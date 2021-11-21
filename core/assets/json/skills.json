@@ -1,0 +1,10 @@
+{
+  "TestSkill": {
+    "NAME":"테스트",
+    "DESCRIPTION":"테스트 설명"
+  },
+  "TestSkill2": {
+    "NAME":"테스트2",
+    "DESCRIPTION":"테스트 설명 2"
+  }
+}

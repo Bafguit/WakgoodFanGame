@@ -1,0 +1,22 @@
+{
+  "Strike": {
+    "NAME": "타격",
+    "COND": "기력이 (@)(@) 이상인 카드",
+    "DESC": "피해를 {A} 줍니다. 보호막을 {S} 얻습니다."
+  },
+  "Barrier": {
+    "NAME": "보호막",
+    "COND": "모든 카드",
+    "DESC": "보호막을 {S} 얻습니다."
+  },
+  "CardID": {
+    "NAME": "NAME",
+    "COND": "CONDITION",
+    "UP_COND": "UP_CONDITION",
+    "DESC": "DESCRIPTION",
+    "UP_DESC": "UP_DESCRIPTION",
+    "EX_DESC": [
+      "EXTRA_DESCRIPTION"
+    ]
+  }
+}
