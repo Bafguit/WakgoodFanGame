@@ -36,7 +36,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     protected int fs;
     protected FontType ft;
     protected boolean fb;
-    protected boolean over;
+    public boolean over;
     protected boolean enabled;
     protected boolean showImg = true;
 

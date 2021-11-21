@@ -39,14 +39,17 @@ public class CharSelectScreen extends AbstractScreen {
         CharButton char1 = new CharButton(BASIC);
         char1.setPosition(Gdx.graphics.getWidth() * 0.1f - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
         aChars[0] = char1;
-        char1 = new CharButton(SAJANG);
-        char1.setPosition(Gdx.graphics.getWidth() * 0.2f - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
-        aChars[1] = char1;
+        CharButton char2 = new CharButton(SAJANG);
+        char2.setPosition(Gdx.graphics.getWidth() * 0.2f - char2.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
+        aChars[1] = char2;
+        CharButton char3 = new CharButton(BABY);
+        char3.setPosition(Gdx.graphics.getWidth() * 0.3f - char3.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
+        aChars[2] = char3;
 
-        for(int i = 2; i < 9; i++) {
-            char1 = new CharButton(BASIC);
-            char1.setPosition(Gdx.graphics.getWidth() * 0.1f * (i + 1) - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
-            aChars[i] = char1;
+        for(int i = 3; i < 9; i++) {
+            CharButton char0 = new CharButton(BASIC);
+            char0.setPosition(Gdx.graphics.getWidth() * 0.1f * (i + 1) - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
+            aChars[i] = char0;
         }
     }
 

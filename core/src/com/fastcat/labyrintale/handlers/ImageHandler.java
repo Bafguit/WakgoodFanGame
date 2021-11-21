@@ -17,6 +17,8 @@ public class ImageHandler {
     public static final Texture WAK_BASIC_BG = new Texture("img/wakdu/basic_bg.png");
     public static final Texture WAK_SAJANG = new Texture("img/wakdu/sajang.png");
     public static final Texture WAK_SAJANG_BG = new Texture("img/wakdu/sajang_bg.png");
+    public static final Texture WAK_BABY = new Texture("img/wakdu/baby.png");
+    public static final Texture WAK_BABY_BG = new Texture("img/wakdu/baby_bg.png");
 
     public ImageHandler() {
 

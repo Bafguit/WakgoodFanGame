@@ -36,6 +36,6 @@ public class NextButton extends AbstractUI {
         Labyrintale.advisorSelectScreen.nextButton.onHide();
         Labyrintale.labyrinth = new AbstractLabyrinth();
         Labyrintale.mapScreen = new MapScreen();
-        //Labyrintale.game.setScreen(Labyrintale.mainMenuScreen);
+        Labyrintale.game.setScreen(Labyrintale.mapScreen);
     }
 }

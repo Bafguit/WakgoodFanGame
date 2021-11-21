@@ -7,17 +7,13 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public class AbstractRoom implements Cloneable {
 
-    private CardPanel cardPanel;
-    private CardPanel cardPanel2;
-
-    public AbstractSkill[] cards = new AbstractSkill[2];
-    public AbstractEnemy[] enemies = new AbstractEnemy[5];
+    public AbstractEnemy[] enemies = new AbstractEnemy[4];
     public AbstractEvent event;
     public RoomType type;
     public boolean isDone;
     
     public AbstractRoom() {
-        this(NONE);
+        this(ENTRY);
     }
     
     public AbstractRoom(AbstractEvent event) {
@@ -25,8 +21,8 @@ public class AbstractRoom implements Cloneable {
         this.event = event;
     }
     
-    public AbstractRoom(AbstractEnemy[] enemies) {
-        this(BATTLE);
+    public AbstractRoom(AbstractEnemy[] enemies, int t) {
+        this(t == 1 ? ELITE : t == 2 ? BOSS : BATTLE);
         this.enemies = enemies;
     }
 
@@ -37,8 +33,7 @@ public class AbstractRoom implements Cloneable {
     
     public void update() {
         if(type == BATTLE) {
-            cardPanel.enable();
-            cardPanel2.enable();
+
         }
     }
     
@@ -51,6 +46,6 @@ public class AbstractRoom implements Cloneable {
     }
 
     public enum RoomType {
-        NONE, BATTLE, EVENT, SHOP, REST, REWARD
+        ENTRY, BATTLE, ELITE, BOSS, EVENT, SHOP, REST
     }
 }

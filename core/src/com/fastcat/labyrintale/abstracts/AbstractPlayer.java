@@ -15,6 +15,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public enum PlayerClass {
-        TEST, BASIC, SAJANG;
+        TEST, BASIC, SAJANG, BABY;
     }
 }

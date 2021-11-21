@@ -40,6 +40,8 @@ public class CharButton extends AbstractUI {
 
     private static Texture getWak(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
+            case BABY:
+                return WAK_BABY;
             case SAJANG:
                 return WAK_SAJANG;
             case BASIC:
@@ -51,6 +53,8 @@ public class CharButton extends AbstractUI {
 
     private static Texture getWakBg(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
+            case BABY:
+                return WAK_BABY_BG;
             case SAJANG:
                 return WAK_SAJANG_BG;
             default:
