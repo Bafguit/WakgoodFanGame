@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractImage;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -17,8 +18,11 @@ public class BattleScreen extends AbstractScreen {
     public EffectText effectText;
     public SkillButton advisor;
     public SkillButton skillInfo;
-    public SkillButton[] charSkills = new SkillButton[4];
+    public SkillButton[] charSkills = new SkillButton[16];
     public SkillButton[] preSkills = new SkillButton[4];
+    public SkillButton[] enemySkills = new SkillButton[4];
+    public PlayerView[] players = new PlayerView[4];
+    public AbstractPlayer currentPlayer;
 
     public BattleScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -41,6 +45,11 @@ public class BattleScreen extends AbstractScreen {
             SkillButton s2 = new SkillButton();
             s2.setPosition(w * 0.410f + w * 0.06f * i - s.sWidth / 2, h * 0.35f);
             preSkills[i] = s2;
+
+            SkillButton s3 = new SkillButton(new Strike());
+            s3.setScale(0.6f);
+            s3.setPosition(w * 0.6f + w * 0.1f * i - s.sWidth / 2, h * 0.8f);
+            enemySkills[i] = s3;
         }
     }
 
@@ -50,6 +59,7 @@ public class BattleScreen extends AbstractScreen {
         for(int i = 0; i < 4; i++) {
             charSkills[i].update();
             preSkills[i].update();
+            enemySkills[i].update();
         }
         skillInfo.update();
         nameText.update();
@@ -62,6 +72,7 @@ public class BattleScreen extends AbstractScreen {
         for(int i = 0; i < 4; i++) {
             charSkills[i].render(sb);
             preSkills[i].render(sb);
+            enemySkills[i].render(sb);
         }
         skillInfo.render(sb);
         nameText.render(sb);

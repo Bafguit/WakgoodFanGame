@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -39,6 +40,8 @@ public class Labyrintale extends Game {
 	public static AdvisorSelectScreen advisorSelectScreen;
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
+
+	private static int uidCount = -1;
 
 	private InputHandler inputHandler;
 	private FontHandler fontHandler;
@@ -97,6 +100,10 @@ public class Labyrintale extends Game {
 		/** ============== */
 
 		sb.end();
+	}
+
+	public static int getUid() {
+		return ++uidCount;
 	}
 	
 	@Override

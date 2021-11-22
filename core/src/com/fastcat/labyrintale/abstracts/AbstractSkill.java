@@ -9,6 +9,8 @@ import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.strings.CardString;
 
+import java.util.Random;
+
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -25,6 +27,7 @@ public abstract class AbstractSkill implements Cloneable {
     public String cond;
     public String desc;
     public boolean upgraded;
+    public long uid;
     public int upgradeCount;
     public int attack = 0;
     public int baseAttack = 0;
@@ -36,6 +39,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int baseCost;
 
     public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardType type, CardRarity rarity, CardTarget target, int cost) {
+        uid = Labyrintale.getUid();
         this.id = id;
         this.img = tex;
         this.cardData = StringHandler.cardString.get(this.id);

@@ -15,7 +15,7 @@ public class EffectText extends AbstractUI {
 
     public EffectText() {
         super(CHAR_SELECT, 0, 0, 400, 180);
-        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.275f - 40 * scale);
+        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.275f - 45 * scale);
         fontData = CARD_BIG_DESC;
         text = "";
         showImg = false;

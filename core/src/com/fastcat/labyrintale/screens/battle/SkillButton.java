@@ -12,6 +12,7 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
+import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.TEST;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 import static com.fastcat.labyrintale.handlers.ImageHandler.*;
 
@@ -20,9 +21,11 @@ public class SkillButton extends AbstractUI {
     private Texture border = CHAR_SELECT;
     public AbstractSkill skill;
     public boolean isInfo = false;
-    public boolean isLock = false;
+    public boolean isOnLock = false;
     public boolean isSkill = true;
+    public boolean isSelected = false;
     public boolean canClick = true;
+    public int suid = -1;
 
     public SkillButton() {
         this(null);
@@ -40,15 +43,17 @@ public class SkillButton extends AbstractUI {
             if(showImg && skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-
-            if(fontData != null) {
-                renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
-            }
         }
     }
 
     @Override
     protected void updateButton() {
+        for(int i = 0; i < 4; i++) {
+            if (skill.uid == battleScreen.preSkills[i].suid) {
+                isSelected = true;
+                break;
+            }
+        }
         if(!isInfo && isSkill && over && skill != null) {
             Labyrintale.battleScreen.skillInfo.skill = skill;
             battleScreen.nameText.text = skill.name;
@@ -58,7 +63,7 @@ public class SkillButton extends AbstractUI {
             boolean ov = false;
             if(!battleScreen.advisor.over) {
                 for (int i = 0; i < 4; i++) {
-                    if (battleScreen.charSkills[i].over || battleScreen.preSkills[i].over) {
+                    if (battleScreen.charSkills[i].over || battleScreen.preSkills[i].over || battleScreen.enemySkills[i].over) {
                         ov = true;
                         break;
                     }
@@ -79,5 +84,15 @@ public class SkillButton extends AbstractUI {
     @Override
     protected void onClick() {
 
+    }
+
+    public void removeChar() {
+        skill = null;
+        showImg = false;
+        isOnLock = false;
+        if(suid > -1) {
+            //sChar.isCharSt = false;
+            suid = -1;
+        }
     }
 }

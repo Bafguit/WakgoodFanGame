@@ -34,10 +34,9 @@ public class FontHandler {
 
     public static final FontData LOGO = new FontData(BOLD, 100, false);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false);
-    public static final BitmapFont STANDARD = generate(MEDIUM, 50, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, true);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 32, false);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 30, false);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -126,10 +125,10 @@ public class FontHandler {
         font.getData().setScale(fontData.scale);
         font.getData().setLineHeight(fontData.size * 1.3f);
         layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
-        if(layout.runs.size * font.getLineHeight() > bh) {
+        /*if(layout.runs.size * font.getLineHeight() > bh) {
             font.getData().setScale(font.getScaleY() * 0.8f);
             layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
-        }
+        }*/
         font.draw(sb, layout, x, y);
     }
 
