@@ -3,25 +3,29 @@ package com.fastcat.labyrintale.uis;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractImage;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.ImageHandler;
+import com.fastcat.labyrintale.skills.Strike;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
-public class CardPanel extends AbstractImage {
+public class CardPanel extends AbstractUI {
 
     private float realScale = 0.5f;
 
     public int index;
 
     public CardPanel(int index) {
-        super(ImageHandler.CARD_PANEL);
-        setScale(0.4f);
+        super(ImageHandler.CARD_BG);
+        setScale(0.3f);
         this.index = index;
     }
 
     @Override
     public void updateButton() {
-        /*AbstractSkill c = Labyrintale.mainMenuScreen.testCard;
+        /*
+        AbstractSkill c = new Strike();
         if(isOverlap(c.ui)) {
             //ggggg
             if(!c.ui.clicking) {

@@ -8,12 +8,14 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.generate;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public abstract class AbstractUI implements ScaleUpdateListener {
 
@@ -21,7 +23,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
 
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     protected Texture img;
-    protected String text;
+    public String text;
     protected FontData fontData;
     protected float x;
     protected float sx;
@@ -144,6 +146,8 @@ public abstract class AbstractUI implements ScaleUpdateListener {
 
     public void setScale(float scale) {
         uiScale = scale;
+        sWidth = width * InputHandler.scale * uiScale;
+        sHeight = height * InputHandler.scale * uiScale;
     }
 
     protected void trackCursor(boolean center) {

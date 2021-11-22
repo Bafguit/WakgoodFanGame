@@ -14,7 +14,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 public class MapScreen extends AbstractScreen {
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public boolean isOnlyMap = true;
+    public boolean isView = false;
 
     public MapNodeButton entryNode;
     public MapNodeButton[] upNodes = new MapNodeButton[5];
@@ -71,12 +71,12 @@ public class MapScreen extends AbstractScreen {
             case UP:
                 shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.6f);
                 for(int i = 1; i < 5; i++) {
-                    if(upNodes[i - 1].room.isDone && !upNodes[i].room.isDone && upNodes[i].over) shr.setColor(Color.WHITE);
+                    if(upNodes[i - 1].room.isDone && !upNodes[i].room.isDone && upNodes[i].over && !isView) shr.setColor(Color.WHITE);
                     else if(!upNodes[i].room.isDone) shr.setColor(Color.LIGHT_GRAY);
                     shr.line(w * 0.1f * (i + 2) + entryNode.sWidth / 2, h * 0.6f, w * 0.1f * (i + 3) - entryNode.sWidth / 2, h * 0.6f);
                 }
                 if(!bossNode.room.isDone) {
-                    if(bossNode.canGo && bossNode.over) shr.setColor(Color.WHITE);
+                    if(bossNode.canGo && bossNode.over && !isView) shr.setColor(Color.WHITE);
                     else shr.setColor(Color.LIGHT_GRAY);
                 }
                 shr.line(w * 0.7f + entryNode.sWidth / 2, h * 0.6f, w * 0.8f - entryNode.sWidth / 2, h / 2);
@@ -84,21 +84,21 @@ public class MapScreen extends AbstractScreen {
             case DOWN:
                 shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.4f);
                 for(int i = 1; i < 5; i++) {
-                    if(downNodes[i - 1].room.isDone && !downNodes[i].room.isDone && downNodes[i].over) shr.setColor(Color.WHITE);
+                    if(downNodes[i - 1].room.isDone && !downNodes[i].room.isDone && downNodes[i].over && !isView) shr.setColor(Color.WHITE);
                     else if(!downNodes[i].room.isDone) shr.setColor(Color.LIGHT_GRAY);
                     shr.line(w * 0.1f * (i + 2) + entryNode.sWidth / 2, h * 0.4f, w * 0.1f * (i + 3) - entryNode.sWidth / 2, h * 0.4f);
                 }
                 if(!bossNode.room.isDone) {
-                    if(bossNode.canGo && bossNode.over) shr.setColor(Color.WHITE);
+                    if(bossNode.canGo && bossNode.over && !isView) shr.setColor(Color.WHITE);
                     else shr.setColor(Color.LIGHT_GRAY);
                 }
                 shr.line(w * 0.7f + entryNode.sWidth / 2, h * 0.4f, w * 0.8f - entryNode.sWidth / 2, h / 2);
                 break;
             default:
-                if(upNodes[0].over) shr.setColor(Color.WHITE);
+                if(upNodes[0].over && !isView) shr.setColor(Color.WHITE);
                 else shr.setColor(Color.LIGHT_GRAY);
                 shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.6f);
-                if(downNodes[0].over) shr.setColor(Color.WHITE);
+                if(downNodes[0].over && !isView) shr.setColor(Color.WHITE);
                 else shr.setColor(Color.LIGHT_GRAY);
                 shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.4f);
         }

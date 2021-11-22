@@ -67,7 +67,7 @@ public class Labyrintale extends Game {
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
 		advisorSelectScreen = new AdvisorSelectScreen();
-		battleScreen = new BattleScreen(this);
+		battleScreen = new BattleScreen();
 		labyrinth = new AbstractLabyrinth();
 
 		setScreen(mainMenuScreen);

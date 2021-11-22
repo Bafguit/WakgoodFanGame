@@ -12,7 +12,7 @@ public class BackToCharButton extends AbstractUI {
     public BackToCharButton() {
         super(BACK);
         setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "뒤로";
         showImg = false;
     }

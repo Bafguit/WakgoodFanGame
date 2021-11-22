@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.mainmenu;
+package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,13 +8,13 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
 import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
 
-public class LogoText extends AbstractUI {
+public class NameText extends AbstractUI {
 
-    public LogoText() {
-        super(MENU_SELECT, 0, 0, 300, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.7f);
-        fontData = LOGO;
-        text = "W의 미궁";
+    public NameText() {
+        super(MENU_SELECT, 0, 0, 400, 60);
+        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.275f);
+        fontData = CARD_BIG_NAME;
+        text = "";
         showImg = false;
     }
 
@@ -22,7 +22,7 @@ public class LogoText extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled) {
             if(fontData != null) {
-                renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+                renderLineLeft(sb, fontData, text, x, y, sWidth, sHeight);
             }
         }
     }

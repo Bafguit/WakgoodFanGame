@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.buttons.CardUIButton;
 import com.fastcat.labyrintale.handlers.SettingHandler;
@@ -13,7 +14,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable {
 
-    public CardUIButton ui;
+    public Texture img;
     public CardString.CardData cardData;
     public PlayerClass playerClass;
     public CardType type;
@@ -34,8 +35,9 @@ public abstract class AbstractSkill implements Cloneable {
     public int cost;
     public int baseCost;
 
-    public AbstractSkill(String id, PlayerClass playerClass, CardType type, CardRarity rarity, CardTarget target, int cost) {
+    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardType type, CardRarity rarity, CardTarget target, int cost) {
         this.id = id;
+        this.img = tex;
         this.cardData = StringHandler.cardString.get(this.id);
         this.name = this.cardData.NAME;
         this.cond = this.cardData.COND;
@@ -48,7 +50,6 @@ public abstract class AbstractSkill implements Cloneable {
         this.baseCost = this.cost;
         this.upgraded = false;
         this.upgradeCount = 0;
-        this.ui = new CardUIButton(this);
     }
 
     public void setBaseAttack(int i) {
@@ -71,15 +72,15 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public void render(SpriteBatch sb) {
-        this.ui.render(sb);
+
     }
 
     public String getKeyValue(String key) {
         switch (key) {
             case "A":
-                return (int) (Labyrintale.labyrinth.player.attack * this.attack / 100) + (viewValue() ? ("(" + this.attack + "%)") : "");
+                return Integer.toString(this.attack);
             case "S":
-                return (int) (Labyrintale.labyrinth.player.spell * this.spell / 100) + (viewValue() ? ("(" + this.spell + "%)") : "");
+                return Integer.toString(this.spell);
             case "V":
                 return Integer.toString(this.value);
             default:

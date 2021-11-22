@@ -25,19 +25,19 @@ public class FontHandler {
     private static final FreeTypeFontGenerator light = new FreeTypeFontGenerator(Gdx.files.internal("font/museumL.ttf"));
     private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/museumM.ttf"));
     private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/museumB.ttf"));
-    private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+    //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     private static final GlyphLayout layout = new GlyphLayout();
 
     private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
-    private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
+    //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
     public static final FontData LOGO = new FontData(BOLD, 100, false);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false);
     public static final BitmapFont STANDARD = generate(MEDIUM, 50, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, true);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, false);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 36, false);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 32, false);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 30, false);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -57,7 +57,9 @@ public class FontHandler {
         return generate(type, size, WHITE, DARK_GRAY, border);
     }
 
+
     public static BitmapFont generate(FontType type, int size, Color color, Color bColor, boolean border) {
+        FreeTypeFontParameter parameter = new FreeTypeFontParameter();
         parameter.characters = "";
         parameter.incremental = true;
         parameter.shadowOffsetX = 2;
@@ -66,11 +68,9 @@ public class FontHandler {
         parameter.color = color;
         parameter.borderColor = bColor;
         parameter.borderWidth = border ? parameter.size * 0.1f : 0.0f;
-        final BitmapFont ff;
-        if(type.equals(BOLD)) ff = bold.generateFont(parameter);
-        else if(type.equals(LIGHT)) ff = light.generateFont(parameter);
-        else ff = medium.generateFont(parameter);
-        return ff;
+        if(type.equals(BOLD)) return bold.generateFont(parameter);
+        else if(type.equals(LIGHT)) return light.generateFont(parameter);
+        else return medium.generateFont(parameter);
     }
 
     public static void renderCenter(SpriteBatch sb, BitmapFont font, String text, float x, float y) {
@@ -89,6 +89,13 @@ public class FontHandler {
         font.draw(sb, layout, x, ry);
     }
 
+    public static void renderLineLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
+        BitmapFont font = fontData.font;
+        layout.setText(font, text, fontData.color, bw, Align.left, false);
+        float ry = y + (layout.height) / 2;
+        font.draw(sb, layout, x, y);
+    }
+
     public static void renderKeywordCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         renderLine(sb, fontData, text, getHexColor(CHARTREUSE) + "$1" + getHexColor(fontData.color), "$1", x, y, bw, bh);
     }
@@ -99,6 +106,31 @@ public class FontHandler {
 
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, Vector2 vector, float bw, float bh) {
         renderCardCenter(sb, card, fontData, text, vector.x, vector.y, bw, bh);
+    }
+
+    public static void renderCardLeft(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {
+        BitmapFont font = fontData.font;
+        Matcher matcher = COLOR_PATTERN.matcher(text);
+        while(matcher.find()) {
+            String mt = matcher.group(1);
+            String mmt = matcher.group(2);
+            text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
+            matcher = COLOR_PATTERN.matcher(text);
+        }
+        matcher = VAR_PATTERN.matcher(text);
+        while(matcher.find()) {
+            String mt = matcher.group(1);
+            text = matcher.replaceFirst(card.getKeyColor(mt) + card.getKeyValue(mt) + getHexColor(fontData.color));
+            matcher = VAR_PATTERN.matcher(text);
+        }
+        font.getData().setScale(fontData.scale);
+        font.getData().setLineHeight(fontData.size * 1.3f);
+        layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
+        if(layout.runs.size * font.getLineHeight() > bh) {
+            font.getData().setScale(font.getScaleY() * 0.8f);
+            layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
+        }
+        font.draw(sb, layout, x, y);
     }
 
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {
@@ -116,7 +148,6 @@ public class FontHandler {
             text = matcher.replaceFirst(card.getKeyColor(mt) + card.getKeyValue(mt) + getHexColor(fontData.color));
             matcher = VAR_PATTERN.matcher(text);
         }
-        text = ORB_PATTERN.matcher(text).replaceAll("　");
         font.getData().setScale(fontData.scale);
         font.getData().setLineHeight(fontData.size + 20);
         while(true) {
@@ -129,29 +160,14 @@ public class FontHandler {
         }
         float ry = y + (layout.height) / 2;
         font.draw(sb, layout, x, ry);
-        for(GlyphLayout.GlyphRun run : layout.runs) {
-            if(run.glyphs.toString().contains("　")) {
-                float gx = x + run.x, gy = ry + run.y - font.getCapHeight();
-                float[] xAdvances = run.xAdvances.items;
-                Object[] glyphs = run.glyphs.items;
-                for (int i = 0; i < run.glyphs.size; i++) {
-                    gx += xAdvances[i];
-                    if (glyphs[i].toString().equals("　")) {
-                        sb.draw(imgG, gx, gy);
-                    }
-                }
-            }
-        }
     }
 
     private static void renderLine(SpriteBatch sb, FontData fontData, String text, String realValue, String tempValue, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         String realText = COLOR_PATTERN.matcher(text).replaceAll(getColorKey("$1") + "$2" + getHexColor(fontData.color));
         realText = VAR_PATTERN.matcher(realText).replaceAll(realValue);
-        realText = ORB_PATTERN.matcher(realText).replaceAll("　");
         String tempText = COLOR_PATTERN.matcher(text).replaceAll("$2");
         tempText = VAR_PATTERN.matcher(tempText).replaceAll(tempValue);
-        tempText = ORB_PATTERN.matcher(tempText).replaceAll("　");
         font.getData().setScale(fontData.scale);
         while(true) {
             layout.setText(font, tempText, fontData.color, bw, Align.center, true);
