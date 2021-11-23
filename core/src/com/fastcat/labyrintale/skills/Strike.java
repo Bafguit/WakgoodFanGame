@@ -14,12 +14,12 @@ public class Strike extends AbstractSkill {
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final int COST = 1;
     private static final int ATTACK = 100;
 
     public Strike() {
-        super(ID, IMG, CLASS, TYPE, RARITY, TARGET, COST);
+        super(ID, IMG, CLASS, TYPE, RARITY, COST);
+        setPlayerTarget(true, true, false, false);
         setBaseAttack(ATTACK);
     }
 

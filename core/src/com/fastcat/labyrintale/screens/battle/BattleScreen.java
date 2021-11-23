@@ -2,14 +2,14 @@ package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractImage;
-import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.skills.Strike;
 import com.fastcat.labyrintale.uis.CardPanel;
 
+import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.player;
 import static com.fastcat.labyrintale.handlers.ImageHandler.WAK_BABY;
 
 public class BattleScreen extends AbstractScreen {
@@ -22,6 +22,8 @@ public class BattleScreen extends AbstractScreen {
     public SkillButton[] preSkills = new SkillButton[4];
     public SkillButton[] enemySkills = new SkillButton[4];
     public PlayerView[] players = new PlayerView[4];
+    public boolean isLooking = false;
+    public boolean[] looking = new boolean[8];
     public AbstractPlayer currentPlayer;
 
     public BattleScreen() {
@@ -35,6 +37,7 @@ public class BattleScreen extends AbstractScreen {
         skillInfo.isInfo = true;
         skillInfo.isSkill = false;
         skillInfo.canClick = false;
+        skillInfo.isCS = false;
         skillInfo.setScale(2.5f);
         skillInfo.setPosition(w * 0.55f, h * 0.175f - skillInfo.sHeight / 2);
         for(int i = 0; i < 4; i++) {
@@ -44,23 +47,41 @@ public class BattleScreen extends AbstractScreen {
 
             SkillButton s2 = new SkillButton();
             s2.setPosition(w * 0.410f + w * 0.06f * i - s.sWidth / 2, h * 0.35f);
+            s2.isCS = false;
             preSkills[i] = s2;
 
             SkillButton s3 = new SkillButton(new Strike());
             s3.setScale(0.6f);
             s3.setPosition(w * 0.6f + w * 0.1f * i - s.sWidth / 2, h * 0.8f);
+            s3.isCS = false;
+            s3.canClick = false;
             enemySkills[i] = s3;
+
+            PlayerView pv = new PlayerView(charSelectScreen.chars[i].selected);
+            pv.setPosition(w * 0.4f - w * 0.1f * i, h * 0.5f);
+            players[i] = pv;
         }
+        currentPlayer = players[0].player;
     }
 
     @Override
     public void update() {
-        advisor.update();
+        if(skillInfo.skill == null) {
+            isLooking = false;
+            for(int i = 0; i < 8; i++) {
+                looking[i] = false;
+            }
+        } else {
+            isLooking = true;
+        }
         for(int i = 0; i < 4; i++) {
+            players[i].isLooking = looking[i];
+            players[i].update();
             charSkills[i].update();
             preSkills[i].update();
             enemySkills[i].update();
         }
+        advisor.update();
         skillInfo.update();
         nameText.update();
         effectText.update();
@@ -68,12 +89,13 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        advisor.render(sb);
         for(int i = 0; i < 4; i++) {
+            players[i].render(sb);
             charSkills[i].render(sb);
             preSkills[i].render(sb);
             enemySkills[i].render(sb);
         }
+        advisor.render(sb);
         skillInfo.render(sb);
         nameText.render(sb);
         effectText.render(sb);

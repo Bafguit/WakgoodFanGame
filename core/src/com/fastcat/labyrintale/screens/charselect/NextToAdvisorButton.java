@@ -12,7 +12,7 @@ public class NextToAdvisorButton extends AbstractUI {
     public NextToAdvisorButton() {
         super(NEXT);
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "다음";
         showImg = false;
         disable();

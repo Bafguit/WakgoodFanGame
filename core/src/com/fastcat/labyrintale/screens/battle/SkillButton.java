@@ -7,10 +7,11 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.screens.charselect.CharButton;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.Labyrintale.mapScreen;
+import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.TEST;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
@@ -22,10 +23,10 @@ public class SkillButton extends AbstractUI {
     public AbstractSkill skill;
     public boolean isInfo = false;
     public boolean isOnLock = false;
+    public boolean isCS = true;
     public boolean isSkill = true;
     public boolean isSelected = false;
     public boolean canClick = true;
-    public int suid = -1;
 
     public SkillButton() {
         this(null);
@@ -39,7 +40,9 @@ public class SkillButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
+            if(isSelected) sb.setColor(Color.DARK_GRAY);
+            else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
+
             if(showImg && skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
@@ -48,16 +51,21 @@ public class SkillButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        for(int i = 0; i < 4; i++) {
-            if (skill.uid == battleScreen.preSkills[i].suid) {
-                isSelected = true;
-                break;
+        if(isCS) {
+            isSelected = false;
+            for (int i = 0; i < 4; i++) {
+                SkillButton ss = battleScreen.preSkills[i];
+                if (ss.isOnLock && skill.uid == ss.skill.uid) {
+                    isSelected = true;
+                    break;
+                }
             }
         }
         if(!isInfo && isSkill && over && skill != null) {
             Labyrintale.battleScreen.skillInfo.skill = skill;
             battleScreen.nameText.text = skill.name;
             battleScreen.effectText.text = skill.desc;
+            battleScreen.looking = skill.target;
         }
         if(isInfo && skill != null) {
             boolean ov = false;
@@ -83,16 +91,37 @@ public class SkillButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-
+        if(!isInfo && canClick) {
+            if(isCS) {
+                if(!isSelected) {
+                    for(int i = 0; i < 4; i++) {
+                        SkillButton chb = battleScreen.preSkills[i];
+                        if(!chb.isOnLock) {
+                            chb.isOnLock = true;
+                            chb.skill = skill;
+                            chb.showImg = true;
+                            chb.img = img;
+                            break;
+                        }
+                    }
+                } else {
+                    for(int i = 0; i < 4; i++) {
+                        SkillButton chb = battleScreen.preSkills[i];
+                        if(chb.isOnLock && chb.skill.uid == skill.uid) {
+                            chb.removeChar();
+                            break;
+                        }
+                    }
+                }
+            } else if(isOnLock) {
+                removeChar();
+            }
+        }
     }
 
     public void removeChar() {
         skill = null;
         showImg = false;
         isOnLock = false;
-        if(suid > -1) {
-            //sChar.isCharSt = false;
-            suid = -1;
-        }
     }
 }

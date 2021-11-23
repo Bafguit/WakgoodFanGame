@@ -41,7 +41,7 @@ public class Labyrintale extends Game {
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
 
-	private static int uidCount = -1;
+	private static int uidCount = 0;
 
 	private InputHandler inputHandler;
 	private FontHandler fontHandler;

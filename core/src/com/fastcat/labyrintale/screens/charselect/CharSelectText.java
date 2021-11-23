@@ -13,7 +13,7 @@ public class CharSelectText extends AbstractUI {
     public CharSelectText() {
         super(MENU_SELECT, 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "플레이어를 선택하세요";
         showImg = false;
     }

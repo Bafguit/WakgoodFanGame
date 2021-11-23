@@ -16,18 +16,18 @@ import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable {
 
+    public boolean[] target = new boolean[8];
     public Texture img;
     public CardString.CardData cardData;
     public PlayerClass playerClass;
     public CardType type;
     public CardRarity rarity;
-    public CardTarget target;
     public String id;
     public String name;
     public String cond;
     public String desc;
     public boolean upgraded;
-    public long uid;
+    public float uid;
     public int upgradeCount;
     public int attack = 0;
     public int baseAttack = 0;
@@ -38,7 +38,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int cost;
     public int baseCost;
 
-    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardType type, CardRarity rarity, CardTarget target, int cost) {
+    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardType type, CardRarity rarity, int cost) {
         uid = Labyrintale.getUid();
         this.id = id;
         this.img = tex;
@@ -49,7 +49,6 @@ public abstract class AbstractSkill implements Cloneable {
         this.playerClass = playerClass;
         this.type = type;
         this.rarity = rarity;
-        this.target = target;
         this.cost = cost;
         this.baseCost = this.cost;
         this.upgraded = false;
@@ -77,6 +76,39 @@ public abstract class AbstractSkill implements Cloneable {
 
     public void render(SpriteBatch sb) {
 
+    }
+
+    protected void setTarget(boolean t1, boolean t2, boolean t3, boolean t4, boolean t5, boolean t6, boolean t7, boolean t8) {
+        target[0] = t1;
+        target[1] = t2;
+        target[2] = t3;
+        target[3] = t4;
+        target[4] = t5;
+        target[5] = t6;
+        target[6] = t7;
+        target[7] = t8;
+    }
+
+    protected void setPlayerTarget(boolean t1, boolean t2, boolean t3, boolean t4) {
+        target[0] = t1;
+        target[1] = t2;
+        target[2] = t3;
+        target[3] = t4;
+        target[4] = false;
+        target[5] = false;
+        target[6] = false;
+        target[7] = false;
+    }
+
+    protected void setEnemyTarget(boolean t1, boolean t2, boolean t3, boolean t4) {
+        target[0] = false;
+        target[1] = false;
+        target[2] = false;
+        target[3] = false;
+        target[4] = t1;
+        target[5] = t2;
+        target[6] = t3;
+        target[7] = t4;
     }
 
     public String getKeyValue(String key) {
