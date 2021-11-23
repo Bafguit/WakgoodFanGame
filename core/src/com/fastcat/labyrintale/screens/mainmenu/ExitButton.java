@@ -1,12 +1,10 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
-import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class ExitButton extends AbstractUI {
 

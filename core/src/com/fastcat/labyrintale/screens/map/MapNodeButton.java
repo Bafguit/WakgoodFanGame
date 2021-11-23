@@ -1,22 +1,16 @@
 package com.fastcat.labyrintale.screens.map;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class MapNodeButton extends AbstractUI {
 

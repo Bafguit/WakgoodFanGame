@@ -1,14 +1,7 @@
 package com.fastcat.labyrintale.uis;
 
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractImage;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.ImageHandler;
-import com.fastcat.labyrintale.skills.Strike;
-
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CardPanel extends AbstractUI {
 
@@ -17,7 +10,7 @@ public class CardPanel extends AbstractUI {
     public int index;
 
     public CardPanel(int index) {
-        super(ImageHandler.CARD_BG);
+        super(FileHandler.CARD_BG);
         setScale(0.3f);
         this.index = index;
     }

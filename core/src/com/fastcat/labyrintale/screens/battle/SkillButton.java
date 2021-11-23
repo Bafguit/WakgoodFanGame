@@ -4,18 +4,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.screens.charselect.CharButton;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.TEST;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillButton extends AbstractUI {
 

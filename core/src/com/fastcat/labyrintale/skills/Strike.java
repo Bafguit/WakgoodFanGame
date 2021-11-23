@@ -4,8 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
-import static com.fastcat.labyrintale.handlers.ImageHandler.CHAR_SELECT;
-import static com.fastcat.labyrintale.handlers.ImageHandler.WAK_BASIC;
+import static com.fastcat.labyrintale.handlers.FileHandler.WAK_BASIC;
 
 public class Strike extends AbstractSkill {
 
@@ -19,7 +18,7 @@ public class Strike extends AbstractSkill {
 
     public Strike() {
         super(ID, IMG, CLASS, TYPE, RARITY, COST);
-        setPlayerTarget(true, true, false, false);
+        setEnemyTarget(true, true, true, true);
         setBaseAttack(ATTACK);
     }
 

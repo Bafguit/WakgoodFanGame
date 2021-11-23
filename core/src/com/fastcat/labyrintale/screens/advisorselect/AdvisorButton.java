@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {

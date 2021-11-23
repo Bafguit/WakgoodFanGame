@@ -3,18 +3,18 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.players.TestPlayer;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.handlers.ImageHandler.ENTITY_POINT;
+import static com.fastcat.labyrintale.handlers.FileHandler.ENTITY_POINT;
 
 public class EnemyView extends AbstractUI {
 
     public AbstractEnemy enemy;
     public boolean isLooking = false;
-    //public boolean isOnLock = false;
+
+    public EnemyView() {
+        this(null);
+    }
 
     public EnemyView(AbstractEnemy enemy) {
         super(ENTITY_POINT);
@@ -30,7 +30,6 @@ public class EnemyView extends AbstractUI {
 
     @Override
     protected void onOver() {
-        showImg = true;
     }
 
     @Override
@@ -44,8 +43,8 @@ public class EnemyView extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!enemy.isDead) {
+        /*if(!enemy.isDead) {
             //code
-        }
+        }*/
     }
 }

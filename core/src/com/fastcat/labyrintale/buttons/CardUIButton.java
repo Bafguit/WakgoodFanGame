@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractButton;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.handlers.ImageHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -47,9 +47,9 @@ public class CardUIButton extends AbstractButton {
     public AbstractSkill card;
 
     public CardUIButton(AbstractSkill card) {
-        super(ImageHandler.CARD_BG);
+        super(FileHandler.CARD_BG);
         this.card = card;
-        this.cardBg = ImageHandler.CARD_BG;
+        this.cardBg = FileHandler.CARD_BG;
         this.costFontData = CARD_BIG_ORB.cpy();
         this.nameFontData = CARD_BIG_NAME.cpy();
         this.descFontData = CARD_BIG_DESC.cpy();

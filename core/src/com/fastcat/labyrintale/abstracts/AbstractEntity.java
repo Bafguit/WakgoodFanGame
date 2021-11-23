@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -7,7 +8,9 @@ import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Skeleton;
+import com.fastcat.labyrintale.Labyrintale;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.BATTLE;
 
@@ -35,6 +38,8 @@ public abstract class AbstractEntity implements Cloneable {
     public boolean isDead;
     public int health;
     public int maxHealth;
+    public float animX = 0;
+    public float animY = 0;
 
     public AbstractEntity(String id, EntityType type, int maxHealth) {
         this.id = id;
@@ -55,7 +60,25 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void render(SpriteBatch sb) {
+        if (atlas != null) {
+            state.update(Gdx.graphics.getDeltaTime());
+            state.apply(skeleton);
+            state.getCurrent(0).setTimeScale(1.0f);
+            skeleton.updateWorldTransform();
+            skeleton.setPosition(animX, animY);
+            skeleton.setColor(WHITE.cpy());
+            skeleton.setFlip(false, false);
+            sb.end();
+            Labyrintale.psb.begin();
+            Labyrintale.sr.draw(Labyrintale.psb, skeleton);
+            Labyrintale.psb.end();
+            sb.begin();
+        }
+    }
 
+    public void setAnimXY(float x, float y) {
+        animX = x;
+        animY = y;
     }
     
     public void die() {

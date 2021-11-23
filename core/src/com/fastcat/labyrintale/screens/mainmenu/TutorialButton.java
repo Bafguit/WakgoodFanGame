@@ -1,14 +1,10 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
-import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class TutorialButton extends AbstractUI {
 

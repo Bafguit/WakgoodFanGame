@@ -1,25 +1,18 @@
 package com.fastcat.labyrintale.screens.battle;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationStateData;
-import com.esotericsoftware.spine.Skeleton;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.players.TestPlayer;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.*;
-import static com.fastcat.labyrintale.handlers.ImageHandler.CHAR_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class PlayerView extends AbstractUI {
+
+    private Texture pImg;
 
     public AbstractPlayer player;
     public boolean isLooking = false;
@@ -28,6 +21,7 @@ public class PlayerView extends AbstractUI {
     public PlayerView(AbstractPlayer.PlayerClass cls) {
         super(ENTITY_POINT);
         this.player = getWak(cls);
+        pImg = PLAYER_POINT;
         showImg = false;
     }
 
@@ -43,20 +37,16 @@ public class PlayerView extends AbstractUI {
         if(battleScreen.currentPlayer == player) isOnLock = true;
         else isOnLock = false;
 
-        if(isLooking || (isOnLock && !battleScreen.isLooking) || over) showImg = true;
+        if(isLooking || (isOnLock) || over) showImg = true;
         else showImg = false;
-    }
-
-    @Override
-    protected void onOver() {
-        showImg = true;
     }
 
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
             sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
+            if(showImg) sb.draw(!isLooking ? pImg : img, x, y, sWidth, sHeight);
+            if(player != null) player.render(sb);
             //애니메이션
         }
     }

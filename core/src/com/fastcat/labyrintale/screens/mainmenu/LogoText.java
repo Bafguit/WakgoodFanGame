@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
-import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class LogoText extends AbstractUI {
 

@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
-import static com.fastcat.labyrintale.handlers.ImageHandler.BACK;
+import static com.fastcat.labyrintale.handlers.FileHandler.BACK;
 
 public class BackToCharButton extends AbstractUI {
 

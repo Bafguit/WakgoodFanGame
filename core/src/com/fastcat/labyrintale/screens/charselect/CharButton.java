@@ -4,15 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {

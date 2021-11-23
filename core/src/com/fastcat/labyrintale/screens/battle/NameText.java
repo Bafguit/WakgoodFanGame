@@ -5,14 +5,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
-import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class NameText extends AbstractUI {
 
     public NameText() {
         super(MENU_SELECT, 0, 0, 400, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.275f);
+        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.25f);
         fontData = CARD_BIG_NAME;
         text = "";
         showImg = false;

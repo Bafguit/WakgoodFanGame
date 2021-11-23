@@ -26,7 +26,7 @@ allprojects {
         ashleyVersion = '1.7.3'
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.1.0'
-        spineVersion = '3.8.99.1'
+        spineVersion = '3.6.53.1'
     }
 
     repositories {

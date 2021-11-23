@@ -6,7 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
-import static com.fastcat.labyrintale.handlers.ImageHandler.MENU_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class AdvisorSelectText extends AbstractUI {
 
