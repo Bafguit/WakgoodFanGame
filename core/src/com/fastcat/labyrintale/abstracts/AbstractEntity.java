@@ -1,13 +1,14 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationStateData;
-import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
@@ -38,10 +39,10 @@ public abstract class AbstractEntity implements Cloneable {
     public boolean isDead;
     public int health;
     public int maxHealth;
-    public float animX = 0;
-    public float animY = 0;
+    public float animX = -10000;
+    public float animY = -10000;
 
-    public AbstractEntity(String id, EntityType type, int maxHealth) {
+    public AbstractEntity(String id, EntityType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
         this.id = id;
         /** 여기에 json 받아오는거 입력 */
         /** 여기에 아틀라스 이미지 불러오는거 입력 */
@@ -51,6 +52,18 @@ public abstract class AbstractEntity implements Cloneable {
         this.drawPile = new Array<>();
         this.discardPile = new Array<>();
         this.status = new Array<>();
+        this.atlas = atlas;
+        SkeletonJson json = new SkeletonJson(atlas);
+        json.setScale(0.65f);
+        SkeletonData skeletonData = json.readSkeletonData(skel);
+        skeleton = new Skeleton(skeletonData);
+        skeleton.setColor(Color.WHITE);
+        skeleton.setPosition(animX, animY);
+        stateData = new AnimationStateData(skeletonData);
+        state = new AnimationState(stateData);
+        AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
+        e.setTrackTime(MathUtils.random(0.0f, 1.0f));
+        e.setTimeScale(1.0f);
     }
 
     public void update() {
