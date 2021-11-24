@@ -38,10 +38,10 @@ public class TestPlayer extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        temp.add(new Strike());
-        temp.add(new Light());
-        temp.add(new Barrier());
-        temp.add(new Heal());
+        temp.add(new Strike(this));
+        temp.add(new Light(this));
+        temp.add(new Barrier(this));
+        temp.add(new Heal(this));
         return temp;
     }
 }

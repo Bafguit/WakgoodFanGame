@@ -43,17 +43,17 @@ public class PlayerView extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if(enabled && player != null && !player.isDead) {
             sb.setColor(Color.WHITE);
             if(showImg) sb.draw(!isLooking ? pImg : img, x, y, sWidth, sHeight);
-            if(player != null) player.render(sb);
+            player.render(sb);
             //애니메이션
         }
     }
 
     @Override
     protected void onClick() {
-        if(!player.isDead) {
+        if(player != null && !player.isDead) {
             battleScreen.setCurrentPlayer(player);
         }
     }

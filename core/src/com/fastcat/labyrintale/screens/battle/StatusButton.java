@@ -21,11 +21,11 @@ public class StatusButton extends AbstractUI {
 
     public StatusButton() {
         super(CHAR_SELECT);
-        setScale(0.4f);
     }
 
     public StatusButton(AbstractEntity entity) {
         this();
+        setScale(0.4f);
         status = entity.status;
     }
 
@@ -36,7 +36,7 @@ public class StatusButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(status != null) {
-                sb.draw(status.img, x, y, sWidth, sHeight);
+                sb.draw(status.img.getTexture(), x, y, sWidth, sHeight);
             }
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
@@ -49,8 +49,7 @@ public class StatusButton extends AbstractUI {
             battleScreen.statusInfo.status = status;
             battleScreen.nameText.text = status.name;
             battleScreen.effectText2.text = status.desc;
-        }
-        if(isInfo && status != null) {
+        } else if(isInfo && status != null) {
             boolean ov = false;
             for (int i = 0; i < 4; i++) {
                 if (battleScreen.playerStatus[i].over || battleScreen.enemyStatus[i].over) {

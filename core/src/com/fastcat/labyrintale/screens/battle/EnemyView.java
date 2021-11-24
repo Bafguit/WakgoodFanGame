@@ -34,11 +34,10 @@ public class EnemyView extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if(enabled && enemy != null && !enemy.isDead) {
             sb.setColor(Color.WHITE);
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            if(enemy != null) enemy.render(sb);
-            //애니메이션
+            enemy.render(sb);
         }
     }
 

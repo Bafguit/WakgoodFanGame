@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.skills.player;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
@@ -14,8 +15,8 @@ public class Barrier extends AbstractSkill {
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final int VALUE = 3;
 
-    public Barrier() {
-        super(ID, IMG, CLASS, RARITY);
+    public Barrier(AbstractEntity e) {
+        super(e, ID, IMG, CLASS, RARITY);
         setPlayerTarget(true, false, false, false);
         setBaseSpell(VALUE);
     }

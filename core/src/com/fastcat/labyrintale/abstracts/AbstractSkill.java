@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.buttons.CardUIButton;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
@@ -11,6 +12,7 @@ import com.fastcat.labyrintale.strings.CardString;
 
 import java.util.Random;
 
+import static com.fastcat.labyrintale.handlers.ActionHandler.*;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -19,6 +21,7 @@ public abstract class AbstractSkill implements Cloneable {
     public boolean[] target = new boolean[8];
     public Texture img;
     public CardString.CardData cardData;
+    public AbstractEntity owner;
     public PlayerClass playerClass;
     public CardRarity rarity;
     public String id;
@@ -34,8 +37,9 @@ public abstract class AbstractSkill implements Cloneable {
     public int value = -1;
     public int baseValue = -1;
 
-    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
+    public AbstractSkill(AbstractEntity owner, String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
         uid = Labyrintale.getUid();
+        this.owner = owner;
         this.id = id;
         this.img = tex;
         this.cardData = StringHandler.cardString.get(this.id);
@@ -45,6 +49,10 @@ public abstract class AbstractSkill implements Cloneable {
         this.rarity = rarity;
         this.upgraded = false;
         this.upgradeCount = 0;
+    }
+
+    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
+        this(null, id, tex, playerClass, rarity);
     }
 
     public void setBaseAttack(int i) {
@@ -137,6 +145,15 @@ public abstract class AbstractSkill implements Cloneable {
         } else {
             return Color.CYAN;
         }
+    }
+
+    protected Array<AbstractEntity> getTargets() {
+        Array<AbstractEntity> temp = new Array<>();
+        for(int i = 0; i < 4; i++) {
+            if(target[i]) temp.add(Labyrintale.battleScreen.players[i].player);
+            if(target[i + 4]) temp.add(Labyrintale.battleScreen.enemies[i].enemy);
+        }
+        return temp;
     }
 
     public abstract void use();

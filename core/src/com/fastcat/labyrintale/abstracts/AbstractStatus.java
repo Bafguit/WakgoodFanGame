@@ -19,19 +19,23 @@ public abstract class AbstractStatus implements Cloneable {
 
     }
 
-    protected void onApply() {
+    public void onApply() {
 
     }
 
-    protected void onRemove() {
+    public void onRemove() {
 
     }
 
-    protected void onUseCard(AbstractSkill card) {
+    public void onUseCard(AbstractSkill card) {
 
     }
 
-    protected void atBattleEnd() {
+    public void atBattleEnd() {
+
+    }
+
+    public void onDamage(AbstractEntity actor, int damage) {
 
     }
 }

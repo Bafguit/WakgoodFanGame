@@ -20,10 +20,10 @@ public class BattleScreen extends AbstractScreen {
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public ShapeRenderer shr2 = new ShapeRenderer();
     public NameText nameText;
     public EffectText effectText;
     public EffectText2 effectText2;
+    public EndTurnButton endTurnButton;
     public SkillButton advisor;
     public SkillButton skillInfo;
     public StatusButton statusInfo;
@@ -44,11 +44,14 @@ public class BattleScreen extends AbstractScreen {
         nameText = new NameText();
         effectText = new EffectText();
         effectText2 = new EffectText2();
-        advisor = new SkillButton(new Strike());
+        advisor = new SkillButton(new Strike(null));
         advisor.skill.img = advisorSelectScreen.advisor.img;
         advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
+        endTurnButton = new EndTurnButton();
         statusInfo = new StatusButton();
         statusInfo.isInfo = true;
+        statusInfo.setScale(2.5f);
+        statusInfo.setPosition(w * 0.55f, h * 0.15f - statusInfo.sHeight / 2);
         skillInfo = new SkillButton();
         skillInfo.isInfo = true;
         skillInfo.isSkill = false;
@@ -100,6 +103,15 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        if(currentPlayer.isDead) {
+            for(int i = 0; i < 4; i++) {
+                AbstractPlayer tp = players[i].player;
+                if(!tp.isDead) {
+                    setCurrentPlayer(tp);
+                    break;
+                }
+            }
+        }
         if(skillInfo.skill == null) {
             isLooking = false;
             looking = DEF_LOOK;
@@ -107,45 +119,58 @@ public class BattleScreen extends AbstractScreen {
             isLooking = true;
         }
         for(int i = 0; i < 4; i++) {
-            players[i].isLooking = looking[i];
-            players[i].update();
-            enemies[i].isLooking = looking[i + 4];
-            enemies[i].update();
-            playerStatus[i].update();
-            enemyStatus[i].update();
+            PlayerView pv = players[i];
+            pv.isLooking = looking[i];
+            pv.update();
+            EnemyView ev = enemies[i];
+            ev.isLooking = looking[i + 4];
+            ev.update();
+            if(!pv.player.isDead) playerStatus[i].update();
+            if(!ev.enemy.isDead) {
+                enemyStatus[i].update();
+                enemySkills[i].update();
+            }
             charSkills[i].update();
             preSkills[i].update();
-            enemySkills[i].update();
         }
         advisor.update();
         skillInfo.update();
+        statusInfo.update();
         nameText.update();
         effectText.update();
         effectText2.update();
+        endTurnButton.update();
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        for(int i=0; i< 4; i++) {
+        for(int i = 3; i >= 0; i--) {
             if(isEnemyTurn) players[i].render(sb);
             else enemies[i].render(sb);
         }
-        for(int i=0; i < 4; i++) {
+        for(int i = 3; i >= 0; i--) {
             if(!isEnemyTurn) players[i].render(sb);
             else enemies[i].render(sb);
         }
+
         sb.end();
         shr.begin(ShapeRenderer.ShapeType.Filled);
         for(int i = 0; i < 4; i++) {
             PlayerView tp = players[i];
             EnemyView te = enemies[i];
             float tw = tp.sWidth;
-            shr.setColor(hbc);
-            shr.rect(tp.x + tw * 0.1f, tp.y, tw * 0.8f, tp.sHeight * 0.05f);
-            shr.rect(te.x + tw * 0.1f, te.y, tw * 0.8f, tp.sHeight * 0.05f);
-            shr.setColor(Color.SCARLET.cpy());
-            shr.rect(tp.x + tw * 0.1f, tp.y, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), tp.sHeight * 0.05f);
-            shr.rect(te.x + tw * 0.1f, te.y, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), tp.sHeight * 0.05f);
+            if(!tp.player.isDead) {
+                shr.setColor(hbc);
+                shr.rect(tp.x + tw * 0.1f, tp.y, tw * 0.8f, tp.sHeight * 0.05f);
+                shr.setColor(Color.SCARLET.cpy());
+                shr.rect(tp.x + tw * 0.1f, tp.y, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), tp.sHeight * 0.05f);
+            }
+            if(!te.enemy.isDead) {
+                shr.setColor(hbc);
+                shr.rect(te.x + tw * 0.1f, te.y, tw * 0.8f, te.sHeight * 0.05f);
+                shr.setColor(Color.SCARLET.cpy());
+                shr.rect(te.x + tw * 0.1f, te.y, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), te.sHeight * 0.05f);
+            }
         }
         shr.end();
         sb.begin();
@@ -153,21 +178,25 @@ public class BattleScreen extends AbstractScreen {
             PlayerView tp = players[i];
             EnemyView te = enemies[i];
             float tw = tp.sWidth;
-            renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, tp.x, tp.y + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
-            renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, te.x, te.y + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
+            if(!tp.player.isDead) renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, tp.x, tp.y + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
+            if(!te.enemy.isDead) renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, te.x, te.y + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
         }
         for(int i = 0; i < 4; i++) {
-            playerStatus[i].render(sb);
-            enemyStatus[i].render(sb);
+            if(!players[i].player.isDead) playerStatus[i].render(sb);
+            if(!enemies[i].enemy.isDead) {
+                enemyStatus[i].render(sb);
+                enemySkills[i].render(sb);
+            }
             charSkills[i].render(sb);
             preSkills[i].render(sb);
-            enemySkills[i].render(sb);
         }
         advisor.render(sb);
         skillInfo.render(sb);
+        statusInfo.render(sb);
         nameText.render(sb);
         effectText.render(sb);
         effectText2.render(sb);
+        endTurnButton.render(sb);
     }
 
     public void setCurrentPlayer(AbstractPlayer p) {

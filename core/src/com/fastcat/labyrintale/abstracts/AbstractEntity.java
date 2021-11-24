@@ -38,6 +38,7 @@ public abstract class AbstractEntity implements Cloneable {
     public String description;
     public boolean targetable;
     public boolean isDead;
+    public boolean isDie;
     public int health;
     public int maxHealth;
     public float animX = -10000;
@@ -77,7 +78,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void render(SpriteBatch sb) {
-        if (atlas != null) {
+        if (atlas != null && !isDead) {
             state.update(Gdx.graphics.getDeltaTime());
             state.apply(skeleton);
             state.getCurrent(0).setTimeScale(1.0f);
@@ -126,9 +127,25 @@ public abstract class AbstractEntity implements Cloneable {
         animX = x;
         animY = y;
     }
+
+    public void damage(AbstractEntity actor, int damage) {
+        AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
+        state.addAnimation(0, "Standby", true, 0.0F);
+        e.setTimeScale(1.0f);
+        health -= damage;
+        if(health <= 0) {
+            health = 0;
+            die();
+        }
+        if(status != null) status.onDamage(actor, damage);
+    }
     
     public void die() {
-        this.isDead = true;
+        if(!isDead && !isDie) this.isDie = true;
+    }
+
+    public boolean isAlive() {
+        return !isDead && !isDie;
     }
 
     public abstract Array<AbstractSkill> getStartingDeck();

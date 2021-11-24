@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
@@ -84,7 +85,7 @@ public class SkillButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!isInfo && canClick) {
+        if(!isInfo && canClick && !battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
             if(isCS) {
                 if(!isSelected) {
                     for(int i = 0; i < 4; i++) {

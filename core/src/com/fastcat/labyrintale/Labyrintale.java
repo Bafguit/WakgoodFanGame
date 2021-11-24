@@ -44,7 +44,6 @@ public class Labyrintale extends Game {
 	public static BattleScreen battleScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
-	public static Color overlayColor = new Color(1, 1, 1, 1);
 
 	private static AbstractScreen nextScreen = null;
 	private static Sprite fadeTex;
@@ -56,6 +55,7 @@ public class Labyrintale extends Game {
 	private FontHandler fontHandler;
 	private StringHandler stringHandler;
 	private SettingHandler settingHandler;
+	public ActionHandler actionHandler;
 	public GroupHandler groupHandler;
 
 	public SpriteBatch sb;
@@ -76,6 +76,7 @@ public class Labyrintale extends Game {
 		fontHandler = new FontHandler();
 		stringHandler = new StringHandler();
 		settingHandler = new SettingHandler();
+		actionHandler = new ActionHandler();
 		game = this;
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
@@ -91,6 +92,7 @@ public class Labyrintale extends Game {
 		camera.update();
 		inputHandler.update();
 		fontHandler.update();
+		actionHandler.update();
 		if(screen instanceof AbstractScreen) {
 			((AbstractScreen) screen).update();
 		}
@@ -108,6 +110,7 @@ public class Labyrintale extends Game {
 		sb.begin();
 
 		/** Render Methods */
+		//actionHandler.render(sb);
 		super.render();
 		/** ============== */
 		fade();
