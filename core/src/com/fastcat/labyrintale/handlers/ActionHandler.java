@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.handlers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 
@@ -11,6 +12,20 @@ public class ActionHandler {
 
     public ActionHandler() {
 
+    }
+
+    public void update() {
+        if(actionList.size > 0) {
+            if(current == null) {
+                current = actionList.get(0);
+                actionList.removeIndex(0);
+            }
+            current.update();
+            if(current.isDone) {
+                previous = current;
+                current = null;
+            }
+        }
     }
 
     public static void bot(AbstractAction action) {

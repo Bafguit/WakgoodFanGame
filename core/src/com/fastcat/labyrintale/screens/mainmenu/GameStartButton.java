@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
+import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
@@ -29,6 +30,6 @@ public class GameStartButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.mainMenuScreen.game.setScreen(Labyrintale.charSelectScreen);
+        fadeOutAndChangeScreen(charSelectScreen, 1.0f);
     }
 }

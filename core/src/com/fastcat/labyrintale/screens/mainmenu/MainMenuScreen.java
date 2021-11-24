@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.esotericsoftware.spine.*;
@@ -30,6 +31,7 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void update() {
+
         logoText.update();
         gameStartButton.update();
         tutorialButton.update();
@@ -45,6 +47,8 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton.render(sb);
         exitButton.render(sb);
     }
+
+
 
     @Override
     public void show() {

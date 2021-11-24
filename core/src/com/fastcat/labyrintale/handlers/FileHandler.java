@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
@@ -12,6 +13,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
 public class FileHandler {
 
+    public static final Sprite FADE = new Sprite(new Texture("img/fade.png"));
     public static final Texture CARD_BG = new Texture("card.png");
     public static final Texture CARD_PANEL = new Texture("cardPanel.png");
     public static final Texture MENU_SELECT = new Texture("img/menuSelect.png");

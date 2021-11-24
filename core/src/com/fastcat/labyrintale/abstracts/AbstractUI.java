@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
 
@@ -85,7 +86,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
         clicking = false;
     }
 
-    public void update() {
+    public final void update() {
         //x = sx * scale;
         //y = sy * scale;
         sWidth = width * scale * uiScale;
@@ -94,7 +95,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
         if(over) over = false;
         if(tracking) tracking = false;
 
-        if(enabled) {
+        if(enabled && !Labyrintale.fading) {
             this.over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
 
             if(over) {
@@ -122,8 +123,8 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     public void render(SpriteBatch sb) {
         if(enabled) {
             if (!over) sb.setColor(Color.LIGHT_GRAY);
+            else sb.setColor(Color.WHITE);
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
 
             if(fontData != null) {
                 renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
@@ -195,6 +196,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
 
     public void onHide() {
         over = false;
+        showImg = false;
         clicked = false;
         clicking = false;
     }
