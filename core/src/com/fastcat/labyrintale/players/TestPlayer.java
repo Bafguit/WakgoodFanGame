@@ -12,6 +12,10 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractTalent;
+import com.fastcat.labyrintale.skills.player.Barrier;
+import com.fastcat.labyrintale.skills.player.Heal;
+import com.fastcat.labyrintale.skills.player.Light;
+import com.fastcat.labyrintale.skills.player.Strike;
 
 import java.util.Random;
 
@@ -22,16 +26,22 @@ public class TestPlayer extends AbstractPlayer {
 
     private static final String ID = "TestPlayer";
     private static final PlayerClass CLASS = PlayerClass.TEST;
-    private static final int HEALTH = 100;
+    private static final int HEALTH = 25;
     private static final TextureAtlas ATLAS = NEKO_ATLAS;
     private static final FileHandle JSON = NEKO_JSON;
 
     public TestPlayer() {
         super(ID, CLASS, HEALTH, ATLAS, JSON);
+        health = MathUtils.random(1, 25);
     }
 
     @Override
     public Array<AbstractSkill> getStartingDeck() {
-        return null;
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike());
+        temp.add(new Light());
+        temp.add(new Barrier());
+        temp.add(new Heal());
+        return temp;
     }
 }

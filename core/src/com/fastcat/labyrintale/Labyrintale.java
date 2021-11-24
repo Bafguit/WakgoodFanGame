@@ -56,6 +56,7 @@ public class Labyrintale extends Game {
 	private FontHandler fontHandler;
 	private StringHandler stringHandler;
 	private SettingHandler settingHandler;
+	public GroupHandler groupHandler;
 
 	public SpriteBatch sb;
 
@@ -79,7 +80,6 @@ public class Labyrintale extends Game {
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
 		advisorSelectScreen = new AdvisorSelectScreen();
-		battleScreen = new BattleScreen();
 		labyrinth = new AbstractLabyrinth();
 		fadeTex = FileHandler.FADE;
 		fadeTex.setPosition(0, 0);
@@ -137,6 +137,10 @@ public class Labyrintale extends Game {
 			fadeTex.setAlpha(alphaCount);
 			fadeTex.draw(sb);
 		}
+	}
+
+	public static void fadeOutAndChangeScreen(AbstractScreen screen) {
+		fadeOutAndChangeScreen(screen, 1.0f);
 	}
 
 	public static void fadeOutAndChangeScreen(AbstractScreen screen, float sec) {

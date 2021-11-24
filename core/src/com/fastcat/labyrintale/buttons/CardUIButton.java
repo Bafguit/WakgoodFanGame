@@ -94,9 +94,6 @@ public class CardUIButton extends AbstractButton {
             rotatedY = vc.y - sHeight / 2;
             sb.draw(img, rotatedX, rotatedY, sWidth, sHeight);
             /** 여기에 카드 이미지 입력 */
-            renderCardCenter(sb, card, descFontData, card.cond,
-                    rotatedX + INT_BORDER * scale * uiScale, rotatedY + (COND_Y + COND_HEIGHT / 2) * scale * uiScale,
-                    sWidth - INT_BORDER * 2 * scale * uiScale, COND_HEIGHT * scale * uiScale);
             renderCardCenter(sb, card, descFontData, card.desc,
                     rotatedX + INT_BORDER * scale * uiScale, rotatedY + (DESC_Y + DESC_HEIGHT / 2) * scale * uiScale,
                     sWidth - INT_BORDER * 2 * scale * uiScale, DESC_HEIGHT * scale * uiScale);

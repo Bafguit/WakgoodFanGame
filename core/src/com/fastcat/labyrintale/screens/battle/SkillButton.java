@@ -48,7 +48,7 @@ public class SkillButton extends AbstractUI {
             isSelected = false;
             for (int i = 0; i < 4; i++) {
                 SkillButton ss = battleScreen.preSkills[i];
-                if (ss.isOnLock && skill.uid == ss.skill.uid) {
+                if (ss.isOnLock && skill != null && skill.uid == ss.skill.uid) {
                     isSelected = true;
                     break;
                 }

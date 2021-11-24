@@ -54,7 +54,7 @@ public class PlayerView extends AbstractUI {
     @Override
     protected void onClick() {
         if(!player.isDead) {
-            battleScreen.currentPlayer = player;
+            battleScreen.setCurrentPlayer(player);
         }
     }
 }

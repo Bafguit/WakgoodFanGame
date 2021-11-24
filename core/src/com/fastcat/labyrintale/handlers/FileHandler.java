@@ -31,6 +31,13 @@ public class FileHandler {
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
     public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/test/char_5_neko.json");
 
+    public static final Texture SKILL_STRIKE = new Texture("img/skill/Strike.png");
+    public static final Texture SKILL_HEAL = new Texture("img/skill/Heal.png");
+    public static final Texture SKILL_LIGHT = new Texture("img/skill/Light.png");
+    public static final Texture SKILL_LOVE = new Texture("img/skill/Love.png");
+    public static final Texture SKILL_POISON = new Texture("img/skill/Poison.png");
+    public static final Texture SKILL_SHIELD = new Texture("img/skill/Shield.png");
+
     public FileHandler() {
 
     }

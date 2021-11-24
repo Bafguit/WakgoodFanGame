@@ -37,6 +37,7 @@ public class FontHandler {
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, true);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false);
+    public static final FontData HP = new FontData(MEDIUM, 19, false);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -91,6 +92,15 @@ public class FontHandler {
     public static void renderLineLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         layout.setText(font, text, fontData.color, bw, Align.left, false);
+        float ry = y + (layout.height) / 2;
+        font.draw(sb, layout, x, y);
+    }
+
+    public static void renderLineTopLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
+        BitmapFont font = fontData.font;
+        font.getData().setScale(fontData.scale);
+        font.getData().setLineHeight(fontData.size * 1.3f);
+        layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
         float ry = y + (layout.height) / 2;
         font.draw(sb, layout, x, y);
     }

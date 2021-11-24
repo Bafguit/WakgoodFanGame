@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
+import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FileHandler.BACK;
 
@@ -35,6 +36,6 @@ public class BackButton extends AbstractUI {
         Labyrintale.charSelectScreen.nextButton.disable();
         Labyrintale.charSelectScreen.backButton.onHide();
         Labyrintale.charSelectScreen.nextButton.onHide();
-        Labyrintale.game.setScreen(Labyrintale.mainMenuScreen);
+        Labyrintale.fadeOutAndChangeScreen(mainMenuScreen);
     }
 }

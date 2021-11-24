@@ -8,7 +8,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public PlayerClass playerClass;
 
     public AbstractPlayer(String id, PlayerClass playerClass, int maxHealth, TextureAtlas atlas, FileHandle skel) {
-        super(id, EntityType.PLAYER, maxHealth, atlas, skel);
+        super(id, EntityType.PLAYER, 4, maxHealth, atlas, skel);
         this.playerClass = playerClass;
     }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 
 public class MainMenuScreen extends AbstractScreen {
 
@@ -52,7 +53,7 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        game.groupHandler = new GroupHandler();
     }
 
     @Override

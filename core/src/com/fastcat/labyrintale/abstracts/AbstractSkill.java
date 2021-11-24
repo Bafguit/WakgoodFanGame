@@ -20,11 +20,9 @@ public abstract class AbstractSkill implements Cloneable {
     public Texture img;
     public CardString.CardData cardData;
     public PlayerClass playerClass;
-    public CardType type;
     public CardRarity rarity;
     public String id;
     public String name;
-    public String cond;
     public String desc;
     public boolean upgraded;
     public float uid;
@@ -35,22 +33,16 @@ public abstract class AbstractSkill implements Cloneable {
     public int baseSpell = 0;
     public int value = -1;
     public int baseValue = -1;
-    public int cost;
-    public int baseCost;
 
-    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardType type, CardRarity rarity, int cost) {
+    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
         uid = Labyrintale.getUid();
         this.id = id;
         this.img = tex;
         this.cardData = StringHandler.cardString.get(this.id);
         this.name = this.cardData.NAME;
-        this.cond = this.cardData.COND;
         this.desc = this.cardData.DESC;
         this.playerClass = playerClass;
-        this.type = type;
         this.rarity = rarity;
-        this.cost = cost;
-        this.baseCost = this.cost;
         this.upgraded = false;
         this.upgradeCount = 0;
     }
@@ -147,12 +139,6 @@ public abstract class AbstractSkill implements Cloneable {
         }
     }
 
-    private boolean viewValue() {
-        return SettingHandler.alwaysValue;
-    }
-
-    public abstract boolean condition(AbstractSkill otherCard);
-
     public abstract void use();
 
     public abstract void upgrade();
@@ -164,10 +150,6 @@ public abstract class AbstractSkill implements Cloneable {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public enum CardType {
-        ATTACK, SPELL
     }
 
     public enum CardRarity {

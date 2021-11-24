@@ -34,15 +34,7 @@ public class CardString {
             if(!id.equals("")) {
                 CardData data = new CardData();
                 data.NAME = js.get("NAME").asString();
-                JsonValue temp = js.get("COND");
-                if(temp != null) {
-                    data.COND = temp.asString();
-                }
-                temp = js.get("UP_COND");
-                if(temp != null) {
-                    data.UP_COND = temp.asString();
-                }
-                temp = js.get("DESC");
+                JsonValue temp = js.get("DESC");
                 if(temp != null) {
                     data.DESC = temp.asString();
                 }
@@ -65,8 +57,6 @@ public class CardString {
 
     public class CardData {
         public String NAME;
-        public String COND = "";
-        public String UP_COND;
         public String DESC = "";
         public String UP_DESC;
         public String[] EX_DESC;

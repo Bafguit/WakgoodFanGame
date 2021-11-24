@@ -17,6 +17,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.BATTLE;
 
 public abstract class AbstractEntity implements Cloneable {
 
+    private final int handSize;
 
     protected Texture orb;
     protected Texture sOrb;
@@ -27,10 +28,10 @@ public abstract class AbstractEntity implements Cloneable {
     public AnimationStateData stateData;
 
     public Array<AbstractSkill> deck;
-    public AbstractSkill[] hand = new AbstractSkill[4];
+    public AbstractSkill[] hand;
     public Array<AbstractSkill> drawPile;
     public Array<AbstractSkill> discardPile;
-    public Array<AbstractStatus> status;
+    public AbstractStatus status;
     public EntityType entityType;
     public String id;
     public String name;
@@ -42,16 +43,19 @@ public abstract class AbstractEntity implements Cloneable {
     public float animX = -10000;
     public float animY = -10000;
 
-    public AbstractEntity(String id, EntityType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
+    public AbstractEntity(String id, EntityType type, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel) {
         this.id = id;
+        handSize = hand;
         /** 여기에 json 받아오는거 입력 */
         /** 여기에 아틀라스 이미지 불러오는거 입력 */
-        this.entityType = type;
+        entityType = type;
         this.maxHealth = maxHealth;
         this.health = this.maxHealth;
-        this.drawPile = new Array<>();
-        this.discardPile = new Array<>();
-        this.status = new Array<>();
+        deck = getStartingDeck();
+        drawPile = new Array<>();
+        discardPile = new Array<>();
+        newDeck();
+
         this.atlas = atlas;
         SkeletonJson json = new SkeletonJson(atlas);
         json.setScale(0.65f);
@@ -80,12 +84,41 @@ public abstract class AbstractEntity implements Cloneable {
             skeleton.updateWorldTransform();
             skeleton.setPosition(animX, animY);
             skeleton.setColor(WHITE.cpy());
-            skeleton.setFlip(false, false);
             sb.end();
             Labyrintale.psb.begin();
             Labyrintale.sr.draw(Labyrintale.psb, skeleton);
             Labyrintale.psb.end();
             sb.begin();
+        }
+    }
+
+    public void newDeck() {
+        hand = new AbstractSkill[handSize];
+        drawPile.clear();
+        discardPile.clear();
+        for(int i = 0; i < deck.size; i++) {
+            drawPile.add(deck.get(i).cpy());
+        }
+    }
+
+    public void shuffleHand() {
+        for(int i = 0; i < handSize; i++) {
+            if(hand[i] != null) {
+                discardPile.add(hand[i]);
+            }
+        }
+        hand = new AbstractSkill[handSize];
+        if(drawPile.size < handSize && discardPile.size > 0) {
+            drawPile.addAll(discardPile);
+            discardPile.clear();
+        }
+        drawPile.shuffle();
+        int ts = drawPile.size;
+        for(int i = 0; i < handSize; i++) {
+            if(i < ts) {
+                hand[i] = drawPile.get(0);
+                drawPile.removeIndex(0);
+            } else break;
         }
     }
 

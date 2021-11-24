@@ -23,13 +23,13 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     private static final SpriteBatch uib = new SpriteBatch();
 
     protected LogHandler logger = new LogHandler(this.getClass().getName());
-    protected Texture img;
+    public Texture img;
     public String text;
     protected FontData fontData;
-    protected float x;
+    public float x;
     protected float sx;
     protected float cx;
-    protected float y;
+    public float y;
     protected float sy;
     protected float cy;
     protected float width;

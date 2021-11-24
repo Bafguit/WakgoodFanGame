@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.rooms.enemy.Test;
 import com.fastcat.labyrintale.screens.map.MapNodeButton;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class AbstractFloor {
         entryRoom.done();
         currentRoom = entryRoom;
         for(int i = 0; i < 5; i++) {
-            upRooms[i] = new AbstractRoom(BATTLE);
+            upRooms[i] = new Test();
             downRooms[i] = new AbstractRoom(ELITE);
         }
         bossRoom = new AbstractRoom(BOSS);

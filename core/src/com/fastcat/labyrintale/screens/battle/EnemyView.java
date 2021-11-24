@@ -37,6 +37,7 @@ public class EnemyView extends AbstractUI {
         if(enabled) {
             sb.setColor(Color.WHITE);
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);
+            if(enemy != null) enemy.render(sb);
             //애니메이션
         }
     }

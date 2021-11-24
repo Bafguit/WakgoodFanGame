@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
+import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
+import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEXT;
 
@@ -32,6 +34,6 @@ public class NextToAdvisorButton extends AbstractUI {
     protected void onClick() {
         Labyrintale.charSelectScreen.backButton.onHide();
         Labyrintale.charSelectScreen.nextButton.onHide();
-        Labyrintale.game.setScreen(Labyrintale.advisorSelectScreen);
+        Labyrintale.fadeOutAndChangeScreen(advisorSelectScreen, 0.5f);
     }
 }
