@@ -9,13 +9,19 @@ public abstract class AbstractAction implements Cloneable {
     protected static final float DUR_FAST = 0.5f;
 
     public AbstractEntity actor;
-    public Array<AbstractEntity> target;
+    public AbstractSkill.CardTarget target;
     public AbstractEffect effect;
     public boolean isDone = false;
     public float baseDuration = DUR_DEFAULT;
     public float duration = DUR_DEFAULT;
 
-    public AbstractAction(AbstractEntity actor, Array<AbstractEntity> target, AbstractEffect effect, float duration) {
+    public AbstractAction(AbstractEntity actor, float duration) {
+        this.actor = actor;
+        this.duration = duration;
+        baseDuration = this.duration;
+    }
+
+    public AbstractAction(AbstractEntity actor, AbstractSkill.CardTarget target, AbstractEffect effect, float duration) {
         this.actor = actor;
         this.target = target;
         this.effect = effect;
@@ -49,10 +55,5 @@ public abstract class AbstractAction implements Cloneable {
         if (duration > 0) {
             duration -= Gdx.graphics.getDeltaTime();
         }
-    }
-
-    protected void setEntity(AbstractEntity actor, Array<AbstractEntity> target) {
-        this.actor = actor;
-        this.target = target;
     }
 }

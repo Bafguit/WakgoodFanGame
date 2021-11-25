@@ -8,22 +8,25 @@ import com.fastcat.labyrintale.buttons.CardUIButton;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.screens.battle.EnemyView;
+import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.CardString;
 
 import java.util.Random;
 
+import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.ActionHandler.*;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable {
 
-    public boolean[] target = new boolean[8];
     public Texture img;
     public CardString.CardData cardData;
     public AbstractEntity owner;
     public PlayerClass playerClass;
     public CardRarity rarity;
+    public CardTarget target;
     public String id;
     public String name;
     public String desc;
@@ -37,8 +40,8 @@ public abstract class AbstractSkill implements Cloneable {
     public int value = -1;
     public int baseValue = -1;
 
-    public AbstractSkill(AbstractEntity owner, String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
-        uid = Labyrintale.getUid();
+    public AbstractSkill(AbstractEntity owner, String id, Texture tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
+        uid = getUid();
         this.owner = owner;
         this.id = id;
         this.img = tex;
@@ -47,12 +50,13 @@ public abstract class AbstractSkill implements Cloneable {
         this.desc = this.cardData.DESC;
         this.playerClass = playerClass;
         this.rarity = rarity;
+        this.target = target;
         this.upgraded = false;
         this.upgradeCount = 0;
     }
 
-    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity) {
-        this(null, id, tex, playerClass, rarity);
+    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
+        this(null, id, tex, playerClass, rarity, target);
     }
 
     public void setBaseAttack(int i) {
@@ -76,39 +80,6 @@ public abstract class AbstractSkill implements Cloneable {
 
     public void render(SpriteBatch sb) {
 
-    }
-
-    protected void setTarget(boolean t1, boolean t2, boolean t3, boolean t4, boolean t5, boolean t6, boolean t7, boolean t8) {
-        target[0] = t1;
-        target[1] = t2;
-        target[2] = t3;
-        target[3] = t4;
-        target[4] = t5;
-        target[5] = t6;
-        target[6] = t7;
-        target[7] = t8;
-    }
-
-    protected void setPlayerTarget(boolean t1, boolean t2, boolean t3, boolean t4) {
-        target[0] = t1;
-        target[1] = t2;
-        target[2] = t3;
-        target[3] = t4;
-        target[4] = false;
-        target[5] = false;
-        target[6] = false;
-        target[7] = false;
-    }
-
-    protected void setEnemyTarget(boolean t1, boolean t2, boolean t3, boolean t4) {
-        target[0] = false;
-        target[1] = false;
-        target[2] = false;
-        target[3] = false;
-        target[4] = t1;
-        target[5] = t2;
-        target[6] = t3;
-        target[7] = t4;
     }
 
     public String getKeyValue(String key) {
@@ -147,11 +118,95 @@ public abstract class AbstractSkill implements Cloneable {
         }
     }
 
-    protected Array<AbstractEntity> getTargets() {
+    public static Array<AbstractEntity> getTargets(CardTarget target) {
         Array<AbstractEntity> temp = new Array<>();
-        for(int i = 0; i < 4; i++) {
-            if(target[i]) temp.add(Labyrintale.battleScreen.players[i].player);
-            if(target[i + 4]) temp.add(Labyrintale.battleScreen.enemies[i].enemy);
+        PlayerView[] tp = battleScreen.players;
+        EnemyView[] te = battleScreen.enemies;
+        switch(target) {
+            case P_F:
+                for(int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive()) {
+                        temp.add(p);
+                        break;
+                    }
+                }
+                break;
+            case E_F:
+                for(int i = 0; i < 4; i++) {
+                    AbstractEnemy e = te[i].enemy;
+                    if(e.isAlive()) {
+                        temp.add(e);
+                        break;
+                    }
+                }
+                break;
+            case P_L:
+                for(int i = 3; i >= 0; i--) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive()) {
+                        temp.add(p);
+                        break;
+                    }
+                }
+                break;
+            case E_L:
+                for(int i = 3; i >= 0; i--) {
+                    AbstractEnemy e = te[i].enemy;
+                    if(e.isAlive()) {
+                        temp.add(e);
+                        break;
+                    }
+                }
+                break;
+            case P_DF:
+                for(int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive()) temp.add(p);
+                    if(temp.size == 2) break;
+                }
+                break;
+            case E_DF:
+                for(int i = 0; i < 4; i++) {
+                    AbstractEnemy e = te[i].enemy;
+                    if(e.isAlive()) temp.add(e);
+                    if(temp.size == 2) break;
+                }
+                break;
+            case P_DL:
+                for(int i = 3; i >= 0; i--) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive()) temp.add(p);
+                    if(temp.size == 2) break;
+                }
+                break;
+            case E_DL:
+                for(int i = 3; i >= 0; i--) {
+                    AbstractEnemy e = te[i].enemy;
+                    if(e.isAlive()) temp.add(e);
+                    if(temp.size == 2) break;
+                }
+                break;
+            case P_ALL:
+                for(int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive()) temp.add(p);
+                }
+                break;
+            case E_ALL:
+                for(int i = 0; i < 4; i++) {
+                    AbstractEnemy e = te[i].enemy;
+                    if(e.isAlive()) temp.add(e);
+                }
+                break;
+            case ALL:
+                for(int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    AbstractEnemy e = te[i].enemy;
+                    if(p.isAlive()) temp.add(p);
+                    if(e.isAlive()) temp.add(e);
+                }
+                break;
         }
         return temp;
     }
@@ -174,6 +229,6 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum CardTarget {
-        NONE, PLAYER, ENEMY, ALL_ENEMY, ALL, RANDOM_ENEMY, RANDOM_ALL
+        NONE, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
     }
 }

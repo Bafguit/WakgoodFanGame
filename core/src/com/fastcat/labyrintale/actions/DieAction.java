@@ -3,12 +3,11 @@ package com.fastcat.labyrintale.actions;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.sun.java.swing.action.AboutAction;
 
 public class DieAction extends AbstractAction {
 
     public DieAction(AbstractEntity e) {
-        super(e, null, null, 2.0f);
+        super(e, 2.0f);
     }
 
     @Override
@@ -21,6 +20,7 @@ public class DieAction extends AbstractAction {
             if (isDone) {
                 actor.isDead = true;
                 actor.isDie = false;
+                actor.status = null;
             }
         }
     }

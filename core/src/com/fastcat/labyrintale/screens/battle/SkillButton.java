@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillButton extends AbstractUI {
@@ -45,35 +46,40 @@ public class SkillButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(isCS) {
-            isSelected = false;
-            for (int i = 0; i < 4; i++) {
-                SkillButton ss = battleScreen.preSkills[i];
-                if (ss.isOnLock && skill != null && skill.uid == ss.skill.uid) {
-                    isSelected = true;
-                    break;
-                }
-            }
-        }
-        if(!isInfo && isSkill && over && skill != null) {
-            Labyrintale.battleScreen.skillInfo.skill = skill;
-            battleScreen.nameText.text = skill.name;
-            battleScreen.effectText.text = skill.desc;
-            battleScreen.looking = skill.target;
-        }
-        if(isInfo && skill != null) {
-            boolean ov = false;
-            if(!battleScreen.advisor.over) {
+        if(skill != null) {
+            if (isCS) {
+                isSelected = false;
                 for (int i = 0; i < 4; i++) {
-                    if (battleScreen.charSkills[i].over || battleScreen.preSkills[i].over || battleScreen.enemySkills[i].over) {
-                        ov = true;
+                    SkillButton ss = battleScreen.preSkills[i];
+                    if (ss.isOnLock && skill.uid == ss.skill.uid) {
+                        isSelected = true;
                         break;
                     }
                 }
-            } else ov = true;
-            if(!ov) {
-                skill = null;
-                battleScreen.nameText.text = "";
+            }
+            if (!isInfo && isSkill) {
+                if(skill.owner != null && skill.owner.isDead) {
+                    skill = null;
+                } else if(over) {
+                    Labyrintale.battleScreen.skillInfo.skill = skill;
+                    battleScreen.nameText.text = skill.name;
+                    battleScreen.effectText.text = skill.desc;
+                    battleScreen.looking = getTargets(skill.target);
+                }
+            }else if (isInfo) {
+                boolean ov = false;
+                if (!battleScreen.advisor.over) {
+                    for (int i = 0; i < 4; i++) {
+                        if (battleScreen.charSkills[i].over || battleScreen.preSkills[i].over || battleScreen.enemySkills[i].over) {
+                            ov = true;
+                            break;
+                        }
+                    }
+                } else ov = true;
+                if (!ov) {
+                    skill = null;
+                    battleScreen.nameText.text = "";
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -16,7 +17,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {
 
-    public static final boolean[] DEF_LOOK = new boolean[] {false, false, false, false, false, false, false, false};
+    public static final Array<AbstractEntity> DEF_LOOK = new Array<>();
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
@@ -36,7 +37,7 @@ public class BattleScreen extends AbstractScreen {
     public EnemyView[] enemies = new EnemyView[4];
     public boolean isEnemyTurn = false;
     public boolean isLooking = false;
-    public boolean[] looking = new boolean[8];
+    public Array<AbstractEntity> looking;
     public AbstractPlayer currentPlayer;
 
     public BattleScreen() {
@@ -112,7 +113,7 @@ public class BattleScreen extends AbstractScreen {
                 }
             }
         }
-        if(skillInfo.skill == null) {
+        if(skillInfo.skill == null && statusInfo.status == null) {
             isLooking = false;
             looking = DEF_LOOK;
         } else {
@@ -120,10 +121,10 @@ public class BattleScreen extends AbstractScreen {
         }
         for(int i = 0; i < 4; i++) {
             PlayerView pv = players[i];
-            pv.isLooking = looking[i];
+            pv.isLooking = looking.contains(pv.player, false);
             pv.update();
             EnemyView ev = enemies[i];
-            ev.isLooking = looking[i + 4];
+            ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
             if(!pv.player.isDead) playerStatus[i].update();
             if(!ev.enemy.isDead) {

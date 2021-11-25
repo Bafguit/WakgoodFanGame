@@ -16,17 +16,17 @@ public class Heal extends AbstractSkill {
     private static final Texture IMG = SKILL_HEAL;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
+    private static final CardTarget TARGET = CardTarget.P_ALL;
     private static final int VALUE = 2;
 
     public Heal(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY);
-        setPlayerTarget(true, true, true, true);
+        super(e, ID, IMG, CLASS, RARITY, TARGET);
         setBaseValue(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new HealAction(owner, getTargets(), value, null));
+        ActionHandler.bot(new HealAction(owner, TARGET, value, null));
     }
 
     @Override

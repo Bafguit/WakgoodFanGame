@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.skills.Temp;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 
 public class StatusButton extends AbstractUI {
@@ -49,6 +50,7 @@ public class StatusButton extends AbstractUI {
             battleScreen.statusInfo.status = status;
             battleScreen.nameText.text = status.name;
             battleScreen.effectText2.text = status.desc;
+            battleScreen.looking = getTargets(status.target);
         } else if(isInfo && status != null) {
             boolean ov = false;
             for (int i = 0; i < 4; i++) {

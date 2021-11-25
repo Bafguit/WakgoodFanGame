@@ -12,10 +12,11 @@ public class Temp extends AbstractSkill {
     private static final Texture IMG = SKILL_STRIKE;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.TOKEN;
+    private static final CardTarget TARGET = CardTarget.NONE;
     private static final int VALUE = 4;
 
     public Temp() {
-        super(ID, IMG, CLASS, RARITY);
+        super(ID, IMG, CLASS, RARITY, TARGET);
     }
 
     @Override

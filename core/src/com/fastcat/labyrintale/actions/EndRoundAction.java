@@ -8,7 +8,7 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 
 public class EndRoundAction extends AbstractAction {
     public EndRoundAction() {
-        super(null, null, null, 0.5f);
+        super(null, 0.5f);
     }
 
     @Override

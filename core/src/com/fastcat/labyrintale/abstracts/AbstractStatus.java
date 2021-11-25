@@ -5,6 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.screens.battle.EnemyView;
+import com.fastcat.labyrintale.screens.battle.PlayerView;
+
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 
 public abstract class AbstractStatus implements Cloneable {
 
@@ -13,10 +17,12 @@ public abstract class AbstractStatus implements Cloneable {
     public Sprite img;
     public String name;
     public String desc;
+    public AbstractSkill.CardTarget target;
 
-    public AbstractStatus(String id, Sprite img) {
+    public AbstractStatus(String id, Sprite img, AbstractSkill.CardTarget target) {
         this.id = id;
         this.img = img;
+        this.target = target;
     }
 
     public void remove() {

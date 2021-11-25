@@ -3,16 +3,15 @@ package com.fastcat.labyrintale.actions;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
-import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEffect;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.*;
+
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class AttackAction extends AbstractAction {
 
     public int damage;
 
-    public AttackAction(AbstractEntity actor, Array<AbstractEntity> target, int damage, AbstractEffect effect) {
+    public AttackAction(AbstractEntity actor, AbstractSkill.CardTarget target, int damage, AbstractEffect effect) {
         super(actor, target, effect, 0.5f);
         this.damage = damage;
     }
@@ -20,19 +19,17 @@ public class AttackAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration){
-            boolean allDead = true;
-            for (int i = 0; i < target.size; i++) {
-                AbstractEntity te = target.get(i);
-                if (te.isAlive()) {
-                    allDead = false;
+            Array<AbstractEntity> t = getTargets(target);
+            if(t.size > 0) {
+                for (int i = 0; i < t.size; i++) {
+                    AbstractEntity te = t.get(i);
                     te.damage(actor, damage);
                 }
-            }
-            if(allDead) isDone = true;
-            else if(actor != null) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);
-                actor.state.addAnimation(0, "Standby", true, 0.0F);
-                e.setTimeScale(1.0f);
+                if(actor != null) {
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);
+                    actor.state.addAnimation(0, "Standby", true, 0.0F);
+                    e.setTimeScale(1.0f);
+                }
             }
         }
     }

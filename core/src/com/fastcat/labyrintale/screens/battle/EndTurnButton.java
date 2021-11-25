@@ -37,16 +37,14 @@ public class EndTurnButton extends AbstractUI {
     protected void onClick() {
         if(!battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
             for (int i = 0; i < 4; i++) {
-                AbstractPlayer tp = battleScreen.players[i].player;
                 SkillButton ts = battleScreen.preSkills[i];
-                if (tp.isAlive() && ts.skill != null) {
+                if (ts.skill != null) {
                     ts.skill.use();
                 }
             }
             for (int i = 0; i < 4; i++) {
-                AbstractEnemy te = battleScreen.enemies[i].enemy;
                 SkillButton ts = battleScreen.enemySkills[i];
-                if (te.isAlive() && ts.skill != null) {
+                if (ts.skill != null) {
                     ts.skill.use();
                 }
             }

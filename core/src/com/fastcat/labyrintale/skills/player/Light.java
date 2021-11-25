@@ -16,17 +16,17 @@ public class Light extends AbstractSkill {
     private static final Texture IMG = SKILL_LIGHT;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
+    private static final CardTarget TARGET = CardTarget.E_ALL;
     private static final int VALUE = 3;
 
     public Light(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY);
-        setEnemyTarget(true, true, true, true);
+        super(e, ID, IMG, CLASS, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new AttackAction(owner, getTargets(), attack, null));
+        ActionHandler.bot(new AttackAction(owner, TARGET, attack, null));
     }
 
     @Override

@@ -17,17 +17,17 @@ public class Strike extends AbstractSkill {
     private static final Texture IMG = SKILL_STRIKE;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
+    private static final CardTarget TARGET = CardTarget.E_F;
     private static final int VALUE = 5;
 
     public Strike(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY);
-        setEnemyTarget(true, false, false, false);
+        super(e, ID, IMG, CLASS, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new AttackAction(owner, getTargets(), attack, null));
+        ActionHandler.bot(new AttackAction(owner, TARGET, attack, null));
     }
 
     @Override
