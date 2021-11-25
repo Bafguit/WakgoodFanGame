@@ -10,10 +10,12 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.actions.DieAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
-import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.BATTLE;
+import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
 
@@ -72,9 +74,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void update() {
-        if(currentFloor.currentRoom.type == BATTLE) {
 
-        }
     }
 
     public void render(SpriteBatch sb) {
@@ -128,6 +128,14 @@ public abstract class AbstractEntity implements Cloneable {
         animY = y;
     }
 
+    public void heal(int heal) {
+        if(heal < 0) heal = 0;
+        if(isAlive()) {
+            health = Math.min(health + heal, maxHealth);
+            if(status != null) status.onHeal(heal);
+        }
+    }
+
     public void damage(AbstractEntity actor, int damage) {
         AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
         state.addAnimation(0, "Standby", true, 0.0F);
@@ -141,7 +149,12 @@ public abstract class AbstractEntity implements Cloneable {
     }
     
     public void die() {
-        if(!isDead && !isDie) this.isDie = true;
+        if(isAlive()) {
+            if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
+                isDie = true;
+                ActionHandler.top(new DieAction(this));
+            }
+        }
     }
 
     public boolean isAlive() {

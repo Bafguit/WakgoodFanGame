@@ -25,7 +25,7 @@ public class TestEnemy extends AbstractEnemy {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        temp.add(new StrikeE());
+        temp.add(new StrikeE(this));
         return temp;
     }
 }

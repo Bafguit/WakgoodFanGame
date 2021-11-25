@@ -17,7 +17,7 @@ public class Strike extends AbstractSkill {
     private static final Texture IMG = SKILL_STRIKE;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final int VALUE = 4;
+    private static final int VALUE = 5;
 
     public Strike(AbstractEntity e) {
         super(e, ID, IMG, CLASS, RARITY);
@@ -27,7 +27,6 @@ public class Strike extends AbstractSkill {
 
     @Override
     public void use() {
-        //System.out.println("Used! Owner: " + owner != null ? owner.name : "null");
         ActionHandler.bot(new AttackAction(owner, getTargets(), attack, null));
     }
 

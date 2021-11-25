@@ -1,6 +1,10 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public abstract class AbstractStatus implements Cloneable {
 
@@ -36,6 +40,10 @@ public abstract class AbstractStatus implements Cloneable {
     }
 
     public void onDamage(AbstractEntity actor, int damage) {
+
+    }
+
+    public void onHeal(int heal) {
 
     }
 }

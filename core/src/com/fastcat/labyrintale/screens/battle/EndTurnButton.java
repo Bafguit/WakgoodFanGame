@@ -2,8 +2,11 @@ package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.actions.EndRoundAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
@@ -34,12 +37,20 @@ public class EndTurnButton extends AbstractUI {
     protected void onClick() {
         if(!battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
             for (int i = 0; i < 4; i++) {
-                AbstractSkill ts = battleScreen.preSkills[i].skill;
-                if (ts != null) {
-                    System.out.println("Used!");
-                    ts.use();
+                AbstractPlayer tp = battleScreen.players[i].player;
+                SkillButton ts = battleScreen.preSkills[i];
+                if (tp.isAlive() && ts.skill != null) {
+                    ts.skill.use();
                 }
             }
+            for (int i = 0; i < 4; i++) {
+                AbstractEnemy te = battleScreen.enemies[i].enemy;
+                SkillButton ts = battleScreen.enemySkills[i];
+                if (te.isAlive() && ts.skill != null) {
+                    ts.skill.use();
+                }
+            }
+            ActionHandler.bot(new EndRoundAction());
         }
         //Gdx.app.exit();
     }

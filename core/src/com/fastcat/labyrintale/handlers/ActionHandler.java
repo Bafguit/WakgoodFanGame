@@ -16,18 +16,17 @@ public class ActionHandler {
     }
 
     public void update() {
-        if(actionList.size > 0) {
+        if(actionList.size > 0 || current != null) {
             isRunning = true;
             if(current == null) {
                 current = actionList.get(0);
+                actionList.removeIndex(0);
             }
             current.update();
             if(current.isDone) {
-                actionList.removeIndex(0);
                 current = null;
-                isRunning = false;
             }
-        }
+        } else isRunning = false;
     }
 
     public void render(SpriteBatch sb) {

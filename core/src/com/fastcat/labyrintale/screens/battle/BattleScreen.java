@@ -128,8 +128,10 @@ public class BattleScreen extends AbstractScreen {
             if(!pv.player.isDead) playerStatus[i].update();
             if(!ev.enemy.isDead) {
                 enemyStatus[i].update();
+                enemySkills[i].skill = ev.enemy.hand[0];
                 enemySkills[i].update();
             }
+            charSkills[i].skill = currentPlayer.hand[i];
             charSkills[i].update();
             preSkills[i].update();
         }
@@ -201,14 +203,10 @@ public class BattleScreen extends AbstractScreen {
 
     public void setCurrentPlayer(AbstractPlayer p) {
         currentPlayer = p;
-        for(int i = 0; i < 4; i++) {
-            charSkills[i].skill = currentPlayer.hand[i];
-        }
     }
 
     public void setEnemy(AbstractEnemy e, int index) {
         enemies[index].enemy = e;
-        enemySkills[index].skill = enemies[index].enemy.hand[0];
     }
 
     @Override

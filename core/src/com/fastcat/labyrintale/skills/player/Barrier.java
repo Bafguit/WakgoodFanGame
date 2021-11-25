@@ -13,7 +13,7 @@ public class Barrier extends AbstractSkill {
     private static final Texture IMG = SKILL_SHIELD;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final int VALUE = 3;
+    private static final int VALUE = 4;
 
     public Barrier(AbstractEntity e) {
         super(e, ID, IMG, CLASS, RARITY);

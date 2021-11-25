@@ -173,34 +173,10 @@ public class FontHandler {
 
     private static void renderLine(SpriteBatch sb, FontData fontData, String text, String realValue, String tempValue, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
-        String realText = COLOR_PATTERN.matcher(text).replaceAll(getColorKey("$1") + "$2" + getHexColor(fontData.color));
-        realText = VAR_PATTERN.matcher(realText).replaceAll(realValue);
-        String tempText = COLOR_PATTERN.matcher(text).replaceAll("$2");
-        tempText = VAR_PATTERN.matcher(tempText).replaceAll(tempValue);
         font.getData().setScale(fontData.scale);
-        while(true) {
-            layout.setText(font, tempText, fontData.color, bw, Align.center, true);
-            if(layout.runs.size * font.getLineHeight() > bh && font.getScaleY() > 0.5f) {
-                font.getData().setScale(font.getScaleY() * 0.9f);
-            } else {
-                break;
-            }
-        }
-        float ry = y + (layout.runs.size * font.getLineHeight() - font.getCapHeight() + font.getXHeight() * 1.2f) / 2;
+        layout.setText(font, text, fontData.color, bw, Align.center, true);
+        float ry = y + (layout.height) / 2;
         font.draw(sb, layout, x, ry);
-        for(GlyphLayout.GlyphRun run : layout.runs) {
-            if(run.glyphs.toString().contains("　")) {
-                float gx = x + run.x, gy = ry + run.y - font.getCapHeight();
-                float[] xAdvances = run.xAdvances.items;
-                Object[] glyphs = run.glyphs.items;
-                for (int i = 0; i < run.glyphs.size; i++) {
-                    gx += xAdvances[i];
-                    if (glyphs[i].toString().equals("　")) {
-                        sb.draw(imgG, gx, gy);
-                    }
-                }
-            }
-        }
     }
 
     public static String getHexColor(Color color) {
