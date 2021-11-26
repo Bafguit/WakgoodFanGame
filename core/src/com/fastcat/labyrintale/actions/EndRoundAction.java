@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.CardTarget.P_F;
 
 public class EndRoundAction extends AbstractAction {
     public EndRoundAction() {
@@ -18,6 +19,10 @@ public class EndRoundAction extends AbstractAction {
                 battleScreen.preSkills[i].removeChar();
                 battleScreen.players[i].player.shuffleHand();
                 battleScreen.enemies[i].enemy.shuffleHand();
+            }
+            Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
+            if(temp.size > 0) {
+                battleScreen.setCurrentPlayer((AbstractPlayer) temp.get(0));
             }
         }
     }

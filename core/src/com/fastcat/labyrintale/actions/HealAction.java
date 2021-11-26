@@ -6,6 +6,8 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.effects.HealEffect;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
@@ -25,6 +27,7 @@ public class HealAction extends AbstractAction {
             if(t.size > 0) {
                 for (int i = 0; i < t.size; i++) {
                     AbstractEntity te = t.get(i);
+                    EffectHandler.add(new HealEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.4f, heal));
                     te.heal(heal);
                 }
                 if (actor != null) {

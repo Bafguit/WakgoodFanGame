@@ -2,6 +2,7 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -57,6 +58,7 @@ public class Labyrintale extends Game {
 	private SettingHandler settingHandler;
 	public ActionHandler actionHandler;
 	public GroupHandler groupHandler;
+	public EffectHandler effectHandler;
 
 	public SpriteBatch sb;
 
@@ -64,8 +66,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sb = new SpriteBatch();
@@ -77,6 +79,7 @@ public class Labyrintale extends Game {
 		stringHandler = new StringHandler();
 		settingHandler = new SettingHandler();
 		actionHandler = new ActionHandler();
+		effectHandler = new EffectHandler();
 		game = this;
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
@@ -155,6 +158,26 @@ public class Labyrintale extends Game {
 
 	public static int getUid() {
 		return ++uidCount;
+	}
+
+	public static AbstractScreen getCurScreen() {
+		return (AbstractScreen) game.screen;
+	}
+
+	@Override
+	public void setScreen (Screen screen) {
+		if (this.screen != null) {
+			this.screen.hide();
+			if (this.screen instanceof AbstractScreen) {
+				((AbstractScreen) this.screen).effectHandler.removeAll();
+			}
+		}
+
+		this.screen = screen;
+		if (this.screen != null) {
+			this.screen.show();
+			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
 	}
 	
 	@Override

@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
+import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillButton extends AbstractUI {
@@ -51,7 +52,7 @@ public class SkillButton extends AbstractUI {
                 isSelected = false;
                 for (int i = 0; i < 4; i++) {
                     SkillButton ss = battleScreen.preSkills[i];
-                    if (ss.isOnLock && skill.uid == ss.skill.uid) {
+                    if (ss.isOnLock && skill == ss.skill) {
                         isSelected = true;
                         break;
                     }
@@ -91,7 +92,7 @@ public class SkillButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!isInfo && canClick && !battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
+        if(!isInfo && canClick && !battleScreen.isEnemyTurn && !isRunning) {
             if(isCS) {
                 if(!isSelected) {
                     for(int i = 0; i < 4; i++) {
@@ -107,7 +108,7 @@ public class SkillButton extends AbstractUI {
                 } else {
                     for(int i = 0; i < 4; i++) {
                         SkillButton chb = battleScreen.preSkills[i];
-                        if(chb.isOnLock && chb.skill.uid == skill.uid) {
+                        if(chb.isOnLock && chb.skill == skill) {
                             chb.removeChar();
                             break;
                         }

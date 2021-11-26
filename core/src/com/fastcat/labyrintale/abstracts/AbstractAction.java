@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 
 public abstract class AbstractAction implements Cloneable {
 
@@ -40,9 +41,6 @@ public abstract class AbstractAction implements Cloneable {
                 return;
             } else if (duration <= 0) {
                 isDone = true;
-            }
-            if(effect != null) {
-                effect.update();
             }
             updateAction();
             TickDuration();

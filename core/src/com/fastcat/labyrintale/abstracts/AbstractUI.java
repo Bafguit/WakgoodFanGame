@@ -25,7 +25,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Texture img;
     public String text;
-    protected FontData fontData;
+    public FontData fontData;
     public float x;
     protected float sx;
     protected float cx;

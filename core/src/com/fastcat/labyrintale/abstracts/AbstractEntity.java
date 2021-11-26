@@ -29,6 +29,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AnimationState state;
     public AnimationStateData stateData;
 
+    public AbstractUI ui;
     public Array<AbstractSkill> deck;
     public AbstractSkill[] hand;
     public Array<AbstractSkill> drawPile;
