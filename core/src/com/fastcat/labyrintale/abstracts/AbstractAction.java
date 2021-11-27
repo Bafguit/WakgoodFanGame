@@ -36,7 +36,7 @@ public abstract class AbstractAction implements Cloneable {
 
     public final void update() {
         if(!isDone) {
-            if(actor != null && actor.isDead) {
+            if(actor != null && !actor.isAlive()) {
                 isDone = true;
                 return;
             } else if (duration <= 0) {

@@ -59,7 +59,7 @@ public class SkillButton extends AbstractUI {
                 }
             }
             if (!isInfo && isSkill) {
-                if(skill.owner != null && skill.owner.isDead) {
+                if(skill.owner != null && !skill.owner.isAlive()) {
                     skill = null;
                 } else if(over) {
                     Labyrintale.battleScreen.skillInfo.skill = skill;

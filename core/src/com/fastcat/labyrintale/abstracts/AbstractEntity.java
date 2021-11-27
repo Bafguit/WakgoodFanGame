@@ -10,8 +10,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.actions.DieAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.effects.DieEffect;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
@@ -153,7 +153,7 @@ public abstract class AbstractEntity implements Cloneable {
         if(isAlive()) {
             if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
                 isDie = true;
-                ActionHandler.top(new DieAction(this));
+                EffectHandler.add(new DieEffect(this));
             }
         }
     }

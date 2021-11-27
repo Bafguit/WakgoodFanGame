@@ -106,10 +106,10 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(currentPlayer.isDead) {
+        if(!currentPlayer.isAlive()) {
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer tp = players[i].player;
-                if(!tp.isDead) {
+                if(tp.isAlive()) {
                     setCurrentPlayer(tp);
                     break;
                 }
@@ -128,8 +128,8 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = enemies[i];
             ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
-            if(!pv.player.isDead) playerStatus[i].update();
-            if(!ev.enemy.isDead) {
+            if(pv.player.isAlive()) playerStatus[i].update();
+            if(ev.enemy.isAlive()) {
                 enemyStatus[i].update();
                 enemySkills[i].skill = ev.enemy.hand[0];
                 enemySkills[i].update();
@@ -187,8 +187,8 @@ public class BattleScreen extends AbstractScreen {
             if(!te.enemy.isDead) renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, te.x, te.y + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
         }
         for(int i = 0; i < 4; i++) {
-            if(!players[i].player.isDead) playerStatus[i].render(sb);
-            if(!enemies[i].enemy.isDead) {
+            if(players[i].player.isAlive()) playerStatus[i].render(sb);
+            if(enemies[i].enemy.isAlive()) {
                 enemyStatus[i].render(sb);
                 enemySkills[i].render(sb);
             }
