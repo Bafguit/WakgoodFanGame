@@ -35,7 +35,7 @@ public class HealAction extends AbstractAction {
                     actor.state.addAnimation(0, "Standby", true, 0.0F);
                     e.setTimeScale(1.0f);
                 }
-            }
+            } else isDone = true;
         }
     }
 }
