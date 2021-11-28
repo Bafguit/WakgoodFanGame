@@ -19,6 +19,7 @@ public class BattleScreen extends AbstractScreen {
 
     public static final Array<AbstractEntity> DEF_LOOK = new Array<>();
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
+    public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
     public NameText nameText;
@@ -164,17 +165,47 @@ public class BattleScreen extends AbstractScreen {
             PlayerView tp = players[i];
             EnemyView te = enemies[i];
             float tw = tp.sWidth;
+            float th = tp.sHeight;
             if(!tp.player.isDead) {
+                boolean isBlock = tp.player.block > 0;
+                if(isBlock) {
+                    shr.setColor(bc);
+                    shr.rect(tp.x + tw * 0.075f, tp.y - th * 0.01f, tw * 0.85f, th * 0.07f);
+                }
                 shr.setColor(hbc);
-                shr.rect(tp.x + tw * 0.1f, tp.y, tw * 0.8f, tp.sHeight * 0.05f);
+                shr.rect(tp.x + tw * 0.1f, tp.y, tw * 0.8f, th * 0.05f);
                 shr.setColor(Color.SCARLET.cpy());
-                shr.rect(tp.x + tw * 0.1f, tp.y, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), tp.sHeight * 0.05f);
+                shr.rect(tp.x + tw * 0.1f, tp.y, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), th * 0.05f);
+                if(isBlock) {
+                    shr.setColor(bc);
+                    shr.circle(tp.x + tw * 0.05f, tp.y + th * 0.025f, th * 0.06f);
+                    shr.end();
+                    sb.begin();
+                    renderCenter(sb, BLOCK.font, Integer.toString(tp.player.block), tp.x + tw * 0.05f, tp.y + th * 0.025f);
+                    sb.end();
+                    shr.begin(ShapeRenderer.ShapeType.Filled);
+                }
             }
             if(!te.enemy.isDead) {
+                boolean isBlock = te.enemy.block > 0;
+                if(isBlock) {
+                    shr.setColor(bc);
+                    shr.rect(te.x + tw * 0.075f, te.y - th * 0.01f, tw * 0.85f, th * 0.07f);
+                }
                 shr.setColor(hbc);
-                shr.rect(te.x + tw * 0.1f, te.y, tw * 0.8f, te.sHeight * 0.05f);
+                shr.rect(te.x + tw * 0.1f, te.y, tw * 0.8f, th * 0.05f);
                 shr.setColor(Color.SCARLET.cpy());
-                shr.rect(te.x + tw * 0.1f, te.y, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), te.sHeight * 0.05f);
+                shr.rect(te.x + tw * 0.1f, te.y, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), th * 0.05f);
+
+                if(isBlock) {
+                    shr.setColor(bc);
+                    shr.circle(te.x + tw * 0.05f, te.y + th * 0.025f, th * 0.06f);
+                    shr.end();
+                    sb.begin();
+                    renderCenter(sb, BLOCK.font, Integer.toString(te.enemy.block), te.x + tw * 0.05f, te.y + th * 0.025f);
+                    sb.end();
+                    shr.begin(ShapeRenderer.ShapeType.Filled);
+                }
             }
         }
         shr.end();

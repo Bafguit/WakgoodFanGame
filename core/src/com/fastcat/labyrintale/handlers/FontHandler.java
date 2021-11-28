@@ -37,6 +37,7 @@ public class FontHandler {
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, true);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false);
+    public static final FontData BLOCK = new FontData(MEDIUM, 20, true);
     public static final FontData HP = new FontData(MEDIUM, 19, false);
     public static final FontData HEAL = new FontData(MEDIUM, 20, false);
 

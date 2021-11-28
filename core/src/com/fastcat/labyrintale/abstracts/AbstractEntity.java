@@ -40,8 +40,9 @@ public abstract class AbstractEntity implements Cloneable {
     public String name;
     public String description;
     public boolean targetable;
-    public boolean isDead;
-    public boolean isDie;
+    public boolean isDead = false;
+    public boolean isDie = false;
+    public int block = 0;
     public int health;
     public int maxHealth;
     public float animX = -10000;
@@ -137,16 +138,46 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
-    public void damage(AbstractEntity actor, int damage) {
-        AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
-        state.addAnimation(0, "Standby", true, 0.0F);
-        e.setTimeScale(1.0f);
-        health -= damage;
-        if(health <= 0) {
-            health = 0;
-            die();
+    public void gainBlock(int b) {
+        if(b > 0) {
+            int temp = state != null ? status.onGainBlock(b) : b;
+            if(temp > 0) {
+                block += temp;
+            }
         }
-        if(status != null) status.onDamage(actor, damage);
+    }
+
+    public void damage(AbstractEntity actor, int damage) {
+        int temp = loseBlock(damage);
+        if(temp > 0) {
+            AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
+            state.addAnimation(0, "Standby", true, 0.0F);
+            e.setTimeScale(1.0f);
+            health -= temp;
+            if (health <= 0) {
+                health = 0;
+                block = 0;
+                die();
+            }
+            if (status != null) status.onDamage(actor, damage);
+        }
+    }
+
+    public int loseBlock(int damage) {
+        if(block > 0) {
+            if(block >= damage) {
+                if (status != null) status.onLoseBlock(damage);
+                block -= damage;
+                return 0;
+            } else {
+                if (status != null) status.onLoseBlock(block);
+                damage -= block;
+                block = 0;
+                return damage;
+            }
+        }
+
+        return damage;
     }
     
     public void die() {

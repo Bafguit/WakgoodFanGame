@@ -41,6 +41,14 @@ public abstract class AbstractStatus implements Cloneable {
 
     }
 
+    public void onLoseBlock(int block) {
+
+    }
+
+    public int onGainBlock(int block) {
+        return block;
+    }
+
     public void atBattleEnd() {
 
     }
