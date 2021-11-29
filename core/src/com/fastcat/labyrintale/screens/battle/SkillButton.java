@@ -23,6 +23,7 @@ public class SkillButton extends AbstractUI {
     public boolean isSkill = true;
     public boolean isSelected = false;
     public boolean canClick = true;
+    public boolean used = false;
 
     public SkillButton() {
         this(null);
@@ -36,7 +37,7 @@ public class SkillButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isSelected) sb.setColor(Color.DARK_GRAY);
+            if(isSelected || used) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(showImg && skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);

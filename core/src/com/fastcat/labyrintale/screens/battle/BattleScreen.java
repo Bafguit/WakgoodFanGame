@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -46,8 +47,9 @@ public class BattleScreen extends AbstractScreen {
         nameText = new NameText();
         effectText = new EffectText();
         effectText2 = new EffectText2();
-        advisor = new SkillButton(new Strike(null));
-        advisor.skill.img = advisorSelectScreen.advisor.img;
+        AbstractLabyrinth.advisor.used = false;
+        advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
+        advisor.skill.img = AbstractLabyrinth.advisor.img;
         advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
         endTurnButton = new EndTurnButton();
         statusInfo = new StatusButton();
@@ -62,7 +64,7 @@ public class BattleScreen extends AbstractScreen {
         skillInfo.setScale(2.5f);
         skillInfo.setPosition(w * 0.55f, h * 0.15f - skillInfo.sHeight / 2);
         for(int i = 0; i < 4; i++) {
-            PlayerView pv = new PlayerView(charSelectScreen.chars[i].selected);
+            PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.45f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.475f);
             pv.player.shuffleHand();
@@ -107,6 +109,7 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        Labyrintale.labyrinth.update();
         if(!currentPlayer.isAlive()) {
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer tp = players[i].player;
@@ -138,6 +141,10 @@ public class BattleScreen extends AbstractScreen {
             charSkills[i].skill = currentPlayer.hand[i];
             charSkills[i].update();
             preSkills[i].update();
+        }
+        if(AbstractLabyrinth.advisor.used && !advisor.used) {
+            advisor.canClick = false;
+            advisor.used = true;
         }
         advisor.update();
         skillInfo.update();

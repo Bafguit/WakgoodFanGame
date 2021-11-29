@@ -38,6 +38,12 @@ public class NextButton extends AbstractUI {
         Labyrintale.advisorSelectScreen.nextButton.onHide();
         Labyrintale.labyrinth = new AbstractLabyrinth();
         Labyrintale.mapScreen = new MapScreen();
+        for(int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
+            Labyrintale.charSelectScreen.chars[i].removeChar();
+        }
+        Labyrintale.charSelectScreen.nextButton.disable();
+        Labyrintale.charSelectScreen.backButton.onHide();
+        Labyrintale.charSelectScreen.nextButton.onHide();
         Labyrintale.fadeOutAndChangeScreen(mapScreen);
     }
 }

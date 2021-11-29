@@ -18,18 +18,11 @@ public class PlayerView extends AbstractUI {
     public boolean isLooking = false;
     public boolean isOnLock = false;
 
-    public PlayerView(AbstractPlayer.PlayerClass cls) {
+    public PlayerView(AbstractPlayer cls) {
         super(ENTITY_POINT);
-        this.player = getWak(cls);
+        this.player = cls;
         pImg = PLAYER_POINT;
         showImg = false;
-    }
-
-    private static AbstractPlayer getWak(AbstractPlayer.PlayerClass cls) {
-        switch (cls) {
-            default:
-                return new TestPlayer();
-        }
     }
 
     @Override
