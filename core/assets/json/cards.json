@@ -15,6 +15,10 @@
     "NAME": "힐",
     "DESC": "체력을 {V} 회복합니다."
   },
+  "Temp": {
+    "NAME": "모시깽이",
+    "DESC": "피해를 {A} 줍니다."
+  },
   "CardID": {
     "NAME": "NAME",
     "DESC": "DESCRIPTION",

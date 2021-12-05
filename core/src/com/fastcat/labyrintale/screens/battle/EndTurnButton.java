@@ -39,13 +39,13 @@ public class EndTurnButton extends AbstractUI {
             for (int i = 0; i < 4; i++) {
                 SkillButton ts = battleScreen.preSkills[i];
                 if (ts.skill != null) {
-                    ts.skill.use();
+                    ts.skill.useCard();
                 }
             }
             for (int i = 0; i < 4; i++) {
                 SkillButton ts = battleScreen.enemySkills[i];
                 if (ts.skill != null) {
-                    ts.skill.use();
+                    ts.skill.useCard();
                 }
             }
             ActionHandler.bot(new EndRoundAction());

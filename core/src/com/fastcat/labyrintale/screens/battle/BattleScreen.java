@@ -51,6 +51,7 @@ public class BattleScreen extends AbstractScreen {
         advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
         advisor.skill.img = AbstractLabyrinth.advisor.img;
         advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
+        advisor.advisor = true;
         endTurnButton = new EndTurnButton();
         statusInfo = new StatusButton();
         statusInfo.isInfo = true;
@@ -141,10 +142,6 @@ public class BattleScreen extends AbstractScreen {
             charSkills[i].skill = currentPlayer.hand[i];
             charSkills[i].update();
             preSkills[i].update();
-        }
-        if(AbstractLabyrinth.advisor.used && !advisor.used) {
-            advisor.canClick = false;
-            advisor.used = true;
         }
         advisor.update();
         skillInfo.update();

@@ -211,7 +211,14 @@ public abstract class AbstractSkill implements Cloneable {
         return temp;
     }
 
-    public abstract void use();
+    public final void useCard() {
+        if(rarity == CardRarity.ADVISOR) {
+            battleScreen.advisor.canClick = false;
+        }
+        use();
+    }
+
+    protected abstract void use();
 
     public abstract void upgrade();
 
@@ -225,7 +232,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum CardRarity {
-        STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN
+        STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN, ADVISOR
     }
 
     public enum CardTarget {

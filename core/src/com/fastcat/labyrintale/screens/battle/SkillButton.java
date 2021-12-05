@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -23,7 +24,7 @@ public class SkillButton extends AbstractUI {
     public boolean isSkill = true;
     public boolean isSelected = false;
     public boolean canClick = true;
-    public boolean used = false;
+    public boolean advisor = false;
 
     public SkillButton() {
         this(null);
@@ -37,7 +38,7 @@ public class SkillButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isSelected || used) sb.setColor(Color.DARK_GRAY);
+            if(isSelected || (advisor && !canClick)) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(showImg && skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
