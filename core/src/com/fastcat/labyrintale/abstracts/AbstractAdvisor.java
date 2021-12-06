@@ -11,7 +11,7 @@ public abstract class AbstractAdvisor {
     public AdvisorClass cls;
     public AbstractSkill skill;
     public boolean used = false;
-    public Texture img;
+    public Sprite img;
 
     public AbstractAdvisor() {
         this(AdvisorClass.NONE, null);
@@ -23,7 +23,7 @@ public abstract class AbstractAdvisor {
         this.skill = skill;
     }
 
-    private static Texture getWak(AbstractAdvisor.AdvisorClass cls) {
+    private static Sprite getWak(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
             case BURGER:
                 return WAK_BASIC;

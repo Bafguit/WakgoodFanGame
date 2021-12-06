@@ -12,6 +12,7 @@ import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
@@ -63,7 +64,7 @@ public abstract class AbstractEntity implements Cloneable {
 
         this.atlas = atlas;
         SkeletonJson json = new SkeletonJson(atlas);
-        json.setScale(0.65f);
+        json.setScale(0.65f * InputHandler.scale);
         SkeletonData skeletonData = json.readSkeletonData(skel);
         skeleton = new Skeleton(skeletonData);
         skeleton.setColor(Color.WHITE);

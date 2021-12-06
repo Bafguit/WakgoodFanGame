@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.skills;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -11,7 +12,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
 public class Temp extends AbstractSkill {
 
     private static final String ID = "Temp";
-    private static final Texture IMG = SKILL_STRIKE;
+    private static final Sprite IMG = SKILL_STRIKE;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.ADVISOR;
     private static final CardTarget TARGET = CardTarget.E_L;

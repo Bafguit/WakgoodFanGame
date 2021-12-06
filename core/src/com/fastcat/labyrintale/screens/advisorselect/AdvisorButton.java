@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.advisorselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -16,8 +17,8 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
-    private Texture border = CHAR_SELECT;
-    private Texture bg;
+    private Sprite border = CHAR_SELECT;
+    private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;
     public boolean isOnLock = false;
@@ -37,7 +38,7 @@ public class AdvisorButton extends AbstractUI {
         selected = cls;
     }
 
-    private static Texture getWak(AbstractAdvisor.AdvisorClass cls) {
+    private static Sprite getWak(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
             case BURGER:
                 return WAK_BASIC;
@@ -46,7 +47,7 @@ public class AdvisorButton extends AbstractUI {
         }
     }
 
-    private static Texture getWakBg(AbstractAdvisor.AdvisorClass cls) {
+    private static Sprite getWakBg(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
             default:
                 return WAK_BASIC_BG;

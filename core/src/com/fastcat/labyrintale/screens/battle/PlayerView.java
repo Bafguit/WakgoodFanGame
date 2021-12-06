@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -12,7 +13,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class PlayerView extends AbstractUI {
 
-    private Texture pImg;
+    private Sprite pImg;
 
     public AbstractPlayer player;
     public boolean isLooking = false;
@@ -21,7 +22,7 @@ public class PlayerView extends AbstractUI {
     public PlayerView(AbstractPlayer cls) {
         super(ENTITY_POINT);
         this.player = cls;
-        pImg = PLAYER_POINT;
+        pImg = new Sprite(PLAYER_POINT);
         showImg = false;
     }
 

@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.buttons.CardUIButton;
@@ -21,7 +22,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable {
 
-    public Texture img;
+    public Sprite img;
     public CardString.CardData cardData;
     public AbstractEntity owner;
     public PlayerClass playerClass;
@@ -40,7 +41,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int value = -1;
     public int baseValue = -1;
 
-    public AbstractSkill(AbstractEntity owner, String id, Texture tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
+    public AbstractSkill(AbstractEntity owner, String id, Sprite tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
         uid = getUid();
         this.owner = owner;
         this.id = id;
@@ -55,7 +56,7 @@ public abstract class AbstractSkill implements Cloneable {
         this.upgradeCount = 0;
     }
 
-    public AbstractSkill(String id, Texture tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
+    public AbstractSkill(String id, Sprite tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
         this(null, id, tex, playerClass, rarity, target);
     }
 

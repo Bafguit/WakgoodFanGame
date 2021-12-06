@@ -189,7 +189,7 @@ public class FontHandler {
         public BitmapFont font;
         public FontType type;
         public Color color;
-        public float size;
+        public int size;
         public float scale = 1.0f;
 
         public FontData(FontType type, int size, boolean border) {
@@ -201,11 +201,11 @@ public class FontHandler {
         }
 
         public FontData(FontType type, int size, boolean border, Color color, Color bColor) {
-            this.font = generate(type, size, color, bColor, border);
+            this.size = (int) (size * InputHandler.scale);
+            this.font = generate(type, this.size, color, bColor, border);
             this.font.getData().markupEnabled = true;
             this.color = this.font.getColor();
             this.type = type;
-            this.size = size;
         }
 
         public final FontData cpy() {

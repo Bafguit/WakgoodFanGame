@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
@@ -15,7 +16,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 
 public class StatusButton extends AbstractUI {
 
-    private Texture border = CHAR_SELECT;
+    private Sprite border = CHAR_SELECT;
     public AbstractStatus status;
     public boolean isInfo = false;
 

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.skills.player;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -14,7 +15,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.WAK_BASIC;
 public class Strike extends AbstractSkill {
 
     private static final String ID = "Strike";
-    private static final Texture IMG = SKILL_STRIKE;
+    private static final Sprite IMG = SKILL_STRIKE;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.E_F;

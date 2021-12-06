@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.skills.enemy;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
@@ -11,7 +12,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
 public class BarrierE extends AbstractSkill {
 
     private static final String ID = "Barrier";
-    private static final Texture IMG = SKILL_SHIELD;
+    private static final Sprite IMG = SKILL_SHIELD;
     private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.E_F;

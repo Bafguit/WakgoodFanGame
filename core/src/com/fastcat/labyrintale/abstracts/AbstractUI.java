@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
@@ -18,12 +19,12 @@ import static com.fastcat.labyrintale.handlers.FontHandler.generate;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
-public abstract class AbstractUI implements ScaleUpdateListener {
+public abstract class AbstractUI {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
     protected LogHandler logger = new LogHandler(this.getClass().getName());
-    public Texture img;
+    public Sprite img;
     public String text;
     public FontData fontData;
     public float x;
@@ -40,7 +41,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     protected FontType ft;
     protected boolean fb;
     public boolean over;
-    protected boolean enabled;
+    public boolean enabled;
     protected boolean showImg = true;
 
     public float uiScale;
@@ -53,23 +54,23 @@ public abstract class AbstractUI implements ScaleUpdateListener {
         this(imgPath, -10000, -10000);
     }
 
-    public AbstractUI(Texture texture) {
+    public AbstractUI(Sprite texture) {
         this(texture, -10000, -10000);
     }
 
     public AbstractUI(String imgPath, float x, float y) {
-        this(new Texture(imgPath), x, y);
+        this(new Sprite(new Texture(imgPath)), x, y);
     }
 
-    public AbstractUI(Texture texture, float x, float y) {
+    public AbstractUI(Sprite texture, float x, float y) {
         this(texture, x, y, texture.getWidth(), texture.getHeight());
     }
 
     public AbstractUI(String imgPath, float x, float y, float width, float height) {
-        this(new Texture(imgPath), x, y, width, height);
+        this(new Sprite(new Texture(imgPath)), x, y, width, height);
     }
 
-    public AbstractUI(Texture img, float x, float y, float width, float height) {
+    public AbstractUI(Sprite img, float x, float y, float width, float height) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -176,7 +177,7 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     }
 
     public void dispose() {
-        img.dispose();
+        img.getTexture().dispose();
         fontData.font.dispose();
     }
 
@@ -187,11 +188,6 @@ public abstract class AbstractUI implements ScaleUpdateListener {
     public void setText(String text, FontType type, int s, boolean border) {
         this.fontData = new FontData(type, s, border);
         this.text = text;
-    }
-
-    @Override
-    public final void scaleUpdate(float pre, float cur) {
-        //setPosition(sx * cur, sy * cur);
     }
 
     public void onHide() {

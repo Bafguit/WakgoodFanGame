@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.charselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -15,8 +16,8 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {
 
-    private Texture border = CHAR_SELECT;
-    private Texture bg;
+    private Sprite border = CHAR_SELECT;
+    private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;
     public boolean isOnLock = false;
@@ -36,7 +37,7 @@ public class CharButton extends AbstractUI {
         selected = cls;
     }
 
-    private static Texture getWak(AbstractPlayer.PlayerClass cls) {
+    private static Sprite getWak(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
             case BABY:
                 return WAK_BABY;
@@ -49,7 +50,7 @@ public class CharButton extends AbstractUI {
         }
     }
 
-    private static Texture getWakBg(AbstractPlayer.PlayerClass cls) {
+    private static Sprite getWakBg(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
             case BABY:
                 return WAK_BABY_BG;

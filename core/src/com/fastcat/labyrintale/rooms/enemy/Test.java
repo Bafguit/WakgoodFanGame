@@ -7,9 +7,11 @@ import com.fastcat.labyrintale.enemies.TestEnemy2;
 
 public class Test extends AbstractRoom {
 
-    private static final AbstractEnemy[] ENEMIES = new AbstractEnemy[] {new TestEnemy(), new TestEnemy2(), new TestEnemy2(), new TestEnemy()};
-
     public Test() {
-        super(ENEMIES, 0);
+        super(getEnemies(), 0);
+    }
+
+    private static AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {new TestEnemy(), new TestEnemy2(), new TestEnemy2(), new TestEnemy() };
     }
 }

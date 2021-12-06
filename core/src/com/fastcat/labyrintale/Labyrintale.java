@@ -19,6 +19,7 @@ import com.fastcat.labyrintale.players.TestPlayer;
 import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
+import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 
@@ -26,8 +27,8 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 
 public class Labyrintale extends Game {
 
-	public static final int DEFAULT_WIDTH = 1920;
-	public static final int DEFAULT_HEIGHT = 1080;
+	public static final int DEFAULT_WIDTH = 1600;
+	public static final int DEFAULT_HEIGHT = 900;
 
 	public static Labyrintale game;
 
@@ -43,6 +44,7 @@ public class Labyrintale extends Game {
 	public static AdvisorSelectScreen advisorSelectScreen;
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
+	public static DeckViewScreen deckViewScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
 

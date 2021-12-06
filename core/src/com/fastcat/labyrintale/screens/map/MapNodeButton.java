@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.map;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractFloor;
@@ -18,7 +19,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class MapNodeButton extends AbstractUI {
 
-    private Texture border = CHAR_SELECT;
+    private Sprite border = CHAR_SELECT;
     public boolean canGo = true;
     public AbstractRoom room;
 
@@ -27,7 +28,7 @@ public class MapNodeButton extends AbstractUI {
         this.room = room;
     }
 
-    private static Texture getWak(RoomType type) {
+    private static Sprite getWak(RoomType type) {
         switch (type) {
             case BOSS:
                 return WAK_BABY;
