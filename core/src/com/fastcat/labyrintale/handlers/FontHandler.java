@@ -94,7 +94,6 @@ public class FontHandler {
     public static void renderLineLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         layout.setText(font, text, fontData.color, bw, Align.left, false);
-        float ry = y + (layout.height) / 2;
         font.draw(sb, layout, x, y);
     }
 

@@ -49,7 +49,6 @@ public class BattleScreen extends AbstractScreen {
         effectText2 = new EffectText2();
         AbstractLabyrinth.advisor.used = false;
         advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
-        advisor.skill.img = AbstractLabyrinth.advisor.img;
         advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
         advisor.advisor = true;
         endTurnButton = new EndTurnButton();

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
@@ -41,7 +42,7 @@ public class AdvisorButton extends AbstractUI {
     private static Sprite getWak(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
             case BURGER:
-                return WAK_BASIC;
+                return FileHandler.BURGER;
             default:
                 return CHAR_SELECT;
         }
@@ -49,6 +50,8 @@ public class AdvisorButton extends AbstractUI {
 
     private static Sprite getWakBg(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
+            case BURGER:
+                return BURGER_BG;
             default:
                 return WAK_BASIC_BG;
         }

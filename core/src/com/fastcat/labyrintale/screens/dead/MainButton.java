@@ -12,7 +12,7 @@ public class MainButton extends AbstractUI {
     public MainButton() {
         super(MENU_SELECT, 0, 0, 300, 50);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "처음으로";
         showImg = false;
     }

@@ -2,15 +2,19 @@ package com.fastcat.labyrintale.screens.deckview;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
+import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
 import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCardLeft;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class UpEffectText extends AbstractUI {
+
+    private AbstractSkill skill;
 
     public UpEffectText() {
         super(CHAR_SELECT, 0, 0, 400, 180);
@@ -22,10 +26,8 @@ public class UpEffectText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(fontData != null && battleScreen.skillInfo.skill != null) {
-                renderCardLeft(sb, battleScreen.skillInfo.skill, fontData, text, x, y, sWidth, sHeight);
-            }
+        if(enabled && deckViewScreen.upInfo.skill != null) {
+            renderCardLeft(sb, deckViewScreen.upInfo.skill, fontData, deckViewScreen.upInfo.skill.desc, x, y, sWidth, sHeight);
         }
     }
 }

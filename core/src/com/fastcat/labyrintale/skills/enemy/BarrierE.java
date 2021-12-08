@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_SHIELD;
@@ -26,7 +28,7 @@ public class BarrierE extends AbstractSkill {
 
     @Override
     public void use() {
-
+        ActionHandler.bot(new BlockAction(this.owner, target, spell));
     }
 
     @Override

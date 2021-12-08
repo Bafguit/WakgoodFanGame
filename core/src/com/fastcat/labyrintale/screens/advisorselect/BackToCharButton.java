@@ -31,10 +31,6 @@ public class BackToCharButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.advisorSelectScreen.advisor.removeChar();
-        Labyrintale.advisorSelectScreen.nextButton.disable();
-        Labyrintale.advisorSelectScreen.backButton.onHide();
-        Labyrintale.advisorSelectScreen.nextButton.onHide();
         Labyrintale.fadeOutAndChangeScreen(charSelectScreen, 0.5f);
     }
 }

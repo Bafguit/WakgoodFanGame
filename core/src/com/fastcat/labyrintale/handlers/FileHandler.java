@@ -19,17 +19,26 @@ public class FileHandler {
     public static final Sprite CHAR_SELECT = new Sprite(new Texture("img/charSelect.png"));
     public static final Sprite BACK = new Sprite(new Texture("img/back.png"));
     public static final Sprite NEXT = new Sprite(new Texture("img/next.png"));
+
+    public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
+    public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
+    public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
+    public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/test/char_5_neko.json");
+
+    //왁두
     public static final Sprite WAK_BASIC = new Sprite(new Texture("img/wakdu/basic.png"));
     public static final Sprite WAK_BASIC_BG = new Sprite(new Texture("img/wakdu/basic_bg.png"));
     public static final Sprite WAK_SAJANG = new Sprite(new Texture("img/wakdu/sajang.png"));
     public static final Sprite WAK_SAJANG_BG = new Sprite(new Texture("img/wakdu/sajang_bg.png"));
     public static final Sprite WAK_BABY = new Sprite(new Texture("img/wakdu/baby.png"));
     public static final Sprite WAK_BABY_BG = new Sprite(new Texture("img/wakdu/baby_bg.png"));
-    public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
-    public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
-    public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
-    public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/test/char_5_neko.json");
 
+    //참모
+    public static final Sprite BURGER = new Sprite(new Texture("img/advisor/burger.png"));
+    public static final Sprite BURGER_BG = new Sprite(new Texture("img/advisor/burger_bg.png"));
+    public static final Sprite BURGER_S = new Sprite(new Texture("img/advisor/burger_s.png"));
+
+    //스킬
     public static final Sprite SKILL_STRIKE = new Sprite(new Texture("img/skill/Strike.png"));
     public static final Sprite SKILL_HEAL = new Sprite(new Texture("img/skill/Heal.png"));
     public static final Sprite SKILL_LIGHT = new Sprite(new Texture("img/skill/Light.png"));

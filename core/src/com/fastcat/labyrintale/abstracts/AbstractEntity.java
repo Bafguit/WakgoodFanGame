@@ -35,6 +35,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill[] hand;
     public Array<AbstractSkill> drawPile;
     public Array<AbstractSkill> discardPile;
+    public Array<AbstractSkill> disposablePile;
     public AbstractStatus status;
     public EntityType entityType;
     public String id;
@@ -60,6 +61,7 @@ public abstract class AbstractEntity implements Cloneable {
         deck = getStartingDeck();
         drawPile = new Array<>();
         discardPile = new Array<>();
+        disposablePile = new Array<>();
         newDeck();
 
         this.atlas = atlas;
@@ -100,6 +102,7 @@ public abstract class AbstractEntity implements Cloneable {
         hand = new AbstractSkill[handSize];
         drawPile.clear();
         discardPile.clear();
+        disposablePile.clear();
         for(int i = 0; i < deck.size; i++) {
             drawPile.add(deck.get(i).cpy());
         }
@@ -141,7 +144,7 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void gainBlock(int b) {
         if(b > 0) {
-            int temp = state != null ? status.onGainBlock(b) : b;
+            int temp = status != null ? status.onGainBlock(b) : b;
             if(temp > 0) {
                 block += temp;
             }

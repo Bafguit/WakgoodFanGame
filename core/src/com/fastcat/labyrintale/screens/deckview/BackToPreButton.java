@@ -1,20 +1,21 @@
-package com.fastcat.labyrintale.screens.charselect;
+package com.fastcat.labyrintale.screens.deckview;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
+import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
 import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FileHandler.BACK;
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
-public class BackButton extends AbstractUI {
+public class BackToPreButton extends AbstractUI {
 
-    public BackButton() {
+    public BackToPreButton() {
         super(BACK);
         setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
-        text = "뒤로";
+        text = "닫기";
         showImg = false;
     }
 
@@ -30,6 +31,6 @@ public class BackButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.fadeOutAndChangeScreen(mainMenuScreen);
+        if(Labyrintale.game.preScreen != null) Labyrintale.closeTempScreen();
     }
 }

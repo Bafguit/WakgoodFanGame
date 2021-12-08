@@ -16,7 +16,7 @@ public class NextButton extends AbstractUI {
     public NextButton() {
         super(NEXT);
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "출발";
         showImg = false;
         disable();

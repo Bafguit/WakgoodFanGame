@@ -27,8 +27,8 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 
 public class Labyrintale extends Game {
 
-	public static final int DEFAULT_WIDTH = 1600;
-	public static final int DEFAULT_HEIGHT = 900;
+	public static final int DEFAULT_WIDTH = 1920;
+	public static final int DEFAULT_HEIGHT = 1080;
 
 	public static Labyrintale game;
 
@@ -39,6 +39,7 @@ public class Labyrintale extends Game {
 
 	public static AbstractLabyrinth labyrinth;
 
+	public Screen preScreen = null;
 	public static MainMenuScreen mainMenuScreen;
 	public static CharSelectScreen charSelectScreen;
 	public static AdvisorSelectScreen advisorSelectScreen;
@@ -68,8 +69,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sb = new SpriteBatch();
@@ -82,6 +83,7 @@ public class Labyrintale extends Game {
 		settingHandler = new SettingHandler();
 		actionHandler = new ActionHandler();
 		effectHandler = new EffectHandler();
+		groupHandler = new GroupHandler();
 		game = this;
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
@@ -179,6 +181,36 @@ public class Labyrintale extends Game {
 		if (this.screen != null) {
 			this.screen.show();
 			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
+	}
+
+	public static void setTempScreen(Screen screen) {
+		if (game.screen != null) {
+			game.preScreen = game.screen;
+			if (game.screen instanceof AbstractScreen) {
+				((AbstractScreen) game.screen).effectHandler.removeAll();
+			}
+		}
+
+		game.screen = screen;
+		if (game.screen != null) {
+			game.screen.show();
+			game.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
+	}
+
+	public static void closeTempScreen() {
+		if (game.screen != null) {
+			game.screen.hide();
+			if (game.screen instanceof AbstractScreen) {
+				((AbstractScreen) game.screen).effectHandler.removeAll();
+			}
+		}
+
+		game.screen = game.preScreen;
+		if (game.screen != null) {
+			game.screen.show();
+			game.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		}
 	}
 	

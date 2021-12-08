@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
+import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
 import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_NAME;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
@@ -20,10 +21,8 @@ public class UpNameText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(fontData != null) {
-                renderLineLeft(sb, fontData, text, x, y, sWidth, sHeight);
-            }
+        if(enabled && fontData != null && deckViewScreen.upInfo.skill != null) {
+            renderLineLeft(sb, fontData, deckViewScreen.upInfo.skill.name, x, y, sWidth, sHeight);
         }
     }
 }

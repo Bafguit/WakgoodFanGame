@@ -33,6 +33,6 @@ public class Strike extends AbstractSkill {
 
     @Override
     public void upgrade() {
-
+        setBaseAttack(baseAttack + 2);
     }
 }

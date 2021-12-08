@@ -13,7 +13,7 @@ public class GameStartButton extends AbstractUI {
     public GameStartButton() {
         super(MENU_SELECT, 0, 0, 300, 50);
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.5f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "게임 시작";
         showImg = false;
     }
@@ -30,6 +30,12 @@ public class GameStartButton extends AbstractUI {
 
     @Override
     protected void onClick() {
+        for(int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
+            Labyrintale.charSelectScreen.chars[i].removeChar();
+        }
+        Labyrintale.charSelectScreen.nextButton.disable();
+        Labyrintale.charSelectScreen.backButton.onHide();
+        Labyrintale.charSelectScreen.nextButton.onHide();
         fadeOutAndChangeScreen(charSelectScreen, 1.0f);
     }
 }

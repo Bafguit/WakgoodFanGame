@@ -11,7 +11,7 @@ public class OptionButton extends AbstractUI {
     public OptionButton() {
         super(MENU_SELECT, 0, 0, 300, 50);
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
-        fontData = MAIN_MENU.cpy();
+        fontData = MAIN_MENU;
         text = "설정";
         showImg = false;
     }

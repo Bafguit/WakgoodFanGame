@@ -53,16 +53,15 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        game.groupHandler = new GroupHandler();
-    }
-
-    @Override
-    public void hide() {
         logoText.onHide();
         gameStartButton.onHide();
         tutorialButton.onHide();
         optionButton.onHide();
         exitButton.onHide();
+    }
+
+    @Override
+    public void hide() {
     }
 
     @Override
