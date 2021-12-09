@@ -26,6 +26,8 @@ public class BattleScreen extends AbstractScreen {
     public NameText nameText;
     public EffectText effectText;
     public EffectText2 effectText2;
+    public DrawPileButton drawPileButton;
+    public DiscardPileButton discardPileButton;
     public EndTurnButton endTurnButton;
     public SkillButton advisor;
     public SkillButton skillInfo;
@@ -51,6 +53,8 @@ public class BattleScreen extends AbstractScreen {
         advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
         advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
         advisor.advisor = true;
+        drawPileButton = new DrawPileButton();
+        discardPileButton = new DiscardPileButton();
         endTurnButton = new EndTurnButton();
         statusInfo = new StatusButton();
         statusInfo.isInfo = true;
@@ -148,6 +152,8 @@ public class BattleScreen extends AbstractScreen {
         nameText.update();
         effectText.update();
         effectText2.update();
+        drawPileButton.update();
+        discardPileButton.update();
         endTurnButton.update();
     }
 
@@ -235,6 +241,8 @@ public class BattleScreen extends AbstractScreen {
         nameText.render(sb);
         effectText.render(sb);
         effectText2.render(sb);
+        drawPileButton.render(sb);
+        discardPileButton.render(sb);
         endTurnButton.render(sb);
     }
 

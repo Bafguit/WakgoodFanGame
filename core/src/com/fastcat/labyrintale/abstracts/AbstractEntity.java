@@ -40,8 +40,6 @@ public abstract class AbstractEntity implements Cloneable {
     public EntityType entityType;
     public String id;
     public String name;
-    public String description;
-    public boolean targetable;
     public boolean isDead = false;
     public boolean isDie = false;
     public int block = 0;

@@ -13,12 +13,17 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
 public class FileHandler {
 
+    //UI
     public static final Sprite FADE = new Sprite(new Texture("img/fade.png"));
     public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
     public static final Sprite CHAR_SELECT = new Sprite(new Texture("img/charSelect.png"));
     public static final Sprite BACK = new Sprite(new Texture("img/back.png"));
     public static final Sprite NEXT = new Sprite(new Texture("img/next.png"));
+    public static final Sprite DECK = new Sprite(new Texture("img/ui/deck.png"));
+    public static final Sprite DRAW = new Sprite(new Texture("img/ui/draw.png"));
+    public static final Sprite DISCARD = new Sprite(new Texture("img/ui/discard.png"));
+
 
     public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));

@@ -117,7 +117,7 @@ public class DeckViewScreen extends AbstractScreen {
         for(int j = 0; j < temp; j++) {
             for(int i = 0; i < 4; i++) {
                 int t = page * 20 + j * 4 + i;
-                if(t > bs.length) break;
+                if(t >= bs.length) break;
                 else {
                     DeckSkillButton b = bs[t];
                     b.setPosition(Gdx.graphics.getWidth() * (0.15f + i * 0.075f) - b.sWidth / 2, Gdx.graphics.getHeight() * (0.8f - j * 0.12f) - b.sHeight / 2);

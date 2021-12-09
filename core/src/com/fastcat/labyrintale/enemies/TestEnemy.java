@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.skills.enemy.BarrierE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
@@ -26,6 +27,7 @@ public class TestEnemy extends AbstractEnemy {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new StrikeE(this));
+        temp.add(new BarrierE(this));
         return temp;
     }
 }
