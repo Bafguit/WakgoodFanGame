@@ -32,7 +32,7 @@ public class Strike extends AbstractSkill {
     }
 
     @Override
-    public void upgrade() {
+    protected void upgradeCard() {
         setBaseAttack(baseAttack + 2);
     }
 }

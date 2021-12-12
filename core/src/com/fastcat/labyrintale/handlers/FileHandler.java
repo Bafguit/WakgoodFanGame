@@ -15,6 +15,8 @@ public class FileHandler {
 
     //UI
     public static final Sprite FADE = new Sprite(new Texture("img/fade.png"));
+    public static final Sprite BG_TRANS = new Sprite(new Texture("img/fade.png"));
+    public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
     public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
     public static final Sprite CHAR_SELECT = new Sprite(new Texture("img/charSelect.png"));

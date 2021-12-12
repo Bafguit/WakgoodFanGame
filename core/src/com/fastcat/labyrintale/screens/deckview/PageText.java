@@ -20,6 +20,9 @@ public class PageText extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        text = (Labyrintale.deckViewScreen.page + 1) + "/" + (Labyrintale.deckViewScreen.max + 1);
+        if(screen instanceof DeckViewScreen) {
+            DeckViewScreen s = ((DeckViewScreen) screen);
+            text = (s.page + 1) + "/" + (s.max + 1);
+        }
     }
 }

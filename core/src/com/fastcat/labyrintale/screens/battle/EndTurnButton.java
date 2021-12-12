@@ -7,6 +7,9 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.actions.EndRoundAction;
+import com.fastcat.labyrintale.actions.RemoveAllBlockAction;
+import com.fastcat.labyrintale.actions.TurnChangeAction;
+import com.fastcat.labyrintale.actions.WaitAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
@@ -36,19 +39,24 @@ public class EndTurnButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(!battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
+            ActionHandler.bot(new TurnChangeAction(true));
+            ActionHandler.bot(new WaitAction(0.5f));
             for (int i = 0; i < 4; i++) {
                 SkillButton ts = battleScreen.preSkills[i];
                 if (ts.skill != null) {
                     ts.skill.useCard();
                 }
             }
+            ActionHandler.bot(new RemoveAllBlockAction(true));
             for (int i = 0; i < 4; i++) {
                 SkillButton ts = battleScreen.enemySkills[i];
                 if (ts.skill != null) {
                     ts.skill.useCard();
                 }
             }
+            ActionHandler.bot(new RemoveAllBlockAction(false));
             ActionHandler.bot(new EndRoundAction());
+            ActionHandler.bot(new TurnChangeAction(false));
         }
         //Gdx.app.exit();
     }

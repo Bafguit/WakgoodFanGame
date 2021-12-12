@@ -6,11 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.uis.EffectText;
 
 import static com.fastcat.labyrintale.handlers.EffectHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class HealEffect extends AbstractEffect {
 

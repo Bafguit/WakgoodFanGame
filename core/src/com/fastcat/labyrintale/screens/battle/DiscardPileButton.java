@@ -27,8 +27,7 @@ public class DiscardPileButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(battleScreen.currentPlayer != null && !ActionHandler.isRunning) {
-            deckViewScreen = new DeckViewScreen(battleScreen.currentPlayer, DeckViewScreen.ViewType.DISCARD);
-            setTempScreen(deckViewScreen);
+            addTempScreen(new DeckViewScreen(battleScreen.currentPlayer, DeckViewScreen.ViewType.DISCARD));
         }
     }
 }

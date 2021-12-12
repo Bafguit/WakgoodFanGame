@@ -43,6 +43,7 @@ public class BattleScreen extends AbstractScreen {
     public boolean isLooking = false;
     public Array<AbstractEntity> looking;
     public AbstractPlayer currentPlayer;
+    public int round = 0;
 
     public BattleScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();

@@ -13,10 +13,6 @@ import com.fastcat.labyrintale.screens.deckview.DeckViewScreen.InfoType;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -56,50 +52,44 @@ public class DeckSkillButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(skill != null) {
+        if(skill != null && screen instanceof DeckViewScreen) {
             if (!isInfo && over) {
                 if(skill.upgraded) {
                     setTo(InfoType.UPGRADED);
-                    deckViewScreen.upInfo.skill = skill;
+                    ((DeckViewScreen)screen).upInfo.skill = skill;
                 } else {
                     setTo(InfoType.NORMAL);
                     AbstractSkill ts = skill.cpy();
                     Objects.requireNonNull(ts).upgrade();
-                    deckViewScreen.info.skill = skill;
-                    deckViewScreen.upInfo.skill = ts;
+                    ((DeckViewScreen)screen).info.skill = skill;
+                    ((DeckViewScreen)screen).upInfo.skill = ts;
                 }
-            } else if(isInfo) {
-                boolean ov = false;
-                for(DeckSkillButton b : deckViewScreen.bs) {
-                    if(b.over) {
-                        ov = true;
-                        break;
-                    }
-                }
-                enabled = ov;
             }
         }
     }
 
     private void setTo(InfoType it) {
-        deckViewScreen.iType = it;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        if (deckViewScreen.iType == InfoType.NORMAL) {
-            deckViewScreen.showArrow = true;
-            deckViewScreen.info.setPosition(w * 0.55f, h * 0.75f - deckViewScreen.info.sHeight / 2);
-            deckViewScreen.skillNameText.setPosition(w * 0.69f, h * 0.85f);
-            deckViewScreen.skillEffectText.setPosition(w * 0.69f, h * 0.85f - 45 * scale);
-            deckViewScreen.upInfo.setPosition(w * 0.55f, h * 0.25f - deckViewScreen.upInfo.sHeight / 2);
-            deckViewScreen.upNameText.setPosition(w * 0.69f, h * 0.35f);
-            deckViewScreen.upEffectText.setPosition(w * 0.69f, h * 0.35f - 45 * scale);
-            deckViewScreen.info.enable();
-        } else {
-            deckViewScreen.showArrow = false;
-            deckViewScreen.upInfo.setPosition(w * 0.55f, h * 0.5f - deckViewScreen.upInfo.sHeight / 2);
-            deckViewScreen.upNameText.setPosition(w * 0.69f, h * 0.6f);
-            deckViewScreen.upEffectText.setPosition(w * 0.69f, h * 0.6f - 45 * scale);
+        if(screen instanceof DeckViewScreen) {
+            DeckViewScreen s = ((DeckViewScreen) screen);
+            s.iType = it;
+            float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+            if (s.iType == InfoType.NORMAL) {
+                s.showArrow = true;
+                s.info.setPosition(w * 0.55f, h * 0.75f - ((DeckViewScreen) screen).info.sHeight / 2);
+                s.skillNameText.setPosition(w * 0.69f, h * 0.85f);
+                s.skillEffectText.setPosition(w * 0.69f, h * 0.85f - 45 * scale);
+                s.upInfo.setPosition(w * 0.55f, h * 0.25f - ((DeckViewScreen) screen).upInfo.sHeight / 2);
+                s.upNameText.setPosition(w * 0.69f, h * 0.35f);
+                s.upEffectText.setPosition(w * 0.69f, h * 0.35f - 45 * scale);
+                s.info.enable();
+            } else {
+                s.showArrow = false;
+                s.upInfo.setPosition(w * 0.55f, h * 0.5f - ((DeckViewScreen) screen).upInfo.sHeight / 2);
+                s.upNameText.setPosition(w * 0.69f, h * 0.6f);
+                s.upEffectText.setPosition(w * 0.69f, h * 0.6f - 45 * scale);
+            }
+            s.upInfo.enable();
         }
-        deckViewScreen.upInfo.enable();
     }
 
     public static String getTargetString(AbstractSkill.CardTarget target) {

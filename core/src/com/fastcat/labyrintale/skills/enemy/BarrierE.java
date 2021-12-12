@@ -32,7 +32,7 @@ public class BarrierE extends AbstractSkill {
     }
 
     @Override
-    public void upgrade() {
+    protected void upgradeCard() {
 
     }
 }

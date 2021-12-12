@@ -33,7 +33,6 @@ public class TutorialButton extends AbstractUI {
     @Override
     protected void onClick() {
         AbstractPlayer t = new TestPlayer();
-        Labyrintale.deckViewScreen = new DeckViewScreen(t, DeckViewScreen.ViewType.NORMAL);
-        Labyrintale.setTempScreen(Labyrintale.deckViewScreen);
+        Labyrintale.addTempScreen(new DeckViewScreen(t, DeckViewScreen.ViewType.NORMAL));
     }
 }

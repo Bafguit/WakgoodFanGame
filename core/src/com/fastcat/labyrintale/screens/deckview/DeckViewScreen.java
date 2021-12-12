@@ -16,6 +16,7 @@ public class DeckViewScreen extends AbstractScreen {
 
     public static ShapeRenderer shr = new ShapeRenderer();
 
+    public BgImg bg = new BgImg();
     public DeckSkillButton[] bs;
     public Array<AbstractSkill> deck;
     public NextDeckPageButton nextDeckPageButton;
@@ -34,6 +35,7 @@ public class DeckViewScreen extends AbstractScreen {
     public int page = 0;
     public int max;
     public boolean showArrow = false;
+    public boolean showInfo = false;
 
     public DeckViewScreen(AbstractPlayer player, ViewType type) {
         this.player = player;
@@ -42,7 +44,7 @@ public class DeckViewScreen extends AbstractScreen {
         bs = new DeckSkillButton[deck.size];
         for(int i = 0; i < deck.size; i++) {
             DeckSkillButton b = new DeckSkillButton(deck.get(i));
-            //TODO 스킬 위치 지정 추가, 마우스 스크롤 추가
+            b.screen = this;
             bs[i] = b;
         }
         info = new DeckSkillButton();
@@ -50,13 +52,21 @@ public class DeckViewScreen extends AbstractScreen {
         upInfo = new DeckSkillButton();
         upInfo.setScale(2.5f);
         nextDeckPageButton = new NextDeckPageButton();
+        nextDeckPageButton.screen = this;
         preDeckPageButton = new PreDeckPageButton();
+        preDeckPageButton.screen = this;
         backToPreButton = new BackToPreButton();
+        backToPreButton.screen = this;
         skillNameText = new SkillNameText();
+        skillNameText.screen = this;
         skillEffectText = new SkillEffectText();
+        skillEffectText.screen = this;
         upNameText = new UpNameText();
+        upNameText.screen = this;
         upEffectText = new UpEffectText();
+        upEffectText.screen = this;
         pageText = new PageText();
+        pageText.screen = this;
         max = Math.max(deck.size - 1, 0) / 20;
     }
 
@@ -82,6 +92,8 @@ public class DeckViewScreen extends AbstractScreen {
     @Override
     public void update() {
         showArrow = false;
+        info.disable();
+        upInfo.disable();
         int temp = page == max ? deck.size - page * 20 : 20;
         for(int i = 0; i < temp; i++) {
             bs[page * 20 + i].update();
@@ -100,6 +112,7 @@ public class DeckViewScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
+        bg.render(sb);
         if(showArrow) {
             sb.end();
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();

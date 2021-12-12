@@ -34,6 +34,6 @@ public class NextDeckPageButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.deckViewScreen.adjustPage(1);
+        if(screen instanceof DeckViewScreen) ((DeckViewScreen)screen).adjustPage(1);
     }
 }

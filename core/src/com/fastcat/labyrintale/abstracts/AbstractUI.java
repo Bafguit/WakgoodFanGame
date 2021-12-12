@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,6 +24,7 @@ public abstract class AbstractUI {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
+    public Screen screen;
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
     public String text;
@@ -33,8 +35,8 @@ public abstract class AbstractUI {
     public float y;
     protected float sy;
     protected float cy;
-    protected float width;
-    protected float height;
+    public float width;
+    public float height;
     public float sWidth;
     public float sHeight;
     protected int fs;
@@ -42,7 +44,7 @@ public abstract class AbstractUI {
     protected boolean fb;
     public boolean over;
     public boolean enabled;
-    protected boolean showImg = true;
+    public boolean showImg = true;
 
     public float uiScale;
     public boolean clicked;

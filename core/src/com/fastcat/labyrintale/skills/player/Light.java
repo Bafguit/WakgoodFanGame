@@ -31,7 +31,7 @@ public class Light extends AbstractSkill {
     }
 
     @Override
-    public void upgrade() {
+    protected void upgradeCard() {
 
     }
 }

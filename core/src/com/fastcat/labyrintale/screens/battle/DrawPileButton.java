@@ -29,8 +29,7 @@ public class DrawPileButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(battleScreen.currentPlayer != null && !ActionHandler.isRunning) {
-            deckViewScreen = new DeckViewScreen(battleScreen.currentPlayer, DeckViewScreen.ViewType.DRAW);
-            setTempScreen(deckViewScreen);
+            addTempScreen(new DeckViewScreen(battleScreen.currentPlayer, DeckViewScreen.ViewType.DRAW));
         }
     }
 }

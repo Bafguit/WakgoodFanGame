@@ -30,7 +30,7 @@ public class BurgerSkill extends AbstractSkill {
     }
 
     @Override
-    public void upgrade() {
+    protected void upgradeCard() {
 
     }
 }

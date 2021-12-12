@@ -31,7 +31,7 @@ public class StrikeE extends AbstractSkill {
     }
 
     @Override
-    public void upgrade() {
+    protected void upgradeCard() {
 
     }
 }

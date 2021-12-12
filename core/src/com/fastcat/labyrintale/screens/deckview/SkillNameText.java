@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
-import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
 import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_NAME;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
@@ -21,8 +20,11 @@ public class SkillNameText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && fontData != null && deckViewScreen.info.skill != null) {
-            renderLineLeft(sb, fontData, deckViewScreen.info.skill.name, x, y, sWidth, sHeight);
+        if(screen instanceof DeckViewScreen) {
+            DeckViewScreen s = ((DeckViewScreen) screen);
+            if (enabled && fontData != null && s.info.skill != null) {
+                renderLineLeft(sb, fontData, s.info.skill.name, x, y, sWidth, sHeight);
+            }
         }
     }
 }

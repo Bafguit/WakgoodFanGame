@@ -221,7 +221,14 @@ public abstract class AbstractSkill implements Cloneable {
 
     protected abstract void use();
 
-    public abstract void upgrade();
+    public void upgrade() {
+        upgradeCard();
+        name += "+";
+        upgraded = true;
+        upgradeCount++;
+    }
+
+    protected abstract void upgradeCard();
 
     public final AbstractSkill cpy() {
         try {

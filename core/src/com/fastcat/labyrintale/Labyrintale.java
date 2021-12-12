@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.RandomXS128;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -27,8 +28,8 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 
 public class Labyrintale extends Game {
 
-	public static final int DEFAULT_WIDTH = 1920;
-	public static final int DEFAULT_HEIGHT = 1080;
+	public static final int DEFAULT_WIDTH = 1280;
+	public static final int DEFAULT_HEIGHT = 720;
 
 	public static Labyrintale game;
 
@@ -39,6 +40,7 @@ public class Labyrintale extends Game {
 
 	public static AbstractLabyrinth labyrinth;
 
+	public Array<Screen> tempScreen = new Array<>();
 	public Screen preScreen = null;
 	public static MainMenuScreen mainMenuScreen;
 	public static CharSelectScreen charSelectScreen;
@@ -69,8 +71,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sb = new SpriteBatch();
@@ -100,7 +102,12 @@ public class Labyrintale extends Game {
 		inputHandler.update();
 		fontHandler.update();
 		actionHandler.update();
-		if(screen instanceof AbstractScreen) {
+		if(tempScreen.size > 0) {
+			Screen s = tempScreen.get(tempScreen.size - 1);
+			if(s instanceof AbstractScreen) {
+				((AbstractScreen) s).update();
+			}
+		} else if(screen instanceof AbstractScreen) {
 			((AbstractScreen) screen).update();
 		}
 	}
@@ -111,7 +118,7 @@ public class Labyrintale extends Game {
 		update();
 
 		/** Render */
-		ScreenUtils.clear(0, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 0.3f);
 		sb.setProjectionMatrix(camera.combined);
 		sb.enableBlending();
 		sb.begin();
@@ -119,6 +126,11 @@ public class Labyrintale extends Game {
 		/** Render Methods */
 		//actionHandler.render(sb);
 		super.render();
+		if(tempScreen.size > 0) {
+			for(Screen s : tempScreen) {
+				if(s != null) s.render(Gdx.graphics.getDeltaTime());
+			}
+		}
 		/** ============== */
 		fade();
 
@@ -177,10 +189,38 @@ public class Labyrintale extends Game {
 			}
 		}
 
+		if(tempScreen.size > 0) {
+			for(Screen s : tempScreen) {
+				s.hide();
+				if (s instanceof AbstractScreen) {
+					((AbstractScreen) s).effectHandler.removeAll();
+				}
+			}
+			tempScreen.clear();
+		}
+
 		this.screen = screen;
 		if (this.screen != null) {
 			this.screen.show();
 			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		}
+	}
+
+	public static void addTempScreen (Screen screen) {
+		game.tempScreen.add(screen);
+	}
+
+	public static void removeTempScreen (Screen screen) {
+		for(int i = 0; i < game.tempScreen.size; i++) {
+			Screen s = game.tempScreen.get(i);
+			if(s == screen) {
+				s.hide();
+				if (s instanceof AbstractScreen) {
+					((AbstractScreen) s).effectHandler.removeAll();
+				}
+				game.tempScreen.removeIndex(i);
+				break;
+			}
 		}
 	}
 

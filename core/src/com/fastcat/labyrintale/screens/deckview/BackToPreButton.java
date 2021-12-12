@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
-import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
-import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 import static com.fastcat.labyrintale.handlers.FileHandler.BACK;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
@@ -31,6 +29,6 @@ public class BackToPreButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(Labyrintale.game.preScreen != null) Labyrintale.closeTempScreen();
+        if(screen != null) Labyrintale.removeTempScreen(screen);
     }
 }

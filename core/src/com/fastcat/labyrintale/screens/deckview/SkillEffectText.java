@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.Labyrintale.deckViewScreen;
 import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCardLeft;
@@ -23,8 +21,11 @@ public class SkillEffectText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && deckViewScreen.info.skill != null) {
-            renderCardLeft(sb, deckViewScreen.info.skill, fontData, deckViewScreen.info.skill.desc, x, y, sWidth, sHeight);
+        if(screen instanceof DeckViewScreen) {
+            DeckViewScreen s = ((DeckViewScreen) screen);
+            if (enabled && s.info.skill != null) {
+                renderCardLeft(sb, s.info.skill, fontData, s.info.skill.desc, x, y, sWidth, sHeight);
+            }
         }
     }
 }

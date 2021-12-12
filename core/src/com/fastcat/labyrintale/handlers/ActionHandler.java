@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 
 public class ActionHandler {
@@ -22,7 +23,9 @@ public class ActionHandler {
                 current = actionList.get(0);
                 actionList.removeIndex(0);
             }
-            current.update();
+            if(!Labyrintale.fading) {
+                current.update();
+            }
             if(current.isDone) {
                 current = null;
             }

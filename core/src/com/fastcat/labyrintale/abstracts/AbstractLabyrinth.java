@@ -36,7 +36,7 @@ public class AbstractLabyrinth {
 
     public void update() {
         if(!players[0].isAlive() && !players[1].isAlive() && !players[2].isAlive() && !players[3].isAlive()) {
-            Labyrintale.game.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
+            Labyrintale.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
         }
     }
 
