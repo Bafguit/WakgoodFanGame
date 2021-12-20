@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -18,11 +19,7 @@ public class CardString {
         JsonReader jsonReader = new JsonReader();
         FileHandle fileHandle = Gdx.files.internal("json/cards.json");
         InputStreamReader is = null;
-        try {
-            is = new InputStreamReader(fileHandle.read(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
         readString(jsonReader.parse(is));
     }
 

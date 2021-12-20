@@ -17,9 +17,9 @@ public class GroupHandler {
 
     public static HashMap<String, AbstractFloor> floorGroup;
     public static HashMap<String, AbstractEvent> eventGroup;
-    public static Array<AbstractEnemy[]>[] normalGroup = new Array[6];
-    public static Array<AbstractEnemy[]>[] eliteGroup = new Array[6];
-    public static Array<AbstractEnemy[]>[] bossGroup = new Array[6];
+    public static Array<AbstractEnemy[]> normalGroup = new Array<>();
+    public static Array<AbstractEnemy[]> eliteGroup = new Array<>();
+    public static Array<AbstractEnemy[]> bossGroup = new Array<>();
     public static HashMap<String, AbstractStatus> statusGroup;
     public static HashMap<PlayerClass, Array<AbstractTalent>> skillGroup;
     public static HashMap<PlayerClass, Array<AbstractSkill>> cardGroup;
@@ -44,5 +44,11 @@ public class GroupHandler {
 
     public static class EventGroup {
 
+    }
+
+    public static class CardGroup {
+        public static HashMap<PlayerClass, Array<AbstractSkill>> bronzeCard;
+        public static HashMap<PlayerClass, Array<AbstractSkill>> silverCard;
+        public static HashMap<PlayerClass, Array<AbstractSkill>> goldCard;
     }
 }

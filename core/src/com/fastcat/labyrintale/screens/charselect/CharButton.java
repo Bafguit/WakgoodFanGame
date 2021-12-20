@@ -16,7 +16,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private final Sprite border = CHAR_SELECT;
     private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;

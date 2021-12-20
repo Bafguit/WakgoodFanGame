@@ -17,6 +17,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public enum PlayerClass {
-        TEST, BASIC, SAJANG, BABY;
+        TEST, BASIC, WAKDU, SAJANG, BABY;
+    }
+
+    public static String getClassName(PlayerClass playerClass) {
+        return playerClass.toString().toLowerCase();
     }
 }

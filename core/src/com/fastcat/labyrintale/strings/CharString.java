@@ -6,43 +6,40 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Iterator;
 
-public class SkillString {
+public class CharString {
 
-    private final HashMap<String, SkillData> skillData = new HashMap<>();
+    private final HashMap<String, CharData> data = new HashMap<>();
 
-    public SkillString() {
+    public CharString() {
         JsonReader jsonReader = new JsonReader();
-        FileHandle fileHandle = Gdx.files.internal("json/skills.json");
-        InputStreamReader is = null;
+        FileHandle fileHandle = Gdx.files.internal("json/chars.json");
+        InputStreamReader is;
         is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
         readString(jsonReader.parse(is));
     }
 
     private void readString(JsonValue json) {
-        skillData.clear();
-        for(Iterator iterator = json.iterator(); iterator.hasNext();) {
-            JsonValue js = (JsonValue) iterator.next();
+        data.clear();
+        for (JsonValue js : json) {
             String id = js.name;
-            if(!id.equals("")) {
-                SkillData data = new SkillData();
+            if (!id.equals("")) {
+                CharData data = new CharData();
                 data.NAME = js.get("NAME").asString();
                 data.DESC = js.get("DESC").asString();
-                skillData.put(id, data);
+                this.data.put(id, data);
             }
         }
     }
 
-    public SkillData get(String id) {
-        return skillData.get(id);
+    public CharData get(String id) {
+        return data.get(id);
     }
 
-    public class SkillData {
+    public static class CharData {
         public String NAME;
-        public String DESC;
+        public String DESC = "";
     }
 }

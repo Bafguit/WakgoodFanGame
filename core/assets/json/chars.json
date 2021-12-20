@@ -1,0 +1,38 @@
+{
+  "wakdu": {
+    "NAME": "왁두",
+    "DESC": "월클급 한국 1위 스트리머. 코가 크다."
+  },
+  "sajang": {
+    "NAME": "왁사장",
+    "DESC": "왁 엔터테인먼트의 사장."
+  },
+  "baby": {
+    "NAME": "아기두",
+    "DESC": "돈까스를 먹고 싶어 하는 것 같다."
+  },
+  "benzen": {
+    "NAME": "벤젠프로",
+    "DESC": "150집의 전설. 꼬마 자동차를 좋아한다."
+  },
+  "umsuk": {
+    "NAME": "엄석두",
+    "DESC": "어째선이 얼굴이 일그러져 있다."
+  },
+  "deep": {
+    "NAME": "심해두",
+    "DESC": "DESCRIPTION"
+  },
+  "minsu": {
+    "NAME": "민수",
+    "DESC": "\"GWANGO IS CRAZY\""
+  },
+  "": {
+    "NAME": "NAME",
+    "DESC": "DESCRIPTION"
+  },
+  "CardID": {
+    "NAME": "NAME",
+    "DESC": "DESCRIPTION"
+  }
+}
