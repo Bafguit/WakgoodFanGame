@@ -13,16 +13,13 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
 public class StrikeE extends AbstractSkill {
 
     private static final String ID = "Strike";
-    private static final Sprite IMG = SKILL_STRIKE;
-    private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.P_F;
     private static final int VALUE = 5;
 
     public StrikeE(AbstractEntity e) {
-        super(ID, IMG, CLASS, RARITY, TARGET);
+        super(e, ID, RARITY, TARGET);
         setBaseAttack(VALUE);
-        owner = e;
     }
 
     @Override

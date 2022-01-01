@@ -1,38 +1,92 @@
 {
-  "wakdu": {
-    "NAME": "왁두",
-    "DESC": "월클급 한국 1위 스트리머. 코가 크다."
+  "wak": {
+    "NAME": "우왁굳",
+    "DESC": "월클급 한국 1위 스트리머. 코가 크다.",
+    "FLV": [
+      "황제의",
+      "황제와",
+      "완고한",
+      "퇴물"
+    ]
   },
-  "sajang": {
-    "NAME": "왁사장",
-    "DESC": "왁 엔터테인먼트의 사장."
+  "manager": {
+    "NAME": "뢴트게늄",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "뇌절의",
+      "오른팔과",
+      "뇌절하는",
+      "히키타치"
+    ]
   },
-  "baby": {
-    "NAME": "아기두",
-    "DESC": "돈까스를 먹고 싶어 하는 것 같다."
+  "ine": {
+    "NAME": "아이네",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "대머리",
+      "여신과",
+      "최단신",
+      "수장"
+    ]
   },
-  "benzen": {
-    "NAME": "벤젠프로",
-    "DESC": "150집의 전설. 꼬마 자동차를 좋아한다."
+  "viichan": {
+    "NAME": "비챤",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "노동하는",
+      "막내와",
+      "겜잘알",
+      "고라니"
+    ]
   },
-  "umsuk": {
-    "NAME": "엄석두",
-    "DESC": "어째선이 얼굴이 일그러져 있다."
+  "lilpa": {
+    "NAME": "릴파",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "귀여운",
+      "박쥐와",
+      "악질",
+      "악질"
+    ]
   },
-  "deep": {
-    "NAME": "심해두",
-    "DESC": "DESCRIPTION"
+  "burger": {
+    "NAME": "징버거",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "햄버거의",
+      "햄버거와",
+      "머시깽한",
+      "머시깽이"
+    ]
   },
-  "minsu": {
-    "NAME": "민수",
-    "DESC": "\"GWANGO IS CRAZY\""
+  "gosegu": {
+    "NAME": "고세구",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "킹받는",
+      "세균과",
+      "무친",
+      "무7련"
+    ]
   },
-  "": {
-    "NAME": "NAME",
-    "DESC": "DESCRIPTION"
+  "jururu": {
+    "NAME": "주르르",
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "주랄하는",
+      "무7련과",
+      "유혹하는",
+      "여우"
+    ]
   },
   "CardID": {
     "NAME": "NAME",
-    "DESC": "DESCRIPTION"
+    "DESC": "DESCRIPTION",
+    "FLV": [
+      "",
+      "",
+      "",
+      ""
+    ]
   }
 }

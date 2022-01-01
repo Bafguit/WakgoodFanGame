@@ -14,14 +14,12 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_SHIELD;
 public class Heal extends AbstractSkill {
 
     private static final String ID = "Heal";
-    private static final Sprite IMG = SKILL_HEAL;
-    private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.P_ALL;
     private static final int VALUE = 2;
 
     public Heal(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY, TARGET);
+        super(e, ID, RARITY, TARGET);
         setBaseValue(VALUE);
     }
 

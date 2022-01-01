@@ -1,31 +1,25 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.buttons.CardUIButton;
-import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
-import com.fastcat.labyrintale.strings.CardString;
-
-import java.util.Random;
+import com.fastcat.labyrintale.strings.SkillString;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.handlers.ActionHandler.*;
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable {
 
     public Sprite img;
-    public CardString.CardData cardData;
+    public Sprite imgBig;
+    public SkillString.SkillData skillData;
     public AbstractEntity owner;
-    public PlayerClass playerClass;
     public CardRarity rarity;
     public CardTarget target;
     public String id;
@@ -41,23 +35,23 @@ public abstract class AbstractSkill implements Cloneable {
     public int value = -1;
     public int baseValue = -1;
 
-    public AbstractSkill(AbstractEntity owner, String id, Sprite tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
+    public AbstractSkill(AbstractEntity owner, String id, CardRarity rarity, CardTarget target) {
         uid = getUid();
         this.owner = owner;
         this.id = id;
-        this.img = tex;
-        this.cardData = StringHandler.cardString.get(this.id);
-        this.name = this.cardData.NAME;
-        this.desc = this.cardData.DESC;
-        this.playerClass = playerClass;
+        this.img = skillImg.get(this.id);
+        this.imgBig = FileHandler.skillImgBig.get(this.id);
+        this.skillData = StringHandler.skillString.get(this.id);
+        this.name = this.skillData.NAME;
+        this.desc = this.skillData.DESC;
         this.rarity = rarity;
         this.target = target;
         this.upgraded = false;
         this.upgradeCount = 0;
     }
 
-    public AbstractSkill(String id, Sprite tex, PlayerClass playerClass, CardRarity rarity, CardTarget target) {
-        this(null, id, tex, playerClass, rarity, target);
+    public AbstractSkill(String id, CardRarity rarity, CardTarget target) {
+        this(null, id, rarity, target);
     }
 
     public void setBaseAttack(int i) {
@@ -124,6 +118,8 @@ public abstract class AbstractSkill implements Cloneable {
         PlayerView[] tp = battleScreen.players;
         EnemyView[] te = battleScreen.enemies;
         switch(target) {
+            case NONE:
+                break;
             case P_F:
                 for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;

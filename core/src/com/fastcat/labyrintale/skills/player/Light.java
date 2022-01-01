@@ -14,14 +14,12 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_LIGHT;
 public class Light extends AbstractSkill {
 
     private static final String ID = "Light";
-    private static final Sprite IMG = SKILL_LIGHT;
-    private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.E_ALL;
     private static final int VALUE = 3;
 
     public Light(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY, TARGET);
+        super(e, ID, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 

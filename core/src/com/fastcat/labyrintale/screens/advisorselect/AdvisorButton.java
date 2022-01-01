@@ -18,7 +18,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private final Sprite border = CHAR_SELECT;
     private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;
@@ -29,7 +29,7 @@ public class AdvisorButton extends AbstractUI {
     public AdvisorButton sChar;
 
     public AdvisorButton() {
-        this(NONE);
+        super(CHAR_SELECT);
         showImg = false;
         isChar = false;
     }
@@ -40,21 +40,11 @@ public class AdvisorButton extends AbstractUI {
     }
 
     private static Sprite getWak(AbstractAdvisor.AdvisorClass cls) {
-        switch (cls) {
-            case BURGER:
-                return FileHandler.BURGER;
-            default:
-                return CHAR_SELECT;
-        }
+        return FileHandler.BURGER; //TODO 나중에 수정
     }
 
     private static Sprite getWakBg(AbstractAdvisor.AdvisorClass cls) {
-        switch (cls) {
-            case BURGER:
-                return BURGER_BG;
-            default:
-                return WAK_BASIC_BG;
-        }
+        return BURGER_BG; //TODO 나중에 수정
     }
 
     @Override
@@ -108,7 +98,7 @@ public class AdvisorButton extends AbstractUI {
     }
 
     public void removeChar() {
-        selected = NONE;
+        selected = null;
         showImg = false;
         isOnLock = false;
         showBg = false;

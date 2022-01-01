@@ -11,16 +11,14 @@ public abstract class AbstractAdvisor {
     public AbstractSkill skill;
     public boolean used = false;
 
-    public AbstractAdvisor() {
-        this(AdvisorClass.NONE, null);
-    }
-
     public AbstractAdvisor(AdvisorClass cls, AbstractSkill skill) {
         this.cls = cls;
         this.skill = skill;
     }
 
     public enum AdvisorClass {
-        NONE, BURGER
+        BURGER,
+        DOPA, SECRET, KIMCHI, RUSEOK, HIKI, POONG,
+        SHRIMP, NEGATIVE, JK, SOPHIA, DEOKSU, HAKU
     }
 }

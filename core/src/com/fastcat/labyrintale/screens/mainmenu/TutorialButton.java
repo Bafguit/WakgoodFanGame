@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.players.TestPlayer;
+import com.fastcat.labyrintale.players.Wakgood;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -32,7 +32,7 @@ public class TutorialButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        AbstractPlayer t = new TestPlayer();
+        AbstractPlayer t = new Wakgood();
         Labyrintale.addTempScreen(new DeckViewScreen(t, DeckViewScreen.ViewType.NORMAL));
     }
 }

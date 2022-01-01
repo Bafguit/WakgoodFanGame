@@ -13,14 +13,12 @@ import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
 public class BurgerSkill extends AbstractSkill {
 
     private static final String ID = "Burger";
-    private static final Sprite IMG = BURGER_S;
-    private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.ADVISOR;
     private static final CardTarget TARGET = CardTarget.E_L;
     private static final int VALUE = 4;
 
     public BurgerSkill() {
-        super(ID, IMG, CLASS, RARITY, TARGET);
+        super(ID, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 

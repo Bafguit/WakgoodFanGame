@@ -13,7 +13,6 @@ import com.fastcat.labyrintale.skills.player.Strike;
 import com.fastcat.labyrintale.status.TestStatus;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.WAK_BABY;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {

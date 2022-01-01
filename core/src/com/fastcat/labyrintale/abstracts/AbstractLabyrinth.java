@@ -6,7 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.advisors.TestAdvisor;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.players.TestPlayer;
+import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 
 import java.util.ArrayList;
@@ -42,8 +42,22 @@ public class AbstractLabyrinth {
 
     private static AbstractPlayer getPlayerInstance(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
+            case MANAGER:
+                return new Manager();
+            case INE:
+                return new Ine();
+            case VIICHAN:
+                return new Viichan();
+            case LILPA:
+                return new Lilpa();
+            case BURGER:
+                return new Burger();
+            case GOSEGU:
+                return new Gosegu();
+            case JURURU:
+                return new Jururu();
             default:
-                return new TestPlayer();
+                return new Wakgood();
         }
     }
 

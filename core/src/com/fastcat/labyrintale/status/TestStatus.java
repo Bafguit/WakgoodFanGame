@@ -17,7 +17,7 @@ public class TestStatus extends AbstractStatus {
     private static final AbstractSkill.CardTarget TARGET = AbstractSkill.CardTarget.E_ALL;
 
     public TestStatus() {
-        super(ID, new Sprite(FileHandler.WAK_BASIC), TARGET);
+        super(ID, new Sprite(FileHandler.SKILL_POISON), TARGET);
         name = "애옹";
         desc = "회복할 때마다 그만큼 모든 적에게 피해를 줍니다.";
     }

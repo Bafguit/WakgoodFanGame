@@ -1,0 +1,50 @@
+{
+  "dopa": {
+    "NAME": "도파민 박사",
+    "DESC": "DESCRIPTION"
+  },
+  "secret": {
+    "NAME": "비밀소녀",
+    "DESC": "DESCRIPTION"
+  },
+  "kimchi": {
+    "NAME": "김치만두번영택사스가",
+    "DESC": "DESCRIPTION"
+  },
+  "ruseok": {
+    "NAME": "해루석",
+    "DESC": "DESCRIPTION"
+  },
+  "hiki": {
+    "NAME": "히키킹",
+    "DESC": "DESCRIPTION"
+  },
+  "poong": {
+    "NAME": "풍신",
+    "DESC": "DESCRIPTION"
+  },
+  "shrimp": {
+    "NAME": "새우튀김",
+    "DESC": "DESCRIPTION"
+  },
+  "negative": {
+    "NAME": "부정형 인간",
+    "DESC": "DESCRIPTION"
+  },
+  "jk": {
+    "NAME": "독고혜지",
+    "DESC": "DESCRIPTION"
+  },
+  "sophia": {
+    "NAME": "소피아",
+    "DESC": "DESCRIPTION"
+  },
+  "deoksu": {
+    "NAME": "이덕수 할아바이",
+    "DESC": "DESCRIPTION"
+  },
+  "haku": {
+    "NAME": "미츠네 하쿠",
+    "DESC": "DESCRIPTION"
+  }
+}

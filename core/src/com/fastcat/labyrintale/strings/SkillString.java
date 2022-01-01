@@ -1,37 +1,45 @@
 package com.fastcat.labyrintale.strings;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class SkillString {
 
-    private final HashMap<String, SkillData> skillData = new HashMap<>();
+    public final HashMap<String, SkillData> skillData = new HashMap<>();
 
     public SkillString() {
-        JsonReader jsonReader = new JsonReader();
-        FileHandle fileHandle = Gdx.files.internal("json/skills.json");
-        InputStreamReader is = null;
-        is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
-        readString(jsonReader.parse(is));
+        generateString(CARD_JSON_BASIC);
+        generateString(CARD_JSON_WAK);
+        generateString(CARD_JSON_MANAGER);
+        generateString(CARD_JSON_INE);
+        generateString(CARD_JSON_VIICHAN);
+        generateString(CARD_JSON_LILPA);
+        generateString(CARD_JSON_BASIC);
+        generateString(CARD_JSON_GOSEGU);
+        generateString(CARD_JSON_JURURU);
+        generateString(CARD_JSON_ADV);
     }
 
-    private void readString(JsonValue json) {
-        skillData.clear();
-        for(Iterator iterator = json.iterator(); iterator.hasNext();) {
-            JsonValue js = (JsonValue) iterator.next();
+    private void generateString(JsonValue json) {
+        for (JsonValue js : json) {
             String id = js.name;
-            if(!id.equals("")) {
+            if (!id.equals("")) {
                 SkillData data = new SkillData();
                 data.NAME = js.get("NAME").asString();
-                data.DESC = js.get("DESC").asString();
+                JsonValue temp = js.get("DESC");
+                if (temp != null) {
+                    data.DESC = temp.asString();
+                }
+                temp = js.get("UP_DESC");
+                if (temp != null) {
+                    data.UP_DESC = temp.asString();
+                }
+                temp = js.get("EX_DESC");
+                if (temp != null) {
+                    data.EX_DESC = temp.asStringArray();
+                }
                 skillData.put(id, data);
             }
         }
@@ -41,8 +49,10 @@ public class SkillString {
         return skillData.get(id);
     }
 
-    public class SkillData {
+    public static class SkillData {
         public String NAME;
-        public String DESC;
+        public String DESC = "";
+        public String UP_DESC;
+        public String[] EX_DESC;
     }
 }

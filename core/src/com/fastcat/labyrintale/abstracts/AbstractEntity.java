@@ -10,11 +10,12 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
@@ -40,6 +41,7 @@ public abstract class AbstractEntity implements Cloneable {
     public EntityType entityType;
     public String id;
     public String name;
+    public String desc;
     public boolean isDead = false;
     public boolean isDie = false;
     public int block = 0;
@@ -144,6 +146,7 @@ public abstract class AbstractEntity implements Cloneable {
         if(b > 0) {
             int temp = status != null ? status.onGainBlock(b) : b;
             if(temp > 0) {
+                EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, CYAN, false));
                 block += temp;
             }
         }
@@ -152,6 +155,7 @@ public abstract class AbstractEntity implements Cloneable {
     public void damage(AbstractEntity actor, int damage) {
         int temp = loseBlock(damage);
         if(temp > 0) {
+            EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, YELLOW, true));
             AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
             state.addAnimation(0, "Standby", true, 0.0F);
             e.setTimeScale(1.0f);
@@ -170,6 +174,7 @@ public abstract class AbstractEntity implements Cloneable {
             if(block >= damage) {
                 if (status != null) status.onLoseBlock(damage);
                 block -= damage;
+                EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, CYAN, true));
                 return 0;
             } else {
                 if (status != null) status.onLoseBlock(block);

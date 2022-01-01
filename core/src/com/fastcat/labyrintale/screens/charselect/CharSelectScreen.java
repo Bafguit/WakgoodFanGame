@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.charselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.*;
@@ -13,7 +14,7 @@ public class CharSelectScreen extends AbstractScreen {
     public BackButton backButton;
     public NextToAdvisorButton nextButton;
     public CharButton[] chars = new CharButton[4];
-    public CharButton[] aChars = new CharButton[9];
+    public CharButton[] aChars = new CharButton[8];
 
     public CharSelectScreen(Labyrintale game) {
         super(game);
@@ -36,19 +37,9 @@ public class CharSelectScreen extends AbstractScreen {
     }
 
     private void addChars() {
-        CharButton char1 = new CharButton(BASIC);
-        char1.setPosition(Gdx.graphics.getWidth() * 0.1f - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
-        aChars[0] = char1;
-        CharButton char2 = new CharButton(SAJANG);
-        char2.setPosition(Gdx.graphics.getWidth() * 0.2f - char2.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
-        aChars[1] = char2;
-        CharButton char3 = new CharButton(BABY);
-        char3.setPosition(Gdx.graphics.getWidth() * 0.3f - char3.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
-        aChars[2] = char3;
-
-        for(int i = 3; i < 9; i++) {
-            CharButton char0 = new CharButton(BASIC);
-            char0.setPosition(Gdx.graphics.getWidth() * 0.1f * (i + 1) - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
+        for(int i = 0; i < 8; i++) {
+            CharButton char0 = new CharButton(AbstractPlayer.PlayerClass.values()[i]);
+            char0.setPosition(Gdx.graphics.getWidth() * 0.15f + Gdx.graphics.getWidth() * 0.1f * i - char0.sWidth / 2, Gdx.graphics.getHeight() * 0.125f);
             aChars[i] = char0;
         }
     }
@@ -56,21 +47,26 @@ public class CharSelectScreen extends AbstractScreen {
     @Override
     public void update() {
         int cc = 0;
-        for(int i = 0; i < chars.length; i++) {
+        for(int i = 0; i < 4; i++) {
             CharButton tc = chars[i];
             tc.update();
             if(tc.isOnLock) cc++;
         }
-        for(int i = 0; i < aChars.length; i++) {
+        for(int i = 0; i < 8; i++) {
             aChars[i].update();
         }
 
-        if(cc == 4) nextButton.enable();
-        else nextButton.disable();
+        if(cc == 4) {
+            nextButton.enable();
+            charSelectText.text = chars[0].charData.FLV[0] + " " + chars[1].charData.FLV[1] + " " + chars[2].charData.FLV[2] + " " + chars[3].charData.FLV[3];
+        }
+        else {
+            nextButton.disable();
+            charSelectText.text = CharSelectText.TEXT;
+        }
 
         backButton.update();
         nextButton.update();
-        charSelectText.update();
     }
 
     @Override
@@ -78,7 +74,7 @@ public class CharSelectScreen extends AbstractScreen {
         for(int i = 0; i < chars.length; i++) {
             chars[i].render(sb);
         }
-        for(int i = 0; i < aChars.length; i++) {
+        for(int i = 0; i < 8; i++) {
             aChars[i].render(sb);
         }
 
@@ -101,7 +97,7 @@ public class CharSelectScreen extends AbstractScreen {
         for(int i = 0; i < chars.length; i++) {
             chars[i].dispose();
         }
-        for(int i = 0; i < aChars.length; i++) {
+        for(int i = 0; i < 8; i++) {
             aChars[i].dispose();
         }
     }

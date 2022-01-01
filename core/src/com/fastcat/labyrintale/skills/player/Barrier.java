@@ -13,14 +13,12 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 public class Barrier extends AbstractSkill {
 
     private static final String ID = "Barrier";
-    private static final Sprite IMG = SKILL_SHIELD;
-    private static final PlayerClass CLASS = PlayerClass.TEST;
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.P_F;
     private static final int VALUE = 4;
 
     public Barrier(AbstractEntity e) {
-        super(e, ID, IMG, CLASS, RARITY, TARGET);
+        super(e, ID, RARITY, TARGET);
         setBaseSpell(VALUE);
     }
 

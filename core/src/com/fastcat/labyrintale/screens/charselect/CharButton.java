@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.strings.CharString;
 
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.*;
@@ -18,6 +21,7 @@ public class CharButton extends AbstractUI {
 
     private final Sprite border = CHAR_SELECT;
     private Sprite bg;
+    public CharString.CharData charData;
     public boolean showBg = false;
     private boolean isCharSt = false;
     public boolean isOnLock = false;
@@ -27,38 +31,14 @@ public class CharButton extends AbstractUI {
     public CharButton sChar;
 
     public CharButton() {
-        this(TEST);
+        super(CHAR_SELECT);
         showImg = false;
         isChar = false;
     }
 
     public CharButton(AbstractPlayer.PlayerClass cls) {
-        super(getWak(cls));
+        super(charImg.get(cls));
         selected = cls;
-    }
-
-    private static Sprite getWak(AbstractPlayer.PlayerClass cls) {
-        switch (cls) {
-            case BABY:
-                return WAK_BABY;
-            case SAJANG:
-                return WAK_SAJANG;
-            case BASIC:
-                return WAK_BASIC;
-            default:
-                return CHAR_SELECT;
-        }
-    }
-
-    private static Sprite getWakBg(AbstractPlayer.PlayerClass cls) {
-        switch (cls) {
-            case BABY:
-                return WAK_BABY_BG;
-            case SAJANG:
-                return WAK_SAJANG_BG;
-            default:
-                return WAK_BASIC_BG;
-        }
     }
 
     @Override
@@ -98,9 +78,10 @@ public class CharButton extends AbstractUI {
                         chb.selected = selected;
                         chb.sChar = this;
                         chb.showImg = true;
-                        chb.img = getWak(selected);
-                        chb.bg = getWakBg(selected);
+                        chb.img = charImg.get(selected);
+                        chb.bg = charBgImg.get(selected);
                         chb.showBg = true;
+                        chb.charData = StringHandler.charString.get(selected.toString().toLowerCase());
                         isCharSt = true;
                         break;
                     }
@@ -119,7 +100,7 @@ public class CharButton extends AbstractUI {
     }
 
     public void removeChar() {
-        selected = TEST;
+        selected = null;
         showImg = false;
         isOnLock = false;
         showBg = false;

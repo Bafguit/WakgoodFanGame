@@ -34,12 +34,14 @@ public class FontHandler {
 
     public static final FontData LOGO = new FontData(BOLD, 100, false);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false);
-    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, true);
+    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, false);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false);
     public static final FontData BLOCK = new FontData(MEDIUM, 20, true);
     public static final FontData HP = new FontData(MEDIUM, 19, false);
-    public static final FontData HEAL = new FontData(MEDIUM, 20, false);
+    public static final FontData DAMAGE = new FontData(MEDIUM, 20, true, GOLD, LIGHT_GRAY);
+    public static final FontData BLOCKED = new FontData(MEDIUM, 20, true, SKY, LIGHT_GRAY);
+    public static final FontData HEAL = new FontData(MEDIUM, 20, true, CHARTREUSE, LIGHT_GRAY);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -69,7 +71,7 @@ public class FontHandler {
         parameter.size = size;
         parameter.color = color;
         parameter.borderColor = bColor;
-        parameter.borderWidth = border ? parameter.size * 0.1f : 0.0f;
+        parameter.borderWidth = border ? parameter.size * 0.05f : 0.0f;
         if(type.equals(BOLD)) return bold.generateFont(parameter);
         else if(type.equals(LIGHT)) return light.generateFont(parameter);
         else return medium.generateFont(parameter);

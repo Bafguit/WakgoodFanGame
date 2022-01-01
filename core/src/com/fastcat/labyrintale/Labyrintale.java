@@ -3,28 +3,22 @@ package com.fastcat.labyrintale;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.players.TestPlayer;
 import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
-
-import static com.badlogic.gdx.graphics.Color.WHITE;
 
 public class Labyrintale extends Game {
 
@@ -71,8 +65,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sb = new SpriteBatch();
@@ -80,8 +74,8 @@ public class Labyrintale extends Game {
 		sr = new SkeletonRenderer();
 		sr.setPremultipliedAlpha(true);
 		inputHandler = new InputHandler();
+		FileHandler.generateFile();
 		fontHandler = new FontHandler();
-		stringHandler = new StringHandler();
 		settingHandler = new SettingHandler();
 		actionHandler = new ActionHandler();
 		effectHandler = new EffectHandler();
@@ -90,7 +84,7 @@ public class Labyrintale extends Game {
 		mainMenuScreen = new MainMenuScreen(this);
 		charSelectScreen = new CharSelectScreen(this);
 		advisorSelectScreen = new AdvisorSelectScreen();
-		labyrinth = new AbstractLabyrinth();
+		//labyrinth = new AbstractLabyrinth();
 		fadeTex = FileHandler.FADE;
 		fadeTex.setPosition(0, 0);
 

@@ -15,6 +15,7 @@ public abstract class AbstractStatus implements Cloneable {
     private String id;
 
     public Sprite img;
+    public Sprite imgBig;
     public String name;
     public String desc;
     public AbstractSkill.CardTarget target;

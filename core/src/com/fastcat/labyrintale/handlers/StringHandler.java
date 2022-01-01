@@ -1,14 +1,15 @@
 package com.fastcat.labyrintale.handlers;
 
-import com.fastcat.labyrintale.strings.CardString;
-
-import java.io.UnsupportedEncodingException;
+import com.fastcat.labyrintale.strings.SkillString;
+import com.fastcat.labyrintale.strings.CharString;
 
 public class StringHandler {
 
-    public static CardString cardString;
+    public static SkillString skillString;
+    public static CharString charString;
 
-    public StringHandler() {
-        cardString = new CardString();
+    public static void generate() {
+        skillString = new SkillString();
+        charString = new CharString();
     }
 }

@@ -29,16 +29,7 @@ public class MapNodeButton extends AbstractUI {
     }
 
     private static Sprite getWak(RoomType type) {
-        switch (type) {
-            case BOSS:
-                return WAK_BABY;
-            case ELITE:
-                return WAK_SAJANG;
-            case BATTLE:
-                return WAK_BASIC;
-            default:
-                return CHAR_SELECT;
-        }
+        return BURGER; //TODO 나중에 수정
     }
 
     @Override

@@ -37,7 +37,7 @@ public class StatusButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(status != null) {
-                sb.draw(status.img.getTexture(), x, y, sWidth, sHeight);
+                sb.draw(/*isInfo ? status.imgBig : */status.img, x, y, sWidth, sHeight);
             }
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
