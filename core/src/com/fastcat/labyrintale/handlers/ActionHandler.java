@@ -36,6 +36,10 @@ public class ActionHandler {
 
     }
 
+    public static void clear() {
+        actionList.clear();
+    }
+
     public static void bot(AbstractAction action) {
         actionList.add(action);
     }

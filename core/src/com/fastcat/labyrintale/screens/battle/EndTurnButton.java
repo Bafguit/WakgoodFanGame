@@ -22,7 +22,7 @@ public class EndTurnButton extends AbstractUI {
         super(MENU_SELECT, 0, 0, 300, 50);
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.35f);
         fontData = MAIN_MENU;
-        text = "턴 종료";
+        text = "턴 시작";
         showImg = false;
     }
 

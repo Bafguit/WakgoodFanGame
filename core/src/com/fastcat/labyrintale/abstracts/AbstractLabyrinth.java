@@ -5,11 +5,9 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.advisors.TestAdvisor;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AbstractLabyrinth {
@@ -18,6 +16,11 @@ public class AbstractLabyrinth {
     public static HashMap<AbstractPlayer, Array<AbstractSkill>> skillList;
 
     public static RandomXS128 publicRandom;
+    public static RandomXS128 skillRandom;
+    public static RandomXS128 relicRandom;
+    public static RandomXS128 mapRandom;
+    public static RandomXS128 monsterRandom;
+    public static RandomXS128 eventRandom;
     public static ActionHandler actionHandler;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
@@ -25,6 +28,11 @@ public class AbstractLabyrinth {
 
     public AbstractLabyrinth() {
         publicRandom = new RandomXS128();
+        skillRandom = new RandomXS128();
+        relicRandom = new RandomXS128();
+        mapRandom = new RandomXS128();
+        monsterRandom = new RandomXS128();
+        eventRandom = new RandomXS128();
         actionHandler = new ActionHandler();
         currentFloor = new AbstractFloor();
         players = new AbstractPlayer[4];

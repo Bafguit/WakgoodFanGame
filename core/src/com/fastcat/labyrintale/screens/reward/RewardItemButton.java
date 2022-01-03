@@ -24,7 +24,7 @@ public class RewardItemButton extends AbstractUI {
     public AbstractReward reward;
 
     public RewardItemButton(AbstractReward re) {
-        super(getImg(re.type));
+        super(re.img);
         this.reward = re;
     }
 
@@ -45,13 +45,6 @@ public class RewardItemButton extends AbstractUI {
 
     }
 
-    private static Sprite getImg(AbstractReward.RewardType type) {
-        switch (type) {
-            default:
-                return FileHandler.REWARD_CARD;
-        }
-    }
-
     @Override
     protected void onOver() {
 
@@ -59,6 +52,8 @@ public class RewardItemButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-
+        if(!reward.isDone) {
+            reward.takeReward();
+        }
     }
 }

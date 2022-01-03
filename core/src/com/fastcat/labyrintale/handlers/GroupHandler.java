@@ -5,9 +5,12 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
+import com.fastcat.labyrintale.rewards.SkillReward;
 
 import java.util.HashMap;
+import java.util.Objects;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.skillRandom;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
 public class GroupHandler {
@@ -15,23 +18,17 @@ public class GroupHandler {
     private static final AbstractEnemy[] TEST =
             new AbstractEnemy[] {new TestEnemy(), new TestEnemy2(), new TestEnemy2(), new TestEnemy()};
 
-    public static HashMap<String, AbstractFloor> floorGroup;
-    public static HashMap<String, AbstractEvent> eventGroup;
+    public static HashMap<String, AbstractFloor> floorGroup = new HashMap<>();
+    public static HashMap<String, AbstractEvent> eventGroup = new HashMap<>();
     public static Array<AbstractEnemy[]> normalGroup = new Array<>();
     public static Array<AbstractEnemy[]> eliteGroup = new Array<>();
     public static Array<AbstractEnemy[]> bossGroup = new Array<>();
-    public static HashMap<String, AbstractStatus> statusGroup;
-    public static HashMap<PlayerClass, Array<AbstractTalent>> skillGroup;
-    public static HashMap<PlayerClass, Array<AbstractSkill>> cardGroup;
-    public static HashMap<PlayerClass, Texture> cardImgGroup;
+    public static HashMap<String, AbstractStatus> statusGroup = new HashMap<>();
+    public static HashMap<PlayerClass, Texture> cardImgGroup = new HashMap<>();
 
     public GroupHandler() {
-        generateSkill();
+        SkillGroup.generateSkill();
         generateEnemy();
-    }
-    
-    public void generateSkill() {
-
     }
     
     public void generateStatus() {
@@ -46,9 +43,94 @@ public class GroupHandler {
 
     }
 
-    public static class CardGroup {
-        public static HashMap<PlayerClass, Array<AbstractSkill>> bronzeCard;
-        public static HashMap<PlayerClass, Array<AbstractSkill>> silverCard;
-        public static HashMap<PlayerClass, Array<AbstractSkill>> goldCard;
+    public static class SkillGroup {
+
+        private static final int BRONZE = 65; // 65%
+        private static final int SILVER = 95; // 30%
+        private static final int GOLD = 100; // 5%
+        private static final int UPGRADE = 10; // 10%
+        private static final int UPGRADE_UP = 20; // 20%
+
+        public static final HashMap<PlayerClass, Array<AbstractSkill>> allSkill = new HashMap<>();
+        public static final HashMap<PlayerClass, Array<AbstractSkill>> bronzeSkill = new HashMap<>();
+        public static final HashMap<PlayerClass, Array<AbstractSkill>> silverSkill = new HashMap<>();
+        public static final HashMap<PlayerClass, Array<AbstractSkill>> goldSkill = new HashMap<>();
+
+        public static void generateSkill() {
+            //TODO 카드 처음 생성은 여기서
+        }
+
+        public static Array<AbstractSkill> getRandomSkill(PlayerClass cls, SkillReward.SkillRewardType type, int amount) {
+            Array<AbstractSkill> a = new Array<>();
+            Array<AbstractSkill> b = bronzeSkill.get(cls);
+            Array<AbstractSkill> s = silverSkill.get(cls);
+            Array<AbstractSkill> g = goldSkill.get(cls);
+            switch (type) {
+                case BRONZE:
+                    staticShuffle(b);
+                    for(int i = 0; i < amount; i++) {
+                        AbstractSkill t;
+                        t = b.get(i).cpy();
+                        if(skillRandom.nextInt(100) < UPGRADE) {
+                            Objects.requireNonNull(t).upgrade();
+                        }
+                        a.add(t);
+                    }
+                    return a;
+                case SILVER:
+                    staticShuffle(s);
+                    for(int i = 0; i < amount; i++) {
+                        AbstractSkill t;
+                        t = s.get(i).cpy();
+                        if(skillRandom.nextInt(100) < UPGRADE) {
+                            Objects.requireNonNull(t).upgrade();
+                        }
+                        a.add(t);
+                    }
+                    return a;
+                case GOLD:
+                    staticShuffle(g);
+                    for(int i = 0; i < amount; i++) {
+                        AbstractSkill t;
+                        t = g.get(i).cpy();
+                        if(skillRandom.nextInt(100) < UPGRADE) {
+                            Objects.requireNonNull(t).upgrade();
+                        }
+                        a.add(t);
+                    }
+                    return a;
+                default:
+                    staticShuffle(b);
+                    staticShuffle(s);
+                    staticShuffle(g);
+                    for(int i = 0; i < amount; i++) {
+                        AbstractSkill t;
+                        int r = skillRandom.nextInt(100);
+                        if (r < BRONZE) {
+                            t = b.get(i).cpy();
+                        } else if(r < SILVER) {
+                            t = s.get(i).cpy();
+                        } else {
+                            t = g.get(i).cpy();
+                        }
+                        if(skillRandom.nextInt(100) < UPGRADE) {
+                            Objects.requireNonNull(t).upgrade();
+                        }
+                        a.add(t);
+                    }
+                    return a;
+            }
+        }
+
+        public static void staticShuffle(Array<AbstractSkill> array) {
+            AbstractSkill[] items = array.items;
+
+            for(int i = array.size - 1; i >= 0; --i) {
+                int ii = skillRandom.nextInt(i + 1);
+                AbstractSkill temp = items[i];
+                items[i] = items[ii];
+                items[ii] = temp;
+            }
+        }
     }
 }

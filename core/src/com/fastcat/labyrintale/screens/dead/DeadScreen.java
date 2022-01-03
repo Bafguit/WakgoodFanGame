@@ -6,18 +6,15 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 
 public class DeadScreen extends AbstractScreen {
 
-    private static final String[] dead = new String[] {"전멸", "패배"};
-    private static final String[] win = new String[] {"승리", "성공"};
-
     public DeadText logo;
     public MainButton mainButton;
 
     public DeadScreen(ScreenType type) {
         logo = new DeadText();
         if(type == ScreenType.WIN) {
-            logo.text = win[MathUtils.random(0, 1)];
+            logo.text = "개같이 멸망";
         } else {
-            logo.text = dead[MathUtils.random(0, 1)];
+            logo.text = "해냈다 해냈어!";
         }
         mainButton = new MainButton();
     }

@@ -15,7 +15,7 @@ public class TestEnemy2 extends AbstractEnemy {
 
     private static final String ID = "TestEnemy";
     private static final EnemyType TYPE = EnemyType.NORMAL;
-    private static final int HEALTH = 100;
+    private static final int HEALTH = 25;
     private static final TextureAtlas ATLAS = NEKO_ATLAS;
     private static final FileHandle JSON = NEKO_JSON;
 

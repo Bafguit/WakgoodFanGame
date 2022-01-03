@@ -10,12 +10,15 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.effects.DieEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 import static com.badlogic.gdx.graphics.Color.*;
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
@@ -192,6 +195,12 @@ public abstract class AbstractEntity implements Cloneable {
             if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
                 isDie = true;
                 EffectHandler.add(new DieEffect(this));
+                boolean a = false;
+                for (int i = 0; i < 4; i++) {
+                    a = currentFloor.currentRoom.enemies[i].isAlive();
+                    if (a) break;
+                }
+                if (!a) ActionHandler.top(new VictoryAction());
             }
         }
     }

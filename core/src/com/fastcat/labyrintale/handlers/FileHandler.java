@@ -45,6 +45,7 @@ public class FileHandler {
     public static final Sprite NEXT = new Sprite(new Texture("img/next.png"));
     public static final Sprite DECK = new Sprite(new Texture("img/ui/deck.png"));
     public static final Sprite DRAW = new Sprite(new Texture("img/ui/draw.png"));
+    public static final Sprite GOLD = new Sprite(new Texture("img/ui/gold.png"));
     public static final Sprite DISCARD = new Sprite(new Texture("img/ui/discard.png"));
     public static final Sprite REWARD_CARD = new Sprite(new Texture("img/ui/deck.png"));
 
