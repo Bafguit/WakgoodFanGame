@@ -9,12 +9,17 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
+
+import java.util.Objects;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class SkillButton extends AbstractUI {
 
@@ -35,6 +40,7 @@ public class SkillButton extends AbstractUI {
     public SkillButton(AbstractSkill skill) {
         super(CHAR_SELECT);
         this.skill = skill;
+        fontData = CARD_BIG_DESC;
     }
 
     @Override
@@ -43,7 +49,11 @@ public class SkillButton extends AbstractUI {
             if(isSelected || (advisor && !canClick)) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
-            if(showImg && skill != null) sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
+            if(skill != null) {
+                if (showImg) sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
+                if (isInfo)
+                    renderCenter(sb, fontData, DeckSkillButton.getTargetString(Objects.requireNonNull(skill).target), x, y - sHeight * 0.1f, sWidth, sHeight);
+            }
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }

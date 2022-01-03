@@ -11,7 +11,6 @@ public abstract class AbstractAction implements Cloneable {
 
     public AbstractEntity actor;
     public AbstractSkill.CardTarget target;
-    public AbstractEffect effect;
     public boolean isDone = false;
     public float baseDuration = DUR_DEFAULT;
     public float duration = DUR_DEFAULT;
@@ -22,16 +21,11 @@ public abstract class AbstractAction implements Cloneable {
         baseDuration = this.duration;
     }
 
-    public AbstractAction(AbstractEntity actor, AbstractSkill.CardTarget target, AbstractEffect effect, float duration) {
+    public AbstractAction(AbstractEntity actor, AbstractSkill.CardTarget target, float duration) {
         this.actor = actor;
         this.target = target;
-        this.effect = effect;
         this.duration = duration;
         baseDuration = this.duration;
-        if(effect != null) {
-            effect.duration = this.duration;
-            effect.baseDuration = effect.duration;
-        }
     }
 
     public final void update() {

@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.actions;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.*;
@@ -9,11 +8,13 @@ import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class AttackAction extends AbstractAction {
 
+    public AbstractEffect effect;
     public int damage;
 
     public AttackAction(AbstractEntity actor, AbstractSkill.CardTarget target, int damage, AbstractEffect effect) {
-        super(actor, target, effect, 0.5f);
+        super(actor, target, 0.5f);
         this.damage = damage;
+        this.effect = effect;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class AttackAction extends AbstractAction {
             if(t.size > 0) {
                 for (int i = 0; i < t.size; i++) {
                     AbstractEntity te = t.get(i);
-                    te.damage(actor, damage);
+                    te.takeDamage(actor, damage);
                 }
                 if(actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);

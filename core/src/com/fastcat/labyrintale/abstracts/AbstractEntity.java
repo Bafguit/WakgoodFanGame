@@ -40,7 +40,7 @@ public abstract class AbstractEntity implements Cloneable {
     public Array<AbstractSkill> drawPile;
     public Array<AbstractSkill> discardPile;
     public Array<AbstractSkill> disposablePile;
-    public AbstractStatus status;
+    public AbstractStatus[] status = new AbstractStatus[5];
     public EntityType entityType;
     public String id;
     public String name;
@@ -141,13 +141,26 @@ public abstract class AbstractEntity implements Cloneable {
         if(heal < 0) heal = 0;
         if(isAlive()) {
             health = Math.min(health + heal, maxHealth);
-            if(status != null) status.onHeal(heal);
+            if(status != null) {
+                for (AbstractStatus s : status) {
+                    if(s != null) s.onHeal(heal);
+                }
+            }
         }
+    }
+
+    public void gainStatus(AbstractEntity source, AbstractStatus status) {
+
     }
 
     public void gainBlock(int b) {
         if(b > 0) {
-            int temp = status != null ? status.onGainBlock(b) : b;
+            int temp = b;
+            if(status != null)  {
+                for(AbstractStatus s : status) {
+                    temp = s != null ? s.onGainBlock(b) : temp;
+                }
+            }
             if(temp > 0) {
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, CYAN, false));
                 block += temp;
@@ -155,7 +168,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
-    public void damage(AbstractEntity actor, int damage) {
+    public void takeDamage(AbstractEntity attacker, int damage) {
         int temp = loseBlock(damage);
         if(temp > 0) {
             EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, YELLOW, true));
@@ -166,21 +179,33 @@ public abstract class AbstractEntity implements Cloneable {
             if (health <= 0) {
                 health = 0;
                 block = 0;
-                die();
+                die(attacker);
             }
-            if (status != null) status.onDamage(actor, damage);
+            if(status != null)  {
+                for(AbstractStatus s : status) {
+                    if(s != null) s.onDamage(attacker, damage);
+                }
+            }
         }
     }
 
     public int loseBlock(int damage) {
         if(block > 0) {
             if(block >= damage) {
-                if (status != null) status.onLoseBlock(damage);
+                if(status != null)  {
+                    for(AbstractStatus s : status) {
+                        if(s != null) s.onLoseBlock(damage);
+                    }
+                }
                 block -= damage;
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, CYAN, true));
                 return 0;
             } else {
-                if (status != null) status.onLoseBlock(block);
+                if(status != null)  {
+                    for(AbstractStatus s : status) {
+                        if(s != null) s.onLoseBlock(block);
+                    }
+                }
                 damage -= block;
                 block = 0;
                 return damage;
@@ -190,17 +215,24 @@ public abstract class AbstractEntity implements Cloneable {
         return damage;
     }
     
-    public void die() {
+    public void die(AbstractEntity murder) {
         if(isAlive()) {
             if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
                 isDie = true;
-                EffectHandler.add(new DieEffect(this));
-                boolean a = false;
-                for (int i = 0; i < 4; i++) {
-                    a = currentFloor.currentRoom.enemies[i].isAlive();
-                    if (a) break;
+                if(status != null)  {
+                    for(AbstractStatus s : status) {
+                        if(s != null) s.onDeath(murder);
+                    }
                 }
-                if (!a) ActionHandler.top(new VictoryAction());
+                EffectHandler.add(new DieEffect(this));
+                if(this instanceof AbstractEnemy) {
+                    boolean a = false;
+                    for (int i = 0; i < 4; i++) {
+                        a = currentFloor.currentRoom.enemies[i].isAlive();
+                        if (a) break;
+                    }
+                    if (!a) ActionHandler.top(new VictoryAction());
+                }
             }
         }
     }

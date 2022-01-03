@@ -14,7 +14,7 @@ public class BlockAction extends AbstractAction {
     public int block;
 
     public BlockAction(AbstractEntity actor, AbstractSkill.CardTarget target, int block) {
-        super(actor, target, null, 0.5f);
+        super(actor, target, 0.5f);
         this.block = block;
     }
 

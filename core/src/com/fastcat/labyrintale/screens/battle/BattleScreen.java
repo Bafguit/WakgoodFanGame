@@ -31,8 +31,8 @@ public class BattleScreen extends AbstractScreen {
     public SkillButton advisor;
     public SkillButton skillInfo;
     public StatusButton statusInfo;
-    public StatusButton[] playerStatus = new StatusButton[4];
-    public StatusButton[] enemyStatus = new StatusButton[4];
+    public StatusButton[][] playerStatus = new StatusButton[4][5];
+    public StatusButton[][] enemyStatus = new StatusButton[4][5];
     public SkillButton[] charSkills = new SkillButton[4];
     public SkillButton[] preSkills = new SkillButton[4];
     public SkillButton[] enemySkills = new SkillButton[4];
@@ -51,7 +51,7 @@ public class BattleScreen extends AbstractScreen {
         effectText2 = new EffectText2();
         AbstractLabyrinth.advisor.used = false;
         advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
-        advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.125f);
+        advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.175f);
         advisor.advisor = true;
         drawPileButton = new DrawPileButton();
         discardPileButton = new DiscardPileButton();
@@ -59,50 +59,52 @@ public class BattleScreen extends AbstractScreen {
         statusInfo = new StatusButton();
         statusInfo.isInfo = true;
         statusInfo.setScale(2.5f);
-        statusInfo.setPosition(w * 0.55f, h * 0.15f - statusInfo.sHeight / 2);
+        statusInfo.setPosition(w * 0.55f, h * 0.2f - statusInfo.sHeight / 2);
         skillInfo = new SkillButton();
         skillInfo.isInfo = true;
         skillInfo.isSkill = false;
         skillInfo.canClick = false;
         skillInfo.isCS = false;
         skillInfo.setScale(2.5f);
-        skillInfo.setPosition(w * 0.55f, h * 0.15f - skillInfo.sHeight / 2);
+        skillInfo.setPosition(w * 0.55f, h * 0.2f - skillInfo.sHeight / 2);
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
-            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.45f);
-            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.475f);
+            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.5f);
+            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.525f);
             pv.player.shuffleHand();
-            pv.player.status = new TestStatus();
+            pv.player.status[0] = new TestStatus(pv.player);
             pv.player.ui = pv;
             players[i] = pv;
 
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
-            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.45f);
-            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.475f);
+            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.5f);
+            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.525f);
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;
             enemies[i] = ev;
 
-            StatusButton t = new StatusButton(players[i].player);
-            t.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.725f);
-            playerStatus[i] = t;
+            for(int j = 0; j < 5; j++) {
+                StatusButton t = new StatusButton(pv.player.status[j]);
+                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.014f * j - pv.sWidth / 2, h * 0.47f);
+                playerStatus[i][j] = t;
 
-            StatusButton t2 = new StatusButton(enemies[i].enemy);
-            t2.setPosition(w * 0.575f + w * 0.1f * i + ev.sWidth / 2 - t2.sWidth, h * 0.725f);
-            enemyStatus[i] = t2;
+                StatusButton t2 = new StatusButton(ev.enemy.status[j]);
+                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.014f * j + ev.sWidth / 2 - t2.sWidth, h * 0.47f);
+                enemyStatus[i][j] = t2;
+            }
 
             SkillButton s = new SkillButton();
-            s.setPosition(w * 0.42f - w * 0.06f * i - s.sWidth / 2, h * 0.125f);
+            s.setPosition(w * 0.42f - w * 0.06f * i - s.sWidth / 2, h * 0.175f);
             charSkills[i] = s;
 
             SkillButton s2 = new SkillButton();
-            s2.setPosition(w * 0.410f + w * 0.06f * i - s.sWidth / 2, h * 0.3f);
+            s2.setPosition(w * 0.410f + w * 0.06f * i - s.sWidth / 2, h * 0.35f);
             s2.isCS = false;
             preSkills[i] = s2;
 
             SkillButton s3 = new SkillButton();
-            s3.setScale(0.6f);
-            s3.setPosition(w * 0.575f + w * 0.1f * i - s3.sWidth / 2, h * 0.8f);
+            s3.setScale(0.5f);
+            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.775f);
             s3.isCS = false;
             s3.canClick = false;
             enemySkills[i] = s3;
@@ -136,9 +138,15 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = enemies[i];
             ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
-            if(pv.player.isAlive()) playerStatus[i].update();
-            if(ev.enemy.isAlive()) {
-                enemyStatus[i].update();
+            for(int j = 0; j < 5; j++) {
+                if (pv.player.isAlive()) {
+                    playerStatus[i][j].update();
+                }
+                if (ev.enemy.isAlive()) {
+                    enemyStatus[i][j].update();
+                }
+            }
+            if (ev.enemy.isAlive()) {
                 enemySkills[i].skill = ev.enemy.hand[0];
                 enemySkills[i].update();
             }
@@ -227,9 +235,13 @@ public class BattleScreen extends AbstractScreen {
             if(!te.enemy.isDead) renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, te.x, te.y + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
         }
         for(int i = 0; i < 4; i++) {
-            if(players[i].player.isAlive()) playerStatus[i].render(sb);
-            if(enemies[i].enemy.isAlive()) {
-                enemyStatus[i].render(sb);
+            for(int j = 0; j < 5; j++) {
+                if (players[i].player.isAlive()) playerStatus[i][j].render(sb);
+                if (enemies[i].enemy.isAlive()) {
+                    enemyStatus[i][j].render(sb);
+                }
+            }
+            if (enemies[i].enemy.isAlive()) {
                 enemySkills[i].render(sb);
             }
             charSkills[i].render(sb);

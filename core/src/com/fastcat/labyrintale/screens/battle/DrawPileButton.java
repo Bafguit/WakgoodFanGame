@@ -16,7 +16,7 @@ public class DrawPileButton extends AbstractUI {
 
     public DrawPileButton() {
         super(DRAW);
-        setPosition(Gdx.graphics.getWidth() * 0.2f - sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
+        setPosition(Gdx.graphics.getWidth() * 0.2f - sWidth / 2, Gdx.graphics.getHeight() * 0.35f);
         fontData = MAIN_MENU;
         text = "";
     }

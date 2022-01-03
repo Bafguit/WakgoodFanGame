@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractTalent;
 
 import java.util.regex.Matcher;
@@ -42,6 +43,7 @@ public class FontHandler {
     public static final FontData DAMAGE = new FontData(MEDIUM, 20, true, GOLD, LIGHT_GRAY);
     public static final FontData BLOCKED = new FontData(MEDIUM, 20, true, SKY, LIGHT_GRAY);
     public static final FontData HEAL = new FontData(MEDIUM, 20, true, CHARTREUSE, LIGHT_GRAY);
+    public static final FontData STATUS = new FontData(MEDIUM, 14, false);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -118,6 +120,21 @@ public class FontHandler {
 
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, Vector2 vector, float bw, float bh) {
         renderCardCenter(sb, card, fontData, text, vector.x, vector.y, bw, bh);
+    }
+
+    public static void renderColorLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw) {
+        BitmapFont font = fontData.font;
+        Matcher matcher = COLOR_PATTERN.matcher(text);
+        while(matcher.find()) {
+            String mt = matcher.group(1);
+            String mmt = matcher.group(2);
+            text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
+            matcher = COLOR_PATTERN.matcher(text);
+        }
+        font.getData().setScale(fontData.scale);
+        font.getData().setLineHeight(fontData.size * 1.3f);
+        layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
+        font.draw(sb, layout, x, y);
     }
 
     public static void renderCardLeft(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {

@@ -14,7 +14,7 @@ public class DiscardPileButton extends AbstractUI {
 
     public DiscardPileButton() {
         super(DISCARD);
-        setPosition(Gdx.graphics.getWidth() * 0.3f - sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
+        setPosition(Gdx.graphics.getWidth() * 0.3f - sWidth / 2, Gdx.graphics.getHeight() * 0.35f);
         fontData = MAIN_MENU;
         text = "";
     }

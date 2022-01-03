@@ -12,7 +12,7 @@ public class NameText2 extends AbstractUI {
 
     public NameText2() {
         super(MENU_SELECT, 0, 0, 400, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.25f);
+        setPosition(Gdx.graphics.getWidth() * 0.69f, Gdx.graphics.getHeight() * 0.3f);
         fontData = CARD_BIG_NAME;
         text = "";
         showImg = false;

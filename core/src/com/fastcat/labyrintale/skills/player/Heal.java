@@ -25,7 +25,7 @@ public class Heal extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new HealAction(owner, TARGET, value, null));
+        ActionHandler.bot(new HealAction(owner, TARGET, value));
     }
 
     @Override

@@ -18,8 +18,8 @@ public class HealAction extends AbstractAction {
 
     public int heal;
 
-    public HealAction(AbstractEntity actor, AbstractSkill.CardTarget target, int heal, AbstractEffect effect) {
-        super(actor, target, effect, 0.5f);
+    public HealAction(AbstractEntity actor, AbstractSkill.CardTarget target, int heal) {
+        super(actor, target, 0.5f);
         this.heal = heal;
     }
 

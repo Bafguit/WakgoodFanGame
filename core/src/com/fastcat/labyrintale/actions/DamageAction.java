@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 public class DamageAction extends AbstractAction {
     public DamageAction(AbstractEntity actor, AbstractSkill.CardTarget target, AbstractEffect effect, float duration) {
-        super(actor, target, effect, duration);
+        super(actor, target, duration);
     }
 
     @Override
