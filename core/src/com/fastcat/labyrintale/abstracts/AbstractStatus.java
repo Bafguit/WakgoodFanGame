@@ -1,11 +1,14 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
@@ -40,8 +43,9 @@ public abstract class AbstractStatus implements Cloneable {
         hasAmount = true;
     }
 
-    public final void flash() {
-        //플래시 구현
+    public final void flash(AbstractEntity e) {
+        //TODO 소리 추가
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
     }
 
     public void endOfTurn() {
@@ -86,5 +90,14 @@ public abstract class AbstractStatus implements Cloneable {
 
     public void onDeath(AbstractEntity murder) {
 
+    }
+
+    public final AbstractStatus cpy() {
+        try {
+            return (AbstractStatus) this.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

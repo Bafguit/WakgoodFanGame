@@ -30,6 +30,7 @@ public class TestStatus extends AbstractStatus {
 
     @Override
     public void onHeal(int heal) {
+        flash(owner);
         ActionHandler.top(new AttackAction(null, TARGET, heal, null));
     }
 }
