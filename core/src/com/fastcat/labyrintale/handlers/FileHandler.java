@@ -76,6 +76,7 @@ public class FileHandler {
     public static final Sprite SKILL_LOVE = new Sprite(new Texture("img/skill/basic/Love.png"));
     public static final Sprite SKILL_POISON = new Sprite(new Texture("img/skill/basic/Poison.png"));
     public static final Sprite SKILL_SHIELD = new Sprite(new Texture("img/skill/basic/Barrier.png"));
+    public static final Sprite SKILL_SPIKE = new Sprite(new Texture("img/skill/basic/Spike.png"));
 
     public static void generateFile() {
         generateCharImg();

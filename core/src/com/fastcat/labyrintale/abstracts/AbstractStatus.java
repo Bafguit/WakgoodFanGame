@@ -43,9 +43,19 @@ public abstract class AbstractStatus implements Cloneable {
         hasAmount = true;
     }
 
+
+    public final void flash() {
+        //TODO 소리 추가
+        EffectHandler.add(new UpIconEffect(owner.animX, owner.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
+    }
+
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
         EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
+    }
+
+    public void startOfTurn() {
+
     }
 
     public void endOfTurn() {
@@ -53,7 +63,6 @@ public abstract class AbstractStatus implements Cloneable {
     }
 
     public void onApply() {
-
     }
 
     public void onRemove() {

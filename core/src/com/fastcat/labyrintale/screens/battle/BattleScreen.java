@@ -140,10 +140,14 @@ public class BattleScreen extends AbstractScreen {
             ev.update();
             for(int j = 0; j < 5; j++) {
                 if (pv.player.isAlive()) {
-                    playerStatus[i][j].update();
+                    StatusButton ts = playerStatus[i][j];
+                    ts.status = AbstractLabyrinth.players[i].status[j];
+                    ts.update();
                 }
                 if (ev.enemy.isAlive()) {
-                    enemyStatus[i][j].update();
+                    StatusButton ts = enemyStatus[i][j];
+                    ts.status = AbstractLabyrinth.currentFloor.currentRoom.enemies[i].status[j];
+                    ts.update();
                 }
             }
             if (ev.enemy.isAlive()) {

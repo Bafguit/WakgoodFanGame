@@ -5,10 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.player.Barrier;
-import com.fastcat.labyrintale.skills.player.Heal;
-import com.fastcat.labyrintale.skills.player.Light;
-import com.fastcat.labyrintale.skills.player.Strike;
+import com.fastcat.labyrintale.skills.player.*;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
@@ -27,24 +24,10 @@ public class Burger extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        Strike s = new Strike(this);
-        s.upgrade();
-        temp.add(s);
         temp.add(new Light(this));
         temp.add(new Barrier(this));
         temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
+        temp.add(new Spike(this));
         return temp;
     }
 }
