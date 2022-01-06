@@ -17,6 +17,8 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
+import java.util.Objects;
+
 import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
@@ -165,6 +167,49 @@ public abstract class AbstractEntity implements Cloneable {
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, CYAN, false));
                 block += temp;
             }
+        }
+    }
+
+    public void applyStatus(AbstractStatus status, int amount) {
+        boolean done = false;
+        AbstractStatus s = status.cpy();
+        Objects.requireNonNull(s).owner = this;
+        for (int i = 0; i < 5; i++) {
+            if (this.status[i] != null) {
+                AbstractStatus temp = this.status[i];
+                if(temp.id.equals(s.id)) {
+                    if (temp.hasAmount) {
+                        temp.amount += amount;
+                        if (temp.amount <= 0 && !temp.canGoNegative) {
+                            temp.onRemove();
+                            if (i < 4) System.arraycopy(this.status, i + 1, this.status, 0, 4 - i);
+                            this.status[4] = null;
+                        }
+                    }
+                    temp.onApply();
+                    temp.flash(this);
+                    done = true;
+                    break;
+                }
+            }
+        }
+        if(!done) {
+            for (int i = 0; i < 5; i++) {
+                if (this.status[i] == null) {
+                    this.status[i] = s;
+                    s.onApply();
+                    s.flash(this);
+                    done = true;
+                    break;
+                }
+            }
+        }
+        if(!done) {
+            this.status[0].onRemove();
+            System.arraycopy(this.status, 1, this.status, 0, 4);
+            this.status[4] = s;
+            s.onApply();
+            s.flash(this);
         }
     }
 

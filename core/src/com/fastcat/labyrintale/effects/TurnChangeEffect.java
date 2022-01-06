@@ -21,7 +21,7 @@ public class TurnChangeEffect extends AbstractEffect {
 
     public TurnChangeEffect(boolean isEnemy) {
         super(0, 0, 2);
-        text = new TurnEffectText(isEnemy ? ++Labyrintale.battleScreen.round + " 번째 턴" : "턴 종료");
+        text = new TurnEffectText(isEnemy ? "적 턴" : "내 턴");
         alpha = 0;
     }
 

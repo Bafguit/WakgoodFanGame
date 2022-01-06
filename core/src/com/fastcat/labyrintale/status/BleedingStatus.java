@@ -29,6 +29,6 @@ public class BleedingStatus extends AbstractStatus {
 
     @Override
     public void startOfTurn() {
-        ActionHandler.bot(new StatusSelfDamageAction(this));
+        ActionHandler.bot(new StatusSelfDamageAction(this, true));
     }
 }

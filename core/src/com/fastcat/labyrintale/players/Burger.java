@@ -28,6 +28,11 @@ public class Burger extends AbstractPlayer {
         temp.add(new Barrier(this));
         temp.add(new Heal(this));
         temp.add(new Spike(this));
+        temp.add(new Spike(this));
+        temp.add(new Spike(this));
+        temp.add(new Spike(this));
+        temp.add(new Spike(this));
+        temp.add(new Spike(this));
         return temp;
     }
 }

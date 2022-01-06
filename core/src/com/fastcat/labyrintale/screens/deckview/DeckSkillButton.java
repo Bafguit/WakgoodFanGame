@@ -117,7 +117,7 @@ public class DeckSkillButton extends AbstractUI {
             case ALL:
                 return "●●●●　●●●●";
         }
-        return "Target is Null";
+        return "";
     }
 
     @Override

@@ -14,10 +14,17 @@ import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 public class StatusSelfDamageAction extends AbstractAction {
 
     public AbstractStatus status;
+    public boolean reduce = false;
+    public boolean done = false;
 
     public StatusSelfDamageAction(AbstractStatus s) {
-        super(s.owner, NONE, 1.0f);
+        super(s.owner, NONE, 0.5f);
         status = s;
+    }
+
+    public StatusSelfDamageAction(AbstractStatus s, boolean reduce) {
+        this(s);
+        this.reduce = reduce;
     }
 
     @Override
@@ -25,6 +32,7 @@ public class StatusSelfDamageAction extends AbstractAction {
         if (duration == baseDuration){
             status.flash(actor);
             actor.takeDamage(actor, status.amount);
+            if(reduce) actor.applyStatus(status, -1);
         }
     }
 }

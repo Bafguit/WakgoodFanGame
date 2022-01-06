@@ -1,16 +1,12 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 
 import java.util.Objects;
 
@@ -23,7 +19,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class SkillButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private final Sprite border = CHAR_SELECT;
     public AbstractSkill skill;
     public boolean isInfo = false;
     public boolean isOnLock = false;
@@ -46,7 +42,7 @@ public class SkillButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isSelected || (advisor && !canClick)) sb.setColor(Color.DARK_GRAY);
+            if(isSelected || (advisor && !canClick) || (isRunning && (advisor || isCS))) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(skill != null) {
@@ -81,7 +77,7 @@ public class SkillButton extends AbstractUI {
                     battleScreen.effectText.text = skill.desc;
                     battleScreen.looking = getTargets(skill.target);
                 }
-            }else if (isInfo) {
+            } else if (isInfo) {
                 boolean ov = false;
                 if (!battleScreen.advisor.over) {
                     for (int i = 0; i < 4; i++) {
@@ -116,20 +112,12 @@ public class SkillButton extends AbstractUI {
                             chb.skill = skill;
                             chb.showImg = true;
                             chb.img = img;
-                            break;
-                        }
-                    }
-                } else {
-                    for(int i = 0; i < 4; i++) {
-                        SkillButton chb = battleScreen.preSkills[i];
-                        if(chb.isOnLock && chb.skill == skill) {
-                            chb.removeChar();
+                            chb.isSelected = true;
+                            skill.useCard();
                             break;
                         }
                     }
                 }
-            } else if(isOnLock) {
-                removeChar();
             }
         }
     }
@@ -138,5 +126,6 @@ public class SkillButton extends AbstractUI {
         skill = null;
         showImg = false;
         isOnLock = false;
+        isSelected = false;
     }
 }

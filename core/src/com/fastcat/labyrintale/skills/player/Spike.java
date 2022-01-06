@@ -1,7 +1,9 @@
 package com.fastcat.labyrintale.skills.player;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -22,7 +24,9 @@ public class Spike extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new BleedingStatus(value), owner, target, false));
+        AbstractStatus s = new BleedingStatus(value);
+        s.id += MathUtils.random(1000);
+        ActionHandler.bot(new ApplyStatusAction(s, owner, target, false));
     }
 
     @Override

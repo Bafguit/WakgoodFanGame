@@ -20,44 +20,7 @@ public class ApplyStatusAction extends AbstractAction {
     protected void updateAction() {
         if(duration == baseDuration) {
             for(AbstractEntity e : target) {
-                boolean done = false;
-                AbstractStatus s = status.cpy();
-                Objects.requireNonNull(s).owner = e;
-                for (int i = 0; i < 5; i++) {
-                    AbstractStatus temp = e.status[i];
-                    if (temp != null && temp.id.equals(s.id)) {
-                        if(temp.hasAmount) {
-                            temp.amount += s.amount;
-                            if (temp.amount < 0 && !temp.canGoNegative) {
-                                temp.onRemove();
-                                if (i < 4) System.arraycopy(e.status, i + 1, e.status, 0, 4 - i);
-                                e.status[4] = null;
-                            }
-                        }
-                        temp.onApply();
-                        temp.flash(e);
-                        done = true;
-                        break;
-                    }
-                }
-                if(!done) {
-                    for (int i = 0; i < 5; i++) {
-                        if (e.status[i] == null) {
-                            e.status[i] = s;
-                            s.onApply();
-                            s.flash(e);
-                            done = true;
-                            break;
-                        }
-                    }
-                }
-                if(!done) {
-                    e.status[0].onRemove();
-                    System.arraycopy(e.status, 1, e.status, 0, 4);
-                    e.status[4] = s;
-                    s.onApply();
-                    s.flash(e);
-                }
+                e.applyStatus(status, status.amount);
             }
         }
     }
