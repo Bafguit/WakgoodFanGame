@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.actions.DefeatAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.effects.DieEffect;
@@ -22,6 +23,7 @@ import java.util.Objects;
 import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
@@ -277,6 +279,13 @@ public abstract class AbstractEntity implements Cloneable {
                         if (a) break;
                     }
                     if (!a) ActionHandler.top(new VictoryAction());
+                } else if (this instanceof AbstractPlayer) {
+                    boolean a = false;
+                    for (int i = 0; i < 4; i++) {
+                        a = players[i].isAlive();
+                        if (a) break;
+                    }
+                    if (!a) ActionHandler.top(new DefeatAction());
                 }
             }
         }

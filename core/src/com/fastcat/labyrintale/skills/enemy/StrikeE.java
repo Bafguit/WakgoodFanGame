@@ -15,7 +15,7 @@ public class StrikeE extends AbstractSkill {
     private static final String ID = "Strike";
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.P_F;
-    private static final int VALUE = 5;
+    private static final int VALUE = 25;
 
     public StrikeE(AbstractEntity e) {
         super(e, ID, RARITY, TARGET);

@@ -24,9 +24,7 @@ public class Spike extends AbstractSkill {
 
     @Override
     public void use() {
-        AbstractStatus s = new BleedingStatus(value);
-        s.id += MathUtils.random(1000);
-        ActionHandler.bot(new ApplyStatusAction(s, owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new BleedingStatus(value), owner, target, false));
     }
 
     @Override

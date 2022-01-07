@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharSelectScreen extends AbstractScreen {
 
@@ -18,6 +17,7 @@ public class CharSelectScreen extends AbstractScreen {
 
     public CharSelectScreen(Labyrintale game) {
         super(game);
+        bg = FileHandler.BG_CHARSELECT;
         charSelectText = new CharSelectText();
         backButton = new BackButton();
         nextButton = new NextToAdvisorButton();
@@ -71,8 +71,8 @@ public class CharSelectScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        for(int i = 0; i < chars.length; i++) {
-            chars[i].render(sb);
+        for (CharButton aChar : chars) {
+            aChar.render(sb);
         }
         for(int i = 0; i < 8; i++) {
             aChars[i].render(sb);
@@ -94,8 +94,8 @@ public class CharSelectScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        for(int i = 0; i < chars.length; i++) {
-            chars[i].dispose();
+        for (CharButton aChar : chars) {
+            aChar.dispose();
         }
         for(int i = 0; i < 8; i++) {
             aChars[i].dispose();

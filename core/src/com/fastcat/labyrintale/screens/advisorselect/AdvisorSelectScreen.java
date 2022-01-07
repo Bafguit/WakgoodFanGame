@@ -3,8 +3,8 @@ package com.fastcat.labyrintale.screens.advisorselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
 
@@ -17,11 +17,12 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorButton[] aAdvisor = new AdvisorButton[9];
 
     public AdvisorSelectScreen() {
+        bg = FileHandler.BG_CHARSELECT;
         advisorSelectText = new AdvisorSelectText();
         backButton = new BackToCharButton();
         nextButton = new NextButton();
         advisor = new AdvisorButton();
-        advisor.setPosition(Gdx.graphics.getWidth() / 2 - advisor.sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
+        advisor.setPosition(Gdx.graphics.getWidth() * 0.5f - advisor.sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
         addAdvisor();
     }
 
@@ -36,12 +37,11 @@ public class AdvisorSelectScreen extends AbstractScreen {
     @Override
     public void update() {
         advisor.update();
-        for(int i = 0; i < aAdvisor.length; i++) {
-            aAdvisor[i].update();
+        for (AdvisorButton advisorButton : aAdvisor) {
+            advisorButton.update();
         }
         if(advisor.isOnLock) nextButton.enable();
         else nextButton.disable();
-
         backButton.update();
         nextButton.update();
         advisorSelectText.update();
@@ -50,10 +50,9 @@ public class AdvisorSelectScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         advisor.render(sb);
-        for(int i = 0; i < aAdvisor.length; i++) {
-            aAdvisor[i].render(sb);
+        for (AdvisorButton advisorButton : aAdvisor) {
+            advisorButton.render(sb);
         }
-
         backButton.render(sb);
         nextButton.render(sb);
         advisorSelectText.render(sb);
@@ -75,8 +74,8 @@ public class AdvisorSelectScreen extends AbstractScreen {
     @Override
     public void dispose() {
         advisor.dispose();
-        for(int i = 0; i < aAdvisor.length; i++) {
-            aAdvisor[i].dispose();
+        for (AdvisorButton advisorButton : aAdvisor) {
+            advisorButton.dispose();
         }
     }
 }

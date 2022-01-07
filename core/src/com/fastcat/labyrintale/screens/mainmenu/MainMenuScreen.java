@@ -6,23 +6,20 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 
 public class MainMenuScreen extends AbstractScreen {
 
-    private TextureAtlas atlas;
-    private Skeleton skeleton;
-    private AnimationState state;
-    private AnimationStateData stateData;
-
-    private LogoText logoText;
-    private GameStartButton gameStartButton;
-    private TutorialButton tutorialButton;
-    private OptionButton optionButton;
-    private ExitButton exitButton;
+    private final LogoText logoText;
+    private final GameStartButton gameStartButton;
+    private final TutorialButton tutorialButton;
+    private final OptionButton optionButton;
+    private final ExitButton exitButton;
 
     public MainMenuScreen(Labyrintale game) {
         super(game);
+        bg = FileHandler.BG_MAIN;
         logoText = new LogoText();
         gameStartButton = new GameStartButton();
         tutorialButton = new TutorialButton();
@@ -48,8 +45,6 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton.render(sb);
         exitButton.render(sb);
     }
-
-
 
     @Override
     public void show() {

@@ -34,9 +34,16 @@ public class FileHandler {
     public static final JsonValue CARD_JSON_JURURU = generateJson("json/skill/jururuCards.json");
     public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
 
+    //BG
+    public static final Sprite BG_BLACK = new Sprite(new Texture("img/fade.png"));
+    public static final Sprite BG_MAIN = new Sprite(new Texture("img/bg/main.png"));
+    public static final Sprite BG_DEAD = new Sprite(new Texture("img/bg/dead.png"));
+    public static final Sprite BG_WIN = new Sprite(new Texture("img/bg/win.png"));
+    public static final Sprite BG_CHARSELECT = new Sprite(new Texture("img/bg/charselect.png"));
+    public static final Sprite BG_BATTLE = new Sprite(new Texture("img/bg/battle.png"));
+
     //UI
     public static final Sprite FADE = new Sprite(new Texture("img/fade.png"));
-    public static final Sprite BG_TRANS = new Sprite(new Texture("img/fade.png"));
     public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
     public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));

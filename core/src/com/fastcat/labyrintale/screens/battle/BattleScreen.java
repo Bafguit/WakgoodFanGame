@@ -7,12 +7,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.enemies.TestEnemy;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.skills.player.Strike;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.status.TestStatus;
 
-import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {
@@ -42,9 +39,9 @@ public class BattleScreen extends AbstractScreen {
     public boolean isLooking = false;
     public Array<AbstractEntity> looking;
     public AbstractPlayer currentPlayer;
-    public int round = 0;
 
     public BattleScreen() {
+        bg = FileHandler.BG_BATTLE;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         nameText = new NameText();
         effectText = new EffectText();

@@ -55,8 +55,7 @@ public class MapScreen extends AbstractScreen {
             upNodes[i].update();
             downNodes[i].update();
         }
-        if(currentFloor.canBoss) bossNode.canGo = true;
-        else bossNode.canGo = false;
+        bossNode.canGo = currentFloor.canBoss;
         bossNode.update();
     }
 
