@@ -39,6 +39,7 @@ public class FileHandler {
     public static final Sprite BG_MAIN = new Sprite(new Texture("img/bg/main.png"));
     public static final Sprite BG_DEAD = new Sprite(new Texture("img/bg/dead.png"));
     public static final Sprite BG_WIN = new Sprite(new Texture("img/bg/win.png"));
+    public static final Sprite BG_MAP = new Sprite(new Texture("img/bg/map.png"));
     public static final Sprite BG_CHARSELECT = new Sprite(new Texture("img/bg/charselect.png"));
     public static final Sprite BG_BATTLE = new Sprite(new Texture("img/bg/battle.png"));
 

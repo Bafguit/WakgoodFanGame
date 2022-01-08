@@ -16,7 +16,7 @@ public class Light extends AbstractSkill {
     private static final String ID = "Light";
     private static final CardRarity RARITY = CardRarity.STARTER;
     private static final CardTarget TARGET = CardTarget.E_ALL;
-    private static final int VALUE = 3;
+    private static final int VALUE = 30;
 
     public Light(AbstractEntity e) {
         super(e, ID, RARITY, TARGET);

@@ -16,14 +16,14 @@ import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 import java.util.Objects;
 
 import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
@@ -106,13 +106,11 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void newDeck() {
-        hand = new AbstractSkill[handSize];
+        hand = new AbstractSkill[4];
         drawPile.clear();
         discardPile.clear();
         disposablePile.clear();
-        for(int i = 0; i < deck.size; i++) {
-            drawPile.add(deck.get(i).cpy());
-        }
+        drawPile = new Array<>(deck);
     }
 
     public void shuffleHand() {
@@ -126,7 +124,7 @@ public abstract class AbstractEntity implements Cloneable {
             drawPile.addAll(discardPile);
             discardPile.clear();
         }
-        drawPile.shuffle();
+        GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
         int ts = drawPile.size;
         for(int i = 0; i < handSize; i++) {
             if(i < ts) {

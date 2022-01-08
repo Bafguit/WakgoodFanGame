@@ -68,14 +68,17 @@ public class BattleScreen extends AbstractScreen {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.5f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.525f);
+            pv.player.newDeck();
             pv.player.shuffleHand();
             pv.player.status[0] = new TestStatus(pv.player);
             pv.player.ui = pv;
             players[i] = pv;
 
+
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.5f);
             ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.525f);
+            ev.enemy.newDeck();
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;
             enemies[i] = ev;

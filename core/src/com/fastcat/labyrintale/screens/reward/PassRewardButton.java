@@ -2,7 +2,9 @@ package com.fastcat.labyrintale.screens.reward;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.NEXT;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
@@ -29,9 +31,6 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        logger.log("Shutting Down...");
-        Labyrintale.advisorSelectScreen.advisor.removeChar();
-        Labyrintale.advisorSelectScreen.nextButton.disable();
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
+        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
     }
 }

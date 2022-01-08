@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
@@ -123,14 +124,19 @@ public class GroupHandler {
         }
 
         public static void staticShuffle(Array<AbstractSkill> array) {
-            AbstractSkill[] items = array.items;
+            staticShuffle(array, skillRandom);
+        }
 
+        public static void staticShuffle(Array<AbstractSkill> array, RandomXS128 r) {
+            AbstractSkill[] items = array.toArray(AbstractSkill.class);
             for(int i = array.size - 1; i >= 0; --i) {
-                int ii = skillRandom.nextInt(i + 1);
+                int ii = r.nextInt(i + 1);
                 AbstractSkill temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;
             }
+            array.clear();
+            array.addAll(items);
         }
     }
 }

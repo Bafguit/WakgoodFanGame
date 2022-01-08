@@ -6,6 +6,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class DieEffect extends AbstractEffect {
 
@@ -28,7 +29,7 @@ public class DieEffect extends AbstractEffect {
             if (isDone) {
                 actor.isDead = true;
                 actor.isDie = false;
-                actor.status = null;
+                actor.status = new AbstractStatus[5];
             }
         }
     }

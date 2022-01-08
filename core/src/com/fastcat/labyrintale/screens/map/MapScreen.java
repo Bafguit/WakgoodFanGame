@@ -4,9 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractFloor.NodeType.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
@@ -35,6 +34,7 @@ public class MapScreen extends AbstractScreen {
         }
         bossNode = new MapNodeButton(currentFloor.bossRoom);
         bossNode.setPosition(w * 0.8f - bossNode.sWidth / 2, h / 2 - bossNode.sHeight / 2);
+        bg = FileHandler.BG_MAP;
     }
 
     @Override

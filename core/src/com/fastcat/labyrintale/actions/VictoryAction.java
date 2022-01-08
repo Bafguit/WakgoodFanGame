@@ -21,6 +21,7 @@ public class VictoryAction extends AbstractAction {
         if(duration == baseDuration) {
             ActionHandler.clear();
         } else if(isDone) {
+            AbstractLabyrinth.currentFloor.currentRoom.done();
             Array<AbstractReward> temp = new Array<>();
             //temp.add(new SkillReward(AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.nextInt(4)].playerClass, SkillReward.SkillRewardType.COMMON, 3));
             temp.add(new GoldReward(20));

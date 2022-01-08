@@ -19,7 +19,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class MapNodeButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private final Sprite border = CHAR_SELECT;
     public boolean canGo = true;
     public AbstractRoom room;
 
@@ -58,13 +58,9 @@ public class MapNodeButton extends AbstractUI {
                 currentFloor.roomNum++;
             }
             currentFloor.currentRoom = room;
-            switch (room.type) {
-                case BATTLE:
-                    battleScreen = new BattleScreen();
-                    fadeOutAndChangeScreen(battleScreen);
-                    break;
-                default:
-                    fadeOutAndChangeScreen(battleScreen);
+            if (room.type == RoomType.BATTLE || room.type == RoomType.ELITE || room.type == RoomType.BOSS) {
+                battleScreen = new BattleScreen();
+                fadeOutAndChangeScreen(battleScreen);
             }
         }
     }
