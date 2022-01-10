@@ -40,7 +40,10 @@ public class MapNodeButton extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled) {
             if(!room.isDone) {
-                if (!over || !canGo || mapScreen.isView) sb.setColor(Color.LIGHT_GRAY);
+                if (!over && canGo) {
+                    sb.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, mapScreen.alpha);
+                }
+                else if (!canGo || mapScreen.isView) sb.setColor(Color.LIGHT_GRAY);
             } else sb.setColor(Color.DARK_GRAY);
             if(currentFloor.currentRoom == room && !room.isDone) sb.setColor(WHITE);
             sb.draw(img, x, y, sWidth, sHeight);

@@ -45,8 +45,8 @@ public class StatusButton extends AbstractUI {
                 sb.draw(/*isInfo ? status.imgBig : */status.img, x, y, sWidth, sHeight);
                 if(!isInfo && status.hasAmount) renderKeywordCenter(sb, fontData, valueColor() + status.amount, x, y + sHeight / 2, sWidth, sHeight);
                 if(isInfo) renderCenter(sb, CARD_BIG_DESC, getTargetString(status.target), x, y - sHeight * 0.1f, sWidth, sHeight);
+                sb.draw(border, x, y, sWidth, sHeight);
             }
-            sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }
     }
@@ -57,7 +57,7 @@ public class StatusButton extends AbstractUI {
             battleScreen.statusInfo.status = status;
             battleScreen.nameText.text = status.name;
             battleScreen.effectText2.text = status.getDesc();
-            battleScreen.looking = getTargets(status.target);
+            battleScreen.looking = getTargets(status);
         } else if(isInfo && status != null) {
             boolean ov = false;
             for (int i = 0; i < 4; i++) {

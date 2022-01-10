@@ -29,17 +29,9 @@ public class AttackAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration){
-            Array<AbstractEntity> t = getTargets(target);
-            if(target == NONE && monoTarget != null) {
-                monoTarget.takeDamage(actor, damage);
-                if(actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);
-                    actor.state.addAnimation(0, "Standby", true, 0.0F);
-                    e.setTimeScale(1.0f);
-                }
-            } else if(t.size > 0) {
-                for (int i = 0; i < t.size; i++) {
-                    AbstractEntity te = t.get(i);
+            if(target.size > 0) {
+                for (int i = 0; i < target.size; i++) {
+                    AbstractEntity te = target.get(i);
                     te.takeDamage(actor, damage);
                 }
                 if(actor != null) {

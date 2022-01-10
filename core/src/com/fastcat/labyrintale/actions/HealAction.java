@@ -26,10 +26,9 @@ public class HealAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration){
-            Array<AbstractEntity> t = getTargets(target);
-            if(t.size > 0) {
-                for (int i = 0; i < t.size; i++) {
-                    AbstractEntity te = t.get(i);
+            if(target.size > 0) {
+                for (int i = 0; i < target.size; i++) {
+                    AbstractEntity te = target.get(i);
                     EffectHandler.add(new UpTextEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     te.heal(heal);
                 }

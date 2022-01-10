@@ -116,6 +116,22 @@ public abstract class AbstractSkill implements Cloneable {
         }
     }
 
+    public static Array<AbstractEntity> getTargets(AbstractSkill s) {
+        if(s.target == CardTarget.SELF) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(s.owner);
+            return temp;
+        } else return getTargets(s.target);
+    }
+
+    public static Array<AbstractEntity> getTargets(AbstractStatus s) {
+        if(s.target == CardTarget.SELF) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(s.owner);
+            return temp;
+        } else return getTargets(s.target);
+    }
+
     public static Array<AbstractEntity> getTargets(CardTarget target) {
         Array<AbstractEntity> temp = new Array<>();
         PlayerView[] tp = battleScreen.players;
@@ -243,6 +259,6 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum CardTarget {
-        NONE, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
+        NONE, SELF, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
     }
 }

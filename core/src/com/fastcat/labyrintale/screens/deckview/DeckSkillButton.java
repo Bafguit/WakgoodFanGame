@@ -94,6 +94,8 @@ public class DeckSkillButton extends AbstractUI {
 
     public static String getTargetString(AbstractSkill.CardTarget target) {
         switch(target) {
+            case SELF:
+                return "●";
             case P_F:
                 return "○○○●　○○○○";
             case E_F:
@@ -116,8 +118,9 @@ public class DeckSkillButton extends AbstractUI {
                 return "○○○○　●●●●";
             case ALL:
                 return "●●●●　●●●●";
+            default:
+                return "";
         }
-        return "";
     }
 
     @Override

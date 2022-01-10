@@ -15,7 +15,7 @@ public class BarrierE extends AbstractSkill {
 
     private static final String ID = "Barrier";
     private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.E_F;
+    private static final CardTarget TARGET = CardTarget.SELF;
     private static final int VALUE = 4;
 
     public BarrierE(AbstractEntity e) {

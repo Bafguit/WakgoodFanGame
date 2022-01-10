@@ -25,6 +25,7 @@ public class AbstractLabyrinth {
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
+    public static int gold = 0;
 
     public AbstractLabyrinth() {
         publicRandom = new RandomXS128();

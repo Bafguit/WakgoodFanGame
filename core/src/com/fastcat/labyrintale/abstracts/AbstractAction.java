@@ -10,7 +10,7 @@ public abstract class AbstractAction implements Cloneable {
     protected static final float DUR_FAST = 0.5f;
 
     public AbstractEntity actor;
-    public AbstractSkill.CardTarget target;
+    public Array<AbstractEntity> target;
     public boolean isDone = false;
     public float baseDuration = DUR_DEFAULT;
     public float duration = DUR_DEFAULT;
@@ -23,7 +23,11 @@ public abstract class AbstractAction implements Cloneable {
 
     public AbstractAction(AbstractEntity actor, AbstractSkill.CardTarget target, float duration) {
         this.actor = actor;
-        this.target = target;
+        if(target == AbstractSkill.CardTarget.SELF) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(actor);
+            this.target = temp;
+        } else this.target = AbstractSkill.getTargets(target);
         this.duration = duration;
         baseDuration = this.duration;
     }

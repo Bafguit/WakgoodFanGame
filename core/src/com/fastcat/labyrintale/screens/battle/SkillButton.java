@@ -75,7 +75,7 @@ public class SkillButton extends AbstractUI {
                     Labyrintale.battleScreen.skillInfo.skill = skill;
                     battleScreen.nameText.text = skill.name;
                     battleScreen.effectText.text = skill.desc;
-                    battleScreen.looking = getTargets(skill.target);
+                    battleScreen.looking = getTargets(skill);
                 }
             } else if (isInfo) {
                 boolean ov = false;
