@@ -1,24 +1,20 @@
 package com.fastcat.labyrintale.skills.player;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
-
 public class Barrier extends AbstractSkill {
 
     private static final String ID = "Barrier";
-    private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final SkillType TYPE = SkillType.DEFENCE;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 4;
 
     public Barrier(AbstractEntity e) {
-        super(e, ID, RARITY, TARGET);
+        super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE);
     }
 

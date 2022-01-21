@@ -28,6 +28,7 @@ public class SkillButton extends AbstractUI {
     public boolean isSelected = false;
     public boolean canClick = true;
     public boolean advisor = false;
+    public boolean available = true;
 
     public SkillButton() {
         this(null);
@@ -42,7 +43,7 @@ public class SkillButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isSelected || (advisor && !canClick) || (isRunning && (advisor || isCS))) sb.setColor(Color.DARK_GRAY);
+            if(isSelected || !available || (advisor && !canClick) || (isRunning && (advisor || isCS))) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(skill != null) {
@@ -105,16 +106,20 @@ public class SkillButton extends AbstractUI {
         if(!isInfo && canClick && !battleScreen.isEnemyTurn && !isRunning) {
             if(isCS) {
                 if(!isSelected) {
-                    for(int i = 0; i < 4; i++) {
-                        SkillButton chb = battleScreen.preSkills[i];
-                        if(!chb.isOnLock) {
-                            chb.isOnLock = true;
-                            chb.skill = skill;
-                            chb.showImg = true;
-                            chb.img = img;
-                            chb.isSelected = true;
-                            skill.useCard();
-                            break;
+                    if(advisor || skill.isTrick) {
+                        skill.useCard();
+                    } else {
+                        for (int i = 0; i < 4; i++) {
+                            SkillButton chb = battleScreen.preSkills[i];
+                            if (!chb.isOnLock && chb.available) {
+                                chb.isOnLock = true;
+                                chb.skill = skill;
+                                chb.showImg = true;
+                                chb.img = img;
+                                chb.isSelected = true;
+                                skill.useCard();
+                                break;
+                            }
                         }
                     }
                 }

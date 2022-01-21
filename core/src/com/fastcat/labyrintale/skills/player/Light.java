@@ -1,25 +1,20 @@
 package com.fastcat.labyrintale.skills.player;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_HEAL;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_LIGHT;
-
 public class Light extends AbstractSkill {
 
     private static final String ID = "Light";
-    private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.E_ALL;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillTarget TARGET = SkillTarget.E_ALL;
     private static final int VALUE = 30;
 
     public Light(AbstractEntity e) {
-        super(e, ID, RARITY, TARGET);
+        super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 

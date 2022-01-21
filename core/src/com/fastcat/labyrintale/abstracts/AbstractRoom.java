@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.uis.CardPanel;
 
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
-public class AbstractRoom implements Cloneable {
+public abstract class AbstractRoom implements Cloneable {
 
     public AbstractEnemy[] enemies = new AbstractEnemy[4];
     public AbstractEvent event;

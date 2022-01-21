@@ -1,24 +1,20 @@
 package com.fastcat.labyrintale.skills.enemy;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
-
 public class StrikeE extends AbstractSkill {
 
     private static final String ID = "Strike";
-    private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.P_F;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillTarget TARGET = SkillTarget.P_F;
     private static final int VALUE = 5;
 
     public StrikeE(AbstractEntity e) {
-        super(e, ID, RARITY, TARGET);
+        super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 

@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.handlers.EffectHandler;
 
 public abstract class AbstractAction implements Cloneable {
 
@@ -21,9 +20,9 @@ public abstract class AbstractAction implements Cloneable {
         baseDuration = this.duration;
     }
 
-    public AbstractAction(AbstractEntity actor, AbstractSkill.CardTarget target, float duration) {
+    public AbstractAction(AbstractEntity actor, AbstractSkill.SkillTarget target, float duration) {
         this.actor = actor;
-        if(target == AbstractSkill.CardTarget.SELF) {
+        if(target == AbstractSkill.SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(actor);
             this.target = temp;

@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.status;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
@@ -14,7 +11,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 public class TestStatus extends AbstractStatus {
 
     private static final String ID = "TestStatus";
-    private static final AbstractSkill.CardTarget TARGET = AbstractSkill.CardTarget.E_ALL;
+    private static final AbstractSkill.SkillTarget TARGET = AbstractSkill.SkillTarget.E_ALL;
 
     public TestStatus(AbstractEntity o) {
         super(ID, new Sprite(FileHandler.SKILL_POISON), o, TARGET);

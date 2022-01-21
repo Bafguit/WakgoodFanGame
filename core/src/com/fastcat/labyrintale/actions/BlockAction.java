@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
-import com.badlogic.gdx.utils.Array;
-import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
@@ -13,7 +10,7 @@ public class BlockAction extends AbstractAction {
 
     public int block;
 
-    public BlockAction(AbstractEntity actor, AbstractSkill.CardTarget target, int block) {
+    public BlockAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int block) {
         super(actor, target, 0.5f);
         this.block = block;
     }

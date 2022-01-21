@@ -1,20 +1,9 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
-
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractStatus implements Cloneable {
 
@@ -23,13 +12,13 @@ public abstract class AbstractStatus implements Cloneable {
     public Sprite imgBig;
     public String name;
     public String desc;
-    public AbstractSkill.CardTarget target;
+    public AbstractSkill.SkillTarget target;
     public AbstractEntity owner;
     public boolean hasAmount = false;
     public boolean canGoNegative = false;
     public int amount = 0;
 
-    public AbstractStatus(String id, Sprite img, AbstractEntity o, AbstractSkill.CardTarget target) {
+    public AbstractStatus(String id, Sprite img, AbstractEntity o, AbstractSkill.SkillTarget target) {
         this.id = id;
         this.img = img;
         owner = o;

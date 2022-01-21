@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.common.Test;
+import com.fastcat.labyrintale.rooms.other.Placeholder;
 
 import static com.fastcat.labyrintale.abstracts.AbstractFloor.NodeType.*;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
@@ -28,7 +29,7 @@ public class AbstractFloor {
         this.floorNum = f;
         this.canBoss = false;
         this.roomNum = 0;
-        entryRoom = new AbstractRoom();
+        entryRoom = new Placeholder();
         entryRoom.done();
         currentRoom = entryRoom;
         for(int i = 0; i < 5; i++) {

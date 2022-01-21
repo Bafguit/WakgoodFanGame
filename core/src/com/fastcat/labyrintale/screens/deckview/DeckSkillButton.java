@@ -4,11 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen.InfoType;
 
 import java.util.Objects;
@@ -92,7 +88,7 @@ public class DeckSkillButton extends AbstractUI {
         }
     }
 
-    public static String getTargetString(AbstractSkill.CardTarget target) {
+    public static String getTargetString(AbstractSkill.SkillTarget target) {
         switch(target) {
             case SELF:
                 return "●";
@@ -130,6 +126,11 @@ public class DeckSkillButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-
+        if(screen instanceof DeckViewScreen) {
+            DeckViewScreen s = ((DeckViewScreen) screen);
+            if(s.type == DeckViewScreen.ViewType.REMOVE) {
+                //TODO 여기에 스킬 제거 입력
+            }
+        }
     }
 }

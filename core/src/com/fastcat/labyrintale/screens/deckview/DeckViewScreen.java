@@ -84,6 +84,12 @@ public class DeckViewScreen extends AbstractScreen {
                     if(!skill.upgraded) temp.add(skill);
                 }
                 return temp;
+            case REMOVE:
+                Array<AbstractSkill> temp2 = new Array<>();
+                for(AbstractSkill skill : player.deck) {
+                    if(skill.removable) temp2.add(skill);
+                }
+                return temp2;
             default:
                 return player.deck;
         }
@@ -175,6 +181,6 @@ public class DeckViewScreen extends AbstractScreen {
     }
 
     public enum ViewType {
-        NORMAL, UPGRADE, DRAW, DISCARD, DISPOSABLE
+        NORMAL, REMOVE, UPGRADE, DRAW, DISCARD, DISPOSABLE
     }
 }

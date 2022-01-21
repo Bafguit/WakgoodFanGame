@@ -1,24 +1,20 @@
 package com.fastcat.labyrintale.actions;
 
-import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.effects.HealEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
-import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class HealAction extends AbstractAction {
 
     public int heal;
 
-    public HealAction(AbstractEntity actor, AbstractSkill.CardTarget target, int heal) {
+    public HealAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int heal) {
         super(actor, target, 0.5f);
         this.heal = heal;
     }

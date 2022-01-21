@@ -2,10 +2,9 @@ package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.CardTarget.P_F;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.P_F;
 
 public class EndRoundAction extends AbstractAction {
     public EndRoundAction() {

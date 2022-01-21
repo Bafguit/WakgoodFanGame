@@ -1,12 +1,9 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
@@ -23,14 +20,18 @@ public abstract class AbstractSkill implements Cloneable {
     public Sprite imgBig;
     public SkillString.SkillData skillData;
     public AbstractEntity owner;
-    public CardRarity rarity;
-    public CardTarget target;
+    public final SkillRarity rarity;
+    public final SkillType type;
+    public SkillTarget target;
     public String id;
     public String name;
     public String desc;
-    public boolean upgraded;
+    public boolean upgraded = false;
+    public boolean isTrick = false;
+    public boolean isDispose = false;
+    public boolean removable = true;
     public float uid;
-    public int upgradeCount;
+    public int upgradeCount = 0;
     public int attack = 0;
     public int baseAttack = 0;
     public int spell = 0;
@@ -38,7 +39,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int value = -1;
     public int baseValue = -1;
 
-    public AbstractSkill(AbstractEntity owner, String id, CardRarity rarity, CardTarget target) {
+    public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         uid = getUid();
         this.owner = owner;
         this.id = id;
@@ -47,14 +48,13 @@ public abstract class AbstractSkill implements Cloneable {
         this.skillData = StringHandler.skillString.get(this.id);
         this.name = this.skillData.NAME;
         this.desc = this.skillData.DESC;
+        this.type = type;
         this.rarity = rarity;
         this.target = target;
-        this.upgraded = false;
-        this.upgradeCount = 0;
     }
 
-    public AbstractSkill(String id, CardRarity rarity, CardTarget target) {
-        this(null, id, rarity, target);
+    public AbstractSkill(String id, SkillType type, SkillRarity rarity, SkillTarget target) {
+        this(null, id, type, rarity, target);
     }
 
     public void setBaseAttack(int i) {
@@ -117,7 +117,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public static Array<AbstractEntity> getTargets(AbstractSkill s) {
-        if(s.target == CardTarget.SELF) {
+        if(s.target == SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(s.owner);
             return temp;
@@ -125,14 +125,14 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public static Array<AbstractEntity> getTargets(AbstractStatus s) {
-        if(s.target == CardTarget.SELF) {
+        if(s.target == SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(s.owner);
             return temp;
         } else return getTargets(s.target);
     }
 
-    public static Array<AbstractEntity> getTargets(CardTarget target) {
+    public static Array<AbstractEntity> getTargets(SkillTarget target) {
         Array<AbstractEntity> temp = new Array<>();
         PlayerView[] tp = battleScreen.players;
         EnemyView[] te = battleScreen.enemies;
@@ -228,7 +228,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public final void useCard() {
-        if(rarity == CardRarity.ADVISOR) {
+        if(rarity == SkillRarity.ADVISOR) {
             battleScreen.advisor.canClick = false;
         }
         use();
@@ -254,11 +254,15 @@ public abstract class AbstractSkill implements Cloneable {
         return null;
     }
 
-    public enum CardRarity {
+    public enum SkillType {
+        ATTACK, DEFENCE, SCHEME
+    }
+
+    public enum SkillRarity {
         STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN, ADVISOR
     }
 
-    public enum CardTarget {
+    public enum SkillTarget {
         NONE, SELF, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
     }
 }

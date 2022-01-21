@@ -1,10 +1,9 @@
 package com.fastcat.labyrintale.actions;
 
-import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.*;
 
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.CardTarget.*;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class AttackAction extends AbstractAction {
@@ -13,7 +12,7 @@ public class AttackAction extends AbstractAction {
     public AbstractEffect effect;
     public int damage;
 
-    public AttackAction(AbstractEntity actor, AbstractSkill.CardTarget target, int damage, AbstractEffect effect) {
+    public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEffect effect) {
         super(actor, target, 0.5f);
         this.damage = damage;
         this.effect = effect;

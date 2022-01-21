@@ -1,24 +1,19 @@
 package com.fastcat.labyrintale.skills;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
-import static com.fastcat.labyrintale.handlers.FileHandler.BURGER_S;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_STRIKE;
-
 public class BurgerSkill extends AbstractSkill {
 
     private static final String ID = "Burger";
-    private static final CardRarity RARITY = CardRarity.ADVISOR;
-    private static final CardTarget TARGET = CardTarget.E_L;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.ADVISOR;
+    private static final SkillTarget TARGET = SkillTarget.E_L;
     private static final int VALUE = 4;
 
     public BurgerSkill() {
-        super(ID, RARITY, TARGET);
+        super(ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
     }
 

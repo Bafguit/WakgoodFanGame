@@ -1,25 +1,20 @@
 package com.fastcat.labyrintale.skills.player;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_HEAL;
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_SHIELD;
-
 public class Heal extends AbstractSkill {
 
     private static final String ID = "Heal";
-    private static final CardRarity RARITY = CardRarity.STARTER;
-    private static final CardTarget TARGET = CardTarget.P_ALL;
+    private static final SkillType TYPE = SkillType.DEFENCE;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillTarget TARGET = SkillTarget.P_ALL;
     private static final int VALUE = 2;
 
     public Heal(AbstractEntity e) {
-        super(e, ID, RARITY, TARGET);
+        super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE);
     }
 
