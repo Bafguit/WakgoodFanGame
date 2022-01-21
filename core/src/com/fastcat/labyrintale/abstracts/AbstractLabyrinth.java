@@ -21,6 +21,7 @@ public class AbstractLabyrinth {
     public static RandomXS128 mapRandom;
     public static RandomXS128 monsterRandom;
     public static RandomXS128 eventRandom;
+    public static RandomXS128 shopRandom;
     public static ActionHandler actionHandler;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
@@ -34,6 +35,7 @@ public class AbstractLabyrinth {
         mapRandom = new RandomXS128();
         monsterRandom = new RandomXS128();
         eventRandom = new RandomXS128();
+        shopRandom = new RandomXS128();
         actionHandler = new ActionHandler();
         currentFloor = new AbstractFloor();
         players = new AbstractPlayer[4];
