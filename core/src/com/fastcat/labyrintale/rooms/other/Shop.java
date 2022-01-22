@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 public class Shop extends AbstractRoom {
 
     public SkillItem[] skills = new SkillItem[6];
+    public RemoveItem remove;
 
     public Shop() {
         super(RoomType.SHOP);
@@ -46,8 +47,10 @@ public class Shop extends AbstractRoom {
         }
     }
 
-    private static class RemoveItem {
-
+    private static class RemoveItem extends ShopItem{
+        public RemoveItem() {
+            super(AbstractLabyrinth.getRemovePrice(true));
+        }
     }
 
     private static void generateItems() {

@@ -27,6 +27,7 @@ public class AbstractLabyrinth {
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
     public static int gold = 0;
+    public static int removePrice = 50;
 
     public AbstractLabyrinth() {
         publicRandom = new RandomXS128();
@@ -75,5 +76,11 @@ public class AbstractLabyrinth {
             default:
                 return new TestAdvisor();
         }
+    }
+
+    public static int getRemovePrice(boolean isNormal) {
+        int temp = removePrice;
+        if(isNormal) removePrice += 25;
+        return temp;
     }
 }
