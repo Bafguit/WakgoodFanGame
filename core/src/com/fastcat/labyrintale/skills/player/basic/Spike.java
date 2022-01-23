@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.skills.player;
+package com.fastcat.labyrintale.skills.player.basic;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;

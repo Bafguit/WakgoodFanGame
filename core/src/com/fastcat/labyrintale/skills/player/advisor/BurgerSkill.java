@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.skills;
+package com.fastcat.labyrintale.skills.player.advisor;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;

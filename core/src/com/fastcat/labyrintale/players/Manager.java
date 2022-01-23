@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.player.Barrier;
-import com.fastcat.labyrintale.skills.player.Heal;
-import com.fastcat.labyrintale.skills.player.Light;
-import com.fastcat.labyrintale.skills.player.Strike;
+import com.fastcat.labyrintale.skills.player.basic.Barrier;
+import com.fastcat.labyrintale.skills.player.basic.Heal;
+import com.fastcat.labyrintale.skills.player.basic.Light;
+import com.fastcat.labyrintale.skills.player.basic.Strike;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;

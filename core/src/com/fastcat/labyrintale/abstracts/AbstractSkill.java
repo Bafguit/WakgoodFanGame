@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
@@ -55,6 +56,10 @@ public abstract class AbstractSkill implements Cloneable {
 
     public AbstractSkill(String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         this(null, id, type, rarity, target);
+    }
+
+    protected final void bot(AbstractAction a) {
+        ActionHandler.bot(a);
     }
 
     public void setBaseAttack(int i) {

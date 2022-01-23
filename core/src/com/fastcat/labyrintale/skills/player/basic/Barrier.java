@@ -1,26 +1,26 @@
-package com.fastcat.labyrintale.skills.player;
+package com.fastcat.labyrintale.skills.player.basic;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.HealAction;
+import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Heal extends AbstractSkill {
+public class Barrier extends AbstractSkill {
 
-    private static final String ID = "Heal";
+    private static final String ID = "Barrier";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.P_ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 3;
 
-    public Heal(AbstractEntity e) {
+    public Barrier(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE);
+        setBaseSpell(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new HealAction(owner, TARGET, value));
+        ActionHandler.bot(new BlockAction(this.owner, target, spell));
     }
 
     @Override
