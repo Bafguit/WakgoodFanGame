@@ -15,9 +15,8 @@ public class CharSelectScreen extends AbstractScreen {
     public CharButton[] chars = new CharButton[4];
     public CharButton[] aChars = new CharButton[8];
 
-    public CharSelectScreen(Labyrintale game) {
-        super(game);
-        bg = FileHandler.BG_CHARSELECT;
+    public CharSelectScreen() {
+        setBg(FileHandler.BG_CHARSELECT);
         charSelectText = new CharSelectText();
         backButton = new BackButton();
         nextButton = new NextToAdvisorButton();

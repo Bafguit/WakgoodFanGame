@@ -17,7 +17,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorButton[] aAdvisor = new AdvisorButton[9];
 
     public AdvisorSelectScreen() {
-        bg = FileHandler.BG_CHARSELECT;
+        setBg(FileHandler.BG_CHARSELECT);
         advisorSelectText = new AdvisorSelectText();
         backButton = new BackToCharButton();
         nextButton = new NextButton();

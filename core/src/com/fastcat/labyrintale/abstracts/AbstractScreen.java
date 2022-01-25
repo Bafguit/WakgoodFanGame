@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -9,17 +10,9 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 
 public abstract class AbstractScreen implements Screen {
 
-    public final Labyrintale game;
+    public final Labyrintale game = Labyrintale.game;
     public final EffectHandler effectHandler = new EffectHandler();
-    public Sprite bg;
-
-    public AbstractScreen() {
-        this(Labyrintale.game);
-    }
-
-    public AbstractScreen(Labyrintale game) {
-        this.game = game;
-    }
+    private Sprite bg;
 
     public abstract void update();
 
@@ -30,6 +23,11 @@ public abstract class AbstractScreen implements Screen {
         if(bg != null) bg.draw(game.sb);
         render(game.sb);
         effectHandler.render(game.sb);
+    }
+
+    public final void setBg(Sprite s) {
+        bg = s;
+        bg.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override

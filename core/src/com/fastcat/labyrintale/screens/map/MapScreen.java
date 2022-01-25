@@ -37,7 +37,7 @@ public class MapScreen extends AbstractScreen {
         }
         bossNode = new MapNodeButton(currentFloor.bossRoom);
         bossNode.setPosition(w * 0.8f - bossNode.sWidth / 2, h / 2 - bossNode.sHeight / 2);
-        bg = FileHandler.BG_MAP;
+        setBg(FileHandler.BG_MAP);
     }
 
     @Override

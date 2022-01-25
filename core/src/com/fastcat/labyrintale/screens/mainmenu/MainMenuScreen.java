@@ -17,9 +17,8 @@ public class MainMenuScreen extends AbstractScreen {
     private final OptionButton optionButton;
     private final ExitButton exitButton;
 
-    public MainMenuScreen(Labyrintale game) {
-        super(game);
-        bg = FileHandler.BG_MAIN;
+    public MainMenuScreen() {
+        setBg(FileHandler.BG_MAIN);
         logoText = new LogoText();
         gameStartButton = new GameStartButton();
         tutorialButton = new TutorialButton();

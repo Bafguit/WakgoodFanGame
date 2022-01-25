@@ -81,8 +81,8 @@ public class Labyrintale extends Game {
 		effectHandler = new EffectHandler();
 		groupHandler = new GroupHandler();
 		game = this;
-		mainMenuScreen = new MainMenuScreen(this);
-		charSelectScreen = new CharSelectScreen(this);
+		mainMenuScreen = new MainMenuScreen();
+		charSelectScreen = new CharSelectScreen();
 		advisorSelectScreen = new AdvisorSelectScreen();
 		//labyrinth = new AbstractLabyrinth();
 		fadeTex = FileHandler.FADE;

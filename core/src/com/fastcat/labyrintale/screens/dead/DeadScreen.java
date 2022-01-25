@@ -13,10 +13,10 @@ public class DeadScreen extends AbstractScreen {
         logo = new DeadText();
         if(type == ScreenType.DEAD) {
             logo.text = "개같이 멸망";
-            bg = FileHandler.BG_DEAD;
+            setBg(FileHandler.BG_DEAD);
         } else {
             logo.text = "해냈다 해냈어!";
-            bg = FileHandler.BG_WIN;
+            setBg(FileHandler.BG_WIN);
         }
         mainButton = new MainButton();
     }

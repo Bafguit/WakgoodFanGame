@@ -41,7 +41,7 @@ public class BattleScreen extends AbstractScreen {
     public AbstractPlayer currentPlayer;
 
     public BattleScreen() {
-        bg = FileHandler.BG_BATTLE;
+        setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         nameText = new NameText();
         effectText = new EffectText();
