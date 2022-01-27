@@ -27,11 +27,18 @@ public class UpTextEffect extends AbstractEffect {
     @Override
     protected void renderEffect(SpriteBatch sb) {
         if(duration != baseDuration) {
-            text.fontData.font.getColor().a -= Gdx.graphics.getDeltaTime();
-            if(text.fontData.font.getColor().a < 0) text.fontData.font.getColor().a = 0;
-            text.y += Gdx.graphics.getDeltaTime() * 100;
-            text.fontData.font.getData().setScale(text.fontData.font.getScaleY() - Gdx.graphics.getDeltaTime() / 2);
+            if(text.fontData != null) {
+                text.fontData.font.getColor().a -= Gdx.graphics.getDeltaTime();
+                if (text.fontData.font.getColor().a < 0) text.fontData.font.getColor().a = 0;
+                text.y += Gdx.graphics.getDeltaTime() * 100;
+                text.fontData.font.getData().setScale(text.fontData.font.getScaleY() - Gdx.graphics.getDeltaTime() / 2);
+            }
         }
         text.render(sb);
+    }
+
+    @Override
+    public void dispose() {
+        text.dispose();
     }
 }

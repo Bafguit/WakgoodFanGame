@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractTalent;
@@ -203,7 +204,7 @@ public class FontHandler {
         return "[" + String.format("#%06X", (0xFFFFFF & rgb888(color))) + "]";
     }
 
-    public static class FontData {
+    public static class FontData implements Disposable {
         public BitmapFont font;
         public FontType type;
         public Color color;
@@ -228,6 +229,11 @@ public class FontHandler {
 
         public final FontData cpy() {
             return new FontData(type, (int) size, color);
+        }
+
+        @Override
+        public void dispose() {
+            font.dispose();
         }
     }
 

@@ -178,6 +178,7 @@ public class Labyrintale extends Game {
 	public void setScreen (Screen screen) {
 		if (this.screen != null) {
 			this.screen.hide();
+			this.screen.dispose();
 			if (this.screen instanceof AbstractScreen) {
 				((AbstractScreen) this.screen).effectHandler.removeAll();
 			}
@@ -209,6 +210,7 @@ public class Labyrintale extends Game {
 			Screen s = game.tempScreen.get(i);
 			if(s == screen) {
 				s.hide();
+				s.dispose();
 				if (s instanceof AbstractScreen) {
 					((AbstractScreen) s).effectHandler.removeAll();
 				}

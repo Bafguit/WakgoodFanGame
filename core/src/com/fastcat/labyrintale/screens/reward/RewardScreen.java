@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.screens.shop.ShopItemButton;
 
 public class RewardScreen extends AbstractScreen {
 
@@ -60,7 +61,11 @@ public class RewardScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-
+        rewardTypeText.dispose();
+        passButton.dispose();
+        for(RewardItemButton t : rewardButtons) {
+            t.dispose();
+        }
     }
 
     public enum RewardScreenType {

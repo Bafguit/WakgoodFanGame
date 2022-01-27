@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
@@ -20,7 +21,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.generate;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
-public abstract class AbstractUI {
+public abstract class AbstractUI implements Disposable {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
@@ -179,8 +180,7 @@ public abstract class AbstractUI {
     }
 
     public void dispose() {
-        img.getTexture().dispose();
-        fontData.font.dispose();
+        if(fontData != null) fontData.font.dispose();
     }
 
     public void setText(String text) {

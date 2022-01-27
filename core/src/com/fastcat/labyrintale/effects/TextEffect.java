@@ -28,4 +28,9 @@ public class TextEffect extends AbstractEffect {
         }
         text.render(sb);
     }
+
+    @Override
+    public void dispose() {
+        text.dispose();
+    }
 }

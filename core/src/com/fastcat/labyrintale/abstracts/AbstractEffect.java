@@ -2,8 +2,9 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Disposable;
 
-public abstract class AbstractEffect {
+public abstract class AbstractEffect implements Disposable {
 
     public float baseDuration;
     public float duration;
@@ -24,6 +25,7 @@ public abstract class AbstractEffect {
             }
             renderEffect(sb);
             TickDuration();
+            if(isDone) dispose();
         }
     }
 
@@ -34,4 +36,8 @@ public abstract class AbstractEffect {
     }
 
     protected abstract void renderEffect(SpriteBatch sb);
+
+    public void dispose() {
+
+    }
 }

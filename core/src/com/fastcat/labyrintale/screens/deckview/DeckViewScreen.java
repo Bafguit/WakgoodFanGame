@@ -173,7 +173,16 @@ public class DeckViewScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-
+        nextDeckPageButton.dispose();
+        preDeckPageButton.dispose();
+        backToPreButton.dispose();
+        info.dispose();
+        upInfo.dispose();
+        skillNameText.dispose();
+        skillEffectText.dispose();
+        pageText.dispose();
+        upNameText.dispose();
+        upEffectText.dispose();
     }
 
     public enum InfoType {

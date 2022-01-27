@@ -281,6 +281,10 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-
+        skillInfo.dispose();
+        statusInfo.dispose();
+        nameText.dispose();
+        effectText.dispose();
+        effectText2.dispose();
     }
 }
