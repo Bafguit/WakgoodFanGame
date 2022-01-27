@@ -5,6 +5,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.fastcat.labyrintale.Labyrintale;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
-public class FileHandler {
+public class FileHandler implements Disposable {
 
     //Json
     public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
@@ -167,5 +168,59 @@ public class FileHandler {
 
     public static Texture getCardBg(PlayerClass playerClass) {
         return new Texture("spell_1024.png");
+    }
+
+    @Override
+    public void dispose() {
+        BG_BLACK.getTexture().dispose();
+        BG_MAIN.getTexture().dispose();
+        BG_DEAD.getTexture().dispose();
+        BG_WIN.getTexture().dispose();
+        BG_MAP.getTexture().dispose();
+        BG_CHARSELECT.getTexture().dispose();
+        BG_BATTLE.getTexture().dispose();
+        FADE.getTexture().dispose();
+        TURN_BG.getTexture().dispose();
+        CARD_BG.getTexture().dispose();
+        MENU_SELECT.getTexture().dispose();
+        CHAR_SELECT.getTexture().dispose();
+        BACK.getTexture().dispose();
+        NEXT.getTexture().dispose();
+        DECK.getTexture().dispose();
+        DRAW.getTexture().dispose();
+        GOLD.getTexture().dispose();
+        DISCARD.getTexture().dispose();
+        REWARD_CARD.getTexture().dispose();
+        ENTITY_POINT.getTexture().dispose();
+        PLAYER_POINT.getTexture().dispose();
+        for(Sprite s : charImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : charBgImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : advImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : advBgImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : advSkillImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : skillImg.values()) {
+            s.getTexture().dispose();
+        }
+        for(Sprite s : skillImgBig.values()) {
+            s.getTexture().dispose();
+        }
+
+        //지울 것들
+        NEKO_ATLAS.dispose();
+        BURGER.getTexture().dispose();
+        BURGER_BG.getTexture().dispose();
+        BURGER_S.getTexture().dispose();
+        SKILL_POISON.getTexture().dispose();
+        SKILL_SPIKE.getTexture().dispose();
     }
 }

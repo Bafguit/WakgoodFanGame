@@ -22,7 +22,7 @@ import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
 import static com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.*;
 
-public class FontHandler {
+public class FontHandler implements Disposable {
 
     private static final FreeTypeFontGenerator light = new FreeTypeFontGenerator(Gdx.files.internal("font/museumL.ttf"));
     private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/museumM.ttf"));
@@ -34,17 +34,13 @@ public class FontHandler {
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
-    public static final FontData LOGO = new FontData(BOLD, 100, false);
-    public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false);
-    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, false);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false);
-    public static final FontData BLOCK = new FontData(MEDIUM, 20, true);
-    public static final FontData HP = new FontData(MEDIUM, 19, false);
-    public static final FontData DAMAGE = new FontData(MEDIUM, 20, true, GOLD, LIGHT_GRAY);
-    public static final FontData BLOCKED = new FontData(MEDIUM, 20, true, SKY, LIGHT_GRAY);
-    public static final FontData HEAL = new FontData(MEDIUM, 20, true, CHARTREUSE, LIGHT_GRAY);
-    public static final FontData STATUS = new FontData(MEDIUM, 14, false);
+    public static final FontData LOGO = new FontData(BOLD, 100, false, true);
+    public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false, true);
+    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, false, true);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false, true);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false, true);
+    public static final FontData BLOCK = new FontData(MEDIUM, 20, true, true);
+    public static final FontData HP = new FontData(MEDIUM, 19, false, true);
 
     private static Texture imgG = new Texture("orb.png");
 
@@ -200,6 +196,20 @@ public class FontHandler {
         font.draw(sb, layout, x, ry);
     }
 
+    @Override
+    public void dispose() {
+        light.dispose();
+        medium.dispose();
+        bold.dispose();
+        LOGO.dispose();
+        MAIN_MENU.dispose();
+        CARD_BIG_ORB.dispose();
+        CARD_BIG_NAME.dispose();
+        CARD_BIG_DESC.dispose();
+        BLOCK.dispose();
+        HP.dispose();
+    }
+
     public static String getHexColor(Color color) {
         return "[" + String.format("#%06X", (0xFFFFFF & rgb888(color))) + "]";
     }
@@ -210,6 +220,12 @@ public class FontHandler {
         public Color color;
         public int size;
         public float scale = 1.0f;
+        public boolean isStatic = false;
+
+        public FontData(FontType type, int size, boolean border, boolean stc) {
+            this(type, size, border, WHITE, DARK_GRAY);
+            isStatic = stc;
+        }
 
         public FontData(FontType type, int size, boolean border) {
             this(type, size, border, WHITE, DARK_GRAY);

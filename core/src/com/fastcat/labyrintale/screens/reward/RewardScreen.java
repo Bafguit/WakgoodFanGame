@@ -61,8 +61,6 @@ public class RewardScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        rewardTypeText.dispose();
-        passButton.dispose();
         for(RewardItemButton t : rewardButtons) {
             t.dispose();
         }
