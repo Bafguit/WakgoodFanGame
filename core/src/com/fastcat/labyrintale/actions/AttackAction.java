@@ -31,7 +31,7 @@ public class AttackAction extends AbstractAction {
             if(target.size > 0) {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    te.takeDamage(actor, damage);
+                    if(te.isAlive()) te.takeDamage(actor, damage);
                 }
                 if(actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);
