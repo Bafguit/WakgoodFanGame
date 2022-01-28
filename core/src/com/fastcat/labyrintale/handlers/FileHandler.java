@@ -22,7 +22,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
 public class FileHandler implements Disposable {
 
-    //Json
+    //json
     public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
     public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
     public static final JsonValue CARD_JSON_WAK = generateJson("json/skill/wakCards.json");
@@ -57,11 +57,13 @@ public class FileHandler implements Disposable {
     public static final Sprite GOLD = new Sprite(new Texture("img/ui/gold.png"));
     public static final Sprite DISCARD = new Sprite(new Texture("img/ui/discard.png"));
     public static final Sprite REWARD_CARD = new Sprite(new Texture("img/ui/deck.png"));
-
-
     public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
+
+    //스파인 atlas
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
+
+    //스파인 json
     public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/test/char_5_neko.json");
 
     //캐릭터
@@ -69,16 +71,15 @@ public class FileHandler implements Disposable {
     public static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
-    public static final HashMap<AdvisorClass, Sprite> advSkillImg = new HashMap<>();
-
-    //참모
-    public static final Sprite BURGER = new Sprite(new Texture("img/advisor/burger.png"));
-    public static final Sprite BURGER_BG = new Sprite(new Texture("img/advisor/burger_bg.png"));
-    public static final Sprite BURGER_S = new Sprite(new Texture("img/advisor/burger_s.png"));
 
     //스킬
     public static final HashMap<String, Sprite> skillImg = new HashMap<>();
     public static final HashMap<String, Sprite> skillImgBig = new HashMap<>();
+
+    //지울 예정
+    public static final Sprite BURGER = new Sprite(new Texture("img/advisor/burger.png"));
+    public static final Sprite BURGER_BG = new Sprite(new Texture("img/advisor/burger_bg.png"));
+    public static final Sprite BURGER_S = new Sprite(new Texture("img/advisor/burger_s.png"));
     public static final Sprite SKILL_STRIKE = new Sprite(new Texture("img/skill/basic/Strike.png"));
     public static final Sprite SKILL_HEAL = new Sprite(new Texture("img/skill/basic/Heal.png"));
     public static final Sprite SKILL_LIGHT = new Sprite(new Texture("img/skill/basic/Light.png"));
@@ -87,7 +88,7 @@ public class FileHandler implements Disposable {
     public static final Sprite SKILL_SHIELD = new Sprite(new Texture("img/skill/basic/Barrier.png"));
     public static final Sprite SKILL_SPIKE = new Sprite(new Texture("img/skill/basic/Spike.png"));
 
-    public static void generateFile() {
+    public FileHandler() {
         generateCharImg();
         //generateAdvImg();
         generateCharImg();
@@ -107,7 +108,6 @@ public class FileHandler implements Disposable {
     private static void generateAdvImg() {
         advImg.clear();
         advBgImg.clear();
-        advSkillImg.clear();
         for(AdvisorClass cls : AdvisorClass.values()) {
             advImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + ".png")));
             advBgImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + "_bg.png")));
@@ -166,10 +166,6 @@ public class FileHandler implements Disposable {
         }
     }
 
-    public static Texture getCardBg(PlayerClass playerClass) {
-        return new Texture("spell_1024.png");
-    }
-
     @Override
     public void dispose() {
         BG_BLACK.getTexture().dispose();
@@ -203,9 +199,6 @@ public class FileHandler implements Disposable {
             s.getTexture().dispose();
         }
         for(Sprite s : advBgImg.values()) {
-            s.getTexture().dispose();
-        }
-        for(Sprite s : advSkillImg.values()) {
             s.getTexture().dispose();
         }
         for(Sprite s : skillImg.values()) {

@@ -92,6 +92,7 @@ public class Shop extends AbstractRoom {
     }
 
     private void generateItems() {
+        //스킬 생성
         int t = shopRandom.nextInt(100);
         int b, s;
         if(t >= 60) {

@@ -55,6 +55,7 @@ public class Labyrintale extends Game {
 	private FontHandler fontHandler;
 	private StringHandler stringHandler;
 	private SettingHandler settingHandler;
+	private FileHandler fileHandler;
 	public ActionHandler actionHandler;
 	public GroupHandler groupHandler;
 	public EffectHandler effectHandler;
@@ -74,7 +75,7 @@ public class Labyrintale extends Game {
 		sr = new SkeletonRenderer();
 		sr.setPremultipliedAlpha(true);
 		inputHandler = new InputHandler();
-		FileHandler.generateFile();
+		fileHandler = new FileHandler();
 		fontHandler = new FontHandler();
 		settingHandler = new SettingHandler();
 		actionHandler = new ActionHandler();
@@ -253,5 +254,6 @@ public class Labyrintale extends Game {
 	@Override
 	public void dispose () {
 		sb.dispose();
+		fileHandler.dispose();
 	}
 }

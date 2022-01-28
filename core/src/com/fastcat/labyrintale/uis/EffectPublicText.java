@@ -7,12 +7,13 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class EffectPublicText extends AbstractUI {
 
     public EffectPublicText(Sprite s, float width, float height) {
         super(s, -1000, -1000, width, height);
-        fontData = HP;
+        fontData = new FontData(MEDIUM, 19, false, true);
         text = "0";
         showImg = false;
     }
