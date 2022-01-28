@@ -33,7 +33,7 @@ public class AbstractLabyrinth {
     public static int removePrice = 50;
 
     public AbstractLabyrinth() {
-
+        this(RunType.NEW);
     }
 
     public AbstractLabyrinth(RunType type) {
