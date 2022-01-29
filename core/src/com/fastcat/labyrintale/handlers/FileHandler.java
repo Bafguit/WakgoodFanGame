@@ -59,6 +59,7 @@ public class FileHandler implements Disposable {
     public static final Sprite REWARD_CARD = new Sprite(new Texture("img/ui/deck.png"));
     public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
+    public static final Sprite CHAR_SKILL_REWARD = new Sprite(new Texture("img/ui/charSkillReward.png"));
 
     //스파인 atlas
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");

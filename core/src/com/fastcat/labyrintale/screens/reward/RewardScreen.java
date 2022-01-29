@@ -12,6 +12,7 @@ public class RewardScreen extends AbstractScreen {
 
     public BgImg bg = new BgImg();
     public RewardTypeText rewardTypeText;
+    public RewardInfoText rewardInfoText;
     public PassRewardButton passButton;
     public Array<RewardItemButton> rewardButtons = new Array<>();
     public Array<AbstractReward> rewards;
@@ -28,14 +29,21 @@ public class RewardScreen extends AbstractScreen {
         }
         rewardTypeText = new RewardTypeText(type);
         passButton = new PassRewardButton();
+        rewardInfoText = new RewardInfoText();
         sType = type;
     }
 
     @Override
     public void update() {
+        boolean isOver = false;
         for(RewardItemButton b : rewardButtons) {
             b.update();
+            if(b.over) {
+                isOver = true;
+                rewardInfoText.text = b.reward.desc;
+            }
         }
+        if(!isOver) rewardInfoText.text = "";
         passButton.update();
     }
 

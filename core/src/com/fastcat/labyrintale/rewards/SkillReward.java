@@ -1,28 +1,25 @@
 package com.fastcat.labyrintale.rewards;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 
-public class SkillReward extends AbstractReward {
+import java.util.HashMap;
 
-    public Array<AbstractSkill> skills;
+import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.COMMON;
 
-    public SkillReward(Array<AbstractSkill> skills) {
+public abstract class SkillReward extends AbstractReward {
+
+    public HashMap<AbstractPlayer, Array<AbstractSkill>> group = new HashMap<>();
+
+    public SkillReward(int cardAmount, Array<AbstractPlayer> ap) {
         super(RewardType.SKILL);
-        this.skills = skills;
-    }
-
-    public SkillReward(PlayerClass cls, SkillRewardType type, int amount) {
-        super(RewardType.SKILL);
-        skills = GroupHandler.SkillGroup.getRandomSkill(cls, type, amount);
-    }
-
-    @Override
-    public void takeReward() {
-
+        for(AbstractPlayer p : ap) {
+            group.put(p, GroupHandler.SkillGroup.getRandomSkill(p, COMMON, cardAmount));
+        }
     }
 
     public enum SkillRewardType {

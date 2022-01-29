@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 public abstract class AbstractReward {
 
     public Sprite img;
+    public String desc = "";
     public RewardType type;
     public boolean isDone = false;
 

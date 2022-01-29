@@ -7,12 +7,14 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
 import com.fastcat.labyrintale.rewards.SkillReward;
+import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 
 import java.util.HashMap;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.skillRandom;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
+import static com.fastcat.labyrintale.rewards.SkillReward.*;
 
 public class GroupHandler {
 
@@ -61,19 +63,20 @@ public class GroupHandler {
             //TODO 카드 처음 생성은 여기서
         }
 
-        public static Array<AbstractSkill> getRandomSkill(PlayerClass cls, SkillReward.SkillRewardType type, int amount) {
+        public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, SkillRewardType type, int amount) {
             Array<AbstractSkill> a = new Array<>();
-            Array<AbstractSkill> b = bronzeSkill.get(cls);
-            Array<AbstractSkill> s = silverSkill.get(cls);
-            Array<AbstractSkill> g = goldSkill.get(cls);
+            Array<AbstractSkill> b = bronzeSkill.get(p.playerClass);
+            Array<AbstractSkill> s = silverSkill.get(p.playerClass);
+            Array<AbstractSkill> g = goldSkill.get(p.playerClass);
             switch (type) {
                 case BRONZE:
                     staticShuffle(b);
                     for(int i = 0; i < amount; i++) {
                         AbstractSkill t;
-                        t = b.get(i).cpy();
+                        t = Objects.requireNonNull(b.get(i).cpy());
+                        t.owner = p;
                         if(skillRandom.nextInt(100) < UPGRADE) {
-                            Objects.requireNonNull(t).upgrade();
+                            t.upgrade();
                         }
                         a.add(t);
                     }
@@ -82,7 +85,8 @@ public class GroupHandler {
                     staticShuffle(s);
                     for(int i = 0; i < amount; i++) {
                         AbstractSkill t;
-                        t = s.get(i).cpy();
+                        t = Objects.requireNonNull(s.get(i).cpy());
+                        t.owner = p;
                         if(skillRandom.nextInt(100) < UPGRADE) {
                             Objects.requireNonNull(t).upgrade();
                         }
@@ -93,7 +97,8 @@ public class GroupHandler {
                     staticShuffle(g);
                     for(int i = 0; i < amount; i++) {
                         AbstractSkill t;
-                        t = g.get(i).cpy();
+                        t = Objects.requireNonNull(g.get(i).cpy());
+                        t.owner = p;
                         if(skillRandom.nextInt(100) < UPGRADE) {
                             Objects.requireNonNull(t).upgrade();
                         }
@@ -108,14 +113,15 @@ public class GroupHandler {
                         AbstractSkill t;
                         int r = skillRandom.nextInt(100);
                         if (r < BRONZE) {
-                            t = b.get(i).cpy();
+                            t = Objects.requireNonNull(b.get(i).cpy());
                         } else if(r < SILVER) {
-                            t = s.get(i).cpy();
+                            t = Objects.requireNonNull(s.get(i).cpy());
                         } else {
-                            t = g.get(i).cpy();
+                            t = Objects.requireNonNull(g.get(i).cpy());
                         }
+                        t.owner = p;
                         if(skillRandom.nextInt(100) < UPGRADE) {
-                            Objects.requireNonNull(t).upgrade();
+                            t.upgrade();
                         }
                         a.add(t);
                     }

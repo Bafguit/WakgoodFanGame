@@ -1,14 +1,10 @@
 package com.fastcat.labyrintale.rooms.other;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.fastcat.labyrintale.abstracts.AbstractAbility;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType;
 import com.fastcat.labyrintale.abstracts.AbstractSkill.SkillRarity;
+import com.fastcat.labyrintale.rewards.SkillReward;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillRarity.*;
@@ -49,7 +45,7 @@ public class Shop extends AbstractRoom {
         }
 
         public SkillItem(SkillRarity r, boolean sale) {
-            this(getRandomSkill(players[shopRandom.nextInt(4)].playerClass, SkillRewardType.valueOf(r.toString()), 1).get(0), sale);
+            this(getRandomSkill(players[shopRandom.nextInt(4)], SkillReward.SkillRewardType.valueOf(r.toString()), 1).get(0), sale);
         }
 
         public SkillItem(AbstractSkill skill, boolean sale) {
