@@ -1,2 +1,34 @@
 {
+  "Test1": {
+    "NAME": "Test1",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test2": {
+    "NAME": "Test2",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test3": {
+    "NAME": "Test3",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test4": {
+    "NAME": "Test4",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test5": {
+    "NAME": "Test5",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test6": {
+    "NAME": "Test6",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test7": {
+    "NAME": "Test7",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test8": {
+    "NAME": "Test8",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  }
 }

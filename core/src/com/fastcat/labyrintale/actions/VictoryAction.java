@@ -23,7 +23,7 @@ public class VictoryAction extends AbstractAction {
         } else if(isDone) {
             AbstractLabyrinth.currentFloor.currentRoom.done();
             Array<AbstractReward> temp = new Array<>();
-            //temp.add(new SkillRewardNormal(3));
+            temp.add(new SkillRewardNormal(2));
             temp.add(new GoldReward(20));
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
         }

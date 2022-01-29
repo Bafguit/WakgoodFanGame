@@ -2,5 +2,37 @@
   "Wakchori": {
     "NAME": "왁초리",
     "DESC": "피해를 {A} 줍니다. &y<객관안>을 {V} 얻습니다."
+  },
+  "Test71": {
+    "NAME": "Test71",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test72": {
+    "NAME": "Test72",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test73": {
+    "NAME": "Test73",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test74": {
+    "NAME": "Test74",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test75": {
+    "NAME": "Test75",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test76": {
+    "NAME": "Test76",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test77": {
+    "NAME": "Test77",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
+  },
+  "Test78": {
+    "NAME": "Test78",
+    "DESC": "&y<출혈>을 {V} 부여합니다."
   }
 }
