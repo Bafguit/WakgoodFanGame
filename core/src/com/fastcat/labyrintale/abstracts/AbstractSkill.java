@@ -31,6 +31,7 @@ public abstract class AbstractSkill implements Cloneable {
     public boolean isTrick = false;
     public boolean isDispose = false;
     public boolean removable = true;
+    public boolean canUse = true;
     public float uid;
     public int upgradeCount = 0;
     public int attack = 0;

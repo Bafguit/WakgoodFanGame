@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
@@ -75,28 +76,12 @@ public class SkillButton extends AbstractUI {
                     }
                 }
             }
-            if (!isInfo && isSkill) {
+            if (isSkill) {
                 if(skill.owner != null && !skill.owner.isAlive()) {
                     skill = null;
                 } else if(over) {
-                    Labyrintale.battleScreen.skillInfo.skill = skill;
-                    battleScreen.nameText.text = skill.name;
-                    battleScreen.effectText.text = skill.desc;
+                    AbstractLabyrinth.cPanel.info.setInfo(skill);
                     battleScreen.looking = getTargets(skill);
-                }
-            } else if (isInfo) {
-                boolean ov = false;
-                if (!battleScreen.advisor.over) {
-                    for (int i = 0; i < 4; i++) {
-                        if (battleScreen.charSkills[i].over || battleScreen.preSkills[i].over || battleScreen.enemySkills[i].over) {
-                            ov = true;
-                            break;
-                        }
-                    }
-                } else ov = true;
-                if (!ov) {
-                    skill = null;
-                    battleScreen.nameText.text = "";
                 }
             }
         }

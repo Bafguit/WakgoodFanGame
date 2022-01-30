@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -39,7 +40,9 @@ public class SkillRewardSkillButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        if(over) {
+            AbstractLabyrinth.cPanel.info.setInfo(skill);
+        }
     }
 
     @Override

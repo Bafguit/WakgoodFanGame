@@ -57,8 +57,8 @@ public class InfoPanel extends AbstractUI {
         }
     }
 
-    public void setInfo(Sprite img, String name, String desc, AbstractSkill s) {
-        setInfo(img, name, desc);
+    public void setInfo(AbstractSkill s) {
+        setInfo(s.img, s.name, s.desc);
         type = InfoType.SKILL;
         skill = s;
     }
