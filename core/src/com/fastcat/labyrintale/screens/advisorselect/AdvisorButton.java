@@ -2,23 +2,20 @@ package com.fastcat.labyrintale.screens.advisorselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
-    private final Sprite border = CHAR_SELECT;
+    private final Sprite border = BORDER;
     private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;
@@ -29,7 +26,7 @@ public class AdvisorButton extends AbstractUI {
     public AdvisorButton sChar;
 
     public AdvisorButton() {
-        super(CHAR_SELECT);
+        super(BORDER);
         showImg = false;
         isChar = false;
     }

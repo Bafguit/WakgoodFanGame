@@ -8,12 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
-import java.io.File;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -49,7 +45,10 @@ public class FileHandler implements Disposable {
     public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
     public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
-    public static final Sprite CHAR_SELECT = new Sprite(new Texture("img/charSelect.png"));
+    public static final Sprite BORDER = new Sprite(new Texture("img/border.png"));
+    public static final Sprite BORDER_B = new Sprite(new Texture("img/border_p.png"));
+    public static final Sprite BORDER_S = new Sprite(new Texture("img/border_s.png"));
+    public static final Sprite BORDER_SS = new Sprite(new Texture("img/border_ss.png"));
     public static final Sprite BACK = new Sprite(new Texture("img/back.png"));
     public static final Sprite NEXT = new Sprite(new Texture("img/next.png"));
     public static final Sprite DECK = new Sprite(new Texture("img/ui/deck.png"));
@@ -180,7 +179,10 @@ public class FileHandler implements Disposable {
         TURN_BG.getTexture().dispose();
         CARD_BG.getTexture().dispose();
         MENU_SELECT.getTexture().dispose();
-        CHAR_SELECT.getTexture().dispose();
+        BORDER.getTexture().dispose();
+        BORDER_B.getTexture().dispose();
+        BORDER_S.getTexture().dispose();
+        BORDER_SS.getTexture().dispose();
         BACK.getTexture().dispose();
         NEXT.getTexture().dispose();
         DECK.getTexture().dispose();

@@ -16,7 +16,7 @@ public class SkillString {
         generateString(CARD_JSON_INE);
         generateString(CARD_JSON_VIICHAN);
         generateString(CARD_JSON_LILPA);
-        generateString(CARD_JSON_BASIC);
+        generateString(CARD_JSON_BURGER);
         generateString(CARD_JSON_GOSEGU);
         generateString(CARD_JSON_JURURU);
         generateString(CARD_JSON_ADV);

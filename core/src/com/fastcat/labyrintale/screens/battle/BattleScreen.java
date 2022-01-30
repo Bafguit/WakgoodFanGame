@@ -54,14 +54,12 @@ public class BattleScreen extends AbstractScreen {
         endTurnButton = new EndTurnButton();
         statusInfo = new StatusButton();
         statusInfo.isInfo = true;
-        statusInfo.setScale(2.5f);
         statusInfo.setPosition(w * 0.55f, h * 0.2f - statusInfo.sHeight / 2);
-        skillInfo = new SkillButton();
+        skillInfo = new SkillButton(true);
         skillInfo.isInfo = true;
         skillInfo.isSkill = false;
         skillInfo.canClick = false;
         skillInfo.isCS = false;
-        skillInfo.setScale(2.5f);
         skillInfo.setPosition(w * 0.55f, h * 0.2f - skillInfo.sHeight / 2);
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
@@ -114,7 +112,6 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        Labyrintale.labyrinth.update();
         if(!currentPlayer.isAlive()) {
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer tp = players[i].player;

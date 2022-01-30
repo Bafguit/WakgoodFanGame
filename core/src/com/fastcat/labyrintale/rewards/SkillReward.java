@@ -13,12 +13,14 @@ import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.COMMON
 
 public abstract class SkillReward extends AbstractReward {
 
-    public HashMap<AbstractPlayer, Array<AbstractSkill>> group = new HashMap<>();
+    public HashMap<Integer, Array<AbstractSkill>> group = new HashMap<>();
 
     public SkillReward(int cardAmount, Array<AbstractPlayer> ap) {
         super(RewardType.SKILL);
-        for(AbstractPlayer p : ap) {
-            group.put(p, GroupHandler.SkillGroup.getRandomSkill(p, COMMON, cardAmount));
+        for(int i = 0; i < ap.size; i++) {
+            AbstractPlayer p = ap.get(i);
+            if(p.isAlive())
+                group.put(i, GroupHandler.SkillGroup.getRandomSkill(p, cardAmount));
         }
     }
 

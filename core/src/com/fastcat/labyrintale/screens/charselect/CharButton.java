@@ -2,24 +2,21 @@ package com.fastcat.labyrintale.screens.charselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.CharString;
 
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {
 
-    private final Sprite border = CHAR_SELECT;
+    private final Sprite border = BORDER;
     private Sprite bg;
     public CharString.CharData charData;
     public boolean showBg = false;
@@ -31,7 +28,7 @@ public class CharButton extends AbstractUI {
     public CharButton sChar;
 
     public CharButton() {
-        super(CHAR_SELECT);
+        super(BORDER);
         showImg = false;
         isChar = false;
     }

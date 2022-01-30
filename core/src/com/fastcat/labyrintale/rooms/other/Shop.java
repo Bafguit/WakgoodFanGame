@@ -45,7 +45,7 @@ public class Shop extends AbstractRoom {
         }
 
         public SkillItem(SkillRarity r, boolean sale) {
-            this(getRandomSkill(players[shopRandom.nextInt(4)], SkillReward.SkillRewardType.valueOf(r.toString()), 1).get(0), sale);
+            this(getRandomSkill(players[shopRandom.nextInt(4)], 1).get(0), sale);
         }
 
         public SkillItem(AbstractSkill skill, boolean sale) {

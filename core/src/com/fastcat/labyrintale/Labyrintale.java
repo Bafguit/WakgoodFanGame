@@ -97,6 +97,7 @@ public class Labyrintale extends Game {
 		inputHandler.update();
 		fontHandler.update();
 		actionHandler.update();
+		if(AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.update();
 		if(tempScreen.size > 0) {
 			Screen s = tempScreen.get(tempScreen.size - 1);
 			if(s instanceof AbstractScreen) {
@@ -126,6 +127,7 @@ public class Labyrintale extends Game {
 				if(s != null) s.render(Gdx.graphics.getDeltaTime());
 			}
 		}
+		if(AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
 		/** ============== */
 		fade();
 

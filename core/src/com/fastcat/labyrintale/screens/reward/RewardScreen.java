@@ -29,6 +29,7 @@ public class RewardScreen extends AbstractScreen {
         }
         rewardTypeText = new RewardTypeText(type);
         passButton = new PassRewardButton();
+        passButton.disable();
         rewardInfoText = new RewardInfoText();
         sType = type;
     }
@@ -36,7 +37,9 @@ public class RewardScreen extends AbstractScreen {
     @Override
     public void update() {
         boolean isOver = false;
+        int dc = 0;
         for(RewardItemButton b : rewardButtons) {
+            if(b.reward.isDone) dc++;
             b.update();
             if(b.over) {
                 isOver = true;
@@ -44,6 +47,7 @@ public class RewardScreen extends AbstractScreen {
             }
         }
         if(!isOver) rewardInfoText.text = "";
+        if(dc == rewardButtons.size && !passButton.enabled) passButton.enable();
         passButton.update();
     }
 

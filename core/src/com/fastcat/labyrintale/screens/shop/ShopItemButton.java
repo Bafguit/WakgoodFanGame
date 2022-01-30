@@ -4,15 +4,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.rooms.other.Shop;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 
 public class ShopItemButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private Sprite border = BORDER;
     public Shop.ShopItem item;
 
     public ShopItemButton(Shop.ShopItem re) {

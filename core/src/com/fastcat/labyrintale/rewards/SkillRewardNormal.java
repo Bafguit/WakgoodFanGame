@@ -1,7 +1,9 @@
 package com.fastcat.labyrintale.rewards;
 
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen;
 
 public class SkillRewardNormal extends SkillReward {
 
@@ -11,6 +13,6 @@ public class SkillRewardNormal extends SkillReward {
 
     @Override
     public void takeReward() {
-
+        Labyrintale.addTempScreen(new SkillRewardScreen(SkillRewardType.COMMON, this));
     }
 }

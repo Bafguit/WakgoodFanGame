@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.advisors.TestAdvisor;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.players.*;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.HashMap;
 
@@ -29,6 +30,7 @@ public class AbstractLabyrinth {
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
+    public static ControlPanel cPanel;
     public static int gold = 0;
     public static int removePrice = 50;
 
@@ -70,14 +72,12 @@ public class AbstractLabyrinth {
     private static String generateRandomSeed() {
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < 8; i++) {
-            int t = MathUtils.random(1, 3);
+            boolean t = MathUtils.randomBoolean();
             char c;
-            if(t == 3) {
+            if(t) {
                 c = (char) MathUtils.random(48, 57);
-            } else if(t == 2) {
-                c = (char) MathUtils.random(65, 90);
             } else {
-                c = (char) MathUtils.random(97, 122);
+                c = (char) MathUtils.random(65, 90);
             }
             s.append(c);
         }

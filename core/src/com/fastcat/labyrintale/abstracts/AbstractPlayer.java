@@ -23,9 +23,9 @@ public abstract class AbstractPlayer extends AbstractEntity {
         desc = temp.DESC;
         flavour = temp.FLV;
         pColor = c.cpy();
-        pColorW = c.cpy().mul(82.7f, 82.7f, 82.7f, 100);
-        pColorLG = c.cpy().mul(66.3f, 66.3f, 66.3f, 100);
-        pColorDG = c.cpy().mul(50, 50, 50, 100);
+        pColorW = c.cpy().mul(0.827f, 0.827f, 0.827f, 1);
+        pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
+        pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
     }
 
     public void update() {

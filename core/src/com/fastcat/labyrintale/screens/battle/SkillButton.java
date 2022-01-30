@@ -19,7 +19,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class SkillButton extends AbstractUI {
 
-    private final Sprite border = CHAR_SELECT;
+    private final Sprite border = BORDER;
     public AbstractSkill skill;
     public boolean isInfo = false;
     public boolean isOnLock = false;
@@ -31,11 +31,17 @@ public class SkillButton extends AbstractUI {
     public boolean available = true;
 
     public SkillButton() {
-        this(null);
+        super(BORDER);
+        fontData = CARD_BIG_DESC;
+    }
+
+    public SkillButton(boolean isBig) {
+        super(isBig ? BORDER_B : BORDER_S);
+        fontData = CARD_BIG_DESC;
     }
 
     public SkillButton(AbstractSkill skill) {
-        super(CHAR_SELECT);
+        super(BORDER);
         this.skill = skill;
         fontData = CARD_BIG_DESC;
     }

@@ -9,13 +9,13 @@ import com.fastcat.labyrintale.screens.deckview.DeckViewScreen.InfoType;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
+import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DeckSkillButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private Sprite border = BORDER;
     public AbstractSkill skill;
     public boolean isInfo = false;
 
@@ -27,7 +27,7 @@ public class DeckSkillButton extends AbstractUI {
     }
 
     public DeckSkillButton(AbstractSkill skill) {
-        super(CHAR_SELECT);
+        super(BORDER);
         this.skill = skill;
     }
 

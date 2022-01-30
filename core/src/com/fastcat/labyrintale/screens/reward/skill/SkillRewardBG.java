@@ -1,15 +1,11 @@
 package com.fastcat.labyrintale.screens.reward.skill;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.rewards.SkillReward;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
 import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SKILL_REWARD;
 
 public class SkillRewardBG extends AbstractUI {

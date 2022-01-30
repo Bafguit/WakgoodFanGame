@@ -1,26 +1,17 @@
 package com.fastcat.labyrintale.screens.reward;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen.InfoType;
 
-import java.util.Objects;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SELECT;
-import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
+import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class RewardItemButton extends AbstractUI {
 
-    private Sprite border = CHAR_SELECT;
+    private Sprite border = BORDER;
     public AbstractReward reward;
 
     public RewardItemButton(AbstractReward re) {

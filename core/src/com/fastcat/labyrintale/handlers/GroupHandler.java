@@ -56,16 +56,7 @@ public class GroupHandler {
 
     public static class SkillGroup {
 
-        private static final int BRONZE = 65; // 65%
-        private static final int SILVER = 95; // 30%
-        private static final int GOLD = 100; // 5%
-        private static final int UPGRADE = 10; // 10%
-        private static final int UPGRADE_UP = 20; // 20%
-
         public static final HashMap<PlayerClass, Array<AbstractSkill>> allSkill = new HashMap<>();
-        public static final HashMap<PlayerClass, Array<AbstractSkill>> bronzeSkill = new HashMap<>();
-        public static final HashMap<PlayerClass, Array<AbstractSkill>> silverSkill = new HashMap<>();
-        public static final HashMap<PlayerClass, Array<AbstractSkill>> goldSkill = new HashMap<>();
 
         public static void generateSkill() {
             generateBurger();
@@ -206,70 +197,17 @@ public class GroupHandler {
             allSkill.put(PlayerClass.WAK, t);
         }
 
-        public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, SkillRewardType type, int amount) {
+        public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {
             Array<AbstractSkill> a = new Array<>();
-            Array<AbstractSkill> b = bronzeSkill.get(p.playerClass);
-            Array<AbstractSkill> s = silverSkill.get(p.playerClass);
-            Array<AbstractSkill> g = goldSkill.get(p.playerClass);
-            switch (type) {
-                case BRONZE:
-                    staticShuffle(b);
-                    for(int i = 0; i < amount; i++) {
-                        AbstractSkill t;
-                        t = Objects.requireNonNull(b.get(i).cpy());
-                        t.owner = p;
-                        if(skillRandom.nextInt(100) < UPGRADE) {
-                            t.upgrade();
-                        }
-                        a.add(t);
-                    }
-                    return a;
-                case SILVER:
-                    staticShuffle(s);
-                    for(int i = 0; i < amount; i++) {
-                        AbstractSkill t;
-                        t = Objects.requireNonNull(s.get(i).cpy());
-                        t.owner = p;
-                        if(skillRandom.nextInt(100) < UPGRADE) {
-                            Objects.requireNonNull(t).upgrade();
-                        }
-                        a.add(t);
-                    }
-                    return a;
-                case GOLD:
-                    staticShuffle(g);
-                    for(int i = 0; i < amount; i++) {
-                        AbstractSkill t;
-                        t = Objects.requireNonNull(g.get(i).cpy());
-                        t.owner = p;
-                        if(skillRandom.nextInt(100) < UPGRADE) {
-                            Objects.requireNonNull(t).upgrade();
-                        }
-                        a.add(t);
-                    }
-                    return a;
-                default:
-                    staticShuffle(b);
-                    staticShuffle(s);
-                    staticShuffle(g);
-                    for(int i = 0; i < amount; i++) {
-                        AbstractSkill t;
-                        int r = skillRandom.nextInt(100);
-                        if (r < BRONZE) {
-                            t = Objects.requireNonNull(b.get(i).cpy());
-                        } else if(r < SILVER) {
-                            t = Objects.requireNonNull(s.get(i).cpy());
-                        } else {
-                            t = Objects.requireNonNull(g.get(i).cpy());
-                        }
-                        t.owner = p;
-                        if(skillRandom.nextInt(100) < UPGRADE) {
-                            t.upgrade();
-                        }
-                        a.add(t);
-                    }
-                    return a;
+            Array<AbstractSkill> b = allSkill.get(p.playerClass);
+            staticShuffle(b);
+            for(int i = 0; i < amount; i++) {
+                AbstractSkill t;
+                t = Objects.requireNonNull(b.get(i).cpy());
+                t.owner = p;
+                a.add(t);
             }
+            return a;
         }
 
         public static void staticShuffle(Array<AbstractSkill> array) {
