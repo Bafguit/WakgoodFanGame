@@ -15,13 +15,13 @@ public class EndRoundAction extends AbstractAction {
     protected void updateAction() {
         if(isDone) {
             for (int i = 0; i < 4; i++) {
-                battleScreen.preSkills[i].removeChar();
+                AbstractLabyrinth.cPanel.battlePanel.uSkill[i].resetImg();
                 battleScreen.players[i].player.shuffleHand();
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
             Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
             if(temp.size > 0) {
-                battleScreen.setCurrentPlayer((AbstractPlayer) temp.get(0));
+                AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
             }
         }
     }

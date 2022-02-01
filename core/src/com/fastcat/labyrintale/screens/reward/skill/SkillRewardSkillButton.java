@@ -41,7 +41,7 @@ public class SkillRewardSkillButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if(over) {
-            AbstractLabyrinth.cPanel.info.setInfo(skill);
+            AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
         }
     }
 

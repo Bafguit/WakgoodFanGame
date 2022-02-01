@@ -19,7 +19,7 @@ public class NextDeckPageButton extends AbstractUI {
         setPosition(Gdx.graphics.getWidth() * 0.345f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f - sHeight / 2);
         fontData = MAIN_MENU;
         text = "다음";
-        showImg = false;
+        disable();
     }
 
     @Override

@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
+import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_POISON;
+
 public abstract class AbstractStatus implements Cloneable {
 
     public String id;
@@ -21,6 +23,7 @@ public abstract class AbstractStatus implements Cloneable {
     public AbstractStatus(String id, Sprite img, AbstractEntity o, AbstractSkill.SkillTarget target) {
         this.id = id;
         this.img = img;
+        this.imgBig = SKILL_POISON;
         owner = o;
         this.target = target;
     }

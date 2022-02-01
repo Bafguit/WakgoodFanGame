@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
@@ -26,7 +27,7 @@ public class PlayerView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(battleScreen.currentPlayer == player) isOnLock = true;
+        if(AbstractLabyrinth.cPanel.battlePanel.curPlayer == player) isOnLock = true;
         else isOnLock = false;
 
         if(isLooking || (isOnLock) || over) showImg = true;
@@ -46,7 +47,7 @@ public class PlayerView extends AbstractUI {
     @Override
     protected void onClick() {
         if(player != null && player.isAlive()) {
-            battleScreen.setCurrentPlayer(player);
+            AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
         }
     }
 }

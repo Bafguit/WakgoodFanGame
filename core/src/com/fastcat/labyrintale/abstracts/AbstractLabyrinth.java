@@ -63,6 +63,7 @@ public class AbstractLabyrinth {
             }
             advisor = getAdvisorInstance(Labyrintale.advisorSelectScreen.advisor.selected);
         }
+        cPanel = new ControlPanel();
     }
 
     public void update() {

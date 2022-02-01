@@ -5,11 +5,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.status.TestStatus;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {
@@ -19,48 +20,24 @@ public class BattleScreen extends AbstractScreen {
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public NameText nameText;
-    public EffectText effectText;
-    public EffectText2 effectText2;
     public DrawPileButton drawPileButton;
     public DiscardPileButton discardPileButton;
     public EndTurnButton endTurnButton;
-    public SkillButton advisor;
-    public SkillButton skillInfo;
-    public StatusButton statusInfo;
     public StatusButton[][] playerStatus = new StatusButton[4][5];
     public StatusButton[][] enemyStatus = new StatusButton[4][5];
-    public SkillButton[] charSkills = new SkillButton[4];
-    public SkillButton[] preSkills = new SkillButton[4];
     public SkillButton[] enemySkills = new SkillButton[4];
     public PlayerView[] players = new PlayerView[4];
     public EnemyView[] enemies = new EnemyView[4];
     public boolean isEnemyTurn = false;
-    public boolean isLooking = false;
     public Array<AbstractEntity> looking;
-    public AbstractPlayer currentPlayer;
 
     public BattleScreen() {
+        cType = ControlPanel.ControlType.BATTLE;
         setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        nameText = new NameText();
-        effectText = new EffectText();
-        effectText2 = new EffectText2();
-        advisor = new SkillButton(AbstractLabyrinth.advisor.skill);
-        advisor.setPosition(w * 0.16f - advisor.sWidth / 2, h * 0.175f);
-        advisor.advisor = true;
         drawPileButton = new DrawPileButton();
         discardPileButton = new DiscardPileButton();
         endTurnButton = new EndTurnButton();
-        statusInfo = new StatusButton();
-        statusInfo.isInfo = true;
-        statusInfo.setPosition(w * 0.55f, h * 0.2f - statusInfo.sHeight / 2);
-        skillInfo = new SkillButton(true);
-        skillInfo.isInfo = true;
-        skillInfo.isSkill = false;
-        skillInfo.canClick = false;
-        skillInfo.isCS = false;
-        skillInfo.setPosition(w * 0.55f, h * 0.2f - skillInfo.sHeight / 2);
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.5f);
@@ -90,42 +67,35 @@ public class BattleScreen extends AbstractScreen {
                 enemyStatus[i][j] = t2;
             }
 
-            SkillButton s = new SkillButton();
-            s.setPosition(w * 0.42f - w * 0.06f * i - s.sWidth / 2, h * 0.175f);
-            charSkills[i] = s;
-
-            SkillButton s2 = new SkillButton();
-            s2.setPosition(w * 0.410f + w * 0.06f * i - s.sWidth / 2, h * 0.35f);
-            s2.isCS = false;
-            preSkills[i] = s2;
-
             SkillButton s3 = new SkillButton();
             s3.setScale(0.5f);
             s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.775f);
-            s3.isCS = false;
             s3.canClick = false;
             enemySkills[i] = s3;
             setEnemy(enemies[i].enemy, i);
         }
-        setCurrentPlayer(players[0].player);
+        for(int i = 0; i < 4; i++) {
+            AbstractPlayer p = AbstractLabyrinth.players[i];
+            if(p.isAlive()) {
+                cPanel.battlePanel.setPlayer(p);
+                break;
+            }
+        }
     }
 
     @Override
     public void update() {
-        if(!currentPlayer.isAlive()) {
+        if(!cPanel.battlePanel.curPlayer.isAlive()) {
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer tp = players[i].player;
                 if(tp.isAlive()) {
-                    setCurrentPlayer(tp);
+                    cPanel.battlePanel.setPlayer(tp);
                     break;
                 }
             }
         }
-        if(skillInfo.skill == null && statusInfo.status == null) {
-            isLooking = false;
+        if(!cPanel.infoPanel.show) {
             looking = DEF_LOOK;
-        } else {
-            isLooking = true;
         }
         for(int i = 0; i < 4; i++) {
             PlayerView pv = players[i];
@@ -150,16 +120,7 @@ public class BattleScreen extends AbstractScreen {
                 enemySkills[i].skill = ev.enemy.hand[0];
                 enemySkills[i].update();
             }
-            charSkills[i].skill = currentPlayer.hand[i];
-            charSkills[i].update();
-            preSkills[i].update();
         }
-        advisor.update();
-        skillInfo.update();
-        statusInfo.update();
-        nameText.update();
-        effectText.update();
-        effectText2.update();
         drawPileButton.update();
         discardPileButton.update();
         endTurnButton.update();
@@ -244,22 +205,10 @@ public class BattleScreen extends AbstractScreen {
             if (enemies[i].enemy.isAlive()) {
                 enemySkills[i].render(sb);
             }
-            charSkills[i].render(sb);
-            preSkills[i].render(sb);
         }
-        advisor.render(sb);
-        skillInfo.render(sb);
-        statusInfo.render(sb);
-        nameText.render(sb);
-        effectText.render(sb);
-        effectText2.render(sb);
         drawPileButton.render(sb);
         discardPileButton.render(sb);
         endTurnButton.render(sb);
-    }
-
-    public void setCurrentPlayer(AbstractPlayer p) {
-        currentPlayer = p;
     }
 
     public void setEnemy(AbstractEnemy e, int index) {
@@ -278,10 +227,6 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        skillInfo.dispose();
-        statusInfo.dispose();
-        nameText.dispose();
-        effectText.dispose();
-        effectText2.dispose();
+
     }
 }

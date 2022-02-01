@@ -7,11 +7,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public abstract class AbstractScreen implements Screen {
 
     public final Labyrintale game = Labyrintale.game;
     public final EffectHandler effectHandler = new EffectHandler();
+    public ControlPanel.ControlType cType = ControlPanel.ControlType.HIDE;
     private Sprite bg;
 
     public abstract void update();

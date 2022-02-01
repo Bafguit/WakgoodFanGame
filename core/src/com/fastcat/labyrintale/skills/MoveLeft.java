@@ -1,7 +1,10 @@
 package com.fastcat.labyrintale.skills;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.MoveAction;
 
 public class MoveLeft extends AbstractSkill {
 
@@ -16,7 +19,16 @@ public class MoveLeft extends AbstractSkill {
 
     @Override
     public void use() {
-        //위치 변경
+        bot(new MoveAction((AbstractPlayer) owner, true));
+    }
+
+    @Override
+    public boolean canUse() {
+        for(int i = 0; i < 4; i++) {
+            AbstractPlayer t = AbstractLabyrinth.players[i];
+            if(t == owner) return i < 3;
+        }
+        return false;
     }
 
     @Override

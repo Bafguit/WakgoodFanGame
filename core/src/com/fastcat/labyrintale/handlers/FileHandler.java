@@ -45,6 +45,7 @@ public class FileHandler implements Disposable {
     public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
     public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
+    public static final Sprite CONTROL_PANEL = new Sprite(new Texture("img/ui/cPanel.png"));
     public static final Sprite BORDER = new Sprite(new Texture("img/border.png"));
     public static final Sprite BORDER_B = new Sprite(new Texture("img/border_p.png"));
     public static final Sprite BORDER_S = new Sprite(new Texture("img/border_s.png"));
@@ -179,6 +180,7 @@ public class FileHandler implements Disposable {
         TURN_BG.getTexture().dispose();
         CARD_BG.getTexture().dispose();
         MENU_SELECT.getTexture().dispose();
+        CONTROL_PANEL.getTexture().dispose();
         BORDER.getTexture().dispose();
         BORDER_B.getTexture().dispose();
         BORDER_S.getTexture().dispose();

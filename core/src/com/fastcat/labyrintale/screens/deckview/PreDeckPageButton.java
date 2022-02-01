@@ -20,6 +20,7 @@ public class PreDeckPageButton extends AbstractUI {
         fontData = MAIN_MENU;
         text = "이전";
         showImg = false;
+        disable();
     }
 
     @Override

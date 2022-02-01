@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.actions.WaitAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
@@ -35,24 +36,15 @@ public class EndTurnButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(!battleScreen.isEnemyTurn && !ActionHandler.isRunning) {
+            for(AbstractPlayer p : players) {
+                if(p.isAlive()) {
+                    for (AbstractStatus s : p.status) {
+                        if (s != null) s.endOfTurn();
+                    }
+                }
+            }
             ActionHandler.bot(new TurnChangeAction(true));
             ActionHandler.bot(new WaitAction(0.5f));
-            /*for(AbstractPlayer p : players) {
-                for(AbstractStatus s : p.status) {
-                    if(s != null) s.startOfTurn();
-                }
-            }
-            for (int i = 0; i < 4; i++) {
-                SkillButton ts = battleScreen.preSkills[i];
-                if (ts.skill != null) {
-                    ts.skill.useCard();
-                }
-            }
-            for(AbstractPlayer p : players) {
-                for(AbstractStatus s : p.status) {
-                    if(s != null) s.endOfTurn();
-                }
-            }*/
             for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
                 if(e.isAlive()) {
                     for (int i = 0; i < 5; i++) {

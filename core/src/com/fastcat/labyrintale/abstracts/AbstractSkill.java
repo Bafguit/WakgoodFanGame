@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -233,11 +234,79 @@ public abstract class AbstractSkill implements Cloneable {
         return temp;
     }
 
+    public String getTargetString() {
+        switch(target) {
+            case SELF:
+                return "●";
+            case P_F:
+                return "○○○●　○○○○";
+            case E_F:
+                return "○○○○　●○○○";
+            case P_L:
+                return "●○○○　○○○○";
+            case E_L:
+                return "○○○○　○○○●";
+            case P_DF:
+                return "○○●●　○○○○";
+            case E_DF:
+                return "○○○○　●●○○";
+            case P_DL:
+                return "●●○○　○○○○";
+            case E_DL:
+                return "○○○○　○○●●";
+            case P_ALL:
+                return "●●●●　○○○○";
+            case E_ALL:
+                return "○○○○　●●●●";
+            case ALL:
+                return "●●●●　●●●●";
+            default:
+                return "";
+        }
+    }
+
+    public static String getTargetString(AbstractSkill.SkillTarget target) {
+        switch(target) {
+            case SELF:
+                return "●";
+            case P_F:
+                return "○○○●　○○○○";
+            case E_F:
+                return "○○○○　●○○○";
+            case P_L:
+                return "●○○○　○○○○";
+            case E_L:
+                return "○○○○　○○○●";
+            case P_DF:
+                return "○○●●　○○○○";
+            case E_DF:
+                return "○○○○　●●○○";
+            case P_DL:
+                return "●●○○　○○○○";
+            case E_DL:
+                return "○○○○　○○●●";
+            case P_ALL:
+                return "●●●●　○○○○";
+            case E_ALL:
+                return "○○○○　●●●●";
+            case ALL:
+                return "●●●●　●●●●";
+            default:
+                return "";
+        }
+    }
+
     public final void useCard() {
-        if(rarity == SkillRarity.ADVISOR) {
-            battleScreen.advisor.canClick = false;
+        if(owner != null) {
+            for (AbstractStatus s : owner.status) {
+                if (s != null) s.onUseCard(this);
+            }
         }
         use();
+    }
+
+    public boolean canUse() {
+        return true;
     }
 
     protected abstract void use();

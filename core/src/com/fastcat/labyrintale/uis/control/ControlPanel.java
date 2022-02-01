@@ -1,56 +1,54 @@
 package com.fastcat.labyrintale.uis.control;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.MoveLeft;
-import com.fastcat.labyrintale.skills.MoveRight;
+import com.badlogic.gdx.utils.Disposable;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
-public class ControlPanel {
+import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.BATTLE;
+import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.HIDE;
 
-    public InfoPanel info;
+public class ControlPanel implements Disposable {
+
+    public InfoPanel infoPanel;
+    public BattlePanel battlePanel;
+    public Sprite bg;
+    public ControlType type;
 
     public ControlPanel() {
-        info = new InfoPanel();
+        infoPanel = new InfoPanel();
+        battlePanel = new BattlePanel();
+        bg = FileHandler.CONTROL_PANEL;
+        bg.setSize(bg.getWidth() * InputHandler.scale, bg.getHeight() * InputHandler.scale);
+        bg.setPosition((Gdx.graphics.getWidth() - bg.getWidth()) * 0.5f, 0);
     }
 
     public void update() {
-        info.update();
-    }
-
-    public void render(SpriteBatch sb) {
-        info.render(sb);
-    }
-
-    public static class BattleGroup {
-        public SkillButtonPanel[] skill = new SkillButtonPanel[4];
-        public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
-        public SkillButtonPanel aSkill;
-
-        public BattleGroup() {
-            AbstractPlayer p;
-            mSkill[0] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-            mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-            for(int i = 0; i < 4; i++) {
-                skill[i] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-            }
-
-            for(int i = 0; i < 4; i++) {
-                p = AbstractLabyrinth.players[i];
-                if(p.isAlive()) {
-                    for(int j = 0; j < 4; j++) {
-                        skill[j].skill = p.hand[3 - j];
-                    }
-                    mSkill[0].skill = p.mLeft;
-                    mSkill[1].skill = p.mRight;
-                    break;
-                }
-            }
+        type = Labyrintale.getCurScreen().cType;
+        if(type != HIDE) {
+            infoPanel.update();
+            if (type == BATTLE) battlePanel.update();
         }
     }
 
+    public void render(SpriteBatch sb) {
+        if(type != HIDE) {
+            bg.draw(sb);
+            if (type == BATTLE) battlePanel.render(sb);
+            infoPanel.render(sb);
+        }
+    }
+
+    @Override
+    public void dispose() {
+        infoPanel.dispose();
+        battlePanel.dispose();
+    }
+
     public enum ControlType {
-        BATTLE, MAP, DECKVIEW, REWARD, SHOP
+        BATTLE, MAP, DECKVIEW, REWARD, SHOP, HIDE
     }
 }

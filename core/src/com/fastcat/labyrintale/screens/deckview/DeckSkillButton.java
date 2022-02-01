@@ -39,7 +39,7 @@ public class DeckSkillButton extends AbstractUI {
 
             if(showImg && skill != null) {
                 sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
-                if(isInfo) renderCenter(sb, fontData, getTargetString(skill.target), x, y - sHeight * 0.1f, sWidth, sHeight);
+                if(isInfo) renderCenter(sb, fontData, AbstractSkill.getTargetString(skill.target), x, y - sHeight * 0.1f, sWidth, sHeight);
             }
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
@@ -85,37 +85,6 @@ public class DeckSkillButton extends AbstractUI {
                 s.upEffectText.setPosition(w * 0.69f, h * 0.6f - 45 * scale);
             }
             s.upInfo.enable();
-        }
-    }
-
-    public static String getTargetString(AbstractSkill.SkillTarget target) {
-        switch(target) {
-            case SELF:
-                return "●";
-            case P_F:
-                return "○○○●　○○○○";
-            case E_F:
-                return "○○○○　●○○○";
-            case P_L:
-                return "●○○○　○○○○";
-            case E_L:
-                return "○○○○　○○○●";
-            case P_DF:
-                return "○○●●　○○○○";
-            case E_DF:
-                return "○○○○　●●○○";
-            case P_DL:
-                return "●●○○　○○○○";
-            case E_DL:
-                return "○○○○　○○●●";
-            case P_ALL:
-                return "●●●●　○○○○";
-            case E_ALL:
-                return "○○○○　●●●●";
-            case ALL:
-                return "●●●●　●●●●";
-            default:
-                return "";
         }
     }
 

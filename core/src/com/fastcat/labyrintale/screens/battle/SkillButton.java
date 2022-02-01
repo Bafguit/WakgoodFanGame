@@ -3,15 +3,15 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
+import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
@@ -29,34 +29,20 @@ public class SkillButton extends AbstractUI {
     public boolean isSelected = false;
     public boolean canClick = true;
     public boolean advisor = false;
-    public boolean available = true;
 
     public SkillButton() {
         super(BORDER);
         fontData = CARD_BIG_DESC;
     }
 
-    public SkillButton(boolean isBig) {
-        super(isBig ? BORDER_B : BORDER_S);
-        fontData = CARD_BIG_DESC;
-    }
-
-    public SkillButton(AbstractSkill skill) {
-        super(BORDER);
-        this.skill = skill;
-        fontData = CARD_BIG_DESC;
-    }
-
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isSelected || !available || (advisor && !canClick) || (isRunning && (advisor || isCS))) sb.setColor(Color.DARK_GRAY);
+            if(isSelected) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(skill != null) {
                 if (showImg) sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
-                if (isInfo)
-                    renderCenter(sb, fontData, DeckSkillButton.getTargetString(Objects.requireNonNull(skill).target), x, y - sHeight * 0.1f, sWidth, sHeight);
             }
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
@@ -66,53 +52,12 @@ public class SkillButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if(skill != null) {
-            if (isCS) {
-                isSelected = false;
-                for (int i = 0; i < 4; i++) {
-                    SkillButton ss = battleScreen.preSkills[i];
-                    if (ss.isOnLock && skill == ss.skill) {
-                        isSelected = true;
-                        break;
-                    }
-                }
-            }
             if (isSkill) {
                 if(skill.owner != null && !skill.owner.isAlive()) {
                     skill = null;
                 } else if(over) {
-                    AbstractLabyrinth.cPanel.info.setInfo(skill);
+                    cPanel.infoPanel.setInfo(skill);
                     battleScreen.looking = getTargets(skill);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onOver() {
-
-    }
-
-    @Override
-    protected void onClick() {
-        if(!isInfo && canClick && !battleScreen.isEnemyTurn && !isRunning) {
-            if(isCS) {
-                if(!isSelected) {
-                    if(advisor || skill.isTrick) {
-                        skill.useCard();
-                    } else {
-                        for (int i = 0; i < 4; i++) {
-                            SkillButton chb = battleScreen.preSkills[i];
-                            if (!chb.isOnLock && chb.available) {
-                                chb.isOnLock = true;
-                                chb.skill = skill;
-                                chb.showImg = true;
-                                chb.img = img;
-                                chb.isSelected = true;
-                                skill.useCard();
-                                break;
-                            }
-                        }
-                    }
                 }
             }
         }
