@@ -4,8 +4,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.skills.MoveLeft;
-import com.fastcat.labyrintale.skills.MoveRight;
+import com.fastcat.labyrintale.skills.player.MoveLeft;
+import com.fastcat.labyrintale.skills.player.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
 
 public abstract class AbstractPlayer extends AbstractEntity {

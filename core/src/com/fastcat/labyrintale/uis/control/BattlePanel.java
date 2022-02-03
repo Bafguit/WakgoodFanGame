@@ -14,7 +14,6 @@ public class BattlePanel implements Disposable {
     public AbstractPlayer curPlayer;
 
     public BattlePanel() {
-        AbstractPlayer p;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
         aSkill.setPosition(w * 0.11f - aSkill.sWidth / 2, h * 0.225f);

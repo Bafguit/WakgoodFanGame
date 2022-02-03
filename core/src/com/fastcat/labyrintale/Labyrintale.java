@@ -174,7 +174,8 @@ public class Labyrintale extends Game {
 	}
 
 	public static AbstractScreen getCurScreen() {
-		return (AbstractScreen) game.screen;
+		if(game.tempScreen.size > 0) return (AbstractScreen) game.tempScreen.get(game.tempScreen.size - 1);
+		else return (AbstractScreen) game.screen;
 	}
 
 	@Override

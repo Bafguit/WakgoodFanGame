@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.rewards.SkillReward;
 import com.fastcat.labyrintale.rewards.SkillRewardNormal;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.rewards.SkillReward.*;
 
@@ -19,6 +20,7 @@ public class SkillRewardScreen extends AbstractScreen {
     public final Array<SkillRewardGroup> groups = new Array<>();
 
     public SkillRewardScreen(SkillRewardType type, SkillReward r) {
+        cType = ControlPanel.ControlType.REWARD;
         SkillRewardGroup.screen = this;
         this.type = type;
         reward = r;

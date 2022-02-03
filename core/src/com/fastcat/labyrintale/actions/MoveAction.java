@@ -50,7 +50,9 @@ public class MoveAction extends AbstractAction {
             AbstractLabyrinth.players[index0] = AbstractLabyrinth.players[index1];
             AbstractLabyrinth.players[index1] = temp;
             Labyrintale.battleScreen.players[index0].player = AbstractLabyrinth.players[index0];
+            Labyrintale.battleScreen.players[index0].player.ui = Labyrintale.battleScreen.players[index0];
             Labyrintale.battleScreen.players[index1].player = temp;
+            Labyrintale.battleScreen.players[index1].player.ui = Labyrintale.battleScreen.players[index1];
             cPanel.battlePanel.setPlayer(temp);
         }
     }
