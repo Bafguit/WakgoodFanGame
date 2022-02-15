@@ -14,8 +14,10 @@ public class AbstractFloor {
     public AbstractRoom entryRoom;
     public AbstractRoom[] upRooms = new AbstractRoom[5];
     public AbstractRoom[] downRooms = new AbstractRoom[5];
+    public AbstractRoom[] rooms = new AbstractRoom[12];
     public AbstractRoom bossRoom;
     public AbstractRoom currentRoom;
+    public AbstractWay way;
     public boolean canBoss;
     public int floorNum;
     public int roomNum;
@@ -35,6 +37,9 @@ public class AbstractFloor {
         for(int i = 0; i < 5; i++) {
             upRooms[i] = new Test();
             downRooms[i] = new Test();
+        }
+        for(int i = 0; i < 12; i++) {
+            rooms[i] = new Test();
         }
         bossRoom = new TestBoss();
         setDirection(NONE);
