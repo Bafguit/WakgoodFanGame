@@ -18,6 +18,7 @@ public class MapScreen extends AbstractScreen {
     public boolean glow = false;
     public float alpha = 1.0f;
 
+    public MapNodeButton[] nodes = new MapNodeButton[13];
     public MapNodeButton entryNode;
     public MapNodeButton[] upNodes = new MapNodeButton[5];
     public MapNodeButton[] downNodes = new MapNodeButton[5];
@@ -25,18 +26,15 @@ public class MapScreen extends AbstractScreen {
 
     public MapScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        entryNode = new MapNodeButton(currentFloor.entryRoom);
-        entryNode.setPosition(w * 0.2f - entryNode.sWidth / 2, h / 2 - entryNode.sHeight / 2);
-        for(int i = 0; i < 5; i++) {
-            MapNodeButton node = new MapNodeButton(currentFloor.upRooms[i]);
-            node.setPosition(w * 0.1f * (i + 3) - node.sWidth / 2, h * 0.6f - node.sHeight / 2);
-            upNodes[i] = node;
-            MapNodeButton node2 = new MapNodeButton(currentFloor.downRooms[i]);
-            node2.setPosition(w * 0.1f * (i + 3) - node2.sWidth / 2, h * 0.4f - node2.sHeight / 2);
-            downNodes[i] = node2;
+        nodes[0] = new MapNodeButton(currentFloor.entryRoom);
+        nodes[0].setPosition(w * 0.1f - entryNode.sWidth / 2, h * 0.5f - entryNode.sHeight / 2);
+        for(int i = 1; i < 12; i++) {
+            MapNodeButton node = new MapNodeButton(currentFloor.rooms[i]);
+            node.setPosition(w * 0.1f * (i + 3) - node.sWidth / 2, h * 0.5f - node.sHeight / 2);
+            nodes[i] = node;
         }
-        bossNode = new MapNodeButton(currentFloor.bossRoom);
-        bossNode.setPosition(w * 0.8f - bossNode.sWidth / 2, h / 2 - bossNode.sHeight / 2);
+        nodes[12] = new MapNodeButton(currentFloor.bossRoom);
+        nodes[12].setPosition(w * 0.9f - bossNode.sWidth / 2, h / 2 - bossNode.sHeight / 2);
         setBg(FileHandler.BG_MAP);
     }
 
