@@ -5,23 +5,20 @@ import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.common.Test;
 import com.fastcat.labyrintale.rooms.other.Placeholder;
 
-import static com.fastcat.labyrintale.abstracts.AbstractFloor.NodeType.*;
-import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
+import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
 public class AbstractFloor {
     public Array<AbstractEnemy> enemyList;
 
     public AbstractRoom entryRoom;
-    public AbstractRoom[] upRooms = new AbstractRoom[5];
-    public AbstractRoom[] downRooms = new AbstractRoom[5];
-    public AbstractRoom[] rooms = new AbstractRoom[12];
+    public AbstractRoom[] rooms = new AbstractRoom[13];
     public AbstractRoom bossRoom;
     public AbstractRoom currentRoom;
-    public AbstractWay way;
+    public AbstractWay currentWay;
+    public AbstractWay[] ways = new AbstractWay[13];
     public boolean canBoss;
     public int floorNum;
-    public int roomNum;
-    public NodeType nt;
+    public int num;
 
     public AbstractFloor() {
         this(1);
@@ -30,35 +27,41 @@ public class AbstractFloor {
     public AbstractFloor(int f) {
         this.floorNum = f;
         this.canBoss = false;
-        this.roomNum = 0;
-        entryRoom = new Placeholder();
+        this.num = 0;
+        rooms[0] = entryRoom = new Placeholder();
         entryRoom.done();
-        currentRoom = entryRoom;
-        for(int i = 0; i < 5; i++) {
-            upRooms[i] = new Test();
-            downRooms[i] = new Test();
-        }
-        for(int i = 0; i < 12; i++) {
+        for(int i = 1; i < 12; i++) {
             rooms[i] = new Test();
         }
-        bossRoom = new TestBoss();
-        setDirection(NONE);
-    }
+        rooms[12] = bossRoom = new TestBoss();
 
-    public void setDirection(NodeType dir) {
-        if(dir == UP) {
-            for(int i = 0; i < 5; i++) {
-                downRooms[i].done();
-            }
-        } else if(dir == DOWN) {
-            for(int i = 0; i < 5; i++) {
-                upRooms[i].done();
-            }
+        ways[0] = new AbstractWay(generateWay(ENTRY), ENTRY);
+        for(int i = 1; i < 4; i++) {
+            ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
         }
-        nt = dir;
+        ways[4] = new AbstractWay(generateWay(ELITE), ELITE);
+        for(int i = 5; i < 8; i++) {
+            ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
+        }
+        ways[8] = new AbstractWay(generateWay(ELITE), ELITE);
+        for(int i = 9; i < 12; i++) {
+            ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
+        }
+        ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
     }
 
-    public enum NodeType {
-        NONE, UP, DOWN
+    private Array<AbstractRoom> generateWay(AbstractWay.WayType type) {
+        Array<AbstractRoom> t = new Array<>();
+        if(type == ENTRY) {
+            //TODO 여기에 길 정보 입력
+            //겁나힘들다 슈바...
+        }
+        return t;
+    }
+
+    public void addNum() {
+        num++;
+        currentWay = ways[num];
+        currentRoom = rooms[num];
     }
 }

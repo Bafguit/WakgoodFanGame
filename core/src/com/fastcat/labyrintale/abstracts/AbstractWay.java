@@ -7,20 +7,21 @@ public class AbstractWay {
     public Sprite img;
     public String name;
     public String desc;
+    public WayType type;
     public AbstractRoom[] rooms;
 
-    public AbstractWay(AbstractRoom r) {
+    public AbstractWay(AbstractRoom r, WayType t) {
         rooms = new AbstractRoom[1];
         rooms[0] = r;
+        type = t;
     }
 
-    public AbstractWay(int way, Array<AbstractRoom> s) {
-        rooms = new AbstractRoom[way];
-        for(int i = 0; i < way; i++) {
-            if(i < s.size) {
-                AbstractRoom temp = s.get(i);
-                rooms[i] = temp;
-            } else break;
-        }
+    public AbstractWay(Array<AbstractRoom> s, WayType t) {
+        rooms = s.toArray();
+        type = t;
+    }
+
+    public enum WayType {
+        ENTRY, REST, NORMAL, ELITE, BOSS
     }
 }

@@ -27,6 +27,7 @@ public class AbstractLabyrinth {
     public static RandomXS128 eventRandom;
     public static RandomXS128 shopRandom;
     public static ActionHandler actionHandler;
+    public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
@@ -57,7 +58,9 @@ public class AbstractLabyrinth {
             monsterRandom = new RandomXS128(seedLong);
             eventRandom = new RandomXS128(seedLong);
             shopRandom = new RandomXS128(seedLong);
+            floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
+            floors[0] = currentFloor;
             for (int i = 0; i < 4; i++) {
                 players[i] = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
             }

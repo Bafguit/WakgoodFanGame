@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
+import com.fastcat.labyrintale.screens.way.WayScreen;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.*;
@@ -51,15 +53,12 @@ public class MapNodeButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(!room.isDone && canGo && !mapScreen.isView) {
-            if(currentFloor.roomNum == 4) {
-                currentFloor.canBoss = true;
-            } else {
-                currentFloor.roomNum++;
-            }
-            currentFloor.currentRoom = room;
-            if (room.type == RoomType.BATTLE || room.type == RoomType.ELITE || room.type == RoomType.BOSS) {
+            currentFloor.addNum();
+            if(currentFloor.currentWay.type == AbstractWay.WayType.BOSS) {
                 battleScreen = new BattleScreen();
                 fadeOutAndChangeScreen(battleScreen);
+            } else {
+                addTempScreen(new WayScreen());
             }
         }
     }

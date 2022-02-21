@@ -1,14 +1,12 @@
 package com.fastcat.labyrintale.screens.map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractFloor.NodeType.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 public class MapScreen extends AbstractScreen {
@@ -20,8 +18,6 @@ public class MapScreen extends AbstractScreen {
 
     public MapNodeButton[] nodes = new MapNodeButton[13];
     public MapNodeButton entryNode;
-    public MapNodeButton[] upNodes = new MapNodeButton[5];
-    public MapNodeButton[] downNodes = new MapNodeButton[5];
     public MapNodeButton bossNode;
 
     public MapScreen() {
@@ -40,24 +36,12 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(currentFloor.nt == NONE) {
-            if(upNodes[0].room.isDone) currentFloor.setDirection(UP);
-            else if (downNodes[0].room.isDone) currentFloor.setDirection(DOWN);
+        for(int i = 0; i < 12; i++) {
+            nodes[i].canGo = i <= currentFloor.num;
+            nodes[i].update();
         }
-        entryNode.update();
-        for(int i = 0; i < 5; i++) {
-            if(i > currentFloor.roomNum) {
-                upNodes[i].canGo = false;
-                downNodes[i].canGo = false;
-            } else {
-                upNodes[i].canGo = true;
-                downNodes[i].canGo = true;
-            }
-            upNodes[i].update();
-            downNodes[i].update();
-        }
-        bossNode.canGo = currentFloor.canBoss;
-        bossNode.update();
+        nodes[12].canGo = currentFloor.canBoss;
+        nodes[12].update();
 
         if(!Labyrintale.fading) {
             if (!glow) {
@@ -78,7 +62,7 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.end();
+        /*sb.end();
 
         shr.begin(ShapeRenderer.ShapeType.Line);
         shr.setColor(Color.DARK_GRAY);
@@ -134,13 +118,10 @@ public class MapScreen extends AbstractScreen {
         }
         shr.end();
 
-        sb.begin();
-        entryNode.render(sb);
-        for(int i = 0; i < 5; i++) {
-            upNodes[i].render(sb);
-            downNodes[i].render(sb);
+        sb.begin();*/
+        for(int i = 0; i < 13; i++) {
+            nodes[i].render(sb);
         }
-        bossNode.render(sb);
     }
 
     @Override
