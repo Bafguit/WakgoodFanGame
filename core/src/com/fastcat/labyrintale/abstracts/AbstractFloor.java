@@ -28,7 +28,7 @@ public class AbstractFloor {
         this.floorNum = f;
         this.canBoss = false;
         this.num = 0;
-        rooms[0] = entryRoom = new Placeholder();
+        rooms[0] = entryRoom = new Test();
         entryRoom.done();
         for(int i = 1; i < 12; i++) {
             rooms[i] = new Test();

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.map;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
@@ -19,14 +20,14 @@ public class MapNodeButton extends AbstractUI {
 
     private final Sprite border = BORDER;
     public boolean canGo = true;
-    public AbstractRoom room;
+    public AbstractWay way;
 
-    public MapNodeButton(AbstractRoom room) {
-        super(getWak(room.type));
-        this.room = room;
+    public MapNodeButton(AbstractWay w) {
+        super(getWak(w.type));
+        this.way = w;
     }
 
-    private static Sprite getWak(RoomType type) {
+    private static Sprite getWak(AbstractWay.WayType type) {
         return BURGER; //TODO 나중에 수정
     }
 
@@ -37,13 +38,17 @@ public class MapNodeButton extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(!room.isDone) {
-                if (!over && canGo) {
-                    sb.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, mapScreen.alpha);
-                }
-                else if (!canGo || mapScreen.isView) sb.setColor(Color.LIGHT_GRAY);
+            if(!way.isDone) {
+                if(canGo) {
+                    if (over) {
+                        sb.setColor(WHITE);
+                    } else {
+                        if (!mapScreen.isView) sb.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+                        else sb.setColor(Color.LIGHT_GRAY);
+                    }
+                } else sb.setColor(Color.LIGHT_GRAY);
             } else sb.setColor(Color.DARK_GRAY);
-            if(currentFloor.currentRoom == room && !room.isDone) sb.setColor(WHITE);
+            //if(currentFloor.currentWay == way && !way.isDone) sb.setColor(WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(WHITE);
@@ -52,7 +57,8 @@ public class MapNodeButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!room.isDone && canGo && !mapScreen.isView) {
+        /*
+        if(!way.isDone && canGo && !mapScreen.isView) {
             currentFloor.addNum();
             if(currentFloor.currentWay.type == AbstractWay.WayType.BOSS) {
                 battleScreen = new BattleScreen();
@@ -60,6 +66,12 @@ public class MapNodeButton extends AbstractUI {
             } else {
                 addTempScreen(new WayScreen());
             }
+        }*/
+        if(canGo) {
+            currentFloor.currentRoom = currentFloor.rooms[currentFloor.num];
+            currentFloor.currentWay = way;
+            battleScreen = new BattleScreen();
+            Labyrintale.fadeOutAndChangeScreen(battleScreen);
         }
     }
 }

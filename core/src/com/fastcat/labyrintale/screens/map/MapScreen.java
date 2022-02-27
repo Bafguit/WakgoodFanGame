@@ -1,12 +1,18 @@
 package com.fastcat.labyrintale.screens.map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 public class MapScreen extends AbstractScreen {
@@ -21,27 +27,32 @@ public class MapScreen extends AbstractScreen {
     public MapNodeButton bossNode;
 
     public MapScreen() {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        nodes[0] = new MapNodeButton(currentFloor.entryRoom);
-        nodes[0].setPosition(w * 0.1f - entryNode.sWidth / 2, h * 0.5f - entryNode.sHeight / 2);
-        for(int i = 1; i < 12; i++) {
-            MapNodeButton node = new MapNodeButton(currentFloor.rooms[i]);
-            node.setPosition(w * 0.1f * (i + 3) - node.sWidth / 2, h * 0.5f - node.sHeight / 2);
-            nodes[i] = node;
+        cType = ControlPanel.ControlType.MAP;
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
+        entryNode = nodes[0] = new MapNodeButton(currentFloor.ways[0]);
+        entryNode.setPosition(b - entryNode.sWidth / 2, h * 0.85f - entryNode.sHeight / 2);
+        int c = 1;
+        float ww = b + w * 0.0333f;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 4; j++) {
+                ww += w * (j == 3 ? 0.1f : 0.0667f);
+                MapNodeButton node = new MapNodeButton(currentFloor.ways[c]);
+                node.setPosition(ww - node.sWidth / 2, h * (0.85f - 0.15f * i) - node.sHeight / 2);
+                nodes[c] = node;
+                c++;
+            }
+            ww -= w * 0.0667f;
         }
-        nodes[12] = new MapNodeButton(currentFloor.bossRoom);
-        nodes[12].setPosition(w * 0.9f - bossNode.sWidth / 2, h / 2 - bossNode.sHeight / 2);
+        bossNode = nodes[12];
         setBg(FileHandler.BG_MAP);
     }
 
     @Override
     public void update() {
-        for(int i = 0; i < 12; i++) {
-            nodes[i].canGo = i <= currentFloor.num;
+        for(int i = 0; i < 13; i++) {
+            nodes[i].canGo = i == currentFloor.num;
             nodes[i].update();
         }
-        nodes[12].canGo = currentFloor.canBoss;
-        nodes[12].update();
 
         if(!Labyrintale.fading) {
             if (!glow) {
@@ -62,63 +73,39 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        /*sb.end();
+        sb.end();
 
         shr.begin(ShapeRenderer.ShapeType.Line);
         shr.setColor(Color.DARK_GRAY);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        switch (currentFloor.nt) {
-            case UP:
-                shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.6f);
-                for(int i = 1; i < 5; i++) {
-                    MapNodeButton temp = upNodes[i];
-                    if(upNodes[i - 1].room.isDone && !temp.room.isDone && !isView) {
-                        if(temp.over) shr.setColor(Color.WHITE);
-                        else shr.setColor(alpha, alpha, alpha, alpha);
-                    }
-                    else if(!temp.room.isDone) shr.setColor(Color.LIGHT_GRAY);
-                    shr.line(w * 0.1f * (i + 2) + entryNode.sWidth / 2, h * 0.6f, w * 0.1f * (i + 3) - entryNode.sWidth / 2, h * 0.6f);
-                }
-                if(!bossNode.room.isDone) {
-                    if(bossNode.canGo && !isView) {
-                        if(bossNode.over) shr.setColor(Color.WHITE);
-                        else shr.setColor(alpha, alpha, alpha, alpha);
-                    }
-                    else shr.setColor(Color.LIGHT_GRAY);
-                }
-                shr.line(w * 0.7f + entryNode.sWidth / 2, h * 0.6f, w * 0.8f - entryNode.sWidth / 2, h / 2);
-                break;
-            case DOWN:
-                shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.4f);
-                for(int i = 1; i < 5; i++) {
-                    MapNodeButton temp = downNodes[i];
-                    if(downNodes[i - 1].room.isDone && !temp.room.isDone && !isView) {
-                        if(temp.over) shr.setColor(Color.WHITE);
-                        else shr.setColor(alpha, alpha, alpha, alpha);
-                    }
-                    else if(!temp.room.isDone) shr.setColor(Color.LIGHT_GRAY);
-                    shr.line(w * 0.1f * (i + 2) + entryNode.sWidth / 2, h * 0.4f, w * 0.1f * (i + 3) - entryNode.sWidth / 2, h * 0.4f);
-                }
-                if(!bossNode.room.isDone) {
-                    if(bossNode.canGo && !isView) {
-                        if(bossNode.over) shr.setColor(Color.WHITE);
-                        else shr.setColor(alpha, alpha, alpha, alpha);
-                    }
-                    else shr.setColor(Color.LIGHT_GRAY);
-                }
-                shr.line(w * 0.7f + entryNode.sWidth / 2, h * 0.4f, w * 0.8f - entryNode.sWidth / 2, h / 2);
-                break;
-            default:
-                if(upNodes[0].over && !isView) shr.setColor(Color.WHITE);
-                else shr.setColor(alpha, alpha, alpha, alpha);
-                shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.6f);
-                if(downNodes[0].over && !isView) shr.setColor(Color.WHITE);
-                else shr.setColor(alpha, alpha, alpha, alpha);
-                shr.line(w * 0.2f + entryNode.sWidth / 2, h / 2, w * 0.3f - entryNode.sWidth / 2, h * 0.4f);
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), sw = entryNode.sWidth / 2, sh = entryNode.sHeight / 2;
+
+        int c = 1;
+        Vector2 v1 = new Vector2(), v2 = new Vector2();
+        v1.set(w * 0.1f, h * 0.85f);
+        v2.set(w * 0.1333f, h * 0.85f);
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 4; j++) {
+                v2.add(w * (j == 3 ? 0.1f : 0.0667f), 0);
+                MapNodeButton n = nodes[c];
+                if(!n.way.isDone) {
+                    if(n.canGo) {
+                        if (n.over) {
+                            shr.setColor(WHITE);
+                        } else {
+                            if (!mapScreen.isView && nodes[c - 1].way.isDone) shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+                            else shr.setColor(Color.LIGHT_GRAY);
+                        }
+                    } else shr.setColor(Color.LIGHT_GRAY);
+                } else shr.setColor(Color.DARK_GRAY);
+                shr.line(v1, v2);
+                v1.set(v2);
+                c++;
+            }
+            v2.sub(w * 0.0667f, h * 0.15f);
         }
         shr.end();
 
-        sb.begin();*/
+        sb.begin();
         for(int i = 0; i < 13; i++) {
             nodes[i].render(sb);
         }

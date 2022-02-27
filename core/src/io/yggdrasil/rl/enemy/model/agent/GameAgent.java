@@ -54,7 +54,7 @@ public class GameAgent implements MDP<GameState, Integer, DiscreteSpace> {
         //logger.info("Enemy: --- new episode started. ---");
 
         if (Labyrintale.getCurScreen() instanceof BattleScreen)
-            ((BattleScreen) Labyrintale.getCurScreen()).reset();
+            Labyrintale.battleScreen = new BattleScreen();
 
         environment = new GameEnvironment();
 

@@ -21,7 +21,9 @@ public class VictoryAction extends AbstractAction {
         if(duration == baseDuration) {
             ActionHandler.clear();
         } else if(isDone) {
+            AbstractLabyrinth.currentFloor.currentWay.done(); //TODO 삭제 요망
             AbstractLabyrinth.currentFloor.currentRoom.done();
+            AbstractLabyrinth.currentFloor.addNum(); //TODO 삭제 요망
             Array<AbstractReward> temp = new Array<>();
             temp.add(new SkillRewardNormal(2));
             temp.add(new GoldReward(20));
