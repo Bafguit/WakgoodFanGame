@@ -60,9 +60,6 @@ project(":core") {
 
 
     dependencies {
-        implementation "org.nd4j:nd4j-native-platform:1.0.0-beta7"
-        implementation "ch.qos.logback:logback-classic:1.1.7"
-        implementation "org.deeplearning4j:rl4j-core:1.0.0-M1.1"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
