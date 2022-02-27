@@ -52,13 +52,11 @@ public class SkillButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if(skill != null) {
-            if (isSkill) {
-                if(skill.owner != null && !skill.owner.isAlive()) {
-                    skill = null;
-                } else if(over) {
-                    cPanel.infoPanel.setInfo(skill);
-                    battleScreen.looking = getTargets(skill);
-                }
+            if(skill.owner != null && !skill.owner.isAlive()) {
+                skill = null;
+            } else if(over) {
+                cPanel.infoPanel.setInfo(skill);
+                battleScreen.looking = getTargets(skill);
             }
         }
     }

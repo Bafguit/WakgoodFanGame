@@ -98,14 +98,19 @@ public class BattleScreen extends AbstractScreen {
         }
         if(!cPanel.infoPanel.show) {
             looking = DEF_LOOK;
+        } else if(cPanel.infoPanel.skill != null) {
+            looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
         }
+
         for(int i = 0; i < 4; i++) {
             PlayerView pv = players[i];
-            pv.isLooking = looking.contains(pv.player, false);
-            pv.update();
             EnemyView ev = enemies[i];
-            ev.isLooking = looking.contains(ev.enemy,  false);
-            ev.update();
+
+            if (ev.enemy.isAlive()) {
+                enemySkills[i].skill = ev.enemy.hand[0];
+                enemySkills[i].update();
+            }
+
             for(int j = 0; j < 5; j++) {
                 if (pv.player.isAlive()) {
                     StatusButton ts = playerStatus[i][j];
@@ -118,10 +123,15 @@ public class BattleScreen extends AbstractScreen {
                     ts.update();
                 }
             }
-            if (ev.enemy.isAlive()) {
-                enemySkills[i].skill = ev.enemy.hand[0];
-                enemySkills[i].update();
-            }
+        }
+
+        for(int i = 0; i < 4; i++) {
+            PlayerView pv = players[i];
+            pv.isLooking = looking.contains(pv.player, false);
+            pv.update();
+            EnemyView ev = enemies[i];
+            ev.isLooking = looking.contains(ev.enemy,  false);
+            ev.update();
         }
         drawPileButton.update();
         discardPileButton.update();

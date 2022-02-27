@@ -40,7 +40,6 @@ public class SkillButtonPanel extends AbstractUI {
         if(over) {
             if(skill != null) {
                 cPanel.infoPanel.setInfo(skill);
-                battleScreen.looking = getTargets(skill);
             }
         }
     }
