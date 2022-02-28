@@ -19,7 +19,10 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 public class FileHandler implements Disposable {
 
     //json
+    public static final JsonValue ADV_JSON = generateJson("json/advisors.json");
     public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
+    public static final JsonValue CHOICE_JSON = generateJson("json/choices.json");
+    public static final JsonValue STATUS_JSON = generateJson("json/status.json");
     public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
     public static final JsonValue CARD_JSON_WAK = generateJson("json/skill/wakCards.json");
     public static final JsonValue CARD_JSON_MANAGER = generateJson("json/skill/managerCards.json");
@@ -43,7 +46,6 @@ public class FileHandler implements Disposable {
     //UI
     public static final Sprite FADE = new Sprite(new Texture("img/fade.png"));
     public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
-    public static final Sprite CARD_BG = new Sprite(new Texture("card.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
     public static final Sprite CONTROL_PANEL = new Sprite(new Texture("img/ui/cPanel.png"));
     public static final Sprite BORDER = new Sprite(new Texture("img/border.png"));
@@ -178,7 +180,6 @@ public class FileHandler implements Disposable {
         BG_BATTLE.getTexture().dispose();
         FADE.getTexture().dispose();
         TURN_BG.getTexture().dispose();
-        CARD_BG.getTexture().dispose();
         MENU_SELECT.getTexture().dispose();
         CONTROL_PANEL.getTexture().dispose();
         BORDER.getTexture().dispose();

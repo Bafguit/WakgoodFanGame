@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.uis.CardPanel;
 
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 

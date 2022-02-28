@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class SkillString {
 
-    public final HashMap<String, SkillData> skillData = new HashMap<>();
+    private final HashMap<String, SkillData> data = new HashMap<>();
 
     public SkillString() {
         generateString(CARD_JSON_BASIC);
@@ -40,13 +40,13 @@ public class SkillString {
                 if (temp != null) {
                     data.EX_DESC = temp.asStringArray();
                 }
-                skillData.put(id, data);
+                this.data.put(id, data);
             }
         }
     }
 
     public SkillData get(String id) {
-        return skillData.get(id);
+        return data.get(id);
     }
 
     public static class SkillData {

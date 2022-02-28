@@ -11,8 +11,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.abstracts.AbstractTalent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -110,10 +108,6 @@ public class FontHandler implements Disposable {
 
     public static void renderKeywordCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         renderLine(sb, fontData, text, getHexColor(CHARTREUSE) + "$1" + getHexColor(fontData.color), "$1", x, y, bw, bh);
-    }
-
-    public static void renderSkillCenter(SpriteBatch sb, AbstractTalent skill, FontData fontData, String text, float x, float y, float bw, float bh) {
-        renderLine(sb, fontData, text, skill.getKeyColor("$1") + skill.getKeyValue("$1") + getHexColor(fontData.color), skill.getKeyValue("$1"), x, y, bw, bh);
     }
 
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, Vector2 vector, float bw, float bh) {

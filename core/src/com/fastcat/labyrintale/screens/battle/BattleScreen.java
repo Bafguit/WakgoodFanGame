@@ -42,8 +42,8 @@ public class BattleScreen extends AbstractScreen {
         endTurnButton = new EndTurnButton();
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
-            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.5f);
-            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.525f);
+            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
+            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
             pv.player.newDeck();
             pv.player.shuffleHand();
             pv.player.status[0] = new TestStatus(pv.player);
@@ -52,8 +52,8 @@ public class BattleScreen extends AbstractScreen {
 
 
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
-            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.5f);
-            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.525f);
+            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
+            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.575f);
             ev.enemy.newDeck();
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;
@@ -61,17 +61,17 @@ public class BattleScreen extends AbstractScreen {
 
             for(int j = 0; j < 5; j++) {
                 StatusButton t = new StatusButton(pv.player.status[j]);
-                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.014f * j - pv.sWidth / 2, h * 0.47f);
+                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.014f * j - pv.sWidth / 2, h * 0.52f);
                 playerStatus[i][j] = t;
 
                 StatusButton t2 = new StatusButton(ev.enemy.status[j]);
-                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.014f * j + ev.sWidth / 2 - t2.sWidth, h * 0.47f);
+                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.014f * j + ev.sWidth / 2 - t2.sWidth, h * 0.52f);
                 enemyStatus[i][j] = t2;
             }
 
             SkillButton s3 = new SkillButton();
             s3.setScale(0.5f);
-            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.775f);
+            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.825f);
             s3.canClick = false;
             enemySkills[i] = s3;
             setEnemy(enemies[i].enemy, i);

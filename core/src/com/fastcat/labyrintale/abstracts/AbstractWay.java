@@ -8,17 +8,17 @@ public class AbstractWay {
     public String name;
     public String desc;
     public WayType type;
-    public AbstractRoom[] rooms;
+    public AbstractChoice[] choices;
     public boolean isDone = false;
 
-    public AbstractWay(AbstractRoom r, WayType t) {
-        rooms = new AbstractRoom[1];
-        rooms[0] = r;
+    public AbstractWay(AbstractChoice c, WayType t) {
+        choices = new AbstractChoice[1];
+        choices[0] = c;
         type = t;
     }
 
-    public AbstractWay(Array<AbstractRoom> s, WayType t) {
-        rooms = s.toArray(AbstractRoom.class);
+    public AbstractWay(Array<AbstractChoice> s, WayType t) {
+        choices = s.toArray(AbstractChoice.class);
         type = t;
     }
 

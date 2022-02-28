@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class AbstractLabyrinth {
 
-    public static Array<AbstractTalent> talentTree;
     public static HashMap<AbstractPlayer, Array<AbstractSkill>> skillList;
 
     public static long seed0;

@@ -22,7 +22,7 @@ public class WayScreen extends AbstractScreen {
 
     public WayScreen(AbstractWay wy) {
         way = wy;
-        wayCount = way.rooms.length;
+        wayCount = way.choices.length;
         buttons = new WaySelectButton[wayCount];
         icons = new WayIcon[wayCount];
         desc = new WayDesc[wayCount];
@@ -35,7 +35,7 @@ public class WayScreen extends AbstractScreen {
             WayDesc d = desc[i] = new WayDesc(way.desc);
             d.setPosition(tw - d.sWidth / 2, h * 0.55f - d.sHeight / 2);
 
-            WaySelectButton b = buttons[i] = new WaySelectButton(this, c, d, way.rooms[i]);
+            WaySelectButton b = buttons[i] = new WaySelectButton(this, c, d, way.choices[i]);
             b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
         }
     }

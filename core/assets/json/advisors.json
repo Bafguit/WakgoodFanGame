@@ -7,10 +7,6 @@
     "NAME": "비밀소녀",
     "DESC": "DESCRIPTION"
   },
-  "kimchi": {
-    "NAME": "김치만두번영택사스가",
-    "DESC": "DESCRIPTION"
-  },
   "ruseok": {
     "NAME": "해루석",
     "DESC": "DESCRIPTION"
@@ -45,6 +41,18 @@
   },
   "haku": {
     "NAME": "미츠네 하쿠",
+    "DESC": "DESCRIPTION"
+  },
+  "business": {
+    "NAME": "비즈니스킴",
+    "DESC": "DESCRIPTION"
+  },
+  "freeter": {
+    "NAME": "프리터",
+    "DESC": "DESCRIPTION"
+  },
+  "yungterr": {
+    "NAME": "카르나르 융터르",
     "DESC": "DESCRIPTION"
   }
 }

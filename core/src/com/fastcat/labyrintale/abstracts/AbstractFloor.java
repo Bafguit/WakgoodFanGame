@@ -50,8 +50,8 @@ public class AbstractFloor {
         ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
     }
 
-    private Array<AbstractRoom> generateWay(AbstractWay.WayType type) {
-        Array<AbstractRoom> t = new Array<>();
+    private Array<AbstractChoice> generateWay(AbstractWay.WayType type) {
+        Array<AbstractChoice> t = new Array<>();
         if(type == ENTRY) {
             //TODO 여기에 길 정보 입력
             //겁나힘들다 슈바...
