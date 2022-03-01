@@ -24,7 +24,7 @@ public class MapNodeButton extends AbstractUI {
     public AbstractWay way;
 
     public MapNodeButton(AbstractWay w) {
-        super(getWak(w.type));
+        super(w.img);
         this.way = w;
     }
 
@@ -35,7 +35,7 @@ public class MapNodeButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if(over) {
-            cPanel.infoPanel.setInfo(img, way.name, way.desc);
+            cPanel.infoPanel.setInfo(way.imgBig, way.name, way.desc);
         }
     }
 
@@ -60,21 +60,10 @@ public class MapNodeButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        /*
         if(!way.isDone && canGo && !mapScreen.isView) {
-            currentFloor.addNum();
-            if(currentFloor.currentWay.type == AbstractWay.WayType.BOSS) {
-                battleScreen = new BattleScreen();
-                fadeOutAndChangeScreen(battleScreen);
-            } else {
-                addTempScreen(new WayScreen());
-            }
-        }*/
-        if(canGo) {
             currentFloor.currentRoom = currentFloor.rooms[currentFloor.num];
             currentFloor.currentWay = way;
-            battleScreen = new BattleScreen();
-            Labyrintale.fadeOutAndChangeScreen(battleScreen);
+            addTempScreen(new WayScreen());
         }
     }
 }

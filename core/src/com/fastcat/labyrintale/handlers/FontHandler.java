@@ -41,8 +41,6 @@ public class FontHandler implements Disposable {
     public static final FontData BLOCK = new FontData(MEDIUM, 20, true, true);
     public static final FontData HP = new FontData(MEDIUM, 19, false, true);
 
-    private static Texture imgG = new Texture("orb.png");
-
     public enum FontType {
         LIGHT, MEDIUM, BOLD
     }

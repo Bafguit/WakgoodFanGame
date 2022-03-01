@@ -11,22 +11,21 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 public class WayIcon extends AbstractUI {
 
     public Sprite icon;
+    public WaySelectButton b;
 
-    public WayIcon(Sprite i) {
+    public WayIcon(WaySelectButton b, Sprite i) {
         super(FileHandler.BORDER);
         icon = i;
+        this.b = b;
     }
 
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if (!over) sb.setColor(Color.LIGHT_GRAY);
+            if (!b.over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(icon, x, y, sWidth, sHeight);
+            if(b.showImg) sb.draw(icon, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
-            if(fontData != null) {
-                renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
-            }
         }
     }
 }

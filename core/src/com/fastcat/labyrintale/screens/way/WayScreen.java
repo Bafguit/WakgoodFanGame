@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.way;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
@@ -29,14 +30,16 @@ public class WayScreen extends AbstractScreen {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < wayCount; i++) {
             float tw = w / (wayCount + 1) * (i + 1);
-            WayIcon c = icons[i] = new WayIcon(way.img);
+            AbstractChoice ch = way.choices[i];
+
+            WaySelectButton b = buttons[i] = new WaySelectButton(this, ch);
+            b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
+
+            WayIcon c = icons[i] = new WayIcon(b, ch.img);
             c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 
-            WayDesc d = desc[i] = new WayDesc(way.desc);
+            WayDesc d = desc[i] = new WayDesc(ch.desc);
             d.setPosition(tw - d.sWidth / 2, h * 0.55f - d.sHeight / 2);
-
-            WaySelectButton b = buttons[i] = new WaySelectButton(this, c, d, way.choices[i]);
-            b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
         }
     }
 

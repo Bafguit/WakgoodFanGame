@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ChoiceString;
 import org.graalvm.compiler.loop.MathUtil;
@@ -14,6 +16,7 @@ public class AbstractChoice {
     public String name;
     public String desc;
     public String[] rawDesc;
+    public Sprite img = FileHandler.BURGER;
     public int prob;
     public boolean must = false;
 

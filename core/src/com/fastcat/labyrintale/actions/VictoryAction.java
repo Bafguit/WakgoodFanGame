@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.rewards.GoldReward;
@@ -21,9 +22,11 @@ public class VictoryAction extends AbstractAction {
         if(duration == baseDuration) {
             ActionHandler.clear();
         } else if(isDone) {
+            for(AbstractPlayer p : AbstractLabyrinth.players) {
+                p.block = 0;
+            }
             AbstractLabyrinth.currentFloor.currentWay.done(); //TODO 삭제 요망
             AbstractLabyrinth.currentFloor.currentRoom.done();
-            AbstractLabyrinth.currentFloor.addNum(); //TODO 삭제 요망
             Array<AbstractReward> temp = new Array<>();
             temp.add(new SkillRewardNormal(2));
             temp.add(new GoldReward(20));

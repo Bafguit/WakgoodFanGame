@@ -15,7 +15,7 @@ public class WaySelectButton extends AbstractUI {
     public WayScreen screen;
     public AbstractChoice c;
 
-    public WaySelectButton(WayScreen s, WayIcon i, WayDesc d, AbstractChoice r) {
+    public WaySelectButton(WayScreen s, AbstractChoice r) {
         super(FileHandler.CHAR_SKILL_REWARD);
         screen = s;
         c = r;
@@ -23,15 +23,16 @@ public class WaySelectButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        /*if(currentFloor.num == 11) {
+        if(currentFloor.num == 11) {
             currentFloor.canBoss = true;
         } else {
             currentFloor.num++;
         }
-        currentFloor.currentRoom = room;
-        if (room.type == AbstractRoom.RoomType.BATTLE || room.type == AbstractRoom.RoomType.ELITE || room.type == AbstractRoom.RoomType.BOSS) {
+        AbstractRoom r = c.room;
+        currentFloor.currentRoom = r;
+        if (r.type == AbstractRoom.RoomType.BATTLE || r.type == AbstractRoom.RoomType.ELITE || r.type == AbstractRoom.RoomType.BOSS) {
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
-        }*/
+        }
     }
 }

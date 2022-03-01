@@ -15,10 +15,10 @@ public class TurnEffectText extends AbstractUI {
 
     public TurnEffectText(String text) {
         super(TURN_BG);
-        setPosition(0, Gdx.graphics.getHeight() * 0.5f - sHeight / 2);
+        setPosition(0, Gdx.graphics.getHeight() * 0.65f - sHeight / 2);
         fontData = new FontHandler.FontData(BOLD, 70, false);
         this.text = text;
-        img.setCenter(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.5f);
+        img.setCenter(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.65f);
     }
 
     @Override

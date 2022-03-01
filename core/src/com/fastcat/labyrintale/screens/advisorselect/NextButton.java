@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
@@ -34,16 +35,6 @@ public class NextButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.advisorSelectScreen.backButton.onHide();
-        Labyrintale.advisorSelectScreen.nextButton.onHide();
-        Labyrintale.labyrinth = new AbstractLabyrinth();
-        Labyrintale.mapScreen = new MapScreen();
-        for(int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
-            Labyrintale.charSelectScreen.chars[i].removeChar();
-        }
-        Labyrintale.charSelectScreen.nextButton.disable();
-        Labyrintale.charSelectScreen.backButton.onHide();
-        Labyrintale.charSelectScreen.nextButton.onHide();
-        Labyrintale.fadeOutAndChangeScreen(mapScreen);
+        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(true));
     }
 }

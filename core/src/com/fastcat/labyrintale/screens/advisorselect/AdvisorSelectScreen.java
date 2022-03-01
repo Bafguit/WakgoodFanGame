@@ -65,7 +65,6 @@ public class AdvisorSelectScreen extends AbstractScreen {
 
     @Override
     public void hide() {
-        Labyrintale.advisorSelectScreen.advisor.removeChar();
         Labyrintale.advisorSelectScreen.nextButton.disable();
         Labyrintale.advisorSelectScreen.backButton.onHide();
         Labyrintale.advisorSelectScreen.nextButton.onHide();
