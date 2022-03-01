@@ -1,7 +1,9 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ChoiceString;
+import org.graalvm.compiler.loop.MathUtil;
 
 public class AbstractChoice {
 
@@ -12,28 +14,38 @@ public class AbstractChoice {
     public String name;
     public String desc;
     public String[] rawDesc;
-    public float prob;
+    public int prob;
     public boolean must = false;
 
-    public AbstractChoice(String id, AbstractRoom r, ChoiceType t) {
-        this(id, r, t, 1);
+    public AbstractChoice(AbstractRoom r, ChoiceType t, boolean m) {
+        this(r, t, 1);
+        must = m;
     }
 
-    public AbstractChoice(String id, AbstractRoom r, ChoiceType t, float p) {
-        this.id = id;
+    public AbstractChoice(AbstractRoom r, ChoiceType t, int p) {
+        id = t.toString().toLowerCase();
         data = StringHandler.choiceString.get(id);
         name = data.NAME;
         rawDesc = data.DESC;
         room = r;
         type = t;
-        prob = p;
+        prob = MathUtils.clamp(p, 0, 100);
+        desc = getDesc();
+    }
+
+    public String getDesc() {
+        if(prob > 75) return rawDesc[3];
+        else if(prob > 50) return rawDesc[2];
+        else if (prob > 25) return rawDesc[1];
+        else return rawDesc[0];
     }
 
     public void must() {
         must = true;
+        desc = rawDesc[AbstractLabyrinth.mapRandom.nextInt(rawDesc.length - 1)];
     }
 
     public enum ChoiceType {
-        BATTLE, ELITE, BOSS, REST, LOOK, DETOUR, GOOD
+        BATTLE, ELITE, BOSS, REST, LOOK, UPGRADE, DETOUR, GOOD
     }
 }

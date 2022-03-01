@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.common.Test;
+import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.other.Placeholder;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
@@ -44,17 +45,32 @@ public class AbstractFloor {
             ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
         }
         ways[8] = new AbstractWay(generateWay(ELITE), ELITE);
-        for(int i = 9; i < 12; i++) {
+        for(int i = 9; i < 11; i++) {
             ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
         }
+        ways[11] = new AbstractWay(generateWay(REST), REST);
         ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
     }
 
     private Array<AbstractChoice> generateWay(AbstractWay.WayType type) {
         Array<AbstractChoice> t = new Array<>();
+        //TODO 랜덤으로 생성하게
         if(type == ENTRY) {
-            //TODO 여기에 길 정보 입력
-            //겁나힘들다 슈바...
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.GOOD, true));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.GOOD, true));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.GOOD, true));
+        } else if (type == NORMAL) {
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.BATTLE, true));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.LOOK, 80));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.REST, true));
+        } else if (type == ELITE) {
+            t.add(new AbstractChoice(new TestElite(), AbstractChoice.ChoiceType.ELITE, true));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.DETOUR, 50));
+        } else if (type == BOSS) {
+            t.add(new AbstractChoice(new TestBoss(), AbstractChoice.ChoiceType.BOSS, true));
+        } else if (type == REST) {
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.REST, true));
+            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.UPGRADE, true));
         }
         return t;
     }

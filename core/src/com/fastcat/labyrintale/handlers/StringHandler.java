@@ -13,6 +13,6 @@ public class StringHandler {
     public static void generate() {
         skillString = new SkillString();
         charString = new CharString();
-        //choiceString = new ChoiceString();
+        choiceString = new ChoiceString();
     }
 }

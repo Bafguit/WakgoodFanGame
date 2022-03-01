@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
@@ -33,7 +34,9 @@ public class MapNodeButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        if(over) {
+            cPanel.infoPanel.setInfo(img, way.name, way.desc);
+        }
     }
 
     public void render(SpriteBatch sb) {
