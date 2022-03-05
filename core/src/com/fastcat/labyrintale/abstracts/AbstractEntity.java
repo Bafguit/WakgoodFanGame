@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
@@ -56,6 +57,9 @@ public abstract class AbstractEntity implements Cloneable {
     public int maxHealth;
     public float animX = -10000;
     public float animY = -10000;
+    public Sprite img;
+    public Sprite imgBig;
+    public Sprite bg;
 
     public AbstractEntity(String id, EntityType type, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel) {
         this.id = id;
@@ -294,6 +298,12 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public abstract Array<AbstractSkill> getStartingDeck();
+
+    public void setImage(Sprite i, Sprite ib, Sprite bg) {
+        img = i;
+        imgBig = ib;
+        this.bg = bg;
+    }
     
     public enum EntityType {
         PLAYER, ENEMY

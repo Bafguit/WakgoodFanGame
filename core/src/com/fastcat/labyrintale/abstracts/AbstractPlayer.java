@@ -2,11 +2,15 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.MoveLeft;
 import com.fastcat.labyrintale.skills.player.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
+
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public abstract class AbstractPlayer extends AbstractEntity {
 
@@ -32,6 +36,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
         mLeft = new MoveLeft(this);
         mRight = new MoveRight(this);
+        Sprite s = charImg.get(playerClass);
+        setImage(s, s, charBgImg.get(playerClass)); //TODO imgBig으로 변경
     }
 
     public void update() {

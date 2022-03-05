@@ -71,8 +71,10 @@ public class FileHandler implements Disposable {
 
     //캐릭터
     public static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
+    public static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
     public static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
+    public static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
 
     //스킬
@@ -101,18 +103,22 @@ public class FileHandler implements Disposable {
 
     private static void generateCharImg() {
         charImg.clear();
+        charImgBig.clear();
         charBgImg.clear();
         for(PlayerClass cls : PlayerClass.values()) {
             charImg.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + ".png")));
+            //charImgBig.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + "_p.png")));
             charBgImg.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + "_bg.png")));
         }
     }
 
     private static void generateAdvImg() {
         advImg.clear();
+        advImgBig.clear();
         advBgImg.clear();
         for(AdvisorClass cls : AdvisorClass.values()) {
             advImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + ".png")));
+            //advImgBig.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + "_p.png")));
             advBgImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + "_bg.png")));
         }
     }

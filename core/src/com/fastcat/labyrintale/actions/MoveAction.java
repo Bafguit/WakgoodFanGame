@@ -44,8 +44,8 @@ public class MoveAction extends AbstractAction {
         }
         if(isDone) {
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-            from.setAnimXY(w * 0.425f - w * 0.1f * index1, h * 0.525f);
-            toPlayer.setAnimXY(w * 0.425f - w * 0.1f * index0, h * 0.525f);
+            from.setAnimXY(w * 0.425f - w * 0.1f * index1, h * 0.575f);
+            toPlayer.setAnimXY(w * 0.425f - w * 0.1f * index0, h * 0.575f);
             AbstractPlayer temp = AbstractLabyrinth.players[index0];
             AbstractLabyrinth.players[index0] = AbstractLabyrinth.players[index1];
             AbstractLabyrinth.players[index1] = temp;

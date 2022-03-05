@@ -4,19 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
+import com.fastcat.labyrintale.uis.PlayerIcon;
 
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.BORDER_B;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
-import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.STATUS;
+import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
 
 public class InfoPanel extends AbstractUI {
 
@@ -25,10 +26,13 @@ public class InfoPanel extends AbstractUI {
     public String desc = "";
     public FontHandler.FontData fontName = CARD_BIG_NAME;
     public FontHandler.FontData fontDesc = CARD_BIG_DESC;
+    public PlayerIcon[] pIcons = new PlayerIcon[4];
     public InfoType type = InfoType.COLOR;
     public AbstractSkill skill;
     public AbstractStatus status;
+    public AbstractPlayer player;
     public boolean show;
+    public boolean renderIcon = true;
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     private AbstractSkill.SkillTarget target;
@@ -43,6 +47,13 @@ public class InfoPanel extends AbstractUI {
         nw = dw = 400 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 180 * InputHandler.scale;
+
+        for(int i = 0; i < 4; i++) {
+            PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);
+            c.setPosition(w * (0.4f - 0.06f * i) - c.sWidth / 2, h * 0.35f);
+            pIcons[i] = c;
+        }
+
     }
 
     @Override
@@ -55,6 +66,11 @@ public class InfoPanel extends AbstractUI {
         name = "";
         desc = "";
         show = false;
+        if(renderIcon) {
+            for (int i = 0; i < 4; i++) {
+                pIcons[i].update();
+            }
+        }
     }
 
     @Override
@@ -71,6 +87,13 @@ public class InfoPanel extends AbstractUI {
             }
             sb.draw(border, x, y, sWidth, sHeight);
             if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.1f, sWidth, sHeight);
+        }
+
+        renderIcon = !(Labyrintale.getCurScreen() instanceof BattleScreen);
+        if(renderIcon) {
+            for (int i = 0; i < 4; i++) {
+                pIcons[i].render(sb);
+            }
         }
     }
 
@@ -98,6 +121,18 @@ public class InfoPanel extends AbstractUI {
         }
     }
 
+    public void setInfo(AbstractPlayer p) {
+        if(p != null) {
+            img = p.imgBig;
+            name = p.name;
+            desc = p.desc;
+            type = PLAYER;
+            player = p;
+            target = null;
+            show = true;
+        }
+    }
+
     public void setInfo(Sprite img, String name, String desc) {
         this.img = img;
         this.name = name;
@@ -106,6 +141,6 @@ public class InfoPanel extends AbstractUI {
     }
 
     public enum InfoType {
-        SKILL, STATUS, COLOR
+        SKILL, STATUS, COLOR, PLAYER
     }
 }
