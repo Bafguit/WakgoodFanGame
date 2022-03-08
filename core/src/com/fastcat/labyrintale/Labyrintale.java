@@ -67,8 +67,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		sb = new SpriteBatch();

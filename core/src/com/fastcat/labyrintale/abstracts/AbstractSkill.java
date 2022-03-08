@@ -29,10 +29,9 @@ public abstract class AbstractSkill implements Cloneable {
     public String name;
     public String desc;
     public boolean upgraded = false;
-    public boolean isTrick = false;
-    public boolean isDispose = false;
     public boolean removable = true;
     public boolean canUse = true;
+    public boolean used = false;
     public float uid;
     public int upgradeCount = 0;
     public int attack = 0;
@@ -302,6 +301,7 @@ public abstract class AbstractSkill implements Cloneable {
                 if (s != null) s.onUseCard(this);
             }
         }
+        used = true;
         use();
     }
 

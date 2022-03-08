@@ -40,13 +40,13 @@ public class InfoPanel extends AbstractUI {
     public InfoPanel() {
         super(BORDER_B);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        setPosition(w * 0.55f, h * 0.2f - sHeight / 2);
+        setPosition(w * 0.5f, h * 0.225f - sHeight / 2);
         nx = dx = w * 0.69f;
-        ny = h * 0.3f;
-        dy = h * 0.3f - 45 * scale;
+        ny = h * 0.375f;
+        dy = h * 0.375f - 45 * scale;
         nw = dw = 400 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
-        dh = 180 * InputHandler.scale;
+        dh = 280 * InputHandler.scale;
 
         for(int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);

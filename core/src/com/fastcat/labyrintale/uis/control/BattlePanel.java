@@ -9,7 +9,6 @@ import com.fastcat.labyrintale.uis.PlayerIcon;
 
 public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
-    public SkillButtonPanel[] uSkill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
     public AbstractPlayer curPlayer;
@@ -27,9 +26,6 @@ public class BattlePanel implements Disposable {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
             s.setPosition(w * 0.38f - w * 0.06f * i - s.sWidth / 2, h * 0.225f);
             skill[i] = s;
-            SkillButtonPanel ss = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.VIEW);
-            ss.setPosition(w * 0.410f + w * 0.06f * i - ss.sWidth / 2, h * 0.35f);
-            uSkill[i] = ss;
         }
         cpIcon = new PlayerIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.125f - cpIcon.sWidth / 2,h * 0.35f);
@@ -38,7 +34,6 @@ public class BattlePanel implements Disposable {
     public void update() {
         for(int i = 0; i < 4; i++) {
             skill[i].update();
-            uSkill[i].update();
         }
         for(int i = 0; i < 2; i++) {
             mSkill[i].update();
@@ -51,7 +46,6 @@ public class BattlePanel implements Disposable {
     public void render(SpriteBatch sb) {
         for(int i = 0; i < 4; i++) {
             skill[i].render(sb);
-            uSkill[i].render(sb);
         }
         for(int i = 0; i < 2; i++) {
             mSkill[i].render(sb);
@@ -76,7 +70,6 @@ public class BattlePanel implements Disposable {
     public void dispose() {
         for(int i = 0; i < 4; i++) {
             skill[i].dispose();
-            uSkill[i].dispose();
         }
         for(int i = 0; i < 2; i++) {
             mSkill[i].dispose();

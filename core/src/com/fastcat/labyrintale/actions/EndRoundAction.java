@@ -15,7 +15,10 @@ public class EndRoundAction extends AbstractAction {
     protected void updateAction() {
         if(isDone) {
             for (int i = 0; i < 4; i++) {
-                AbstractLabyrinth.cPanel.battlePanel.uSkill[i].resetImg();
+                AbstractPlayer t = battleScreen.players[i].player;
+                for(int j = 0; j < 4; j++) {
+                    t.hand[j].used = false;
+                }
                 battleScreen.players[i].player.shuffleHand();
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
