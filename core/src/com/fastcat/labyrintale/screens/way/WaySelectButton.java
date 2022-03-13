@@ -5,9 +5,9 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
+import com.fastcat.labyrintale.screens.rest.RestScreen;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
+import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class WaySelectButton extends AbstractUI {
@@ -33,6 +33,9 @@ public class WaySelectButton extends AbstractUI {
         if (r.type == AbstractRoom.RoomType.BATTLE || r.type == AbstractRoom.RoomType.ELITE || r.type == AbstractRoom.RoomType.BOSS) {
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
+        } else if(r.type == AbstractRoom.RoomType.REST) {
+            restScreen = new RestScreen();
+            fadeOutAndChangeScreen(restScreen);
         }
     }
 }

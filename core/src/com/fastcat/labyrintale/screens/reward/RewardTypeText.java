@@ -14,7 +14,7 @@ public class RewardTypeText extends AbstractUI {
         super(MENU_SELECT, 0, 0, 600, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
         fontData = CARD_BIG_ORB;
-        text = type == VICTORY ? "전투 승리" : type == CHEST ? "보물 발견" : "";
+        text = type == VICTORY ? "전투 승리" : type == CHEST ? "보물 발견" : type == REST ? "정비" : "";
         showImg = false;
     }
 

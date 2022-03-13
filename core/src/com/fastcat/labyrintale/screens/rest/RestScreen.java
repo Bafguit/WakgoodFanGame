@@ -1,41 +1,33 @@
 package com.fastcat.labyrintale.screens.rest;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractChoice;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.abstracts.AbstractWay;
+import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
 
 public class RestScreen extends AbstractScreen {
 
     public BgImg bg = new BgImg();
     public int count;
-    public AbstractWay way;
     public RestButton[] buttons = new RestButton[2];
     public RestIcon[] icons = new RestIcon[2];
     public RestDesc[] desc = new RestDesc[2];
 
     public RestScreen() {
-        this(AbstractLabyrinth.currentFloor.currentWay);
-    }
-
-    public RestScreen(AbstractWay wy) {
-        way = wy;
         count = 2;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < count; i++) {
             float tw = w / (count + 1) * (i + 1);
-            AbstractChoice ch = way.choices[i];
 
-            RestButton b = buttons[i] = new RestButton(this, ch);
+            RestButton b = buttons[i] = new RestButton(this, RestButton.RestType.HEAL);
             b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
 
-            RestIcon c = icons[i] = new RestIcon(b, ch.img);
+            RestIcon c = icons[i] = new RestIcon(b, getImg(b.type));
             c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 
-            RestDesc d = desc[i] = new RestDesc(ch.desc);
+            RestDesc d = desc[i] = new RestDesc("테스트");
             d.setPosition(tw - d.sWidth / 2, h * 0.55f - d.sHeight / 2);
         }
     }
@@ -56,6 +48,17 @@ public class RestScreen extends AbstractScreen {
             buttons[i].render(sb);
             icons[i].render(sb);
             desc[i].render(sb);
+        }
+    }
+
+    public static Sprite getImg(RestButton.RestType type) {
+        switch (type) {
+            case HEAL:
+                return FileHandler.SKILL_HEAL; //TODO 이미지 변경
+            case UPGRADE:
+                return FileHandler.SKILL_LIGHT;
+            default:
+                return FileHandler.REWARD_CARD;
         }
     }
 

@@ -199,8 +199,7 @@ public class GroupHandler {
 
         public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {
             Array<AbstractSkill> a = new Array<>();
-            Array<AbstractSkill> b = allSkill.get(p.playerClass);
-            staticShuffle(b);
+            Array<AbstractSkill> b = staticShuffle(allSkill.get(p.playerClass));
             for(int i = 0; i < amount; i++) {
                 AbstractSkill t;
                 t = Objects.requireNonNull(b.get(i).cpy());
@@ -210,11 +209,29 @@ public class GroupHandler {
             return a;
         }
 
-        public static void staticShuffle(Array<AbstractSkill> array) {
-            staticShuffle(array, skillRandom);
+        public static AbstractSkill getRandomSkill(AbstractPlayer p) {
+            AbstractSkill t = Objects.requireNonNull(staticShuffle(allSkill.get(p.playerClass)).get(0).cpy());
+            t.owner = p;
+            return t;
         }
 
-        public static void staticShuffle(Array<AbstractSkill> array, RandomXS128 r) {
+        public static AbstractSkill getRandomUpgradedSkillFromDeck(AbstractPlayer p, boolean isNone) {
+            Array<AbstractSkill> a = new Array<>();
+            Array<AbstractSkill> b = p.deck;
+            for (int i = 0; i < b.size; i++) {
+                AbstractSkill s = b.get(i);
+                if(s.upgraded != isNone) a.add(s.cpy());
+            }
+            if(a.size > 0) {
+                return staticShuffle(a).get(0);
+            } else return null;
+        }
+
+        public static Array<AbstractSkill> staticShuffle(Array<AbstractSkill> array) {
+            return staticShuffle(array, skillRandom);
+        }
+
+        public static Array<AbstractSkill> staticShuffle(Array<AbstractSkill> array, RandomXS128 r) {
             AbstractSkill[] items = array.toArray(AbstractSkill.class);
             for(int i = array.size - 1; i >= 0; --i) {
                 int ii = r.nextInt(i + 1);
@@ -224,6 +241,7 @@ public class GroupHandler {
             }
             array.clear();
             array.addAll(items);
+            return array;
         }
     }
 }

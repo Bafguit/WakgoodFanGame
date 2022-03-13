@@ -20,6 +20,7 @@ import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
+import com.fastcat.labyrintale.screens.rest.RestScreen;
 
 public class Labyrintale extends Game {
 
@@ -42,6 +43,7 @@ public class Labyrintale extends Game {
 	public static AdvisorSelectScreen advisorSelectScreen;
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
+	public static RestScreen restScreen;
 	public static DeckViewScreen deckViewScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;

@@ -1,10 +1,15 @@
 package com.fastcat.labyrintale.screens.rest;
 
-import com.fastcat.labyrintale.abstracts.AbstractChoice;
-import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.rewards.GoldReward;
+import com.fastcat.labyrintale.rewards.HealReward;
+import com.fastcat.labyrintale.rewards.SkillRewardNormal;
+import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
+import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
@@ -13,26 +18,30 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 public class RestButton extends AbstractUI {
 
     public RestScreen screen;
-    public AbstractChoice c;
+    public RestType type;
 
-    public RestButton(RestScreen s, AbstractChoice r) {
+    public RestButton(RestScreen s, RestType t) {
         super(FileHandler.CHAR_SKILL_REWARD);
         screen = s;
-        c = r;
+        type = t;
     }
 
     @Override
     public void onClick() {
-        if(currentFloor.num == 11) {
-            currentFloor.canBoss = true;
+        AbstractLabyrinth.currentFloor.currentWay.done();
+        AbstractLabyrinth.currentFloor.currentRoom.done();
+        Array<AbstractReward> temp = new Array<>();
+        if(type == RestType.HEAL) {
+            temp.add(new HealReward(10));
+        } else if (type == RestType.UPGRADE) {
+            temp.add(new SkillRewardUpgrade());
         } else {
-            currentFloor.num++;
+            temp.add(new SkillRewardNormal(2));
         }
-        AbstractRoom r = c.room;
-        currentFloor.currentRoom = r;
-        if (r.type == AbstractRoom.RoomType.BATTLE || r.type == AbstractRoom.RoomType.ELITE || r.type == AbstractRoom.RoomType.BOSS) {
-            battleScreen = new BattleScreen();
-            fadeOutAndChangeScreen(battleScreen);
-        }
+        Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.REST, temp));
+    }
+
+    public enum RestType {
+        HEAL, UPGRADE, DISCOVER
     }
 }

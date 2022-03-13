@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.common.Test;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.other.Placeholder;
+import com.fastcat.labyrintale.rooms.other.RestRoom;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
@@ -63,15 +64,14 @@ public class AbstractFloor {
         } else if (type == NORMAL) {
             t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.BATTLE, true));
             t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.LOOK, 80));
-            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.REST, true));
+            t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         } else if (type == ELITE) {
             t.add(new AbstractChoice(new TestElite(), AbstractChoice.ChoiceType.ELITE, true));
             t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.DETOUR, 50));
         } else if (type == BOSS) {
             t.add(new AbstractChoice(new TestBoss(), AbstractChoice.ChoiceType.BOSS, true));
         } else if (type == REST) {
-            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.REST, true));
-            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.UPGRADE, true));
+            t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         }
         return t;
     }

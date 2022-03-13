@@ -122,7 +122,6 @@ public class FontHandler implements Disposable {
             matcher = COLOR_PATTERN.matcher(text);
         }
         font.getData().setScale(fontData.scale);
-        font.getData().setLineHeight(fontData.size * 1.3f);
         layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
         font.draw(sb, layout, x, y);
     }

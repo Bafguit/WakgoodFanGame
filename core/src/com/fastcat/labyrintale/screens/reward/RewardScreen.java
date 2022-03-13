@@ -82,6 +82,6 @@ public class RewardScreen extends AbstractScreen {
     }
 
     public enum RewardScreenType {
-        VICTORY, CHEST, EVENT
+        VICTORY, REST, CHEST, EVENT
     }
 }

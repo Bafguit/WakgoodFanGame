@@ -17,6 +17,8 @@ public abstract class AbstractReward {
 
     private static Sprite getImg(AbstractReward.RewardType type) {
         switch (type) {
+            case HEAL:
+                return FileHandler.SKILL_HEAL; //TODO 이미지 변경
             case GOLD:
                 return FileHandler.GOLD;
             default:
@@ -27,6 +29,6 @@ public abstract class AbstractReward {
     public abstract void takeReward();
 
     public enum RewardType {
-        SKILL, GOLD, TALENT
+        SKILL, GOLD, HEAL, TALENT
     }
 }

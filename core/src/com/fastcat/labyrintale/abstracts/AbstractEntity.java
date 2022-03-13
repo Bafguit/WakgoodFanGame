@@ -132,7 +132,9 @@ public abstract class AbstractEntity implements Cloneable {
         int ts = drawPile.size;
         for(int i = 0; i < handSize; i++) {
             if(i < ts) {
-                hand[i] = drawPile.get(0);
+                AbstractSkill s = drawPile.get(0);
+                s.used = false;
+                hand[i] = s;
                 drawPile.removeIndex(0);
             } else break;
         }
