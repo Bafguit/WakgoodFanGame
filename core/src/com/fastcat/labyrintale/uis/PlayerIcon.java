@@ -11,8 +11,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER_SS;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontData;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
@@ -22,7 +21,7 @@ public class PlayerIcon extends AbstractUI {
     public AbstractPlayer p;
 
     public PlayerIcon(AbstractPlayer p) {
-        super(BORDER);
+        super(BORDER_M);
         this.p = p;
     }
 

@@ -33,13 +33,13 @@ public class WayScreen extends AbstractScreen {
             AbstractChoice ch = way.choices[i];
 
             WaySelectButton b = buttons[i] = new WaySelectButton(this, ch);
-            b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
+            b.setPosition(tw - b.sWidth / 2, h * 0.73f - b.sHeight / 2);
 
             WayIcon c = icons[i] = new WayIcon(b, ch.img);
             c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 
             WayDesc d = desc[i] = new WayDesc(ch.desc);
-            d.setPosition(tw - d.sWidth / 2, h * 0.55f - d.sHeight / 2);
+            d.setPosition(tw - d.sWidth / 2, h * 0.7f - d.sHeight / 2);
         }
     }
 

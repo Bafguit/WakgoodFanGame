@@ -40,17 +40,17 @@ public class InfoPanel extends AbstractUI {
     public InfoPanel() {
         super(BORDER_B);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        setPosition(w * 0.5f, h * 0.225f - sHeight / 2);
+        setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
         nx = dx = w * 0.69f;
-        ny = h * 0.375f;
-        dy = h * 0.375f - 45 * scale;
+        ny = h * 0.41f;
+        dy = h * 0.41f - 45 * scale;
         nw = dw = 400 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;
 
         for(int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);
-            c.setPosition(w * (0.4f - 0.06f * i) - c.sWidth / 2, h * 0.35f);
+            c.setPosition(w * (0.41f - 0.08f * i) - c.sWidth / 2, h * 0.275f);
             pIcons[i] = c;
         }
 
@@ -86,7 +86,7 @@ public class InfoPanel extends AbstractUI {
                 renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
             }
             sb.draw(border, x, y, sWidth, sHeight);
-            if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.1f, sWidth, sHeight);
+            if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.05f, sWidth, sHeight);
         }
 
         renderIcon = !(Labyrintale.getCurScreen() instanceof BattleScreen);

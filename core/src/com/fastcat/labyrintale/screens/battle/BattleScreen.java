@@ -21,8 +21,6 @@ public class BattleScreen extends AbstractScreen {
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public DrawPileButton drawPileButton;
-    public DiscardPileButton discardPileButton;
     public EndTurnButton endTurnButton;
     public StatusButton[][] playerStatus = new StatusButton[4][5];
     public StatusButton[][] enemyStatus = new StatusButton[4][5];
@@ -37,8 +35,6 @@ public class BattleScreen extends AbstractScreen {
         cPanel.battlePanel = new BattlePanel();
         setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        drawPileButton = new DrawPileButton();
-        discardPileButton = new DiscardPileButton();
         endTurnButton = new EndTurnButton();
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
@@ -133,8 +129,6 @@ public class BattleScreen extends AbstractScreen {
             ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
         }
-        drawPileButton.update();
-        discardPileButton.update();
         endTurnButton.update();
     }
 
@@ -218,8 +212,6 @@ public class BattleScreen extends AbstractScreen {
                 enemySkills[i].render(sb);
             }
         }
-        drawPileButton.render(sb);
-        discardPileButton.render(sb);
         endTurnButton.render(sb);
     }
 

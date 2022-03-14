@@ -13,7 +13,7 @@ public class PassRewardButton extends AbstractUI {
 
     public PassRewardButton() {
         super(NEXT);
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.1f);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.6f);
         fontData = MAIN_MENU;
         text = "넘기기";
         showImg = false;

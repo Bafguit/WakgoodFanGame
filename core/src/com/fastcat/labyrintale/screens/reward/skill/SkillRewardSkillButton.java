@@ -51,7 +51,7 @@ public class SkillRewardSkillButton extends AbstractUI {
             if (over || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            if(isTo) FontHandler.renderCenter(sb, FontHandler.BORDER.font, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.03f);
+            if(isTo) FontHandler.renderCenter(sb, FontHandler.BORDER.font, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.035f);
             sb.draw(border, x, y, sWidth, sHeight);
         }
     }

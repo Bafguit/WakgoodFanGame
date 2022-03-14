@@ -5,11 +5,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.uis.PlayerIcon;
+
+import static com.fastcat.labyrintale.Labyrintale.addTempScreen;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
+import static com.fastcat.labyrintale.handlers.FileHandler.DISCARD;
+import static com.fastcat.labyrintale.handlers.FileHandler.DRAW;
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
 public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
+    public DrawPileButton drawPileButton;
+    public DiscardPileButton discardPileButton;
     public SkillButtonPanel aSkill;
     public AbstractPlayer curPlayer;
     public PlayerIcon cpIcon;
@@ -17,18 +28,20 @@ public class BattlePanel implements Disposable {
     public BattlePanel() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
-        aSkill.setPosition(w * 0.14f - aSkill.sWidth / 2, h * 0.225f);
+        aSkill.setPosition(w * 0.14f - aSkill.sWidth / 2, h * 0.125f);
         mSkill[0] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-        mSkill[0].setPosition(w * 0.44f - aSkill.sWidth / 2, h * 0.225f);
+        mSkill[0].setPosition(w * 0.38f - aSkill.sWidth / 2, h * 0.275f);
         mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-        mSkill[1].setPosition(w * 0.5f - aSkill.sWidth / 2, h * 0.225f);
+        mSkill[1].setPosition(w * 0.46f - aSkill.sWidth / 2, h * 0.275f);
         for(int i = 0; i < 4; i++) {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-            s.setPosition(w * 0.38f - w * 0.06f * i - s.sWidth / 2, h * 0.225f);
+            s.setPosition(w * 0.46f - w * 0.08f * i - s.sWidth / 2, h * 0.125f);
             skill[i] = s;
         }
         cpIcon = new PlayerIcon(AbstractLabyrinth.players[0]);
-        cpIcon.setPosition(w * 0.125f - cpIcon.sWidth / 2,h * 0.35f);
+        cpIcon.setPosition(w * 0.14f - cpIcon.sWidth / 2,h * 0.275f);
+        drawPileButton = new DrawPileButton();
+        discardPileButton = new DiscardPileButton();
     }
 
     public void update() {
@@ -41,6 +54,8 @@ public class BattlePanel implements Disposable {
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
+        drawPileButton.update();
+        discardPileButton.update();
     }
 
     public void render(SpriteBatch sb) {
@@ -52,6 +67,8 @@ public class BattlePanel implements Disposable {
         }
         aSkill.render(sb);
         cpIcon.render(sb);
+        drawPileButton.render(sb);
+        discardPileButton.render(sb);
     }
 
     public void setPlayer(AbstractPlayer p) {
@@ -75,5 +92,49 @@ public class BattlePanel implements Disposable {
             mSkill[i].dispose();
         }
         aSkill.dispose();
+    }
+
+    public class DrawPileButton extends AbstractUI {
+
+        public DrawPileButton() {
+            super(DRAW);
+            setPosition(Gdx.graphics.getWidth() * 0.22f - sWidth / 2, Gdx.graphics.getHeight() * 0.275f);
+            fontData = MAIN_MENU;
+            text = "";
+        }
+
+        @Override
+        protected void updateButton() {
+            if(cPanel.battlePanel.curPlayer != null) text = Integer.toString(cPanel.battlePanel.curPlayer.drawPile.size);
+        }
+
+        @Override
+        protected void onClick() {
+            if(cPanel.battlePanel.curPlayer != null && !ActionHandler.isRunning) {
+                addTempScreen(new DeckViewScreen(cPanel.battlePanel.curPlayer, DeckViewScreen.ViewType.DRAW));
+            }
+        }
+    }
+
+    public class DiscardPileButton extends AbstractUI {
+
+        public DiscardPileButton() {
+            super(DISCARD);
+            setPosition(Gdx.graphics.getWidth() * 0.3f - sWidth / 2, Gdx.graphics.getHeight() * 0.275f);
+            fontData = MAIN_MENU;
+            text = "";
+        }
+
+        @Override
+        protected void updateButton() {
+            if(cPanel.battlePanel.curPlayer != null) text = Integer.toString(cPanel.battlePanel.curPlayer.discardPile.size);
+        }
+
+        @Override
+        protected void onClick() {
+            if(cPanel.battlePanel.curPlayer != null && !ActionHandler.isRunning) {
+                addTempScreen(new DeckViewScreen(cPanel.battlePanel.curPlayer, DeckViewScreen.ViewType.DISCARD));
+            }
+        }
     }
 }

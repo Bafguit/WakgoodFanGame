@@ -49,6 +49,7 @@ public class FileHandler implements Disposable {
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
     public static final Sprite CONTROL_PANEL = new Sprite(new Texture("img/ui/cPanel.png"));
     public static final Sprite BORDER = new Sprite(new Texture("img/border.png"));
+    public static final Sprite BORDER_M = new Sprite(new Texture("img/border_m.png"));
     public static final Sprite BORDER_B = new Sprite(new Texture("img/border_p.png"));
     public static final Sprite BORDER_S = new Sprite(new Texture("img/border_s.png"));
     public static final Sprite BORDER_SS = new Sprite(new Texture("img/border_ss.png"));
@@ -62,6 +63,7 @@ public class FileHandler implements Disposable {
     public static final Sprite ENTITY_POINT = new Sprite(new Texture("img/entityPoint.png"));
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
     public static final Sprite CHAR_SKILL_REWARD = new Sprite(new Texture("img/ui/charSkillReward.png"));
+    public static final Sprite WAY_SELECT = new Sprite(new Texture("img/ui/wayBG.png"));
 
     //스파인 atlas
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");

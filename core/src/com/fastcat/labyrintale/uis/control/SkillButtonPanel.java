@@ -19,7 +19,7 @@ public class SkillButtonPanel extends AbstractUI {
     public boolean available = true;
 
     public SkillButtonPanel(SkillButtonType type) {
-        super(BORDER);
+        super(BORDER_M);
         this.type = type;
     }
 
