@@ -2,15 +2,56 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.handlers.GroupHandler;
+
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
 
 public abstract class AbstractEnemy extends AbstractEntity {
 
     public EnemyType type;
+    public Array<AbstractSkill> drawPile;
+    public Array<AbstractSkill> discardPile;
+    public Array<AbstractSkill> disposablePile;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
         super(id, EntityType.ENEMY, 1, maxHealth, atlas, skel);
         this.type = type;
         skeleton.setFlip(true, false);
+        drawPile = new Array<>();
+        discardPile = new Array<>();
+        disposablePile = new Array<>();
+    }
+
+    @Override
+    public void newDeck() {
+        hand = new AbstractSkill[4];
+        drawPile.clear();
+        discardPile.clear();
+        disposablePile.clear();
+        drawPile = new Array<>(deck);
+    }
+
+    public void shuffleHand() {
+        for(int i = 0; i < handSize; i++) {
+            if(hand[i] != null) {
+                discardPile.add(hand[i]);
+            }
+        }
+        hand = new AbstractSkill[handSize];
+        if(drawPile.size < handSize && discardPile.size > 0) {
+            drawPile.addAll(discardPile);
+            discardPile.clear();
+        }
+        GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
+        int ts = drawPile.size;
+        for(int i = 0; i < handSize; i++) {
+            if(i < ts) {
+                AbstractSkill s = drawPile.get(0);
+                hand[i] = s;
+                drawPile.removeIndex(0);
+            } else break;
+        }
     }
 
     public enum EnemyType {

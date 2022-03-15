@@ -16,7 +16,6 @@ public class SkillButtonPanel extends AbstractUI {
     public SkillButtonType type;
     public AbstractSkill skill;
     public boolean isUsed = false;
-    public boolean available = true;
 
     public SkillButtonPanel(SkillButtonType type) {
         super(BORDER_M);
@@ -26,7 +25,7 @@ public class SkillButtonPanel extends AbstractUI {
     @Override
     protected void updateButton() {
         if(type == SkillButtonType.PLAYER) {
-            isUsed = skill.used;
+            isUsed = !skill.canUse();
         }
         if(over) {
             if(skill != null) {

@@ -72,12 +72,6 @@ public class DeckViewScreen extends AbstractScreen {
 
     private Array<AbstractSkill> getSkills() {
         switch (type) {
-            case DISPOSABLE:
-                return player.disposablePile;
-            case DISCARD:
-                return player.discardPile;
-            case DRAW:
-                return player.drawPile;
             case UPGRADE:
                 Array<AbstractSkill> temp = new Array<>();
                 for(AbstractSkill skill : player.deck) {

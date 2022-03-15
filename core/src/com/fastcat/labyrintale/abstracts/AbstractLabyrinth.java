@@ -31,6 +31,8 @@ public class AbstractLabyrinth {
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
     public static ControlPanel cPanel;
+    public static int maxEnergy = 4;
+    public static int energy = 0;
     public static int gold = 0;
     public static int removePrice = 50;
 
@@ -70,6 +72,10 @@ public class AbstractLabyrinth {
 
     public void update() {
 
+    }
+
+    public static void prepare() {
+        energy = maxEnergy;
     }
 
     private static String generateRandomSeed() {

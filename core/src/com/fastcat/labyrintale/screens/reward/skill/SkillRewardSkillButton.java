@@ -32,9 +32,15 @@ public class SkillRewardSkillButton extends AbstractUI {
         group = g;
         skill = s;
         this.isTo = isTo;
-        if(!isTo && skill.id.equals(group.toSkill.skill.id)) {
-            skill = Objects.requireNonNull(group.toSkill.skill.cpy());
-            skill.upgrade();
+        if(!isTo) {
+            AbstractSkill t = group.toSkill.skill;
+            for(int i = 0; i < t.upgradeCount; i++) {
+                skill.upgrade();
+            }
+            if(skill.id.equals(t.id)) {
+                skill = Objects.requireNonNull(t.cpy());
+                skill.upgrade();
+            }
         }
     }
 

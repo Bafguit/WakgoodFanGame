@@ -33,6 +33,7 @@ public class BattleScreen extends AbstractScreen {
     public BattleScreen() {
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
+        AbstractLabyrinth.prepare();
         setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         endTurnButton = new EndTurnButton();
@@ -41,7 +42,6 @@ public class BattleScreen extends AbstractScreen {
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
             pv.player.newDeck();
-            pv.player.shuffleHand();
             pv.player.status[0] = new TestStatus(pv.player);
             pv.player.ui = pv;
             players[i] = pv;

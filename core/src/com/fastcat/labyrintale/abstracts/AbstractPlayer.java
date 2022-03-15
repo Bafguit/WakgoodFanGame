@@ -4,6 +4,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.MoveLeft;
@@ -38,6 +39,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mRight = new MoveRight(this);
         Sprite s = charImg.get(playerClass);
         setImage(s, s, charBgImg.get(playerClass)); //TODO imgBig으로 변경
+    }
+
+    @Override
+    public void newDeck() {
+        hand = deck.toArray(AbstractSkill.class);
     }
 
     public void update() {

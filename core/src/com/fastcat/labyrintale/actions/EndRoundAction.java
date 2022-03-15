@@ -17,9 +17,10 @@ public class EndRoundAction extends AbstractAction {
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer t = battleScreen.players[i].player;
                 for(int j = 0; j < 4; j++) {
-                    t.hand[j].used = false;
+                    if(t.hand[j].cooldown > 0) {
+                        t.hand[j].cooldown--;
+                    }
                 }
-                battleScreen.players[i].player.shuffleHand();
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
             Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);

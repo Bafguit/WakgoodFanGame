@@ -12,7 +12,6 @@ import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -30,8 +29,11 @@ public abstract class AbstractSkill implements Cloneable {
     public String desc;
     public boolean upgraded = false;
     public boolean removable = true;
-    public boolean canUse = true;
-    public boolean used = false;
+    public boolean usedOnce = false;
+    public boolean usedOnly = false;
+
+    public boolean disposable = false;
+    public boolean isTrick = false;
     public float uid;
     public int upgradeCount = 0;
     public int attack = 0;
@@ -40,6 +42,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int baseSpell = 0;
     public int value = -1;
     public int baseValue = -1;
+    public int cooldown = 0;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         uid = getUid();
@@ -301,21 +304,23 @@ public abstract class AbstractSkill implements Cloneable {
                 if (s != null) s.onUseCard(this);
             }
         }
-        used = true;
+        cooldown = 2;
+        if(!isTrick) AbstractLabyrinth.energy--;
+        if(disposable) usedOnce = true;
         use();
     }
 
     public boolean canUse() {
-        return true;
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0;
     }
 
     protected abstract void use();
 
     public void upgrade() {
         upgradeCard();
-        name += "+";
         upgraded = true;
         upgradeCount++;
+        name = skillData.NAME + "+" + upgradeCount;
     }
 
     protected abstract void upgradeCard();

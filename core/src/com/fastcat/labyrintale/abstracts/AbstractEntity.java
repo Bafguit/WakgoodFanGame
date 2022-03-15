@@ -29,7 +29,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
 
-    private final int handSize;
+    protected final int handSize;
 
     protected Texture orb;
     protected Texture sOrb;
@@ -42,9 +42,6 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractUI ui;
     public Array<AbstractSkill> deck;
     public AbstractSkill[] hand;
-    public Array<AbstractSkill> drawPile;
-    public Array<AbstractSkill> discardPile;
-    public Array<AbstractSkill> disposablePile;
     public AbstractStatus[] status = new AbstractStatus[5];
     public EntityType entityType;
     public String id;
@@ -70,10 +67,6 @@ public abstract class AbstractEntity implements Cloneable {
         this.maxHealth = maxHealth;
         this.health = this.maxHealth;
         deck = getStartingDeck();
-        drawPile = new Array<>();
-        discardPile = new Array<>();
-        disposablePile = new Array<>();
-        newDeck();
 
         this.atlas = atlas;
         SkeletonJson json = new SkeletonJson(atlas);
@@ -109,36 +102,6 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
-    public void newDeck() {
-        hand = new AbstractSkill[4];
-        drawPile.clear();
-        discardPile.clear();
-        disposablePile.clear();
-        drawPile = new Array<>(deck);
-    }
-
-    public void shuffleHand() {
-        for(int i = 0; i < handSize; i++) {
-            if(hand[i] != null) {
-                discardPile.add(hand[i]);
-            }
-        }
-        hand = new AbstractSkill[handSize];
-        if(drawPile.size < handSize && discardPile.size > 0) {
-            drawPile.addAll(discardPile);
-            discardPile.clear();
-        }
-        GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
-        int ts = drawPile.size;
-        for(int i = 0; i < handSize; i++) {
-            if(i < ts) {
-                AbstractSkill s = drawPile.get(0);
-                s.used = false;
-                hand[i] = s;
-                drawPile.removeIndex(0);
-            } else break;
-        }
-    }
 
     public void setAnimXY(float x, float y) {
         animX = x;
@@ -300,6 +263,8 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public abstract Array<AbstractSkill> getStartingDeck();
+
+    public abstract void newDeck();
 
     public void setImage(Sprite i, Sprite ib, Sprite bg) {
         img = i;

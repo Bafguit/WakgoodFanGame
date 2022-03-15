@@ -19,8 +19,6 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
-    public DrawPileButton drawPileButton;
-    public DiscardPileButton discardPileButton;
     public SkillButtonPanel aSkill;
     public AbstractPlayer curPlayer;
     public PlayerIcon cpIcon;
@@ -40,8 +38,6 @@ public class BattlePanel implements Disposable {
         }
         cpIcon = new PlayerIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.14f - cpIcon.sWidth / 2,h * 0.275f);
-        drawPileButton = new DrawPileButton();
-        discardPileButton = new DiscardPileButton();
     }
 
     public void update() {
@@ -54,8 +50,6 @@ public class BattlePanel implements Disposable {
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
-        drawPileButton.update();
-        discardPileButton.update();
     }
 
     public void render(SpriteBatch sb) {
@@ -67,8 +61,6 @@ public class BattlePanel implements Disposable {
         }
         aSkill.render(sb);
         cpIcon.render(sb);
-        drawPileButton.render(sb);
-        discardPileButton.render(sb);
     }
 
     public void setPlayer(AbstractPlayer p) {
@@ -92,49 +84,5 @@ public class BattlePanel implements Disposable {
             mSkill[i].dispose();
         }
         aSkill.dispose();
-    }
-
-    public class DrawPileButton extends AbstractUI {
-
-        public DrawPileButton() {
-            super(DRAW);
-            setPosition(Gdx.graphics.getWidth() * 0.22f - sWidth / 2, Gdx.graphics.getHeight() * 0.275f);
-            fontData = MAIN_MENU;
-            text = "";
-        }
-
-        @Override
-        protected void updateButton() {
-            if(cPanel.battlePanel.curPlayer != null) text = Integer.toString(cPanel.battlePanel.curPlayer.drawPile.size);
-        }
-
-        @Override
-        protected void onClick() {
-            if(cPanel.battlePanel.curPlayer != null && !ActionHandler.isRunning) {
-                addTempScreen(new DeckViewScreen(cPanel.battlePanel.curPlayer, DeckViewScreen.ViewType.DRAW));
-            }
-        }
-    }
-
-    public class DiscardPileButton extends AbstractUI {
-
-        public DiscardPileButton() {
-            super(DISCARD);
-            setPosition(Gdx.graphics.getWidth() * 0.3f - sWidth / 2, Gdx.graphics.getHeight() * 0.275f);
-            fontData = MAIN_MENU;
-            text = "";
-        }
-
-        @Override
-        protected void updateButton() {
-            if(cPanel.battlePanel.curPlayer != null) text = Integer.toString(cPanel.battlePanel.curPlayer.discardPile.size);
-        }
-
-        @Override
-        protected void onClick() {
-            if(cPanel.battlePanel.curPlayer != null && !ActionHandler.isRunning) {
-                addTempScreen(new DeckViewScreen(cPanel.battlePanel.curPlayer, DeckViewScreen.ViewType.DISCARD));
-            }
-        }
     }
 }
