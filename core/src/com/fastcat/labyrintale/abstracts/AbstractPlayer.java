@@ -11,6 +11,8 @@ import com.fastcat.labyrintale.skills.player.MoveLeft;
 import com.fastcat.labyrintale.skills.player.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
 
+import java.util.Objects;
+
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public abstract class AbstractPlayer extends AbstractEntity {
@@ -43,7 +45,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     @Override
     public void newDeck() {
-        hand = deck.toArray(AbstractSkill.class);
+        hand = new AbstractSkill[4];
+        for(int i = 0; i < 4; i++) {
+            hand[i] = Objects.requireNonNull(deck.get(i).cpy());
+        }
     }
 
     public void update() {

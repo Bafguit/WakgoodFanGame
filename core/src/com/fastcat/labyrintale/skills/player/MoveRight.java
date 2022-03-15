@@ -26,9 +26,11 @@ public class MoveRight extends AbstractSkill {
 
     @Override
     public boolean canUse() {
-        for(int i = 0; i < 4; i++) {
-            AbstractPlayer t = AbstractLabyrinth.players[i];
-            if(t == owner) return i > 0;
+        if(super.canUse()) {
+            for (int i = 0; i < 4; i++) {
+                AbstractPlayer t = AbstractLabyrinth.players[i];
+                if (t == owner) return i > 0;
+            }
         }
         return false;
     }

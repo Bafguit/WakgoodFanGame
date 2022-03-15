@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -23,6 +24,7 @@ public class EndRoundAction extends AbstractAction {
                 }
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
+            AbstractLabyrinth.prepare();
             Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
             if(temp.size > 0) {
                 AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
