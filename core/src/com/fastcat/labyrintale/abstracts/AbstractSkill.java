@@ -36,12 +36,15 @@ public abstract class AbstractSkill implements Cloneable {
     public boolean isTrick = false;
     public float uid;
     public int upgradeCount = 0;
-    public int attack = 0;
-    public int baseAttack = 0;
-    public int spell = 0;
-    public int baseSpell = 0;
+    public int attack = -1;
+    public int baseAttack = -1;
+    public int upAttack = -1;
+    public int spell = -1;
+    public int baseSpell = -1;
+    public int upSpell = -1;
     public int value = -1;
     public int baseValue = -1;
+    public int upValue = -1;
     public int cooltime = 2;
     public int cooldown = 0;
 
@@ -68,18 +71,36 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public void setBaseAttack(int i) {
-        this.attack = i;
-        this.baseAttack = this.attack;
+        attack = i;
+        baseAttack = attack;
     }
 
     public void setBaseSpell(int i) {
-        this.spell = i;
-        this.baseSpell = this.spell;
+        spell = i;
+        baseSpell = spell;
     }
 
     public void setBaseValue(int i) {
-        this.value = i;
-        this.baseValue = this.value;
+        value = i;
+        baseValue = value;
+    }
+
+    public void setBaseAttack(int i, int up) {
+        attack = i;
+        baseAttack = attack;
+        upAttack = up;
+    }
+
+    public void setBaseSpell(int i, int up) {
+        spell = i;
+        baseSpell = spell;
+        upSpell = up;
+    }
+
+    public void setBaseValue(int i, int up) {
+        value = i;
+        baseValue = value;
+        upValue = up;
     }
 
     public void update() {
@@ -319,6 +340,18 @@ public abstract class AbstractSkill implements Cloneable {
 
     public void upgrade() {
         upgradeCard();
+        if(upAttack != -1) {
+            baseAttack = attack + upAttack;
+            attack = baseAttack;
+        }
+        if(upSpell != -1) {
+            baseSpell = spell + upSpell;
+            spell = baseSpell;
+        }
+        if(upValue != -1) {
+            baseValue = value + upValue;
+            value = baseValue;
+        }
         upgraded = true;
         upgradeCount++;
         name = skillData.NAME + "+" + upgradeCount;

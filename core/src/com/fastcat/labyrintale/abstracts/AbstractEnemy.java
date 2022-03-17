@@ -4,6 +4,10 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
+import com.fastcat.labyrintale.skills.enemy.MoveRightE;
+import com.fastcat.labyrintale.skills.player.MoveLeft;
+import com.fastcat.labyrintale.skills.player.MoveRight;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
 
@@ -21,6 +25,8 @@ public abstract class AbstractEnemy extends AbstractEntity {
         drawPile = new Array<>();
         discardPile = new Array<>();
         disposablePile = new Array<>();
+        mLeft = new MoveLeftE(this);
+        mRight = new MoveRightE(this);
     }
 
     @Override

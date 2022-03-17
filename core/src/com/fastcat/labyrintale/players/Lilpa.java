@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Heal;
 import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.lilpa.Lilpaa;
 
 import static com.badlogic.gdx.graphics.Color.NAVY;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
@@ -31,21 +32,7 @@ public class Lilpa extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        Strike s = new Strike(this);
-        s.upgrade();
-        temp.add(s);
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
+        temp.add(new Lilpaa(this));
         temp.add(new Light(this));
         temp.add(new Barrier(this));
         temp.add(new Heal(this));

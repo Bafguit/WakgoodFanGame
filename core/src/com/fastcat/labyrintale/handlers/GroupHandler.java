@@ -102,7 +102,7 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
             t.add(new EyeSting(null));
-            t.add(new Test22(null));
+            t.add(new Pruning(null));
             t.add(new Test23(null));
             //Silver
             t.add(new Test24(null));
@@ -133,7 +133,7 @@ public class GroupHandler {
         private static void generateLilpa() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test41(null));
+            t.add(new Lilpaa(null));
             t.add(new Test42(null));
             t.add(new Test43(null));
             //Silver

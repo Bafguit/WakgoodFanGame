@@ -23,8 +23,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final Color pColorDG;
     public final PlayerClass playerClass;
     public String[] flavour;
-    public AbstractSkill mLeft;
-    public AbstractSkill mRight;
 
     public AbstractPlayer(String id, int maxHealth, TextureAtlas atlas, FileHandle skel, Color c) {
         super(id, EntityType.PLAYER, 4, maxHealth, atlas, skel);

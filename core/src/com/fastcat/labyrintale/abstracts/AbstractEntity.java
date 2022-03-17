@@ -42,6 +42,8 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractUI ui;
     public Array<AbstractSkill> deck;
     public AbstractSkill[] hand;
+    public AbstractSkill mLeft;
+    public AbstractSkill mRight;
     public AbstractStatus[] status = new AbstractStatus[5];
     public EntityType entityType;
     public String id;
@@ -199,8 +201,10 @@ public abstract class AbstractEntity implements Cloneable {
         AbstractEntity attacker = info.actor;
         int damage = info.damage;
         DamageType type = info.type;
-        for (AbstractStatus s : attacker.status) {
-            if (s != null) damage = s.onAttack(this, damage, type);
+        if(attacker != null) {
+            for (AbstractStatus s : attacker.status) {
+                if (s != null) damage = s.onAttack(this, damage, type);
+            }
         }
         if(damage > 0) {
             for (AbstractStatus s : status) {
