@@ -23,6 +23,8 @@ public class VictoryAction extends AbstractAction {
                 p.block = 0;
                 p.status = new AbstractStatus[5];
             }
+            AbstractLabyrinth.advisor.skill.usedOnce = false;
+            AbstractLabyrinth.advisor.skill.cooldown = 0;
             AbstractLabyrinth.currentFloor.currentWay.done();
             AbstractLabyrinth.currentFloor.currentRoom.done();
             Array<AbstractReward> temp = new Array<>();

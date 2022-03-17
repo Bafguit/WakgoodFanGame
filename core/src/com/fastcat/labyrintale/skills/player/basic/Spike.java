@@ -4,7 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.BleedingStatus;
+import com.fastcat.labyrintale.status.InfectionStatus;
 
 
 public class Spike extends AbstractSkill {
@@ -22,7 +22,7 @@ public class Spike extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new BleedingStatus(value), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new InfectionStatus(value), owner, target, false));
     }
 
     @Override

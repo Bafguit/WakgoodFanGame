@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.strings.StatusString;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_POISON;
 
@@ -14,17 +17,22 @@ public abstract class AbstractStatus implements Cloneable {
     public Sprite imgBig;
     public String name;
     public String desc;
+    public String[] exDesc;
+    public StatusString.StatusData data;
     public AbstractSkill.SkillTarget target;
     public AbstractEntity owner;
     public boolean hasAmount = false;
     public boolean canGoNegative = false;
     public int amount = 0;
 
-    public AbstractStatus(String id, Sprite img, AbstractEntity o, AbstractSkill.SkillTarget target) {
+    public AbstractStatus(String id, AbstractSkill.SkillTarget target) {
         this.id = id;
-        this.img = img;
-        this.imgBig = SKILL_POISON;
-        owner = o;
+        img = FileHandler.statusImg.get(this.id);
+        imgBig = FileHandler.statusImgBig.get(this.id);
+        data = StringHandler.statusString.get(this.id);
+        name = data.NAME;
+        desc = data.DESC;
+        exDesc = data.DESC_B;
         this.target = target;
     }
 
@@ -76,13 +84,21 @@ public abstract class AbstractStatus implements Cloneable {
     public void atBattleEnd() {
 
     }
-
-    public void onDamage(AbstractEntity actor, int damage) {
-
+    
+    public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+        
     }
 
-    public void onDamaged(AbstractEntity attacker, int damage) {
+    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        
+    }
 
+    public int onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+        return damage;
+    }
+
+    public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return damage;
     }
 
     public void onHeal(int heal) {

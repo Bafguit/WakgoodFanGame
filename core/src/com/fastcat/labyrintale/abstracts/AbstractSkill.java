@@ -42,6 +42,7 @@ public abstract class AbstractSkill implements Cloneable {
     public int baseSpell = 0;
     public int value = -1;
     public int baseValue = -1;
+    public int cooltime = 2;
     public int cooldown = 0;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
@@ -304,7 +305,7 @@ public abstract class AbstractSkill implements Cloneable {
                 if (s != null) s.onUseCard(this);
             }
         }
-        cooldown = 2;
+        cooldown = cooltime;
         if(!isTrick) AbstractLabyrinth.energy--;
         if(disposable) usedOnce = true;
         use();

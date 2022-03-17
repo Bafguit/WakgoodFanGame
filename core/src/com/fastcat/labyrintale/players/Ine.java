@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Heal;
 import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.ine.EyeSting;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
@@ -33,21 +34,10 @@ public class Ine extends AbstractPlayer {
         Strike s = new Strike(this);
         s.upgrade();
         temp.add(s);
-        temp.add(new Light(this));
+        temp.add(new EyeSting(this));
         temp.add(new Barrier(this));
         temp.add(new Heal(this));
         temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
         return temp;
     }
 }

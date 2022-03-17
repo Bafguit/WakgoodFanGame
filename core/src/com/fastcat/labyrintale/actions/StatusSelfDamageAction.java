@@ -25,7 +25,7 @@ public class StatusSelfDamageAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration){
             status.flash(actor);
-            actor.takeDamage(actor, status.amount);
+            actor.takeDamage(new AbstractEntity.DamageInfo(actor, status.amount, AbstractEntity.DamageType.SPIKE));
             if(reduce) actor.applyStatus(status, -1);
         }
     }

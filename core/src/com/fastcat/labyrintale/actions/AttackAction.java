@@ -10,17 +10,30 @@ public class AttackAction extends AbstractAction {
 
     public AbstractEntity monoTarget;
     public AbstractEffect effect;
-    public int damage;
+    public AbstractEntity.DamageInfo info;
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEffect effect) {
         super(actor, target, 0.5f);
-        this.damage = damage;
+        info = new AbstractEntity.DamageInfo(actor, damage);
         this.effect = effect;
     }
 
     public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AbstractEffect effect) {
         super(actor, NONE, 0.5f);
-        this.damage = damage;
+        info = new AbstractEntity.DamageInfo(actor, damage);
+        monoTarget = target;
+        this.effect = effect;
+    }
+
+    public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEntity.DamageType type, AbstractEffect effect) {
+        super(actor, target, 0.5f);
+        info = new AbstractEntity.DamageInfo(actor, damage, type);
+        this.effect = effect;
+    }
+
+    public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AbstractEntity.DamageType type, AbstractEffect effect) {
+        super(actor, NONE, 0.5f);
+        info = new AbstractEntity.DamageInfo(actor, damage, type);
         monoTarget = target;
         this.effect = effect;
     }
@@ -31,7 +44,7 @@ public class AttackAction extends AbstractAction {
             if(target.size > 0) {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    if(te.isAlive()) te.takeDamage(actor, damage);
+                    if(te.isAlive()) te.takeDamage(info);
                 }
                 if(actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);

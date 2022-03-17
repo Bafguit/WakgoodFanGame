@@ -49,6 +49,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         for(int i = 0; i < 4; i++) {
             hand[i] = Objects.requireNonNull(deck.get(i).cpy());
         }
+
     }
 
     public void update() {

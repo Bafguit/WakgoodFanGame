@@ -2,12 +2,16 @@ package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.actions.*;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
+import static com.fastcat.labyrintale.handlers.ActionHandler.bot;
 import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
@@ -49,8 +53,22 @@ public class SkillButtonPanel extends AbstractUI {
         if(type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning) {
             if(!isUsed && skill.canUse()) {
                 skill.useCard();
+
+                if(AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+                    bot(new EndPlayerTurnAction());
+                }
             }
         }
+    }
+
+    public static boolean noMoreSkill() {
+        if(AbstractLabyrinth.advisor.skill.canUse()) return false;
+        for(AbstractPlayer p : players) {
+            for(AbstractSkill s : p.hand) {
+                if(s.canUse()) return false;
+            }
+        }
+        return true;
     }
 
     public void resetImg() {

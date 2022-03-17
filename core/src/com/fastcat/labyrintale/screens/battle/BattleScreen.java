@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.status.TestStatus;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -21,7 +20,6 @@ public class BattleScreen extends AbstractScreen {
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public EndTurnButton endTurnButton;
     public StatusButton[][] playerStatus = new StatusButton[4][5];
     public StatusButton[][] enemyStatus = new StatusButton[4][5];
     public SkillButton[] enemySkills = new SkillButton[4];
@@ -36,13 +34,11 @@ public class BattleScreen extends AbstractScreen {
         AbstractLabyrinth.prepare();
         setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        endTurnButton = new EndTurnButton();
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
             pv.player.newDeck();
-            pv.player.status[0] = new TestStatus(pv.player);
             pv.player.ui = pv;
             players[i] = pv;
 
@@ -129,7 +125,6 @@ public class BattleScreen extends AbstractScreen {
             ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
         }
-        endTurnButton.update();
     }
 
     @Override
@@ -212,7 +207,6 @@ public class BattleScreen extends AbstractScreen {
                 enemySkills[i].render(sb);
             }
         }
-        endTurnButton.render(sb);
     }
 
     public void setEnemy(AbstractEnemy e, int index) {

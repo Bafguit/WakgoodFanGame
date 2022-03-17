@@ -83,6 +83,10 @@ public class FileHandler implements Disposable {
     public static final HashMap<String, Sprite> skillImg = new HashMap<>();
     public static final HashMap<String, Sprite> skillImgBig = new HashMap<>();
 
+    //상태
+    public static final HashMap<String, Sprite> statusImg = new HashMap<>();
+    public static final HashMap<String, Sprite> statusImgBig = new HashMap<>();
+
     //지울 예정
     public static final Sprite BURGER = new Sprite(new Texture("img/advisor/burger.png"));
     public static final Sprite BURGER_BG = new Sprite(new Texture("img/advisor/burger_bg.png"));
@@ -101,6 +105,7 @@ public class FileHandler implements Disposable {
         generateCharImg();
         StringHandler.generate();
         generateSkillImg();
+        generateStatusImg();
     }
 
     private static void generateCharImg() {
@@ -174,6 +179,17 @@ public class FileHandler implements Disposable {
         for (JsonValue js : CARD_JSON_ADV) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
             skillImgBig.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + "_p.png")));
+        }
+    }
+
+    private static void generateStatusImg() {
+        statusImg.clear();
+        statusImgBig.clear();
+        for (JsonValue js : STATUS_JSON) {
+            if(!js.name.equals("")) {
+                statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
+                statusImgBig.put(js.name, new Sprite(new Texture("img/status/" + js.name + "_p.png")));
+            }
         }
     }
 

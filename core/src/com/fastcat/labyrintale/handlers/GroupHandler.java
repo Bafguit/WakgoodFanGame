@@ -6,8 +6,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
-import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.skills.player.burger.*;
 import com.fastcat.labyrintale.skills.player.gosegu.*;
 import com.fastcat.labyrintale.skills.player.ine.*;
@@ -22,7 +20,6 @@ import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.skillRandom;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
-import static com.fastcat.labyrintale.rewards.SkillReward.*;
 
 public class GroupHandler {
 
@@ -104,7 +101,7 @@ public class GroupHandler {
         private static void generateIne() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test21(null));
+            t.add(new EyeSting(null));
             t.add(new Test22(null));
             t.add(new Test23(null));
             //Silver

@@ -6,7 +6,9 @@ import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.effects.TurnChangeEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 public class TurnChangeAction extends AbstractAction {
 
@@ -21,6 +23,8 @@ public class TurnChangeAction extends AbstractAction {
     protected void updateAction() {
         if(duration == baseDuration) {
             EffectHandler.add(new TurnChangeEffect(isEnemy));
+        } else if(isDone && !isEnemy && SkillButtonPanel.noMoreSkill()) {
+            ActionHandler.bot(new EndPlayerTurnAction());
         }
     }
 }

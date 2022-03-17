@@ -8,20 +8,18 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
 
-public class BleedingStatus extends AbstractStatus {
+public class InfectionStatus extends AbstractStatus {
 
-    private static final String ID = "Spike";
+    private static final String ID = "Infection";
 
-    public BleedingStatus(int amount) {
-        super(ID, new Sprite(FileHandler.SKILL_SPIKE), null, NONE);
-        name = "출혈";
-        desc = "턴 시작 시 피해를 받습니다.";
+    public InfectionStatus(int amount) {
+        super(ID, NONE);
         setAmount(amount);
     }
 
     @Override
     public String getDesc() {
-        return "턴 시작 시 피해를 &y<" + amount + "> 받습니다.";
+        return exDesc[0] + amount + exDesc[1];
     }
 
     @Override

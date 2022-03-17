@@ -112,10 +112,8 @@ public abstract class AbstractEntity implements Cloneable {
         if(heal < 0) heal = 0;
         if(isAlive()) {
             health = Math.min(health + heal, maxHealth);
-            if(status != null) {
-                for (AbstractStatus s : status) {
-                    if(s != null) s.onHeal(heal);
-                }
+            for (AbstractStatus s : status) {
+                if(s != null) s.onHeal(heal);
             }
         }
     }
@@ -151,7 +149,10 @@ public abstract class AbstractEntity implements Cloneable {
                         temp.amount += amount;
                         if (temp.amount <= 0 && !temp.canGoNegative) {
                             temp.onRemove();
-                            if (i < 4) System.arraycopy(this.status, i + 1, this.status, 0, 4 - i);
+                            if (i < 4) {
+                                this.status[i] = null;
+                                System.arraycopy(this.status, i + 1, this.status, i, 4 - i);
+                            }
                             this.status[4] = null;
                         }
                     }
@@ -174,51 +175,76 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         if(!done) {
-            this.status[0].onRemove();
-            System.arraycopy(this.status, 1, this.status, 0, 4);
-            this.status[4] = s;
+            this.status[4].onRemove();
+            System.arraycopy(this.status, 0, this.status, 1, 4);
+            this.status[0] = s;
             s.onApply();
             s.flash(this);
         }
     }
 
-    public void takeDamage(AbstractEntity attacker, int damage) {
-        int temp = loseBlock(damage);
-        if(temp > 0) {
-            EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, YELLOW, true));
-            AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
-            state.addAnimation(0, "Standby", true, 0.0F);
-            e.setTimeScale(1.0f);
-            health -= temp;
-            if (health <= 0) {
-                health = 0;
-                block = 0;
-                die(attacker);
-            }
-            if(status != null)  {
-                for(AbstractStatus s : status) {
-                    if(s != null) s.onDamage(attacker, damage);
-                }
+    public void removeStatus(String id) {
+        for (int i = 0; i < 5; i++) {
+            AbstractStatus s = this.status[i];
+            if (s != null && s.id.equals(id)) {
+                s.onRemove();
+                this.status[i] = null;
+                if (i < 4) System.arraycopy(this.status, i + 1, this.status, i, 4 - i);
+                break;
             }
         }
+    }
+
+    public void takeDamage(DamageInfo info) {
+        AbstractEntity attacker = info.actor;
+        int damage = info.damage;
+        DamageType type = info.type;
+        for (AbstractStatus s : attacker.status) {
+            if (s != null) damage = s.onAttack(this, damage, type);
+        }
+        if(damage > 0) {
+            for (AbstractStatus s : status) {
+                if (s != null) damage = s.onAttacked(attacker, damage, type);
+            }
+            if(damage > 0) {
+                damage = loseBlock(damage);
+                if (damage > 0) {
+                    EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                    AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
+                    state.addAnimation(0, "Standby", true, 0.0F);
+                    e.setTimeScale(1.0f);
+                    health -= damage;
+                    if (health <= 0) {
+                        health = 0;
+                        block = 0;
+                        die(attacker);
+                    }
+                    for (AbstractStatus s : attacker.status) {
+                        if (s != null) s.onDamage(this, damage, type);
+                    }
+                    for (AbstractStatus s : status) {
+                        if (s != null) s.onDamaged(attacker, damage, type);
+                    }
+                    return;
+                }
+                return;
+            }
+        }
+        EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
     }
 
     public int loseBlock(int damage) {
         if(block > 0) {
             if(block >= damage) {
-                if(status != null)  {
-                    for(AbstractStatus s : status) {
-                        if(s != null) s.onLoseBlock(damage);
-                    }
+                for(AbstractStatus s : status) {
+                    if(s != null) s.onLoseBlock(damage);
                 }
                 block -= damage;
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, CYAN, true));
                 return 0;
             } else {
-                if(status != null)  {
-                    for(AbstractStatus s : status) {
-                        if(s != null) s.onLoseBlock(block);
-                    }
+                for(AbstractStatus s : status) {
+                    if(s != null) s.onLoseBlock(block);
                 }
                 damage -= block;
                 block = 0;
@@ -233,10 +259,8 @@ public abstract class AbstractEntity implements Cloneable {
         if(isAlive()) {
             if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
                 isDie = true;
-                if(status != null)  {
-                    for(AbstractStatus s : status) {
-                        if(s != null) s.onDeath(murder);
-                    }
+                for(AbstractStatus s : status) {
+                    if(s != null) s.onDeath(murder);
                 }
                 EffectHandler.add(new DieEffect(this));
                 if(this instanceof AbstractEnemy) {
@@ -271,8 +295,31 @@ public abstract class AbstractEntity implements Cloneable {
         imgBig = ib;
         this.bg = bg;
     }
+
+    public static class DamageInfo {
+
+        public AbstractEntity actor;
+        public int damage;
+        public DamageType type;
+
+        public DamageInfo(AbstractEntity actor, int damage, DamageType type) {
+            this.actor = actor;
+            this.damage = damage;
+            this.type = type;
+        }
+
+        public DamageInfo(AbstractEntity actor, int damage) {
+            this.actor = actor;
+            this.damage = damage;
+            this.type = DamageType.NORMAL;
+        }
+    }
     
     public enum EntityType {
         PLAYER, ENEMY
+    }
+    
+    public enum DamageType {
+        NORMAL, SPIKE, LOSE
     }
 }
