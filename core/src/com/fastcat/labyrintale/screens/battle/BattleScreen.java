@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -31,6 +32,7 @@ public class BattleScreen extends AbstractScreen {
     public BattleScreen() {
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
+        SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
         AbstractLabyrinth.prepare();
         setBg(FileHandler.BG_BATTLE);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();

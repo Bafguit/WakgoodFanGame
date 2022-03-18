@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.actions;
 
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
@@ -41,6 +42,7 @@ public class AttackAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration){
+            SoundHandler.playSfx("ATTACK_TEST");
             if(target.size > 0) {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);

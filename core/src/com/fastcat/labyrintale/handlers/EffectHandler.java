@@ -11,6 +11,7 @@ public class EffectHandler {
 
     public static final ShapeRenderer shr = new ShapeRenderer();
     public Array<AbstractEffect> effectList = new Array<>();
+    public boolean isShaking = false;
 
     public EffectHandler() {
 
@@ -21,7 +22,10 @@ public class EffectHandler {
             for(int i = 0; i < effectList.size; i++) {
                 AbstractEffect e = effectList.get(i);
                 e.render(sb);
-                if(e.isDone) effectList.removeIndex(i);
+                if(e.isDone) {
+                    e.onRemove();
+                    effectList.removeIndex(i);
+                }
             }
         }
     }
@@ -31,6 +35,9 @@ public class EffectHandler {
     }
 
     public void removeAll() {
+        for(AbstractEffect e : effectList) {
+            e.onRemove();
+        }
         effectList.clear();
     }
 }

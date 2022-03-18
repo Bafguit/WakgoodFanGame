@@ -223,8 +223,10 @@ public abstract class AbstractEntity implements Cloneable {
                         block = 0;
                         die(attacker);
                     }
-                    for (AbstractStatus s : attacker.status) {
-                        if (s != null) s.onDamage(this, damage, type);
+                    if(attacker != null) {
+                        for (AbstractStatus s : attacker.status) {
+                            if (s != null) s.onDamage(this, damage, type);
+                        }
                     }
                     for (AbstractStatus s : status) {
                         if (s != null) s.onDamaged(attacker, damage, type);

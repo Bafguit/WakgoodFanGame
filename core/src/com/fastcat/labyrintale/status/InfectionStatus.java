@@ -24,6 +24,6 @@ public class InfectionStatus extends AbstractStatus {
 
     @Override
     public void startOfTurn() {
-        ActionHandler.bot(new StatusSelfDamageAction(this, true));
+        ActionHandler.top(new StatusSelfDamageAction(this, true));
     }
 }

@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -64,6 +66,13 @@ public class FileHandler implements Disposable {
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
     public static final Sprite CHAR_SKILL_REWARD = new Sprite(new Texture("img/ui/charSkillReward.png"));
     public static final Sprite WAY_SELECT = new Sprite(new Texture("img/ui/wayBG.png"));
+
+    //사운드
+    public static final Sound LILPAA = getSound("sound/sfx/skill/lilpaa.mp3");
+    public static final Sound ATTACK_TEST = getSound("sound/sfx/attack/attackTest.ogg");
+
+    //BGM
+    public static final Music BATTLE_1 = getMusic("sound/bgm/battle_1.mp3");
 
     //스파인 atlas
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
@@ -135,6 +144,16 @@ public class FileHandler implements Disposable {
         FileHandle fileHandle = Gdx.files.internal(url);
         InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
         return jsonReader.parse(is);
+    }
+
+    private static Sound getSound(String url) {
+        FileHandle fileHandle = Gdx.files.internal(url);
+        return Gdx.audio.newSound(fileHandle);
+    }
+
+    private static Music getMusic(String url) {
+        FileHandle fileHandle = Gdx.files.internal(url);
+        return Gdx.audio.newMusic(fileHandle);
     }
 
     private static void generateSkillImg() {

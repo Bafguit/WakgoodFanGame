@@ -23,8 +23,6 @@ public class TurnChangeAction extends AbstractAction {
     protected void updateAction() {
         if(duration == baseDuration) {
             EffectHandler.add(new TurnChangeEffect(isEnemy));
-        } else if(isDone && !isEnemy && SkillButtonPanel.noMoreSkill()) {
-            ActionHandler.bot(new EndPlayerTurnAction());
         }
     }
 }

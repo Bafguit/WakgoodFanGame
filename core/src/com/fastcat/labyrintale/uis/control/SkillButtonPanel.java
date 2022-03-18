@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -24,6 +25,7 @@ public class SkillButtonPanel extends AbstractUI {
     public SkillButtonPanel(SkillButtonType type) {
         super(BORDER_M);
         this.type = type;
+        fontData = FontHandler.LOGO;
     }
 
     @Override
@@ -45,6 +47,8 @@ public class SkillButtonPanel extends AbstractUI {
             else sb.setColor(Color.LIGHT_GRAY);
             if(skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
+            sb.setColor(Color.WHITE);
+            if(skill.cooldown > 0) FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cooldown), x, y + sHeight / 2, sWidth, sHeight);
         }
     }
 

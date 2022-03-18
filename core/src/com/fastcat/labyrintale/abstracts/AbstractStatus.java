@@ -20,6 +20,7 @@ public abstract class AbstractStatus implements Cloneable {
     public String[] exDesc;
     public StatusString.StatusData data;
     public AbstractSkill.SkillTarget target;
+    public AbstractEntity source;
     public AbstractEntity owner;
     public boolean hasAmount = false;
     public boolean canGoNegative = false;

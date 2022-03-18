@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -33,6 +34,8 @@ public class Labyrintale extends Game {
 	public static SkeletonRenderer sr;
 
 	public static OrthographicCamera camera;
+	public static FitViewport viewport;
+	public static ScreenShake screenShake;
 
 	public static AbstractLabyrinth labyrinth;
 
@@ -59,6 +62,7 @@ public class Labyrintale extends Game {
 	private StringHandler stringHandler;
 	private SettingHandler settingHandler;
 	private FileHandler fileHandler;
+	private SoundHandler soundHandler;
 	public ActionHandler actionHandler;
 	public GroupHandler groupHandler;
 	public EffectHandler effectHandler;
@@ -72,7 +76,9 @@ public class Labyrintale extends Game {
 		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
 		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.setToOrtho(false);
+		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+		screenShake = new ScreenShake();
 		sb = new SpriteBatch();
 		psb = new PolygonSpriteBatch();
 		sr = new SkeletonRenderer();
@@ -81,6 +87,7 @@ public class Labyrintale extends Game {
 		fileHandler = new FileHandler();
 		fontHandler = new FontHandler();
 		settingHandler = new SettingHandler();
+		soundHandler = new SoundHandler();
 		actionHandler = new ActionHandler();
 		effectHandler = new EffectHandler();
 		groupHandler = new GroupHandler();
@@ -97,6 +104,7 @@ public class Labyrintale extends Game {
 
 	public void update() {
 		camera.update();
+		screenShake.update(viewport);
 		inputHandler.update();
 		fontHandler.update();
 		actionHandler.update();
@@ -109,6 +117,7 @@ public class Labyrintale extends Game {
 		} else if(screen instanceof AbstractScreen) {
 			((AbstractScreen) screen).update();
 		}
+		soundHandler.update();
 	}
 
 	@Override

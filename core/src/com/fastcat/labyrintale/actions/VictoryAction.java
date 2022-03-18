@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.GoldReward;
 import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
@@ -18,6 +19,7 @@ public class VictoryAction extends AbstractAction {
     protected void updateAction() {
         if(duration == baseDuration) {
             ActionHandler.clear();
+            SoundHandler.fadeOutMusic("BATTLE_1");
         } else if(isDone) {
             for(AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;

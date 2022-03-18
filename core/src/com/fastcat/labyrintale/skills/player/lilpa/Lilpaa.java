@@ -11,18 +11,16 @@ public class Lilpaa extends AbstractSkill {
     private static final SkillRarity RARITY = SkillRarity.STARTER;
     private static final SkillTarget TARGET = SkillTarget.ALL;
     private static final int ATTACK = 5;
-    private static final int VALUE = 2;
     private static final int UP = 1;
 
     public Lilpaa(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
-        setBaseValue(VALUE);
     }
 
     @Override
     public void use() {
-        bot(new LilpaaAction(owner, attack, value));
+        bot(new LilpaaAction(owner, attack, 2));
     }
 
     @Override
