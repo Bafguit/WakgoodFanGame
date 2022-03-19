@@ -9,9 +9,6 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 
 import java.util.HashMap;
 
-import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
-import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.COMMON;
-
 public abstract class SkillReward extends AbstractReward {
 
     public HashMap<Integer, Array<AbstractSkill>> group = new HashMap<>();

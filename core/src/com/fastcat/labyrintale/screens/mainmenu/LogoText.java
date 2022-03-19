@@ -15,6 +15,7 @@ public class LogoText extends AbstractUI {
         fontData = LOGO;
         text = "W의 미궁";
         showImg = false;
+        overable = false;
     }
 
     @Override

@@ -15,6 +15,7 @@ public class AdvisorSelectText extends AbstractUI {
         fontData = CARD_BIG_ORB;
         text = "참모를 선택하세요";
         showImg = false;
+        overable = false;
     }
 
     @Override

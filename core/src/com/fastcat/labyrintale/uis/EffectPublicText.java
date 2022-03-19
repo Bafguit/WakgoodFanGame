@@ -16,6 +16,7 @@ public class EffectPublicText extends AbstractUI {
         fontData = new FontData(MEDIUM, 19, false, true);
         text = "0";
         showImg = false;
+        overable = false;
     }
 
     @Override

@@ -25,6 +25,8 @@ public class StatusButton extends AbstractUI {
         super(BORDER_SS);
         fontData = new FontHandler.FontData(MEDIUM, 16, true);
         status = s;
+        overable = true;
+        clickable = false;
     }
 
     @Override
@@ -43,8 +45,8 @@ public class StatusButton extends AbstractUI {
     }
 
     @Override
-    protected void updateButton() {
-        if(over && status != null) {
+    protected void onOver() {
+        if(status != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(status);
             battleScreen.looking = getTargets(status);
         }
@@ -56,15 +58,5 @@ public class StatusButton extends AbstractUI {
         } else {
             return "";
         }
-    }
-
-    @Override
-    protected void onOver() {
-
-    }
-
-    @Override
-    protected void onClick() {
-
     }
 }

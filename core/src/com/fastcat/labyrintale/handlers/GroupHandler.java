@@ -196,18 +196,30 @@ public class GroupHandler {
 
         public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {
             Array<AbstractSkill> a = new Array<>();
-            Array<AbstractSkill> b = staticShuffle(allSkill.get(p.playerClass));
+            Array<AbstractSkill> b = new Array<>();
+            boolean t;
+            for(AbstractSkill s : allSkill.get(p.playerClass)) {
+                t = true;
+                for(AbstractSkill ss : p.deck) {
+                    if (s.id.equals(ss.id)) {
+                        t = false;
+                        break;
+                    }
+                }
+                if(t) b.add(s);
+            }
+            staticShuffle(b);
             for(int i = 0; i < amount; i++) {
-                AbstractSkill t;
-                t = Objects.requireNonNull(b.get(i).cpy());
-                t.owner = p;
-                a.add(t);
+                AbstractSkill tt;
+                tt = Objects.requireNonNull(b.get(i).cpy());
+                tt.owner = p;
+                a.add(tt);
             }
             return a;
         }
 
         public static AbstractSkill getRandomSkill(AbstractPlayer p) {
-            AbstractSkill t = Objects.requireNonNull(staticShuffle(allSkill.get(p.playerClass)).get(0).cpy());
+            AbstractSkill t = getRandomSkill(p, 1).get(0);
             t.owner = p;
             return t;
         }

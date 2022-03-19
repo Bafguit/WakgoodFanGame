@@ -50,6 +50,7 @@ public class FileHandler implements Disposable {
     public static final Sprite TURN_BG = new Sprite(new Texture("img/tc.png"));
     public static final Sprite MENU_SELECT = new Sprite(new Texture("img/menuSelect.png"));
     public static final Sprite CONTROL_PANEL = new Sprite(new Texture("img/ui/cPanel.png"));
+    public static final Sprite ENERGY_ORB = new Sprite(new Texture("img/ui/energy.png"));
     public static final Sprite BORDER = new Sprite(new Texture("img/border.png"));
     public static final Sprite BORDER_M = new Sprite(new Texture("img/border_m.png"));
     public static final Sprite BORDER_B = new Sprite(new Texture("img/border_p.png"));
@@ -70,6 +71,8 @@ public class FileHandler implements Disposable {
     //사운드
     public static final Sound LILPAA = getSound("sound/sfx/skill/lilpaa.mp3");
     public static final Sound ATTACK_TEST = getSound("sound/sfx/attack/attackTest.ogg");
+    public static final Sound CLICK = getSound("sound/sfx/click.wav");
+    public static final Sound OVER = getSound("sound/sfx/over.wav");
 
     //BGM
     public static final Music BATTLE_1 = getMusic("sound/bgm/battle_1.mp3");

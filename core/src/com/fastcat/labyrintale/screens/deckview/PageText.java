@@ -14,6 +14,7 @@ public class PageText extends AbstractUI {
         fontData = MAIN_MENU;
         text = "";
         showImg = false;
+        overable = false;
     }
 
     @Override

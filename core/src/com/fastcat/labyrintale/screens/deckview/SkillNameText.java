@@ -16,6 +16,7 @@ public class SkillNameText extends AbstractUI {
         fontData = CARD_BIG_NAME;
         text = "";
         showImg = false;
+        overable = false;
     }
 
     @Override

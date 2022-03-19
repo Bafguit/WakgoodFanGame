@@ -19,6 +19,7 @@ public class TurnEffectText extends AbstractUI {
         fontData = new FontHandler.FontData(BOLD, 70, false);
         this.text = text;
         img.setCenter(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.65f);
+        overable = false;
     }
 
     @Override

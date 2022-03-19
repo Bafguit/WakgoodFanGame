@@ -17,6 +17,7 @@ public class SkillEffectText extends AbstractUI {
         fontData = CARD_BIG_DESC;
         text = "";
         showImg = false;
+        overable = false;
     }
 
     @Override

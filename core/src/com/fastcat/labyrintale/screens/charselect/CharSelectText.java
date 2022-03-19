@@ -18,6 +18,7 @@ public class CharSelectText extends AbstractUI {
         fontData = CARD_BIG_ORB;
         text = "플레이어를 선택하세요";
         showImg = false;
+        overable = false;
     }
 
     @Override

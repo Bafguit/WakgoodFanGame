@@ -25,7 +25,7 @@ public class SkillButtonPanel extends AbstractUI {
     public SkillButtonPanel(SkillButtonType type) {
         super(BORDER_M);
         this.type = type;
-        fontData = FontHandler.LOGO;
+        fontData = FontHandler.COOLDOWN;
     }
 
     @Override
@@ -80,6 +80,6 @@ public class SkillButtonPanel extends AbstractUI {
     }
 
     public enum SkillButtonType {
-        PLAYER, ADVISOR, VIEW
+        PLAYER, ADVISOR, PASSIVE, VIEW
     }
 }

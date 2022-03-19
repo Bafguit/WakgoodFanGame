@@ -33,6 +33,7 @@ public class FontHandler implements Disposable {
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
     public static final FontData LOGO = new FontData(BOLD, 100, false, true);
+    public static final FontData COOLDOWN = new FontData(BOLD, 60, true, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false, true);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, false, true);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false, true);

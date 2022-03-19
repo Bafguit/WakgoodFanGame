@@ -17,9 +17,10 @@ public class EnemyTurnStartAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+            for(int j = 3; j >= 0; j--) {
+                AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
                 if(e.isAlive()) {
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 4; i >= 0; i--) {
                         if (e.status[i] != null) e.status[i].startOfTurn();
                     }
                 }

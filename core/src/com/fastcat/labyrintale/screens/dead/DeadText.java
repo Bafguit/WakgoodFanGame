@@ -15,6 +15,7 @@ public class DeadText extends AbstractUI {
         fontData = CARD_BIG_ORB;
         text = "";
         showImg = false;
+        overable = false;
     }
 
     @Override

@@ -26,6 +26,8 @@ public class SoundHandler {
     private static void generateSound() {
         sfx.put("LILPAA", FileHandler.LILPAA);
         sfx.put("ATTACK_TEST", FileHandler.ATTACK_TEST);
+        sfx.put("CLICK", FileHandler.CLICK);
+        sfx.put("OVER", FileHandler.OVER);
     }
 
     private static void generateMusic() {

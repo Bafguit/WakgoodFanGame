@@ -17,6 +17,7 @@ public class SkillRewardBG extends AbstractUI {
         super(CHAR_SKILL_REWARD);
         group = g;
         this.p = p;
+        overable = false;
     }
 
     @Override

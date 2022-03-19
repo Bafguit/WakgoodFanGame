@@ -24,6 +24,7 @@ public abstract class AbstractSkill implements Cloneable {
     public final SkillRarity rarity;
     public final SkillType type;
     public SkillTarget target;
+    public AbstractSkill passive;
     public String id;
     public String name;
     public String desc;
@@ -328,7 +329,7 @@ public abstract class AbstractSkill implements Cloneable {
         }
         use();
         cooldown = cooltime;
-        if(!isTrick) AbstractLabyrinth.energy--;
+        if(!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
         if(disposable) usedOnce = true;
     }
 

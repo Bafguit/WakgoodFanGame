@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
@@ -44,12 +45,15 @@ public abstract class AbstractUI implements Disposable {
     protected FontType ft;
     protected boolean fb;
     public boolean over;
+    private boolean justOver = false;
+    public boolean overable = true;
     public boolean enabled;
     public boolean showImg = true;
 
     public float uiScale;
     public boolean clicked;
     public boolean clicking;
+    public boolean clickable = true;
     public boolean trackable = false;
     public boolean tracking = false;
 
@@ -95,29 +99,32 @@ public abstract class AbstractUI implements Disposable {
         //y = sy * scale;
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        if(clicked) clicked = false;
-        if(over) over = false;
         if(tracking) tracking = false;
 
         if(enabled && !Labyrintale.fading) {
-            this.over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+            justOver = over;
+            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+            clicked = isLeftClick;
+            clicking = isLeftClicking;
 
             if(over) {
-                onOver();
-                if(isLeftClick) {
-                    clicked = true;
-                    clicking = true;
+                if(!justOver) {
+                    //if(overable) SoundHandler.playSfx("OVER");
+                    onOver();
+                    justOver = true;
+                }
+                if(overable) {
                     cx = mx - x;
                     cy = my - y;
-                    onClick();
+                    if(clicked) {
+                        if(clickable) {
+                            SoundHandler.playSfx("CLICK");
+                            onClick();
+                        }
+                        clicked = true;
+                    }
+                    if(clicking) onClicking();
                 }
-
-            }
-
-            if(clicking && isLeftClicking) {
-                onClicking();
-            } else {
-                clicking = false;
             }
 
             updateButton();

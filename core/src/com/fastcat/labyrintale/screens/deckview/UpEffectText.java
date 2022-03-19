@@ -20,6 +20,7 @@ public class UpEffectText extends AbstractUI {
         fontData = CARD_BIG_DESC;
         text = "";
         showImg = false;
+        overable = false;
     }
 
     @Override

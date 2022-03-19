@@ -37,10 +37,6 @@ public class SkillRewardSkillButton extends AbstractUI {
             for(int i = 0; i < t.upgradeCount; i++) {
                 skill.upgrade();
             }
-            if(skill.id.equals(t.id)) {
-                skill = Objects.requireNonNull(t.cpy());
-                skill.upgrade();
-            }
         }
     }
 

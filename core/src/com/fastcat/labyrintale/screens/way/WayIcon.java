@@ -17,6 +17,7 @@ public class WayIcon extends AbstractUI {
         super(FileHandler.BORDER);
         icon = i;
         this.b = b;
+        overable = false;
     }
 
     @Override

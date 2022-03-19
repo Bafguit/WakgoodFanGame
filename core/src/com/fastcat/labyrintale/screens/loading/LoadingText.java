@@ -15,6 +15,7 @@ public class LoadingText extends AbstractUI {
         fontData = LOGO;
         text = "로딩...";
         showImg = false;
+        overable = false;
     }
 
     @Override

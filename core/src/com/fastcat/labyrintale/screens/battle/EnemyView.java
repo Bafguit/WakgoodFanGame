@@ -20,6 +20,7 @@ public class EnemyView extends AbstractUI {
         super(ENTITY_POINT);
         this.enemy = enemy;
         showImg = false;
+        overable = false;
     }
 
     @Override

@@ -16,6 +16,7 @@ public class RestDesc extends AbstractUI {
         text = d;
         showImg = false;
         fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 36, false);
+        overable = false;
     }
 
     @Override

@@ -16,6 +16,7 @@ public class RewardTypeText extends AbstractUI {
         fontData = CARD_BIG_ORB;
         text = type == VICTORY ? "전투 승리" : type == CHEST ? "보물 발견" : type == REST ? "정비" : "";
         showImg = false;
+        overable = false;
     }
 
     @Override

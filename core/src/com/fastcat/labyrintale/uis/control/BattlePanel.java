@@ -20,6 +20,8 @@ public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
+    public SkillButtonPanel pSkill;
+    public EnergyPanel energy;
     public AbstractPlayer curPlayer;
     public PlayerIcon cpIcon;
 
@@ -38,6 +40,9 @@ public class BattlePanel implements Disposable {
         }
         cpIcon = new PlayerIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.14f - cpIcon.sWidth / 2,h * 0.275f);
+        energy = new EnergyPanel();
+        energy.setPosition(w * 0.22f - energy.sWidth / 2,h * 0.275f);
+        //pSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PASSIVE); //TODO 패시브 스킬 버튼 추가
     }
 
     public void update() {
@@ -61,6 +66,7 @@ public class BattlePanel implements Disposable {
         }
         aSkill.render(sb);
         cpIcon.render(sb);
+        energy.render(sb);
     }
 
     public void setPlayer(AbstractPlayer p) {
@@ -84,5 +90,7 @@ public class BattlePanel implements Disposable {
             mSkill[i].dispose();
         }
         aSkill.dispose();
+        cpIcon.dispose();
+        energy.dispose();
     }
 }
