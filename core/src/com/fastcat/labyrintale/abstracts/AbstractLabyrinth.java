@@ -76,6 +76,8 @@ public class AbstractLabyrinth {
 
     public static void prepare() {
         energy = maxEnergy;
+        advisor.skill.usedOnce = false;
+        advisor.skill.cooldown = 0;
     }
 
     private static String generateRandomSeed() {

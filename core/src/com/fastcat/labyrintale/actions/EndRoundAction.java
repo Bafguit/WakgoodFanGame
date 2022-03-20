@@ -22,9 +22,11 @@ public class EndRoundAction extends AbstractAction {
                         t.hand[j].cooldown--;
                     }
                 }
+                if(t.mLeft.cooldown > 0) t.mLeft.cooldown--;
+                if(t.mRight.cooldown > 0) t.mRight.cooldown--;
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
-            AbstractLabyrinth.prepare();
+            AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;
             Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
             if(temp.size > 0) {
                 AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));

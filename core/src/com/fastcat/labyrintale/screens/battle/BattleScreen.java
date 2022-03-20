@@ -28,6 +28,7 @@ public class BattleScreen extends AbstractScreen {
     public EnemyView[] enemies = new EnemyView[4];
     public boolean isEnemyTurn = false;
     public Array<AbstractEntity> looking;
+    public float w, h;
 
     public BattleScreen() {
         cType = ControlPanel.ControlType.BATTLE;
@@ -35,7 +36,8 @@ public class BattleScreen extends AbstractScreen {
         SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
         AbstractLabyrinth.prepare();
         setBg(FileHandler.BG_BATTLE);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        w = Gdx.graphics.getWidth();
+        h = Gdx.graphics.getHeight();
         for(int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
@@ -101,8 +103,10 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = enemies[i];
 
             if (ev.enemy.isAlive()) {
-                enemySkills[i].skill = ev.enemy.hand[0];
-                enemySkills[i].update();
+                SkillButton ss = enemySkills[i];
+                ss.skill = ev.enemy.hand[0];
+                ss.update();
+                ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
             }
 
             for(int j = 0; j < 5; j++) {
@@ -110,11 +114,13 @@ public class BattleScreen extends AbstractScreen {
                     StatusButton ts = playerStatus[i][j];
                     ts.status = AbstractLabyrinth.players[i].status[j];
                     ts.update();
+                    ts.setPosition(pv.player.animX + w * (0.012f + 0.014f * j) - pv.sWidth / 2, h * 0.52f);
                 }
                 if (ev.enemy.isAlive()) {
                     StatusButton ts = enemyStatus[i][j];
                     ts.status = AbstractLabyrinth.currentFloor.currentRoom.enemies[i].status[j];
                     ts.update();
+                    ts.setPosition(ev.enemy.animX + w * (-0.068f + 0.014f * j) + ev.sWidth / 2 - ts.sWidth, h * 0.52f);
                 }
             }
         }
@@ -145,24 +151,25 @@ public class BattleScreen extends AbstractScreen {
         for(int i = 0; i < 4; i++) {
             PlayerView tp = players[i];
             EnemyView te = enemies[i];
-            float tw = tp.sWidth;
-            float th = tp.sHeight;
+            float tw = tp.sWidth, th = tp.sHeight;
+            float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
+            float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
             if(!tp.player.isDead) {
                 boolean isBlock = tp.player.block > 0;
                 if(isBlock) {
                     shr.setColor(bc);
-                    shr.rect(tp.x + tw * 0.075f, tp.y - th * 0.01f, tw * 0.85f, th * 0.07f);
+                    shr.rect(px + tw * 0.075f, py - th * 0.01f, tw * 0.85f, th * 0.07f);
                 }
                 shr.setColor(hbc);
-                shr.rect(tp.x + tw * 0.1f, tp.y, tw * 0.8f, th * 0.05f);
+                shr.rect(px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
                 shr.setColor(Color.SCARLET.cpy());
-                shr.rect(tp.x + tw * 0.1f, tp.y, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), th * 0.05f);
+                shr.rect(px + tw * 0.1f, py, Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0), th * 0.05f);
                 if(isBlock) {
                     shr.setColor(bc);
-                    shr.circle(tp.x + tw * 0.05f, tp.y + th * 0.025f, th * 0.06f);
+                    shr.circle(px + tw * 0.05f, py + th * 0.025f, th * 0.06f);
                     shr.end();
                     sb.begin();
-                    renderCenter(sb, BLOCK.font, Integer.toString(tp.player.block), tp.x + tw * 0.05f, tp.y + th * 0.025f);
+                    renderCenter(sb, BLOCK.font, Integer.toString(tp.player.block), px + tw * 0.05f, py + th * 0.025f);
                     sb.end();
                     shr.begin(ShapeRenderer.ShapeType.Filled);
                 }
@@ -171,19 +178,19 @@ public class BattleScreen extends AbstractScreen {
                 boolean isBlock = te.enemy.block > 0;
                 if(isBlock) {
                     shr.setColor(bc);
-                    shr.rect(te.x + tw * 0.075f, te.y - th * 0.01f, tw * 0.85f, th * 0.07f);
+                    shr.rect(ex + tw * 0.075f, ey - th * 0.01f, tw * 0.85f, th * 0.07f);
                 }
                 shr.setColor(hbc);
-                shr.rect(te.x + tw * 0.1f, te.y, tw * 0.8f, th * 0.05f);
+                shr.rect(ex + tw * 0.1f, ey, tw * 0.8f, th * 0.05f);
                 shr.setColor(Color.SCARLET.cpy());
-                shr.rect(te.x + tw * 0.1f, te.y, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), th * 0.05f);
+                shr.rect(ex + tw * 0.1f, ey, Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0), th * 0.05f);
 
                 if(isBlock) {
                     shr.setColor(bc);
-                    shr.circle(te.x + tw * 0.05f, te.y + th * 0.025f, th * 0.06f);
+                    shr.circle(ex + tw * 0.05f, ey + th * 0.025f, th * 0.06f);
                     shr.end();
                     sb.begin();
-                    renderCenter(sb, BLOCK.font, Integer.toString(te.enemy.block), te.x + tw * 0.05f, te.y + th * 0.025f);
+                    renderCenter(sb, BLOCK.font, Integer.toString(te.enemy.block), ex + tw * 0.05f, ey + th * 0.025f);
                     sb.end();
                     shr.begin(ShapeRenderer.ShapeType.Filled);
                 }
@@ -195,8 +202,10 @@ public class BattleScreen extends AbstractScreen {
             PlayerView tp = players[i];
             EnemyView te = enemies[i];
             float tw = tp.sWidth;
-            if(!tp.player.isDead) renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, tp.x, tp.y + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
-            if(!te.enemy.isDead) renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, te.x, te.y + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
+            float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
+            float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
+            if(!tp.player.isDead) renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
+            if(!te.enemy.isDead) renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, ex, ey + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
         }
         for(int i = 0; i < 4; i++) {
             for(int j = 0; j < 5; j++) {

@@ -37,18 +37,6 @@ public class Manager extends AbstractPlayer {
         temp.add(new Light(this));
         temp.add(new Barrier(this));
         temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
-        temp.add(new Strike(this));
-        temp.add(new Light(this));
-        temp.add(new Barrier(this));
-        temp.add(new Heal(this));
         return temp;
     }
 }

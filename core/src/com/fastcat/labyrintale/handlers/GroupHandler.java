@@ -117,7 +117,7 @@ public class GroupHandler {
         private static void generateJururu() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test31(null));
+            t.add(new Captivate(null));
             t.add(new Test32(null));
             t.add(new Test33(null));
             //Silver
@@ -165,8 +165,8 @@ public class GroupHandler {
         private static void generateViichan() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test61(null));
-            t.add(new Test62(null));
+            t.add(new DiaSword(null));
+            t.add(new ChainMail(null));
             t.add(new Test63(null));
             //Silver
             t.add(new Test64(null));

@@ -1,15 +1,15 @@
 {
-  "Test61": {
-    "NAME": "Test61",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
+  "DiaSword": {
+    "NAME": "다이아몬드 검",
+    "DESC": "피해를 {A} 줍니다."
   },
-  "Test62": {
-    "NAME": "Test62",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
+  "ChainMail": {
+    "NAME": "사슬 갑옷",
+    "DESC": "보호막을 {S} 얻습니다."
   },
   "Test63": {
-    "NAME": "Test63",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
+    "NAME": "임시 스킬",
+    "DESC": "피해를 {A} 줍니다. 공격력을 {V} 얻습니다."
   },
   "Test64": {
     "NAME": "Test64",

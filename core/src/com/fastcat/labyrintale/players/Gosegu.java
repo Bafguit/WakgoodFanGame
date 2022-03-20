@@ -34,7 +34,6 @@ public class Gosegu extends AbstractPlayer {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         Strike s = new Strike(this);
-        s.upgrade();
         temp.add(s);
         temp.add(new SeguBeam(this));
         temp.add(new Provoke(this));

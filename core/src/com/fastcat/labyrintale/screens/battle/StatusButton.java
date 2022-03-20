@@ -45,8 +45,8 @@ public class StatusButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {
-        if(status != null) {
+    protected void updateButton() {
+        if(over && status != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(status);
             battleScreen.looking = getTargets(status);
         }

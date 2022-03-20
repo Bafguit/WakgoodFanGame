@@ -1,21 +1,21 @@
-package com.fastcat.labyrintale.skills.player.jururu;
+package com.fastcat.labyrintale.skills.player.viichan;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test31 extends AbstractSkill {
+public class ChainMail extends AbstractSkill {
 
-    private static final String ID = "Test31";
+    private static final String ID = "ChainMail";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 4;
 
-    public Test31(AbstractEntity e) {
+    public ChainMail(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override
