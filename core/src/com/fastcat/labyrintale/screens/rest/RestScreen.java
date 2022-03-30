@@ -18,18 +18,27 @@ public class RestScreen extends AbstractScreen {
     public RestScreen() {
         count = 2;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < count; i++) {
-            float tw = w / (count + 1) * (i + 1);
+        float tw = w / (count + 1);
 
-            RestButton b = buttons[i] = new RestButton(this, RestButton.RestType.HEAL);
-            b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
+        RestButton b = buttons[0] = new RestButton(this, RestButton.RestType.HEAL);
+        b.setPosition(tw - b.sWidth / 2, h * 0.73f - b.sHeight / 2);
 
-            RestIcon c = icons[i] = new RestIcon(b, getImg(b.type));
-            c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
+        RestIcon c = icons[0] = new RestIcon(b, getImg(b.type));
+        c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 
-            RestDesc d = desc[i] = new RestDesc("테스트");
-            d.setPosition(tw - d.sWidth / 2, h * 0.55f - d.sHeight / 2);
-        }
+        RestDesc d = desc[0] = new RestDesc("테스트");
+        d.setPosition(tw - d.sWidth / 2, h * 0.6f - d.sHeight / 2);
+
+        tw = w / (count + 1) * 2;
+
+        RestButton b2 = buttons[1] = new RestButton(this, RestButton.RestType.UPGRADE);
+        b2.setPosition(tw - b2.sWidth / 2, h * 0.73f - b2.sHeight / 2);
+
+        RestIcon c2 = icons[1] = new RestIcon(b2, getImg(b2.type));
+        c2.setPosition(tw - c2.sWidth / 2, h * 0.85f - c2.sHeight / 2);
+
+        RestDesc d2 = desc[1] = new RestDesc("강화");
+        d2.setPosition(tw - d2.sWidth / 2, h * 0.6f - d2.sHeight / 2);
     }
 
     @Override

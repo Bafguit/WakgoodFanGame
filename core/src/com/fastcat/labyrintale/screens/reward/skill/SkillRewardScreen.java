@@ -8,10 +8,12 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.Objects;
+
 import static com.fastcat.labyrintale.rewards.SkillReward.*;
+import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.UPGRADE;
 
 public class SkillRewardScreen extends AbstractScreen {
 
@@ -27,7 +29,7 @@ public class SkillRewardScreen extends AbstractScreen {
         groups = new SkillRewardGroup[reward.group.size()];
         for(int i = 0; i < reward.group.size(); i++) {
             Array<AbstractSkill> a = reward.group.get(i);
-            groups[i] = new SkillRewardGroup((AbstractPlayer) a.get(0).owner, a, a.size);
+            groups[i] = new SkillRewardGroup((AbstractPlayer) a.get(0).owner, a, this.type, a.size);
         }
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < groups.length; i++) {
@@ -81,15 +83,22 @@ public class SkillRewardScreen extends AbstractScreen {
         public SkillRewardSkillButton[] skills;
         public SkillRewardSkillButton toSkill;
 
-        public SkillRewardGroup(AbstractPlayer p, Array<AbstractSkill> s, int l) {
+        public SkillRewardGroup(AbstractPlayer p, Array<AbstractSkill> s, SkillRewardType type, int l) {
             player = p;
             bg = new SkillRewardBG(this, player);
             cIcon = new SkillRewardCharIcon(this, player);
-            toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.skillRandom.nextInt(player.deck.size)), true);
-            toSkill.isTo = true;
             skills = new SkillRewardSkillButton[l];
-            skills[0] = new SkillRewardSkillButton(this, s.get(0));
-            if(l > 1) skills[1] = new SkillRewardSkillButton(this, s.get(1));
+            if(type == UPGRADE) {
+                toSkill = new SkillRewardSkillButton(this, s.get(0), true);
+                AbstractSkill ss = Objects.requireNonNull(s.get(0).clone());
+                ss.upgrade();
+                skills[0] = new SkillRewardSkillButton(this, ss);
+            } else {
+                toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.skillRandom.nextInt(player.deck.size)), true);
+                skills[0] = new SkillRewardSkillButton(this, s.get(0));
+                skills[1] = new SkillRewardSkillButton(this, s.get(1));
+            }
+            toSkill.isTo = true;
         }
 
         public void update() {

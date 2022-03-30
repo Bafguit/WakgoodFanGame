@@ -6,13 +6,12 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.renderColorLeft;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class RestDesc extends AbstractUI {
 
     public RestDesc(String d) {
-        super(FileHandler.CHAR_SKILL_REWARD);
+        super(FileHandler.WAY_SELECT);
         text = d;
         showImg = false;
         fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 36, false);
@@ -26,7 +25,7 @@ public class RestDesc extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(fontData != null) {
-                renderColorLeft(sb, fontData, text, x, y + sHeight / 2, sWidth);
+                renderColorCenter(sb, fontData, text, x, y + sHeight / 2, sWidth);
             }
         }
     }

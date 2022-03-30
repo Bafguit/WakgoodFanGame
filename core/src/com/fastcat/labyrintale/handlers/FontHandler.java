@@ -106,7 +106,7 @@ public class FontHandler implements Disposable {
     }
 
     public static void renderKeywordCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
-        renderLine(sb, fontData, text, getHexColor(CHARTREUSE) + "$1" + getHexColor(fontData.color), "$1", x, y, bw, bh);
+        renderLine(sb, fontData, text, x, y, bw);
     }
 
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, Vector2 vector, float bw, float bh) {
@@ -125,6 +125,21 @@ public class FontHandler implements Disposable {
         font.getData().setScale(fontData.scale);
         layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
         font.draw(sb, layout, x, y);
+    }
+
+    public static void renderColorCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw) {
+        BitmapFont font = fontData.font;
+        Matcher matcher = COLOR_PATTERN.matcher(text);
+        while(matcher.find()) {
+            String mt = matcher.group(1);
+            String mmt = matcher.group(2);
+            text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
+            matcher = COLOR_PATTERN.matcher(text);
+        }
+        font.getData().setScale(fontData.scale);
+        layout.setText(font, text, fontData.color, bw, Align.center, true);
+        float ry = y + (layout.height) / 2;
+        font.draw(sb, layout, x, ry);
     }
 
     public static void renderCardLeft(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {
@@ -181,7 +196,7 @@ public class FontHandler implements Disposable {
         font.draw(sb, layout, x, ry);
     }
 
-    private static void renderLine(SpriteBatch sb, FontData fontData, String text, String realValue, String tempValue, float x, float y, float bw, float bh) {
+    private static void renderLine(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw) {
         BitmapFont font = fontData.font;
         font.getData().setScale(fontData.scale);
         layout.setText(font, text, fontData.color, bw, Align.center, true);

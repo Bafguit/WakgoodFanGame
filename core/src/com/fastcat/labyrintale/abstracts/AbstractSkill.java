@@ -360,9 +360,10 @@ public abstract class AbstractSkill implements Cloneable {
 
     protected abstract void upgradeCard();
 
-    public final AbstractSkill cpy() {
+    @Override
+    public final AbstractSkill clone() {
         try {
-            return (AbstractSkill) this.clone();
+            return (AbstractSkill) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

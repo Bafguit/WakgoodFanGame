@@ -17,11 +17,13 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class RestButton extends AbstractUI {
 
+    public static final int HEAL_AMOUNT = 10;
+
     public RestScreen screen;
     public RestType type;
 
     public RestButton(RestScreen s, RestType t) {
-        super(FileHandler.CHAR_SKILL_REWARD);
+        super(FileHandler.WAY_SELECT);
         screen = s;
         type = t;
     }
@@ -32,7 +34,7 @@ public class RestButton extends AbstractUI {
         AbstractLabyrinth.currentFloor.currentRoom.done();
         Array<AbstractReward> temp = new Array<>();
         if(type == RestType.HEAL) {
-            temp.add(new HealReward(10));
+            temp.add(new HealReward(HEAL_AMOUNT));
         } else if (type == RestType.UPGRADE) {
             temp.add(new SkillRewardUpgrade());
         } else {

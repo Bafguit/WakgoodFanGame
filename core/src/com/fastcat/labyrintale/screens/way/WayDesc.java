@@ -7,12 +7,13 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.renderColorCenter;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class WayDesc extends AbstractUI {
 
     public WayDesc(String d) {
-        super(FileHandler.CHAR_SKILL_REWARD);
+        super(FileHandler.WAY_SELECT);
         text = d;
         showImg = false;
         fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 36, false);
@@ -26,7 +27,7 @@ public class WayDesc extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(fontData != null) {
-                renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+                renderColorCenter(sb, fontData, text, x, y + sHeight / 2, sWidth);
             }
         }
     }

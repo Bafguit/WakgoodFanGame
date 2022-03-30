@@ -211,7 +211,7 @@ public class GroupHandler {
             staticShuffle(b);
             for(int i = 0; i < amount; i++) {
                 AbstractSkill tt;
-                tt = Objects.requireNonNull(b.get(i).cpy());
+                tt = Objects.requireNonNull(b.get(i).clone());
                 tt.owner = p;
                 a.add(tt);
             }
@@ -229,7 +229,7 @@ public class GroupHandler {
             Array<AbstractSkill> b = p.deck;
             for (int i = 0; i < b.size; i++) {
                 AbstractSkill s = b.get(i);
-                if(s.upgraded != isNone) a.add(s.cpy());
+                if(s.upgraded != isNone) a.add(s.clone());
             }
             if(a.size > 0) {
                 return staticShuffle(a).get(0);

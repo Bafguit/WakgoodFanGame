@@ -3,14 +3,12 @@ package com.fastcat.labyrintale.screens.skillselect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.Random;
 
 public class SkillSelectScreen extends AbstractScreen {
 
@@ -60,7 +58,7 @@ public class SkillSelectScreen extends AbstractScreen {
         }
         for(int i = 0; i < 3; i++) {
             if(ss.size > 0) {
-                AbstractSkill s = ss.random().cpy();
+                AbstractSkill s = ss.random().clone();
                 ss.removeValue(s, false);
                 if(upgradable) {
                     int p = MathUtils.random(100);

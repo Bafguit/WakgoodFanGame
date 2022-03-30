@@ -25,6 +25,7 @@ public class FileHandler implements Disposable {
     public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
     public static final JsonValue CHOICE_JSON = generateJson("json/choices.json");
     public static final JsonValue STATUS_JSON = generateJson("json/status.json");
+    public static final JsonValue EVENT_JSON = generateJson("json/events.json");
     public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
     public static final JsonValue CARD_JSON_WAK = generateJson("json/skill/wakCards.json");
     public static final JsonValue CARD_JSON_MANAGER = generateJson("json/skill/managerCards.json");
@@ -98,6 +99,9 @@ public class FileHandler implements Disposable {
     //상태
     public static final HashMap<String, Sprite> statusImg = new HashMap<>();
     public static final HashMap<String, Sprite> statusImgBig = new HashMap<>();
+
+    //이벤트
+    public static final HashMap<String, Sprite> eventImg = new HashMap<>();
 
     //지울 예정
     public static final Sprite BURGER = new Sprite(new Texture("img/advisor/burger.png"));
@@ -211,6 +215,18 @@ public class FileHandler implements Disposable {
             if(!js.name.equals("")) {
                 statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
                 statusImgBig.put(js.name, new Sprite(new Texture("img/status/" + js.name + "_p.png")));
+            }
+        }
+    }
+
+    private static void generateEventImg() {
+        eventImg.clear();
+        for (JsonValue js : EVENT_JSON) {
+            if(!js.name.equals("")) {
+                String[] ss = js.get("IMAGE").asStringArray();
+                for(String id : ss) {
+                    eventImg.put(id, new Sprite(new Texture("img/event/" + id + ".png")));
+                }
             }
         }
     }

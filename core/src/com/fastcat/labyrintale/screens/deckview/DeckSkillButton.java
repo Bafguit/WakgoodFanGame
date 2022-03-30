@@ -55,7 +55,7 @@ public class DeckSkillButton extends AbstractUI {
                     ((DeckViewScreen)screen).upInfo.skill = skill;
                 } else {
                     setTo(InfoType.NORMAL);
-                    AbstractSkill ts = skill.cpy();
+                    AbstractSkill ts = skill.clone();
                     Objects.requireNonNull(ts).upgrade();
                     ((DeckViewScreen)screen).info.skill = skill;
                     ((DeckViewScreen)screen).upInfo.skill = ts;
