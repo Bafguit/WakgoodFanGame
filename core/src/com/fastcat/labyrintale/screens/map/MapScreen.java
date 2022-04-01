@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -27,7 +26,7 @@ public class MapScreen extends AbstractScreen {
     public MapNodeButton bossNode;
 
     public MapScreen() {
-        cType = ControlPanel.ControlType.MAP;
+        cType = ControlPanel.ControlType.BASIC;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
         entryNode = nodes[0] = new MapNodeButton(currentFloor.ways[0]);
         entryNode.setPosition(b - entryNode.sWidth / 2, h * 0.85f - entryNode.sHeight / 2);

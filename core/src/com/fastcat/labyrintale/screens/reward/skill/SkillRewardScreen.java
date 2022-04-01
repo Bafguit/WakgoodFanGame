@@ -22,7 +22,7 @@ public class SkillRewardScreen extends AbstractScreen {
     public final SkillRewardGroup[] groups;
 
     public SkillRewardScreen(SkillRewardType type, SkillReward r) {
-        cType = ControlPanel.ControlType.REWARD;
+        cType = ControlPanel.ControlType.BASIC;
         SkillRewardGroup.screen = this;
         this.type = type;
         reward = r;

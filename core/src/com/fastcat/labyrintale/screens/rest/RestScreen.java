@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RestScreen extends AbstractScreen {
 
@@ -16,6 +17,7 @@ public class RestScreen extends AbstractScreen {
     public RestDesc[] desc = new RestDesc[2];
 
     public RestScreen() {
+        cType = ControlPanel.ControlType.BASIC;
         count = 2;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         float tw = w / (count + 1);

@@ -122,6 +122,7 @@ public class FileHandler implements Disposable {
         StringHandler.generate();
         generateSkillImg();
         generateStatusImg();
+        generateEventImg();
     }
 
     private static void generateCharImg() {

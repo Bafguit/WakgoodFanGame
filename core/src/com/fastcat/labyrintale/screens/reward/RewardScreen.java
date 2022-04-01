@@ -21,7 +21,7 @@ public class RewardScreen extends AbstractScreen {
     public RewardScreenType sType;
 
     public RewardScreen(RewardScreenType type, Array<AbstractReward> rewards) {
-        cType = ControlPanel.ControlType.REWARD;
+        cType = ControlPanel.ControlType.BASIC;
         this.rewards = rewards;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < rewards.size; i++) {

@@ -18,6 +18,7 @@ import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
+import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
@@ -48,6 +49,7 @@ public class Labyrintale extends Game {
 	public static BattleScreen battleScreen;
 	public static RestScreen restScreen;
 	public static DeckViewScreen deckViewScreen;
+	public static EventScreen eventScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
 

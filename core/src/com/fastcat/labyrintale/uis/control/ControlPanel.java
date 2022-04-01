@@ -49,6 +49,6 @@ public class ControlPanel implements Disposable {
     }
 
     public enum ControlType {
-        BATTLE, MAP, DECKVIEW, REWARD, SHOP, HIDE
+        BATTLE, BASIC, HIDE
     }
 }

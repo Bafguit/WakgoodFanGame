@@ -2,9 +2,11 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.events.TestEvent;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.common.Test;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
+import com.fastcat.labyrintale.rooms.other.EventRoom;
 import com.fastcat.labyrintale.rooms.other.Placeholder;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 
@@ -63,7 +65,7 @@ public class AbstractFloor {
             t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.GOOD, true));
         } else if (type == NORMAL) {
             t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.BATTLE, true));
-            t.add(new AbstractChoice(new Test(), AbstractChoice.ChoiceType.LOOK, 80));
+            t.add(new AbstractChoice(new EventRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         } else if (type == ELITE) {
             t.add(new AbstractChoice(new TestElite(), AbstractChoice.ChoiceType.ELITE, true));

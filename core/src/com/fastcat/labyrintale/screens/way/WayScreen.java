@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class WayScreen extends AbstractScreen {
 
@@ -23,6 +24,7 @@ public class WayScreen extends AbstractScreen {
 
     public WayScreen(AbstractWay wy) {
         way = wy;
+        cType = ControlPanel.ControlType.BASIC;
         wayCount = way.choices.length;
         buttons = new WaySelectButton[wayCount];
         icons = new WayIcon[wayCount];
