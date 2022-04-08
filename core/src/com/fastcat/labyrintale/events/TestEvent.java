@@ -14,7 +14,7 @@ public class TestEvent extends AbstractEvent {
 
     public TestEvent() {
         super(ID, SIZE);
-        choices[0] = new HealEventChoice(data.SELECT[0], new Array<AbstractEntity>(AbstractLabyrinth.players), 3);
+        choices[0] = new HealEventChoice(this, data.SELECT[0], AbstractLabyrinth.players, 3);
         img = getImage(0);
         desc = data.DESC[0];
     }

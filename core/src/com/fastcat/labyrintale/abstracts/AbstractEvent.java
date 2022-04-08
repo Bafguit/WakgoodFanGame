@@ -24,17 +24,29 @@ public abstract class AbstractEvent {
         choices = new EventChoice[size];
     }
 
+    public void done() {
+
+    }
+
     public static abstract class EventChoice {
         public String text;
+        public AbstractEvent event;
+        public boolean isUsed = false;
 
-        public EventChoice(String text) {
+        public EventChoice(AbstractEvent event, String text) {
             this.text = text;
+            this.event = event;
         }
 
-        public abstract void onSelect();
+        public final void select() {
+            onSelect();
+            isUsed = true;
+        }
+
+        protected abstract void onSelect();
 
         public boolean available() {
-            return true;
+            return !isUsed;
         }
     }
 

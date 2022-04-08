@@ -6,17 +6,17 @@ import com.fastcat.labyrintale.abstracts.AbstractEvent;
 
 public class HealEventChoice extends AbstractEvent.EventChoice {
 
-    private final Array<AbstractEntity> target;
+    private final AbstractEntity[] target;
     private final int amount;
 
-    public HealEventChoice(String t, Array<AbstractEntity> target, int amount) {
-        super(t);
+    public HealEventChoice(AbstractEvent e, String t, AbstractEntity[] target, int amount) {
+        super(e, t);
         this.target = target;
         this.amount = amount;
     }
 
     @Override
-    public void onSelect() {
+    protected void onSelect() {
         for(AbstractEntity entity : target) {
             entity.heal(amount);
         }
