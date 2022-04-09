@@ -68,6 +68,7 @@ public class FileHandler implements Disposable {
     public static final Sprite PLAYER_POINT = new Sprite(new Texture("img/playerPoint.png"));
     public static final Sprite CHAR_SKILL_REWARD = new Sprite(new Texture("img/ui/charSkillReward.png"));
     public static final Sprite WAY_SELECT = new Sprite(new Texture("img/ui/wayBG.png"));
+    public static final Sprite EVENT_CHOICE = new Sprite(new Texture("img/ui/event_choice.png"));
 
     //사운드
     public static final Sound LILPAA = getSound("sound/sfx/skill/lilpaa.mp3");

@@ -52,7 +52,7 @@ public class EventImage extends AbstractUI {
                 renderLineLeft(sb, fontName, event.name, nx, ny, nw, nh);
                 renderColorLeft(sb, fontDesc, event.desc, dx, dy, dw);
             }
-            sb.draw(img, x, y, sWidth, sHeight);
+            //sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }
     }

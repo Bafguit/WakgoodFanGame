@@ -132,6 +132,13 @@ public class AbstractLabyrinth {
         }
     }
 
+    public static void finishRoom() {
+        advisor.skill.usedOnce = false;
+        advisor.skill.cooldown = 0;
+        currentFloor.currentWay.done();
+        currentFloor.currentRoom.done();
+    }
+
     public static int getRemovePrice(boolean isNormal) {
         int temp = removePrice;
         if(isNormal) removePrice += 25;

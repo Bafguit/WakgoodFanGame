@@ -15,6 +15,7 @@ public abstract class AbstractEvent {
     public Sprite img;
     public String name;
     public String desc = "";
+    public int page = 0;
     public EventChoice[] choices;
 
     public AbstractEvent(String id, int size) {
@@ -25,6 +26,10 @@ public abstract class AbstractEvent {
     }
 
     public void done() {
+
+    }
+
+    protected void onChoose() {
 
     }
 
@@ -40,13 +45,18 @@ public abstract class AbstractEvent {
 
         public final void select() {
             onSelect();
+            event.onChoose();
             isUsed = true;
         }
 
         protected abstract void onSelect();
 
-        public boolean available() {
-            return !isUsed;
+        public final boolean available() {
+            return !isUsed && condition();
+        }
+
+        protected boolean condition() {
+            return true;
         }
     }
 

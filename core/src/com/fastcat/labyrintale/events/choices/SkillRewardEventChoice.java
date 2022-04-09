@@ -6,24 +6,19 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.rewards.HealReward;
-import com.fastcat.labyrintale.screens.rest.RestButton;
+import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
-public class HealEventChoice extends AbstractEvent.EventChoice {
+public class SkillRewardEventChoice extends AbstractEvent.EventChoice {
 
-    private final AbstractEntity[] target;
-    private final int amount;
-
-    public HealEventChoice(AbstractEvent e, String t, AbstractEntity[] target, int amount) {
+    public SkillRewardEventChoice(AbstractEvent e, String t) {
         super(e, t);
-        this.target = target;
-        this.amount = amount;
     }
 
     @Override
     protected void onSelect() {
         Array<AbstractReward> temp = new Array<>();
-        temp.add(new HealReward(amount));
+        temp.add(new SkillRewardNormal(2));
         Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.EVENT, temp));
     }
 }
