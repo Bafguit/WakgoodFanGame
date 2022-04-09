@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.*;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class AttackAction extends AbstractAction {
 

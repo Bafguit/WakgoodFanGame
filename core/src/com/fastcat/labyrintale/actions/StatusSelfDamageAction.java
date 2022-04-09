@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.actions;
 import com.fastcat.labyrintale.abstracts.*;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class StatusSelfDamageAction extends AbstractAction {
 

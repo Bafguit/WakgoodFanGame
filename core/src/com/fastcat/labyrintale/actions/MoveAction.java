@@ -64,6 +64,8 @@ public class MoveAction extends AbstractAction {
         if(isDone) {
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
             if(type == MoveType.PLAYER) {
+                from.defineIndex(index1);
+                to.defineIndex(index0);
                 from.setAnimXY(w * 0.425f - w * 0.1f * index1, h * 0.575f);
                 to.setAnimXY(w * 0.425f - w * 0.1f * index0, h * 0.575f);
                 AbstractPlayer temp = AbstractLabyrinth.players[index0];
@@ -75,6 +77,8 @@ public class MoveAction extends AbstractAction {
                 Labyrintale.battleScreen.players[index1].player.ui = Labyrintale.battleScreen.players[index1];
                 cPanel.battlePanel.setPlayer(temp);
             } else {
+                from.defineIndex(index1);
+                to.defineIndex(index0);
                 from.setAnimXY(w * 0.575f + w * 0.1f * index1, h * 0.575f);
                 to.setAnimXY(w * 0.575f + w * 0.1f * index0, h * 0.575f);
                 AbstractEnemy temp = AbstractLabyrinth.currentFloor.currentRoom.enemies[index0];

@@ -51,6 +51,8 @@ public abstract class AbstractEntity implements Cloneable {
     public String desc;
     public boolean isDead = false;
     public boolean isDie = false;
+    public int index;
+    public int tempIndex;
     public int block = 0;
     public int health;
     public int maxHealth;
@@ -286,6 +288,11 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
         }
+    }
+
+    public void defineIndex(int i) {
+        index = i;
+        tempIndex = i;
     }
 
     public boolean isAlive() {

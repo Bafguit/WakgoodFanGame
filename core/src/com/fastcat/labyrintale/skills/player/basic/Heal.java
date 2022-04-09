@@ -10,7 +10,7 @@ public class Heal extends AbstractSkill {
     private static final String ID = "Heal";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.P_ALL;
+    private static final SkillTarget TARGET = SkillTarget.SS_B;
     private static final int VALUE = 2;
 
     public Heal(AbstractEntity e) {

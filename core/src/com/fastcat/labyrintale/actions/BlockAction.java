@@ -4,8 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-
 public class BlockAction extends AbstractAction {
 
     public int block;

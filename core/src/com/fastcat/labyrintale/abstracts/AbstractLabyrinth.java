@@ -63,7 +63,9 @@ public class AbstractLabyrinth {
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
             for (int i = 0; i < 4; i++) {
-                players[i] = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
+                AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
+                p.defineIndex(i);
+                players[i] = p;
             }
             advisor = getAdvisorInstance(Labyrintale.advisorSelectScreen.advisor.selected);
         }
@@ -137,6 +139,9 @@ public class AbstractLabyrinth {
         advisor.skill.cooldown = 0;
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
+        for(AbstractPlayer p : players) {
+            p.tempIndex = p.index;
+        }
     }
 
     public static int getRemovePrice(boolean isNormal) {

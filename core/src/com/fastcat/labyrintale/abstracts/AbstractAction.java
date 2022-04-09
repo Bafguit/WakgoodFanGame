@@ -26,6 +26,61 @@ public abstract class AbstractAction implements Cloneable {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(actor);
             this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.S_R) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.players[actor.tempIndex - 1]);
+            } else {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex + 1]);
+            }
+            this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.S_L) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.players[actor.tempIndex + 1]);
+            } else {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex - 1]);
+            }
+            this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.S_B) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.players[actor.tempIndex - 1]);
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.players[actor.tempIndex + 1]);
+            } else {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex + 1]);
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex - 1]);
+            }
+            this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.SS_R) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(actor);
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.players[actor.tempIndex - 1]);
+            } else {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex + 1]);
+            }
+            this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.SS_L) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(actor);
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.players[actor.tempIndex + 1]);
+            } else {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex - 1]);
+            }
+            this.target = temp;
+        } else if(target == AbstractSkill.SkillTarget.SS_B) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(actor);
+            if(actor instanceof AbstractPlayer) {
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.players[actor.tempIndex - 1]);
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.players[actor.tempIndex + 1]);
+            } else {
+                if(actor.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex + 1]);
+                if(actor.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[actor.tempIndex - 1]);
+            }
+            this.target = temp;
         } else this.target = AbstractSkill.getTargets(target);
         this.duration = duration;
         baseDuration = this.duration;

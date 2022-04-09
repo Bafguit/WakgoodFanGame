@@ -8,7 +8,6 @@ import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class HealAction extends AbstractAction {
 

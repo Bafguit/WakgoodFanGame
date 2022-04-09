@@ -153,6 +153,67 @@ public abstract class AbstractSkill implements Cloneable {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(s.owner);
             return temp;
+        } else if(s.target == SkillTarget.S_R) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.S_L) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.S_B) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_R) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_L) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_B) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
         } else return getTargets(s.target);
     }
 
@@ -160,6 +221,67 @@ public abstract class AbstractSkill implements Cloneable {
         if(s.target == SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(s.owner);
+            return temp;
+        } else if(s.target == SkillTarget.S_R) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.S_L) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.S_B) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_R) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_L) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
+            return temp;
+        } else if(s.target == SkillTarget.SS_B) {
+            AbstractEntity e = s.owner;
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(e);
+            if(e instanceof AbstractPlayer) {
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
+            } else {
+                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
+                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
+            }
             return temp;
         } else return getTargets(s.target);
     }
@@ -261,6 +383,18 @@ public abstract class AbstractSkill implements Cloneable {
 
     public String getTargetString() {
         switch(target) {
+            case S_R:
+                return "▶";
+            case S_L:
+                return "◀";
+            case S_B:
+                return "◀　▶";
+            case SS_R:
+                return "●▶";
+            case SS_L:
+                return "◀●";
+            case SS_B:
+                return "◀●▶";
             case SELF:
                 return "●";
             case P_F:
@@ -292,6 +426,18 @@ public abstract class AbstractSkill implements Cloneable {
 
     public static String getTargetString(AbstractSkill.SkillTarget target) {
         switch(target) {
+            case S_R:
+                return "▶";
+            case S_L:
+                return "◀";
+            case S_B:
+                return "◀　▶";
+            case SS_R:
+                return "●▶";
+            case SS_L:
+                return "◀●";
+            case SS_B:
+                return "◀●▶";
             case SELF:
                 return "●";
             case P_F:
@@ -379,6 +525,6 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum SkillTarget {
-        NONE, SELF, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
+        NONE, SELF, S_R, S_L, S_B, SS_R, SS_L, SS_B, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
     }
 }
