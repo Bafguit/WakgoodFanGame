@@ -16,7 +16,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private Sprite ci;
     private Sprite bg;
     public CharString.CharData charData;
     public boolean showBg = false;
@@ -34,7 +34,8 @@ public class CharButton extends AbstractUI {
     }
 
     public CharButton(AbstractPlayer.PlayerClass cls) {
-        super(charImg.get(cls));
+        super(BORDER);
+        ci = charImg.get(cls);
         selected = cls;
     }
 
@@ -49,8 +50,8 @@ public class CharButton extends AbstractUI {
             if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
             if(isCharSt) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            sb.draw(border, x, y, sWidth, sHeight);
+            if(showImg) sb.draw(ci, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
 
             if(fontData != null) {
@@ -75,7 +76,7 @@ public class CharButton extends AbstractUI {
                         chb.selected = selected;
                         chb.sChar = this;
                         chb.showImg = true;
-                        chb.img = charImg.get(selected);
+                        chb.ci = charImg.get(selected);
                         chb.bg = charBgImg.get(selected);
                         chb.showBg = true;
                         chb.charData = StringHandler.charString.get(selected.toString().toLowerCase());

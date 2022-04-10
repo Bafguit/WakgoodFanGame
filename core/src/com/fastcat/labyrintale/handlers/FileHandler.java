@@ -118,7 +118,7 @@ public class FileHandler implements Disposable {
 
     public FileHandler() {
         generateCharImg();
-        //generateAdvImg();
+        generateAdvImg();
         generateCharImg();
         StringHandler.generate();
         generateSkillImg();
@@ -131,9 +131,10 @@ public class FileHandler implements Disposable {
         charImgBig.clear();
         charBgImg.clear();
         for(PlayerClass cls : PlayerClass.values()) {
-            charImg.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + ".png")));
-            //charImgBig.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + "_p.png")));
-            charBgImg.put(cls, new Sprite(new Texture("img/char/" + cls.toString().toLowerCase() + "_bg.png")));
+            String s = cls.toString().toLowerCase();
+            charImg.put(cls, new Sprite(new Texture("img/char/" + s + ".png")));
+            //charImgBig.put(cls, new Sprite(new Texture("img/char/" + s + "_p.png")));
+            charBgImg.put(cls, new Sprite(new Texture("img/char/" + s + "_bg.png")));
         }
     }
 
@@ -142,9 +143,10 @@ public class FileHandler implements Disposable {
         advImgBig.clear();
         advBgImg.clear();
         for(AdvisorClass cls : AdvisorClass.values()) {
-            advImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + ".png")));
-            //advImgBig.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + "_p.png")));
-            advBgImg.put(cls, new Sprite(new Texture("img/adv/" + cls.toString().toLowerCase() + "_bg.png")));
+            String s = cls.toString().toLowerCase();
+            advImg.put(cls, new Sprite(new Texture("img/advisor/" + s + ".png")));
+            advImgBig.put(cls, new Sprite(new Texture("img/advisor/" + s + "_s.png")));
+            advBgImg.put(cls, new Sprite(new Texture("img/advisor/" + s + "_bg.png")));
         }
     }
 

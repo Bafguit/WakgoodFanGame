@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.advisorselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -14,7 +15,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public BackToCharButton backButton;
     public NextButton nextButton;
     public AdvisorButton advisor;
-    public AdvisorButton[] aAdvisor = new AdvisorButton[9];
+    public AdvisorButton[] aAdvisor = new AdvisorButton[14];
 
     public AdvisorSelectScreen() {
         setBg(FileHandler.BG_CHARSELECT);
@@ -27,10 +28,17 @@ public class AdvisorSelectScreen extends AbstractScreen {
     }
 
     private void addAdvisor() {
-        for(int i = 0; i < aAdvisor.length; i++) {
-            AdvisorButton adv = new AdvisorButton(BURGER);
-            adv.setPosition(Gdx.graphics.getWidth() * 0.1f * (i + 1) - adv.sWidth / 2, Gdx.graphics.getHeight() * 0.1f);
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        AbstractAdvisor.AdvisorClass[] ac = AbstractAdvisor.AdvisorClass.values();
+        for(int i = 0; i < 7; i++) {
+            AdvisorButton adv = new AdvisorButton(ac[i]);
+            adv.setPosition(w * (0.2f + 0.1f * i) - adv.sWidth / 2, h * 0.25f);
             aAdvisor[i] = adv;
+        }
+        for(int i = 0; i < 7; i++) {
+            AdvisorButton adv = new AdvisorButton(ac[i + 7]);
+            adv.setPosition(w * (0.2f + 0.1f * i) - adv.sWidth / 2, h * 0.1f);
+            aAdvisor[i + 7] = adv;
         }
     }
 

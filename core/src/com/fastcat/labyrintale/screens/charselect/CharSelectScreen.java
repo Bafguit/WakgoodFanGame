@@ -36,8 +36,9 @@ public class CharSelectScreen extends AbstractScreen {
     }
 
     private void addChars() {
+        AbstractPlayer.PlayerClass[] pc = AbstractPlayer.PlayerClass.values();
         for(int i = 0; i < 8; i++) {
-            CharButton char0 = new CharButton(AbstractPlayer.PlayerClass.values()[i]);
+            CharButton char0 = new CharButton(pc[i]);
             char0.setPosition(Gdx.graphics.getWidth() * 0.15f + Gdx.graphics.getWidth() * 0.1f * i - char0.sWidth / 2, Gdx.graphics.getHeight() * 0.125f);
             aChars[i] = char0;
         }

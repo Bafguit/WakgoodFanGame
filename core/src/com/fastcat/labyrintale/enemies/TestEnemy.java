@@ -23,11 +23,6 @@ public class TestEnemy extends AbstractEnemy {
         super(ID, TYPE, HEALTH, ATLAS, JSON);
     }
 
-    public TestEnemy(int index) {
-        this();
-        defineIndex(index);
-    }
-
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();

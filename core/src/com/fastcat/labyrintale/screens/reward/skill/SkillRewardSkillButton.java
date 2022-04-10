@@ -61,7 +61,12 @@ public class SkillRewardSkillButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(!isTo) {
-            int index = group.player.deck.indexOf(group.toSkill.skill, false);
+            int index = 0;
+            for(int i = 0; i < group.player.deck.size; i++) {
+                if(group.player.deck.get(i).id.equals(group.toSkill.skill.id)) {
+                    index = i;
+                }
+            }
             group.player.deck.removeIndex(index);
             group.player.deck.insert(index, skill);
             Labyrintale.removeTempScreen(SkillRewardGroup.screen);

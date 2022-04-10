@@ -24,11 +24,6 @@ public class EnemyPlaceHolder extends AbstractEnemy {
         isDead = true;
     }
 
-    public EnemyPlaceHolder(int index) {
-        this();
-        defineIndex(index);
-    }
-
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();

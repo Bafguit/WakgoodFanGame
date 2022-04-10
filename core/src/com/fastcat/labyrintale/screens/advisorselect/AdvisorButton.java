@@ -15,7 +15,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private Sprite ai;
     private Sprite bg;
     public boolean showBg = false;
     private boolean isCharSt = false;
@@ -32,16 +32,9 @@ public class AdvisorButton extends AbstractUI {
     }
 
     public AdvisorButton(AbstractAdvisor.AdvisorClass cls) {
-        super(getWak(cls));
+        super(BORDER);
+        ai = advImg.get(cls);
         selected = cls;
-    }
-
-    private static Sprite getWak(AbstractAdvisor.AdvisorClass cls) {
-        return FileHandler.BURGER; //TODO 나중에 수정
-    }
-
-    private static Sprite getWakBg(AbstractAdvisor.AdvisorClass cls) {
-        return BURGER_BG; //TODO 나중에 수정
     }
 
     @Override
@@ -55,8 +48,10 @@ public class AdvisorButton extends AbstractUI {
             if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
             if(isCharSt) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            sb.draw(border, x, y, sWidth, sHeight);
+            if(isChar) {
+                if(showImg) sb.draw(ai, x, y, sWidth, sHeight);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
             sb.setColor(Color.WHITE);
 
             if(fontData != null) {
@@ -82,8 +77,8 @@ public class AdvisorButton extends AbstractUI {
                 chb.selected = selected;
                 chb.sChar = this;
                 chb.showImg = true;
-                chb.img = getWak(selected);
-                chb.bg = getWakBg(selected);
+                chb.ai = advImg.get(selected);
+                chb.bg = advBgImg.get(selected);
                 chb.showBg = true;
                 isCharSt = true;
             } else if(chb.sChar == this) {

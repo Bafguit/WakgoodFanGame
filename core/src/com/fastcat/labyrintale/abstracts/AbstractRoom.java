@@ -22,6 +22,9 @@ public abstract class AbstractRoom implements Cloneable {
     
     public AbstractRoom(AbstractEnemy[] enemies, int t) {
         this(t == 1 ? ELITE : t == 2 ? BOSS : BATTLE);
+        for(int i = 0; i < enemies.length; i++) {
+            enemies[i].defineIndex(i);
+        }
         System.arraycopy(enemies, 0, this.enemies, 0, enemies.length);
     }
 

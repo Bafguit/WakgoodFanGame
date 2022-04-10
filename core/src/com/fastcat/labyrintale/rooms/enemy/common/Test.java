@@ -12,6 +12,6 @@ public class Test extends AbstractRoom {
     }
 
     private static AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[] {new TestEnemy(0), new TestEnemy2(1), new TestEnemy2(2), new TestEnemy(3) };
+        return new AbstractEnemy[] {new TestEnemy(), new TestEnemy2(), new TestEnemy2(), new TestEnemy() };
     }
 }

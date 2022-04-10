@@ -17,8 +17,7 @@ public abstract class AbstractAdvisor {
     }
 
     public enum AdvisorClass {
-        BURGER,
-        DOPA, SECRET, KIMCHI, RUSEOK, HIKI, POONG,
-        SHRIMP, NEGATIVE, JK, SOPHIA, DEOKSU, HAKU
+        DOPA, SECRET, RUSEOK, HIKI, PUNG, SHRIMP, NEGATIVE,
+        JK, SOPHIA, DUKSU, HAKU, BUSINESS, FREETER, CARNAR
     }
 }

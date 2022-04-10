@@ -6,6 +6,6 @@ import com.fastcat.labyrintale.skills.player.advisor.BurgerSkill;
 public class TestAdvisor extends AbstractAdvisor {
 
     public TestAdvisor() {
-        super(AdvisorClass.BURGER, new BurgerSkill());
+        super(AdvisorClass.HAKU, new BurgerSkill());
     }
 }
