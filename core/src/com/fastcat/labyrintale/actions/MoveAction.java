@@ -17,55 +17,51 @@ public class MoveAction extends AbstractAction {
     private int index1 = 0;
 
     public MoveAction(AbstractPlayer p, boolean isLeft) {
-        super(p, 0.5f);
+        this(p, isLeft, 0.5f);
+    }
+
+    public MoveAction(AbstractPlayer p, boolean isLeft, float dur) {
+        super(p, dur);
         from = p;
         type = MoveType.PLAYER;
         this.isLeft = isLeft;
         distance = Gdx.graphics.getWidth() * 0.095f;
-        AbstractPlayer[] temp = AbstractLabyrinth.players;
-        for(int i = 0; i < 4; i++) {
-            AbstractPlayer t = temp[i];
-            if(t == from) {
-                index0 = i;
-                if(this.isLeft) index1 = i + 1;
-                else index1 = i - 1;
-            }
-        }
-        to = temp[index1];
+        index0 = from.tempIndex;
+        if(this.isLeft) index1 = from.tempIndex + 1;
+        else index1 = from.tempIndex - 1;
+        to = AbstractLabyrinth.players[index1];
     }
 
     public MoveAction(AbstractEnemy e, boolean isLeft) {
-        super(e, 0.5f);
+        this(e, isLeft, 0.5f);
+    }
+
+    public MoveAction(AbstractEnemy e, boolean isLeft, float dur) {
+        super(e, dur);
         from = e;
         type = MoveType.ENEMY;
         this.isLeft = isLeft;
         distance = Gdx.graphics.getWidth() * 0.095f;
-        AbstractEnemy[] temp = AbstractLabyrinth.currentFloor.currentRoom.enemies;
-        for(int i = 0; i < 4; i++) {
-            AbstractEnemy t = temp[i];
-            if(t == from) {
-                index0 = i;
-                if(this.isLeft) index1 = i - 1;
-                else index1 = i + 1;
-            }
-        }
-        to = temp[index1];
+        index0 = from.tempIndex;
+        if(this.isLeft) index1 = from.tempIndex - 1;
+        else index1 = from.tempIndex + 1;
+        to = AbstractLabyrinth.currentFloor.currentRoom.enemies[index1];
     }
 
     @Override
     protected void updateAction() {
         if(isLeft) {
-            from.animX -= distance * Gdx.graphics.getDeltaTime() * 2;
-            to.animX += distance * Gdx.graphics.getDeltaTime() * 2;
+            from.animX -= distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
+            to.animX += distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
         } else {
-            from.animX += distance * Gdx.graphics.getDeltaTime() * 2;
-            to.animX -= distance * Gdx.graphics.getDeltaTime() * 2;
+            from.animX += distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
+            to.animX -= distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
         }
         if(isDone) {
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
             if(type == MoveType.PLAYER) {
-                from.defineIndex(index1);
-                to.defineIndex(index0);
+                from.tempIndex = index1;
+                to.tempIndex = index0;
                 from.setAnimXY(w * 0.425f - w * 0.1f * index1, h * 0.575f);
                 to.setAnimXY(w * 0.425f - w * 0.1f * index0, h * 0.575f);
                 AbstractPlayer temp = AbstractLabyrinth.players[index0];
@@ -77,8 +73,8 @@ public class MoveAction extends AbstractAction {
                 Labyrintale.battleScreen.players[index1].player.ui = Labyrintale.battleScreen.players[index1];
                 cPanel.battlePanel.setPlayer(temp);
             } else {
-                from.defineIndex(index1);
-                to.defineIndex(index0);
+                from.tempIndex = index1;
+                to.tempIndex = index0;
                 from.setAnimXY(w * 0.575f + w * 0.1f * index1, h * 0.575f);
                 to.setAnimXY(w * 0.575f + w * 0.1f * index0, h * 0.575f);
                 AbstractEnemy temp = AbstractLabyrinth.currentFloor.currentRoom.enemies[index0];

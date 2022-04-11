@@ -479,8 +479,12 @@ public abstract class AbstractSkill implements Cloneable {
         else cooldown = cooltime;
     }
 
-    public boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0;
+    public final boolean canUse() {
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
+    }
+
+    protected boolean available() {
+        return true;
     }
 
     protected abstract void use();

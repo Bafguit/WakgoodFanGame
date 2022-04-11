@@ -47,12 +47,15 @@ public class CharButton extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            sb.setColor(Color.LIGHT_GRAY);
+            sb.setColor(Color.WHITE);
             if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
             if(isCharSt) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(ci, x, y, sWidth, sHeight);
-            sb.draw(img, x, y, sWidth, sHeight);
+            else sb.setColor(Color.LIGHT_GRAY);
+            if(isChar) {
+                if (showImg) sb.draw(ci, x, y, sWidth, sHeight);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
             sb.setColor(Color.WHITE);
 
             if(fontData != null) {
@@ -93,8 +96,6 @@ public class CharButton extends AbstractUI {
                     }
                 }
             }
-        } else if (isOnLock){
-            removeChar();
         }
     }
 

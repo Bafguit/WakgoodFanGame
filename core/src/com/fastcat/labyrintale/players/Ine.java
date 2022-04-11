@@ -10,8 +10,7 @@ import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Heal;
 import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
-import com.fastcat.labyrintale.skills.player.ine.EyeSting;
-import com.fastcat.labyrintale.skills.player.ine.Pruning;
+import com.fastcat.labyrintale.skills.player.ine.*;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
@@ -33,9 +32,9 @@ public class Ine extends AbstractPlayer {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new EyeSting(this));
-        temp.add(new Barrier(this));
-        temp.add(new Pruning(this));
-        temp.add(new Strike(this));
+        temp.add(new Test24(this));
+        temp.add(new Test23(this));
+        temp.add(new Test25(this));
         return temp;
     }
 }

@@ -44,10 +44,11 @@ public class AdvisorButton extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            sb.setColor(Color.LIGHT_GRAY);
+            sb.setColor(Color.WHITE);
             if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
             if(isCharSt) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
+            else sb.setColor(Color.LIGHT_GRAY);
             if(isChar) {
                 if(showImg) sb.draw(ai, x, y, sWidth, sHeight);
                 sb.draw(img, x, y, sWidth, sHeight);
@@ -84,8 +85,6 @@ public class AdvisorButton extends AbstractUI {
             } else if(chb.sChar == this) {
                 chb.removeChar();
             }
-        } else if (isOnLock){
-            removeChar();
         }
     }
 

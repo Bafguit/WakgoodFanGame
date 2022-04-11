@@ -22,14 +22,8 @@ public class MoveRightE extends AbstractSkill {
     }
 
     @Override
-    public boolean canUse() {
-        if(super.canUse()) {
-            for (int i = 0; i < 4; i++) {
-                AbstractEnemy t = AbstractLabyrinth.currentFloor.currentRoom.enemies[i];
-                if (t == owner) return i < 3;
-            }
-        }
-        return false;
+    protected boolean available() {
+        return enemy.tempIndex < 3;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class SkillRewardSkillButton extends AbstractUI {
     }
 
     public SkillRewardSkillButton(SkillRewardGroup g, AbstractSkill s, boolean isTo) {
-        super(s.img);
+        super(s.img, -10000, -10000, 100, 100);
         group = g;
         skill = s;
         this.isTo = isTo;

@@ -139,9 +139,17 @@ public class AbstractLabyrinth {
         advisor.skill.cooldown = 0;
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
+        AbstractPlayer p1 = players[0];
+        AbstractPlayer p2 = players[1];
+        AbstractPlayer p3 = players[2];
+        AbstractPlayer p4 = players[3];
         for(AbstractPlayer p : players) {
             p.tempIndex = p.index;
         }
+        players[p1.index] = p1;
+        players[p2.index] = p2;
+        players[p3.index] = p3;
+        players[p4.index] = p4;
     }
 
     public static int getRemovePrice(boolean isNormal) {

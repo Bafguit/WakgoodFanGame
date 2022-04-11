@@ -2,25 +2,29 @@ package com.fastcat.labyrintale.skills.player.ine;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Test23 extends AbstractSkill {
 
     private static final String ID = "Test23";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 3;
 
     public Test23(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        ActionHandler.bot(new HealAction(owner, TARGET, spell));
+        ActionHandler.bot(new ApplyStatusAction(new EnduranceStatus(1), owner, TARGET, true));
     }
 
     @Override

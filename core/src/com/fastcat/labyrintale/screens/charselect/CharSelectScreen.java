@@ -60,11 +60,9 @@ public class CharSelectScreen extends AbstractScreen {
 
         if(cc == 4) {
             nextButton.enable();
-            charSelectText.text = chars[0].charData.FLV[0] + " " + chars[1].charData.FLV[1] + " " + chars[2].charData.FLV[2] + " " + chars[3].charData.FLV[3];
         }
         else {
             nextButton.disable();
-            charSelectText.text = CharSelectText.TEXT;
         }
 
         backButton.update();

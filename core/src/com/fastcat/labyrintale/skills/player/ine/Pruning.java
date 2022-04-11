@@ -31,7 +31,7 @@ public class Pruning extends AbstractSkill {
         boolean b = e.mRight.canUse();
         System.out.println("Pruning: " + b);
         if(b) {
-            bot(new MoveAction(e, false));
+            bot(new MoveAction(e, false, 0.3f));
         }
     }
 
