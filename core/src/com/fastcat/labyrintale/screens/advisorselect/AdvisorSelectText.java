@@ -3,14 +3,14 @@ package com.fastcat.labyrintale.screens.advisorselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class AdvisorSelectText extends AbstractUI {
 
     public AdvisorSelectText() {
-        super(MENU_SELECT, 0, 0, 1000, 60);
+        super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
         fontData = CARD_BIG_ORB;
         text = "참모를 선택하세요";

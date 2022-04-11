@@ -3,10 +3,10 @@ package com.fastcat.labyrintale.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.EffectPublicText;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class TextEffect extends AbstractEffect {
@@ -15,7 +15,7 @@ public class TextEffect extends AbstractEffect {
 
     public TextEffect(float x, float y, String s) {
         super(x, y, 0.5f);
-        text = new EffectPublicText(MENU_SELECT, 300, 60);
+        text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
         text.fontData = new FontHandler.FontData(MEDIUM, 24, true);
         text.text = s;
         text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);

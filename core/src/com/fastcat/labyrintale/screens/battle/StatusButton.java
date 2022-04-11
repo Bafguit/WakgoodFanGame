@@ -7,22 +7,22 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class StatusButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
     public AbstractStatus status;
 
     public StatusButton(AbstractStatus s) {
-        super(BORDER_SS);
+        super(FileHandler.ui.get("BORDER_SS"));
         fontData = new FontHandler.FontData(MEDIUM, 16, true);
         status = s;
         overable = true;

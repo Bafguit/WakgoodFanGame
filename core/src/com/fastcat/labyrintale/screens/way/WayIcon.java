@@ -14,7 +14,7 @@ public class WayIcon extends AbstractUI {
     public WaySelectButton b;
 
     public WayIcon(WaySelectButton b, Sprite i) {
-        super(FileHandler.BORDER);
+        super(FileHandler.ui.get("BORDER"));
         icon = i;
         this.b = b;
         overable = false;

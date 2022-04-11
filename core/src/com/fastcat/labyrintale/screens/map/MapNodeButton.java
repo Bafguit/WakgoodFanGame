@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
 
@@ -19,17 +20,13 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class MapNodeButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
     public boolean canGo = true;
     public AbstractWay way;
 
     public MapNodeButton(AbstractWay w) {
         super(w.img);
         this.way = w;
-    }
-
-    private static Sprite getWak(AbstractWay.WayType type) {
-        return BURGER; //TODO 나중에 수정
     }
 
     @Override

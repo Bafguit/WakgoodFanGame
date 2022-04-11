@@ -5,16 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.uis.PlayerIcon;
-
-import static com.fastcat.labyrintale.Labyrintale.addTempScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.handlers.FileHandler.DISCARD;
-import static com.fastcat.labyrintale.handlers.FileHandler.DRAW;
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
 public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];

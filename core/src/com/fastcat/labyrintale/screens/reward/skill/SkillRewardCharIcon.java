@@ -5,13 +5,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillRewardCharIcon extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
 
     private final SkillRewardGroup group;
     public AbstractPlayer p;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
@@ -14,14 +15,13 @@ import com.fastcat.labyrintale.uis.PlayerIcon;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER_B;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
 
 public class InfoPanel extends AbstractUI {
 
-    public Sprite border = BORDER_B;
+    public Sprite border = FileHandler.ui.get("BORDER_B");
     public String name = "";
     public String desc = "";
     public FontHandler.FontData fontName = CARD_BIG_NAME;
@@ -38,12 +38,12 @@ public class InfoPanel extends AbstractUI {
     private AbstractSkill.SkillTarget target;
 
     public InfoPanel() {
-        super(BORDER_B);
+        super(FileHandler.ui.get("BORDER_B"));
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
         nx = dx = w * 0.69f;
         ny = h * 0.41f;
-        dy = h * 0.41f - 45 * scale;
+        dy = h * 0.4f - 45 * scale;
         nw = dw = 400 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;
@@ -78,7 +78,7 @@ public class InfoPanel extends AbstractUI {
         if(enabled) {
             sb.setColor(Color.WHITE);
             if(img != null) sb.draw(img, x, y, sWidth, sHeight);
-            renderLineLeft(sb, fontName, name, nx, ny, nw, nh);
+            renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
             if(type == InfoType.SKILL) {
                 renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
             }

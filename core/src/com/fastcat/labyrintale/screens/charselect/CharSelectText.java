@@ -3,17 +3,16 @@ package com.fastcat.labyrintale.screens.charselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 
 public class CharSelectText extends AbstractUI {
 
     public static final String TEXT = "플레이어를 선택하세요";
 
     public CharSelectText() {
-        super(MENU_SELECT, 0, 0, 1000, 60);
+        super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
         fontData = CARD_BIG_ORB;
         text = "플레이어를 선택하세요";

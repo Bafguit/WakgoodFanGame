@@ -7,6 +7,8 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
+import static com.fastcat.labyrintale.handlers.FileHandler.bg;
+
 public class CharSelectScreen extends AbstractScreen {
 
     public CharSelectText charSelectText;
@@ -16,7 +18,7 @@ public class CharSelectScreen extends AbstractScreen {
     public CharButton[] aChars = new CharButton[8];
 
     public CharSelectScreen() {
-        setBg(FileHandler.BG_CHARSELECT);
+        setBg(bg.get("BG_CHARSELECT"));
         charSelectText = new CharSelectText();
         backButton = new BackButton();
         nextButton = new NextToAdvisorButton();

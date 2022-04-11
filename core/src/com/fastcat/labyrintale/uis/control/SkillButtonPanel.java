@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
 
@@ -23,7 +24,7 @@ public class SkillButtonPanel extends AbstractUI {
     public boolean isUsed = false;
 
     public SkillButtonPanel(SkillButtonType type) {
-        super(BORDER_M);
+        super(FileHandler.ui.get("BORDER_M"));
         this.type = type;
         fontData = FontHandler.COOLDOWN;
     }

@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 
 public class MapScreen extends AbstractScreen {
 
@@ -43,7 +44,7 @@ public class MapScreen extends AbstractScreen {
             ww -= w * 0.0667f;
         }
         bossNode = nodes[12];
-        setBg(FileHandler.BG_MAP);
+        setBg(bg.get("BG_MAP"));
     }
 
     @Override

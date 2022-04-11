@@ -5,17 +5,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen.InfoType;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DeckSkillButton extends AbstractUI {
 
-    private Sprite border = BORDER;
     public AbstractSkill skill;
     public boolean isInfo = false;
 
@@ -27,7 +26,7 @@ public class DeckSkillButton extends AbstractUI {
     }
 
     public DeckSkillButton(AbstractSkill skill) {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         this.skill = skill;
     }
 

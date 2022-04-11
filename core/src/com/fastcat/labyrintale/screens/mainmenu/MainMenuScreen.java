@@ -9,6 +9,8 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 
+import static com.fastcat.labyrintale.handlers.FileHandler.bg;
+
 public class MainMenuScreen extends AbstractScreen {
 
     private final LogoText logoText;
@@ -18,7 +20,7 @@ public class MainMenuScreen extends AbstractScreen {
     private final ExitButton exitButton;
 
     public MainMenuScreen() {
-        setBg(FileHandler.BG_MAIN);
+        setBg(bg.get("BG_MAIN"));
         logoText = new LogoText();
         gameStartButton = new GameStartButton();
         tutorialButton = new TutorialButton();

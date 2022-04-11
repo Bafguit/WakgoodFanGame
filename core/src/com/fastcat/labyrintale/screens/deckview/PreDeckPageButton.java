@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
@@ -15,7 +16,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 public class PreDeckPageButton extends AbstractUI {
 
     public PreDeckPageButton() {
-        super(BACK);
+        super(FileHandler.ui.get("BACK"));
         setPosition(Gdx.graphics.getWidth() * 0.18f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f - sHeight / 2);
         fontData = MAIN_MENU;
         text = "이전";

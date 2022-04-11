@@ -23,7 +23,7 @@ public class RestButton extends AbstractUI {
     public RestType type;
 
     public RestButton(RestScreen s, RestType t) {
-        super(FileHandler.WAY_SELECT);
+        super(FileHandler.ui.get("WAY_SELECT"));
         screen = s;
         type = t;
     }

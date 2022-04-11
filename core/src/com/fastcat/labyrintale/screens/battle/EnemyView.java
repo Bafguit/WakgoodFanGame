@@ -4,8 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.ENTITY_POINT;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class EnemyView extends AbstractUI {
 
@@ -17,7 +16,7 @@ public class EnemyView extends AbstractUI {
     }
 
     public EnemyView(AbstractEnemy enemy) {
-        super(ENTITY_POINT);
+        super(FileHandler.ui.get("ENTITY_POINT"));
         this.enemy = enemy;
         showImg = false;
         overable = false;

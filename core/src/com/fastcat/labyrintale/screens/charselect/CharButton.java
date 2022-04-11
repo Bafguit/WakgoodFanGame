@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.CharString;
 
@@ -28,13 +29,13 @@ public class CharButton extends AbstractUI {
     public CharButton sChar;
 
     public CharButton() {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         showImg = false;
         isChar = false;
     }
 
     public CharButton(AbstractPlayer.PlayerClass cls) {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         ci = charImg.get(cls);
         selected = cls;
     }

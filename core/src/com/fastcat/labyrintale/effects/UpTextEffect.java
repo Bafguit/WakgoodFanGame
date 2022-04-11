@@ -4,11 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.EffectPublicText;
 
-import static com.badlogic.gdx.graphics.Color.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class UpTextEffect extends AbstractEffect {
@@ -17,7 +16,7 @@ public class UpTextEffect extends AbstractEffect {
 
     public UpTextEffect(float x, float y, int damage, Color color, boolean isNegative) {
         super(x, y, 1);
-        text = new EffectPublicText(MENU_SELECT, 300, 60);
+        text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
         text.fontData = new FontHandler.FontData(MEDIUM, 40, color);
         damage = Math.max(damage, 0);
         text.text = damage != 0 ? isNegative ? "-" + damage : "+" + damage : "0";

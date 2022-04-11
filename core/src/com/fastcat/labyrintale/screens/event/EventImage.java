@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.PrintTextEffect;
@@ -27,14 +28,14 @@ public class EventImage extends AbstractUI {
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     public EventImage(AbstractEvent e) {
-        super(WAY_SELECT);
+        super(FileHandler.ui.get("WAY_SELECT"));
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         setPosition(w * 0.25f - sWidth / 2, h * 0.7f - sHeight / 2);
         event = e;
         overable = false;
         nx = dx = w * 0.4f;
         ny = h * 0.9f;
-        dy = h * 0.9f - 60 * scale;
+        dy = h * 0.9f - 50 * scale;
         nw = dw = 1000 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;

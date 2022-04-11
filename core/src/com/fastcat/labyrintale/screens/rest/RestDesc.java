@@ -11,7 +11,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 public class RestDesc extends AbstractUI {
 
     public RestDesc(String d) {
-        super(FileHandler.WAY_SELECT);
+        super(FileHandler.ui.get("WAY_SELECT"));
         text = d;
         showImg = false;
         fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 36, false);

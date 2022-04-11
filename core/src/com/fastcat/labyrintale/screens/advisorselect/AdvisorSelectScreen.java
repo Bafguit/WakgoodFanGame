@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
+import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 
 public class AdvisorSelectScreen extends AbstractScreen {
 
@@ -18,7 +19,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorButton[] aAdvisor = new AdvisorButton[14];
 
     public AdvisorSelectScreen() {
-        setBg(FileHandler.BG_CHARSELECT);
+        setBg(bg.get("BG_CHARSELECT"));
         advisorSelectText = new AdvisorSelectText();
         backButton = new BackToCharButton();
         nextButton = new NextButton();

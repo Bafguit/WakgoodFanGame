@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.rooms.other.Shop;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
 
 public class ShopItemButton extends AbstractUI {
 
-    private Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
     public Shop.ShopItem item;
 
     public ShopItemButton(Shop.ShopItem re) {

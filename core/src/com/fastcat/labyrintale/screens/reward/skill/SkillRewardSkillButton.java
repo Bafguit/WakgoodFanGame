@@ -8,16 +8,13 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
 
-import java.util.Objects;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
-
 public class SkillRewardSkillButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
 
     private final SkillRewardGroup group;
     public AbstractSkill skill;

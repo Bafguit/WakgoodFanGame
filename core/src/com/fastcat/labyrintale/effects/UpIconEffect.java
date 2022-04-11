@@ -5,12 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.uis.EffectPublicText;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.MENU_SELECT;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class UpIconEffect extends AbstractEffect {

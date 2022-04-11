@@ -14,7 +14,7 @@ public class LoadingScreen extends AbstractScreen {
 
     public LoadingScreen() {
         text = new LoadingText();
-        setBg(FileHandler.FADE);
+        setBg(FileHandler.ui.get("FADE"));
     }
 
     public LoadingScreen(boolean b) {

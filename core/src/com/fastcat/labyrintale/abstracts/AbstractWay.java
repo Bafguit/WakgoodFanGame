@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class AbstractWay {
-    public Sprite img = FileHandler.BURGER;
-    public Sprite imgBig = FileHandler.BURGER_S;
+    public Sprite img = FileHandler.charImg.get(AbstractPlayer.PlayerClass.BURGER);
+    public Sprite imgBig = FileHandler.charImgBig.get(AbstractPlayer.PlayerClass.BURGER);
     public String name = "테스트";
     public String desc = "테스트 설명";
     public WayType type;

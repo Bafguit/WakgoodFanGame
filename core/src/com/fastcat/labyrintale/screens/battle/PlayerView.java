@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
@@ -19,9 +20,9 @@ public class PlayerView extends AbstractUI {
     public boolean isOnLock = false;
 
     public PlayerView(AbstractPlayer cls) {
-        super(ENTITY_POINT);
+        super(FileHandler.ui.get("ENTITY_POINT"));
         this.player = cls;
-        pImg = new Sprite(PLAYER_POINT);
+        pImg = FileHandler.ui.get("PLAYER_POINT");
         showImg = false;
     }
 

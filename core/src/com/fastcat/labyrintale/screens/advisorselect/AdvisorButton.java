@@ -26,13 +26,13 @@ public class AdvisorButton extends AbstractUI {
     public AdvisorButton sChar;
 
     public AdvisorButton() {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         showImg = false;
         isChar = false;
     }
 
     public AdvisorButton(AbstractAdvisor.AdvisorClass cls) {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         ai = advImg.get(cls);
         selected = cls;
     }

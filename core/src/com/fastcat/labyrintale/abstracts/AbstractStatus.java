@@ -8,7 +8,6 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.StatusString;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.SKILL_POISON;
 
 public abstract class AbstractStatus implements Cloneable {
 

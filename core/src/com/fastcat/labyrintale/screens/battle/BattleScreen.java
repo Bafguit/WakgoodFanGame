@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
+import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {
@@ -35,7 +36,7 @@ public class BattleScreen extends AbstractScreen {
         cPanel.battlePanel = new BattlePanel();
         SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
         AbstractLabyrinth.prepare();
-        setBg(FileHandler.BG_BATTLE);
+        setBg(bg.get("BG_BATTLE"));
         w = Gdx.graphics.getWidth();
         h = Gdx.graphics.getHeight();
         for(int i = 0; i < 4; i++) {

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class EventScreen extends AbstractScreen {
@@ -22,7 +23,7 @@ public class EventScreen extends AbstractScreen {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < length; i++) {
             EventChoiceButton t = new EventChoiceButton(this.event.choices[i]);
-            t.setPosition(w * 0.4f, h * 0.5f + 55 * (length - 1 - i));
+            t.setPosition(w * 0.4f, h * 0.5f + 60 * InputHandler.scale * (length - 1 - i));
             ecb[i] = t;
         }
     }

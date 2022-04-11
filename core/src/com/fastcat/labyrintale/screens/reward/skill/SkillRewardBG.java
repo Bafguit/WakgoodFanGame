@@ -4,9 +4,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.CHAR_SKILL_REWARD;
 
 public class SkillRewardBG extends AbstractUI {
 
@@ -14,7 +14,7 @@ public class SkillRewardBG extends AbstractUI {
     public AbstractPlayer p;
 
     public SkillRewardBG(SkillRewardGroup g, AbstractPlayer p) {
-        super(CHAR_SKILL_REWARD);
+        super(FileHandler.ui.get("CHAR_SKILL_REWARD"));
         group = g;
         this.p = p;
         overable = false;

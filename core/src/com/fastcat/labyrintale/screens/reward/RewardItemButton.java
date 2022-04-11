@@ -5,13 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.BORDER;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class RewardItemButton extends AbstractUI {
 
-    private Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
     public AbstractReward reward;
 
     public RewardItemButton(AbstractReward re) {

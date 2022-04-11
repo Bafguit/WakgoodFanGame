@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 import java.util.Objects;
@@ -20,7 +21,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class SkillButton extends AbstractUI {
 
-    private final Sprite border = BORDER;
+    private final Sprite border = FileHandler.ui.get("BORDER");
     public AbstractSkill skill;
     public boolean isInfo = false;
     public boolean isOnLock = false;
@@ -31,7 +32,7 @@ public class SkillButton extends AbstractUI {
     public boolean advisor = false;
 
     public SkillButton() {
-        super(BORDER);
+        super(FileHandler.ui.get("BORDER"));
         fontData = CARD_BIG_DESC;
     }
 

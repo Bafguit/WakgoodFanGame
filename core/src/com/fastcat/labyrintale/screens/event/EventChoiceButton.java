@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -16,7 +17,7 @@ public class EventChoiceButton extends AbstractUI {
     public AbstractEvent.EventChoice choice;
 
     public EventChoiceButton(AbstractEvent.EventChoice choice) {
-        super(EVENT_CHOICE);
+        super(FileHandler.ui.get("EVENT_CHOICE"));
         fontData = new FontData(MEDIUM, 30, false, true);;
         this.choice = choice;
         clickable = choice.available();

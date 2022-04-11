@@ -3,16 +3,15 @@ package com.fastcat.labyrintale.screens.charselect;
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
-import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEXT;
 
 public class NextToAdvisorButton extends AbstractUI {
 
     public NextToAdvisorButton() {
-        super(NEXT);
+        super(FileHandler.ui.get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
         text = "다음";

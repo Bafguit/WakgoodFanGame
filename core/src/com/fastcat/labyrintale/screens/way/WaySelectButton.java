@@ -17,7 +17,7 @@ public class WaySelectButton extends AbstractUI {
     public AbstractChoice c;
 
     public WaySelectButton(WayScreen s, AbstractChoice r) {
-        super(FileHandler.WAY_SELECT);
+        super(FileHandler.ui.get("WAY_SELECT"));
         screen = s;
         c = r;
     }

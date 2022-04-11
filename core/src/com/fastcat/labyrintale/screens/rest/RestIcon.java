@@ -12,7 +12,7 @@ public class RestIcon extends AbstractUI {
     public RestButton b;
 
     public RestIcon(RestButton b, Sprite i) {
-        super(FileHandler.BORDER);
+        super(FileHandler.ui.get("BORDER"));
         icon = i;
         this.b = b;
     }

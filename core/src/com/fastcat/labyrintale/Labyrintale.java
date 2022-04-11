@@ -75,8 +75,8 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		//Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false);
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
@@ -98,7 +98,7 @@ public class Labyrintale extends Game {
 		charSelectScreen = new CharSelectScreen();
 		advisorSelectScreen = new AdvisorSelectScreen();
 		//labyrinth = new AbstractLabyrinth();
-		fadeTex = FileHandler.FADE;
+		fadeTex = FileHandler.ui.get("FADE");
 		fadeTex.setPosition(0, 0);
 
 		setScreen(mainMenuScreen);

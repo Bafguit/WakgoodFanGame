@@ -21,7 +21,7 @@ public class ControlPanel implements Disposable {
     public ControlPanel() {
         infoPanel = new InfoPanel();
         battlePanel = new BattlePanel();
-        bg = FileHandler.CONTROL_PANEL;
+        bg = FileHandler.ui.get("CONTROL_PANEL");
         bg.setSize(bg.getWidth() * InputHandler.scale, bg.getHeight() * InputHandler.scale);
         bg.setPosition((Gdx.graphics.getWidth() - bg.getWidth()) * 0.5f, 0);
     }

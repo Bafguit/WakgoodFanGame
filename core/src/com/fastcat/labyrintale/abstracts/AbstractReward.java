@@ -18,11 +18,11 @@ public abstract class AbstractReward {
     private static Sprite getImg(AbstractReward.RewardType type) {
         switch (type) {
             case HEAL:
-                return FileHandler.SKILL_HEAL; //TODO 이미지 변경
+                return FileHandler.skillImg.get("Heal"); //TODO 이미지 변경
             case GOLD:
-                return FileHandler.GOLD;
+                return FileHandler.ui.get("GOLD");
             default:
-                return FileHandler.REWARD_CARD;
+                return FileHandler.ui.get("REWARD_CARD");
         }
     }
 

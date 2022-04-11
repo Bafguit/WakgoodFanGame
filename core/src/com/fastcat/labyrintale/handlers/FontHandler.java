@@ -98,6 +98,12 @@ public class FontHandler implements Disposable {
         font.draw(sb, layout, x, ry);
     }
 
+    public static void renderLineBotLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
+        BitmapFont font = fontData.font;
+        layout.setText(font, text, fontData.color, bw, Align.left, false);
+        font.draw(sb, layout, x, y);
+    }
+
     public static void renderLineTopLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         font.getData().setScale(fontData.scale);

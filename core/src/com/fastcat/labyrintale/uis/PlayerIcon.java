@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -21,7 +22,7 @@ public class PlayerIcon extends AbstractUI {
     public AbstractPlayer p;
 
     public PlayerIcon(AbstractPlayer p) {
-        super(BORDER_M);
+        super(FileHandler.ui.get("BORDER_M"));
         this.p = p;
     }
 
