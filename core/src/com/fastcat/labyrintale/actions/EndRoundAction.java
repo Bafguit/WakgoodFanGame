@@ -22,8 +22,8 @@ public class EndRoundAction extends AbstractAction {
                         t.hand[j].cooldown--;
                     }
                 }
-                if(t.mLeft.cooldown > 0) t.mLeft.cooldown--;
-                if(t.mRight.cooldown > 0) t.mRight.cooldown--;
+                if(t.mLeftTemp.cooldown > 0) t.mLeftTemp.cooldown--;
+                if(t.mRightTemp.cooldown > 0) t.mRightTemp.cooldown--;
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;

@@ -2,6 +2,7 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
@@ -23,6 +24,7 @@ import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
+import org.graalvm.compiler.virtual.phases.ea.EffectList;
 
 public class Labyrintale extends Game {
 
@@ -75,8 +77,11 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+		Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode(Gdx.graphics.getPrimaryMonitor());
+		//Gdx.graphics.setFullscreenMode(displayMode);//전체화면
+		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);//창모드
+		//Gdx.graphics.setUndecorated(true);//전체창
+		//Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false);
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);

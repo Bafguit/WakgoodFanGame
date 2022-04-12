@@ -13,7 +13,7 @@ public class InfectionStatus extends AbstractStatus {
     private static final String ID = "Infection";
 
     public InfectionStatus(int amount) {
-        super(ID, NONE);
+        super(ID, NONE, StatusType.DEBUFF);
         setAmount(amount);
     }
 

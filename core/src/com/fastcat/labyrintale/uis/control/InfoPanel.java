@@ -77,13 +77,14 @@ public class InfoPanel extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled) {
             sb.setColor(Color.WHITE);
-            if(img != null) sb.draw(img, x, y, sWidth, sHeight);
-            renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
-            if(type == InfoType.SKILL) {
-                renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
-            }
-            else {
-                renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
+            if(img != null) {
+                sb.draw(img, x, y, sWidth, sHeight);
+                renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
+                if (type == InfoType.SKILL) {
+                    renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
+                } else {
+                    renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
+                }
             }
             sb.draw(border, x, y, sWidth, sHeight);
             if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.05f, sWidth, sHeight);

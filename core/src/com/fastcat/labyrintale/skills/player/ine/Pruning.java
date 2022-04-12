@@ -29,7 +29,6 @@ public class Pruning extends AbstractSkill {
         bot(new AttackAction(owner, target, attack, null));
         AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(target).get(0);
         boolean b = e.mRight.canUse();
-        System.out.println("Pruning: " + b);
         if(b) {
             bot(new MoveAction(e, false, 0.3f));
         }

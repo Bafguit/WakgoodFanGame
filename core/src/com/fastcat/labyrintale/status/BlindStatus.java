@@ -14,7 +14,7 @@ public class BlindStatus extends AbstractStatus {
     private static final String ID = "Blind";
 
     public BlindStatus() {
-        super(ID, AbstractSkill.SkillTarget.NONE);
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
     }
 
     @Override

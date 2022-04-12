@@ -10,7 +10,7 @@ public class BurgerSkill extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
     private static final SkillTarget TARGET = SkillTarget.E_L;
-    private static final int VALUE = 4;
+    private static final int VALUE = 30;
 
     public BurgerSkill() {
         super(ID, TYPE, RARITY, TARGET);

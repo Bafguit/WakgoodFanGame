@@ -103,12 +103,10 @@ public class BattleScreen extends AbstractScreen {
             PlayerView pv = players[i];
             EnemyView ev = enemies[i];
 
-            if (ev.enemy.isAlive()) {
-                SkillButton ss = enemySkills[i];
-                ss.skill = ev.enemy.hand[0];
-                ss.update();
-                ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
-            }
+            SkillButton ss = enemySkills[i];
+            ss.skill = ev.enemy.hand[0];
+            ss.update();
+            ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
 
             for(int j = 0; j < 5; j++) {
                 if (pv.player.isAlive()) {

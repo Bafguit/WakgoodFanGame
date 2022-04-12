@@ -62,6 +62,12 @@ public class SkillButton extends AbstractUI {
         }
     }
 
+    @Override
+    protected void onClick() {
+        System.out.println("OWNER: " + (skill != null ? skill.owner.id : "NULL"));
+        System.out.println("INDEX: " + (skill != null ? skill.owner.tempIndex : "NULL"));
+    }
+
     public void removeChar() {
         skill = null;
         showImg = false;

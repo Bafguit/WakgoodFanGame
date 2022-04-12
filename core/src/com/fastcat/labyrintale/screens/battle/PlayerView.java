@@ -50,5 +50,7 @@ public class PlayerView extends AbstractUI {
         if(player != null && player.isAlive()) {
             AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
         }
+        System.out.println("P_OWNER: " + (player != null ? player.id : "NULL"));
+        System.out.println("P_INDEX: " + (player != null ? player.tempIndex : "NULL"));
     }
 }

@@ -10,8 +10,8 @@ public class Test4 extends AbstractSkill {
     private static final String ID = "Test4";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.P_ALL;
+    private static final int VALUE = 3;
 
     public Test4(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

@@ -145,6 +145,8 @@ public class AbstractLabyrinth {
         AbstractPlayer p4 = players[3];
         for(AbstractPlayer p : players) {
             p.tempIndex = p.index;
+            p.mRightTemp = p.mRight;
+            p.mLeftTemp = p.mLeft;
         }
         players[p1.index] = p1;
         players[p2.index] = p2;

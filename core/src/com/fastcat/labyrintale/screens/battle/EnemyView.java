@@ -43,8 +43,7 @@ public class EnemyView extends AbstractUI {
 
     @Override
     protected void onClick() {
-        /*if(!enemy.isDead) {
-            //code
-        }*/
+        System.out.println("E_OWNER: " + (enemy != null ? enemy.id : "NULL"));
+        System.out.println("E_INDEX: " + (enemy != null ? enemy.tempIndex : "NULL"));
     }
 }

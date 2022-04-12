@@ -12,7 +12,7 @@ public class EnduranceStatus extends AbstractStatus {
     private static final String ID = "Endurance";
 
     public EnduranceStatus(int amount) {
-        super(ID, AbstractSkill.SkillTarget.NONE);
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
         setAmount(amount);
     }
 

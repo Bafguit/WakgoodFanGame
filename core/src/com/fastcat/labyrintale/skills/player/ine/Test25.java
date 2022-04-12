@@ -24,7 +24,7 @@ public class Test25 extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction((AbstractPlayer) owner, false, 0.1f));
+        if(owner.tempIndex > 0) bot(new MoveAction((AbstractPlayer) owner, false, 0.1f));
         bot(new AttackAction(owner, target, attack, null));
         bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
     }
@@ -32,10 +32,5 @@ public class Test25 extends AbstractSkill {
     @Override
     protected void upgradeCard() {
 
-    }
-
-    @Override
-    protected boolean available() {
-        return owner.tempIndex > 0;
     }
 }

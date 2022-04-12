@@ -13,7 +13,7 @@ public class LethargyStatus extends AbstractStatus {
     private boolean fromEnemy;
 
     public LethargyStatus(int amount, boolean fromEnemy) {
-        super(ID, AbstractSkill.SkillTarget.NONE);
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
         setAmount(amount);
         this.fromEnemy = fromEnemy;
     }

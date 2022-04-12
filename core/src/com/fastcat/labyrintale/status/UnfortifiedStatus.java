@@ -16,7 +16,7 @@ public class UnfortifiedStatus extends AbstractStatus {
     private boolean fromEnemy;
 
     public UnfortifiedStatus(int amount, boolean fromEnemy) {
-        super(ID, AbstractSkill.SkillTarget.NONE);
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
         setAmount(amount);
         this.fromEnemy = fromEnemy;
     }

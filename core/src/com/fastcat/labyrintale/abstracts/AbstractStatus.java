@@ -17,6 +17,7 @@ public abstract class AbstractStatus implements Cloneable {
     public String name;
     public String desc;
     public String[] exDesc;
+    public StatusType type;
     public StatusString.StatusData data;
     public AbstractSkill.SkillTarget target;
     public AbstractEntity source;
@@ -25,7 +26,7 @@ public abstract class AbstractStatus implements Cloneable {
     public boolean canGoNegative = false;
     public int amount = 0;
 
-    public AbstractStatus(String id, AbstractSkill.SkillTarget target) {
+    public AbstractStatus(String id, AbstractSkill.SkillTarget target, StatusType type) {
         this.id = id;
         img = FileHandler.statusImg.get(this.id);
         imgBig = FileHandler.statusImgBig.get(this.id);
@@ -34,6 +35,7 @@ public abstract class AbstractStatus implements Cloneable {
         desc = data.DESC;
         exDesc = data.DESC_B;
         this.target = target;
+        this.type = type;
     }
 
     public abstract String getDesc();
@@ -116,5 +118,9 @@ public abstract class AbstractStatus implements Cloneable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public enum StatusType {
+        BUFF, DEBUFF
     }
 }

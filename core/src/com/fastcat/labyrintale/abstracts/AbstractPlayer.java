@@ -33,8 +33,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorW = c.cpy().mul(0.827f, 0.827f, 0.827f, 1);
         pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
-        mLeft = new MoveLeft(this);
-        mRight = new MoveRight(this);
+        mLeft = mLeftTemp = new MoveLeft(this);
+        mRight = mRightTemp = new MoveRight(this);
         Sprite s = charImg.get(playerClass);
         setImage(s, s, charBgImg.get(playerClass)); //TODO imgBig으로 변경
     }
@@ -45,8 +45,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
         for(int i = 0; i < 4; i++) {
             hand[i] = Objects.requireNonNull(deck.get(i).clone());
         }
-        mRight.cooldown = 0;
-        mLeft.cooldown = 0;
+        mRightTemp = mRight.clone();
+        mLeftTemp = mLeft.clone();
     }
 
     public void update() {

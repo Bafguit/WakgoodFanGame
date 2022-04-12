@@ -29,7 +29,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
 
-    protected final int handSize;
+    public final int handSize;
 
     protected Texture orb;
     protected Texture sOrb;
@@ -44,6 +44,8 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill[] hand;
     public AbstractSkill mLeft;
     public AbstractSkill mRight;
+    public AbstractSkill mLeftTemp;
+    public AbstractSkill mRightTemp;
     public AbstractStatus[] status = new AbstractStatus[5];
     public EntityType entityType;
     public String id;

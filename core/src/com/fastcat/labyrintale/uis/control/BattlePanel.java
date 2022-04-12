@@ -67,8 +67,8 @@ public class BattlePanel implements Disposable {
                 skill[j].skill = p.hand[3 - j];
             }
             aSkill.skill = AbstractLabyrinth.advisor.skill;
-            mSkill[0].skill = p.mLeft;
-            mSkill[1].skill = p.mRight;
+            mSkill[0].skill = p.mLeftTemp;
+            mSkill[1].skill = p.mRightTemp;
         }
     }
 
