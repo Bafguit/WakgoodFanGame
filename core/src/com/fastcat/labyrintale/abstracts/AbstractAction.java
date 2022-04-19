@@ -2,6 +2,9 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.interfaces.EventCallback;
+
+import static com.fastcat.labyrintale.handlers.ActionHandler.listeners;
 
 public abstract class AbstractAction implements Cloneable {
 
@@ -91,10 +94,10 @@ public abstract class AbstractAction implements Cloneable {
             if(actor != null && !actor.isAlive()) {
                 isDone = true;
                 return;
-            } else if (duration <= 0) {
-                isDone = true;
-            }
+            } else if (duration <= 0) isDone = true;
+            onStart();
             updateAction();
+            onComplete();
             TickDuration();
         }
     }
@@ -104,6 +107,26 @@ public abstract class AbstractAction implements Cloneable {
     protected void TickDuration() {
         if (duration > 0) {
             duration -= Gdx.graphics.getDeltaTime();
+        }
+    }
+
+    protected void registerListener(EventCallback<AbstractAction> callback){
+        listeners.add(callback);
+    }
+
+    private void onStart(){
+        if(! listeners.isEmpty()){
+            for (EventCallback<AbstractAction> listener : listeners) {
+                listener.onStart(this);
+            }
+        }
+    }
+
+    private void onComplete(){
+        if(! listeners.isEmpty()){
+            for (EventCallback<AbstractAction> listener : listeners) {
+                listener.onComplete(this);
+            }
         }
     }
 }

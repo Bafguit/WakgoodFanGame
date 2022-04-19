@@ -1,15 +1,17 @@
 package com.fastcat.labyrintale.handlers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.interfaces.EventCallback;
 
 public class ActionHandler {
 
     private static final Array<AbstractAction> actionList = new Array<>();
+    public static final Array<EventCallback<AbstractAction>> listeners = new Array<>();
     public static boolean isRunning = false;
+
     private AbstractAction current;
 
     public ActionHandler() {
