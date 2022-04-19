@@ -11,7 +11,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class GameStartButton extends AbstractUI {
 
     public GameStartButton() {
-        super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 300, 50);
+        super(FileHandler.ui.get("MENU_SELECT"));
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.5f);
         fontData = MAIN_MENU;
         text = "게임 시작";

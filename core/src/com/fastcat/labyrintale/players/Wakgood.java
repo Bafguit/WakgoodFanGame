@@ -33,8 +33,8 @@ public class Wakgood extends AbstractPlayer {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
-        temp.add(new Light(this));
         temp.add(new Barrier(this));
+        temp.add(new Light(this));
         temp.add(new Wakchori(this));
         return temp;
     }

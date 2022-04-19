@@ -16,7 +16,7 @@ public class TextEffect extends AbstractEffect {
     public TextEffect(float x, float y, String s) {
         super(x, y, 0.5f);
         text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
-        text.fontData = new FontHandler.FontData(MEDIUM, 24, true);
+        text.fontData = new FontHandler.FontData(MEDIUM, 32, true);
         text.text = s;
         text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
     }

@@ -33,11 +33,10 @@ public class Gosegu extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        Strike s = new Strike(this);
-        temp.add(s);
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
         temp.add(new SeguBeam(this));
         temp.add(new Provoke(this));
-        temp.add(new Heal(this));
         return temp;
     }
 }

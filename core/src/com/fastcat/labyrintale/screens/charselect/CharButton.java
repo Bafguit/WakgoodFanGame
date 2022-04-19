@@ -29,13 +29,13 @@ public class CharButton extends AbstractUI {
     public CharButton sChar;
 
     public CharButton() {
-        super(FileHandler.ui.get("BORDER"));
+        super(FileHandler.ui.get("BORDER_M"));
         showImg = false;
         isChar = false;
     }
 
     public CharButton(AbstractPlayer.PlayerClass cls) {
-        super(FileHandler.ui.get("BORDER"));
+        super(FileHandler.ui.get("BORDER_M"));
         ci = charImg.get(cls);
         selected = cls;
     }

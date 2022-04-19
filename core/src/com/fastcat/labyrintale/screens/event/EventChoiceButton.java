@@ -18,7 +18,7 @@ public class EventChoiceButton extends AbstractUI {
 
     public EventChoiceButton(AbstractEvent.EventChoice choice) {
         super(FileHandler.ui.get("EVENT_CHOICE"));
-        fontData = new FontData(MEDIUM, 30, false, true);;
+        fontData = new FontData(MEDIUM, 40, false, true);;
         this.choice = choice;
         clickable = choice.available();
     }

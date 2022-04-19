@@ -16,7 +16,7 @@ public class TurnEffectText extends AbstractUI {
     public TurnEffectText(String text) {
         super(FileHandler.ui.get("TURN_BG"));
         setPosition(0, Gdx.graphics.getHeight() * 0.65f - sHeight / 2);
-        fontData = new FontHandler.FontData(BOLD, 70, false);
+        fontData = new FontHandler.FontData(BOLD, 93, false);
         this.text = text;
         img.setCenter(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.65f);
         overable = false;

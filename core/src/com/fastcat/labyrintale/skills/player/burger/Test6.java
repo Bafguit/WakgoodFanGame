@@ -12,7 +12,7 @@ public class Test6 extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
     private static final SkillTarget TARGET = SkillTarget.E_DF;
-    private static final int ATK = 3;
+    private static final int ATK = 2;
     private static final int SPL = 1;
 
     public Test6(AbstractEntity e) {

@@ -10,12 +10,13 @@ public class Test7 extends AbstractSkill {
     private static final String ID = "Test7";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.GOLD;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 1;
 
     public Test7(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseValue(VALUE);
+        passive = true;
     }
 
     @Override
@@ -25,6 +26,16 @@ public class Test7 extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
+        if(upgradeCount % 3 == 0 && value < 3) {
+            setBaseValue(++baseValue);
+        }
+    }
 
+    @Override
+    public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        if(type != AbstractEntity.DamageType.LOSE && owner.health <= owner.maxHealth / 2)
+            return damage - value;
+        else
+            return damage;
     }
 }

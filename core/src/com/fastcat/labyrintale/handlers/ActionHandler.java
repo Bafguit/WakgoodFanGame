@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 
 public class ActionHandler {
 
-    private static Array<AbstractAction> actionList = new Array<>();
+    private static final Array<AbstractAction> actionList = new Array<>();
     public static boolean isRunning = false;
     private AbstractAction current;
 

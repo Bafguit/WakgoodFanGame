@@ -17,7 +17,7 @@ public class UpTextEffect extends AbstractEffect {
     public UpTextEffect(float x, float y, int damage, Color color, boolean isNegative) {
         super(x, y, 1);
         text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
-        text.fontData = new FontHandler.FontData(MEDIUM, 40, color);
+        text.fontData = new FontHandler.FontData(MEDIUM, 53, color);
         damage = Math.max(damage, 0);
         text.text = damage != 0 ? isNegative ? "-" + damage : "+" + damage : "0";
         text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);

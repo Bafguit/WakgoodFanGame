@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class DieEffect extends AbstractEffect {
 
-    private AbstractEntity actor;
+    private final AbstractEntity actor;
 
     public DieEffect(AbstractEntity e) {
         super(0, 0, 2.0f);

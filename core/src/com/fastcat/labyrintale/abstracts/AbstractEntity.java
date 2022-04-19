@@ -76,7 +76,7 @@ public abstract class AbstractEntity implements Cloneable {
 
         this.atlas = atlas;
         SkeletonJson json = new SkeletonJson(atlas);
-        json.setScale(0.65f * InputHandler.scale);
+        json.setScale(0.87f * InputHandler.scale);
         SkeletonData skeletonData = json.readSkeletonData(skel);
         skeleton = new Skeleton(skeletonData);
         skeleton.setColor(Color.WHITE);
@@ -206,11 +206,17 @@ public abstract class AbstractEntity implements Cloneable {
         int damage = info.damage;
         DamageType type = info.type;
         if(attacker != null) {
+            for (AbstractSkill s : attacker.hand) {
+                if (s != null) damage = s.onAttack(this, damage, type);
+            }
             for (AbstractStatus s : attacker.status) {
                 if (s != null) damage = s.onAttack(this, damage, type);
             }
         }
         if(damage > 0) {
+            for (AbstractSkill s : hand) {
+                if (s != null) damage = s.onAttacked(attacker, damage, type);
+            }
             for (AbstractStatus s : status) {
                 if (s != null) damage = s.onAttacked(attacker, damage, type);
             }
@@ -228,9 +234,15 @@ public abstract class AbstractEntity implements Cloneable {
                         die(attacker);
                     }
                     if(attacker != null) {
+                        for (AbstractSkill s : attacker.hand) {
+                            if (s != null) s.onDamage(this, damage, type);
+                        }
                         for (AbstractStatus s : attacker.status) {
                             if (s != null) s.onDamage(this, damage, type);
                         }
+                    }
+                    for (AbstractSkill s : hand) {
+                        if (s != null) s.onDamaged(attacker, damage, type);
                     }
                     for (AbstractStatus s : status) {
                         if (s != null) s.onDamaged(attacker, damage, type);

@@ -35,8 +35,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
         mLeft = mLeftTemp = new MoveLeft(this);
         mRight = mRightTemp = new MoveRight(this);
-        Sprite s = charImg.get(playerClass);
-        setImage(s, s, charBgImg.get(playerClass)); //TODO imgBig으로 변경
+        setImage(charImg.get(playerClass), charImgBig.get(playerClass), charBgImg.get(playerClass));
     }
 
     @Override

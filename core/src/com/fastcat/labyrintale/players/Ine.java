@@ -31,9 +31,9 @@ public class Ine extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        temp.add(new EyeSting(this));
-        temp.add(new Test24(this));
-        temp.add(new Test23(this));
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
+        temp.add(new Pruning(this));
         temp.add(new Test25(this));
         return temp;
     }

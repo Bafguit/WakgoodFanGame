@@ -24,7 +24,6 @@ public abstract class AbstractSkill implements Cloneable {
     public final SkillRarity rarity;
     public final SkillType type;
     public SkillTarget target;
-    public AbstractSkill passive;
     public String id;
     public String name;
     public String desc;
@@ -32,6 +31,7 @@ public abstract class AbstractSkill implements Cloneable {
     public boolean removable = true;
     public boolean usedOnce = false;
     public boolean usedOnly = false;
+    public boolean passive = false;
 
     public boolean disposable = false;
     public boolean isTrick = false;
@@ -148,6 +148,7 @@ public abstract class AbstractSkill implements Cloneable {
         }
     }
 
+    //스킬 대상(유동)
     public static Array<AbstractEntity> getTargets(AbstractSkill s) {
         if(s.target == SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
@@ -217,6 +218,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else return getTargets(s.target);
     }
 
+    //상태 대상(유동)
     public static Array<AbstractEntity> getTargets(AbstractStatus s) {
         if(s.target == SkillTarget.SELF) {
             Array<AbstractEntity> temp = new Array<>();
@@ -286,6 +288,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else return getTargets(s.target);
     }
 
+    //고정 대상
     public static Array<AbstractEntity> getTargets(SkillTarget target) {
         Array<AbstractEntity> temp = new Array<>();
         PlayerView[] tp = battleScreen.players;
@@ -382,46 +385,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public String getTargetString() {
-        switch(target) {
-            case S_R:
-                return "▶";
-            case S_L:
-                return "◀";
-            case S_B:
-                return "◀　▶";
-            case SS_R:
-                return "●▶";
-            case SS_L:
-                return "◀●";
-            case SS_B:
-                return "◀●▶";
-            case SELF:
-                return "●";
-            case P_F:
-                return "○○○●　○○○○";
-            case E_F:
-                return "○○○○　●○○○";
-            case P_L:
-                return "●○○○　○○○○";
-            case E_L:
-                return "○○○○　○○○●";
-            case P_DF:
-                return "○○●●　○○○○";
-            case E_DF:
-                return "○○○○　●●○○";
-            case P_DL:
-                return "●●○○　○○○○";
-            case E_DL:
-                return "○○○○　○○●●";
-            case P_ALL:
-                return "●●●●　○○○○";
-            case E_ALL:
-                return "○○○○　●●●●";
-            case ALL:
-                return "●●●●　●●●●";
-            default:
-                return "";
-        }
+        return getTargetString(target);
     }
 
     public static String getTargetString(AbstractSkill.SkillTarget target) {
@@ -480,7 +444,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
+        return !passive && cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
     }
 
     protected boolean available() {
@@ -490,25 +454,47 @@ public abstract class AbstractSkill implements Cloneable {
     protected abstract void use();
 
     public void upgrade() {
-        upgradeCard();
-        if(upAttack != -1) {
-            baseAttack = attack + upAttack;
-            attack = baseAttack;
+        if(upgradable()) {
+            upgradeCard();
+            if (upAttack != -1) {
+                baseAttack = attack + upAttack;
+                attack = baseAttack;
+            }
+            if (upSpell != -1) {
+                baseSpell = spell + upSpell;
+                spell = baseSpell;
+            }
+            if (upValue != -1) {
+                baseValue = value + upValue;
+                value = baseValue;
+            }
+            upgraded = true;
+            upgradeCount++;
+            name = skillData.NAME + "+" + upgradeCount;
         }
-        if(upSpell != -1) {
-            baseSpell = spell + upSpell;
-            spell = baseSpell;
-        }
-        if(upValue != -1) {
-            baseValue = value + upValue;
-            value = baseValue;
-        }
-        upgraded = true;
-        upgradeCount++;
-        name = skillData.NAME + "+" + upgradeCount;
+    }
+
+    public boolean upgradable() {
+        return true;
     }
 
     protected abstract void upgradeCard();
+
+    public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+
+    }
+
+    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+
+    }
+
+    public int onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+        return damage;
+    }
+
+    public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return damage;
+    }
 
     @Override
     public final AbstractSkill clone() {

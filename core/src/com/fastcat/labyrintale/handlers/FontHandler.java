@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Disposable;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 import java.util.regex.Matcher;
@@ -32,16 +33,16 @@ public class FontHandler implements Disposable {
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
-    public static final FontData LOGO = new FontData(BOLD, 100, false, true);
-    public static final FontData COOLDOWN = new FontData(BOLD, 60, true, true);
-    public static final FontData MAIN_MENU = new FontData(MEDIUM, 40, false, true);
-    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 50, false, true);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 36, false, true);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 26, false, true);
-    public static final FontData EVENT_DESC = new FontData(MEDIUM, 30, false, true);
-    public static final FontData BORDER = new FontData(MEDIUM, 30, true, true);
-    public static final FontData BLOCK = new FontData(MEDIUM, 20, true, true);
-    public static final FontData HP = new FontData(MEDIUM, 19, false, true);
+    public static final FontData LOGO = new FontData(BOLD, 133, false, true);
+    public static final FontData COOLDOWN = new FontData(BOLD, 80, true, true);
+    public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false, true);
+    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false, true);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, false, true);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 35, false, true);
+    public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false, true);
+    public static final FontData BORDER = new FontData(MEDIUM, 40, true, true);
+    public static final FontData BLOCK = new FontData(MEDIUM, 27, true, true);
+    public static final FontData HP = new FontData(MEDIUM, 25, false, true);
 
     public enum FontType {
         LIGHT, MEDIUM, BOLD

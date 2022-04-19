@@ -32,10 +32,10 @@ public class Viichan extends AbstractPlayer {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
         temp.add(new DiaSword(this));
-        temp.add(new Light(this));
         temp.add(new ChainMail(this));
-        temp.add(new Heal(this));
         return temp;
     }
 }

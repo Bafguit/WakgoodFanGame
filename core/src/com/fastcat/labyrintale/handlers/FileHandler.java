@@ -107,7 +107,7 @@ public class FileHandler implements Disposable {
 
     private static void generateBG() {
         bg.clear();
-        bg.put("BG_BLACK", new Sprite(new Texture("img/fade.png")));
+        bg.put("BG_BLACK", new Sprite(new Texture("img/ui/fade.png")));
         bg.put("BG_MAIN", new Sprite(new Texture("img/bg/main.png")));
         bg.put("BG_DEAD", new Sprite(new Texture("img/bg/dead.png")));
         bg.put("BG_WIN", new Sprite(new Texture("img/bg/win.png")));
@@ -118,25 +118,25 @@ public class FileHandler implements Disposable {
 
     private static void generateUI() {
         ui.clear();
-        ui.put("FADE", new Sprite(new Texture("img/fade.png")));
-        ui.put("TURN_BG", new Sprite(new Texture("img/tc.png")));
-        ui.put("MENU_SELECT", new Sprite(new Texture("img/menuSelect.png")));
+        ui.put("FADE", new Sprite(new Texture("img/ui/fade.png")));
+        ui.put("TURN_BG", new Sprite(new Texture("img/ui/tc.png")));
+        ui.put("MENU_SELECT", new Sprite(new Texture("img/ui/menuSelect.png")));
         ui.put("CONTROL_PANEL", new Sprite(new Texture("img/ui/cPanel.png")));
         ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
-        ui.put("BORDER", new Sprite(new Texture("img/border.png")));
-        ui.put("BORDER_M", new Sprite(new Texture("img/border_m.png")));
-        ui.put("BORDER_B", new Sprite(new Texture("img/border_p.png")));
-        ui.put("BORDER_S", new Sprite(new Texture("img/border_s.png")));
-        ui.put("BORDER_SS", new Sprite(new Texture("img/border_ss.png")));
-        ui.put("BACK", new Sprite(new Texture("img/back.png")));
-        ui.put("NEXT", new Sprite(new Texture("img/next.png")));
+        ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
+        ui.put("BORDER_M", new Sprite(new Texture("img/ui/border_m.png")));
+        ui.put("BORDER_B", new Sprite(new Texture("img/ui/border_p.png")));
+        ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
+        ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
+        ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
+        ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
         ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));
         ui.put("DRAW", new Sprite(new Texture("img/ui/draw.png")));
         ui.put("GOLD", new Sprite(new Texture("img/ui/gold.png")));
         ui.put("DISCARD", new Sprite(new Texture("img/ui/discard.png")));
         ui.put("REWARD_CARD", new Sprite(new Texture("img/ui/deck.png")));
-        ui.put("ENTITY_POINT", new Sprite(new Texture("img/entityPoint.png")));
-        ui.put("PLAYER_POINT", new Sprite(new Texture("img/playerPoint.png")));
+        ui.put("ENTITY_POINT", new Sprite(new Texture("img/ui/entityPoint.png")));
+        ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
         ui.put("CHAR_SKILL_REWARD", new Sprite(new Texture("img/ui/charSkillReward.png")));
         ui.put("WAY_SELECT", new Sprite(new Texture("img/ui/wayBG.png")));
         ui.put("EVENT_CHOICE", new Sprite(new Texture("img/ui/event_choice.png")));
@@ -149,7 +149,7 @@ public class FileHandler implements Disposable {
         for(PlayerClass cls : PlayerClass.values()) {
             String s = cls.toString().toLowerCase();
             charImg.put(cls, new Sprite(new Texture("img/char/" + s + ".png")));
-            //charImgBig.put(cls, new Sprite(new Texture("img/char/" + s + "_p.png")));
+            charImgBig.put(cls, new Sprite(new Texture("img/char/" + s + "_p.png")));
             charBgImg.put(cls, new Sprite(new Texture("img/char/" + s + "_bg.png")));
         }
     }
