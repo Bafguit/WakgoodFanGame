@@ -16,12 +16,12 @@ public class SeguBeam extends AbstractSkill {
 
     public SeguBeam(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new InfectionStatus(spell), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new InfectionStatus(value), owner, target, false));
     }
 
     @Override

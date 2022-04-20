@@ -36,7 +36,7 @@ public class SkillRewardScreen extends AbstractScreen {
             SkillRewardGroup g = groups[i];
             float ww = w / groups.length * i, wc = w / groups.length / 2 + ww, hc = h * 0.73f;
             g.bg.setPosition(ww, hc - g.bg.sHeight * 0.5f);
-            g.cIcon.setPosition(wc - g.cIcon.sWidth * 0.5f, h * 0.85f - g.cIcon.width * 0.5f);
+            g.cIcon.setPosition(wc - g.cIcon.sWidth * 0.5f, h * 0.9f - g.cIcon.width * 0.5f);
             if(g.skills.length > 1) {
                 g.skills[0].setPosition(wc - g.skills[0].sWidth * 1.1f, hc - g.skills[0].sHeight * 0.5f);
                 g.skills[1].setPosition(wc + g.skills[1].sWidth * 0.1f, hc - g.skills[1].sHeight * 0.5f);

@@ -12,15 +12,16 @@ import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillRewardCharIcon extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER");
+    private final Sprite border;
 
     private final SkillRewardGroup group;
     public AbstractPlayer p;
 
     public SkillRewardCharIcon(SkillRewardGroup g, AbstractPlayer p) {
-        super(charImg.get(p.playerClass));
+        super(FileHandler.ui.get("BORDER_M"));
         group = g;
         this.p = p;
+        border = charImg.get(p.playerClass);
     }
 
     @Override
@@ -33,8 +34,8 @@ public class SkillRewardCharIcon extends AbstractUI {
         if(enabled) {
             if (group.bg.over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            sb.draw(border, x, y, sWidth, sHeight);
+            if(showImg) sb.draw(border, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 

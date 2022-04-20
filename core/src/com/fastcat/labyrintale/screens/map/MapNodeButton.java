@@ -27,6 +27,7 @@ public class MapNodeButton extends AbstractUI {
     public MapNodeButton(AbstractWay w) {
         super(w.img);
         this.way = w;
+        setScale(0.75f);
     }
 
     @Override

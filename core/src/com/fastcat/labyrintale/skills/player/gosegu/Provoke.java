@@ -18,12 +18,12 @@ public class Provoke extends AbstractSkill {
 
     public Provoke(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new UnfortifiedStatus(spell, false), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new UnfortifiedStatus(value, false), owner, target, false));
     }
 
     @Override

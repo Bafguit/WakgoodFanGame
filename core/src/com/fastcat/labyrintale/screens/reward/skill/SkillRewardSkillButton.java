@@ -14,8 +14,6 @@ import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewar
 
 public class SkillRewardSkillButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER");
-
     private final SkillRewardGroup group;
     public AbstractSkill skill;
     public boolean isTo;
@@ -25,7 +23,7 @@ public class SkillRewardSkillButton extends AbstractUI {
     }
 
     public SkillRewardSkillButton(SkillRewardGroup g, AbstractSkill s, boolean isTo) {
-        super(s.img);
+        super(FileHandler.ui.get("BORDER_M"));
         group = g;
         skill = s;
         this.isTo = isTo;
@@ -49,9 +47,9 @@ public class SkillRewardSkillButton extends AbstractUI {
         if(enabled) {
             if (over || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
-            if(isTo) FontHandler.renderCenter(sb, FontHandler.BORDER.font, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.035f);
-            sb.draw(border, x, y, sWidth, sHeight);
+            if(showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+            if(isTo) FontHandler.renderCenter(sb, FontHandler.BORDER.font, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.03f);
+            sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 

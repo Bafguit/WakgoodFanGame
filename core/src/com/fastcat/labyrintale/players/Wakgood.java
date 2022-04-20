@@ -20,7 +20,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 public class Wakgood extends AbstractPlayer {
 
     private static final String ID = "wak";
-    private static final int HEALTH = 25;
+    private static final int HEALTH = 28;
     private static final TextureAtlas ATLAS = NEKO_ATLAS;
     private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = FOREST;

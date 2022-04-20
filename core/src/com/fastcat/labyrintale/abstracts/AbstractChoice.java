@@ -16,7 +16,7 @@ public class AbstractChoice {
     public String name;
     public String desc;
     public String[] rawDesc;
-    public Sprite img = FileHandler.charImg.get(AbstractPlayer.PlayerClass.BURGER);
+    public Sprite img = FileHandler.ui.get("DRAW");
     public int prob;
     public boolean must = false;
 

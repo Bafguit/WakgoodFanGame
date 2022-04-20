@@ -103,6 +103,14 @@ public abstract class AbstractStatus implements Cloneable {
         return damage;
     }
 
+    public int calculateAttack(int base) {
+        return base;
+    }
+
+    public int calculateSpell(int base) {
+        return base;
+    }
+
     public void onHeal(int heal) {
 
     }

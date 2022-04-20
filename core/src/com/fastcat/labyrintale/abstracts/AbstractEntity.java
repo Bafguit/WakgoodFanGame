@@ -115,6 +115,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void heal(int heal) {
+        heal = calculateSpell(heal);
         if(heal < 0) heal = 0;
         if(isAlive()) {
             health = Math.min(health + heal, maxHealth);
@@ -124,13 +125,9 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
-    public void gainStatus(AbstractEntity source, AbstractStatus status) {
-
-    }
-
     public void gainBlock(int b) {
         if(b > 0) {
-            int temp = b;
+            int temp = calculateSpell(b);
             if(status != null)  {
                 for(AbstractStatus s : status) {
                     temp = s != null ? s.onGainBlock(b) : temp;
@@ -153,7 +150,7 @@ public abstract class AbstractEntity implements Cloneable {
                 if(temp.id.equals(s.id)) {
                     if (temp.hasAmount) {
                         temp.amount += amount;
-                        if (temp.amount <= 0 && !temp.canGoNegative) {
+                        if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
                             temp.onRemove();
                             if (i < 4) {
                                 this.status[i] = null;
@@ -201,11 +198,26 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
+    public int calculateAttack(int d) {
+        for(AbstractStatus s : status) {
+            if(s != null) d = s.calculateAttack(d);
+        }
+        return d;
+    }
+
+    public int calculateSpell(int d) {
+        for(AbstractStatus s : status) {
+            if(s != null) d = s.calculateSpell(d);
+        }
+        return d;
+    }
+
     public void takeDamage(DamageInfo info) {
         AbstractEntity attacker = info.actor;
         int damage = info.damage;
         DamageType type = info.type;
         if(attacker != null) {
+            damage = attacker.calculateAttack(damage);
             for (AbstractSkill s : attacker.hand) {
                 if (s != null) damage = s.onAttack(this, damage, type);
             }

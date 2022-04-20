@@ -115,11 +115,23 @@ public abstract class AbstractSkill implements Cloneable {
     public String getKeyValue(String key) {
         switch (key) {
             case "A":
-                return Integer.toString(this.attack);
+                int a = attack;
+                if(owner != null) {
+                    for (AbstractStatus s : owner.status) {
+                        if (s != null) a = s.calculateAttack(a);
+                    }
+                }
+                return Integer.toString(a);
             case "S":
-                return Integer.toString(this.spell);
+                int p = spell;
+                if(owner != null) {
+                    for (AbstractStatus s : owner.status) {
+                        if (s != null) p = s.calculateSpell(p);
+                    }
+                }
+                return Integer.toString(p);
             case "V":
-                return Integer.toString(this.value);
+                return Integer.toString(value);
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }

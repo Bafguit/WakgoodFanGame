@@ -31,10 +31,9 @@ public class AbstractLabyrinth {
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
     public static ControlPanel cPanel;
-    public static int maxEnergy = 4;
-    public static int energy = 0;
-    public static int gold = 0;
-    public static int removePrice = 50;
+    public static int maxEnergy;
+    public static int energy;
+    public static int gold;
 
     public AbstractLabyrinth() {
         this(RunType.NEW);
@@ -62,6 +61,9 @@ public class AbstractLabyrinth {
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
+            maxEnergy = 3;
+            energy = 0;
+            gold = 100;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);
@@ -152,12 +154,6 @@ public class AbstractLabyrinth {
         players[p2.index] = p2;
         players[p3.index] = p3;
         players[p4.index] = p4;
-    }
-
-    public static int getRemovePrice(boolean isNormal) {
-        int temp = removePrice;
-        if(isNormal) removePrice += 25;
-        return temp;
     }
 
     public enum RunType {

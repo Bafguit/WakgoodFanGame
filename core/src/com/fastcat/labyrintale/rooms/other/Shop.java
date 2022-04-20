@@ -13,7 +13,6 @@ import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.*;
 public class Shop extends AbstractRoom {
 
     public SkillItem[] skills = new SkillItem[6];
-    public RemoveItem remove;
 
     public Shop() {
         super(RoomType.SHOP);
@@ -68,17 +67,6 @@ public class Shop extends AbstractRoom {
                     p = 50 + shopRandom.nextInt(20);
             }
             return (int)(p * s);
-        }
-
-        @Override
-        protected void take() {
-
-        }
-    }
-
-    private static class RemoveItem extends ShopItem{
-        public RemoveItem() {
-            super(getRemovePrice(true));
         }
 
         @Override

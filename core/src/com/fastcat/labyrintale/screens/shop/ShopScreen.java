@@ -11,7 +11,6 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 public class ShopScreen extends AbstractScreen {
 
     public ShopItemButton[] skills = new ShopItemButton[6];
-    public ShopItemButton remove;
 
     public ShopScreen() {
         AbstractRoom room = currentFloor.currentRoom;
@@ -19,7 +18,6 @@ public class ShopScreen extends AbstractScreen {
             for(int i = 0; i < 6; i++) {
                 skills[i] = new ShopItemButton(((Shop) room).skills[i]);
             }
-            remove = new ShopItemButton(((Shop) room).remove);
         }
     }
 

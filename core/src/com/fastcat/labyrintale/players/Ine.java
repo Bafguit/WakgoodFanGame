@@ -19,7 +19,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 public class Ine extends AbstractPlayer {
 
     private static final String ID = "ine";
-    private static final int HEALTH = 25;
+    private static final int HEALTH = 27;
     private static final TextureAtlas ATLAS = NEKO_ATLAS;
     private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = Color.valueOf("#8a2be2");

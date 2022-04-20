@@ -20,7 +20,7 @@ import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 public class Viichan extends AbstractPlayer {
 
     private static final String ID = "viichan";
-    private static final int HEALTH = 25;
+    private static final int HEALTH = 24;
     private static final TextureAtlas ATLAS = NEKO_ATLAS;
     private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = CHARTREUSE;
