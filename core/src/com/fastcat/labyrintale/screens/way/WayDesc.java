@@ -27,7 +27,7 @@ public class WayDesc extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(fontData != null) {
-                renderColorCenter(sb, fontData, text, x, y + sHeight / 2, sWidth * 0.8f);
+                renderColorCenter(sb, fontData, text, x + sWidth * 0.1f, y + sHeight / 2, sWidth * 0.8f);
             }
         }
     }

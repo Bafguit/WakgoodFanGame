@@ -20,6 +20,7 @@ public class SkillString {
         generateString(CARD_JSON_GOSEGU);
         generateString(CARD_JSON_JURURU);
         generateString(CARD_JSON_ADV);
+        generateString(CARD_JSON_ENEMY);
     }
 
     private void generateString(JsonValue json) {

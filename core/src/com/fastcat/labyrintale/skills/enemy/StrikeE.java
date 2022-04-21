@@ -7,15 +7,15 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class StrikeE extends AbstractSkill {
 
-    private static final String ID = "Strike";
+    private static final String ID = "StrikeE";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
     private static final SkillTarget TARGET = SkillTarget.P_F;
-    private static final int VALUE = 5;
+    private static final int VALUE = 4;
 
     public StrikeE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
+        setBaseAttack(VALUE, 1);
     }
 
     @Override

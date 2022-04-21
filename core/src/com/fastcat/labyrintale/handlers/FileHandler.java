@@ -36,6 +36,7 @@ public class FileHandler implements Disposable {
     public static final JsonValue CARD_JSON_GOSEGU = generateJson("json/skill/goseguCards.json");
     public static final JsonValue CARD_JSON_JURURU = generateJson("json/skill/jururuCards.json");
     public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
+    public static final JsonValue CARD_JSON_ENEMY = generateJson("json/skill/enemyCards.json");
 
     //사운드
     public static final Sound LILPAA = getSound("sound/sfx/skill/lilpaa.mp3");
@@ -225,6 +226,10 @@ public class FileHandler implements Disposable {
         for (JsonValue js : CARD_JSON_ADV) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
             skillImgBig.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + "_p.png")));
+        }
+        for (JsonValue js : CARD_JSON_ENEMY) {
+            skillImg.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + ".png")));
+            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + "_p.png")));
         }
     }
 

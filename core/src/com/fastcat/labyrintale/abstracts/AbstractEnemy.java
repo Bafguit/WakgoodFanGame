@@ -61,6 +61,6 @@ public abstract class AbstractEnemy extends AbstractEntity {
     }
 
     public enum EnemyType {
-        NORMAL, ELITE, BOSS
+        WEAK, NORMAL, ELITE, BOSS
     }
 }

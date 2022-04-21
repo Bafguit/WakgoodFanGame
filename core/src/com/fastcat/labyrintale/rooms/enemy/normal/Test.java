@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.rooms.enemy.common;
+package com.fastcat.labyrintale.rooms.enemy.normal;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;

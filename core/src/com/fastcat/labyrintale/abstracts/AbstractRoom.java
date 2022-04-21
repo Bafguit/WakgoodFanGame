@@ -47,6 +47,16 @@ public abstract class AbstractRoom implements Cloneable {
         this.isDone = true;
     }
 
+    @Override
+    public final AbstractRoom clone() {
+        try {
+            return (AbstractRoom) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public enum RoomType {
         ENTRY, BATTLE, ELITE, BOSS, EVENT, SHOP, REST
     }

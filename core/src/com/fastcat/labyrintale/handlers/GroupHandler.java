@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
+import com.fastcat.labyrintale.rooms.enemy.normal.Test;
+import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.skills.player.burger.*;
 import com.fastcat.labyrintale.skills.player.gosegu.*;
 import com.fastcat.labyrintale.skills.player.ine.*;
@@ -18,6 +20,7 @@ import com.fastcat.labyrintale.skills.player.wak.*;
 import java.util.HashMap;
 import java.util.Objects;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.monsterRandom;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.skillRandom;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
@@ -28,11 +31,7 @@ public class GroupHandler {
 
     public static HashMap<String, AbstractFloor> floorGroup = new HashMap<>();
     public static HashMap<String, AbstractEvent> eventGroup = new HashMap<>();
-    public static Array<AbstractEnemy[]> normalGroup = new Array<>();
-    public static Array<AbstractEnemy[]> eliteGroup = new Array<>();
-    public static Array<AbstractEnemy[]> bossGroup = new Array<>();
     public static HashMap<String, AbstractStatus> statusGroup = new HashMap<>();
-    public static HashMap<PlayerClass, Texture> cardImgGroup = new HashMap<>();
 
     public GroupHandler() {
         SkillGroup.generateSkill();
@@ -51,11 +50,85 @@ public class GroupHandler {
 
     }
 
+    public static class EnemyGroup {
+
+        public static HashMap<Integer, Array<AbstractRoom>> weakGroup = new HashMap<>();
+        public static HashMap<Integer, Array<AbstractRoom>> normalGroup = new HashMap<>();
+        public static HashMap<Integer, Array<AbstractRoom>> eliteGroup = new HashMap<>();
+        public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
+
+        public static void generateEnemy() {
+            generateWeak();
+            generateNormal();
+            generateElite();
+            generateBoss();
+        }
+
+        private static void generateWeak() {
+            weakGroup.clear();
+            Array<AbstractRoom> t = new Array<>();
+            t.add(new Weak1());
+            weakGroup.put(1, t);
+        }
+
+        private static void generateNormal() {
+            normalGroup.clear();
+            Array<AbstractRoom> t = new Array<>();
+            t.add(new Test());
+            normalGroup.put(1, t);
+        }
+
+        private static void generateElite() {
+
+        }
+
+        private static void generateBoss() {
+
+        }
+
+        public static AbstractRoom getWeak() {
+            return new Weak1();
+        }
+
+        public static void roll() {
+            for(Array<AbstractRoom> a : weakGroup.values()) {
+                staticShuffle(a);
+            }
+            for(Array<AbstractRoom> a : normalGroup.values()) {
+                staticShuffle(a);
+            }
+            for(Array<AbstractRoom> a : eliteGroup.values()) {
+                staticShuffle(a);
+            }
+            for(Array<AbstractRoom> a : bossGroup.values()) {
+                staticShuffle(a);
+            }
+        }
+
+        public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array) {
+            return staticShuffle(array, monsterRandom);
+        }
+
+        public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array, RandomXS128 r) {
+            AbstractRoom[] items = array.toArray(AbstractRoom.class);
+            for(int i = array.size - 1; i >= 0; --i) {
+                int ii = r.nextInt(i + 1);
+                AbstractRoom temp = items[i];
+                items[i] = items[ii];
+                items[ii] = temp;
+            }
+            array.clear();
+            array.addAll(items);
+            return array;
+        }
+    }
+
     public static class SkillGroup {
 
         public static final HashMap<PlayerClass, Array<AbstractSkill>> allSkill = new HashMap<>();
 
         public static void generateSkill() {
+            allSkill.clear();
             generateBurger();
             generateGosegu();
             generateIne();
