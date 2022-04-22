@@ -256,7 +256,7 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
             t.add(new Boost(null));
-            t.add(new Test72(null));
+            t.add(new Encourage(null));
             t.add(new Test73(null));
             //Silver
             t.add(new Test74(null));

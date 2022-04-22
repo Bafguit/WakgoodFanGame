@@ -22,6 +22,11 @@ public class AttackStatus extends AbstractStatus {
     }
 
     @Override
+    public int showAttack(int base) {
+        return base + amount;
+    }
+
+    @Override
     public int calculateAttack(int base) {
         return base + amount;
     }

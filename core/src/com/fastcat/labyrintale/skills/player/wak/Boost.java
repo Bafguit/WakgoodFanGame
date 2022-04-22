@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Boost extends AbstractSkill {
 
-    private static final String ID = "Test71";
+    private static final String ID = "Boost";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.GOLD;
     private static final SkillTarget TARGET = SkillTarget.P_ALL;

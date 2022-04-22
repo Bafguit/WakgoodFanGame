@@ -1,38 +1,42 @@
 package com.fastcat.labyrintale.status;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.ReduceStatusAction;
 import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
 
-public class BlindStatus extends AbstractStatus {
+public class CourageStatus extends AbstractStatus {
 
-    private static final String ID = "Blind";
+    private static final String ID = "Courage";
 
-    public BlindStatus() {
+    public CourageStatus(int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+        setAmount(amount);
     }
 
     @Override
     public String getDesc() {
-        return desc;
+        return data.DESC_B[0] + data.DESC_B[1] + amount + data.DESC_B[2];
     }
 
     @Override
-    public int onAttack(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    public int onAttack(AbstractEntity e, int dmg, AbstractEntity.DamageType type) {
         if(type == AbstractEntity.DamageType.NORMAL) {
             flash();
             ActionHandler.top(new RemoveStatusAction(this, true));
-            return 0;
-        } else return d;
+            return dmg + amount;
+        } else return dmg;
     }
 
     @Override
     public int showAttack(int base) {
-        return 0;
+        return base + amount;
+    }
+
+    @Override
+    public void endOfTurn() {
+        ActionHandler.bot(new RemoveStatusAction(this, true));
     }
 }

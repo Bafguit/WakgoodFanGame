@@ -21,12 +21,12 @@ public class Patience extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+
     }
 
     @Override
     protected void upgradeCard() {
-        if((upgradeCount + 1) % 3 == 0 && value < 3) {
+        if((upgradeCount + 1) % 2 == 0 && value < 3) {
             setBaseValue(++baseValue);
         }
     }

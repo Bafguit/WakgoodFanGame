@@ -48,7 +48,7 @@ public abstract class AbstractStatus implements Cloneable {
 
     public final void flash() {
         //TODO 소리 추가
-        EffectHandler.add(new UpIconEffect(owner.animX, owner.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
+        flash(owner);
     }
 
     public final void flash(AbstractEntity e) {
@@ -101,6 +101,14 @@ public abstract class AbstractStatus implements Cloneable {
 
     public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return damage;
+    }
+
+    public int showAttack(int base) {
+        return base;
+    }
+
+    public int showSpell(int base) {
+        return base;
     }
 
     public int calculateAttack(int base) {

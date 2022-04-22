@@ -35,4 +35,9 @@ public class LethargyStatus extends AbstractStatus {
         if(fromEnemy) fromEnemy = false;
         else ActionHandler.bot(new ReduceStatusAction(this, 1, true));
     }
+
+    @Override
+    public int showAttack(int base) {
+        return MathUtils.floor((float) base * 0.5f);
+    }
 }

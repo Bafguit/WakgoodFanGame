@@ -163,7 +163,7 @@ public class FontHandler implements Disposable {
         matcher = VAR_PATTERN.matcher(text);
         while(matcher.find()) {
             String mt = matcher.group(1);
-            text = matcher.replaceFirst(card.getKeyColor(mt) + card.getKeyValue(mt) + getHexColor(fontData.color));
+            text = matcher.replaceFirst(card.getKeyValue(mt) + getHexColor(fontData.color));
             matcher = VAR_PATTERN.matcher(text);
         }
         font.getData().setScale(fontData.scale);
@@ -188,7 +188,7 @@ public class FontHandler implements Disposable {
         matcher = VAR_PATTERN.matcher(text);
         while(matcher.find()) {
             String mt = matcher.group(1);
-            text = matcher.replaceFirst(card.getKeyColor(mt) + card.getKeyValue(mt) + getHexColor(fontData.color));
+            text = matcher.replaceFirst(card.getKeyValue(mt) + getHexColor(fontData.color));
             matcher = VAR_PATTERN.matcher(text);
         }
         font.getData().setScale(fontData.scale);

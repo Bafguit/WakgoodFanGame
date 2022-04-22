@@ -23,4 +23,9 @@ public class SpellStatus extends AbstractStatus {
     public int calculateSpell(int base) {
         return base + amount;
     }
+
+    @Override
+    public int showSpell(int base) {
+        return base + amount;
+    }
 }

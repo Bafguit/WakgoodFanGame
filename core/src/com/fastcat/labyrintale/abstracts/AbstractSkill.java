@@ -118,35 +118,22 @@ public abstract class AbstractSkill implements Cloneable {
                 int a = attack;
                 if(owner != null) {
                     for (AbstractStatus s : owner.status) {
-                        if (s != null) a = s.calculateAttack(a);
+                        if (s != null) a = s.showAttack(a);
                     }
                 }
-                return Integer.toString(a);
+                return getHexColor(valueColor(a, baseAttack)) + a;
             case "S":
                 int p = spell;
                 if(owner != null) {
                     for (AbstractStatus s : owner.status) {
-                        if (s != null) p = s.calculateSpell(p);
+                        if (s != null) p = s.showSpell(p);
                     }
                 }
-                return Integer.toString(p);
+                return getHexColor(valueColor(p, baseSpell)) + p;
             case "V":
-                return Integer.toString(value);
+                return getHexColor(Color.CYAN) + value;
             default:
                 return "ERROR_UNIDENTIFIABLE";
-        }
-    }
-
-    public String getKeyColor(String key) {
-        switch (key) {
-            case "A":
-                return getHexColor(valueColor(attack, baseAttack));
-            case "S":
-                return getHexColor(valueColor(spell, baseSpell));
-            case "V":
-                return getHexColor(valueColor(value, baseValue));
-            default:
-                return getHexColor(Color.WHITE);
         }
     }
 
