@@ -9,7 +9,7 @@ public class BarrierE extends AbstractSkill {
 
     private static final String ID = "BarrierE";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 3;
 

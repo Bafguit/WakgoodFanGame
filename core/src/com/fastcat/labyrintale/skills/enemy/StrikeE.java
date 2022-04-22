@@ -9,7 +9,7 @@ public class StrikeE extends AbstractSkill {
 
     private static final String ID = "StrikeE";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.P_F;
     private static final int VALUE = 4;
 

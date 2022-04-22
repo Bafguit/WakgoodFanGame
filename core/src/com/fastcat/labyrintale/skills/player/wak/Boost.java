@@ -1,29 +1,29 @@
-package com.fastcat.labyrintale.skills.enemy;
+package com.fastcat.labyrintale.skills.player.wak;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.SpellStatus;
 
-public class FuryE extends AbstractSkill {
+public class Boost extends AbstractSkill {
 
-    private static final String ID = "FuryE";
+    private static final String ID = "Test71";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.ENEMY;
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final SkillRarity RARITY = SkillRarity.GOLD;
+    private static final SkillTarget TARGET = SkillTarget.P_ALL;
     private static final int VALUE = 1;
 
-    public FuryE(AbstractEntity e) {
+    public Boost(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
+        cooltime = 3;
     }
 
     @Override
     public void use() {
-        bot(new ApplyStatusAction(new AttackStatus(value), owner, target, false));
+        bot(new ApplyStatusAction(new SpellStatus(value), owner, target, false));
     }
 
     @Override

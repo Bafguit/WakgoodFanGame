@@ -3,24 +3,23 @@ package com.fastcat.labyrintale.skills.player.burger;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test4 extends AbstractSkill {
+public class Strong extends AbstractSkill {
 
-    private static final String ID = "Test4";
+    private static final String ID = "Strong";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.SILVER;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.SS_L;
-    private static final int VALUE = 3;
+    private static final int VALUE = 4;
 
-    public Test4(AbstractEntity e) {
+    public Strong(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        bot(new BlockAction(owner, TARGET, spell));
     }
 
     @Override

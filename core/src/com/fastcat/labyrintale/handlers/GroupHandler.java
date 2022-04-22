@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.handlers;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
@@ -126,6 +125,7 @@ public class GroupHandler {
     public static class SkillGroup {
 
         public static final HashMap<PlayerClass, Array<AbstractSkill>> allSkill = new HashMap<>();
+        public static final HashMap<String, Integer> discardedCount = new HashMap<>();
 
         public static void generateSkill() {
             allSkill.clear();
@@ -137,20 +137,21 @@ public class GroupHandler {
             generateManager();
             generateViichan();
             generateWak();
+            resetDiscCount();
         }
 
         private static void generateBurger() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test1(null));
-            t.add(new Test2(null));
-            t.add(new Test3(null));
+            t.add(new Kick(null));
+            t.add(new Strong(null));
+            t.add(new Purify(null));
             //Silver
-            t.add(new Test4(null));
-            t.add(new Test5(null));
-            t.add(new Test6(null));
+            t.add(new Protect(null));
+            t.add(new HolyLight(null));
+            t.add(new HolySmite(null));
             //Gold
-            t.add(new Test7(null));
+            t.add(new Patience(null));
             t.add(new Test8(null));
             allSkill.put(PlayerClass.BURGER, t);
         }
@@ -254,7 +255,7 @@ public class GroupHandler {
         private static void generateWak() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Test71(null));
+            t.add(new Boost(null));
             t.add(new Test72(null));
             t.add(new Test73(null));
             //Silver
@@ -265,6 +266,15 @@ public class GroupHandler {
             t.add(new Test77(null));
             t.add(new Test78(null));
             allSkill.put(PlayerClass.WAK, t);
+        }
+
+        private static void resetDiscCount() {
+            discardedCount.clear();
+            for(Array<AbstractSkill> a : allSkill.values()) {
+                for(AbstractSkill s : a) {
+                    discardedCount.put(s.id, 0);
+                }
+            }
         }
 
         public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {

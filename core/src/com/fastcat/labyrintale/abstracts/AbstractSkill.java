@@ -523,7 +523,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum SkillRarity {
-        STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN, ADVISOR
+        STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN, ADVISOR, ENEMY
     }
 
     public enum SkillTarget {

@@ -1,19 +1,19 @@
-package com.fastcat.labyrintale.skills.player.wak;
+package com.fastcat.labyrintale.skills.player.burger;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test71 extends AbstractSkill {
+public class Protect extends AbstractSkill {
 
-    private static final String ID = "Test71";
+    private static final String ID = "Protect";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillRarity RARITY = SkillRarity.SILVER;
+    private static final SkillTarget TARGET = SkillTarget.SS_L;
+    private static final int VALUE = 3;
 
-    public Test71(AbstractEntity e) {
+    public Protect(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE);
     }

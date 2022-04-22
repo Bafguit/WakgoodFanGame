@@ -10,7 +10,7 @@ public class SeguBeam extends AbstractSkill {
 
     private static final String ID = "SeguBeam";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.E_ALL;
     private static final int VALUE = 2;
 

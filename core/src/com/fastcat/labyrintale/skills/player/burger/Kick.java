@@ -4,20 +4,18 @@ import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.MoveAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
-public class Test1 extends AbstractSkill {
+public class Kick extends AbstractSkill {
 
-    private static final String ID = "Test1";
+    private static final String ID = "Kick";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.E_F;
     private static final int VALUE = 2;
 
-    public Test1(AbstractEntity e) {
+    public Kick(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
     }

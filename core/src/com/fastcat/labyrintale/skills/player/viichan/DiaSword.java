@@ -8,7 +8,7 @@ public class DiaSword extends AbstractSkill {
 
     private static final String ID = "DiaSword";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.E_F;
     private static final int VALUE = 5;
 

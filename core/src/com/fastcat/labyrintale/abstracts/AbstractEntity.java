@@ -130,7 +130,7 @@ public abstract class AbstractEntity implements Cloneable {
             int temp = calculateSpell(b);
             if(status != null)  {
                 for(AbstractStatus s : status) {
-                    temp = s != null ? s.onGainBlock(b) : temp;
+                    temp = s != null ? s.onGainBlock(temp) : temp;
                 }
             }
             if(temp > 0) {

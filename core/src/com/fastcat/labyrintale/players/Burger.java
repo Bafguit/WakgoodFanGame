@@ -7,10 +7,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.player.basic.*;
-import com.fastcat.labyrintale.skills.player.burger.Test4;
-import com.fastcat.labyrintale.skills.player.burger.Test5;
-import com.fastcat.labyrintale.skills.player.burger.Test6;
-import com.fastcat.labyrintale.skills.player.burger.Test7;
+import com.fastcat.labyrintale.skills.player.burger.Protect;
+import com.fastcat.labyrintale.skills.player.burger.Patience;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
@@ -33,8 +31,8 @@ public class Burger extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new Test4(this));
-        temp.add(new Test7(this));
+        temp.add(new Protect(this));
+        temp.add(new Patience(this));
         return temp;
     }
 }

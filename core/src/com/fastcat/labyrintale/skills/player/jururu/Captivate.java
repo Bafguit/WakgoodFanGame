@@ -12,7 +12,7 @@ public class Captivate extends AbstractSkill {
 
     private static final String ID = "Captivate";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.E_DF;
     private static final int VALUE = 1;
 

@@ -5,15 +5,15 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test7 extends AbstractSkill {
+public class Patience extends AbstractSkill {
 
-    private static final String ID = "Test7";
+    private static final String ID = "Patience";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.GOLD;
     private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 1;
 
-    public Test7(AbstractEntity e) {
+    public Patience(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE);
         passive = true;
@@ -26,7 +26,7 @@ public class Test7 extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
-        if(upgradeCount % 3 == 0 && value < 3) {
+        if((upgradeCount + 1) % 3 == 0 && value < 3) {
             setBaseValue(++baseValue);
         }
     }

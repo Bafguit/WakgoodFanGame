@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
 
 public class SkillRewardSkillButton extends AbstractUI {
@@ -31,6 +32,14 @@ public class SkillRewardSkillButton extends AbstractUI {
             AbstractSkill t = group.toSkill.skill;
             for(int i = 0; i < t.upgradeCount; i++) {
                 skill.upgrade();
+            }
+
+            //버린 횟수만큼 업그레이드
+            Integer u = GroupHandler.SkillGroup.discardedCount.get(skill.id);
+            if(u != null) {
+                for (int i = 0; i < u; i++) {
+                    skill.upgrade();
+                }
             }
         }
     }
@@ -57,10 +66,15 @@ public class SkillRewardSkillButton extends AbstractUI {
     protected void onClick() {
         if(!isTo) {
             int index = 0;
+            AbstractSkill ts = group.toSkill.skill;
             for(int i = 0; i < group.player.deck.size; i++) {
-                if(group.player.deck.get(i).id.equals(group.toSkill.skill.id)) {
+                if(group.player.deck.get(i).id.equals(ts.id)) {
                     index = i;
                 }
+            }
+            Integer up = GroupHandler.SkillGroup.discardedCount.get(ts.id);
+            if(up != null) {
+                GroupHandler.SkillGroup.discardedCount.put(ts.id, up + 1);
             }
             group.player.deck.removeIndex(index);
             group.player.deck.insert(index, skill);
