@@ -159,9 +159,9 @@ public class GroupHandler {
         private static void generateGosegu() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new SeguBeam(null));
+            t.add(new BioCloud(null));
             t.add(new Provoke(null));
-            t.add(new Test13(null));
+            t.add(new RustyShard(null));
             //Silver
             t.add(new Test14(null));
             t.add(new Test15(null));

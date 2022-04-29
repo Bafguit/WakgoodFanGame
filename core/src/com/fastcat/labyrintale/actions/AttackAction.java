@@ -18,23 +18,9 @@ public class AttackAction extends AbstractAction {
         this.effect = effect;
     }
 
-    public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AbstractEffect effect) {
-        super(actor, NONE, 0.5f);
-        info = new AbstractEntity.DamageInfo(actor, damage);
-        monoTarget = target;
-        this.effect = effect;
-    }
-
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEntity.DamageType type, AbstractEffect effect) {
         super(actor, target, 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage, type);
-        this.effect = effect;
-    }
-
-    public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AbstractEntity.DamageType type, AbstractEffect effect) {
-        super(actor, NONE, 0.5f);
-        info = new AbstractEntity.DamageInfo(actor, damage, type);
-        monoTarget = target;
         this.effect = effect;
     }
 

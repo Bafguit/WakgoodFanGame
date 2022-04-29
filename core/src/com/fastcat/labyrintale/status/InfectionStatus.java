@@ -2,18 +2,17 @@ package com.fastcat.labyrintale.status;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.actions.StatusSelfDamageAction;
+import com.fastcat.labyrintale.actions.StatusDamageAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.SELF;
 
 public class InfectionStatus extends AbstractStatus {
 
     private static final String ID = "Infection";
 
     public InfectionStatus(int amount) {
-        super(ID, NONE, StatusType.DEBUFF);
+        super(ID, SELF, StatusType.DEBUFF);
         setAmount(amount);
     }
 
@@ -24,6 +23,6 @@ public class InfectionStatus extends AbstractStatus {
 
     @Override
     public void startOfTurn() {
-        ActionHandler.top(new StatusSelfDamageAction(this, true));
+        ActionHandler.top(new StatusDamageAction(this, true, false));
     }
 }

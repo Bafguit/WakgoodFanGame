@@ -6,15 +6,15 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.InfectionStatus;
 
-public class SeguBeam extends AbstractSkill {
+public class BioCloud extends AbstractSkill {
 
-    private static final String ID = "SeguBeam";
+    private static final String ID = "BioCloud";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.SILVER;
     private static final SkillTarget TARGET = SkillTarget.E_ALL;
     private static final int VALUE = 2;
 
-    public SeguBeam(AbstractEntity e) {
+    public BioCloud(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
     }

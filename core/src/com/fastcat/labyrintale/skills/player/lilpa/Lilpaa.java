@@ -16,11 +16,12 @@ public class Lilpaa extends AbstractSkill {
     public Lilpaa(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
+        setBaseValue(2);
     }
 
     @Override
     public void use() {
-        bot(new LilpaaAction(owner, attack, 2));
+        bot(new LilpaaAction(owner, attack, value));
     }
 
     @Override

@@ -18,12 +18,12 @@ public class Captivate extends AbstractSkill {
 
     public Captivate(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new LethargyStatus(spell, false), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, false));
     }
 
     @Override

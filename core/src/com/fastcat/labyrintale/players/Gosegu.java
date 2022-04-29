@@ -7,14 +7,11 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
-import com.fastcat.labyrintale.skills.player.basic.Heal;
-import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.gosegu.Provoke;
-import com.fastcat.labyrintale.skills.player.gosegu.SeguBeam;
+import com.fastcat.labyrintale.skills.player.gosegu.BioCloud;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
-import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 
@@ -35,7 +32,7 @@ public class Gosegu extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new SeguBeam(this));
+        temp.add(new BioCloud(this));
         temp.add(new Provoke(this));
         return temp;
     }

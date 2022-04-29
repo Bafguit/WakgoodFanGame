@@ -18,7 +18,7 @@ public class CourageStatus extends AbstractStatus {
 
     @Override
     public String getDesc() {
-        return data.DESC_B[0] + data.DESC_B[1] + amount + data.DESC_B[2];
+        return exDesc[0] + amount + exDesc[1];
     }
 
     @Override

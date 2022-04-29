@@ -1,19 +1,19 @@
 {
-  "SeguBeam": {
-    "NAME": "세구빔",
+  "BioCloud": {
+    "NAME": "생화학 구름",
     "DESC": "&y<감염>을 {V} 부여합니다."
   },
   "Provoke": {
     "NAME": "도발",
     "DESC": "&y<무방비>를 {V} 부여합니다."
   },
-  "Test13": {
-    "NAME": "Test13",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
+  "RustyShard": {
+    "NAME": "녹슨 파편",
+    "DESC": "피해를 {A} 줍니다. &y<감염>을 {V} 부여합니다."
   },
   "Test14": {
-    "NAME": "Test14",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
+    "NAME": "인화성 플라스크",
+    "DESC": "&y<화상>을 {V} 부여합니다."
   },
   "Test15": {
     "NAME": "Test15",

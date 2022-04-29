@@ -67,6 +67,10 @@ public abstract class AbstractSkill implements Cloneable {
         this(null, id, type, rarity, target);
     }
 
+    protected final void top(AbstractAction a) {
+        ActionHandler.top(a);
+    }
+
     protected final void bot(AbstractAction a) {
         ActionHandler.bot(a);
     }

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.effects.UpIconEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
@@ -45,6 +46,13 @@ public abstract class AbstractStatus implements Cloneable {
         hasAmount = true;
     }
 
+    protected final void top(AbstractAction a) {
+        ActionHandler.top(a);
+    }
+
+    protected final void bot(AbstractAction a) {
+        ActionHandler.bot(a);
+    }
 
     public final void flash() {
         //TODO 소리 추가

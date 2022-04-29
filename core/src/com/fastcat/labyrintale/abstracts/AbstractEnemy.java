@@ -17,6 +17,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public Array<AbstractSkill> drawPile;
     public Array<AbstractSkill> discardPile;
     public Array<AbstractSkill> disposablePile;
+    protected boolean isRandom = true;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
         super(id, EntityType.ENEMY, 1, maxHealth, atlas, skel);
@@ -49,7 +50,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
             drawPile.addAll(discardPile);
             discardPile.clear();
         }
-        GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
+        if(isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
         int ts = drawPile.size;
         for(int i = 0; i < handSize; i++) {
             if(i < ts) {

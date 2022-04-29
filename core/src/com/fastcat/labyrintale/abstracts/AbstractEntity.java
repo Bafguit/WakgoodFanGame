@@ -213,58 +213,60 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void takeDamage(DamageInfo info) {
-        AbstractEntity attacker = info.actor;
-        int damage = info.damage;
-        DamageType type = info.type;
-        if(attacker != null) {
-            damage = attacker.calculateAttack(damage);
-            for (AbstractSkill s : attacker.hand) {
-                if (s != null) damage = s.onAttack(this, damage, type);
+        if(isAlive()) {
+            AbstractEntity attacker = info.actor;
+            int damage = info.damage;
+            DamageType type = info.type;
+            if (attacker != null) {
+                damage = attacker.calculateAttack(damage);
+                for (AbstractSkill s : attacker.hand) {
+                    if (s != null) damage = s.onAttack(this, damage, type);
+                }
+                for (AbstractStatus s : attacker.status) {
+                    if (s != null) damage = s.onAttack(this, damage, type);
+                }
             }
-            for (AbstractStatus s : attacker.status) {
-                if (s != null) damage = s.onAttack(this, damage, type);
-            }
-        }
-        if(damage > 0) {
-            for (AbstractSkill s : hand) {
-                if (s != null) damage = s.onAttacked(attacker, damage, type);
-            }
-            for (AbstractStatus s : status) {
-                if (s != null) damage = s.onAttacked(attacker, damage, type);
-            }
-            if(damage > 0) {
-                damage = loseBlock(damage);
+            if (damage > 0) {
+                for (AbstractSkill s : hand) {
+                    if (s != null) damage = s.onAttacked(attacker, damage, type);
+                }
+                for (AbstractStatus s : status) {
+                    if (s != null) damage = s.onAttacked(attacker, damage, type);
+                }
                 if (damage > 0) {
-                    EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
-                    AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
-                    state.addAnimation(0, "Standby", true, 0.0F);
-                    e.setTimeScale(1.0f);
-                    health -= damage;
-                    if (health <= 0) {
-                        health = 0;
-                        block = 0;
-                        die(attacker);
-                    }
-                    if(attacker != null) {
-                        for (AbstractSkill s : attacker.hand) {
-                            if (s != null) s.onDamage(this, damage, type);
+                    damage = loseBlock(damage);
+                    if (damage > 0) {
+                        EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                        AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
+                        state.addAnimation(0, "Standby", true, 0.0F);
+                        e.setTimeScale(1.0f);
+                        health -= damage;
+                        if (health <= 0) {
+                            health = 0;
+                            block = 0;
+                            die(attacker);
                         }
-                        for (AbstractStatus s : attacker.status) {
-                            if (s != null) s.onDamage(this, damage, type);
+                        if (attacker != null) {
+                            for (AbstractSkill s : attacker.hand) {
+                                if (s != null) s.onDamage(this, damage, type);
+                            }
+                            for (AbstractStatus s : attacker.status) {
+                                if (s != null) s.onDamage(this, damage, type);
+                            }
                         }
-                    }
-                    for (AbstractSkill s : hand) {
-                        if (s != null) s.onDamaged(attacker, damage, type);
-                    }
-                    for (AbstractStatus s : status) {
-                        if (s != null) s.onDamaged(attacker, damage, type);
+                        for (AbstractSkill s : hand) {
+                            if (s != null) s.onDamaged(attacker, damage, type);
+                        }
+                        for (AbstractStatus s : status) {
+                            if (s != null) s.onDamaged(attacker, damage, type);
+                        }
+                        return;
                     }
                     return;
                 }
-                return;
             }
+            EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
         }
-        EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
     }
 
     public int loseBlock(int damage) {

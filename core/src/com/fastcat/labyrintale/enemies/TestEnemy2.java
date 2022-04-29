@@ -27,6 +27,9 @@ public class TestEnemy2 extends AbstractEnemy {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new BarrierE(this));
+        temp.add(new BarrierE(this));
+        temp.add(new BarrierE(this));
+        temp.add(new StrikeE(this));
         return temp;
     }
 }

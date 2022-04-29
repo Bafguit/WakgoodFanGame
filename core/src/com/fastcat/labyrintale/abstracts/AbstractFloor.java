@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EventRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 
@@ -63,7 +64,7 @@ public class AbstractFloor {
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
         } else if (type == NORMAL) {
-            t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.BATTLE, true));
+            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             t.add(new AbstractChoice(new EventRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         } else if (type == ELITE) {
