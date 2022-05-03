@@ -44,7 +44,7 @@ public class InfoPanel extends AbstractUI {
         nx = dx = w * 0.69f;
         ny = h * 0.41f;
         dy = h * 0.4f - 45 * scale;
-        nw = dw = 550 * InputHandler.scale;
+        nw = dw = 650 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;
 

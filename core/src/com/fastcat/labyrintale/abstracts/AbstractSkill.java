@@ -121,6 +121,11 @@ public abstract class AbstractSkill implements Cloneable {
             case "A":
                 int a = attack;
                 if(owner != null) {
+                    if(owner.isPlayer) {
+                        for (AbstractItem m : owner.item) {
+                            if (m != null) a = m.showAttack(a);
+                        }
+                    }
                     for (AbstractStatus s : owner.status) {
                         if (s != null) a = s.showAttack(a);
                     }
@@ -129,6 +134,11 @@ public abstract class AbstractSkill implements Cloneable {
             case "S":
                 int p = spell;
                 if(owner != null) {
+                    if(owner.isPlayer) {
+                        for (AbstractItem m : owner.item) {
+                            if (m != null) p = m.showSpell(p);
+                        }
+                    }
                     for (AbstractStatus s : owner.status) {
                         if (s != null) p = s.showSpell(p);
                     }

@@ -136,14 +136,16 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
+        int ci = cPanel.battlePanel.curPlayer.index;
         for(int i = 0; i < 4; i++) {
             if(isEnemyTurn) players[i].render(sb);
             else enemies[i].render(sb);
         }
         for(int i = 0; i < 4; i++) {
-            if(!isEnemyTurn) players[i].render(sb);
+            if(!isEnemyTurn && i != ci) players[i].render(sb);
             else enemies[i].render(sb);
         }
+        if(!isEnemyTurn) players[ci].render(sb);
 
         sb.end();
         shr.begin(ShapeRenderer.ShapeType.Filled);

@@ -18,7 +18,6 @@ public class VictoryAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            ActionHandler.clear();
             SoundHandler.fadeOutMusic("BATTLE_1");
         } else if(isDone) {
             for(AbstractPlayer p : AbstractLabyrinth.players) {

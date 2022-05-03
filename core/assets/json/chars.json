@@ -2,7 +2,7 @@
   "wak": {
     "NAME": "우왁굳",
     "DESC": "월클급 한국 1위 스트리머. 코가 크다.",
-    "FLV": [
+    "FLAV": [
       "황제의",
       "황제와",
       "완고한",
@@ -12,7 +12,7 @@
   "manager": {
     "NAME": "뢴트게늄",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "뇌절의",
       "오른팔과",
       "뇌절하는",
@@ -22,7 +22,7 @@
   "ine": {
     "NAME": "아이네",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "대머리",
       "여신과",
       "최단신",
@@ -32,7 +32,7 @@
   "viichan": {
     "NAME": "비챤",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "노동하는",
       "막내와",
       "겜잘알",
@@ -42,7 +42,7 @@
   "lilpa": {
     "NAME": "릴파",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "귀여운",
       "박쥐와",
       "악질",
@@ -52,7 +52,7 @@
   "burger": {
     "NAME": "징버거",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "햄버거의",
       "햄버거와",
       "머시깽한",
@@ -62,7 +62,7 @@
   "gosegu": {
     "NAME": "고세구",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "킹받는",
       "세균과",
       "무친",
@@ -72,7 +72,7 @@
   "jururu": {
     "NAME": "주르르",
     "DESC": "DESCRIPTION",
-    "FLV": [
+    "FLAV": [
       "주랄하는",
       "무7련과",
       "유혹하는",

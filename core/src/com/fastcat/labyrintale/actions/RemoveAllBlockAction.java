@@ -24,6 +24,16 @@ public class RemoveAllBlockAction extends AbstractAction {
                     e.block = 0;
                 }
             } else {
+                if(duration == baseDuration) {
+                    for(int j = 3; j >= 0; j--) {
+                        AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
+                        if(e.isAlive()) {
+                            for (int i = 4; i >= 0; i--) {
+                                if (e.status[i] != null) e.status[i].startOfTurn();
+                            }
+                        }
+                    }
+                }
                 for(AbstractPlayer p : AbstractLabyrinth.players) {
                     p.block = 0;
                 }

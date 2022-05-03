@@ -20,7 +20,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     protected boolean isRandom = true;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
-        super(id, EntityType.ENEMY, 1, maxHealth, atlas, skel);
+        super(id, EntityType.ENEMY, 1, maxHealth, atlas, skel, false);
         this.type = type;
         skeleton.setFlip(true, false);
         drawPile = new Array<>();

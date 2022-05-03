@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.effects.TurnChangeEffect;
@@ -23,6 +24,9 @@ public class PlayerTurnStartAction extends AbstractAction {
         if(duration == baseDuration) {
             for(AbstractPlayer p : players) {
                 if(p.isAlive()) {
+                    for (AbstractItem m : p.item) {
+                        if (m != null) m.startOfTurn();
+                    }
                     for (AbstractStatus s : p.status) {
                         if (s != null) s.startOfTurn();
                     }

@@ -18,6 +18,9 @@ public class EndPlayerTurnAction extends AbstractAction {
         if(isDone) {
             for(AbstractPlayer p : players) {
                 if(p.isAlive()) {
+                    for (AbstractItem s : p.item) {
+                        if (s != null) s.endOfTurn();
+                    }
                     for (AbstractStatus s : p.status) {
                         if (s != null) s.endOfTurn();
                     }
@@ -30,13 +33,6 @@ public class EndPlayerTurnAction extends AbstractAction {
                 SkillButton ts = battleScreen.enemySkills[i];
                 if (ts.skill != null) {
                     ts.skill.useCard();
-                }
-            }
-            for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                if(e.isAlive()) {
-                    for (int i = 0; i < 5; i++) {
-                        if (e.status[i] != null) e.status[i].endOfTurn();
-                    }
                 }
             }
             ActionHandler.bot(new RemoveAllBlockAction(false));

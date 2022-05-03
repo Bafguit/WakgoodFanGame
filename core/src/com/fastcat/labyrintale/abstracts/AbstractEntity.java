@@ -30,6 +30,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 public abstract class AbstractEntity implements Cloneable {
 
     public final int handSize;
+    public final boolean isPlayer;
 
     protected Texture orb;
     protected Texture sOrb;
@@ -47,6 +48,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mLeftTemp;
     public AbstractSkill mRightTemp;
     public AbstractStatus[] status = new AbstractStatus[5];
+    public AbstractItem[] item = new AbstractItem[2];
     public EntityType entityType;
     public String id;
     public String name;
@@ -64,8 +66,9 @@ public abstract class AbstractEntity implements Cloneable {
     public Sprite imgBig;
     public Sprite bg;
 
-    public AbstractEntity(String id, EntityType type, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel) {
+    public AbstractEntity(String id, EntityType type, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel, boolean player) {
         this.id = id;
+        isPlayer = player;
         handSize = hand;
         /** 여기에 json 받아오는거 입력 */
         /** 여기에 아틀라스 이미지 불러오는거 입력 */
@@ -119,6 +122,11 @@ public abstract class AbstractEntity implements Cloneable {
         if(heal < 0) heal = 0;
         if(isAlive()) {
             health = Math.min(health + heal, maxHealth);
+            if(isPlayer) {
+                for (AbstractItem m : item) {
+                    if (m != null) m.onHeal(heal);
+                }
+            }
             for (AbstractStatus s : status) {
                 if(s != null) s.onHeal(heal);
             }
@@ -128,6 +136,11 @@ public abstract class AbstractEntity implements Cloneable {
     public void gainBlock(int b) {
         if(b > 0) {
             int temp = calculateSpell(b);
+            if(isPlayer) {
+                for (AbstractItem m : item) {
+                    if (m != null) temp = m.onGainBlock(temp);
+                }
+            }
             if(status != null)  {
                 for(AbstractStatus s : status) {
                     temp = s != null ? s.onGainBlock(temp) : temp;
@@ -142,8 +155,13 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void applyStatus(AbstractStatus status, int amount) {
         boolean done = false;
-        AbstractStatus s = status.cpy();
-        Objects.requireNonNull(s).owner = this;
+        AbstractStatus s = Objects.requireNonNull(status.cpy());
+        s.owner = this;
+        if(isPlayer) {
+            for (AbstractItem m : item) {
+                if (m != null) m.onApplyStatus(s);
+            }
+        }
         for (int i = 0; i < 5; i++) {
             if (this.status[i] != null) {
                 AbstractStatus temp = this.status[i];
@@ -199,6 +217,11 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public int calculateAttack(int d) {
+        if(isPlayer) {
+            for (AbstractItem m : item) {
+                if (m != null) d = m.calculateAttack(d);
+            }
+        }
         for(AbstractStatus s : status) {
             if(s != null) d = s.calculateAttack(d);
         }
@@ -206,6 +229,11 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public int calculateSpell(int d) {
+        if(isPlayer) {
+            for (AbstractItem m : item) {
+                if (m != null) d = m.calculateSpell(d);
+            }
+        }
         for(AbstractStatus s : status) {
             if(s != null) d = s.calculateSpell(d);
         }
@@ -219,6 +247,11 @@ public abstract class AbstractEntity implements Cloneable {
             DamageType type = info.type;
             if (attacker != null) {
                 damage = attacker.calculateAttack(damage);
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) damage = m.onAttack(this, damage, type);
+                    }
+                }
                 for (AbstractSkill s : attacker.hand) {
                     if (s != null) damage = s.onAttack(this, damage, type);
                 }
@@ -227,6 +260,11 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
             if (damage > 0) {
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) damage = m.onAttacked(attacker, damage, type);
+                    }
+                }
                 for (AbstractSkill s : hand) {
                     if (s != null) damage = s.onAttacked(attacker, damage, type);
                 }
@@ -247,11 +285,21 @@ public abstract class AbstractEntity implements Cloneable {
                             die(attacker);
                         }
                         if (attacker != null) {
+                            if(isPlayer) {
+                                for (AbstractItem m : item) {
+                                    if (m != null) m.onDamage(this, damage, type);
+                                }
+                            }
                             for (AbstractSkill s : attacker.hand) {
                                 if (s != null) s.onDamage(this, damage, type);
                             }
                             for (AbstractStatus s : attacker.status) {
                                 if (s != null) s.onDamage(this, damage, type);
+                            }
+                        }
+                        if(isPlayer) {
+                            for (AbstractItem m : item) {
+                                if (m != null) m.onDamaged(attacker, damage, type);
                             }
                         }
                         for (AbstractSkill s : hand) {
@@ -272,6 +320,11 @@ public abstract class AbstractEntity implements Cloneable {
     public int loseBlock(int damage) {
         if(block > 0) {
             if(block >= damage) {
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) m.onLoseBlock(damage);
+                    }
+                }
                 for(AbstractStatus s : status) {
                     if(s != null) s.onLoseBlock(damage);
                 }
@@ -279,6 +332,11 @@ public abstract class AbstractEntity implements Cloneable {
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, CYAN, true));
                 return 0;
             } else {
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) m.onLoseBlock(block);
+                    }
+                }
                 for(AbstractStatus s : status) {
                     if(s != null) s.onLoseBlock(block);
                 }
@@ -295,19 +353,32 @@ public abstract class AbstractEntity implements Cloneable {
         if(isAlive()) {
             if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
                 isDie = true;
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) m.onDeath(murder);
+                    }
+                }
                 for(AbstractStatus s : status) {
                     if(s != null) s.onDeath(murder);
                 }
                 EffectHandler.add(new DieEffect(this));
-                if(this instanceof AbstractEnemy) {
-                    boolean a = false;
+                boolean a = false;
+                if(!isPlayer) {
                     for (int i = 0; i < 4; i++) {
                         a = currentFloor.currentRoom.enemies[i].isAlive();
                         if (a) break;
                     }
-                    if (!a) ActionHandler.top(new VictoryAction());
-                } else if (this instanceof AbstractPlayer) {
-                    boolean a = false;
+                    if (!a) {
+                        ActionHandler.clear();
+                        for (AbstractItem m : item) {
+                            if (m != null) m.atBattleEnd();
+                        }
+                        for(AbstractStatus s : status) {
+                            if(s != null) s.atBattleEnd();
+                        }
+                        ActionHandler.bot(new VictoryAction());
+                    }
+                } else {
                     for (int i = 0; i < 4; i++) {
                         a = players[i].isAlive();
                         if (a) break;

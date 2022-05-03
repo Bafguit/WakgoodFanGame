@@ -15,6 +15,7 @@ public class BurgerSkill extends AbstractSkill {
     public BurgerSkill() {
         super(ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
+        disposable = true;
     }
 
     @Override

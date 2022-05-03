@@ -26,6 +26,7 @@ public class FileHandler implements Disposable {
     public static final JsonValue CHOICE_JSON = generateJson("json/choices.json");
     public static final JsonValue STATUS_JSON = generateJson("json/status.json");
     public static final JsonValue EVENT_JSON = generateJson("json/events.json");
+    public static final JsonValue ITEM_JSON = generateJson("json/items.json");
     public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
     public static final JsonValue CARD_JSON_WAK = generateJson("json/skill/wakCards.json");
     public static final JsonValue CARD_JSON_MANAGER = generateJson("json/skill/managerCards.json");
