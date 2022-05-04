@@ -170,7 +170,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_R) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
             } else {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
@@ -179,7 +179,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_L) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
@@ -188,7 +188,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_B) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
@@ -200,7 +200,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
             } else {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
@@ -210,7 +210,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
@@ -220,7 +220,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
@@ -240,7 +240,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_R) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
             } else {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
@@ -249,7 +249,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_L) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
@@ -258,7 +258,7 @@ public abstract class AbstractSkill implements Cloneable {
         } else if(s.target == SkillTarget.S_B) {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
@@ -270,7 +270,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
             } else {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
@@ -280,7 +280,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
@@ -290,7 +290,7 @@ public abstract class AbstractSkill implements Cloneable {
             AbstractEntity e = s.owner;
             Array<AbstractEntity> temp = new Array<>();
             temp.add(e);
-            if(e instanceof AbstractPlayer) {
+            if(e.isPlayer) {
                 if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
                 if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
             } else {

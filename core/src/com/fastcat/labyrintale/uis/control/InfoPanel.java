@@ -90,7 +90,7 @@ public class InfoPanel extends AbstractUI {
             if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.04f, sWidth, sHeight);
         }
 
-        renderIcon = !(Labyrintale.getCurScreen() instanceof BattleScreen);
+        renderIcon = Labyrintale.getCurScreen().cType != ControlPanel.ControlType.BATTLE;
         if(renderIcon) {
             for (int i = 0; i < 4; i++) {
                 pIcons[i].render(sb);

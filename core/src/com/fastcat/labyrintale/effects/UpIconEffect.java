@@ -17,11 +17,11 @@ public class UpIconEffect extends AbstractEffect {
     public UpIconEffect(float x, float y, Sprite img) {
         super(x, y, 1);
         this.img = img;
-        rw = 50 * scale;
-        rh = 50 * scale;
+        rw = 80 * scale;
+        rh = 80 * scale;
         this.x = x;
         this.y = y;
-        this.img.setBounds(x - 25 * scale, y - 25 * scale, rw, rh);
+        this.img.setBounds(x - 40 * scale, y - 40 * scale, rw, rh);
     }
 
     @Override

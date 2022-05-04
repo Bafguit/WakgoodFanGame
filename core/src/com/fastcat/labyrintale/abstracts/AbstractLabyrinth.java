@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AbstractLabyrinth {
@@ -67,6 +68,12 @@ public class AbstractLabyrinth {
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);
+                Array<AbstractItem> t = p.getStartingItem();
+                for(int j = 0; j < 2; j++) {
+                    AbstractItem item = t.get(j);
+                    item.onGain();
+                    p.item[j] = item;
+                }
                 players[i] = p;
             }
             advisor = getAdvisorInstance(Labyrintale.advisorSelectScreen.advisor.selected);

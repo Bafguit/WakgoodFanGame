@@ -29,7 +29,7 @@ public class RemoveAllBlockAction extends AbstractAction {
                         AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
                         if(e.isAlive()) {
                             for (int i = 4; i >= 0; i--) {
-                                if (e.status[i] != null) e.status[i].startOfTurn();
+                                if (e.status[i] != null) e.status[i].endOfTurn();
                             }
                         }
                     }

@@ -17,6 +17,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
+import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
@@ -49,6 +50,7 @@ public class Labyrintale extends Game {
 	public static AdvisorSelectScreen advisorSelectScreen;
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
+	public static CharInfoScreen charInfoScreen;
 	public static RestScreen restScreen;
 	public static DeckViewScreen deckViewScreen;
 	public static EventScreen eventScreen;
@@ -199,6 +201,10 @@ public class Labyrintale extends Game {
 	public static AbstractScreen getCurScreen() {
 		if(game.tempScreen.size > 0) return (AbstractScreen) game.tempScreen.get(game.tempScreen.size - 1);
 		else return (AbstractScreen) game.screen;
+	}
+
+	public static AbstractScreen getBaseScreen() {
+		return (AbstractScreen) game.screen;
 	}
 
 	@Override

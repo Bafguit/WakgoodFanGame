@@ -4,8 +4,12 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.BurgerHat;
+import com.fastcat.labyrintale.items.Item1;
+import com.fastcat.labyrintale.items.OldArmour;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.gosegu.Provoke;
@@ -34,6 +38,14 @@ public class Gosegu extends AbstractPlayer {
         temp.add(new Barrier(this));
         temp.add(new BioCloud(this));
         temp.add(new Provoke(this));
+        return temp;
+    }
+
+    @Override
+    public Array<AbstractItem> getStartingItem() {
+        Array<AbstractItem> temp = new Array<>();
+        temp.add(new Item1(this));
+        temp.add(new Item1(this));
         return temp;
     }
 }

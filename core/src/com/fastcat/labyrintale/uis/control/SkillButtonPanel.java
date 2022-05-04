@@ -2,11 +2,13 @@ package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -55,7 +57,7 @@ public class SkillButtonPanel extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning) {
+        if(type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning && Labyrintale.getCurScreen() == battleScreen) {
             if(!isUsed && skill.canUse()) {
                 skill.useCard();
 

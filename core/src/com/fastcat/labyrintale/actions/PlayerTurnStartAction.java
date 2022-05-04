@@ -13,10 +13,16 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 
 public class PlayerTurnStartAction extends AbstractAction {
 
-    boolean isEnemy;
+    boolean isFirst;
 
     public PlayerTurnStartAction() {
         super(null, 0.5f);
+        isFirst = false;
+    }
+
+    public PlayerTurnStartAction(boolean first) {
+        super(null, 0.5f);
+        isFirst = first;
     }
 
     @Override
@@ -24,6 +30,11 @@ public class PlayerTurnStartAction extends AbstractAction {
         if(duration == baseDuration) {
             for(AbstractPlayer p : players) {
                 if(p.isAlive()) {
+                    if(isFirst) {
+                        for (AbstractItem m : p.item) {
+                            if (m != null) m.atBattleStart();
+                        }
+                    }
                     for (AbstractItem m : p.item) {
                         if (m != null) m.startOfTurn();
                     }

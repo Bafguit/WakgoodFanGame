@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.actions.PlayerTurnStartAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
@@ -80,6 +82,7 @@ public class BattleScreen extends AbstractScreen {
                 break;
             }
         }
+        ActionHandler.bot(new PlayerTurnStartAction(true));
     }
 
     @Override
@@ -136,16 +139,23 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        int ci = cPanel.battlePanel.curPlayer.index;
-        for(int i = 0; i < 4; i++) {
-            if(isEnemyTurn) players[i].render(sb);
-            else enemies[i].render(sb);
+        if(isEnemyTurn) {
+            for (int i = 0; i < 4; i++) {
+                players[i].render(sb);
+            }
+            for (int i = 0; i < 4; i++) {
+                enemies[i].render(sb);
+            }
+        } else {
+            int ci = cPanel.battlePanel.curPlayer.index;
+            for (int i = 0; i < 4; i++) {
+                enemies[i].render(sb);
+            }
+            for (int i = 0; i < 4; i++) {
+                if (i != ci) players[i].render(sb);
+            }
+            players[ci].render(sb);
         }
-        for(int i = 0; i < 4; i++) {
-            if(!isEnemyTurn && i != ci) players[i].render(sb);
-            else enemies[i].render(sb);
-        }
-        if(!isEnemyTurn) players[ci].render(sb);
 
         sb.end();
         shr.begin(ShapeRenderer.ShapeType.Filled);

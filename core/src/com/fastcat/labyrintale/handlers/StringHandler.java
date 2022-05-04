@@ -9,6 +9,7 @@ public class StringHandler {
     public static CharString charString;
     public static ChoiceString choiceString;
     public static EventString eventString;
+    public static ItemString itemString;
 
     public static void generate() {
         skillString = new SkillString();
@@ -16,5 +17,6 @@ public class StringHandler {
         charString = new CharString();
         choiceString = new ChoiceString();
         eventString = new EventString();
+        itemString = new ItemString();
     }
 }

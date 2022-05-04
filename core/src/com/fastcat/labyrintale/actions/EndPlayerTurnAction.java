@@ -27,8 +27,8 @@ public class EndPlayerTurnAction extends AbstractAction {
                 }
             }
             ActionHandler.bot(new TurnChangeAction(true));
-            ActionHandler.bot(new EnemyTurnStartAction());
             ActionHandler.bot(new RemoveAllBlockAction(true));
+            ActionHandler.bot(new EnemyTurnStartAction());
             for (int i = 0; i < 4; i++) {
                 SkillButton ts = battleScreen.enemySkills[i];
                 if (ts.skill != null) {

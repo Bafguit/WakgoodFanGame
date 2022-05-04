@@ -3,21 +3,38 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.effects.UpIconEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ItemString;
 
 public class AbstractItem {
 
     public ItemString.ItemData data;
     public Sprite img;
+    public Sprite imgBig;
     public String id;
     public String name;
     public String desc;
     public String flav;
     public AbstractPlayer owner;
+    public ItemRarity rarity;
 
-    public AbstractItem(String id) {
+    public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
+        this.id = id;
+        img = FileHandler.itemImg.get(this.id);
+        imgBig = FileHandler.itemImgBig.get(this.id);
+        data = StringHandler.itemString.get(this.id);
+        name = data.NAME;
+        desc = data.DESC;
+        flav = data.FLAV;
+        this.rarity = rarity;
+        this.owner = owner;
+    }
 
+    public final void setOwner(AbstractPlayer owner) {
+        this.owner = owner;
     }
 
     public final void flash() {
@@ -44,6 +61,10 @@ public class AbstractItem {
 
     public int onGainBlock(int block) {
         return block;
+    }
+
+    public void atBattleStart() {
+
     }
 
     public void atBattleEnd() {
@@ -100,6 +121,14 @@ public class AbstractItem {
 
     public void onRemove() {
 
+    }
+
+    protected final void top(AbstractAction a) {
+        ActionHandler.top(a);
+    }
+
+    protected final void bot(AbstractAction a) {
+        ActionHandler.bot(a);
     }
 
     public enum ItemRarity {

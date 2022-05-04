@@ -75,6 +75,10 @@ public class FileHandler implements Disposable {
     public static final HashMap<String, Sprite> statusImg = new HashMap<>();
     public static final HashMap<String, Sprite> statusImgBig = new HashMap<>();
 
+    //상태
+    public static final HashMap<String, Sprite> itemImg = new HashMap<>();
+    public static final HashMap<String, Sprite> itemImgBig = new HashMap<>();
+
     //이벤트
     public static final HashMap<String, Sprite> eventImg = new HashMap<>();
 
@@ -88,6 +92,7 @@ public class FileHandler implements Disposable {
         StringHandler.generate();
         generateSkillImg();
         generateStatusImg();
+        generateItemImg();
         generateEventImg();
         setAntiAliased();
     }
@@ -105,6 +110,9 @@ public class FileHandler implements Disposable {
         maps.put("skillImgBig", skillImgBig);
         maps.put("statusImg", statusImg);
         maps.put("statusImgBig", statusImgBig);
+        maps.put("itemImg", itemImg);
+        maps.put("itemImgBig", itemImgBig);
+        //maps.put("eventImg", eventImg);
     }
 
     private static void generateBG() {
@@ -244,6 +252,17 @@ public class FileHandler implements Disposable {
             if(!js.name.equals("")) {
                 statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
                 statusImgBig.put(js.name, new Sprite(new Texture("img/status/" + js.name + "_p.png")));
+            }
+        }
+    }
+
+    private static void generateItemImg() {
+        itemImg.clear();
+        itemImgBig.clear();
+        for (JsonValue js : ITEM_JSON) {
+            if(!js.name.equals("")) {
+                itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
+                itemImgBig.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_p.png")));
             }
         }
     }

@@ -39,6 +39,7 @@ public abstract class AbstractEntity implements Cloneable {
     public Skeleton skeleton;
     public AnimationState state;
     public AnimationStateData stateData;
+    public InfoSpine infoSpine;
 
     public AbstractUI ui;
     public Array<AbstractSkill> deck;
@@ -86,13 +87,18 @@ public abstract class AbstractEntity implements Cloneable {
         skeleton.setPosition(animX, animY);
         stateData = new AnimationStateData(skeletonData);
         state = new AnimationState(stateData);
-        AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
-        e.setTrackTime(MathUtils.random(0.0f, 1.0f));
-        e.setTimeScale(1.0f);
+        resetAnimation();
+        infoSpine = new InfoSpine(atlas, skel);
     }
 
     public void update() {
 
+    }
+
+    public final void resetAnimation() {
+        AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
+        e.setTrackTime(MathUtils.random(0.0f, 1.0f));
+        e.setTimeScale(1.0f);
     }
 
     public void render(SpriteBatch sb) {
@@ -111,6 +117,16 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
+    public final void setMaxHealth(int max, boolean heal) {
+        maxHealth = max;
+        health = heal ? maxHealth : Math.min(health, maxHealth);
+    }
+
+    public final void modifyMaxHealth(int add) {
+        maxHealth = Math.max(maxHealth + add, 1);
+        if(add >= 0) heal(add);
+        else health = Math.min(health, maxHealth);
+    }
 
     public void setAnimXY(float x, float y) {
         animX = x;
@@ -118,17 +134,18 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void heal(int heal) {
-        heal = calculateSpell(heal);
-        if(heal < 0) heal = 0;
         if(isAlive()) {
-            health = Math.min(health + heal, maxHealth);
-            if(isPlayer) {
-                for (AbstractItem m : item) {
-                    if (m != null) m.onHeal(heal);
+            heal = calculateSpell(heal);
+            if(heal > 0) {
+                health = Math.min(health + heal, maxHealth);
+                if (isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) m.onHeal(heal);
+                    }
                 }
-            }
-            for (AbstractStatus s : status) {
-                if(s != null) s.onHeal(heal);
+                for (AbstractStatus s : status) {
+                    if (s != null) s.onHeal(heal);
+                }
             }
         }
     }
@@ -246,7 +263,7 @@ public abstract class AbstractEntity implements Cloneable {
             int damage = info.damage;
             DamageType type = info.type;
             if (attacker != null) {
-                damage = attacker.calculateAttack(damage);
+                if(type == DamageType.NORMAL) damage = attacker.calculateAttack(damage);
                 if(isPlayer) {
                     for (AbstractItem m : item) {
                         if (m != null) damage = m.onAttack(this, damage, type);
@@ -424,6 +441,50 @@ public abstract class AbstractEntity implements Cloneable {
             this.actor = actor;
             this.damage = damage;
             this.type = DamageType.NORMAL;
+        }
+    }
+
+    public static class InfoSpine {
+
+        public final TextureAtlas atlas;
+        public final Skeleton skeleton;
+        public final AnimationState state;
+        public final AnimationStateData stateData;
+
+        public InfoSpine(TextureAtlas atlas, FileHandle skel) {
+            this.atlas = atlas;
+            SkeletonJson json = new SkeletonJson(atlas);
+            json.setScale(1.3f * InputHandler.scale);
+            SkeletonData skeletonData = json.readSkeletonData(skel);
+            skeleton = new Skeleton(skeletonData);
+            skeleton.setColor(Color.WHITE);
+            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.55f);
+            stateData = new AnimationStateData(skeletonData);
+            state = new AnimationState(stateData);
+            AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
+            e.setTrackTime(MathUtils.random(0.0f, 1.0f));
+            e.setTimeScale(1.0f);
+        }
+
+        public void render(SpriteBatch sb) {
+            if (atlas != null) {
+                state.update(Gdx.graphics.getDeltaTime());
+                state.apply(skeleton);
+                state.getCurrent(0).setTimeScale(1.0f);
+                skeleton.updateWorldTransform();
+                skeleton.setColor(WHITE.cpy());
+                sb.end();
+                Labyrintale.psb.begin();
+                Labyrintale.sr.draw(Labyrintale.psb, skeleton);
+                Labyrintale.psb.end();
+                sb.begin();
+            }
+        }
+
+        public void setAnimation(String key) {
+            AnimationState.TrackEntry e = state.setAnimation(0, key, true);
+            e.setTrackTime(MathUtils.random(0.0f, 1.0f));
+            e.setTimeScale(1.0f);
         }
     }
     

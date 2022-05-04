@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.GoldReward;
 import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class VictoryAction extends AbstractAction {
 
@@ -29,6 +30,7 @@ public class VictoryAction extends AbstractAction {
             temp.add(new SkillRewardNormal(2));
             temp.add(new GoldReward(20));
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
+            Labyrintale.battleScreen.cType = ControlPanel.ControlType.BASIC;
         }
     }
 }

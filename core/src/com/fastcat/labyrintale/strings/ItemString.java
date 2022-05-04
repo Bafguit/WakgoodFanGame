@@ -20,14 +20,8 @@ public class ItemString {
             if (!id.equals("")) {
                 ItemData data = new ItemData();
                 data.NAME = js.get("NAME").asString();
-                JsonValue temp = js.get("DESC");
-                if (temp != null) {
-                    data.DESC = temp.asString();
-                }
-                temp = js.get("FLAV");
-                if (temp != null) {
-                    data.FLAV = temp.asString();
-                }
+                data.DESC = js.get("DESC").asString();
+                data.FLAV = js.get("FLAV").asString();
                 this.data.put(id, data);
             }
         }
