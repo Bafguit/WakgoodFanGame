@@ -25,6 +25,7 @@ public class FileHandler implements Disposable {
     public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
     public static final JsonValue CHOICE_JSON = generateJson("json/choices.json");
     public static final JsonValue STATUS_JSON = generateJson("json/status.json");
+    public static final JsonValue ENEMY_JSON = generateJson("json/enemies.json");
     public static final JsonValue EVENT_JSON = generateJson("json/events.json");
     public static final JsonValue ITEM_JSON = generateJson("json/items.json");
     public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
@@ -49,15 +50,22 @@ public class FileHandler implements Disposable {
     public static final Music BATTLE_1 = getMusic("sound/bgm/battle_1.mp3");
 
     //스파인 atlas
-    public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/test/char_5_neko.atlas");
-
-    //스파인 json
-    public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/test/char_5_neko.json");
+    public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
+    public static final TextureAtlas BURGER_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
+    public static final TextureAtlas INE_ATLAS = new TextureAtlas("spine/ine/skeleton.atlas");
 
     //관리
     private static final HashMap<String, HashMap> maps = new HashMap<>();
     public static final HashMap<String, Sprite> bg = new HashMap<>();
     public static final HashMap<String, Sprite> ui = new HashMap<>();
+
+    public static final HashMap<String, FileHandle> skeleton = new HashMap<>();
+    public static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
+
+    //스파인 json
+    public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/burger/skeleton.json");
+    public static final FileHandle BURGER_JSON = Gdx.files.internal("spine/burger/skeleton.json");
+    public static final FileHandle INE_JSON = Gdx.files.internal("spine/ine/skeleton.json");
 
     //캐릭터
     public static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
@@ -87,8 +95,8 @@ public class FileHandler implements Disposable {
         generateBG();
         generateUI();
         generateCharImg();
+        generateSkeleton();
         generateAdvImg();
-        generateCharImg();
         StringHandler.generate();
         generateSkillImg();
         generateStatusImg();
@@ -113,6 +121,13 @@ public class FileHandler implements Disposable {
         maps.put("itemImg", itemImg);
         maps.put("itemImgBig", itemImgBig);
         //maps.put("eventImg", eventImg);
+    }
+
+    private static void generateSkeleton() {
+        for (JsonValue js : ENEMY_JSON) {
+            skeleton.put(js.name, Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json"));
+            atlas.put(js.name, new TextureAtlas("spine/enemy/" + js.name + "/skeleton.atlas"));
+        }
     }
 
     private static void generateBG() {
@@ -159,11 +174,15 @@ public class FileHandler implements Disposable {
         charImg.clear();
         charImgBig.clear();
         charBgImg.clear();
+        skeleton.clear();
+        atlas.clear();
         for(PlayerClass cls : PlayerClass.values()) {
             String s = cls.toString().toLowerCase();
             charImg.put(cls, new Sprite(new Texture("img/char/" + s + ".png")));
             charImgBig.put(cls, new Sprite(new Texture("img/char/" + s + "_p.png")));
             charBgImg.put(cls, new Sprite(new Texture("img/char/" + s + "_bg.png")));
+            skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
+            atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
         }
     }
 
@@ -297,6 +316,9 @@ public class FileHandler implements Disposable {
             for (Object s : h.values()) {
                 ((Sprite) s).getTexture().dispose();
             }
+        }
+        for(TextureAtlas a : atlas.values()) {
+            a.dispose();
         }
     }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.MoveLeft;
 import com.fastcat.labyrintale.skills.player.MoveRight;
@@ -22,8 +23,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final PlayerClass playerClass;
     public String[] flav;
 
-    public AbstractPlayer(String id, int maxHealth, TextureAtlas atlas, FileHandle skel, Color c) {
-        super(id, EntityType.PLAYER, 4, maxHealth, atlas, skel, true);
+    public AbstractPlayer(String id, int maxHealth, Color c) {
+        super(id, EntityType.PLAYER, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
         this.playerClass = PlayerClass.valueOf(id.toUpperCase());
         CharString.CharData temp = StringHandler.charString.get(id);
         name = temp.NAME;

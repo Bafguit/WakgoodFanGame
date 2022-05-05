@@ -1,0 +1,22 @@
+{
+  "Placeholder": {
+    "NAME": "Placeholder",
+    "DESC": "DESCRIPTION"
+  },
+  "TestEnemy1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "TestEnemy2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "WeakEnemy1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "WeakEnemy2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  }
+}

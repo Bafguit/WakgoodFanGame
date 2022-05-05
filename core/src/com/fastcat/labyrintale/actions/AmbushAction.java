@@ -33,8 +33,8 @@ public class AmbushAction extends AbstractAction {
                     }
                 }
                 if(actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "RoadHitPerfect1", false);
-                    actor.state.addAnimation(0, "Standby", true, 0.0F);
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "hit", false);
+                    actor.state.addAnimation(0, "idle", true, 0.0F);
                     e.setTimeScale(1.0f);
                 }
             } else isDone = true;

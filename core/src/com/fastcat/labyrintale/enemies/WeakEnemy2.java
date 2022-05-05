@@ -15,11 +15,9 @@ public class WeakEnemy2 extends AbstractEnemy {
     private static final String ID = "WeakEnemy2";
     private static final EnemyType TYPE = EnemyType.WEAK;
     private static final int HEALTH = 8;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
 
     public WeakEnemy2() {
-        super(ID, TYPE, HEALTH, ATLAS, JSON);
+        super(ID, TYPE, HEALTH);
         isRandom = false;
     }
 

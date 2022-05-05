@@ -15,19 +15,16 @@ import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.ine.*;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class Ine extends AbstractPlayer {
 
     private static final String ID = "ine";
     private static final int HEALTH = 27;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = Color.valueOf("#8a2be2");
 
     public Ine() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

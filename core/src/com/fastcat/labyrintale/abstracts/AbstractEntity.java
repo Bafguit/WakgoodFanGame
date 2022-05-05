@@ -80,7 +80,7 @@ public abstract class AbstractEntity implements Cloneable {
 
         this.atlas = atlas;
         SkeletonJson json = new SkeletonJson(atlas);
-        json.setScale(0.87f * InputHandler.scale);
+        json.setScale(0.7f * InputHandler.scale);
         SkeletonData skeletonData = json.readSkeletonData(skel);
         skeleton = new Skeleton(skeletonData);
         skeleton.setColor(Color.WHITE);
@@ -96,7 +96,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public final void resetAnimation() {
-        AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
+        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
         e.setTrackTime(MathUtils.random(0.0f, 1.0f));
         e.setTimeScale(1.0f);
     }
@@ -292,8 +292,8 @@ public abstract class AbstractEntity implements Cloneable {
                     damage = loseBlock(damage);
                     if (damage > 0) {
                         EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
-                        AnimationState.TrackEntry e = state.setAnimation(0, "AirHitHurt", false);
-                        state.addAnimation(0, "Standby", true, 0.0F);
+                        AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
+                        state.addAnimation(0, "idle", true, 0.0F);
                         e.setTimeScale(1.0f);
                         health -= damage;
                         if (health <= 0) {
@@ -454,14 +454,14 @@ public abstract class AbstractEntity implements Cloneable {
         public InfoSpine(TextureAtlas atlas, FileHandle skel) {
             this.atlas = atlas;
             SkeletonJson json = new SkeletonJson(atlas);
-            json.setScale(1.3f * InputHandler.scale);
+            json.setScale(InputHandler.scale);
             SkeletonData skeletonData = json.readSkeletonData(skel);
             skeleton = new Skeleton(skeletonData);
             skeleton.setColor(Color.WHITE);
-            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.55f);
+            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.525f);
             stateData = new AnimationStateData(skeletonData);
             state = new AnimationState(stateData);
-            AnimationState.TrackEntry e = state.setAnimation(0, "Standby", true);
+            AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
             e.setTrackTime(MathUtils.random(0.0f, 1.0f));
             e.setTimeScale(1.0f);
         }

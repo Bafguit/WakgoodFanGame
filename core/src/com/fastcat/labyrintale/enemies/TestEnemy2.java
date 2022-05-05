@@ -13,14 +13,12 @@ import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 
 public class TestEnemy2 extends AbstractEnemy {
 
-    private static final String ID = "TestEnemy";
+    private static final String ID = "TestEnemy2";
     private static final EnemyType TYPE = EnemyType.NORMAL;
     private static final int HEALTH = 30;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
 
     public TestEnemy2() {
-        super(ID, TYPE, HEALTH, ATLAS, JSON);
+        super(ID, TYPE, HEALTH);
     }
 
     @Override

@@ -14,19 +14,16 @@ import com.fastcat.labyrintale.skills.player.burger.Protect;
 import com.fastcat.labyrintale.skills.player.burger.Patience;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
+import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class Burger extends AbstractPlayer {
 
     private static final String ID = "burger";
     private static final int HEALTH = 27;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = YELLOW;
 
     public Burger() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

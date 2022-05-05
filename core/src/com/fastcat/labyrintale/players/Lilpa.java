@@ -24,12 +24,10 @@ public class Lilpa extends AbstractPlayer {
 
     private static final String ID = "lilpa";
     private static final int HEALTH = 22;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = NAVY;
 
     public Lilpa() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

@@ -1,0 +1,13 @@
+
+skeleton.png
+size: 576,1197
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+burger_sd_t
+  rotate: false
+  xy: 2, 2
+  size: 572, 1193
+  orig: 1280, 1280
+  offset: 373, 20
+  index: -1

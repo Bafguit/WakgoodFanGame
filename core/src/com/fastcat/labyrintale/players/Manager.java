@@ -22,12 +22,10 @@ public class Manager extends AbstractPlayer {
 
     private static final String ID = "manager";
     private static final int HEALTH = 25;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = PINK;
 
     public Manager() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

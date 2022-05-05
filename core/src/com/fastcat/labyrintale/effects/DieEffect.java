@@ -21,7 +21,7 @@ public class DieEffect extends AbstractEffect {
     protected void renderEffect(SpriteBatch sb) {
         if(actor != null) {
             if (duration == baseDuration) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "Die", false);
+                AnimationState.TrackEntry e = actor.state.setAnimation(0, "die", false);
                 e.setTimeScale(1.0f);
             } else {
                 actor.skeleton.getColor().a -= Gdx.graphics.getDeltaTime() / 2;

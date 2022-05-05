@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
 import com.fastcat.labyrintale.skills.enemy.MoveRightE;
@@ -19,10 +20,10 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public Array<AbstractSkill> disposablePile;
     protected boolean isRandom = true;
 
-    public AbstractEnemy(String id, EnemyType type, int maxHealth, TextureAtlas atlas, FileHandle skel) {
-        super(id, EntityType.ENEMY, 1, maxHealth, atlas, skel, false);
+    public AbstractEnemy(String id, EnemyType type, int maxHealth) {
+        super(id, EntityType.ENEMY, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);
         this.type = type;
-        skeleton.setFlip(true, false);
+        //skeleton.setScaleX(-skeleton.getScaleX());
         drawPile = new Array<>();
         discardPile = new Array<>();
         disposablePile = new Array<>();

@@ -17,11 +17,9 @@ public class WeakEnemy1 extends AbstractEnemy {
     private static final String ID = "WeakEnemy1";
     private static final EnemyType TYPE = EnemyType.WEAK;
     private static final int HEALTH = 15;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
 
     public WeakEnemy1() {
-        super(ID, TYPE, HEALTH, ATLAS, JSON);
+        super(ID, TYPE, HEALTH);
     }
 
     @Override

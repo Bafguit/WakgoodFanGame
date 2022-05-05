@@ -23,12 +23,10 @@ public class Jururu extends AbstractPlayer {
 
     private static final String ID = "jururu";
     private static final int HEALTH = 20;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = MAGENTA;
 
     public Jururu() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

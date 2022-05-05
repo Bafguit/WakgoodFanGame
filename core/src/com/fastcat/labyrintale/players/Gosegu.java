@@ -23,12 +23,10 @@ public class Gosegu extends AbstractPlayer {
 
     private static final String ID = "gosegu";
     private static final int HEALTH = 21;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
     private static final Color COLOR = BLUE;
 
     public Gosegu() {
-        super(ID, HEALTH, ATLAS, JSON, COLOR);
+        super(ID, HEALTH, COLOR);
     }
 
     @Override

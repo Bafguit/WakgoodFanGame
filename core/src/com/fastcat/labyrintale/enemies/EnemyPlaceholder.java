@@ -11,16 +11,14 @@ import com.fastcat.labyrintale.skills.enemy.StrikeE;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
 import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 
-public class EnemyPlaceHolder extends AbstractEnemy {
+public class EnemyPlaceholder extends AbstractEnemy {
 
-    private static final String ID = "PlaceHolder";
+    private static final String ID = "Placeholder";
     private static final EnemyType TYPE = EnemyType.NORMAL;
     private static final int HEALTH = 25;
-    private static final TextureAtlas ATLAS = NEKO_ATLAS;
-    private static final FileHandle JSON = NEKO_JSON;
 
-    public EnemyPlaceHolder() {
-        super(ID, TYPE, HEALTH, ATLAS, JSON);
+    public EnemyPlaceholder() {
+        super(ID, TYPE, HEALTH);
         isDead = true;
     }
 

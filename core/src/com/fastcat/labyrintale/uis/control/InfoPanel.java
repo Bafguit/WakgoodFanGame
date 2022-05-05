@@ -30,6 +30,7 @@ public class InfoPanel extends AbstractUI {
     public InfoType type = InfoType.COLOR;
     public AbstractSkill skill;
     public AbstractStatus status;
+    public AbstractItem item;
     public AbstractPlayer player;
     public boolean show;
     public boolean renderIcon = true;
@@ -122,6 +123,18 @@ public class InfoPanel extends AbstractUI {
         }
     }
 
+    public void setInfo(AbstractItem s) {
+        if(s != null) {
+            img = s.imgBig;
+            name = s.name;
+            desc = s.desc;
+            type = ITEM;
+            item = s;
+            target = null;
+            show = true;
+        }
+    }
+
     public void setInfo(AbstractPlayer p) {
         if(p != null) {
             img = p.imgBig;
@@ -142,6 +155,6 @@ public class InfoPanel extends AbstractUI {
     }
 
     public enum InfoType {
-        SKILL, STATUS, COLOR, PLAYER
+        SKILL, STATUS, ITEM, COLOR, PLAYER
     }
 }
