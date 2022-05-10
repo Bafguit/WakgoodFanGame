@@ -131,7 +131,17 @@ public class AbstractItem {
         ActionHandler.bot(a);
     }
 
+    @Override
+    public final AbstractItem clone() {
+        try {
+            return (AbstractItem) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public enum ItemRarity {
-        STARTER, BRONZE, SILVER, GOLD, EVENT
+        STARTER, BRONZE, SILVER, GOLD, SHOP, SPECIAL
     }
 }

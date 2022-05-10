@@ -1,20 +1,17 @@
 package com.fastcat.labyrintale.players;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.BurgerHat;
-import com.fastcat.labyrintale.items.OldArmour;
+import com.fastcat.labyrintale.items.PlateArmour;
 import com.fastcat.labyrintale.skills.player.basic.*;
 import com.fastcat.labyrintale.skills.player.burger.Protect;
 import com.fastcat.labyrintale.skills.player.burger.Patience;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class Burger extends AbstractPlayer {
 
@@ -39,7 +36,7 @@ public class Burger extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new OldArmour(this));
+        temp.add(new PlateArmour(this));
         temp.add(new BurgerHat(this));
         return temp;
     }

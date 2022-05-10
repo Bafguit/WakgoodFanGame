@@ -11,7 +11,7 @@ import com.fastcat.labyrintale.rooms.other.Shop;
 
 public class ShopItemButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER");
+    private final Sprite border = FileHandler.ui.get("BORDER_M");
     public Shop.ShopItem item;
 
     public ShopItemButton(Shop.ShopItem re) {
@@ -33,7 +33,7 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        clickable = !item.isDone;
     }
 
     @Override
@@ -43,9 +43,8 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(AbstractLabyrinth.gold >= item.price && !item.isDone) {
+        if(!item.isDone && AbstractLabyrinth.gold >= item.price) {
             item.takeItem();
-            AbstractLabyrinth.gold -= item.price;
         }
     }
 }

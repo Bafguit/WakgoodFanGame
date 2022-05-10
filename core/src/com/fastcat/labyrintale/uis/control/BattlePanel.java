@@ -1,38 +1,61 @@
 package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.uis.PlayerBigIcon;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
+import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 public class BattlePanel implements Disposable {
+
+    public static final Color hbc = new Color(0.4f, 0, 0, 1);
+    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final FontHandler.FontData fontHp = COOLDOWN;
+
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
-    public SkillButtonPanel pSkill;
+    public ItemPanel[] item = new ItemPanel[2];
     public EnergyPanel energy;
     public AbstractPlayer curPlayer;
-    public PlayerIcon cpIcon;
+    public PlayerBigIcon cpIcon;
+    public ShapeRenderer shr = new ShapeRenderer();
+    public float rx, ry, ex, ey;
 
     public BattlePanel() {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        item[0] = new ItemPanel();
+        item[0].setPosition(w * 0.26f - item[0].sWidth / 2,h * 0.225f);
+        item[1] = new ItemPanel();
+        item[1].setPosition(w * 0.32f - item[1].sWidth / 2,h * 0.225f);
         aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
-        aSkill.setPosition(w * 0.14f - aSkill.sWidth / 2, h * 0.125f);
-        mSkill[0] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-        mSkill[0].setPosition(w * 0.38f - aSkill.sWidth / 2, h * 0.275f);
-        mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-        mSkill[1].setPosition(w * 0.46f - aSkill.sWidth / 2, h * 0.275f);
+        aSkill.setPosition(w * 0.58f - aSkill.sWidth, h * 0.075f);
+        mSkill[0] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
+        mSkill[0].setPosition(w * 0.84f - mSkill[0].sWidth, h * 0.225f);
+        mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
+        mSkill[1].setPosition(w * 0.9f - mSkill[1].sWidth, h * 0.225f);
         for(int i = 0; i < 4; i++) {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-            s.setPosition(w * 0.46f - w * 0.08f * i - s.sWidth / 2, h * 0.125f);
+            s.setPosition(w * 0.9f - w * 0.08f * i - s.sWidth, h * 0.075f);
             skill[i] = s;
         }
-        cpIcon = new PlayerIcon(AbstractLabyrinth.players[0]);
-        cpIcon.setPosition(w * 0.14f - cpIcon.sWidth / 2,h * 0.275f);
+        cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
+        cpIcon.setPosition(w * 0.13f - cpIcon.sWidth / 2,h * 0.22f - cpIcon.sHeight / 2);
         energy = new EnergyPanel();
-        energy.setPosition(w * 0.22f - energy.sWidth / 2,h * 0.275f);
+        energy.setPosition(w * 0.23f - energy.sWidth / 2,h * 0.32f);
+        rx = 440 * scale;
+        ry = h * 0.075f;
+        ex = w * 0.3f;
+        ey = aSkill.sHeight;
         //pSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PASSIVE); //TODO 패시브 스킬 버튼 추가
     }
 
@@ -42,6 +65,7 @@ public class BattlePanel implements Disposable {
         }
         for(int i = 0; i < 2; i++) {
             mSkill[i].update();
+            item[i].update();
         }
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
@@ -49,11 +73,22 @@ public class BattlePanel implements Disposable {
     }
 
     public void render(SpriteBatch sb) {
+        sb.end();
+        shr.begin(ShapeRenderer.ShapeType.Filled);
+        shr.setColor(hbc);
+        shr.rect(rx, ry, ex, ey);
+        shr.setColor(Color.SCARLET.cpy());
+        shr.rect(rx, ry, Math.max(ex * ((float) curPlayer.health / (float) curPlayer.maxHealth), 0), ey);
+        shr.end();
+        sb.begin();
+        FontHandler.renderCenter(sb, fontHp, curPlayer.health + "/" + curPlayer.maxHealth, rx, h * 0.135f, ex, ey);
+
+        for(int i = 0; i < 2; i++) {
+            item[i].render(sb);
+            mSkill[i].render(sb);
+        }
         for(int i = 0; i < 4; i++) {
             skill[i].render(sb);
-        }
-        for(int i = 0; i < 2; i++) {
-            mSkill[i].render(sb);
         }
         aSkill.render(sb);
         cpIcon.render(sb);
@@ -69,6 +104,8 @@ public class BattlePanel implements Disposable {
             aSkill.skill = AbstractLabyrinth.advisor.skill;
             mSkill[0].skill = p.mLeftTemp;
             mSkill[1].skill = p.mRightTemp;
+            item[0].item = p.item[0];
+            item[1].item = p.item[1];
         }
     }
 
@@ -79,6 +116,7 @@ public class BattlePanel implements Disposable {
         }
         for(int i = 0; i < 2; i++) {
             mSkill[i].dispose();
+            item[i].dispose();
         }
         aSkill.dispose();
         cpIcon.dispose();

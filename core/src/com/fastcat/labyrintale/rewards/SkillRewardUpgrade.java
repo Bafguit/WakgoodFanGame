@@ -19,7 +19,7 @@ public class SkillRewardUpgrade extends SkillReward {
             if(p.isAlive()) {
                 Array<AbstractSkill> t = new Array<>();
                 t.add(getRandomUpgradedSkillFromDeck(p, true));
-                group.put(i, t);
+                group.add(t);
             }
         }
         desc = "무작위 스킬을 강화합니다.";

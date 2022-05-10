@@ -3,12 +3,12 @@ package com.fastcat.labyrintale.items;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
-public class OldArmour extends AbstractItem {
+public class PlateArmour extends AbstractItem {
 
-    private static final String ID = "OldArmour";
+    private static final String ID = "PlateArmour";
     private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public OldArmour(AbstractPlayer owner) {
+    public PlateArmour(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 

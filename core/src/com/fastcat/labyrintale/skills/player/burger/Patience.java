@@ -33,9 +33,9 @@ public class Patience extends AbstractSkill {
 
     @Override
     public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-        if(type != AbstractEntity.DamageType.LOSE && owner.health <= owner.maxHealth / 2)
+        if(type != AbstractEntity.DamageType.LOSE && owner.health <= owner.maxHealth / 2) {
+            flash();
             return damage - value;
-        else
-            return damage;
+        } else return damage;
     }
 }

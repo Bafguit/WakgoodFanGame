@@ -37,8 +37,10 @@ public class FontHandler implements Disposable {
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false, true);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false, true);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, false, true);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 35, false, true);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false, true);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 35, WHITE, false, true, true);
+    public static final FontData INFO_NAME = new FontData(BOLD, 48, false, true);
+    public static final FontData INFO_HP = new FontData(MEDIUM, 35, false, true);
     public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false, true);
     public static final FontData BORDER = new FontData(MEDIUM, 40, true, true);
     public static final FontData BLOCK = new FontData(MEDIUM, 27, true, true);
@@ -62,11 +64,14 @@ public class FontHandler implements Disposable {
 
 
     public static BitmapFont generate(FontType type, int size, Color color, Color bColor, boolean border) {
+        return generate(type, size, color, bColor, true, border);
+    }
+
+    public static BitmapFont generate(FontType type, int size, Color color, Color bColor, boolean shadow, boolean border) {
         FreeTypeFontParameter parameter = new FreeTypeFontParameter();
         parameter.characters = "";
         parameter.incremental = true;
-        parameter.shadowOffsetX = 2;
-        parameter.shadowOffsetY = 2;
+        parameter.shadowOffsetX = parameter.shadowOffsetY = shadow ? 2 : 0;
         parameter.size = size;
         parameter.color = color;
         parameter.borderColor = bColor;
@@ -241,21 +246,26 @@ public class FontHandler implements Disposable {
         public boolean isStatic = false;
 
         public FontData(FontType type, int size, boolean border, boolean stc) {
-            this(type, size, border, WHITE, DARK_GRAY);
+            this(type, size, true, border, WHITE, DARK_GRAY);
+            isStatic = stc;
+        }
+
+        public FontData(FontType type, int size, Color color, boolean shadow, boolean border, boolean stc) {
+            this(type, size, shadow, border, color, DARK_GRAY);
             isStatic = stc;
         }
 
         public FontData(FontType type, int size, boolean border) {
-            this(type, size, border, WHITE, DARK_GRAY);
+            this(type, size, true, border, WHITE, DARK_GRAY);
         }
 
         public FontData(FontType type, int size, Color color) {
-            this(type, size, false, color, DARK_GRAY);
+            this(type, size, true, false, color, DARK_GRAY);
         }
 
-        public FontData(FontType type, int size, boolean border, Color color, Color bColor) {
+        public FontData(FontType type, int size, boolean shadow, boolean border, Color color, Color bColor) {
             this.size = (int) (size * InputHandler.scale);
-            this.font = generate(type, this.size, color, bColor, border);
+            this.font = generate(type, this.size, color, bColor, shadow, border);
             this.font.getData().markupEnabled = true;
             this.color = this.font.getColor();
             this.type = type;

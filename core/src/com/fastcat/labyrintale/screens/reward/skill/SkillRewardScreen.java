@@ -26,16 +26,16 @@ public class SkillRewardScreen extends AbstractScreen {
         SkillRewardGroup.screen = this;
         this.type = type;
         reward = r;
-        groups = new SkillRewardGroup[reward.group.size()];
-        for(int i = 0; i < reward.group.size(); i++) {
+        groups = new SkillRewardGroup[reward.group.size];
+        for(int i = 0; i < reward.group.size; i++) {
             Array<AbstractSkill> a = reward.group.get(i);
             groups[i] = new SkillRewardGroup((AbstractPlayer) a.get(0).owner, a, this.type, a.size);
         }
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < groups.length; i++) {
             SkillRewardGroup g = groups[i];
-            float ww = w / groups.length * i, wc = w / groups.length / 2 + ww, hc = h * 0.73f;
-            g.bg.setPosition(ww, hc - g.bg.sHeight * 0.5f);
+            float ww = w / groups.length, wc = w / groups.length / 2 + ww * i, hc = h * 0.73f;
+            g.bg.setPosition(wc - g.bg.sWidth / 2, hc - g.bg.sHeight * 0.5f);
             g.cIcon.setPosition(wc - g.cIcon.sWidth * 0.5f, h * 0.9f - g.cIcon.width * 0.5f);
             if(g.skills.length > 1) {
                 g.skills[0].setPosition(wc - g.skills[0].sWidth * 1.1f, hc - g.skills[0].sHeight * 0.5f);
@@ -94,7 +94,7 @@ public class SkillRewardScreen extends AbstractScreen {
                 ss.upgrade();
                 skills[0] = new SkillRewardSkillButton(this, ss);
             } else {
-                toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.skillRandom.nextInt(player.deck.size)), true);
+                toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.publicRandom.nextInt(player.deck.size)), true);
                 skills[0] = new SkillRewardSkillButton(this, s.get(0));
                 skills[1] = new SkillRewardSkillButton(this, s.get(1));
             }

@@ -34,9 +34,4 @@ public class CourageStatus extends AbstractStatus {
     public int showAttack(int base) {
         return base + amount;
     }
-
-    @Override
-    public void endOfTurn() {
-        ActionHandler.bot(new RemoveStatusAction(this, true));
-    }
 }

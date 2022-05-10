@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.skills.player.viichan;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.AmbushAction;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.BlockAction;
@@ -18,14 +19,13 @@ public class Test63 extends AbstractSkill {
 
     public Test63(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(3, 1);
+        setBaseAttack(4, 1);
         setBaseValue(1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new AttackAction(owner, target, attack, null));
-        bot(new ApplyStatusAction(new AttackStatus(value), owner, SkillTarget.SELF, true));
+        ActionHandler.bot(new AmbushAction(this));
     }
 
     @Override

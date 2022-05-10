@@ -49,6 +49,6 @@ public class AbstractChoice {
     }
 
     public enum ChoiceType {
-        BATTLE, ELITE, BOSS, REST, LOOK, UPGRADE, DETOUR, GOOD
+        BATTLE, ELITE, BOSS, REST, LOOK, SHOP, DETOUR, GOOD
     }
 }

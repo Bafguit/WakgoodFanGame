@@ -18,13 +18,14 @@ public class Test23 extends AbstractSkill {
 
     public Test23(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseSpell(2);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
     public void use() {
         ActionHandler.bot(new HealAction(owner, TARGET, spell));
-        ActionHandler.bot(new ApplyStatusAction(new EnduranceStatus(1), owner, TARGET, true));
+        ActionHandler.bot(new ApplyStatusAction(new EnduranceStatus(value), owner, TARGET, true));
     }
 
     @Override

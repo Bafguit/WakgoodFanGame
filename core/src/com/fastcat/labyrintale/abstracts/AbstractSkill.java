@@ -1,10 +1,13 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
@@ -114,6 +117,16 @@ public abstract class AbstractSkill implements Cloneable {
 
     public void render(SpriteBatch sb) {
 
+    }
+
+    public final void flash() {
+        //TODO 소리 추가
+        flash(owner);
+    }
+
+    public final void flash(AbstractEntity e) {
+        //TODO 소리 추가
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
     }
 
     public String getKeyValue(String key) {

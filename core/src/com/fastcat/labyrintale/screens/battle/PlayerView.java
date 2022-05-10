@@ -28,11 +28,9 @@ public class PlayerView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(AbstractLabyrinth.cPanel.battlePanel.curPlayer == player) isOnLock = true;
-        else isOnLock = false;
-
-        if(isLooking || (isOnLock) || over) showImg = true;
-        else showImg = false;
+        isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
+        showImg = isLooking || (isOnLock) || over;
+        clickable = player.isAlive();
     }
 
     @Override
@@ -50,7 +48,5 @@ public class PlayerView extends AbstractUI {
         if(player != null && player.isAlive()) {
             AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
         }
-        System.out.println("P_OWNER: " + (player != null ? player.id : "NULL"));
-        System.out.println("P_INDEX: " + (player != null ? player.tempIndex : "NULL"));
     }
 }

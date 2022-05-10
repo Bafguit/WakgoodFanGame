@@ -12,7 +12,7 @@ public class RewardInfoText extends AbstractUI {
     public RewardInfoText() {
         super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 600, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.4f - sHeight * 0.5f);
-        fontData = CARD_BIG_DESC;
+        fontData = INFO_HP;
         text = "";
         showImg = false;
         overable = false;

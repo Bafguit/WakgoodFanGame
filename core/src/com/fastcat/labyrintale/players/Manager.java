@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Heal;
 import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.manager.Test51;
 
 import static com.badlogic.gdx.graphics.Color.PINK;
 import static com.badlogic.gdx.graphics.Color.YELLOW;
@@ -34,7 +35,7 @@ public class Manager extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Light(this));
-        temp.add(new Heal(this));
+        temp.add(new Test51(this));
         return temp;
     }
 

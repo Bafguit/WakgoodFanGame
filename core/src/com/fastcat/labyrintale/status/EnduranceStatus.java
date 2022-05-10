@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ReduceStatusAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class EnduranceStatus extends AbstractStatus {
@@ -18,18 +19,15 @@ public class EnduranceStatus extends AbstractStatus {
 
     @Override
     public String getDesc() {
-        return exDesc[0];
+        return exDesc[0] + amount + exDesc[1];
     }
 
     @Override
     public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if(type == AbstractEntity.DamageType.NORMAL) {
-            return MathUtils.floor((float) d * 0.5f);
+            flash();
+            ActionHandler.top(new RemoveStatusAction(this, true));
+            return d - amount;
         } else return d;
-    }
-
-    @Override
-    public void startOfTurn() {
-        ActionHandler.bot(new ReduceStatusAction(this, 1, true));
     }
 }

@@ -35,6 +35,7 @@ public class InfoPanel extends AbstractUI {
     public boolean show;
     public boolean renderIcon = true;
     public float nx, ny, nw, nh, dx, dy, dw, dh;
+    public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
     private AbstractSkill.SkillTarget target;
 
@@ -48,6 +49,14 @@ public class InfoPanel extends AbstractUI {
         nw = dw = 650 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;
+
+        bnx = 970 * scale;
+        bny = 445 * scale;
+        bdx = 1000 * scale;
+        bdy = 390 * scale;
+        bnw = bdw = 1000 * InputHandler.scale;
+        bnh = 60 * InputHandler.scale;
+        bdh = 60 * InputHandler.scale;
 
         for(int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);
@@ -79,19 +88,30 @@ public class InfoPanel extends AbstractUI {
         if(enabled) {
             sb.setColor(Color.WHITE);
             if(img != null) {
-                sb.draw(img, x, y, sWidth, sHeight);
-                renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
-                if (type == InfoType.SKILL) {
-                    renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
+                //sb.draw(img, x, y, sWidth, sHeight);
+                if(renderIcon) {
+                    renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
+                    if (type == InfoType.SKILL) {
+                        renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
+                    } else {
+                        renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
+                    }
                 } else {
-                    renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
+                    renderLineBotLeft(sb, fontName, name, bnx, bny, bnw, bnh);
+                    if (type == InfoType.SKILL) {
+                        renderCardLeft(sb, skill, fontDesc, desc, bdx, bdy, bdw, bdh);
+                    } else {
+                        renderColorLeft(sb, fontDesc, desc, bdx, bdy, bdw);
+                    }
                 }
             }
-            sb.draw(border, x, y, sWidth, sHeight);
-            if(target != null) renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.04f, sWidth, sHeight);
+            if(renderIcon) {
+                sb.draw(border, x, y, sWidth, sHeight);
+                if (target != null)
+                    renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.04f, sWidth, sHeight);
+            }
         }
 
-        renderIcon = Labyrintale.getCurScreen().cType != ControlPanel.ControlType.BATTLE;
         if(renderIcon) {
             for (int i = 0; i < 4; i++) {
                 pIcons[i].render(sb);

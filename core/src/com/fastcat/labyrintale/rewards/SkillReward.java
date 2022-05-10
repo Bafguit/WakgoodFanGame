@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public abstract class SkillReward extends AbstractReward {
 
-    public HashMap<Integer, Array<AbstractSkill>> group = new HashMap<>();
+    public Array<Array<AbstractSkill>> group = new Array<>();
 
     public SkillReward() {
         super(RewardType.SKILL);

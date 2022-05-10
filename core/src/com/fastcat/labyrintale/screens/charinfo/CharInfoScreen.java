@@ -16,16 +16,15 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
-import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_NAME;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class CharInfoScreen extends AbstractScreen {
 
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
 
     private final BgImg bg = new BgImg();
-    private final FontHandler.FontData fontName = CARD_BIG_NAME;
-    private final FontHandler.FontData fontHp = CARD_BIG_DESC;
+    private final FontHandler.FontData fontName = INFO_NAME;
+    private final FontHandler.FontData fontHp = INFO_HP;
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
     public ShapeRenderer shr = new ShapeRenderer();

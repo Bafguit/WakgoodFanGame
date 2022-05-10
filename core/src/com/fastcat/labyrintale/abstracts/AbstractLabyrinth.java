@@ -21,6 +21,7 @@ public class AbstractLabyrinth {
     public static String seed;
     public static RandomXS128 publicRandom;
     public static RandomXS128 skillRandom;
+    public static RandomXS128 itemRandom;
     public static RandomXS128 relicRandom;
     public static RandomXS128 mapRandom;
     public static RandomXS128 monsterRandom;
@@ -54,6 +55,7 @@ public class AbstractLabyrinth {
             long seedLong = seedToLong(seed);
             publicRandom = new RandomXS128(seedLong);
             skillRandom = new RandomXS128(seedLong);
+            itemRandom = new RandomXS128(seedLong);
             relicRandom = new RandomXS128(seedLong);
             mapRandom = new RandomXS128(seedLong);
             monsterRandom = new RandomXS128(seedLong);

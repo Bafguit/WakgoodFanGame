@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Array;
 
@@ -24,14 +25,24 @@ public class SoundHandler {
     }
 
     private static void generateSound() {
-        sfx.put("LILPAA", FileHandler.LILPAA);
-        sfx.put("ATTACK_TEST", FileHandler.ATTACK_TEST);
-        sfx.put("CLICK", FileHandler.CLICK);
-        sfx.put("OVER", FileHandler.OVER);
+        sfx.put("LILPAA", getSound("sound/sfx/skill/lilpaa.mp3"));
+        sfx.put("ATTACK_TEST", getSound("sound/sfx/attack/attackTest.ogg"));
+        sfx.put("CLICK", getSound("sound/sfx/click.wav"));
+        sfx.put("OVER", getSound("sound/sfx/over.wav"));
     }
 
     private static void generateMusic() {
-        music.put("BATTLE_1", new MusicData(FileHandler.BATTLE_1));
+        music.put("BATTLE_1", new MusicData(getMusic("sound/bgm/battle_1.mp3")));
+    }
+
+    private static Sound getSound(String url) {
+        FileHandle fileHandle = Gdx.files.internal(url);
+        return Gdx.audio.newSound(fileHandle);
+    }
+
+    private static Music getMusic(String url) {
+        FileHandle fileHandle = Gdx.files.internal(url);
+        return Gdx.audio.newMusic(fileHandle);
     }
 
     public static void playSfx(String key) {

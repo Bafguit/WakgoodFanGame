@@ -21,7 +21,7 @@ public class DeckSkillButton extends AbstractUI {
     public DeckSkillButton() {
         this(null);
         isInfo = true;
-        fontData = CARD_BIG_DESC;
+        fontData = INFO_HP;
         disable();
     }
 

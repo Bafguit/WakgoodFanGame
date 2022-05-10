@@ -40,10 +40,4 @@ public class EnemyView extends AbstractUI {
             enemy.render(sb);
         }
     }
-
-    @Override
-    protected void onClick() {
-        System.out.println("E_OWNER: " + (enemy != null ? enemy.id : "NULL"));
-        System.out.println("E_INDEX: " + (enemy != null ? enemy.tempIndex : "NULL"));
-    }
 }

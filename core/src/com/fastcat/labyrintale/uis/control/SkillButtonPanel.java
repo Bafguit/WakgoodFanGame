@@ -26,14 +26,14 @@ public class SkillButtonPanel extends AbstractUI {
     public boolean isUsed = false;
 
     public SkillButtonPanel(SkillButtonType type) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(type == SkillButtonType.MOVE ? FileHandler.ui.get("BORDER") : FileHandler.ui.get("BORDER_M"));
         this.type = type;
         fontData = FontHandler.COOLDOWN;
     }
 
     @Override
     protected void updateButton() {
-        if(type == SkillButtonType.PLAYER) {
+        if(type == SkillButtonType.PLAYER || type == SkillButtonType.MOVE) {
             isUsed = !skill.canUse();
         }
         if(over) {
@@ -83,6 +83,6 @@ public class SkillButtonPanel extends AbstractUI {
     }
 
     public enum SkillButtonType {
-        PLAYER, ADVISOR, PASSIVE, VIEW
+        PLAYER, MOVE, ADVISOR, PASSIVE, VIEW
     }
 }

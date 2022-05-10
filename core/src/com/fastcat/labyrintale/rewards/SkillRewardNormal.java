@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen;
 
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
@@ -16,7 +15,7 @@ public class SkillRewardNormal extends SkillReward {
         for(int i = 0; i < ap.size; i++) {
             AbstractPlayer p = ap.get(i);
             if(p.isAlive())
-                group.put(i, getRandomSkill(p, cardAmount));
+                group.add(getRandomSkill(p, cardAmount));
         }
         desc = "스킬 보상을 획득합니다.";
     }

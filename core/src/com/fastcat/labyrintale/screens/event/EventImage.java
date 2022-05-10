@@ -23,8 +23,8 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class EventImage extends AbstractUI {
 
     public AbstractEvent event;
-    public FontHandler.FontData fontName = CARD_BIG_NAME;
-    public FontHandler.FontData fontDesc = EVENT_DESC;
+    public FontHandler.FontData fontName = INFO_NAME;
+    public FontHandler.FontData fontDesc = INFO_HP;
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     public EventImage(AbstractEvent e) {

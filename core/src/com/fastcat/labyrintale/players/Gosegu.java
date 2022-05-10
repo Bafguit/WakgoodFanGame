@@ -1,23 +1,19 @@
 package com.fastcat.labyrintale.players;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.items.BurgerHat;
 import com.fastcat.labyrintale.items.Item1;
-import com.fastcat.labyrintale.items.OldArmour;
+import com.fastcat.labyrintale.items.Sedative;
+import com.fastcat.labyrintale.items.ToxicFlask;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.gosegu.Provoke;
 import com.fastcat.labyrintale.skills.player.gosegu.BioCloud;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
 
 public class Gosegu extends AbstractPlayer {
 
@@ -42,8 +38,8 @@ public class Gosegu extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new Item1(this));
-        temp.add(new Item1(this));
+        temp.add(new ToxicFlask(this));
+        temp.add(new Sedative(this));
         return temp;
     }
 }

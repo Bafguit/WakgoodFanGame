@@ -16,6 +16,7 @@ public class ControlPanel implements Disposable {
     public InfoPanel infoPanel;
     public BattlePanel battlePanel;
     public Sprite bg;
+    public Sprite bbg;
     public ControlType type;
 
     public ControlPanel() {
@@ -24,11 +25,15 @@ public class ControlPanel implements Disposable {
         bg = FileHandler.ui.get("CONTROL_PANEL");
         bg.setSize(bg.getWidth() * InputHandler.scale, bg.getHeight() * InputHandler.scale);
         bg.setPosition((Gdx.graphics.getWidth() - bg.getWidth()) * 0.5f, 0);
+        bbg = FileHandler.ui.get("BATTLE_PANEL");
+        bbg.setSize(bbg.getWidth() * InputHandler.scale, bbg.getHeight() * InputHandler.scale);
+        bbg.setPosition((Gdx.graphics.getWidth() - bbg.getWidth()) * 0.5f, 0);
     }
 
     public void update() {
         type = Labyrintale.getCurScreen().cType;
         if(type != HIDE) {
+            infoPanel.renderIcon = type != BATTLE;
             infoPanel.update();
             if (type == BATTLE) battlePanel.update();
         }
@@ -36,8 +41,13 @@ public class ControlPanel implements Disposable {
 
     public void render(SpriteBatch sb) {
         if(type != HIDE) {
-            bg.draw(sb);
-            if (type == BATTLE) battlePanel.render(sb);
+            if (type == BATTLE) {
+                bbg.draw(sb);
+                battlePanel.render(sb);
+            }
+            else {
+                bg.draw(sb);
+            }
             infoPanel.render(sb);
         }
     }

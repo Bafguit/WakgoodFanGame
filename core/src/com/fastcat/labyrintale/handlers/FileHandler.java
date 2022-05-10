@@ -40,15 +40,6 @@ public class FileHandler implements Disposable {
     public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
     public static final JsonValue CARD_JSON_ENEMY = generateJson("json/skill/enemyCards.json");
 
-    //사운드
-    public static final Sound LILPAA = getSound("sound/sfx/skill/lilpaa.mp3");
-    public static final Sound ATTACK_TEST = getSound("sound/sfx/attack/attackTest.ogg");
-    public static final Sound CLICK = getSound("sound/sfx/click.wav");
-    public static final Sound OVER = getSound("sound/sfx/over.wav");
-
-    //BGM
-    public static final Music BATTLE_1 = getMusic("sound/bgm/battle_1.mp3");
-
     //스파인 atlas
     public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
     public static final TextureAtlas BURGER_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
@@ -147,6 +138,7 @@ public class FileHandler implements Disposable {
         ui.put("TURN_BG", new Sprite(new Texture("img/ui/tc.png")));
         ui.put("MENU_SELECT", new Sprite(new Texture("img/ui/menuSelect.png")));
         ui.put("CONTROL_PANEL", new Sprite(new Texture("img/ui/cPanel.png")));
+        ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
         ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
         ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
         ui.put("BORDER_M", new Sprite(new Texture("img/ui/border_m.png")));
@@ -203,16 +195,6 @@ public class FileHandler implements Disposable {
         FileHandle fileHandle = Gdx.files.internal(url);
         InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
         return jsonReader.parse(is);
-    }
-
-    private static Sound getSound(String url) {
-        FileHandle fileHandle = Gdx.files.internal(url);
-        return Gdx.audio.newSound(fileHandle);
-    }
-
-    private static Music getMusic(String url) {
-        FileHandle fileHandle = Gdx.files.internal(url);
-        return Gdx.audio.newMusic(fileHandle);
     }
 
     private static void generateSkillImg() {
