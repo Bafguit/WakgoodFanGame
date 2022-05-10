@@ -27,10 +27,10 @@ public class UnfortifiedStatus extends AbstractStatus {
     }
 
     @Override
-    public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    public float onAttackedMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if(type == AbstractEntity.DamageType.NORMAL) {
-            return MathUtils.floor((float) d * 1.5f);
-        } else return d;
+            return 1.5f;
+        } else return 1.0f;
     }
 
     @Override

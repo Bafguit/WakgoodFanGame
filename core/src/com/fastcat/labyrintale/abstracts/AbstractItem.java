@@ -87,12 +87,28 @@ public class AbstractItem {
         return damage;
     }
 
+    public float onAttackMultiply(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+        return 1.0f;
+    }
+
+    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return 1.0f;
+    }
+
     public int showAttack(int base) {
         return base;
     }
 
     public int showSpell(int base) {
         return base;
+    }
+
+    public float showAttackMultiply(int base) {
+        return 1.0f;
+    }
+
+    public float showSpellMultiply(int base) {
+        return 1.0f;
     }
 
     public int calculateAttack(int base) {
@@ -142,6 +158,6 @@ public class AbstractItem {
     }
 
     public enum ItemRarity {
-        STARTER, BRONZE, SILVER, GOLD, SHOP, SPECIAL
+        STARTER, BRONZE, SILVER, GOLD, BOSS, SHOP, SPECIAL
     }
 }

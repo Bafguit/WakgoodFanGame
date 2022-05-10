@@ -24,10 +24,10 @@ public class LethargyStatus extends AbstractStatus {
     }
 
     @Override
-    public int onAttack(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    public float onAttackMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if(type == AbstractEntity.DamageType.NORMAL) {
-            return MathUtils.floor((float) d * 0.5f);
-        } else return d;
+            return 0.7f;
+        } else return 1.0f;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class LethargyStatus extends AbstractStatus {
     }
 
     @Override
-    public int showAttack(int base) {
-        return MathUtils.floor((float) base * 0.5f);
+    public float showAttackMultiply(int base) {
+        return 0.7f;
     }
 }

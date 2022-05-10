@@ -142,6 +142,14 @@ public abstract class AbstractSkill implements Cloneable {
                     for (AbstractStatus s : owner.status) {
                         if (s != null) a = s.showAttack(a);
                     }
+                    if(owner.isPlayer) {
+                        for (AbstractItem m : owner.item) {
+                            if (m != null) a *= m.showAttackMultiply(a);
+                        }
+                    }
+                    for (AbstractStatus s : owner.status) {
+                        if (s != null) a *= s.showAttackMultiply(a);
+                    }
                 }
                 return getHexColor(valueColor(a, baseAttack)) + a;
             case "S":
@@ -154,6 +162,14 @@ public abstract class AbstractSkill implements Cloneable {
                     }
                     for (AbstractStatus s : owner.status) {
                         if (s != null) p = s.showSpell(p);
+                    }
+                    if(owner.isPlayer) {
+                        for (AbstractItem m : owner.item) {
+                            if (m != null) p *= m.showSpellMultiply(p);
+                        }
+                    }
+                    for (AbstractStatus s : owner.status) {
+                        if (s != null) p *= s.showSpellMultiply(p);
                     }
                 }
                 return getHexColor(valueColor(p, baseSpell)) + p;
@@ -520,6 +536,14 @@ public abstract class AbstractSkill implements Cloneable {
 
     public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return damage;
+    }
+
+    public float onAttackMultiply(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+        return 1.0f;
+    }
+
+    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return 1.0f;
     }
 
     @Override

@@ -128,6 +128,7 @@ public class GroupHandler {
         public static final Array<AbstractItem> silverItem = new Array<>();
         public static final Array<AbstractItem> goldItem = new Array<>();
         public static final Array<AbstractItem> shopItem = new Array<>();
+        public static final Array<AbstractItem> eventItem = new Array<>();
 
         public static void generateItem() {
             allItem.clear();
@@ -151,7 +152,11 @@ public class GroupHandler {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
             for(AbstractItem s : raritySort.get(rarity)) {
-                b.add(s);
+                boolean can = false;
+                for(AbstractPlayer p : players) {
+                    can = p.isAlive() && !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                }
+                if(can) b.add(s);
             }
             staticShuffle(b);
             for(int i = 0; i < amount; i++) {
@@ -166,7 +171,11 @@ public class GroupHandler {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
             for(AbstractItem s : allItem) {
-                b.add(s);
+                boolean can = false;
+                for(AbstractPlayer p : players) {
+                    can = p.isAlive() && !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                }
+                if(can) b.add(s);
             }
             staticShuffle(b);
             for(int i = 0; i < amount; i++) {

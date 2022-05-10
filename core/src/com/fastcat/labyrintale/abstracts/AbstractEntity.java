@@ -13,6 +13,7 @@ import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
+import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -32,8 +33,7 @@ public abstract class AbstractEntity implements Cloneable {
     public final int handSize;
     public final boolean isPlayer;
 
-    protected Texture orb;
-    protected Texture sOrb;
+    public Color animColor = new Color(1, 1, 1, 1);
 
     public TextureAtlas atlas;
     public Skeleton skeleton;
@@ -108,7 +108,7 @@ public abstract class AbstractEntity implements Cloneable {
             state.getCurrent(0).setTimeScale(1.0f);
             skeleton.updateWorldTransform();
             skeleton.setPosition(animX, animY);
-            skeleton.setColor(WHITE.cpy());
+            skeleton.setColor(animColor);
             sb.end();
             Labyrintale.psb.begin();
             Labyrintale.sr.draw(Labyrintale.psb, skeleton);
@@ -275,6 +275,17 @@ public abstract class AbstractEntity implements Cloneable {
                 for (AbstractStatus s : attacker.status) {
                     if (s != null) damage = s.onAttack(this, damage, type);
                 }
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) damage *= m.onAttackMultiply(this, damage, type);
+                    }
+                }
+                for (AbstractSkill s : attacker.hand) {
+                    if (s != null) damage *= s.onAttackMultiply(this, damage, type);
+                }
+                for (AbstractStatus s : attacker.status) {
+                    if (s != null) damage *= s.onAttackMultiply(this, damage, type);
+                }
             }
             if (damage > 0) {
                 if(isPlayer) {
@@ -288,10 +299,22 @@ public abstract class AbstractEntity implements Cloneable {
                 for (AbstractStatus s : status) {
                     if (s != null) damage = s.onAttacked(attacker, damage, type);
                 }
+                if(isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) damage *= m.onAttackedMultiply(attacker, damage, type);
+                    }
+                }
+                for (AbstractSkill s : hand) {
+                    if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
+                }
+                for (AbstractStatus s : status) {
+                    if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
+                }
                 if (damage > 0) {
                     damage = loseBlock(damage);
                     if (damage > 0) {
                         EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                        EffectHandler.add(new HealthBarDamageEffect(this));
                         AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
                         state.addAnimation(0, "idle", true, 0.0F);
                         e.setTimeScale(1.0f);
