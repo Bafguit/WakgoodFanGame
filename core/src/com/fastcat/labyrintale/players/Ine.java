@@ -1,26 +1,19 @@
 package com.fastcat.labyrintale.players;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.items.Item1;
+import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
-import com.fastcat.labyrintale.skills.player.basic.Heal;
-import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.ine.*;
-
-import static com.badlogic.gdx.graphics.Color.YELLOW;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class Ine extends AbstractPlayer {
 
     private static final String ID = "ine";
-    private static final int HEALTH = 27;
+    private static final int HEALTH = 25;
     private static final Color COLOR = Color.valueOf("#8a2be2");
 
     public Ine() {

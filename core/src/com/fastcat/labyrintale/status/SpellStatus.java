@@ -9,9 +9,14 @@ public class SpellStatus extends AbstractStatus {
     private static final String ID = "Spell";
 
     public SpellStatus(int amount) {
-        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+        super(ID, AbstractSkill.SkillTarget.NONE, amount > 0 ? StatusType.BUFF : StatusType.DEBUFF);
         setAmount(amount);
         canGoNegative = true;
+    }
+
+    @Override
+    public void onApply() {
+        type = amount > 0 ? StatusType.BUFF : StatusType.DEBUFF;
     }
 
     @Override

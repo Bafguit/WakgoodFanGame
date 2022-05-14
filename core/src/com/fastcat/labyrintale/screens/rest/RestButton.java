@@ -37,7 +37,7 @@ public class RestButton extends AbstractUI {
         } else if (type == RestType.UPGRADE) {
             temp.add(new SkillRewardUpgrade());
         } else {
-            temp.add(new SkillRewardNormal(2));
+            temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));
         }
         Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.REST, temp));
     }

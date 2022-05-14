@@ -33,6 +33,8 @@ public class AbstractLabyrinth {
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
     public static ControlPanel cPanel;
+    public static int itemAble;
+    public static int selection;
     public static int maxEnergy;
     public static int energy;
     public static int gold;
@@ -64,6 +66,8 @@ public class AbstractLabyrinth {
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
+            itemAble = 0;
+            selection = 2;
             maxEnergy = 3;
             energy = 0;
             gold = 100;
@@ -91,6 +95,22 @@ public class AbstractLabyrinth {
         energy = maxEnergy;
         advisor.skill.usedOnce = false;
         advisor.skill.cooldown = 0;
+    }
+
+    public static boolean canGetItem() {
+        return itemAble == 0;
+    }
+
+    public static void modifyItemAble(int a) {
+        itemAble = Math.max(itemAble + a, 0);
+    }
+
+    public static void modifyMaxEnergy(int a) {
+        maxEnergy = Math.max(maxEnergy + a, 0);
+    }
+
+    public static void modifySelection(int a) {
+        selection = Math.max(selection + a, 0);
     }
 
     private static String generateRandomSeed() {

@@ -27,7 +27,7 @@ public class VictoryAction extends AbstractAction {
             }
             AbstractLabyrinth.finishRoom();
             Array<AbstractReward> temp = new Array<>();
-            temp.add(new SkillRewardNormal(2));
+            temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));
             temp.add(new GoldReward(20));
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
             Labyrintale.battleScreen.cType = ControlPanel.ControlType.BASIC;

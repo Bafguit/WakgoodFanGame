@@ -11,9 +11,14 @@ public class AttackStatus extends AbstractStatus {
     private static final String ID = "Attack";
 
     public AttackStatus(int amount) {
-        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+        super(ID, AbstractSkill.SkillTarget.NONE, amount > 0 ? StatusType.BUFF : StatusType.DEBUFF);
         setAmount(amount);
         canGoNegative = true;
+    }
+
+    @Override
+    public void onApply() {
+        type = amount > 0 ? StatusType.BUFF : StatusType.DEBUFF;
     }
 
     @Override

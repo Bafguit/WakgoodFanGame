@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.items.BurgerHat;
-import com.fastcat.labyrintale.items.PlateArmour;
+import com.fastcat.labyrintale.items.starter.BurgerHat;
+import com.fastcat.labyrintale.items.starter.OldArmour;
 import com.fastcat.labyrintale.skills.player.basic.*;
 import com.fastcat.labyrintale.skills.player.burger.Protect;
 import com.fastcat.labyrintale.skills.player.burger.Patience;
@@ -36,7 +36,7 @@ public class Burger extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new PlateArmour(this));
+        temp.add(new OldArmour(this));
         temp.add(new BurgerHat(this));
         return temp;
     }

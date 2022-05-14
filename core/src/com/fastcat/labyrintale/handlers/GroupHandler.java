@@ -5,6 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
+import com.fastcat.labyrintale.items.bronze.*;
+import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.skills.player.burger.*;
@@ -141,6 +143,35 @@ public class GroupHandler {
         }
 
         private static void generateAll() {
+            Array<AbstractItem> t = allItem;
+            //시작 아이템
+            t.add(new OldShield(null));
+            t.add(new Pendant(null));
+            t.add(new OldArmour(null));
+            t.add(new BurgerHat(null));
+            t.add(new OldSword(null));
+            t.add(new FabricMail(null));
+            t.add(new ToxicFlask(null));
+            t.add(new Sedative(null));
+
+            //브론즈
+            t.add(new BronzeItem(null));
+            t.add(new BronzeItem2(null));
+            t.add(new BronzeItem3(null));
+            t.add(new BronzeItem4(null));
+            t.add(new BronzeItem5(null));
+            t.add(new BronzeItem6(null));
+            t.add(new BronzeItem7(null));
+
+            //실버
+
+            //골드
+
+            //보스
+
+            //싱점
+
+            //이벤트
 
         }
 

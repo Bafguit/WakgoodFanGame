@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.items;
+package com.fastcat.labyrintale.items.starter;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;

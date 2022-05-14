@@ -49,6 +49,7 @@ public class FileHandler implements Disposable {
     private static final HashMap<String, HashMap> maps = new HashMap<>();
     public static final HashMap<String, Sprite> bg = new HashMap<>();
     public static final HashMap<String, Sprite> ui = new HashMap<>();
+    public static final HashMap<String, Sprite> vfx = new HashMap<>();
 
     public static final HashMap<String, FileHandle> skeleton = new HashMap<>();
     public static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
@@ -85,6 +86,7 @@ public class FileHandler implements Disposable {
         generateHashMap();
         generateBG();
         generateUI();
+        generateVFX();
         generateCharImg();
         generateSkeleton();
         generateAdvImg();
@@ -130,6 +132,14 @@ public class FileHandler implements Disposable {
         bg.put("BG_MAP", new Sprite(new Texture("img/bg/map.png")));
         bg.put("BG_CHARSELECT", new Sprite(new Texture("img/bg/charselect.png")));
         bg.put("BG_BATTLE", new Sprite(new Texture("img/bg/battle.png")));
+    }
+
+    private static void generateVFX() {
+        vfx.clear();
+        vfx.put("HIT_LIGHT", new Sprite(new Texture("img/vfx/hit_s.png")));
+        vfx.put("HIT_HEAVY", new Sprite(new Texture("img/vfx/hit_b.png")));
+        vfx.put("INFECTION", new Sprite(new Texture("img/vfx/infection.png")));
+        vfx.put("LIGHTNING", new Sprite(new Texture("img/vfx/lightning.png")));
     }
 
     private static void generateUI() {

@@ -1,25 +1,24 @@
-package com.fastcat.labyrintale.items;
+package com.fastcat.labyrintale.items.starter;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.status.BlindStatus;
-import com.fastcat.labyrintale.status.CourageStatus;
+import com.fastcat.labyrintale.status.InfectionStatus;
 
-public class OldSword extends AbstractItem {
+public class ToxicFlask extends AbstractItem {
 
-    private static final String ID = "OldSword";
+    private static final String ID = "ToxicFlask";
     private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public OldSword(AbstractPlayer owner) {
+    public ToxicFlask(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
+        bot(new ApplyStatusAction(new InfectionStatus(1), owner, AbstractSkill.SkillTarget.E_ALL, true));
     }
 }

@@ -53,6 +53,14 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     }
 
+    public void gainItem(AbstractItem i, int index) {
+        AbstractItem it = item[index];
+        if(it != null) it.onRemove();
+        i.owner = this;
+        i.onGain();
+        item[index] = i;
+    }
+
     public abstract Array<AbstractItem> getStartingItem();
 
     public enum PlayerClass {

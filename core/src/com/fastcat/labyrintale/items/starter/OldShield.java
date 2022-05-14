@@ -1,22 +1,22 @@
-package com.fastcat.labyrintale.items;
+package com.fastcat.labyrintale.items.starter;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.HealAction;
+import com.fastcat.labyrintale.actions.BlockAction;
 
-public class BurgerHat extends AbstractItem {
+public class OldShield extends AbstractItem {
 
-    private static final String ID = "BurgerHat";
+    private static final String ID = "OldShield";
     private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public BurgerHat(AbstractPlayer owner) {
+    public OldShield(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
     @Override
     public void atBattleStart() {
         flash();
-        bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1, false));
+        bot(new BlockAction(owner, AbstractSkill.SkillTarget.P_ALL, 1));
     }
 }

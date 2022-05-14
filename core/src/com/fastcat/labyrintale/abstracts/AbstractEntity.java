@@ -34,6 +34,7 @@ public abstract class AbstractEntity implements Cloneable {
     public final boolean isPlayer;
 
     public Color animColor = new Color(1, 1, 1, 1);
+    public HealthBarDamageEffect hbEffect = null;
 
     public TextureAtlas atlas;
     public Skeleton skeleton;
