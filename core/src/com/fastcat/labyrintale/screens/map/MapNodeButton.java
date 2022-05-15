@@ -33,7 +33,7 @@ public class MapNodeButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if(over) {
-            cPanel.infoPanel.setInfo(way.imgBig, way.name, way.desc);
+            cPanel.infoPanel.setInfo(way.name, way.desc);
         }
     }
 

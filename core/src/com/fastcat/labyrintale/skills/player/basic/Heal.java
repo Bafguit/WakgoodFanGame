@@ -15,7 +15,7 @@ public class Heal extends AbstractSkill {
 
     public Heal(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

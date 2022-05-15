@@ -15,7 +15,7 @@ public class Light extends AbstractSkill {
 
     public Light(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
+        setBaseAttack(VALUE, 1);
     }
 
     @Override

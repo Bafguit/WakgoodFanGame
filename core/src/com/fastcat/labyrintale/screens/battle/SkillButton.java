@@ -43,7 +43,7 @@ public class SkillButton extends AbstractUI {
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
 
             if(skill != null) {
-                if (showImg) sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
+                if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             }
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);

@@ -69,15 +69,12 @@ public class FileHandler implements Disposable {
 
     //스킬
     public static final HashMap<String, Sprite> skillImg = new HashMap<>();
-    public static final HashMap<String, Sprite> skillImgBig = new HashMap<>();
 
     //상태
     public static final HashMap<String, Sprite> statusImg = new HashMap<>();
-    public static final HashMap<String, Sprite> statusImgBig = new HashMap<>();
 
     //상태
     public static final HashMap<String, Sprite> itemImg = new HashMap<>();
-    public static final HashMap<String, Sprite> itemImgBig = new HashMap<>();
 
     //이벤트
     public static final HashMap<String, Sprite> eventImg = new HashMap<>();
@@ -109,11 +106,8 @@ public class FileHandler implements Disposable {
         maps.put("advImgBig", advImgBig);
         maps.put("advBgImg", advBgImg);
         maps.put("skillImg", skillImg);
-        maps.put("skillImgBig", skillImgBig);
         maps.put("statusImg", statusImg);
-        maps.put("statusImgBig", statusImgBig);
         maps.put("itemImg", itemImg);
-        maps.put("itemImgBig", itemImgBig);
         //maps.put("eventImg", eventImg);
     }
 
@@ -177,6 +171,7 @@ public class FileHandler implements Disposable {
         ui.put("CHECK_OFF", new Sprite(new Texture("img/ui/check_0.png")));
         ui.put("CHECK_ON", new Sprite(new Texture("img/ui/check_1.png")));
         ui.put("OPTION_PANEL", new Sprite(new Texture("img/ui/optionPanel.png")));
+        ui.put("SHIELD", new Sprite(new Texture("img/ui/shield.png")));
     }
 
     private static void generateCharImg() {
@@ -216,71 +211,55 @@ public class FileHandler implements Disposable {
 
     private static void generateSkillImg() {
         skillImg.clear();
-        skillImgBig.clear();
         for (JsonValue js : CARD_JSON_BASIC) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/basic/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/basic/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_WAK) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/wak/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/wak/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_MANAGER) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/manager/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/manager/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_INE) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/ine/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/ine/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_VIICHAN) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/viichan/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/viichan/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_LILPA) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/lilpa/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/lilpa/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_BURGER) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/burger/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/burger/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_GOSEGU) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/gosegu/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/gosegu/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_JURURU) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_ADV) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + "_p.png")));
         }
         for (JsonValue js : CARD_JSON_ENEMY) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + ".png")));
-            skillImgBig.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + "_p.png")));
         }
     }
 
     private static void generateStatusImg() {
         statusImg.clear();
-        statusImgBig.clear();
         for (JsonValue js : STATUS_JSON) {
             if(!js.name.equals("")) {
                 statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
-                statusImgBig.put(js.name, new Sprite(new Texture("img/status/" + js.name + "_p.png")));
             }
         }
     }
 
     private static void generateItemImg() {
         itemImg.clear();
-        itemImgBig.clear();
         for (JsonValue js : ITEM_JSON) {
             if(!js.name.equals("")) {
                 itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
-                itemImgBig.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_p.png")));
             }
         }
     }

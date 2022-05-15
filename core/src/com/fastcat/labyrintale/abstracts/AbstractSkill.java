@@ -57,7 +57,6 @@ public abstract class AbstractSkill implements Cloneable {
         this.owner = owner;
         this.id = id;
         this.img = skillImg.get(this.id);
-        this.imgBig = FileHandler.skillImgBig.get(this.id);
         this.skillData = StringHandler.skillString.get(this.id);
         this.name = this.skillData.NAME;
         this.desc = this.skillData.DESC;

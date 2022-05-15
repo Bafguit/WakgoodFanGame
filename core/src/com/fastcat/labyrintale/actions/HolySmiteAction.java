@@ -3,11 +3,13 @@ package com.fastcat.labyrintale.actions;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.ScreenShake;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
@@ -29,6 +31,7 @@ public class HolySmiteAction extends AbstractAction {
         if (duration == baseDuration){
             SoundHandler.playSfx("ATTACK_TEST");
             if(target.size > 0) {
+                Labyrintale.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
                 for (AbstractEntity t : target) {
                     EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.vfx.get("LIGHTNING")));
                 }

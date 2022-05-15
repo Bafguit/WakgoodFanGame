@@ -43,8 +43,8 @@ public class FontHandler implements Disposable {
     public static final FontData INFO_HP = new FontData(MEDIUM, 35, false, true);
     public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false, true);
     public static final FontData BORDER = new FontData(MEDIUM, 40, true, true);
-    public static final FontData BLOCK = new FontData(MEDIUM, 27, true, true);
-    public static final FontData HP = new FontData(MEDIUM, 25, false, true);
+    public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true, true);
+    public static final FontData HP = new FontData(MEDIUM, 26, false, true);
 
     public enum FontType {
         LIGHT, MEDIUM, BOLD

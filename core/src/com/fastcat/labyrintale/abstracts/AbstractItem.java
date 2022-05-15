@@ -13,7 +13,6 @@ public class AbstractItem {
 
     public ItemString.ItemData data;
     public Sprite img;
-    public Sprite imgBig;
     public String id;
     public String name;
     public String desc;
@@ -24,7 +23,6 @@ public class AbstractItem {
     public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
         this.id = id;
         img = FileHandler.itemImg.get(this.id);
-        imgBig = FileHandler.itemImgBig.get(this.id);
         data = StringHandler.itemString.get(this.id);
         name = data.NAME;
         desc = data.DESC;

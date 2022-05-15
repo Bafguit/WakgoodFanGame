@@ -17,7 +17,7 @@ public class Spike extends AbstractSkill {
 
     public Spike(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

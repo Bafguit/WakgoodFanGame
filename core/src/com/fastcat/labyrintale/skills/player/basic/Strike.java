@@ -16,7 +16,7 @@ public class Strike extends AbstractSkill {
 
     public Strike(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
+        setBaseAttack(VALUE,1);
     }
 
     @Override
@@ -26,6 +26,6 @@ public class Strike extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
-        setBaseAttack(baseAttack + 2);
+
     }
 }

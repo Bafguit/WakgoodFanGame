@@ -60,7 +60,7 @@ public class InfoPanel extends AbstractUI {
 
         for(int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);
-            c.setPosition(w * (0.41f - 0.08f * i) - c.sWidth / 2, h * 0.275f);
+            c.setPosition(w * (0.17f + 0.08f * i) - c.sWidth / 2, h * 0.275f);
             pIcons[i] = c;
         }
 
@@ -68,7 +68,6 @@ public class InfoPanel extends AbstractUI {
 
     @Override
     public void updateButton() {
-        img = null;
         type = InfoType.COLOR;
         skill = null;
         status = null;
@@ -88,7 +87,6 @@ public class InfoPanel extends AbstractUI {
         if(enabled) {
             sb.setColor(Color.WHITE);
             if(img != null) {
-                //sb.draw(img, x, y, sWidth, sHeight);
                 if(renderIcon) {
                     renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
                     if (type == InfoType.SKILL) {
@@ -106,7 +104,6 @@ public class InfoPanel extends AbstractUI {
                 }
             }
             if(renderIcon) {
-                sb.draw(border, x, y, sWidth, sHeight);
                 if (target != null)
                     renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.04f, sWidth, sHeight);
             }
@@ -121,7 +118,6 @@ public class InfoPanel extends AbstractUI {
 
     public void setInfo(AbstractSkill s) {
         if(s != null) {
-            img = s.imgBig;
             name = s.name;
             desc = s.desc;
             type = InfoType.SKILL;
@@ -133,7 +129,6 @@ public class InfoPanel extends AbstractUI {
 
     public void setInfo(AbstractStatus s) {
         if(s != null) {
-            img = s.imgBig;
             name = s.name;
             desc = s.getDesc();
             type = STATUS;
@@ -145,7 +140,6 @@ public class InfoPanel extends AbstractUI {
 
     public void setInfo(AbstractItem s) {
         if(s != null) {
-            img = s.imgBig;
             name = s.name;
             desc = s.desc;
             type = ITEM;
@@ -157,7 +151,6 @@ public class InfoPanel extends AbstractUI {
 
     public void setInfo(AbstractPlayer p) {
         if(p != null) {
-            img = p.imgBig;
             name = p.name;
             desc = p.desc;
             type = PLAYER;
@@ -167,8 +160,7 @@ public class InfoPanel extends AbstractUI {
         }
     }
 
-    public void setInfo(Sprite img, String name, String desc) {
-        this.img = img;
+    public void setInfo(String name, String desc) {
         this.name = name;
         this.desc = desc;
         type = InfoType.COLOR;

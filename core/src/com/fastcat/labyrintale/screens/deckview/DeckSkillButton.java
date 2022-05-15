@@ -37,7 +37,7 @@ public class DeckSkillButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(showImg && skill != null) {
-                sb.draw(isInfo ? skill.imgBig : skill.img, x, y, sWidth, sHeight);
+                sb.draw(skill.img, x, y, sWidth, sHeight);
                 if(isInfo) renderCenter(sb, fontData, AbstractSkill.getTargetString(skill.target), x, y - sHeight * 0.1f, sWidth, sHeight);
             }
             sb.draw(img, x, y, sWidth, sHeight);

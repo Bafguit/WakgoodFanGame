@@ -14,7 +14,6 @@ public abstract class AbstractStatus implements Cloneable {
 
     public String id;
     public Sprite img;
-    public Sprite imgBig;
     public String name;
     public String desc;
     public String[] exDesc;
@@ -30,7 +29,6 @@ public abstract class AbstractStatus implements Cloneable {
     public AbstractStatus(String id, AbstractSkill.SkillTarget target, StatusType type) {
         this.id = id;
         img = FileHandler.statusImg.get(this.id);
-        imgBig = FileHandler.statusImgBig.get(this.id);
         data = StringHandler.statusString.get(this.id);
         name = data.NAME;
         desc = data.DESC;
