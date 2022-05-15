@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.status;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
+import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.StatusDamageAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
@@ -23,6 +24,6 @@ public class InfectionStatus extends AbstractStatus {
 
     @Override
     public void startOfTurn() {
-        ActionHandler.top(new StatusDamageAction(this, true, false));
+        ActionHandler.top(new StatusDamageAction(this, AttackAction.AttackType.INFECTION, true, false));
     }
 }

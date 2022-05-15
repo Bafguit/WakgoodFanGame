@@ -190,144 +190,125 @@ public abstract class AbstractSkill implements Cloneable {
         }
     }
 
+    public static Array<AbstractEntity> getTargets(AbstractEntity owner, SkillTarget target) {
+        if(target == SkillTarget.SELF) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(owner);
+            return temp;
+        } else if(target == SkillTarget.S_R) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(owner.isPlayer) {
+                if(owner.tempIndex > 0) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex < 3) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else if(target == SkillTarget.S_L) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(owner.isPlayer) {
+                if(owner.tempIndex < 3) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex > 0) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else if(target == SkillTarget.S_B) {
+            Array<AbstractEntity> temp = new Array<>();
+            if(owner.isPlayer) {
+                if(owner.tempIndex > 0) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+                if(owner.tempIndex < 3) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex < 3) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+                if(owner.tempIndex > 0) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else if(target == SkillTarget.SS_R) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(owner);
+            if(owner.isPlayer) {
+                if(owner.tempIndex > 0) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex < 3) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else if(target == SkillTarget.SS_L) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(owner);
+            if(owner.isPlayer) {
+                if(owner.tempIndex < 3) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex > 0) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else if(target == SkillTarget.SS_B) {
+            Array<AbstractEntity> temp = new Array<>();
+            temp.add(owner);
+            if(owner.isPlayer) {
+                if(owner.tempIndex > 0) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+                if(owner.tempIndex < 3) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+            } else {
+                if(owner.tempIndex < 3) {
+                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if(tp.isAlive()) temp.add(tp);
+                }
+                if(owner.tempIndex > 0) {
+                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if(te.isAlive()) temp.add(te);
+                }
+            }
+            return temp;
+        } else return getTargets(target);
+    }
+
     //스킬 대상(유동)
     public static Array<AbstractEntity> getTargets(AbstractSkill s) {
-        if(s.target == SkillTarget.SELF) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(s.owner);
-            return temp;
-        } else if(s.target == SkillTarget.S_R) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.S_L) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.S_B) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_R) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_L) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_B) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else return getTargets(s.target);
+        return getTargets(s.owner, s.target);
     }
 
     //상태 대상(유동)
     public static Array<AbstractEntity> getTargets(AbstractStatus s) {
-        if(s.target == SkillTarget.SELF) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(s.owner);
-            return temp;
-        } else if(s.target == SkillTarget.S_R) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.S_L) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.S_B) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_R) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_L) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else if(s.target == SkillTarget.SS_B) {
-            AbstractEntity e = s.owner;
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(e);
-            if(e.isPlayer) {
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.players[e.tempIndex - 1]);
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.players[e.tempIndex + 1]);
-            } else {
-                if(e.tempIndex < 3) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex + 1]);
-                if(e.tempIndex > 0) temp.add(AbstractLabyrinth.currentFloor.currentRoom.enemies[e.tempIndex - 1]);
-            }
-            return temp;
-        } else return getTargets(s.target);
+        return getTargets(s.owner, s.target);
     }
 
     //고정 대상

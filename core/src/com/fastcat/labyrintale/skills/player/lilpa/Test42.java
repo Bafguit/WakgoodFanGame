@@ -25,7 +25,7 @@ public class Test42 extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN));
         bot(new ApplyStatusAction(new BurnStatus(value), owner, target, true));
     }
 

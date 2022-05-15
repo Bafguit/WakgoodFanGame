@@ -5,6 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.boss.BossItem3;
+import com.fastcat.labyrintale.items.boss.BossItem4;
 import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -33,8 +35,8 @@ public class Ine extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new Item1(this));
-        temp.add(new Item1(this));
+        temp.add(new BossItem3(this));
+        temp.add(new BossItem4(this));
         return temp;
     }
 }

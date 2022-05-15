@@ -21,7 +21,7 @@ public class Strike extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new AttackAction(owner, TARGET, attack, null));
+        ActionHandler.bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT));
     }
 
     @Override

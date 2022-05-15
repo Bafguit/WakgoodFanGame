@@ -19,7 +19,7 @@ public class DiaSword extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_D));
     }
 
     @Override

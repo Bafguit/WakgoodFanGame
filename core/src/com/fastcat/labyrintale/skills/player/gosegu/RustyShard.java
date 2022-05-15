@@ -22,7 +22,7 @@ public class RustyShard extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT));
         bot(new ApplyStatusAction(new InfectionStatus(value), owner, target, true));
     }
 

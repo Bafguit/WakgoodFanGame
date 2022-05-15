@@ -25,7 +25,7 @@ public class Test25 extends AbstractSkill {
     @Override
     public void use() {
         if(owner.tempIndex > 0) bot(new MoveAction((AbstractPlayer) owner, false, 0.1f));
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH));
         bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
     }
 

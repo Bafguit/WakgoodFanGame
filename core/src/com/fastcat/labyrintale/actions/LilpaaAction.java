@@ -1,8 +1,12 @@
 package com.fastcat.labyrintale.actions;
 
+import com.badlogic.gdx.Gdx;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.effects.HitEffect;
+import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.ScreenShake;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
@@ -30,6 +34,9 @@ public class LilpaaAction extends AbstractAction {
         } else if(duration < 1.1f && !ps) {
             ps = true;
             Labyrintale.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
+            for (AbstractEntity t : target) {
+                if(t != actor) EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.vfx.get("LIGHTNING")));
+            }
             for(AbstractPlayer p : AbstractLabyrinth.players) {
                 if(p != actor && p.isAlive()) p.takeDamage(info2);
             }

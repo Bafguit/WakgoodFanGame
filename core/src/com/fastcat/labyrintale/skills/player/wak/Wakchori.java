@@ -24,9 +24,9 @@ public class Wakchori extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null, true));
-        bot(new AttackAction(owner, target, attack, null, true));
-        bot(new AttackAction(owner, target, attack, null, true));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true));
     }
 
     @Override

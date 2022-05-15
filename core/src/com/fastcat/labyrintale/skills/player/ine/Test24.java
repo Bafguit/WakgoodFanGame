@@ -21,7 +21,7 @@ public class Test24 extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY));
     }
 
     @Override

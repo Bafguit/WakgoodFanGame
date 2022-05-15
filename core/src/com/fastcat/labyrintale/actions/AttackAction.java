@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import org.jetbrains.annotations.Nullable;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.*;
 
@@ -17,26 +18,26 @@ public class AttackAction extends AbstractAction {
     public AttackType effect;
     public AbstractEntity.DamageInfo info;
 
-    private Sprite img;
+    private final Sprite img;
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AttackType effect) {
         super(actor, target, 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage);
-        this.effect = effect == null ? AttackType.NONE : effect;
+        this.effect = effect;
         img = getEffectImg(effect);
     }
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AttackType effect, boolean fast) {
         super(actor, target, fast ? 0.1f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage);
-        this.effect = effect == null ? AttackType.NONE : effect;
+        this.effect = effect;
         img = getEffectImg(effect);
     }
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEntity.DamageType type, AttackType effect) {
         super(actor, target, 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage, type);
-        this.effect = effect == null ? AttackType.NONE : effect;
+        this.effect = effect;
         img = getEffectImg(effect);
     }
 
@@ -45,9 +46,11 @@ public class AttackAction extends AbstractAction {
         if (duration == baseDuration){
             if(target.size > 0) {
                 SoundHandler.playSfx("ATTACK_TEST");
-                for(AbstractEntity t : target) {
-                    //TODO 이미지 좌표로 자동입력되게 설정
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, img, 1.5f));
+                if(effect != AttackType.NONE) {
+                    for (AbstractEntity t : target) {
+                        //TODO 이미지 좌표로 자동입력되게 설정
+                        EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, img));
+                    }
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
@@ -62,11 +65,30 @@ public class AttackAction extends AbstractAction {
         }
     }
 
-    private Sprite getEffectImg(AttackType t) {
-        return FileHandler.vfx.get("HIT_LIGHT");
+    public static Sprite getEffectImg(AttackType t) {
+        switch (t) {
+            case SMASH:
+                return FileHandler.vfx.get("SMASH");
+            case BURN:
+                return FileHandler.vfx.get("BURN");
+            case SLASH_D:
+                return FileHandler.vfx.get("SLASH_D");
+            case SLASH_V:
+                return FileHandler.vfx.get("SLASH_V");
+            case LIGHT:
+                return FileHandler.vfx.get("HIT_LIGHT");
+            case HEAVY:
+                return FileHandler.vfx.get("HIT_HEAVY");
+            case LIGHTNING:
+                return FileHandler.vfx.get("LIGHTNING");
+            case INFECTION:
+                return FileHandler.vfx.get("INFECTION");
+            default:
+                return FileHandler.vfx.get("SLASH_H");
+        }
     }
 
     public enum AttackType {
-        NONE, LIGHT, HEAVY, LIGHTNING
+        NONE, LIGHT, HEAVY, LIGHTNING, INFECTION, SLASH_H, SLASH_V, SLASH_D, SMASH, BURN
     }
 }

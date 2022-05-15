@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.status.AttackStatus;
 
 public class BossItem4 extends AbstractItem {
 
-    private static final String ID = "BossItem";
+    private static final String ID = "BossItem4";
     private static final ItemRarity RARITY = ItemRarity.BOSS;
 
     public BossItem4(AbstractPlayer owner) {

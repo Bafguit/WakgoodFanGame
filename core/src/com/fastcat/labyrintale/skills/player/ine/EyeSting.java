@@ -24,7 +24,7 @@ public class EyeSting extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, null));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT));
         bot(new ApplyStatusAction(new BlindStatus(), owner, target, false));
     }
 

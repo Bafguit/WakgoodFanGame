@@ -101,6 +101,7 @@ public class FileHandler implements Disposable {
     private static void generateHashMap() {
         maps.put("bg", bg);
         maps.put("ui", ui);
+        maps.put("vfx", vfx);
         maps.put("charImg", charImg);
         maps.put("charImgBig", charImgBig);
         maps.put("charBgImg", charBgImg);
@@ -140,6 +141,12 @@ public class FileHandler implements Disposable {
         vfx.put("HIT_HEAVY", new Sprite(new Texture("img/vfx/hit_b.png")));
         vfx.put("INFECTION", new Sprite(new Texture("img/vfx/infection.png")));
         vfx.put("LIGHTNING", new Sprite(new Texture("img/vfx/lightning.png")));
+        vfx.put("BURN", new Sprite(new Texture("img/vfx/burn.png")));
+        vfx.put("SHIELD", new Sprite(new Texture("img/vfx/shield.png")));
+        vfx.put("SLASH_H", new Sprite(new Texture("img/vfx/slash_h.png")));
+        vfx.put("SLASH_V", new Sprite(new Texture("img/vfx/slash_v.png")));
+        vfx.put("SLASH_D", new Sprite(new Texture("img/vfx/slash_d.png")));
+        vfx.put("SMASH", new Sprite(new Texture("img/vfx/smash.png")));
     }
 
     private static void generateUI() {

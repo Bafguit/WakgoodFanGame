@@ -13,8 +13,12 @@ public class HitEffect extends AbstractEffect {
     private final Sprite img;
     private float alpha = 1;
 
+    public HitEffect(float x, float y, Sprite img) {
+        this(x, y, img, 1);
+    }
+
     public HitEffect(float x, float y, Sprite img, float scale) {
-        super(x, y, 0.5f);
+        super(x, y, 0.55f);
         this.img = new Sprite(img.getTexture());
         float rw = img.getWidth() * InputHandler.scale * scale, rh = img.getHeight() * InputHandler.scale * scale;
         this.img.setBounds(x - rw * 0.5f, y - rh * 0.5f, rw, rh);
