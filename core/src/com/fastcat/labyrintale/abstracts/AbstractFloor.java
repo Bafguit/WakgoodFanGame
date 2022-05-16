@@ -10,14 +10,9 @@ import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EventRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 
-import java.io.Serializable;
-
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
-public class AbstractFloor implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class AbstractFloor {
     public Array<AbstractEnemy> enemyList;
 
     public AbstractRoom entryRoom;

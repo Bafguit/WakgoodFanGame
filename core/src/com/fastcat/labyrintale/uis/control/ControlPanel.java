@@ -8,14 +8,10 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
-import java.io.Serializable;
-
 import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.BATTLE;
 import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.HIDE;
 
-public class ControlPanel implements Disposable, Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class ControlPanel implements Disposable {
 
     public InfoPanel infoPanel;
     public BattlePanel battlePanel;
