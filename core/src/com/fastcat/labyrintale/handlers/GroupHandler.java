@@ -356,8 +356,8 @@ public class GroupHandler {
         private static void generateJururu() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Captivate(null));
-            t.add(new Test32(null));
+            t.add(new Scorn(null));
+            t.add(new Pray(null));
             t.add(new Test33(null));
             //Silver
             t.add(new Test34(null));
