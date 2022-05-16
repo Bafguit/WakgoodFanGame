@@ -21,6 +21,7 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import static com.badlogic.gdx.graphics.Color.*;
@@ -28,7 +29,9 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
-public abstract class AbstractEntity implements Cloneable {
+public abstract class AbstractEntity implements Cloneable, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public final int handSize;
     public final boolean isPlayer;
