@@ -9,6 +9,8 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ItemString;
 
+import java.io.Serializable;
+
 public class AbstractItem {
 
     public ItemString.ItemData data;

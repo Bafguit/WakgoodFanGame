@@ -27,11 +27,13 @@ public class BattleScreen extends AbstractScreen {
 
     public Sprite shield = FileHandler.ui.get("SHIELD");
     public ShapeRenderer shr = new ShapeRenderer();
-    public StatusButton[][] playerStatus = new StatusButton[4][5];
-    public StatusButton[][] enemyStatus = new StatusButton[4][5];
+    public StatusButton[][] playerStatus = new StatusButton[4][4];
+    public StatusButton[][] enemyStatus = new StatusButton[4][4];
     public SkillButton[] enemySkills = new SkillButton[4];
     public PlayerView[] players = new PlayerView[4];
     public EnemyView[] enemies = new EnemyView[4];
+    public ShieldIcon[] pShield = new ShieldIcon[4];
+    public ShieldIcon[] eShield = new ShieldIcon[4];
     public boolean isEnemyTurn = false;
     public Array<AbstractEntity> looking;
     public float w, h, sw, sh;
@@ -63,13 +65,21 @@ public class BattleScreen extends AbstractScreen {
             ev.enemy.ui = ev;
             enemies[i] = ev;
 
-            for(int j = 0; j < 5; j++) {
+            ShieldIcon ps = new ShieldIcon(pv.player);
+            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
+            pShield[i] = ps;
+
+            ShieldIcon es = new ShieldIcon(ev.enemy);
+            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.55f - es.sHeight * 0.35f);
+            eShield[i] = es;
+
+            for(int j = 0; j < 4; j++) {
                 StatusButton t = new StatusButton(pv.player.status[j]);
-                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.014f * j - pv.sWidth / 2, h * 0.52f);
+                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.019f * j - pv.sWidth / 2, h * 0.517f);
                 playerStatus[i][j] = t;
 
                 StatusButton t2 = new StatusButton(ev.enemy.status[j]);
-                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.014f * j + ev.sWidth / 2 - t2.sWidth, h * 0.52f);
+                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.019f * j + ev.sWidth / 2 - t2.sWidth, h * 0.517f);
                 enemyStatus[i][j] = t2;
             }
 
@@ -116,18 +126,18 @@ public class BattleScreen extends AbstractScreen {
             ss.update();
             ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
 
-            for(int j = 0; j < 5; j++) {
+            for(int j = 0; j < 4; j++) {
                 if (pv.player.isAlive()) {
                     StatusButton ts = playerStatus[i][j];
                     ts.status = AbstractLabyrinth.players[i].status[j];
                     ts.update();
-                    ts.setPosition(pv.player.animX + w * (0.012f + 0.014f * j) - pv.sWidth / 2, h * 0.52f);
+                    ts.setPosition(pv.player.animX + w * (0.012f + 0.019f * j) - pv.sWidth / 2, h * 0.517f);
                 }
                 if (ev.enemy.isAlive()) {
                     StatusButton ts = enemyStatus[i][j];
                     ts.status = AbstractLabyrinth.currentFloor.currentRoom.enemies[i].status[j];
                     ts.update();
-                    ts.setPosition(ev.enemy.animX + w * (-0.068f + 0.014f * j) + ev.sWidth / 2 - ts.sWidth, h * 0.52f);
+                    ts.setPosition(ev.enemy.animX + w * (-0.068f + 0.019f * j) + ev.sWidth / 2 - ts.sWidth, h * 0.517f);
                 }
             }
         }
@@ -203,21 +213,15 @@ public class BattleScreen extends AbstractScreen {
             float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
             if(!tp.player.isDead) {
                 renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
-                if(tp.player.block > 0) {
-                    sb.draw(shield, px - sw * 0.5f, py + th * 0.01f - sh * 0.5f);
-                    renderCenter(sb, BLOCK.font, Integer.toString(tp.player.block), px + tw * 0.03f, py + th * 0.025f);
-                }
             }
             if(!te.enemy.isDead) {
                 renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, ex, ey + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
-                if(te.enemy.block > 0) {
-                    sb.draw(shield, ex - sw * 0.5f, ey + th * 0.01f - sh * 0.5f);
-                    renderCenter(sb, BLOCK.font, Integer.toString(te.enemy.block), ex + tw * 0.03f, ey + th * 0.025f);
-                }
             }
+            pShield[i].render(sb);
+            eShield[i].render(sb);
         }
         for(int i = 0; i < 4; i++) {
-            for(int j = 0; j < 5; j++) {
+            for(int j = 0; j < 4; j++) {
                 if (players[i].player.isAlive()) playerStatus[i][j].render(sb);
                 if (enemies[i].enemy.isAlive()) {
                     enemyStatus[i][j].render(sb);

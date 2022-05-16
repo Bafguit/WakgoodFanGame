@@ -12,6 +12,8 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 
+import java.io.Serializable;
+
 import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
 import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;

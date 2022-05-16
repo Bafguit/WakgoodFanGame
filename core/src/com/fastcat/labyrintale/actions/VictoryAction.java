@@ -23,7 +23,7 @@ public class VictoryAction extends AbstractAction {
         } else if(isDone) {
             for(AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;
-                p.status = new AbstractStatus[5];
+                p.status = new AbstractStatus[4];
             }
             AbstractLabyrinth.finishRoom();
             Array<AbstractReward> temp = new Array<>();

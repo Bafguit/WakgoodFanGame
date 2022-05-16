@@ -33,8 +33,8 @@ public abstract class AbstractEntity implements Cloneable {
     public final int handSize;
     public final boolean isPlayer;
 
-    public Color animColor = new Color(1, 1, 1, 1);
-    public HealthBarDamageEffect hbEffect = null;
+    public final transient Color animColor = new Color(1, 1, 1, 1);
+    public transient HealthBarDamageEffect hbEffect = null;
 
     public TextureAtlas atlas;
     public Skeleton skeleton;
@@ -49,7 +49,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mRight;
     public AbstractSkill mLeftTemp;
     public AbstractSkill mRightTemp;
-    public AbstractStatus[] status = new AbstractStatus[5];
+    public AbstractStatus[] status = new AbstractStatus[4];
     public AbstractItem[] item = new AbstractItem[2];
     public EntityType entityType;
     public String id;
@@ -180,7 +180,7 @@ public abstract class AbstractEntity implements Cloneable {
                 if (m != null) m.onApplyStatus(s);
             }
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             if (this.status[i] != null) {
                 AbstractStatus temp = this.status[i];
                 if(temp.id.equals(s.id)) {
@@ -188,11 +188,11 @@ public abstract class AbstractEntity implements Cloneable {
                         temp.amount += amount;
                         if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
                             temp.onRemove();
-                            if (i < 4) {
+                            if (i < 3) {
                                 this.status[i] = null;
-                                System.arraycopy(this.status, i + 1, this.status, i, 4 - i);
+                                System.arraycopy(this.status, i + 1, this.status, i, 3 - i);
                             }
-                            this.status[4] = null;
+                            this.status[3] = null;
                         }
                     }
                     temp.onApply();
@@ -203,7 +203,7 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         if(!done) {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 4; i++) {
                 if (this.status[i] == null) {
                     this.status[i] = s;
                     s.onApply();
@@ -214,8 +214,8 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         if(!done) {
-            this.status[4].onRemove();
-            System.arraycopy(this.status, 0, this.status, 1, 4);
+            this.status[3].onRemove();
+            System.arraycopy(this.status, 0, this.status, 1, 3);
             this.status[0] = s;
             s.onApply();
             s.flash(this);
@@ -223,12 +223,12 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void removeStatus(String id) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             AbstractStatus s = this.status[i];
             if (s != null && s.id.equals(id)) {
                 s.onRemove();
                 this.status[i] = null;
-                if (i < 4) System.arraycopy(this.status, i + 1, this.status, i, 4 - i);
+                if (i < 3) System.arraycopy(this.status, i + 1, this.status, i, 3 - i);
                 break;
             }
         }
@@ -447,6 +447,15 @@ public abstract class AbstractEntity implements Cloneable {
         img = i;
         imgBig = ib;
         this.bg = bg;
+    }
+
+    @Override
+    public AbstractEntity clone() {
+        try {
+            return (AbstractEntity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static class DamageInfo {

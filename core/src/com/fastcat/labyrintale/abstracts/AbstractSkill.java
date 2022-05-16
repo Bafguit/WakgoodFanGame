@@ -14,6 +14,8 @@ import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
 
+import java.io.Serializable;
+
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;

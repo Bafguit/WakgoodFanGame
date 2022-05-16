@@ -29,7 +29,7 @@ public class DieEffect extends AbstractEffect {
             if (isDone) {
                 actor.isDead = true;
                 actor.isDie = false;
-                actor.status = new AbstractStatus[5];
+                actor.status = new AbstractStatus[4];
             }
         }
     }

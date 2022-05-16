@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
@@ -9,15 +11,14 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AbstractLabyrinth {
 
-    public static HashMap<AbstractPlayer, Array<AbstractSkill>> skillList;
+    public static ActionHandler actionHandler;
 
-    public static long seed0;
-    public static long seed1;
     public static String seed;
     public static RandomXS128 publicRandom;
     public static RandomXS128 skillRandom;
@@ -27,7 +28,6 @@ public class AbstractLabyrinth {
     public static RandomXS128 monsterRandom;
     public static RandomXS128 eventRandom;
     public static RandomXS128 shopRandom;
-    public static ActionHandler actionHandler;
     public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
@@ -38,6 +38,8 @@ public class AbstractLabyrinth {
     public static int maxEnergy;
     public static int energy;
     public static int gold;
+
+
 
     public AbstractLabyrinth() {
         this(RunType.NEW);

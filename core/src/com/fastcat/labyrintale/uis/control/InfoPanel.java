@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;

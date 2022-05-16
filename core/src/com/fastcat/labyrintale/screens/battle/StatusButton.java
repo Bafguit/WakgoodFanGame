@@ -18,12 +18,12 @@ import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class StatusButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER");
+    private final Sprite border = FileHandler.ui.get("BORDER_SS");
     public AbstractStatus status;
 
     public StatusButton(AbstractStatus s) {
         super(FileHandler.ui.get("BORDER_SS"));
-        fontData = new FontHandler.FontData(MEDIUM, 21, true);
+        fontData = new FontHandler.FontData(MEDIUM, 24, true);
         status = s;
         overable = true;
         clickable = false;
@@ -32,15 +32,13 @@ public class StatusButton extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if (!over) sb.setColor(Color.LIGHT_GRAY);
-            else sb.setColor(Color.WHITE);
+            sb.setColor(Color.WHITE);
 
             if(status != null) {
                 sb.draw(status.img, x, y, sWidth, sHeight);
                 if(status.hasAmount) renderKeywordCenter(sb, fontData, valueColor() + status.amount, x, y + sHeight / 2, sWidth, sHeight);
                 sb.draw(border, x, y, sWidth, sHeight);
             }
-            sb.setColor(Color.WHITE);
         }
     }
 

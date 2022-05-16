@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
+import java.io.Serializable;
+
 public class AbstractWay {
     public Sprite img = FileHandler.charImg.get(AbstractPlayer.PlayerClass.BURGER);
     public Sprite imgBig = FileHandler.charImgBig.get(AbstractPlayer.PlayerClass.BURGER);

@@ -9,9 +9,6 @@ import com.fastcat.labyrintale.skills.enemy.BarrierE;
 import com.fastcat.labyrintale.skills.enemy.FuryE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_ATLAS;
-import static com.fastcat.labyrintale.handlers.FileHandler.NEKO_JSON;
-
 public class WeakEnemy1 extends AbstractEnemy {
 
     private static final String ID = "WeakEnemy1";

@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.EventString;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class AbstractEvent {

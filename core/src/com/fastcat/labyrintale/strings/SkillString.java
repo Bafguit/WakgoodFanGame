@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.strings;
 import com.badlogic.gdx.utils.JsonValue;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 public class SkillString {

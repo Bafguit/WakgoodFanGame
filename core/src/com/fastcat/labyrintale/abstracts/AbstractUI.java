@@ -16,6 +16,8 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
+import java.io.Serializable;
+
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.generate;

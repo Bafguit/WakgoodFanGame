@@ -2,6 +2,8 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.io.Serializable;
+
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractRoom implements Cloneable {

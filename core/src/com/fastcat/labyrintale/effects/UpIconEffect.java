@@ -11,27 +11,25 @@ public class UpIconEffect extends AbstractEffect {
 
     private final Sprite img;
     private float alpha = 0.7f;
-    private float sc = 1.0f;
-    private final float x, y, rw, rh;
+    private float x, y, rw, rh;
 
     public UpIconEffect(float x, float y, Sprite img) {
         super(x, y, 1);
         this.img = img;
-        rw = 80 * scale;
-        rh = 80 * scale;
-        this.x = x;
-        this.y = y;
-        this.img.setBounds(x - 40 * scale, y - 40 * scale, rw, rh);
+        rw = 100 * scale;
+        rh = 100 * scale;
+        this.x = x - 50 * scale;
+        this.y = y - 50 * scale;
+        this.img.setBounds(x, y, rw, rh);
     }
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        if(duration != baseDuration) {
-            alpha -= Gdx.graphics.getDeltaTime() * 0.7f;
-            sc -= Gdx.graphics.getDeltaTime() * 0.5f;
+        y += Gdx.graphics.getDeltaTime() * 100;
+        img.setPosition(x, y);
+        if(duration <= 0.5f) {
+            alpha -= Gdx.graphics.getDeltaTime() * 2f;
             if(alpha < 0) alpha = 0;
-            img.setBounds(x - rw * 0.5f * sc, img.getY() + Gdx.graphics.getDeltaTime() * 100,
-                    rw * sc, rh * sc);
         }
         img.draw(sb, alpha);
     }

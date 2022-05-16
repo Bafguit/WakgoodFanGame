@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
+import java.io.Serializable;
+
 public abstract class AbstractRestriction {
 
     public static final int LEVEL_SUPPORT = 0;

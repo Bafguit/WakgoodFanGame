@@ -7,6 +7,8 @@ import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ChoiceString;
 import org.graalvm.compiler.loop.MathUtil;
 
+import java.io.Serializable;
+
 public class AbstractChoice {
 
     public ChoiceString.ChoiceData data;

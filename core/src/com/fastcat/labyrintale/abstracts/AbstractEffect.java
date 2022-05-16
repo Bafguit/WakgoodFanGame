@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 
+import java.io.Serializable;
+
 public abstract class AbstractEffect implements Disposable {
 
     public float baseDuration;

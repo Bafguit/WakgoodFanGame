@@ -40,11 +40,6 @@ public class FileHandler implements Disposable {
     public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
     public static final JsonValue CARD_JSON_ENEMY = generateJson("json/skill/enemyCards.json");
 
-    //스파인 atlas
-    public static final TextureAtlas NEKO_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
-    public static final TextureAtlas BURGER_ATLAS = new TextureAtlas("spine/burger/skeleton.atlas");
-    public static final TextureAtlas INE_ATLAS = new TextureAtlas("spine/ine/skeleton.atlas");
-
     //관리
     private static final HashMap<String, HashMap> maps = new HashMap<>();
     public static final HashMap<String, Sprite> bg = new HashMap<>();
@@ -53,11 +48,6 @@ public class FileHandler implements Disposable {
 
     public static final HashMap<String, FileHandle> skeleton = new HashMap<>();
     public static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
-
-    //스파인 json
-    public static final FileHandle NEKO_JSON = Gdx.files.internal("spine/burger/skeleton.json");
-    public static final FileHandle BURGER_JSON = Gdx.files.internal("spine/burger/skeleton.json");
-    public static final FileHandle INE_JSON = Gdx.files.internal("spine/ine/skeleton.json");
 
     //캐릭터
     public static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
