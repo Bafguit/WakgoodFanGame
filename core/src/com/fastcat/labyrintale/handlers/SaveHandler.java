@@ -63,7 +63,11 @@ public class SaveHandler {
     }
 
     public static void load() {
-
+        try {
+            data = mapper.readValue(saveFile.file(), SaveData.class);
+        } catch (IOException e) {
+            System.err.println("Failed to load!");
+        }
     }
 
     public static class SaveData {
@@ -185,7 +189,7 @@ public class SaveHandler {
     public static class EntityData {
         public String id;
         public String[] item = new String[2];
-        public Array<SkillData> deck = new Array<>();
+        public SkillData[] deck;
         public boolean isDead;
         public int index;
         public int maxHealth;
@@ -197,8 +201,11 @@ public class SaveHandler {
                 AbstractItem t = e.item[i];
                 item[i] = t != null ? t.id : null;
             }
-            for(AbstractSkill s : e.deck) {
-                deck.add(new SkillData(s));
+            AbstractSkill[] temp = e.deck.toArray(AbstractSkill.class);
+            int l = temp.length;
+            deck = new SkillData[l];
+            for(int i = 0; i < l; i++) {
+                deck[i] = new SkillData(temp[i]);
             }
             isDead = e.isDead;
             index = e.index;
