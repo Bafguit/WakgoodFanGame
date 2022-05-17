@@ -31,8 +31,5 @@ public class InputHandler {
         isCursorInScreen = gx < sw && gx > 0 && gy < sh && gy > 0;
         mx = Math.max(Math.min(gx, sw), 0);
         my = sh - Math.max(Math.min(gy, sh), 0);
-        if(Gdx.input.isButtonJustPressed(Input.Buttons.RIGHT)) {
-            SaveHandler.finish();
-        }
     }
 }

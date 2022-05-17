@@ -15,7 +15,7 @@ public class Protect extends AbstractSkill {
 
     public Protect(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override

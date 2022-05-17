@@ -33,13 +33,11 @@ public abstract class AbstractSkill implements Cloneable {
     public String name;
     public String desc;
     public boolean upgraded = false;
-    public boolean removable = true;
     public boolean usedOnce = false;
     public boolean usedOnly = false;
     public boolean passive = false;
     public boolean disposable = false;
     public boolean isTrick = false;
-    public float uid;
     public int upgradeCount = 0;
     public int attack = -1;
     public int baseAttack = -1;
@@ -54,7 +52,6 @@ public abstract class AbstractSkill implements Cloneable {
     public int cooldown = 0;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
-        uid = getUid();
         this.owner = owner;
         this.id = id;
         this.img = skillImg.get(this.id);

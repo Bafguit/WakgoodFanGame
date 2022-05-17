@@ -149,6 +149,8 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = enemies[i];
             ev.isLooking = looking.contains(ev.enemy,  false);
             ev.update();
+            pShield[i].e = pv.player;
+            eShield[i].e = ev.enemy;
         }
     }
 
@@ -217,7 +219,11 @@ public class BattleScreen extends AbstractScreen {
             if(!te.enemy.isDead) {
                 renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, ex, ey + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
             }
+
+            ShieldIcon ps = pShield[i];
+            pShield[i].setPosition(px - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
             pShield[i].render(sb);
+            eShield[i].setPosition(ex - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
             eShield[i].render(sb);
         }
         for(int i = 0; i < 4; i++) {

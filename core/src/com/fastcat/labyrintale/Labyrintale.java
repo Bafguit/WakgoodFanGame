@@ -60,7 +60,6 @@ public class Labyrintale extends Game {
 	private static Sprite fadeTex;
 	private static float alphaCount = 1.0f;
 	private static float alphaDex = 1.0f;
-	private static int uidCount = 0;
 
 	private InputHandler inputHandler;
 	private FontHandler fontHandler;
@@ -191,10 +190,6 @@ public class Labyrintale extends Game {
 		alphaDex = sec;
 		fading = true;
 		fadeIn = false;
-	}
-
-	public static int getUid() {
-		return ++uidCount;
 	}
 
 	public static AbstractScreen getCurScreen() {

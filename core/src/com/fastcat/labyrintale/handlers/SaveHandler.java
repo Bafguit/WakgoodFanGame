@@ -25,8 +25,9 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 public class SaveHandler {
 
-    protected static final String[] randomKey = new String[] {"public", "skill", "item", "relic", "map", "monster", "event", "shop"};
-    public static File saveFile = new File("save.json");
+    private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
+    public static FileHandle saveFile = Gdx.files.local("save.json");
     public static SaveData data;
     public static boolean hasSave;
 
@@ -40,9 +41,8 @@ public class SaveHandler {
 
     public static void save() {
         data = new SaveData();
-        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(saveFile, data);
+            mapper.writeValue(new File("save.json"), data);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,15 +54,9 @@ public class SaveHandler {
             saveFile.delete();
         }
 
-        Date now = new Date();
-        System.out.println(now);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-        String formatted = formatter.format(now);
-
         data = new SaveData();
-        ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            objectMapper.writeValue(new File("save_" + formatted + ".json"), data);
+            mapper.writeValue(new File("save_" + data.date + ".json"), data);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,19 +67,23 @@ public class SaveHandler {
     }
 
     public static class SaveData {
+        public String date;
         public RandomData random;
-        public FloorData[] floors = new FloorData[4];
-        public EntityData[] players = new EntityData[4];
-        public AdvisorData advisor;
-        public int currentFloor;
-        public int uidCount;
         public int itemAble;
         public int selection;
         public int maxEnergy;
         public int energy;
         public int gold;
+        public AdvisorData advisor;
+        public EntityData[] players = new EntityData[4];
+        public int currentFloor;
+        public FloorData[] floors = new FloorData[4];
 
         public SaveData() {
+            Date now = new Date();
+            System.out.println(now);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+            date = formatter.format(now);
             random = new RandomData();
             for(int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];
@@ -96,7 +94,6 @@ public class SaveHandler {
                 players[i] = new EntityData(AbstractLabyrinth.players[i]);
             }
             advisor = new AdvisorData(AbstractLabyrinth.advisor);
-            uidCount = Labyrintale.getUid() - 1;
             itemAble = AbstractLabyrinth.itemAble;
             selection = AbstractLabyrinth.selection;
             maxEnergy = AbstractLabyrinth.maxEnergy;
@@ -189,12 +186,10 @@ public class SaveHandler {
         public String id;
         public String[] item = new String[2];
         public Array<SkillData> deck = new Array<>();
-        public boolean isPlayer;
         public boolean isDead;
         public int index;
         public int maxHealth;
         public int health;
-        public int block;
 
         public EntityData(AbstractEntity e) {
             id = e.id;
@@ -205,12 +200,10 @@ public class SaveHandler {
             for(AbstractSkill s : e.deck) {
                 deck.add(new SkillData(s));
             }
-            isPlayer = e.isPlayer;
             isDead = e.isDead;
             index = e.index;
             maxHealth = e.maxHealth;
             health = e.health;
-            block = e.block;
         }
     }
 
@@ -226,39 +219,13 @@ public class SaveHandler {
 
     public static class SkillData {
         public String id;
-        public boolean upgraded;
-        public boolean removable;
-        public boolean usedOnce;
         public boolean usedOnly;
-        public boolean passive;
-        public boolean disposable;
-        public boolean isTrick;
         public int upgradeCount;
-        public int attack;
-        public int upAttack;
-        public int spell;
-        public int upSpell;
-        public int value;
-        public int upValue;
-        public int cooltime;
 
         public SkillData(AbstractSkill s) {
             id = s.id;
-            upgraded = s.upgraded;
-            removable = s.removable;
-            usedOnce = s.usedOnce;
             usedOnly = s.usedOnly;
-            passive = s.passive;
-            disposable = s.disposable;
-            isTrick = s.isTrick;
             upgradeCount = s.upgradeCount;
-            attack = s.baseAttack;
-            upAttack = s.upAttack;
-            spell = s.baseSpell;
-            upSpell = s.upSpell;
-            value = s.baseValue;
-            upValue = s.upValue;
-            cooltime = s.cooltime;
         }
     }
 }
