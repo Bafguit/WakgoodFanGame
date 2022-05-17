@@ -21,7 +21,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     protected boolean isRandom = true;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
-        super(id, EntityType.ENEMY, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);
+        super(id, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);
         this.type = type;
         //skeleton.setScaleX(-skeleton.getScaleX());
         drawPile = new Array<>();

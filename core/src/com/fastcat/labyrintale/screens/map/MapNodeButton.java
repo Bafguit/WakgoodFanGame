@@ -59,7 +59,6 @@ public class MapNodeButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(!way.isDone && canGo && !mapScreen.isView) {
-            currentFloor.currentRoom = currentFloor.rooms[currentFloor.num];
             currentFloor.currentWay = way;
             addTempScreen(new WayScreen());
         }

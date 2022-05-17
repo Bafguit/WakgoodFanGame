@@ -53,6 +53,9 @@ public class EventChoiceButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(clickable) choice.select();
+        if(clickable) {
+            choice.select();
+            Labyrintale.eventScreen.event.onChoose();
+        }
     }
 }

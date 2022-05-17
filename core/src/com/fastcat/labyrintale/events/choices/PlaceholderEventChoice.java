@@ -10,8 +10,8 @@ import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
 public class PlaceholderEventChoice extends AbstractEvent.EventChoice {
 
-    public PlaceholderEventChoice(AbstractEvent e, String t) {
-        super(e, t);
+    public PlaceholderEventChoice(String t) {
+        super(t);
     }
 
     @Override

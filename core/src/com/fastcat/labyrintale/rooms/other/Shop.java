@@ -23,7 +23,7 @@ public class Shop extends AbstractRoom {
     public RollItem roll;
 
     public Shop() {
-        super(RoomType.SHOP);
+        super("shop", RoomType.SHOP);
         roll = new RollItem(this);
         generateSkills();
         generateItems();

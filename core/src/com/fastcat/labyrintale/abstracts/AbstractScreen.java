@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public abstract class AbstractScreen implements Screen {
 
-    public final Labyrintale game = Labyrintale.game;
     public final EffectHandler effectHandler = new EffectHandler();
     public ControlPanel.ControlType cType = ControlPanel.ControlType.HIDE;
     private Sprite bg;
@@ -22,9 +21,9 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public final void render(float delta) {
-        if(bg != null) bg.draw(game.sb);
-        render(game.sb);
-        effectHandler.render(game.sb);
+        if(bg != null) bg.draw(Labyrintale.game.sb);
+        render(Labyrintale.game.sb);
+        effectHandler.render(Labyrintale.game.sb);
     }
 
     public final void setBg(Sprite s) {

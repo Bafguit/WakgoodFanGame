@@ -14,7 +14,6 @@ public class AbstractChoice {
     public ChoiceString.ChoiceData data;
     public ChoiceType type;
     public AbstractRoom room;
-    public String id;
     public String name;
     public String desc;
     public String[] rawDesc;
@@ -22,14 +21,17 @@ public class AbstractChoice {
     public int prob;
     public boolean must = false;
 
+    public AbstractChoice(ChoiceString.ChoiceData data) {
+
+    }
+
     public AbstractChoice(AbstractRoom r, ChoiceType t, boolean m) {
         this(r, t, 1);
         must = m;
     }
 
     public AbstractChoice(AbstractRoom r, ChoiceType t, int p) {
-        id = t.toString().toLowerCase();
-        data = StringHandler.choiceString.get(id);
+        data = StringHandler.choiceString.get(t.toString().toLowerCase());
         name = data.NAME;
         rawDesc = data.DESC;
         room = r;

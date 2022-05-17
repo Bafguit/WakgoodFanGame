@@ -12,8 +12,8 @@ import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
 public class SkillRewardEventChoice extends AbstractEvent.EventChoice {
 
-    public SkillRewardEventChoice(AbstractEvent e, String t) {
-        super(e, t);
+    public SkillRewardEventChoice(String t) {
+        super(t);
     }
 
     @Override

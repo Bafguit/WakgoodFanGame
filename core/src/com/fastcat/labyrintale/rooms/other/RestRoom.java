@@ -4,6 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 
 public class RestRoom extends AbstractRoom {
     public RestRoom() {
-        super(RoomType.REST);
+        super("rest", RoomType.REST);
     }
 }

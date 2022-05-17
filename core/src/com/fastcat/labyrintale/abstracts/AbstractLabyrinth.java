@@ -160,7 +160,7 @@ public class AbstractLabyrinth {
         }
     }
 
-    private static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
+    public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
         switch (cls) {
             default:
                 return new TestAdvisor();

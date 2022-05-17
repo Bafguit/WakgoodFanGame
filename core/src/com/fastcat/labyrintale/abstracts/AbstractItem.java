@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ItemString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 

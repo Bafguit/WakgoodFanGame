@@ -14,8 +14,8 @@ public class HealEventChoice extends AbstractEvent.EventChoice {
     private final AbstractEntity[] target;
     private final int amount;
 
-    public HealEventChoice(AbstractEvent e, String t, AbstractEntity[] target, int amount) {
-        super(e, t);
+    public HealEventChoice(String t, AbstractEntity[] target, int amount) {
+        super(t);
         this.target = target;
         this.amount = amount;
     }

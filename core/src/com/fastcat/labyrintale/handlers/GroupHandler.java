@@ -406,7 +406,7 @@ public class GroupHandler {
             //Bronze
             t.add(new DiaSword(null));
             t.add(new ChainMail(null));
-            t.add(new Test63(null));
+            t.add(new Overpower(null));
             //Silver
             t.add(new Test64(null));
             t.add(new Test65(null));

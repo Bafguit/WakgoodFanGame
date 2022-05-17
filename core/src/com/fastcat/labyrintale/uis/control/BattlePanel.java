@@ -21,17 +21,17 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class BattlePanel implements Disposable {
 
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
+    private static final FontHandler.FontData fontHp = COOLDOWN;
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-    private final FontHandler.FontData fontHp = COOLDOWN;
+    public static ShapeRenderer shr = new ShapeRenderer();
+    public static EnergyPanel energy = new EnergyPanel();
 
     public SkillButtonPanel[] skill = new SkillButtonPanel[4];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
     public ItemPanel[] item = new ItemPanel[2];
-    public EnergyPanel energy;
     public AbstractPlayer curPlayer;
     public PlayerBigIcon cpIcon;
-    public ShapeRenderer shr = new ShapeRenderer();
     public float rx, ry, ex, ey;
 
     public BattlePanel() {
@@ -52,7 +52,6 @@ public class BattlePanel implements Disposable {
         }
         cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.13f - cpIcon.sWidth / 2,h * 0.22f - cpIcon.sHeight / 2);
-        energy = new EnergyPanel();
         energy.setPosition(w * 0.23f - energy.sWidth / 2,h * 0.32f);
         rx = 440 * scale;
         ry = h * 0.075f;

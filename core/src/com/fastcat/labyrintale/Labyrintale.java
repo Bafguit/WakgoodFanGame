@@ -43,8 +43,7 @@ public class Labyrintale extends Game {
 
 	public static AbstractLabyrinth labyrinth;
 
-	public Array<Screen> tempScreen = new Array<>();
-	public Screen preScreen = null;
+	public Array<AbstractScreen> tempScreen = new Array<>();
 	public static MainMenuScreen mainMenuScreen;
 	public static CharSelectScreen charSelectScreen;
 	public static AdvisorSelectScreen advisorSelectScreen;
@@ -52,7 +51,7 @@ public class Labyrintale extends Game {
 	public static BattleScreen battleScreen;
 	public static CharInfoScreen charInfoScreen;
 	public static RestScreen restScreen;
-	public static DeckViewScreen deckViewScreen;
+	public static DeckViewScreen deckViewScreen; //TODO 삭제 예정
 	public static EventScreen eventScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
@@ -199,7 +198,7 @@ public class Labyrintale extends Game {
 	}
 
 	public static AbstractScreen getCurScreen() {
-		if(game.tempScreen.size > 0) return (AbstractScreen) game.tempScreen.get(game.tempScreen.size - 1);
+		if(game.tempScreen.size > 0) return game.tempScreen.get(game.tempScreen.size - 1);
 		else return (AbstractScreen) game.screen;
 	}
 
@@ -234,52 +233,20 @@ public class Labyrintale extends Game {
 		}
 	}
 
-	public static void addTempScreen (Screen screen) {
+	public static void addTempScreen (AbstractScreen screen) {
 		game.tempScreen.add(screen);
 	}
 
 	public static void removeTempScreen (Screen screen) {
 		for(int i = 0; i < game.tempScreen.size; i++) {
-			Screen s = game.tempScreen.get(i);
+			AbstractScreen s = game.tempScreen.get(i);
 			if(s == screen) {
 				s.hide();
 				s.dispose();
-				if (s instanceof AbstractScreen) {
-					((AbstractScreen) s).effectHandler.removeAll();
-				}
+				s.effectHandler.removeAll();
 				game.tempScreen.removeIndex(i);
 				break;
 			}
-		}
-	}
-
-	public static void setTempScreen(Screen screen) {
-		if (game.screen != null) {
-			game.preScreen = game.screen;
-			if (game.screen instanceof AbstractScreen) {
-				((AbstractScreen) game.screen).effectHandler.removeAll();
-			}
-		}
-
-		game.screen = screen;
-		if (game.screen != null) {
-			game.screen.show();
-			game.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		}
-	}
-
-	public static void closeTempScreen() {
-		if (game.screen != null) {
-			game.screen.hide();
-			if (game.screen instanceof AbstractScreen) {
-				((AbstractScreen) game.screen).effectHandler.removeAll();
-			}
-		}
-
-		game.screen = game.preScreen;
-		if (game.screen != null) {
-			game.screen.show();
-			game.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		}
 	}
 	

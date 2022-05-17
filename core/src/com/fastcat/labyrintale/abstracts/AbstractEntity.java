@@ -20,6 +20,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
 
@@ -51,7 +52,6 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mRightTemp;
     public AbstractStatus[] status = new AbstractStatus[4];
     public AbstractItem[] item = new AbstractItem[2];
-    public EntityType entityType;
     public String id;
     public String name;
     public String desc;
@@ -68,13 +68,12 @@ public abstract class AbstractEntity implements Cloneable {
     public Sprite imgBig;
     public Sprite bg;
 
-    public AbstractEntity(String id, EntityType type, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel, boolean player) {
+    public AbstractEntity(String id, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel, boolean player) {
         this.id = id;
         isPlayer = player;
         handSize = hand;
         /** 여기에 json 받아오는거 입력 */
         /** 여기에 아틀라스 이미지 불러오는거 입력 */
-        entityType = type;
         this.maxHealth = maxHealth;
         this.health = this.maxHealth;
         deck = getStartingDeck();
@@ -519,10 +518,6 @@ public abstract class AbstractEntity implements Cloneable {
             e.setTrackTime(MathUtils.random(0.0f, 1.0f));
             e.setTimeScale(1.0f);
         }
-    }
-    
-    public enum EntityType {
-        PLAYER, ENEMY
     }
     
     public enum DamageType {

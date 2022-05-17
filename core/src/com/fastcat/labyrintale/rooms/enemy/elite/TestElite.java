@@ -9,10 +9,11 @@ import com.fastcat.labyrintale.enemies.TestEnemy2;
 public class TestElite extends AbstractRoom {
 
     public TestElite() {
-        super(getEnemies(), 1);
+        super("TestElite", RoomType.ELITE);
     }
 
-    private static AbstractEnemy[] getEnemies() {
+    @Override
+    protected AbstractEnemy[] getEnemies() {
         return new AbstractEnemy[] {new EnemyPlaceholder(), new EnemyPlaceholder(), new TestEnemy2(), new TestEnemy() };
     }
 }

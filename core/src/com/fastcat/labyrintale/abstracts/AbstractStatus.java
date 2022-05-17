@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.StatusString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 public abstract class AbstractStatus implements Cloneable {
@@ -20,7 +21,6 @@ public abstract class AbstractStatus implements Cloneable {
     public StatusType type;
     public StatusString.StatusData data;
     public AbstractSkill.SkillTarget target;
-    public AbstractEntity source;
     public AbstractEntity owner;
     public boolean hasAmount = false;
     public boolean canGoNegative = false;

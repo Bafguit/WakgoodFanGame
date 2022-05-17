@@ -30,23 +30,20 @@ public abstract class AbstractEvent {
 
     }
 
-    protected void onChoose() {
+    public void onChoose() {
 
     }
 
     public static abstract class EventChoice {
         public String text;
-        public AbstractEvent event;
         public boolean isUsed = false;
 
-        public EventChoice(AbstractEvent event, String text) {
+        public EventChoice(String text) {
             this.text = text;
-            this.event = event;
         }
 
         public final void select() {
             onSelect();
-            event.onChoose();
             isUsed = true;
         }
 

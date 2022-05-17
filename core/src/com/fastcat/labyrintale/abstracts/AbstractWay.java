@@ -3,17 +3,21 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SaveHandler;
 
 import java.io.Serializable;
 
 public class AbstractWay {
     public Sprite img = FileHandler.charImg.get(AbstractPlayer.PlayerClass.BURGER);
-    public Sprite imgBig = FileHandler.charImgBig.get(AbstractPlayer.PlayerClass.BURGER);
     public String name = "테스트";
     public String desc = "테스트 설명";
     public WayType type;
     public AbstractChoice[] choices;
     public boolean isDone = false;
+
+    public AbstractWay(SaveHandler.WayData data) {
+
+    }
 
     public AbstractWay(AbstractChoice c, WayType t) {
         choices = new AbstractChoice[1];

@@ -65,6 +65,7 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.esotericsoftware.spine:spine-libgdx:$spineVersion"
         api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:1.0.2"
+        api "com.fasterxml.jackson.core:jackson-databind:2.13.3"
         
     }
 }

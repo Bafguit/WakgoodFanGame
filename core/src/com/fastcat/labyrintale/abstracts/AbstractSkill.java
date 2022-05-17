@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 
@@ -23,7 +24,6 @@ import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 public abstract class AbstractSkill implements Cloneable {
 
     public Sprite img;
-    public Sprite imgBig;
     public SkillString.SkillData skillData;
     public AbstractEntity owner;
     public final SkillRarity rarity;
@@ -37,7 +37,6 @@ public abstract class AbstractSkill implements Cloneable {
     public boolean usedOnce = false;
     public boolean usedOnly = false;
     public boolean passive = false;
-
     public boolean disposable = false;
     public boolean isTrick = false;
     public float uid;

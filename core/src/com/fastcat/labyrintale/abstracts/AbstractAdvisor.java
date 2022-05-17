@@ -9,7 +9,6 @@ public abstract class AbstractAdvisor {
 
     public AdvisorClass cls;
     public AbstractSkill skill;
-    public boolean used = false;
 
     public AbstractAdvisor(AdvisorClass cls, AbstractSkill skill) {
         this.cls = cls;

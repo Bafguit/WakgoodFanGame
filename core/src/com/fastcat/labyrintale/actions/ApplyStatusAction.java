@@ -9,7 +9,6 @@ public class ApplyStatusAction extends AbstractAction {
     public ApplyStatusAction(AbstractStatus status, AbstractEntity actor, AbstractSkill.SkillTarget target, boolean fast) {
         super(actor, target, fast ? 0.25f : DUR_DEFAULT);
         this.status = status;
-        this.status.source = this.actor;
     }
 
     @Override

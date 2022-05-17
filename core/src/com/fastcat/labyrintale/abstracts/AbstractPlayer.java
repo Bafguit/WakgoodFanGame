@@ -24,7 +24,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public String[] flav;
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
-        super(id, EntityType.PLAYER, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
+        super(id, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
         this.playerClass = PlayerClass.valueOf(id.toUpperCase());
         CharString.CharData temp = StringHandler.charString.get(id);
         name = temp.NAME;

@@ -8,10 +8,11 @@ import com.fastcat.labyrintale.enemies.WeakEnemy1;
 public class Weak1 extends AbstractRoom {
 
     public Weak1() {
-        super(getEnemies(), 0);
+        super("Weak1", RoomType.BATTLE);
     }
 
-    private static AbstractEnemy[] getEnemies() {
+    @Override
+    protected AbstractEnemy[] getEnemies() {
         return new AbstractEnemy[] { new EnemyPlaceholder(), new WeakEnemy1(), new WeakEnemy1(), new WeakEnemy1() };
     }
 }
