@@ -31,7 +31,7 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        AbstractLabyrinth.currentFloor.currentRoom.rewardDone = true;
+        AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
         Labyrintale.mapScreen.isView = false;
         SaveHandler.save();
         Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);

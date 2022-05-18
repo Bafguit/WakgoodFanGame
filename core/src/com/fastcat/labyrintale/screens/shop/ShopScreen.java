@@ -2,10 +2,9 @@ package com.fastcat.labyrintale.screens.shop;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.rooms.other.Shop;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
@@ -18,8 +17,8 @@ public class ShopScreen extends AbstractScreen {
     public ShopScreen() {
         AbstractRoom room = currentFloor.currentRoom;
         int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        if(room instanceof Shop) {
-            Shop shop = (Shop) room;
+        if(room instanceof ShopRoom) {
+            ShopRoom shop = (ShopRoom) room;
             for(int i = 0; i < 6; i++) {
                 ShopItemButton b = new ShopItemButton(shop.skills[i]);
                 b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.7f);

@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.PlayerTurnStartAction;
+import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -24,6 +24,7 @@ public class BattleScreen extends AbstractScreen {
     public static final Array<AbstractEntity> DEF_LOOK = new Array<>();
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
+
 
     public Sprite shield = FileHandler.ui.get("SHIELD");
     public ShapeRenderer shr = new ShapeRenderer();
@@ -39,9 +40,12 @@ public class BattleScreen extends AbstractScreen {
     public float w, h, sw, sh;
 
     public BattleScreen() {
+        this(false);
+    }
+
+    public BattleScreen(boolean isLoad) {
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
-        //SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
         AbstractLabyrinth.prepare();
         setBg(bg.get("BG_BATTLE"));
         w = Gdx.graphics.getWidth();
@@ -61,6 +65,11 @@ public class BattleScreen extends AbstractScreen {
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
             ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.575f);
             ev.enemy.newDeck();
+            if(isLoad) {
+                ev.enemy.isRandom = false;
+                ev.enemy.isDead = true;
+                ev.enemy.isDie = true;
+            }
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;
             enemies[i] = ev;
@@ -97,7 +106,12 @@ public class BattleScreen extends AbstractScreen {
                 break;
             }
         }
-        ActionHandler.bot(new PlayerTurnStartAction(true));
+        if(isLoad) {
+            ActionHandler.top(new VictoryAction(0));
+        } else {
+            //SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
+            ActionHandler.bot(new PlayerTurnStartAction(true));
+        }
     }
 
     @Override

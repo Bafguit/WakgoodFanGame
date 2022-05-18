@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.lilpa.Lilpaa;
-import com.fastcat.labyrintale.skills.player.lilpa.Test42;
+import com.fastcat.labyrintale.skills.player.lilpa.FireBall;
 
 import static com.badlogic.gdx.graphics.Color.NAVY;
 
@@ -29,7 +29,7 @@ public class Lilpa extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Lilpaa(this));
-        temp.add(new Test42(this));
+        temp.add(new FireBall(this));
         return temp;
     }
 

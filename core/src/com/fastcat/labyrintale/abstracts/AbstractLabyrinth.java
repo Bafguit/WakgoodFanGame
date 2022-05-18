@@ -6,8 +6,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.advisors.TestAdvisor;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -20,14 +22,15 @@ public class AbstractLabyrinth {
     public static ActionHandler actionHandler;
 
     public static String seed;
-    public static RandomXS128 publicRandom;
-    public static RandomXS128 skillRandom;
-    public static RandomXS128 itemRandom;
-    public static RandomXS128 relicRandom;
-    public static RandomXS128 mapRandom;
-    public static RandomXS128 monsterRandom;
-    public static RandomXS128 eventRandom;
-    public static RandomXS128 shopRandom;
+    public static long seedLong;
+
+    public static RandomXC publicRandom;
+    public static RandomXC skillRandom;
+    public static RandomXC itemRandom;
+    public static RandomXC mapRandom;
+    public static RandomXC monsterRandom;
+    public static RandomXC eventRandom;
+    public static RandomXC shopRandom;
     public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
@@ -39,8 +42,6 @@ public class AbstractLabyrinth {
     public static int energy;
     public static int gold;
 
-
-
     public AbstractLabyrinth() {
         this(RunType.NEW);
     }
@@ -49,22 +50,20 @@ public class AbstractLabyrinth {
         actionHandler = new ActionHandler();
         players = new AbstractPlayer[4];
         if(type == RunType.SAVE) {
-            seed = "Put Save Here";
-            //여기에 세이브 입력
+            SaveHandler.load();
         } else if(type == RunType.CUSTOM) {
             seed = "Put Custom Here";
             //여기에 커스텀 입력
         } else {
             seed = generateRandomSeed();
-            long seedLong = seedToLong(seed);
-            publicRandom = new RandomXS128(seedLong);
-            skillRandom = new RandomXS128(seedLong);
-            itemRandom = new RandomXS128(seedLong);
-            relicRandom = new RandomXS128(seedLong);
-            mapRandom = new RandomXS128(seedLong);
-            monsterRandom = new RandomXS128(seedLong);
-            eventRandom = new RandomXS128(seedLong);
-            shopRandom = new RandomXS128(seedLong);
+            seedLong = seedToLong(seed);
+            publicRandom = new RandomXC(seedLong);
+            skillRandom = new RandomXC(seedLong);
+            itemRandom = new RandomXC(seedLong);
+            mapRandom = new RandomXC(seedLong);
+            monsterRandom = new RandomXC(seedLong);
+            eventRandom = new RandomXC(seedLong);
+            shopRandom = new RandomXC(seedLong);
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
@@ -139,7 +138,7 @@ public class AbstractLabyrinth {
         return Long.parseLong(sb.toString());
     }
 
-    private static AbstractPlayer getPlayerInstance(AbstractPlayer.PlayerClass cls) {
+    public static AbstractPlayer getPlayerInstance(AbstractPlayer.PlayerClass cls) {
         switch (cls) {
             case MANAGER:
                 return new Manager();

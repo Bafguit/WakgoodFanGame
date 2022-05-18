@@ -1,36 +1,29 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
 
-import java.io.Serializable;
-
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.Labyrintale.eventScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
-public abstract class AbstractRoom implements Cloneable {
+public class AbstractRoom implements Cloneable {
 
     public String id;
-    public AbstractEnemy[] enemies = new AbstractEnemy[4];
+    public AbstractEnemy[] enemies;
     public AbstractEvent event;
     public RoomType type;
-    public boolean rewardDone;
+    public boolean battleDone;
     public boolean isDone;
-
-    public AbstractRoom(SaveHandler.RoomData data) {
-
-    }
     
     public AbstractRoom() {
-        this("entry", ENTRY);
+        this("Entry", ENTRY);
     }
-    
+
     public AbstractRoom(AbstractEvent event) {
         this(event.id, EVENT);
         this.event = event;
@@ -44,7 +37,7 @@ public abstract class AbstractRoom implements Cloneable {
         }
         this.type = type;
         this.isDone = false;
-        this.rewardDone = false;
+        this.battleDone = false;
     }
     
     public void update() {
@@ -58,6 +51,7 @@ public abstract class AbstractRoom implements Cloneable {
     }
 
     public final void enter() {
+        entry();
         if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
@@ -68,6 +62,10 @@ public abstract class AbstractRoom implements Cloneable {
             eventScreen = new EventScreen(event);
             fadeOutAndChangeScreen(eventScreen);
         }
+    }
+
+    protected void entry() {
+
     }
 
     protected AbstractEnemy[] getEnemies() {

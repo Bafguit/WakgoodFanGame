@@ -18,7 +18,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public Array<AbstractSkill> drawPile;
     public Array<AbstractSkill> discardPile;
     public Array<AbstractSkill> disposablePile;
-    protected boolean isRandom = true;
+    public boolean isRandom = true;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
         super(id, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);

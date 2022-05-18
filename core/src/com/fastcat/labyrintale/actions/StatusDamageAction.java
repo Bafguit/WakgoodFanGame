@@ -19,12 +19,14 @@ public class StatusDamageAction extends AbstractAction {
     public boolean remove = false;
     public AttackAction.AttackType effect;
     public Sprite eImg;
+    public AbstractEntity e;
 
     public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect) {
-        super(s.owner, 0.5f);
+        super(null, 0.5f);
         status = s;
         this.effect = effect;
         eImg = AttackAction.getEffectImg(effect);
+        e = s.owner;
     }
 
     public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect, boolean reduce, boolean remove) {
@@ -38,7 +40,7 @@ public class StatusDamageAction extends AbstractAction {
         if (duration == baseDuration){
             Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
             if(effect == AttackAction.AttackType.NONE) {
-                status.flash(actor);
+                status.flash(e);
             } else {
                 for (AbstractEntity t : temp) {
                     //TODO 이미지 좌표로 자동입력되게 설정
@@ -46,10 +48,10 @@ public class StatusDamageAction extends AbstractAction {
                 }
             }
             for(AbstractEntity e : temp) {
-                e.takeDamage(new AbstractEntity.DamageInfo(actor, status.amount, AbstractEntity.DamageType.SPIKE));
+                e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
             }
-            if (reduce) actor.applyStatus(status, -1);
-            if (remove) actor.removeStatus(status.id);
+            if (reduce) e.applyStatus(status, -1);
+            if (remove) e.removeStatus(status.id);
         }
     }
 }

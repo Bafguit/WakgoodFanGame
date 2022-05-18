@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 
-public class AbstractItem {
+public class AbstractItem implements Cloneable {
 
     public ItemString.ItemData data;
     public Sprite img;

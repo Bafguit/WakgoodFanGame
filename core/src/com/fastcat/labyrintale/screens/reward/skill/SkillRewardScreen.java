@@ -94,7 +94,7 @@ public class SkillRewardScreen extends AbstractScreen {
                 ss.upgrade();
                 skills[0] = new SkillRewardSkillButton(this, ss);
             } else {
-                toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.publicRandom.nextInt(player.deck.size)), true);
+                toSkill = new SkillRewardSkillButton(this, player.deck.get(AbstractLabyrinth.publicRandom.random(player.deck.size - 1)), true);
                 skills[0] = new SkillRewardSkillButton(this, s.get(0));
                 skills[1] = new SkillRewardSkillButton(this, s.get(1));
             }

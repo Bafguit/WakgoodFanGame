@@ -72,10 +72,12 @@ public class SoundHandler {
 
     public static void fadeOutMusic(String key) {
         MusicData d = music.get(key);
-        d.isFadingOut = true;
-        d.fadeOutStartVolume = d.music.getVolume();
-        d.fadeTimer = 4.0F;
-        fadingMusic.add(d);
+        if(d != null) {
+            d.isFadingOut = true;
+            d.fadeOutStartVolume = d.music.getVolume();
+            d.fadeTimer = 4.0F;
+            fadingMusic.add(d);
+        }
     }
 
     public void update() {

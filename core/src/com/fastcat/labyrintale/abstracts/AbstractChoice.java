@@ -3,11 +3,10 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ChoiceString;
-import org.graalvm.compiler.loop.MathUtil;
-
-import java.io.Serializable;
 
 public class AbstractChoice {
 
@@ -21,8 +20,11 @@ public class AbstractChoice {
     public int prob;
     public boolean must = false;
 
-    public AbstractChoice(ChoiceString.ChoiceData data) {
-
+    public AbstractChoice(SaveHandler.ChoiceData data) {
+        this(GroupHandler.RoomGroup.idSort.get(data.room.id).clone(), ChoiceType.valueOf(data.type), data.prob);
+        must = data.must;
+        room.isDone = data.room.isDone;
+        room.battleDone = data.room.battleDone;
     }
 
     public AbstractChoice(AbstractRoom r, ChoiceType t, boolean m) {
@@ -49,7 +51,7 @@ public class AbstractChoice {
 
     public void must() {
         must = true;
-        desc = rawDesc[AbstractLabyrinth.mapRandom.nextInt(rawDesc.length - 1)];
+        desc = rawDesc[AbstractLabyrinth.mapRandom.random(rawDesc.length - 2)];
     }
 
     public enum ChoiceType {

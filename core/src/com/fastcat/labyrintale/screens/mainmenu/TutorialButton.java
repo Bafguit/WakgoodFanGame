@@ -5,8 +5,10 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.Wakgood;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
+import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
@@ -16,12 +18,13 @@ public class TutorialButton extends AbstractUI {
         super(FileHandler.ui.get("MENU_SELECT"));
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.4f);
         fontData = MAIN_MENU;
-        text = "튜토리얼";
+        text = "불러오기";
         showImg = false;
     }
 
     @Override
     protected void updateButton() {
+        clickable = SaveHandler.hasSave;
         if(!over && showImg) showImg = false;
     }
 
@@ -32,7 +35,6 @@ public class TutorialButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        AbstractPlayer t = new Wakgood();
-        Labyrintale.addTempScreen(new DeckViewScreen(t, DeckViewScreen.ViewType.NORMAL));
+        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(false));
     }
 }

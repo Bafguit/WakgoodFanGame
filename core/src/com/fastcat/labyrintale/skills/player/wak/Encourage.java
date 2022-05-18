@@ -13,7 +13,7 @@ public class Encourage extends AbstractSkill {
     private static final String ID = "Encourage";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.S_B;
+    private static final SkillTarget TARGET = SkillTarget.SS_B;
     private static final int VALUE = 2;
 
     public Encourage(AbstractEntity e) {

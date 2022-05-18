@@ -32,9 +32,7 @@ public class MapNodeButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over) {
-            cPanel.infoPanel.setInfo(way.name, way.desc);
-        }
+
     }
 
     public void render(SpriteBatch sb) {

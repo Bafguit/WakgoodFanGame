@@ -6,15 +6,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.rooms.other.Shop;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
 
 
 public class ShopItemButton extends AbstractUI {
 
     private final Sprite border = FileHandler.ui.get("BORDER_M");
-    public Shop.ShopItem item;
+    public ShopRoom.ShopItem item;
 
-    public ShopItemButton(Shop.ShopItem re) {
+    public ShopItemButton(ShopRoom.ShopItem re) {
         super(re.img);
         item = re;
     }

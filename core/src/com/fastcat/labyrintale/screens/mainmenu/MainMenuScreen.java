@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.SaveHandler;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 
@@ -54,6 +55,7 @@ public class MainMenuScreen extends AbstractScreen {
         tutorialButton.onHide();
         optionButton.onHide();
         exitButton.onHide();
+        SaveHandler.refresh();
     }
 
     @Override

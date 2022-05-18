@@ -2,13 +2,24 @@ package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.enemies.TestEnemy;
 import com.fastcat.labyrintale.enemies.TestEnemy2;
+import com.fastcat.labyrintale.events.TestEvent;
+import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.starter.*;
+import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
+import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
+import com.fastcat.labyrintale.rooms.other.EntryRoom;
+import com.fastcat.labyrintale.rooms.other.RestRoom;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
+import com.fastcat.labyrintale.skills.player.basic.Barrier;
+import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.burger.*;
 import com.fastcat.labyrintale.skills.player.gosegu.*;
 import com.fastcat.labyrintale.skills.player.ine.*;
@@ -26,48 +37,35 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
 
 public class GroupHandler {
 
-    private static final AbstractEnemy[] TEST =
-            new AbstractEnemy[] {new TestEnemy(), new TestEnemy2(), new TestEnemy2(), new TestEnemy()};
-
-    public static HashMap<String, AbstractFloor> floorGroup = new HashMap<>();
-    public static HashMap<String, AbstractEvent> eventGroup = new HashMap<>();
-    public static HashMap<String, AbstractStatus> statusGroup = new HashMap<>();
-
     public GroupHandler() {
         SkillGroup.generateSkill();
-        generateEnemy();
-    }
-    
-    public void generateStatus() {
-        
+        ItemGroup.generateItem();
+        RoomGroup.generateRoom();
     }
 
-    public void generateEnemy() {
-        //normalGroup[0].add(TEST);
-    }
+    public static class RoomGroup {
 
-    public static class EventGroup {
-
-    }
-
-    public static class EnemyGroup {
-
+        public static HashMap<String, AbstractRoom> idSort = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> weakGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> normalGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> eliteGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
+        public static HashMap<Integer, Array<AbstractRoom>> eventGroup = new HashMap<>();
 
-        public static void generateEnemy() {
+        public static void generateRoom() {
             generateWeak();
             generateNormal();
             generateElite();
             generateBoss();
+            generateEvent();
+            sort();
         }
 
         private static void generateWeak() {
             weakGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new Weak1());
+            t.add(new Weak2());
             weakGroup.put(1, t);
         }
 
@@ -79,11 +77,58 @@ public class GroupHandler {
         }
 
         private static void generateElite() {
-
+            eliteGroup.clear();
+            Array<AbstractRoom> t = new Array<>();
+            t.add(new TestElite());
+            eliteGroup.put(1, t);
         }
 
         private static void generateBoss() {
+            bossGroup.clear();
+            Array<AbstractRoom> t = new Array<>();
+            t.add(new TestBoss());
+            bossGroup.put(1, t);
+        }
 
+        private static void generateEvent() {
+            eventGroup.clear();
+            Array<AbstractRoom> t = new Array<>();
+            t.add(new AbstractRoom(new TestEvent()));
+            eventGroup.put(1, t);
+        }
+
+        private static void sort() {
+            idSort.clear();
+
+            idSort.put("Entry", new EntryRoom());
+            idSort.put("Shop", new ShopRoom());
+            idSort.put("Rest", new RestRoom());
+
+            for(Array<AbstractRoom> ar : weakGroup.values()) {
+                for(AbstractRoom r : ar) {
+                    idSort.put(r.id, r);
+                }
+            }
+            for(Array<AbstractRoom> ar : normalGroup.values()) {
+                for(AbstractRoom r : ar) {
+                    idSort.put(r.id, r);
+                }
+            }
+            for(Array<AbstractRoom> ar : eliteGroup.values()) {
+                for(AbstractRoom r : ar) {
+                    idSort.put(r.id, r);
+                }
+            }
+            for(Array<AbstractRoom> ar : bossGroup.values()) {
+                for(AbstractRoom r : ar) {
+                    idSort.put(r.id, r);
+                }
+            }
+            for(Array<AbstractRoom> ar : eventGroup.values()) {
+                for(AbstractRoom r : ar) {
+                    idSort.put(r.id, r);
+                }
+            }
         }
 
         public static AbstractRoom getWeak() {
@@ -109,10 +154,10 @@ public class GroupHandler {
             return staticShuffle(array, monsterRandom);
         }
 
-        public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array, RandomXS128 r) {
+        public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array, RandomXC r) {
             AbstractRoom[] items = array.toArray(AbstractRoom.class);
             for(int i = array.size - 1; i >= 0; --i) {
-                int ii = r.nextInt(i + 1);
+                int ii = r.random(i);
                 AbstractRoom temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;
@@ -125,6 +170,7 @@ public class GroupHandler {
 
     public static class ItemGroup {
         public static final HashMap<AbstractItem.ItemRarity, Array<AbstractItem>> raritySort = new HashMap<>();
+        public static final HashMap<String, AbstractItem> idSort = new HashMap<>();
         public static final Array<AbstractItem> allItem = new Array<>();
         public static final Array<AbstractItem> bronzeItem = new Array<>();
         public static final Array<AbstractItem> silverItem = new Array<>();
@@ -133,6 +179,8 @@ public class GroupHandler {
         public static final Array<AbstractItem> eventItem = new Array<>();
 
         public static void generateItem() {
+            idSort.clear();
+            raritySort.clear();
             allItem.clear();
             bronzeItem.clear();
             silverItem.clear();
@@ -145,6 +193,7 @@ public class GroupHandler {
         private static void generateAll() {
             Array<AbstractItem> t = allItem;
             //시작 아이템
+            t.add(new Item1(null)); //삭제 예정
             t.add(new OldShield(null));
             t.add(new Pendant(null));
             t.add(new OldArmour(null));
@@ -153,21 +202,21 @@ public class GroupHandler {
             t.add(new FabricMail(null));
             t.add(new ToxicFlask(null));
             t.add(new Sedative(null));
+            t.add(new Bible(null));
+            t.add(new CottonNecklace(null));
 
             //브론즈
             t.add(new BronzeItem(null));
-            t.add(new BronzeItem2(null));
-            t.add(new BronzeItem3(null));
-            t.add(new BronzeItem4(null));
-            t.add(new BronzeItem5(null));
-            t.add(new BronzeItem6(null));
-            t.add(new BronzeItem7(null));
 
             //실버
 
             //골드
 
             //보스
+            t.add(new BossItem(null));
+            t.add(new BossItem3(null));
+            t.add(new BossItem4(null));
+            t.add(new BossItem5(null));
 
             //싱점
 
@@ -223,6 +272,7 @@ public class GroupHandler {
 
         private static void sort() {
             for(AbstractItem item : allItem) {
+                idSort.put(item.id, item);
                 if(item.rarity == AbstractItem.ItemRarity.BRONZE) {
                     bronzeItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.SILVER) {
@@ -241,10 +291,10 @@ public class GroupHandler {
             return staticShuffle(array, itemRandom);
         }
 
-        public static Array<AbstractItem> staticShuffle(Array<AbstractItem> array, RandomXS128 r) {
+        public static Array<AbstractItem> staticShuffle(Array<AbstractItem> array, RandomXC r) {
             AbstractItem[] items = array.toArray(AbstractItem.class);
             for(int i = array.size - 1; i >= 0; --i) {
-                int ii = r.nextInt(i + 1);
+                int ii = r.random(i);
                 AbstractItem temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;
@@ -257,6 +307,7 @@ public class GroupHandler {
 
     public static class SkillGroup {
         public static final HashMap<AbstractSkill.SkillRarity, HashMap<PlayerClass, Array<AbstractSkill>>> raritySort = new HashMap<>();
+        public static final HashMap<String, AbstractSkill> idSort = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> allSkill = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> bronzeSkill = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> silverSkill = new HashMap<>();
@@ -265,6 +316,7 @@ public class GroupHandler {
 
         public static void generateSkill() {
             raritySort.clear();
+            idSort.clear();
             allSkill.clear();
             bronzeSkill.clear();
             silverSkill.clear();
@@ -278,6 +330,8 @@ public class GroupHandler {
             generateViichan();
             generateWak();
             resetDiscCount();
+            idSort.put("Strike", new Strike(null));
+            idSort.put("Barrier", new Barrier(null));
             sort();
         }
 
@@ -288,6 +342,7 @@ public class GroupHandler {
                 Array<AbstractSkill> ss = new Array<>();
                 Array<AbstractSkill> gs = new Array<>();
                 for (AbstractSkill item : s) {
+                    idSort.put(item.id, item);
                     if (item.rarity == AbstractSkill.SkillRarity.BRONZE) {
                         bs.add(item);
                     } else if (item.rarity == AbstractSkill.SkillRarity.SILVER) {
@@ -328,7 +383,7 @@ public class GroupHandler {
             t.add(new Provoke(null));
             t.add(new RustyShard(null));
             //Silver
-            t.add(new Test14(null));
+            t.add(new FlameFlask(null));
             t.add(new Test15(null));
             t.add(new Test16(null));
             //Gold
@@ -373,7 +428,7 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
             t.add(new Lilpaa(null));
-            t.add(new Test42(null));
+            t.add(new FireBall(null));
             t.add(new Test43(null));
             //Silver
             t.add(new Test44(null));
@@ -517,10 +572,10 @@ public class GroupHandler {
             return staticShuffle(array, skillRandom);
         }
 
-        public static Array<AbstractSkill> staticShuffle(Array<AbstractSkill> array, RandomXS128 r) {
+        public static Array<AbstractSkill> staticShuffle(Array<AbstractSkill> array, RandomXC r) {
             AbstractSkill[] items = array.toArray(AbstractSkill.class);
             for(int i = array.size - 1; i >= 0; --i) {
-                int ii = r.nextInt(i + 1);
+                int ii = r.random(i);
                 AbstractSkill temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;

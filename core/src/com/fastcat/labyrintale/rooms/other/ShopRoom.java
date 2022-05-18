@@ -16,15 +16,19 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillRarity.*;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.*;
 
-public class Shop extends AbstractRoom {
+public class ShopRoom extends AbstractRoom {
 
     public SkillItem[] skills = new SkillItem[6];
     public ItemItem[] items = new ItemItem[5];
     public RollItem roll;
 
-    public Shop() {
-        super("shop", RoomType.SHOP);
+    public ShopRoom() {
+        super("Shop", RoomType.SHOP);
         roll = new RollItem(this);
+    }
+
+    @Override
+    protected void entry() {
         generateSkills();
         generateItems();
     }
@@ -49,9 +53,9 @@ public class Shop extends AbstractRoom {
 
     private static class RollItem extends ShopItem {
 
-        private final Shop shop;
+        private final ShopRoom shop;
 
-        public RollItem(Shop s) {
+        public RollItem(ShopRoom s) {
             super(50);
             shop = s;
             img = FileHandler.ui.get("REWARD_CARD");
@@ -80,11 +84,11 @@ public class Shop extends AbstractRoom {
         private static int generateSkillPrice(AbstractSkill skill) {
             switch(skill.rarity) {
                 case GOLD:
-                    return 180 + shopRandom.nextInt(20) - 10;
+                    return 180 + shopRandom.random(20) - 10;
                 case SILVER:
-                    return 120 + shopRandom.nextInt(20) - 10;
+                    return 120 + shopRandom.random(20) - 10;
                 default:
-                    return 60 + shopRandom.nextInt(20) - 10;
+                    return 60 + shopRandom.random(20) - 10;
             }
         }
 
@@ -110,11 +114,11 @@ public class Shop extends AbstractRoom {
         private static int generateSkillPrice(AbstractItem i) {
             switch(i.rarity) {
                 case GOLD:
-                    return 180 + shopRandom.nextInt(20) - 10;
+                    return 180 + shopRandom.random(20) - 10;
                 case BRONZE:
-                    return 60 + shopRandom.nextInt(20) - 10;
+                    return 60 + shopRandom.random(20) - 10;
                 default:
-                    return 120 + shopRandom.nextInt(20) - 10;
+                    return 120 + shopRandom.random(20) - 10;
             }
         }
 
@@ -126,7 +130,7 @@ public class Shop extends AbstractRoom {
 
     public void generateSkills() {
         //스킬 생성
-        int t = shopRandom.nextInt(100);
+        int t = shopRandom.random(100);
         int b, s;
         if(t >= 60) {
             b = 3;
@@ -163,7 +167,7 @@ public class Shop extends AbstractRoom {
 
     public void generateItems() {
         //스킬 생성
-        int t = shopRandom.nextInt(100);
+        int t = shopRandom.random(100);
         int b, s, g;
         if(t >= 70) {
             b = 3;

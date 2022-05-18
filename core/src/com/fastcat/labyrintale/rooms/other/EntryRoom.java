@@ -6,5 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 public class EntryRoom extends AbstractRoom {
     public EntryRoom() {
         super();
+        isDone = true;
+        battleDone = true;
     }
 }

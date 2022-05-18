@@ -2,15 +2,16 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.events.TestEvent;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
-import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EntryRoom;
-import com.fastcat.labyrintale.rooms.other.EventRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
+
+import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
@@ -23,7 +24,12 @@ public class AbstractFloor {
     public int num;
 
     public AbstractFloor(SaveHandler.FloorData data) {
-        currentWay = new AbstractWay(data.currentWay);
+        if(data.currentWay != null) currentWay = new AbstractWay(data.currentWay);
+        if(data.currentRoom != null) {
+            currentRoom = Objects.requireNonNull(GroupHandler.RoomGroup.idSort.get(data.currentRoom.id).clone());
+            currentRoom.isDone = data.currentRoom.isDone;
+            currentRoom.battleDone = data.currentRoom.battleDone;
+        }
         for(int i = 0; i < 13; i++) {
             ways[i] = new AbstractWay(data.ways[i]);
         }
@@ -55,6 +61,8 @@ public class AbstractFloor {
         }
         ways[11] = new AbstractWay(generateWay(REST), REST);
         ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
+
+        currentRoom = new EntryRoom();
     }
 
     private Array<AbstractChoice> generateWay(AbstractWay.WayType type) {
@@ -66,7 +74,7 @@ public class AbstractFloor {
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
         } else if (type == NORMAL) {
             t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
-            t.add(new AbstractChoice(new EventRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));
+            t.add(new AbstractChoice(new AbstractRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         } else if (type == ELITE) {
             t.add(new AbstractChoice(new TestElite(), AbstractChoice.ChoiceType.ELITE, true));
