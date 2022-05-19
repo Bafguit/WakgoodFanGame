@@ -31,7 +31,7 @@ public class WaySelectButton extends AbstractUI {
             currentFloor.num++;
         }
         currentFloor.currentRoom = c.room;
-        currentFloor.currentRoom.enter();
         SaveHandler.save();
+        currentFloor.currentRoom.enter();
     }
 }

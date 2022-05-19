@@ -10,7 +10,6 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.EffectPublicText;
 import com.fastcat.labyrintale.uis.TurnEffectText;
-import org.graalvm.compiler.loop.MathUtil;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
 
