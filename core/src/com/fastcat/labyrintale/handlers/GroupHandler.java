@@ -1,14 +1,12 @@
 package com.fastcat.labyrintale.handlers;
 
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.enemies.TestEnemy;
-import com.fastcat.labyrintale.enemies.TestEnemy2;
 import com.fastcat.labyrintale.events.TestEvent;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
+import com.fastcat.labyrintale.items.silver.*;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
@@ -206,9 +204,18 @@ public class GroupHandler {
             t.add(new CottonNecklace(null));
 
             //브론즈
-            t.add(new BronzeItem(null));
+            t.add(new PlatedArmour(null));
+            t.add(new NaviNecklace(null));
+            t.add(new GlowingStick(null));
+            t.add(new ElasticRing(null));
+            t.add(new Coffin(null));
 
             //실버
+            t.add(new SafetyHat(null));
+            t.add(new AutoFire(null));
+            t.add(new BunnyHat(null));
+            t.add(new CheeseBall(null));
+            t.add(new Purplight(null));
 
             //골드
 

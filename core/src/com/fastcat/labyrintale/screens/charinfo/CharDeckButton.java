@@ -19,6 +19,7 @@ public class CharDeckButton extends AbstractUI {
     public CharDeckButton(AbstractSkill s) {
         super(FileHandler.ui.get("BORDER_M"));
         skill = s;
+        clickable = false;
     }
 
     @Override

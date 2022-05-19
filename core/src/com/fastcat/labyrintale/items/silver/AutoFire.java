@@ -1,0 +1,37 @@
+package com.fastcat.labyrintale.items.silver;
+
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.status.AttackStatus;
+import com.fastcat.labyrintale.status.SpellStatus;
+
+public class AutoFire extends AbstractItem {
+
+    private static final String ID = "AutoFire";
+    private static final ItemRarity RARITY = ItemRarity.SILVER;
+
+    public AutoFire(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
+
+    @Override
+    public void onGain() {
+        owner.modifyMaxHealth(4);
+    }
+
+    @Override
+    public void onRemove() {
+        owner.modifyMaxHealth(-4);
+    }
+
+    @Override
+    public void startOfTurn() {
+        flash();
+        ActionHandler.bot(new AttackAction(owner, AbstractSkill.SkillTarget.P_ALL, 2, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
+    }
+}

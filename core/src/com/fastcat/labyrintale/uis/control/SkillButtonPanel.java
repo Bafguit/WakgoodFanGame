@@ -33,6 +33,7 @@ public class SkillButtonPanel extends AbstractUI {
 
     @Override
     protected void updateButton() {
+        clickable = skill.canUse() && type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning && Labyrintale.getCurScreen() == battleScreen;
         if(type == SkillButtonType.PLAYER || type == SkillButtonType.MOVE) {
             isUsed = !skill.canUse();
         }
@@ -57,13 +58,11 @@ public class SkillButtonPanel extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning && Labyrintale.getCurScreen() == battleScreen) {
-            if(!isUsed && skill.canUse()) {
-                skill.useCard();
+        if(!isUsed && skill.canUse()) {
+            skill.useCard();
 
-                if(AbstractLabyrinth.energy == 0 && noMoreSkill()) {
-                    bot(new EndPlayerTurnAction());
-                }
+            if(AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+                bot(new EndPlayerTurnAction());
             }
         }
     }

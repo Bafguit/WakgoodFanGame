@@ -34,6 +34,7 @@ public class SkillButton extends AbstractUI {
     public SkillButton() {
         super(FileHandler.ui.get("BORDER"));
         fontData = CARD_BIG_DESC;
+        clickable = false;
     }
 
     @Override

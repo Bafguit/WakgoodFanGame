@@ -1,9 +1,9 @@
 {
-  "date" : "2022_05_19_03_36_21",
+  "date" : "2022_05_20_00_32_10",
   "random" : {
-    "seed" : "523P307B",
-    "seedLong" : 5350518051485566,
-    "publicRandom" : 23,
+    "seed" : "99QNT4N6",
+    "seedLong" : 5757817884527854,
+    "publicRandom" : 90,
     "skillRandom" : 24,
     "itemRandom" : 0,
     "mapRandom" : 0,
@@ -48,29 +48,29 @@
     "maxHealth" : 30,
     "health" : 30
   }, {
-    "id" : "wak",
-    "item" : [ "OldShield", "Pendant" ],
+    "id" : "viichan",
+    "item" : [ "OldSword", "FabricMail" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Barrier",
+      "id" : "Overpower",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Test73",
+      "id" : "DiaSword",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Encourage",
+      "id" : "ChainMail",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
     "index" : 1,
-    "maxHealth" : 26,
-    "health" : 26
+    "maxHealth" : 23,
+    "health" : 23
   }, {
     "id" : "jururu",
     "item" : [ "Bible", "CottonNecklace" ],
@@ -97,7 +97,7 @@
     "health" : 20
   }, {
     "id" : "gosegu",
-    "item" : [ "ToxicFlask", "Sedative" ],
+    "item" : [ "ToxicFlask", "Purplight" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -117,8 +117,8 @@
     } ],
     "isDead" : false,
     "index" : 3,
-    "maxHealth" : 21,
-    "health" : 21
+    "maxHealth" : 25,
+    "health" : 25
   } ],
   "currentFloor" : 1,
   "floors" : [ {
@@ -165,8 +165,8 @@
         "type" : "GOOD",
         "room" : {
           "id" : "Weak1",
-          "battleDone" : true,
-          "isDone" : true
+          "battleDone" : false,
+          "isDone" : false
         },
         "must" : true,
         "prob" : 1
@@ -189,7 +189,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {

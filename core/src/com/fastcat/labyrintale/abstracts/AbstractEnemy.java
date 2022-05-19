@@ -23,7 +23,6 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
         super(id, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);
         this.type = type;
-        //skeleton.setScaleX(-skeleton.getScaleX());
         drawPile = new Array<>();
         discardPile = new Array<>();
         disposablePile = new Array<>();

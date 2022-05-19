@@ -42,6 +42,8 @@ public class InfoPanel extends AbstractUI {
 
     public InfoPanel() {
         super(FileHandler.ui.get("BORDER_B"));
+        clickable = false;
+        overable = false;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
         nx = dx = w * 0.69f;

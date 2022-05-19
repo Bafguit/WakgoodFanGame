@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
@@ -128,7 +129,7 @@ public class AbstractItem implements Cloneable {
 
     }
 
-    public void onApplyStatus(AbstractStatus s) {
+    public void onApplyStatus(AbstractStatus s, Array<AbstractEntity> target) {
 
     }
 

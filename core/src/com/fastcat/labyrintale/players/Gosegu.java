@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.silver.Purplight;
 import com.fastcat.labyrintale.items.starter.Sedative;
 import com.fastcat.labyrintale.items.starter.ToxicFlask;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;

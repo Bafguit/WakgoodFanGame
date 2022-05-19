@@ -174,11 +174,6 @@ public abstract class AbstractEntity implements Cloneable {
         boolean done = false;
         AbstractStatus s = Objects.requireNonNull(status.cpy());
         s.owner = this;
-        if(isPlayer) {
-            for (AbstractItem m : item) {
-                if (m != null) m.onApplyStatus(s);
-            }
-        }
         for (int i = 0; i < 4; i++) {
             if (this.status[i] != null) {
                 AbstractStatus temp = this.status[i];

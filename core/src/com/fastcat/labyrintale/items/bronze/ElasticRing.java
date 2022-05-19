@@ -4,15 +4,14 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 
-public class BronzeItem7 extends AbstractItem {
+public class ElasticRing extends AbstractItem {
 
-    private static final String ID = "GlowingStick";
+    private static final String ID = "ElasticRing";
     private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-    public BronzeItem7(AbstractPlayer owner) {
+    public ElasticRing(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
@@ -29,6 +28,6 @@ public class BronzeItem7 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new EnduranceStatus(3), owner, AbstractSkill.SkillTarget.SELF, true));
+        bot(new ApplyStatusAction(new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.P_ALL, true));
     }
 }

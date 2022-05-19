@@ -15,6 +15,7 @@ public class CharItemButton extends AbstractUI {
     public CharItemButton(AbstractItem s) {
         super(FileHandler.ui.get("BORDER_M"));
         skill = s;
+        clickable = false;
     }
 
     @Override
