@@ -26,7 +26,6 @@ public abstract class AbstractSkill implements Cloneable {
     public Sprite img;
     public SkillString.SkillData skillData;
     public AbstractEntity owner;
-    public final SkillRarity rarity;
     public final SkillType type;
     public SkillTarget target;
     public String id;
@@ -59,7 +58,6 @@ public abstract class AbstractSkill implements Cloneable {
         this.name = this.skillData.NAME;
         this.desc = this.skillData.DESC;
         this.type = type;
-        this.rarity = rarity;
         this.target = target;
     }
 

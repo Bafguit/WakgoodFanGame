@@ -171,10 +171,10 @@ public class BattleScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         if(isEnemyTurn) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 players[i].render(sb);
             }
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 enemies[i].render(sb);
             }
         } else {

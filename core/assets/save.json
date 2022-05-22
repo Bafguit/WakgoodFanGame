@@ -1,20 +1,20 @@
 {
-  "date" : "2022_05_20_00_32_10",
+  "date" : "2022_05_23_03_28_30",
   "random" : {
-    "seed" : "99QNT4N6",
-    "seedLong" : 5757817884527854,
-    "publicRandom" : 90,
-    "skillRandom" : 24,
-    "itemRandom" : 0,
+    "seed" : "9IH79FFP",
+    "seedLong" : 5773725557707080,
+    "publicRandom" : 0,
+    "skillRandom" : 90,
+    "itemRandom" : 153,
     "mapRandom" : 0,
     "monsterRandom" : 0,
     "eventRandom" : 0,
-    "shopRandom" : 0
+    "shopRandom" : 42
   },
   "itemAble" : 0,
   "selection" : 2,
   "maxEnergy" : 3,
-  "gold" : 120,
+  "gold" : 100,
   "advisor" : {
     "cls" : "HAKU",
     "skill" : {
@@ -48,29 +48,29 @@
     "maxHealth" : 30,
     "health" : 30
   }, {
-    "id" : "viichan",
-    "item" : [ "OldSword", "FabricMail" ],
+    "id" : "lilpa",
+    "item" : [ "Item1", "Item1" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Overpower",
+      "id" : "Barrier",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "DiaSword",
+      "id" : "Lilpaa",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "ChainMail",
+      "id" : "FireBall",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
     "index" : 1,
-    "maxHealth" : 23,
-    "health" : 23
+    "maxHealth" : 22,
+    "health" : 22
   }, {
     "id" : "jururu",
     "item" : [ "Bible", "CottonNecklace" ],
@@ -97,7 +97,7 @@
     "health" : 20
   }, {
     "id" : "gosegu",
-    "item" : [ "ToxicFlask", "Purplight" ],
+    "item" : [ "ToxicFlask", "Sedative" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -117,47 +117,47 @@
     } ],
     "isDead" : false,
     "index" : 3,
-    "maxHealth" : 25,
-    "health" : 25
+    "maxHealth" : 21,
+    "health" : 21
   } ],
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Weak2",
+      "id" : "Shop",
       "battleDone" : false,
-      "isDone" : true
+      "isDone" : false
     },
     "currentWay" : {
-      "type" : "NORMAL",
+      "type" : "ENTRY",
       "choices" : [ {
-        "type" : "BATTLE",
+        "type" : "GOOD",
         "room" : {
-          "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "TestEvent",
+          "id" : "Weak1",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "GOOD",
         "room" : {
-          "id" : "Rest",
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -180,9 +180,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "GOOD",
+        "type" : "SHOP",
         "room" : {
-          "id" : "Weak1",
+          "id" : "Shop",
           "battleDone" : false,
           "isDone" : false
         },
@@ -197,7 +197,7 @@
         "room" : {
           "id" : "Weak2",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "must" : true,
         "prob" : 1
@@ -220,7 +220,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
@@ -511,6 +511,6 @@
     } ],
     "canBoss" : false,
     "floorNum" : 1,
-    "num" : 2
+    "num" : 1
   }, null, null, null ]
 }

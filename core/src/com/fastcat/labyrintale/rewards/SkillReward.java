@@ -18,6 +18,6 @@ public abstract class SkillReward extends AbstractReward {
     }
 
     public enum SkillRewardType {
-        COMMON, BRONZE, SILVER, GOLD, UPGRADE
+        COMMON, UPGRADE
     }
 }

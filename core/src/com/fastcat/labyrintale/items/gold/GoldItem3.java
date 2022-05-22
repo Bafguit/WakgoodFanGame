@@ -7,7 +7,7 @@ import com.fastcat.labyrintale.actions.BlockAction;
 
 public class GoldItem3 extends AbstractItem {
 
-    private static final String ID = "GoldItem3";
+    private static final String ID = "Item1";
     private static final ItemRarity RARITY = ItemRarity.GOLD;
 
     public GoldItem3(AbstractPlayer owner) {

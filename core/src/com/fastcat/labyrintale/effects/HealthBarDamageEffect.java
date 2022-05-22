@@ -34,10 +34,10 @@ public class HealthBarDamageEffect extends AbstractEffect {
 
             } else {
                 alpha = Math.min(alpha + Gdx.graphics.getDeltaTime() * 5, 1);
-                entity.animColor.set(1, alpha, alpha, 1);
+                entity.animColor.set(1, alpha, alpha, entity.animColor.a);
             }
             if(isDone) {
-                entity.animColor.set(1, 1, 1, 1);
+                entity.animColor.set(1, 1, 1, entity.animColor.a);
                 entity.hbEffect = null;
             }
         }

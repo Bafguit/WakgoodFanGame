@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EntryRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
 
 import java.util.Objects;
 
@@ -71,7 +72,7 @@ public class AbstractFloor {
         if(type == ENTRY) {
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
-            t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
+            t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP, true));
         } else if (type == NORMAL) {
             t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             t.add(new AbstractChoice(new AbstractRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));

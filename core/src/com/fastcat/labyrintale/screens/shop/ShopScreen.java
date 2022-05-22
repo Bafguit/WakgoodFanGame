@@ -22,10 +22,12 @@ public class ShopScreen extends AbstractScreen {
             for(int i = 0; i < 6; i++) {
                 ShopItemButton b = new ShopItemButton(shop.skills[i]);
                 b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.7f);
+                skills[i] = b;
             }
             for(int i = 0; i < 5; i++) {
                 ShopItemButton b = new ShopItemButton(shop.items[i]);
                 b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.55f);
+                items[i] = b;
             }
             roll = new ShopItemButton(shop.roll);
             roll.setPosition(w * 0.75f - roll.sWidth / 2, h * 0.55f);
@@ -34,12 +36,17 @@ public class ShopScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        for(ShopItemButton b : skills) b.update();
+        for(ShopItemButton b : items) b.update();
+        roll.update();
 
     }
 
     @Override
     public void render(SpriteBatch sb) {
-
+        for(ShopItemButton b : skills) b.render(sb);
+        for(ShopItemButton b : items) b.render(sb);
+        roll.render(sb);
     }
 
 

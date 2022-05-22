@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
+import com.fastcat.labyrintale.screens.shop.ShopScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.Labyrintale.eventScreen;
@@ -61,6 +62,9 @@ public class AbstractRoom implements Cloneable {
         } else if(type == AbstractRoom.RoomType.EVENT) {
             eventScreen = new EventScreen(event);
             fadeOutAndChangeScreen(eventScreen);
+        } else if(type == SHOP) {
+            shopScreen = new ShopScreen();
+            fadeOutAndChangeScreen(shopScreen);
         }
     }
 

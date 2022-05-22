@@ -26,6 +26,7 @@ public class ShopItemButton extends AbstractUI {
             else if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
+
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }

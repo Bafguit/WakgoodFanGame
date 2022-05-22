@@ -25,6 +25,7 @@ import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
+import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import org.graalvm.compiler.virtual.phases.ea.EffectList;
 
 public class Labyrintale extends Game {
@@ -53,6 +54,7 @@ public class Labyrintale extends Game {
 	public static RestScreen restScreen;
 	public static DeckViewScreen deckViewScreen; //TODO 삭제 예정
 	public static EventScreen eventScreen;
+	public static ShopScreen shopScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
 
@@ -121,9 +123,9 @@ public class Labyrintale extends Game {
 		actionHandler.update();
 		if(AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.update();
 		if(tempScreen.size > 0) {
-			Screen s = tempScreen.get(tempScreen.size - 1);
-			if(s instanceof AbstractScreen) {
-				((AbstractScreen) s).update();
+			AbstractScreen s = tempScreen.get(tempScreen.size - 1);
+			if(s != null) {
+				s.update();
 			}
 		} else if(screen instanceof AbstractScreen) {
 			((AbstractScreen) screen).update();
