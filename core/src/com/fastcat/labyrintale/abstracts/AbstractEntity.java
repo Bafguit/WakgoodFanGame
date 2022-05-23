@@ -66,6 +66,7 @@ public abstract class AbstractEntity implements Cloneable {
     public float animY = -10000;
     public Sprite img;
     public Sprite imgBig;
+    public Sprite imgTiny;
     public Sprite bg;
 
     public AbstractEntity(String id, int hand, int maxHealth, TextureAtlas atlas, FileHandle skel, boolean player) {

@@ -1,15 +1,15 @@
 {
-  "date" : "2022_05_23_03_28_30",
+  "date" : "2022_05_23_13_57_33",
   "random" : {
-    "seed" : "9IH79FFP",
-    "seedLong" : 5773725557707080,
+    "seed" : "1V26X90A",
+    "seedLong" : 4986505488574865,
     "publicRandom" : 0,
-    "skillRandom" : 90,
-    "itemRandom" : 153,
+    "skillRandom" : 0,
+    "itemRandom" : 0,
     "mapRandom" : 0,
     "monsterRandom" : 0,
     "eventRandom" : 0,
-    "shopRandom" : 42
+    "shopRandom" : 0
   },
   "itemAble" : 0,
   "selection" : 2,

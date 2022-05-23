@@ -39,6 +39,7 @@ public class FontHandler implements Disposable {
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false, true);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false, true);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 30, WHITE, true, true, true);
+    public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true, true);
     public static final FontData INFO_NAME = new FontData(BOLD, 48, false, true);
     public static final FontData INFO_HP = new FontData(MEDIUM, 35, false, true);
     public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false, true);

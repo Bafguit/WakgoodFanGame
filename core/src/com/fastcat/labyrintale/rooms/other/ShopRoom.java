@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.rooms.other;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractItem.ItemRarity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -52,6 +53,12 @@ public class ShopRoom extends AbstractRoom {
         }
 
         protected abstract void take();
+
+        public abstract void setPanel();
+
+        public final boolean canBuy() {
+            return gold >= price;
+        }
     }
 
     private static class RollItem extends ShopItem {
@@ -68,10 +75,23 @@ public class ShopRoom extends AbstractRoom {
         protected void take() {
             shop.generateSkills();
             shop.generateItems();
+            for(int i = 0; i < 6; i++) {
+                shopScreen.skills[i].setItem(shop.skills[i]);
+                shopScreen.icons[i].item = shop.skills[i];
+            }
+            for(int i = 0; i < 5; i++) {
+                shopScreen.items[i].setItem(shop.items[i]);
+            }
+            shopScreen.roll.setItem(shop.roll);
+        }
+
+        @Override
+        public void setPanel() {
+            cPanel.infoPanel.setInfo("새로고침", "제단을 초기화합니다. ");
         }
     }
 
-    private static class SkillItem extends ShopItem{
+    public static class SkillItem extends ShopItem{
         public AbstractSkill skill;
 
         public SkillItem(AbstractSkill skill) {
@@ -81,12 +101,17 @@ public class ShopRoom extends AbstractRoom {
         }
 
         private static int generateSkillPrice() {
-            return 80 + shopRandom.random(20) - 10;
+            return 80 + (10 - shopRandom.random(20));
         }
 
         @Override
         protected void take() {
 
+        }
+
+        @Override
+        public void setPanel() {
+            cPanel.infoPanel.setInfo(skill);
         }
     }
 
@@ -117,6 +142,11 @@ public class ShopRoom extends AbstractRoom {
         @Override
         protected void take() {
 
+        }
+
+        @Override
+        public void setPanel() {
+            cPanel.infoPanel.setInfo(item);
         }
     }
 

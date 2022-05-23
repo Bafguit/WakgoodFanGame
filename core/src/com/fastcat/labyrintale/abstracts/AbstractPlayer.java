@@ -37,6 +37,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mLeft = mLeftTemp = new MoveLeft(this);
         mRight = mRightTemp = new MoveRight(this);
         setImage(charImg.get(playerClass), charImgBig.get(playerClass), charBgImg.get(playerClass));
+        imgTiny = charImgTiny.get(playerClass);
     }
 
     @Override

@@ -40,6 +40,9 @@ public class FileHandler implements Disposable {
     public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
     public static final JsonValue CARD_JSON_ENEMY = generateJson("json/skill/enemyCards.json");
 
+    //TextureAtlas
+    public static final TextureAtlas character = new TextureAtlas("img/char/char.atlas");
+
     //관리
     private static final HashMap<String, HashMap> maps = new HashMap<>();
     public static final HashMap<String, Sprite> bg = new HashMap<>();
@@ -52,6 +55,7 @@ public class FileHandler implements Disposable {
     //캐릭터
     public static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
     public static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
+    public static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
     public static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
@@ -91,6 +95,7 @@ public class FileHandler implements Disposable {
         maps.put("vfx", vfx);
         maps.put("charImg", charImg);
         maps.put("charImgBig", charImgBig);
+        maps.put("charImgTiny", charImgTiny);
         maps.put("charBgImg", charBgImg);
         maps.put("advImg", advImg);
         maps.put("advImgBig", advImgBig);
@@ -167,14 +172,16 @@ public class FileHandler implements Disposable {
     private static void generateCharImg() {
         charImg.clear();
         charImgBig.clear();
+        charImgTiny.clear();
         charBgImg.clear();
         skeleton.clear();
         atlas.clear();
         for(PlayerClass cls : PlayerClass.values()) {
             String s = cls.toString().toLowerCase();
-            charImg.put(cls, new Sprite(new Texture("img/char/" + s + ".png")));
-            charImgBig.put(cls, new Sprite(new Texture("img/char/" + s + "_p.png")));
-            charBgImg.put(cls, new Sprite(new Texture("img/char/" + s + "_bg.png")));
+            charImg.put(cls, character.createSprite(s));
+            charImgBig.put(cls, character.createSprite(s + "_p"));
+            charImgTiny.put(cls, character.createSprite(s + "_s"));
+            charBgImg.put(cls, character.createSprite(s + "_bg"));
             skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
             atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
         }
