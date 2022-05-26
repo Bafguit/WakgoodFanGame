@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;

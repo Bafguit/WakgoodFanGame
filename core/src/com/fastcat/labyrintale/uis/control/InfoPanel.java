@@ -4,17 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.screens.battle.BattleScreen;
-import com.fastcat.labyrintale.screens.deckview.DeckSkillButton;
 import com.fastcat.labyrintale.uis.PlayerIcon;
-
-import java.io.Serializable;
-import java.util.Objects;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;

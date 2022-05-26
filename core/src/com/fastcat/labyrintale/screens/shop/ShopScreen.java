@@ -15,6 +15,7 @@ public class ShopScreen extends AbstractScreen {
     public ShopItemButton[] items = new ShopItemButton[5];
     public ShopItemCharIcon[] icons = new ShopItemCharIcon[6];
     public ShopItemButton roll;
+    public PassShopButton pass;
 
     public ShopScreen() {
         cType = ControlPanel.ControlType.BASIC;
@@ -39,6 +40,7 @@ public class ShopScreen extends AbstractScreen {
             }
             roll = new ShopItemButton(shop.roll);
             roll.setPosition(w * 0.75f - roll.sWidth / 2, h * 0.55f);
+            pass = new PassShopButton();
         }
     }
 
@@ -47,7 +49,7 @@ public class ShopScreen extends AbstractScreen {
         for(ShopItemButton b : skills) b.update();
         for(ShopItemButton b : items) b.update();
         roll.update();
-
+        pass.update();
     }
 
     @Override
@@ -58,6 +60,7 @@ public class ShopScreen extends AbstractScreen {
         }
         for(ShopItemButton b : items) b.render(sb);
         roll.render(sb);
+        pass.render(sb);
     }
 
 

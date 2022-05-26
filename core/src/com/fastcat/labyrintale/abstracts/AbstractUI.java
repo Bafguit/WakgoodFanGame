@@ -189,7 +189,7 @@ public abstract class AbstractUI implements Disposable {
     }
 
     public void dispose() {
-        if(fontData != null && !fontData.isStatic) fontData.font.dispose();
+
     }
 
     public void setText(String text) {

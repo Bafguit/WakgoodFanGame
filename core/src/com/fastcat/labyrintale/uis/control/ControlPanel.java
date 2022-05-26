@@ -17,7 +17,7 @@ public class ControlPanel implements Disposable {
     public BattlePanel battlePanel;
     public Sprite bg;
     public Sprite bbg;
-    public ControlType type;
+    public ControlType type = HIDE;
 
     public ControlPanel() {
         infoPanel = new InfoPanel();

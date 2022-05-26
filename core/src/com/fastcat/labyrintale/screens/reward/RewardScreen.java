@@ -3,11 +3,9 @@ package com.fastcat.labyrintale.screens.reward;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
-import com.fastcat.labyrintale.screens.shop.ShopItemButton;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RewardScreen extends AbstractScreen {

@@ -1,20 +1,20 @@
 {
-  "date" : "2022_05_23_13_57_33",
+  "date" : "2022_05_26_18_20_46",
   "random" : {
-    "seed" : "1V26X90A",
-    "seedLong" : 4986505488574865,
+    "seed" : "7RW7U48D",
+    "seedLong" : 5582875585525668,
     "publicRandom" : 0,
-    "skillRandom" : 0,
-    "itemRandom" : 0,
+    "skillRandom" : 59,
+    "itemRandom" : 102,
     "mapRandom" : 0,
     "monsterRandom" : 0,
     "eventRandom" : 0,
-    "shopRandom" : 0
+    "shopRandom" : 28
   },
   "itemAble" : 0,
   "selection" : 2,
   "maxEnergy" : 3,
-  "gold" : 100,
+  "gold" : 456,
   "advisor" : {
     "cls" : "HAKU",
     "skill" : {
@@ -25,9 +25,9 @@
   },
   "players" : [ {
     "id" : "burger",
-    "item" : [ "OldArmour", "BurgerHat" ],
+    "item" : [ "ElasticRing", "BurgerHat" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "HolySmite",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -45,11 +45,11 @@
     } ],
     "isDead" : false,
     "index" : 0,
-    "maxHealth" : 30,
-    "health" : 30
+    "maxHealth" : 29,
+    "health" : 29
   }, {
-    "id" : "lilpa",
-    "item" : [ "Item1", "Item1" ],
+    "id" : "viichan",
+    "item" : [ "OldSword", "BunnyHat" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -59,21 +59,21 @@
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Lilpaa",
+      "id" : "DiaSword",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "FireBall",
+      "id" : "ChainMail",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
     "index" : 1,
-    "maxHealth" : 22,
-    "health" : 22
+    "maxHealth" : 27,
+    "health" : 27
   }, {
     "id" : "jururu",
-    "item" : [ "Bible", "CottonNecklace" ],
+    "item" : [ "Bible", "AutoFire" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -93,13 +93,13 @@
     } ],
     "isDead" : false,
     "index" : 2,
-    "maxHealth" : 20,
-    "health" : 20
+    "maxHealth" : 24,
+    "health" : 24
   }, {
     "id" : "gosegu",
-    "item" : [ "ToxicFlask", "Sedative" ],
+    "item" : [ "NaviNecklace", "Sedative" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "RustyShard",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -117,15 +117,15 @@
     } ],
     "isDead" : false,
     "index" : 3,
-    "maxHealth" : 21,
-    "health" : 21
+    "maxHealth" : 23,
+    "health" : 23
   } ],
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
       "id" : "Shop",
       "battleDone" : false,
-      "isDone" : false
+      "isDone" : true
     },
     "currentWay" : {
       "type" : "ENTRY",
@@ -152,7 +152,7 @@
         "room" : {
           "id" : "Shop",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -184,7 +184,7 @@
         "room" : {
           "id" : "Shop",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1

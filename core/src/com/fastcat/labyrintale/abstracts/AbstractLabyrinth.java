@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
@@ -12,10 +9,6 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AbstractLabyrinth {
 
@@ -71,7 +64,7 @@ public class AbstractLabyrinth {
             selection = 2;
             maxEnergy = 3;
             energy = 0;
-            gold = 100;
+            gold = 1000;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);
@@ -127,6 +120,13 @@ public class AbstractLabyrinth {
             s.append(c);
         }
         return s.toString();
+    }
+
+    public static void endRoom() {
+        currentFloor.currentWay.done();
+        currentFloor.currentRoom.done();
+        Labyrintale.mapScreen.isView = false;
+        SaveHandler.save();
     }
 
     public static long seedToLong(String s) {

@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.actions;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
-import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;

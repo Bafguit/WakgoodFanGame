@@ -14,7 +14,6 @@ public class ShopItemButton extends AbstractUI {
 
     public ShopRoom.ShopItem item;
     public Sprite itemImg;
-    public ShopItemCharIcon charIcon;
 
     public ShopItemButton(ShopRoom.ShopItem re) {
         super(FileHandler.ui.get("BORDER_M"));
@@ -36,13 +35,14 @@ public class ShopItemButton extends AbstractUI {
             sb.draw(itemImg, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            FontHandler.renderCenter(sb, can ? FontHandler.CARD_BIG_DESC : FontHandler.SHOP_NO, item.price + "G", x, y - sHeight * 0.2f, sWidth, sHeight * 0.2f);
+            FontHandler.renderCenter(sb, can ? FontHandler.SHOP_OK : FontHandler.SHOP_NO, item.price + "G", x, y - sHeight * 0.2f, sWidth, sHeight * 0.2f);
         }
     }
 
     @Override
     protected void updateButton() {
         clickable = !item.isDone && item.canBuy();
+        overable = !item.isDone;
         if(over) {
             item.setPanel();
         }

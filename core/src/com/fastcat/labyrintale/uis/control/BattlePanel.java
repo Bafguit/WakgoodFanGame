@@ -8,14 +8,9 @@ import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
-import com.fastcat.labyrintale.uis.PlayerIcon;
-
-import java.io.Serializable;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
-import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class BattlePanel implements Disposable {

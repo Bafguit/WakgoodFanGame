@@ -172,6 +172,7 @@ public class GroupHandler {
         public static final HashMap<AbstractItem.ItemRarity, Array<AbstractItem>> raritySort = new HashMap<>();
         public static final HashMap<String, AbstractItem> idSort = new HashMap<>();
         public static final Array<AbstractItem> allItem = new Array<>();
+        public static final Array<AbstractItem> starterItem = new Array<>();
         public static final Array<AbstractItem> bronzeItem = new Array<>();
         public static final Array<AbstractItem> silverItem = new Array<>();
         public static final Array<AbstractItem> goldItem = new Array<>();
@@ -181,6 +182,7 @@ public class GroupHandler {
             idSort.clear();
             raritySort.clear();
             allItem.clear();
+            starterItem.clear();
             bronzeItem.clear();
             silverItem.clear();
             goldItem.clear();
@@ -326,14 +328,17 @@ public class GroupHandler {
                     silverItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.GOLD) {
                     goldItem.add(item);
-                } else {
+                } else if(item.rarity == AbstractItem.ItemRarity.SHOP) {
                     shopItem.add(item);
+                } else if(item.rarity == AbstractItem.ItemRarity.STARTER) {
+                    starterItem.add(item);
                 }
             }
             raritySort.put(AbstractItem.ItemRarity.BRONZE, bronzeItem);
             raritySort.put(AbstractItem.ItemRarity.SILVER, silverItem);
             raritySort.put(AbstractItem.ItemRarity.GOLD, goldItem);
             raritySort.put(AbstractItem.ItemRarity.SHOP, shopItem);
+            raritySort.put(AbstractItem.ItemRarity.STARTER, starterItem);
         }
 
         public static Array<AbstractItem> staticShuffle(Array<AbstractItem> array) {

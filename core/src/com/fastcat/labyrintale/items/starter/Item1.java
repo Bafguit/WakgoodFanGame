@@ -11,4 +11,9 @@ public class Item1 extends AbstractItem {
     public Item1(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
+
+    @Override
+    public void onRemove() {
+        System.out.println("Item1 Removed!");
+    }
 }

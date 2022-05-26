@@ -5,12 +5,11 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.actions.VictoryAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
@@ -22,6 +21,7 @@ public class LoadingScreen extends AbstractScreen {
     public boolean create = true;
 
     public LoadingScreen() {
+        cType = ControlPanel.ControlType.HIDE;
         text = new LoadingText();
         setBg(FileHandler.ui.get("FADE"));
     }

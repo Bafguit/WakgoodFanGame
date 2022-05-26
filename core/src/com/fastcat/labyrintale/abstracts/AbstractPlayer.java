@@ -44,7 +44,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public void newDeck() {
         hand = new AbstractSkill[4];
         for(int i = 0; i < 4; i++) {
-            hand[i] = Objects.requireNonNull(deck.get(i).clone());
+            hand[i] = deck.get(i).clone();
         }
         mRightTemp = mRight.clone();
         mLeftTemp = mLeft.clone();
@@ -55,11 +55,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public void gainItem(AbstractItem i, int index) {
-        AbstractItem it = item[index];
-        if(it != null) it.onRemove();
+        item[index].onRemove();
         i.owner = this;
-        i.onGain();
         item[index] = i;
+        item[index].onGain();
     }
 
     public abstract Array<AbstractItem> getStartingItem();

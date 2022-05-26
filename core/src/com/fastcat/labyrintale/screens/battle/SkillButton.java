@@ -3,19 +3,13 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
-
-import java.util.Objects;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 

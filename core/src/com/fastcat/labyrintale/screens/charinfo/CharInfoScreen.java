@@ -2,20 +2,14 @@ package com.fastcat.labyrintale.screens.charinfo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationStateData;
-import com.esotericsoftware.spine.Skeleton;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class CharInfoScreen extends AbstractScreen {
@@ -28,18 +22,18 @@ public class CharInfoScreen extends AbstractScreen {
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public CharDeckButton[] deck = new CharDeckButton[4];
-    public CharItemButton[] item = new CharItemButton[2];
+    public CharDeckIcon[] deck = new CharDeckIcon[4];
+    public CharItemIcon[] item = new CharItemIcon[2];
     public AbstractPlayer player;
 
     public CharInfoScreen(AbstractPlayer player) {
         for(int i = 0; i < 4; i++) {
-            CharDeckButton b = new CharDeckButton(null);
+            CharDeckIcon b = new CharDeckIcon(null);
             b.setPosition(w * (0.5f + 0.08f * i) - b.sWidth / 2, h * 0.55f);
             deck[i] = b;
         }
         for(int i = 0; i < 2; i++) {
-            CharItemButton b = new CharItemButton(null);
+            CharItemIcon b = new CharItemIcon(null);
             b.setPosition(w * (0.66f + 0.08f * i) - b.sWidth / 2, h * 0.7f);
             item[i] = b;
         }
@@ -61,8 +55,8 @@ public class CharInfoScreen extends AbstractScreen {
     public void update() {
         cType = Labyrintale.getBaseScreen().cType;
 
-        for(CharDeckButton b : deck) b.update();
-        for(CharItemButton b : item) b.update();
+        for(CharDeckIcon b : deck) b.update();
+        for(CharItemIcon b : item) b.update();
     }
 
     @Override
@@ -88,8 +82,8 @@ public class CharInfoScreen extends AbstractScreen {
         FontHandler.renderLineLeft(sb, fontName, player.name, w * 0.47f, h * 0.79f, w * 0.14f, 50);
         FontHandler.renderCenter(sb, fontHp, player.health + "/" + player.maxHealth, w * 0.47f, h * 0.747f, w * 0.14f, h * 0.03f);
 
-        for(CharDeckButton b : deck) b.render(sb);
-        for(CharItemButton b : item) b.render(sb);
+        for(CharDeckIcon b : deck) b.render(sb);
+        for(CharItemIcon b : item) b.render(sb);
     }
 
     @Override

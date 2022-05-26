@@ -33,19 +33,20 @@ public class FontHandler implements Disposable {
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
-    public static final FontData LOGO = new FontData(BOLD, 133, false, true);
-    public static final FontData COOLDOWN = new FontData(BOLD, 80, true, true);
-    public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false, true);
-    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false, true);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false, true);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 30, WHITE, true, true, true);
-    public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true, true);
-    public static final FontData INFO_NAME = new FontData(BOLD, 48, false, true);
-    public static final FontData INFO_HP = new FontData(MEDIUM, 35, false, true);
-    public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false, true);
-    public static final FontData BORDER = new FontData(MEDIUM, 40, true, true);
-    public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true, true);
-    public static final FontData HP = new FontData(MEDIUM, 26, false, true);
+    public static final FontData LOGO = new FontData(BOLD, 133, false);
+    public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
+    public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
+    public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
+    public static final FontData SHOP_OK = new FontData(MEDIUM, 30, WHITE, true, true);
+    public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true);
+    public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
+    public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
+    public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false);
+    public static final FontData BORDER = new FontData(MEDIUM, 40, true);
+    public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
+    public static final FontData HP = new FontData(MEDIUM, 26, false);
 
     public enum FontType {
         LIGHT, MEDIUM, BOLD
@@ -242,18 +243,14 @@ public class FontHandler implements Disposable {
         public BitmapFont font;
         public FontType type;
         public Color color;
+        public Color bColor;
         public int size;
         public float scale = 1.0f;
-        public boolean isStatic = false;
+        public boolean shadow;
+        public boolean border;
 
-        public FontData(FontType type, int size, boolean border, boolean stc) {
-            this(type, size, true, border, WHITE, DARK_GRAY);
-            isStatic = stc;
-        }
-
-        public FontData(FontType type, int size, Color color, boolean shadow, boolean border, boolean stc) {
+        public FontData(FontType type, int size, Color color, boolean shadow, boolean border) {
             this(type, size, shadow, border, color, DARK_GRAY);
-            isStatic = stc;
         }
 
         public FontData(FontType type, int size, boolean border) {
@@ -266,14 +263,17 @@ public class FontHandler implements Disposable {
 
         public FontData(FontType type, int size, boolean shadow, boolean border, Color color, Color bColor) {
             this.size = (int) (size * InputHandler.scale);
-            this.font = generate(type, this.size, color, bColor, shadow, border);
+            this.color = color.cpy();
+            this.bColor = bColor.cpy();
+            this.font = generate(type, this.size, this.color, this.bColor, shadow, border);
             this.font.getData().markupEnabled = true;
-            this.color = this.font.getColor();
             this.type = type;
+            this.shadow = shadow;
+            this.border = border;
         }
 
         public final FontData cpy() {
-            return new FontData(type, (int) size, color);
+            return new FontData(type, size, shadow, border, color, bColor);
         }
 
         @Override

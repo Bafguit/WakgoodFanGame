@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
+import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 import static com.fastcat.labyrintale.Labyrintale.shopScreen;
@@ -106,7 +107,7 @@ public class ShopRoom extends AbstractRoom {
 
         @Override
         protected void take() {
-
+            Labyrintale.addTempScreen(new ShopTakeScreen(skill));
         }
 
         @Override
@@ -141,7 +142,7 @@ public class ShopRoom extends AbstractRoom {
 
         @Override
         protected void take() {
-
+            Labyrintale.addTempScreen(new ShopTakeScreen(item));
         }
 
         @Override
@@ -206,7 +207,7 @@ public class ShopRoom extends AbstractRoom {
             items[i] = new ItemItem(bs.get(i));
         }
         for(int i = 0; i < s; i++) {
-            items[b - i] = new ItemItem(ss.get(i));
+            items[b + i] = new ItemItem(ss.get(i));
         }
         if(g > 0) {
             items[3] = new ItemItem(ItemRarity.GOLD);
