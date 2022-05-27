@@ -1,26 +1,55 @@
 
 skeleton.png
-size: 1207,1038
+size: 1564,1573
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+arm_left
+  rotate: true
+  xy: 895, 43
+  size: 492, 330
+  orig: 1280, 1280
+  offset: 129, 339
+  index: -1
+arm_right
+  rotate: true
+  xy: 1207, 537
+  size: 618, 352
+  orig: 1280, 1280
+  offset: 605, 349
+  index: -1
+body
+  rotate: false
+  xy: 1207, 1157
+  size: 355, 414
+  orig: 1280, 1280
+  offset: 449, 303
+  index: -1
+hair
+  rotate: false
+  xy: 1227, 125
+  size: 314, 410
+  orig: 1280, 1280
+  offset: 269, 672
+  index: -1
+head
+  rotate: false
+  xy: 400, 14
+  size: 493, 521
+  orig: 1280, 1280
+  offset: 411, 606
+  index: -1
 ine_sd_a
   rotate: true
-  xy: 2, 2
+  xy: 2, 537
   size: 1034, 1203
   orig: 1280, 1280
   offset: 198, 50
   index: -1
-
-skeleton2.png
-size: 1196,1132
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-ine_sd_t
-  rotate: false
+leg
+  rotate: true
   xy: 2, 2
-  size: 1192, 1128
+  size: 533, 396
   orig: 1280, 1280
-  offset: 84, 20
+  offset: 366, 27
   index: -1

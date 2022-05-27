@@ -72,12 +72,7 @@ public class SkillRewardSkillButton extends AbstractUI {
                     index = i;
                 }
             }
-            Integer up = GroupHandler.SkillGroup.discardedCount.get(ts.id);
-            if(up != null) {
-                GroupHandler.SkillGroup.discardedCount.put(ts.id, up + 1);
-            }
-            group.player.deck.removeIndex(index);
-            group.player.deck.insert(index, skill);
+            group.player.gainSkill(index, skill);
             Labyrintale.removeTempScreen(SkillRewardGroup.screen);
         }
     }

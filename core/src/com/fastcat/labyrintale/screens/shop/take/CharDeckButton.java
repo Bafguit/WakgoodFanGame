@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 
 public class CharDeckButton extends AbstractUI {
 
@@ -43,7 +44,10 @@ public class CharDeckButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        skill.owner.deck.set(index, toSkill);
+        for(int i = 0; i < skill.upgradeCount; i++) {
+            toSkill.upgrade();
+        }
+        skill.owner.gainSkill(index, toSkill);
         Labyrintale.removeTempScreen(screen);
     }
 }

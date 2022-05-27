@@ -362,7 +362,7 @@ public class GroupHandler {
     public static class SkillGroup {
         public static final HashMap<String, AbstractSkill> idSort = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> playerSort = new HashMap<>();
-        public static final HashMap<String, Integer> discardedCount = new HashMap<>();
+        public static HashMap<String, Integer> discardedCount = new HashMap<>();
 
         public static void generateSkill() {
             idSort.clear();

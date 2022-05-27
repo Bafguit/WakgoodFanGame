@@ -425,6 +425,15 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
+    public void gainSkill(int index, AbstractSkill skill) {
+        AbstractSkill ts = deck.get(index);
+        Integer up = GroupHandler.SkillGroup.discardedCount.get(ts.id);
+        if(up != null) {
+            GroupHandler.SkillGroup.discardedCount.put(ts.id, up + 1);
+        }
+        deck.set(index, skill);
+    }
+
     public void defineIndex(int i) {
         index = i;
         tempIndex = i;

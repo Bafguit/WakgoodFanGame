@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
@@ -63,6 +64,7 @@ public class SaveHandler {
             e.printStackTrace();
         }
 
+        GroupHandler.SkillGroup.discardedCount = data.discard;
         seed = data.random.seed;
         seedLong = data.random.seedLong;
         publicRandom = new RandomXC(seedLong, data.random.publicRandom);
@@ -136,6 +138,7 @@ public class SaveHandler {
         public EntityData[] players = new EntityData[4];
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
+        public HashMap<String, Integer> discard = new HashMap<>();
 
         public static SaveData create() {
             SaveData temp = new SaveData();
@@ -157,6 +160,7 @@ public class SaveHandler {
             temp.selection = AbstractLabyrinth.selection;
             temp.maxEnergy = AbstractLabyrinth.maxEnergy;
             temp.gold = AbstractLabyrinth.gold;
+            temp.discard = GroupHandler.SkillGroup.discardedCount;
 
             return temp;
         }

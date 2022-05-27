@@ -95,7 +95,7 @@ public class Labyrintale extends Game {
 		sb = new SpriteBatch();
 		psb = new PolygonSpriteBatch();
 		sr = new SkeletonRenderer();
-		sr.setPremultipliedAlpha(true);
+		sr.setPremultipliedAlpha(false);
 		inputHandler = new InputHandler();
 		fileHandler = new FileHandler();
 		fontHandler = new FontHandler();

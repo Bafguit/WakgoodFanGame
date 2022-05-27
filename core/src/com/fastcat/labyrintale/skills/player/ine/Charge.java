@@ -23,7 +23,7 @@ public class Charge extends AbstractSkill {
 
     @Override
     public void use() {
-        if(owner.tempIndex > 0) bot(new MoveAction((AbstractPlayer) owner, false, 0.1f));
+        if(owner.tempIndex > 0) bot(new MoveAction((AbstractPlayer) owner, false, 0.05f));
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH));
         bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
     }
