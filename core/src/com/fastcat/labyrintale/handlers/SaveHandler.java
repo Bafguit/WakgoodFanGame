@@ -32,6 +32,13 @@ public class SaveHandler {
 
     public static void refresh() {
         hasSave = saveFile.exists();
+        if(hasSave) {
+            try {
+                data = mapper.readValue(new File("save.json"), SaveData.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void save() {
@@ -43,26 +50,20 @@ public class SaveHandler {
         }
     }
 
-    public static void finish() {
-        refresh();
+    public static void finish(boolean refresh) {
+        if(refresh) refresh();
         if(hasSave) {
+            try {
+                mapper.writeValue(new File("run_" + data.date + ".json"), data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             saveFile.delete();
         }
-
-        data = SaveData.create();
-        try {
-            mapper.writeValue(new File("save_" + data.date + ".json"), data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        refresh();
     }
 
     public static void load() {
-        try {
-            data = mapper.readValue(new File("save.json"), SaveData.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         GroupHandler.SkillGroup.discardedCount = data.discard;
         seed = data.random.seed;

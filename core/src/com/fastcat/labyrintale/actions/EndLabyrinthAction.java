@@ -1,18 +1,14 @@
 package com.fastcat.labyrintale.actions;
 
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.rewards.GoldReward;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
-import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
-public class DefeatAction extends AbstractAction {
+public class EndLabyrinthAction extends AbstractAction {
 
-    public DefeatAction() {
+    public EndLabyrinthAction() {
         super(null, 2);
     }
 

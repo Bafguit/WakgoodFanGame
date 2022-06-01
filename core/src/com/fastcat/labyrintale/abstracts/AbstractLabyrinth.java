@@ -57,6 +57,9 @@ public class AbstractLabyrinth {
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
+            floors[1] = new AbstractFloor(2);
+            floors[2] = new AbstractFloor(3);
+            floors[3] = new AbstractFloor(4);
             itemAble = 0;
             selection = 2;
             maxEnergy = 3;
