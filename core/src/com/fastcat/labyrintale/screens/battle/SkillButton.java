@@ -11,7 +11,6 @@ import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class SkillButton extends AbstractUI {
 

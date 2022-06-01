@@ -47,7 +47,6 @@ public class MapNodeButton extends AbstractUI {
                     }
                 } else sb.setColor(Color.LIGHT_GRAY);
             } else sb.setColor(Color.DARK_GRAY);
-            //if(currentFloor.currentWay == way && !way.isDone) sb.setColor(WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);
             sb.setColor(WHITE);

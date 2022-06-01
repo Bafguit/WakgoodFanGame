@@ -23,7 +23,7 @@ public class EventScreen extends AbstractScreen {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < length; i++) {
             EventChoiceButton t = new EventChoiceButton(this.event.choices[i]);
-            t.setPosition(w * 0.4f, h * 0.5f + 60 * InputHandler.scale * (length - 1 - i));
+            t.setPosition(w * 0.4f, h * 0.5f + t.sHeight * 1.2f * (length - 1 - i));
             ecb[i] = t;
         }
     }

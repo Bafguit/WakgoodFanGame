@@ -12,6 +12,7 @@ public abstract class AbstractScreen implements Screen {
 
     public final EffectHandler effectHandler = new EffectHandler();
     public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
+    public ScreenType type = ScreenType.OTHER;
     private Sprite bg;
 
     public abstract void update();
@@ -43,5 +44,9 @@ public abstract class AbstractScreen implements Screen {
     @Override
     public final void resume() {
 
+    }
+
+    public enum ScreenType {
+        MAP, OTHER
     }
 }

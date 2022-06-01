@@ -224,22 +224,20 @@ public class Labyrintale extends Game {
 		}
 
 		this.screen = screen;
-		if (this.screen != null) {
-			this.screen.show();
-			this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		}
+		if (this.screen != null) this.screen.show();
 	}
 
 	public static void addTempScreen (AbstractScreen screen) {
+		removeTempScreen(screen);
+		screen.show();
 		game.tempScreen.add(screen);
 	}
 
-	public static void removeTempScreen (Screen screen) {
+	public static void removeTempScreen (AbstractScreen screen) {
 		for(int i = 0; i < game.tempScreen.size; i++) {
 			AbstractScreen s = game.tempScreen.get(i);
 			if(s == screen) {
 				s.hide();
-				s.dispose();
 				s.effectHandler.removeAll();
 				game.tempScreen.removeIndex(i);
 				break;

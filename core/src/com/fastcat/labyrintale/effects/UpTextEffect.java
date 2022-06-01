@@ -28,8 +28,8 @@ public class UpTextEffect extends AbstractEffect {
     protected void renderEffect(SpriteBatch sb) {
         if(duration != baseDuration) {
             if(text.fontData != null) {
-                text.fontData.font.getColor().a -= Labyrintale.tick;
-                if (text.fontData.font.getColor().a < 0) text.fontData.font.getColor().a = 0;
+                text.fontData.alpha -= Labyrintale.tick;
+                if (text.fontData.alpha < 0) text.fontData.alpha = 0;
                 text.y += Labyrintale.tick * 100;
             }
         }

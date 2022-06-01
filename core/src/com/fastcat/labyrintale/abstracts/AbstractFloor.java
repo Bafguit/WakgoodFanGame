@@ -25,18 +25,20 @@ public class AbstractFloor {
     public int num;
 
     public AbstractFloor(SaveHandler.FloorData data) {
-        if(data.currentWay != null) currentWay = new AbstractWay(data.currentWay);
+        canBoss = data.canBoss;
+        floorNum = data.floorNum;
+        num = data.num;
+        for(int i = 0; i < 13; i++) {
+            ways[i] = new AbstractWay(data.ways[i]);
+        }
+        if(data.currentWay != null) {
+            currentWay = ways[num - 1];
+        }
         if(data.currentRoom != null) {
             currentRoom = Objects.requireNonNull(GroupHandler.RoomGroup.idSort.get(data.currentRoom.id).clone());
             currentRoom.isDone = data.currentRoom.isDone;
             currentRoom.battleDone = data.currentRoom.battleDone;
         }
-        for(int i = 0; i < 13; i++) {
-            ways[i] = new AbstractWay(data.ways[i]);
-        }
-        canBoss = data.canBoss;
-        floorNum = data.floorNum;
-        num = data.num;
     }
 
     public AbstractFloor() {

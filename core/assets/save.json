@@ -1,10 +1,10 @@
 {
-  "date" : "2022_05_28_02_27_23",
+  "date" : "2022_06_01_14_47_18",
   "random" : {
-    "seed" : "2YP1U61J",
-    "seedLong" : 5089804985544974,
-    "publicRandom" : 0,
-    "skillRandom" : 0,
+    "seed" : "B3R4N3Z7",
+    "seedLong" : 6651825278519055,
+    "publicRandom" : 27,
+    "skillRandom" : 47,
     "itemRandom" : 0,
     "mapRandom" : 0,
     "monsterRandom" : 0,
@@ -13,8 +13,8 @@
   },
   "itemAble" : 0,
   "selection" : 2,
-  "maxEnergy" : 4,
-  "gold" : 1000,
+  "maxEnergy" : 3,
+  "gold" : 1040,
   "advisor" : {
     "cls" : "HAKU",
     "skill" : {
@@ -24,10 +24,34 @@
     }
   },
   "players" : [ {
+    "id" : "wak",
+    "item" : [ "OldShield", "Pendant" ],
+    "deck" : [ {
+      "id" : "Strike",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Barrier",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Test73",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Test74",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    } ],
+    "isDead" : false,
+    "index" : 0,
+    "maxHealth" : 26,
+    "health" : 26
+  }, {
     "id" : "burger",
     "item" : [ "OldArmour", "BurgerHat" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "HolySmite",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -44,33 +68,9 @@
       "upgradeCount" : 0
     } ],
     "isDead" : false,
-    "index" : 0,
+    "index" : 1,
     "maxHealth" : 30,
     "health" : 30
-  }, {
-    "id" : "ine",
-    "item" : [ "BrokenTicker", "BossItem4" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Barrier",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Pruning",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Charge",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "isDead" : false,
-    "index" : 1,
-    "maxHealth" : 15,
-    "health" : 15
   }, {
     "id" : "jururu",
     "item" : [ "Bible", "CottonNecklace" ],
@@ -103,7 +103,7 @@
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Barrier",
+      "id" : "RustyShard",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -123,34 +123,34 @@
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Weak1",
+      "id" : "TestEvent",
       "battleDone" : false,
       "isDone" : false
     },
     "currentWay" : {
-      "type" : "ENTRY",
+      "type" : "NORMAL",
       "choices" : [ {
-        "type" : "GOOD",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Weak1",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "GOOD",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak1",
+          "id" : "TestEvent",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "SHOP",
+        "type" : "REST",
         "room" : {
-          "id" : "Shop",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -189,15 +189,15 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -220,7 +220,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "choices" : [ {
@@ -511,13 +511,13 @@
     } ],
     "canBoss" : false,
     "floorNum" : 1,
-    "num" : 1
+    "num" : 3
   }, null, null, null ],
   "discard" : {
     "ChainMail" : 0,
     "Test35" : 0,
-    "Test36" : 0,
     "Test8" : 0,
+    "Test36" : 0,
     "Test37" : 0,
     "Test38" : 0,
     "Test75" : 0,
@@ -538,15 +538,15 @@
     "Test48" : 0,
     "HolySmite" : 0,
     "Test43" : 0,
-    "Provoke" : 0,
     "Test44" : 0,
+    "Provoke" : 0,
     "Test45" : 0,
     "Overpower" : 0,
     "Scorn" : 0,
     "FireBall" : 0,
     "Test17" : 0,
-    "Test18" : 0,
     "Kick" : 0,
+    "Test18" : 0,
     "Purify" : 0,
     "Test57" : 0,
     "Test58" : 0,
@@ -564,18 +564,18 @@
     "Protect" : 0,
     "Test28" : 0,
     "BioCloud" : 0,
-    "Test68" : 0,
     "Test24" : 0,
     "Charge" : 0,
-    "RustyShard" : 0,
+    "Test68" : 0,
     "Test26" : 0,
+    "RustyShard" : 0,
     "Test27" : 0,
     "Lilpaa" : 0,
     "Test64" : 0,
     "Test65" : 0,
     "Test66" : 0,
-    "Test67" : 0,
     "Test23" : 0,
+    "Test67" : 0,
     "EyeSting" : 0,
     "Pray" : 0
   }

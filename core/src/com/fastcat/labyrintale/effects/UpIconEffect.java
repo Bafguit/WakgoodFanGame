@@ -12,7 +12,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class UpIconEffect extends AbstractEffect {
 
     private final Sprite img;
-    private float alpha = 0.7f;
+    private float alpha = 0.8f;
     private float x, y, rw, rh;
 
     public UpIconEffect(float x, float y, Sprite img) {
@@ -30,7 +30,7 @@ public class UpIconEffect extends AbstractEffect {
         y += Labyrintale.tick * 100;
         img.setPosition(x, y);
         if(duration <= 0.5f) {
-            float f = Labyrintale.tick * 1.4f;
+            float f = Labyrintale.tick * 1.6f;
             if(alpha <= f) isDone = true;
             alpha = MathUtils.clamp(alpha - f, 0, 0.7f);
         }

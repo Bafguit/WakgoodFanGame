@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
@@ -27,6 +28,7 @@ public class MapScreen extends AbstractScreen {
 
     public MapScreen() {
         cType = ControlPanel.ControlType.BASIC;
+        type = ScreenType.MAP;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
         entryNode = nodes[0] = new MapNodeButton(currentFloor.ways[0]);
         entryNode.setPosition(b - entryNode.sWidth / 2, h * 0.85f - entryNode.sHeight / 2);
@@ -48,6 +50,8 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        if(isView && (InputHandler.cancel || InputHandler.map)) Labyrintale.removeTempScreen(this);
+
         for(int i = 0; i < 13; i++) {
             nodes[i].canGo = i == currentFloor.num;
             nodes[i].update();
@@ -110,6 +114,11 @@ public class MapScreen extends AbstractScreen {
         }
     }
 
+    public void view() {
+        Labyrintale.mapScreen.isView = true;
+        Labyrintale.addTempScreen(Labyrintale.mapScreen);
+    }
+
     @Override
     public void show() {
 
@@ -117,7 +126,7 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void hide() {
-
+        isView = false;
     }
 
     @Override

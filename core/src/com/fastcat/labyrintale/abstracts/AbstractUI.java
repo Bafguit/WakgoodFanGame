@@ -28,7 +28,7 @@ public abstract class AbstractUI implements Disposable {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
-    public Screen screen;
+    public AbstractScreen screen;
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
     public String text;
