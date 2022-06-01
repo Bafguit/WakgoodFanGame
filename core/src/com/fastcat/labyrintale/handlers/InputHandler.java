@@ -22,6 +22,7 @@ public class InputHandler {
 
     private static boolean textInputMode;
     private static String typedText = "";
+    private static int backspaces = 0;
 
     public InputHandler() {
         isLeftClick = false;
@@ -31,9 +32,17 @@ public class InputHandler {
         scale = (float) Gdx.graphics.getWidth() / 2560.0f;
 
         Gdx.input.setInputProcessor(new InputAdapter() {
-            public boolean keyTyped (char character) {
+            public boolean keyTyped (char c) {
+                System.out.println((int) c);
                 if(textInputMode) {
-                    typedText += character;
+                    if(c == '\b') {
+                        if(typedText.length() == 0)
+                            backspaces++;
+                        else
+                            typedText = typedText.substring(0, typedText.length()-1);
+                    } else if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
+                        typedText += c;
+                    }
                     return true;
                 }
                 return false;
@@ -70,9 +79,12 @@ public class InputHandler {
         return InputHandler.textInputMode;
     }
 
-    public String getTypedText() {
-        String text = typedText;
+    public String getTypedText(String formerText) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(formerText);
+        sb.setLength(Math.max(formerText.length() - backspaces, 0));
+        sb.append(typedText);
         typedText = "";
-        return text;
+        return sb.toString();
     }
 }
