@@ -85,6 +85,7 @@ public class InputHandler {
         sb.setLength(Math.max(formerText.length() - backspaces, 0));
         sb.append(typedText);
         typedText = "";
+        backspaces = 0;
         return sb.toString();
     }
 }
