@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.handlers.EffectHandler;
@@ -33,7 +34,7 @@ public class HealthBarDamageEffect extends AbstractEffect {
                 entity.animColor.set(1, 0, 0, 1);
 
             } else {
-                alpha = Math.min(alpha + Gdx.graphics.getDeltaTime() * 5, 1);
+                alpha = Math.min(alpha + Labyrintale.tick * 5, 1);
                 entity.animColor.set(1, alpha, alpha, entity.animColor.a);
             }
             if(isDone) {

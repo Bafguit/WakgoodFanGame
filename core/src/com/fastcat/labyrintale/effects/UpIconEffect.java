@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
@@ -15,7 +17,7 @@ public class UpIconEffect extends AbstractEffect {
 
     public UpIconEffect(float x, float y, Sprite img) {
         super(x, y, 1);
-        this.img = img;
+        this.img = new Sprite(img.getTexture());
         rw = 100 * scale;
         rh = 100 * scale;
         this.x = x - 50 * scale;
@@ -25,11 +27,12 @@ public class UpIconEffect extends AbstractEffect {
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        y += Gdx.graphics.getDeltaTime() * 100;
+        y += Labyrintale.tick * 100;
         img.setPosition(x, y);
         if(duration <= 0.5f) {
-            alpha -= Gdx.graphics.getDeltaTime() * 2f;
-            if(alpha < 0) alpha = 0;
+            float f = Labyrintale.tick * 1.4f;
+            if(alpha <= f) isDone = true;
+            alpha = MathUtils.clamp(alpha - f, 0, 0.7f);
         }
         img.draw(sb, alpha);
     }

@@ -55,13 +55,13 @@ public class MapScreen extends AbstractScreen {
 
         if(!Labyrintale.fading) {
             if (!glow) {
-                alpha -= Gdx.graphics.getDeltaTime() * 0.34f;
+                alpha -= Labyrintale.tick * 0.34f;
                 if (alpha <= 0.83f) {
                     alpha = 0.83f;
                     glow = true;
                 }
             } else {
-                alpha += Gdx.graphics.getDeltaTime() * 0.34f;
+                alpha += Labyrintale.tick * 0.34f;
                 if (alpha >= 1) {
                     alpha = 1;
                     glow = false;

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -28,8 +29,8 @@ public class FlashEffect extends AbstractEffect {
     @Override
     protected void renderEffect(SpriteBatch sb) {
         if(duration != baseDuration) {
-            alpha -= Gdx.graphics.getDeltaTime() * 0.7f;
-            sc -= Gdx.graphics.getDeltaTime() * 0.5f;
+            alpha -= Labyrintale.tick * 0.7f;
+            sc -= Labyrintale.tick * 0.5f;
             if(alpha < 0) alpha = 0;
             img.setBounds(x - rw * 0.5f * scale, y - rh * 0.5f * scale, rw * sc, rh * sc);
         }

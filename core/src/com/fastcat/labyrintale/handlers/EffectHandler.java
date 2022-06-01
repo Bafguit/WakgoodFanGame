@@ -22,6 +22,9 @@ public class EffectHandler {
             for(int i = 0; i < effectList.size; i++) {
                 AbstractEffect e = effectList.get(i);
                 e.render(sb);
+            }
+            for(int i = 0; i < effectList.size; i++) {
+                AbstractEffect e = effectList.get(i);
                 if(e.isDone) {
                     e.onRemove();
                     effectList.removeIndex(i);

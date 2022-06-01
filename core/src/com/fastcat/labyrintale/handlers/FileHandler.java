@@ -7,6 +7,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
@@ -44,7 +45,7 @@ public class FileHandler implements Disposable {
     public static final TextureAtlas character = new TextureAtlas("img/char/char.atlas");
 
     //관리
-    private static final HashMap<String, HashMap> maps = new HashMap<>();
+    private static final Array<HashMap> maps = new Array<>();
     public static final HashMap<String, Sprite> bg = new HashMap<>();
     public static final HashMap<String, Sprite> ui = new HashMap<>();
     public static final HashMap<String, Sprite> vfx = new HashMap<>();
@@ -69,6 +70,7 @@ public class FileHandler implements Disposable {
 
     //상태
     public static final HashMap<String, Sprite> itemImg = new HashMap<>();
+    public static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
 
     //이벤트
     public static final HashMap<String, Sprite> eventImg = new HashMap<>();
@@ -90,19 +92,20 @@ public class FileHandler implements Disposable {
     }
 
     private static void generateHashMap() {
-        maps.put("bg", bg);
-        maps.put("ui", ui);
-        maps.put("vfx", vfx);
-        maps.put("charImg", charImg);
-        maps.put("charImgBig", charImgBig);
-        maps.put("charImgTiny", charImgTiny);
-        maps.put("charBgImg", charBgImg);
-        maps.put("advImg", advImg);
-        maps.put("advImgBig", advImgBig);
-        maps.put("advBgImg", advBgImg);
-        maps.put("skillImg", skillImg);
-        maps.put("statusImg", statusImg);
-        maps.put("itemImg", itemImg);
+        maps.add(bg);
+        maps.add(ui);
+        maps.add(vfx);
+        maps.add(charImg);
+        maps.add(charImgBig);
+        maps.add(charImgTiny);
+        maps.add(charBgImg);
+        maps.add(advImg);
+        maps.add(advImgBig);
+        maps.add(advBgImg);
+        maps.add(skillImg);
+        maps.add(statusImg);
+        maps.add(itemImg);
+        maps.add(itemImgTrans);
         //maps.put("eventImg", eventImg);
     }
 
@@ -254,9 +257,11 @@ public class FileHandler implements Disposable {
 
     private static void generateItemImg() {
         itemImg.clear();
+        itemImgTrans.clear();
         for (JsonValue js : ITEM_JSON) {
             if(!js.name.equals("")) {
                 itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
+                //itemImgTrans.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_t.png"))); //TODO 이미지 추가
             }
         }
     }
@@ -274,20 +279,22 @@ public class FileHandler implements Disposable {
     }
 
     private static void setAntiAliased() {
-        for(HashMap h : maps.values()) {
+        for(HashMap h : maps) {
             for(Object s : h.values()) {
                 ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             }
         }
         /*
-        for(Texture t : NEKO_ATLAS.getTextures()) {
-            t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        for(TextureAtlas a : atlas.values()) {
+            for (Texture t : a.getTextures()) {
+                t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            }
         }*/
     }
 
     @Override
     public void dispose() {
-        for(HashMap h : maps.values()) {
+        for(HashMap h : maps) {
             for (Object s : h.values()) {
                 ((Sprite) s).getTexture().dispose();
             }

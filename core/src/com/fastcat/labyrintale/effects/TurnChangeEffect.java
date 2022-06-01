@@ -26,7 +26,7 @@ public class TurnChangeEffect extends AbstractEffect {
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        float d = Gdx.graphics.getDeltaTime();
+        float d = Labyrintale.tick;
         if (duration < 0.5f) {
             alpha -= d;
         } else if (duration >= 1.5f) {

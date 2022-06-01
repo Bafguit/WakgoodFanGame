@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.fastcat.labyrintale.Labyrintale;
 
 public class ScreenShake {
     private float x = 0.0F;
@@ -53,7 +54,7 @@ public class ScreenShake {
         iw = (int)sw;
         ih = (int)sh;
         if (this.duration != 0.0F) {
-            this.duration -= Gdx.graphics.getDeltaTime();
+            this.duration -= Labyrintale.tick;
             if (this.duration < 0.0F) {
                 this.duration = 0.0F;
                 viewport.update(iw, ih);

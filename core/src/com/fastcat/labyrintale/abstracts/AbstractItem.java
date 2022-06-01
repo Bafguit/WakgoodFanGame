@@ -17,6 +17,7 @@ public class AbstractItem implements Cloneable {
 
     public ItemString.ItemData data;
     public Sprite img;
+    public Sprite tImg;
     public String id;
     public String name;
     public String desc;
@@ -27,6 +28,7 @@ public class AbstractItem implements Cloneable {
     public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
         this.id = id;
         img = FileHandler.itemImg.get(this.id);
+        //tImg = FileHandler.itemImgTrans.get(this.id);
         data = StringHandler.itemString.get(this.id);
         name = data.NAME;
         desc = data.DESC;
@@ -46,7 +48,7 @@ public class AbstractItem implements Cloneable {
 
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
     }
 
     public void startOfTurn() {

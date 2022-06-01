@@ -121,7 +121,7 @@ public abstract class AbstractSkill implements Cloneable {
 
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, new Sprite(img.getTexture())));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
     }
 
     public String getKeyValue(String key) {

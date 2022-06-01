@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -27,9 +28,9 @@ public class UpTextEffect extends AbstractEffect {
     protected void renderEffect(SpriteBatch sb) {
         if(duration != baseDuration) {
             if(text.fontData != null) {
-                text.fontData.font.getColor().a -= Gdx.graphics.getDeltaTime();
+                text.fontData.font.getColor().a -= Labyrintale.tick;
                 if (text.fontData.font.getColor().a < 0) text.fontData.font.getColor().a = 0;
-                text.y += Gdx.graphics.getDeltaTime() * 100;
+                text.y += Labyrintale.tick * 100;
             }
         }
         text.render(sb);

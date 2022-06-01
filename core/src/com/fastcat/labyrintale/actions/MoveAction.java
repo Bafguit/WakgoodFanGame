@@ -34,6 +34,36 @@ public class MoveAction extends AbstractAction {
         to = AbstractLabyrinth.players[index1];
     }
 
+    public MoveAction(AbstractPlayer p, int index) {
+        super(p, 0.5f);
+        from = p;
+        type = MoveType.PLAYER;
+        index0 = from.tempIndex;
+        index1 = index;
+        int i = Math.abs(index0 - index1);
+        if(i == 0) isDone = true;
+        distance = Gdx.graphics.getWidth() * 0.095f * i;
+        duration *= i;
+        baseDuration = duration;
+        this.isLeft = index0 < index1;
+        to = AbstractLabyrinth.players[index1];
+    }
+
+    public MoveAction(AbstractPlayer p, int index, float dur) {
+        super(p, dur);
+        from = p;
+        type = MoveType.PLAYER;
+        index0 = from.tempIndex;
+        index1 = index;
+        int i = Math.abs(index0 - index1);
+        if(i == 0) isDone = true;
+        distance = Gdx.graphics.getWidth() * 0.095f * i;
+        duration *= i;
+        baseDuration = duration;
+        this.isLeft = index0 < index1;
+        to = AbstractLabyrinth.players[index1];
+    }
+
     public MoveAction(AbstractEnemy e, boolean isLeft) {
         this(e, isLeft, 0.5f);
     }
@@ -50,15 +80,38 @@ public class MoveAction extends AbstractAction {
         to = currentFloor.currentRoom.enemies[index1];
     }
 
+    public MoveAction(AbstractEnemy e, int index, float dur) {
+        super(e, dur);
+        from = e;
+        type = MoveType.ENEMY;
+        index0 = from.tempIndex;
+        index1 = index;
+        int i = Math.abs(index0 - index1);
+        if(i == 0) isDone = true;
+        distance = Gdx.graphics.getWidth() * 0.095f * i;
+        duration *= i;
+        baseDuration = duration;
+        this.isLeft = index0 < index1;
+        to = currentFloor.currentRoom.enemies[index1];
+    }
+
+    public MoveAction(AbstractEnemy e, int index) {
+        super(e, 0.5f);
+        from = e;
+        type = MoveType.ENEMY;
+        index0 = from.tempIndex;
+        index1 = index;
+        int i = Math.abs(index0 - index1);
+        if(i == 0) isDone = true;
+        distance = Gdx.graphics.getWidth() * 0.095f * i;
+        duration *= i;
+        baseDuration = duration;
+        this.isLeft = index0 < index1;
+        to = currentFloor.currentRoom.enemies[index1];
+    }
+
     @Override
     protected void updateAction() {
-        if(isLeft) {
-            from.animX -= distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
-            to.animX += distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
-        } else {
-            from.animX += distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
-            to.animX -= distance * Gdx.graphics.getDeltaTime() * (1 / baseDuration);
-        }
         if(isDone) {
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
             if(type == MoveType.PLAYER) {
@@ -84,6 +137,14 @@ public class MoveAction extends AbstractAction {
                 battleScreen.enemies[index0].enemy.ui = battleScreen.enemies[index0];
                 battleScreen.enemies[index1].enemy = (AbstractEnemy) from;
                 battleScreen.enemies[index1].enemy.ui = battleScreen.enemies[index1];
+            }
+        } else {
+            if (isLeft) {
+                from.animX -= distance * Labyrintale.tick * (1 / baseDuration);
+                to.animX += distance * Labyrintale.tick * (1 / baseDuration);
+            } else {
+                from.animX += distance * Labyrintale.tick * (1 / baseDuration);
+                to.animX -= distance * Labyrintale.tick * (1 / baseDuration);
             }
         }
     }

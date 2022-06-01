@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 
 import java.util.HashMap;
 
@@ -103,7 +104,7 @@ public class SoundHandler {
         }
 
         public void updateFadeIn() {
-            fadeTimer -= Gdx.graphics.getDeltaTime();
+            fadeTimer -= Labyrintale.tick;
             if (fadeTimer < 0.0F) {
                 fadeTimer = 0.0F;
                 fadingMusic.removeValue(this, false);
@@ -112,7 +113,7 @@ public class SoundHandler {
         }
 
         public void updateFadeOut() {
-            fadeTimer -= Gdx.graphics.getDeltaTime();
+            fadeTimer -= Labyrintale.tick;
             if (fadeTimer < 0.0F) {
                 fadeTimer = 0.0F;
                 isDone = true;

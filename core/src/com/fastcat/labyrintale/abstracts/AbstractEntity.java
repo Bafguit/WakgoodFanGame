@@ -104,7 +104,7 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void render(SpriteBatch sb) {
         if (atlas != null && !isDead) {
-            state.update(Gdx.graphics.getDeltaTime());
+            state.update(Labyrintale.tick);
             state.apply(skeleton);
             state.getCurrent(0).setTimeScale(1.0f);
             skeleton.updateWorldTransform();
@@ -505,7 +505,7 @@ public abstract class AbstractEntity implements Cloneable {
 
         public void render(SpriteBatch sb) {
             if (atlas != null) {
-                state.update(Gdx.graphics.getDeltaTime());
+                state.update(Labyrintale.tick);
                 state.apply(skeleton);
                 state.getCurrent(0).setTimeScale(1.0f);
                 skeleton.updateWorldTransform();

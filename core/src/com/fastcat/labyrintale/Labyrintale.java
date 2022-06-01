@@ -57,6 +57,7 @@ public class Labyrintale extends Game {
 	public static ShopScreen shopScreen;
 	public static boolean fading = true;
 	public static boolean fadeIn = true;
+	public static float tick;
 
 	private static AbstractScreen nextScreen = null;
 	private static Sprite fadeTex;
@@ -116,6 +117,7 @@ public class Labyrintale extends Game {
 	}
 
 	public void update() {
+		tick = Gdx.graphics.getDeltaTime();
 		camera.update();
 		screenShake.update(viewport);
 		inputHandler.update();
@@ -149,7 +151,7 @@ public class Labyrintale extends Game {
 		super.render();
 		if(tempScreen.size > 0) {
 			for(Screen s : tempScreen) {
-				if(s != null) s.render(Gdx.graphics.getDeltaTime());
+				if(s != null) s.render(Labyrintale.tick);
 			}
 		}
 		if(AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
@@ -162,7 +164,7 @@ public class Labyrintale extends Game {
 	private void fade() {
 		if(fading) {
 			if(!fadeIn) {
-				alphaCount += Gdx.graphics.getDeltaTime() / alphaDex;
+				alphaCount += Labyrintale.tick / alphaDex;
 				if(alphaCount > 1.0f) {
 					if(nextScreen != null) {
 						alphaCount = 1.0f;
@@ -172,7 +174,7 @@ public class Labyrintale extends Game {
 					} else fading = false;
 				}
 			} else {
-				alphaCount -= Gdx.graphics.getDeltaTime() / alphaDex;
+				alphaCount -= Labyrintale.tick / alphaDex;
 				if(alphaCount < 0.0f) {
 					alphaCount = 0.0f;
 					fading = false;
