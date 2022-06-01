@@ -14,6 +14,7 @@ public class CharSelectScreen extends AbstractScreen {
     public CharSelectText charSelectText;
     public BackButton backButton;
     public NextToAdvisorButton nextButton;
+    public SeedText seedText;
     public CharButton[] chars = new CharButton[4];
     public CharButton[] aChars = new CharButton[8];
 
@@ -22,6 +23,7 @@ public class CharSelectScreen extends AbstractScreen {
         charSelectText = new CharSelectText();
         backButton = new BackButton();
         nextButton = new NextToAdvisorButton();
+        seedText = new SeedText();
         CharButton char1 = new CharButton();
         CharButton char2 = new CharButton();
         CharButton char3 = new CharButton();
@@ -65,6 +67,7 @@ public class CharSelectScreen extends AbstractScreen {
             nextButton.disable();
         }
 
+        seedText.update();
         backButton.update();
         nextButton.update();
     }
@@ -78,6 +81,7 @@ public class CharSelectScreen extends AbstractScreen {
             aChars[i].render(sb);
         }
 
+        seedText.render(sb);
         backButton.render(sb);
         nextButton.render(sb);
         charSelectText.render(sb);
@@ -90,6 +94,7 @@ public class CharSelectScreen extends AbstractScreen {
 
     @Override
     public void hide() {
+
     }
 
     @Override

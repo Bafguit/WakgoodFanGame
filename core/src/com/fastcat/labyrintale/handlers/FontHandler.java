@@ -37,6 +37,7 @@ public class FontHandler implements Disposable {
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
+    public static final FontData SEED = new FontData(MEDIUM, 44, WHITE, true, false);
     public static final FontData SHOP_OK = new FontData(MEDIUM, 30, WHITE, true, true);
     public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true);
     public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
@@ -112,12 +113,9 @@ public class FontHandler implements Disposable {
 
     public static void renderLineTopLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
-        font.getData().setScale(fontData.scale);
-        font.getData().setLineHeight(fontData.size * 1.3f);
-        font.getColor().premultiplyAlpha();
         layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
         float ry = y + (layout.height) / 2;
-        fontData.draw(sb, layout, fontData.alpha, x, y);
+        fontData.draw(sb, layout, fontData.alpha, x, ry);
     }
 
     public static void renderKeywordCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {

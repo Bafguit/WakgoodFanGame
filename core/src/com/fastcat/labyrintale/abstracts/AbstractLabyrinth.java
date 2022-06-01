@@ -44,11 +44,8 @@ public class AbstractLabyrinth {
         players = new AbstractPlayer[4];
         if(type == RunType.SAVE) {
             SaveHandler.load();
-        } else if(type == RunType.CUSTOM) {
-            seed = "Put Custom Here";
-            //여기에 커스텀 입력
         } else {
-            seed = generateRandomSeed();
+            if(seed.equals("")) seed = generateRandomSeed();
             seedLong = seedToLong(seed);
             publicRandom = new RandomXC(seedLong);
             skillRandom = new RandomXC(seedLong);
@@ -187,6 +184,6 @@ public class AbstractLabyrinth {
     }
 
     public enum RunType {
-        NEW, CUSTOM, SAVE
+        NEW, SAVE
     }
 }

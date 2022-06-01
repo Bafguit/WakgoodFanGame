@@ -36,6 +36,7 @@ public class GameStartButton extends AbstractUI {
         Labyrintale.charSelectScreen.nextButton.disable();
         Labyrintale.charSelectScreen.backButton.onHide();
         Labyrintale.charSelectScreen.nextButton.onHide();
+        charSelectScreen.seedText.text = "";
         fadeOutAndChangeScreen(charSelectScreen, 1.0f);
     }
 }

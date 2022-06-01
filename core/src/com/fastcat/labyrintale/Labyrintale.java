@@ -84,10 +84,10 @@ public class Labyrintale extends Game {
 
 		//Gdx.graphics.setFullscreenMode(displayMode);//전체화면
 
-		//Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);//창모드
+		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);//창모드
 
-		Gdx.graphics.setUndecorated(true);//전체창
-		Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
+		//Gdx.graphics.setUndecorated(true);//전체창
+		//Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false);

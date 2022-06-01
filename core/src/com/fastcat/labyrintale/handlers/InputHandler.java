@@ -20,7 +20,7 @@ public class InputHandler {
     public static int mx;
     public static int my;
 
-    private static boolean textInputMode;
+    public static boolean textInputMode;
     private static String typedText = "";
     private static int backspaces = 0;
 
@@ -33,15 +33,16 @@ public class InputHandler {
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean keyTyped (char c) {
-                System.out.println((int) c);
                 if(textInputMode) {
                     if(c == '\b') {
                         if(typedText.length() == 0)
                             backspaces++;
                         else
                             typedText = typedText.substring(0, typedText.length()-1);
-                    } else if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
+                    } else if((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
                         typedText += c;
+                    } else if(c >= 'a' && c <= 'z') {
+                        typedText += (char) (c - 32);
                     }
                     return true;
                 }
@@ -59,9 +60,11 @@ public class InputHandler {
 
         mx = Math.max(Math.min(gx, sw), 0);
         my = sh - Math.max(Math.min(gy, sh), 0);
+        cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
+
+        if(textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) textInputMode = false;
 
         if(!textInputMode) {
-            cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
             map = Gdx.input.isKeyJustPressed(Keys.M);
         }
 
@@ -71,20 +74,17 @@ public class InputHandler {
         }
     }
 
-    public void setTextInputMode(boolean textInputMode) {
+    public static void setTextInputMode(boolean textInputMode) {
         InputHandler.textInputMode = textInputMode;
     }
 
-    public boolean isTextInputMode() {
-        return InputHandler.textInputMode;
-    }
-
-    public String getTypedText(String formerText) {
+    public static String getTypedText(String formerText) {
         StringBuilder sb = new StringBuilder();
         sb.append(formerText);
         sb.setLength(Math.max(formerText.length() - backspaces, 0));
         sb.append(typedText);
         typedText = "";
+        backspaces = 0;
         return sb.toString();
     }
 }

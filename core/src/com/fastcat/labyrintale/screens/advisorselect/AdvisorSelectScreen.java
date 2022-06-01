@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.charselect.SeedText;
 
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.bg;
@@ -15,6 +16,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorSelectText advisorSelectText;
     public BackToCharButton backButton;
     public NextButton nextButton;
+    public SeedText seedText;
     public AdvisorButton advisor;
     public AdvisorButton[] aAdvisor = new AdvisorButton[14];
 
@@ -23,6 +25,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
         advisorSelectText = new AdvisorSelectText();
         backButton = new BackToCharButton();
         nextButton = new NextButton();
+        seedText = Labyrintale.charSelectScreen.seedText;
         advisor = new AdvisorButton();
         advisor.setPosition(Gdx.graphics.getWidth() * 0.5f - advisor.sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
         addAdvisor();
@@ -51,6 +54,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
         }
         if(advisor.isOnLock) nextButton.enable();
         else nextButton.disable();
+        seedText.update();
         backButton.update();
         nextButton.update();
         advisorSelectText.update();
@@ -62,6 +66,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
         for (AdvisorButton advisorButton : aAdvisor) {
             advisorButton.render(sb);
         }
+        seedText.render(sb);
         backButton.render(sb);
         nextButton.render(sb);
         advisorSelectText.render(sb);

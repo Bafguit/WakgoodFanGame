@@ -31,7 +31,6 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void update() {
-
         logoText.update();
         gameStartButton.update();
         tutorialButton.update();
