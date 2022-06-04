@@ -22,13 +22,10 @@ public class EffectHandler {
 
     public void render(SpriteBatch sb) {
         if(effectList.size > 0) {
-            while(! effectList.isEmpty()){
-                AbstractEffect e = effectList.removeFirst();
-                e.render(sb);
-            }
             Iterator<AbstractEffect> it = effectList.iterator();
             while (it.hasNext()){
                 AbstractEffect e = it.next();
+                e.render(sb);
                 if(e.isDone){
                     e.onRemove();
                     it.remove();

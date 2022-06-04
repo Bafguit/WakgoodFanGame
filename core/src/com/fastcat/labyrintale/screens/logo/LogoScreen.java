@@ -17,7 +17,7 @@ public class LogoScreen extends AbstractScreen {
         cType = ControlPanel.ControlType.HIDE;
         setBg(FileHandler.ui.get("FADE"));
         logo = new LogoImage();
-        effectHandler.effectList.add(new LogoEffect());
+        effectHandler.effectList.addLast(new LogoEffect());
     }
 
     @Override

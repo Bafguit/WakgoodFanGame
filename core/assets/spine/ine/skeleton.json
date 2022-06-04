@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "s6ZTS2PfMgbFm+dPRXHSatO4TSQ",
+	"hash": "gZrB/prAhmLDr7b7/noy7nMWaAk",
 	"spine": "3.8.75",
 	"x": -320,
 	"y": -50,
@@ -82,6 +82,21 @@
 "animations": {
 	"attack": {
 		"slots": {
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"arm_right": {
 				"attachment": [
 					{ "name": null }
@@ -93,33 +108,20 @@
 					{ "time": 0.6667, "name": "ine_sd_a" }
 				]
 			},
-			"hair": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"head": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"body": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"leg": {
+			"hair": {
 				"attachment": [
 					{ "name": null }
 				]
 			}
 		}
 	},
+	"die": {},
+	"hit": {},
 	"idle": {
 		"bones": {
 			"arm_right": {
@@ -184,6 +186,7 @@
 				]
 			}
 		}
-	}
+	},
+	"skill": {}
 }
 }
