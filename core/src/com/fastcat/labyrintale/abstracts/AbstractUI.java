@@ -43,9 +43,6 @@ public abstract class AbstractUI implements Disposable {
     public float height;
     public float sWidth;
     public float sHeight;
-    protected int fs;
-    protected FontType ft;
-    protected boolean fb;
     public boolean over;
     private boolean justOver = false;
     public boolean overable = true;

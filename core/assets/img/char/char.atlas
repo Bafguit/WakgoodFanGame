@@ -1,75 +1,75 @@
 char.png
-size:2048,2048
-repeat:none
+	size: 2048, 2048
+	repeat: none
 burger_p
-bounds:940,71,467,467
+	bounds: 940, 71, 467, 467
 burger_s
-bounds:2,2,67,67
+	bounds: 2, 2, 67, 67
 gosegu_bg
-bounds:1286,540,640,1440
+	bounds: 1286, 540, 640, 1440
 gosegu_s
-bounds:1928,1706,67,67
+	bounds: 1928, 1706, 67, 67
 ine_bg
-bounds:644,540,640,1440
+	bounds: 644, 540, 640, 1440
 ine_p
-bounds:1409,71,467,467
+	bounds: 1409, 71, 467, 467
 ine_s
-bounds:1928,1844,67,67
+	bounds: 1928, 1844, 67, 67
 jururu_bg
-bounds:2,540,640,1440
+	bounds: 2, 540, 640, 1440
 jururu_s
-bounds:1928,1775,67,67
+	bounds: 1928, 1775, 67, 67
 lilpa_s
-bounds:71,2,67,67
+	bounds: 71, 2, 67, 67
 manager_p
-bounds:471,71,467,467
+	bounds: 471, 71, 467, 467
 manager_s
-bounds:1928,1913,67,67
+	bounds: 1928, 1913, 67, 67
 viichan_s
-bounds:140,2,67,67
+	bounds: 140, 2, 67, 67
 wak_p
-bounds:2,71,467,467
+	bounds: 2, 71, 467, 467
 wak_s
-bounds:209,2,67,67
+	bounds: 209, 2, 67, 67
 
 char2.png
-size:2048,2048
-repeat:none
+	size: 2048, 2048
+	repeat: none
 burger_bg
-bounds:2,471,640,1440
+	bounds: 2, 471, 640, 1440
 gosegu_p
-bounds:1409,2,467,467
+	bounds: 1409, 2, 467, 467
 jururu_p
-bounds:471,2,467,467
+	bounds: 471, 2, 467, 467
 lilpa_bg
-bounds:644,471,640,1440
+	bounds: 644, 471, 640, 1440
 lilpa_p
-bounds:2,2,467,467
+	bounds: 2, 2, 467, 467
 manager_bg
-bounds:1286,471,640,1440
+	bounds: 1286, 471, 640, 1440
 viichan_p
-bounds:940,2,467,467
+	bounds: 940, 2, 467, 467
 
 char3.png
-size:2048,2048
-repeat:none
+	size: 2048, 2048
+	repeat: none
 burger
-bounds:2,2,171,171
+	bounds: 2, 2, 171, 171
 gosegu
-bounds:1459,1790,171,171
+	bounds: 1459, 1790, 171, 171
 ine
-bounds:1286,1617,171,171
+	bounds: 1286, 1617, 171, 171
 jururu
-bounds:175,175,171,171
+	bounds: 175, 175, 171, 171
 lilpa
-bounds:2,175,171,171
+	bounds: 2, 175, 171, 171
 manager
-bounds:1286,1790,171,171
+	bounds: 1286, 1790, 171, 171
 viichan
-bounds:2,348,171,171
+	bounds: 2, 348, 171, 171
 viichan_bg
-bounds:644,521,640,1440
+	bounds: 644, 521, 640, 1440
 wak
-bounds:175,348,171,171
+	bounds: 175, 348, 171, 171
 wak_bg
-bounds:2,521,640,1440
+	bounds: 2, 521, 640, 1440

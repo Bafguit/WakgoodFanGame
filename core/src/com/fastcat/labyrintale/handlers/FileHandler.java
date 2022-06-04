@@ -170,6 +170,7 @@ public class FileHandler implements Disposable {
         ui.put("CHECK_ON", new Sprite(new Texture("img/ui/check_1.png")));
         ui.put("OPTION_PANEL", new Sprite(new Texture("img/ui/optionPanel.png")));
         ui.put("SHIELD", new Sprite(new Texture("img/ui/shield.png")));
+        ui.put("LOGO", new Sprite(new Texture("img/ui/logo.png")));
     }
 
     private static void generateCharImg() {

@@ -22,6 +22,7 @@ import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
+import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
@@ -62,7 +63,7 @@ public class Labyrintale extends Game {
 	private static AbstractScreen nextScreen = null;
 	private static Sprite fadeTex;
 	private static float alphaCount = 1.0f;
-	private static float alphaDex = 1.0f;
+	private static float alphaDex = 2.0f;
 
 	private InputHandler inputHandler;
 	private FontHandler fontHandler;
@@ -113,7 +114,7 @@ public class Labyrintale extends Game {
 		fadeTex = FileHandler.ui.get("FADE");
 		fadeTex.setPosition(0, 0);
 
-		setScreen(mainMenuScreen);
+		setScreen(new LogoScreen());
 	}
 
 	public void update() {
@@ -180,8 +181,8 @@ public class Labyrintale extends Game {
 					fading = false;
 				}
 			}
-			fadeTex.setAlpha(alphaCount);
-			fadeTex.draw(sb);
+			//fadeTex.setAlpha(alphaCount);
+			fadeTex.draw(sb, alphaCount);
 		}
 	}
 
