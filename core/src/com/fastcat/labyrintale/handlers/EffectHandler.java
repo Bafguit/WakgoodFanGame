@@ -8,6 +8,8 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 
+import java.util.Iterator;
+
 public class EffectHandler {
 
     public static final ShapeRenderer shr = new ShapeRenderer();
@@ -20,15 +22,16 @@ public class EffectHandler {
 
     public void render(SpriteBatch sb) {
         if(effectList.size > 0) {
-            for(int i = 0; i < effectList.size; i++) {
+            while(! effectList.isEmpty()){
                 AbstractEffect e = effectList.removeFirst();
                 e.render(sb);
             }
-            for(int i = 0; i < effectList.size; i++) {
-                AbstractEffect e = effectList.get(i);
-                if(e.isDone) {
+            Iterator<AbstractEffect> it = effectList.iterator();
+            while (it.hasNext()){
+                AbstractEffect e = it.next();
+                if(e.isDone){
                     e.onRemove();
-                    effectList.removeIndex(i);
+                    it.remove();
                 }
             }
         }
