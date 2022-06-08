@@ -32,7 +32,7 @@ public class ShopRoom extends AbstractRoom {
     }
 
     @Override
-    protected void entry() {
+    public void entry() {
         generateSkills();
         generateItems();
         roll = new RollItem(this);

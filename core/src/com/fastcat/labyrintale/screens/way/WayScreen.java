@@ -37,6 +37,7 @@ public class WayScreen extends AbstractScreen {
             WaySelectButton b = buttons[i] = new WaySelectButton(this, ch);
             b.setPosition(tw - b.sWidth / 2, h * 0.73f - b.sHeight / 2);
 
+            //TODO 음산함 60 이상이면 물음표 표시
             WayIcon c = icons[i] = new WayIcon(b, ch.img);
             c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 

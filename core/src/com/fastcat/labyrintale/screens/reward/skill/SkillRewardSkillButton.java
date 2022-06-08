@@ -28,6 +28,7 @@ public class SkillRewardSkillButton extends AbstractUI {
         group = g;
         skill = s;
         this.isTo = isTo;
+        clickable = !isTo;
         if(!isTo) {
             AbstractSkill t = group.toSkill.skill;
             for(int i = 0; i < t.upgradeCount; i++) {

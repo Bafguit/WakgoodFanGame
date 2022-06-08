@@ -15,6 +15,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 public class AbstractRoom implements Cloneable {
 
     public String id;
+    public String text;
     public AbstractEnemy[] enemies;
     public AbstractEvent event;
     public RoomType type;
@@ -42,9 +43,6 @@ public class AbstractRoom implements Cloneable {
     }
     
     public void update() {
-        if(type == BATTLE) {
-
-        }
     }
     
     public void render(SpriteBatch sb) {
@@ -68,7 +66,7 @@ public class AbstractRoom implements Cloneable {
         }
     }
 
-    protected void entry() {
+    public void entry() {
 
     }
 

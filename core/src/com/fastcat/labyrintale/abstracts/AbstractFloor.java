@@ -21,11 +21,13 @@ public class AbstractFloor {
     public AbstractWay currentWay;
     public AbstractWay[] ways = new AbstractWay[13];
     public boolean canBoss;
+    public boolean isDone;
     public int floorNum;
     public int num;
 
     public AbstractFloor(SaveHandler.FloorData data) {
         canBoss = data.canBoss;
+        isDone = data.isDone;
         floorNum = data.floorNum;
         num = data.num;
         for(int i = 0; i < 13; i++) {
@@ -48,6 +50,7 @@ public class AbstractFloor {
     public AbstractFloor(int f) {
         this.floorNum = f;
         this.canBoss = false;
+        this.isDone = false;
         this.num = 0;
 
         ways[0] = new AbstractWay(generateWay(ENTRY), ENTRY);
@@ -66,6 +69,10 @@ public class AbstractFloor {
         ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
 
         currentRoom = new EntryRoom();
+    }
+
+    public void done() {
+        this.isDone = true;
     }
 
     private Array<AbstractChoice> generateWay(AbstractWay.WayType type) {

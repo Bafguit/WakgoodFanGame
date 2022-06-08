@@ -64,7 +64,7 @@ public class SaveHandler {
     }
 
     public static void load() {
-
+        GroupHandler.RoomGroup.eventCount = data.eventCount;
         GroupHandler.SkillGroup.discardedCount = data.discard;
         seed = data.random.seed;
         seedLong = data.random.seedLong;
@@ -83,7 +83,8 @@ public class SaveHandler {
                 floors[i] = new AbstractFloor(d);
             }
         }
-        currentFloor = floors[data.currentFloor - 1];
+        floorNum = data.currentFloor;
+        currentFloor = floors[floorNum - 1];
 
         for (int i = 0; i < 4; i++) {
             EntityData d = data.players[i];
@@ -135,10 +136,12 @@ public class SaveHandler {
         public int selection;
         public int maxEnergy;
         public int gold;
+        public int bleak;
         public AdvisorData advisor;
         public EntityData[] players = new EntityData[4];
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
+        public int eventCount;
         public HashMap<String, Integer> discard = new HashMap<>();
 
         public static SaveData create() {
@@ -152,7 +155,7 @@ public class SaveHandler {
                 AbstractFloor f = AbstractLabyrinth.floors[i];
                 temp.floors[i] = f != null ? FloorData.create(f) : null;
             }
-            temp.currentFloor = AbstractLabyrinth.currentFloor.floorNum;
+            temp.currentFloor = floorNum;
             for(int i = 0; i < 4; i++) {
                 temp.players[i] = EntityData.create(AbstractLabyrinth.players[i]);
             }
@@ -161,6 +164,8 @@ public class SaveHandler {
             temp.selection = AbstractLabyrinth.selection;
             temp.maxEnergy = AbstractLabyrinth.maxEnergy;
             temp.gold = AbstractLabyrinth.gold;
+            temp.bleak = AbstractLabyrinth.bleak;
+            temp.eventCount = GroupHandler.RoomGroup.eventCount;
             temp.discard = GroupHandler.SkillGroup.discardedCount;
 
             return temp;
@@ -198,6 +203,7 @@ public class SaveHandler {
         public WayData currentWay;
         public WayData[] ways = new WayData[13];
         public boolean canBoss;
+        public boolean isDone;
         public int floorNum;
         public int num;
 
@@ -209,6 +215,7 @@ public class SaveHandler {
                 temp.ways[i] = WayData.create(f.ways[i]);
             }
             temp.canBoss = f.canBoss;
+            temp.isDone = f.isDone;
             temp.floorNum = f.floorNum;
             temp.num = f.num;
             return temp;

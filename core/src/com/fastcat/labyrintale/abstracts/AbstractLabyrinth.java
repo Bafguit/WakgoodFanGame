@@ -29,11 +29,13 @@ public class AbstractLabyrinth {
     public static AbstractPlayer[] players;
     public static AbstractAdvisor advisor;
     public static ControlPanel cPanel;
+    public static int floorNum;
     public static int itemAble;
     public static int selection;
     public static int maxEnergy;
     public static int energy;
     public static int gold;
+    public static int bleak;
 
     public AbstractLabyrinth() {
         this(RunType.NEW);
@@ -57,6 +59,7 @@ public class AbstractLabyrinth {
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
+            floorNum = currentFloor.floorNum;
             floors[1] = new AbstractFloor(2);
             floors[2] = new AbstractFloor(3);
             floors[3] = new AbstractFloor(4);
@@ -65,6 +68,7 @@ public class AbstractLabyrinth {
             maxEnergy = 3;
             energy = 0;
             gold = 1000;
+            bleak = 0;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);
@@ -125,6 +129,12 @@ public class AbstractLabyrinth {
     public static void endRoom() {
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
+        if(currentFloor.num == 11) {
+            currentFloor.canBoss = true;
+        } else if (currentFloor.canBoss) {
+            currentFloor.done();
+            currentFloor = floors[++floorNum];
+        }
         Labyrintale.mapScreen.isView = false;
         SaveHandler.save();
     }

@@ -58,6 +58,7 @@ public class FileHandler implements Disposable {
     public static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
     public static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
     public static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
+    public static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
     public static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
@@ -99,6 +100,7 @@ public class FileHandler implements Disposable {
         maps.add(charImgBig);
         maps.add(charImgTiny);
         maps.add(charBgImg);
+        maps.add(charPanelImg);
         maps.add(advImg);
         maps.add(advImgBig);
         maps.add(advBgImg);
@@ -178,6 +180,7 @@ public class FileHandler implements Disposable {
         charImgBig.clear();
         charImgTiny.clear();
         charBgImg.clear();
+        charPanelImg.clear();
         skeleton.clear();
         atlas.clear();
         for(PlayerClass cls : PlayerClass.values()) {
@@ -186,6 +189,7 @@ public class FileHandler implements Disposable {
             charImgBig.put(cls, character.createSprite(s + "_p"));
             charImgTiny.put(cls, character.createSprite(s + "_s"));
             charBgImg.put(cls, character.createSprite(s + "_bg"));
+            charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
             skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
             atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
         }

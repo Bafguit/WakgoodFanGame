@@ -69,7 +69,7 @@ public class LoadingScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        text.render(sb);
+        //text.render(sb);
     }
 
     @Override

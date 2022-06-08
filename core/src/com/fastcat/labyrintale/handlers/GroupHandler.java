@@ -16,6 +16,7 @@ import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EntryRoom;
+import com.fastcat.labyrintale.rooms.other.MysteryRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
@@ -51,6 +52,7 @@ public class GroupHandler {
         public static HashMap<Integer, Array<AbstractRoom>> eliteGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> eventGroup = new HashMap<>();
+        public static int eventCount;
 
         public static void generateRoom() {
             generateWeak();
@@ -94,6 +96,7 @@ public class GroupHandler {
             eventGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new AbstractRoom(new TestEvent()));
+            staticShuffle(t, eventRandom);
             eventGroup.put(1, t);
         }
 
@@ -103,6 +106,7 @@ public class GroupHandler {
             idSort.put("Entry", new EntryRoom());
             idSort.put("Shop", new ShopRoom());
             idSort.put("Rest", new RestRoom());
+            idSort.put("Mystery", new MysteryRoom());
 
             for(Array<AbstractRoom> ar : weakGroup.values()) {
                 for(AbstractRoom r : ar) {
@@ -135,23 +139,23 @@ public class GroupHandler {
             return new Weak1();
         }
 
-        public static void roll() {
-            for(Array<AbstractRoom> a : weakGroup.values()) {
-                staticShuffle(a);
-            }
-            for(Array<AbstractRoom> a : normalGroup.values()) {
-                staticShuffle(a);
-            }
-            for(Array<AbstractRoom> a : eliteGroup.values()) {
-                staticShuffle(a);
-            }
-            for(Array<AbstractRoom> a : bossGroup.values()) {
-                staticShuffle(a);
-            }
+        public static AbstractRoom getNextEvent() {
+            return Objects.requireNonNull(eventGroup.get(currentFloor.floorNum).get(eventCount++).clone());
         }
 
-        public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array) {
-            return staticShuffle(array, monsterRandom);
+        public static void roll() {
+            for(Array<AbstractRoom> a : weakGroup.values()) {
+                staticShuffle(a, monsterRandom);
+            }
+            for(Array<AbstractRoom> a : normalGroup.values()) {
+                staticShuffle(a, monsterRandom);
+            }
+            for(Array<AbstractRoom> a : eliteGroup.values()) {
+                staticShuffle(a, monsterRandom);
+            }
+            for(Array<AbstractRoom> a : bossGroup.values()) {
+                staticShuffle(a, monsterRandom);
+            }
         }
 
         public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array, RandomXC r) {

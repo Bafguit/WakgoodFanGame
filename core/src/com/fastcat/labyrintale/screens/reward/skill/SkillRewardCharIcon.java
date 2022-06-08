@@ -22,6 +22,7 @@ public class SkillRewardCharIcon extends AbstractUI {
         group = g;
         this.p = p;
         border = charImg.get(p.playerClass);
+        clickable = false;
     }
 
     @Override

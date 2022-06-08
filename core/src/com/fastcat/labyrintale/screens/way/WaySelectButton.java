@@ -25,11 +25,7 @@ public class WaySelectButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        if(currentFloor.num == 11) {
-            currentFloor.canBoss = true;
-        } else {
-            currentFloor.num++;
-        }
+        currentFloor.num++;
         currentFloor.currentRoom = c.room;
         SaveHandler.save();
         currentFloor.currentRoom.enter();
