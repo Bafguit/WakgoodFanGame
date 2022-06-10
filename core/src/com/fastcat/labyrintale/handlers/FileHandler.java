@@ -76,6 +76,9 @@ public class FileHandler implements Disposable {
     //이벤트
     public static final HashMap<String, Sprite> eventImg = new HashMap<>();
 
+    //영상
+    public static final HashMap<String, FileHandle> video = new HashMap<>();
+
     public FileHandler() {
         generateHashMap();
         generateBG();
@@ -89,6 +92,7 @@ public class FileHandler implements Disposable {
         generateStatusImg();
         generateItemImg();
         generateEventImg();
+        generateVideo();
         setAntiAliased();
     }
 
@@ -109,6 +113,11 @@ public class FileHandler implements Disposable {
         maps.add(itemImg);
         maps.add(itemImgTrans);
         //maps.put("eventImg", eventImg);
+    }
+
+    private static void generateVideo() {
+        video.clear();
+        video.put("LOGO", Gdx.files.internal("video/logo.webm"));
     }
 
     private static void generateSkeleton() {

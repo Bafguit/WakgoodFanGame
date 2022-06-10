@@ -5,8 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.items.silver.Purplight;
-import com.fastcat.labyrintale.items.starter.Sedative;
+import com.fastcat.labyrintale.items.starter.CrossPin;
 import com.fastcat.labyrintale.items.starter.ToxicFlask;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -39,7 +38,7 @@ public class Gosegu extends AbstractPlayer {
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
         temp.add(new ToxicFlask(this));
-        temp.add(new Sedative(this));
+        temp.add(new CrossPin(this));
         return temp;
     }
 }

@@ -96,7 +96,6 @@ public class GroupHandler {
             eventGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new AbstractRoom(new TestEvent()));
-            staticShuffle(t, eventRandom);
             eventGroup.put(1, t);
         }
 
@@ -206,7 +205,7 @@ public class GroupHandler {
             t.add(new OldSword(null));
             t.add(new FabricMail(null));
             t.add(new ToxicFlask(null));
-            t.add(new Sedative(null));
+            t.add(new CrossPin(null));
             t.add(new Bible(null));
             t.add(new CottonNecklace(null));
 

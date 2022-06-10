@@ -4,15 +4,14 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.InfectionStatus;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
-public class Sedative extends AbstractItem {
+public class CrossPin extends AbstractItem {
 
-    private static final String ID = "Sedative";
+    private static final String ID = "CrossPin";
     private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public Sedative(AbstractPlayer owner) {
+    public CrossPin(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 

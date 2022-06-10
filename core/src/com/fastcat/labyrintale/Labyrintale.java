@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.video.VideoPlayer;
+import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -42,6 +44,7 @@ public class Labyrintale extends Game {
 	public static OrthographicCamera camera;
 	public static FitViewport viewport;
 	public static ScreenShake screenShake;
+	public static VideoPlayer videoPlayer;
 
 	public static AbstractLabyrinth labyrinth;
 
@@ -56,14 +59,14 @@ public class Labyrintale extends Game {
 	public static DeckViewScreen deckViewScreen; //TODO 삭제 예정
 	public static EventScreen eventScreen;
 	public static ShopScreen shopScreen;
-	public static boolean fading = true;
-	public static boolean fadeIn = true;
+	public static boolean fading = false;
+	public static boolean fadeIn = false;
 	public static float tick;
 
 	private static AbstractScreen nextScreen = null;
 	private static Sprite fadeTex;
-	private static float alphaCount = 1.0f;
-	private static float alphaDex = 2.0f;
+	private static float alphaCount = 0;
+	private static float alphaDex = 2;
 
 	private InputHandler inputHandler;
 	private FontHandler fontHandler;
@@ -94,6 +97,7 @@ public class Labyrintale extends Game {
 		camera.setToOrtho(false);
 		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 		screenShake = new ScreenShake();
+		videoPlayer = VideoPlayerCreator.createVideoPlayer();
 		sb = new SpriteBatch();
 		psb = new PolygonSpriteBatch();
 		sr = new SkeletonRenderer();
