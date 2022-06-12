@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.advisors.TestAdvisor;
 import com.fastcat.labyrintale.events.TestEvent;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
@@ -15,10 +16,7 @@ import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
-import com.fastcat.labyrintale.rooms.other.EntryRoom;
-import com.fastcat.labyrintale.rooms.other.MysteryRoom;
-import com.fastcat.labyrintale.rooms.other.RestRoom;
-import com.fastcat.labyrintale.rooms.other.ShopRoom;
+import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.burger.*;
@@ -42,6 +40,41 @@ public class GroupHandler {
         SkillGroup.generateSkill();
         ItemGroup.generateItem();
         RoomGroup.generateRoom();
+        AdvisorGroup.generateAdvisor();
+    }
+
+    public static class AdvisorGroup {
+
+        public static Array<AbstractAdvisor> sort = new Array<>();
+        public static HashMap<AbstractAdvisor.AdvisorClass, AbstractAdvisor> advisors = new HashMap<>();
+
+        public static void generateAdvisor() {
+            for(AbstractAdvisor.AdvisorClass c : AbstractAdvisor.AdvisorClass.values()) {
+                AbstractAdvisor a = getAdvisorInstance(c);
+                sort.add(a);
+                advisors.put(c, a);
+            }
+        }
+
+        public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
+            switch (cls) {
+                default:
+                    return new TestAdvisor();
+            }
+        }
+
+        public static Array<AbstractAdvisor> staticShuffle(Array<AbstractAdvisor> array) {
+            AbstractAdvisor[] items = array.toArray(AbstractAdvisor.class);
+            for(int i = array.size - 1; i >= 0; --i) {
+                int ii = publicRandom.random(i);
+                AbstractAdvisor temp = items[i];
+                items[i] = items[ii];
+                items[ii] = temp;
+            }
+            array.clear();
+            array.addAll(items);
+            return array;
+        }
     }
 
     public static class RoomGroup {
@@ -106,6 +139,7 @@ public class GroupHandler {
             idSort.put("Shop", new ShopRoom());
             idSort.put("Rest", new RestRoom());
             idSort.put("Mystery", new MysteryRoom());
+            idSort.put("Placeholder", new PlaceholderRoom());
 
             for(Array<AbstractRoom> ar : weakGroup.values()) {
                 for(AbstractRoom r : ar) {

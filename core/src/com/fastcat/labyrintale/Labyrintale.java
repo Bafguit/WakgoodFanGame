@@ -51,7 +51,6 @@ public class Labyrintale extends Game {
 	public Array<AbstractScreen> tempScreen = new Array<>();
 	public static MainMenuScreen mainMenuScreen;
 	public static CharSelectScreen charSelectScreen;
-	public static AdvisorSelectScreen advisorSelectScreen;
 	public static MapScreen mapScreen;
 	public static BattleScreen battleScreen;
 	public static CharInfoScreen charInfoScreen;
@@ -113,7 +112,6 @@ public class Labyrintale extends Game {
 		game = this;
 		mainMenuScreen = new MainMenuScreen();
 		charSelectScreen = new CharSelectScreen();
-		advisorSelectScreen = new AdvisorSelectScreen();
 		//labyrinth = new AbstractLabyrinth();
 		fadeTex = FileHandler.ui.get("FADE");
 		fadeTex.setPosition(0, 0);

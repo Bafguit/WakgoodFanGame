@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.advisorselect;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
@@ -10,13 +11,15 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
 public class NextButton extends AbstractUI {
 
-    public NextButton() {
+    private final AdvisorSelectScreen sc;
+
+    public NextButton(AdvisorSelectScreen sc) {
         super(FileHandler.ui.get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
-        text = "출발";
+        text = "결정";
+        this.sc = sc;
         showImg = false;
-        disable();
     }
 
     @Override
@@ -31,6 +34,11 @@ public class NextButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(true));
+        if(sc.selected != null) {
+            AbstractLabyrinth.advisor = sc.selected.advisor;
+            AbstractLabyrinth.endRoom();
+            Labyrintale.removeTempScreen(sc);
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        }
     }
 }

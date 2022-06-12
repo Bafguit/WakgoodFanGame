@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
 import com.fastcat.labyrintale.rooms.other.EntryRoom;
+import com.fastcat.labyrintale.rooms.other.PlaceholderRoom;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 
@@ -68,7 +69,7 @@ public class AbstractFloor {
         ways[11] = new AbstractWay(generateWay(REST), REST);
         ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
 
-        currentRoom = new EntryRoom();
+        currentRoom = new PlaceholderRoom();
     }
 
     public void done() {
@@ -79,9 +80,7 @@ public class AbstractFloor {
         Array<AbstractChoice> t = new Array<>();
         //TODO 랜덤으로 생성하게
         if(type == ENTRY) {
-            t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
-            t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.GOOD, true));
-            t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP, true));
+            t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
         } else if (type == NORMAL) {
             t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             t.add(new AbstractChoice(new AbstractRoom(new TestEvent()), AbstractChoice.ChoiceType.LOOK, true));

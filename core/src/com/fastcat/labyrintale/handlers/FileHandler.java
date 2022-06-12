@@ -86,8 +86,8 @@ public class FileHandler implements Disposable {
         generateVFX();
         generateCharImg();
         generateSkeleton();
-        generateAdvImg();
         StringHandler.generate();
+        generateAdvImg();
         generateSkillImg();
         generateStatusImg();
         generateItemImg();
@@ -252,11 +252,11 @@ public class FileHandler implements Disposable {
         for (JsonValue js : CARD_JSON_JURURU) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_ADV) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
-        }
         for (JsonValue js : CARD_JSON_ENEMY) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + ".png")));
+        }
+        for (JsonValue js : CARD_JSON_ADV) {
+            skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
         }
     }
 

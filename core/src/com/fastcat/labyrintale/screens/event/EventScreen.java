@@ -43,6 +43,10 @@ public class EventScreen extends AbstractScreen {
         }
     }
 
+    public void refresh() {
+
+    }
+
     @Override
     public void show() {
 

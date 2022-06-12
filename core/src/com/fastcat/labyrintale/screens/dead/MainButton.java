@@ -30,8 +30,6 @@ public class MainButton extends AbstractUI {
     @Override
     protected void onClick() {
         logger.log("Shutting Down...");
-        Labyrintale.advisorSelectScreen.advisor.removeChar();
-        Labyrintale.advisorSelectScreen.nextButton.disable();
         Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
     }
 }

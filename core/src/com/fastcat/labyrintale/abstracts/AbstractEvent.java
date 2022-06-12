@@ -24,6 +24,7 @@ public abstract class AbstractEvent {
         data = StringHandler.eventString.data.get(this.id);
         name = data.NAME;
         choices = new EventChoice[size];
+        //TODO 페이지 구현 필수
     }
 
     public void done() {

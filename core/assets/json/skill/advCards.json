@@ -1,6 +1,58 @@
 {
-  "Burger": {
-    "NAME": "모시깽이",
-    "DESC": "피해를 {A} 줍니다."
+  "dopa": {
+    "NAME": "도파민 박사",
+    "DESC": "DESCRIPTION"
+  },
+  "secret": {
+    "NAME": "비밀소녀",
+    "DESC": "DESCRIPTION"
+  },
+  "ruseok": {
+    "NAME": "해루석",
+    "DESC": "DESCRIPTION"
+  },
+  "hiki": {
+    "NAME": "히키킹",
+    "DESC": "DESCRIPTION"
+  },
+  "pung": {
+    "NAME": "풍신",
+    "DESC": "DESCRIPTION"
+  },
+  "shrimp": {
+    "NAME": "새우튀김",
+    "DESC": "DESCRIPTION"
+  },
+  "negative": {
+    "NAME": "부정형 인간",
+    "DESC": "DESCRIPTION"
+  },
+  "jk": {
+    "NAME": "독고혜지",
+    "DESC": "DESCRIPTION"
+  },
+  "sophia": {
+    "NAME": "생계형 강도",
+    "DESC": "전투 승리 시 획득하는 골드가 20% 증가합니다."
+  },
+  "duksu": {
+    "NAME": "이덕수 할아바이",
+    "DESC": "DESCRIPTION"
+  },
+  "haku": {
+    "NAME": "카놀라유",
+    "DESC": "DESCRIPTION"
+  },
+  "business": {
+    "NAME": "비즈니스킴",
+    "DESC": "DESCRIPTION"
+  },
+  "freeter": {
+    "NAME": "프리터",
+    "DESC": "DESCRIPTION"
+  },
+  "carnar": {
+    "NAME": "카르나르 융터르",
+    "DESC": "DESCRIPTION"
   }
 }

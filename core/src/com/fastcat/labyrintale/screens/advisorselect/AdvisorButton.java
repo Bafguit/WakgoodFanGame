@@ -5,36 +5,25 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.Labyrintale.advisorSelectScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
-    private Sprite ai;
-    private Sprite bg;
-    public boolean showBg = false;
-    private boolean isCharSt = false;
-    public boolean isOnLock = false;
-    private boolean isChar = true;
+    public AbstractAdvisor advisor;
 
     public AbstractAdvisor.AdvisorClass selected;
-    public AdvisorButton sChar;
+    public AdvisorSelectScreen select;
 
-    public AdvisorButton() {
+    public AdvisorButton(AbstractAdvisor adv, AdvisorSelectScreen select) {
         super(FileHandler.ui.get("BORDER_M"));
-        showImg = false;
-        isChar = false;
-    }
-
-    public AdvisorButton(AbstractAdvisor.AdvisorClass cls) {
-        super(FileHandler.ui.get("BORDER_M"));
-        ai = advImg.get(cls);
-        selected = cls;
+        advisor = adv;
+        this.select = select;
     }
 
     @Override
@@ -44,20 +33,11 @@ public class AdvisorButton extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            sb.setColor(Color.WHITE);
-            if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
-            if(isCharSt) sb.setColor(Color.DARK_GRAY);
-            else if (over) sb.setColor(Color.WHITE);
+            if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(isChar) {
-                if(showImg) sb.draw(ai, x, y, sWidth, sHeight);
-                sb.draw(img, x, y, sWidth, sHeight);
-            }
+            sb.draw(advisor.img, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-
-            if(fontData != null) {
-                renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
-            }
         }
     }
 
@@ -68,34 +48,6 @@ public class AdvisorButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(isChar) {
-            AdvisorButton chb = advisorSelectScreen.advisor;
-            if(!isCharSt) {
-                if(chb.isOnLock) {
-                    chb.removeChar();
-                }
-                chb.isOnLock = true;
-                chb.selected = selected;
-                chb.sChar = this;
-                chb.showImg = true;
-                chb.ai = advImg.get(selected);
-                chb.bg = advBgImg.get(selected);
-                chb.showBg = true;
-                isCharSt = true;
-            } else if(chb.sChar == this) {
-                chb.removeChar();
-            }
-        }
-    }
-
-    public void removeChar() {
-        selected = null;
-        showImg = false;
-        isOnLock = false;
-        showBg = false;
-        if(sChar != null) {
-            sChar.isCharSt = false;
-            sChar = null;
-        }
+        select.selected = this;
     }
 }

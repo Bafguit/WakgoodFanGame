@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
+import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvisorInstance;
 
 public class SaveHandler {
 
@@ -75,6 +77,7 @@ public class SaveHandler {
         monsterRandom = new RandomXC(seedLong, data.random.monsterRandom);
         eventRandom = new RandomXC(seedLong, data.random.eventRandom);
         shopRandom = new RandomXC(seedLong, data.random.shopRandom);
+        restriction.setData(data.restriction);
 
         floors = new AbstractFloor[4];
         for(int i = 0; i < 4; i++) {
@@ -116,12 +119,14 @@ public class SaveHandler {
             players[i] = p;
         }
         AdvisorData ad = data.advisor;
-        AbstractAdvisor a = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad.cls.toUpperCase()));
-        a.skill.usedOnly = ad.skill.usedOnly;
-        for(int i = 0; i < ad.skill.upgradeCount; i++) {
-            a.skill.upgrade();
+        if(ad != null) {
+            AbstractAdvisor a = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad.cls.toUpperCase()));
+            a.skill.usedOnly = ad.skill.usedOnly;
+            for (int i = 0; i < ad.skill.upgradeCount; i++) {
+                a.skill.upgrade();
+            }
+            advisor = a;
         }
-        advisor = a;
 
         itemAble = data.itemAble;
         selection = data.selection;
@@ -132,6 +137,7 @@ public class SaveHandler {
     public static class SaveData {
         public String date;
         public RandomData random;
+        public RestrictionData restriction;
         public int itemAble;
         public int selection;
         public int maxEnergy;
@@ -151,6 +157,7 @@ public class SaveHandler {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             temp.date = formatter.format(now);
             temp.random = RandomData.create();
+            temp.restriction = RestrictionData.create();
             for(int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];
                 temp.floors[i] = f != null ? FloorData.create(f) : null;
@@ -159,7 +166,7 @@ public class SaveHandler {
             for(int i = 0; i < 4; i++) {
                 temp.players[i] = EntityData.create(AbstractLabyrinth.players[i]);
             }
-            temp.advisor = AdvisorData.create(AbstractLabyrinth.advisor);
+            temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
             temp.itemAble = AbstractLabyrinth.itemAble;
             temp.selection = AbstractLabyrinth.selection;
             temp.maxEnergy = AbstractLabyrinth.maxEnergy;
@@ -194,6 +201,34 @@ public class SaveHandler {
             temp.monsterRandom = AbstractLabyrinth.monsterRandom.counter;
             temp.eventRandom = AbstractLabyrinth.eventRandom.counter;
             temp.shopRandom = AbstractLabyrinth.shopRandom.counter;
+            return temp;
+        }
+    }
+
+    public static class RestrictionData {
+        public int GRW;
+        public int STR;
+        public int INT;
+        public int HUG;
+        public int FAM;
+        public int FOG;
+        public int POV;
+        public int MSR;
+        public int FTG;
+        public int ANX;
+
+        public static RestrictionData create() {
+            RestrictionData temp = new RestrictionData();
+            temp.GRW = restriction.GRW;
+            temp.STR = restriction.STR;
+            temp.INT = restriction.INT;
+            temp.HUG = restriction.HUG;
+            temp.FAM = restriction.FAM;
+            temp.FOG = restriction.FOG;
+            temp.POV = restriction.POV;
+            temp.MSR = restriction.MSR;
+            temp.FTG = restriction.FTG;
+            temp.ANX = restriction.ANX;
             return temp;
         }
     }

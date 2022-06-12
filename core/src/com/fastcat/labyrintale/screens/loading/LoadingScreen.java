@@ -36,11 +36,8 @@ public class LoadingScreen extends AbstractScreen {
         if(!Labyrintale.fading && create) {
             create = false;
             if (isNew) {
-                Labyrintale.advisorSelectScreen.backButton.onHide();
-                Labyrintale.advisorSelectScreen.nextButton.onHide();
                 Labyrintale.labyrinth = new AbstractLabyrinth();
                 Labyrintale.mapScreen = new MapScreen();
-                Labyrintale.advisorSelectScreen.advisor.removeChar();
                 for (int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
                     Labyrintale.charSelectScreen.chars[i].removeChar();
                 }

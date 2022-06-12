@@ -498,6 +498,10 @@ public abstract class AbstractSkill implements Cloneable {
 
     protected abstract void upgradeCard();
 
+    public void atBattleEnd() {
+
+    }
+
     public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
 
     }

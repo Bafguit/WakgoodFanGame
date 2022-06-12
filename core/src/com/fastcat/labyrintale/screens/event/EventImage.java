@@ -14,8 +14,8 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class EventImage extends AbstractUI {
 
     public AbstractEvent event;
-    public FontHandler.FontData fontName = INFO_NAME;
-    public FontHandler.FontData fontDesc = INFO_HP;
+    public FontHandler.FontData fontName = EVENT_TITLE;
+    public FontHandler.FontData fontDesc = EVENT_DESC;
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     public EventImage(AbstractEvent e) {
@@ -25,11 +25,11 @@ public class EventImage extends AbstractUI {
         event = e;
         overable = false;
         nx = dx = w * 0.4f;
-        ny = h * 0.9f;
-        dy = h * 0.9f - 50 * scale;
-        nw = dw = 1000 * InputHandler.scale;
+        ny = h * 0.93f;
+        dy = h * 0.93f - 60 * scale;
+        nw = dw = 1400 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
-        dh = 280 * InputHandler.scale;
+        dh = 360 * InputHandler.scale;
     }
 
     @Override

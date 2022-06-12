@@ -34,7 +34,7 @@ public class VictoryAction extends AbstractAction {
             SaveHandler.save();
             Array<AbstractReward> temp = new Array<>();
             temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));
-            temp.add(new GoldReward(20));
+            temp.add(new GoldReward(20)); //TODO 참모가 소피아일때 획득략 20% 증가
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
             Labyrintale.battleScreen.cType = ControlPanel.ControlType.BASIC;
         }

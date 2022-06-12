@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.advisors.TestAdvisor;
+import com.fastcat.labyrintale.handlers.RestrictionHandler;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
@@ -24,6 +25,7 @@ public class AbstractLabyrinth {
     public static RandomXC monsterRandom;
     public static RandomXC eventRandom;
     public static RandomXC shopRandom;
+    public static RestrictionHandler restriction;
     public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
     public static AbstractPlayer[] players;
@@ -44,6 +46,7 @@ public class AbstractLabyrinth {
     public AbstractLabyrinth(RunType type) {
         actionHandler = new ActionHandler();
         players = new AbstractPlayer[4];
+        restriction = new RestrictionHandler();
         if(type == RunType.SAVE) {
             SaveHandler.load();
         } else {
@@ -80,7 +83,6 @@ public class AbstractLabyrinth {
                 }
                 players[i] = p;
             }
-            advisor = getAdvisorInstance(Labyrintale.advisorSelectScreen.advisor.selected);
         }
         cPanel = new ControlPanel();
     }
@@ -166,13 +168,6 @@ public class AbstractLabyrinth {
                 return new Jururu();
             default:
                 return new Wakgood();
-        }
-    }
-
-    public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
-        switch (cls) {
-            default:
-                return new TestAdvisor();
         }
     }
 
