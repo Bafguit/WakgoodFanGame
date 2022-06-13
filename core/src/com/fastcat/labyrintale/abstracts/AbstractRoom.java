@@ -21,10 +21,6 @@ public class AbstractRoom implements Cloneable {
     public RoomType type;
     public boolean battleDone;
     public boolean isDone;
-    
-    public AbstractRoom() {
-        this("Entry", ENTRY);
-    }
 
     public AbstractRoom(AbstractEvent event) {
         this(event.id, EVENT);
@@ -89,6 +85,6 @@ public class AbstractRoom implements Cloneable {
     }
 
     public enum RoomType {
-        ENTRY, BATTLE, ELITE, BOSS, EVENT, SHOP, REST
+        ENTRY, BATTLE, ELITE, BOSS, EVENT, SHOP, REST, MYSTERY
     }
 }

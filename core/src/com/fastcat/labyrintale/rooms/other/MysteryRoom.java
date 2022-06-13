@@ -11,7 +11,7 @@ public class MysteryRoom extends AbstractRoom {
     private static final String ID = "Mystery";
 
     public MysteryRoom() {
-        id = ID;
+        super(ID, RoomType.MYSTERY);
     }
 
     @Override

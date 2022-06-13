@@ -135,7 +135,7 @@ public class GroupHandler {
         private static void sort() {
             idSort.clear();
 
-            idSort.put("Entry", new EntryRoom());
+            idSort.put("StartEvent", new EntryRoom());
             idSort.put("Shop", new ShopRoom());
             idSort.put("Rest", new RestRoom());
             idSort.put("Mystery", new MysteryRoom());
