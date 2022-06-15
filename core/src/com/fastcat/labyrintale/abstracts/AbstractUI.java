@@ -55,6 +55,7 @@ public abstract class AbstractUI implements Disposable {
     public boolean clickable = true;
     public boolean trackable = false;
     public boolean tracking = false;
+    public boolean mute = false;
 
     public AbstractUI(String imgPath) {
         this(imgPath, -10000, -10000);
@@ -98,13 +99,12 @@ public abstract class AbstractUI implements Disposable {
         //y = sy * scale;
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        if(tracking) tracking = false;
+        clicked = false;
+        clicking = false;
 
         if(enabled && !Labyrintale.fading) {
             justOver = over;
             over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
-            clicked = isLeftClick;
-            clicking = isLeftClicking;
 
             if(over) {
                 if(!justOver) {
@@ -115,9 +115,11 @@ public abstract class AbstractUI implements Disposable {
                 if(overable) {
                     cx = mx - x;
                     cy = my - y;
+                    clicked = isLeftClick;
+                    clicking = isLeftClicking;
                     if(clicked) {
                         if(clickable) {
-                            SoundHandler.playSfx("CLICK");
+                            if(!mute) SoundHandler.playSfx("CLICK");
                             onClick();
                         }
                         clicked = true;

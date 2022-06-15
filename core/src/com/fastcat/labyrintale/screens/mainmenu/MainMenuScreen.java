@@ -1,14 +1,9 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 
@@ -20,6 +15,8 @@ public class MainMenuScreen extends AbstractScreen {
     private final OptionButton optionButton;
     private final ExitButton exitButton;
 
+    public SlideBar slide;
+
     public MainMenuScreen() {
         setBg(bg.get("BG_MAIN"));
         logoText = new LogoText();
@@ -27,6 +24,8 @@ public class MainMenuScreen extends AbstractScreen {
         tutorialButton = new TutorialButton();
         optionButton = new OptionButton();
         exitButton = new ExitButton();
+
+        slide = new SlideBar(100, 100, 300, 50);
     }
 
     @Override
@@ -36,6 +35,8 @@ public class MainMenuScreen extends AbstractScreen {
         tutorialButton.update();
         optionButton.update();
         exitButton.update();
+
+        slide.update();
     }
 
     @Override
@@ -45,6 +46,8 @@ public class MainMenuScreen extends AbstractScreen {
         tutorialButton.render(sb);
         optionButton.render(sb);
         exitButton.render(sb);
+
+        slide.render(sb);
     }
 
     @Override

@@ -1,0 +1,9 @@
+{
+  "volumeBgm" : 100,
+  "volumeSfx" : 100,
+  "width" : 1920,
+  "height" : 1080,
+  "monitor" : 0,
+  "screenMode" : 1,
+  "shake" : true
+}

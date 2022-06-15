@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,19 +18,16 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
-import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
-import org.graalvm.compiler.virtual.phases.ea.EffectList;
 
 public class Labyrintale extends Game {
 
@@ -83,18 +81,26 @@ public class Labyrintale extends Game {
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);
-		Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode(Gdx.graphics.getPrimaryMonitor());
+		Gdx.graphics.setTitle("Wakest Dungeon");
+		Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor.png"));
+		pix.setFilter(Pixmap.Filter.BiLinear);
+		Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
+		SettingHandler.initialize();
 
-		//Gdx.graphics.setFullscreenMode(displayMode);//전체화면
+		Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode(InputHandler.monitor);
 
-		Gdx.graphics.setWindowedMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);//창모드
-
-		//Gdx.graphics.setUndecorated(true);//전체창
-		//Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
+		if(SettingHandler.setting.screenMode == 0) { //창모드
+			Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
+		} else if(SettingHandler.setting.screenMode == 1) { //전체화면
+			Gdx.graphics.setFullscreenMode(displayMode);
+		} else { //전체창
+			Gdx.graphics.setUndecorated(true);
+			Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
+		}
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false);
-		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+		camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
+		viewport = new FitViewport(SettingHandler.setting.width, SettingHandler.setting.height, camera);
 		screenShake = new ScreenShake();
 		videoPlayer = VideoPlayerCreator.createVideoPlayer();
 		sb = new SpriteBatch();
@@ -104,7 +110,6 @@ public class Labyrintale extends Game {
 		inputHandler = new InputHandler();
 		fileHandler = new FileHandler();
 		fontHandler = new FontHandler();
-		settingHandler = new SettingHandler();
 		soundHandler = new SoundHandler();
 		actionHandler = new ActionHandler();
 		effectHandler = new EffectHandler();

@@ -21,7 +21,6 @@ import static com.fastcat.labyrintale.handlers.FontHandler.FontType.*;
 
 public class FontHandler implements Disposable {
 
-    private static final FreeTypeFontGenerator light = new FreeTypeFontGenerator(Gdx.files.internal("font/museumL.ttf"));
     private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/museumM.ttf"));
     private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/museumB.ttf"));
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
@@ -49,7 +48,7 @@ public class FontHandler implements Disposable {
     public static final FontData HP = new FontData(MEDIUM, 26, false);
 
     public enum FontType {
-        LIGHT, MEDIUM, BOLD
+        MEDIUM, BOLD
     }
 
     public FontHandler() {
@@ -79,7 +78,6 @@ public class FontHandler implements Disposable {
         parameter.borderColor = bColor;
         parameter.borderWidth = border ? parameter.size * 0.05f : 0.0f;
         if(type.equals(BOLD)) return bold.generateFont(parameter);
-        else if(type.equals(LIGHT)) return light.generateFont(parameter);
         else return medium.generateFont(parameter);
     }
 
@@ -220,7 +218,6 @@ public class FontHandler implements Disposable {
 
     @Override
     public void dispose() {
-        light.dispose();
         medium.dispose();
         bold.dispose();
         LOGO.dispose();

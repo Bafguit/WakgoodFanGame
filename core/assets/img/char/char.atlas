@@ -20,9 +20,9 @@ ine_s
 jururu_bg
 	bounds: 2, 540, 640, 1440
 jururu_s
-	bounds: 1928, 1844, 67, 67
-lilpa_s
 	bounds: 71, 2, 67, 67
+lilpa_s
+	bounds: 1928, 1844, 67, 67
 manager_p
 	bounds: 471, 71, 467, 467
 manager_s
@@ -44,13 +44,13 @@ gosegu_p
 jururu_p
 	bounds: 471, 2, 467, 467
 lilpa_bg
-	bounds: 644, 471, 640, 1440
+	bounds: 1286, 471, 640, 1440
 lilpa_cPanel
 	bounds: 1878, 144, 165, 325
 lilpa_p
 	bounds: 2, 2, 467, 467
 manager_bg
-	bounds: 1286, 471, 640, 1440
+	bounds: 644, 471, 640, 1440
 viichan_p
 	bounds: 940, 2, 467, 467
 
@@ -70,7 +70,7 @@ ine_cPanel
 jururu
 	bounds: 1022, 329, 171, 171
 jururu_cPanel
-	bounds: 2, 175, 165, 325
+	bounds: 169, 175, 165, 325
 lilpa
 	bounds: 503, 329, 171, 171
 manager
@@ -82,7 +82,7 @@ viichan
 viichan_bg
 	bounds: 644, 502, 640, 1440
 viichan_cPanel
-	bounds: 169, 175, 165, 325
+	bounds: 2, 175, 165, 325
 wak
 	bounds: 175, 2, 171, 171
 wak_bg

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input.*;
 import com.badlogic.gdx.InputAdapter;
 import com.fastcat.labyrintale.Labyrintale;
@@ -23,6 +24,8 @@ public class InputHandler {
     public static boolean textInputMode;
     private static String typedText = "";
     private static int backspaces = 0;
+
+    public static Graphics.Monitor monitor;
 
     public InputHandler() {
         isLeftClick = false;
