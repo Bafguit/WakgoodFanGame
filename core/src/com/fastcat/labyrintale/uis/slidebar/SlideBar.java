@@ -15,9 +15,15 @@ public class SlideBar extends AbstractUI {
     private final SlideSideL sideL;
     private final SlideSideR sideR;
     private final SlideButton button;
+
+    public int min, max, abs;
     public int pos; //0 ~ 100;
 
     public SlideBar(float x, float y, float width, int start) {
+        this(x, y, width, 0, 100, start);
+    }
+
+    public SlideBar(float x, float y, float width, int min, int max, int start) {
         super(FileHandler.ui.get("SLIDE_A"), x, y, width, 40);
         sideL = new SlideSideL();
         sideL.setPosition(x, y);
@@ -25,18 +31,21 @@ public class SlideBar extends AbstractUI {
         line.setPosition(x + sideL.sWidth, y);
         sideR = new SlideSideR();
         sideR.setPosition(x + sideL.sWidth + line.sWidth, y);
+        this.min = min;
+        this.max = max;
+        abs = max - min;
         pos = start;
         button = new SlideButton();
         button.min = x;
         button.max = x + sWidth - button.sWidth;
-        button.setPosition(x + ((sWidth - button.sWidth) * (pos * 0.01f)), y);
+        button.setPosition(x + ((sWidth - button.sWidth) * ((float) pos / abs)), y);
     }
 
     @Override
     protected void updateButton() {
-        button.overTrack = clicking;
+        if(!clicking) button.overTrack = false;
         button.update();
-        pos = MathUtils.floor((button.x - x) / (button.max - x) * 100);
+        pos = MathUtils.floor((button.x - x) / (button.max - x) * abs);
     }
 
     @Override
@@ -50,5 +59,10 @@ public class SlideBar extends AbstractUI {
 
             renderLineLeft(sb, FontHandler.CARD_BIG_DESC, Integer.toString(pos), x, y + 100, sWidth, sHeight);
         }
+    }
+
+    @Override
+    public void onClick() {
+        button.overTrack = true;
     }
 }

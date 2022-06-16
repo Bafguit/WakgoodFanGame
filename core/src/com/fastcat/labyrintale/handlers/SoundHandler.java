@@ -13,8 +13,6 @@ import java.util.HashMap;
 public class SoundHandler {
 
     public static final HashMap<String, Sound> sfx = new HashMap<>();
-    public static final Array<Sound> sfxPlaylist = new Array<>();
-    public static final Array<Sound> fadingSfx = new Array<>();
 
     public static final HashMap<String, MusicData> music = new HashMap<>();
     public static final Array<MusicData> musicPlaylist = new Array<>();
@@ -49,23 +47,22 @@ public class SoundHandler {
     public static void playSfx(String key) {
         Sound s = sfx.get(key);
         if(s != null) {
-            s.play();
-            sfxPlaylist.add(s);
+            s.play(SettingHandler.setting.volumeSfx * 0.01f);
         }
     }
 
-    public static void playMusic(String key, float volume, boolean isLoop, boolean fadeIn) {
+    public static void playMusic(String key, boolean isLoop, boolean fadeIn) {
         MusicData d = music.get(key);
         if(d != null) {
             Music s = d.music;
             s.setLooping(isLoop);
             if (fadeIn) {
                 d.isFadingOut = false;
-                d.fadeOutStartVolume = volume;
+                d.fadeOutStartVolume = SettingHandler.setting.volumeBgm * 0.01f;
                 d.fadeTimer = 4.0F;
                 s.setVolume(0.0f);
                 fadingMusic.add(d);
-            } else s.setVolume(volume);
+            } else s.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
             s.play();
             musicPlaylist.add(d);
         }
@@ -75,6 +72,7 @@ public class SoundHandler {
         MusicData d = music.get(key);
         if(d != null) {
             d.isFadingOut = true;
+            d.isFading = true;
             d.fadeOutStartVolume = d.music.getVolume();
             d.fadeTimer = 4.0F;
             fadingMusic.add(d);
@@ -82,6 +80,9 @@ public class SoundHandler {
     }
 
     public void update() {
+        for(MusicData data : musicPlaylist) {
+            if(!data.isFading) data.music.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
+        }
         for(MusicData data : fadingMusic) {
             if (!data.isFadingOut) {
                 data.updateFadeIn();
@@ -95,6 +96,7 @@ public class SoundHandler {
     public static class MusicData {
         public float fadeTimer = 0.0F;
         public boolean isFadingOut = false;
+        public boolean isFading = false;
         private float fadeOutStartVolume;
         public boolean isDone = false;
         public Music music;

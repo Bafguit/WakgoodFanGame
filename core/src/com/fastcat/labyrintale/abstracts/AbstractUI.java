@@ -99,8 +99,8 @@ public abstract class AbstractUI implements Disposable {
         //y = sy * scale;
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        clicked = false;
-        clicking = false;
+        clicked = isLeftClick;
+        clicking = isLeftClicking;
 
         if(enabled && !Labyrintale.fading) {
             justOver = over;
@@ -115,14 +115,11 @@ public abstract class AbstractUI implements Disposable {
                 if(overable) {
                     cx = mx - x;
                     cy = my - y;
-                    clicked = isLeftClick;
-                    clicking = isLeftClicking;
                     if(clicked) {
                         if(clickable) {
                             if(!mute) SoundHandler.playSfx("CLICK");
                             onClick();
                         }
-                        clicked = true;
                     }
                     if(clicking) onClicking();
                 }

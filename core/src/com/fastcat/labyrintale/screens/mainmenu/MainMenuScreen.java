@@ -3,6 +3,8 @@ package com.fastcat.labyrintale.screens.mainmenu;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.uis.CheckBox;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.bg;
@@ -16,6 +18,7 @@ public class MainMenuScreen extends AbstractScreen {
     private final ExitButton exitButton;
 
     public SlideBar slide;
+    public CheckBox check;
 
     public MainMenuScreen() {
         setBg(bg.get("BG_MAIN"));
@@ -26,6 +29,7 @@ public class MainMenuScreen extends AbstractScreen {
         exitButton = new ExitButton();
 
         slide = new SlideBar(100, 100, 300, 50);
+        check = new CheckBox(100, 300, false);
     }
 
     @Override
@@ -37,6 +41,7 @@ public class MainMenuScreen extends AbstractScreen {
         exitButton.update();
 
         slide.update();
+        check.update();
     }
 
     @Override
@@ -48,6 +53,7 @@ public class MainMenuScreen extends AbstractScreen {
         exitButton.render(sb);
 
         slide.render(sb);
+        check.render(sb);
     }
 
     @Override
