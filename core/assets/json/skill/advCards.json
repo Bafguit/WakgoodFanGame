@@ -1,27 +1,27 @@
 {
   "dopa": {
-    "NAME": "도파민 박사",
-    "DESC": "DESCRIPTION"
+    "NAME": "빅 데이터",
+    "DESC": "&y<지속:> 강력한 적과의 전투 보상에 기술 강화가 추가됩니다."
   },
   "secret": {
-    "NAME": "비밀소녀",
-    "DESC": "DESCRIPTION"
+    "NAME": "정의의 사도",
+    "DESC": "&y<지속:> 단 한 번, 치명적인 피해를 받은 아군이 무력화되지 않고 체력을 모두 회복합니다."
   },
   "ruseok": {
-    "NAME": "해루석",
-    "DESC": "DESCRIPTION"
+    "NAME": "회계",
+    "DESC": "&y<지속:> 제단에서의 금화 요구량이 30% 감소합니다."
   },
   "hiki": {
-    "NAME": "히키킹",
-    "DESC": "DESCRIPTION"
+    "NAME": "일섬",
+    "DESC": "&y<일회용>. 피해를 {A} 줍니다."
   },
   "pung": {
     "NAME": "풍신",
     "DESC": "DESCRIPTION"
   },
   "shrimp": {
-    "NAME": "새우튀김",
-    "DESC": "DESCRIPTION"
+    "NAME": "불면증",
+    "DESC": "&y<무기력>을 {V} 부여합니다."
   },
   "negative": {
     "NAME": "부정형 인간",
@@ -33,7 +33,7 @@
   },
   "sophia": {
     "NAME": "생계형 강도",
-    "DESC": "전투 승리 시 획득하는 골드가 20% 증가합니다."
+    "DESC": "&y<지속:> 전투 보상으로 획득하는 골드가 20% 증가합니다."
   },
   "duksu": {
     "NAME": "이덕수 할아바이",
@@ -41,7 +41,7 @@
   },
   "haku": {
     "NAME": "카놀라유",
-    "DESC": "DESCRIPTION"
+    "DESC": "&y<용기>를 {V} 부여합니다."
   },
   "business": {
     "NAME": "비즈니스킴",

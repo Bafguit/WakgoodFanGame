@@ -17,10 +17,6 @@ public class CharString {
                 CharData data = new CharData();
                 data.NAME = js.get("NAME").asString();
                 data.DESC = js.get("DESC").asString();
-                String[] temp = js.get("FLAV").asStringArray();
-                if(temp != null) {
-                    data.FLAV = temp;
-                }
                 this.data.put(id, data);
             }
         }
@@ -33,6 +29,5 @@ public class CharString {
     public static class CharData {
         public String NAME;
         public String DESC = "";
-        public String[] FLAV;
     }
 }

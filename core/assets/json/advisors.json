@@ -1,19 +1,19 @@
 {
   "dopa": {
     "NAME": "도파민 박사",
-    "DESC": "DESCRIPTION"
+    "DESC": "엘리트를 처치할 때마다 보상에 스킬 강화 추가"
   },
   "secret": {
     "NAME": "비밀소녀",
-    "DESC": "DESCRIPTION"
+    "DESC": "게임 중 딱 한 번 치명적인 피해를 받았을 때 최대 체력으로 부활"
   },
   "ruseok": {
     "NAME": "해루석",
-    "DESC": "DESCRIPTION"
+    "DESC": "상점 할인"
   },
   "hiki": {
     "NAME": "히키킹",
-    "DESC": "DESCRIPTION"
+    "DESC": "일회용. 적 전체 피해 5."
   },
   "pung": {
     "NAME": "풍신",
@@ -21,7 +21,7 @@
   },
   "shrimp": {
     "NAME": "새우튀김",
-    "DESC": "DESCRIPTION"
+    "DESC": "적 전체에게 무기력 1 부여, 쿨타임 3"
   },
   "negative": {
     "NAME": "부정형 인간",
@@ -33,7 +33,7 @@
   },
   "sophia": {
     "NAME": "소피아",
-    "DESC": "DESCRIPTION"
+    "DESC": "골드 획득량 증가"
   },
   "duksu": {
     "NAME": "이덕수 할아바이",
@@ -41,7 +41,7 @@
   },
   "haku": {
     "NAME": "미츠네 하쿠",
-    "DESC": "DESCRIPTION"
+    "DESC": "아군 전체 용기 2 부여, 쿨타임 3"
   },
   "business": {
     "NAME": "비즈니스킴",

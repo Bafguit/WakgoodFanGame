@@ -2,20 +2,18 @@ package com.fastcat.labyrintale.skills.player.advisor;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
-public class HakuSkill extends AbstractSkill {
+public class ShrimpSkill extends AbstractSkill {
 
-    private static final String ID = "haku";
+    private static final String ID = "shrimp";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-    private static final SkillTarget TARGET = SkillTarget.P_ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.E_ALL;
+    public static final int VALUE = 1;
 
-    public HakuSkill() {
+    public ShrimpSkill() {
         super(ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE);
         cooltime = 3;
@@ -23,7 +21,7 @@ public class HakuSkill extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, false));
     }
 
     @Override

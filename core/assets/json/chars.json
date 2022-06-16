@@ -1,82 +1,34 @@
 {
   "wak": {
     "NAME": "우왁굳",
-    "DESC": "월클급 한국 1위 스트리머. 코가 크다.",
-    "FLAV": [
-      "황제의",
-      "황제와",
-      "완고한",
-      "퇴물"
-    ]
+    "DESC": "코가 크다."
   },
   "manager": {
     "NAME": "뢴트게늄",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "뇌절의",
-      "오른팔과",
-      "뇌절하는",
-      "매니저"
-    ]
+    "DESC": "소신 있는 변태."
   },
   "ine": {
     "NAME": "아이네",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "대머리",
-      "여신과",
-      "최단신",
-      "수장"
-    ]
+    "DESC": ""
   },
   "viichan": {
     "NAME": "비챤",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "노동하는",
-      "막내와",
-      "겜잘알",
-      "고라니"
-    ]
+    "DESC": "고라니를 타고 다니는 방랑 검사."
   },
   "lilpa": {
     "NAME": "릴파",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "귀여운",
-      "박쥐와",
-      "악질",
-      "악질"
-    ]
+    "DESC": "DESCRIPTION"
   },
   "burger": {
     "NAME": "징버거",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "햄버거의",
-      "햄버거와",
-      "머시깽한",
-      "머시깽이"
-    ]
+    "DESC": "특이한 모자를 쓰고 있다."
   },
   "gosegu": {
     "NAME": "고세구",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "킹받는",
-      "세균과",
-      "무친",
-      "무7련"
-    ]
+    "DESC": "세구세구야 미안해..."
   },
   "jururu": {
     "NAME": "주르르",
-    "DESC": "DESCRIPTION",
-    "FLAV": [
-      "주랄하는",
-      "무7련과",
-      "유혹하는",
-      "여우"
-    ]
+    "DESC": "수녀원이 망해서 떠돌이 신세가 되었다."
   }
 }

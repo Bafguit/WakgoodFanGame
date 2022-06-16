@@ -462,7 +462,7 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public final boolean canUse() {
-        return !passive && cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && (owner == null || (!owner.isNeut || type == SkillType.DEFENCE));
     }
 
     protected boolean available() {

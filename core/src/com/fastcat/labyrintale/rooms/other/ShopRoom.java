@@ -1,25 +1,19 @@
 package com.fastcat.labyrintale.rooms.other;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractItem.ItemRarity;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractSkill.SkillRarity;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
-import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 import static com.fastcat.labyrintale.Labyrintale.shopScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillRarity.*;
-import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.*;
 
 public class ShopRoom extends AbstractRoom {
 
@@ -108,7 +102,7 @@ public class ShopRoom extends AbstractRoom {
         }
 
         private static int generateSkillPrice() {
-            return 80 + (10 - shopRandom.random(20));
+            return MathUtils.floor((80 + (10 - shopRandom.random(20))) * (advisor.cls == AbstractAdvisor.AdvisorClass.RUSEOK ? 0.8f : 1));
         }
 
         @Override
@@ -130,12 +124,12 @@ public class ShopRoom extends AbstractRoom {
         }
 
         public ItemItem(AbstractItem item) {
-            super(generateSkillPrice(item));
+            super(MathUtils.floor(generateItemPrice(item) * (advisor.cls == AbstractAdvisor.AdvisorClass.RUSEOK ? 0.8f : 1)));
             this.item = item;
             img = this.item.img;
         }
 
-        private static int generateSkillPrice(AbstractItem i) {
+        private static int generateItemPrice(AbstractItem i) {
             switch(i.rarity) {
                 case GOLD:
                     return 180 + shopRandom.random(20) - 10;

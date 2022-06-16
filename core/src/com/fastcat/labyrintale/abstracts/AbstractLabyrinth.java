@@ -38,6 +38,7 @@ public class AbstractLabyrinth {
     public static int energy;
     public static int gold;
     public static int bleak;
+    public static int bleakMin;
 
     public AbstractLabyrinth() {
         this(RunType.NEW);
@@ -72,6 +73,7 @@ public class AbstractLabyrinth {
             energy = 0;
             gold = 1000;
             bleak = 0;
+            bleakMin = 0;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);

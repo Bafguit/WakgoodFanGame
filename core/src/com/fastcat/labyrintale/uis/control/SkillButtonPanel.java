@@ -33,7 +33,7 @@ public class SkillButtonPanel extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        clickable = skill.canUse() && type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning && Labyrintale.getCurScreen() == battleScreen;
+        clickable = !skill.passive && skill.canUse() && type != SkillButtonType.VIEW && !battleScreen.isEnemyTurn && !isRunning && Labyrintale.getCurScreen() == battleScreen;
         if(type == SkillButtonType.PLAYER || type == SkillButtonType.MOVE) {
             isUsed = !skill.canUse();
         }
@@ -47,7 +47,7 @@ public class SkillButtonPanel extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled) {
             if(isUsed || (type != SkillButtonType.VIEW && skill != null && !skill.canUse())) sb.setColor(Color.DARK_GRAY);
-            else if (over) sb.setColor(Color.WHITE);
+            else if (over && clickable) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             if(skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
@@ -71,7 +71,7 @@ public class SkillButtonPanel extends AbstractUI {
         if(AbstractLabyrinth.advisor.skill.canUse()) return false;
         for(AbstractPlayer p : players) {
             for(AbstractSkill s : p.hand) {
-                if(s.canUse()) return false;
+                if(s.canUse() && !s.passive) return false;
             }
         }
         return true;

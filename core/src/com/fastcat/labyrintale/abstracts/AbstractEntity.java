@@ -57,6 +57,7 @@ public abstract class AbstractEntity implements Cloneable {
     public String desc;
     public boolean isDead = false;
     public boolean isDie = false;
+    public boolean isNeut = false;
     public int index;
     public int tempIndex;
     public int block = 0;
@@ -316,9 +317,19 @@ public abstract class AbstractEntity implements Cloneable {
                         e.setTimeScale(1.0f);
                         health -= damage;
                         if (health <= 0) {
-                            health = 0;
-                            block = 0;
-                            die(attacker);
+                            if(advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
+                                advisor.skill.use();
+                                health = maxHealth;
+                                block = 0;
+                            } else if(!isNeut) {
+                                health = 1;
+                                block = 0;
+                                neutralize();
+                            } else {
+                                health = 0;
+                                block = 0;
+                                die(attacker);
+                            }
                         }
                         if (attacker != null) {
                             if(isPlayer) {
@@ -423,6 +434,10 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
         }
+    }
+
+    public void neutralize() {
+
     }
 
     public void gainSkill(int index, AbstractSkill skill) {

@@ -132,6 +132,8 @@ public class SaveHandler {
         selection = data.selection;
         maxEnergy = data.maxEnergy;
         gold = data.gold;
+        bleak = data.bleak;
+        bleakMin = data.bleakMin;
     }
 
     public static class SaveData {
@@ -143,6 +145,7 @@ public class SaveHandler {
         public int maxEnergy;
         public int gold;
         public int bleak;
+        public int bleakMin;
         public AdvisorData advisor;
         public EntityData[] players = new EntityData[4];
         public int currentFloor;
@@ -172,6 +175,7 @@ public class SaveHandler {
             temp.maxEnergy = AbstractLabyrinth.maxEnergy;
             temp.gold = AbstractLabyrinth.gold;
             temp.bleak = AbstractLabyrinth.bleak;
+            temp.bleakMin = AbstractLabyrinth.bleakMin;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
             temp.discard = GroupHandler.SkillGroup.discardedCount;
 

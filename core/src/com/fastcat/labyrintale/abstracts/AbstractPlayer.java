@@ -22,7 +22,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final Color pColorLG;
     public final Color pColorDG;
     public final PlayerClass playerClass;
-    public String[] flav;
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
         super(id, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
@@ -30,7 +29,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
         CharString.CharData temp = StringHandler.charString.get(id);
         name = temp.NAME;
         desc = temp.DESC;
-        flav = temp.FLAV;
         pColor = c.cpy();
         pColorW = c.cpy().mul(0.827f, 0.827f, 0.827f, 1);
         pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
