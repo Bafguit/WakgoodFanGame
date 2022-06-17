@@ -6,8 +6,12 @@ import com.fastcat.labyrintale.Labyrintale;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new Labyrintale(), config);
-		config.samples = 3;
+		try {
+			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+			new LwjglApplication(new Labyrintale(), config);
+			config.samples = 3;
+		} catch(Exception e) {
+			new ErrorWindow(e).setVisible(true);
+		}
 	}
 }
