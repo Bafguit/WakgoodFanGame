@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.events;
 
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.events.choices.AdvisorChoice;
@@ -14,8 +15,14 @@ public class StartEvent extends AbstractEvent {
 
     public StartEvent() {
         super(ID, SIZE);
-        choices[0] = new AdvisorChoice(data.SELECT[0]);
         img = getImage(0);
         desc = data.DESC[0];
+    }
+
+    @Override
+    public Array<EventChoice> getChoices(int page) {
+        Array<EventChoice> a = new Array<>();
+        a.add(new AdvisorChoice(data.SELECT[0]));
+        return a;
     }
 }

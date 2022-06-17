@@ -21,7 +21,7 @@ public class AbstractChoice {
     public boolean must = false;
 
     public AbstractChoice(SaveHandler.ChoiceData data) {
-        this(GroupHandler.RoomGroup.idSort.get(data.room.id).clone(), ChoiceType.valueOf(data.type), data.prob);
+        this(GroupHandler.RoomGroup.getRoom(data.room.id), ChoiceType.valueOf(data.type), data.prob);
         must = data.must;
         room.isDone = data.room.isDone;
         room.battleDone = data.room.battleDone;

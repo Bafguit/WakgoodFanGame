@@ -38,7 +38,7 @@ public class AbstractFloor {
             currentWay = ways[num - 1];
         }
         if(data.currentRoom != null) {
-            currentRoom = Objects.requireNonNull(GroupHandler.RoomGroup.idSort.get(data.currentRoom.id).clone());
+            currentRoom = GroupHandler.RoomGroup.getRoom(data.currentRoom.id);
             currentRoom.isDone = data.currentRoom.isDone;
             currentRoom.battleDone = data.currentRoom.battleDone;
         }

@@ -3,7 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.advisors.TestAdvisor;
+import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.TestEvent;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
@@ -58,8 +58,18 @@ public class GroupHandler {
 
         public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
             switch (cls) {
-                default:
-                    return new TestAdvisor();
+                case SOPHIA:
+                    return new Sophia();
+                case SECRET:
+                    return new SecretGirl();
+                case HIKI:
+                    return new HikiKing();
+                case RUSEOK:
+                    return new Haeruseok();
+                case SHRIMP:
+                    return new FriedShrimp();
+                default: //하쿠
+                    return new MitsuneHaku();
             }
         }
 
@@ -166,6 +176,11 @@ public class GroupHandler {
                     idSort.put(r.id, r);
                 }
             }
+
+        }
+
+        public static AbstractRoom getRoom(String id) {
+            return idSort.get(id).cpy();
         }
 
         public static AbstractRoom getWeak() {
@@ -173,7 +188,7 @@ public class GroupHandler {
         }
 
         public static AbstractRoom getNextEvent() {
-            return Objects.requireNonNull(eventGroup.get(currentFloor.floorNum).get(eventCount++).clone());
+            return Objects.requireNonNull(eventGroup.get(currentFloor.floorNum).get(eventCount++).cpy());
         }
 
         public static void roll() {

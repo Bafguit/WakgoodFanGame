@@ -12,7 +12,7 @@ import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.Labyrintale.eventScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
-public class AbstractRoom implements Cloneable {
+public class AbstractRoom {
 
     public String id;
     public String text;
@@ -21,6 +21,10 @@ public class AbstractRoom implements Cloneable {
     public RoomType type;
     public boolean battleDone;
     public boolean isDone;
+
+    public AbstractRoom() {
+
+    }
 
     public AbstractRoom(AbstractEvent event) {
         this(event.id, EVENT);
@@ -66,7 +70,7 @@ public class AbstractRoom implements Cloneable {
 
     }
 
-    protected AbstractEnemy[] getEnemies() {
+    public AbstractEnemy[] getEnemies() {
         return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
     }
     
@@ -74,14 +78,16 @@ public class AbstractRoom implements Cloneable {
         this.isDone = true;
     }
 
-    @Override
-    public final AbstractRoom clone() {
-        try {
-            return (AbstractRoom) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public final AbstractRoom cpy() {
+        AbstractRoom r = new AbstractRoom();
+        r.id = id;
+        r.text = text;
+        r.enemies = getEnemies();
+        if(event != null) r.event = event.clone();
+        r.type = type;
+        r.battleDone = battleDone;
+        r.isDone = isDone;
+        return r;
     }
 
     public enum RoomType {

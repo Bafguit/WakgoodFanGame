@@ -30,7 +30,7 @@ public class MysteryRoom extends AbstractRoom {
         AbstractRoom temp;
         if(x < b) {
             //TODO 랜덤으로 변경
-            temp = Objects.requireNonNull(GroupHandler.RoomGroup.normalGroup.get(AbstractLabyrinth.currentFloor.floorNum).get(0).clone());
+            temp = GroupHandler.RoomGroup.normalGroup.get(AbstractLabyrinth.currentFloor.floorNum).get(0).cpy();
             enemies = temp.enemies;
         } else if (x < s) {
             temp = new ShopRoom();

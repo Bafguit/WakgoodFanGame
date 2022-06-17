@@ -16,9 +16,6 @@ public class TestEvent extends AbstractEvent {
 
     public TestEvent() {
         super(ID, SIZE);
-        choices[0] = new HealEventChoice(data.SELECT[0], AbstractLabyrinth.players, 3);
-        choices[1] = new SkillRewardEventChoice(data.SELECT[1]);
-        choices[2] = new PlaceholderEventChoice(data.SELECT[2]);
         img = getImage(0);
         desc = data.DESC[0];
     }
@@ -26,5 +23,14 @@ public class TestEvent extends AbstractEvent {
     @Override
     public void onChoose() {
         AbstractLabyrinth.finishRoom();
+    }
+
+    @Override
+    public Array<EventChoice> getChoices(int page) {
+        Array<EventChoice> a = new Array<>();
+        a.add(new HealEventChoice(data.SELECT[0], AbstractLabyrinth.players, 3));
+        a.add(new SkillRewardEventChoice(data.SELECT[1]));
+        a.add(new PlaceholderEventChoice(data.SELECT[2]));
+        return a;
     }
 }

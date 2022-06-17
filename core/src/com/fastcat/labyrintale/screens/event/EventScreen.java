@@ -12,18 +12,22 @@ public class EventScreen extends AbstractScreen {
     public EventImage eventImage;
     public EventChoiceButton[] ecb;
     public AbstractEvent event;
-    private int length;
+    public int size;
 
     public EventScreen(AbstractEvent event) {
         this.event = event;
         eventImage = new EventImage(this.event);
         cType = ControlPanel.ControlType.BASIC;
-        length = this.event.choices.length;
-        ecb = new EventChoiceButton[length];
+        setPage(event.page);
+    }
+
+    public void setPage(int page) {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < length; i++) {
-            EventChoiceButton t = new EventChoiceButton(this.event.choices[i]);
-            t.setPosition(w * 0.4f, h * 0.5f + t.sHeight * 1.2f * (length - 1 - i));
+        size = event.choices[page].size;
+        ecb = new EventChoiceButton[size];
+        for(int i = 0; i < size; i++) {
+            EventChoiceButton t = new EventChoiceButton(this.event.choices[page].get(i));
+            t.setPosition(w * 0.4f, h * 0.5f + t.sHeight * 1.2f * (size - 1 - i));
             ecb[i] = t;
         }
     }

@@ -36,7 +36,7 @@ public class ShieldIcon extends AbstractUI {
             if (amount > 0) {
                 sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
-                renderKeywordCenter(sb, fontData, Integer.toString(amount), x, y + sHeight * 0.45f, sWidth, sHeight);
+                renderKeywordCenter(sb, fontData, Integer.toString(amount), x, y + sHeight * 0.5f, sWidth, sHeight);
             }
         }
     }
