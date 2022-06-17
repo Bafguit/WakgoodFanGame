@@ -34,7 +34,7 @@ public class TurnChangeEffect extends AbstractEffect {
         }
         alpha = MathUtils.clamp(alpha, 0, 0.5f);
         text.img.setAlpha(alpha);
-        text.fontData.font.getColor().a  = alpha * 2;
+        text.fontData.alpha = MathUtils.clamp(alpha * 2, 0, 1.0f);
         text.render(sb);
     }
 }

@@ -21,8 +21,8 @@ import static com.fastcat.labyrintale.handlers.FontHandler.FontType.*;
 
 public class FontHandler implements Disposable {
 
-    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/museumM.ttf"));
-    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/museumB.ttf"));
+    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/cb.ttf"));
+    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/cb.ttf"));
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     private static final GlyphLayout layout = new GlyphLayout();
 
@@ -32,6 +32,7 @@ public class FontHandler implements Disposable {
 
     public static final FontData LOGO = new FontData(BOLD, 133, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
+    public static final FontData ENERGY = new FontData(BOLD, 64, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false);
@@ -76,7 +77,7 @@ public class FontHandler implements Disposable {
         parameter.size = size;
         parameter.color = color;
         parameter.borderColor = bColor;
-        parameter.borderWidth = border ? parameter.size * 0.05f : 0.0f;
+        parameter.borderWidth = border ? parameter.size * 0.03f : 0.0f;
         if(type.equals(BOLD)) return bold.generateFont(parameter);
         else return medium.generateFont(parameter);
     }
@@ -221,10 +222,19 @@ public class FontHandler implements Disposable {
         medium.dispose();
         bold.dispose();
         LOGO.dispose();
+        COOLDOWN.dispose();
+        ENERGY.dispose();
         MAIN_MENU.dispose();
         CARD_BIG_ORB.dispose();
         CARD_BIG_NAME.dispose();
         CARD_BIG_DESC.dispose();
+        SEED.dispose();
+        SHOP_OK.dispose();
+        SHOP_NO.dispose();
+        INFO_NAME.dispose();
+        INFO_HP.dispose();
+        EVENT_TITLE.dispose();
+        EVENT_DESC.dispose();
         BORDER.dispose();
         BLOCK.dispose();
         HP.dispose();

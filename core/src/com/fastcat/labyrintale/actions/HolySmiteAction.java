@@ -6,14 +6,13 @@ import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
-import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.ScreenShake;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
 
 public class HolySmiteAction extends AbstractAction {
 
@@ -50,7 +49,7 @@ public class HolySmiteAction extends AbstractAction {
                 }
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
-                    EffectHandler.add(new UpTextEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
+                    EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     te.heal(heal);
                 }
                 if(actor != null) {

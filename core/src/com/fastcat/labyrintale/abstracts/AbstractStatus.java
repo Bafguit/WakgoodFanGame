@@ -159,6 +159,6 @@ public abstract class AbstractStatus implements Cloneable {
     }
 
     public enum StatusType {
-        BUFF, DEBUFF
+        BUFF, DEBUFF, STATIC
     }
 }

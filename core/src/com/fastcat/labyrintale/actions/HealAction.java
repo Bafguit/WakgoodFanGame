@@ -4,7 +4,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
@@ -32,7 +32,7 @@ public class HealAction extends AbstractAction {
             if(target.size > 0) {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    EffectHandler.add(new UpTextEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
+                    EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     te.heal(heal);
                 }
                 if (actor != null && motion) {

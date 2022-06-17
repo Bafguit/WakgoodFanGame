@@ -12,7 +12,7 @@ public class EnergyPanel extends AbstractUI {
 
     public EnergyPanel() {
         super(FileHandler.ui.get("ENERGY_ORB"));
-        fontData = FontHandler.COOLDOWN;
+        fontData = FontHandler.ENERGY;
         overable = false;
         clickable = false;
     }
@@ -23,7 +23,7 @@ public class EnergyPanel extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            FontHandler.renderCenter(sb, fontData, Integer.toString(AbstractLabyrinth.energy), x, y + sHeight / 2, sWidth, sHeight);
+            FontHandler.renderCenter(sb, fontData, AbstractLabyrinth.energy + "/" + AbstractLabyrinth.maxEnergy, x, y + sHeight / 2, sWidth, sHeight);
         }
     }
 }

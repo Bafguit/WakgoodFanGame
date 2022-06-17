@@ -228,10 +228,10 @@ public class BattleScreen extends AbstractScreen {
             float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
             float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
             if(!tp.player.isDead) {
-                renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + tp.sHeight * 0.05f / 2, tw, tp.sHeight * 0.05f);
+                renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + tp.sHeight * 0.06f / 2, tw, tp.sHeight * 0.05f);
             }
             if(!te.enemy.isDead) {
-                renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, ex, ey + te.sHeight * 0.05f / 2, tw, te.sHeight * 0.05f);
+                renderCenter(sb, HP, te.enemy.health + "/" + te.enemy.maxHealth, ex, ey + te.sHeight * 0.06f / 2, tw, te.sHeight * 0.05f);
             }
 
             ShieldIcon ps = pShield[i];
