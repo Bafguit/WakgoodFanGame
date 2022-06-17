@@ -2,13 +2,18 @@ package com.fastcat.labyrintale.desktop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class ErrorWindow extends JFrame {
 
     public ErrorWindow(Throwable e) {
-        StringWriter stackTrace = new StringWriter();
+        final StringWriter stackTrace = new StringWriter();
+        stackTrace.append("--------------------GAME CRASHED--------------------\n\n");
         e.printStackTrace(new PrintWriter(stackTrace));
 
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -24,6 +29,19 @@ public class ErrorWindow extends JFrame {
         randomText.setFont(new Font("Ariel", Font.PLAIN, 14));
         randomText.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         this.add(randomText);
+
+        JButton button = new JButton("Copy to clipboard");
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                StringSelection selection = new StringSelection(stackTrace.toString());
+                clipboard.setContents(selection, null);
+            }
+        });
+        this.add(button);
 
         JTextArea editArea = new JTextArea(10, 60);
         editArea.setText(stackTrace.toString());
