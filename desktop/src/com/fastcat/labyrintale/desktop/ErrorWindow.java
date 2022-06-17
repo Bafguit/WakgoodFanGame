@@ -7,7 +7,7 @@ import java.io.StringWriter;
 
 public class ErrorWindow extends JFrame {
 
-    public ErrorWindow(Exception e) {
+    public ErrorWindow(Throwable e) {
         StringWriter stackTrace = new StringWriter();
         e.printStackTrace(new PrintWriter(stackTrace));
 
