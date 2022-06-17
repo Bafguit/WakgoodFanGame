@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.DefeatAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
@@ -21,7 +20,8 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.status.NeutStatus;
+import com.fastcat.labyrintale.status.NeutEStatus;
+import com.fastcat.labyrintale.status.NeutPStatus;
 
 import java.util.Objects;
 
@@ -438,7 +438,7 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void neutralize() {
         EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "무력화", SCARLET));
-        applyStatus(new NeutStatus(this), 1);
+        applyStatus(isPlayer ? new NeutPStatus(this) : new NeutEStatus(this), 1);
     }
 
     public void gainSkill(int index, AbstractSkill skill) {

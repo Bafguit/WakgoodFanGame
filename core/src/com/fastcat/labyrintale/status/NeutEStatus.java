@@ -3,14 +3,12 @@ package com.fastcat.labyrintale.status;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.actions.ReduceStatusAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class NeutStatus extends AbstractStatus {
+public class NeutEStatus extends AbstractStatus {
 
-    private static final String ID = "Neut";
+    private static final String ID = "NeutE";
 
-    public NeutStatus(AbstractEntity owner) {
+    public NeutEStatus(AbstractEntity owner) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
         this.owner = owner;
     }
