@@ -24,12 +24,6 @@ public class ErrorWindow extends JFrame {
         mainLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         this.add(mainLabel);
 
-        JLabel randomText = new JLabel("That is sad.");
-        randomText.setAlignmentX(Component.CENTER_ALIGNMENT);
-        randomText.setFont(new Font("Ariel", Font.PLAIN, 14));
-        randomText.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        this.add(randomText);
-
         JButton button = new JButton("Copy to clipboard");
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -37,7 +31,7 @@ public class ErrorWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                StringSelection selection = new StringSelection(stackTrace.toString());
+                StringSelection selection = new StringSelection("```" + stackTrace + "```");
                 clipboard.setContents(selection, null);
             }
         });

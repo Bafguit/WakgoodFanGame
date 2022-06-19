@@ -26,6 +26,7 @@ public class EndRoundAction extends AbstractAction {
                 if(t.mRightTemp.cooldown > 0) t.mRightTemp.cooldown--;
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
+            if(AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;
             Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
             if(temp.size > 0) {

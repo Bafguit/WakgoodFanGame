@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
@@ -24,6 +25,7 @@ public class AbstractLabyrinth {
     public static RandomXC monsterRandom;
     public static RandomXC eventRandom;
     public static RandomXC shopRandom;
+    public static RandomXC groupRandom;
     public static RestrictionHandler restriction;
     public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
@@ -59,6 +61,8 @@ public class AbstractLabyrinth {
             monsterRandom = new RandomXC(seedLong);
             eventRandom = new RandomXC(seedLong);
             shopRandom = new RandomXC(seedLong);
+            groupRandom = new RandomXC(seedLong);
+            GroupHandler.RoomGroup.shuffleAll();
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;

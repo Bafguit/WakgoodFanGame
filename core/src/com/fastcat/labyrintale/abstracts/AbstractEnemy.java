@@ -41,8 +41,10 @@ public abstract class AbstractEnemy extends AbstractEntity {
 
     public void shuffleHand() {
         for(int i = 0; i < handSize; i++) {
-            if(hand[i] != null) {
-                discardPile.add(hand[i]);
+            AbstractSkill s = hand[i];
+            if(s != null) {
+                if(s.usedOnce) disposablePile.add(hand[i]);
+                else discardPile.add(hand[i]);
             }
         }
         hand = new AbstractSkill[handSize];
@@ -51,12 +53,10 @@ public abstract class AbstractEnemy extends AbstractEntity {
             discardPile.clear();
         }
         if(isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
-        int ts = drawPile.size;
         for(int i = 0; i < handSize; i++) {
-            if(i < ts) {
-                AbstractSkill s = drawPile.get(0);
+            if(i < drawPile.size) {
+                AbstractSkill s = drawPile.removeIndex(0);
                 hand[i] = s;
-                drawPile.removeIndex(0);
             } else break;
         }
     }

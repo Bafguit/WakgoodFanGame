@@ -96,6 +96,10 @@ public class GroupHandler {
         public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> eventGroup = new HashMap<>();
         public static int eventCount;
+        public static int weakCount;
+        public static int normalCount;
+        public static int eliteCount;
+        public static int bossCount;
 
         public static void generateRoom() {
             generateWeak();
@@ -142,6 +146,19 @@ public class GroupHandler {
             eventGroup.put(1, t);
         }
 
+        public static void shuffleAll() {
+            for(int i = 0; i < weakGroup.size(); i++)
+                staticShuffle(weakGroup.get(i + 1), groupRandom);
+            for(int i = 0; i < normalGroup.size(); i++)
+                staticShuffle(normalGroup.get(i + 1), groupRandom);
+            for(int i = 0; i < eliteGroup.size(); i++)
+                staticShuffle(eliteGroup.get(i + 1), groupRandom);
+            for(int i = 0; i < bossGroup.size(); i++)
+                staticShuffle(bossGroup.get(i + 1), groupRandom);
+            for(int i = 0; i < eventGroup.size(); i++)
+                staticShuffle(eventGroup.get(i + 1), groupRandom);
+        }
+
         private static void sort() {
             idSort.clear();
 
@@ -183,12 +200,24 @@ public class GroupHandler {
             return idSort.get(id).cpy();
         }
 
-        public static AbstractRoom getWeak() {
-            return new Weak1();
+        public static AbstractRoom getNextWeak() {
+            return weakGroup.get(currentFloor.floorNum).get(weakCount++).cpy();
+        }
+
+        public static AbstractRoom getNextNormal() {
+            return normalGroup.get(currentFloor.floorNum).get(normalCount++).cpy();
+        }
+
+        public static AbstractRoom getNextElite() {
+            return eliteGroup.get(currentFloor.floorNum).get(eliteCount++).cpy();
+        }
+
+        public static AbstractRoom getNextBoss() {
+            return bossGroup.get(currentFloor.floorNum).get(bossCount++).cpy();
         }
 
         public static AbstractRoom getNextEvent() {
-            return Objects.requireNonNull(eventGroup.get(currentFloor.floorNum).get(eventCount++).cpy());
+            return eventGroup.get(currentFloor.floorNum).get(eventCount++).cpy();
         }
 
         public static void roll() {

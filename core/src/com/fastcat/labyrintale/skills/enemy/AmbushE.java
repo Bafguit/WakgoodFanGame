@@ -12,7 +12,7 @@ public class AmbushE extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.P_L;
-    private static final int VALUE = 3;
+    private static final int VALUE = 4;
 
     public AmbushE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

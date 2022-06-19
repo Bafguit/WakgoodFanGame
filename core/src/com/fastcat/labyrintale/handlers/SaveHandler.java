@@ -67,6 +67,10 @@ public class SaveHandler {
 
     public static void load() {
         GroupHandler.RoomGroup.eventCount = data.eventCount;
+        GroupHandler.RoomGroup.weakCount = data.weakCount;
+        GroupHandler.RoomGroup.normalCount = data.normalCount;
+        GroupHandler.RoomGroup.eliteCount = data.eliteCount;
+        GroupHandler.RoomGroup.bossCount = data.eventCount;
         GroupHandler.SkillGroup.discardedCount = data.discard;
         seed = data.random.seed;
         seedLong = data.random.seedLong;
@@ -77,6 +81,8 @@ public class SaveHandler {
         monsterRandom = new RandomXC(seedLong, data.random.monsterRandom);
         eventRandom = new RandomXC(seedLong, data.random.eventRandom);
         shopRandom = new RandomXC(seedLong, data.random.shopRandom);
+        groupRandom = new RandomXC(seedLong);
+        GroupHandler.RoomGroup.shuffleAll();
         restriction.setData(data.restriction);
 
         floors = new AbstractFloor[4];
@@ -151,6 +157,10 @@ public class SaveHandler {
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
         public int eventCount;
+        public int weakCount;
+        public int normalCount;
+        public int eliteCount;
+        public int bossCount;
         public HashMap<String, Integer> discard = new HashMap<>();
 
         public static SaveData create() {
@@ -177,6 +187,10 @@ public class SaveHandler {
             temp.bleak = AbstractLabyrinth.bleak;
             temp.bleakMin = AbstractLabyrinth.bleakMin;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
+            temp.weakCount = GroupHandler.RoomGroup.weakCount;
+            temp.normalCount = GroupHandler.RoomGroup.normalCount;
+            temp.eliteCount = GroupHandler.RoomGroup.eliteCount;
+            temp.bossCount = GroupHandler.RoomGroup.bossCount;
             temp.discard = GroupHandler.SkillGroup.discardedCount;
 
             return temp;
