@@ -16,6 +16,7 @@ public class EventScreen extends AbstractScreen {
 
     public EventScreen(AbstractEvent event) {
         this.event = event;
+        this.event.generateChoices();
         eventImage = new EventImage(this.event);
         cType = ControlPanel.ControlType.BASIC;
         setPage(event.page);

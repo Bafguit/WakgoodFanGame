@@ -11,16 +11,11 @@ import com.fastcat.labyrintale.screens.reward.RewardScreen;
 public class PlaceholderEventChoice extends AbstractEvent.EventChoice {
 
     public PlaceholderEventChoice(String t) {
-        super(t);
+        super(t, new AbstractEvent.EventCondition.False());
     }
 
     @Override
     protected void onSelect() {
 
-    }
-
-    @Override
-    protected boolean condition() {
-        return false;
     }
 }

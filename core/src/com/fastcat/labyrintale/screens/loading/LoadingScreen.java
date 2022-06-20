@@ -52,7 +52,7 @@ public class LoadingScreen extends AbstractScreen {
                 AbstractRoom tr = AbstractLabyrinth.currentFloor.currentRoom;
                 if(tr.isDone) {
                     if (tr.type == AbstractRoom.RoomType.BATTLE && !tr.battleDone) {
-                        battleScreen = new BattleScreen(true);
+                        battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
                         fadeOutAndChangeScreen(battleScreen);
                     } else {
                         Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);

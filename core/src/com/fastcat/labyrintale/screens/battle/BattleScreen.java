@@ -37,15 +37,17 @@ public class BattleScreen extends AbstractScreen {
     public ShieldIcon[] eShield = new ShieldIcon[4];
     public boolean isEnemyTurn = false;
     public Array<AbstractEntity> looking;
+    public BattleType type;
     public float w, h, sw, sh;
 
     public BattleScreen() {
-        this(false);
+        this(BattleType.NORMAL, false);
     }
 
-    public BattleScreen(boolean isLoad) {
+    public BattleScreen(BattleType type, boolean isLoad) {
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
+        this.type = type;
         AbstractLabyrinth.prepare();
         setBg(bg.get("BG_BATTLE"));
         w = Gdx.graphics.getWidth();
@@ -270,5 +272,9 @@ public class BattleScreen extends AbstractScreen {
     @Override
     public void dispose() {
 
+    }
+
+    public enum BattleType {
+        NORMAL, EVENT;
     }
 }

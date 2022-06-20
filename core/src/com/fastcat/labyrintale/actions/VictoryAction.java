@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.GoldReward;
 import com.fastcat.labyrintale.rewards.SkillRewardNormal;
 import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
+import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -36,8 +37,10 @@ public class VictoryAction extends AbstractAction {
                 p.isNeut = false;
                 p.status = new AbstractStatus[4];
             }
-            AbstractLabyrinth.finishRoom();
-            SaveHandler.save();
+            if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+                AbstractLabyrinth.finishRoom();
+                SaveHandler.save();
+            }
             Array<AbstractReward> temp = new Array<>();
             temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));
             if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {

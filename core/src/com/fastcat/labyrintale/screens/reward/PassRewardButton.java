@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
@@ -30,8 +31,13 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
-        AbstractLabyrinth.endRoom();
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+            AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
+            AbstractLabyrinth.endRoom();
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        } else {
+            Labyrintale.eventScreen.event.endBattle();
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
+        }
     }
 }

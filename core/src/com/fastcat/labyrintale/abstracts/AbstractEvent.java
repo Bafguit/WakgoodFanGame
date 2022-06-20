@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
@@ -18,7 +19,7 @@ public abstract class AbstractEvent implements Cloneable {
     public Sprite img;
     public String name;
     public String desc = "";
-    public int page = 0;
+    public int page;
     public int size;
     public Array<EventChoice>[] choices;
 
@@ -26,12 +27,16 @@ public abstract class AbstractEvent implements Cloneable {
         this.id = id;
         data = StringHandler.eventString.data.get(this.id);
         name = data.NAME;
+        desc = getDescription(page);
         this.size = size;
         choices = new Array[this.size];
+        //TODO 페이지 구현 필수
+    }
+
+    public final void generateChoices() {
         for(int i = 0; i < this.size; i++) {
             choices[i] = getChoices(i);
         }
-        //TODO 페이지 구현 필수
     }
 
     public void done() {
@@ -40,6 +45,22 @@ public abstract class AbstractEvent implements Cloneable {
 
     public void onChoose() {
 
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+        desc = getDescription(this.page);
+        if(Labyrintale.eventScreen.event == this) {
+            Labyrintale.eventScreen.setPage(this.page);
+        }
+    }
+
+    public void endBattle() {
+
+    }
+
+    public String getDescription(int page) {
+        return data.DESC[page];
     }
 
     public abstract Array<EventChoice> getChoices(int page);
@@ -58,9 +79,15 @@ public abstract class AbstractEvent implements Cloneable {
     public static abstract class EventChoice {
         public String text;
         public boolean isUsed = false;
+        public EventCondition condition;
 
         public EventChoice(String text) {
+            this(text, new EventCondition.True());
+        }
+
+        public EventChoice(String text, EventCondition condition) {
             this.text = text;
+            this.condition = condition;
         }
 
         public final void select() {
@@ -71,11 +98,25 @@ public abstract class AbstractEvent implements Cloneable {
         protected abstract void onSelect();
 
         public final boolean available() {
-            return !isUsed && condition();
+            return !isUsed && condition.condition();
+        }
+    }
+
+    public static abstract class EventCondition {
+        public abstract boolean condition();
+
+        public static class True extends EventCondition {
+            @Override
+            public boolean condition() {
+                return true;
+            }
         }
 
-        protected boolean condition() {
-            return true;
+        public static class False extends EventCondition {
+            @Override
+            public boolean condition() {
+                return false;
+            }
         }
     }
 

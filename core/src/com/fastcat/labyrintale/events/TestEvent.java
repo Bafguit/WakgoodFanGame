@@ -26,10 +26,15 @@ public class TestEvent extends AbstractEvent {
     }
 
     @Override
+    public String getDescription(int page) {
+        return data.DESC[0];
+    }
+
+    @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        a.add(new HealEventChoice(data.SELECT[0], AbstractLabyrinth.players, 3));
-        a.add(new SkillRewardEventChoice(data.SELECT[1]));
+        a.add(new HealEventChoice(data.SELECT[0], AbstractLabyrinth.players, 3, new EventCondition.True()));
+        a.add(new SkillRewardEventChoice(data.SELECT[1], new EventCondition.True()));
         a.add(new PlaceholderEventChoice(data.SELECT[2]));
         return a;
     }

@@ -16,7 +16,11 @@ public class StartEvent extends AbstractEvent {
     public StartEvent() {
         super(ID, SIZE);
         img = getImage(0);
-        desc = data.DESC[0];
+    }
+
+    @Override
+    public String getDescription(int page) {
+        return data.DESC[0];
     }
 
     @Override
