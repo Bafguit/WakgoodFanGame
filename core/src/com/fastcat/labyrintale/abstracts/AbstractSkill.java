@@ -8,14 +8,10 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
@@ -190,7 +186,7 @@ public abstract class AbstractSkill implements Cloneable {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(owner);
             return temp;
-        } else if(target == SkillTarget.S_R) {
+        } else if(target == SkillTarget.RIGHT) {
             Array<AbstractEntity> temp = new Array<>();
             if(owner.isPlayer) {
                 if(owner.tempIndex > 0) {
@@ -204,7 +200,7 @@ public abstract class AbstractSkill implements Cloneable {
                 }
             }
             return temp;
-        } else if(target == SkillTarget.S_L) {
+        } else if(target == SkillTarget.LEFT) {
             Array<AbstractEntity> temp = new Array<>();
             if(owner.isPlayer) {
                 if(owner.tempIndex < 3) {
@@ -218,7 +214,7 @@ public abstract class AbstractSkill implements Cloneable {
                 }
             }
             return temp;
-        } else if(target == SkillTarget.S_B) {
+        } else if(target == SkillTarget.BOTH) {
             Array<AbstractEntity> temp = new Array<>();
             if(owner.isPlayer) {
                 if(owner.tempIndex > 0) {
@@ -240,7 +236,7 @@ public abstract class AbstractSkill implements Cloneable {
                 }
             }
             return temp;
-        } else if(target == SkillTarget.SS_R) {
+        } else if(target == SkillTarget.SELF_RIGHT) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(owner);
             if(owner.isPlayer) {
@@ -255,7 +251,7 @@ public abstract class AbstractSkill implements Cloneable {
                 }
             }
             return temp;
-        } else if(target == SkillTarget.SS_L) {
+        } else if(target == SkillTarget.SELF_LEFT) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(owner);
             if(owner.isPlayer) {
@@ -270,7 +266,7 @@ public abstract class AbstractSkill implements Cloneable {
                 }
             }
             return temp;
-        } else if(target == SkillTarget.SS_B) {
+        } else if(target == SkillTarget.SELF_BOTH) {
             Array<AbstractEntity> temp = new Array<>();
             temp.add(owner);
             if(owner.isPlayer) {
@@ -314,7 +310,7 @@ public abstract class AbstractSkill implements Cloneable {
         switch(target) {
             case NONE:
                 break;
-            case P_F:
+            case PLAYER_FIRST:
                 for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
                     if(p.isAlive()) {
@@ -323,7 +319,7 @@ public abstract class AbstractSkill implements Cloneable {
                     }
                 }
                 break;
-            case E_F:
+            case ENEMY_FIRST:
                 for(int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
                     if(e.isAlive()) {
@@ -332,7 +328,7 @@ public abstract class AbstractSkill implements Cloneable {
                     }
                 }
                 break;
-            case P_L:
+            case PLAYER_LAST:
                 for(int i = 3; i >= 0; i--) {
                     AbstractPlayer p = tp[i].player;
                     if(p.isAlive()) {
@@ -341,7 +337,7 @@ public abstract class AbstractSkill implements Cloneable {
                     }
                 }
                 break;
-            case E_L:
+            case ENEMY_LAST:
                 for(int i = 3; i >= 0; i--) {
                     AbstractEnemy e = te[i].enemy;
                     if(e.isAlive()) {
@@ -350,41 +346,41 @@ public abstract class AbstractSkill implements Cloneable {
                     }
                 }
                 break;
-            case P_DF:
+            case PLAYER_FIRST_TWO:
                 for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
                     if(p.isAlive()) temp.add(p);
                     if(temp.size == 2) break;
                 }
                 break;
-            case E_DF:
+            case ENEMY_FIRST_TWO:
                 for(int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
                     if(e.isAlive()) temp.add(e);
                     if(temp.size == 2) break;
                 }
                 break;
-            case P_DL:
+            case PLAYER_LAST_TWO:
                 for(int i = 3; i >= 0; i--) {
                     AbstractPlayer p = tp[i].player;
                     if(p.isAlive()) temp.add(p);
                     if(temp.size == 2) break;
                 }
                 break;
-            case E_DL:
+            case ENEMY_LAST_TWO:
                 for(int i = 3; i >= 0; i--) {
                     AbstractEnemy e = te[i].enemy;
                     if(e.isAlive()) temp.add(e);
                     if(temp.size == 2) break;
                 }
                 break;
-            case P_ALL:
+            case PLAYER_ALL:
                 for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
                     if(p.isAlive()) temp.add(p);
                 }
                 break;
-            case E_ALL:
+            case ENEMY_ALL:
                 for(int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
                     if(e.isAlive()) temp.add(e);
@@ -408,39 +404,39 @@ public abstract class AbstractSkill implements Cloneable {
 
     public static String getTargetString(AbstractSkill.SkillTarget target) {
         switch(target) {
-            case S_R:
+            case RIGHT:
                 return "▶";
-            case S_L:
+            case LEFT:
                 return "◀";
-            case S_B:
+            case BOTH:
                 return "◀　▶";
-            case SS_R:
+            case SELF_RIGHT:
                 return "●▶";
-            case SS_L:
+            case SELF_LEFT:
                 return "◀●";
-            case SS_B:
+            case SELF_BOTH:
                 return "◀●▶";
             case SELF:
                 return "●";
-            case P_F:
+            case PLAYER_FIRST:
                 return "○○○●　○○○○";
-            case E_F:
+            case ENEMY_FIRST:
                 return "○○○○　●○○○";
-            case P_L:
+            case PLAYER_LAST:
                 return "●○○○　○○○○";
-            case E_L:
+            case ENEMY_LAST:
                 return "○○○○　○○○●";
-            case P_DF:
+            case PLAYER_FIRST_TWO:
                 return "○○●●　○○○○";
-            case E_DF:
+            case ENEMY_FIRST_TWO:
                 return "○○○○　●●○○";
-            case P_DL:
+            case PLAYER_LAST_TWO:
                 return "●●○○　○○○○";
-            case E_DL:
+            case ENEMY_LAST_TWO:
                 return "○○○○　○○●●";
-            case P_ALL:
+            case PLAYER_ALL:
                 return "●●●●　○○○○";
-            case E_ALL:
+            case ENEMY_ALL:
                 return "○○○○　●●●●";
             case ALL:
                 return "●●●●　●●●●";
@@ -545,6 +541,8 @@ public abstract class AbstractSkill implements Cloneable {
     }
 
     public enum SkillTarget {
-        NONE, SELF, S_R, S_L, S_B, SS_R, SS_L, SS_B, P_F, E_F, P_L, E_L, P_DF, E_DF, P_DL, E_DL, P_ALL, E_ALL, ALL
+        NONE, ALL, SELF, RIGHT, LEFT, BOTH, SELF_RIGHT, SELF_LEFT, SELF_BOTH,
+        PLAYER_FIRST, ENEMY_FIRST, PLAYER_LAST, ENEMY_LAST, PLAYER_FIRST_TWO,
+        ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL
     }
 }

@@ -6,14 +6,13 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.CourageStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Encourage extends AbstractSkill {
 
     private static final String ID = "Encourage";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.SS_B;
+    private static final SkillTarget TARGET = SkillTarget.SELF_BOTH;
     private static final int VALUE = 2;
 
     public Encourage(AbstractEntity e) {

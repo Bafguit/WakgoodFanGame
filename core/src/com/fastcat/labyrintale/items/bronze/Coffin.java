@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.LethargyStatus;
-import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Coffin extends AbstractItem {
 
@@ -29,6 +28,6 @@ public class Coffin extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new LethargyStatus(1, false), owner, AbstractSkill.SkillTarget.E_ALL, true));
+        bot(new ApplyStatusAction(new LethargyStatus(1, false), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
     }
 }

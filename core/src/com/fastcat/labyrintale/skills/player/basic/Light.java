@@ -10,7 +10,7 @@ public class Light extends AbstractSkill {
     private static final String ID = "Light";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.E_ALL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
     private static final int VALUE = 30;
 
     public Light(AbstractEntity e) {

@@ -9,7 +9,7 @@ public class HikiSkill extends AbstractSkill {
     private static final String ID = "hiki";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-    private static final SkillTarget TARGET = SkillTarget.E_ALL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
     private static final int VALUE = 5;
 
     public HikiSkill() {

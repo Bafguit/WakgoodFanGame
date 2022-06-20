@@ -4,11 +4,8 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class AutoFire extends AbstractItem {
 
@@ -32,6 +29,6 @@ public class AutoFire extends AbstractItem {
     @Override
     public void startOfTurn() {
         flash();
-        ActionHandler.bot(new AttackAction(owner, AbstractSkill.SkillTarget.P_ALL, 2, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
+        ActionHandler.bot(new AttackAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 2, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
     }
 }

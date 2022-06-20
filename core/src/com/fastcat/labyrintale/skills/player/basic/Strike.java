@@ -11,7 +11,7 @@ public class Strike extends AbstractSkill {
     private static final String ID = "Strike";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.E_F;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 4;
 
     public Strike(AbstractEntity e) {

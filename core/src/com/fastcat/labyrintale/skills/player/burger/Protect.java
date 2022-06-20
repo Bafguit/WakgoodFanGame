@@ -10,7 +10,7 @@ public class Protect extends AbstractSkill {
     private static final String ID = "Protect";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.SS_L;
+    private static final SkillTarget TARGET = SkillTarget.SELF_LEFT;
     private static final int VALUE = 3;
 
     public Protect(AbstractEntity e) {

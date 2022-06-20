@@ -27,6 +27,6 @@ public class GoldItem4 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.P_ALL, 8));
+        bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 8));
     }
 }

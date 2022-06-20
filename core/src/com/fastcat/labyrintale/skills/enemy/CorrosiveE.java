@@ -11,7 +11,7 @@ public class CorrosiveE extends AbstractSkill {
     private static final String ID = "CorrosiveE";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ENEMY;
-    private static final SkillTarget TARGET = SkillTarget.P_DL;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
     private static final int VALUE = 1;
 
     public CorrosiveE(AbstractEntity e) {

@@ -11,7 +11,7 @@ public class BioCloud extends AbstractSkill {
     private static final String ID = "BioCloud";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.E_ALL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
     private static final int VALUE = 2;
 
     public BioCloud(AbstractEntity e) {

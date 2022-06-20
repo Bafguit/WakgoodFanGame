@@ -17,6 +17,6 @@ public class OldShield extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.P_ALL, 1));
+        bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 1));
     }
 }

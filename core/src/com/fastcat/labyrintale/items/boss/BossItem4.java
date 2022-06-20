@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.status.AttackStatus;
 
 public class BossItem4 extends AbstractItem {
@@ -30,6 +29,6 @@ public class BossItem4 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new AttackStatus(1), owner, AbstractSkill.SkillTarget.E_ALL, true));
+        bot(new ApplyStatusAction(new AttackStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
     }
 }

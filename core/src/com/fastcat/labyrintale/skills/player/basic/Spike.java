@@ -12,7 +12,7 @@ public class Spike extends AbstractSkill {
     private static final String ID = "Spike";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.E_DF;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
     private static final int VALUE = 4;
 
     public Spike(AbstractEntity e) {

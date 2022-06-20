@@ -9,7 +9,7 @@ public class Strong extends AbstractSkill {
     private static final String ID = "Strong";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
-    private static final SkillTarget TARGET = SkillTarget.SS_L;
+    private static final SkillTarget TARGET = SkillTarget.SELF_LEFT;
     private static final int VALUE = 4;
 
     public Strong(AbstractEntity e) {

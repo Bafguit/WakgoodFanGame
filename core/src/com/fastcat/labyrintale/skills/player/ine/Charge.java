@@ -12,7 +12,7 @@ public class Charge extends AbstractSkill {
     private static final String ID = "Charge";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.E_F;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 3;
 
     public Charge(AbstractEntity e) {

@@ -31,9 +31,6 @@ import com.fastcat.labyrintale.screens.shop.ShopScreen;
 
 public class Labyrintale extends Game {
 
-	public static final int DEFAULT_WIDTH = 1600;
-	public static final int DEFAULT_HEIGHT = 900;
-
 	public static Labyrintale game;
 
 	public static PolygonSpriteBatch psb;
@@ -77,7 +74,6 @@ public class Labyrintale extends Game {
 
 	public SpriteBatch sb;
 
-	
 	@Override
 	public void create () {
 		Gdx.graphics.setResizable(false);

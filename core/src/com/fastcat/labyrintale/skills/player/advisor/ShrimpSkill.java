@@ -10,7 +10,7 @@ public class ShrimpSkill extends AbstractSkill {
     private static final String ID = "shrimp";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-    private static final SkillTarget TARGET = SkillTarget.E_ALL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
     public static final int VALUE = 1;
 
     public ShrimpSkill() {

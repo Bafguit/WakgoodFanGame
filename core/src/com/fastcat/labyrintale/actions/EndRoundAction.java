@@ -1,11 +1,10 @@
 package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.P_F;
+import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.PLAYER_FIRST;
 
 public class EndRoundAction extends AbstractAction {
     public EndRoundAction() {
@@ -28,7 +27,7 @@ public class EndRoundAction extends AbstractAction {
             }
             if(AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(P_F);
+            Array<AbstractEntity> temp = AbstractSkill.getTargets(PLAYER_FIRST);
             if(temp.size > 0) {
                 AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
             }
