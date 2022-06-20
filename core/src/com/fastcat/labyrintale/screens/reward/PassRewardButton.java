@@ -11,8 +11,11 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
 public class PassRewardButton extends AbstractUI {
 
-    public PassRewardButton() {
+    public RewardScreen sc;
+
+    public PassRewardButton(RewardScreen sc) {
         super(FileHandler.ui.get("NEXT"));
+        this.sc = sc;
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.6f);
         fontData = MAIN_MENU;
         text = "넘기기";
@@ -31,13 +34,17 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
-            AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
-            AbstractLabyrinth.endRoom();
-            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        if(Labyrintale.getCurScreen() == Labyrintale.battleScreen) {
+            if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+                AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
+                AbstractLabyrinth.endRoom();
+                Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+            } else {
+                Labyrintale.eventScreen.event.endBattle();
+                Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
+            }
         } else {
-            Labyrintale.eventScreen.event.endBattle();
-            Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen); //TODO 기존 화면으로 돌아가게 하기
         }
     }
 }

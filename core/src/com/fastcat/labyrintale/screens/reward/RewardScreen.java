@@ -29,7 +29,7 @@ public class RewardScreen extends AbstractScreen {
             rewardButtons.add(temp);
         }
         rewardTypeText = new RewardTypeText(type);
-        passButton = new PassRewardButton();
+        passButton = new PassRewardButton(this);
         passButton.disable();
         rewardInfoText = new RewardInfoText();
         sType = type;

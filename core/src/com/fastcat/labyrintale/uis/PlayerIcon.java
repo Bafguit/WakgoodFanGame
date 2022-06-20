@@ -32,7 +32,7 @@ public class PlayerIcon extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         if(enabled && p != null) {
-            sb.setColor(Color.WHITE);
+            sb.setColor(p.isAlive() ? p.animColor : Color.DARK_GRAY);
             sb.draw(p.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }

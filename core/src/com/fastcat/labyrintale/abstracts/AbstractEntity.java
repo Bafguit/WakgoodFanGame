@@ -22,6 +22,8 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.status.NeutEStatus;
 import com.fastcat.labyrintale.status.NeutPStatus;
+import com.fastcat.labyrintale.uis.PlayerIcon;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.Objects;
 
@@ -259,108 +261,120 @@ public abstract class AbstractEntity implements Cloneable {
             AbstractEntity attacker = info.actor;
             int damage = info.damage;
             DamageType type = info.type;
-            if (attacker != null) {
-                if(type == DamageType.NORMAL) damage = attacker.calculateAttack(damage);
-                if(isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) damage = m.onAttack(this, damage, type);
+            if(cPanel.type == ControlPanel.ControlType.BATTLE) {
+                if (attacker != null) {
+                    if (type == DamageType.NORMAL) damage = attacker.calculateAttack(damage);
+                    if (isPlayer) {
+                        for (AbstractItem m : item) {
+                            if (m != null) damage = m.onAttack(this, damage, type);
+                        }
                     }
-                }
-                for (AbstractSkill s : attacker.hand) {
-                    if (s != null) damage = s.onAttack(this, damage, type);
-                }
-                for (AbstractStatus s : attacker.status) {
-                    if (s != null) damage = s.onAttack(this, damage, type);
-                }
-                if(isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) damage *= m.onAttackMultiply(this, damage, type);
+                    for (AbstractSkill s : attacker.hand) {
+                        if (s != null) damage = s.onAttack(this, damage, type);
                     }
-                }
-                for (AbstractSkill s : attacker.hand) {
-                    if (s != null) damage *= s.onAttackMultiply(this, damage, type);
-                }
-                for (AbstractStatus s : attacker.status) {
-                    if (s != null) damage *= s.onAttackMultiply(this, damage, type);
-                }
-            }
-            if (damage > 0) {
-                if(isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) damage = m.onAttacked(attacker, damage, type);
+                    for (AbstractStatus s : attacker.status) {
+                        if (s != null) damage = s.onAttack(this, damage, type);
                     }
-                }
-                for (AbstractSkill s : hand) {
-                    if (s != null) damage = s.onAttacked(attacker, damage, type);
-                }
-                for (AbstractStatus s : status) {
-                    if (s != null) damage = s.onAttacked(attacker, damage, type);
-                }
-                if(isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) damage *= m.onAttackedMultiply(attacker, damage, type);
+                    if (isPlayer) {
+                        for (AbstractItem m : item) {
+                            if (m != null) damage *= m.onAttackMultiply(this, damage, type);
+                        }
                     }
-                }
-                for (AbstractSkill s : hand) {
-                    if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
-                }
-                for (AbstractStatus s : status) {
-                    if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
+                    for (AbstractSkill s : attacker.hand) {
+                        if (s != null) damage *= s.onAttackMultiply(this, damage, type);
+                    }
+                    for (AbstractStatus s : attacker.status) {
+                        if (s != null) damage *= s.onAttackMultiply(this, damage, type);
+                    }
                 }
                 if (damage > 0) {
-                    damage = loseBlock(damage);
-                    if (damage > 0) {
-                        EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
-                        EffectHandler.add(new HealthBarDamageEffect(this));
-                        AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
-                        state.addAnimation(0, "idle", true, 0.0F);
-                        e.setTimeScale(1.0f);
-                        health -= damage;
-                        if (health <= 0) {
-                            if(advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
-                                advisor.skill.use();
-                                health = maxHealth;
-                                block = 0;
-                            } else if(!isNeut) {
-                                health = 1;
-                                block = 0;
-                                neutralize();
-                            } else {
-                                health = 0;
-                                block = 0;
-                                die(attacker);
-                            }
+                    if (isPlayer) {
+                        for (AbstractItem m : item) {
+                            if (m != null) damage = m.onAttacked(attacker, damage, type);
                         }
-                        if (attacker != null) {
-                            if(isPlayer) {
-                                for (AbstractItem m : item) {
-                                    if (m != null) m.onDamage(this, damage, type);
+                    }
+                    for (AbstractSkill s : hand) {
+                        if (s != null) damage = s.onAttacked(attacker, damage, type);
+                    }
+                    for (AbstractStatus s : status) {
+                        if (s != null) damage = s.onAttacked(attacker, damage, type);
+                    }
+                    if (isPlayer) {
+                        for (AbstractItem m : item) {
+                            if (m != null) damage *= m.onAttackedMultiply(attacker, damage, type);
+                        }
+                    }
+                    for (AbstractSkill s : hand) {
+                        if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
+                    }
+                    for (AbstractStatus s : status) {
+                        if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
+                    }
+                    if (damage > 0) {
+                        damage = loseBlock(damage);
+                        if (damage > 0) {
+                            EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                            EffectHandler.add(new HealthBarDamageEffect(this));
+                            AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
+                            state.addAnimation(0, "idle", true, 0.0F);
+                            e.setTimeScale(1.0f);
+                            health -= damage;
+                            if (health <= 0) {
+                                if (advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
+                                    advisor.skill.use();
+                                    health = maxHealth;
+                                    block = 0;
+                                } else if (!isNeut) {
+                                    health = 1;
+                                    block = 0;
+                                    neutralize();
+                                } else {
+                                    health = 0;
+                                    block = 0;
+                                    die(attacker);
                                 }
                             }
-                            for (AbstractSkill s : attacker.hand) {
-                                if (s != null) s.onDamage(this, damage, type);
+                            if (attacker != null) {
+                                if (isPlayer) {
+                                    for (AbstractItem m : item) {
+                                        if (m != null) m.onDamage(this, damage, type);
+                                    }
+                                }
+                                for (AbstractSkill s : attacker.hand) {
+                                    if (s != null) s.onDamage(this, damage, type);
+                                }
+                                for (AbstractStatus s : attacker.status) {
+                                    if (s != null) s.onDamage(this, damage, type);
+                                }
                             }
-                            for (AbstractStatus s : attacker.status) {
-                                if (s != null) s.onDamage(this, damage, type);
+                            if (isPlayer) {
+                                for (AbstractItem m : item) {
+                                    if (m != null) m.onDamaged(attacker, damage, type);
+                                }
                             }
-                        }
-                        if(isPlayer) {
-                            for (AbstractItem m : item) {
-                                if (m != null) m.onDamaged(attacker, damage, type);
+                            for (AbstractSkill s : hand) {
+                                if (s != null) s.onDamaged(attacker, damage, type);
                             }
-                        }
-                        for (AbstractSkill s : hand) {
-                            if (s != null) s.onDamaged(attacker, damage, type);
-                        }
-                        for (AbstractStatus s : status) {
-                            if (s != null) s.onDamaged(attacker, damage, type);
+                            for (AbstractStatus s : status) {
+                                if (s != null) s.onDamaged(attacker, damage, type);
+                            }
+                            return;
                         }
                         return;
                     }
-                    return;
+                }
+                EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
+            } else if(isPlayer && damage > 0) {
+                PlayerIcon ui = cPanel.infoPanel.pIcons[index];
+                cPanel.effectHandler.effectList.addLast(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, damage, YELLOW, true));
+                cPanel.effectHandler.effectList.addLast(new HealthBarDamageEffect(this));
+                health -= damage;
+                if (health <= 0) {
+                    health = 0;
+                    block = 0;
+                    die(attacker);
                 }
             }
-            EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
         }
     }
 
@@ -397,43 +411,41 @@ public abstract class AbstractEntity implements Cloneable {
     }
     
     public void die(AbstractEntity murder) {
-        if(isAlive()) {
-            if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE || currentFloor.currentRoom.type == BOSS) {
-                isDie = true;
-                if(isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) m.onDeath(murder);
-                    }
-                }
-                for(AbstractStatus s : status) {
-                    if(s != null) s.onDeath(murder);
-                }
-                EffectHandler.add(new DieEffect(this));
-                boolean a = false;
-                if(!isPlayer) {
-                    for (int i = 0; i < 4; i++) {
-                        a = currentFloor.currentRoom.enemies[i].isAlive();
-                        if (a) break;
-                    }
-                    if (!a) {
-                        ActionHandler.clear();
-                        for (AbstractItem m : item) {
-                            if (m != null) m.atBattleEnd();
-                        }
-                        for(AbstractStatus s : status) {
-                            if(s != null) s.atBattleEnd();
-                        }
-                        ActionHandler.bot(new VictoryAction());
-                    }
-                } else {
-                    for (int i = 0; i < 4; i++) {
-                        a = players[i].isAlive();
-                        if (a) break;
-                    }
-                    if (!a) ActionHandler.top(new DefeatAction());
+        if(cPanel.type == ControlPanel.ControlType.BATTLE) {
+            isDie = true;
+            if(isPlayer) {
+                for (AbstractItem m : item) {
+                    if (m != null) m.onDeath(murder);
                 }
             }
-        }
+            for(AbstractStatus s : status) {
+                if(s != null) s.onDeath(murder);
+            }
+            EffectHandler.add(new DieEffect(this));
+            boolean a = false;
+            if(!isPlayer) {
+                for (int i = 0; i < 4; i++) {
+                    a = currentFloor.currentRoom.enemies[i].isAlive();
+                    if (a) break;
+                }
+                if (!a) {
+                    ActionHandler.clear();
+                    for (AbstractItem m : item) {
+                        if (m != null) m.atBattleEnd();
+                    }
+                    for(AbstractStatus s : status) {
+                        if(s != null) s.atBattleEnd();
+                    }
+                    ActionHandler.bot(new VictoryAction());
+                }
+            } else {
+                for (int i = 0; i < 4; i++) {
+                    a = players[i].isAlive();
+                    if (a) break;
+                }
+                if (!a) ActionHandler.top(new DefeatAction());
+            }
+        } else isDead = true;
     }
 
     public void neutralize() {

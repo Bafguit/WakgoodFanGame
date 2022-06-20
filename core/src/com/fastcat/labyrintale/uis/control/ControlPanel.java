@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
@@ -18,10 +19,12 @@ public class ControlPanel implements Disposable {
     public Sprite bg;
     public Sprite bbg;
     public ControlType type = HIDE;
+    public EffectHandler effectHandler;
 
     public ControlPanel() {
         infoPanel = new InfoPanel();
         battlePanel = new BattlePanel();
+        effectHandler = new EffectHandler();
         bg = FileHandler.ui.get("CONTROL_PANEL");
         bg.setSize(bg.getWidth() * InputHandler.scale, bg.getHeight() * InputHandler.scale);
         bg.setPosition((Gdx.graphics.getWidth() - bg.getWidth()) * 0.5f, 0);
@@ -49,6 +52,7 @@ public class ControlPanel implements Disposable {
                 bg.draw(sb);
             }
             infoPanel.render(sb);
+            effectHandler.render(sb);
         }
     }
 

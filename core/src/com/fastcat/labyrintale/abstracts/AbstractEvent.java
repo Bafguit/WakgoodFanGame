@@ -86,8 +86,8 @@ public abstract class AbstractEvent implements Cloneable {
         }
 
         public EventChoice(String text, EventCondition condition) {
-            this.text = text;
             this.condition = condition;
+            this.text = text;
         }
 
         public final void select() {
@@ -104,11 +104,17 @@ public abstract class AbstractEvent implements Cloneable {
 
     public static abstract class EventCondition {
         public abstract boolean condition();
+        public abstract String cdText();
 
         public static class True extends EventCondition {
             @Override
             public boolean condition() {
                 return true;
+            }
+
+            @Override
+            public String cdText() {
+                return "";
             }
         }
 
@@ -116,6 +122,11 @@ public abstract class AbstractEvent implements Cloneable {
             @Override
             public boolean condition() {
                 return false;
+            }
+
+            @Override
+            public String cdText() {
+                return "";
             }
         }
     }

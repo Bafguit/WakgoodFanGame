@@ -40,7 +40,7 @@ public class EventChoiceButton extends AbstractUI {
             sb.draw(img, x, y, sWidth, sHeight);
 
             if(fontData != null) {
-                renderLineLeft(sb, fontData, choice.text, x + 10, y + sHeight / 2, sWidth, sHeight);
+                renderLineLeft(sb, fontData, clickable ? choice.text : choice.condition.cdText(), x + 10, y + sHeight * 0.55f, sWidth, sHeight);
             }
         }
     }

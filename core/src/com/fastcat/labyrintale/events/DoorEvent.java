@@ -15,7 +15,6 @@ public class DoorEvent extends AbstractEvent {
     public DoorEvent() {
         super(ID, SIZE);
         img = getImage(0);
-        desc = data.DESC[0];
     }
 
     @Override
@@ -41,7 +40,6 @@ public class DoorEvent extends AbstractEvent {
                 if (ch.type == AbstractChoice.ChoiceType.BATTLE) {
                     a.add(new BattleEventChoice(data.SELECT[2], ch.room));
                     b = true;
-                    System.out.println("WOW!");
                     break;
                 }
             }
