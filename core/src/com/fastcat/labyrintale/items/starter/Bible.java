@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Bible extends AbstractItem {
 
@@ -19,6 +18,6 @@ public class Bible extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.S_R, true));
+        bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.RIGHT, true));
     }
 }

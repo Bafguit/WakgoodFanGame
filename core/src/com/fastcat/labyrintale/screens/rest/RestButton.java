@@ -30,7 +30,6 @@ public class RestButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        AbstractLabyrinth.finishRoom();
         Array<AbstractReward> temp = new Array<>();
         if(type == RestType.HEAL) {
             temp.add(new HealReward(HEAL_AMOUNT));

@@ -24,11 +24,6 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
     }
 
     @Override
-    public void onChoose() {
-        AbstractLabyrinth.finishRoom();
-    }
-
-    @Override
     public void endBattle() {
         if(page == 1) setPage(2);
     }

@@ -2,29 +2,28 @@ package com.fastcat.labyrintale.events.choices;
 
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.rewards.SkillRewardNormal;
+import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen;
 
-public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
+public class SkillUpgradeEventChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
 
     private final AbstractEvent event;
     private final int toPage;
 
-    public SkillRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event) {
-        this(t, condition, event, -1);
+    public SkillUpgradeEventChoice(String t, AbstractEvent.EventCondition c, AbstractEvent event) {
+        this(t, c, event, -1);
     }
 
-    public SkillRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event, int page) {
-        super(t, condition);
+    public SkillUpgradeEventChoice(String t, AbstractEvent.EventCondition c, AbstractEvent event, int page) {
+        super(t, c);
         this.event = event;
         toPage = page;
     }
 
     @Override
     protected void onSelect() {
-        SkillRewardScreen s = new SkillRewardScreen(SkillReward.SkillRewardType.NORMAL, new SkillRewardNormal(AbstractLabyrinth.selection));
+        SkillRewardScreen s = new SkillRewardScreen(SkillReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade());
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

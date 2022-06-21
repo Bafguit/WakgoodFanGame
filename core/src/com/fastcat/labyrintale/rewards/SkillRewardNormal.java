@@ -22,6 +22,6 @@ public class SkillRewardNormal extends SkillReward {
 
     @Override
     public void takeReward() {
-        Labyrintale.addTempScreen(new SkillRewardScreen(SkillRewardType.COMMON, this));
+        Labyrintale.addTempScreen(new SkillRewardScreen(SkillRewardType.NORMAL, this));
     }
 }

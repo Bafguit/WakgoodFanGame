@@ -18,11 +18,6 @@ public class DoorEvent extends AbstractEvent {
     }
 
     @Override
-    public void onChoose() {
-        AbstractLabyrinth.finishRoom();
-    }
-
-    @Override
     public void endBattle() {
         if(page == 1) setPage(2);
     }

@@ -222,6 +222,7 @@ public class Labyrintale extends Game {
 		if(tempScreen.size > 0) {
 			for(AbstractScreen s : tempScreen) {
 				s.hide();
+				s.atEndOfTempScreen();
 				s.effectHandler.removeAll();
 			}
 			tempScreen.clear();
@@ -242,6 +243,7 @@ public class Labyrintale extends Game {
 			AbstractScreen s = game.tempScreen.get(i);
 			if(s == screen) {
 				s.hide();
+				s.atEndOfTempScreen();
 				s.effectHandler.removeAll();
 				game.tempScreen.removeIndex(i);
 				break;

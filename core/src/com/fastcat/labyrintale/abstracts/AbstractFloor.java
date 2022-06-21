@@ -2,9 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
-import com.fastcat.labyrintale.events.DoorEvent;
-import com.fastcat.labyrintale.events.TestEvent;
-import com.fastcat.labyrintale.events.TrapEvent;
+import com.fastcat.labyrintale.events.*;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
@@ -110,7 +108,7 @@ public class AbstractFloor {
             t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
         } else if(type == WEAK) {
             if(battle) t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
-            if(mystery) t.add(new AbstractChoice(new AbstractRoom(new TrapEvent()), AbstractChoice.ChoiceType.LOOK, true));
+            if(mystery) t.add(new AbstractChoice(new AbstractRoom(new CivilizationEvent()), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
         } else if (type == NORMAL) {

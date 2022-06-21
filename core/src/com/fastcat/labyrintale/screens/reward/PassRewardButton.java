@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.reward;
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
@@ -34,7 +35,8 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(Labyrintale.getCurScreen() == Labyrintale.battleScreen) {
+        AbstractScreen s = Labyrintale.getBaseScreen();
+        if(s == Labyrintale.battleScreen) {
             if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
                 AbstractLabyrinth.endRoom();
@@ -43,8 +45,10 @@ public class PassRewardButton extends AbstractUI {
                 Labyrintale.eventScreen.event.endBattle();
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
             }
+        } else if(s == Labyrintale.restScreen) {
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
         } else {
-            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen); //TODO 기존 화면으로 돌아가게 하기
+            Labyrintale.removeTempScreen(sc);
         }
     }
 }

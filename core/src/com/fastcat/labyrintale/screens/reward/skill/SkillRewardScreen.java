@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.rewards.SkillReward;
+import com.fastcat.labyrintale.screens.deckview.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.Objects;
@@ -17,18 +18,19 @@ import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.UPGRAD
 
 public class SkillRewardScreen extends AbstractScreen {
 
+    private final BgImg bgImg;
+
     public final SkillRewardType type;
-    public final SkillReward reward;
     public final SkillRewardGroup[] groups;
 
-    public SkillRewardScreen(SkillRewardType type, SkillReward r) {
+    public SkillRewardScreen(SkillRewardType type, Array<Array<AbstractSkill>> group) {
         cType = ControlPanel.ControlType.BASIC;
         SkillRewardGroup.screen = this;
         this.type = type;
-        reward = r;
-        groups = new SkillRewardGroup[reward.group.size];
-        for(int i = 0; i < reward.group.size; i++) {
-            Array<AbstractSkill> a = reward.group.get(i);
+        bgImg = new BgImg();
+        groups = new SkillRewardGroup[group.size];
+        for(int i = 0; i < group.size; i++) {
+            Array<AbstractSkill> a = group.get(i);
             groups[i] = new SkillRewardGroup((AbstractPlayer) a.get(0).owner, a, this.type, a.size);
         }
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -45,6 +47,10 @@ public class SkillRewardScreen extends AbstractScreen {
         }
     }
 
+    public SkillRewardScreen(SkillRewardType type, SkillReward r) {
+        this(type, r.group);
+    }
+
     @Override
     public void update() {
         for(SkillRewardGroup g : groups) {
@@ -54,6 +60,7 @@ public class SkillRewardScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
+        bgImg.render(sb);
         for(SkillRewardGroup g : groups) {
             g.render(sb);
         }

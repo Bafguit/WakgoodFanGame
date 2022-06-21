@@ -39,7 +39,6 @@ public class VictoryAction extends AbstractAction {
             }
             if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.finishRoom();
-                SaveHandler.save();
             }
             Array<AbstractReward> temp = new Array<>();
             temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));

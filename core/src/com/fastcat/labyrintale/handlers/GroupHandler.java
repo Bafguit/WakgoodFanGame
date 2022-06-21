@@ -4,9 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.advisors.*;
-import com.fastcat.labyrintale.events.DoorEvent;
-import com.fastcat.labyrintale.events.TestEvent;
-import com.fastcat.labyrintale.events.TrapEvent;
+import com.fastcat.labyrintale.events.*;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
@@ -147,6 +145,8 @@ public class GroupHandler {
             t.add(new AbstractRoom(new TestEvent()));
             t.add(new AbstractRoom(new DoorEvent()));
             t.add(new AbstractRoom(new TrapEvent()));
+            t.add(new AbstractRoom(new SurvivorEvent()));
+            t.add(new AbstractRoom(new CivilizationEvent()));
             eventGroup.put(1, t);
         }
 
