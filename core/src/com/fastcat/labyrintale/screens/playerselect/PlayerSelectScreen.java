@@ -13,17 +13,22 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
     public PlayerSelectText playerSelectText;
     public PlayerConfirmButton nextButton;
     public PlayerButton selected;
-    public PlayerButton[] pPlayer = new PlayerButton[4];
+    public PlayerButton[] pPlayer;
     public GetSelectedPlayer gets;
 
     public PlayerSelectScreen(GetSelectedPlayer gets) {
+        this(AbstractLabyrinth.players, gets);
+    }
+
+    public PlayerSelectScreen(AbstractPlayer[] players, GetSelectedPlayer gets) {
         playerSelectText = new PlayerSelectText();
         nextButton = new PlayerConfirmButton(this);
         this.gets = gets;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < 4; i++) {
-            PlayerButton adv = new PlayerButton(AbstractLabyrinth.players[i], this);
-            adv.setPosition(w * 0.2f * (i + 1) - adv.sWidth / 2, h * 0.6f);
+        int size = players.length;
+        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
+        for(int i = 0; i < size; i++) {
+            PlayerButton adv = new PlayerButton(players[i], this);
+            adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
             pPlayer[i] = adv;
         }
     }

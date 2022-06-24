@@ -66,6 +66,7 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
             ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.575f);
+            ev.enemy.tempIndex = i;
             ev.enemy.newDeck();
             if(isLoad) {
                 ev.enemy.isRandom = false;

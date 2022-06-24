@@ -23,9 +23,7 @@ public class Kick extends AbstractSkill {
     @Override
     public void use() {
         AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(target).get(0);
-        if(e.mRight.canUse()) {
-            bot(new MoveAction(e, false, 0.3f));
-        }
+        bot(new MoveAction(e, false, 0.3f));
         bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, true));
     }
 

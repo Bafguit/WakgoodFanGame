@@ -19,8 +19,22 @@ public class RestScreen extends AbstractScreen {
     public RestScreen() {
         cType = ControlPanel.ControlType.BASIC;
         count = 2;
+        boolean rev = false, item = false;
+        for(AbstractPlayer p : AbstractLabyrinth.players) {
+            if(!rev && !p.isAlive()) {
+                rev = true;
+                count++;
+            }
+            for(AbstractItem i : p.item) {
+                if(!item && i.id.equals("삽 같은거")) { //TODO 아이템 만들어서 ID 넣기
+                    item = true;
+                    count++;
+                }
+            }
+        }
+
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        float tw = w / (count + 1);
+        float tw = w / (count + 1), tww = tw;
 
         RestButton b = buttons[0] = new RestButton(this, RestButton.RestType.HEAL);
         b.setPosition(tw - b.sWidth / 2, h * 0.73f - b.sHeight / 2);
@@ -28,10 +42,10 @@ public class RestScreen extends AbstractScreen {
         RestIcon c = icons[0] = new RestIcon(b, getImg(b.type));
         c.setPosition(tw - c.sWidth / 2, h * 0.85f - c.sHeight / 2);
 
-        RestDesc d = desc[0] = new RestDesc("테스트");
+        RestDesc d = desc[0] = new RestDesc("휴식");
         d.setPosition(tw - d.sWidth / 2, h * 0.6f - d.sHeight / 2);
 
-        tw = w / (count + 1) * 2;
+        tw += tww;
 
         RestButton b2 = buttons[1] = new RestButton(this, RestButton.RestType.UPGRADE);
         b2.setPosition(tw - b2.sWidth / 2, h * 0.73f - b2.sHeight / 2);
@@ -39,8 +53,34 @@ public class RestScreen extends AbstractScreen {
         RestIcon c2 = icons[1] = new RestIcon(b2, getImg(b2.type));
         c2.setPosition(tw - c2.sWidth / 2, h * 0.85f - c2.sHeight / 2);
 
-        RestDesc d2 = desc[1] = new RestDesc("강화");
+        RestDesc d2 = desc[1] = new RestDesc("단련");
         d2.setPosition(tw - d2.sWidth / 2, h * 0.6f - d2.sHeight / 2);
+
+        if(rev) {
+            tw += tww;
+
+            RestButton b3 = buttons[1] = new RestButton(this, RestButton.RestType.REVIVE);
+            b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
+
+            RestIcon c3 = icons[1] = new RestIcon(b2, getImg(b2.type));
+            c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
+
+            RestDesc d3 = desc[1] = new RestDesc("소생");
+            d2.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
+        }
+
+        if(item) {
+            tw += tww;
+
+            RestButton b3 = buttons[1] = new RestButton(this, RestButton.RestType.DISCOVER);
+            b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
+
+            RestIcon c3 = icons[1] = new RestIcon(b2, getImg(b2.type));
+            c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
+
+            RestDesc d3 = desc[1] = new RestDesc("탐색");
+            d2.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
+        }
     }
 
     @Override

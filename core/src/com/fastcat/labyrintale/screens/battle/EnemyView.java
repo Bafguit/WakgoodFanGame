@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.battle;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
@@ -34,6 +35,7 @@ public class EnemyView extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
+        setPosition(enemy.animX - sWidth / 2, enemy.animY - Gdx.graphics.getHeight() * 0.025f);
         if(enabled && enemy != null && !enemy.isDead) {
             sb.setColor(Color.WHITE);
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);

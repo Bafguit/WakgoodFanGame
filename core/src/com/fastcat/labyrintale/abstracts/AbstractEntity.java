@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
+import com.fastcat.labyrintale.actions.MoveAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
 import com.fastcat.labyrintale.effects.UpDamageEffect;
@@ -414,9 +415,12 @@ public abstract class AbstractEntity implements Cloneable {
         if(cPanel.type == ControlPanel.ControlType.BATTLE) {
             isDie = true;
             if(isPlayer) {
+                ActionHandler.top(new MoveAction((AbstractPlayer) this, 3));
                 for (AbstractItem m : item) {
                     if (m != null) m.onDeath(murder);
                 }
+            } else {
+                ActionHandler.top(new MoveAction((AbstractEnemy) this, 3));
             }
             for(AbstractStatus s : status) {
                 if(s != null) s.onDeath(murder);

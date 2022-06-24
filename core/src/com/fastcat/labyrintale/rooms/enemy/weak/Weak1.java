@@ -13,6 +13,6 @@ public class Weak1 extends AbstractRoom {
 
     @Override
     public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[] { new EnemyPlaceholder(), new WeakEnemy1(), new WeakEnemy1(), new WeakEnemy1() };
+        return new AbstractEnemy[] { new WeakEnemy1(), new WeakEnemy1(), new WeakEnemy1(), new EnemyPlaceholder()};
     }
 }

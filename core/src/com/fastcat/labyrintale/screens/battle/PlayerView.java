@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.battle;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -37,7 +38,7 @@ public class PlayerView extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled && player != null && !player.isDead) {
             sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(!isLooking ? pImg : img, x, y, sWidth, sHeight);
+            if(showImg) sb.draw(!isLooking ? pImg : img, player.animX - sWidth / 2, player.animY - Gdx.graphics.getHeight() * 0.025f, sWidth, sHeight);
             player.render(sb);
             //애니메이션
         }

@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "gZrB/prAhmLDr7b7/noy7nMWaAk",
+	"hash": "mHmSuQZ8pF4h9tdUzE/r3RtdzP4",
 	"spine": "3.8.75",
 	"x": -320,
 	"y": -50,
@@ -82,11 +82,6 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"head": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"arm_left": {
 				"attachment": [
 					{ "name": null }
@@ -97,17 +92,6 @@
 					{ "name": null }
 				]
 			},
-			"arm_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"ine_sd_a": {
-				"attachment": [
-					{ "name": "ine_sd_a" },
-					{ "time": 0.6667, "name": "ine_sd_a" }
-				]
-			},
 			"body": {
 				"attachment": [
 					{ "name": null }
@@ -116,6 +100,22 @@
 			"hair": {
 				"attachment": [
 					{ "name": null }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"ine_sd_a": {
+				"attachment": [
+					{ "name": "ine_sd_a" },
+					{ "time": 0.6667, "name": "ine_sd_a" }
 				]
 			}
 		}

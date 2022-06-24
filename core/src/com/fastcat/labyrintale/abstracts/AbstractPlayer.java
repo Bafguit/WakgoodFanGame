@@ -53,6 +53,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     }
 
+    public void revive() {
+        isDead = false;
+        health = 1;
+    }
+
     public void gainItem(AbstractItem i, int index) {
         item[index].onRemove();
         i.owner = this;
