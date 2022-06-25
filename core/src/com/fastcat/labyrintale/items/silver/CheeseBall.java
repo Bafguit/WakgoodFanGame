@@ -2,11 +2,7 @@ package com.fastcat.labyrintale.items.silver;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.UpgradeAction;
-import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class CheeseBall extends AbstractItem {
 

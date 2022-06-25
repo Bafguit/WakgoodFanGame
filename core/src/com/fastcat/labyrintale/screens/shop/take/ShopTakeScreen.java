@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.screens.itemselect.GetSelectedItem;
 
-public class ShopTakeScreen extends AbstractScreen {
+public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
 
     private final BgImg bg = new BgImg();
     public TakeType type;
@@ -15,6 +16,7 @@ public class ShopTakeScreen extends AbstractScreen {
     public ShopItemIcon shopItem;
     public CharDeckButton[] deck;
     public CharItemButton[][] items;
+    public GetSelectedItem getItem;
     public int count;
 
     public ShopTakeScreen(AbstractSkill skill) {
@@ -31,9 +33,10 @@ public class ShopTakeScreen extends AbstractScreen {
         shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
     }
 
-    public ShopTakeScreen(AbstractItem item) {
+    public ShopTakeScreen(AbstractItem item, GetSelectedItem gets) {
         this.item = item;
         type = TakeType.ITEM;
+        getItem = gets;
         Array<AbstractPlayer> p = new Array<>();
         for(int i = 0; i < 4; i++) {
             if(AbstractLabyrinth.players[i].isAlive()) {
@@ -102,6 +105,11 @@ public class ShopTakeScreen extends AbstractScreen {
     @Override
     public void dispose() {
 
+    }
+
+    @Override
+    public void itemSelected(AbstractItem item) {
+        getItem.itemSelected(item);
     }
 
     public enum TakeType {

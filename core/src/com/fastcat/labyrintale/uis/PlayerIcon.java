@@ -1,24 +1,16 @@
 package com.fastcat.labyrintale.uis;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontData;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class PlayerIcon extends AbstractUI {
 

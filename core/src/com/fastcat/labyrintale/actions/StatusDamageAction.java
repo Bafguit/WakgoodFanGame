@@ -10,8 +10,6 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
-
 public class StatusDamageAction extends AbstractAction {
 
     public AbstractStatus status;

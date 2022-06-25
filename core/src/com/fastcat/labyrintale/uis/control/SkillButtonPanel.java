@@ -5,11 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.screens.battle.BattleScreen;
-import com.fastcat.labyrintale.screens.battle.SkillButton;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
@@ -17,7 +14,6 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.ActionHandler.bot;
 import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class SkillButtonPanel extends AbstractUI {
 

@@ -1,7 +1,5 @@
 package com.fastcat.labyrintale.enemies;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;

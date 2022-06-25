@@ -7,7 +7,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
-import com.fastcat.labyrintale.skills.player.basic.Light;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.manager.Test51;
 import com.fastcat.labyrintale.skills.player.wak.Test73;

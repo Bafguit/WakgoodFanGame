@@ -1,17 +1,12 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.MoveLeft;
 import com.fastcat.labyrintale.skills.player.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
-
-import java.util.Objects;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 

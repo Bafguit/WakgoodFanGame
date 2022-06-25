@@ -4,15 +4,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 
 public class CharDeckButton extends AbstractUI {
 
-    public ShopTakeScreen screen;
+    public ShopTakeScreen sc;
     public AbstractSkill skill;
     public AbstractSkill toSkill;
     public int index;
@@ -21,7 +19,7 @@ public class CharDeckButton extends AbstractUI {
         super(FileHandler.ui.get("BORDER_M"));
         toSkill = s;
         this.index = index;
-        this.screen = screen;
+        sc = screen;
         skill = s.owner.deck.get(index);
     }
 

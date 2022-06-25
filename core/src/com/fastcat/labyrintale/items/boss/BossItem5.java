@@ -3,9 +3,6 @@ package com.fastcat.labyrintale.items.boss;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.AttackStatus;
 
 public class BossItem5 extends AbstractItem {
 

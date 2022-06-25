@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.reward.skill;
+package com.fastcat.labyrintale.screens.skillselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -6,18 +6,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen.SkillRewardGroup;
+import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
-public class SkillRewardCharIcon extends AbstractUI {
+public class SkillSelectCharIcon extends AbstractUI {
 
     private final Sprite border;
 
-    private final SkillRewardGroup group;
+    private final SkillSelectGroup group;
     public AbstractPlayer p;
 
-    public SkillRewardCharIcon(SkillRewardGroup g, AbstractPlayer p) {
+    public SkillSelectCharIcon(SkillSelectGroup g, AbstractPlayer p) {
         super(FileHandler.ui.get("BORDER_M"));
         group = g;
         this.p = p;

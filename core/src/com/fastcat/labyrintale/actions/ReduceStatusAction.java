@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;

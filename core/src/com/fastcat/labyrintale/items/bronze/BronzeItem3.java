@@ -28,6 +28,6 @@ public class BronzeItem3 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new AttackStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
+        bot(new ApplyStatusAction(new AttackStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
     }
 }

@@ -1,8 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEffect;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 public class UpgradeAction extends AbstractAction {

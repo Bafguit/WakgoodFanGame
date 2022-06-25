@@ -29,6 +29,6 @@ public class NaviNecklace extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new UnfortifiedStatus(1, false), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
+        bot(new ApplyStatusAction(new UnfortifiedStatus(1, false), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
     }
 }

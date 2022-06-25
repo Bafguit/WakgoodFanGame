@@ -18,6 +18,6 @@ public class CrossPin extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new LethargyStatus(1, false), owner, AbstractSkill.SkillTarget.ENEMY_LAST, true));
+        bot(new ApplyStatusAction(new LethargyStatus(1, false), owner, AbstractSkill.SkillTarget.ENEMY_LAST, false));
     }
 }

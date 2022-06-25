@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.status;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.StatusDamageAction;

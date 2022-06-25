@@ -142,7 +142,7 @@ public class ShopRoom extends AbstractRoom {
 
         @Override
         protected void take() {
-            Labyrintale.addTempScreen(new ShopTakeScreen(item));
+            Labyrintale.addTempScreen(new ShopTakeScreen(item, null));
         }
 
         @Override

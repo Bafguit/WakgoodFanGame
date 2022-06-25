@@ -494,6 +494,10 @@ public abstract class AbstractSkill implements Cloneable {
 
     protected abstract void upgradeCard();
 
+    public void atBattleStart() {
+
+    }
+
     public void atBattleEnd() {
 
     }

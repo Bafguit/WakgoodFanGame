@@ -1,19 +1,14 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 public class ShieldIcon extends AbstractUI {
 

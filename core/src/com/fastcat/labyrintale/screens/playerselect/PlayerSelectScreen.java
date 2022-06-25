@@ -25,6 +25,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         nextButton = new PlayerConfirmButton(this);
         this.gets = gets;
         int size = players.length;
+        pPlayer = new PlayerButton[size];
         float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
         for(int i = 0; i < size; i++) {
             PlayerButton adv = new PlayerButton(players[i], this);

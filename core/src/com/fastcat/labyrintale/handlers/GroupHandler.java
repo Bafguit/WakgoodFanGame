@@ -58,6 +58,22 @@ public class GroupHandler {
 
         public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
             switch (cls) {
+                case PUNG:
+                    return new Pungsin();
+                case NEGATIVE:
+                    return new NegativeHuman();
+                case JK:
+                    return new Hyeji();
+                case FREETER:
+                    return new Freeter();
+                case DUKSU:
+                    return new Duksu();
+                case DOPA:
+                    return new DrDopamine();
+                case CARNAR:
+                    return new CarnarYungter();
+                case BUSINESS:
+                    return new BusinessKim();
                 case SOPHIA:
                     return new Sophia();
                 case SECRET:
@@ -68,7 +84,7 @@ public class GroupHandler {
                     return new Haeruseok();
                 case SHRIMP:
                     return new FriedShrimp();
-                default: //하쿠
+                default:
                     return new MitsuneHaku();
             }
         }
@@ -258,9 +274,11 @@ public class GroupHandler {
         public static final HashMap<String, AbstractItem> idSort = new HashMap<>();
         public static final Array<AbstractItem> allItem = new Array<>();
         public static final Array<AbstractItem> starterItem = new Array<>();
+        public static final Array<AbstractItem> normalItem = new Array<>();
         public static final Array<AbstractItem> bronzeItem = new Array<>();
         public static final Array<AbstractItem> silverItem = new Array<>();
         public static final Array<AbstractItem> goldItem = new Array<>();
+        public static final Array<AbstractItem> bossItem = new Array<>();
         public static final Array<AbstractItem> shopItem = new Array<>();
 
         public static void generateItem() {
@@ -384,7 +402,7 @@ public class GroupHandler {
         public static Array<AbstractItem> getRandomItem(int amount) {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
-            for(AbstractItem s : allItem) {
+            for(AbstractItem s : normalItem) {
                 boolean can = false;
                 for(AbstractPlayer p : players) {
                     can = p.isAlive() && !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
@@ -409,10 +427,15 @@ public class GroupHandler {
                 idSort.put(item.id, item);
                 if(item.rarity == AbstractItem.ItemRarity.BRONZE) {
                     bronzeItem.add(item);
+                    normalItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.SILVER) {
                     silverItem.add(item);
+                    normalItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.GOLD) {
                     goldItem.add(item);
+                    normalItem.add(item);
+                } else if (item.rarity == AbstractItem.ItemRarity.BOSS) {
+                    bossItem.add(item);
                 } else if(item.rarity == AbstractItem.ItemRarity.SHOP) {
                     shopItem.add(item);
                 } else if(item.rarity == AbstractItem.ItemRarity.STARTER) {
@@ -422,6 +445,7 @@ public class GroupHandler {
             raritySort.put(AbstractItem.ItemRarity.BRONZE, bronzeItem);
             raritySort.put(AbstractItem.ItemRarity.SILVER, silverItem);
             raritySort.put(AbstractItem.ItemRarity.GOLD, goldItem);
+            raritySort.put(AbstractItem.ItemRarity.BOSS, shopItem);
             raritySort.put(AbstractItem.ItemRarity.SHOP, shopItem);
             raritySort.put(AbstractItem.ItemRarity.STARTER, starterItem);
         }

@@ -48,6 +48,7 @@ public class SettingHandler {
 
                 //기타 설정
                 setting.shake = data.shake;
+                setting.fastMode = data.fastMode;
                 InputHandler.monitor = monitor;
             } catch (IOException e) {
                 hasSave = false;
@@ -79,6 +80,7 @@ public class SettingHandler {
 
             //기타 설정
             setting.shake = true;
+            setting.fastMode = false;
             InputHandler.monitor = monitor;
 
             //저장
@@ -105,5 +107,6 @@ public class SettingHandler {
         public int monitor; //모니터 여러개일때 활성화
         public int screenMode; //0:창, 1:전체화면, 2:전체창(테두리 없음)
         public boolean shake; //화면 흔들림
+        public boolean fastMode; //효과와 액션 배속
     }
 }

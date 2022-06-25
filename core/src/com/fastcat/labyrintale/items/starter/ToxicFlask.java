@@ -18,6 +18,6 @@ public class ToxicFlask extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new InfectionStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
+        bot(new ApplyStatusAction(new InfectionStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
     }
 }

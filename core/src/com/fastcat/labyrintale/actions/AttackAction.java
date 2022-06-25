@@ -8,9 +8,6 @@ import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
-import org.jetbrains.annotations.Nullable;
-
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.*;
 
 public class AttackAction extends AbstractAction {
 

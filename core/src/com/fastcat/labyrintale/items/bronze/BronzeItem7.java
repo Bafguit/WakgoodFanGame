@@ -4,7 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class BronzeItem7 extends AbstractItem {

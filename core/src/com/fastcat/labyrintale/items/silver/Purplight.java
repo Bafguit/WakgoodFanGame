@@ -28,7 +28,7 @@ public class Purplight extends AbstractItem {
     @Override
     public void onApplyStatus(AbstractStatus s, Array<AbstractEntity> t) {
         if(s.id.equals("Infection")) {
-            flash();
+            flashWithoutAction();
             s.amount++;
         }
     }

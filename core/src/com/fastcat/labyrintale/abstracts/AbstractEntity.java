@@ -30,7 +30,6 @@ import java.util.Objects;
 
 import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public abstract class AbstractEntity implements Cloneable {
 

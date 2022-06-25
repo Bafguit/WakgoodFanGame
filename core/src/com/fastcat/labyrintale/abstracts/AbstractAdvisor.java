@@ -1,8 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.AdvisorString;
 

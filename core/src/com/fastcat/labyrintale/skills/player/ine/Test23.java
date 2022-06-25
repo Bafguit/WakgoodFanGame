@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.skills.player.ine;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.EnduranceStatus;

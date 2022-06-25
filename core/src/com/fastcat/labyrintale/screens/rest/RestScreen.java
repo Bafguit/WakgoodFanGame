@@ -15,10 +15,13 @@ public class RestScreen extends AbstractScreen {
     public RestButton[] buttons = new RestButton[2];
     public RestIcon[] icons = new RestIcon[2];
     public RestDesc[] desc = new RestDesc[2];
+    public RestEndButton end;
 
     public RestScreen() {
         cType = ControlPanel.ControlType.BASIC;
         count = 2;
+        end = new RestEndButton();
+        end.disable();
         boolean rev = false, item = false;
         for(AbstractPlayer p : AbstractLabyrinth.players) {
             if(!rev && !p.isAlive()) {
@@ -90,6 +93,7 @@ public class RestScreen extends AbstractScreen {
             icons[i].update();
             desc[i].update();
         }
+        end.update();
     }
 
     @Override
@@ -100,6 +104,7 @@ public class RestScreen extends AbstractScreen {
             icons[i].render(sb);
             desc[i].render(sb);
         }
+        end.render(sb);
     }
 
     public static Sprite getImg(RestButton.RestType type) {
@@ -111,6 +116,15 @@ public class RestScreen extends AbstractScreen {
             default:
                 return FileHandler.ui.get("REWARD_CARD");
         }
+    }
+
+    public void finishRest() {
+        for(int i = 0; i < count; i++) {
+            buttons[i].disable();
+            icons[i].disable();
+            desc[i].disable();
+        }
+        end.enable();
     }
 
     @Override

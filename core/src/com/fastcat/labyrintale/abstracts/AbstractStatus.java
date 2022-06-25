@@ -9,7 +9,6 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.StatusString;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 public abstract class AbstractStatus implements Cloneable {
@@ -60,7 +59,7 @@ public abstract class AbstractStatus implements Cloneable {
 
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
-        ActionHandler.top(new FlashAction(owner, img));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
     }
 
     public void startOfTurn() {

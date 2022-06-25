@@ -18,6 +18,6 @@ public class Bible extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.RIGHT, true));
+        bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.RIGHT, false));
     }
 }

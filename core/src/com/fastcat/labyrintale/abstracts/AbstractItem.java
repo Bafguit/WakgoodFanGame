@@ -49,7 +49,16 @@ public class AbstractItem implements Cloneable {
 
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
-        ActionHandler.bot(new FlashAction(owner, img));
+        ActionHandler.bot(new FlashAction(e, img));
+    }
+
+    public final void flashWithoutAction() {
+        //TODO 소리 추가
+        flashWithoutAction(owner);
+    }
+
+    public final void flashWithoutAction(AbstractEntity e) {
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
     }
 
     public void startOfTurn() {

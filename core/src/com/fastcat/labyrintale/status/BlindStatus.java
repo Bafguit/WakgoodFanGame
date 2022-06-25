@@ -1,13 +1,10 @@
 package com.fastcat.labyrintale.status;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class BlindStatus extends AbstractStatus {
 

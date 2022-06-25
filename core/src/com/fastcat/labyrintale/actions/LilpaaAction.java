@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.handlers.ScreenShake;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.ALL;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget.NONE;
 
 public class LilpaaAction extends AbstractAction {
 

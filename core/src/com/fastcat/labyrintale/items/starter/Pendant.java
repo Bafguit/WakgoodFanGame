@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.items.starter;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
 
 public class Pendant extends AbstractItem {

@@ -10,10 +10,10 @@ import com.fastcat.labyrintale.screens.shop.ShopItemCharIcon;
 public class CharItemButton extends AbstractUI {
 
     public CharOwnerIcon icon;
-    public ShopTakeScreen screen;
     public AbstractPlayer player;
     public AbstractItem item;
     public AbstractItem toItem;
+    public ShopTakeScreen sc;
     public int index;
 
     public CharItemButton(ShopTakeScreen screen, int index, AbstractPlayer player, AbstractItem s) {
@@ -22,7 +22,7 @@ public class CharItemButton extends AbstractUI {
         item = player.item[index];
         this.player = player;
         this.index = index;
-        this.screen = screen;
+        sc = screen;
         icon = new CharOwnerIcon(player);
     }
 
@@ -54,6 +54,7 @@ public class CharItemButton extends AbstractUI {
     @Override
     public void onClick() {
         player.gainItem(toItem, index);
-        Labyrintale.removeTempScreen(screen);
+        if(sc.getItem != null) sc.itemSelected(toItem);
+        Labyrintale.removeTempScreen(sc);
     }
 }

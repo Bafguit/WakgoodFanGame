@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.rewards.SkillReward;
 import com.fastcat.labyrintale.rewards.SkillRewardNormal;
-import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen;
+import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
 
@@ -24,7 +24,7 @@ public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements
 
     @Override
     protected void onSelect() {
-        SkillRewardScreen s = new SkillRewardScreen(SkillReward.SkillRewardType.NORMAL, new SkillRewardNormal(AbstractLabyrinth.selection));
+        SkillSelectScreen s = new SkillSelectScreen(SkillReward.SkillRewardType.NORMAL, new SkillRewardNormal(AbstractLabyrinth.selection));
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class RemoveStatusAction extends AbstractAction {

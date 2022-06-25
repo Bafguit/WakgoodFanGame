@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.interfaces.EventCallback;
@@ -9,8 +8,7 @@ import static com.fastcat.labyrintale.handlers.ActionHandler.listeners;
 
 public abstract class AbstractAction implements Cloneable {
 
-    protected static final float DUR_DEFAULT = 1.0f;
-    protected static final float DUR_FAST = 0.5f;
+    protected static final float DUR_DEFAULT = 0.5f;
 
     public AbstractEntity actor;
     public Array<AbstractEntity> target;

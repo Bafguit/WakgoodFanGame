@@ -5,14 +5,16 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.screens.reward.skill.SkillRewardScreen;
+import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
+import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomUpgradedSkillFromDeck;
 
 public class SkillRewardUpgrade extends SkillReward {
 
-    public SkillRewardUpgrade() {
+    public SkillRewardUpgrade(GetSelectedSkill gets) {
+        this.gets = gets;
         Array<AbstractPlayer> ap = new Array<>(AbstractLabyrinth.players);
         for(int i = 0; i < ap.size; i++) {
             AbstractPlayer p = ap.get(i);
@@ -25,8 +27,12 @@ public class SkillRewardUpgrade extends SkillReward {
         desc = "무작위 스킬을 강화합니다.";
     }
 
+    public SkillRewardUpgrade() {
+        this(null);
+    }
+
     @Override
     public void takeReward() {
-        Labyrintale.addTempScreen(new SkillRewardScreen(SkillRewardType.UPGRADE, this));
+        Labyrintale.addTempScreen(new SkillSelectScreen(SkillRewardType.UPGRADE, group, this));
     }
 }

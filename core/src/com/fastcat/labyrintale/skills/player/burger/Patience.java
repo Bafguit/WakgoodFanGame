@@ -3,9 +3,6 @@ package com.fastcat.labyrintale.skills.player.burger;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.BlindStatus;
 import com.fastcat.labyrintale.status.CourageStatus;
 
 public class Patience extends AbstractSkill {

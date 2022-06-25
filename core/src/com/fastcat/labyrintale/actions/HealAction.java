@@ -36,7 +36,7 @@ public class HealAction extends AbstractAction {
                     te.heal(heal);
                 }
                 if (actor != null && motion) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "skillselect", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);
                     e.setTimeScale(1.0f);
                 }

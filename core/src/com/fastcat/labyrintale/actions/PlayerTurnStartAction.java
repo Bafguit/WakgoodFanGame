@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
-import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractStatus;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
@@ -29,6 +26,7 @@ public class PlayerTurnStartAction extends AbstractAction {
             for(AbstractPlayer p : players) {
                 if(p.isAlive()) {
                     if(isFirst) {
+                        AbstractLabyrinth.advisor.skill.atBattleStart();
                         for (AbstractItem m : p.item) {
                             if (m != null) m.atBattleStart();
                         }

@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.screens.deckview;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;

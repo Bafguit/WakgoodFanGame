@@ -4,7 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 import com.fastcat.labyrintale.status.ImmuneStatus;
 
 public class GoldItem2 extends AbstractItem {
@@ -29,6 +28,6 @@ public class GoldItem2 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
+        bot(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
     }
 }

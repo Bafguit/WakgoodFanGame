@@ -16,28 +16,28 @@
     "DESC": "&y<일회용>. 피해를 {A} 줍니다."
   },
   "pung": {
-    "NAME": "풍신",
-    "DESC": "DESCRIPTION"
+    "NAME": "회오리바람",
+    "DESC": "피해를 3 주고 맨 뒤로 밀어냅니다."
   },
   "shrimp": {
     "NAME": "불면증",
     "DESC": "&y<무기력>을 {V} 부여합니다."
   },
   "negative": {
-    "NAME": "부정형 인간",
-    "DESC": "DESCRIPTION"
+    "NAME": "비관",
+    "DESC": "아군 전체에게 공격력, 무기력 +1."
   },
   "jk": {
-    "NAME": "독고혜지",
-    "DESC": "DESCRIPTION"
+    "NAME": "열공",
+    "DESC": "교체 횟수가 0인 스킬을 처음 교체할 때 한 번 더 강화됩니다."
   },
   "sophia": {
     "NAME": "생계형 강도",
     "DESC": "&y<지속:> 전투 보상으로 획득하는 골드가 20% 증가합니다."
   },
   "duksu": {
-    "NAME": "이덕수 할아바이",
-    "DESC": "DESCRIPTION"
+    "NAME": "노련함",
+    "DESC": "전투 시작 시 모든 스킬 강화"
   },
   "haku": {
     "NAME": "카놀라유",

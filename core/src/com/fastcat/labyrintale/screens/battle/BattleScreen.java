@@ -102,6 +102,13 @@ public class BattleScreen extends AbstractScreen {
             enemySkills[i] = s3;
             setEnemy(enemies[i].enemy, i);
         }
+        if(AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.DUKSU){
+            for(AbstractPlayer p : AbstractLabyrinth.players) {
+                for(AbstractSkill s : p.hand) {
+                    s.upgrade();
+                }
+            }
+        }
         for(int i = 0; i < 4; i++) {
             AbstractPlayer p = AbstractLabyrinth.players[i];
             if(p.isAlive()) {
