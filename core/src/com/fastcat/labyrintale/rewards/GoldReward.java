@@ -17,7 +17,7 @@ public class GoldReward extends AbstractReward {
     public GoldReward(int gold) {
         super(RewardType.GOLD);
         this.gold = gold;
-        desc = "골드를 &y<" + this.gold + ">획득합니다.";
+        setInfo("골드", "골드를 &y<" + this.gold + "> 획득합니다.");
     }
 
     @Override

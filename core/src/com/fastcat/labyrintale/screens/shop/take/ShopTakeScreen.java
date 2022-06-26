@@ -33,6 +33,10 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
     }
 
+    public ShopTakeScreen(AbstractItem item) {
+        this(item, null);
+    }
+
     public ShopTakeScreen(AbstractItem item, GetSelectedItem gets) {
         this.item = item;
         type = TakeType.ITEM;
@@ -109,7 +113,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
 
     @Override
     public void itemSelected(AbstractItem item) {
-        getItem.itemSelected(item);
+        if(getItem != null) getItem.itemSelected(item);
     }
 
     public enum TakeType {

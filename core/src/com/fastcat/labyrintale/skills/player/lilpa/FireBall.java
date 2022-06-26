@@ -22,7 +22,7 @@ public class FireBall extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN, true));
         bot(new ApplyStatusAction(new BurnStatus(value), owner, target, true));
     }
 

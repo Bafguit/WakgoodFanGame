@@ -460,7 +460,8 @@ public abstract class AbstractEntity implements Cloneable {
         AbstractSkill ts = deck.get(index);
         Integer up = GroupHandler.SkillGroup.discardedCount.get(ts.id);
         if(up != null) {
-            GroupHandler.SkillGroup.discardedCount.put(ts.id, up + 1);
+            if(advisor.cls == AbstractAdvisor.AdvisorClass.JK && up == 0) up++;
+            GroupHandler.SkillGroup.discardedCount.put(ts.id, ++up);
         }
         deck.set(index, skill);
     }

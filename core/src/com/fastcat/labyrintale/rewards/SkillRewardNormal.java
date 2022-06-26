@@ -19,7 +19,7 @@ public class SkillRewardNormal extends SkillReward {
             if(p.isAlive())
                 group.add(getRandomSkill(p, cardAmount));
         }
-        desc = "스킬 보상을 획득합니다.";
+        setInfo("스킬 교체", "무작위 스킬을 획득합니다.");
     }
 
     public SkillRewardNormal(int cardAmount) {

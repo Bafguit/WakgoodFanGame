@@ -18,7 +18,7 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
     public ItemReward(AbstractItem item) {
         super(RewardType.ITEM);
         this.item = item;
-        desc = item.name + "을(를) 획득합니다.";
+        setInfo(item.name, item.desc);
         img = item.img;
     }
 

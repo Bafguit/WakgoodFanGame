@@ -24,7 +24,7 @@ public class SkillRewardUpgrade extends SkillReward {
                 group.add(t);
             }
         }
-        desc = "무작위 스킬을 강화합니다.";
+        setInfo("스킬 강화", "무작위 스킬을 강화합니다.");
     }
 
     public SkillRewardUpgrade() {

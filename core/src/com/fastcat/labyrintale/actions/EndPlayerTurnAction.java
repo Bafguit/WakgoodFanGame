@@ -34,6 +34,14 @@ public class EndPlayerTurnAction extends AbstractAction {
                     ts.skill.useCard();
                 }
             }
+            for(int j = 3; j >= 0; j--) {
+                AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
+                if(e.isAlive()) {
+                    for (int i = 3; i >= 0; i--) {
+                        if (e.status[i] != null) e.status[i].endOfTurn();
+                    }
+                }
+            }
             ActionHandler.bot(new RemoveAllBlockAction(false));
             ActionHandler.bot(new EndRoundAction());
             ActionHandler.bot(new TurnChangeAction(false));

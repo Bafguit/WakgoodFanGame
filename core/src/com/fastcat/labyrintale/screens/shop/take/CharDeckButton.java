@@ -46,6 +46,6 @@ public class CharDeckButton extends AbstractUI {
             toSkill.upgrade();
         }
         skill.owner.gainSkill(index, toSkill);
-        Labyrintale.removeTempScreen(screen);
+        Labyrintale.removeTempScreen(sc);
     }
 }

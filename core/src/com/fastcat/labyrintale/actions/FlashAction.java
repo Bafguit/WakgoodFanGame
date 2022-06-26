@@ -13,7 +13,7 @@ public class FlashAction extends AbstractAction {
     public Sprite img;
 
     public FlashAction(AbstractEntity e, Sprite img) {
-        super(null, 0.5f);
+        super(null, 0.25f);
         this.e = e;
         this.img = img;
     }

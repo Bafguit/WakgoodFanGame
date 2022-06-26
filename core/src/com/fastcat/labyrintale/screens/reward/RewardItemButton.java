@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.reward;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -31,7 +32,9 @@ public class RewardItemButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        if(over) {
+            AbstractLabyrinth.cPanel.infoPanel.setInfo(reward.name, reward.desc);
+        }
     }
 
     @Override

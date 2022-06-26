@@ -11,7 +11,7 @@ public class HealReward extends AbstractReward {
     public HealReward(int amount) {
         super(RewardType.HEAL);
         this.amount = amount;
-        desc = "생존해 있는 모든 동료의 체력을 &g<" + this.amount + "> 회복합니다.";
+        setInfo("회복", "생존해 있는 모든 동료의 체력을 &g<" + this.amount + "> 회복합니다.");
     }
 
     @Override
