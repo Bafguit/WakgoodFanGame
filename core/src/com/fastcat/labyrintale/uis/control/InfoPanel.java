@@ -128,7 +128,7 @@ public class InfoPanel extends AbstractUI {
         if(s != null) {
             name = s.name;
             desc = s.getDesc();
-            type = STATUS;
+            type = InfoType.STATUS;
             status = s;
             target = status.target;
             show = true;

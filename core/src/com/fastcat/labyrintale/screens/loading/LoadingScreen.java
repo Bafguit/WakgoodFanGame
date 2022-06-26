@@ -16,13 +16,11 @@ import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
 public class LoadingScreen extends AbstractScreen {
 
-    public LoadingText text;
     public boolean isNew = false;
     public boolean create = true;
 
     public LoadingScreen() {
         cType = ControlPanel.ControlType.HIDE;
-        text = new LoadingText();
         setBg(FileHandler.ui.get("FADE"));
     }
 
@@ -51,7 +49,7 @@ public class LoadingScreen extends AbstractScreen {
                 Labyrintale.mapScreen = new MapScreen();
                 AbstractRoom tr = AbstractLabyrinth.currentFloor.currentRoom;
                 if(tr.isDone) {
-                    if (tr.type == AbstractRoom.RoomType.BATTLE && !tr.battleDone) {
+                    if ((tr.type == AbstractRoom.RoomType.BATTLE || tr.type == AbstractRoom.RoomType.ELITE || tr.type == AbstractRoom.RoomType.BOSS) && !tr.battleDone) {
                         battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
                         fadeOutAndChangeScreen(battleScreen);
                     } else {
@@ -66,7 +64,7 @@ public class LoadingScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        //text.render(sb);
+
     }
 
     @Override
@@ -80,6 +78,6 @@ public class LoadingScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        text.dispose();
+
     }
 }

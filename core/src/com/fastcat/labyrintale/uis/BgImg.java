@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.deckview;
+package com.fastcat.labyrintale.uis;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;

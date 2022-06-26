@@ -320,7 +320,7 @@ public abstract class AbstractEntity implements Cloneable {
                             e.setTimeScale(1.0f);
                             health -= damage;
                             if (health <= 0) {
-                                if (advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
+                                if (isPlayer && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
                                     advisor.skill.use();
                                     health = maxHealth;
                                     block = 0;

@@ -6,7 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class WayScreen extends AbstractScreen {

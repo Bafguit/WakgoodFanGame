@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.BgImg;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
@@ -22,12 +22,12 @@ public class CharInfoScreen extends AbstractScreen {
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
     public ShapeRenderer shr = new ShapeRenderer();
-    public CharDeckIcon[] deck = new CharDeckIcon[4];
+    public CharDeckIcon[] deck = new CharDeckIcon[3];
     public CharItemIcon[] item = new CharItemIcon[2];
     public AbstractPlayer player;
 
     public CharInfoScreen(AbstractPlayer player) {
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             CharDeckIcon b = new CharDeckIcon(null);
             b.setPosition(w * (0.5f + 0.08f * i) - b.sWidth / 2, h * 0.55f);
             deck[i] = b;
@@ -43,7 +43,7 @@ public class CharInfoScreen extends AbstractScreen {
 
     public void setPlayer(AbstractPlayer p) {
         player = p;
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             deck[i].skill = player.deck.get(i);
         }
         for(int i = 0; i < 2; i++) {

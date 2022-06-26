@@ -24,14 +24,16 @@ public class ErrorWindow extends JFrame {
         mainLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         this.add(mainLabel);
 
+        final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        final StringSelection selection = new StringSelection("```" + stackTrace + "```");
+        clipboard.setContents(selection, null);
+
         JButton button = new JButton("Copy to clipboard");
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                StringSelection selection = new StringSelection("```" + stackTrace + "```");
                 clipboard.setContents(selection, null);
             }
         });

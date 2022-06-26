@@ -2,7 +2,7 @@ package com.fastcat.labyrintale.events.choices;
 
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.rewards.SkillReward;
+import com.fastcat.labyrintale.rewards.SkillUpgradeReward;
 import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
@@ -23,7 +23,7 @@ public class SkillUpgradeEventChoice extends AbstractEvent.EventChoice implement
 
     @Override
     protected void onSelect() {
-        SkillSelectScreen s = new SkillSelectScreen(SkillReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade());
+        SkillSelectScreen s = new SkillSelectScreen(SkillUpgradeReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade());
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

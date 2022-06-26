@@ -7,14 +7,14 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
+import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.rewards.SkillReward.*;
-import static com.fastcat.labyrintale.rewards.SkillReward.SkillRewardType.UPGRADE;
+import static com.fastcat.labyrintale.rewards.SkillUpgradeReward.*;
+import static com.fastcat.labyrintale.rewards.SkillUpgradeReward.SkillRewardType.UPGRADE;
 
 public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkill {
 
@@ -56,7 +56,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         }
     }
 
-    public SkillSelectScreen(SkillRewardType type, SkillReward r) {
+    public SkillSelectScreen(SkillRewardType type, SkillRewardUpgrade r) {
         this(type, r.group, r);
     }
 

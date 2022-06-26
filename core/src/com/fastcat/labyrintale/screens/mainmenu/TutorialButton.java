@@ -6,8 +6,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.players.Wakgood;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;

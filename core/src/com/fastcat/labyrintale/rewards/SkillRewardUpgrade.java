@@ -11,7 +11,7 @@ import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomUpgradedSkillFromDeck;
 
-public class SkillRewardUpgrade extends SkillReward {
+public class SkillRewardUpgrade extends SkillUpgradeReward {
 
     public SkillRewardUpgrade(GetSelectedSkill gets) {
         this.gets = gets;

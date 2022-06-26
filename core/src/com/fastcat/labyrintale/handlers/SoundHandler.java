@@ -6,11 +6,12 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 
 import java.util.HashMap;
 
-public class SoundHandler {
+public class SoundHandler implements Disposable {
 
     public static final HashMap<String, Sound> sfx = new HashMap<>();
 
@@ -93,7 +94,17 @@ public class SoundHandler {
 
     }
 
-    public static class MusicData {
+    @Override
+    public void dispose() {
+        for(Sound s : sfx.values()) {
+            s.dispose();
+        }
+        for(MusicData m : music.values()) {
+            m.dispose();
+        }
+    }
+
+    public static class MusicData implements Disposable {
         public float fadeTimer = 0.0F;
         public boolean isFadingOut = false;
         public boolean isFading = false;
@@ -125,6 +136,11 @@ public class SoundHandler {
             } else {
                 music.setVolume(Interpolation.fade.apply(fadeOutStartVolume, 0.0F, 1.0F - fadeTimer / 4.0F));
             }
+        }
+
+        @Override
+        public void dispose() {
+            music.dispose();
         }
     }
 }

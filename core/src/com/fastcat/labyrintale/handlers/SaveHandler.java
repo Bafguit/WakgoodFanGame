@@ -107,8 +107,8 @@ public class SaveHandler {
                 p.item[j] = it;
             }
 
-            AbstractSkill[] ss = new AbstractSkill[4];
-            for(int j = 0; j < 4; j++) {
+            AbstractSkill[] ss = new AbstractSkill[3];
+            for(int j = 0; j < 3; j++) {
                 SkillData sd = d.deck[j];
                 AbstractSkill s = Objects.requireNonNull(GroupHandler.SkillGroup.idSort.get(d.deck[j].id).clone());
                 s.usedOnly = sd.usedOnly;

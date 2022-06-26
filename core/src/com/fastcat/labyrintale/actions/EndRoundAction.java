@@ -16,7 +16,7 @@ public class EndRoundAction extends AbstractAction {
         if(isDone) {
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer t = battleScreen.players[i].player;
-                for(int j = 0; j < 4; j++) {
+                for(int j = 0; j < 3; j++) {
                     if(t.hand[j].cooldown > 0) {
                         t.hand[j].cooldown--;
                     }

@@ -28,7 +28,7 @@ public class FontHandler implements Disposable {
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
 
-    public static final FontData LOGO = new FontData(BOLD, 133, false);
+    public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 64, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
@@ -42,9 +42,12 @@ public class FontHandler implements Disposable {
     public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
     public static final FontData EVENT_TITLE = new FontData(MEDIUM, 53, false);
     public static final FontData EVENT_DESC = new FontData(MEDIUM, 40, false);
+    public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 40, false);
     public static final FontData BORDER = new FontData(MEDIUM, 40, true);
     public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
     public static final FontData HP = new FontData(MEDIUM, 26, false);
+    public static final FontData STATUS = new FontData(MEDIUM, 24, true);
+    public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
 
     public enum FontType {
         MEDIUM, BOLD
@@ -219,7 +222,7 @@ public class FontHandler implements Disposable {
     public void dispose() {
         medium.dispose();
         bold.dispose();
-        LOGO.dispose();
+        TURN_CHANGE.dispose();
         COOLDOWN.dispose();
         ENERGY.dispose();
         MAIN_MENU.dispose();
@@ -233,9 +236,12 @@ public class FontHandler implements Disposable {
         INFO_HP.dispose();
         EVENT_TITLE.dispose();
         EVENT_DESC.dispose();
+        EVENT_CHOICE.dispose();
         BORDER.dispose();
         BLOCK.dispose();
         HP.dispose();
+        STATUS.dispose();
+        REST_DESC.dispose();
     }
 
     public static String getHexColor(Color color) {
@@ -277,7 +283,7 @@ public class FontHandler implements Disposable {
         }
 
         public final FontData cpy() {
-            return new FontData(type, size, shadow, border, color, bColor);
+            return new FontData(type, size, shadow, border, new Color(color), new Color(bColor));
         }
 
         public final void draw(SpriteBatch sb, GlyphLayout layout, float alpha, float x, float y) {

@@ -3,9 +3,9 @@ package com.fastcat.labyrintale.events.choices;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.rewards.SkillReward;
-import com.fastcat.labyrintale.rewards.SkillRewardNormal;
-import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
+import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
+
+import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 
 public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
 
@@ -24,7 +24,7 @@ public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements
 
     @Override
     protected void onSelect() {
-        SkillSelectScreen s = new SkillSelectScreen(SkillReward.SkillRewardType.NORMAL, new SkillRewardNormal(AbstractLabyrinth.selection));
+        ShopTakeScreen s = new ShopTakeScreen(getRandomSkill(AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)]));
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

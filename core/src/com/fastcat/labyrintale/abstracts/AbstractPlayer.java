@@ -36,8 +36,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     @Override
     public void newDeck() {
-        hand = new AbstractSkill[4];
-        for(int i = 0; i < 4; i++) {
+        hand = new AbstractSkill[3];
+        for(int i = 0; i < 3; i++) {
             hand[i] = deck.get(i).clone();
         }
         mRightTemp = mRight.clone();

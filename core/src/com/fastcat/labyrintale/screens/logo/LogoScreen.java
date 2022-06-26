@@ -3,17 +3,13 @@ package com.fastcat.labyrintale.screens.logo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.effects.LogoEffect;
-import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.io.FileNotFoundException;

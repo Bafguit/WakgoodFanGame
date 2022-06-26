@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RestScreen extends AbstractScreen {

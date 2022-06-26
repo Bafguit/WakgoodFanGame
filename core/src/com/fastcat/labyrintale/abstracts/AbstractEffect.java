@@ -39,7 +39,7 @@ public abstract class AbstractEffect implements Disposable {
     protected abstract void renderEffect(SpriteBatch sb);
 
     public void onRemove() {
-
+        dispose();
     }
 
     public void dispose() {

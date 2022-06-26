@@ -1,36 +1,31 @@
 package com.fastcat.labyrintale.rewards;
 
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
-import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
-public abstract class SkillReward extends AbstractReward implements GetSelectedSkill {
+import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 
-    public Array<Array<AbstractSkill>> group = new Array<>();
-    public GetSelectedSkill gets;
+public class SkillReward extends AbstractReward {
 
-    public SkillReward() {
+    public AbstractSkill skill;
+
+    public SkillReward(AbstractSkill s) {
         super(RewardType.SKILL);
+        skill = s;
+        setInfo(skill.name, skill.desc);
+        img = skill.img;
     }
 
-    public enum SkillRewardType {
-        NORMAL, UPGRADE
+    public SkillReward() {
+        this(getRandomSkill(AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)]));
     }
 
     @Override
-    public final void skillSelected(SkillSelectScreen.SkillSelectGroup skill) {
-        int index = 0;
-        AbstractSkill ts = skill.toSkill.skill;
-        for(int i = 0; i < skill.player.deck.size; i++) {
-            if(skill.player.deck.get(i).id.equals(ts.id)) {
-                index = i;
-            }
-        }
-        skill.player.gainSkill(index, skill.selected);
-        if(gets != null) gets.skillSelected(skill);
-        Labyrintale.removeTempScreen(SkillSelectScreen.SkillSelectGroup.screen);
+    public void takeReward() {
+        Labyrintale.addTempScreen(new ShopTakeScreen(skill));
     }
 }

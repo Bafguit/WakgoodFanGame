@@ -5,12 +5,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.events.choices.AtEndOfTempScreen;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-public abstract class AbstractScreen implements Screen, AtEndOfTempScreen {
+public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Disposable {
 
     public final EffectHandler effectHandler = new EffectHandler();
     public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
@@ -59,6 +60,11 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen {
     @Override
     public void hide () {
 
+    }
+
+    @Override
+    public void dispose() {
+        effectHandler.removeAll();
     }
 
     public enum ScreenType {

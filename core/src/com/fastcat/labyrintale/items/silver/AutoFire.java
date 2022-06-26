@@ -29,6 +29,6 @@ public class AutoFire extends AbstractItem {
     @Override
     public void startOfTurn() {
         flash();
-        ActionHandler.bot(new AttackAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 2, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
+        ActionHandler.bot(new AttackAction(owner, AbstractSkill.SkillTarget.ENEMY_ALL, 2, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
     }
 }

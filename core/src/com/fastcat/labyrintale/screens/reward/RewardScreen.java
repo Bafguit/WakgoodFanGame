@@ -5,14 +5,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
+import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RewardScreen extends AbstractScreen {
 
     public BgImg bg = new BgImg();
     public RewardTypeText rewardTypeText;
-    public RewardInfoText rewardInfoText;
     public PassRewardButton passButton;
     public Array<RewardItemButton> rewardButtons = new Array<>();
     public Array<AbstractReward> rewards;
@@ -30,25 +29,14 @@ public class RewardScreen extends AbstractScreen {
         }
         rewardTypeText = new RewardTypeText(type);
         passButton = new PassRewardButton(this);
-        passButton.disable();
-        rewardInfoText = new RewardInfoText();
         sType = type;
     }
 
     @Override
     public void update() {
-        boolean isOver = false;
-        int dc = 0;
         for(RewardItemButton b : rewardButtons) {
-            if(b.reward.isDone) dc++;
             b.update();
-            if(b.over) {
-                isOver = true;
-                rewardInfoText.text = b.reward.desc;
-            }
         }
-        if(!isOver) rewardInfoText.text = "";
-        if(dc == rewardButtons.size && !passButton.enabled) passButton.enable();
         passButton.update();
     }
 

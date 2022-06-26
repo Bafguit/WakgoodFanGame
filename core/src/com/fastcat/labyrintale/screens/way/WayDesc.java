@@ -16,7 +16,7 @@ public class WayDesc extends AbstractUI {
         super(FileHandler.ui.get("WAY_SELECT"));
         text = d;
         showImg = false;
-        fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 48, false);
+        fontData = FontHandler.REST_DESC;
         overable = false;
     }
 

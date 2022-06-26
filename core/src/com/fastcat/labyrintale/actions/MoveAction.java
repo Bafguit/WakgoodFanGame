@@ -42,47 +42,7 @@ public class MoveAction extends AbstractAction {
         super(null, dur);
         from = p;
         type = MoveType.PLAYER;
-        if(index < 0 || index > 3) {
-            isDone = true;
-            run = false;
-        } else {
-            boolean isLeft = p.tempIndex < index;
-            if (isLeft) {
-                while (!AbstractLabyrinth.players[index].isAlive() && index > p.tempIndex) {
-                    index--;
-                }
-            } else {
-                while (!AbstractLabyrinth.players[index].isAlive() && index < p.tempIndex) {
-                    index++;
-                }
-            }
-            int i = Math.abs(p.tempIndex - index);
-            if (i == 0) {
-                isDone = true;
-                run = false;
-            } else {
-                isLeft = p.tempIndex < index;
-                //duration *= i;
-                baseDuration = duration;
-                float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
-                toIndex = index;
-                toDist = -d * i;
-                toPos = w * 0.425f - w * 0.1f * toIndex;
-                if (isLeft) {
-                    for (int j = p.tempIndex; j < index; j++) {
-                        to.put(j, AbstractLabyrinth.players[j + 1]);
-                        distance.put(j, d);
-                        position.put(j, w * 0.425f - w * 0.1f * j);
-                    }
-                } else {
-                    for (int j = p.tempIndex; j > index; j--) {
-                        to.put(j, AbstractLabyrinth.players[j - 1]);
-                        distance.put(j, d);
-                        position.put(j, w * 0.425f - w * 0.1f * j);
-                    }
-                }
-            }
-        }
+        toIndex = index;
     }
 
     public MoveAction(AbstractEnemy e, boolean isLeft) {
@@ -101,51 +61,85 @@ public class MoveAction extends AbstractAction {
         super(null, dur);
         from = e;
         type = MoveType.ENEMY;
-        if(index < 0 || index > 3) {
-            isDone = true;
-            run = false;
-        } else {
-            boolean isLeft = e.tempIndex > index;
-            if (isLeft) {
-                while (!currentFloor.currentRoom.enemies[index].isAlive() && index < e.tempIndex) {
-                    index++;
-                }
-            } else {
-                while (!currentFloor.currentRoom.enemies[index].isAlive() && index > e.tempIndex) {
-                    index--;
-                }
-            }
-            int i = Math.abs(e.tempIndex - index);
-            if (i == 0) {
-                isDone = true;
-                run = false;
-            } else {
-                isLeft = e.tempIndex > index;
-                //duration *= i;
-                baseDuration = duration;
-                float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
-                toIndex = index;
-                toDist = -d * i;
-                toPos = w * 0.575f + w * 0.1f * toIndex;
-                if (!isLeft) {
-                    for (int j = e.tempIndex; j < index; j++) {
-                        to.put(j, currentFloor.currentRoom.enemies[j + 1]);
-                        distance.put(j, d);
-                        position.put(j, w * 0.575f + w * 0.1f * j);
-                    }
-                } else {
-                    for (int j = e.tempIndex; j > index; j--) {
-                        to.put(j, currentFloor.currentRoom.enemies[j - 1]);
-                        distance.put(j, d);
-                        position.put(j, w * 0.575f + w * 0.1f * j);
-                    }
-                }
-            }
-        }
+        toIndex = index;
     }
 
     @Override
     protected void updateAction() {
+        if(duration == baseDuration) {
+            if(toIndex < 0 || toIndex > 3) {
+                isDone = true;
+                run = false;
+            } else {
+                if(type == MoveType.PLAYER) {
+                    isLeft = from.tempIndex < toIndex;
+                    if (isLeft) {
+                        while (!AbstractLabyrinth.players[toIndex].isAlive() && toIndex > from.tempIndex) {
+                            toIndex--;
+                        }
+                    } else {
+                        while (!AbstractLabyrinth.players[toIndex].isAlive() && toIndex < from.tempIndex) {
+                            toIndex++;
+                        }
+                    }
+                    int i = Math.abs(from.tempIndex - toIndex);
+                    if (i == 0) {
+                        isDone = true;
+                        run = false;
+                    } else {
+                        float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
+                        toDist = -d * i;
+                        toPos = w * 0.425f - w * 0.1f * toIndex;
+                        if (isLeft) {
+                            for (int j = from.tempIndex; j < toIndex; j++) {
+                                to.put(j, AbstractLabyrinth.players[j + 1]);
+                                distance.put(j, d);
+                                position.put(j, w * 0.425f - w * 0.1f * j);
+                            }
+                        } else {
+                            for (int j = from.tempIndex; j > toIndex; j--) {
+                                to.put(j, AbstractLabyrinth.players[j - 1]);
+                                distance.put(j, d);
+                                position.put(j, w * 0.425f - w * 0.1f * j);
+                            }
+                        }
+                    }
+                } else {
+                    isLeft = from.tempIndex > toIndex;
+                    if (isLeft) {
+                        while (!currentFloor.currentRoom.enemies[toIndex].isAlive() && toIndex < from.tempIndex) {
+                            toIndex++;
+                        }
+                    } else {
+                        while (!currentFloor.currentRoom.enemies[toIndex].isAlive() && toIndex > from.tempIndex) {
+                            toIndex--;
+                        }
+                    }
+                    int i = Math.abs(from.tempIndex - toIndex);
+                    if (i == 0) {
+                        isDone = true;
+                        run = false;
+                    } else {
+                        float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
+                        toDist = -d * i;
+                        toPos = w * 0.575f + w * 0.1f * toIndex;
+                        if (!isLeft) {
+                            for (int j = from.tempIndex; j < toIndex; j++) {
+                                to.put(j, currentFloor.currentRoom.enemies[j + 1]);
+                                distance.put(j, d);
+                                position.put(j, w * 0.575f + w * 0.1f * j);
+                            }
+                        } else {
+                            for (int j = from.tempIndex; j > toIndex; j--) {
+                                to.put(j, currentFloor.currentRoom.enemies[j - 1]);
+                                distance.put(j, d);
+                                position.put(j, w * 0.575f + w * 0.1f * j);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         if(run) {
             if (isDone) {
                 if (type == MoveType.PLAYER) {

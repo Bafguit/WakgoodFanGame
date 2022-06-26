@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -18,7 +19,7 @@ public class EventChoiceButton extends AbstractUI {
 
     public EventChoiceButton(AbstractEvent.EventChoice choice) {
         super(FileHandler.ui.get("EVENT_CHOICE"));
-        fontData = new FontData(MEDIUM, 40, false);;
+        fontData = EVENT_CHOICE;
         this.choice = choice;
         clickable = choice.available();
     }

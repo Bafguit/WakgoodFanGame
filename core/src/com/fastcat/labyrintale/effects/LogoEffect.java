@@ -35,4 +35,9 @@ public class LogoEffect extends AbstractEffect {
             Labyrintale.game.setScreen(Labyrintale.mainMenuScreen);
         }
     }
+
+    @Override
+    public void dispose() {
+
+    }
 }

@@ -14,7 +14,7 @@ public class RestDesc extends AbstractUI {
         super(FileHandler.ui.get("WAY_SELECT"));
         text = d;
         showImg = false;
-        fontData = new FontHandler.FontData(FontHandler.FontType.MEDIUM, 48, false);
+        fontData = REST_DESC;
         overable = false;
     }
 

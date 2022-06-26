@@ -21,7 +21,6 @@ import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
-import com.fastcat.labyrintale.screens.deckview.DeckViewScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
@@ -50,7 +49,6 @@ public class Labyrintale extends Game {
 	public static BattleScreen battleScreen;
 	public static CharInfoScreen charInfoScreen;
 	public static RestScreen restScreen;
-	public static DeckViewScreen deckViewScreen; //TODO 삭제 예정
 	public static EventScreen eventScreen;
 	public static ShopScreen shopScreen;
 	public static boolean fading = false;
@@ -255,5 +253,19 @@ public class Labyrintale extends Game {
 	public void dispose () {
 		sb.dispose();
 		fileHandler.dispose();
+		fontHandler.dispose();
+		soundHandler.dispose();
+		for(AbstractScreen s : tempScreen) {
+			s.dispose();
+		}
+		if(mainMenuScreen != null) mainMenuScreen.dispose();
+		if(charSelectScreen != null) charSelectScreen.dispose();
+		if(mapScreen != null) mapScreen.dispose();
+		if(battleScreen != null) battleScreen.dispose();
+		if(charInfoScreen != null) charInfoScreen.dispose();
+		if(restScreen != null) restScreen.dispose();
+		if(eventScreen != null) eventScreen.dispose();
+		if(shopScreen != null) shopScreen.dispose();
+		if(videoPlayer != null) videoPlayer.dispose();
 	}
 }

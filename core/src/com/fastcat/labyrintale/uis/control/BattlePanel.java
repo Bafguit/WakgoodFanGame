@@ -21,7 +21,7 @@ public class BattlePanel implements Disposable {
     public static ShapeRenderer shr = new ShapeRenderer();
     public static EnergyPanel energy = new EnergyPanel();
 
-    public SkillButtonPanel[] skill = new SkillButtonPanel[4];
+    public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
     public ItemPanel[] item = new ItemPanel[2];
@@ -40,7 +40,7 @@ public class BattlePanel implements Disposable {
         mSkill[0].setPosition(w * 0.84f - mSkill[0].sWidth, h * 0.225f);
         mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
         mSkill[1].setPosition(w * 0.9f - mSkill[1].sWidth, h * 0.225f);
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
             s.setPosition(w * 0.9f - w * 0.08f * i - s.sWidth, h * 0.075f);
             skill[i] = s;
@@ -56,7 +56,7 @@ public class BattlePanel implements Disposable {
     }
 
     public void update() {
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             skill[i].update();
         }
         for(int i = 0; i < 2; i++) {
@@ -83,7 +83,7 @@ public class BattlePanel implements Disposable {
             item[i].render(sb);
             mSkill[i].render(sb);
         }
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             skill[i].render(sb);
         }
         aSkill.render(sb);
@@ -94,8 +94,8 @@ public class BattlePanel implements Disposable {
     public void setPlayer(AbstractPlayer p) {
         if(p.isAlive()) {
             curPlayer = p;
-            for(int j = 0; j < 4; j++) {
-                skill[j].skill = p.hand[3 - j];
+            for(int j = 0; j < 3; j++) {
+                skill[j].skill = p.hand[2 - j];
             }
             aSkill.skill = AbstractLabyrinth.advisor.skill;
             mSkill[0].skill = p.mLeftTemp;
@@ -107,7 +107,7 @@ public class BattlePanel implements Disposable {
 
     @Override
     public void dispose() {
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 3; i++) {
             skill[i].dispose();
         }
         for(int i = 0; i < 2; i++) {

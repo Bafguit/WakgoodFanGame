@@ -4,11 +4,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.GoldReward;
 import com.fastcat.labyrintale.rewards.ItemReward;
-import com.fastcat.labyrintale.rewards.SkillRewardNormal;
+import com.fastcat.labyrintale.rewards.SkillReward;
 import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
@@ -42,8 +41,14 @@ public class VictoryAction extends AbstractAction {
                 AbstractLabyrinth.finishRoom();
             }
             Array<AbstractReward> temp = new Array<>();
-            temp.add(new SkillRewardNormal(AbstractLabyrinth.selection));
-            int r = AbstractLabyrinth.publicRandom.random(100);
+            int r;
+            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
+                temp.add(new SkillReward());
+            } else {
+                r = AbstractLabyrinth.publicRandom.random(100);
+                if(r <= 10) temp.add(new SkillReward());
+            }
+            r = AbstractLabyrinth.publicRandom.random(100);
             if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 if(AbstractLabyrinth.advisor.cls == DOPA) temp.add(new SkillRewardUpgrade());
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));

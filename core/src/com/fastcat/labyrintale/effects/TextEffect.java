@@ -19,7 +19,7 @@ public class TextEffect extends AbstractEffect {
     public TextEffect(float x, float y, String s) {
         super(x, y, 0.5f);
         text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
-        text.fontData = new FontHandler.FontData(MEDIUM, 32, true);
+        text.fontData = FontHandler.CARD_BIG_DESC;
         text.text = s;
         text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
         f = text.fontData.font;
@@ -36,6 +36,6 @@ public class TextEffect extends AbstractEffect {
 
     @Override
     public void dispose() {
-        text.dispose();
+
     }
 }

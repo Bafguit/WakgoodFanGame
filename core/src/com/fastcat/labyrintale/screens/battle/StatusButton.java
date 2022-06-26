@@ -21,7 +21,7 @@ public class StatusButton extends AbstractUI {
 
     public StatusButton(AbstractStatus s) {
         super(FileHandler.ui.get("BORDER_SS"));
-        fontData = new FontHandler.FontData(MEDIUM, 24, true);
+        fontData = STATUS;
         status = s;
         overable = true;
         clickable = false;

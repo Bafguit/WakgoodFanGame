@@ -38,7 +38,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
             }
             Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
         } else if (type == RestType.UPGRADE) {
-            Labyrintale.addTempScreen(new SkillSelectScreen(SkillReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade(this)));
+            Labyrintale.addTempScreen(new SkillSelectScreen(SkillUpgradeReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade(this)));
         } else if(type == RestType.REVIVE) {
             Array<AbstractPlayer> temp = new Array<>();
             for(AbstractPlayer p : AbstractLabyrinth.players) {

@@ -3,14 +3,11 @@ package com.fastcat.labyrintale.screens.advisorselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.screens.deckview.BgImg;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.bg;
+import com.fastcat.labyrintale.uis.BgImg;
 
 public class AdvisorSelectScreen extends AbstractScreen {
 

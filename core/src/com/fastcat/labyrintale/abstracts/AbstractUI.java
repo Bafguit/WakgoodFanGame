@@ -188,15 +188,6 @@ public abstract class AbstractUI implements Disposable {
 
     }
 
-    public void setText(String text) {
-        setText(text, MEDIUM, 50, false);
-    }
-
-    public void setText(String text, FontType type, int s, boolean border) {
-        this.fontData = new FontData(type, s, border);
-        this.text = text;
-    }
-
     public void onHide() {
         over = false;
         showImg = false;
