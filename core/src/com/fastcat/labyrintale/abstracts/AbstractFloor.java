@@ -61,9 +61,9 @@ public class AbstractFloor {
             ways[i] = new AbstractWay(generateWay(WEAK), NORMAL);
         }
         ways[4] = new AbstractWay(generateWay(ELITE), ELITE);
-        for(int i = 5; i < 8; i++) {
-            ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
-        }
+        ways[5] = new AbstractWay(generateWay(NORMAL), NORMAL);
+        ways[6] = new AbstractWay(generateWay(SHOP), SHOP);
+        ways[7] = new AbstractWay(generateWay(NORMAL), NORMAL);
         ways[8] = new AbstractWay(generateWay(ELITE), ELITE);
         for(int i = 9; i < 11; i++) {
             ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
@@ -124,6 +124,8 @@ public class AbstractFloor {
             t.add(new AbstractChoice(new TestBoss(), AbstractChoice.ChoiceType.BOSS, true));
         } else if (type == REST) {
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
+        } else if(type == SHOP) {
+            t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP, true));
         }
         return t;
     }

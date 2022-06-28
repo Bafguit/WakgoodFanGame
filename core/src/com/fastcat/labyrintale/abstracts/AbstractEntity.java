@@ -132,6 +132,11 @@ public abstract class AbstractEntity implements Cloneable {
         else health = Math.min(health, maxHealth);
     }
 
+    public final void addMaxHealth(int add) {
+        maxHealth = Math.max(maxHealth + add, 1);
+        health = Math.min(health, maxHealth);
+    }
+
     public void setAnimXY(float x, float y) {
         animX = x;
         animY = y;

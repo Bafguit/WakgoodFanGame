@@ -35,6 +35,6 @@ public abstract class AbstractReward {
     public abstract void takeReward();
 
     public enum RewardType {
-        SKILL, EXP, GOLD, HEAL, ITEM
+        SKILL, EXP, GOLD, HEAL, ITEM, SLOT
     }
 }

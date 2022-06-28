@@ -17,6 +17,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final Color pColorLG;
     public final Color pColorDG;
     public final PlayerClass playerClass;
+    public int[] slot = new int[]{0, 0, 0};
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
         super(id, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);

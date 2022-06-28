@@ -39,6 +39,6 @@ public class AbstractWay {
     }
 
     public enum WayType {
-        ENTRY, REST, WEAK, NORMAL, ELITE, BOSS
+        ENTRY, REST, SHOP, WEAK, NORMAL, ELITE, BOSS
     }
 }

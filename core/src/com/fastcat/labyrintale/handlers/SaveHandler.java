@@ -94,7 +94,7 @@ public class SaveHandler {
         currentFloor = floors[floorNum - 1];
 
         for (int i = 0; i < 4; i++) {
-            EntityData d = data.players[i];
+            PlayerData d = data.players[i];
             AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
             p.defineIndex(d.index);
             p.isDead = d.isDead;
@@ -117,6 +117,7 @@ public class SaveHandler {
                     s.upgrade();
                 }
                 ss[j] = s;
+                p.slot[i] = d.slot[i];
             }
             p.deck = new Array<>(ss);
 
@@ -151,7 +152,7 @@ public class SaveHandler {
         public int bleak;
         public int bleakMin;
         public AdvisorData advisor;
-        public EntityData[] players = new EntityData[4];
+        public PlayerData[] players = new PlayerData[4];
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
         public int eventCount;
@@ -175,7 +176,7 @@ public class SaveHandler {
             }
             temp.currentFloor = floorNum;
             for(int i = 0; i < 4; i++) {
-                temp.players[i] = EntityData.create(AbstractLabyrinth.players[i]);
+                temp.players[i] = PlayerData.create(AbstractLabyrinth.players[i]);
             }
             temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
             temp.itemAble = AbstractLabyrinth.itemAble;
@@ -321,26 +322,28 @@ public class SaveHandler {
         }
     }
 
-    public static class EntityData {
+    public static class PlayerData {
         public String id;
         public String[] item = new String[2];
         public SkillData[] deck;
         public boolean isDead;
+        public int[] slot;
         public int index;
         public int maxHealth;
         public int health;
 
-        public static EntityData create(AbstractEntity e) {
-            EntityData temp = new EntityData();
+        public static PlayerData create(AbstractPlayer e) {
+            PlayerData temp = new PlayerData();
             temp.id = e.id;
             for(int i = 0; i < 2; i++) {
                 AbstractItem t = e.item[i];
                 temp.item[i] = t != null ? t.id : null;
             }
             int l = e.deck.size;
-            temp.deck = new SkillData[l];
-            for(int i = 0; i < l; i++) {
+            temp.deck = new SkillData[3];
+            for(int i = 0; i < 3; i++) {
                 temp.deck[i] = SkillData.create(e.deck.get(i));
+                temp.slot[i] = e.slot[i];
             }
             temp.isDead = !e.isAlive();
             temp.index = e.index;
