@@ -27,20 +27,6 @@ public class SkillSelectButton extends AbstractUI {
         skill = s;
         this.isTo = isTo;
         clickable = !isTo;
-        if(!isTo) {
-            AbstractSkill t = group.toSkill.skill;
-            for(int i = 0; i < t.upgradeCount; i++) {
-                skill.upgrade();
-            }
-
-            //버린 횟수만큼 업그레이드
-            Integer u = GroupHandler.SkillGroup.discardedCount.get(skill.id);
-            if(u != null) {
-                for (int i = 0; i < u; i++) {
-                    skill.upgrade();
-                }
-            }
-        }
     }
 
     @Override

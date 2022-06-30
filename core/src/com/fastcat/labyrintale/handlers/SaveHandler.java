@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
@@ -69,7 +68,6 @@ public class SaveHandler {
         GroupHandler.RoomGroup.normalCount = data.normalCount;
         GroupHandler.RoomGroup.eliteCount = data.eliteCount;
         GroupHandler.RoomGroup.bossCount = data.eventCount;
-        GroupHandler.SkillGroup.discardedCount = data.discard;
         seed = data.random.seed;
         seedLong = data.random.seedLong;
         publicRandom = new RandomXC(seedLong, data.random.publicRandom);
@@ -117,7 +115,7 @@ public class SaveHandler {
                     s.upgrade();
                 }
                 ss[j] = s;
-                p.slot[i] = d.slot[i];
+                p.slot[j] = d.slot[j];
             }
             p.deck = new Array<>(ss);
 
@@ -134,7 +132,7 @@ public class SaveHandler {
         }
 
         itemAble = data.itemAble;
-        selection = data.selection;
+        maxSlotUp = data.selection;
         maxEnergy = data.maxEnergy;
         gold = data.gold;
         bleak = data.bleak;
@@ -160,7 +158,6 @@ public class SaveHandler {
         public int normalCount;
         public int eliteCount;
         public int bossCount;
-        public HashMap<String, Integer> discard = new HashMap<>();
 
         public static SaveData create() {
             SaveData temp = new SaveData();
@@ -180,7 +177,7 @@ public class SaveHandler {
             }
             temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
             temp.itemAble = AbstractLabyrinth.itemAble;
-            temp.selection = AbstractLabyrinth.selection;
+            temp.selection = AbstractLabyrinth.maxSlotUp;
             temp.maxEnergy = AbstractLabyrinth.maxEnergy;
             temp.gold = AbstractLabyrinth.gold;
             temp.bleak = AbstractLabyrinth.bleak;
@@ -190,7 +187,6 @@ public class SaveHandler {
             temp.normalCount = GroupHandler.RoomGroup.normalCount;
             temp.eliteCount = GroupHandler.RoomGroup.eliteCount;
             temp.bossCount = GroupHandler.RoomGroup.bossCount;
-            temp.discard = GroupHandler.SkillGroup.discardedCount;
 
             return temp;
         }
@@ -327,7 +323,7 @@ public class SaveHandler {
         public String[] item = new String[2];
         public SkillData[] deck;
         public boolean isDead;
-        public int[] slot;
+        public int[] slot = new int[3];
         public int index;
         public int maxHealth;
         public int health;
@@ -339,7 +335,6 @@ public class SaveHandler {
                 AbstractItem t = e.item[i];
                 temp.item[i] = t != null ? t.id : null;
             }
-            int l = e.deck.size;
             temp.deck = new SkillData[3];
             for(int i = 0; i < 3; i++) {
                 temp.deck[i] = SkillData.create(e.deck.get(i));

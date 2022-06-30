@@ -34,7 +34,7 @@ public class AbstractLabyrinth {
     public static ControlPanel cPanel;
     public static int floorNum;
     public static int itemAble;
-    public static int selection;
+    public static int maxSlotUp;
     public static int maxEnergy;
     public static int energy;
     public static int gold;
@@ -71,7 +71,7 @@ public class AbstractLabyrinth {
             floors[2] = new AbstractFloor(3);
             floors[3] = new AbstractFloor(4);
             itemAble = 0;
-            selection = 2;
+            maxSlotUp = 3;
             maxEnergy = 3;
             energy = 0;
             gold = 1000;
@@ -115,7 +115,7 @@ public class AbstractLabyrinth {
     }
 
     public static void modifySelection(int a) {
-        selection = Math.max(selection + a, 0);
+        maxSlotUp = Math.max(maxSlotUp + a, 0);
     }
 
     private static String generateRandomSeed() {

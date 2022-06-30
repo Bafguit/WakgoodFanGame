@@ -23,6 +23,8 @@ public abstract class AbstractReward {
 
     private static Sprite getImg(AbstractReward.RewardType type) {
         switch (type) {
+            case SLOT:
+                return FileHandler.ui.get("SLOT_UP");
             case HEAL:
                 return FileHandler.skillImg.get("Heal"); //TODO 이미지 변경
             case GOLD:

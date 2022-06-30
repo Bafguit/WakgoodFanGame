@@ -24,7 +24,7 @@ public class ExpButton extends AbstractUI {
     }
 
     private static Sprite getImage(ExpReward.ExpType type) { //TODO 이미지 바꾸기
-        if(type == ExpReward.ExpType.SKILL_SLOT) return FileHandler.ui.get("DECK");
+        if(type == ExpReward.ExpType.SKILL_SLOT) return FileHandler.ui.get("SLOT_UP");
         else if(type == ExpReward.ExpType.HEAL) return FileHandler.ui.get("DECK");
         else if(type == ExpReward.ExpType.MAX_HEALTH) return FileHandler.ui.get("DECK");
         else return FileHandler.ui.get("DECK");
@@ -51,7 +51,8 @@ public class ExpButton extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if (select.selected == this || over) sb.setColor(Color.WHITE);
+            if(!clickable) sb.setColor(Color.DARK_GRAY);
+            else if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);

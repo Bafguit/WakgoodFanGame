@@ -54,6 +54,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mRightTemp;
     public AbstractStatus[] status = new AbstractStatus[4];
     public AbstractItem[] item = new AbstractItem[2];
+    public int[] slot = new int[3];
     public String id;
     public String name;
     public String desc;
@@ -462,11 +463,8 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void gainSkill(int index, AbstractSkill skill) {
-        AbstractSkill ts = deck.get(index);
-        Integer up = GroupHandler.SkillGroup.discardedCount.get(ts.id);
-        if(up != null) {
-            if(advisor.cls == AbstractAdvisor.AdvisorClass.JK && up == 0) up++;
-            GroupHandler.SkillGroup.discardedCount.put(ts.id, ++up);
+        for(int i = 0; i < slot[i]; i++) {
+            skill.upgrade();
         }
         deck.set(index, skill);
     }

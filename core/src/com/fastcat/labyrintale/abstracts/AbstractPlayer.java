@@ -17,7 +17,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final Color pColorLG;
     public final Color pColorDG;
     public final PlayerClass playerClass;
-    public int[] slot = new int[]{0, 0, 0};
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
         super(id, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
@@ -59,6 +58,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
         i.owner = this;
         item[index] = i;
         item[index].onGain();
+    }
+
+    public boolean hasSlot() {
+        int i = AbstractLabyrinth.maxSlotUp;
+        return slot[0] < i || slot[1] < i || slot[2] < i;
     }
 
     public abstract Array<AbstractItem> getStartingItem();

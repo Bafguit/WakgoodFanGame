@@ -11,9 +11,11 @@ import com.fastcat.labyrintale.rewards.ExpReward;
 import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerButton;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
+import com.fastcat.labyrintale.screens.slotselect.GetSelectedSlot;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 
-public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer, GetSelectedExp {
+public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer, GetSelectedExp, GetSelectedSlot {
 
     public BgImg bg = new BgImg();
     public ExpSelectText playerSelectText;
@@ -41,7 +43,15 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         adv.setPosition(w * 3 - adv.sWidth / 2, h * 0.6f);
         exp[2] = adv;
 
+        boolean canRevive = false;
+        for(AbstractPlayer p : AbstractLabyrinth.players) {
+            if(!p.isAlive()) {
+                canRevive = true;
+                break;
+            }
+        }
         adv = new ExpButton(ExpReward.ExpType.REVIVE, this);
+        adv.clickable = canRevive;
         adv.setPosition(w * 4 - adv.sWidth / 2, h * 0.6f);
         exp[3] = adv;
     }
@@ -78,7 +88,7 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
                 pa[i] = pp.get(i);
             }
             return pa;
-        } else if(type == ExpReward.ExpType.HEAL) {
+        } else if(type == ExpReward.ExpType.REVIVE) {
             Array<AbstractPlayer> pp = new Array<>();
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer p = AbstractLabyrinth.players[i];
@@ -123,8 +133,7 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
     @Override
     public void playerSelected(AbstractPlayer player) {
         if(selectedType == ExpReward.ExpType.SKILL_SLOT) {
-            //TODO 스킬 슬롯 강화
-            Labyrintale.removeTempScreen(this);
+            Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
         } else if(selectedType == ExpReward.ExpType.HEAL) {
             player.heal(4);
             Labyrintale.removeTempScreen(this);
@@ -141,5 +150,10 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
     public void expSelected(ExpReward.ExpType type) {
         selectedType = type;
         Labyrintale.addTempScreen(new PlayerSelectScreen(getPlayers(type), this));
+    }
+
+    @Override
+    public void slotSelected(AbstractPlayer player, int index) {
+        Labyrintale.removeTempScreen(this);
     }
 }

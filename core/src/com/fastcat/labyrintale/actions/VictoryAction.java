@@ -45,7 +45,7 @@ public class VictoryAction extends AbstractAction {
                     boolean hasSlot = false;
                     for(int i = 0; i < 4; i++) {
                         AbstractPlayer p = AbstractLabyrinth.players[i];
-                        if(p.isAlive() && (p.slot[0] < 3 || p.slot[1] < 3 || p.slot[2] < 3)) hasSlot = true;
+                        if(p.isAlive() && p.hasSlot()) hasSlot = true;
                     }
                     if(hasSlot) temp.add(new SlotReward());
                 }

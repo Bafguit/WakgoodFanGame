@@ -7,6 +7,8 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.boss.BrokenTicker;
 import com.fastcat.labyrintale.items.boss.BossItem4;
+import com.fastcat.labyrintale.items.starter.BattleAxe;
+import com.fastcat.labyrintale.items.starter.ShoulderPlate;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.ine.*;
@@ -34,8 +36,8 @@ public class Ine extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new BrokenTicker(this));
-        temp.add(new BossItem4(this));
+        temp.add(new ShoulderPlate(this));
+        temp.add(new BattleAxe(this));
         return temp;
     }
 }

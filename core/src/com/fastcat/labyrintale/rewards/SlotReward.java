@@ -6,10 +6,10 @@ import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.screens.expselect.ExpSelectScreen;
 import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
+import com.fastcat.labyrintale.screens.slotselect.GetSelectedSlot;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
-public class SlotReward extends AbstractReward implements GetSelectedPlayer {
-
-
+public class SlotReward extends AbstractReward implements GetSelectedPlayer, GetSelectedSlot {
 
     public SlotReward() {
         super(RewardType.EXP);
@@ -23,6 +23,11 @@ public class SlotReward extends AbstractReward implements GetSelectedPlayer {
 
     @Override
     public void playerSelected(AbstractPlayer player) {
-        //TODO 스킬 슬롯 강화
+        Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
+    }
+
+    @Override
+    public void slotSelected(AbstractPlayer player, int index) {
+
     }
 }

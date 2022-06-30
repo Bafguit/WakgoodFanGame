@@ -302,6 +302,8 @@ public class GroupHandler {
             t.add(new Pendant(null));
             t.add(new OldArmour(null));
             t.add(new BurgerHat(null));
+            t.add(new ShoulderPlate(null));
+            t.add(new BattleAxe(null));
             t.add(new OldSword(null));
             t.add(new FabricMail(null));
             t.add(new ToxicFlask(null));
@@ -471,7 +473,6 @@ public class GroupHandler {
     public static class SkillGroup {
         public static final HashMap<String, AbstractSkill> idSort = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> playerSort = new HashMap<>();
-        public static HashMap<String, Integer> discardedCount = new HashMap<>();
 
         public static void generateSkill() {
             idSort.clear();
@@ -484,7 +485,6 @@ public class GroupHandler {
             generateManager();
             generateViichan();
             generateWak();
-            resetDiscCount();
             idSort.put("Strike", new Strike(null));
             idSort.put("Barrier", new Barrier(null));
             sort();
@@ -604,15 +604,6 @@ public class GroupHandler {
             t.add(new Test77(null));
             t.add(new Test78(null));
             playerSort.put(PlayerClass.WAK, t);
-        }
-
-        private static void resetDiscCount() {
-            discardedCount.clear();
-            for(Array<AbstractSkill> a : playerSort.values()) {
-                for(AbstractSkill s : a) {
-                    discardedCount.put(s.id, 0);
-                }
-            }
         }
 
         public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {

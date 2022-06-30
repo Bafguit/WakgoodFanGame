@@ -92,12 +92,6 @@ public class ShopRoom extends AbstractRoom {
         public SkillItem(AbstractSkill skill) {
             super(generateSkillPrice());
             this.skill = skill;
-            Integer u = GroupHandler.SkillGroup.discardedCount.get(this.skill.id);
-            if(u != null) {
-                for (int i = 0; i < u; i++) {
-                    this.skill.upgrade();
-                }
-            }
             img = this.skill.img;
         }
 

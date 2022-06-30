@@ -20,6 +20,10 @@ public abstract class AbstractAdvisor implements Cloneable {
         data = StringHandler.advisorString.get(cls.toString().toLowerCase());
     }
 
+    public void onHire() {
+
+    }
+
     @Override
     public AbstractAdvisor clone() {
         try {

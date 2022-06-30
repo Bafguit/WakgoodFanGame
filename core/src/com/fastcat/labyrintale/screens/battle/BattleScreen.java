@@ -104,9 +104,7 @@ public class BattleScreen extends AbstractScreen {
         }
         if(AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.DUKSU){
             for(AbstractPlayer p : AbstractLabyrinth.players) {
-                for(AbstractSkill s : p.hand) {
-                    s.upgrade();
-                }
+                p.hand[0].upgrade();
             }
         }
         for(int i = 0; i < 4; i++) {
