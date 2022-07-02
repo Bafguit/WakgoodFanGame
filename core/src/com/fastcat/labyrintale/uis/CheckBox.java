@@ -14,6 +14,11 @@ public class CheckBox extends AbstractUI {
 
     public boolean checked;
 
+    public CheckBox(boolean checked) {
+        super(FileHandler.ui.get("CHECK_OFF"));
+        this.checked = checked;
+    }
+
     public CheckBox(float x, float y, boolean checked) {
         super(FileHandler.ui.get("CHECK_OFF"), x, y);
         this.checked = checked;
@@ -26,6 +31,7 @@ public class CheckBox extends AbstractUI {
             else sb.setColor(Color.WHITE);
             if(checked) sb.draw(on, x, y, sWidth, sHeight);
             else sb.draw(img, x, y, sWidth, sHeight);
+
         }
     }
 

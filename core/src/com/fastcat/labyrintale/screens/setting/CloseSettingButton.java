@@ -1,20 +1,22 @@
-package com.fastcat.labyrintale.screens.mainmenu;
+package com.fastcat.labyrintale.screens.setting;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.itemselect.ItemSelectScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
-public class OptionButton extends AbstractUI {
+public class CloseSettingButton extends AbstractUI {
 
-    public OptionButton() {
-        super(FileHandler.ui.get("MENU_SELECT"));
-        setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
+    public CloseSettingButton(SettingScreen sc) {
+        super(FileHandler.ui.get("NEXT"));
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
-        text = "설정";
+        text = "완료";
         showImg = false;
+        screen = sc;
     }
 
     @Override
@@ -29,6 +31,6 @@ public class OptionButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.addTempScreen(Labyrintale.settingScreen);
+        Labyrintale.removeTempScreen(screen);
     }
 }

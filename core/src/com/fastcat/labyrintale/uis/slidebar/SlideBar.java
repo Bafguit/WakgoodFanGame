@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
+import static com.fastcat.labyrintale.handlers.InputHandler.mx;
 
 public class SlideBar extends AbstractUI {
 
@@ -57,12 +58,76 @@ public class SlideBar extends AbstractUI {
             sideR.render(sb);
             button.render(sb);
 
-            renderLineLeft(sb, FontHandler.CARD_BIG_DESC, Integer.toString(pos), x, y + 100, sWidth, sHeight);
         }
     }
 
     @Override
     public void onClick() {
         button.overTrack = true;
+    }
+
+    public static class SlideButton extends AbstractUI {
+
+        protected boolean overTrack = false;
+        protected float min, max;
+
+        public SlideButton() {
+            super(FileHandler.ui.get("SLIDE_B"));
+            clickable = false;
+        }
+
+        @Override
+        protected void updateButton() {
+            if(overTrack) setPosition(MathUtils.clamp(mx - sWidth / 2, min, max), y);
+        }
+
+        public void render(SpriteBatch sb) {
+            if(enabled) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
+    }
+
+    public static class SlideLine extends AbstractUI {
+        public SlideLine(float width) {
+            super(FileHandler.ui.get("SLIDE_L"), -1000, -1000, width - 12, 40);
+            clickable = false;
+        }
+
+        public void render(SpriteBatch sb) {
+            if(enabled) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
+    }
+
+    public static class SlideSideL extends AbstractUI {
+        public SlideSideL() {
+            super(FileHandler.ui.get("SLIDE_SL"));
+            clickable = false;
+        }
+
+        public void render(SpriteBatch sb) {
+            if(enabled) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
+    }
+
+    public static class SlideSideR extends AbstractUI {
+        public SlideSideR() {
+            super(FileHandler.ui.get("SLIDE_SR"));
+            clickable = false;
+        }
+
+        public void render(SpriteBatch sb) {
+            if(enabled) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
     }
 }

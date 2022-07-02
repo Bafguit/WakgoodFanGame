@@ -48,6 +48,7 @@ public class FontHandler implements Disposable {
     public static final FontData HP = new FontData(MEDIUM, 26, false);
     public static final FontData STATUS = new FontData(MEDIUM, 24, true);
     public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
+    public static final FontData SETTING = new FontData(BOLD, 48, true);
 
     public enum FontType {
         MEDIUM, BOLD

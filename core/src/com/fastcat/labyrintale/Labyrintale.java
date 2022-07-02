@@ -26,6 +26,7 @@ import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
+import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 
 public class Labyrintale extends Game {
@@ -51,6 +52,7 @@ public class Labyrintale extends Game {
 	public static RestScreen restScreen;
 	public static EventScreen eventScreen;
 	public static ShopScreen shopScreen;
+	public static SettingScreen settingScreen;
 	public static boolean fading = false;
 	public static boolean fadeIn = false;
 	public static float tick;
@@ -111,6 +113,7 @@ public class Labyrintale extends Game {
 		game = this;
 		mainMenuScreen = new MainMenuScreen();
 		charSelectScreen = new CharSelectScreen();
+		settingScreen = new SettingScreen();
 		//labyrinth = new AbstractLabyrinth();
 		fadeTex = FileHandler.ui.get("FADE");
 		fadeTex.setPosition(0, 0);
