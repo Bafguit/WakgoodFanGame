@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
+import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;

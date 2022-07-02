@@ -21,6 +21,7 @@ public class BattlePanel implements Disposable {
     public static ShapeRenderer shr = new ShapeRenderer();
     public static EnergyPanel energy = new EnergyPanel();
 
+    public SkillButtonPanel selected;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;

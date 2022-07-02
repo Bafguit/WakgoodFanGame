@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.uis.BgImg;
 
 public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPlayer {

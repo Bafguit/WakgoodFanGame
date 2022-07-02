@@ -2,12 +2,9 @@ package com.fastcat.labyrintale.screens.slotselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
-import com.fastcat.labyrintale.screens.playerselect.PlayerButton;
-import com.fastcat.labyrintale.screens.playerselect.PlayerConfirmButton;
+import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.uis.BgImg;
 
 public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot {

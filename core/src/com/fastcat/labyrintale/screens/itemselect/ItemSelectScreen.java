@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.uis.BgImg;
 
 public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem {

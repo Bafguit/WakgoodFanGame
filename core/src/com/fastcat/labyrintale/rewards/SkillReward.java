@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
-import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
 
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 

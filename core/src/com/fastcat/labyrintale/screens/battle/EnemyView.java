@@ -4,8 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 
 public class EnemyView extends AbstractUI {
 
@@ -25,12 +29,14 @@ public class EnemyView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(isLooking) showImg = true;
-        else showImg = false;
-    }
-
-    @Override
-    protected void onOver() {
+        if(battleScreen.isSelecting) {
+            boolean can = battleScreen.target == AbstractSkill.SkillTarget.ENEMY;
+            overable = clickable = enemy.isAlive() && can;
+            showImg = over && clickable;
+        } else {
+            overable = clickable = false;
+            showImg = isLooking;
+        }
     }
 
     @Override
@@ -41,5 +47,10 @@ public class EnemyView extends AbstractUI {
             if(showImg) sb.draw(img, x, y, sWidth, sHeight);
             enemy.render(sb);
         }
+    }
+
+    @Override
+    protected void onClick() {
+        battleScreen.gets.onTargetSelected(enemy);
     }
 }

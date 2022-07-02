@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.events.choices.AtEndOfTempScreen;
+import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 

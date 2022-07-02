@@ -29,6 +29,14 @@ public abstract class AbstractAction implements Cloneable {
         baseDuration = this.duration;
     }
 
+    public AbstractAction(AbstractEntity actor, AbstractEntity target, float duration) {
+        this.actor = actor;
+        this.target = new Array<>();
+        this.target.add(target);
+        this.duration = duration;
+        baseDuration = this.duration;
+    }
+
     public final void update() {
         if(!isDone) {
             if(actor != null && !actor.isAlive()) {

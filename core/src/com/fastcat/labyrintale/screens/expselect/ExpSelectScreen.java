@@ -7,11 +7,11 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.interfaces.GetSelectedExp;
 import com.fastcat.labyrintale.rewards.ExpReward;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
-import com.fastcat.labyrintale.screens.playerselect.PlayerButton;
+import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
-import com.fastcat.labyrintale.screens.slotselect.GetSelectedSlot;
+import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 

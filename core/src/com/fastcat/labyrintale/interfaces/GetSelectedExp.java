@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.expselect;
+package com.fastcat.labyrintale.interfaces;
 
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.rewards.ExpReward;

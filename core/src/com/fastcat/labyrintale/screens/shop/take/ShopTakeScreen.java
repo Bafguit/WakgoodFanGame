@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.uis.BgImg;
-import com.fastcat.labyrintale.screens.itemselect.GetSelectedItem;
+import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 
 public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
 

@@ -5,9 +5,9 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.rewards.*;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
+import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
-import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
+import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;

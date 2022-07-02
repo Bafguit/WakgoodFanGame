@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.screens.skillselect.GetSelectedSkill;
+import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 public abstract class SkillUpgradeReward extends AbstractReward implements GetSelectedSkill {

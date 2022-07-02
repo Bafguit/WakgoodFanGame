@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -29,9 +30,16 @@ public class PlayerView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
-        showImg = isLooking || (isOnLock) || over;
-        clickable = player.isAlive();
+        if(battleScreen.isSelecting) {
+            boolean can = battleScreen.target == AbstractSkill.SkillTarget.PLAYER;
+            isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
+            showImg = isLooking || (isOnLock) || (over && can);
+            clickable = player.isAlive() && can;
+        } else {
+            isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
+            showImg = isLooking || (isOnLock) || over;
+            clickable = player.isAlive();
+        }
     }
 
     @Override
@@ -47,7 +55,8 @@ public class PlayerView extends AbstractUI {
     @Override
     protected void onClick() {
         if(player != null && player.isAlive()) {
-            AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
+            if(battleScreen.isSelecting) battleScreen.gets.onTargetSelected(player);
+            else AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.playerselect;
+package com.fastcat.labyrintale.interfaces;
 
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 

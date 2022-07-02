@@ -4,9 +4,9 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.screens.expselect.ExpSelectScreen;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
+import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
-import com.fastcat.labyrintale.screens.slotselect.GetSelectedSlot;
+import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 public class SlotReward extends AbstractReward implements GetSelectedPlayer, GetSelectedSlot {

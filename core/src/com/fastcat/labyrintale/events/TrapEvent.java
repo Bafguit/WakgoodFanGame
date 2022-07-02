@@ -3,12 +3,10 @@ package com.fastcat.labyrintale.events;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
-import com.fastcat.labyrintale.events.choices.BattleEventChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.PlayerEventChoice;
-import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
+import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.advisor;
 

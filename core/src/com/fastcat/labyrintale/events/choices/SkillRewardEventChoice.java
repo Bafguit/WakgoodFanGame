@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.events.choices;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;

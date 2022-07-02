@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.slotselect;
+package com.fastcat.labyrintale.interfaces;
 
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 

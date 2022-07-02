@@ -12,6 +12,8 @@ import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
+import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -25,7 +27,7 @@ public class BattleScreen extends AbstractScreen {
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
-
+    private final BgImg bgImg = new BgImg();
     public Sprite shield = FileHandler.ui.get("SHIELD");
     public ShapeRenderer shr = new ShapeRenderer();
     public StatusButton[][] playerStatus = new StatusButton[4][4];
@@ -35,7 +37,9 @@ public class BattleScreen extends AbstractScreen {
     public EnemyView[] enemies = new EnemyView[4];
     public ShieldIcon[] pShield = new ShieldIcon[4];
     public ShieldIcon[] eShield = new ShieldIcon[4];
-    public boolean isEnemyTurn = false;
+    public GetSelectedTarget gets;
+    public boolean isSelecting = false;
+    public AbstractSkill.SkillTarget target;
     public Array<AbstractEntity> looking;
     public BattleType type;
     public float w, h, sw, sh;
@@ -178,15 +182,28 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(isEnemyTurn) {
-            for (int i = 3; i >= 0; i--) {
-                players[i].render(sb);
-            }
-            for (int i = 3; i >= 0; i--) {
-                enemies[i].render(sb);
+        int ci = cPanel.battlePanel.curPlayer.index;
+        if(isSelecting) {
+            if(target == AbstractSkill.SkillTarget.PLAYER) {
+                for (int i = 0; i < 4; i++) {
+                    enemies[i].render(sb);
+                }
+                bgImg.render(sb);
+                for (int i = 0; i < 4; i++) {
+                    if (i != ci) players[i].render(sb);
+                }
+                players[ci].render(sb);
+            } else {
+                for (int i = 0; i < 4; i++) {
+                    if (i != ci) players[i].render(sb);
+                }
+                players[ci].render(sb);
+                bgImg.render(sb);
+                for (int i = 0; i < 4; i++) {
+                    enemies[i].render(sb);
+                }
             }
         } else {
-            int ci = cPanel.battlePanel.curPlayer.index;
             for (int i = 0; i < 4; i++) {
                 enemies[i].render(sb);
             }
@@ -194,6 +211,7 @@ public class BattleScreen extends AbstractScreen {
                 if (i != ci) players[i].render(sb);
             }
             players[ci].render(sb);
+
         }
 
         sb.end();
@@ -259,6 +277,12 @@ public class BattleScreen extends AbstractScreen {
                 enemySkills[i].render(sb);
             }
         }
+    }
+
+    public void selectTarget(GetSelectedTarget gets, AbstractSkill.SkillTarget target) {
+        this.gets = gets;
+        isSelecting = true;
+        this.target = target;
     }
 
     public void setEnemy(AbstractEnemy e, int index) {

@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
@@ -17,7 +18,7 @@ import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
-public abstract class AbstractSkill implements Cloneable {
+public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     public Sprite img;
     public SkillString.SkillData skillData;
@@ -536,6 +537,10 @@ public abstract class AbstractSkill implements Cloneable {
         return null;
     }
 
+    public void onTargetSelected(AbstractEntity target) {
+
+    }
+
     public enum SkillType {
         ATTACK, DEFENCE, SCHEME
     }
@@ -547,6 +552,6 @@ public abstract class AbstractSkill implements Cloneable {
     public enum SkillTarget {
         NONE, ALL, SELF, RIGHT, LEFT, BOTH, SELF_RIGHT, SELF_LEFT, SELF_BOTH,
         PLAYER_FIRST, ENEMY_FIRST, PLAYER_LAST, ENEMY_LAST, PLAYER_FIRST_TWO,
-        ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL
+        ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL, ENEMY, PLAYER
     }
 }

@@ -1,11 +1,8 @@
 package com.fastcat.labyrintale.rewards;
 
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
-import com.fastcat.labyrintale.events.choices.AtEndOfTempScreen;
 import com.fastcat.labyrintale.screens.expselect.ExpSelectScreen;
-import com.fastcat.labyrintale.screens.playerselect.GetSelectedPlayer;
 
 public class ExpReward extends AbstractReward {
 
