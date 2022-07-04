@@ -2,29 +2,30 @@ package com.fastcat.labyrintale.skills.player.burger;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.MoveAction;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
-public class Kick extends AbstractSkill {
+public class KeepOnLine extends AbstractSkill {
 
-    private static final String ID = "Kick";
-    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final String ID = "KeepOnLine";
+    private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 4;
 
-    public Kick(AbstractEntity e) {
+    public KeepOnLine(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE, 1);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override
     public void use() {
-        AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(target).get(0);
-        bot(new MoveAction(e, false, 0.3f));
-        bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, true));
+        bot(new MoveAction((AbstractPlayer) owner, 0, 0.3f));
+        top(new BlockAction(owner, owner, spell));
     }
 
     @Override

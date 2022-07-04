@@ -67,18 +67,18 @@ public class MoveAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            if(toIndex < 0 || toIndex > 3) {
+            if(toIndex < 0 || toIndex > 3 || from.movable > 0) {
                 isDone = true;
                 run = false;
             } else {
                 if(type == MoveType.PLAYER) {
                     isLeft = from.tempIndex < toIndex;
                     if (isLeft) {
-                        while (!AbstractLabyrinth.players[toIndex].isAlive() && toIndex > from.tempIndex) {
+                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex > from.tempIndex) {
                             toIndex--;
                         }
                     } else {
-                        while (!AbstractLabyrinth.players[toIndex].isAlive() && toIndex < from.tempIndex) {
+                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex < from.tempIndex) {
                             toIndex++;
                         }
                     }
@@ -90,28 +90,43 @@ public class MoveAction extends AbstractAction {
                         float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
                         toDist = -d * i;
                         toPos = w * 0.425f - w * 0.1f * toIndex;
+                        int v = 0;
                         if (isLeft) {
                             for (int j = from.tempIndex; j < toIndex; j++) {
-                                to.put(j, AbstractLabyrinth.players[j + 1]);
-                                distance.put(j, d);
-                                position.put(j, w * 0.425f - w * 0.1f * j);
+                                AbstractPlayer p = AbstractLabyrinth.players[j + 1];
+                                if(p.movable > 0) {
+                                    v--;
+                                } else {
+                                    int jv = j + v;
+                                    to.put(jv, p);
+                                    distance.put(jv, d);
+                                    position.put(jv, w * 0.425f - w * 0.1f * jv);
+                                    if(v != 0) v++;
+                                }
                             }
                         } else {
                             for (int j = from.tempIndex; j > toIndex; j--) {
-                                to.put(j, AbstractLabyrinth.players[j - 1]);
-                                distance.put(j, d);
-                                position.put(j, w * 0.425f - w * 0.1f * j);
+                                AbstractPlayer p = AbstractLabyrinth.players[j - 1];
+                                if(p.movable > 0) {
+                                    v++;
+                                } else {
+                                    int jv = j + v;
+                                    to.put(jv, p);
+                                    distance.put(jv, d);
+                                    position.put(jv, w * 0.425f - w * 0.1f * jv);
+                                    if(v != 0) v--;
+                                }
                             }
                         }
                     }
                 } else {
                     isLeft = from.tempIndex > toIndex;
                     if (isLeft) {
-                        while (!currentFloor.currentRoom.enemies[toIndex].isAlive() && toIndex < from.tempIndex) {
+                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex < from.tempIndex) {
                             toIndex++;
                         }
                     } else {
-                        while (!currentFloor.currentRoom.enemies[toIndex].isAlive() && toIndex > from.tempIndex) {
+                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex > from.tempIndex) {
                             toIndex--;
                         }
                     }
@@ -123,17 +138,32 @@ public class MoveAction extends AbstractAction {
                         float w = Gdx.graphics.getWidth(), d = w * (isLeft ? 0.1f : -0.1f);
                         toDist = -d * i;
                         toPos = w * 0.575f + w * 0.1f * toIndex;
+                        int v = 0;
                         if (!isLeft) {
                             for (int j = from.tempIndex; j < toIndex; j++) {
-                                to.put(j, currentFloor.currentRoom.enemies[j + 1]);
-                                distance.put(j, d);
-                                position.put(j, w * 0.575f + w * 0.1f * j);
+                                AbstractEnemy e = currentFloor.currentRoom.enemies[j + 1];
+                                if(e.movable > 0) {
+                                    v--;
+                                } else {
+                                    int jv = j + v;
+                                    to.put(jv, e);
+                                    distance.put(jv, d);
+                                    position.put(jv, w * 0.575f + w * 0.1f * jv);
+                                    if(v != 0) v++;
+                                }
                             }
                         } else {
                             for (int j = from.tempIndex; j > toIndex; j--) {
-                                to.put(j, currentFloor.currentRoom.enemies[j - 1]);
-                                distance.put(j, d);
-                                position.put(j, w * 0.575f + w * 0.1f * j);
+                                AbstractEnemy e = currentFloor.currentRoom.enemies[j - 1];
+                                if(e.movable > 0) {
+                                    v++;
+                                } else {
+                                    int jv = j + v;
+                                    to.put(jv, e);
+                                    distance.put(jv, d);
+                                    position.put(jv, w * 0.575f + w * 0.1f * jv);
+                                    if(v != 0) v--;
+                                }
                             }
                         }
                     }

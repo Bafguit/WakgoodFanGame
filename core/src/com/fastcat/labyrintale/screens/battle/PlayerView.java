@@ -23,7 +23,8 @@ public class PlayerView extends AbstractUI {
 
     public PlayerView(AbstractPlayer cls) {
         super(FileHandler.ui.get("ENTITY_POINT"));
-        this.player = cls;
+        player = cls;
+        player.block = 0;
         pImg = FileHandler.ui.get("PLAYER_POINT");
         showImg = false;
     }

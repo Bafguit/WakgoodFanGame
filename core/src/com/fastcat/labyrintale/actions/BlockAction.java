@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -11,6 +12,19 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 public class BlockAction extends AbstractAction {
 
     public int block;
+
+    public BlockAction(AbstractEntity actor, AbstractEntity target, int block) {
+        super(actor, 0.5f);
+        this.target = new Array<>();
+        this.target.add(target);
+        this.block = block;
+    }
+
+    public BlockAction(AbstractEntity actor, Array<AbstractEntity> target, int block) {
+        super(actor, 0.5f);
+        this.target = target;
+        this.block = block;
+    }
 
     public BlockAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int block) {
         super(actor, target, 0.5f);

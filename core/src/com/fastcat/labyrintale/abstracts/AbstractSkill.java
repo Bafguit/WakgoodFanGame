@@ -399,53 +399,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         return temp;
     }
 
-    public String getTargetString() {
-        return getTargetString(target);
-    }
-
-    public static String getTargetString(AbstractSkill.SkillTarget target) {
-        switch(target) {
-            case RIGHT:
-                return "▶";
-            case LEFT:
-                return "◀";
-            case BOTH:
-                return "◀　▶";
-            case SELF_RIGHT:
-                return "●▶";
-            case SELF_LEFT:
-                return "◀●";
-            case SELF_BOTH:
-                return "◀●▶";
-            case SELF:
-                return "●";
-            case PLAYER_FIRST:
-                return "○○○●　○○○○";
-            case ENEMY_FIRST:
-                return "○○○○　●○○○";
-            case PLAYER_LAST:
-                return "●○○○　○○○○";
-            case ENEMY_LAST:
-                return "○○○○　○○○●";
-            case PLAYER_FIRST_TWO:
-                return "○○●●　○○○○";
-            case ENEMY_FIRST_TWO:
-                return "○○○○　●●○○";
-            case PLAYER_LAST_TWO:
-                return "●●○○　○○○○";
-            case ENEMY_LAST_TWO:
-                return "○○○○　○○●●";
-            case PLAYER_ALL:
-                return "●●●●　○○○○";
-            case ENEMY_ALL:
-                return "○○○○　●●●●";
-            case ALL:
-                return "●●●●　●●●●";
-            default:
-                return "";
-        }
-    }
-
     public final void useCard() {
         if(owner != null) {
             for (AbstractStatus s : owner.status) {

@@ -181,10 +181,13 @@ public class AbstractLabyrinth {
         advisor.skill.cooldown = 0;
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
-        for(AbstractPlayer p : players) {
+        AbstractPlayer[] temp = players;
+        players = new AbstractPlayer[4];
+        for(AbstractPlayer p : temp) {
             p.tempIndex = p.index;
             p.mRightTemp = p.mRight;
             p.mLeftTemp = p.mLeft;
+            players[p.index] = p;
         }
         SaveHandler.save();
     }

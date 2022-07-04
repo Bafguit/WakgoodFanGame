@@ -61,6 +61,7 @@ public abstract class AbstractEntity implements Cloneable {
     public boolean isDead = false;
     public boolean isDie = false;
     public boolean isNeut = false;
+    public int movable = 0;
     public int index;
     public int tempIndex;
     public int block = 0;

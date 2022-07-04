@@ -1,5 +1,5 @@
 {
-  "date" : "2022_07_05_01_06_29",
+  "date" : "2022_07_05_01_06_12",
   "random" : {
     "seed" : "35BHDT1N",
     "seedLong" : 5153667268844978,
@@ -125,23 +125,41 @@
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Shop",
+      "id" : "Rest",
       "battleDone" : false,
-      "isDone" : false
+      "isDone" : true
     },
     "currentWay" : {
-      "type" : "SHOP",
+      "type" : "NORMAL",
       "choices" : [ {
-        "type" : "SHOP",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Shop",
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -451,7 +469,7 @@
     "canBoss" : false,
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 7
+    "num" : 6
   }, {
     "currentRoom" : {
       "id" : "Placeholder",

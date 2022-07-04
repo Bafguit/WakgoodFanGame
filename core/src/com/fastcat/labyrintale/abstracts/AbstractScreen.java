@@ -18,6 +18,7 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     public ScreenType type = ScreenType.OTHER;
     private Sprite bg;
     public Array<AtEndOfTempScreen> endTemp = new Array<>();
+    public boolean playMusic = false;
 
     public abstract void update();
 
@@ -37,6 +38,10 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
 
     @Override
     public final void resize(int width, int height) {
+
+    }
+
+    public void onCreate() {
 
     }
 

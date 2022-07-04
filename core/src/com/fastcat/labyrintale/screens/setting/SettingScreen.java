@@ -74,9 +74,13 @@ public class SettingScreen extends AbstractScreen {
         screenMode.update();
         resolution.update();
         volumeSfx.update();
+        SettingHandler.setting.volumeSfx = volumeSfx.getValue();
         volumeBgm.update();
+        SettingHandler.setting.volumeBgm = volumeBgm.getValue();
         shake.update();
+        SettingHandler.setting.shake = shake.getValue();
         fastMode.update();
+        SettingHandler.setting.fastMode = fastMode.getValue();
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.items.starter.BurgerHat;
 import com.fastcat.labyrintale.items.starter.OldArmour;
 import com.fastcat.labyrintale.skills.player.basic.*;
 import com.fastcat.labyrintale.skills.player.burger.Protect;
-import com.fastcat.labyrintale.skills.player.burger.Patience;
+import com.fastcat.labyrintale.skills.player.burger.Strong;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 
@@ -29,7 +29,7 @@ public class Burger extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Protect(this));
-        temp.add(new Patience(this));
+        temp.add(new Strong(this));
         return temp;
     }
 

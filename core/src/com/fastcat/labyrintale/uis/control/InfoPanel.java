@@ -100,10 +100,6 @@ public class InfoPanel extends AbstractUI {
                     }
                 }
             }
-            if(renderIcon) {
-                if (target != null)
-                    renderCenter(sb, fontDesc, AbstractSkill.getTargetString(target), x, y - sHeight * 0.04f, sWidth, sHeight);
-            }
         }
 
         if(renderIcon) {

@@ -33,6 +33,8 @@ public class SoundHandler implements Disposable {
 
     private static void generateMusic() {
         music.put("BATTLE_1", new MusicData(getMusic("sound/bgm/battle_1.mp3")));
+        music.put("LOBBY", new MusicData(getMusic("sound/bgm/lobby.mp3")));
+        music.put("MAP", new MusicData(getMusic("sound/bgm/map.mp3")));
     }
 
     private static Sound getSound(String url) {
@@ -45,14 +47,15 @@ public class SoundHandler implements Disposable {
         return Gdx.audio.newMusic(fileHandle);
     }
 
-    public static void playSfx(String key) {
+    public static Sound playSfx(String key) {
         Sound s = sfx.get(key);
         if(s != null) {
             s.play(SettingHandler.setting.volumeSfx * 0.01f);
         }
+        return s;
     }
 
-    public static void playMusic(String key, boolean isLoop, boolean fadeIn) {
+    public static MusicData playMusic(String key, boolean isLoop, boolean fadeIn) {
         MusicData d = music.get(key);
         if(d != null) {
             Music s = d.music;
@@ -60,13 +63,15 @@ public class SoundHandler implements Disposable {
             if (fadeIn) {
                 d.isFadingOut = false;
                 d.fadeOutStartVolume = SettingHandler.setting.volumeBgm * 0.01f;
-                d.fadeTimer = 4.0F;
+                d.setFadeTime(3);
                 s.setVolume(0.0f);
                 fadingMusic.add(d);
             } else s.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
-            s.play();
             musicPlaylist.add(d);
+            s.play();
+            System.out.println("KEY: " + key + " | VOLUME: " + s.getVolume() + " | STATUS: " + s.isPlaying());
         }
+        return d;
     }
 
     public static void fadeOutMusic(String key) {
@@ -75,7 +80,7 @@ public class SoundHandler implements Disposable {
             d.isFadingOut = true;
             d.isFading = true;
             d.fadeOutStartVolume = d.music.getVolume();
-            d.fadeTimer = 4.0F;
+            d.setFadeTime(3);
             fadingMusic.add(d);
         }
     }
@@ -105,15 +110,21 @@ public class SoundHandler implements Disposable {
     }
 
     public static class MusicData implements Disposable {
+        public float fadeTime = 4.0f;
         public float fadeTimer = 0.0F;
         public boolean isFadingOut = false;
         public boolean isFading = false;
         private float fadeOutStartVolume;
         public boolean isDone = false;
+        public boolean stop = true;
         public Music music;
 
         public MusicData(Music music) {
             this.music = music;
+        }
+
+        public void setFadeTime(float time) {
+            fadeTime = fadeTimer = time;
         }
 
         public void updateFadeIn() {
@@ -122,7 +133,7 @@ public class SoundHandler implements Disposable {
                 fadeTimer = 0.0F;
                 fadingMusic.removeValue(this, false);
             }
-            music.setVolume(Interpolation.fade.apply(0.0F, fadeOutStartVolume, 1.0F - fadeTimer / 4.0F));
+            music.setVolume(Interpolation.fade.apply(0.0F, fadeOutStartVolume, 1.0F - fadeTimer / fadeTime));
         }
 
         public void updateFadeOut() {
@@ -130,11 +141,12 @@ public class SoundHandler implements Disposable {
             if (fadeTimer < 0.0F) {
                 fadeTimer = 0.0F;
                 isDone = true;
-                music.stop();
+                if(stop) music.stop();
+                else music.pause();
                 fadingMusic.removeValue(this, false);
                 musicPlaylist.removeValue(this, false);
             } else {
-                music.setVolume(Interpolation.fade.apply(fadeOutStartVolume, 0.0F, 1.0F - fadeTimer / 4.0F));
+                music.setVolume(Interpolation.fade.apply(fadeOutStartVolume, 0.0F, 1.0F - fadeTimer / fadeTime));
             }
         }
 

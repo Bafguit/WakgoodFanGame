@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -22,6 +23,7 @@ public class LoadingScreen extends AbstractScreen {
     public LoadingScreen() {
         cType = ControlPanel.ControlType.HIDE;
         setBg(FileHandler.ui.get("FADE"));
+        SoundHandler.fadeOutMusic("LOBBY");
     }
 
     public LoadingScreen(boolean b) {

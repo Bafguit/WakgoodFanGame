@@ -33,6 +33,7 @@ public class VictoryAction extends AbstractAction {
                 p.block = 0;
                 p.isNeut = false;
                 p.status = new AbstractStatus[4];
+                p.movable = 0;
             }
             if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.finishRoom();

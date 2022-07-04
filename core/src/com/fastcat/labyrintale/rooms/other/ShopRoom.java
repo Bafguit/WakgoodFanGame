@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem.ItemRarity;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
+import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
@@ -25,11 +26,13 @@ public class ShopRoom extends AbstractRoom {
         super("Shop", RoomType.SHOP);
     }
 
-    @Override
     public void entry() {
+        System.out.println("SHOP!");
         generateSkills();
         generateItems();
         roll = new RollItem(this);
+        shopScreen = new ShopScreen(this);
+        fadeOutAndChangeScreen(shopScreen);
     }
 
     public abstract static class ShopItem {

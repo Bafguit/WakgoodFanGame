@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
@@ -57,6 +58,11 @@ public class MainMenuScreen extends AbstractScreen {
     }
 
     @Override
+    public void onCreate() {
+        playMusic = true;
+    }
+
+    @Override
     public void show() {
         logoText.onHide();
         gameStartButton.onHide();
@@ -64,6 +70,10 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton.onHide();
         exitButton.onHide();
         SaveHandler.refresh();
+        if(playMusic) {
+            SoundHandler.playMusic("LOBBY", true, true);
+            playMusic = false;
+        }
     }
 
     @Override

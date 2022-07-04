@@ -19,8 +19,8 @@ import static com.fastcat.labyrintale.handlers.FontHandler.FontType.*;
 
 public class FontHandler implements Disposable {
 
-    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/cb.ttf"));
-    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/cb.ttf"));
+    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     private static final GlyphLayout layout = new GlyphLayout();
 

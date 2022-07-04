@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
+import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
@@ -13,6 +14,21 @@ public class HealAction extends AbstractAction {
 
     public int heal;
     public boolean motion;
+
+    public HealAction(AbstractEntity actor, Array<AbstractEntity> target, int heal) {
+        super(actor, 0.5f);
+        this.target = target;
+        this.heal = heal;
+        motion = true;
+    }
+
+    public HealAction(AbstractEntity actor, AbstractEntity target, int heal) {
+        super(actor, 0.5f);
+        this.target = new Array<>();
+        this.target.add(target);
+        this.heal = heal;
+        motion = true;
+    }
 
     public HealAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int heal) {
         super(actor, target, 0.5f);

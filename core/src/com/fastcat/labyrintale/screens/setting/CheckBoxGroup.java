@@ -30,6 +30,10 @@ public class CheckBoxGroup {
         checkBox.render(sb);
     }
 
+    public boolean getValue() {
+        return checkBox.checked;
+    }
+
     private static class Title extends AbstractUI {
         public String title;
 

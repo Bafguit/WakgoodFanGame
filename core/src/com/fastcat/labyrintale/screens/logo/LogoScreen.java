@@ -42,6 +42,7 @@ public class LogoScreen extends AbstractScreen {
         videoPlayer.update();
         if(InputHandler.isLeftClick && !isDone) isDone = true;
         if(isDone) {
+            Labyrintale.mainMenuScreen.onCreate();
             Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
         }
     }

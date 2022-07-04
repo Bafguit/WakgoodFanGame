@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
@@ -49,6 +50,7 @@ public class BattleScreen extends AbstractScreen {
     }
 
     public BattleScreen(BattleType type, boolean isLoad) {
+        if(!isLoad) SoundHandler.fadeOutMusic("MAP");
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
         this.type = type;
@@ -121,7 +123,6 @@ public class BattleScreen extends AbstractScreen {
         if(isLoad) {
             ActionHandler.top(new VictoryAction(0));
         } else {
-            //SoundHandler.playMusic("BATTLE_1", 0.3f, true, true);
             ActionHandler.bot(new PlayerTurnStartAction(true));
         }
     }
@@ -182,7 +183,7 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        int ci = cPanel.battlePanel.curPlayer.index;
+        int ci = cPanel.battlePanel.curPlayer.tempIndex;
         if(isSelecting) {
             if(target == AbstractSkill.SkillTarget.PLAYER) {
                 for (int i = 0; i < 4; i++) {
@@ -291,7 +292,7 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        SoundHandler.playMusic("BATTLE_1", true, true);
     }
 
     @Override

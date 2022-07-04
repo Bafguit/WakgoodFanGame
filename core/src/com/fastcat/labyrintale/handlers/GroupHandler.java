@@ -502,14 +502,14 @@ public class GroupHandler {
         private static void generateBurger() {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
-            t.add(new Kick(null));
-            t.add(new Strong(null));
+            t.add(new KeepOnLine(null));
+            t.add(new SuperSave(null));
             t.add(new Purify(null));
             t.add(new Protect(null));
             t.add(new HolyLight(null));
             t.add(new HolySmite(null));
-            t.add(new Patience(null));
-            t.add(new Test8(null));
+            t.add(new Strong(null));
+            t.add(new Bless(null));
             playerSort.put(PlayerClass.BURGER, t);
         }
 

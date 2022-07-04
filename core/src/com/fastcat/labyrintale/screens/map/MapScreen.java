@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
@@ -21,6 +22,7 @@ public class MapScreen extends AbstractScreen {
     public boolean isView = false;
     public boolean glow = false;
     public float alpha = 1.0f;
+    public SoundHandler.MusicData music;
 
     public MapNodeButton[] nodes = new MapNodeButton[13];
     public MapNodeButton entryNode;
@@ -121,7 +123,9 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        if(music == null || (!isView && !music.music.isPlaying())) {
+            music = SoundHandler.playMusic("MAP", true, true);
+        }
     }
 
     @Override

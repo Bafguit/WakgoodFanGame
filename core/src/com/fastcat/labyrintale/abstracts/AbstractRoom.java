@@ -2,7 +2,10 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.rooms.other.RestRoom;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
@@ -50,7 +53,38 @@ public class AbstractRoom {
     }
 
     public final void enter() {
-        entry();
+        if(this instanceof ShopRoom) System.out.println("SHOP!!!");
+        if(type == MYSTERY) {
+            int b = 10, s = 10, r = 10, e = 70;
+            if(AbstractLabyrinth.bleak >= 20) {
+                b = 35;
+                if(AbstractLabyrinth.bleak >= 40) {
+                    r = 0;
+                }
+            }
+            s = s + b;
+            r = r + s;
+            e = e + r;
+            int x = AbstractLabyrinth.mapRandom.random(e);
+            AbstractRoom temp;
+            if(x < b) {
+                //TODO 랜덤으로 변경
+                temp = GroupHandler.RoomGroup.normalGroup.get(AbstractLabyrinth.currentFloor.floorNum).get(0).cpy();
+                enemies = temp.enemies;
+            } else if (x < s) {
+                temp = new ShopRoom();
+            } else if (x < r) {
+                temp = new RestRoom();
+            } else {
+                temp = GroupHandler.RoomGroup.getNextEvent();
+                event = temp.event;
+            }
+            id = temp.id;
+            type = temp.type;
+            done();
+            battleDone = true;
+            AbstractLabyrinth.currentFloor.currentRoom = temp;
+        }
         if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
@@ -61,13 +95,11 @@ public class AbstractRoom {
             eventScreen = new EventScreen(event);
             fadeOutAndChangeScreen(eventScreen);
         } else if(type == SHOP) {
-            shopScreen = new ShopScreen();
+            ShopRoom r = new ShopRoom();
+            r.entry();
+            shopScreen = new ShopScreen(r);
             fadeOutAndChangeScreen(shopScreen);
         }
-    }
-
-    public void entry() {
-
     }
 
     public AbstractEnemy[] getEnemies() {

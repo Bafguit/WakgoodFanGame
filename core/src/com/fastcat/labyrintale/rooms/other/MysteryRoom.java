@@ -13,38 +13,4 @@ public class MysteryRoom extends AbstractRoom {
     public MysteryRoom() {
         super(ID, RoomType.MYSTERY);
     }
-
-    @Override
-    public void entry() {
-        int b = 10, s = 10, r = 10, e = 70;
-        if(AbstractLabyrinth.bleak >= 20) {
-            b = 35;
-            if(AbstractLabyrinth.bleak >= 40) {
-                r = 0;
-            }
-        }
-        s = s + b;
-        r = r + s;
-        e = e + r;
-        int x = AbstractLabyrinth.mapRandom.random(e);
-        AbstractRoom temp;
-        if(x < b) {
-            //TODO 랜덤으로 변경
-            temp = GroupHandler.RoomGroup.normalGroup.get(AbstractLabyrinth.currentFloor.floorNum).get(0).cpy();
-            enemies = temp.enemies;
-        } else if (x < s) {
-            temp = new ShopRoom();
-        } else if (x < r) {
-            temp = new RestRoom();
-        } else {
-            temp = GroupHandler.RoomGroup.getNextEvent();
-            event = temp.event;
-        }
-        id = temp.id;
-        type = temp.type;
-        done();
-        battleDone = true;
-        temp.entry();
-        AbstractLabyrinth.currentFloor.currentRoom = temp;
-    }
 }

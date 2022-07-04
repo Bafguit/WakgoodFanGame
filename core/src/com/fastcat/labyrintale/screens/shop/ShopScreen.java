@@ -17,31 +17,27 @@ public class ShopScreen extends AbstractScreen {
     public ShopItemButton roll;
     public PassShopButton pass;
 
-    public ShopScreen() {
+    public ShopScreen(ShopRoom room) {
         cType = ControlPanel.ControlType.BASIC;
-        AbstractRoom room = currentFloor.currentRoom;
         int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        if(room instanceof ShopRoom) {
-            ShopRoom shop = (ShopRoom) room;
-            for(int i = 0; i < 6; i++) {
-                ShopRoom.SkillItem s = shop.skills[i];
-                ShopItemButton b = new ShopItemButton(s);
-                b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.75f);
-                skills[i] = b;
+        for(int i = 0; i < 6; i++) {
+            ShopRoom.SkillItem s = room.skills[i];
+            ShopItemButton b = new ShopItemButton(s);
+            b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.75f);
+            skills[i] = b;
 
-                ShopItemCharIcon c = new ShopItemCharIcon(s);
-                c.setPosition(b.x + b.sWidth - c.sWidth, b.y);
-                icons[i] = c;
-            }
-            for(int i = 0; i < 5; i++) {
-                ShopItemButton b = new ShopItemButton(shop.items[i]);
-                b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.55f);
-                items[i] = b;
-            }
-            roll = new ShopItemButton(shop.roll);
-            roll.setPosition(w * 0.75f - roll.sWidth / 2, h * 0.55f);
-            pass = new PassShopButton();
+            ShopItemCharIcon c = new ShopItemCharIcon(s);
+            c.setPosition(b.x + b.sWidth - c.sWidth, b.y);
+            icons[i] = c;
         }
+        for(int i = 0; i < 5; i++) {
+            ShopItemButton b = new ShopItemButton(room.items[i]);
+            b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.55f);
+            items[i] = b;
+        }
+        roll = new ShopItemButton(room.roll);
+        roll.setPosition(w * 0.75f - roll.sWidth / 2, h * 0.55f);
+        pass = new PassShopButton();
     }
 
     @Override
