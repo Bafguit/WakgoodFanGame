@@ -123,7 +123,7 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        if(music == null || (!isView && !music.music.isPlaying())) {
+        if(music == null || (!isView && !music.clip.isActive())) {
             music = SoundHandler.playMusic("MAP", true, true);
         }
     }

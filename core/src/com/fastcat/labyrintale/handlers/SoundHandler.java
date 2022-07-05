@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Interpolation;
@@ -9,6 +8,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 
+import javax.sound.sampled.*;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class SoundHandler implements Disposable {
@@ -32,9 +33,9 @@ public class SoundHandler implements Disposable {
     }
 
     private static void generateMusic() {
-        music.put("BATTLE_1", new MusicData(getMusic("sound/bgm/battle_1.mp3")));
-        music.put("LOBBY", new MusicData(getMusic("sound/bgm/lobby.mp3")));
-        music.put("MAP", new MusicData(getMusic("sound/bgm/map.mp3")));
+        music.put("BATTLE_1", new MusicData(getClip("sound/bgm/battle_1.wav")));
+        music.put("LOBBY", new MusicData(getClip("sound/bgm/lobby.wav")));
+        music.put("MAP", new MusicData(getClip("sound/bgm/map.wav")));
     }
 
     private static Sound getSound(String url) {
@@ -42,9 +43,18 @@ public class SoundHandler implements Disposable {
         return Gdx.audio.newSound(fileHandle);
     }
 
-    private static Music getMusic(String url) {
-        FileHandle fileHandle = Gdx.files.internal(url);
-        return Gdx.audio.newMusic(fileHandle);
+    private static Clip getClip(String url) {
+        try {
+            FileHandle fileHandle = Gdx.files.internal(url);
+            AudioInputStream audioInputStream = AudioSystem
+                    .getAudioInputStream(fileHandle.file().getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            return clip;
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            Gdx.app.error("SoundHandler", "Error while loading music: " + url, e);
+        }
+        return null;
     }
 
     public static Sound playSfx(String key) {
@@ -58,18 +68,18 @@ public class SoundHandler implements Disposable {
     public static MusicData playMusic(String key, boolean isLoop, boolean fadeIn) {
         MusicData d = music.get(key);
         if(d != null) {
-            Music s = d.music;
-            s.setLooping(isLoop);
+            Clip s = d.clip;
+            s.loop(isLoop ? Clip.LOOP_CONTINUOUSLY : 0);
             if (fadeIn) {
                 d.isFadingOut = false;
                 d.fadeOutStartVolume = SettingHandler.setting.volumeBgm * 0.01f;
                 d.setFadeTime(3);
-                s.setVolume(0.0f);
+                d.setVolume(0.0f);
                 fadingMusic.add(d);
-            } else s.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
+            } else d.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
             musicPlaylist.add(d);
-            s.play();
-            System.out.println("KEY: " + key + " | VOLUME: " + s.getVolume() + " | STATUS: " + s.isPlaying());
+            s.start();
+            System.out.println("KEY: " + key + " | VOLUME: " + d.getVolume() + " | STATUS: " + s.isActive());
         }
         return d;
     }
@@ -79,7 +89,7 @@ public class SoundHandler implements Disposable {
         if(d != null) {
             d.isFadingOut = true;
             d.isFading = true;
-            d.fadeOutStartVolume = d.music.getVolume();
+            d.fadeOutStartVolume = d.getVolume();
             d.setFadeTime(3);
             fadingMusic.add(d);
         }
@@ -87,7 +97,7 @@ public class SoundHandler implements Disposable {
 
     public void update() {
         for(MusicData data : musicPlaylist) {
-            if(!data.isFading) data.music.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
+            if(!data.isFading) data.setVolume(SettingHandler.setting.volumeBgm * 0.01f);
         }
         for(MusicData data : fadingMusic) {
             if (!data.isFadingOut) {
@@ -117,10 +127,11 @@ public class SoundHandler implements Disposable {
         private float fadeOutStartVolume;
         public boolean isDone = false;
         public boolean stop = true;
-        public Music music;
+        public Clip clip;
+        public float volume;
 
-        public MusicData(Music music) {
-            this.music = music;
+        public MusicData(Clip clip) {
+            this.clip = clip;
         }
 
         public void setFadeTime(float time) {
@@ -133,7 +144,7 @@ public class SoundHandler implements Disposable {
                 fadeTimer = 0.0F;
                 fadingMusic.removeValue(this, false);
             }
-            music.setVolume(Interpolation.fade.apply(0.0F, fadeOutStartVolume, 1.0F - fadeTimer / fadeTime));
+            setVolume(Interpolation.fade.apply(0.0F, fadeOutStartVolume, 1.0F - fadeTimer / fadeTime));
         }
 
         public void updateFadeOut() {
@@ -141,18 +152,37 @@ public class SoundHandler implements Disposable {
             if (fadeTimer < 0.0F) {
                 fadeTimer = 0.0F;
                 isDone = true;
-                if(stop) music.stop();
-                else music.pause();
+                if(stop) clip.stop();
+                else {
+                    long pos = clip.getMicrosecondPosition();
+                    clip.stop();
+                    clip.setMicrosecondPosition(pos);
+                };
                 fadingMusic.removeValue(this, false);
                 musicPlaylist.removeValue(this, false);
             } else {
-                music.setVolume(Interpolation.fade.apply(fadeOutStartVolume, 0.0F, 1.0F - fadeTimer / fadeTime));
+                setVolume(Interpolation.fade.apply(fadeOutStartVolume, 0.0F, 1.0F - fadeTimer / fadeTime));
             }
+        }
+
+        public float getVolume() {
+            return volume;
+        }
+
+        public void setVolume(float volume) {
+            if (volume < 0f || volume > 1f) {
+                Gdx.app.error("SoundHandler", "Volume not valid: " + volume);
+                volume = Math.max(0, Math.min(volume, 1));
+            }
+            this.volume = volume;
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            System.out.println(20f * (float) Math.log10(volume) + "\t" + gainControl.getMinimum());
+            gainControl.setValue(Math.max(20f * (float) Math.log10(volume), gainControl.getMinimum()));
         }
 
         @Override
         public void dispose() {
-            music.dispose();
+            //music.dispose();
         }
     }
 }
