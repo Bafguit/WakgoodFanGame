@@ -44,7 +44,7 @@ public class LoadingScreen extends AbstractScreen {
                 Labyrintale.charSelectScreen.nextButton.disable();
                 Labyrintale.charSelectScreen.backButton.onHide();
                 Labyrintale.charSelectScreen.nextButton.onHide();
-                Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+                fadeOutAndChangeScreen(Labyrintale.mapScreen);
                 SaveHandler.save();
             } else {
                 Labyrintale.labyrinth = new AbstractLabyrinth(AbstractLabyrinth.RunType.SAVE);
@@ -55,7 +55,7 @@ public class LoadingScreen extends AbstractScreen {
                         battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
                         fadeOutAndChangeScreen(battleScreen);
                     } else {
-                        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+                        fadeOutAndChangeScreen(Labyrintale.mapScreen);
                     }
                 } else {
                     tr.enter();

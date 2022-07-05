@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
@@ -86,6 +87,8 @@ public class AbstractRoom {
             AbstractLabyrinth.currentFloor.currentRoom = temp;
         }
         if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
+            SoundHandler.fadeOutMusic("MAP");
+            SoundHandler.addMusic("BATTLE_1", true, true);
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
         } else if(type == AbstractRoom.RoomType.REST) {

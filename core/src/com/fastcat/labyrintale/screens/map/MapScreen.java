@@ -116,15 +116,16 @@ public class MapScreen extends AbstractScreen {
         }
     }
 
-    public void view() {
+    public static void view() {
         Labyrintale.mapScreen.isView = true;
         Labyrintale.addTempScreen(Labyrintale.mapScreen);
     }
 
     @Override
     public void show() {
-        if(music == null || (!isView && !music.clip.isActive())) {
-            music = SoundHandler.playMusic("MAP", true, true);
+        if(music == null || (!isView && !music.music.isPlaying())) {
+            music = SoundHandler.addMusic("MAP", true, true);
+            music.stop = false;
         }
     }
 

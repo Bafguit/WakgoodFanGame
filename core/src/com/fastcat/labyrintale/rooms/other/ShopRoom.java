@@ -27,7 +27,6 @@ public class ShopRoom extends AbstractRoom {
     }
 
     public void entry() {
-        System.out.println("SHOP!");
         generateSkills();
         generateItems();
         roll = new RollItem(this);

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.*;
 import com.badlogic.gdx.InputAdapter;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.screens.map.MapScreen;
 
 public class InputHandler {
 
@@ -72,7 +73,7 @@ public class InputHandler {
         }
 
         if(map && Labyrintale.mapScreen != null && Labyrintale.getCurScreen().type != AbstractScreen.ScreenType.MAP) {
-            Labyrintale.mapScreen.view();
+            MapScreen.view();
             map = false;
         }
     }

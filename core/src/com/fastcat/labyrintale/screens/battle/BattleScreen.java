@@ -50,7 +50,6 @@ public class BattleScreen extends AbstractScreen {
     }
 
     public BattleScreen(BattleType type, boolean isLoad) {
-        if(!isLoad) SoundHandler.fadeOutMusic("MAP");
         cType = ControlPanel.ControlType.BATTLE;
         cPanel.battlePanel = new BattlePanel();
         this.type = type;
@@ -292,7 +291,7 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        SoundHandler.playMusic("BATTLE_1", true, true);
+
     }
 
     @Override
