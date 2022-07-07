@@ -1,13 +1,13 @@
 
 skeleton.png
-size: 576,1197
+size: 334,482
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-burger_sd_t
+lilpa_sd_t
   rotate: false
   xy: 2, 2
-  size: 572, 1193
-  orig: 1280, 1280
-  offset: 373, 20
+  size: 330, 478
+  orig: 640, 640
+  offset: 140, 39
   index: -1

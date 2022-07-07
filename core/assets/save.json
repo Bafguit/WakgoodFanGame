@@ -1,15 +1,15 @@
 {
-  "date" : "2022_07_07_12_39_44",
+  "date" : "2022_07_08_01_01_02",
   "random" : {
-    "seed" : "97926EJ9",
-    "seedLong" : 5755575054697457,
-    "publicRandom" : 54,
-    "skillRandom" : 79,
-    "itemRandom" : 170,
-    "mapRandom" : 158,
+    "seed" : "H254SE8H",
+    "seedLong" : 7250535283695672,
+    "publicRandom" : 14,
+    "skillRandom" : 0,
+    "itemRandom" : 0,
+    "mapRandom" : 161,
     "monsterRandom" : 0,
     "eventRandom" : 0,
-    "shopRandom" : 28
+    "shopRandom" : 0
   },
   "restriction" : {
     "GRW" : 0,
@@ -26,13 +26,13 @@
   "itemAble" : 0,
   "selection" : 3,
   "maxEnergy" : 3,
-  "gold" : 711,
+  "gold" : 1000,
   "bleak" : 0,
   "bleakMin" : 0,
   "advisor" : {
-    "cls" : "HAKU",
+    "cls" : "SECRET",
     "skill" : {
-      "id" : "haku",
+      "id" : "secret",
       "usedOnly" : false,
       "upgradeCount" : 0
     }
@@ -57,52 +57,52 @@
     "slot" : [ 0, 0, 0 ],
     "index" : 0,
     "maxHealth" : 26,
-    "health" : 23
+    "health" : 26
   }, {
-    "id" : "burger",
-    "item" : [ "SafetyHat", "BurgerHat" ],
+    "id" : "viichan",
+    "item" : [ "OldSword", "FabricMail" ],
     "deck" : [ {
-      "id" : "HolyLight",
+      "id" : "Strike",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Strong",
+      "id" : "Barrier",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Protect",
+      "id" : "DiaSword",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
     "slot" : [ 0, 0, 0 ],
     "index" : 1,
-    "maxHealth" : 37,
-    "health" : 37
+    "maxHealth" : 23,
+    "health" : 23
   }, {
     "id" : "lilpa",
     "item" : [ "Item1", "Item1" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
-      "upgradeCount" : 3
+      "upgradeCount" : 0
     }, {
       "id" : "Barrier",
       "usedOnly" : false,
-      "upgradeCount" : 1
+      "upgradeCount" : 0
     }, {
       "id" : "Lilpaa",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
-    "slot" : [ 3, 1, 0 ],
+    "slot" : [ 0, 0, 0 ],
     "index" : 2,
     "maxHealth" : 22,
     "health" : 22
   }, {
-    "id" : "jururu",
-    "item" : [ "Bible", "BunnyHat" ],
+    "id" : "gosegu",
+    "item" : [ "ToxicFlask", "CrossPin" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -112,15 +112,15 @@
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Scorn",
+      "id" : "BioCloud",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "isDead" : false,
     "slot" : [ 0, 0, 0 ],
     "index" : 3,
-    "maxHealth" : 24,
-    "health" : 24
+    "maxHealth" : 21,
+    "health" : 21
   } ],
   "currentFloor" : 1,
   "floors" : [ {
@@ -132,18 +132,18 @@
     "currentWay" : {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Door",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -177,11 +177,20 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Civilization",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
-          "battleDone" : true,
-          "isDone" : true
+          "battleDone" : false,
+          "isDone" : false
         },
         "must" : true,
         "prob" : 1
@@ -194,17 +203,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Civilization",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
@@ -221,28 +221,6 @@
         "room" : {
           "id" : "Weak2",
           "battleDone" : false,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : true
-    }, {
-      "type" : "NORMAL",
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : true,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
@@ -257,10 +235,50 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Civilization",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : false
     }, {
       "type" : "ELITE",
       "choices" : [ {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "TestElite",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "DETOUR",
         "room" : {
           "id" : "Weak1",
@@ -269,20 +287,20 @@
         },
         "must" : false,
         "prob" : 50
-      }, {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "TestElite",
-          "battleDone" : true,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Door",
@@ -300,17 +318,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : true,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "SHOP",
       "choices" : [ {
@@ -318,27 +327,27 @@
         "room" : {
           "id" : "Shop",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : true
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Door",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -392,6 +401,15 @@
         "type" : "LOOK",
         "room" : {
           "id" : "Door",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -460,7 +478,7 @@
     "canBoss" : false,
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 8
+    "num" : 2
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -484,15 +502,6 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Civilization",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
@@ -505,6 +514,15 @@
         "type" : "REST",
         "room" : {
           "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
@@ -524,15 +542,6 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
@@ -546,18 +555,18 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Civilization",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
@@ -577,15 +586,6 @@
     }, {
       "type" : "ELITE",
       "choices" : [ {
-        "type" : "DETOUR",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : false,
-        "prob" : 50
-      }, {
         "type" : "ELITE",
         "room" : {
           "id" : "TestElite",
@@ -594,6 +594,15 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "DETOUR",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : false,
+        "prob" : 50
       } ],
       "isDone" : false
     }, {
@@ -611,15 +620,6 @@
         "type" : "LOOK",
         "room" : {
           "id" : "Door",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -643,15 +643,6 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
@@ -661,9 +652,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Door",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -713,23 +704,14 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
       "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Door",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -739,6 +721,15 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -800,27 +791,18 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Civilization",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
@@ -831,9 +813,9 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Civilization",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -849,9 +831,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
@@ -862,15 +844,6 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Civilization",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
@@ -880,9 +853,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Civilization",
           "battleDone" : false,
           "isDone" : false
         },
@@ -893,15 +866,6 @@
     }, {
       "type" : "ELITE",
       "choices" : [ {
-        "type" : "DETOUR",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : false,
-        "prob" : 50
-      }, {
         "type" : "ELITE",
         "room" : {
           "id" : "TestElite",
@@ -910,32 +874,32 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "DETOUR",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : false,
+        "prob" : 50
       } ],
       "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Door",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -959,9 +923,9 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "REST",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Rest",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -977,9 +941,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "REST",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1021,18 +985,18 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Door",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1043,18 +1007,18 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
-        "type" : "REST",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Rest",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1156,18 +1120,18 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "REST",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Rest",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1178,6 +1142,15 @@
     }, {
       "type" : "NORMAL",
       "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Civilization",
@@ -1200,15 +1173,6 @@
     }, {
       "type" : "ELITE",
       "choices" : [ {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "TestElite",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "DETOUR",
         "room" : {
           "id" : "Weak1",
@@ -1217,11 +1181,29 @@
         },
         "must" : false,
         "prob" : 50
+      }, {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "TestElite",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
       } ],
       "isDone" : false
     }, {
       "type" : "NORMAL",
       "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Door",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "REST",
         "room" : {
           "id" : "Rest",
@@ -1234,15 +1216,6 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1275,18 +1248,18 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Door",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Door",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1297,15 +1270,6 @@
     }, {
       "type" : "ELITE",
       "choices" : [ {
-        "type" : "DETOUR",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : false,
-        "prob" : 50
-      }, {
         "type" : "ELITE",
         "room" : {
           "id" : "TestElite",
@@ -1314,6 +1278,15 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "DETOUR",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : false,
+        "prob" : 50
       } ],
       "isDone" : false
     }, {
@@ -1322,37 +1295,6 @@
         "type" : "LOOK",
         "room" : {
           "id" : "Door",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1368,9 +1310,31 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Door",
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },

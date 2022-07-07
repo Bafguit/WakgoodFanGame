@@ -27,7 +27,6 @@ public abstract class AbstractEffect implements Disposable {
         }
         renderEffect(sb);
         TickDuration();
-        if(isDone) dispose();
     }
 
     protected void TickDuration() {

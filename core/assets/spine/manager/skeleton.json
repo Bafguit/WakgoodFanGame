@@ -1,1 +1,35 @@
-{"skeleton":{"hash":"tnOwEK0wS89yrNUB2hXQ6xSnjq8","spine":"3.8.75","x":-320,"y":-50,"width":640,"height":640,"images":"../spine/","audio":""},"bones":[{"name":"root"}],"slots":[{"name":"burger_sd_t","bone":"root","attachment":"burger_sd_t"}],"skins":[{"name":"default","attachments":{"burger_sd_t":{"burger_sd_t":{"y":270,"scaleX":0.5,"scaleY":0.5,"width":1280,"height":1280}}}}],"animations":{"attack":{},"die":{},"hit":{},"idle":{},"skill":{}}}
+{
+"skeleton": {
+	"hash": "8s13DHB2n1wLQDYY3x8eGZI/BnM",
+	"spine": "3.8.75",
+	"x": -320,
+	"y": -50,
+	"width": 640,
+	"height": 640,
+	"images": "../../sd/roent/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "gosegu_sd_t", "bone": "root", "attachment": "roent_sd_t" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"gosegu_sd_t": {
+				"roent_sd_t": { "y": 270, "width": 640, "height": 640 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {},
+	"die": {},
+	"hit": {},
+	"idle": {},
+	"skill": {}
+}
+}

@@ -15,8 +15,6 @@ public class SettingHandler {
 
     public static FileHandle settingFile = Gdx.files.local("setting.json");
 
-
-
     public static void initialize() { //TODO 설정 파일에서 불러오기
         setting = new SettingData();
         boolean hasSave = settingFile.exists();
@@ -69,10 +67,9 @@ public class SettingHandler {
             }
 
             //화면 모드 설정
-            setting.screenMode = 1;
-            Graphics.DisplayMode display = Gdx.graphics.getDisplayMode(monitor);
-            setting.width = display.width;
-            setting.height = display.height;
+            setting.screenMode = 0;
+            setting.width = 1600;
+            setting.height = 900;
 
             //볼륨 설정
             setting.volumeBgm = 100;
