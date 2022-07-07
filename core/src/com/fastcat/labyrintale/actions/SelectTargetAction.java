@@ -9,20 +9,19 @@ import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 public class SelectTargetAction extends AbstractAction implements GetSelectedTarget {
 
     public GetSelectedTarget gets;
-    public AbstractSkill.SkillTarget tar;
 
-    public SelectTargetAction(GetSelectedTarget gets, AbstractSkill.SkillTarget target) {
+    public SelectTargetAction(GetSelectedTarget gets) {
         super(null, 1);
         this.gets = gets;
-        this.tar = target;
     }
 
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            Labyrintale.battleScreen.selectTarget(this, tar);
-        } else {
-            if(!isDone) duration = 10000;
+            isDone = !gets.setTarget();
+            if(!isDone) Labyrintale.battleScreen.selectTarget(this);
+        } else if(!isDone) {
+            duration = 10000;
         }
     }
 
@@ -31,5 +30,15 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
         isDone = true;
         Labyrintale.battleScreen.isSelecting = false;
         gets.onTargetSelected(e);
+        setTarget();
+    }
+
+    @Override
+    public boolean setTarget() {
+        for(int i = 0; i < 4; i++) {
+            Labyrintale.battleScreen.players[i].isTarget = false;
+            Labyrintale.battleScreen.enemies[i].isTarget = false;
+        }
+        return false;
     }
 }

@@ -11,7 +11,7 @@ public class NegativeSkill extends AbstractSkill {
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
     private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
-    private static final int VALUE = 2;
+    private static final int VALUE = 1;
 
     public NegativeSkill() {
         super(ID, TYPE, RARITY, TARGET);

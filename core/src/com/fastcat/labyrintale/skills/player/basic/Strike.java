@@ -12,7 +12,7 @@ public class Strike extends AbstractSkill {
     private static final String ID = "Strike";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 4;
 
     public Strike(AbstractEntity e) {
@@ -22,12 +22,7 @@ public class Strike extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this, target));
-    }
-
-    @Override
-    public void onTargetSelected(AbstractEntity e) {
-        ActionHandler.top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT));
     }
 
     @Override

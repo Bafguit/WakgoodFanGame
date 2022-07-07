@@ -520,9 +520,9 @@ public class GroupHandler {
             t.add(new Provoke(null));
             t.add(new RustyShard(null));
             t.add(new FlameFlask(null));
-            t.add(new Test15(null));
-            t.add(new Test16(null));
-            t.add(new Test17(null));
+            t.add(new Poison(null));
+            t.add(new HealingPotion(null));
+            t.add(new UpgradePotion(null));
             t.add(new Test18(null));
             playerSort.put(PlayerClass.GOSEGU, t);
         }
@@ -531,10 +531,10 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             t.add(new EyeSting(null));
             t.add(new Pruning(null));
-            t.add(new Test23(null));
-            t.add(new Test24(null));
+            t.add(new EnduringPotion(null));
+            t.add(new ThrowAxe(null));
             t.add(new Charge(null));
-            t.add(new Test26(null));
+            t.add(new Intimidate(null));
             t.add(new Test27(null));
             t.add(new Test28(null));
             playerSort.put(PlayerClass.INE, t);
@@ -585,10 +585,10 @@ public class GroupHandler {
             t.add(new DiaSword(null));
             t.add(new ChainMail(null));
             t.add(new Overpower(null));
-            t.add(new Test64(null));
-            t.add(new Test65(null));
-            t.add(new Test66(null));
-            t.add(new Test67(null));
+            t.add(new Insight(null));
+            t.add(new Cross(null));
+            t.add(new Stab(null));
+            t.add(new Onslaught(null));
             t.add(new Test68(null));
             playerSort.put(PlayerClass.VIICHAN, t);
         }
@@ -597,12 +597,12 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             t.add(new Boost(null));
             t.add(new Encourage(null));
-            t.add(new Test73(null));
-            t.add(new Test74(null));
+            t.add(new Test78(null));
+            t.add(new ShieldPush(null));
             t.add(new Test75(null));
             t.add(new Test76(null));
             t.add(new Test77(null));
-            t.add(new Test78(null));
+            t.add(new Guard(null));
             playerSort.put(PlayerClass.WAK, t);
         }
 

@@ -20,6 +20,7 @@ public class PlayerView extends AbstractUI {
     public AbstractPlayer player;
     public boolean isLooking = false;
     public boolean isOnLock = false;
+    public boolean isTarget = false;
 
     public PlayerView(AbstractPlayer cls) {
         super(FileHandler.ui.get("ENTITY_POINT"));
@@ -32,10 +33,9 @@ public class PlayerView extends AbstractUI {
     @Override
     protected void updateButton() {
         if(battleScreen.isSelecting) {
-            boolean can = battleScreen.target == AbstractSkill.SkillTarget.PLAYER;
             isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
-            showImg = isLooking || (isOnLock) || (over && can);
-            clickable = player.isAlive() && can;
+            showImg = isLooking || (isOnLock) || (over && isTarget);
+            clickable = player.isAlive() && isTarget;
         } else {
             isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
             showImg = isLooking || (isOnLock) || over;

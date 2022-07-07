@@ -490,8 +490,14 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         return null;
     }
 
+    @Override
     public void onTargetSelected(AbstractEntity target) {
 
+    }
+
+    @Override
+    public boolean setTarget() {
+        return false;
     }
 
     public enum SkillType {

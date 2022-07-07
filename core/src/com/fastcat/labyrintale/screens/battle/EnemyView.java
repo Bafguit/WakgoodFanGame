@@ -15,6 +15,7 @@ public class EnemyView extends AbstractUI {
 
     public AbstractEnemy enemy;
     public boolean isLooking = false;
+    public boolean isTarget = false;
 
     public EnemyView() {
         this(null);
@@ -30,8 +31,7 @@ public class EnemyView extends AbstractUI {
     @Override
     protected void updateButton() {
         if(battleScreen.isSelecting) {
-            boolean can = battleScreen.target == AbstractSkill.SkillTarget.ENEMY;
-            overable = clickable = enemy.isAlive() && can;
+            overable = clickable = enemy.isAlive() && isTarget;
             showImg = over && clickable;
         } else {
             overable = clickable = false;

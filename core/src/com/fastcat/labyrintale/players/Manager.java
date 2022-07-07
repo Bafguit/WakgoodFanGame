@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.manager.Test51;
-import com.fastcat.labyrintale.skills.player.wak.Test73;
+import com.fastcat.labyrintale.skills.player.wak.Test78;
 
 import static com.badlogic.gdx.graphics.Color.PINK;
 
@@ -28,7 +28,7 @@ public class Manager extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new Test73(this));
+        temp.add(new Test78(this));
         temp.add(new Test51(this));
         return temp;
     }

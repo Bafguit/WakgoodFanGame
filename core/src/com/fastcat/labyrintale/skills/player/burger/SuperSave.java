@@ -1,10 +1,12 @@
 package com.fastcat.labyrintale.skills.player.burger;
 
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.SelectTargetAction;
+import com.fastcat.labyrintale.screens.battle.PlayerView;
 
 public class SuperSave extends AbstractSkill {
 
@@ -22,12 +24,24 @@ public class SuperSave extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this, target));
+        bot(new SelectTargetAction(this));
     }
 
     @Override
     public void onTargetSelected(AbstractEntity e) {
         top(new BlockAction(this.owner, e, spell));
+    }
+
+    @Override
+    public boolean setTarget() {
+        boolean can = false;
+        for(PlayerView pv : Labyrintale.battleScreen.players) {
+            if(pv.player.isAlive()) {
+                pv.isTarget = true;
+                can = true;
+            }
+        }
+        return can;
     }
 
     @Override

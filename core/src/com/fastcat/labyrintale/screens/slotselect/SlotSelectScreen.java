@@ -76,7 +76,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
     @Override
     public void slotSelected(AbstractPlayer player, int index) {
         if(type == SlotType.UPGRADE) {
-            player.slot[index]++;
+            player.upgradeSlot(index, 1);
         }
         gets.slotSelected(player, index);
     }

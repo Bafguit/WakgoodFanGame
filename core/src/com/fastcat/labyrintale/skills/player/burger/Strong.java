@@ -22,8 +22,8 @@ public class Strong extends AbstractSkill {
 
     @Override
     public void use() {
-        top(new BlockAction(owner, owner, spell));
-        top(new ApplyStatusAction(new FixedStatus(owner), owner, target, true));
+        bot(new BlockAction(owner, owner, spell));
+        bot(new ApplyStatusAction(new FixedStatus(owner), owner, target, true));
     }
 
     @Override

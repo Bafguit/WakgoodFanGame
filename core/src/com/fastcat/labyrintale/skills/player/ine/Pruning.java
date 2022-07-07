@@ -26,7 +26,7 @@ public class Pruning extends AbstractSkill {
     public void use() {
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
         AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(target).get(0);
-        bot(new MoveAction(e, 3, 0.2f));
+        bot(new MoveAction(e, false, 0.2f));
     }
 
     @Override

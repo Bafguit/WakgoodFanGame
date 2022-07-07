@@ -2,25 +2,25 @@ package com.fastcat.labyrintale.skills.player.wak;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class Test78 extends AbstractSkill {
 
     private static final String ID = "Test78";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.GOLD;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
+    private static final int VALUE = 30;
 
     public Test78(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseAttack(VALUE);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        ActionHandler.bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHTNING));
     }
 
     @Override

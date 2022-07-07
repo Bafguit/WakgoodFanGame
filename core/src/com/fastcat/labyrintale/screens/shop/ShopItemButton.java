@@ -27,7 +27,7 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && !item.isDone) {
+        if(enabled) {
             boolean can = item.canBuy();
             if(!can) sb.setColor(Color.DARK_GRAY);
             else if (!over) sb.setColor(Color.LIGHT_GRAY);
@@ -41,9 +41,8 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        clickable = !item.isDone && item.canBuy();
-        overable = !item.isDone;
-        if(over) {
+        clickable = item.canBuy();
+        if(!item.isDone && over) {
             item.setPanel();
         }
     }

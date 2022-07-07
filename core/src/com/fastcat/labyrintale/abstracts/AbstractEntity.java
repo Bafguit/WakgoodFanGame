@@ -13,10 +13,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
 import com.fastcat.labyrintale.actions.MoveAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
-import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
-import com.fastcat.labyrintale.effects.UpDamageEffect;
-import com.fastcat.labyrintale.effects.DieEffect;
-import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.effects.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
@@ -189,7 +186,8 @@ public abstract class AbstractEntity implements Cloneable {
             if (this.status[i] != null) {
                 AbstractStatus temp = this.status[i];
                 if(temp.id.equals(s.id)) {
-                    if (temp.hasAmount) {
+                    String text = temp.name;
+                    if (temp.hasAmount && amount != 0) {
                         temp.amount += amount;
                         if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
                             temp.onRemove();
@@ -199,9 +197,11 @@ public abstract class AbstractEntity implements Cloneable {
                             }
                             this.status[3] = null;
                         }
+                        text += amount > 0 ? "+" + amount : amount;
                     }
                     temp.onApply();
                     temp.flash(this);
+                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
                     done = true;
                     break;
                 }
@@ -210,9 +210,11 @@ public abstract class AbstractEntity implements Cloneable {
         if(!done) {
             for (int i = 0; i < 4; i++) {
                 if (this.status[i] == null) {
+                    String text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
                     this.status[i] = s;
                     s.onApply();
                     s.flash(this);
+                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
                     done = true;
                     break;
                 }
@@ -221,9 +223,11 @@ public abstract class AbstractEntity implements Cloneable {
         if(!done) {
             this.status[3].onRemove();
             System.arraycopy(this.status, 0, this.status, 1, 3);
+            String text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
             this.status[0] = s;
             s.onApply();
             s.flash(this);
+            EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
         }
     }
 
@@ -470,6 +474,13 @@ public abstract class AbstractEntity implements Cloneable {
         deck.set(index, skill);
     }
 
+    public void upgradeSlot(int index, int amount) {
+        slot[index] += amount;
+        for(int i = 0; i < amount; i++) {
+            deck.get(index).upgrade();
+        }
+    }
+
     public void defineIndex(int i) {
         index = i;
         tempIndex = i;
@@ -487,6 +498,15 @@ public abstract class AbstractEntity implements Cloneable {
         img = i;
         imgBig = ib;
         this.bg = bg;
+    }
+
+    public boolean hasStatus(String id) {
+        if(status != null) {
+            for (AbstractStatus s : status) {
+                if(s != null && s.id.equals(id)) return true;
+            }
+        }
+        return false;
     }
 
     @Override
