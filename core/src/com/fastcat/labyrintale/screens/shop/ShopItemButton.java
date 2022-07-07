@@ -27,7 +27,7 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if(enabled && !item.isDone) {
             boolean can = item.canBuy();
             if(!can) sb.setColor(Color.DARK_GRAY);
             else if (!over) sb.setColor(Color.LIGHT_GRAY);

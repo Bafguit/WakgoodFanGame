@@ -37,6 +37,6 @@ public class UpDamageEffect extends AbstractEffect {
 
     @Override
     public void dispose() {
-        text.dispose();
+        text.fontData.dispose();
     }
 }

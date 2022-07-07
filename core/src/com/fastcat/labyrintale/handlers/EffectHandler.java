@@ -28,6 +28,7 @@ public class EffectHandler {
                 e.render(sb);
                 if(e.isDone){
                     e.onRemove();
+                    e.dispose();
                     it.remove();
                 }
             }
@@ -41,6 +42,7 @@ public class EffectHandler {
     public void removeAll() {
         for(AbstractEffect e : effectList) {
             e.onRemove();
+            e.dispose();
         }
         effectList.clear();
     }
