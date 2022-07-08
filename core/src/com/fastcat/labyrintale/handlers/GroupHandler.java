@@ -388,7 +388,7 @@ public class GroupHandler {
             for(AbstractItem s : raritySort.get(rarity)) {
                 boolean can = false;
                 for(AbstractPlayer p : players) {
-                    can = p.isAlive() && !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                    can = !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
                 }
                 if(can) b.add(s);
             }
@@ -405,9 +405,10 @@ public class GroupHandler {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
             for(AbstractItem s : normalItem) {
-                boolean can = false;
+                boolean can = true;
                 for(AbstractPlayer p : players) {
-                    can = p.isAlive() && !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                    can = !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                    if(!can) break;
                 }
                 if(can) b.add(s);
             }

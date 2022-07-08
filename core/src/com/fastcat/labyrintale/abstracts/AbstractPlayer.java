@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
+import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.MoveLeft;
@@ -50,7 +51,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     public void revive() {
         isDead = false;
+        isDie = false;
         health = 1;
+        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
+        e.setTimeScale(1.0f);
     }
 
     public void gainItem(AbstractItem i, int index) {
