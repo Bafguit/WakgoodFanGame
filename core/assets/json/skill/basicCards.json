@@ -1,23 +1,11 @@
 {
   "Strike": {
     "NAME": "타격",
-    "DESC": "피해를 {A} 줍니다."
+    "DESC": "앞의 적에게 피해를 {A} 줍니다."
   },
   "Barrier": {
     "NAME": "보호막",
     "DESC": "보호막을 {S} 얻습니다."
-  },
-  "Light": {
-    "NAME": "빛",
-    "DESC": "피해를 {A} 줍니다."
-  },
-  "Heal": {
-    "NAME": "힐",
-    "DESC": "체력을 {V} 회복합니다."
-  },
-  "Spike": {
-    "NAME": "깨시",
-    "DESC": "&y<출혈>을 {V} 부여합니다."
   },
   "MoveLeft": {
     "NAME": "후퇴",

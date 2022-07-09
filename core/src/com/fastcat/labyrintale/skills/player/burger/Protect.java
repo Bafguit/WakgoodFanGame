@@ -23,11 +23,11 @@ public class Protect extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this));
+
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity e) {
+    public void onTarget(AbstractEntity e) {
         Array<AbstractEntity> temp = new Array<>();
         temp.add(owner);
         temp.add(e);

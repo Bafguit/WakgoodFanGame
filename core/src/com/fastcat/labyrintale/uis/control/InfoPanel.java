@@ -32,8 +32,6 @@ public class InfoPanel extends AbstractUI {
     public float nx, ny, nw, nh, dx, dy, dw, dh;
     public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
-    private AbstractSkill.SkillTarget target;
-
     public InfoPanel() {
         super(FileHandler.ui.get("BORDER_B"));
         clickable = false;
@@ -68,7 +66,6 @@ public class InfoPanel extends AbstractUI {
         type = InfoType.COLOR;
         skill = null;
         status = null;
-        target = null;
         name = "";
         desc = "";
         show = false;
@@ -100,11 +97,11 @@ public class InfoPanel extends AbstractUI {
                     }
                 }
             }
-        }
 
-        if(renderIcon) {
-            for (int i = 0; i < 4; i++) {
-                pIcons[i].render(sb);
+            if(renderIcon) {
+                for (int i = 0; i < 4; i++) {
+                    pIcons[i].render(sb);
+                }
             }
         }
     }
@@ -115,7 +112,6 @@ public class InfoPanel extends AbstractUI {
             desc = s.desc;
             type = InfoType.SKILL;
             skill = s;
-            target = skill.target;
             show = true;
         }
     }
@@ -126,7 +122,6 @@ public class InfoPanel extends AbstractUI {
             desc = s.getDesc();
             type = InfoType.STATUS;
             status = s;
-            target = status.target;
             show = true;
         }
     }
@@ -137,7 +132,6 @@ public class InfoPanel extends AbstractUI {
             desc = s.desc;
             type = ITEM;
             item = s;
-            target = null;
             show = true;
         }
     }
@@ -148,7 +142,6 @@ public class InfoPanel extends AbstractUI {
             desc = p.desc;
             type = PLAYER;
             player = p;
-            target = null;
             show = true;
         }
     }

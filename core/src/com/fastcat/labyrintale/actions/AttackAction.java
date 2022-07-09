@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class AttackAction extends AbstractAction {
 
-    public AbstractEntity monoTarget;
     public AttackType effect;
     public AbstractEntity.DamageInfo info;
 

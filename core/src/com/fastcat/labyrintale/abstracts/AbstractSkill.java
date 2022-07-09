@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
+import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
@@ -15,6 +17,8 @@ import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
+import static com.fastcat.labyrintale.handlers.ActionHandler.bot;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -71,40 +75,42 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public void setBaseAttack(int i) {
-        attack = i;
-        baseAttack = attack;
+        baseAttack = i;
+        attack = baseAttack;
     }
 
     public void setBaseSpell(int i) {
-        spell = i;
-        baseSpell = spell;
+        baseSpell = i;
+        spell = baseSpell;
     }
 
     public void setBaseValue(int i) {
-        value = i;
-        baseValue = value;
+        baseValue = i;
+        value = baseValue;
     }
 
     public void setBaseAttack(int i, int up) {
-        attack = i;
-        baseAttack = attack;
+        baseAttack = i;
+        attack = baseAttack;
         upAttack = up;
     }
 
     public void setBaseSpell(int i, int up) {
-        spell = i;
-        baseSpell = spell;
+        baseSpell = i;
+        spell = baseSpell;
         upSpell = up;
     }
 
     public void setBaseValue(int i, int up) {
-        value = i;
-        baseValue = value;
+        baseValue = i;
+        value = baseValue;
         upValue = up;
     }
 
     public void update() {
-
+        attack = calculateAttack(baseAttack);
+        spell = calculateSpell(baseSpell);
+        value = calculateValue(baseValue);
     }
 
     public void render(SpriteBatch sb) {
@@ -119,6 +125,18 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public final void flash(AbstractEntity e) {
         //TODO 소리 추가
         EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
+    }
+
+    public int calculateAttack(int a) {
+        return a;
+    }
+
+    public int calculateSpell(int s) {
+        return s;
+    }
+
+    public int calculateValue(int v) {
+        return v;
     }
 
     public String getKeyValue(String key) {
@@ -136,11 +154,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     }
                     if(owner.isPlayer) {
                         for (AbstractItem m : owner.item) {
-                            if (m != null) a *= m.showAttackMultiply(a);
+                            if (m != null) a *= m.attackMultiply(a);
                         }
                     }
                     for (AbstractStatus s : owner.status) {
-                        if (s != null) a *= s.showAttackMultiply(a);
+                        if (s != null) a *= s.attackMultiply(a);
                     }
                 }
                 return getHexColor(valueColor(a, baseAttack)) + a;
@@ -157,11 +175,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     }
                     if(owner.isPlayer) {
                         for (AbstractItem m : owner.item) {
-                            if (m != null) p *= m.showSpellMultiply(p);
+                            if (m != null) p *= m.spellMultiply(p);
                         }
                     }
                     for (AbstractStatus s : owner.status) {
-                        if (s != null) p *= s.showSpellMultiply(p);
+                        if (s != null) p *= s.spellMultiply(p);
                     }
                 }
                 return getHexColor(valueColor(p, baseSpell)) + p;
@@ -183,114 +201,117 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public static Array<AbstractEntity> getTargets(AbstractEntity owner, SkillTarget target) {
-        if(target == SkillTarget.SELF) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(owner);
-            return temp;
-        } else if(target == SkillTarget.RIGHT) {
-            Array<AbstractEntity> temp = new Array<>();
-            if(owner.isPlayer) {
-                if(owner.tempIndex > 0) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
-                    if(tp.isAlive()) temp.add(tp);
+        if(owner != null) {
+            if (target == SkillTarget.SELF) {
+                Array<AbstractEntity> temp = new Array<>();
+                temp.add(owner);
+                return temp;
+            } else if (target == SkillTarget.RIGHT) {
+                Array<AbstractEntity> temp = new Array<>();
+                if (owner.isPlayer) {
+                    if (owner.tempIndex > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
                 }
-            } else {
-                if(owner.tempIndex < 3) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
-                    if(te.isAlive()) temp.add(te);
+                return temp;
+            } else if (target == SkillTarget.LEFT) {
+                Array<AbstractEntity> temp = new Array<>();
+                if (owner.isPlayer) {
+                    if (owner.tempIndex < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
                 }
+                return temp;
+            } else if (target == SkillTarget.BOTH) {
+                Array<AbstractEntity> temp = new Array<>();
+                if (owner.isPlayer) {
+                    if (owner.tempIndex > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                    if (owner.tempIndex < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
+                    if (owner.tempIndex > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
+                }
+                return temp;
+            } else if (target == SkillTarget.SELF_RIGHT) {
+                Array<AbstractEntity> temp = new Array<>();
+                temp.add(owner);
+                if (owner.isPlayer) {
+                    if (owner.tempIndex > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
+                }
+                return temp;
+            } else if (target == SkillTarget.SELF_LEFT) {
+                Array<AbstractEntity> temp = new Array<>();
+                temp.add(owner);
+                if (owner.isPlayer) {
+                    if (owner.tempIndex < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
+                }
+                return temp;
+            } else if (target == SkillTarget.SELF_BOTH) {
+                Array<AbstractEntity> temp = new Array<>();
+                temp.add(owner);
+                if (owner.isPlayer) {
+                    if (owner.tempIndex > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                    if (owner.tempIndex < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                } else {
+                    if (owner.tempIndex < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                        if (tp.isAlive()) temp.add(tp);
+                    }
+                    if (owner.tempIndex > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                        if (te.isAlive()) temp.add(te);
+                    }
+                }
+                return temp;
             }
-            return temp;
-        } else if(target == SkillTarget.LEFT) {
-            Array<AbstractEntity> temp = new Array<>();
-            if(owner.isPlayer) {
-                if(owner.tempIndex < 3) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-            } else {
-                if(owner.tempIndex > 0) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-            }
-            return temp;
-        } else if(target == SkillTarget.BOTH) {
-            Array<AbstractEntity> temp = new Array<>();
-            if(owner.isPlayer) {
-                if(owner.tempIndex > 0) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-                if(owner.tempIndex < 3) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-            } else {
-                if(owner.tempIndex < 3) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-                if(owner.tempIndex > 0) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-            }
-            return temp;
-        } else if(target == SkillTarget.SELF_RIGHT) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(owner);
-            if(owner.isPlayer) {
-                if(owner.tempIndex > 0) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-            } else {
-                if(owner.tempIndex < 3) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-            }
-            return temp;
-        } else if(target == SkillTarget.SELF_LEFT) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(owner);
-            if(owner.isPlayer) {
-                if(owner.tempIndex < 3) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-            } else {
-                if(owner.tempIndex > 0) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-            }
-            return temp;
-        } else if(target == SkillTarget.SELF_BOTH) {
-            Array<AbstractEntity> temp = new Array<>();
-            temp.add(owner);
-            if(owner.isPlayer) {
-                if(owner.tempIndex > 0) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-                if(owner.tempIndex < 3) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-            } else {
-                if(owner.tempIndex < 3) {
-                    AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
-                    if(tp.isAlive()) temp.add(tp);
-                }
-                if(owner.tempIndex > 0) {
-                    AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
-                    if(te.isAlive()) temp.add(te);
-                }
-            }
-            return temp;
-        } else return getTargets(target);
+        }
+        return getTargets(target);
     }
 
     //스킬 대상(유동)
@@ -405,14 +426,33 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (s != null) s.onUseCard(this);
             }
         }
-        use();
-        if(!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
-        if(disposable) usedOnce = true;
-        else cooldown = cooltime;
+        if(target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
+            bot(new SelectTargetAction(this));
+        } else {
+            use();
+            if (disposable) usedOnce = true;
+            if(owner.isPlayer) {
+                if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
+                else cooldown = cooltime;
+                if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+                    bot(new EndPlayerTurnAction());
+                }
+            }
+        }
+    }
+
+    public static boolean noMoreSkill() {
+        if(AbstractLabyrinth.advisor.skill.canUse()) return false;
+        for(AbstractPlayer p : players) {
+            for(AbstractSkill s : p.hand) {
+                if(s.canUse() && !s.passive) return false;
+            }
+        }
+        return true;
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && (owner == null || (!owner.isNeut || type == SkillType.DEFENCE));
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && owner != null && !owner.isNeut;
     }
 
     protected boolean available() {
@@ -425,15 +465,15 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if(upgradable()) {
             upgradeCard();
             if (upAttack != -1) {
-                baseAttack = attack + upAttack;
+                baseAttack += upAttack;
                 attack = baseAttack;
             }
             if (upSpell != -1) {
-                baseSpell = spell + upSpell;
+                baseSpell += upSpell;
                 spell = baseSpell;
             }
             if (upValue != -1) {
-                baseValue = value + upValue;
+                baseValue += upValue;
                 value = baseValue;
             }
             upgraded = true;
@@ -464,22 +504,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     }
 
-    public int onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-        return damage;
-    }
-
-    public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-        return damage;
-    }
-
-    public float onAttackMultiply(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-        return 1.0f;
-    }
-
-    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-        return 1.0f;
-    }
-
     @Override
     public final AbstractSkill clone() {
         try {
@@ -491,7 +515,17 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity target) {
+    public final void onTargetSelected(AbstractEntity target) {
+        onTarget(target);
+        if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
+        if (disposable) usedOnce = true;
+        else cooldown = cooltime;
+        if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+            bot(new EndPlayerTurnAction());
+        }
+    }
+
+    public void onTarget(AbstractEntity target) {
 
     }
 

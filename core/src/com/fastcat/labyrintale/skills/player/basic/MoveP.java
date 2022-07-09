@@ -1,29 +1,30 @@
-package com.fastcat.labyrintale.skills.player;
+package com.fastcat.labyrintale.skills.player.basic;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.MoveAction;
+import com.fastcat.labyrintale.actions.SelectTargetAction;
 
-public class MoveLeft extends AbstractSkill {
+public class MoveP extends AbstractSkill {
 
-    private static final String ID = "MoveLeft";
+    private static final String ID = "MoveP";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.TOKEN;
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER;
 
-    public MoveLeft(AbstractEntity e) {
+    public MoveP(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
     }
 
     @Override
     public void use() {
-        bot(new MoveAction((AbstractPlayer) owner, true));
+
     }
 
     @Override
-    protected boolean available() {
-        return owner.tempIndex < 3;
+    public void onTarget(AbstractEntity target) {
+        top(new MoveAction((AbstractPlayer) owner, target.tempIndex));
     }
 
     @Override

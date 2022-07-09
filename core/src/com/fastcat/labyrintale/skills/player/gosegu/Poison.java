@@ -25,11 +25,11 @@ public class Poison extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new SelectTargetAction(this));
+
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity e) {
+    public void onTarget(AbstractEntity e) {
         top(new ApplyStatusAction(new InfectionStatus(value), owner, e, false));
     }
 

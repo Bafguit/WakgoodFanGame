@@ -4,15 +4,15 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 
-public class Test51 extends AbstractSkill {
+public class Outburst extends AbstractSkill {
 
-    private static final String ID = "Test51";
+    private static final String ID = "Outburst";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
     private static final int VALUE = 30;
 
-    public Test51(AbstractEntity e) {
+    public Outburst(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
     }

@@ -20,16 +20,13 @@ public class BlindStatus extends AbstractStatus {
     }
 
     @Override
-    public float onAttackMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
-            flash();
-            ActionHandler.top(new RemoveStatusAction(this, true));
-            return 0;
-        } else return 1.0f;
+    public void onAttack(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+        flash();
+        ActionHandler.top(new RemoveStatusAction(this, true));
     }
 
     @Override
-    public float showAttackMultiply(int base) {
+    public float attackMultiply(int base) {
         return 0;
     }
 }

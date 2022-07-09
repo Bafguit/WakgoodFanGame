@@ -389,6 +389,7 @@ public class GroupHandler {
                 boolean can = false;
                 for(AbstractPlayer p : players) {
                     can = !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
+                    if(!can) break;
                 }
                 if(can) b.add(s);
             }
@@ -569,13 +570,13 @@ public class GroupHandler {
 
         private static void generateManager() {
             Array<AbstractSkill> t = new Array<>();
-            t.add(new Test51(null));
-            t.add(new Test52(null));
-            t.add(new Test53(null));
-            t.add(new Test54(null));
-            t.add(new Test55(null));
-            t.add(new Test56(null));
-            t.add(new Test57(null));
+            t.add(new Outburst(null));
+            t.add(new LightningBullet(null));
+            t.add(new Calmness(null));
+            t.add(new DramaticExit(null));
+            t.add(new PointBlank(null));
+            t.add(new Snipe(null));
+            t.add(new Impulse(null));
             t.add(new Test58(null));
             playerSort.put(PlayerClass.MANAGER, t);
         }

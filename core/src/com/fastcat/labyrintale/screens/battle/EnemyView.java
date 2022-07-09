@@ -31,12 +31,14 @@ public class EnemyView extends AbstractUI {
     @Override
     protected void updateButton() {
         if(battleScreen.isSelecting) {
-            overable = clickable = enemy.isAlive() && isTarget;
-            showImg = over && clickable;
+            overable = enemy.isAlive() && isTarget;
+            showImg = over && overable;
+            if(showImg) battleScreen.looking.add(enemy);
         } else {
-            overable = clickable = false;
+            overable = false;
             showImg = isLooking;
         }
+        enemy.update();
     }
 
     @Override

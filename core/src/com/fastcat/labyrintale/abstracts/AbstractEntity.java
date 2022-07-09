@@ -16,7 +16,6 @@ import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.status.NeutEStatus;
 import com.fastcat.labyrintale.status.NeutPStatus;
@@ -95,7 +94,11 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void update() {
-
+        if(hand != null) {
+            for(AbstractSkill s : hand) {
+                s.update();
+            }
+        }
     }
 
     public final void resetAnimation() {
@@ -214,7 +217,7 @@ public abstract class AbstractEntity implements Cloneable {
                     this.status[i] = s;
                     s.onApply();
                     s.flash(this);
-                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
+                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, (s.id.equals("NeutE") || s.id.equals("NeutP")) ? SCARLET : YELLOW));
                     done = true;
                     break;
                 }
@@ -246,11 +249,19 @@ public abstract class AbstractEntity implements Cloneable {
     public int calculateAttack(int d) {
         if(isPlayer) {
             for (AbstractItem m : item) {
-                if (m != null) d = m.calculateAttack(d);
+                if (m != null) d = m.showAttack(d);
             }
         }
         for(AbstractStatus s : status) {
-            if(s != null) d = s.calculateAttack(d);
+            if(s != null) d = s.showAttack(d);
+        }
+        if (isPlayer) {
+            for (AbstractItem m : item) {
+                if (m != null) d *= m.attackMultiply(d);
+            }
+        }
+        for (AbstractStatus s : status) {
+            if (s != null) d *= s.attackMultiply(d);
         }
         return d;
     }
@@ -258,11 +269,11 @@ public abstract class AbstractEntity implements Cloneable {
     public int calculateSpell(int d) {
         if(isPlayer) {
             for (AbstractItem m : item) {
-                if (m != null) d = m.calculateSpell(d);
+                if (m != null) d = m.showSpell(d);
             }
         }
         for(AbstractStatus s : status) {
-            if(s != null) d = s.calculateSpell(d);
+            if(s != null) d = s.showSpell(d);
         }
         return d;
     }
@@ -274,28 +285,14 @@ public abstract class AbstractEntity implements Cloneable {
             DamageType type = info.type;
             if(cPanel.type == ControlPanel.ControlType.BATTLE) {
                 if (attacker != null) {
-                    if (type == DamageType.NORMAL) damage = attacker.calculateAttack(damage);
+                    damage = attacker.calculateAttack(damage);
                     if (isPlayer) {
                         for (AbstractItem m : item) {
-                            if (m != null) damage = m.onAttack(this, damage, type);
+                            if (m != null) m.onAttack(this, damage, type);
                         }
                     }
-                    for (AbstractSkill s : attacker.hand) {
-                        if (s != null) damage = s.onAttack(this, damage, type);
-                    }
                     for (AbstractStatus s : attacker.status) {
-                        if (s != null) damage = s.onAttack(this, damage, type);
-                    }
-                    if (isPlayer) {
-                        for (AbstractItem m : item) {
-                            if (m != null) damage *= m.onAttackMultiply(this, damage, type);
-                        }
-                    }
-                    for (AbstractSkill s : attacker.hand) {
-                        if (s != null) damage *= s.onAttackMultiply(this, damage, type);
-                    }
-                    for (AbstractStatus s : attacker.status) {
-                        if (s != null) damage *= s.onAttackMultiply(this, damage, type);
+                        if (s != null) s.onAttack(this, damage, type);
                     }
                 }
                 if (damage > 0) {
@@ -304,9 +301,6 @@ public abstract class AbstractEntity implements Cloneable {
                             if (m != null) damage = m.onAttacked(attacker, damage, type);
                         }
                     }
-                    for (AbstractSkill s : hand) {
-                        if (s != null) damage = s.onAttacked(attacker, damage, type);
-                    }
                     for (AbstractStatus s : status) {
                         if (s != null) damage = s.onAttacked(attacker, damage, type);
                     }
@@ -314,9 +308,6 @@ public abstract class AbstractEntity implements Cloneable {
                         for (AbstractItem m : item) {
                             if (m != null) damage *= m.onAttackedMultiply(attacker, damage, type);
                         }
-                    }
-                    for (AbstractSkill s : hand) {
-                        if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
                     }
                     for (AbstractStatus s : status) {
                         if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
@@ -463,7 +454,6 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void neutralize() {
-        EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "무력화", SCARLET));
         applyStatus(isPlayer ? new NeutPStatus(this) : new NeutEStatus(this), 1);
     }
 

@@ -39,7 +39,7 @@ public class PlayerTurnStartAction extends AbstractAction {
                     }
                 }
             }
-            if(SkillButtonPanel.noMoreSkill()) ActionHandler.bot(new EndPlayerTurnAction());
+            if(AbstractSkill.noMoreSkill()) ActionHandler.bot(new EndPlayerTurnAction());
         }
     }
 }

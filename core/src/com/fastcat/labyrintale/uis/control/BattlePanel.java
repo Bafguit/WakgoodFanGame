@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
 
@@ -21,7 +22,7 @@ public class BattlePanel implements Disposable {
     public static ShapeRenderer shr = new ShapeRenderer();
     public static EnergyPanel energy = new EnergyPanel();
 
-    public SkillButtonPanel selected;
+    public AbstractSkill selected;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;

@@ -11,7 +11,7 @@ public class CourageStatus extends AbstractStatus {
     private static final String ID = "Courage";
 
     public CourageStatus(int amount) {
-        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
         setAmount(amount);
     }
 
@@ -21,12 +21,9 @@ public class CourageStatus extends AbstractStatus {
     }
 
     @Override
-    public int onAttack(AbstractEntity e, int dmg, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
-            flash();
-            ActionHandler.top(new RemoveStatusAction(this, true));
-            return dmg + amount;
-        } else return dmg;
+    public void onAttack(AbstractEntity e, int dmg, AbstractEntity.DamageType type) {
+        flash();
+        top(new RemoveStatusAction(this, true));
     }
 
     @Override

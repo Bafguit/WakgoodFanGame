@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.skills.player.MoveLeft;
-import com.fastcat.labyrintale.skills.player.MoveRight;
+import com.fastcat.labyrintale.skills.player.basic.MoveLeft;
+import com.fastcat.labyrintale.skills.player.basic.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.*;
@@ -53,6 +53,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         isDead = false;
         isDie = false;
         health = 1;
+        animColor.a = 1.0f;
         AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
         e.setTimeScale(1.0f);
     }

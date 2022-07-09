@@ -23,20 +23,13 @@ public class LethargyStatus extends AbstractStatus {
     }
 
     @Override
-    public float onAttackMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
-            return 0.7f;
-        } else return 1.0f;
-    }
-
-    @Override
     public void endOfTurn() {
         if(fromEnemy) fromEnemy = false;
         else ActionHandler.bot(new ReduceStatusAction(this, 1, true));
     }
 
     @Override
-    public float showAttackMultiply(int base) {
+    public float attackMultiply(int base) {
         return 0.7f;
     }
 }

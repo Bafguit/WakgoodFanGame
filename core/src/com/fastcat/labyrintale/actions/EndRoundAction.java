@@ -27,9 +27,11 @@ public class EndRoundAction extends AbstractAction {
             }
             if(AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(PLAYER_FIRST);
-            if(temp.size > 0) {
-                AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
+            if(AbstractLabyrinth.cPanel.battlePanel.curPlayer == null || !AbstractLabyrinth.cPanel.battlePanel.curPlayer.isAlive()) {
+                Array<AbstractEntity> temp = AbstractSkill.getTargets(PLAYER_FIRST);
+                if (temp.size > 0) {
+                    AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
+                }
             }
         }
     }

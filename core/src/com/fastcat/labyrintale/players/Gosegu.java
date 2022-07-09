@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.gosegu.Provoke;
 import com.fastcat.labyrintale.skills.player.gosegu.BioCloud;
+import com.fastcat.labyrintale.skills.player.gosegu.RustyShard;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
 
@@ -29,8 +30,7 @@ public class Gosegu extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new BioCloud(this));
-        temp.add(new Provoke(this));
+        temp.add(new RustyShard(this));
         return temp;
     }
 

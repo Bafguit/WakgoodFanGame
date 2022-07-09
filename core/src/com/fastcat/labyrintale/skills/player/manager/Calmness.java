@@ -5,15 +5,15 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test56 extends AbstractSkill {
+public class Calmness extends AbstractSkill {
 
-    private static final String ID = "Test56";
+    private static final String ID = "Calmness";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.SILVER;
+    private static final SkillRarity RARITY = SkillRarity.BRONZE;
     private static final SkillTarget TARGET = SkillTarget.ALL;
     private static final int VALUE = 2;
 
-    public Test56(AbstractEntity e) {
+    public Calmness(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE);
     }

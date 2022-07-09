@@ -3,14 +3,15 @@ package com.fastcat.labyrintale.actions;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 
 public class SelectTargetAction extends AbstractAction implements GetSelectedTarget {
 
-    public GetSelectedTarget gets;
+    public AbstractSkill gets;
 
-    public SelectTargetAction(GetSelectedTarget gets) {
+    public SelectTargetAction(AbstractSkill gets) {
         super(null, 1);
         this.gets = gets;
     }
@@ -19,7 +20,10 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
     protected void updateAction() {
         if(duration == baseDuration) {
             isDone = !gets.setTarget();
-            if(!isDone) Labyrintale.battleScreen.selectTarget(this);
+            if(!isDone) {
+                Labyrintale.battleScreen.selectTarget(this);
+                AbstractLabyrinth.cPanel.battlePanel.selected = gets;
+            }
         } else if(!isDone) {
             duration = 10000;
         }
@@ -29,6 +33,7 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
     public void onTargetSelected(AbstractEntity e) {
         isDone = true;
         Labyrintale.battleScreen.isSelecting = false;
+        AbstractLabyrinth.cPanel.battlePanel.selected = null;
         gets.onTargetSelected(e);
         setTarget();
     }

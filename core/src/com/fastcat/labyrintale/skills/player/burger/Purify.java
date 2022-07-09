@@ -24,11 +24,11 @@ public class Purify extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this));
+
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity e) {
+    public void onTarget(AbstractEntity e) {
         for(AbstractStatus s : e.status) {
             if(s != null && s.type == AbstractStatus.StatusType.DEBUFF) top(new RemoveStatusAction(s, true));
         }

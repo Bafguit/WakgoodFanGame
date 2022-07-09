@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.fastcat.labyrintale.actions.FlashAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
@@ -101,19 +100,23 @@ public abstract class AbstractStatus implements Cloneable {
         
     }
 
-    public int onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-        return damage;
+    public void onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+
     }
 
     public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return damage;
     }
 
-    public float onAttackMultiply(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return 1.0f;
     }
 
-    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+    public float attackMultiply(int base) {
+        return 1.0f;
+    }
+
+    public float spellMultiply(int base) {
         return 1.0f;
     }
 
@@ -125,19 +128,11 @@ public abstract class AbstractStatus implements Cloneable {
         return base;
     }
 
-    public float showAttackMultiply(int base) {
+    public float attackedMultiply(int base) {
         return 1.0f;
     }
 
-    public float showSpellMultiply(int base) {
-        return 1.0f;
-    }
-
-    public int calculateAttack(int base) {
-        return base;
-    }
-
-    public int calculateSpell(int base) {
+    public int calculateAttacked(int base) {
         return base;
     }
 

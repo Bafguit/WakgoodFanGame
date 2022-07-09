@@ -45,6 +45,7 @@ public class LoadingScreen extends AbstractScreen {
                 Labyrintale.charSelectScreen.backButton.onHide();
                 Labyrintale.charSelectScreen.nextButton.onHide();
                 fadeOutAndChangeScreen(Labyrintale.mapScreen);
+                SaveHandler.finish(true);
                 SaveHandler.save();
             } else {
                 Labyrintale.labyrinth = new AbstractLabyrinth(AbstractLabyrinth.RunType.SAVE);

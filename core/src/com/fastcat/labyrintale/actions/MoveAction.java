@@ -20,6 +20,7 @@ public class MoveAction extends AbstractAction {
     private final HashMap<Integer, Float> position = new HashMap<>();
     private final MoveType type;
 
+    private boolean alive;
     private boolean run = true;
     private boolean isLeft;
     private int toIndex;
@@ -43,6 +44,7 @@ public class MoveAction extends AbstractAction {
         from = p;
         type = MoveType.PLAYER;
         toIndex = index;
+        alive = p.isAlive();
     }
 
     public MoveAction(AbstractEnemy e, boolean isLeft) {
@@ -62,12 +64,13 @@ public class MoveAction extends AbstractAction {
         from = e;
         type = MoveType.ENEMY;
         toIndex = index;
+        alive = e.isAlive();
     }
 
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            if(toIndex < 0 || toIndex > 3 || from.movable > 0) {
+            if(toIndex < 0 || toIndex > 3 || from.movable > 0 || alive != from.isAlive()) {
                 isDone = true;
                 run = false;
             } else {

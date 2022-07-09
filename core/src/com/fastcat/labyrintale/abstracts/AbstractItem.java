@@ -10,9 +10,6 @@ import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.ItemString;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
 
 public class AbstractItem implements Cloneable {
 
@@ -93,19 +90,23 @@ public class AbstractItem implements Cloneable {
 
     }
 
-    public int onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-        return damage;
+    public void onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+
     }
 
     public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return damage;
     }
 
-    public float onAttackMultiply(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         return 1.0f;
     }
 
-    public float onAttackedMultiply(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+    public float attackMultiply(int base) {
+        return 1.0f;
+    }
+
+    public float spellMultiply(int base) {
         return 1.0f;
     }
 
@@ -114,22 +115,6 @@ public class AbstractItem implements Cloneable {
     }
 
     public int showSpell(int base) {
-        return base;
-    }
-
-    public float showAttackMultiply(int base) {
-        return 1.0f;
-    }
-
-    public float showSpellMultiply(int base) {
-        return 1.0f;
-    }
-
-    public int calculateAttack(int base) {
-        return base;
-    }
-
-    public int calculateSpell(int base) {
         return base;
     }
 

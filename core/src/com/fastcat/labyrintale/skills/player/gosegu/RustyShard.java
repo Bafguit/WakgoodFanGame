@@ -24,11 +24,11 @@ public class RustyShard extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this));
+
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity e) {
+    public void onTarget(AbstractEntity e) {
         top(new ApplyStatusAction(new InfectionStatus(value), owner, e, true));
         top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT));
     }

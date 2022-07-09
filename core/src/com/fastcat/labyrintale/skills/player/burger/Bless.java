@@ -23,11 +23,11 @@ public class Bless extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new SelectTargetAction(this));
+
     }
 
     @Override
-    public void onTargetSelected(AbstractEntity e) {
+    public void onTarget(AbstractEntity e) {
         top(new BlockAction(this.owner, e, spell));
         top(new HealAction(this.owner, e, spell));
     }

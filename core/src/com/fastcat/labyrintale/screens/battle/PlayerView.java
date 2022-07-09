@@ -34,13 +34,18 @@ public class PlayerView extends AbstractUI {
     protected void updateButton() {
         if(battleScreen.isSelecting) {
             isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
-            showImg = isLooking || (isOnLock) || (over && isTarget);
             clickable = player.isAlive() && isTarget;
+            showImg = isLooking || (isOnLock) || (over && isTarget);
+            if(over && clickable) {
+                battleScreen.looking.add(player);
+                isLooking = true;
+            }
         } else {
             isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
             showImg = isLooking || (isOnLock) || over;
             clickable = player.isAlive();
         }
+        player.update();
     }
 
     @Override

@@ -23,7 +23,6 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class BattleScreen extends AbstractScreen {
 
-    public static final Array<AbstractEntity> DEF_LOOK = new Array<>();
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
     public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
@@ -135,10 +134,11 @@ public class BattleScreen extends AbstractScreen {
                 }
             }
         }
-        if(!cPanel.infoPanel.show) {
-            looking = DEF_LOOK;
-        } else if(cPanel.infoPanel.skill != null) {
+
+        if(cPanel.infoPanel.skill != null) {
             looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
+        } else {
+            looking = new Array<>();
         }
 
         for(int i = 0; i < 4; i++) {
