@@ -29,6 +29,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public AbstractEntity owner;
     public final SkillType type;
     public SkillTarget target;
+    public SkillRarity rarity;
     public String id;
     public String name;
     public String desc;
@@ -60,6 +61,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         this.desc = this.skillData.DESC;
         this.type = type;
         this.target = target;
+        this.rarity = rarity;
     }
 
     public AbstractSkill(String id, SkillType type, SkillRarity rarity, SkillTarget target) {
@@ -431,9 +433,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         } else {
             use();
             if (disposable) usedOnce = true;
-            if(owner.isPlayer) {
+            if(rarity == SkillRarity.ADVISOR || owner.isPlayer) {
                 if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
-                else cooldown = cooltime;
+                else if(!disposable) cooldown = cooltime;
                 if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
                     bot(new EndPlayerTurnAction());
                 }
@@ -452,7 +454,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && owner != null && !owner.isNeut;
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && (owner == null || !owner.isNeut);
     }
 
     protected boolean available() {

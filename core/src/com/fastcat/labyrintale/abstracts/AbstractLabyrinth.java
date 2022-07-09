@@ -189,6 +189,7 @@ public class AbstractLabyrinth {
             p.mLeftTemp = p.mLeft;
             players[p.index] = p;
         }
+        //AbstractLabyrinth.prepare();
         SaveHandler.save();
     }
 

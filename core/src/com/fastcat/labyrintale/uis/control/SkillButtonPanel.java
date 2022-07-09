@@ -42,7 +42,9 @@ public class SkillButtonPanel extends AbstractUI {
 
     public void render(SpriteBatch sb) {
         if(enabled) {
-            if(isUsed || (type != SkillButtonType.VIEW && skill != null && !skill.canUse()) || (battleScreen.isSelecting && cPanel.battlePanel.selected != skill)) sb.setColor(Color.DARK_GRAY);
+            if(isUsed || (type != SkillButtonType.VIEW && skill != null && !skill.canUse()) || (battleScreen.isSelecting && cPanel.battlePanel.selected != skill)) {
+                sb.setColor(Color.DARK_GRAY);
+            }
             else if (over && clickable) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             if(skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);

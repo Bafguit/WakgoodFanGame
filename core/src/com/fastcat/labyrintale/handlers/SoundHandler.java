@@ -198,7 +198,7 @@ public class SoundHandler implements Disposable {
 
         public void setVolume(float volume) {
             if (volume < 0f || volume > 1f) {
-                Gdx.app.error("SoundHandler", "Volume not valid: " + volume);
+                //Gdx.app.error("SoundHandler", "Volume not valid: " + volume);
                 volume = Math.max(0, Math.min(volume, 1));
             }
             music.setVolume(volume);
