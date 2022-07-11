@@ -42,9 +42,9 @@ public class EndPlayerTurnAction extends AbstractAction {
                     }
                 }
             }
-            ActionHandler.bot(new RemoveAllBlockAction(false));
             ActionHandler.bot(new EndRoundAction());
             ActionHandler.bot(new TurnChangeAction(false));
+            ActionHandler.bot(new RemoveAllBlockAction(false));
             ActionHandler.bot(new PlayerTurnStartAction());
         }
     }

@@ -176,6 +176,12 @@ public class BattleScreen extends AbstractScreen {
             pShield[i].e = pv.player;
             eShield[i].e = ev.enemy;
         }
+
+        for(int i = 0; i < 4; i++) {
+            AbstractLabyrinth.players[i].update();
+            AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[i];
+            if(e != null) e.update();
+        }
     }
 
     @Override

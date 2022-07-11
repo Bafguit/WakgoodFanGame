@@ -137,6 +137,7 @@ public class SaveHandler {
         gold = data.gold;
         bleak = data.bleak;
         bleakMin = data.bleakMin;
+        bleakAdd = data.bleakAdd;
     }
 
     public static class SaveData {
@@ -149,6 +150,7 @@ public class SaveHandler {
         public int gold;
         public int bleak;
         public int bleakMin;
+        public int bleakAdd;
         public AdvisorData advisor;
         public PlayerData[] players = new PlayerData[4];
         public int currentFloor;
@@ -182,6 +184,7 @@ public class SaveHandler {
             temp.gold = AbstractLabyrinth.gold;
             temp.bleak = AbstractLabyrinth.bleak;
             temp.bleakMin = AbstractLabyrinth.bleakMin;
+            temp.bleakAdd = AbstractLabyrinth.bleakAdd;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
             temp.weakCount = GroupHandler.RoomGroup.weakCount;
             temp.normalCount = GroupHandler.RoomGroup.normalCount;

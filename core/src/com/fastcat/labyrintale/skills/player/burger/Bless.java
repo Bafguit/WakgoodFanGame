@@ -1,18 +1,15 @@
 package com.fastcat.labyrintale.skills.player.burger;
 
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
-import com.fastcat.labyrintale.actions.SelectTargetAction;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
 
 public class Bless extends AbstractSkill {
 
     private static final String ID = "Bless";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.GOLD;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER;
     private static final int VALUE = 2;
 
@@ -30,18 +27,6 @@ public class Bless extends AbstractSkill {
     public void onTarget(AbstractEntity e) {
         top(new BlockAction(this.owner, e, spell));
         top(new HealAction(this.owner, e, spell));
-    }
-
-    @Override
-    public boolean setTarget() {
-        boolean can = false;
-        for(PlayerView pv : Labyrintale.battleScreen.players) {
-            if(pv.player.isAlive()) {
-                pv.isTarget = true;
-                can = true;
-            }
-        }
-        return can;
     }
 
     @Override

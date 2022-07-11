@@ -45,10 +45,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mLeftTemp = mLeft.clone();
     }
 
-    public void update() {
-
-    }
-
     public void revive() {
         isDead = false;
         isDie = false;

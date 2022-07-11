@@ -3,14 +3,12 @@ package com.fastcat.labyrintale.skills.player.viichan;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class Test68 extends AbstractSkill {
 
     private static final String ID = "Test68";
-    private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.GOLD;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 2;
 

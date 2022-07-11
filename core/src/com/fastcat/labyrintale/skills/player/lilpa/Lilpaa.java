@@ -8,7 +8,7 @@ public class Lilpaa extends AbstractSkill {
 
     private static final String ID = "Lilpaa";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ALL;
     private static final int ATTACK = 5;
     private static final int UP = 1;

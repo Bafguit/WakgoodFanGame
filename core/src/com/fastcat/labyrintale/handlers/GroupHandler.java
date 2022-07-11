@@ -559,7 +559,7 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             t.add(new Lilpaa(null));
             t.add(new FireBall(null));
-            t.add(new Test43(null));
+            t.add(new CrystalStrike(null));
             t.add(new Test44(null));
             t.add(new Test45(null));
             t.add(new Test46(null));
@@ -577,7 +577,7 @@ public class GroupHandler {
             t.add(new PointBlank(null));
             t.add(new Snipe(null));
             t.add(new Impulse(null));
-            t.add(new Test58(null));
+            t.add(new ShockZone(null));
             playerSort.put(PlayerClass.MANAGER, t);
         }
 

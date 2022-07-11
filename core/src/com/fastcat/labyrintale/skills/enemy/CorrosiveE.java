@@ -21,7 +21,7 @@ public class CorrosiveE extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, false));
     }
 
     @Override

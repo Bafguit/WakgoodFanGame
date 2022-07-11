@@ -7,7 +7,7 @@ public class MoveRightE extends AbstractSkill {
 
     private static final String ID = "MoveRight";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.TOKEN;
+    private static final SkillRarity RARITY = SkillRarity.BASIC;
     private static final SkillTarget TARGET = SkillTarget.SELF;
     private final AbstractEnemy enemy;
 

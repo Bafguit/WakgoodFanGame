@@ -11,7 +11,7 @@ public class EnduringPotion extends AbstractSkill {
 
     private static final String ID = "EnduringPotion";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 2;
 

@@ -1,32 +1,26 @@
 package com.fastcat.labyrintale.status;
 
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ReduceStatusAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class LethargyStatus extends AbstractStatus {
+public class UnblockableStatus extends AbstractStatus {
 
-    private static final String ID = "Lethargy";
+    private static final String ID = "Unblockable";
 
-    public LethargyStatus(int amount) {
+    public UnblockableStatus() {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
-        setAmount(amount);
     }
 
     @Override
     public String getDesc() {
-        return exDesc[0] + amount + exDesc[1];
+        return exDesc[0];
     }
 
     @Override
     public void endOfTurn() {
-        bot(new ReduceStatusAction(this, 1, true));
-    }
-
-    @Override
-    public float attackMultiply(int base) {
-        return 0.7f;
+        bot(new RemoveStatusAction(id, null, true));
     }
 }

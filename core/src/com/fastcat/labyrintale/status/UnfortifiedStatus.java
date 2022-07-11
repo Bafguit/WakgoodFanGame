@@ -9,12 +9,10 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 public class UnfortifiedStatus extends AbstractStatus {
 
     private static final String ID = "Unfortified";
-    private boolean fromEnemy;
 
-    public UnfortifiedStatus(int amount, boolean fromEnemy) {
+    public UnfortifiedStatus(int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
         setAmount(amount);
-        this.fromEnemy = fromEnemy;
     }
 
     @Override
@@ -31,7 +29,6 @@ public class UnfortifiedStatus extends AbstractStatus {
 
     @Override
     public void endOfTurn() {
-        if(fromEnemy) fromEnemy = false;
-        else ActionHandler.bot(new ReduceStatusAction(this, 1, true));
+        ActionHandler.bot(new ReduceStatusAction(this, 1, true));
     }
 }

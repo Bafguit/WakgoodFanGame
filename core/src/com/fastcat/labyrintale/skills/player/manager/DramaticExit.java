@@ -1,26 +1,28 @@
 package com.fastcat.labyrintale.skills.player.manager;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.MoveAction;
 
 public class DramaticExit extends AbstractSkill {
 
     private static final String ID = "DramaticExit";
-    private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.SILVER;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
+    private static final int VALUE = 4;
 
     public DramaticExit(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseAttack(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true));
+        bot(new MoveAction((AbstractPlayer) owner, 3, 0.3f));
     }
 
     @Override

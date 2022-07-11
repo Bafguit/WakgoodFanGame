@@ -8,8 +8,8 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 public class Overpower extends AbstractSkill {
 
     private static final String ID = "Overpower";
-    private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 2;
 

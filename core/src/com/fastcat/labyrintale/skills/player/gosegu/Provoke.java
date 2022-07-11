@@ -10,7 +10,7 @@ public class Provoke extends AbstractSkill {
 
     private static final String ID = "Provoke";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
     private static final int VALUE = 1;
 
@@ -21,7 +21,7 @@ public class Provoke extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new ApplyStatusAction(new UnfortifiedStatus(value, false), owner, target, false));
+        ActionHandler.bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, false));
     }
 
     @Override

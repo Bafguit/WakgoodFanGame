@@ -9,7 +9,7 @@ public class HolyLight extends AbstractSkill {
 
     private static final String ID = "HolyLight";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.SILVER;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
     private static final int VALUE = 2;
 

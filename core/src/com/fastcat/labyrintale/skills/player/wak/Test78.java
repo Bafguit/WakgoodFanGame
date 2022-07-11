@@ -9,7 +9,7 @@ public class Test78 extends AbstractSkill {
 
     private static final String ID = "Test78";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
     private static final int VALUE = 30;
 

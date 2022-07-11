@@ -171,7 +171,14 @@ public abstract class AbstractEntity implements Cloneable {
             }
             if(status != null)  {
                 for(AbstractStatus s : status) {
-                    temp = s != null ? s.onGainBlock(temp) : temp;
+                    if(s != null) {
+                        if(s.id.equals("Unblockable")) {
+                            temp = 0;
+                            break;
+                        } else {
+                            temp = s.onGainBlock(temp);
+                        }
+                    }
                 }
             }
             if(temp > 0) {
@@ -181,15 +188,16 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
-    public void applyStatus(AbstractStatus status, int amount) {
+    public void applyStatus(AbstractStatus status, int amount, boolean effect) {
         boolean done = false;
+        String text;
         AbstractStatus s = Objects.requireNonNull(status.cpy());
         s.owner = this;
         for (int i = 0; i < 4; i++) {
             if (this.status[i] != null) {
                 AbstractStatus temp = this.status[i];
                 if(temp.id.equals(s.id)) {
-                    String text = temp.name;
+                    text = temp.name;
                     if (temp.hasAmount && amount != 0) {
                         temp.amount += amount;
                         if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
@@ -203,8 +211,10 @@ public abstract class AbstractEntity implements Cloneable {
                         text += amount > 0 ? "+" + amount : amount;
                     }
                     temp.onApply();
-                    temp.flash(this);
-                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
+                    if(effect) {
+                        temp.flash(this);
+                        EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, (s.id.equals("NeutE") || s.id.equals("NeutP")) ? SCARLET : YELLOW));
+                    }
                     done = true;
                     break;
                 }
@@ -213,11 +223,13 @@ public abstract class AbstractEntity implements Cloneable {
         if(!done) {
             for (int i = 0; i < 4; i++) {
                 if (this.status[i] == null) {
-                    String text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
+                    text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
                     this.status[i] = s;
                     s.onApply();
-                    s.flash(this);
-                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, (s.id.equals("NeutE") || s.id.equals("NeutP")) ? SCARLET : YELLOW));
+                    if(effect) {
+                        s.flash(this);
+                        EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, (s.id.equals("NeutE") || s.id.equals("NeutP")) ? SCARLET : YELLOW));
+                    }
                     done = true;
                     break;
                 }
@@ -226,12 +238,18 @@ public abstract class AbstractEntity implements Cloneable {
         if(!done) {
             this.status[3].onRemove();
             System.arraycopy(this.status, 0, this.status, 1, 3);
-            String text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
+            text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
             this.status[0] = s;
             s.onApply();
-            s.flash(this);
-            EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, YELLOW));
+            if(effect) {
+                s.flash(this);
+                EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, (s.id.equals("NeutE") || s.id.equals("NeutP")) ? SCARLET : YELLOW));
+            }
         }
+    }
+
+    public void applyStatus(AbstractStatus status, int amount) {
+        applyStatus(status, amount, true);
     }
 
     public void removeStatus(String id) {

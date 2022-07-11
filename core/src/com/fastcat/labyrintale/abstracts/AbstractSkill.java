@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
 import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
@@ -18,7 +19,6 @@ import com.fastcat.labyrintale.strings.SkillString;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
-import static com.fastcat.labyrintale.handlers.ActionHandler.bot;
 import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
@@ -144,7 +144,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public String getKeyValue(String key) {
         switch (key) {
             case "A":
-                int a = attack;
+                int a = calculateAttack(baseAttack);
                 if(owner != null) {
                     if(owner.isPlayer) {
                         for (AbstractItem m : owner.item) {
@@ -165,7 +165,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
                 return getHexColor(valueColor(a, baseAttack)) + a;
             case "S":
-                int p = spell;
+                int p = calculateSpell(baseSpell);
                 if(owner != null) {
                     if(owner.isPlayer) {
                         for (AbstractItem m : owner.item) {
@@ -186,7 +186,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
                 return getHexColor(valueColor(p, baseSpell)) + p;
             case "V":
-                return getHexColor(Color.CYAN) + value;
+                return getHexColor(Color.CYAN) + calculateValue(baseValue);
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }
@@ -433,9 +433,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         } else {
             use();
             if (disposable) usedOnce = true;
-            if(rarity == SkillRarity.ADVISOR || owner.isPlayer) {
+            if (rarity == SkillRarity.ADVISOR || owner.isPlayer) {
                 if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
-                else if(!disposable) cooldown = cooltime;
+                if (!disposable) cooldown = cooltime;
                 if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
                     bot(new EndPlayerTurnAction());
                 }
@@ -533,7 +533,25 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     @Override
     public boolean setTarget() {
-        return false;
+        boolean can = false;
+        if(target == SkillTarget.ENEMY) {
+            for(int i = 0; i < 4; i++) {
+                EnemyView pv = Labyrintale.battleScreen.enemies[i];
+                if(pv.enemy.isAlive()) {
+                    pv.isTarget = true;
+                    can = true;
+                    if(pv.enemy.hasStatus("Provoke")) break;
+                }
+            }
+        } else if(target == SkillTarget.PLAYER) {
+            for(PlayerView pv : Labyrintale.battleScreen.players) {
+                if(pv.player.isAlive()) {
+                    pv.isTarget = true;
+                    can = true;
+                }
+            }
+        }
+        return can;
     }
 
     public enum SkillType {
@@ -541,7 +559,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public enum SkillRarity {
-        STARTER, BRONZE, SILVER, GOLD, SPECIAL, TOKEN, ADVISOR, ENEMY
+        STARTER, NORMAL, SPECIAL, BASIC, ADVISOR, ENEMY
     }
 
     public enum SkillTarget {

@@ -10,7 +10,7 @@ public class FireBall extends AbstractSkill {
 
     private static final String ID = "FireBall";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
     private static final int VALUE = 2;
 

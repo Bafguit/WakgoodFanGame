@@ -27,7 +27,7 @@ public class NegativeSkill extends AbstractSkill {
     @Override
     public void atBattleStart() {
         bot(new ApplyStatusAction(new AttackStatus(value), owner, target, true));
-        bot(new ApplyStatusAction(new LethargyStatus(value, false), owner, target, true));
+        bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, true));
     }
 
     @Override

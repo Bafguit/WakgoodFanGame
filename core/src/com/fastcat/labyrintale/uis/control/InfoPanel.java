@@ -63,12 +63,20 @@ public class InfoPanel extends AbstractUI {
 
     @Override
     public void updateButton() {
-        type = InfoType.COLOR;
-        skill = null;
+        if(AbstractLabyrinth.cPanel.battlePanel.selected == null) {
+            type = InfoType.COLOR;
+            skill = null;
+            name = "";
+            desc = "";
+            show = false;
+        } else {
+            type = SKILL;
+            skill = AbstractLabyrinth.cPanel.battlePanel.selected;
+            name = skill.name;
+            desc = skill.desc;
+            show = true;
+        }
         status = null;
-        name = "";
-        desc = "";
-        show = false;
         if(renderIcon) {
             for (int i = 0; i < 4; i++) {
                 pIcons[i].update();

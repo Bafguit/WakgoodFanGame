@@ -38,7 +38,6 @@ public class EnemyView extends AbstractUI {
             overable = false;
             showImg = isLooking;
         }
-        enemy.update();
     }
 
     @Override

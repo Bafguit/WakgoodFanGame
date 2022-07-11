@@ -1,19 +1,16 @@
 package com.fastcat.labyrintale.skills.player.burger;
 
-import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.MoveAction;
-import com.fastcat.labyrintale.status.LethargyStatus;
 
 public class KeepOnLine extends AbstractSkill {
 
     private static final String ID = "KeepOnLine";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 4;
 

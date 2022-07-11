@@ -40,6 +40,7 @@ public class AbstractLabyrinth {
     public static int gold;
     public static int bleak;
     public static int bleakMin;
+    public static int bleakAdd;
 
     public AbstractLabyrinth() {
         this(RunType.NEW);

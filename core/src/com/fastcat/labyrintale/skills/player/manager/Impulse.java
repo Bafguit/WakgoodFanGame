@@ -1,26 +1,29 @@
 package com.fastcat.labyrintale.skills.player.manager;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.MoveAction;
+import com.fastcat.labyrintale.status.CourageStatus;
 
 public class Impulse extends AbstractSkill {
 
     private static final String ID = "Impulse";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.GOLD;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
     private static final int VALUE = 2;
 
     public Impulse(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        bot(new MoveAction((AbstractPlayer) owner, 0, 0.3f));
+        bot(new ApplyStatusAction(new CourageStatus(value), owner, target, true));
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Charge extends AbstractSkill {
 
     private static final String ID = "Charge";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.SILVER;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 3;
 
@@ -24,7 +24,7 @@ public class Charge extends AbstractSkill {
     @Override
     public void use() {
         bot(new MoveAction((AbstractPlayer) owner, false, 0.05f));
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
         bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
     }
 

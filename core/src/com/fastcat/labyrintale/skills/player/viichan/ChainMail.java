@@ -9,9 +9,9 @@ public class ChainMail extends AbstractSkill {
 
     private static final String ID = "ChainMail";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.BRONZE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.SELF;
-    private static final int VALUE = 4;
+    private static final int VALUE = 5;
 
     public ChainMail(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
