@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class SlideBarGroup {
 
@@ -17,7 +17,7 @@ public class SlideBarGroup {
 
     public SlideBarGroup(String text, int start, float x, float y) {
         title = new Title(text, x, y);
-        slideBar = new SlideBar(x + title.sWidth, y, title.sWidth * 1.25f, start);
+        slideBar = new SlideBar(x + title.sWidth, y, start);
         title.slideBar = slideBar;
     }
 
@@ -59,7 +59,7 @@ public class SlideBarGroup {
         public void render(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
             renderKeywordCenter(sb, fontData, title, x, y + sHeight / 2, sWidth, sHeight);
-            renderKeywordCenter(sb, fontData, text, x + sWidth * 1.75f, y + sHeight / 2, sWidth * 0.5f, sHeight);
+            renderLineRight(sb, fontData, text, x + sWidth * 1.9f, y + sHeight / 2, sWidth * 0.5f, sHeight);
         }
     }
 }

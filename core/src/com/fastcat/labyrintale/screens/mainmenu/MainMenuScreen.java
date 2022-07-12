@@ -29,7 +29,7 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton = new OptionButton();
         exitButton = new ExitButton();
 
-        slide = new SlideBar(100, 100, 300, 50);
+        slide = new SlideBar(100, 100, 50);
         check = new CheckBox(100, 300, false);
     }
 

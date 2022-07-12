@@ -163,6 +163,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                         if (s != null) a *= s.attackMultiply(a);
                     }
                 }
+                a = Math.max(a, 0);
                 return getHexColor(valueColor(a, baseAttack)) + a;
             case "S":
                 int p = calculateSpell(baseSpell);
@@ -184,6 +185,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                         if (s != null) p *= s.spellMultiply(p);
                     }
                 }
+                p = Math.max(p, 0);
                 return getHexColor(valueColor(p, baseSpell)) + p;
             case "V":
                 return getHexColor(Color.CYAN) + calculateValue(baseValue);

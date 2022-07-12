@@ -30,6 +30,13 @@ public abstract class AbstractAction implements Cloneable {
         baseDuration = this.duration;
     }
 
+    public AbstractAction(AbstractEntity actor, Array<AbstractEntity> target, float duration) {
+        this.actor = actor;
+        this.target = target;
+        this.duration = duration;
+        baseDuration = this.duration;
+    }
+
     public AbstractAction(AbstractEntity actor, AbstractEntity target, float duration) {
         this.actor = actor;
         this.target = new Array<>();

@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ReduceStatusAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class FixedStatus extends AbstractStatus {
@@ -27,7 +28,7 @@ public class FixedStatus extends AbstractStatus {
 
     @Override
     public void endOfTurn() {
-        ActionHandler.bot(new ReduceStatusAction(this, 1, true));
+        bot(new RemoveStatusAction(id, null, true));
     }
 
     @Override

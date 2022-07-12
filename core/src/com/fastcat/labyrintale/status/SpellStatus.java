@@ -20,7 +20,7 @@ public class SpellStatus extends AbstractStatus {
 
     @Override
     public String getDesc() {
-        return data.DESC_B[0] + (amount > 0 ? data.DESC_B[1] + amount + data.DESC_B[2] : data.DESC_B[3] + amount + data.DESC_B[4]);
+        return exDesc[0] + (amount > 0 ? exDesc[1] + amount + exDesc[2] : exDesc[3] + amount + exDesc[4]);
     }
 
     @Override

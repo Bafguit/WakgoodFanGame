@@ -546,10 +546,10 @@ public class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             t.add(new Scorn(null));
             t.add(new Pray(null));
-            t.add(new Test33(null));
-            t.add(new Test34(null));
-            t.add(new Test35(null));
-            t.add(new Test36(null));
+            t.add(new Support(null));
+            t.add(new IronWill(null));
+            t.add(new PureWill(null));
+            t.add(new Penitence(null));
             t.add(new Test37(null));
             t.add(new Test38(null));
             playerSort.put(PlayerClass.JURURU, t);
@@ -560,7 +560,7 @@ public class GroupHandler {
             t.add(new Lilpaa(null));
             t.add(new FireBall(null));
             t.add(new CrystalStrike(null));
-            t.add(new Test44(null));
+            t.add(new ElectricFire(null));
             t.add(new Test45(null));
             t.add(new Test46(null));
             t.add(new Test47(null));

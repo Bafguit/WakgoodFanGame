@@ -4,7 +4,7 @@
   "width" : 1600,
   "height" : 900,
   "monitor" : 0,
-  "screenMode" : 0,
+  "screenMode" : 1,
   "shake" : true,
   "fastMode" : false
 }

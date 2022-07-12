@@ -4,11 +4,11 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
-public class NeutEStatus extends AbstractStatus {
+public class NeutStatus extends AbstractStatus {
 
-    private static final String ID = "NeutE";
+    private static final String ID = "Neut";
 
-    public NeutEStatus(AbstractEntity owner) {
+    public NeutStatus(AbstractEntity owner) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
         this.owner = owner;
     }

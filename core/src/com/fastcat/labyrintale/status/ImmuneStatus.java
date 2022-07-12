@@ -17,15 +17,6 @@ public class ImmuneStatus extends AbstractStatus {
 
     @Override
     public String getDesc() {
-        return desc;
-    }
-
-    @Override
-    public float onAttackedMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
-            flash();
-            ActionHandler.top(new ReduceStatusAction(this, 1, true));
-            return 0;
-        } else return 1.0f;
+        return exDesc[0] + amount + exDesc[1];
     }
 }

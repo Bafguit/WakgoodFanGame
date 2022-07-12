@@ -6,25 +6,27 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.status.CourageStatus;
 
-public class Pray extends AbstractSkill {
+public class Support extends AbstractSkill {
 
-    private static final String ID = "Pray";
-    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final String ID = "Support";
+    private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER;
+    private static final SkillTarget TARGET = SkillTarget.ALL;
     private static final int VALUE = 2;
 
-    public Pray(AbstractEntity e) {
+    public Support(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE, 1);
+        setBaseSpell(VALUE);
+        cooltime = 3;
     }
 
     @Override
     public void use() {
-
+        ActionHandler.bot(new BlockAction(this.owner, target, spell));
     }
 
     @Override

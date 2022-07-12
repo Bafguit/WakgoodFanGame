@@ -20,12 +20,12 @@ public class SlideBar extends AbstractUI {
     public int min, max, abs;
     public int pos; //0 ~ 100;
 
-    public SlideBar(float x, float y, float width, int start) {
-        this(x, y, width, 0, 100, start);
+    public SlideBar(float x, float y, int start) {
+        this(x, y, 0, 100, start);
     }
 
-    public SlideBar(float x, float y, float width, int min, int max, int start) {
-        super(FileHandler.ui.get("SLIDE_A"), x, y, width, 40);
+    public SlideBar(float x, float y, int min, int max, int start) {
+        super(FileHandler.ui.get("SLIDE_A"), x, y);
         sideL = new SlideSideL();
         sideL.setPosition(x, y);
         line = new SlideLine(width);
