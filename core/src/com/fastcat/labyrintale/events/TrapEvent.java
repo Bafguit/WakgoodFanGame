@@ -22,11 +22,6 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
     }
 
     @Override
-    public void endBattle() {
-        if(page == 1) setPage(2);
-    }
-
-    @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
         if(page == 0) {

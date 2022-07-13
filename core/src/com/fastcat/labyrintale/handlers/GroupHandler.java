@@ -163,6 +163,7 @@ public class GroupHandler {
             t.add(new AbstractRoom(new TrapEvent()));
             t.add(new AbstractRoom(new SurvivorEvent()));
             t.add(new AbstractRoom(new CivilizationEvent()));
+            t.add(new AbstractRoom(new SealedHeartEvent()));
             eventGroup.put(1, t);
         }
 

@@ -47,12 +47,17 @@ public abstract class AbstractEvent implements Cloneable {
 
     }
 
-    public void setPage(int page) {
+    public final void setPage(int page) {
         this.page = page;
         desc = getDescription(this.page);
         if(Labyrintale.eventScreen.event == this) {
             Labyrintale.eventScreen.setPage(this.page);
         }
+        onSetPage(page);
+    }
+
+    public void onSetPage(int page) {
+
     }
 
     public void endBattle() {
@@ -126,7 +131,7 @@ public abstract class AbstractEvent implements Cloneable {
 
             @Override
             public String cdText() {
-                return "";
+                return "잠김";
             }
         }
     }

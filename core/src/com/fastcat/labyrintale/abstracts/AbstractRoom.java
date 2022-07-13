@@ -54,7 +54,6 @@ public class AbstractRoom {
     }
 
     public final void enter() {
-        if(this instanceof ShopRoom) System.out.println("SHOP!!!");
         if(type == MYSTERY) {
             int b = 10, s = 10, r = 10, e = 70;
             if(AbstractLabyrinth.bleak >= 20) {

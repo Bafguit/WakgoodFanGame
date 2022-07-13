@@ -11,6 +11,8 @@ import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 public class SlotReward extends AbstractReward implements GetSelectedPlayer, GetSelectedSlot {
 
+    public GetSelectedSlot gets;
+
     public SlotReward() {
         super(RewardType.EXP);
         setInfo("스킬 슬롯 강화", "스킬 슬롯 강화");
@@ -28,6 +30,6 @@ public class SlotReward extends AbstractReward implements GetSelectedPlayer, Get
 
     @Override
     public void slotSelected(AbstractPlayer player, int index) {
-
+        if(gets != null) gets.slotSelected(player, index);
     }
 }

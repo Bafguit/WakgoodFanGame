@@ -36,19 +36,14 @@ public class VictoryAction extends AbstractAction {
                 p.movable = 0;
             }
             if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
-                AbstractLabyrinth.finishRoom();
+                AbstractLabyrinth.victoryRoom();
             }
             Array<AbstractReward> temp = new Array<>();
             temp.add(new ExpReward());
             int r;
             if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 if(AbstractLabyrinth.advisor.cls == DOPA) {
-                    boolean hasSlot = false;
-                    for(int i = 0; i < 4; i++) {
-                        AbstractPlayer p = AbstractLabyrinth.players[i];
-                        if(p.isAlive() && p.hasSlot()) hasSlot = true;
-                    }
-                    if(hasSlot) temp.add(new SlotReward());
+                    if(AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
                 }
                 temp.add(new SkillReward());
             } else {

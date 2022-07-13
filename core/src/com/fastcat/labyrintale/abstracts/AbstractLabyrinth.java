@@ -103,6 +103,23 @@ public class AbstractLabyrinth {
         advisor.skill.cooldown = 0;
     }
 
+    public static boolean hasSlot() {
+        boolean hasSlot = false;
+        for(int i = 0; i < 4; i++) {
+            AbstractPlayer p = AbstractLabyrinth.players[i];
+            if(p.isAlive() && p.hasSlot()) hasSlot = true;
+        }
+        return hasSlot;
+    }
+
+    public static void addBleak() {
+        bleak = Math.min(bleak + (9 + floorNum), 100);
+    }
+
+    public static void reduceBleak() {
+        bleak = Math.max(bleak - (11 - floorNum), 0);
+    }
+
     public static boolean canGetItem() {
         return itemAble == 0;
     }
@@ -135,6 +152,9 @@ public class AbstractLabyrinth {
     }
 
     public static void endRoom() {
+        if(currentFloor.currentRoom.type != AbstractRoom.RoomType.BATTLE && currentFloor.currentRoom.type != AbstractRoom.RoomType.ELITE && currentFloor.currentRoom.type != AbstractRoom.RoomType.BOSS) {
+            AbstractLabyrinth.addBleak();
+        }
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
         if(currentFloor.num == 11) {
@@ -177,7 +197,7 @@ public class AbstractLabyrinth {
         }
     }
 
-    public static void finishRoom() {
+    public static void victoryRoom() {
         advisor.skill.usedOnce = false;
         advisor.skill.cooldown = 0;
         currentFloor.currentWay.done();
@@ -191,6 +211,7 @@ public class AbstractLabyrinth {
             players[p.index] = p;
         }
         //AbstractLabyrinth.prepare();
+        AbstractLabyrinth.reduceBleak();
         SaveHandler.save();
     }
 

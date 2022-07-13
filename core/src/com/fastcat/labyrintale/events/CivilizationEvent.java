@@ -28,7 +28,17 @@ public class CivilizationEvent extends AbstractEvent {
         } else if(page == 2) {
             a.add(new SkillGetEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
         } else if(page == 3) {
-            a.add(new SkillUpgradeEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
+            a.add(new SkillSlotEventChoice(data.SELECT[3], new EventCondition() {
+                @Override
+                public boolean condition() {
+                    return AbstractLabyrinth.hasSlot();
+                }
+
+                @Override
+                public String cdText() {
+                    return data.SELECT[4];
+                }
+            }, this, 4));
         } else {
             a.add(new EndEventChoice(data.SELECT[3]));
         }

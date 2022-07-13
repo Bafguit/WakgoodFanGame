@@ -267,8 +267,10 @@ public class BattleScreen extends AbstractScreen {
                     enemyStatus[i][j].render(sb);
                 }
             }
-            if (enemies[i].enemy.isAlive() && AbstractLabyrinth.bleak < 100) {
-                enemySkills[i].render(sb);
+            if (enemies[i].enemy.isAlive()) {
+                boolean t = AbstractLabyrinth.bleak < 100;
+                enemySkills[i].overable = t;
+                if(t) enemySkills[i].render(sb);
             }
         }
     }

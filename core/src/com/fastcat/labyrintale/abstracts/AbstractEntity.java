@@ -124,7 +124,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public final void setMaxHealth(int max, boolean heal) {
-        maxHealth = max;
+        maxHealth = Math.max(max, 1);
         health = heal ? maxHealth : Math.min(health, maxHealth);
     }
 

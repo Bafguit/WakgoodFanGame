@@ -51,14 +51,14 @@ public class SaveHandler {
 
     public static void finish(boolean refresh) {
         if(refresh) refresh();
-        if(hasSave) {
+        /*if(hasSave) {
             try {
                 mapper.writeValue(new File("run_" + data.date + ".json"), data);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             saveFile.delete();
-        }
+        }*/
         refresh();
     }
 

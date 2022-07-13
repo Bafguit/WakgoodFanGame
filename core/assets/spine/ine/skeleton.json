@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "mHmSuQZ8pF4h9tdUzE/r3RtdzP4",
+	"hash": "HqRZ2duwk66xDRXX3NRrBPJbIXU",
 	"spine": "3.8.75",
 	"x": -320,
 	"y": -50,
@@ -25,7 +25,8 @@
 	{ "name": "body", "bone": "body", "attachment": "body" },
 	{ "name": "arm_right", "bone": "arm_right", "attachment": "arm_right" },
 	{ "name": "head", "bone": "head", "attachment": "head" },
-	{ "name": "ine_sd_a", "bone": "root" }
+	{ "name": "ine_sd_a", "bone": "root" },
+	{ "name": "ine_sd_h", "bone": "root" }
 ],
 "skins": [
 	{
@@ -47,6 +48,9 @@
 			},
 			"leg": {
 				"leg": { "x": 270, "scaleX": 0.5, "scaleY": 0.5, "rotation": -90, "width": 1280, "height": 1280 }
+			},
+			"ine_sd_h": {
+				"ine_sd_h": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
 			},
 			"head": {
 				"head": { "x": -9.9, "scaleX": 0.5, "scaleY": 0.5, "rotation": -90, "width": 1280, "height": 1280 }
@@ -82,17 +86,7 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"arm_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"leg": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"body": {
+			"head": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -107,7 +101,12 @@
 					{ "name": null }
 				]
 			},
-			"head": {
+			"leg": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -117,11 +116,55 @@
 					{ "name": "ine_sd_a" },
 					{ "time": 0.6667, "name": "ine_sd_a" }
 				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
 			}
 		}
 	},
 	"die": {},
-	"hit": {},
+	"hit": {
+		"slots": {
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hair": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"ine_sd_h": {
+				"attachment": [
+					{ "name": "ine_sd_h" },
+					{ "time": 0.6667, "name": "ine_sd_h" }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
 	"idle": {
 		"bones": {
 			"arm_right": {
