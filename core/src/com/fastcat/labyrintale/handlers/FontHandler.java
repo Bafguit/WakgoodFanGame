@@ -102,6 +102,13 @@ public class FontHandler implements Disposable {
 
     public static void renderLineLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
+        Matcher matcher = COLOR_PATTERN.matcher(text);
+        while(matcher.find()) {
+            String mt = matcher.group(1);
+            String mmt = matcher.group(2);
+            text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
+            matcher = COLOR_PATTERN.matcher(text);
+        }
         layout.setText(font, text, fontData.color, bw, Align.left, false);
         float ry = y + (layout.height) / 2;
         fontData.draw(sb, layout, fontData.alpha, x, ry);

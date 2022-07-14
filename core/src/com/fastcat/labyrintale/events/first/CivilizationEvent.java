@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events;
+package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
@@ -40,7 +40,7 @@ public class CivilizationEvent extends AbstractEvent {
                 }
             }, this, 4));
         } else {
-            a.add(new EndEventChoice(data.SELECT[3]));
+            a.add(new EndEventChoice());
         }
         return a;
     }

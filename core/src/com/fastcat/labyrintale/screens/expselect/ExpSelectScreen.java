@@ -81,7 +81,7 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
             Array<AbstractPlayer> pp = new Array<>();
             for(int i = 0; i < 4; i++) {
                 AbstractPlayer p = AbstractLabyrinth.players[i];
-                if(p.isAlive() && (p.slot[0] < 3 || p.slot[1] < 3 || p.slot[2] < 3)) pp.add(p);
+                if(p.isAlive() && p.hasSlot()) pp.add(p);
             }
             AbstractPlayer[] pa = new AbstractPlayer[pp.size];
             for(int i = 0; i < pp.size; i++) {

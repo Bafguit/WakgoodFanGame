@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events;
+package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
@@ -45,7 +45,7 @@ public class SurvivorEvent extends AbstractEvent {
                 }
             }, this, 2));
         } else {
-            a.add(new EndEventChoice(data.SELECT[6]));
+            a.add(new EndEventChoice());
         }
         return a;
     }

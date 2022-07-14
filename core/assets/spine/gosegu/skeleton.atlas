@@ -1,13 +1,41 @@
 
 skeleton.png
-size: 334,514
+size: 844,966
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-gosegu_sd_t
+attack
   rotate: false
+  xy: 514, 70
+  size: 322, 510
+  orig: 640, 640
+  offset: 159, 39
+  index: -1
+die
+  rotate: false
+  xy: 514, 582
+  size: 328, 382
+  orig: 640, 640
+  offset: 116, 42
+  index: -1
+hit
+  rotate: true
   xy: 2, 2
+  size: 305, 505
+  orig: 640, 640
+  offset: 144, 39
+  index: -1
+idle
+  rotate: true
+  xy: 2, 634
   size: 330, 510
   orig: 640, 640
   offset: 140, 39
+  index: -1
+skill
+  rotate: true
+  xy: 2, 309
+  size: 323, 510
+  orig: 640, 640
+  offset: 159, 39
   index: -1

@@ -59,7 +59,7 @@ public class VictoryAction extends AbstractAction {
             }
             int g = 20; //TODO 골드 보상 생성하는 메소드 만들기
             if(AbstractLabyrinth.advisor.cls == SOPHIA) g = MathUtils.floor(g * 1.2f);
-            temp.add(new GoldReward(g));
+            temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
             Labyrintale.battleScreen.cType = ControlPanel.ControlType.BASIC;
         }

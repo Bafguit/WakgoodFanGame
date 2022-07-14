@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events;
+package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractChoice;
@@ -40,7 +40,7 @@ public class DoorEvent extends AbstractEvent {
             }
             if(!b) a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal()));
         } else {
-            a.add(new EndEventChoice(data.SELECT[3]));
+            a.add(new EndEventChoice());
         }
         return a;
     }

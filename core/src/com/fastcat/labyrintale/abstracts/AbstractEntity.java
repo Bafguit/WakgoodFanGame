@@ -148,6 +148,12 @@ public abstract class AbstractEntity implements Cloneable {
         if(isAlive() && !hasStatus("Neut")) {
             heal = calculateSpell(heal);
             if(heal > 0) {
+                if(cPanel.type == ControlPanel.ControlType.BATTLE) {
+                    EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, heal, CHARTREUSE, false));
+                } else {
+                    PlayerIcon ui = cPanel.infoPanel.pIcons[index];
+                    cPanel.effectHandler.effectList.addLast(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, heal, CHARTREUSE, false));
+                }
                 health = Math.min(health + heal, maxHealth);
                 if (isPlayer) {
                     for (AbstractItem m : item) {

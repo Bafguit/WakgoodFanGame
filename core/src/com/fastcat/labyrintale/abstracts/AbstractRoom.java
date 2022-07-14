@@ -55,7 +55,7 @@ public class AbstractRoom {
 
     public final void enter() {
         if(type == MYSTERY) {
-            int b = 10, s = 10, r = 10, e = 70;
+            int b = 10, s = 5, r = 10, e = 75;
             if(AbstractLabyrinth.bleak >= 20) {
                 b = 35;
                 if(AbstractLabyrinth.bleak >= 40) {
@@ -76,7 +76,7 @@ public class AbstractRoom {
             } else if (x < r) {
                 temp = new RestRoom();
             } else {
-                temp = GroupHandler.RoomGroup.getNextEvent();
+                temp = GroupHandler.RoomGroup.getNextEvent(AbstractLabyrinth.floorNum);
                 event = temp.event;
             }
             id = temp.id;

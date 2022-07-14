@@ -64,6 +64,7 @@ public class SaveHandler {
 
     public static void load() {
         GroupHandler.RoomGroup.eventCount = data.eventCount;
+        GroupHandler.RoomGroup.neutCount = data.neutCount;
         GroupHandler.RoomGroup.weakCount = data.weakCount;
         GroupHandler.RoomGroup.normalCount = data.normalCount;
         GroupHandler.RoomGroup.eliteCount = data.eliteCount;
@@ -156,6 +157,7 @@ public class SaveHandler {
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
         public int eventCount;
+        public int neutCount;
         public int weakCount;
         public int normalCount;
         public int eliteCount;
@@ -186,6 +188,7 @@ public class SaveHandler {
             temp.bleakMin = AbstractLabyrinth.bleakMin;
             temp.bleakAdd = AbstractLabyrinth.bleakAdd;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
+            temp.neutCount = GroupHandler.RoomGroup.neutCount;
             temp.weakCount = GroupHandler.RoomGroup.weakCount;
             temp.normalCount = GroupHandler.RoomGroup.normalCount;
             temp.eliteCount = GroupHandler.RoomGroup.eliteCount;

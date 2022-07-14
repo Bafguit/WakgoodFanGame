@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events;
+package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
@@ -38,7 +38,7 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
             }));
             a.add(new PlayerEventChoice(data.SELECT[2], this));
         } else {
-            a.add(new EndEventChoice(data.SELECT[3]));
+            a.add(new EndEventChoice());
         }
         return a;
     }

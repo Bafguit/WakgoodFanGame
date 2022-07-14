@@ -11,7 +11,12 @@ public class PlayerEventChoice extends AbstractEvent.EventChoice {
 
     public PlayerEventChoice(String t, GetSelectedPlayer callback) {
         super(t);
-        this.event = callback;
+        event = callback;
+    }
+
+    public PlayerEventChoice(String t, AbstractEvent.EventCondition condition, GetSelectedPlayer callback) {
+        super(t, condition);
+        event = callback;
     }
 
     @Override

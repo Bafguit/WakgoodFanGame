@@ -24,6 +24,10 @@ public abstract class AbstractAdvisor implements Cloneable {
 
     }
 
+    public void onFire() {
+
+    }
+
     @Override
     public AbstractAdvisor clone() {
         try {

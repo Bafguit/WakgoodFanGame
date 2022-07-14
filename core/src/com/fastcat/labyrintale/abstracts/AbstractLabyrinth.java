@@ -78,9 +78,11 @@ public class AbstractLabyrinth {
             gold = 1000;
             bleak = 0;
             bleakMin = 0;
+            bleakAdd = 9;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
                 p.defineIndex(i);
+                restriction.onCreatePlayer(p);
                 Array<AbstractItem> t = p.getStartingItem();
                 for(int j = 0; j < 2; j++) {
                     AbstractItem item = t.get(j);
@@ -89,6 +91,7 @@ public class AbstractLabyrinth {
                 }
                 players[i] = p;
             }
+            restriction.onCreateLabyrinth();
         }
         cPanel = new ControlPanel();
     }
@@ -114,6 +117,10 @@ public class AbstractLabyrinth {
 
     public static void addBleak() {
         bleak = Math.min(bleak + (9 + floorNum), 100);
+    }
+
+    public static void addBleak(int add) {
+        bleak = Math.max(Math.min(bleak + add, 100), 0);
     }
 
     public static void reduceBleak() {

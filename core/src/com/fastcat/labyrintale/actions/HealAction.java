@@ -46,10 +46,8 @@ public class HealAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration){
             if(target.size > 0) {
-                for (int i = 0; i < target.size; i++) {
-                    AbstractEntity te = target.get(i);
-                    EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
-                    te.heal(heal);
+                for (AbstractEntity e : target) {
+                    e.heal(heal);
                 }
                 if (actor != null && motion) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);

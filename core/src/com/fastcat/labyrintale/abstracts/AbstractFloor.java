@@ -1,20 +1,15 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.RandomXC;
-import com.fastcat.labyrintale.events.*;
+import com.fastcat.labyrintale.events.first.CivilizationEvent;
+import com.fastcat.labyrintale.events.first.DoorEvent;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
-import com.fastcat.labyrintale.rooms.other.EntryRoom;
-import com.fastcat.labyrintale.rooms.other.PlaceholderRoom;
-import com.fastcat.labyrintale.rooms.other.RestRoom;
-import com.fastcat.labyrintale.rooms.other.ShopRoom;
-
-import java.util.Objects;
+import com.fastcat.labyrintale.rooms.other.*;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
@@ -56,20 +51,20 @@ public class AbstractFloor {
         this.num = 0;
         GroupHandler.RoomGroup.eventCount = 0;
 
-        ways[0] = new AbstractWay(generateWay(ENTRY), ENTRY);
+        ways[0] = new AbstractWay(generateWay(f, ENTRY), ENTRY);
         for(int i = 1; i < 4; i++) {
-            ways[i] = new AbstractWay(generateWay(WEAK), NORMAL);
+            ways[i] = new AbstractWay(generateWay(f, WEAK), NORMAL);
         }
-        ways[4] = new AbstractWay(generateWay(ELITE), ELITE);
-        ways[5] = new AbstractWay(generateWay(NORMAL), NORMAL);
-        ways[6] = new AbstractWay(generateWay(SHOP), SHOP);
-        ways[7] = new AbstractWay(generateWay(NORMAL), NORMAL);
-        ways[8] = new AbstractWay(generateWay(ELITE), ELITE);
+        ways[4] = new AbstractWay(generateWay(f, ELITE), ELITE);
+        ways[5] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
+        ways[6] = new AbstractWay(generateWay(f, SHOP), SHOP);
+        ways[7] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
+        ways[8] = new AbstractWay(generateWay(f, ELITE), ELITE);
         for(int i = 9; i < 11; i++) {
-            ways[i] = new AbstractWay(generateWay(NORMAL), NORMAL);
+            ways[i] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
         }
-        ways[11] = new AbstractWay(generateWay(REST), REST);
-        ways[12] = new AbstractWay(generateWay(BOSS), BOSS);
+        ways[11] = new AbstractWay(generateWay(f, REST), REST);
+        ways[12] = new AbstractWay(generateWay(f, BOSS), BOSS);
 
         currentRoom = new PlaceholderRoom();
     }
@@ -78,28 +73,18 @@ public class AbstractFloor {
         this.isDone = true;
     }
 
-    private Array<AbstractChoice> generateWay(AbstractWay.WayType type) {
+    private Array<AbstractChoice> generateWay(int floor, AbstractWay.WayType type) {
         int x = AbstractLabyrinth.mapRandom.random(100);
-        boolean battle = false;
         boolean rest = false;
         boolean mystery = false;
 
-        if(x < 60) {
-            battle = true;
+        if(x < 50) {
             rest = true;
             mystery = true;
-        } else {
-            int y = AbstractLabyrinth.mapRandom.random(100);
-            if(y < 60) {
-                battle = true;
-                mystery = true;
-            } else if(y < 90) {
-                battle = true;
-                rest = true;
-            } else {
-                rest = true;
-                mystery = true;
-            }
+        } else if(x < 90) {
+            mystery = true;
+        } else{
+            rest = true;
         }
 
         Array<AbstractChoice> t = new Array<>();
@@ -107,13 +92,13 @@ public class AbstractFloor {
         if(type == ENTRY) {
             t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
         } else if(type == WEAK) {
-            if(battle) t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
-            if(mystery) t.add(new AbstractChoice(new AbstractRoom(new CivilizationEvent()), AbstractChoice.ChoiceType.LOOK, true));
+            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
+            if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
         } else if (type == NORMAL) {
-            if(battle) t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
-            if(mystery) t.add(new AbstractChoice(new AbstractRoom(new DoorEvent()), AbstractChoice.ChoiceType.LOOK, true));
+            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
+            if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
         } else if (type == ELITE) {
@@ -125,7 +110,9 @@ public class AbstractFloor {
         } else if (type == REST) {
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
         } else if(type == SHOP) {
+            t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP, true));
+            shuffleChoice(t);
         }
         return t;
     }

@@ -7,9 +7,9 @@ import com.fastcat.labyrintale.status.SpellStatus;
 
 public class RestrictionHandler {
 
-    public int GRW;
-    public int STR;
-    public int INT;
+    public int GRW; //TODO
+    public int STR; //TODO
+    public int INT; //TODO
     public int HUG;
     public int FAM;
     public int FOG;
@@ -107,9 +107,9 @@ public class RestrictionHandler {
     }
 
     public int onGainGoldReward(int gold) {
-        if(FAM == 1) return (int)(gold * 0.9f);
-        else if(FAM == 2) return (int)(gold * 0.7f);
-        else if(FAM == 3) return (int)(gold * 0.5f);
+        if(FAM == 1) return (int)((float) gold * 0.9f);
+        else if(FAM == 2) return (int)((float) gold * 0.7f);
+        else if(FAM == 3) return (int)((float) gold * 0.5f);
         else return gold;
     }
 

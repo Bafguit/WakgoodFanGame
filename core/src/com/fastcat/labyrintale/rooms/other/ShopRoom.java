@@ -40,7 +40,7 @@ public class ShopRoom extends AbstractRoom {
         public Sprite img;
 
         public ShopItem(int p) {
-            price = p;
+            price = restriction.onCreateShopItem(p);
         }
 
         public final void takeItem() {

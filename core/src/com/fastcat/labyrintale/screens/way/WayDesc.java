@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.way;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -27,7 +28,7 @@ public class WayDesc extends AbstractUI {
             else sb.setColor(Color.WHITE);
 
             if(fontData != null) {
-                renderColorCenter(sb, fontData, text, x + sWidth * 0.1f, y + sHeight / 2, sWidth * 0.8f);
+                renderColorCenter(sb, fontData, AbstractLabyrinth.bleak >= 60 ? "???" : text, x + sWidth * 0.1f, y + sHeight / 2, sWidth * 0.8f);
             }
         }
     }

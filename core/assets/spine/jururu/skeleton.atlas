@@ -1,13 +1,41 @@
 
 skeleton.png
-size: 334,495
+size: 827,958
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-jururu_sd_t
+attack
+  rotate: true
+  xy: 2, 303
+  size: 324, 491
+  orig: 640, 640
+  offset: 158, 38
+  index: -1
+die
   rotate: false
-  xy: 2, 2
-  size: 330, 491
+  xy: 495, 68
+  size: 311, 396
+  orig: 640, 640
+  offset: 152, 18
+  index: -1
+hit
+  rotate: true
+  xy: 2, 629
+  size: 327, 491
+  orig: 640, 640
+  offset: 137, 38
+  index: -1
+idle
+  rotate: false
+  xy: 495, 466
+  size: 330, 490
   orig: 640, 640
   offset: 140, 39
+  index: -1
+skill
+  rotate: true
+  xy: 2, 2
+  size: 299, 490
+  orig: 640, 640
+  offset: 158, 39
   index: -1

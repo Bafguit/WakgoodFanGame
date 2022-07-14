@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events;
+package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
@@ -36,7 +36,7 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
             a.add(new NextPageEventChoice(data.SELECT[2], this, 3));
             a.add(new NextPageEventChoice(data.SELECT[3], this, 4));
         } else {
-            a.add(new EndEventChoice(data.SELECT[5]));
+            a.add(new EndEventChoice());
         }
         return a;
     }
@@ -59,7 +59,7 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
                 if(p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 4, AbstractEntity.DamageType.LOSE));
             }
         } else if(page == 4) {
-            AbstractLabyrinth.addBleak();
+            AbstractLabyrinth.addBleak(20);
         }
     }
 }

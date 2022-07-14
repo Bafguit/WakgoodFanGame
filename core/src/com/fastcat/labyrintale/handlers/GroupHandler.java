@@ -5,6 +5,8 @@ import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.*;
+import com.fastcat.labyrintale.events.first.*;
+import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
@@ -111,7 +113,9 @@ public class GroupHandler {
         public static HashMap<Integer, Array<AbstractRoom>> eliteGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> eventGroup = new HashMap<>();
+        public static Array<AbstractRoom> eventNeut = new Array<>();
         public static int eventCount;
+        public static int neutCount;
         public static int weakCount;
         public static int normalCount;
         public static int eliteCount;
@@ -123,6 +127,7 @@ public class GroupHandler {
             generateElite();
             generateBoss();
             generateEvent();
+            generateNeut();
             sort();
         }
 
@@ -158,13 +163,20 @@ public class GroupHandler {
         private static void generateEvent() {
             eventGroup.clear();
             Array<AbstractRoom> t = new Array<>();
-            t.add(new AbstractRoom(new TestEvent()));
             t.add(new AbstractRoom(new DoorEvent()));
             t.add(new AbstractRoom(new TrapEvent()));
             t.add(new AbstractRoom(new SurvivorEvent()));
             t.add(new AbstractRoom(new CivilizationEvent()));
             t.add(new AbstractRoom(new SealedHeartEvent()));
             eventGroup.put(1, t);
+        }
+
+        private static void generateNeut() {
+            eventNeut.add(new AbstractRoom(new TransformEvent()));
+            eventNeut.add(new AbstractRoom(new UpgradeEvent()));
+            eventNeut.add(new AbstractRoom(new ChaosEvent()));
+            eventNeut.add(new AbstractRoom(new CureEvent()));
+            eventNeut.add(new AbstractRoom(new PurifyEvent()));
         }
 
         public static void shuffleAll() {
@@ -178,6 +190,7 @@ public class GroupHandler {
                 staticShuffle(bossGroup.get(i + 1), groupRandom);
             for(int i = 0; i < eventGroup.size(); i++)
                 staticShuffle(eventGroup.get(i + 1), groupRandom);
+            staticShuffle(eventNeut, groupRandom);
         }
 
         private static void sort() {
@@ -237,8 +250,20 @@ public class GroupHandler {
             return bossGroup.get(currentFloor.floorNum).get(bossCount++).cpy();
         }
 
-        public static AbstractRoom getNextEvent() {
-            return eventGroup.get(currentFloor.floorNum).get(eventCount++).cpy();
+        public static AbstractRoom getNextEvent(int floorNum) {
+            AbstractRoom r;
+            Array<AbstractRoom> t = eventGroup.get(floorNum);
+            boolean ef = eventCount < t.size, nf = neutCount < floorNum * 2;
+            if(ef) {
+                if(nf && eventRandom.random(100) < 25) {
+                    r = eventNeut.get(neutCount++).cpy();
+                } else {
+                    r = eventGroup.get(floorNum).get(eventCount++).cpy();
+                }
+            } else {
+                r = eventNeut.get(neutCount++).cpy();
+            }
+            return r;
         }
 
         public static void roll() {
