@@ -118,11 +118,11 @@ public class RestScreen extends AbstractScreen {
     public static Sprite getImg(RestButton.RestType type) {
         switch (type) {
             case HEAL:
-                return FileHandler.skillImg.get("Heal"); //TODO 이미지 변경
+                return FileHandler.ui.get("HEAL"); //TODO 이미지 변경
             case UPGRADE:
-                return FileHandler.skillImg.get("Light");
+                return FileHandler.ui.get("UPGRADE");
             default:
-                return FileHandler.ui.get("REWARD_CARD");
+                return FileHandler.ui.get("DECK");
         }
     }
 

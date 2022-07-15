@@ -9,8 +9,7 @@ public class RemoveStatusAction extends AbstractAction {
     private final String id;
 
     public RemoveStatusAction(AbstractStatus status, boolean fast) {
-        super(status.owner, fast ? 0.25f : DUR_DEFAULT);
-        id = status.id;
+        this(status.id, status.owner, fast);
     }
 
     public RemoveStatusAction(String id, AbstractEntity actor, boolean fast) {

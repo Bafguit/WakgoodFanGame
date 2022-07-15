@@ -28,7 +28,7 @@ public class FixedStatus extends AbstractStatus {
 
     @Override
     public void endOfTurn() {
-        bot(new RemoveStatusAction(id, null, true));
+        bot(new RemoveStatusAction(this, true));
     }
 
     @Override

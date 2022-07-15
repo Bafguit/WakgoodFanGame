@@ -159,6 +159,136 @@
     "DESC": "",
     "FLAV": ""
   },
+  "Juggernaut": {
+    "NAME": "저거너트",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem2": {
+    "NAME": "GoldItem2",
+    "DESC": "전투 시작 시 &y<면역>을 &b<1> 얻습니다.",
+    "FLAV": ""
+  },
+  "Turtle": {
+    "NAME": "거북 등딱지 방패",
+    "DESC": "전투 시작 시 보호막을 &b<15> 얻습니다.",
+    "FLAV": ""
+  },
+  "GoldenRing": {
+    "NAME": "항금 고리",
+    "DESC": "전투 시작 시 모든 아군이 보호막을 &b<8> 얻습니다.",
+    "FLAV": ""
+  },
+  "BronzeItem3": {
+    "NAME": "BronzeItem3",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem4": {
+    "NAME": "BronzeItem4",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem5": {
+    "NAME": "BronzeItem5",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem7": {
+    "NAME": "BronzeItem7",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem10": {
+    "NAME": "BronzeItem10",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem11": {
+    "NAME": "BronzeItem11",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "BronzeItem12": {
+    "NAME": "BronzeItem12",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem1": {
+    "NAME": "SilverItem1",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem2": {
+    "NAME": "SilverItem2",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem3": {
+    "NAME": "SilverItem3",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem4": {
+    "NAME": "SilverItem4",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem5": {
+    "NAME": "SilverItem5",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem6": {
+    "NAME": "SilverItem6",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "SilverItem7": {
+    "NAME": "SilverItem7",
+    "DESC": "테스트",
+    "FLAV": ""
+  },
+  "GoldItem5": {
+    "NAME": "GoldItem5",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem6": {
+    "NAME": "GoldItem6",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem7": {
+    "NAME": "GoldItem7",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem8": {
+    "NAME": "GoldItem8",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem9": {
+    "NAME": "GoldItem9",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem10": {
+    "NAME": "GoldItem10",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem11": {
+    "NAME": "GoldItem11",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
+  "GoldItem12": {
+    "NAME": "GoldItem12",
+    "DESC": "최대 체력 &b<+20>.",
+    "FLAV": ""
+  },
   "": {
     "NAME": "",
     "DESC": "",

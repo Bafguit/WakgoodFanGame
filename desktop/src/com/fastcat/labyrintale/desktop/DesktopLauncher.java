@@ -20,6 +20,7 @@ public class DesktopLauncher {
 			mainLoopThread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 				@Override
 				public void uncaughtException(Thread t, Throwable e) {
+					Gdx.app.error("ERROR: ", "", e);
 					new ErrorWindow(e).setVisible(true);
 				}
 			});

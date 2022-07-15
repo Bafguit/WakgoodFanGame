@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class SilverItem6 extends AbstractItem {
 
-    private static final String ID = "PlatedArmour";
+    private static final String ID = "SilverItem6";
     private static final ItemRarity RARITY = ItemRarity.SILVER;
 
     public SilverItem6(AbstractPlayer owner) {

@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.advisors.*;
-import com.fastcat.labyrintale.events.*;
 import com.fastcat.labyrintale.events.first.*;
 import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.items.boss.*;
@@ -227,6 +226,9 @@ public class GroupHandler {
                     idSort.put(r.id, r);
                 }
             }
+            for(AbstractRoom r : eventNeut) {
+                idSort.put(r.id, r);
+            }
 
         }
 
@@ -366,10 +368,10 @@ public class GroupHandler {
             t.add(new SilverItem7(null));
 
             //골드
-            t.add(new GoldItem(null));
+            t.add(new Juggernaut(null));
             t.add(new GoldItem2(null));
-            t.add(new GoldItem3(null));
-            t.add(new GoldItem4(null));
+            t.add(new Turtle(null));
+            t.add(new GoldenRing(null));
             t.add(new GoldItem5(null));
             t.add(new GoldItem7(null));
             t.add(new GoldItem8(null));

@@ -3,12 +3,12 @@ package com.fastcat.labyrintale.items.gold;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
-public class GoldItem extends AbstractItem {
+public class Juggernaut extends AbstractItem {
 
-    private static final String ID = "Item1";
+    private static final String ID = "Juggernaut";
     private static final ItemRarity RARITY = ItemRarity.GOLD;
 
-    public GoldItem(AbstractPlayer owner) {
+    public Juggernaut(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 

@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.status.CourageStatus;
 
 public class BronzeItem4 extends AbstractItem {
 
-    private static final String ID = "Item1";
+    private static final String ID = "BronzeItem4";
     private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
     public BronzeItem4(AbstractPlayer owner) {

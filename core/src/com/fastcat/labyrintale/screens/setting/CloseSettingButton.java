@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.screens.itemselect.ItemSelectScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
@@ -31,6 +32,7 @@ public class CloseSettingButton extends AbstractUI {
 
     @Override
     protected void onClick() {
+        SettingHandler.save();
         Labyrintale.removeTempScreen(screen);
     }
 }

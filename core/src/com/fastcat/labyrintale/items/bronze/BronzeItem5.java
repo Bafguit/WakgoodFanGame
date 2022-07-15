@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.status.SpellStatus;
 
 public class BronzeItem5 extends AbstractItem {
 
-    private static final String ID = "Item1";
+    private static final String ID = "BronzeItem5";
     private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
     public BronzeItem5(AbstractPlayer owner) {

@@ -193,6 +193,8 @@ public class FileHandler implements Disposable {
         ui.put("LEFT", new Sprite(new Texture("img/ui/left.png")));
         ui.put("RIGHT", new Sprite(new Texture("img/ui/right.png")));
         ui.put("MYSTERY", new Sprite(new Texture("img/ui/mystery.png")));
+        ui.put("HEAL", new Sprite(new Texture("img/ui/heal.png")));
+        ui.put("UPGRADE", new Sprite(new Texture("img/ui/upgrade.png")));
     }
 
     private static void generateCharImg() {

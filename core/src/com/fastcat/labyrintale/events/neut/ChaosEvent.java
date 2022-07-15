@@ -7,7 +7,7 @@ import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.SkillSlotEventChoice;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
-public class ChaosEvent extends AbstractEvent implements AtEndOfTempScreen {
+public class ChaosEvent extends AbstractEvent {
 
     private static final String ID = "Chaos";
     private static final int SIZE = 3;
@@ -21,16 +21,11 @@ public class ChaosEvent extends AbstractEvent implements AtEndOfTempScreen {
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
         if(page == 0) {
-            a.add(new SkillSlotEventChoice(data.SELECT[0], new EventCondition.True(), this)); //TODO
+            a.add(new SkillSlotEventChoice(data.SELECT[0], new EventCondition.True(), this, 1)); //TODO
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {
             a.add(new EndEventChoice());
         }
         return a;
-    }
-
-    @Override
-    public void atEndOfTempScreen() {
-        setPage(1);
     }
 }

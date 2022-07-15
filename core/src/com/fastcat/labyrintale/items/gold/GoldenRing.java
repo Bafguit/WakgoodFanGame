@@ -5,12 +5,12 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 
-public class GoldItem3 extends AbstractItem {
+public class GoldenRing extends AbstractItem {
 
-    private static final String ID = "Item1";
+    private static final String ID = "GoldenRing";
     private static final ItemRarity RARITY = ItemRarity.GOLD;
 
-    public GoldItem3(AbstractPlayer owner) {
+    public GoldenRing(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
@@ -27,6 +27,6 @@ public class GoldItem3 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 15));
+        bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 8));
     }
 }
