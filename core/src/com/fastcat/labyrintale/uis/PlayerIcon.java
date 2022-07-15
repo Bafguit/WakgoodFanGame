@@ -15,10 +15,12 @@ import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 public class PlayerIcon extends AbstractUI {
 
     public AbstractPlayer p;
+    public final int index;
 
-    public PlayerIcon(AbstractPlayer p) {
+    public PlayerIcon(int index) {
         super(FileHandler.ui.get("BORDER_M"));
-        this.p = p;
+        this.index = index;
+        p = AbstractLabyrinth.players[index];
     }
 
     @Override
@@ -32,13 +34,10 @@ public class PlayerIcon extends AbstractUI {
 
     @Override
     protected void updateButton() {
+        p = AbstractLabyrinth.players[index];
         if(over && p != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(p);
         }
-    }
-
-    public void setPlayer(AbstractPlayer p) {
-        this.p = p;
     }
 
     @Override

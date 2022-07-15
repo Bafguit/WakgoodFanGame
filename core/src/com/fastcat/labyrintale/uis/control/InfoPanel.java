@@ -54,7 +54,7 @@ public class InfoPanel extends AbstractUI {
         bdh = 60 * InputHandler.scale;
 
         for(int i = 0; i < 4; i++) {
-            PlayerIcon c = new PlayerIcon(AbstractLabyrinth.players[i]);
+            PlayerIcon c = new PlayerIcon(i);
             c.setPosition(w * (0.17f + 0.08f * i) - c.sWidth / 2, h * 0.275f);
             pIcons[i] = c;
         }

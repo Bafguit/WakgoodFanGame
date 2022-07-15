@@ -68,7 +68,7 @@ public class BattleScreen extends AbstractScreen {
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
             ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.575f);
-            ev.enemy.tempIndex = i;
+            ev.enemy.index = i;
             ev.enemy.newDeck();
             if(isLoad) {
                 ev.enemy.isRandom = false;
@@ -186,7 +186,7 @@ public class BattleScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        int ci = cPanel.battlePanel.curPlayer.tempIndex;
+        int ci = cPanel.battlePanel.curPlayer.index;
         if(isSelecting) {
             for (int i = 0; i < 4; i++) {
                 if(!enemies[i].isTarget) enemies[i].render(sb);

@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.screens.battle.PlayerView;

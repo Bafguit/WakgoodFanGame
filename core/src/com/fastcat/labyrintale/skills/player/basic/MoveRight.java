@@ -18,12 +18,12 @@ public class MoveRight extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction((AbstractPlayer) owner, false));
+        bot(new MoveAction(owner, false));
     }
 
     @Override
     protected boolean available() {
-        return owner.tempIndex > 0;
+        return owner.index > 0;
     }
 
     @Override

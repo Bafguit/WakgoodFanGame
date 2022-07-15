@@ -6,13 +6,14 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.CourageStatus;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Encourage extends AbstractSkill {
 
     private static final String ID = "Encourage";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.SELF_BOTH;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER;
     private static final int VALUE = 2;
 
     public Encourage(AbstractEntity e) {
@@ -23,8 +24,13 @@ public class Encourage extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
-        bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
+
+    }
+
+    @Override
+    public void onTarget(AbstractEntity e) {
+        top(new ApplyStatusAction(new EnduranceStatus(value), owner, target, false));
+        top(new BlockAction(this.owner, target, spell));
     }
 
     @Override

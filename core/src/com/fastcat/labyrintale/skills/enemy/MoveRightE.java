@@ -23,7 +23,7 @@ public class MoveRightE extends AbstractSkill {
 
     @Override
     protected boolean available() {
-        return enemy.tempIndex < 3;
+        return enemy.index < 3;
     }
 
     @Override

@@ -27,42 +27,22 @@ public class MoveAction extends AbstractAction {
     private float toDist;
     private float toPos;
 
-    public MoveAction(AbstractPlayer p, boolean isLeft) {
-        this(p, isLeft, 0.5f);
-    }
-
-    public MoveAction(AbstractPlayer p, boolean isLeft, float dur) {
-        this(p, isLeft ? p.tempIndex + 1 : p.tempIndex - 1, dur);
-    }
-
-    public MoveAction(AbstractPlayer p, int index) {
-        this(p, index, 0.5f);
-    }
-
-    public MoveAction(AbstractPlayer p, int index, float dur) {
-        super(null, dur);
-        from = p;
-        type = MoveType.PLAYER;
-        toIndex = index;
-        alive = p.isAlive();
-    }
-
-    public MoveAction(AbstractEnemy e, boolean isLeft) {
+    public MoveAction(AbstractEntity e, boolean isLeft) {
         this(e, isLeft, 0.5f);
     }
 
-    public MoveAction(AbstractEnemy e, boolean isLeft, float dur) {
-        this(e, isLeft ? e.tempIndex - 1 : e.tempIndex + 1, dur);
+    public MoveAction(AbstractEntity e, boolean isLeft, float dur) {
+        this(e, e.isPlayer ? (isLeft ? e.index + 1 : e.index - 1) : (isLeft ? e.index - 1 : e.index + 1), dur);
     }
 
-    public MoveAction(AbstractEnemy e, int index) {
+    public MoveAction(AbstractEntity e, int index) {
         this(e, index, 0.5f);
     }
 
-    public MoveAction(AbstractEnemy e, int index, float dur) {
+    public MoveAction(AbstractEntity e, int index, float dur) {
         super(null, dur);
         from = e;
-        type = MoveType.ENEMY;
+        type = e.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
         toIndex = index;
         alive = e.isAlive();
     }
@@ -75,17 +55,17 @@ public class MoveAction extends AbstractAction {
                 run = false;
             } else {
                 if(type == MoveType.PLAYER) {
-                    isLeft = from.tempIndex < toIndex;
+                    isLeft = from.index < toIndex;
                     if (isLeft) {
-                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex > from.tempIndex) {
+                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex > from.index) {
                             toIndex--;
                         }
                     } else {
-                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex < from.tempIndex) {
+                        while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex < from.index) {
                             toIndex++;
                         }
                     }
-                    int i = Math.abs(from.tempIndex - toIndex);
+                    int i = Math.abs(from.index - toIndex);
                     if (i == 0) {
                         isDone = true;
                         run = false;
@@ -95,7 +75,7 @@ public class MoveAction extends AbstractAction {
                         toPos = w * 0.425f - w * 0.1f * toIndex;
                         int v = 0;
                         if (isLeft) {
-                            for (int j = from.tempIndex; j < toIndex; j++) {
+                            for (int j = from.index; j < toIndex; j++) {
                                 AbstractPlayer p = AbstractLabyrinth.players[j + 1];
                                 if(p.movable > 0) {
                                     v--;
@@ -108,7 +88,7 @@ public class MoveAction extends AbstractAction {
                                 }
                             }
                         } else {
-                            for (int j = from.tempIndex; j > toIndex; j--) {
+                            for (int j = from.index; j > toIndex; j--) {
                                 AbstractPlayer p = AbstractLabyrinth.players[j - 1];
                                 if(p.movable > 0) {
                                     v++;
@@ -123,17 +103,17 @@ public class MoveAction extends AbstractAction {
                         }
                     }
                 } else {
-                    isLeft = from.tempIndex > toIndex;
+                    isLeft = from.index > toIndex;
                     if (isLeft) {
-                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex < from.tempIndex) {
+                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex < from.index) {
                             toIndex++;
                         }
                     } else {
-                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex > from.tempIndex) {
+                        while ((!currentFloor.currentRoom.enemies[toIndex].isAlive() || currentFloor.currentRoom.enemies[toIndex].movable > 0) && toIndex > from.index) {
                             toIndex--;
                         }
                     }
-                    int i = Math.abs(from.tempIndex - toIndex);
+                    int i = Math.abs(from.index - toIndex);
                     if (i == 0) {
                         isDone = true;
                         run = false;
@@ -143,7 +123,7 @@ public class MoveAction extends AbstractAction {
                         toPos = w * 0.575f + w * 0.1f * toIndex;
                         int v = 0;
                         if (!isLeft) {
-                            for (int j = from.tempIndex; j < toIndex; j++) {
+                            for (int j = from.index; j < toIndex; j++) {
                                 AbstractEnemy e = currentFloor.currentRoom.enemies[j + 1];
                                 if(e.movable > 0) {
                                     v--;
@@ -156,7 +136,7 @@ public class MoveAction extends AbstractAction {
                                 }
                             }
                         } else {
-                            for (int j = from.tempIndex; j > toIndex; j--) {
+                            for (int j = from.index; j > toIndex; j--) {
                                 AbstractEnemy e = currentFloor.currentRoom.enemies[j - 1];
                                 if(e.movable > 0) {
                                     v++;
@@ -178,12 +158,12 @@ public class MoveAction extends AbstractAction {
                 if (type == MoveType.PLAYER) {
                     for (Integer i : to.keySet()) {
                         AbstractEntity e = to.get(i);
-                        e.tempIndex = i;
+                        e.index = i;
                         e.animX = position.get(i);
                         AbstractLabyrinth.players[i] = (AbstractPlayer) e;
                         battleScreen.players[i].player = (AbstractPlayer) e;
                     }
-                    from.tempIndex = toIndex;
+                    from.index = toIndex;
                     from.animX = toPos;
                     AbstractLabyrinth.players[toIndex] = (AbstractPlayer) from;
                     battleScreen.players[toIndex].player = (AbstractPlayer) from;
@@ -194,12 +174,12 @@ public class MoveAction extends AbstractAction {
                 } else {
                     for (Integer i : to.keySet()) {
                         AbstractEntity e = to.get(i);
-                        e.tempIndex = i;
+                        e.index = i;
                         e.animX = position.get(i);
                         currentFloor.currentRoom.enemies[i] = (AbstractEnemy) e;
                         battleScreen.setEnemy((AbstractEnemy) e, i);
                     }
-                    from.tempIndex = toIndex;
+                    from.index = toIndex;
                     from.animX = toPos;
                     currentFloor.currentRoom.enemies[toIndex] = (AbstractEnemy) from;
                     battleScreen.enemies[toIndex].enemy = (AbstractEnemy) from;

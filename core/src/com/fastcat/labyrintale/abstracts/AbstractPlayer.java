@@ -45,15 +45,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mLeftTemp = mLeft.clone();
     }
 
-    public void revive() {
-        isDead = false;
-        isDie = false;
-        health = 1;
-        animColor.a = 1.0f;
-        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
-        e.setTimeScale(1.0f);
-    }
-
     public void gainItem(AbstractItem i, int index) {
         item[index].onRemove();
         i.owner = this;

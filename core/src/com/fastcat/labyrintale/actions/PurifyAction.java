@@ -21,7 +21,7 @@ public class PurifyAction extends AbstractAction {
         if(duration == baseDuration) {
             for(AbstractEntity e : target) {
                 if(e.isAlive()) {
-                    for (AbstractStatus s : actor.status) {
+                    for (AbstractStatus s : e.status) {
                         if (s != null && s.type == AbstractStatus.StatusType.DEBUFF) {
                             ActionHandler.top(new RemoveStatusAction(s, true));
                         }

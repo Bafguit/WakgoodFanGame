@@ -39,7 +39,7 @@ public class PointBlank extends AbstractSkill {
     public int calculateAttack(int a) {
         if(AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
             if(AbstractLabyrinth.cPanel.battlePanel.selected == this && Labyrintale.battleScreen.looking.size == 1) {
-                return a + (6 - (owner.tempIndex + Labyrintale.battleScreen.looking.get(0).tempIndex));
+                return a + (6 - (owner.index + Labyrintale.battleScreen.looking.get(0).index));
             }
         }
         return a;

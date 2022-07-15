@@ -213,13 +213,13 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             } else if (target == SkillTarget.RIGHT) {
                 Array<AbstractEntity> temp = new Array<>();
                 if (owner.isPlayer) {
-                    if (owner.tempIndex > 0) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index - 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex < 3) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index + 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -227,13 +227,13 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             } else if (target == SkillTarget.LEFT) {
                 Array<AbstractEntity> temp = new Array<>();
                 if (owner.isPlayer) {
-                    if (owner.tempIndex < 3) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index + 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex > 0) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index - 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -241,21 +241,21 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             } else if (target == SkillTarget.BOTH) {
                 Array<AbstractEntity> temp = new Array<>();
                 if (owner.isPlayer) {
-                    if (owner.tempIndex > 0) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index - 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
-                    if (owner.tempIndex < 3) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index + 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex < 3) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index + 1];
                         if (te.isAlive()) temp.add(te);
                     }
-                    if (owner.tempIndex > 0) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index - 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -264,13 +264,13 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 Array<AbstractEntity> temp = new Array<>();
                 temp.add(owner);
                 if (owner.isPlayer) {
-                    if (owner.tempIndex > 0) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index - 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex < 3) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index + 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -279,13 +279,13 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 Array<AbstractEntity> temp = new Array<>();
                 temp.add(owner);
                 if (owner.isPlayer) {
-                    if (owner.tempIndex < 3) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index + 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex > 0) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index - 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -294,21 +294,21 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 Array<AbstractEntity> temp = new Array<>();
                 temp.add(owner);
                 if (owner.isPlayer) {
-                    if (owner.tempIndex > 0) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index - 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
-                    if (owner.tempIndex < 3) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index + 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
                 } else {
-                    if (owner.tempIndex < 3) {
-                        AbstractPlayer tp = AbstractLabyrinth.players[owner.tempIndex + 1];
+                    if (owner.index < 3) {
+                        AbstractPlayer tp = AbstractLabyrinth.players[owner.index + 1];
                         if (tp.isAlive()) temp.add(tp);
                     }
-                    if (owner.tempIndex > 0) {
-                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.tempIndex - 1];
+                    if (owner.index > 0) {
+                        AbstractEnemy te = AbstractLabyrinth.currentFloor.currentRoom.enemies[owner.index - 1];
                         if (te.isAlive()) temp.add(te);
                     }
                 }
@@ -355,20 +355,42 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
                 break;
             case PLAYER_LAST:
-                for(int i = 3; i >= 0; i--) {
+                boolean has = false;
+                for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive()) {
+                    if(p.isAlive() && p.hasStatus("Provoke")) {
                         temp.add(p);
+                        has = true;
                         break;
+                    }
+                }
+                if(!has) {
+                    for (int i = 3; i >= 0; i--) {
+                        AbstractPlayer p = tp[i].player;
+                        if (p.isAlive()) {
+                            temp.add(p);
+                            break;
+                        }
                     }
                 }
                 break;
             case ENEMY_LAST:
-                for(int i = 3; i >= 0; i--) {
-                    AbstractEnemy e = te[i].enemy;
-                    if(e.isAlive()) {
-                        temp.add(e);
+                has = false;
+                for(int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if(p.isAlive() && p.hasStatus("Provoke")) {
+                        temp.add(p);
+                        has = true;
                         break;
+                    }
+                }
+                if(!has) {
+                    for (int i = 3; i >= 0; i--) {
+                        AbstractEnemy e = te[i].enemy;
+                        if (e.isAlive()) {
+                            temp.add(e);
+                            break;
+                        }
                     }
                 }
                 break;

@@ -12,7 +12,6 @@ import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
 import com.fastcat.labyrintale.actions.MoveAction;
-import com.fastcat.labyrintale.actions.ReduceStatusAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.effects.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -59,7 +58,6 @@ public abstract class AbstractEntity implements Cloneable {
     public boolean isNeut = false;
     public int movable = 0;
     public int index;
-    public int tempIndex;
     public int block = 0;
     public int health;
     public int maxHealth;
@@ -442,17 +440,25 @@ public abstract class AbstractEntity implements Cloneable {
 
         return damage;
     }
+
+    public void revive() {
+        isDead = false;
+        isDie = false;
+        health = 1;
+        animColor.a = 1.0f;
+        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
+        e.setTimeScale(1.0f);
+        infoSpine.setAnimation("idle");
+    }
     
     public void die(AbstractEntity murder) {
         if(cPanel.type == ControlPanel.ControlType.BATTLE) {
             isDie = true;
+            ActionHandler.top(new MoveAction(this, 3));
             if(isPlayer) {
-                ActionHandler.top(new MoveAction((AbstractPlayer) this, 3));
                 for (AbstractItem m : item) {
                     if (m != null) m.onDeath(murder);
                 }
-            } else {
-                ActionHandler.top(new MoveAction((AbstractEnemy) this, 3));
             }
             for(AbstractStatus s : status) {
                 if(s != null) s.onDeath(murder);
@@ -504,7 +510,6 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void defineIndex(int i) {
         index = i;
-        tempIndex = i;
     }
 
     public boolean isAlive() {

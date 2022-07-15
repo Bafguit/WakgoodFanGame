@@ -212,7 +212,6 @@ public class AbstractLabyrinth {
         AbstractPlayer[] temp = players;
         players = new AbstractPlayer[4];
         for(AbstractPlayer p : temp) {
-            p.tempIndex = p.index;
             p.mRightTemp = p.mRight;
             p.mLeftTemp = p.mLeft;
             players[p.index] = p;

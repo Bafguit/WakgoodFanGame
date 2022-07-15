@@ -154,8 +154,48 @@
     "DESC": "엘리트와 보스 전투에서 행동력 &b<+1>.",
     "FLAV": ""
   },
-  "ShopItem": {
-    "NAME": "상점용 아이템",
+  "ShopItem1": {
+    "NAME": "상점용 아이템1",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem2": {
+    "NAME": "상점용 아이템2",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem3": {
+    "NAME": "상점용 아이템3",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem4": {
+    "NAME": "상점용 아이템4",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem5": {
+    "NAME": "상점용 아이템5",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem6": {
+    "NAME": "상점용 아이템6",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem7": {
+    "NAME": "상점용 아이템7",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem8": {
+    "NAME": "상점용 아이템8",
+    "DESC": "",
+    "FLAV": ""
+  },
+  "ShopItem9": {
+    "NAME": "상점용 아이템9",
     "DESC": "",
     "FLAV": ""
   },

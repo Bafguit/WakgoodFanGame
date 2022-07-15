@@ -26,9 +26,9 @@ public class AmbushAction extends AbstractAction {
                     AbstractEntity te = target.get(i);
                     if(te.isAlive()) {
                         te.takeDamage(info);
-                        skill.upgrade();
                     }
                 }
+                skill.upgrade();
                 if(actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "hit", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);

@@ -51,7 +51,7 @@ public class PlayerView extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled && player != null && !player.isDead) {
             sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(isOnLock ? pImg : img, player.animX - sWidth / 2, player.animY - Gdx.graphics.getHeight() * 0.025f, sWidth, sHeight);
+            if(showImg) sb.draw(isLooking ? img : pImg, player.animX - sWidth / 2, player.animY - Gdx.graphics.getHeight() * 0.025f, sWidth, sHeight);
             player.render(sb);
             //애니메이션
         }

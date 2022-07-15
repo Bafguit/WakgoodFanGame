@@ -25,6 +25,7 @@ public class DieEffect extends AbstractEffect {
             if (duration == baseDuration) {
                 AnimationState.TrackEntry e = actor.state.setAnimation(0, "die", false);
                 e.setTimeScale(1.0f);
+                actor.infoSpine.setAnimation("die");
             } else {
                 actor.animColor.set(actor.animColor.r, actor.animColor.b, actor.animColor.g, actor.animColor.a - Labyrintale.tick / 2);
             }

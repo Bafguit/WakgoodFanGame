@@ -119,7 +119,7 @@ public class SaveHandler {
                 p.slot[j] = d.slot[j];
             }
             p.deck = new Array<>(ss);
-
+            if(p.isDead) p.infoSpine.setAnimation("die");
             players[i] = p;
         }
         AdvisorData ad = data.advisor;
