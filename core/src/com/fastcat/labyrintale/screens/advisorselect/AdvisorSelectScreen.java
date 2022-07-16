@@ -18,14 +18,20 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorButton[] aAdvisor = new AdvisorButton[4];
 
     public AdvisorSelectScreen() {
-        advisorSelectText = new AdvisorSelectText();
-        nextButton = new NextButton(this);
-        addAdvisor();
+        this(false);
     }
 
-    private void addAdvisor() {
+    public AdvisorSelectScreen(boolean isStart) {
+        advisorSelectText = new AdvisorSelectText();
+        nextButton = new NextButton(this);
+        addAdvisor(isStart);
+    }
+
+    private void addAdvisor(boolean start) {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        Array<AbstractAdvisor> a = GroupHandler.AdvisorGroup.staticShuffle(GroupHandler.AdvisorGroup.sort);
+        Array<AbstractAdvisor> a;
+        if(start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
+        else a = GroupHandler.AdvisorGroup.getAdvisors(4);
         for(int i = 0; i < 4; i++) {
             AdvisorButton adv = new AdvisorButton(a.get(i).clone(), this);
             adv.setPosition(w * 0.2f * (i + 1) - adv.sWidth / 2, h * 0.6f);

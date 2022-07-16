@@ -15,7 +15,7 @@ public class SettingHandler {
 
     public static FileHandle settingFile = Gdx.files.local("setting.json");
 
-    public static void initialize() { //TODO 설정 파일에서 불러오기
+    public static void initialize() {
         setting = new SettingData();
         boolean hasSave = settingFile.exists();
         if(hasSave) {

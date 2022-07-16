@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
 import com.fastcat.labyrintale.events.neut.*;
@@ -47,18 +48,19 @@ public class GroupHandler {
     public static class AdvisorGroup {
 
         public static Array<AbstractAdvisor> sort = new Array<>();
-        public static HashMap<AbstractAdvisor.AdvisorClass, AbstractAdvisor> advisors = new HashMap<>();
 
         public static void generateAdvisor() {
-            for(AbstractAdvisor.AdvisorClass c : AbstractAdvisor.AdvisorClass.values()) {
-                AbstractAdvisor a = getAdvisorInstance(c);
-                sort.add(a);
-                advisors.put(c, a);
+            for(AdvisorClass c : AdvisorClass.values()) {
+                if(c != AdvisorClass.START) {
+                    sort.add(getAdvisorInstance(c));
+                }
             }
         }
 
-        public static AbstractAdvisor getAdvisorInstance(AbstractAdvisor.AdvisorClass cls) {
+        public static AbstractAdvisor getAdvisorInstance(AdvisorClass cls) {
             switch (cls) {
+                case START:
+                    return new StartAdvisor();
                 case PUNG:
                     return new Pungsin();
                 case NEGATIVE:
@@ -88,6 +90,26 @@ public class GroupHandler {
                 default:
                     return new MitsuneHaku();
             }
+        }
+
+        public static Array<AbstractAdvisor> getStartAdvisor() {
+            Array<AbstractAdvisor> a = new Array<>();
+            a.add(getAdvisorInstance(AdvisorClass.START));
+            //TODO 시작 참모 더 추가
+            return a;
+        }
+
+        public static Array<AbstractAdvisor> getAdvisors(int amount) {
+            Array<AbstractAdvisor> t = new Array<>();
+            Array<AbstractAdvisor> r = new Array<>();
+            for(AbstractAdvisor advisor : sort) {
+                if(advisor.cls != AbstractLabyrinth.advisor.cls) t.add(advisor);
+            }
+            staticShuffle(t);
+            for(int i = 0; i < amount; i++) {
+                r.add(t.get(i));
+            }
+            return r;
         }
 
         public static Array<AbstractAdvisor> staticShuffle(Array<AbstractAdvisor> array) {
@@ -168,6 +190,10 @@ public class GroupHandler {
             t.add(new AbstractRoom(new CivilizationEvent()));
             t.add(new AbstractRoom(new SealedHeartEvent()));
             eventGroup.put(1, t);
+            //TODO 층마다 이벤트 다르게
+            eventGroup.put(2, t);
+            eventGroup.put(3, t);
+            eventGroup.put(4, t);
         }
 
         private static void generateNeut() {
@@ -176,6 +202,9 @@ public class GroupHandler {
             eventNeut.add(new AbstractRoom(new ChaosEvent()));
             eventNeut.add(new AbstractRoom(new CureEvent()));
             eventNeut.add(new AbstractRoom(new PurifyEvent()));
+            eventNeut.add(new AbstractRoom(new LightEvent()));
+            eventNeut.add(new AbstractRoom(new MetamorphEvent()));
+            eventNeut.add(new AbstractRoom(new GoldEvent()));
         }
 
         public static void shuffleAll() {

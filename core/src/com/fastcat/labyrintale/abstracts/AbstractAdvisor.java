@@ -39,6 +39,6 @@ public abstract class AbstractAdvisor implements Cloneable {
 
     public enum AdvisorClass {
         DOPA, SECRET, RUSEOK, HIKI, PUNG, SHRIMP, NEGATIVE,
-        JK, SOPHIA, DUKSU, HAKU, BUSINESS, FREETER, CARNAR
+        JK, SOPHIA, DUKSU, HAKU, BUSINESS, FREETER, CARNAR, START
     }
 }

@@ -18,7 +18,6 @@ public class CivilizationEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        //TODO 좀 더 구체적으로 수정
         if(page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1, new EventCondition.True()));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2, new EventCondition.True()));

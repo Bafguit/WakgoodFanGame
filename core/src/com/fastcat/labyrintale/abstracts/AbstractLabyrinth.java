@@ -91,6 +91,7 @@ public class AbstractLabyrinth {
                 }
                 players[i] = p;
             }
+            advisor = GroupHandler.AdvisorGroup.getAdvisorInstance(AbstractAdvisor.AdvisorClass.START);
             restriction.onCreateLabyrinth();
         }
         cPanel = new ControlPanel();
@@ -119,7 +120,7 @@ public class AbstractLabyrinth {
         bleak = Math.min(bleak + (9 + floorNum), 100);
     }
 
-    public static void addBleak(int add) {
+    public static void modifyBleak(int add) {
         bleak = Math.max(Math.min(bleak + add, 100), 0);
     }
 

@@ -54,7 +54,6 @@ public class BattlePanel implements Disposable {
         ry = h * 0.075f;
         ex = w * 0.3f;
         ey = aSkill.sHeight;
-        //pSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PASSIVE); //TODO 패시브 스킬 버튼 추가
     }
 
     public void update() {

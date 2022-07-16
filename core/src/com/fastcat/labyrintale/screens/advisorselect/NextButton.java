@@ -37,9 +37,7 @@ public class NextButton extends AbstractUI {
         if(sc.selected != null) {
             AbstractLabyrinth.advisor = sc.selected.advisor;
             AbstractLabyrinth.advisor.onHire();
-            AbstractLabyrinth.endRoom();
             Labyrintale.removeTempScreen(sc);
-            Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
         }
     }
 }

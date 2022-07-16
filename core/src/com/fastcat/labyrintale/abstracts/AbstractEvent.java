@@ -30,7 +30,6 @@ public abstract class AbstractEvent implements Cloneable {
         desc = getDescription(page);
         this.size = size;
         choices = new Array[this.size];
-        //TODO 페이지 구현 필수
     }
 
     public final void generateChoices() {

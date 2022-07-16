@@ -88,7 +88,6 @@ public class AbstractFloor {
         }
 
         Array<AbstractChoice> t = new Array<>();
-        //TODO 랜덤으로 생성하게
         if(type == ENTRY) {
             t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
         } else if(type == WEAK) {
