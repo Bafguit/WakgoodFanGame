@@ -35,6 +35,7 @@ public class NextButton extends AbstractUI {
     @Override
     protected void onClick() {
         if(sc.selected != null) {
+            if(AbstractLabyrinth.advisor != null) AbstractLabyrinth.advisor.onFire();
             AbstractLabyrinth.advisor = sc.selected.advisor;
             AbstractLabyrinth.advisor.onHire();
             Labyrintale.removeTempScreen(sc);

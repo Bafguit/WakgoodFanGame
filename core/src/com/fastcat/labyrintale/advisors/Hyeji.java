@@ -15,4 +15,9 @@ public class Hyeji extends AbstractAdvisor {
     public void onHire() {
         AbstractLabyrinth.maxSlotUp++;
     }
+
+    @Override
+    public void onFire() {
+        AbstractLabyrinth.maxSlotUp--;
+    }
 }

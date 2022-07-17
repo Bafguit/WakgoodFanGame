@@ -12,6 +12,7 @@ public class JkSkill extends AbstractSkill {
     public JkSkill() {
         super(ID, TYPE, RARITY, TARGET);
         passive = true;
+        setBaseValue(1);
     }
 
     @Override

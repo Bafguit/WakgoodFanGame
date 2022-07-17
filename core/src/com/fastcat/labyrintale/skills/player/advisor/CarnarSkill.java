@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.skills.player.advisor;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.LowHealAction;
 
 public class CarnarSkill extends AbstractSkill {
 
@@ -12,12 +13,18 @@ public class CarnarSkill extends AbstractSkill {
 
     public CarnarSkill() {
         super(ID, TYPE, RARITY, TARGET);
-        //passive = true;
+        passive = true;
+        setBaseValue(VALUE);
     }
 
     @Override
     public void use() {
 
+    }
+
+    @Override
+    public void atBattleEnd() {
+        bot(new LowHealAction(value));
     }
 
     @Override

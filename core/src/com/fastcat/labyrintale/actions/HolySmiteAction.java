@@ -36,7 +36,7 @@ public class HolySmiteAction extends AbstractAction {
                     if(te.isAlive()) te.takeDamage(info);
                 }
                 Array<AbstractPlayer> temp = new Array<>();
-                int low = 10000000;
+                int low = 2147483647;
                 for(int i = 0; i < 4; i++) {
                     AbstractPlayer p = AbstractLabyrinth.players[i];
                     if(p.isAlive() && p.health < low) low = p.health;

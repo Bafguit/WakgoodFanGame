@@ -4,15 +4,17 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.rewards.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
-public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSkill {
+public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot {
 
     public static final int HEAL_AMOUNT = 10;
 
@@ -38,7 +40,15 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
             }
             Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
         } else if (type == RestType.UPGRADE) {
-            Labyrintale.addTempScreen(new SkillSelectScreen(SkillUpgradeReward.SkillRewardType.UPGRADE, new SkillRewardUpgrade(this)));
+            Array<AbstractPlayer> temp = new Array<>();
+            for(AbstractPlayer p : AbstractLabyrinth.players) {
+                if(p.isAlive()) temp.add(p);
+            }
+            AbstractPlayer[] tp = new AbstractPlayer[temp.size];
+            for(int i = 0; i < temp.size; i++) {
+                tp[i] = temp.get(i);
+            }
+            Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
         } else if(type == RestType.REVIVE) {
             Array<AbstractPlayer> temp = new Array<>();
             for(AbstractPlayer p : AbstractLabyrinth.players) {
@@ -56,14 +66,19 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
     public void playerSelected(AbstractPlayer player) {
         if(type == RestType.HEAL) {
             player.heal(HEAL_AMOUNT);
+            sc.finishRest();
+        } else if(type == RestType.UPGRADE) {
+            Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
         } else if(type == RestType.REVIVE) {
             player.revive();
+            sc.finishRest();
+        } else {
+            sc.finishRest();
         }
-        sc.finishRest();
     }
 
     @Override
-    public void skillSelected(SkillSelectScreen.SkillSelectGroup group) {
+    public void slotSelected(AbstractPlayer player, int index) {
         sc.finishRest();
     }
 

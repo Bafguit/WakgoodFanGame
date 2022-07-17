@@ -91,7 +91,6 @@ public class AbstractLabyrinth {
                 }
                 players[i] = p;
             }
-            advisor = GroupHandler.AdvisorGroup.getAdvisorInstance(AbstractAdvisor.AdvisorClass.START);
             restriction.onCreateLabyrinth();
         }
         cPanel = new ControlPanel();

@@ -315,7 +315,7 @@ public abstract class AbstractEntity implements Cloneable {
             if(cPanel.type == ControlPanel.ControlType.BATTLE) {
                 if (attacker != null && type == DamageType.NORMAL) {
                     damage = attacker.calculateAttack(damage);
-                    if (isPlayer) {
+                    if (attacker.isPlayer) {
                         for (AbstractItem m : attacker.item) {
                             if (m != null) m.onAttack(this, damage, type);
                         }
@@ -351,9 +351,9 @@ public abstract class AbstractEntity implements Cloneable {
                             e.setTimeScale(1.0f);
                             health -= damage;
                             if (health <= 0) {
-                                if (isPlayer && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnly) {
+                                if (isPlayer && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnce) {
                                     advisor.skill.use();
-                                    health = maxHealth;
+                                    health = 1;
                                     block = 0;
                                 } else if (!isNeut) {
                                     health = 1;

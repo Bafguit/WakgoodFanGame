@@ -74,28 +74,42 @@ public class AbstractFloor {
     }
 
     private Array<AbstractChoice> generateWay(int floor, AbstractWay.WayType type) {
-        int x = AbstractLabyrinth.mapRandom.random(100);
-        boolean rest = false;
-        boolean mystery = false;
-
-        if(x < 50) {
-            rest = true;
-            mystery = true;
-        } else if(x < 90) {
-            mystery = true;
-        } else{
-            rest = true;
-        }
 
         Array<AbstractChoice> t = new Array<>();
         if(type == ENTRY) {
-            t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
+            if(floor == 1) t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
+            else if(floor == 2) t.add(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.GOOD, true));
+            else t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
         } else if(type == WEAK) {
+            int x = AbstractLabyrinth.mapRandom.random(100);
+            boolean rest = false;
+            boolean mystery = false;
+
+            if(x < 50) {
+                rest = true;
+                mystery = true;
+            } else if(x < 90) {
+                mystery = true;
+            } else{
+                rest = true;
+            }
             t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
         } else if (type == NORMAL) {
+            int x = AbstractLabyrinth.mapRandom.random(100);
+            boolean rest = false;
+            boolean mystery = false;
+
+            if(x < 50) {
+                rest = true;
+                mystery = true;
+            } else if(x < 90) {
+                mystery = true;
+            } else{
+                rest = true;
+            }
             t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));

@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
 import com.fastcat.labyrintale.events.neut.*;
+import com.fastcat.labyrintale.events.second.*;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
@@ -51,7 +52,7 @@ public class GroupHandler {
 
         public static void generateAdvisor() {
             for(AdvisorClass c : AdvisorClass.values()) {
-                if(c != AdvisorClass.START) {
+                if(c != AdvisorClass.BUSINESS && c != AdvisorClass.FREETER && c != AdvisorClass.CARNAR) {
                     sort.add(getAdvisorInstance(c));
                 }
             }
@@ -59,8 +60,6 @@ public class GroupHandler {
 
         public static AbstractAdvisor getAdvisorInstance(AdvisorClass cls) {
             switch (cls) {
-                case START:
-                    return new StartAdvisor();
                 case PUNG:
                     return new Pungsin();
                 case NEGATIVE:
@@ -94,8 +93,9 @@ public class GroupHandler {
 
         public static Array<AbstractAdvisor> getStartAdvisor() {
             Array<AbstractAdvisor> a = new Array<>();
-            a.add(getAdvisorInstance(AdvisorClass.START));
-            //TODO 시작 참모 더 추가
+            a.add(getAdvisorInstance(AdvisorClass.BUSINESS));
+            a.add(getAdvisorInstance(AdvisorClass.FREETER));
+            a.add(getAdvisorInstance(AdvisorClass.CARNAR));
             return a;
         }
 
@@ -190,10 +190,28 @@ public class GroupHandler {
             t.add(new AbstractRoom(new CivilizationEvent()));
             t.add(new AbstractRoom(new SealedHeartEvent()));
             eventGroup.put(1, t);
-            //TODO 층마다 이벤트 다르게
-            eventGroup.put(2, t);
-            eventGroup.put(3, t);
-            eventGroup.put(4, t);
+            Array<AbstractRoom> t2 = new Array<>();
+            t2.add(new AbstractRoom(new BettingEvent()));
+            t2.add(new AbstractRoom(new FogEvent()));
+            t2.add(new AbstractRoom(new StrangerEvent()));
+            t2.add(new AbstractRoom(new UpsetIdolEvent()));
+            t2.add(new AbstractRoom(new WeaponEvent()));
+            eventGroup.put(2, t2);
+            //TODO 3층 4층 이벤트 만들기
+            Array<AbstractRoom> t3 = new Array<>();
+            t3.add(new AbstractRoom(new BettingEvent()));
+            t3.add(new AbstractRoom(new FogEvent()));
+            t3.add(new AbstractRoom(new StrangerEvent()));
+            t3.add(new AbstractRoom(new UpsetIdolEvent()));
+            t3.add(new AbstractRoom(new WeaponEvent()));
+            eventGroup.put(3, t3);
+            Array<AbstractRoom> t4 = new Array<>();
+            t4.add(new AbstractRoom(new BettingEvent()));
+            t4.add(new AbstractRoom(new FogEvent()));
+            t4.add(new AbstractRoom(new StrangerEvent()));
+            t4.add(new AbstractRoom(new UpsetIdolEvent()));
+            t4.add(new AbstractRoom(new WeaponEvent()));
+            eventGroup.put(4, t4);
         }
 
         private static void generateNeut() {
@@ -225,6 +243,7 @@ public class GroupHandler {
             idSort.clear();
 
             idSort.put("StartEvent", new EntryRoom());
+            idSort.put("SecondFloor", new SecondFloorRoom());
             idSort.put("Shop", new ShopRoom());
             idSort.put("Rest", new RestRoom());
             idSort.put("Mystery", new MysteryRoom());

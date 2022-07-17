@@ -15,7 +15,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     public AdvisorSelectText advisorSelectText;
     public NextButton nextButton;
     public AdvisorButton selected;
-    public AdvisorButton[] aAdvisor = new AdvisorButton[4];
+    public AdvisorButton[] aAdvisor;
 
     public AdvisorSelectScreen() {
         this(false);
@@ -32,9 +32,12 @@ public class AdvisorSelectScreen extends AbstractScreen {
         Array<AbstractAdvisor> a;
         if(start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
         else a = GroupHandler.AdvisorGroup.getAdvisors(4);
-        for(int i = 0; i < 4; i++) {
+        int s = a.size;
+        aAdvisor = new AdvisorButton[s];
+        float ws = w / (s + 1);
+        for(int i = 0; i < a.size; i++) {
             AdvisorButton adv = new AdvisorButton(a.get(i).clone(), this);
-            adv.setPosition(w * 0.2f * (i + 1) - adv.sWidth / 2, h * 0.6f);
+            adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.6f);
             aAdvisor[i] = adv;
         }
     }

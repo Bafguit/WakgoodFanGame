@@ -12,11 +12,12 @@ public class SecretSkill extends AbstractSkill {
     public SecretSkill() {
         super(ID, TYPE, RARITY, TARGET);
         passive = true;
+        disposable = true;
     }
 
     @Override
     public void use() {
-        usedOnly = true;
+        usedOnce = true;
     }
 
     @Override
