@@ -158,6 +158,7 @@ public class GroupHandler {
             t.add(new Weak1());
             t.add(new Weak2());
             weakGroup.put(1, t);
+            weakGroup.put(2, t);
         }
 
         private static void generateNormal() {
@@ -165,6 +166,7 @@ public class GroupHandler {
             Array<AbstractRoom> t = new Array<>();
             t.add(new Test());
             normalGroup.put(1, t);
+            normalGroup.put(2, t);
         }
 
         private static void generateElite() {
