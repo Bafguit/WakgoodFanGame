@@ -36,10 +36,10 @@ public class HealAction extends AbstractAction {
         motion = true;
     }
 
-    public HealAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int heal, boolean effect) {
+    public HealAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int heal, boolean motion) {
         super(actor, target, 0.5f);
         this.heal = heal;
-        motion = effect;
+        this.motion = motion;
     }
 
     @Override

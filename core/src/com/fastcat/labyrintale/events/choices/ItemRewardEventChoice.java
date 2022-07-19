@@ -12,6 +12,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
     private final AbstractEvent event;
     private final int toPage;
     public AbstractItem item;
+    public AbstractItem.ItemRarity rarity;
 
     public ItemRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event) {
         this(t, condition, event, -1);
@@ -23,6 +24,13 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
         toPage = page;
     }
 
+    public ItemRewardEventChoice(String t, AbstractItem.ItemRarity rarity, AbstractEvent.EventCondition condition, AbstractEvent event, int page) {
+        super(t, condition);
+        this.event = event;
+        toPage = page;
+        this.rarity = rarity;
+    }
+
     public ItemRewardEventChoice(String t, AbstractItem item, AbstractEvent.EventCondition condition, AbstractEvent event, int page) {
         super(t, condition);
         this.event = event;
@@ -32,7 +40,10 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
 
     @Override
     protected void onSelect() {
-        ShopTakeScreen s = new ShopTakeScreen(item != null ? item : GroupHandler.ItemGroup.getRandomItem());
+        ShopTakeScreen s;
+        if(item != null) s = new ShopTakeScreen(item);
+        else if(rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity));
+        else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem());
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

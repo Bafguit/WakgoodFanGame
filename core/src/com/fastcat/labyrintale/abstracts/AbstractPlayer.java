@@ -33,6 +33,12 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mRight = mRightTemp = new MoveRight(this);
         setImage(charImg.get(playerClass), charImgBig.get(playerClass), charBgImg.get(playerClass));
         imgTiny = charImgTiny.get(playerClass);
+        Array<AbstractItem> t = getStartingItem();
+        for(int j = 0; j < 2; j++) {
+            AbstractItem it = t.get(j);
+            it.onGain();
+            item[j] = it;
+        }
     }
 
     @Override

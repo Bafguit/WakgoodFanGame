@@ -26,7 +26,7 @@ public class StrangerEvent extends AbstractEvent {
             a.add(new ItemRewardEventChoice(data.SELECT[1], new EventCondition() {
                 @Override
                 public boolean condition() {
-                    return AbstractLabyrinth.gold > 80;
+                    return AbstractLabyrinth.gold >= 80;
                 }
 
                 @Override

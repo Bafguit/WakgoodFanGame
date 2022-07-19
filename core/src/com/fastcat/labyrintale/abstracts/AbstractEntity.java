@@ -472,11 +472,15 @@ public abstract class AbstractEntity implements Cloneable {
                 }
                 if (!a) {
                     ActionHandler.clear();
-                    for (AbstractItem m : item) {
-                        if (m != null) m.atBattleEnd();
+                    for(AbstractPlayer p : players) {
+                        for (AbstractItem m : p.item) {
+                            if (m != null) m.atBattleEnd();
+                        }
                     }
-                    for(AbstractStatus s : status) {
-                        if(s != null) s.atBattleEnd();
+                    for(AbstractPlayer p : players) {
+                        for (AbstractStatus s : p.status) {
+                            if (s != null) s.atBattleEnd();
+                        }
                     }
                     advisor.skill.atBattleEnd();
                     ActionHandler.bot(new VictoryAction());

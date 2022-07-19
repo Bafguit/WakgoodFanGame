@@ -25,7 +25,7 @@ public class CivilizationEvent extends AbstractEvent {
         } else if(page == 1) {
             a.add(new ItemRewardEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
         } else if(page == 2) {
-            a.add(new SkillGetEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
+            a.add(new SkillRewardEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
         } else if(page == 3) {
             a.add(new SkillSlotEventChoice(data.SELECT[3], new EventCondition() {
                 @Override

@@ -33,7 +33,7 @@ public class FontHandler implements Disposable {
     public static final FontData ENERGY = new FontData(BOLD, 64, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
-    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, BLACK, false, false);
+    public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
     public static final FontData SEED = new FontData(MEDIUM, 44, WHITE, true, false);
     public static final FontData SHOP_OK = new FontData(MEDIUM, 30, WHITE, true, true);

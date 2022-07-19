@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.items.gold.GoldItem12;
+import com.fastcat.labyrintale.items.special.CrackedHeart;
 
 public class UpsetIdolEvent extends AbstractEvent {
 
@@ -65,7 +66,7 @@ public class UpsetIdolEvent extends AbstractEvent {
                     break;
                 }
             }
-            if(player != null) player.gainItem(new GoldItem12(player), index);
+            if(player != null) player.gainItem(new CrackedHeart(player), index);
         } else if(page == 2) {
             for(AbstractPlayer p : AbstractLabyrinth.players) {
                 if(p.isAlive()) {

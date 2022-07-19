@@ -138,6 +138,7 @@ public class SaveHandler {
         gold = data.gold;
         bleak = data.bleak;
         bleakMin = data.bleakMin;
+        bleakMax = data.bleakMax;
         bleakAdd = data.bleakAdd;
     }
 
@@ -151,6 +152,7 @@ public class SaveHandler {
         public int gold;
         public int bleak;
         public int bleakMin;
+        public int bleakMax;
         public int bleakAdd;
         public AdvisorData advisor;
         public PlayerData[] players = new PlayerData[4];
@@ -186,6 +188,7 @@ public class SaveHandler {
             temp.gold = AbstractLabyrinth.gold;
             temp.bleak = AbstractLabyrinth.bleak;
             temp.bleakMin = AbstractLabyrinth.bleakMin;
+            temp.bleakMax = AbstractLabyrinth.bleakMax;
             temp.bleakAdd = AbstractLabyrinth.bleakAdd;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
             temp.neutCount = GroupHandler.RoomGroup.neutCount;

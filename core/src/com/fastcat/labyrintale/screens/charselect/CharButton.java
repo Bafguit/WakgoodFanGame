@@ -17,27 +17,22 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharButton extends AbstractUI {
 
-    private Sprite ci;
-    private Sprite bg;
-    public CharString.CharData charData;
-    public boolean showBg = false;
+    public AbstractPlayer player;
     private boolean isCharSt = false;
     public boolean isOnLock = false;
-    private boolean isChar = true;
-
-    public AbstractPlayer.PlayerClass selected;
+    public boolean isChar = true;
     public CharButton sChar;
 
     public CharButton() {
         super(FileHandler.ui.get("BORDER_M"));
         showImg = false;
+        clickable = false;
         isChar = false;
     }
 
-    public CharButton(AbstractPlayer.PlayerClass cls) {
+    public CharButton(AbstractPlayer player) {
         super(FileHandler.ui.get("BORDER_M"));
-        ci = charImg.get(cls);
-        selected = cls;
+        this.player = player;
     }
 
     @Override
@@ -48,62 +43,56 @@ public class CharButton extends AbstractUI {
     public void render(SpriteBatch sb) {
         if(enabled) {
             sb.setColor(Color.WHITE);
-            if(!isChar && showBg) sb.draw(bg, x + sWidth / 2 - Gdx.graphics.getWidth() * 0.125f, 0, bg.getWidth() * scale * uiScale, bg.getHeight() * scale * uiScale);
             if(isCharSt) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(isChar) {
-                if (showImg) sb.draw(ci, x, y, sWidth, sHeight);
-                sb.draw(img, x, y, sWidth, sHeight);
-            }
+            if (showImg) sb.draw(player.img, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-
-            if(fontData != null) {
-                renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
-            }
         }
     }
 
     @Override
     protected void onOver() {
-
+        if(player != null) {
+            charSelectScreen.group.setPlayer(player);
+            charSelectScreen.selected = player;
+        }
     }
 
     @Override
     protected void onClick() {
         if(isChar) {
             if(!isCharSt) {
-                for(int i = 0; i < charSelectScreen.chars.length; i++) {
+                for (int i = 0; i < charSelectScreen.chars.length; i++) {
                     CharButton chb = charSelectScreen.chars[i];
-                    if(!chb.isOnLock) {
+                    if (!chb.isOnLock) {
+                        chb.player = player;
                         chb.isOnLock = true;
-                        chb.selected = selected;
                         chb.sChar = this;
                         chb.showImg = true;
-                        chb.ci = charImg.get(selected);
-                        chb.bg = charBgImg.get(selected);
-                        chb.showBg = true;
-                        chb.charData = StringHandler.charString.get(selected.toString().toLowerCase());
+                        chb.clickable = true;
                         isCharSt = true;
+                        sChar = chb;
                         break;
                     }
                 }
             } else {
-                for(int i = 0; i < charSelectScreen.chars.length; i++) {
-                    CharButton chb = charSelectScreen.chars[i];
-                    if(chb.sChar == this) {
-                        chb.removeChar();
-                    }
+                if(sChar != null) {
+                    sChar.removeChar();
+                    sChar = null;
                 }
             }
+        } else {
+            removeChar();
         }
     }
 
     public void removeChar() {
-        selected = null;
+        player = null;
         showImg = false;
         isOnLock = false;
-        showBg = false;
+        clickable = false;
         if(sChar != null) {
             sChar.isCharSt = false;
             sChar = null;

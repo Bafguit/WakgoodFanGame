@@ -40,6 +40,7 @@ public class AbstractLabyrinth {
     public static int gold;
     public static int bleak;
     public static int bleakMin;
+    public static int bleakMax;
     public static int bleakAdd;
 
     public AbstractLabyrinth() {
@@ -78,17 +79,12 @@ public class AbstractLabyrinth {
             gold = 1000;
             bleak = 0;
             bleakMin = 0;
+            bleakMax = 100;
             bleakAdd = 9;
             for (int i = 0; i < 4; i++) {
-                AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].selected);
+                AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].player.playerClass);
                 p.defineIndex(i);
                 restriction.onCreatePlayer(p);
-                Array<AbstractItem> t = p.getStartingItem();
-                for(int j = 0; j < 2; j++) {
-                    AbstractItem item = t.get(j);
-                    item.onGain();
-                    p.item[j] = item;
-                }
                 players[i] = p;
             }
             restriction.onCreateLabyrinth();
@@ -116,15 +112,19 @@ public class AbstractLabyrinth {
     }
 
     public static void addBleak() {
-        bleak = Math.min(bleak + (9 + floorNum), 100);
+        bleak = Math.min(bleak + (9 + floorNum), bleakMax);
+    }
+
+    public static void modifyGold(int add) {
+        gold = Math.max(gold + add, 0);
     }
 
     public static void modifyBleak(int add) {
-        bleak = Math.max(Math.min(bleak + add, 100), 0);
+        bleak = Math.max(Math.min(bleak + add, bleakMax), bleakMin);
     }
 
     public static void reduceBleak() {
-        bleak = Math.max(bleak - (11 - floorNum), 0);
+        bleak = Math.max(bleak - (11 - floorNum), bleakMin);
     }
 
     public static boolean canGetItem() {

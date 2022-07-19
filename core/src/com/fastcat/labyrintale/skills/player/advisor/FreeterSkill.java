@@ -1,6 +1,9 @@
 package com.fastcat.labyrintale.skills.player.advisor;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.status.CourageStatus;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class FreeterSkill extends AbstractSkill {
 
@@ -8,16 +11,20 @@ public class FreeterSkill extends AbstractSkill {
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
     private static final SkillTarget TARGET = SkillTarget.NONE;
-    private static final int VALUE = 2;
 
     public FreeterSkill() {
         super(ID, TYPE, RARITY, TARGET);
-        //passive = true;
+        passive = true;
+        setBaseValue(1, 1);
     }
 
     @Override
     public void use() {
 
+    }
+
+    public void atBattleStart() {
+        bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
     }
 
     @Override

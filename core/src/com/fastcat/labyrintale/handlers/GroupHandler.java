@@ -8,11 +8,15 @@ import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
 import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.events.second.*;
+import com.fastcat.labyrintale.events.third.GeneralStoreEvent;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
 import com.fastcat.labyrintale.items.shop.*;
 import com.fastcat.labyrintale.items.silver.*;
+import com.fastcat.labyrintale.items.special.CrackedHeart;
+import com.fastcat.labyrintale.items.special.GolemHead;
+import com.fastcat.labyrintale.items.special.GreenHeart;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
@@ -201,7 +205,7 @@ public class GroupHandler {
             eventGroup.put(2, t2);
             //TODO 3층 4층 이벤트 만들기
             Array<AbstractRoom> t3 = new Array<>();
-            t3.add(new AbstractRoom(new BettingEvent()));
+            t3.add(new AbstractRoom(new GeneralStoreEvent()));
             t3.add(new AbstractRoom(new FogEvent()));
             t3.add(new AbstractRoom(new StrangerEvent()));
             t3.add(new AbstractRoom(new UpsetIdolEvent()));
@@ -358,6 +362,7 @@ public class GroupHandler {
         public static final Array<AbstractItem> goldItem = new Array<>();
         public static final Array<AbstractItem> bossItem = new Array<>();
         public static final Array<AbstractItem> shopItem = new Array<>();
+        public static final Array<AbstractItem> specialItem = new Array<>();
 
         public static void generateItem() {
             idSort.clear();
@@ -368,6 +373,7 @@ public class GroupHandler {
             silverItem.clear();
             goldItem.clear();
             shopItem.clear();
+            specialItem.clear();
             generateAll();
             sort();
         }
@@ -444,7 +450,7 @@ public class GroupHandler {
             t.add(new BossItem12(null));
             t.add(new BrokenTicker(null));
 
-            //싱점
+            //상점
             t.add(new ShopItem1(null));
             t.add(new ShopItem2(null));
             t.add(new ShopItem3(null));
@@ -454,6 +460,11 @@ public class GroupHandler {
             t.add(new ShopItem7(null));
             t.add(new ShopItem8(null));
             t.add(new ShopItem9(null));
+
+            //특별
+            t.add(new GreenHeart(null));
+            t.add(new CrackedHeart(null));
+            t.add(new GolemHead(null));
         }
 
         public static AbstractItem getRandomItemByRarity(AbstractItem.ItemRarity rarity) {
@@ -522,6 +533,8 @@ public class GroupHandler {
                     shopItem.add(item);
                 } else if(item.rarity == AbstractItem.ItemRarity.STARTER) {
                     starterItem.add(item);
+                } else if(item.rarity == AbstractItem.ItemRarity.SPECIAL) {
+                    specialItem.add(item);
                 }
             }
             raritySort.put(AbstractItem.ItemRarity.BRONZE, bronzeItem);

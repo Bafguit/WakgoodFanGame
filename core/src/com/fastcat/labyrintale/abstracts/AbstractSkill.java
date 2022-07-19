@@ -144,51 +144,61 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public String getKeyValue(String key) {
         switch (key) {
             case "A":
-                int a = calculateAttack(baseAttack);
-                if(owner != null) {
-                    if(owner.isPlayer) {
-                        for (AbstractItem m : owner.item) {
-                            if (m != null) a = m.showAttack(a);
+                int a = baseAttack;
+                if(AbstractLabyrinth.cPanel != null) {
+                    a = calculateAttack(a);
+                    if (owner != null) {
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) a = m.showAttack(a);
+                            }
                         }
-                    }
-                    for (AbstractStatus s : owner.status) {
-                        if (s != null) a = s.showAttack(a);
-                    }
-                    if(owner.isPlayer) {
-                        for (AbstractItem m : owner.item) {
-                            if (m != null) a *= m.attackMultiply(a);
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) a = s.showAttack(a);
                         }
-                    }
-                    for (AbstractStatus s : owner.status) {
-                        if (s != null) a *= s.attackMultiply(a);
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) a *= m.attackMultiply(a);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) a *= s.attackMultiply(a);
+                        }
                     }
                 }
                 a = Math.max(a, 0);
                 return getHexColor(valueColor(a, baseAttack)) + a;
             case "S":
-                int p = calculateSpell(baseSpell);
-                if(owner != null) {
-                    if(owner.isPlayer) {
-                        for (AbstractItem m : owner.item) {
-                            if (m != null) p = m.showSpell(p);
+                int p = baseSpell;
+                if(AbstractLabyrinth.cPanel != null) {
+                    p = calculateSpell(p);
+                    if (owner != null) {
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) p = m.showSpell(p);
+                            }
                         }
-                    }
-                    for (AbstractStatus s : owner.status) {
-                        if (s != null) p = s.showSpell(p);
-                    }
-                    if(owner.isPlayer) {
-                        for (AbstractItem m : owner.item) {
-                            if (m != null) p *= m.spellMultiply(p);
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) p = s.showSpell(p);
                         }
-                    }
-                    for (AbstractStatus s : owner.status) {
-                        if (s != null) p *= s.spellMultiply(p);
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) p *= m.spellMultiply(p);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) p *= s.spellMultiply(p);
+                        }
                     }
                 }
                 p = Math.max(p, 0);
                 return getHexColor(valueColor(p, baseSpell)) + p;
             case "V":
-                return getHexColor(Color.CYAN) + calculateValue(baseValue);
+                int v = baseValue;
+                if(AbstractLabyrinth.cPanel != null) {
+                    v = calculateValue(v);
+                }
+                return getHexColor(Color.CYAN) + v;
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }
@@ -478,7 +488,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available() && (owner == null || !owner.isNeut);
+        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
     }
 
     protected boolean available() {

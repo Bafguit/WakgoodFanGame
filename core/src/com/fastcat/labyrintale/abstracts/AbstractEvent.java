@@ -96,6 +96,7 @@ public abstract class AbstractEvent implements Cloneable {
 
         public final void select() {
             onSelect();
+            condition.onSelect();
             isUsed = true;
         }
 
@@ -109,6 +110,7 @@ public abstract class AbstractEvent implements Cloneable {
     public static abstract class EventCondition {
         public abstract boolean condition();
         public abstract String cdText();
+        public void onSelect() {}
 
         public static class True extends EventCondition {
             @Override

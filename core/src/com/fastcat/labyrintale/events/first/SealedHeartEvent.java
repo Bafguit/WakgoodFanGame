@@ -8,7 +8,9 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.ItemRewardEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
+import com.fastcat.labyrintale.items.special.GreenHeart;
 
 public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer {
 
@@ -25,7 +27,7 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
         if(page == 0) {
-            a.add(new ItemRewardEventChoice(data.SELECT[0], new EventCondition.True(), this, 1)); //TODO 특정 아이템 주도록 변경
+            a.add(new ItemRewardEventChoice(data.SELECT[0], new GreenHeart(null), new EventCondition.True(), this, 1)); //TODO 특정 아이템 주도록 변경
             a.add(new NextPageEventChoice(data.SELECT[4], this, 5));
         } else if(page == 1) {
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));

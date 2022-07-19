@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.skills.player.advisor;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class BusinessSkill extends AbstractSkill {
 
@@ -23,7 +24,7 @@ public class BusinessSkill extends AbstractSkill {
     }
 
     public void atBattleStart() {
-        bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
+        bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, false));
     }
 
     @Override
