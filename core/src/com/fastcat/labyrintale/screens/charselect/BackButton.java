@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.uis.control.InfoPanel;
 
 import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;

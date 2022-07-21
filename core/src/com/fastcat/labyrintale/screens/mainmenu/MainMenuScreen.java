@@ -1,11 +1,13 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
+import com.fastcat.labyrintale.uis.control.InfoPanel;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
 import static com.fastcat.labyrintale.handlers.FileHandler.bg;
@@ -64,6 +66,12 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void show() {
+        if(Labyrintale.charSelectScreen != null) {
+            Labyrintale.charSelectScreen.selected = null;
+            for (int i = 0; i < 4; i++) {
+                Labyrintale.charSelectScreen.chars[i].removeChar();
+            }
+        }
         logoText.onHide();
         gameStartButton.onHide();
         tutorialButton.onHide();

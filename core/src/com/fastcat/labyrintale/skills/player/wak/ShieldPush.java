@@ -1,8 +1,10 @@
 package com.fastcat.labyrintale.skills.player.wak;
 
+import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.actions.MoveAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class ShieldPush extends AbstractSkill {
@@ -10,8 +12,8 @@ public class ShieldPush extends AbstractSkill {
     private static final String ID = "ShieldPush";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 4;
 
     public ShieldPush(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
@@ -20,7 +22,9 @@ public class ShieldPush extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        bot(new BlockAction(this.owner, target, spell));
+        AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(SkillTarget.ENEMY_FIRST).get(0);
+        bot(new MoveAction(e, false, 0.2f));
     }
 
     @Override

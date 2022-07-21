@@ -18,7 +18,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class CharButton extends AbstractUI {
 
     public AbstractPlayer player;
-    private boolean isCharSt = false;
+    public boolean isCharSt = false;
     public boolean isOnLock = false;
     public boolean isChar = true;
     public CharButton sChar;

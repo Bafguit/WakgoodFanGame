@@ -5,6 +5,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.starter.FireStaff;
+import com.fastcat.labyrintale.items.starter.FlameBook;
 import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -36,8 +38,8 @@ public class Lilpa extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new Item1(this));
-        temp.add(new Item1(this));
+        temp.add(new FlameBook(this));
+        temp.add(new FireStaff(this));
         return temp;
     }
 }

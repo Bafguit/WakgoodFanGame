@@ -81,6 +81,9 @@ public class CharSelectScreen extends AbstractScreen {
         seedText.update();
         backButton.update();
         nextButton.update();
+        if(!Labyrintale.fading && InputHandler.cancel) {
+            backButton.onClick();
+        }
     }
 
     @Override

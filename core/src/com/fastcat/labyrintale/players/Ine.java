@@ -29,7 +29,6 @@ public class Ine extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Pruning(this));
-        temp.add(new Charge(this));
         return temp;
     }
 
