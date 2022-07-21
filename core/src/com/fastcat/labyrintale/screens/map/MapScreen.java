@@ -50,6 +50,12 @@ public class MapScreen extends AbstractScreen {
         setBg(bg.get("BG_MAP"));
     }
 
+    public void refreshFloor() {
+        for(int i = 0; i < 13; i++) {
+            nodes[i].way = currentFloor.ways[i];
+        }
+    }
+
     @Override
     public void update() {
         if(isView && (InputHandler.cancel || InputHandler.map)) Labyrintale.removeTempScreen(this);

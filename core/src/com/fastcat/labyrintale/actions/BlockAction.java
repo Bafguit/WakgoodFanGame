@@ -40,7 +40,7 @@ public class BlockAction extends AbstractAction {
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    te.gainBlock(block);
+                    te.gainBlock(actor.calculateSpell(block));
                 }
             } else isDone = true;
         }

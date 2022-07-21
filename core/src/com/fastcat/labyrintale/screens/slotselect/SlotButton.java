@@ -37,7 +37,7 @@ public class SlotButton extends AbstractUI {
             if(!clickable) sb.setColor(Color.DARK_GRAY);
             else if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            sb.draw(img, x, y, sWidth, sHeight);
+            sb.draw(player.deck.get(index).img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
             if(upCount > 0) FontHandler.renderCenter(sb, fontData, "+" + upCount, x, y + sHeight / 2, sWidth, sHeight);
         }

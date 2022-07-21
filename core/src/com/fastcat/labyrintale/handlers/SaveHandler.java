@@ -259,7 +259,6 @@ public class SaveHandler {
         public RoomData currentRoom;
         public WayData currentWay;
         public WayData[] ways = new WayData[13];
-        public boolean canBoss;
         public boolean isDone;
         public int floorNum;
         public int num;
@@ -271,7 +270,6 @@ public class SaveHandler {
             for(int i = 0; i < 13; i++) {
                 temp.ways[i] = WayData.create(f.ways[i]);
             }
-            temp.canBoss = f.canBoss;
             temp.isDone = f.isDone;
             temp.floorNum = f.floorNum;
             temp.num = f.num;

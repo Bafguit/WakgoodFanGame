@@ -37,10 +37,11 @@ public class CharSelectScreen extends AbstractScreen {
         CharButton char2 = new CharButton();
         CharButton char3 = new CharButton();
         CharButton char4 = new CharButton();
-        char1.setPosition(Gdx.graphics.getWidth() * 0.3725f - char1.sWidth / 2, Gdx.graphics.getHeight() * 0.95f - char1.height / 2);
-        char2.setPosition(Gdx.graphics.getWidth() * 0.4575f - char2.sWidth / 2, Gdx.graphics.getHeight() * 0.95f - char2.height / 2);
-        char3.setPosition(Gdx.graphics.getWidth() * 0.5425f - char3.sWidth / 2, Gdx.graphics.getHeight() * 0.95f - char3.height / 2);
-        char4.setPosition(Gdx.graphics.getWidth() * 0.6275f - char4.sWidth / 2, Gdx.graphics.getHeight() * 0.95f - char4.height / 2);
+        float cy = Gdx.graphics.getHeight() * 0.85f;
+        char1.setPosition(Gdx.graphics.getWidth() * 0.3725f - char1.sWidth / 2, cy);
+        char2.setPosition(Gdx.graphics.getWidth() * 0.4575f - char2.sWidth / 2, cy);
+        char3.setPosition(Gdx.graphics.getWidth() * 0.5425f - char3.sWidth / 2, cy);
+        char4.setPosition(Gdx.graphics.getWidth() * 0.6275f - char4.sWidth / 2, cy);
         chars[0] = char1;
         chars[1] = char2;
         chars[2] = char3;
@@ -52,7 +53,7 @@ public class CharSelectScreen extends AbstractScreen {
         AbstractPlayer.PlayerClass[] pc = AbstractPlayer.PlayerClass.values();
         for(int i = 0; i < 8; i++) {
             CharButton char0 = new CharButton(AbstractLabyrinth.getPlayerInstance(pc[i]));
-            char0.setPosition(Gdx.graphics.getWidth() * 0.21f + Gdx.graphics.getWidth() * 0.085f * i - char0.sWidth / 2, Gdx.graphics.getHeight() * 0.15f - char0.height / 2);
+            char0.setPosition(Gdx.graphics.getWidth() * 0.21f + Gdx.graphics.getWidth() * 0.085f * i - char0.sWidth / 2, Gdx.graphics.getHeight() * 0.03f);
             aChars[i] = char0;
         }
     }
@@ -121,9 +122,9 @@ public class CharSelectScreen extends AbstractScreen {
     public static class CharSelectGroup {
 
         private final FontHandler.FontData nData = TURN_CHANGE;
-        private final FontHandler.FontData dData = FontHandler.CARD_BIG_NAME;
-        private final FontHandler.FontData inData = FontHandler.CARD_BIG_NAME;
-        private final FontHandler.FontData idData = FontHandler.CARD_BIG_DESC;
+        private final FontHandler.FontData dData = CARD_BIG_DESC;
+        private final FontHandler.FontData inData = CARD_BIG_NAME;
+        private final FontHandler.FontData idData = CARD_BIG_DESC;
 
         public InfoPanel.InfoType type;
         public AbstractPlayer player;
@@ -142,22 +143,22 @@ public class CharSelectScreen extends AbstractScreen {
             health.setPosition(w * 0.77f, h * 0.635f);
             for(int i = 0; i < 2; i++) {
                 CharInfoItemButton b = new CharInfoItemButton(this);
-                b.setPosition(w * 0.515f + w * 0.06f * i, h * 0.43f);
+                b.setPosition(w * 0.515f + w * 0.06f * i, h * 0.47f);
                 items[i] = b;
             }
             for(int i = 0; i < 3; i++) {
                 CharInfoItemButton b = new CharInfoItemButton(this);
-                b.setPosition(w * 0.655f + w * 0.06f * i, h * 0.43f);
+                b.setPosition(w * 0.655f + w * 0.06f * i, h * 0.47f);
                 skills[i] = b;
             }
-            tw = w * 0.34f;
+            tw = w * 0.325f;
             x = w * 0.515f;
             bgx = w * 0.175f;
             bgy = h * -0.15f;
             ny = h * 0.715f;
-            dy = h * 0.625f;
-            iny = h * 0.4f;
-            idy = h * 0.35f;
+            dy = h * 0.635f;
+            iny = h * 0.45f;
+            idy = h * 0.4f;
         }
 
         public void setPlayer(AbstractPlayer player) {
@@ -184,6 +185,7 @@ public class CharSelectScreen extends AbstractScreen {
         }
 
         public void render(SpriteBatch sb) {
+            sb.setColor(Color.WHITE);
             sb.draw(player.bg, bgx, bgy, cw, ch);
             renderLineBotLeft(sb, nData, player.name, x, ny, tw, 0);
             renderColorLeft(sb, dData, player.desc, x, dy, tw);

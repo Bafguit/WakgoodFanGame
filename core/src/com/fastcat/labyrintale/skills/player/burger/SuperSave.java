@@ -14,7 +14,7 @@ public class SuperSave extends AbstractSkill {
 
     public SuperSave(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
         cooltime = 3;
     }
 

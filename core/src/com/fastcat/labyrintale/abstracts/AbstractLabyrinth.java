@@ -164,11 +164,10 @@ public class AbstractLabyrinth {
         }
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
-        if(currentFloor.num == 11) {
-            currentFloor.canBoss = true;
-        } else if (currentFloor.canBoss) {
+        if(currentFloor.num == 13) {
             currentFloor.done();
             currentFloor = floors[++floorNum];
+            Labyrintale.mapScreen.refreshFloor();
         }
         Labyrintale.mapScreen.isView = false;
         SaveHandler.save();

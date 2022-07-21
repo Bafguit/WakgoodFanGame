@@ -199,6 +199,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     v = calculateValue(v);
                 }
                 return getHexColor(Color.CYAN) + v;
+            case "C":
+                return getHexColor(Color.CYAN) + cooltime;
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }

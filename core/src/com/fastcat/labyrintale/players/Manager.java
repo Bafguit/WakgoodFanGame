@@ -29,7 +29,7 @@ public class Manager extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new PointBlank(this));
+        temp.add(new Outburst(this));
         return temp;
     }
 

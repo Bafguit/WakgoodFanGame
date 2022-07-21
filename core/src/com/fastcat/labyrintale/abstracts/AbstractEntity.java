@@ -172,22 +172,21 @@ public abstract class AbstractEntity implements Cloneable {
     public void gainBlock(int b) {
         if(!hasStatus("Unblockable")) {
             if (b > 0) {
-                int temp = calculateSpell(b);
                 if (isPlayer) {
                     for (AbstractItem m : item) {
-                        if (m != null) temp = m.onGainBlock(temp);
+                        if (m != null) b = m.onGainBlock(b);
                     }
                 }
                 if (status != null) {
                     for (AbstractStatus s : status) {
                         if (s != null) {
-                            temp = s.onGainBlock(temp);
+                            b = s.onGainBlock(b);
                         }
                     }
                 }
-                if (temp > 0) {
-                    EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, temp, CYAN, false));
-                    block += temp;
+                if (b > 0) {
+                    EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, b, CYAN, false));
+                    block += b;
                 }
             }
         }
@@ -365,9 +364,9 @@ public abstract class AbstractEntity implements Cloneable {
                                     die(attacker);
                                 }
                             }
-                            if (attacker != null) {
+                            if (attacker != null && type == DamageType.NORMAL) {
                                 if (isPlayer) {
-                                    for (AbstractItem m : item) {
+                                    for (AbstractItem m : attacker.item) {
                                         if (m != null) m.onDamage(this, damage, type);
                                     }
                                 }

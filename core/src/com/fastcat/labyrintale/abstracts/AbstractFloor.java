@@ -1,14 +1,13 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.events.first.CivilizationEvent;
-import com.fastcat.labyrintale.events.first.DoorEvent;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
-import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
-import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
+import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak3;
 import com.fastcat.labyrintale.rooms.other.*;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
@@ -17,13 +16,11 @@ public class AbstractFloor {
     public AbstractRoom currentRoom;
     public AbstractWay currentWay;
     public AbstractWay[] ways = new AbstractWay[13];
-    public boolean canBoss;
     public boolean isDone;
     public int floorNum;
     public int num;
 
     public AbstractFloor(SaveHandler.FloorData data) {
-        canBoss = data.canBoss;
         isDone = data.isDone;
         floorNum = data.floorNum;
         num = data.num;
@@ -46,7 +43,6 @@ public class AbstractFloor {
 
     public AbstractFloor(int f) {
         this.floorNum = f;
-        this.canBoss = false;
         this.isDone = false;
         this.num = 0;
         GroupHandler.RoomGroup.eventCount = 0;
@@ -93,7 +89,7 @@ public class AbstractFloor {
             } else{
                 rest = true;
             }
-            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
+            t.add(new AbstractChoice(new Weak3(), AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
@@ -110,12 +106,12 @@ public class AbstractFloor {
             } else{
                 rest = true;
             }
-            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
+            t.add(new AbstractChoice(new Elite2(), AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
         } else if (type == ELITE) {
-            t.add(new AbstractChoice(new TestElite(), AbstractChoice.ChoiceType.ELITE, true));
+            t.add(new AbstractChoice(new Elite2(), AbstractChoice.ChoiceType.ELITE, true));
             t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.DETOUR, 50));
             shuffleChoice(t);
         } else if (type == BOSS) {

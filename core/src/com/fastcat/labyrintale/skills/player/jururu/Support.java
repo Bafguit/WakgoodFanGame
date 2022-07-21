@@ -20,7 +20,7 @@ public class Support extends AbstractSkill {
 
     public Support(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseValue(VALUE);
         cooltime = 3;
     }
 
@@ -55,6 +55,10 @@ public class Support extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
-
+        if(upgradeCount == 3) {
+            cooltime = 2;
+        } else {
+            setBaseValue(value + 1);
+        }
     }
 }

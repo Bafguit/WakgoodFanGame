@@ -20,9 +20,10 @@ import com.fastcat.labyrintale.items.special.GreenHeart;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
+import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
-import com.fastcat.labyrintale.rooms.enemy.weak.Weak1;
-import com.fastcat.labyrintale.rooms.enemy.weak.Weak2;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak3;
 import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -160,7 +161,7 @@ public class GroupHandler {
             weakGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new Weak1());
-            t.add(new Weak2());
+            t.add(new Weak3());
             weakGroup.put(1, t);
             weakGroup.put(2, t);
         }
@@ -177,6 +178,7 @@ public class GroupHandler {
             eliteGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new TestElite());
+            t.add(new Elite2());
             eliteGroup.put(1, t);
         }
 

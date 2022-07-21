@@ -16,7 +16,7 @@ public class UpgradePotion extends AbstractSkill {
 
     public UpgradePotion(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class UpgradePotion extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new InfectionStatus(1), owner, e, true));
-        top(new ApplyStatusAction(new AttackStatus(1), owner, e, true));
+        top(new ApplyStatusAction(new InfectionStatus(2), owner, e, true));
+        top(new ApplyStatusAction(new AttackStatus(value), owner, e, true));
     }
 
     @Override

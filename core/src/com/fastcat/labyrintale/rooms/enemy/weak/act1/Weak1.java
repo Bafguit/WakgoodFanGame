@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.rooms.enemy.weak;
+package com.fastcat.labyrintale.rooms.enemy.weak.act1;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;

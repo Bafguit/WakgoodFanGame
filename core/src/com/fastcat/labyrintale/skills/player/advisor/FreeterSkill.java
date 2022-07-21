@@ -10,7 +10,7 @@ public class FreeterSkill extends AbstractSkill {
     private static final String ID = "freeter";
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-    private static final SkillTarget TARGET = SkillTarget.NONE;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST_TWO;
 
     public FreeterSkill() {
         super(ID, TYPE, RARITY, TARGET);
