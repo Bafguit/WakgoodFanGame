@@ -9,7 +9,7 @@ public class RustyShard extends AbstractSkill {
 
     private static final String ID = "RustyShard";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
     private static final SkillTarget TARGET = SkillTarget.ENEMY;
     private static final int VALUE = 2;
 

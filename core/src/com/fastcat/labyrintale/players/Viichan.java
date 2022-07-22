@@ -30,7 +30,6 @@ public class Viichan extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new DiaSword(this));
-        temp.add(new ChainMail(this));
         return temp;
     }
 

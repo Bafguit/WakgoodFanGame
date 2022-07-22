@@ -1,19 +1,19 @@
-package com.fastcat.labyrintale.skills.player.jururu;
+package com.fastcat.labyrintale.skills.enemy;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
-public class Scorn extends AbstractSkill {
+public class FrailE extends AbstractSkill {
 
-    private static final String ID = "Scorn";
+    private static final String ID = "FrailE";
     private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
-    private static final int VALUE = 1;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST_TWO;
+    private static final int VALUE = 2;
 
-    public Scorn(AbstractEntity e) {
+    public FrailE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
     }

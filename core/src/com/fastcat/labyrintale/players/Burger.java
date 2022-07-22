@@ -29,7 +29,6 @@ public class Burger extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Protect(this));
-        temp.add(new Strong(this));
         return temp;
     }
 

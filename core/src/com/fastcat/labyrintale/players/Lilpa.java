@@ -30,7 +30,6 @@ public class Lilpa extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new Lilpaa(this));
         temp.add(new FireBall(this));
         return temp;
     }

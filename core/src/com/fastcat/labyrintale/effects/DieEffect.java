@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.effects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Queue;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
@@ -32,7 +33,7 @@ public class DieEffect extends AbstractEffect {
             if (isDone) {
                 actor.isDead = true;
                 actor.isDie = false;
-                actor.status = new AbstractStatus[4];
+                actor.status = new Queue<>();
             }
         }
     }

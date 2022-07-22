@@ -30,7 +30,6 @@ public class Jururu extends AbstractPlayer {
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
         temp.add(new Scorn(this));
-        temp.add(new Pray(this));
         return temp;
     }
 

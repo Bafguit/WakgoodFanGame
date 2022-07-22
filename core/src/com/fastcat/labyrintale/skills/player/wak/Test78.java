@@ -11,7 +11,7 @@ public class Test78 extends AbstractSkill {
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
-    private static final int VALUE = 30;
+    private static final int VALUE = 100;
 
     public Test78(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

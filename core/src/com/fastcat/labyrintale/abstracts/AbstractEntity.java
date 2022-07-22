@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Queue;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
@@ -47,7 +48,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mRight;
     public AbstractSkill mLeftTemp;
     public AbstractSkill mRightTemp;
-    public AbstractStatus[] status = new AbstractStatus[4];
+    public Queue<AbstractStatus> status = new Queue<>();
     public AbstractItem[] item = new AbstractItem[2];
     public int[] slot = new int[3];
     public String id;
@@ -203,53 +204,31 @@ public abstract class AbstractEntity implements Cloneable {
         }
         boolean done = false;
         String text;
-        for (int i = 0; i < 4; i++) {
-            if (this.status[i] != null) {
-                AbstractStatus temp = this.status[i];
-                if (temp.id.equals(s.id)) {
-                    text = temp.name;
-                    if (temp.hasAmount && amount != 0) {
-                        temp.amount += amount;
-                        if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
-                            temp.onRemove();
-                            if (i < 3) {
-                                this.status[i] = null;
-                                System.arraycopy(this.status, i + 1, this.status, i, 3 - i);
-                            }
-                            this.status[3] = null;
-                        }
-                        text += amount > 0 ? "+" + amount : amount;
+        for (int i = 0; i < this.status.size; i++) {
+            AbstractStatus temp = this.status.get(i);
+            if (temp.id.equals(s.id)) {
+                text = temp.name;
+                if (temp.hasAmount && amount != 0) {
+                    temp.amount += amount;
+                    if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
+                        temp.onRemove();
+                        this.status.removeIndex(i);
                     }
-                    temp.onApply();
-                    if (effect) {
-                        temp.flash(this);
-                        EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
-                    }
-                    done = true;
-                    break;
+                    text += amount > 0 ? "+" + amount : amount;
                 }
+                temp.onApply();
+                if (effect) {
+                    temp.flash(this);
+                    EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
+                }
+                done = true;
+                break;
             }
         }
         if (!done) {
-            for (int i = 0; i < 4; i++) {
-                if (this.status[i] == null) {
-                    text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
-                    this.status[i] = s;
-                    s.onApply();
-                    if (effect) {
-                        s.flash(this);
-                        EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
-                    }
-                    done = true;
-                    break;
-                }
-            }
-        }
-        if (!done) {
-            this.status[3].onRemove();
-            System.arraycopy(this.status, 0, this.status, 1, 3);
+            if(this.status.size == 4) this.status.removeFirst().onRemove();
             text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
-            this.status[0] = s;
+            this.status.addLast(s);
             s.onApply();
             if (effect) {
                 s.flash(this);
@@ -263,12 +242,9 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void removeStatus(String id) {
-        for (int i = 0; i < 4; i++) {
-            AbstractStatus s = this.status[i];
-            if (s != null && s.id.equals(id)) {
-                s.onRemove();
-                this.status[i] = null;
-                if (i < 3) System.arraycopy(this.status, i + 1, this.status, i, 3 - i);
+        for (int i = 0; i < status.size; i++) {
+            if (status.get(i).id.equals(id)) {
+                status.removeIndex(i).onRemove();
                 break;
             }
         }

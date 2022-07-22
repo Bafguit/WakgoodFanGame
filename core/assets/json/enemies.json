@@ -22,5 +22,13 @@
   "WeakEnemy3": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "WeakEnemy4": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "WeakEnemy5": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }

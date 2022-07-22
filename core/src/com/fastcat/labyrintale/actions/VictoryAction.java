@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Queue;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.SoundHandler;
@@ -32,7 +33,7 @@ public class VictoryAction extends AbstractAction {
             for(AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;
                 p.isNeut = false;
-                p.status = new AbstractStatus[4];
+                p.status = new Queue<>();
                 p.movable = 0;
             }
             if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {

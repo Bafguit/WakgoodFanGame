@@ -88,11 +88,15 @@ public class BattleScreen extends AbstractScreen {
             eShield[i] = es;
 
             for(int j = 0; j < 4; j++) {
-                StatusButton t = new StatusButton(pv.player.status[j]);
+                AbstractStatus s = null;
+                if(pv.player.status.size > j) s = pv.player.status.get(j);
+                StatusButton t = new StatusButton(s);
                 t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.019f * j - pv.sWidth / 2, h * 0.517f);
                 playerStatus[i][j] = t;
 
-                StatusButton t2 = new StatusButton(ev.enemy.status[j]);
+                AbstractStatus ss = null;
+                if(ev.enemy.status.size > j) ss = ev.enemy.status.get(j);
+                StatusButton t2 = new StatusButton(ss);
                 t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.019f * j + ev.sWidth / 2 - t2.sWidth, h * 0.517f);
                 enemyStatus[i][j] = t2;
             }
@@ -152,14 +156,18 @@ public class BattleScreen extends AbstractScreen {
 
             for(int j = 0; j < 4; j++) {
                 if (pv.player.isAlive()) {
+                    AbstractPlayer pp = AbstractLabyrinth.players[i];
                     StatusButton ts = playerStatus[i][j];
-                    ts.status = AbstractLabyrinth.players[i].status[j];
+                    if(pp.status.size > j) ts.status = pp.status.get(j);
+                    else ts.status = null;
                     ts.update();
                     ts.setPosition(pv.player.animX + w * (0.012f + 0.019f * j) - pv.sWidth / 2, h * 0.517f);
                 }
                 if (ev.enemy.isAlive()) {
+                    AbstractEnemy ee = AbstractLabyrinth.currentFloor.currentRoom.enemies[i];
                     StatusButton ts = enemyStatus[i][j];
-                    ts.status = AbstractLabyrinth.currentFloor.currentRoom.enemies[i].status[j];
+                    if(ee.status.size > j) ts.status = ee.status.get(j);
+                    else ts.status = null;
                     ts.update();
                     ts.setPosition(ev.enemy.animX + w * (-0.068f + 0.019f * j) + ev.sWidth / 2 - ts.sWidth, h * 0.517f);
                 }

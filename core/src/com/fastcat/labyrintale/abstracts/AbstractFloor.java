@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak2;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak3;
 import com.fastcat.labyrintale.rooms.other.*;
 
@@ -89,7 +90,7 @@ public class AbstractFloor {
             } else{
                 rest = true;
             }
-            t.add(new AbstractChoice(new Weak3(), AbstractChoice.ChoiceType.BATTLE, true));
+            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
