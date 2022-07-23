@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
+import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal1;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak2;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak3;
@@ -47,21 +48,25 @@ public class AbstractFloor {
         this.isDone = false;
         this.num = 0;
         GroupHandler.RoomGroup.eventCount = 0;
+        GroupHandler.RoomGroup.weakCount = 0;
+        GroupHandler.RoomGroup.normalCount = 0;
+        GroupHandler.RoomGroup.eliteCount = 0;
+        GroupHandler.RoomGroup.bossCount = 0;
 
-        ways[0] = new AbstractWay(generateWay(f, ENTRY), ENTRY);
+        ways[0] = generateWay(f, ENTRY);
         for(int i = 1; i < 4; i++) {
-            ways[i] = new AbstractWay(generateWay(f, WEAK), NORMAL);
+            ways[i] = generateWay(f, WEAK);
         }
-        ways[4] = new AbstractWay(generateWay(f, ELITE), ELITE);
-        ways[5] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
-        ways[6] = new AbstractWay(generateWay(f, SHOP), SHOP);
-        ways[7] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
-        ways[8] = new AbstractWay(generateWay(f, ELITE), ELITE);
+        ways[4] = generateWay(f, ELITE);
+        ways[5] = generateWay(f, NORMAL);
+        ways[6] = generateWay(f, SHOP);
+        ways[7] = generateWay(f, NORMAL);
+        ways[8] = generateWay(f, ELITE);
         for(int i = 9; i < 11; i++) {
-            ways[i] = new AbstractWay(generateWay(f, NORMAL), NORMAL);
+            ways[i] = generateWay(f, NORMAL);
         }
-        ways[11] = new AbstractWay(generateWay(f, REST), REST);
-        ways[12] = new AbstractWay(generateWay(f, BOSS), BOSS);
+        ways[11] = generateWay(f, REST);
+        ways[12] = generateWay(f, BOSS);
 
         currentRoom = new PlaceholderRoom();
     }
@@ -70,13 +75,14 @@ public class AbstractFloor {
         this.isDone = true;
     }
 
-    private Array<AbstractChoice> generateWay(int floor, AbstractWay.WayType type) {
-
+    private AbstractWay generateWay(int floor, AbstractWay.WayType type) {
+        AbstractWay w;
         Array<AbstractChoice> t = new Array<>();
         if(type == ENTRY) {
             if(floor == 1) t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
             else if(floor == 2) t.add(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.GOOD, true));
             else t.add(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.GOOD, true));
+            w = new AbstractWay(t, type);
         } else if(type == WEAK) {
             int x = AbstractLabyrinth.mapRandom.random(100);
             boolean rest = false;
@@ -90,10 +96,12 @@ public class AbstractFloor {
             } else{
                 rest = true;
             }
-            t.add(new AbstractChoice(new Weak2(), AbstractChoice.ChoiceType.BATTLE, true));
+            AbstractRoom r = GroupHandler.RoomGroup.getNextWeak(floorNum);
+            t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
+            w = new AbstractWay(t, r, type);
         } else if (type == NORMAL) {
             int x = AbstractLabyrinth.mapRandom.random(100);
             boolean rest = false;
@@ -107,24 +115,27 @@ public class AbstractFloor {
             } else{
                 rest = true;
             }
-            t.add(new AbstractChoice(new Elite2(), AbstractChoice.ChoiceType.BATTLE, true));
+            AbstractRoom r = new Normal1();
+            t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE, true));
             if(mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if(rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
+            w = new AbstractWay(t, r, type);
         } else if (type == ELITE) {
-            t.add(new AbstractChoice(new Elite2(), AbstractChoice.ChoiceType.ELITE, true));
-            t.add(new AbstractChoice(new Weak1(), AbstractChoice.ChoiceType.DETOUR, 50));
-            shuffleChoice(t);
+            AbstractRoom r = new Elite2();
+            w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.ELITE, true), r, type);
         } else if (type == BOSS) {
-            t.add(new AbstractChoice(new TestBoss(), AbstractChoice.ChoiceType.BOSS, true));
+            AbstractRoom r = new TestBoss();
+            w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.BOSS, true), r, type);
         } else if (type == REST) {
-            t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
-        } else if(type == SHOP) {
+            w = new AbstractWay(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true), type);
+        } else {
             t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP, true));
             shuffleChoice(t);
+            w = new AbstractWay(t, type);
         }
-        return t;
+        return w;
     }
 
     public static Array<AbstractChoice> shuffleChoice(Array<AbstractChoice> array) {

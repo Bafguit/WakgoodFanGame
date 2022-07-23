@@ -26,6 +26,7 @@ import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal1;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak1;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak2;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak3;
+import com.fastcat.labyrintale.rooms.enemy.weak.act1.Weak4;
 import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -165,8 +166,11 @@ public class GroupHandler {
             t.add(new Weak1());
             t.add(new Weak2());
             t.add(new Weak3());
+            t.add(new Weak4());
             weakGroup.put(1, t);
             weakGroup.put(2, t);
+            weakGroup.put(3, t);
+            weakGroup.put(4, t);
         }
 
         private static void generateNormal() {
@@ -296,19 +300,19 @@ public class GroupHandler {
             return idSort.get(id).cpy();
         }
 
-        public static AbstractRoom getNextWeak() {
-            return weakGroup.get(currentFloor.floorNum).get(weakCount++).cpy();
+        public static AbstractRoom getNextWeak(int f) {
+            return weakGroup.get(f).get(weakCount++).cpy();
         }
 
-        public static AbstractRoom getNextNormal() {
+        public static AbstractRoom getNextNormal(int f) {
             return normalGroup.get(currentFloor.floorNum).get(normalCount++).cpy();
         }
 
-        public static AbstractRoom getNextElite() {
+        public static AbstractRoom getNextElite(int f) {
             return eliteGroup.get(currentFloor.floorNum).get(eliteCount++).cpy();
         }
 
-        public static AbstractRoom getNextBoss() {
+        public static AbstractRoom getNextBoss(int f) {
             return bossGroup.get(currentFloor.floorNum).get(bossCount++).cpy();
         }
 

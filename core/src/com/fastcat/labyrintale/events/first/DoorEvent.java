@@ -38,7 +38,7 @@ public class DoorEvent extends AbstractEvent {
                     break;
                 }
             }
-            if(!b) a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal()));
+            if(!b) a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal(AbstractLabyrinth.floorNum)));
         } else {
             a.add(new EndEventChoice());
         }

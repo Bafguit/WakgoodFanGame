@@ -16,6 +16,7 @@ import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
@@ -162,7 +163,16 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                             }
                         }
                         for (AbstractStatus s : owner.status) {
-                            if (s != null) a *= s.attackMultiply(a);
+                            if (s != null) a *= s.attackMultiply();
+                        }
+                    }
+                    if(AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE && battleScreen.looking.size == 1) {
+                        AbstractEntity t = battleScreen.looking.get(0);
+                        for (AbstractStatus s : t.status) {
+                            if (s != null) a = s.showAttacked(a);
+                        }
+                        for (AbstractStatus s : t.status) {
+                            if (s != null) a *= s.attackedMultiply();
                         }
                     }
                 }

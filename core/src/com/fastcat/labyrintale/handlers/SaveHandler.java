@@ -279,12 +279,14 @@ public class SaveHandler {
 
     public static class WayData {
         public String type;
+        public RoomData enemies;
         public ChoiceData[] choices;
         public boolean isDone;
 
         public static WayData create(AbstractWay w) {
             WayData temp = new WayData();
             temp.type = w.type.toString();
+            temp.enemies = RoomData.create(w.enemies);
             int l = w.choices.length;
             temp.choices = new ChoiceData[l];
             for(int i = 0; i < l; i++) {
@@ -317,11 +319,13 @@ public class SaveHandler {
         public boolean isDone;
 
         public static RoomData create(AbstractRoom r) {
-            RoomData temp = new RoomData();
-            temp.id = r.id;
-            temp.battleDone = r.battleDone;
-            temp.isDone = r.isDone;
-            return temp;
+            if(r != null) {
+                RoomData temp = new RoomData();
+                temp.id = r.id;
+                temp.battleDone = r.battleDone;
+                temp.isDone = r.isDone;
+                return temp;
+            } else return null;
         }
     }
 

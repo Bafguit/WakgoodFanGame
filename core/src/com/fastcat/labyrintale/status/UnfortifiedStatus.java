@@ -31,4 +31,9 @@ public class UnfortifiedStatus extends AbstractStatus {
     public void endOfTurn() {
         ActionHandler.bot(new ReduceStatusAction(this, 1, true));
     }
+
+    @Override
+    public float attackedMultiply() {
+        return 1.5f;
+    }
 }

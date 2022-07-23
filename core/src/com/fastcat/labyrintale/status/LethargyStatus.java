@@ -26,7 +26,7 @@ public class LethargyStatus extends AbstractStatus {
     }
 
     @Override
-    public float attackMultiply(int base) {
+    public float attackMultiply() {
         return 0.7f;
     }
 }

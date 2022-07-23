@@ -26,7 +26,7 @@ public class BlindStatus extends AbstractStatus {
     }
 
     @Override
-    public float attackMultiply(int base) {
+    public float attackMultiply() {
         return 0;
     }
 }

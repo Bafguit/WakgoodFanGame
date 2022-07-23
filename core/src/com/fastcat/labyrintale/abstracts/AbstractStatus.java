@@ -112,7 +112,7 @@ public abstract class AbstractStatus implements Cloneable {
         return 1.0f;
     }
 
-    public float attackMultiply(int base) {
+    public float attackMultiply() {
         return 1.0f;
     }
 
@@ -128,11 +128,11 @@ public abstract class AbstractStatus implements Cloneable {
         return base;
     }
 
-    public float attackedMultiply(int base) {
+    public float attackedMultiply() {
         return 1.0f;
     }
 
-    public int calculateAttacked(int base) {
+    public int showAttacked(int base) {
         return base;
     }
 

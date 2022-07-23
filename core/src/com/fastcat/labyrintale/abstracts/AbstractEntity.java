@@ -265,7 +265,7 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         for (AbstractStatus s : status) {
-            if (s != null) d *= s.attackMultiply(d);
+            if (s != null) d *= s.attackMultiply();
         }
         return d;
     }
@@ -290,6 +290,14 @@ public abstract class AbstractEntity implements Cloneable {
             if(cPanel.type == ControlPanel.ControlType.BATTLE) {
                 if (attacker != null && type == DamageType.NORMAL) {
                     damage = attacker.calculateAttack(damage);
+                    if (attacker.isPlayer) {
+                        for (AbstractItem m : attacker.item) {
+                            if (m != null) m.onAttack(this, damage, type);
+                        }
+                    }
+                    for (AbstractStatus s : attacker.status) {
+                        if (s != null) s.onAttack(this, damage, type);
+                    }
                     if (attacker.isPlayer) {
                         for (AbstractItem m : attacker.item) {
                             if (m != null) m.onAttack(this, damage, type);

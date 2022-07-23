@@ -65,10 +65,10 @@ public class AbstractLabyrinth {
             shopRandom = new RandomXC(seedLong);
             groupRandom = new RandomXC(seedLong);
             GroupHandler.RoomGroup.shuffleAll();
+            floorNum = 1;
             floors = new AbstractFloor[4];
             currentFloor = new AbstractFloor();
             floors[0] = currentFloor;
-            floorNum = currentFloor.floorNum;
             floors[1] = new AbstractFloor(2);
             floors[2] = new AbstractFloor(3);
             floors[3] = new AbstractFloor(4);
@@ -165,12 +165,21 @@ public class AbstractLabyrinth {
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
         if(currentFloor.num == 13) {
-            currentFloor.done();
-            currentFloor = floors[++floorNum];
-            Labyrintale.mapScreen.refreshFloor();
+            nextFloor();
         }
         Labyrintale.mapScreen.isView = false;
         SaveHandler.save();
+    }
+
+    public static void nextFloor() {
+        currentFloor.done();
+        currentFloor = floors[++floorNum];
+        GroupHandler.RoomGroup.weakCount = 0;
+        GroupHandler.RoomGroup.normalCount = 0;
+        GroupHandler.RoomGroup.eliteCount = 0;
+        GroupHandler.RoomGroup.bossCount = 0;
+        GroupHandler.RoomGroup.eventCount = 0;
+        Labyrintale.mapScreen.refreshFloor();
     }
 
     public static long seedToLong(String s) {

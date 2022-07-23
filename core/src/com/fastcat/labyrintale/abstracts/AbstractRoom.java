@@ -69,8 +69,8 @@ public class AbstractRoom {
             AbstractRoom temp;
             if(x < b) {
                 //TODO 랜덤으로 변경
-                temp = GroupHandler.RoomGroup.normalGroup.get(AbstractLabyrinth.currentFloor.floorNum).get(0).cpy();
-                enemies = temp.enemies;
+                temp = AbstractLabyrinth.currentFloor.currentWay.enemies.cpy();
+                enemies = temp.getEnemies();
             } else if (x < s) {
                 temp = new ShopRoom();
             } else if (x < r) {
