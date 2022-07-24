@@ -1,15 +1,10 @@
 package com.fastcat.labyrintale.screens.way;
 
 import com.fastcat.labyrintale.abstracts.AbstractChoice;
-import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.screens.battle.BattleScreen;
-import com.fastcat.labyrintale.screens.event.EventScreen;
-import com.fastcat.labyrintale.screens.rest.RestScreen;
 
-import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class WaySelectButton extends AbstractUI {
@@ -18,7 +13,7 @@ public class WaySelectButton extends AbstractUI {
     public AbstractChoice c;
 
     public WaySelectButton(WayScreen s, AbstractChoice r) {
-        super(FileHandler.ui.get("WAY_SELECT"));
+        super(FileHandler.getUi().get("WAY_SELECT"));
         screen = s;
         c = r;
     }

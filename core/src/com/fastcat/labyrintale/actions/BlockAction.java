@@ -33,10 +33,10 @@ public class BlockAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
-            if(target.size > 0) {
+        if (duration == baseDuration) {
+            if (target.size > 0) {
                 for (AbstractEntity t : target) {
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.vfx.get("SHIELD")));
+                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("SHIELD")));
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);

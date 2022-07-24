@@ -11,16 +11,16 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
+import static com.fastcat.labyrintale.handlers.FontHandler.STATUS;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class StatusButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER_SS");
+    private final Sprite border = FileHandler.getUi().get("BORDER_SS");
     public AbstractStatus status;
 
     public StatusButton(AbstractStatus s) {
-        super(FileHandler.ui.get("BORDER_SS"));
+        super(FileHandler.getUi().get("BORDER_SS"));
         fontData = STATUS;
         status = s;
         overable = true;
@@ -29,12 +29,13 @@ public class StatusButton extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             sb.setColor(Color.WHITE);
 
-            if(status != null) {
+            if (status != null) {
                 sb.draw(status.img, x, y, sWidth, sHeight);
-                if(status.hasAmount) renderKeywordCenter(sb, fontData, valueColor() + status.amount, x, y + sHeight / 2, sWidth, sHeight);
+                if (status.hasAmount)
+                    renderKeywordCenter(sb, fontData, valueColor() + status.amount, x, y + sHeight / 2, sWidth, sHeight);
                 sb.draw(border, x, y, sWidth, sHeight);
             }
         }
@@ -42,14 +43,14 @@ public class StatusButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over && status != null) {
+        if (over && status != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(status);
             battleScreen.looking = getTargets(status);
         }
     }
 
     private String valueColor() {
-        if(status.amount < 0) {
+        if (status.amount < 0) {
             return FontHandler.getHexColor(Color.SCARLET);
         } else {
             return "";

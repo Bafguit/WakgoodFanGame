@@ -2,9 +2,9 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.interfaces.EventCallback;
 
-import static com.fastcat.labyrintale.handlers.ActionHandler.listeners;
 
 public abstract class AbstractAction implements Cloneable {
 
@@ -46,13 +46,13 @@ public abstract class AbstractAction implements Cloneable {
     }
 
     public final void update() {
-        if(!isDone) {
-            if(actor != null && !actor.isAlive()) {
+        if (!isDone) {
+            if (actor != null && !actor.isAlive()) {
                 isDone = true;
                 return;
-            }
-            else if (duration <= 0) isDone = true;
-            else if(duration == baseDuration && tar != AbstractSkill.SkillTarget.NONE) target = AbstractSkill.getTargets(actor, tar);
+            } else if (duration <= 0) isDone = true;
+            else if (duration == baseDuration && tar != AbstractSkill.SkillTarget.NONE)
+                target = AbstractSkill.getTargets(actor, tar);
             onStart();
             updateAction();
             onComplete();
@@ -68,21 +68,21 @@ public abstract class AbstractAction implements Cloneable {
         }
     }
 
-    protected void registerListener(EventCallback<AbstractAction> callback){
-        listeners.add(callback);
+    protected void registerListener(EventCallback<AbstractAction> callback) {
+        ActionHandler.getListeners().add(callback);
     }
 
-    private void onStart(){
-        if(! listeners.isEmpty()){
-            for (EventCallback<AbstractAction> listener : listeners) {
+    private void onStart() {
+        if (!ActionHandler.getListeners().isEmpty()) {
+            for (EventCallback<AbstractAction> listener : ActionHandler.getListeners()) {
                 listener.onStart(this);
             }
         }
     }
 
-    private void onComplete(){
-        if(! listeners.isEmpty()){
-            for (EventCallback<AbstractAction> listener : listeners) {
+    private void onComplete() {
+        if (!ActionHandler.getListeners().isEmpty()) {
+            for (EventCallback<AbstractAction> listener : ActionHandler.getListeners()) {
                 listener.onComplete(this);
             }
         }

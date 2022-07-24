@@ -18,10 +18,10 @@ public class ShopItemIcon extends AbstractUI {
     public String text;
 
     public ShopItemIcon(ShopTakeScreen screen) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         clickable = false;
         this.screen = screen;
-        if(screen.type == ShopTakeScreen.TakeType.SKILL) {
+        if (screen.type == ShopTakeScreen.TakeType.SKILL) {
             icon = screen.skill.img;
             text = "버릴 스킬을 선택하세요.";
         } else {
@@ -32,7 +32,7 @@ public class ShopItemIcon extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             sb.setColor(Color.WHITE);
 
             FontHandler.renderCenter(sb, fontData, text, x - sWidth, Gdx.graphics.getHeight() * 0.925f, sWidth * 3f, sHeight);
@@ -45,8 +45,8 @@ public class ShopItemIcon extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over) {
-            if(screen.type == ShopTakeScreen.TakeType.SKILL) {
+        if (over) {
+            if (screen.type == ShopTakeScreen.TakeType.SKILL) {
                 AbstractLabyrinth.cPanel.infoPanel.setInfo(screen.skill);
             } else {
                 AbstractLabyrinth.cPanel.infoPanel.setInfo(screen.item);

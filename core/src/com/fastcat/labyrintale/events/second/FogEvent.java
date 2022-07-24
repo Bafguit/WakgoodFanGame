@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
@@ -22,7 +21,7 @@ public class FogEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1, new EventCondition() {
                 @Override
                 public boolean condition() {
@@ -36,7 +35,7 @@ public class FogEvent extends AbstractEvent {
             }));
             a.add(new NextPageEventChoice(data.SELECT[2], this, 2));
             a.add(new NextPageEventChoice(data.SELECT[3], this, 4));
-        } else if(page == 2) {
+        } else if (page == 2) {
             a.add(new SkillRewardEventChoice(data.SELECT[4], new EventCondition.True(), this, 3));
         } else {
             a.add(new EndEventChoice());
@@ -46,7 +45,7 @@ public class FogEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 4) {
+        if (page == 4) {
             AbstractLabyrinth.modifyBleak(10);
         }
     }

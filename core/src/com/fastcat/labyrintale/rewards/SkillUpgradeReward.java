@@ -16,21 +16,21 @@ public abstract class SkillUpgradeReward extends AbstractReward implements GetSe
         super(RewardType.EXP);
     }
 
-    public enum SkillRewardType {
-        NORMAL, UPGRADE
-    }
-
     @Override
     public final void skillSelected(SkillSelectScreen.SkillSelectGroup skill) {
         int index = 0;
         AbstractSkill ts = skill.toSkill.skill;
-        for(int i = 0; i < skill.player.deck.size; i++) {
-            if(skill.player.deck.get(i).id.equals(ts.id)) {
+        for (int i = 0; i < skill.player.deck.size; i++) {
+            if (skill.player.deck.get(i).id.equals(ts.id)) {
                 index = i;
             }
         }
         skill.player.gainSkill(index, skill.selected);
-        if(gets != null) gets.skillSelected(skill);
+        if (gets != null) gets.skillSelected(skill);
         Labyrintale.removeTempScreen(SkillSelectScreen.SkillSelectGroup.screen);
+    }
+
+    public enum SkillRewardType {
+        NORMAL, UPGRADE
     }
 }

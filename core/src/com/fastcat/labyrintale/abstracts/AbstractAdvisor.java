@@ -1,10 +1,9 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.AdvisorString;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public abstract class AbstractAdvisor implements Cloneable {
 
@@ -16,7 +15,7 @@ public abstract class AbstractAdvisor implements Cloneable {
     public AbstractAdvisor(AdvisorClass cls, AbstractSkill skill) {
         this.cls = cls;
         this.skill = skill;
-        img = advImg.get(cls);
+        img = FileHandler.getAdvImg().get(cls);
         data = StringHandler.advisorString.get(cls.toString().toLowerCase());
     }
 

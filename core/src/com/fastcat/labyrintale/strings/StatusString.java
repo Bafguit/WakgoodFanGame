@@ -1,17 +1,16 @@
 package com.fastcat.labyrintale.strings;
 
 import com.badlogic.gdx.utils.JsonValue;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
 import java.util.HashMap;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public class StatusString {
 
     private final HashMap<String, StatusData> data = new HashMap<>();
 
     public StatusString() {
-        generateString(STATUS_JSON);
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.STATUS_JSON));
     }
 
     private void generateString(JsonValue json) {

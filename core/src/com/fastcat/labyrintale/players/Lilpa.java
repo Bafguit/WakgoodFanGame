@@ -7,10 +7,8 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.FireStaff;
 import com.fastcat.labyrintale.items.starter.FlameBook;
-import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
-import com.fastcat.labyrintale.skills.player.lilpa.Lilpaa;
 import com.fastcat.labyrintale.skills.player.lilpa.FireBall;
 
 import static com.badlogic.gdx.graphics.Color.NAVY;

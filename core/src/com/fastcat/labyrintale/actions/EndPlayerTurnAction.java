@@ -14,9 +14,9 @@ public class EndPlayerTurnAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(isDone) {
-            for(AbstractPlayer p : players) {
-                if(p.isAlive()) {
+        if (isDone) {
+            for (AbstractPlayer p : players) {
+                if (p.isAlive()) {
                     for (AbstractItem s : p.item) {
                         if (s != null) s.endOfTurn();
                     }
@@ -34,9 +34,9 @@ public class EndPlayerTurnAction extends AbstractAction {
                     ts.skill.useCard();
                 }
             }
-            for(int j = 3; j >= 0; j--) {
+            for (int j = 3; j >= 0; j--) {
                 AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
-                if(e.isAlive()) {
+                if (e.isAlive()) {
                     for (int i = e.status.size - 1; i >= 0; i--) {
                         e.status.get(i).endOfTurn();
                     }

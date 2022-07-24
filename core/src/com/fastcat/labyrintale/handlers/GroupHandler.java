@@ -43,15 +43,30 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
+import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 
-public class GroupHandler {
+public final class GroupHandler {
+    /***
+     * Instance of handler.
+     * Initialized on getInstance()
+     */
+    private static GroupHandler instance;
 
-    public GroupHandler() {
+    private GroupHandler() {
         SkillGroup.generateSkill();
         ItemGroup.generateItem();
         RoomGroup.generateRoom();
         AdvisorGroup.generateAdvisor();
+    }
+
+    /***
+     * Returns instance of handler, if not exist, create new.
+     * @return instance of handler
+     */
+    public static GroupHandler getInstance() {
+        if (instance == null)
+            return (instance = new GroupHandler());
+        return instance;
     }
 
     public static class AdvisorGroup {
@@ -59,8 +74,8 @@ public class GroupHandler {
         public static Array<AbstractAdvisor> sort = new Array<>();
 
         public static void generateAdvisor() {
-            for(AdvisorClass c : AdvisorClass.values()) {
-                if(c != AdvisorClass.BUSINESS && c != AdvisorClass.FREETER && c != AdvisorClass.CARNAR) {
+            for (AdvisorClass c : AdvisorClass.values()) {
+                if (c != AdvisorClass.BUSINESS && c != AdvisorClass.FREETER && c != AdvisorClass.CARNAR) {
                     sort.add(getAdvisorInstance(c));
                 }
             }
@@ -110,11 +125,11 @@ public class GroupHandler {
         public static Array<AbstractAdvisor> getAdvisors(int amount) {
             Array<AbstractAdvisor> t = new Array<>();
             Array<AbstractAdvisor> r = new Array<>();
-            for(AbstractAdvisor advisor : sort) {
-                if(advisor.cls != AbstractLabyrinth.advisor.cls) t.add(advisor);
+            for (AbstractAdvisor advisor : sort) {
+                if (advisor.cls != AbstractLabyrinth.advisor.cls) t.add(advisor);
             }
             staticShuffle(t);
-            for(int i = 0; i < amount; i++) {
+            for (int i = 0; i < amount; i++) {
                 r.add(t.get(i));
             }
             return r;
@@ -122,7 +137,7 @@ public class GroupHandler {
 
         public static Array<AbstractAdvisor> staticShuffle(Array<AbstractAdvisor> array) {
             AbstractAdvisor[] items = array.toArray(AbstractAdvisor.class);
-            for(int i = array.size - 1; i >= 0; --i) {
+            for (int i = array.size - 1; i >= 0; --i) {
                 int ii = publicRandom.random(i);
                 AbstractAdvisor temp = items[i];
                 items[i] = items[ii];
@@ -242,15 +257,15 @@ public class GroupHandler {
         }
 
         public static void shuffleAll() {
-            for(int i = 0; i < weakGroup.size(); i++)
+            for (int i = 0; i < weakGroup.size(); i++)
                 staticShuffle(weakGroup.get(i + 1), groupRandom);
-            for(int i = 0; i < normalGroup.size(); i++)
+            for (int i = 0; i < normalGroup.size(); i++)
                 staticShuffle(normalGroup.get(i + 1), groupRandom);
-            for(int i = 0; i < eliteGroup.size(); i++)
+            for (int i = 0; i < eliteGroup.size(); i++)
                 staticShuffle(eliteGroup.get(i + 1), groupRandom);
-            for(int i = 0; i < bossGroup.size(); i++)
+            for (int i = 0; i < bossGroup.size(); i++)
                 staticShuffle(bossGroup.get(i + 1), groupRandom);
-            for(int i = 0; i < eventGroup.size(); i++)
+            for (int i = 0; i < eventGroup.size(); i++)
                 staticShuffle(eventGroup.get(i + 1), groupRandom);
             staticShuffle(eventNeut, groupRandom);
         }
@@ -265,32 +280,32 @@ public class GroupHandler {
             idSort.put("Mystery", new MysteryRoom());
             idSort.put("Placeholder", new PlaceholderRoom());
 
-            for(Array<AbstractRoom> ar : weakGroup.values()) {
-                for(AbstractRoom r : ar) {
+            for (Array<AbstractRoom> ar : weakGroup.values()) {
+                for (AbstractRoom r : ar) {
                     idSort.put(r.id, r);
                 }
             }
-            for(Array<AbstractRoom> ar : normalGroup.values()) {
-                for(AbstractRoom r : ar) {
+            for (Array<AbstractRoom> ar : normalGroup.values()) {
+                for (AbstractRoom r : ar) {
                     idSort.put(r.id, r);
                 }
             }
-            for(Array<AbstractRoom> ar : eliteGroup.values()) {
-                for(AbstractRoom r : ar) {
+            for (Array<AbstractRoom> ar : eliteGroup.values()) {
+                for (AbstractRoom r : ar) {
                     idSort.put(r.id, r);
                 }
             }
-            for(Array<AbstractRoom> ar : bossGroup.values()) {
-                for(AbstractRoom r : ar) {
+            for (Array<AbstractRoom> ar : bossGroup.values()) {
+                for (AbstractRoom r : ar) {
                     idSort.put(r.id, r);
                 }
             }
-            for(Array<AbstractRoom> ar : eventGroup.values()) {
-                for(AbstractRoom r : ar) {
+            for (Array<AbstractRoom> ar : eventGroup.values()) {
+                for (AbstractRoom r : ar) {
                     idSort.put(r.id, r);
                 }
             }
-            for(AbstractRoom r : eventNeut) {
+            for (AbstractRoom r : eventNeut) {
                 idSort.put(r.id, r);
             }
 
@@ -320,8 +335,8 @@ public class GroupHandler {
             AbstractRoom r;
             Array<AbstractRoom> t = eventGroup.get(floorNum);
             boolean ef = eventCount < t.size, nf = neutCount < floorNum * 2;
-            if(ef) {
-                if(nf && eventRandom.random(100) < 25) {
+            if (ef) {
+                if (nf && eventRandom.random(100) < 25) {
                     r = eventNeut.get(neutCount++).cpy();
                 } else {
                     r = eventGroup.get(floorNum).get(eventCount++).cpy();
@@ -333,23 +348,23 @@ public class GroupHandler {
         }
 
         public static void roll() {
-            for(Array<AbstractRoom> a : weakGroup.values()) {
+            for (Array<AbstractRoom> a : weakGroup.values()) {
                 staticShuffle(a, monsterRandom);
             }
-            for(Array<AbstractRoom> a : normalGroup.values()) {
+            for (Array<AbstractRoom> a : normalGroup.values()) {
                 staticShuffle(a, monsterRandom);
             }
-            for(Array<AbstractRoom> a : eliteGroup.values()) {
+            for (Array<AbstractRoom> a : eliteGroup.values()) {
                 staticShuffle(a, monsterRandom);
             }
-            for(Array<AbstractRoom> a : bossGroup.values()) {
+            for (Array<AbstractRoom> a : bossGroup.values()) {
                 staticShuffle(a, monsterRandom);
             }
         }
 
         public static Array<AbstractRoom> staticShuffle(Array<AbstractRoom> array, RandomXC r) {
             AbstractRoom[] items = array.toArray(AbstractRoom.class);
-            for(int i = array.size - 1; i >= 0; --i) {
+            for (int i = array.size - 1; i >= 0; --i) {
                 int ii = r.random(i);
                 AbstractRoom temp = items[i];
                 items[i] = items[ii];
@@ -484,16 +499,16 @@ public class GroupHandler {
         public static Array<AbstractItem> getRandomItemByRarity(AbstractItem.ItemRarity rarity, int amount) {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
-            for(AbstractItem s : raritySort.get(rarity)) {
+            for (AbstractItem s : raritySort.get(rarity)) {
                 boolean can = false;
-                for(AbstractPlayer p : players) {
+                for (AbstractPlayer p : players) {
                     can = !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
-                    if(!can) break;
+                    if (!can) break;
                 }
-                if(can) b.add(s);
+                if (can) b.add(s);
             }
             staticShuffle(b);
-            for(int i = 0; i < amount; i++) {
+            for (int i = 0; i < amount; i++) {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 a.add(tt);
@@ -504,16 +519,16 @@ public class GroupHandler {
         public static Array<AbstractItem> getRandomItem(int amount) {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
-            for(AbstractItem s : normalItem) {
+            for (AbstractItem s : normalItem) {
                 boolean can = true;
-                for(AbstractPlayer p : players) {
+                for (AbstractPlayer p : players) {
                     can = !p.item[0].id.equals(s.id) && !p.item[1].id.equals(s.id);
-                    if(!can) break;
+                    if (!can) break;
                 }
-                if(can) b.add(s);
+                if (can) b.add(s);
             }
             staticShuffle(b);
-            for(int i = 0; i < amount; i++) {
+            for (int i = 0; i < amount; i++) {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 a.add(tt);
@@ -526,9 +541,9 @@ public class GroupHandler {
         }
 
         private static void sort() {
-            for(AbstractItem item : allItem) {
+            for (AbstractItem item : allItem) {
                 idSort.put(item.id, item);
-                if(item.rarity == AbstractItem.ItemRarity.BRONZE) {
+                if (item.rarity == AbstractItem.ItemRarity.BRONZE) {
                     bronzeItem.add(item);
                     normalItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.SILVER) {
@@ -539,11 +554,11 @@ public class GroupHandler {
                     normalItem.add(item);
                 } else if (item.rarity == AbstractItem.ItemRarity.BOSS) {
                     bossItem.add(item);
-                } else if(item.rarity == AbstractItem.ItemRarity.SHOP) {
+                } else if (item.rarity == AbstractItem.ItemRarity.SHOP) {
                     shopItem.add(item);
-                } else if(item.rarity == AbstractItem.ItemRarity.STARTER) {
+                } else if (item.rarity == AbstractItem.ItemRarity.STARTER) {
                     starterItem.add(item);
-                } else if(item.rarity == AbstractItem.ItemRarity.SPECIAL) {
+                } else if (item.rarity == AbstractItem.ItemRarity.SPECIAL) {
                     specialItem.add(item);
                 }
             }
@@ -561,7 +576,7 @@ public class GroupHandler {
 
         public static Array<AbstractItem> staticShuffle(Array<AbstractItem> array, RandomXC r) {
             AbstractItem[] items = array.toArray(AbstractItem.class);
-            for(int i = array.size - 1; i >= 0; --i) {
+            for (int i = array.size - 1; i >= 0; --i) {
                 int ii = r.random(i);
                 AbstractItem temp = items[i];
                 items[i] = items[ii];
@@ -594,7 +609,7 @@ public class GroupHandler {
         }
 
         private static void sort() {
-            for(PlayerClass cls : playerSort.keySet()) {
+            for (PlayerClass cls : playerSort.keySet()) {
                 Array<AbstractSkill> s = playerSort.get(cls);
                 for (AbstractSkill item : s) {
                     idSort.put(item.id, item);
@@ -713,18 +728,18 @@ public class GroupHandler {
             Array<AbstractSkill> a = new Array<>();
             Array<AbstractSkill> b = new Array<>();
             boolean t;
-            for(AbstractSkill s : playerSort.get(p.playerClass)) {
+            for (AbstractSkill s : playerSort.get(p.playerClass)) {
                 t = true;
-                for(AbstractSkill ss : p.deck) {
+                for (AbstractSkill ss : p.deck) {
                     if (s.id.equals(ss.id)) {
                         t = false;
                         break;
                     }
                 }
-                if(t) b.add(s);
+                if (t) b.add(s);
             }
             staticShuffle(b);
-            for(int i = 0; i < amount; i++) {
+            for (int i = 0; i < amount; i++) {
                 AbstractSkill tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 tt.owner = p;
@@ -742,9 +757,9 @@ public class GroupHandler {
             Array<AbstractSkill> b = p.deck;
             for (int i = 0; i < b.size; i++) {
                 AbstractSkill s = b.get(i);
-                if(s.upgraded != isNone) a.add(s.clone());
+                if (s.upgraded != isNone) a.add(s.clone());
             }
-            if(a.size > 0) {
+            if (a.size > 0) {
                 return staticShuffle(a).get(0);
             } else return null;
         }
@@ -755,7 +770,7 @@ public class GroupHandler {
 
         public static Array<AbstractSkill> staticShuffle(Array<AbstractSkill> array, RandomXC r) {
             AbstractSkill[] items = array.toArray(AbstractSkill.class);
-            for(int i = array.size - 1; i >= 0; --i) {
+            for (int i = array.size - 1; i >= 0; --i) {
                 int ii = r.random(i);
                 AbstractSkill temp = items[i];
                 items[i] = items[ii];

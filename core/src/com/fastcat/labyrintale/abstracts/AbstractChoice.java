@@ -16,7 +16,7 @@ public class AbstractChoice {
     public String name;
     public String desc;
     public String[] rawDesc;
-    public Sprite img = FileHandler.ui.get("DRAW");
+    public Sprite img = FileHandler.getUi().get("DRAW");
     public int prob;
     public boolean must = false;
 
@@ -43,8 +43,8 @@ public class AbstractChoice {
     }
 
     public String getDesc() {
-        if(prob > 75) return rawDesc[3];
-        else if(prob > 50) return rawDesc[2];
+        if (prob > 75) return rawDesc[3];
+        else if (prob > 50) return rawDesc[2];
         else if (prob > 25) return rawDesc[1];
         else return rawDesc[0];
     }

@@ -9,8 +9,6 @@ import com.fastcat.labyrintale.items.starter.CrossPin;
 import com.fastcat.labyrintale.items.starter.ToxicFlask;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
-import com.fastcat.labyrintale.skills.player.gosegu.Provoke;
-import com.fastcat.labyrintale.skills.player.gosegu.BioCloud;
 import com.fastcat.labyrintale.skills.player.gosegu.RustyShard;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;

@@ -12,23 +12,23 @@ public class CharItemIcon extends AbstractUI {
     public AbstractItem skill;
 
     public CharItemIcon(AbstractItem s) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         skill = s;
         clickable = false;
     }
 
     @Override
     protected void updateButton() {
-        if(over) {
+        if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
         }
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }

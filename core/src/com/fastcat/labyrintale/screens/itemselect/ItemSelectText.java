@@ -11,7 +11,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 public class ItemSelectText extends AbstractUI {
 
     public ItemSelectText() {
-        super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 1000, 60);
+        super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.925f);
         fontData = CARD_BIG_ORB;
         text = "아이템을 선택하세요";
@@ -21,8 +21,8 @@ public class ItemSelectText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(fontData != null) {
+        if (enabled) {
+            if (fontData != null) {
                 renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
             }
         }

@@ -18,13 +18,13 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
+        if (duration == baseDuration) {
             isDone = !gets.setTarget();
-            if(!isDone) {
+            if (!isDone) {
                 Labyrintale.battleScreen.selectTarget(this);
                 AbstractLabyrinth.cPanel.battlePanel.selected = gets;
             }
-        } else if(!isDone) {
+        } else if (!isDone) {
             duration = 10000;
         }
     }
@@ -40,7 +40,7 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
 
     @Override
     public boolean setTarget() {
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             Labyrintale.battleScreen.players[i].isTarget = false;
             Labyrintale.battleScreen.enemies[i].isTarget = false;
         }

@@ -30,7 +30,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         this.type = type;
         pPlayer = new SlotButton[3];
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             SlotButton adv = new SlotButton(this.player, i, this);
             adv.setPosition(w * (0.4f + 0.1f * i) - adv.sWidth / 2, h * 0.6f);
             pPlayer[i] = adv;
@@ -75,7 +75,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
 
     @Override
     public void slotSelected(AbstractPlayer player, int index) {
-        if(type == SlotType.UPGRADE) {
+        if (type == SlotType.UPGRADE) {
             player.upgradeSlot(index, 1);
         }
         gets.slotSelected(player, index);

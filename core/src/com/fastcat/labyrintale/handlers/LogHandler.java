@@ -2,9 +2,9 @@ package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
 
-public class LogHandler {
+public final class LogHandler {
 
-    private String tag;
+    private final String tag;
 
     public LogHandler(String tag) {
         this.tag = tag;

@@ -2,8 +2,8 @@ package com.fastcat.labyrintale.abstracts;
 
 public abstract class AbstractAbility {
 
-    public String id;
     public final AbilityRarity rarity;
+    public String id;
     public AbstractSkill.SkillTarget target;
 
     public AbstractAbility(String id, AbilityRarity rarity, AbstractSkill.SkillTarget target) {

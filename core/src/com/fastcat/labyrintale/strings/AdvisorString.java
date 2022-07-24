@@ -10,7 +10,7 @@ public class AdvisorString {
     private final HashMap<String, AdvisorData> data = new HashMap<>();
 
     public AdvisorString() {
-        JsonValue json = FileHandler.ADV_JSON;
+        JsonValue json = FileHandler.getJsonValue(FileHandler.JsonType.ADV_JSON);
         for (JsonValue js : json) {
             String id = js.name;
             if (!id.equals("")) {

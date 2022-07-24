@@ -4,7 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.handlers.RestrictionHandler;
 
 public class GoldReward extends AbstractReward {
 
@@ -20,11 +19,6 @@ public class GoldReward extends AbstractReward {
         setInfo("골드", "골드를 &y<" + this.gold + "> 획득합니다.");
     }
 
-    @Override
-    public void takeReward() {
-        AbstractLabyrinth.gold += gold;
-    }
-
     private static int getAmountByMonster(AbstractRoom.RoomType type) {
         switch (type) {
             case BOSS:
@@ -37,10 +31,15 @@ public class GoldReward extends AbstractReward {
     }
 
     private static int calculate(int g) {
-        if(AbstractLabyrinth.restriction.FAM == 1) g *= 0.9f;
+        if (AbstractLabyrinth.restriction.FAM == 1) g *= 0.9f;
         else if (AbstractLabyrinth.restriction.FAM == 2) g *= 0.7f;
         else if (AbstractLabyrinth.restriction.FAM == 3) g *= 0.5f;
-        if(AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.SOPHIA) g *= 1.2f;
+        if (AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.SOPHIA) g *= 1.2f;
         return g + AbstractLabyrinth.publicRandom.random(-5, 5);
+    }
+
+    @Override
+    public void takeReward() {
+        AbstractLabyrinth.gold += gold;
     }
 }

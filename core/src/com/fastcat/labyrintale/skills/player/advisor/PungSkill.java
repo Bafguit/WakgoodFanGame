@@ -1,9 +1,7 @@
 package com.fastcat.labyrintale.skills.player.advisor;
 
-import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.MoveAction;
 
 public class PungSkill extends AbstractSkill {

@@ -1,54 +1,37 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Quaternion;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.LogHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
-import java.io.Serializable;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
-import static com.fastcat.labyrintale.handlers.FontHandler.generate;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontData;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public abstract class AbstractUI implements Disposable {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
     public AbstractScreen screen;
-    protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
     public String text;
     public FontData fontData;
     public float x;
-    protected float sx;
-    protected float cx;
     public float y;
-    protected float sy;
-    protected float cy;
     public float width;
     public float height;
     public float sWidth;
     public float sHeight;
     public boolean over;
-    private boolean justOver = false;
     public boolean overable = true;
     public boolean enabled;
     public boolean showImg = true;
-
     public float uiScale;
     public boolean clicked;
     public boolean clicking;
@@ -56,6 +39,12 @@ public abstract class AbstractUI implements Disposable {
     public boolean trackable = false;
     public boolean tracking = false;
     public boolean mute = false;
+    protected LogHandler logger = new LogHandler(this.getClass().getName());
+    protected float sx;
+    protected float cx;
+    protected float sy;
+    protected float cy;
+    private boolean justOver = false;
 
     public AbstractUI(String imgPath) {
         this(imgPath, -10000, -10000);
@@ -102,26 +91,26 @@ public abstract class AbstractUI implements Disposable {
         clicked = isLeftClick;
         clicking = isLeftClicking;
 
-        if(enabled && !Labyrintale.fading) {
+        if (enabled && !Labyrintale.fading) {
             justOver = over;
             over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
 
-            if(over) {
-                if(!justOver) {
+            if (over) {
+                if (!justOver) {
                     //if(overable) SoundHandler.playSfx("OVER");
                     onOver();
                     justOver = true;
                 }
-                if(overable) {
+                if (overable) {
                     cx = mx - x;
                     cy = my - y;
-                    if(clicked) {
-                        if(clickable) {
-                            if(!mute) SoundHandler.playSfx("CLICK");
+                    if (clicked) {
+                        if (clickable) {
+                            if (!mute) SoundHandler.playSfx("CLICK");
                             onClick();
                         }
                     }
-                    if(clicking) onClicking();
+                    if (clicking) onClicking();
                 }
             }
 
@@ -130,12 +119,12 @@ public abstract class AbstractUI implements Disposable {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(img, x, y, sWidth, sHeight);
 
-            if(fontData != null) {
+            if (fontData != null) {
                 renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
             }
         }
@@ -161,7 +150,7 @@ public abstract class AbstractUI implements Disposable {
     }
 
     protected void trackCursor(boolean center) {
-        if(trackable && isCursorInScreen) {
+        if (trackable && isCursorInScreen) {
             tracking = true;
             if (center) setPosition(mx - sWidth / 2, my - sHeight / 2);
             else setPosition(mx - cx, my - cy);
@@ -195,11 +184,15 @@ public abstract class AbstractUI implements Disposable {
         clicking = false;
     }
 
-    protected void updateButton() { }
+    protected void updateButton() {
+    }
 
-    protected void onOver() { }
+    protected void onOver() {
+    }
 
-    protected void onClick() { }
+    protected void onClick() {
+    }
 
-    protected void onClicking() { }
+    protected void onClicking() {
+    }
 }

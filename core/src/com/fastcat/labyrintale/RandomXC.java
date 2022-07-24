@@ -7,11 +7,14 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
+import lombok.Getter;
 
-public class RandomXC {
-    public RandomXS128 random;
-    public long seed;
-    public int counter;
+
+public final class RandomXC {
+    private RandomXS128 random;
+    private long seed;
+    @Getter
+    private int counter;
 
     public RandomXC() {
         this(MathUtils.random(9999L), MathUtils.random(99));
@@ -28,7 +31,7 @@ public class RandomXC {
         this.seed = seed;
         this.random = new RandomXS128(seed);
 
-        for(int i = 0; i < counter; ++i) {
+        for (int i = 0; i < counter; ++i) {
             this.random(999);
         }
 
@@ -46,7 +49,7 @@ public class RandomXC {
         if (this.counter < targetCounter) {
             int count = targetCounter - this.counter;
 
-            for(int i = 0; i < count; ++i) {
+            for (int i = 0; i < count; ++i) {
                 this.randomBoolean();
             }
         } else {
@@ -67,12 +70,12 @@ public class RandomXC {
 
     public long random(long range) {
         ++this.counter;
-        return (long)(this.random.nextDouble() * (double)range);
+        return (long) (this.random.nextDouble() * (double) range);
     }
 
     public long random(long start, long end) {
         ++this.counter;
-        return start + (long)(this.random.nextDouble() * (double)(end - start));
+        return start + (long) (this.random.nextDouble() * (double) (end - start));
     }
 
     public long randomLong() {

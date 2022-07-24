@@ -16,7 +16,7 @@ public class CharDeckButton extends AbstractUI {
     public int index;
 
     public CharDeckButton(ShopTakeScreen screen, int index, AbstractSkill s) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         toSkill = s;
         this.index = index;
         sc = screen;
@@ -25,24 +25,24 @@ public class CharDeckButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over) {
+        if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
         }
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(!over) sb.setColor(Color.LIGHT_GRAY);
+        if (enabled) {
+            if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 
     @Override
     public void onClick() {
-        for(int i = 0; i < skill.upgradeCount; i++) {
+        for (int i = 0; i < skill.upgradeCount; i++) {
             toSkill.upgrade();
         }
         skill.owner.gainSkill(index, toSkill);

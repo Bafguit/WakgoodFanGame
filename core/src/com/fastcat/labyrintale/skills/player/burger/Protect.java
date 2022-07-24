@@ -4,9 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 
 public class Protect extends AbstractSkill {
@@ -38,13 +36,13 @@ public class Protect extends AbstractSkill {
     @Override
     public boolean setTarget() {
         boolean can = false;
-        for(PlayerView pv : Labyrintale.battleScreen.players) {
-            if(pv.player.isAlive() && pv.player != owner) {
+        for (PlayerView pv : Labyrintale.battleScreen.players) {
+            if (pv.player.isAlive() && pv.player != owner) {
                 pv.isTarget = true;
                 can = true;
             }
         }
-        if(can) return true;
+        if (can) return true;
         else {
             top(new BlockAction(owner, SkillTarget.SELF, spell));
             return false;

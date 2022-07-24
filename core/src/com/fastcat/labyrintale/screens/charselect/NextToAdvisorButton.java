@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
@@ -12,7 +11,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class NextToAdvisorButton extends AbstractUI {
 
     public NextToAdvisorButton() {
-        super(FileHandler.ui.get("NEXT"));
+        super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
         text = "출발";
@@ -22,7 +21,7 @@ public class NextToAdvisorButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override

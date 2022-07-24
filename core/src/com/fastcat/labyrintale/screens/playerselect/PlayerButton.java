@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.screens.playerselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -13,7 +12,7 @@ public class PlayerButton extends AbstractUI {
     public PlayerSelectScreen select;
 
     public PlayerButton(AbstractPlayer adv, PlayerSelectScreen select) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         player = adv;
         this.select = select;
     }
@@ -24,7 +23,7 @@ public class PlayerButton extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(player.img, x, y, sWidth, sHeight);

@@ -1,15 +1,11 @@
 package com.fastcat.labyrintale.effects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Queue;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class DieEffect extends AbstractEffect {
 
@@ -22,7 +18,7 @@ public class DieEffect extends AbstractEffect {
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        if(actor != null) {
+        if (actor != null) {
             if (duration == baseDuration) {
                 AnimationState.TrackEntry e = actor.state.setAnimation(0, "die", false);
                 e.setTimeScale(1.0f);

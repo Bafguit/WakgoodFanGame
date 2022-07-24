@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.status.CourageStatus;
 
@@ -38,13 +37,13 @@ public class Pray extends AbstractSkill {
     @Override
     public boolean setTarget() {
         boolean can = false;
-        for(PlayerView pv : Labyrintale.battleScreen.players) {
-            if(pv.player.isAlive() && pv.player != owner) {
+        for (PlayerView pv : Labyrintale.battleScreen.players) {
+            if (pv.player.isAlive() && pv.player != owner) {
                 pv.isTarget = true;
                 can = true;
             }
         }
-        if(can) return true;
+        if (can) return true;
         else {
             top(new ApplyStatusAction(new CourageStatus(value), owner, SkillTarget.SELF, false));
             return false;

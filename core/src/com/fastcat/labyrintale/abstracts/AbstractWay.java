@@ -6,10 +6,8 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 
-import java.io.Serializable;
-
 public class AbstractWay {
-    public Sprite img = FileHandler.charImg.get(AbstractPlayer.PlayerClass.BURGER);
+    public Sprite img = FileHandler.getCharImg().get(AbstractPlayer.PlayerClass.BURGER);
     public WayType type;
     public AbstractRoom enemies;
     public AbstractChoice[] choices;
@@ -17,14 +15,14 @@ public class AbstractWay {
 
     public AbstractWay(SaveHandler.WayData data) {
         type = WayType.valueOf(data.type);
-        if(data.enemies != null) {
+        if (data.enemies != null) {
             enemies = GroupHandler.RoomGroup.getRoom(data.enemies.id);
             enemies.isDone = data.enemies.isDone;
             enemies.battleDone = data.enemies.battleDone;
         }
         int l = data.choices.length;
         choices = new AbstractChoice[l];
-        for(int i = 0; i < l; i++) {
+        for (int i = 0; i < l; i++) {
             choices[i] = new AbstractChoice(data.choices[i]);
         }
         isDone = data.isDone;

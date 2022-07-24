@@ -7,6 +7,8 @@ import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,21 +19,21 @@ import java.util.Objects;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvisorInstance;
 
-public class SaveHandler {
-
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class SaveHandler {
     private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-
     public static FileHandle saveFile = Gdx.files.local("save.json");
     public static SaveData data;
     public static boolean hasSave;
+    private static SaveHandler instance;
 
-    public SaveHandler() {
+    static {
         refresh();
     }
 
     public static void refresh() {
         hasSave = saveFile.exists();
-        if(hasSave) {
+        if (hasSave) {
             try {
                 data = mapper.readValue(new File("save.json"), SaveData.class);
             } catch (IOException e) {
@@ -50,7 +52,7 @@ public class SaveHandler {
     }
 
     public static void finish(boolean refresh) {
-        if(refresh) refresh();
+        if (refresh) refresh();
         /*if(hasSave) {
             try {
                 mapper.writeValue(new File("run_" + data.date + ".json"), data);
@@ -83,9 +85,9 @@ public class SaveHandler {
         restriction.setData(data.restriction);
 
         floors = new AbstractFloor[4];
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             FloorData d = data.floors[i];
-            if(d != null) {
+            if (d != null) {
                 floors[i] = new AbstractFloor(d);
             }
         }
@@ -100,30 +102,30 @@ public class SaveHandler {
             p.maxHealth = d.maxHealth;
             p.health = d.health;
 
-            for(int j = 0; j < 2; j++) {
+            for (int j = 0; j < 2; j++) {
                 AbstractItem it = Objects.requireNonNull(GroupHandler.ItemGroup.idSort.get(d.item[j]).clone());
                 it.setOwner(p);
                 p.item[j] = it;
             }
 
             AbstractSkill[] ss = new AbstractSkill[3];
-            for(int j = 0; j < 3; j++) {
+            for (int j = 0; j < 3; j++) {
                 SkillData sd = d.deck[j];
                 AbstractSkill s = Objects.requireNonNull(GroupHandler.SkillGroup.idSort.get(d.deck[j].id).clone());
                 s.usedOnly = sd.usedOnly;
                 s.owner = p;
-                for(int k = 0; k < sd.upgradeCount; k++) {
+                for (int k = 0; k < sd.upgradeCount; k++) {
                     s.upgrade();
                 }
                 ss[j] = s;
                 p.slot[j] = d.slot[j];
             }
             p.deck = new Array<>(ss);
-            if(p.isDead) p.infoSpine.setAnimation("die");
+            if (p.isDead) p.infoSpine.setAnimation("die");
             players[i] = p;
         }
         AdvisorData ad = data.advisor;
-        if(ad != null) {
+        if (ad != null) {
             AbstractAdvisor a = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad.cls.toUpperCase()));
             a.skill.usedOnly = ad.skill.usedOnly;
             for (int i = 0; i < ad.skill.upgradeCount; i++) {
@@ -173,12 +175,12 @@ public class SaveHandler {
             temp.date = formatter.format(now);
             temp.random = RandomData.create();
             temp.restriction = RestrictionData.create();
-            for(int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];
                 temp.floors[i] = f != null ? FloorData.create(f) : null;
             }
             temp.currentFloor = floorNum;
-            for(int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) {
                 temp.players[i] = PlayerData.create(AbstractLabyrinth.players[i]);
             }
             temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
@@ -216,13 +218,13 @@ public class SaveHandler {
             RandomData temp = new RandomData();
             temp.seed = AbstractLabyrinth.seed;
             temp.seedLong = AbstractLabyrinth.seedLong;
-            temp.publicRandom = AbstractLabyrinth.publicRandom.counter;
-            temp.skillRandom = AbstractLabyrinth.skillRandom.counter;
-            temp.itemRandom = AbstractLabyrinth.itemRandom.counter;
-            temp.mapRandom = AbstractLabyrinth.mapRandom.counter;
-            temp.monsterRandom = AbstractLabyrinth.monsterRandom.counter;
-            temp.eventRandom = AbstractLabyrinth.eventRandom.counter;
-            temp.shopRandom = AbstractLabyrinth.shopRandom.counter;
+            temp.publicRandom = AbstractLabyrinth.publicRandom.getCounter();
+            temp.skillRandom = AbstractLabyrinth.skillRandom.getCounter();
+            temp.itemRandom = AbstractLabyrinth.itemRandom.getCounter();
+            temp.mapRandom = AbstractLabyrinth.mapRandom.getCounter();
+            temp.monsterRandom = AbstractLabyrinth.monsterRandom.getCounter();
+            temp.eventRandom = AbstractLabyrinth.eventRandom.getCounter();
+            temp.shopRandom = AbstractLabyrinth.shopRandom.getCounter();
             return temp;
         }
     }
@@ -267,7 +269,7 @@ public class SaveHandler {
             FloorData temp = new FloorData();
             temp.currentRoom = f.currentRoom != null ? RoomData.create(f.currentRoom) : null;
             temp.currentWay = f.currentWay != null ? WayData.create(f.currentWay) : null;
-            for(int i = 0; i < 13; i++) {
+            for (int i = 0; i < 13; i++) {
                 temp.ways[i] = WayData.create(f.ways[i]);
             }
             temp.isDone = f.isDone;
@@ -289,7 +291,7 @@ public class SaveHandler {
             temp.enemies = RoomData.create(w.enemies);
             int l = w.choices.length;
             temp.choices = new ChoiceData[l];
-            for(int i = 0; i < l; i++) {
+            for (int i = 0; i < l; i++) {
                 temp.choices[i] = ChoiceData.create(w.choices[i]);
             }
             temp.isDone = w.isDone;
@@ -319,7 +321,7 @@ public class SaveHandler {
         public boolean isDone;
 
         public static RoomData create(AbstractRoom r) {
-            if(r != null) {
+            if (r != null) {
                 RoomData temp = new RoomData();
                 temp.id = r.id;
                 temp.battleDone = r.battleDone;
@@ -342,12 +344,12 @@ public class SaveHandler {
         public static PlayerData create(AbstractPlayer e) {
             PlayerData temp = new PlayerData();
             temp.id = e.id;
-            for(int i = 0; i < 2; i++) {
+            for (int i = 0; i < 2; i++) {
                 AbstractItem t = e.item[i];
                 temp.item[i] = t != null ? t.id : null;
             }
             temp.deck = new SkillData[3];
-            for(int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++) {
                 temp.deck[i] = SkillData.create(e.deck.get(i));
                 temp.slot[i] = e.slot[i];
             }

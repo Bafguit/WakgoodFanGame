@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.screens.shop;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -16,7 +15,7 @@ public class ShopItemButton extends AbstractUI {
     public Sprite itemImg;
 
     public ShopItemButton(ShopRoom.ShopItem re) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         setItem(re);
     }
 
@@ -27,9 +26,9 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && !item.isDone) {
+        if (enabled && !item.isDone) {
             boolean can = item.canBuy();
-            if(!can) sb.setColor(Color.DARK_GRAY);
+            if (!can) sb.setColor(Color.DARK_GRAY);
             else if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
             sb.draw(itemImg, x, y, sWidth, sHeight);
@@ -42,7 +41,7 @@ public class ShopItemButton extends AbstractUI {
     @Override
     protected void updateButton() {
         clickable = item.canBuy();
-        if(!item.isDone && over) {
+        if (!item.isDone && over) {
             item.setPanel();
         }
     }
@@ -54,7 +53,7 @@ public class ShopItemButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!item.isDone && item.canBuy()) {
+        if (!item.isDone && item.canBuy()) {
             item.takeItem();
         }
     }

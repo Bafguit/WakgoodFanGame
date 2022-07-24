@@ -1,19 +1,16 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
-
-    public static ActionHandler actionHandler;
 
     public static String seed;
     public static long seedLong;
@@ -48,13 +45,12 @@ public class AbstractLabyrinth {
     }
 
     public AbstractLabyrinth(RunType type) {
-        actionHandler = new ActionHandler();
         players = new AbstractPlayer[4];
-        restriction = new RestrictionHandler();
-        if(type == RunType.SAVE) {
+        restriction = RestrictionHandler.getInstance();
+        if (type == RunType.SAVE) {
             SaveHandler.load();
         } else {
-            if(seed.equals("")) seed = generateRandomSeed();
+            if (seed.equals("")) seed = generateRandomSeed();
             seedLong = seedToLong(seed);
             publicRandom = new RandomXC(seedLong);
             skillRandom = new RandomXC(seedLong);
@@ -92,10 +88,6 @@ public class AbstractLabyrinth {
         cPanel = new ControlPanel();
     }
 
-    public void update() {
-
-    }
-
     public static void prepare() {
         energy = maxEnergy;
         advisor.skill.usedOnce = false;
@@ -104,9 +96,9 @@ public class AbstractLabyrinth {
 
     public static boolean hasSlot() {
         boolean hasSlot = false;
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             AbstractPlayer p = AbstractLabyrinth.players[i];
-            if(p.isAlive() && p.hasSlot()) hasSlot = true;
+            if (p.isAlive() && p.hasSlot()) hasSlot = true;
         }
         return hasSlot;
     }
@@ -145,10 +137,10 @@ public class AbstractLabyrinth {
 
     private static String generateRandomSeed() {
         StringBuilder s = new StringBuilder();
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             boolean t = MathUtils.randomBoolean();
             char c;
-            if(t) {
+            if (t) {
                 c = (char) MathUtils.random(48, 57);
             } else {
                 c = (char) MathUtils.random(65, 90);
@@ -159,12 +151,12 @@ public class AbstractLabyrinth {
     }
 
     public static void endRoom() {
-        if(currentFloor.currentRoom.type != AbstractRoom.RoomType.BATTLE && currentFloor.currentRoom.type != AbstractRoom.RoomType.ELITE && currentFloor.currentRoom.type != AbstractRoom.RoomType.BOSS) {
+        if (currentFloor.currentRoom.type != AbstractRoom.RoomType.BATTLE && currentFloor.currentRoom.type != AbstractRoom.RoomType.ELITE && currentFloor.currentRoom.type != AbstractRoom.RoomType.BOSS) {
             AbstractLabyrinth.addBleak();
         }
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
-        if(currentFloor.num == 13) {
+        if (currentFloor.num == 13) {
             nextFloor();
         }
         Labyrintale.mapScreen.isView = false;
@@ -185,8 +177,8 @@ public class AbstractLabyrinth {
     public static long seedToLong(String s) {
         char[] ca = s.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for(char c : ca) {
-            sb.append((int)c);
+        for (char c : ca) {
+            sb.append((int) c);
         }
         return Long.parseLong(sb.toString());
     }
@@ -219,7 +211,7 @@ public class AbstractLabyrinth {
         currentFloor.currentRoom.done();
         AbstractPlayer[] temp = players;
         players = new AbstractPlayer[4];
-        for(AbstractPlayer p : temp) {
+        for (AbstractPlayer p : temp) {
             p.mRightTemp = p.mRight;
             p.mLeftTemp = p.mLeft;
             players[p.index] = p;
@@ -227,6 +219,10 @@ public class AbstractLabyrinth {
         //AbstractLabyrinth.prepare();
         AbstractLabyrinth.reduceBleak();
         SaveHandler.save();
+    }
+
+    public void update() {
+
     }
 
     public enum RunType {

@@ -24,32 +24,33 @@ public class HolySmiteAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
+        if (duration == baseDuration) {
             SoundHandler.playSfx("ATTACK_TEST");
-            if(target.size > 0) {
-                if(SettingHandler.setting.shake) Labyrintale.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
+            if (target.size > 0) {
+                if (SettingHandler.setting.shake)
+                    Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
                 for (AbstractEntity t : target) {
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.vfx.get("LIGHTNING")));
+                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("LIGHTNING")));
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    if(te.isAlive()) te.takeDamage(info);
+                    if (te.isAlive()) te.takeDamage(info);
                 }
                 Array<AbstractPlayer> temp = new Array<>();
                 int low = 2147483647;
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = AbstractLabyrinth.players[i];
-                    if(p.isAlive() && p.health < low) low = p.health;
+                    if (p.isAlive() && p.health < low) low = p.health;
                 }
-                for(AbstractPlayer p : AbstractLabyrinth.players) {
-                    if(p.health == low) temp.add(p);
+                for (AbstractPlayer p : AbstractLabyrinth.players) {
+                    if (p.health == low) temp.add(p);
                 }
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
                     EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     te.heal(heal);
                 }
-                if(actor != null) {
+                if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);
                     e.setTimeScale(1.0f);

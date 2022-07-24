@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.strings;
 
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonValue;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -11,7 +10,7 @@ public class ChoiceString {
     private final HashMap<String, ChoiceData> data = new HashMap<>();
 
     public ChoiceString() {
-        JsonValue json = FileHandler.CHOICE_JSON;
+        JsonValue json = FileHandler.getJsonValue(FileHandler.JsonType.CHOICE_JSON);
         for (JsonValue js : json) {
             String id = js.name;
             if (!id.equals("")) {

@@ -2,14 +2,11 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
-import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.basic.MoveLeft;
 import com.fastcat.labyrintale.skills.player.basic.MoveRight;
 import com.fastcat.labyrintale.strings.CharString;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
 
 public abstract class AbstractPlayer extends AbstractEntity {
 
@@ -20,7 +17,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final PlayerClass playerClass;
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
-        super(id, 4, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), true);
+        super(id, 4, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), true);
         this.playerClass = PlayerClass.valueOf(id.toUpperCase());
         CharString.CharData temp = StringHandler.charString.get(id);
         name = temp.NAME;
@@ -31,20 +28,24 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
         mLeft = mLeftTemp = new MoveLeft(this);
         mRight = mRightTemp = new MoveRight(this);
-        setImage(charImg.get(playerClass), charImgBig.get(playerClass), charBgImg.get(playerClass));
-        imgTiny = charImgTiny.get(playerClass);
+        setImage(FileHandler.getCharImg().get(playerClass), FileHandler.getCharImgBig().get(playerClass), FileHandler.getCharBgImg().get(playerClass));
+        imgTiny = FileHandler.getCharImgTiny().get(playerClass);
         Array<AbstractItem> t = getStartingItem();
-        for(int j = 0; j < 2; j++) {
+        for (int j = 0; j < 2; j++) {
             AbstractItem it = t.get(j);
             it.onGain();
             item[j] = it;
         }
     }
 
+    public static String getClassName(PlayerClass playerClass) {
+        return playerClass.toString().toLowerCase();
+    }
+
     @Override
     public void newDeck() {
         hand = new AbstractSkill[3];
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             hand[i] = deck.get(i).clone();
         }
         mRightTemp = mRight.clone();
@@ -67,9 +68,5 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     public enum PlayerClass {
         WAK, MANAGER, INE, VIICHAN, LILPA, BURGER, GOSEGU, JURURU
-    }
-
-    public static String getClassName(PlayerClass playerClass) {
-        return playerClass.toString().toLowerCase();
     }
 }

@@ -3,24 +3,19 @@ package com.fastcat.labyrintale.screens.map;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.abstracts.AbstractRoom.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
+import static com.fastcat.labyrintale.Labyrintale.addTempScreen;
+import static com.fastcat.labyrintale.Labyrintale.mapScreen;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class MapNodeButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER");
+    private final Sprite border = FileHandler.getUi().get("BORDER");
     public boolean canGo = true;
     public AbstractWay way;
 
@@ -36,9 +31,9 @@ public class MapNodeButton extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(!way.isDone) {
-                if(canGo) {
+        if (enabled) {
+            if (!way.isDone) {
+                if (canGo) {
                     if (over) {
                         sb.setColor(WHITE);
                     } else {
@@ -55,7 +50,7 @@ public class MapNodeButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(!way.isDone && canGo && !mapScreen.isView) {
+        if (!way.isDone && canGo && !mapScreen.isView) {
             currentFloor.currentWay = way;
             addTempScreen(new WayScreen());
         }

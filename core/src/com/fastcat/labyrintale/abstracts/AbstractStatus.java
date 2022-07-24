@@ -27,7 +27,7 @@ public abstract class AbstractStatus implements Cloneable {
 
     public AbstractStatus(String id, AbstractSkill.SkillTarget target, StatusType type) {
         this.id = id;
-        img = FileHandler.statusImg.get(this.id);
+        img = FileHandler.getStatusImg().get(this.id);
         data = StringHandler.statusString.get(this.id);
         name = data.NAME;
         desc = data.DESC;
@@ -91,13 +91,13 @@ public abstract class AbstractStatus implements Cloneable {
     public void atBattleEnd() {
 
     }
-    
+
     public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-        
+
     }
 
     public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-        
+
     }
 
     public void onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {

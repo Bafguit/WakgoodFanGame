@@ -41,8 +41,8 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
     @Override
     protected void onSelect() {
         ShopTakeScreen s;
-        if(item != null) s = new ShopTakeScreen(item);
-        else if(rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity));
+        if (item != null) s = new ShopTakeScreen(item);
+        else if (rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity));
         else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem());
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
@@ -50,7 +50,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
 
     @Override
     public void atEndOfTempScreen() {
-        if(toPage >= 0) {
+        if (toPage >= 0) {
             event.setPage(toPage);
         }
     }

@@ -8,8 +8,6 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
-
 public class SkillSelectCharIcon extends AbstractUI {
 
     private final Sprite border;
@@ -18,10 +16,10 @@ public class SkillSelectCharIcon extends AbstractUI {
     public AbstractPlayer p;
 
     public SkillSelectCharIcon(SkillSelectGroup g, AbstractPlayer p) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         group = g;
         this.p = p;
-        border = charImg.get(p.playerClass);
+        border = FileHandler.getCharImg().get(p.playerClass);
         clickable = false;
     }
 
@@ -32,10 +30,10 @@ public class SkillSelectCharIcon extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (group.bg.over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(showImg) sb.draw(border, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(border, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }

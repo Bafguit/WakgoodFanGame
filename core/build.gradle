@@ -1,3 +1,6 @@
+plugins{
+    id 'io.freefair.lombok'
+}
 sourceCompatibility = 1.7
 dependencies {
     implementation 'org.jetbrains:annotations-java5:20.1.0'

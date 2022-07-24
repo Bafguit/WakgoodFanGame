@@ -21,10 +21,10 @@ public class LogoScreen extends AbstractScreen {
 
     public LogoScreen() {
         cType = ControlPanel.ControlType.HIDE;
-        setBg(FileHandler.ui.get("FADE"));
+        setBg(FileHandler.getUi().get("FADE"));
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
         try {
-            videoPlayer.play(FileHandler.video.get("LOGO"));
+            videoPlayer.play(FileHandler.getVideo().get("LOGO"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -40,8 +40,8 @@ public class LogoScreen extends AbstractScreen {
     @Override
     public void update() {
         videoPlayer.update();
-        if(InputHandler.isLeftClick && !isDone) isDone = true;
-        if(isDone) {
+        if (InputHandler.isLeftClick && !isDone) isDone = true;
+        if (isDone) {
             Labyrintale.mainMenuScreen.onCreate();
             Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
         }

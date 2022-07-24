@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderLineRight;
 
 public class SlideBarGroup {
 
@@ -44,7 +44,7 @@ public class SlideBarGroup {
         public SlideBar slideBar;
 
         public Title(String title, float x, float y) {
-            super(FileHandler.ui.get("SLIDE_A"), x, y);
+            super(FileHandler.getUi().get("SLIDE_A"), x, y);
             this.title = title;
             fontData = FontHandler.SETTING;
             overable = false;

@@ -19,7 +19,7 @@ public class GoldEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {
@@ -30,6 +30,6 @@ public class GoldEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 1) AbstractLabyrinth.gold += 100;
+        if (page == 1) AbstractLabyrinth.gold += 100;
     }
 }

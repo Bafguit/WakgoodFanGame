@@ -3,15 +3,11 @@ package com.fastcat.labyrintale.events.choices;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.rewards.ExpReward;
-import com.fastcat.labyrintale.rewards.SkillUpgradeReward;
-import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.rewards.SlotReward;
 import com.fastcat.labyrintale.screens.expselect.ExpSelectScreen;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
-import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
 
@@ -37,7 +33,7 @@ public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements G
 
     @Override
     public void slotSelected(AbstractPlayer player, int index) {
-        if(toPage >= 0) {
+        if (toPage >= 0) {
             event.setPage(toPage);
         }
     }

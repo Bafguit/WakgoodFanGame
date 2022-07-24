@@ -12,7 +12,7 @@ public class ItemButton extends AbstractUI {
     public ItemSelectScreen select;
 
     public ItemButton(AbstractItem item, ItemSelectScreen select) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         this.item = item;
         this.select = select;
     }
@@ -23,7 +23,7 @@ public class ItemButton extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(item.img, x, y, sWidth, sHeight);

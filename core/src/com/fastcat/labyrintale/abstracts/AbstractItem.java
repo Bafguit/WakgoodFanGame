@@ -25,7 +25,7 @@ public class AbstractItem implements Cloneable {
 
     public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
         this.id = id;
-        img = FileHandler.itemImg.get(this.id);
+        img = FileHandler.getItemImg().get(this.id);
         //tImg = FileHandler.itemImgTrans.get(this.id);
         data = StringHandler.itemString.get(this.id);
         name = data.NAME;

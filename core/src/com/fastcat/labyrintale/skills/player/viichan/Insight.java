@@ -4,9 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.status.ScarStatus;
 import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Insight extends AbstractSkill {

@@ -10,7 +10,7 @@ public class EventString {
     public final HashMap<String, EventData> data = new HashMap<>();
 
     public EventString() {
-        JsonValue json = FileHandler.EVENT_JSON;
+        JsonValue json = FileHandler.getJsonValue(FileHandler.JsonType.EVENT_JSON);
         for (JsonValue js : json) {
             String id = js.name;
             if (!id.equals("")) {

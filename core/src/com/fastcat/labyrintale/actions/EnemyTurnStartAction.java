@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.actions;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 
 public class EnemyTurnStartAction extends AbstractAction {
 
@@ -12,10 +14,10 @@ public class EnemyTurnStartAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
-            for(int j = 3; j >= 0; j--) {
+        if (duration == baseDuration) {
+            for (int j = 3; j >= 0; j--) {
                 AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
-                if(e.isAlive()) {
+                if (e.isAlive()) {
                     for (int i = e.status.size - 1; i >= 0; i--) {
                         e.status.get(i).startOfTurn();
                     }

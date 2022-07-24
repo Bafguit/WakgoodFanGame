@@ -2,37 +2,35 @@ package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFontCache;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.badlogic.gdx.graphics.Color.*;
-import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
-import static com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.*;
+import static com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
-public class FontHandler implements Disposable {
-
-    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
-    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
-    //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
-    private static final GlyphLayout layout = new GlyphLayout();
-
-    private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
-    private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
-    //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class FontHandler implements Disposable {
 
     public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 64, true);
     public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
+    //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
     public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
     public static final FontData SEED = new FontData(MEDIUM, 44, WHITE, true, false);
@@ -49,23 +47,31 @@ public class FontHandler implements Disposable {
     public static final FontData STATUS = new FontData(MEDIUM, 24, true);
     public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
     public static final FontData SETTING = new FontData(BOLD, 44, true);
+    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+    //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+    private static final GlyphLayout layout = new GlyphLayout();
+    private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
+    private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
+    /***
+     * Instance of handler.
+     * Initialized on getInstance()
+     */
+    private static FontHandler instance;
 
-    public enum FontType {
-        MEDIUM, BOLD
-    }
-
-    public FontHandler() {
-
-    }
-
-    public void update() {
-        //mainMenuFont.getData().setScale(InputHelper.scale);
+    /***
+     * Returns instance of handler, if not exist, create new.
+     * @return instance of handler
+     */
+    public static FontHandler getInstance() {
+        if (instance == null)
+            return (instance = new FontHandler());
+        return instance;
     }
 
     public static BitmapFont generate(FontType type, int size, boolean border) {
         return generate(type, size, WHITE, DARK_GRAY, border);
     }
-
 
     public static BitmapFont generate(FontType type, int size, Color color, Color bColor, boolean border) {
         return generate(type, size, color, bColor, true, border);
@@ -80,7 +86,7 @@ public class FontHandler implements Disposable {
         parameter.color = color;
         parameter.borderColor = bColor;
         parameter.borderWidth = border ? parameter.size * 0.03f : 0.0f;
-        if(type.equals(BOLD)) return bold.generateFont(parameter);
+        if (type.equals(BOLD)) return bold.generateFont(parameter);
         else return medium.generateFont(parameter);
     }
 
@@ -103,7 +109,7 @@ public class FontHandler implements Disposable {
     public static void renderLineLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         Matcher matcher = COLOR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             String mmt = matcher.group(2);
             text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
@@ -145,7 +151,7 @@ public class FontHandler implements Disposable {
     public static void renderColorLeft(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw) {
         BitmapFont font = fontData.font;
         Matcher matcher = COLOR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             String mmt = matcher.group(2);
             text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
@@ -159,7 +165,7 @@ public class FontHandler implements Disposable {
     public static void renderColorCenter(SpriteBatch sb, FontData fontData, String text, float x, float y, float bw) {
         BitmapFont font = fontData.font;
         Matcher matcher = COLOR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             String mmt = matcher.group(2);
             text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
@@ -174,14 +180,14 @@ public class FontHandler implements Disposable {
     public static void renderCardLeft(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         Matcher matcher = COLOR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             String mmt = matcher.group(2);
             text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
             matcher = COLOR_PATTERN.matcher(text);
         }
         matcher = VAR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             text = matcher.replaceFirst(card.getKeyValue(mt) + getHexColor(fontData.color));
             matcher = VAR_PATTERN.matcher(text);
@@ -199,23 +205,23 @@ public class FontHandler implements Disposable {
     public static void renderCardCenter(SpriteBatch sb, AbstractSkill card, FontData fontData, String text, float x, float y, float bw, float bh) {
         BitmapFont font = fontData.font;
         Matcher matcher = COLOR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             String mmt = matcher.group(2);
             text = matcher.replaceFirst(getColorKey(mt) + mmt + getHexColor(fontData.color));
             matcher = COLOR_PATTERN.matcher(text);
         }
         matcher = VAR_PATTERN.matcher(text);
-        while(matcher.find()) {
+        while (matcher.find()) {
             String mt = matcher.group(1);
             text = matcher.replaceFirst(card.getKeyValue(mt) + getHexColor(fontData.color));
             matcher = VAR_PATTERN.matcher(text);
         }
         font.getData().setScale(fontData.scale);
         font.getData().setLineHeight(fontData.size + 20);
-        while(true) {
+        while (true) {
             layout.setText(font, text, fontData.color, bw, Align.center, true);
-            if(layout.runs.size * font.getLineHeight() > bh && font.getScaleY() > 0.5f) {
+            if (layout.runs.size * font.getLineHeight() > bh && font.getScaleY() > 0.5f) {
                 font.getData().setScale(font.getScaleY() * 0.9f);
             } else {
                 break;
@@ -231,6 +237,29 @@ public class FontHandler implements Disposable {
         layout.setText(font, text, fontData.color, bw, Align.center, true);
         float ry = y + (layout.height) / 2;
         fontData.draw(sb, layout, fontData.alpha, x, ry);
+    }
+
+    public static String getHexColor(Color color) {
+        return "[" + String.format("#%06X", (0xFFFFFF & rgb888(color))) + "]";
+    }
+
+    private static String getColorKey(String key) {
+        switch (key) {
+            case "b":
+                return getHexColor(CYAN);
+            case "g":
+                return getHexColor(CHARTREUSE);
+            case "r":
+                return getHexColor(SCARLET);
+            case "y":
+                return getHexColor(YELLOW);
+            default:
+                return getHexColor(WHITE);
+        }
+    }
+
+    public void update() {
+        //mainMenuFont.getData().setScale(InputHelper.scale);
     }
 
     @Override
@@ -259,8 +288,8 @@ public class FontHandler implements Disposable {
         REST_DESC.dispose();
     }
 
-    public static String getHexColor(Color color) {
-        return "[" + String.format("#%06X", (0xFFFFFF & rgb888(color))) + "]";
+    public enum FontType {
+        MEDIUM, BOLD
     }
 
     public static class FontData implements Disposable {
@@ -311,21 +340,6 @@ public class FontHandler implements Disposable {
         @Override
         public void dispose() {
             font.dispose();
-        }
-    }
-
-    private static String getColorKey(String key) {
-        switch (key) {
-            case "b":
-                return getHexColor(CYAN);
-            case "g":
-                return getHexColor(CHARTREUSE);
-            case "r":
-                return getHexColor(SCARLET);
-            case "y":
-                return getHexColor(YELLOW);
-            default:
-                return getHexColor(WHITE);
         }
     }
 }

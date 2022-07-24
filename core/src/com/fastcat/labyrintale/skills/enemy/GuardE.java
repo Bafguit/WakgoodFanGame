@@ -4,7 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.ProvokeStatus;
 
 public class GuardE extends AbstractSkill {

@@ -8,13 +8,8 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 
-import java.util.HashMap;
-
 public class SettingScreen extends AbstractScreen {
 
-    private String[] res;
-    private int[] width;
-    private int[] height;
     public BgImg bgImg = new BgImg();
     public OptionPanel panel;
     public CloseSettingButton close;
@@ -26,6 +21,9 @@ public class SettingScreen extends AbstractScreen {
     public CheckBoxGroup shake;
     public CheckBoxGroup fastMode;
     public boolean changed = false;
+    private String[] res;
+    private int[] width;
+    private int[] height;
 
     public SettingScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -34,7 +32,7 @@ public class SettingScreen extends AbstractScreen {
         Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
         String[] ms = new String[mo.length];
         int[] mi = new int[mo.length];
-        for(int i = 0; i < mo.length; i++) {
+        for (int i = 0; i < mo.length; i++) {
             ms[i] = mo[i].name;
             mi[i] = i;
         }
@@ -50,8 +48,8 @@ public class SettingScreen extends AbstractScreen {
         resolution.item = width;
         resolution.item2 = height;
         int id = 0;
-        for(int i = 0; i < resolution.item.length; i++) {
-            if(resolution.item[i] == SettingHandler.setting.width) {
+        for (int i = 0; i < resolution.item.length; i++) {
+            if (resolution.item[i] == SettingHandler.setting.width) {
                 id = i;
                 break;
             }
@@ -105,27 +103,27 @@ public class SettingScreen extends AbstractScreen {
         s.add(mw + "x" + mh);
         w.add(mw);
         h.add(mh);
-        if(mw > 3840) {
+        if (mw > 3840) {
             s.add("3840x2160");
             w.add(3840);
             h.add(2160);
         }
-        if(mw > 2560) {
+        if (mw > 2560) {
             s.add("2560x1440");
             w.add(2560);
             h.add(1440);
         }
-        if(mw > 1920) {
+        if (mw > 1920) {
             s.add("1920x1080");
             w.add(1920);
             h.add(1080);
         }
-        if(mw > 1600) {
+        if (mw > 1600) {
             s.add("1600x900");
             w.add(1600);
             h.add(900);
         }
-        if(mw > 1280) {
+        if (mw > 1280) {
             s.add("1280x720");
             w.add(1280);
             h.add(720);
@@ -133,7 +131,7 @@ public class SettingScreen extends AbstractScreen {
         res = s.toArray(String.class);
         width = new int[w.size];
         height = new int[h.size];
-        for(int i = 0; i < w.size; i++) {
+        for (int i = 0; i < w.size; i++) {
             width[i] = w.get(i);
             height[i] = h.get(i);
         }

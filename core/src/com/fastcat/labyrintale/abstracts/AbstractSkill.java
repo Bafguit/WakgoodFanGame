@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
@@ -18,17 +19,16 @@ import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.strings.SkillString;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-import static com.fastcat.labyrintale.Labyrintale.*;
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
-import static com.fastcat.labyrintale.handlers.FileHandler.skillImg;
 import static com.fastcat.labyrintale.handlers.FontHandler.getHexColor;
 
 public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
+    public final SkillType type;
     public Sprite img;
     public SkillString.SkillData skillData;
     public AbstractEntity owner;
-    public final SkillType type;
     public SkillTarget target;
     public SkillRarity rarity;
     public String id;
@@ -56,7 +56,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         this.owner = owner;
         this.id = id;
-        this.img = skillImg.get(this.id);
+        this.img = FileHandler.getSkillImg().get(this.id);
         this.skillData = StringHandler.skillString.get(this.id);
         this.name = this.skillData.NAME;
         this.desc = this.skillData.DESC;
@@ -69,165 +69,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         this(null, id, type, rarity, target);
     }
 
-    protected final void top(AbstractAction a) {
-        ActionHandler.top(a);
-    }
-
-    protected final void bot(AbstractAction a) {
-        ActionHandler.bot(a);
-    }
-
-    public void setBaseAttack(int i) {
-        baseAttack = i;
-        attack = baseAttack;
-    }
-
-    public void setBaseSpell(int i) {
-        baseSpell = i;
-        spell = baseSpell;
-    }
-
-    public void setBaseValue(int i) {
-        baseValue = i;
-        value = baseValue;
-    }
-
-    public void setBaseAttack(int i, int up) {
-        baseAttack = i;
-        attack = baseAttack;
-        upAttack = up;
-    }
-
-    public void setBaseSpell(int i, int up) {
-        baseSpell = i;
-        spell = baseSpell;
-        upSpell = up;
-    }
-
-    public void setBaseValue(int i, int up) {
-        baseValue = i;
-        value = baseValue;
-        upValue = up;
-    }
-
-    public void update() {
-        attack = calculateAttack(baseAttack);
-        spell = calculateSpell(baseSpell);
-        value = calculateValue(baseValue);
-    }
-
-    public void render(SpriteBatch sb) {
-
-    }
-
-    public final void flash() {
-        //TODO 소리 추가
-        flash(owner);
-    }
-
-    public final void flash(AbstractEntity e) {
-        //TODO 소리 추가
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
-    }
-
-    public int calculateAttack(int a) {
-        return a;
-    }
-
-    public int calculateSpell(int s) {
-        return s;
-    }
-
-    public int calculateValue(int v) {
-        return v;
-    }
-
-    public String getKeyValue(String key) {
-        switch (key) {
-            case "A":
-                int a = baseAttack;
-                if(AbstractLabyrinth.cPanel != null) {
-                    a = calculateAttack(a);
-                    if (owner != null) {
-                        if (owner.isPlayer) {
-                            for (AbstractItem m : owner.item) {
-                                if (m != null) a = m.showAttack(a);
-                            }
-                        }
-                        for (AbstractStatus s : owner.status) {
-                            if (s != null) a = s.showAttack(a);
-                        }
-                        if (owner.isPlayer) {
-                            for (AbstractItem m : owner.item) {
-                                if (m != null) a *= m.attackMultiply(a);
-                            }
-                        }
-                        for (AbstractStatus s : owner.status) {
-                            if (s != null) a *= s.attackMultiply();
-                        }
-                    }
-                    if(AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE && battleScreen.looking.size == 1) {
-                        AbstractEntity t = battleScreen.looking.get(0);
-                        for (AbstractStatus s : t.status) {
-                            if (s != null) a = s.showAttacked(a);
-                        }
-                        for (AbstractStatus s : t.status) {
-                            if (s != null) a *= s.attackedMultiply();
-                        }
-                    }
-                }
-                a = Math.max(a, 0);
-                return getHexColor(valueColor(a, baseAttack)) + a;
-            case "S":
-                int p = baseSpell;
-                if(AbstractLabyrinth.cPanel != null) {
-                    p = calculateSpell(p);
-                    if (owner != null) {
-                        if (owner.isPlayer) {
-                            for (AbstractItem m : owner.item) {
-                                if (m != null) p = m.showSpell(p);
-                            }
-                        }
-                        for (AbstractStatus s : owner.status) {
-                            if (s != null) p = s.showSpell(p);
-                        }
-                        if (owner.isPlayer) {
-                            for (AbstractItem m : owner.item) {
-                                if (m != null) p *= m.spellMultiply(p);
-                            }
-                        }
-                        for (AbstractStatus s : owner.status) {
-                            if (s != null) p *= s.spellMultiply(p);
-                        }
-                    }
-                }
-                p = Math.max(p, 0);
-                return getHexColor(valueColor(p, baseSpell)) + p;
-            case "V":
-                int v = baseValue;
-                if(AbstractLabyrinth.cPanel != null) {
-                    v = calculateValue(v);
-                }
-                return getHexColor(Color.CYAN) + v;
-            case "C":
-                return getHexColor(Color.CYAN) + cooltime;
-            default:
-                return "ERROR_UNIDENTIFIABLE";
-        }
-    }
-
-    private Color valueColor(int v, int base) {
-        if(v < base) {
-            return Color.SCARLET;
-        } else if(v > base) {
-            return Color.CHARTREUSE;
-        } else {
-            return Color.CYAN;
-        }
-    }
-
     public static Array<AbstractEntity> getTargets(AbstractEntity owner, SkillTarget target) {
-        if(owner != null) {
+        if (owner != null) {
             if (target == SkillTarget.SELF) {
                 Array<AbstractEntity> temp = new Array<>();
                 temp.add(owner);
@@ -355,22 +198,22 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         Array<AbstractEntity> temp = new Array<>();
         PlayerView[] tp = battleScreen.players;
         EnemyView[] te = battleScreen.enemies;
-        switch(target) {
+        switch (target) {
             case NONE:
                 break;
             case PLAYER_FIRST:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive()) {
+                    if (p.isAlive()) {
                         temp.add(p);
                         break;
                     }
                 }
                 break;
             case ENEMY_FIRST:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
-                    if(e.isAlive()) {
+                    if (e.isAlive()) {
                         temp.add(e);
                         break;
                     }
@@ -378,15 +221,15 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 break;
             case PLAYER_LAST:
                 boolean has = false;
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive() && p.hasStatus("Provoke")) {
+                    if (p.isAlive() && p.hasStatus("Provoke")) {
                         temp.add(p);
                         has = true;
                         break;
                     }
                 }
-                if(!has) {
+                if (!has) {
                     for (int i = 3; i >= 0; i--) {
                         AbstractPlayer p = tp[i].player;
                         if (p.isAlive()) {
@@ -398,15 +241,15 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 break;
             case ENEMY_LAST:
                 has = false;
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive() && p.hasStatus("Provoke")) {
+                    if (p.isAlive() && p.hasStatus("Provoke")) {
                         temp.add(p);
                         has = true;
                         break;
                     }
                 }
-                if(!has) {
+                if (!has) {
                     for (int i = 3; i >= 0; i--) {
                         AbstractEnemy e = te[i].enemy;
                         if (e.isAlive()) {
@@ -417,64 +260,231 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
                 break;
             case PLAYER_FIRST_TWO:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive()) temp.add(p);
-                    if(temp.size == 2) break;
+                    if (p.isAlive()) temp.add(p);
+                    if (temp.size == 2) break;
                 }
                 break;
             case ENEMY_FIRST_TWO:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
-                    if(e.isAlive()) temp.add(e);
-                    if(temp.size == 2) break;
+                    if (e.isAlive()) temp.add(e);
+                    if (temp.size == 2) break;
                 }
                 break;
             case PLAYER_LAST_TWO:
-                for(int i = 3; i >= 0; i--) {
+                for (int i = 3; i >= 0; i--) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive()) temp.add(p);
-                    if(temp.size == 2) break;
+                    if (p.isAlive()) temp.add(p);
+                    if (temp.size == 2) break;
                 }
                 break;
             case ENEMY_LAST_TWO:
-                for(int i = 3; i >= 0; i--) {
+                for (int i = 3; i >= 0; i--) {
                     AbstractEnemy e = te[i].enemy;
-                    if(e.isAlive()) temp.add(e);
-                    if(temp.size == 2) break;
+                    if (e.isAlive()) temp.add(e);
+                    if (temp.size == 2) break;
                 }
                 break;
             case PLAYER_ALL:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
-                    if(p.isAlive()) temp.add(p);
+                    if (p.isAlive()) temp.add(p);
                 }
                 break;
             case ENEMY_ALL:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractEnemy e = te[i].enemy;
-                    if(e.isAlive()) temp.add(e);
+                    if (e.isAlive()) temp.add(e);
                 }
                 break;
             case ALL:
-                for(int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
                     AbstractEnemy e = te[i].enemy;
-                    if(p.isAlive()) temp.add(p);
-                    if(e.isAlive()) temp.add(e);
+                    if (p.isAlive()) temp.add(p);
+                    if (e.isAlive()) temp.add(e);
                 }
                 break;
         }
         return temp;
     }
 
+    public static boolean noMoreSkill() {
+        if (AbstractLabyrinth.advisor.skill.canUse()) return false;
+        for (AbstractPlayer p : players) {
+            for (AbstractSkill s : p.hand) {
+                if (s.canUse() && !s.passive) return false;
+            }
+        }
+        return true;
+    }
+
+    protected final void top(AbstractAction a) {
+        ActionHandler.top(a);
+    }
+
+    protected final void bot(AbstractAction a) {
+        ActionHandler.bot(a);
+    }
+
+    public void setBaseAttack(int i) {
+        baseAttack = i;
+        attack = baseAttack;
+    }
+
+    public void setBaseSpell(int i) {
+        baseSpell = i;
+        spell = baseSpell;
+    }
+
+    public void setBaseValue(int i) {
+        baseValue = i;
+        value = baseValue;
+    }
+
+    public void setBaseAttack(int i, int up) {
+        baseAttack = i;
+        attack = baseAttack;
+        upAttack = up;
+    }
+
+    public void setBaseSpell(int i, int up) {
+        baseSpell = i;
+        spell = baseSpell;
+        upSpell = up;
+    }
+
+    public void setBaseValue(int i, int up) {
+        baseValue = i;
+        value = baseValue;
+        upValue = up;
+    }
+
+    public void update() {
+        attack = calculateAttack(baseAttack);
+        spell = calculateSpell(baseSpell);
+        value = calculateValue(baseValue);
+    }
+
+    public void render(SpriteBatch sb) {
+
+    }
+
+    public final void flash() {
+        //TODO 소리 추가
+        flash(owner);
+    }
+
+    public final void flash(AbstractEntity e) {
+        //TODO 소리 추가
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
+    }
+
+    public int calculateAttack(int a) {
+        return a;
+    }
+
+    public int calculateSpell(int s) {
+        return s;
+    }
+
+    public int calculateValue(int v) {
+        return v;
+    }
+
+    public String getKeyValue(String key) {
+        switch (key) {
+            case "A":
+                int a = baseAttack;
+                if (AbstractLabyrinth.cPanel != null) {
+                    a = calculateAttack(a);
+                    if (owner != null) {
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) a = m.showAttack(a);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) a = s.showAttack(a);
+                        }
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) a *= m.attackMultiply(a);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) a *= s.attackMultiply();
+                        }
+                    }
+                    if (AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE && battleScreen.looking.size == 1) {
+                        AbstractEntity t = battleScreen.looking.get(0);
+                        for (AbstractStatus s : t.status) {
+                            if (s != null) a = s.showAttacked(a);
+                        }
+                        for (AbstractStatus s : t.status) {
+                            if (s != null) a *= s.attackedMultiply();
+                        }
+                    }
+                }
+                a = Math.max(a, 0);
+                return getHexColor(valueColor(a, baseAttack)) + a;
+            case "S":
+                int p = baseSpell;
+                if (AbstractLabyrinth.cPanel != null) {
+                    p = calculateSpell(p);
+                    if (owner != null) {
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) p = m.showSpell(p);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) p = s.showSpell(p);
+                        }
+                        if (owner.isPlayer) {
+                            for (AbstractItem m : owner.item) {
+                                if (m != null) p *= m.spellMultiply(p);
+                            }
+                        }
+                        for (AbstractStatus s : owner.status) {
+                            if (s != null) p *= s.spellMultiply(p);
+                        }
+                    }
+                }
+                p = Math.max(p, 0);
+                return getHexColor(valueColor(p, baseSpell)) + p;
+            case "V":
+                int v = baseValue;
+                if (AbstractLabyrinth.cPanel != null) {
+                    v = calculateValue(v);
+                }
+                return getHexColor(Color.CYAN) + v;
+            case "C":
+                return getHexColor(Color.CYAN) + cooltime;
+            default:
+                return "ERROR_UNIDENTIFIABLE";
+        }
+    }
+
+    private Color valueColor(int v, int base) {
+        if (v < base) {
+            return Color.SCARLET;
+        } else if (v > base) {
+            return Color.CHARTREUSE;
+        } else {
+            return Color.CYAN;
+        }
+    }
+
     public final void useCard() {
-        if(owner != null) {
+        if (owner != null) {
             for (AbstractStatus s : owner.status) {
                 if (s != null) s.onUseCard(this);
             }
         }
-        if(target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
+        if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
             bot(new SelectTargetAction(this));
         } else {
             use();
@@ -489,16 +499,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         }
     }
 
-    public static boolean noMoreSkill() {
-        if(AbstractLabyrinth.advisor.skill.canUse()) return false;
-        for(AbstractPlayer p : players) {
-            for(AbstractSkill s : p.hand) {
-                if(s.canUse() && !s.passive) return false;
-            }
-        }
-        return true;
-    }
-
     public final boolean canUse() {
         return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
     }
@@ -510,7 +510,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     protected abstract void use();
 
     public void upgrade() {
-        if(upgradable()) {
+        if (upgradable()) {
             upgradeCard();
             if (upAttack != -1) {
                 baseAttack += upAttack;
@@ -580,18 +580,18 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     @Override
     public boolean setTarget() {
         boolean can = false;
-        if(target == SkillTarget.ENEMY) {
-            for(int i = 0; i < 4; i++) {
+        if (target == SkillTarget.ENEMY) {
+            for (int i = 0; i < 4; i++) {
                 EnemyView pv = Labyrintale.battleScreen.enemies[i];
-                if(pv.enemy.isAlive()) {
+                if (pv.enemy.isAlive()) {
                     pv.isTarget = true;
                     can = true;
-                    if(pv.enemy.hasStatus("Provoke")) break;
+                    if (pv.enemy.hasStatus("Provoke")) break;
                 }
             }
-        } else if(target == SkillTarget.PLAYER) {
-            for(PlayerView pv : Labyrintale.battleScreen.players) {
-                if(pv.player.isAlive()) {
+        } else if (target == SkillTarget.PLAYER) {
+            for (PlayerView pv : Labyrintale.battleScreen.players) {
+                if (pv.player.isAlive()) {
                     pv.isTarget = true;
                     can = true;
                 }

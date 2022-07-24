@@ -9,8 +9,6 @@ import com.fastcat.labyrintale.items.starter.Item1;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.manager.Outburst;
-import com.fastcat.labyrintale.skills.player.manager.PointBlank;
-import com.fastcat.labyrintale.skills.player.wak.Test78;
 
 import static com.badlogic.gdx.graphics.Color.PINK;
 

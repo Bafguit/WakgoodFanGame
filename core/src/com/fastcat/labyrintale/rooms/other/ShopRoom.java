@@ -34,6 +34,70 @@ public class ShopRoom extends AbstractRoom {
         fadeOutAndChangeScreen(shopScreen);
     }
 
+    public void generateSkills() {
+        //스킬 생성
+        int p1 = 1, p2 = 1, p3 = 1, p4 = 1;
+
+        for (int i = 0; i < 2; i++) {
+            int t = shopRandom.random(3);
+            if (t == 0) p1++;
+            else if (t == 1) p2++;
+            else if (t == 2) p3++;
+            else p4++;
+        }
+
+        Array<AbstractSkill> bs = new Array<>();
+        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], p1));
+        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[1], p2));
+        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[2], p3));
+        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[3], p4));
+        GroupHandler.SkillGroup.staticShuffle(bs);
+
+        for (int i = 0; i < 6; i++) {
+            skills[i] = new SkillItem(bs.get(i));
+        }
+    }
+
+    public void generateItems() {
+        //스킬 생성
+        int t = shopRandom.random(100);
+        int b, s, g;
+        if (t >= 70) {
+            b = 3;
+            s = 1;
+            g = 0;
+        } else if (t >= 40) {
+            b = 2;
+            s = 2;
+            g = 0;
+        } else if (t >= 20) {
+            b = 3;
+            s = 1;
+            g = 0;
+        } else if (t >= 10) {
+            b = 2;
+            s = 1;
+            g = 1;
+        } else {
+            b = 1;
+            s = 2;
+            g = 1;
+        }
+
+        Array<AbstractItem> bs = ItemGroup.getRandomItemByRarity(ItemRarity.BRONZE, b);
+        Array<AbstractItem> ss = ItemGroup.getRandomItemByRarity(ItemRarity.SILVER, s);
+        for (int i = 0; i < b; i++) {
+            items[i] = new ItemItem(bs.get(i));
+        }
+        for (int i = 0; i < s; i++) {
+            items[b + i] = new ItemItem(ss.get(i));
+        }
+        if (g > 0) {
+            items[3] = new ItemItem(ItemRarity.GOLD);
+        }
+        items[4] = new ItemItem(ItemRarity.SHOP);
+    }
+
     public abstract static class ShopItem {
         public int price;
         public boolean isDone = false;
@@ -65,18 +129,18 @@ public class ShopRoom extends AbstractRoom {
         public RollItem(ShopRoom s) {
             super(50);
             shop = s;
-            img = FileHandler.ui.get("REWARD_CARD");
+            img = FileHandler.getUi().get("REWARD_CARD");
         }
 
         @Override
         protected void take() {
             shop.generateSkills();
             shop.generateItems();
-            for(int i = 0; i < 6; i++) {
+            for (int i = 0; i < 6; i++) {
                 shopScreen.skills[i].setItem(shop.skills[i]);
                 shopScreen.icons[i].item = shop.skills[i];
             }
-            for(int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 shopScreen.items[i].setItem(shop.items[i]);
             }
             shopScreen.roll.setItem(shop.roll);
@@ -88,7 +152,7 @@ public class ShopRoom extends AbstractRoom {
         }
     }
 
-    public static class SkillItem extends ShopItem{
+    public static class SkillItem extends ShopItem {
         public AbstractSkill skill;
 
         public SkillItem(AbstractSkill skill) {
@@ -112,7 +176,7 @@ public class ShopRoom extends AbstractRoom {
         }
     }
 
-    private static class ItemItem extends ShopItem{
+    private static class ItemItem extends ShopItem {
         public AbstractItem item;
 
         public ItemItem(ItemRarity r) {
@@ -126,7 +190,7 @@ public class ShopRoom extends AbstractRoom {
         }
 
         private static int generateItemPrice(AbstractItem i) {
-            switch(i.rarity) {
+            switch (i.rarity) {
                 case GOLD:
                     return 180 + shopRandom.random(20) - 10;
                 case BRONZE:
@@ -145,69 +209,5 @@ public class ShopRoom extends AbstractRoom {
         public void setPanel() {
             cPanel.infoPanel.setInfo(item);
         }
-    }
-
-    public void generateSkills() {
-        //스킬 생성
-        int p1 = 1, p2 = 1, p3 = 1, p4 = 1;
-
-        for(int i = 0; i < 2; i++) {
-            int t = shopRandom.random(3);
-            if (t == 0) p1++;
-            else if (t == 1) p2++;
-            else if (t == 2) p3++;
-            else p4++;
-        }
-
-        Array<AbstractSkill> bs = new Array<>();
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], p1));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[1], p2));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[2], p3));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[3], p4));
-        GroupHandler.SkillGroup.staticShuffle(bs);
-
-        for(int i = 0; i < 6; i++) {
-            skills[i] = new SkillItem(bs.get(i));
-        }
-    }
-
-    public void generateItems() {
-        //스킬 생성
-        int t = shopRandom.random(100);
-        int b, s, g;
-        if(t >= 70) {
-            b = 3;
-            s = 1;
-            g = 0;
-        } else if(t >= 40) {
-            b = 2;
-            s = 2;
-            g = 0;
-        } else if(t >= 20) {
-            b = 3;
-            s = 1;
-            g = 0;
-        } else if(t >= 10) {
-            b = 2;
-            s = 1;
-            g = 1;
-        } else {
-            b = 1;
-            s = 2;
-            g = 1;
-        }
-
-        Array<AbstractItem> bs = ItemGroup.getRandomItemByRarity(ItemRarity.BRONZE, b);
-        Array<AbstractItem> ss = ItemGroup.getRandomItemByRarity(ItemRarity.SILVER, s);
-        for(int i = 0; i < b; i++) {
-            items[i] = new ItemItem(bs.get(i));
-        }
-        for(int i = 0; i < s; i++) {
-            items[b + i] = new ItemItem(ss.get(i));
-        }
-        if(g > 0) {
-            items[3] = new ItemItem(ItemRarity.GOLD);
-        }
-        items[4] = new ItemItem(ItemRarity.SHOP);
     }
 }

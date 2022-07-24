@@ -30,7 +30,7 @@ public class WayScreen extends AbstractScreen {
         icons = new WayIcon[wayCount];
         desc = new WayDesc[wayCount];
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < wayCount; i++) {
+        for (int i = 0; i < wayCount; i++) {
             float tw = w / (wayCount + 1) * (i + 1);
             AbstractChoice ch = way.choices[i];
 
@@ -47,7 +47,7 @@ public class WayScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        for(int i = 0; i < wayCount; i++) {
+        for (int i = 0; i < wayCount; i++) {
             buttons[i].update();
             icons[i].update();
             desc[i].update();
@@ -57,7 +57,7 @@ public class WayScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         bg.render(sb);
-        for(int i = 0; i < wayCount; i++) {
+        for (int i = 0; i < wayCount; i++) {
             buttons[i].render(sb);
             icons[i].render(sb);
             desc[i].render(sb);

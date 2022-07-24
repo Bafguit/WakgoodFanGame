@@ -16,13 +16,13 @@ public class PlayerBigIcon extends AbstractUI {
     public AbstractPlayer p;
 
     public PlayerBigIcon(AbstractPlayer p) {
-        super(FileHandler.ui.get("BORDER_B"));
+        super(FileHandler.getUi().get("BORDER_B"));
         this.p = p;
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && p != null) {
+        if (enabled && p != null) {
             sb.setColor(Color.WHITE);
             sb.draw(p.imgBig, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
@@ -31,7 +31,7 @@ public class PlayerBigIcon extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over && p != null) {
+        if (over && p != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(p);
         }
     }
@@ -47,20 +47,19 @@ public class PlayerBigIcon extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(charInfoScreen == null) {
+        if (charInfoScreen == null) {
             charInfoScreen = new CharInfoScreen(p);
             Labyrintale.addTempScreen(charInfoScreen);
-        } else if(charInfoScreen.player == p) {
-            if(Labyrintale.getCurScreen() != charInfoScreen) {
+        } else if (charInfoScreen.player == p) {
+            if (Labyrintale.getCurScreen() != charInfoScreen) {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 Labyrintale.addTempScreen(charInfoScreen);
-            }
-            else {
+            } else {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 charInfoScreen = null;
             }
         } else {
-            if(Labyrintale.getCurScreen() != charInfoScreen) {
+            if (Labyrintale.getCurScreen() != charInfoScreen) {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 charInfoScreen.setPlayer(p);
                 Labyrintale.addTempScreen(charInfoScreen);

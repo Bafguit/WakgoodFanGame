@@ -5,13 +5,11 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.items.boss.BrokenTicker;
-import com.fastcat.labyrintale.items.boss.BossItem4;
 import com.fastcat.labyrintale.items.starter.BattleAxe;
 import com.fastcat.labyrintale.items.starter.ShoulderPlate;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
-import com.fastcat.labyrintale.skills.player.ine.*;
+import com.fastcat.labyrintale.skills.player.ine.Pruning;
 
 public class Ine extends AbstractPlayer {
 

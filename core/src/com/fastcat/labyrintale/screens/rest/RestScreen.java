@@ -3,7 +3,10 @@ package com.fastcat.labyrintale.screens.rest;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -23,13 +26,13 @@ public class RestScreen extends AbstractScreen {
         end = new RestEndButton();
         end.disable();
         boolean rev = false, item = false;
-        for(AbstractPlayer p : AbstractLabyrinth.players) {
-            if(!rev && !p.isAlive()) {
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+            if (!rev && !p.isAlive()) {
                 rev = true;
                 count++;
             }
-            for(AbstractItem i : p.item) {
-                if(!item && i.id.equals("삽 같은거")) { //TODO 아이템 만들어서 ID 넣기
+            for (AbstractItem i : p.item) {
+                if (!item && i.id.equals("삽 같은거")) { //TODO 아이템 만들어서 ID 넣기
                     item = true;
                     count++;
                 }
@@ -65,7 +68,7 @@ public class RestScreen extends AbstractScreen {
         RestDesc d2 = desc[cnt] = new RestDesc("단련");
         d2.setPosition(tw - d2.sWidth / 2, h * 0.6f - d2.sHeight / 2);
 
-        if(rev) {
+        if (rev) {
             tw += tww;
             cnt++;
 
@@ -79,7 +82,7 @@ public class RestScreen extends AbstractScreen {
             d2.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
         }
 
-        if(item) {
+        if (item) {
             tw += tww;
             cnt++;
 
@@ -94,9 +97,20 @@ public class RestScreen extends AbstractScreen {
         }
     }
 
+    public static Sprite getImg(RestButton.RestType type) {
+        switch (type) {
+            case HEAL:
+                return FileHandler.getUi().get("HEAL"); //TODO 이미지 변경
+            case UPGRADE:
+                return FileHandler.getUi().get("UPGRADE");
+            default:
+                return FileHandler.getUi().get("DECK");
+        }
+    }
+
     @Override
     public void update() {
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             buttons[i].update();
             icons[i].update();
             desc[i].update();
@@ -107,7 +121,7 @@ public class RestScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         bg.render(sb);
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             buttons[i].render(sb);
             icons[i].render(sb);
             desc[i].render(sb);
@@ -115,19 +129,8 @@ public class RestScreen extends AbstractScreen {
         end.render(sb);
     }
 
-    public static Sprite getImg(RestButton.RestType type) {
-        switch (type) {
-            case HEAL:
-                return FileHandler.ui.get("HEAL"); //TODO 이미지 변경
-            case UPGRADE:
-                return FileHandler.ui.get("UPGRADE");
-            default:
-                return FileHandler.ui.get("DECK");
-        }
-    }
-
     public void finishRest() {
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             buttons[i].disable();
             icons[i].disable();
             desc[i].disable();

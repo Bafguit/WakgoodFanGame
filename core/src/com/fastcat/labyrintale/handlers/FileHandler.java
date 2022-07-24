@@ -1,8 +1,6 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -12,74 +10,96 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
+import lombok.Getter;
 
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-import static com.fastcat.labyrintale.abstracts.AbstractPlayer.*;
+import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 
 public class FileHandler implements Disposable {
 
-    //json
-    public static final JsonValue ADV_JSON = generateJson("json/advisors.json");
-    public static final JsonValue CHAR_JSON = generateJson("json/chars.json");
-    public static final JsonValue CHOICE_JSON = generateJson("json/choices.json");
-    public static final JsonValue STATUS_JSON = generateJson("json/status.json");
-    public static final JsonValue ENEMY_JSON = generateJson("json/enemies.json");
-    public static final JsonValue EVENT_JSON = generateJson("json/events.json");
-    public static final JsonValue ITEM_JSON = generateJson("json/items.json");
-    public static final JsonValue CARD_JSON_BASIC = generateJson("json/skill/basicCards.json");
-    public static final JsonValue CARD_JSON_WAK = generateJson("json/skill/wakCards.json");
-    public static final JsonValue CARD_JSON_MANAGER = generateJson("json/skill/managerCards.json");
-    public static final JsonValue CARD_JSON_INE = generateJson("json/skill/ineCards.json");
-    public static final JsonValue CARD_JSON_VIICHAN = generateJson("json/skill/viichanCards.json");
-    public static final JsonValue CARD_JSON_LILPA = generateJson("json/skill/lilpaCards.json");
-    public static final JsonValue CARD_JSON_BURGER = generateJson("json/skill/burgerCards.json");
-    public static final JsonValue CARD_JSON_GOSEGU = generateJson("json/skill/goseguCards.json");
-    public static final JsonValue CARD_JSON_JURURU = generateJson("json/skill/jururuCards.json");
-    public static final JsonValue CARD_JSON_ADV = generateJson("json/skill/advCards.json");
-    public static final JsonValue CARD_JSON_ENEMY = generateJson("json/skill/enemyCards.json");
-
     //TextureAtlas
     public static final TextureAtlas character = new TextureAtlas("img/char/char.atlas");
+    /**
+     * Combined all static "JsonValue" variables into hash map to optimize memory.
+     */
+    private static final HashMap<JsonType, JsonValue> jsonMap = new HashMap<>();
+
+    public static JsonValue getJsonValue(JsonType jsonType){
+        return jsonMap.get(jsonType);
+    }
 
     //관리
     private static final Array<HashMap> maps = new Array<>();
-    public static final HashMap<String, Sprite> bg = new HashMap<>();
-    public static final HashMap<String, Sprite> ui = new HashMap<>();
-    public static final HashMap<String, Sprite> vfx = new HashMap<>();
-
-    public static final HashMap<String, FileHandle> skeleton = new HashMap<>();
-    public static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
-
+    @Getter
+    private static final HashMap<String, Sprite> bg = new HashMap<>();
+    @Getter
+    private static final HashMap<String, Sprite> ui = new HashMap<>();
+    @Getter
+    private static final HashMap<String, Sprite> vfx = new HashMap<>();
+    @Getter
+    private static final HashMap<String, FileHandle> skeleton = new HashMap<>();
+    @Getter
+    private static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
     //캐릭터
-    public static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
-    public static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
-    public static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
-    public static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
-    public static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
-    public static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
-    public static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
-    public static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
-
+    @Getter
+    private static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
+    @Getter
+    private static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
+    @Getter
+    private static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
+    @Getter
+    private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
+    private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
+    @Getter
+    private static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
+    private static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
+    private static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
     //스킬
-    public static final HashMap<String, Sprite> skillImg = new HashMap<>();
-
+    @Getter
+    private static final HashMap<String, Sprite> skillImg = new HashMap<>();
     //상태
-    public static final HashMap<String, Sprite> statusImg = new HashMap<>();
-
+    @Getter
+    private static final HashMap<String, Sprite> statusImg = new HashMap<>();
     //상태
-    public static final HashMap<String, Sprite> itemImg = new HashMap<>();
-    public static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
-
+    @Getter
+    private static final HashMap<String, Sprite> itemImg = new HashMap<>();
+    private static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
     //이벤트
-    public static final HashMap<String, Sprite> eventImg = new HashMap<>();
-
+    @Getter
+    private static final HashMap<String, Sprite> eventImg = new HashMap<>();
     //영상
-    public static final HashMap<String, FileHandle> video = new HashMap<>();
+    @Getter
+    private static final HashMap<String, FileHandle> video = new HashMap<>();
+    /***
+     * Instance of handler.
+     * Initialized on getInstance()
+     */
+    private static FileHandler instance;
 
-    public FileHandler() {
+    static {
+        jsonMap.put(JsonType.ADV_JSON, generateJson("json/advisors.json"));
+        jsonMap.put(JsonType.CHAR_JSON, generateJson("json/chars.json"));
+        jsonMap.put(JsonType.CHOICE_JSON, generateJson("json/choices.json"));
+        jsonMap.put(JsonType.STATUS_JSON, generateJson("json/status.json"));
+        jsonMap.put(JsonType.ENEMY_JSON, generateJson("json/enemies.json"));
+        jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
+        jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
+        jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_INE, generateJson("json/skill/ineCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_VIICHAN, generateJson("json/skill/viichanCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_LILPA, generateJson("json/skill/lilpaCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_BURGER, generateJson("json/skill/burgerCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_GOSEGU, generateJson("json/skill/goseguCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_JURURU, generateJson("json/skill/jururuCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_ADV, generateJson("json/skill/advCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_ENEMY, generateJson("json/skill/enemyCards.json"));
+    }
+    private FileHandler() {
         generateHashMap();
         generateBG();
         generateUI();
@@ -96,7 +116,24 @@ public class FileHandler implements Disposable {
         setAntiAliased();
     }
 
-    private static void generateHashMap() {
+    /***
+     * Returns instance of handler, if not exist, create new.
+     * @return instance of handler
+     */
+    public static FileHandler getInstance() {
+        if (instance == null)
+            return (instance = new FileHandler());
+        return instance;
+    }
+
+    private static JsonValue generateJson(String url) {
+        JsonReader jsonReader = new JsonReader();
+        FileHandle fileHandle = Gdx.files.internal(url);
+        InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
+        return jsonReader.parse(is);
+    }
+
+    private void generateHashMap() {
         maps.add(bg);
         maps.add(ui);
         maps.add(vfx);
@@ -115,19 +152,19 @@ public class FileHandler implements Disposable {
         //maps.put("eventImg", eventImg);
     }
 
-    private static void generateVideo() {
+    private void generateVideo() {
         video.clear();
         video.put("LOGO", Gdx.files.internal("video/logo.webm"));
     }
 
-    private static void generateSkeleton() {
-        for (JsonValue js : ENEMY_JSON) {
+    private void generateSkeleton() {
+        for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
             skeleton.put(js.name, Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json"));
             atlas.put(js.name, new TextureAtlas("spine/enemy/" + js.name + "/skeleton.atlas"));
         }
     }
 
-    private static void generateBG() {
+    private void generateBG() {
         bg.clear();
         bg.put("BG_BLACK", new Sprite(new Texture("img/ui/fade.png")));
         bg.put("BG_MAIN", new Sprite(new Texture("img/bg/main.png")));
@@ -138,7 +175,7 @@ public class FileHandler implements Disposable {
         bg.put("BG_BATTLE", new Sprite(new Texture("img/bg/battle.png")));
     }
 
-    private static void generateVFX() {
+    private void generateVFX() {
         vfx.clear();
         vfx.put("HIT_LIGHT", new Sprite(new Texture("img/vfx/hit_s.png")));
         vfx.put("HIT_HEAVY", new Sprite(new Texture("img/vfx/hit_b.png")));
@@ -152,7 +189,7 @@ public class FileHandler implements Disposable {
         vfx.put("SMASH", new Sprite(new Texture("img/vfx/smash.png")));
     }
 
-    private static void generateUI() {
+    private void generateUI() {
         ui.clear();
         ui.put("FADE", new Sprite(new Texture("img/ui/fade.png")));
         ui.put("TURN_BG", new Sprite(new Texture("img/ui/tc.png")));
@@ -198,7 +235,7 @@ public class FileHandler implements Disposable {
         ui.put("HEART", new Sprite(new Texture("img/ui/heart.png")));
     }
 
-    private static void generateCharImg() {
+    private void generateCharImg() {
         charImg.clear();
         charImgBig.clear();
         charImgTiny.clear();
@@ -206,7 +243,7 @@ public class FileHandler implements Disposable {
         charPanelImg.clear();
         skeleton.clear();
         atlas.clear();
-        for(PlayerClass cls : PlayerClass.values()) {
+        for (PlayerClass cls : PlayerClass.values()) {
             String s = cls.toString().toLowerCase();
             charImg.put(cls, character.createSprite(s));
             charImgBig.put(cls, character.createSprite(s + "_p"));
@@ -218,11 +255,11 @@ public class FileHandler implements Disposable {
         }
     }
 
-    private static void generateAdvImg() {
+    private void generateAdvImg() {
         advImg.clear();
         advImgBig.clear();
         advBgImg.clear();
-        for(AdvisorClass cls : AdvisorClass.values()) {
+        for (AdvisorClass cls : AdvisorClass.values()) {
             String s = cls.toString().toLowerCase();
             advImg.put(cls, new Sprite(new Texture("img/advisor/" + s + ".png")));
             advImgBig.put(cls, new Sprite(new Texture("img/advisor/" + s + "_s.png")));
@@ -230,85 +267,78 @@ public class FileHandler implements Disposable {
         }
     }
 
-    private static JsonValue generateJson(String url) {
-        JsonReader jsonReader = new JsonReader();
-        FileHandle fileHandle = Gdx.files.internal(url);
-        InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
-        return jsonReader.parse(is);
-    }
-
-    private static void generateSkillImg() {
+    private void generateSkillImg() {
         skillImg.clear();
-        for (JsonValue js : CARD_JSON_BASIC) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_BASIC)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/basic/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_WAK) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_WAK)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/wak/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_MANAGER) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_MANAGER)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/manager/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_INE) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_INE)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/ine/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_VIICHAN) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_VIICHAN)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/viichan/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_LILPA) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_LILPA)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/lilpa/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_BURGER) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_BURGER)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/burger/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_GOSEGU) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_GOSEGU)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/gosegu/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_JURURU) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_JURURU)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_ENEMY) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_ENEMY)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + ".png")));
         }
-        for (JsonValue js : CARD_JSON_ADV) {
+        for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_ADV)) {
             skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
         }
     }
 
-    private static void generateStatusImg() {
+    private void generateStatusImg() {
         statusImg.clear();
-        for (JsonValue js : STATUS_JSON) {
-            if(!js.name.equals("")) {
+        for (JsonValue js : jsonMap.get(JsonType.STATUS_JSON)) {
+            if (!js.name.equals("")) {
                 statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
             }
         }
     }
 
-    private static void generateItemImg() {
+    private void generateItemImg() {
         itemImg.clear();
         itemImgTrans.clear();
-        for (JsonValue js : ITEM_JSON) {
-            if(!js.name.equals("")) {
+        for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
+            if (!js.name.equals("")) {
                 itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
                 //itemImgTrans.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_t.png"))); //TODO 이미지 추가
             }
         }
     }
 
-    private static void generateEventImg() {
+    private void generateEventImg() {
         eventImg.clear();
-        for (JsonValue js : EVENT_JSON) {
-            if(!js.name.equals("")) {
+        for (JsonValue js : jsonMap.get(JsonType.EVENT_JSON)) {
+            if (!js.name.equals("")) {
                 String[] ss = js.get("IMAGE").asStringArray();
-                for(String id : ss) {
+                for (String id : ss) {
                     eventImg.put(id, new Sprite(new Texture("img/event/" + id + ".png")));
                 }
             }
         }
     }
 
-    private static void setAntiAliased() {
-        for(HashMap h : maps) {
-            for(Object s : h.values()) {
+    private void setAntiAliased() {
+        for (HashMap h : maps) {
+            for (Object s : h.values()) {
                 ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             }
         }
@@ -322,13 +352,34 @@ public class FileHandler implements Disposable {
 
     @Override
     public void dispose() {
-        for(HashMap h : maps) {
+        for (HashMap h : maps) {
             for (Object s : h.values()) {
                 ((Sprite) s).getTexture().dispose();
             }
         }
-        for(TextureAtlas a : atlas.values()) {
+        for (TextureAtlas a : atlas.values()) {
             a.dispose();
         }
+    }
+
+    public enum JsonType {
+        ADV_JSON,
+        CHAR_JSON,
+        CHOICE_JSON,
+        STATUS_JSON,
+        ENEMY_JSON,
+        EVENT_JSON,
+        ITEM_JSON,
+        CARD_JSON_BASIC,
+        CARD_JSON_WAK,
+        CARD_JSON_MANAGER,
+        CARD_JSON_INE,
+        CARD_JSON_VIICHAN,
+        CARD_JSON_LILPA,
+        CARD_JSON_BURGER,
+        CARD_JSON_GOSEGU,
+        CARD_JSON_JURURU,
+        CARD_JSON_ADV,
+        CARD_JSON_ENEMY
     }
 }

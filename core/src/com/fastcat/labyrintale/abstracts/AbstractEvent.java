@@ -4,18 +4,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.EventString;
 
-import java.io.Closeable;
-import java.io.Serializable;
-import java.util.Objects;
-
 public abstract class AbstractEvent implements Cloneable {
 
-    protected final EventString.EventData data;
     public final String id;
+    protected final EventString.EventData data;
     public Sprite img;
     public String name;
     public String desc = "";
@@ -33,7 +28,7 @@ public abstract class AbstractEvent implements Cloneable {
     }
 
     public final void generateChoices() {
-        for(int i = 0; i < this.size; i++) {
+        for (int i = 0; i < this.size; i++) {
             choices[i] = getChoices(i);
         }
     }
@@ -49,7 +44,7 @@ public abstract class AbstractEvent implements Cloneable {
     public final void setPage(int page) {
         this.page = page;
         desc = getDescription(this.page);
-        if(Labyrintale.eventScreen.event == this) {
+        if (Labyrintale.eventScreen.event == this) {
             Labyrintale.eventScreen.setPage(this.page);
         }
         onSetPage(page);
@@ -78,6 +73,10 @@ public abstract class AbstractEvent implements Cloneable {
             e.printStackTrace();
         }
         return clone;
+    }
+
+    protected Sprite getImage(int index) {
+        return FileHandler.getEventImg().get(data.IMAGE[index]);
     }
 
     public static abstract class EventChoice {
@@ -109,8 +108,11 @@ public abstract class AbstractEvent implements Cloneable {
 
     public static abstract class EventCondition {
         public abstract boolean condition();
+
         public abstract String cdText();
-        public void onSelect() {}
+
+        public void onSelect() {
+        }
 
         public static class True extends EventCondition {
             @Override
@@ -135,9 +137,5 @@ public abstract class AbstractEvent implements Cloneable {
                 return "잠김";
             }
         }
-    }
-
-    protected Sprite getImage(int index) {
-        return FileHandler.eventImg.get(data.IMAGE[index]);
     }
 }

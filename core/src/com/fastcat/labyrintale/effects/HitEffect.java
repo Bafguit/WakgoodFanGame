@@ -1,13 +1,10 @@
 package com.fastcat.labyrintale.effects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.handlers.InputHandler;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class HitEffect extends AbstractEffect {
 
@@ -28,9 +25,9 @@ public class HitEffect extends AbstractEffect {
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        if(duration <= 0.4f) {
+        if (duration <= 0.4f) {
             alpha -= Labyrintale.tick * 2.5F;
-            if(alpha < 0) alpha = 0;
+            if (alpha < 0) alpha = 0;
         }
         img.draw(sb, alpha);
     }

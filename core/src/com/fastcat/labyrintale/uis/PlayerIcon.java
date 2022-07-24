@@ -10,22 +10,21 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
 
 public class PlayerIcon extends AbstractUI {
 
-    public AbstractPlayer p;
     public final int index;
+    public AbstractPlayer p;
 
     public PlayerIcon(int index) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         this.index = index;
         p = AbstractLabyrinth.players[index];
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             sb.setColor(p.isAlive() ? p.animColor : Color.DARK_GRAY);
             sb.draw(p.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
@@ -35,7 +34,7 @@ public class PlayerIcon extends AbstractUI {
     @Override
     protected void updateButton() {
         p = AbstractLabyrinth.players[index];
-        if(over && p != null) {
+        if (over && p != null) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(p);
         }
     }
@@ -47,20 +46,19 @@ public class PlayerIcon extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(charInfoScreen == null) {
+        if (charInfoScreen == null) {
             charInfoScreen = new CharInfoScreen(p);
             Labyrintale.addTempScreen(charInfoScreen);
-        } else if(charInfoScreen.player == p) {
-            if(Labyrintale.getCurScreen() != charInfoScreen) {
+        } else if (charInfoScreen.player == p) {
+            if (Labyrintale.getCurScreen() != charInfoScreen) {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 Labyrintale.addTempScreen(charInfoScreen);
-            }
-            else {
+            } else {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 charInfoScreen = null;
             }
         } else {
-            if(Labyrintale.getCurScreen() != charInfoScreen) {
+            if (Labyrintale.getCurScreen() != charInfoScreen) {
                 Labyrintale.removeTempScreen(charInfoScreen);
                 charInfoScreen.setPlayer(p);
                 Labyrintale.addTempScreen(charInfoScreen);

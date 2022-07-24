@@ -3,7 +3,10 @@ package com.fastcat.labyrintale.events.first;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.events.choices.*;
+import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
+import com.fastcat.labyrintale.events.choices.SkillSlotEventChoice;
 
 public class SurvivorEvent extends AbstractEvent {
 
@@ -18,7 +21,7 @@ public class SurvivorEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1, new EventCondition() {
                 @Override
                 public boolean condition() {
@@ -31,7 +34,7 @@ public class SurvivorEvent extends AbstractEvent {
                 }
             }));
             a.add(new NextPageEventChoice(data.SELECT[2], this, 3));
-        } else if(page == 1) {
+        } else if (page == 1) {
             a.add(new SkillRewardEventChoice(data.SELECT[3], new EventCondition.True(), this, 2));
             a.add(new SkillSlotEventChoice(data.SELECT[4], new EventCondition() {
                 @Override

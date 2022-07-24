@@ -14,7 +14,7 @@ public class EndLabyrinthAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
+        if (duration == baseDuration) {
             ActionHandler.clear();
             Labyrintale.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
             SaveHandler.finish(false);

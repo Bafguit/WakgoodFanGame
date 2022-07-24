@@ -2,9 +2,9 @@ package com.fastcat.labyrintale.events.neut;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.events.choices.*;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
+import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
 
 public class TransformEvent extends AbstractEvent {
 
@@ -19,7 +19,7 @@ public class TransformEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new SkillRewardEventChoice(data.SELECT[0], new EventCondition.True(), this, 1));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {

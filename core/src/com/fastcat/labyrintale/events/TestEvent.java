@@ -3,10 +3,10 @@ package com.fastcat.labyrintale.events;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.events.choices.HealEventChoice;
 import com.fastcat.labyrintale.events.choices.PlaceholderEventChoice;
 import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
+import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
 public class TestEvent extends AbstractEvent implements AtEndOfTempScreen {
 

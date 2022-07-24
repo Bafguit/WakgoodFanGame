@@ -2,10 +2,10 @@ package com.fastcat.labyrintale.events.neut;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.events.choices.*;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
+import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.events.choices.PlayerEventChoice;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 
 public class CureEvent extends AbstractEvent implements GetSelectedPlayer {
@@ -21,7 +21,7 @@ public class CureEvent extends AbstractEvent implements GetSelectedPlayer {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new PlayerEventChoice(data.SELECT[0], this));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {

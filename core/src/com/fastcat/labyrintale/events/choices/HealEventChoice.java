@@ -6,7 +6,6 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.rewards.HealReward;
-import com.fastcat.labyrintale.screens.rest.RestButton;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
 
 public class HealEventChoice extends AbstractEvent.EventChoice {

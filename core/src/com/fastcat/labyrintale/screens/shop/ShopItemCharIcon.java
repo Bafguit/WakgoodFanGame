@@ -1,13 +1,9 @@
 package com.fastcat.labyrintale.screens.shop;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 
 
@@ -16,7 +12,7 @@ public class ShopItemCharIcon extends AbstractUI {
     public ShopRoom.SkillItem item;
 
     public ShopItemCharIcon(ShopRoom.SkillItem re) {
-        super(FileHandler.ui.get("BORDER_S"));
+        super(FileHandler.getUi().get("BORDER_S"));
         item = re;
         clickable = false;
         overable = false;
@@ -24,9 +20,9 @@ public class ShopItemCharIcon extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled && !item.isDone) {
+        if (enabled && !item.isDone) {
             boolean can = item.canBuy();
-            if(!can) sb.setColor(Color.DARK_GRAY);
+            if (!can) sb.setColor(Color.DARK_GRAY);
             else sb.setColor(Color.WHITE);
             sb.draw(item.skill.owner.imgTiny, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);

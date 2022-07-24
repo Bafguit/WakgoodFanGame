@@ -3,8 +3,6 @@ package com.fastcat.labyrintale.skills.enemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.LethargyStatus;
 
 public class WebE extends AbstractSkill {

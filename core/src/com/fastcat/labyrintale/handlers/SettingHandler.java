@@ -5,11 +5,14 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.files.FileHandle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.io.File;
 import java.io.IOException;
 
-public class SettingHandler {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class SettingHandler {
     private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public static SettingData setting;
 
@@ -18,11 +21,11 @@ public class SettingHandler {
     public static void initialize() {
         setting = new SettingData();
         boolean hasSave = settingFile.exists();
-        if(hasSave) {
+        if (hasSave) {
             try {
                 SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
                 Graphics.Monitor monitor;
-                if(Gdx.graphics.getMonitors().length > data.monitor) {
+                if (Gdx.graphics.getMonitors().length > data.monitor) {
                     setting.monitor = data.monitor;
                     monitor = Gdx.graphics.getMonitors()[setting.monitor];
                 } else {
@@ -53,14 +56,14 @@ public class SettingHandler {
             }
         }
 
-        if(!hasSave) {
+        if (!hasSave) {
 
             //모니터 설정
             setting.monitor = 0;
             Graphics.Monitor monitor = Gdx.graphics.getMonitor();
             Graphics.Monitor[] m = Gdx.graphics.getMonitors();
-            for(int i = 0; i < m.length; i++) {
-                if(m[i].name.equals(monitor.name)) {
+            for (int i = 0; i < m.length; i++) {
+                if (m[i].name.equals(monitor.name)) {
                     setting.monitor = i;
                     break;
                 }
@@ -86,7 +89,7 @@ public class SettingHandler {
     }
 
     public static void save() {
-        if(setting != null) {
+        if (setting != null) {
             try {
                 mapper.writeValue(new File("setting.json"), setting);
             } catch (IOException e) {

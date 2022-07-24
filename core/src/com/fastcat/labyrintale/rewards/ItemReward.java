@@ -23,11 +23,11 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
     }
 
     private static AbstractItem generateItem(ItemRewardType type) {
-        if(type == ItemRewardType.NORMAL) {
+        if (type == ItemRewardType.NORMAL) {
             return GroupHandler.ItemGroup.getRandomItem();
-        } else if(type == ItemRewardType.BRONZE) {
+        } else if (type == ItemRewardType.BRONZE) {
             return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BRONZE);
-        } else if(type == ItemRewardType.SILVER) {
+        } else if (type == ItemRewardType.SILVER) {
             return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.SILVER);
         } else if (type == ItemRewardType.GOLD) {
             return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.GOLD);

@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.rewards.ExpReward;
 
 public class ExpButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.ui.get("BORDER_M");
+    private final Sprite border = FileHandler.getUi().get("BORDER_M");
     public ExpReward.ExpType type;
     public ExpSelectScreen select;
     public String name;
@@ -24,23 +24,23 @@ public class ExpButton extends AbstractUI {
     }
 
     private static Sprite getImage(ExpReward.ExpType type) { //TODO 이미지 바꾸기
-        if(type == ExpReward.ExpType.SKILL_SLOT) return FileHandler.ui.get("SLOT_UP");
-        else if(type == ExpReward.ExpType.HEAL) return FileHandler.ui.get("DECK");
-        else if(type == ExpReward.ExpType.MAX_HEALTH) return FileHandler.ui.get("DECK");
-        else return FileHandler.ui.get("DECK");
+        if (type == ExpReward.ExpType.SKILL_SLOT) return FileHandler.getUi().get("SLOT_UP");
+        else if (type == ExpReward.ExpType.HEAL) return FileHandler.getUi().get("DECK");
+        else if (type == ExpReward.ExpType.MAX_HEALTH) return FileHandler.getUi().get("DECK");
+        else return FileHandler.getUi().get("DECK");
     }
 
     private static String getName(ExpReward.ExpType type) {
-        if(type == ExpReward.ExpType.SKILL_SLOT) return "슬롯 강화";
-        else if(type == ExpReward.ExpType.HEAL) return "회복";
-        else if(type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력 증가";
+        if (type == ExpReward.ExpType.SKILL_SLOT) return "슬롯 강화";
+        else if (type == ExpReward.ExpType.HEAL) return "회복";
+        else if (type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력 증가";
         else return "소생";
     }
 
     private static String getDesc(ExpReward.ExpType type) {
-        if(type == ExpReward.ExpType.SKILL_SLOT) return "스킬 슬롯을 하나 선택해 강화합니다.";
-        else if(type == ExpReward.ExpType.HEAL) return "체력을 4 회복합니다.";
-        else if(type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력이 2 증가합니다. (회복은 하지 않습니다.)";
+        if (type == ExpReward.ExpType.SKILL_SLOT) return "스킬 슬롯을 하나 선택해 강화합니다.";
+        else if (type == ExpReward.ExpType.HEAL) return "체력을 4 회복합니다.";
+        else if (type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력이 2 증가합니다. (회복은 하지 않습니다.)";
         else return "사망한 플레이어를 되살립니다.";
     }
 
@@ -50,8 +50,8 @@ public class ExpButton extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(!clickable) sb.setColor(Color.DARK_GRAY);
+        if (enabled) {
+            if (!clickable) sb.setColor(Color.DARK_GRAY);
             else if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);

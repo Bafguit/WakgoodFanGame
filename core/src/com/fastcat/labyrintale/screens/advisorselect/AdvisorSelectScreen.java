@@ -30,12 +30,12 @@ public class AdvisorSelectScreen extends AbstractScreen {
     private void addAdvisor(boolean start) {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         Array<AbstractAdvisor> a;
-        if(start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
+        if (start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
         else a = GroupHandler.AdvisorGroup.getAdvisors(4);
         int s = a.size;
         aAdvisor = new AdvisorButton[s];
         float ws = w / (s + 1);
-        for(int i = 0; i < a.size; i++) {
+        for (int i = 0; i < a.size; i++) {
             AdvisorButton adv = new AdvisorButton(a.get(i).clone(), this);
             adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.6f);
             aAdvisor[i] = adv;
@@ -49,7 +49,8 @@ public class AdvisorSelectScreen extends AbstractScreen {
         }
         nextButton.update();
         advisorSelectText.update();
-        if(selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.advisor.data.NAME, selected.advisor.data.DESC);
+        if (selected != null)
+            AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.advisor.data.NAME, selected.advisor.data.DESC);
     }
 
     @Override

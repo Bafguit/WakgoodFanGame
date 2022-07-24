@@ -14,15 +14,14 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.Objects;
 
-import static com.fastcat.labyrintale.rewards.SkillUpgradeReward.*;
+import static com.fastcat.labyrintale.rewards.SkillUpgradeReward.SkillRewardType;
 import static com.fastcat.labyrintale.rewards.SkillUpgradeReward.SkillRewardType.UPGRADE;
 
 public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkill {
 
-    private final BgImg bgImg;
-
     public final SkillRewardType type;
     public final SkillSelectGroup[] groups;
+    private final BgImg bgImg;
     public SkillSelectButton selected;
     public GetSelectedSkill gets;
     public SkillConfirmButton confirm;
@@ -39,17 +38,17 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         bgImg = new BgImg();
         confirm = new SkillConfirmButton(this);
         groups = new SkillSelectGroup[group.size];
-        for(int i = 0; i < group.size; i++) {
+        for (int i = 0; i < group.size; i++) {
             Array<AbstractSkill> a = group.get(i);
             groups[i] = new SkillSelectGroup((AbstractPlayer) a.get(0).owner, a, this.type, a.size);
         }
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < groups.length; i++) {
+        for (int i = 0; i < groups.length; i++) {
             SkillSelectGroup g = groups[i];
             float ww = w / groups.length, wc = w / groups.length / 2 + ww * i, hc = h * 0.73f;
             g.bg.setPosition(wc - g.bg.sWidth / 2, hc - g.bg.sHeight * 0.5f);
             g.cIcon.setPosition(wc - g.cIcon.sWidth * 0.5f, h * 0.9f - g.cIcon.width * 0.5f);
-            if(g.skills.length > 1) {
+            if (g.skills.length > 1) {
                 g.skills[0].setPosition(wc - g.skills[0].sWidth * 1.1f, hc - g.skills[0].sHeight * 0.5f);
                 g.skills[1].setPosition(wc + g.skills[1].sWidth * 0.1f, hc - g.skills[1].sHeight * 0.5f);
             } else g.skills[0].setPosition(wc - g.skills[0].sWidth * 0.5f, hc - g.skills[0].sHeight * 0.5f);
@@ -63,7 +62,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
 
     @Override
     public void update() {
-        for(SkillSelectGroup g : groups) {
+        for (SkillSelectGroup g : groups) {
             g.update();
         }
         confirm.update();
@@ -72,7 +71,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
     @Override
     public void render(SpriteBatch sb) {
         bgImg.render(sb);
-        for(SkillSelectGroup g : groups) {
+        for (SkillSelectGroup g : groups) {
             g.render(sb);
         }
         confirm.render(sb);
@@ -95,7 +94,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
 
     @Override
     public void skillSelected(SkillSelectGroup skill) {
-        if(gets != null) gets.skillSelected(skill);
+        if (gets != null) gets.skillSelected(skill);
     }
 
     public static class SkillSelectGroup {
@@ -113,7 +112,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
             bg = new SkillSelectBG(this, player);
             cIcon = new SkillSelectCharIcon(this, player);
             skills = new SkillSelectButton[l];
-            if(type == UPGRADE) {
+            if (type == UPGRADE) {
                 toSkill = new SkillSelectButton(this, s.get(0), true);
                 AbstractSkill ss = Objects.requireNonNull(s.get(0).clone());
                 ss.upgrade();
@@ -129,7 +128,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         public void update() {
             bg.update();
             cIcon.update();
-            for(SkillSelectButton s : skills) {
+            for (SkillSelectButton s : skills) {
                 s.update();
             }
             toSkill.update();
@@ -138,7 +137,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         public void render(SpriteBatch sb) {
             bg.render(sb);
             cIcon.render(sb);
-            for(SkillSelectButton s : skills) {
+            for (SkillSelectButton s : skills) {
                 s.render(sb);
             }
             toSkill.render(sb);

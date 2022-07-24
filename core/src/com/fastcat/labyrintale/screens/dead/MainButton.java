@@ -10,7 +10,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class MainButton extends AbstractUI {
 
     public MainButton() {
-        super(FileHandler.ui.get("MENU_SELECT"), 0, 0, 300, 50);
+        super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 300, 50);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
         fontData = MAIN_MENU;
         text = "처음으로";
@@ -19,7 +19,7 @@ public class MainButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override
