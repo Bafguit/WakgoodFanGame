@@ -27,7 +27,7 @@ public final class EffectHandler {
      * @return instance of handler
      */
     public static EffectHandler newInstance() {
-        return newInstance();
+        return new EffectHandler();
     }
 
     public static void add(AbstractEffect e) {
