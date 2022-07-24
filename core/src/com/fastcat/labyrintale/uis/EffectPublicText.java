@@ -1,12 +1,11 @@
 package com.fastcat.labyrintale.uis;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
+import static com.fastcat.labyrintale.handlers.FontHandler.HP;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 public class EffectPublicText extends AbstractUI {
 
@@ -20,9 +19,9 @@ public class EffectPublicText extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(fontData != null) {
-                if(showImg) img.draw(sb);
+        if (enabled) {
+            if (fontData != null) {
+                if (showImg) img.draw(sb);
                 renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
             }
         }

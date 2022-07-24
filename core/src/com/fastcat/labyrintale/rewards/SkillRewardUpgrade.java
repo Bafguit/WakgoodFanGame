@@ -8,7 +8,6 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
-import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomUpgradedSkillFromDeck;
 
 public class SkillRewardUpgrade extends SkillUpgradeReward {
@@ -16,9 +15,9 @@ public class SkillRewardUpgrade extends SkillUpgradeReward {
     public SkillRewardUpgrade(GetSelectedSkill gets) {
         this.gets = gets;
         Array<AbstractPlayer> ap = new Array<>(AbstractLabyrinth.players);
-        for(int i = 0; i < ap.size; i++) {
+        for (int i = 0; i < ap.size; i++) {
             AbstractPlayer p = ap.get(i);
-            if(p.isAlive()) {
+            if (p.isAlive()) {
                 Array<AbstractSkill> t = new Array<>();
                 t.add(getRandomUpgradedSkillFromDeck(p, true));
                 group.add(t);

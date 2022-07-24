@@ -40,13 +40,13 @@ public class Support extends AbstractSkill {
     @Override
     public boolean setTarget() {
         boolean can = false;
-        for(PlayerView pv : Labyrintale.battleScreen.players) {
-            if(pv.player.isAlive() && pv.player != owner) {
+        for (PlayerView pv : Labyrintale.battleScreen.players) {
+            if (pv.player.isAlive() && pv.player != owner) {
                 pv.isTarget = true;
                 can = true;
             }
         }
-        if(can) return true;
+        if (can) return true;
         else {
             top(new ApplyStatusAction(new CourageStatus(value), owner, SkillTarget.SELF, false));
             return false;
@@ -55,7 +55,7 @@ public class Support extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
-        if(upgradeCount == 3) {
+        if (upgradeCount == 3) {
             cooltime = 2;
         } else {
             setBaseValue(value + 1);

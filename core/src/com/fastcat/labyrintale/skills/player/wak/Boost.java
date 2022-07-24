@@ -4,10 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.CourageStatus;
-import com.fastcat.labyrintale.status.EnduranceStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Boost extends AbstractSkill {
 

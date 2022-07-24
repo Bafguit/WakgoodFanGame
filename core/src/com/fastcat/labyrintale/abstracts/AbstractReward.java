@@ -16,22 +16,22 @@ public abstract class AbstractReward {
         this.type = type;
     }
 
-    public void setInfo(String name, String desc) {
-        this.name = name;
-        this.desc = desc;
-    }
-
     private static Sprite getImg(AbstractReward.RewardType type) {
         switch (type) {
             case SLOT:
-                return FileHandler.ui.get("SLOT_UP");
+                return FileHandler.getUi().get("SLOT_UP");
             case HEAL:
-                return FileHandler.skillImg.get("Heal"); //TODO 이미지 변경
+                return FileHandler.getSkillImg().get("Heal"); //TODO 이미지 변경
             case GOLD:
-                return FileHandler.ui.get("GOLD");
+                return FileHandler.getUi().get("GOLD");
             default:
-                return FileHandler.ui.get("REWARD_CARD");
+                return FileHandler.getUi().get("REWARD_CARD");
         }
+    }
+
+    public void setInfo(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
     }
 
     public abstract void takeReward();

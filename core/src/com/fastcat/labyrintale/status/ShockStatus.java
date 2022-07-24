@@ -23,7 +23,7 @@ public class ShockStatus extends AbstractStatus {
 
     @Override
     public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
+        if (type == AbstractEntity.DamageType.NORMAL) {
             top(new StatusDamageAction(this, AttackAction.AttackType.BURN, false, true));
         }
         return d;

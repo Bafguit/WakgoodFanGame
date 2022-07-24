@@ -13,6 +13,6 @@ public class TestBoss extends AbstractRoom {
 
     @Override
     public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[] { new TestEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
+        return new AbstractEnemy[]{new TestEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
     }
 }

@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
 
 public class WaitAction extends AbstractAction {
     public WaitAction() {

@@ -25,21 +25,23 @@ public class LilpaaAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
+        if (duration == baseDuration) {
             SoundHandler.playSfx("LILPAA");
-        } else if(duration < 1.1f && !ps) {
+        } else if (duration < 1.1f && !ps) {
             ps = true;
-            if(SettingHandler.setting.shake) Labyrintale.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
+            if (SettingHandler.setting.shake)
+                Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
             for (AbstractEntity t : target) {
-                if(t != actor) EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.vfx.get("LIGHTNING")));
+                if (t != actor)
+                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("LIGHTNING")));
             }
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
-                if(p != actor && p.isAlive()) p.takeDamage(info2);
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p != actor && p.isAlive()) p.takeDamage(info2);
             }
             for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                if(e.isAlive()) e.takeDamage(info);
+                if (e.isAlive()) e.takeDamage(info);
             }
-            if(actor != null) {
+            if (actor != null) {
                 AnimationState.TrackEntry e = actor.state.setAnimation(0, "hit", false);
                 actor.state.addAnimation(0, "idle", true, 0.0F);
                 e.setTimeScale(1.0f);

@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
+import com.fastcat.labyrintale.uis.BgImg;
 
 public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
 
@@ -24,7 +24,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         type = TakeType.SKILL;
         deck = new CharDeckButton[3];
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             CharDeckButton c = new CharDeckButton(this, i, this.skill);
             c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.775f - c.sHeight * 0.5f);
             deck[i] = c;
@@ -42,8 +42,8 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         type = TakeType.ITEM;
         getItem = gets;
         Array<AbstractPlayer> p = new Array<>();
-        for(int i = 0; i < 4; i++) {
-            if(AbstractLabyrinth.players[i].isAlive()) {
+        for (int i = 0; i < 4; i++) {
+            if (AbstractLabyrinth.players[i].isAlive()) {
                 p.add(AbstractLabyrinth.players[i]);
             }
         }
@@ -51,8 +51,8 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         items = new CharItemButton[count][2];
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         float ww = w / (count + 1);
-        for(int i = 0; i < count; i++) {
-            for(int j = 0; j < 2; j++) {
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < 2; j++) {
                 CharItemButton t = new CharItemButton(this, j, p.get(i), this.item);
                 t.setPosition(ww + ww * i + w * (0.08f * j - 0.04f) - t.sWidth * 0.5f, h * 0.775f - t.sHeight * 0.5f);
                 items[i][j] = t;
@@ -65,13 +65,13 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
     @Override
     public void update() {
         shopItem.update();
-        if(type == TakeType.SKILL) {
+        if (type == TakeType.SKILL) {
             for (int i = 0; i < 3; i++) {
                 deck[i].update();
             }
         } else {
-            for(int i = 0; i < count; i++) {
-                for(int j = 0; j < 2; j++) {
+            for (int i = 0; i < count; i++) {
+                for (int j = 0; j < 2; j++) {
                     items[i][j].update();
                 }
             }
@@ -83,13 +83,13 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         bg.render(sb);
 
         shopItem.render(sb);
-        if(type == TakeType.SKILL) {
+        if (type == TakeType.SKILL) {
             for (int i = 0; i < 3; i++) {
                 deck[i].render(sb);
             }
         } else {
-            for(int i = 0; i < count; i++) {
-                for(int j = 0; j < 2; j++) {
+            for (int i = 0; i < count; i++) {
+                for (int j = 0; j < 2; j++) {
                     items[i][j].render(sb);
                 }
             }
@@ -113,7 +113,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
 
     @Override
     public void itemSelected(AbstractItem item) {
-        if(getItem != null) getItem.itemSelected(item);
+        if (getItem != null) getItem.itemSelected(item);
     }
 
     public enum TakeType {

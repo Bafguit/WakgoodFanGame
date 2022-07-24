@@ -3,17 +3,14 @@ package com.fastcat.labyrintale.uis.control;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.*;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.ActionHandler.bot;
-import static com.fastcat.labyrintale.handlers.ActionHandler.isRunning;
 
 public class SkillButtonPanel extends AbstractUI {
 
@@ -22,47 +19,47 @@ public class SkillButtonPanel extends AbstractUI {
     public boolean isUsed = false;
 
     public SkillButtonPanel(SkillButtonType type) {
-        super(type == SkillButtonType.MOVE ? FileHandler.ui.get("BORDER") : FileHandler.ui.get("BORDER_M"));
+        super(type == SkillButtonType.MOVE ? FileHandler.getUi().get("BORDER") : FileHandler.getUi().get("BORDER_M"));
         this.type = type;
         fontData = FontHandler.COOLDOWN;
     }
 
     @Override
     protected void updateButton() {
-        clickable = !skill.passive && skill.canUse() && type != SkillButtonType.VIEW && !battleScreen.isSelecting && !isRunning && Labyrintale.getCurScreen() == battleScreen;
-        if(type == SkillButtonType.PLAYER || type == SkillButtonType.MOVE) {
+        clickable = !skill.passive && skill.canUse() && type != SkillButtonType.VIEW && !battleScreen.isSelecting && !ActionHandler.isRunning() && Labyrintale.getCurScreen() == battleScreen;
+        if (type == SkillButtonType.PLAYER || type == SkillButtonType.MOVE) {
             isUsed = !skill.canUse();
         }
-        if(over) {
-            if(skill != null) {
+        if (over) {
+            if (skill != null) {
                 cPanel.infoPanel.setInfo(skill);
             }
         }
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(isUsed || (type != SkillButtonType.VIEW && skill != null && !skill.canUse()) || (battleScreen.isSelecting && cPanel.battlePanel.selected != skill)) {
+        if (enabled) {
+            if (isUsed || (type != SkillButtonType.VIEW && skill != null && !skill.canUse()) || (battleScreen.isSelecting && cPanel.battlePanel.selected != skill)) {
                 sb.setColor(Color.DARK_GRAY);
-            }
-            else if (over && clickable) sb.setColor(Color.WHITE);
+            } else if (over && clickable) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if(skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
+            if (skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            if(skill.cooldown > 0 && !skill.usedOnce && !skill.usedOnly) FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cooldown), x, y + sHeight / 2, sWidth, sHeight);
+            if (skill.cooldown > 0 && !skill.usedOnce && !skill.usedOnly)
+                FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cooldown), x, y + sHeight / 2, sWidth, sHeight);
         }
     }
 
     @Override
     protected void onClick() {
-        if(!isUsed && skill.canUse()) {
+        if (!isUsed && skill.canUse()) {
             skill.useCard();
         }
     }
 
     public void resetImg() {
-        if(type == SkillButtonType.VIEW) skill = null;
+        if (type == SkillButtonType.VIEW) skill = null;
     }
 
     public enum SkillButtonType {

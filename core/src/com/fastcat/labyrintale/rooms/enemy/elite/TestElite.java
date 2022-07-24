@@ -14,6 +14,6 @@ public class TestElite extends AbstractRoom {
 
     @Override
     public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[] { new TestEnemy2(), new TestEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder() };
+        return new AbstractEnemy[]{new TestEnemy2(), new TestEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder()};
     }
 }

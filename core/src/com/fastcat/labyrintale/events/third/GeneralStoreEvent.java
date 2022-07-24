@@ -21,7 +21,7 @@ public class GeneralStoreEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new ItemRewardEventChoice(data.SELECT[0], new GolemHead(null), new EventCondition() {
                 @Override
                 public boolean condition() {
@@ -111,9 +111,9 @@ public class GeneralStoreEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 3) {
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
-                if(p.isAlive()) p.heal(p.maxHealth);
+        if (page == 3) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p.isAlive()) p.heal(p.maxHealth);
             }
         }
     }

@@ -35,9 +35,9 @@ public class StatusDamageAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
+        if (duration == baseDuration) {
             Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
-            if(effect == AttackAction.AttackType.NONE) {
+            if (effect == AttackAction.AttackType.NONE) {
                 status.flash(e);
             } else {
                 for (AbstractEntity t : temp) {
@@ -45,7 +45,7 @@ public class StatusDamageAction extends AbstractAction {
                     EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, eImg));
                 }
             }
-            for(AbstractEntity e : temp) {
+            for (AbstractEntity e : temp) {
                 e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
             }
             if (reduce) e.applyStatus(status, -1);

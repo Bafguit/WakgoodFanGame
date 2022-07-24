@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rooms.other.RestRoom;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
@@ -13,7 +12,6 @@ import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.*;
-import static com.fastcat.labyrintale.Labyrintale.eventScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public class AbstractRoom {
@@ -38,27 +36,27 @@ public class AbstractRoom {
     public AbstractRoom(String id, RoomType type) {
         this.id = id;
         enemies = getEnemies();
-        for(int i = 0; i < enemies.length; i++) {
+        for (int i = 0; i < enemies.length; i++) {
             enemies[i].defineIndex(i);
         }
         this.type = type;
         this.isDone = false;
         this.battleDone = false;
     }
-    
+
     public void update() {
     }
-    
+
     public void render(SpriteBatch sb) {
-        
+
     }
 
     public final void enter() {
-        if(type == MYSTERY) {
+        if (type == MYSTERY) {
             int b = 10, s = 5, r = 10, e = 75;
-            if(AbstractLabyrinth.bleak >= 20) {
+            if (AbstractLabyrinth.bleak >= 20) {
                 b = 35;
-                if(AbstractLabyrinth.bleak >= 40) {
+                if (AbstractLabyrinth.bleak >= 40) {
                     r = 0;
                 }
             }
@@ -67,7 +65,7 @@ public class AbstractRoom {
             e = e + r;
             int x = AbstractLabyrinth.mapRandom.random(e);
             AbstractRoom temp;
-            if(x < b) {
+            if (x < b) {
                 //TODO 랜덤으로 변경
                 temp = AbstractLabyrinth.currentFloor.currentWay.enemies.cpy();
                 enemies = temp.getEnemies();
@@ -90,13 +88,13 @@ public class AbstractRoom {
             SoundHandler.addMusic("BATTLE_1", true, true);
             battleScreen = new BattleScreen();
             fadeOutAndChangeScreen(battleScreen);
-        } else if(type == AbstractRoom.RoomType.REST) {
+        } else if (type == AbstractRoom.RoomType.REST) {
             restScreen = new RestScreen();
             fadeOutAndChangeScreen(restScreen);
-        } else if(type == AbstractRoom.RoomType.EVENT) {
+        } else if (type == AbstractRoom.RoomType.EVENT) {
             eventScreen = new EventScreen(event);
             fadeOutAndChangeScreen(eventScreen);
-        } else if(type == SHOP) {
+        } else if (type == SHOP) {
             ShopRoom r = new ShopRoom();
             r.entry();
             shopScreen = new ShopScreen(r);
@@ -107,7 +105,7 @@ public class AbstractRoom {
     public AbstractEnemy[] getEnemies() {
         return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
     }
-    
+
     public void done() {
         this.isDone = true;
     }
@@ -117,7 +115,7 @@ public class AbstractRoom {
         r.id = id;
         r.text = text;
         r.enemies = getEnemies();
-        if(event != null) r.event = event.clone();
+        if (event != null) r.event = event.clone();
         r.type = type;
         r.battleDone = battleDone;
         r.isDone = isDone;

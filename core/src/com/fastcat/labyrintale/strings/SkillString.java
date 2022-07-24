@@ -1,9 +1,8 @@
 package com.fastcat.labyrintale.strings;
 
 import com.badlogic.gdx.utils.JsonValue;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 public class SkillString {
@@ -11,17 +10,17 @@ public class SkillString {
     private final HashMap<String, SkillData> data = new HashMap<>();
 
     public SkillString() {
-        generateString(CARD_JSON_BASIC);
-        generateString(CARD_JSON_WAK);
-        generateString(CARD_JSON_MANAGER);
-        generateString(CARD_JSON_INE);
-        generateString(CARD_JSON_VIICHAN);
-        generateString(CARD_JSON_LILPA);
-        generateString(CARD_JSON_BURGER);
-        generateString(CARD_JSON_GOSEGU);
-        generateString(CARD_JSON_JURURU);
-        generateString(CARD_JSON_ADV);
-        generateString(CARD_JSON_ENEMY);
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_BASIC));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_WAK));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_MANAGER));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_INE));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_VIICHAN));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_LILPA));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_BURGER));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_GOSEGU));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_JURURU));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_ADV));
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.CARD_JSON_ENEMY));
     }
 
     private void generateString(JsonValue json) {

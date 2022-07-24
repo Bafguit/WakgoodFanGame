@@ -22,7 +22,7 @@ public class LoadingScreen extends AbstractScreen {
 
     public LoadingScreen() {
         cType = ControlPanel.ControlType.HIDE;
-        setBg(FileHandler.ui.get("FADE"));
+        setBg(FileHandler.getUi().get("FADE"));
         SoundHandler.fadeOutMusic("LOBBY");
     }
 
@@ -33,7 +33,7 @@ public class LoadingScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(!Labyrintale.fading && create) {
+        if (!Labyrintale.fading && create) {
             create = false;
             if (isNew) {
                 Labyrintale.labyrinth = new AbstractLabyrinth();
@@ -51,7 +51,7 @@ public class LoadingScreen extends AbstractScreen {
                 Labyrintale.labyrinth = new AbstractLabyrinth(AbstractLabyrinth.RunType.SAVE);
                 Labyrintale.mapScreen = new MapScreen();
                 AbstractRoom tr = AbstractLabyrinth.currentFloor.currentRoom;
-                if(tr.isDone) {
+                if (tr.isDone) {
                     if ((tr.type == AbstractRoom.RoomType.BATTLE || tr.type == AbstractRoom.RoomType.ELITE || tr.type == AbstractRoom.RoomType.BOSS) && !tr.battleDone) {
                         battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
                         fadeOutAndChangeScreen(battleScreen);

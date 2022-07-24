@@ -38,7 +38,7 @@ public class CheckBoxGroup {
         public String title;
 
         public Title(String title, float x, float y) {
-            super(FileHandler.ui.get("SLIDE_A"), x, y);
+            super(FileHandler.getUi().get("SLIDE_A"), x, y);
             this.title = title;
             fontData = FontHandler.SETTING;
             overable = false;

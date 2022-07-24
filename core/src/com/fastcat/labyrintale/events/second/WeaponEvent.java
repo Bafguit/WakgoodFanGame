@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.events.choices.BetEventChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 
@@ -21,7 +20,7 @@ public class WeaponEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1));//TODO 아이템 10개 중 선택으로 변경
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {
@@ -32,9 +31,9 @@ public class WeaponEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 2) {
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
-                if(p.isAlive()) p.heal(6);
+        if (page == 2) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p.isAlive()) p.heal(6);
             }
         }
     }

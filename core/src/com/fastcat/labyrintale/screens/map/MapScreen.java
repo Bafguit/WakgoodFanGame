@@ -7,14 +7,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
-import static com.fastcat.labyrintale.handlers.FileHandler.bg;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class MapScreen extends AbstractScreen {
 
@@ -36,8 +36,8 @@ public class MapScreen extends AbstractScreen {
         entryNode.setPosition(b - entryNode.sWidth / 2, h * 0.85f - entryNode.sHeight / 2);
         int c = 1;
         float ww = b + w * 0.0333f;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 4; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
                 ww += w * (j == 3 ? 0.1f : 0.0667f);
                 MapNodeButton node = new MapNodeButton(currentFloor.ways[c]);
                 node.setPosition(ww - node.sWidth / 2, h * (0.85f - 0.15f * i) - node.sHeight / 2);
@@ -47,25 +47,30 @@ public class MapScreen extends AbstractScreen {
             ww -= w * 0.0667f;
         }
         bossNode = nodes[12];
-        setBg(bg.get("BG_MAP"));
+        setBg(FileHandler.getBg().get("BG_MAP"));
+    }
+
+    public static void view() {
+        Labyrintale.mapScreen.isView = true;
+        Labyrintale.addTempScreen(Labyrintale.mapScreen);
     }
 
     public void refreshFloor() {
-        for(int i = 0; i < 13; i++) {
+        for (int i = 0; i < 13; i++) {
             nodes[i].way = currentFloor.ways[i];
         }
     }
 
     @Override
     public void update() {
-        if(isView && (InputHandler.cancel || InputHandler.map)) Labyrintale.removeTempScreen(this);
+        if (isView && (InputHandler.cancel || InputHandler.map)) Labyrintale.removeTempScreen(this);
 
-        for(int i = 0; i < 13; i++) {
+        for (int i = 0; i < 13; i++) {
             nodes[i].canGo = i == currentFloor.num;
             nodes[i].update();
         }
 
-        if(!Labyrintale.fading) {
+        if (!Labyrintale.fading) {
             if (!glow) {
                 alpha -= Labyrintale.tick * 0.34f;
                 if (alpha <= 0.83f) {
@@ -94,16 +99,17 @@ public class MapScreen extends AbstractScreen {
         Vector2 v1 = new Vector2(), v2 = new Vector2();
         v1.set(w * 0.1f, h * 0.85f);
         v2.set(w * 0.1333f, h * 0.85f);
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 4; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
                 v2.add(w * (j == 3 ? 0.1f : 0.0667f), 0);
                 MapNodeButton n = nodes[c];
-                if(!n.way.isDone) {
-                    if(n.canGo) {
+                if (!n.way.isDone) {
+                    if (n.canGo) {
                         if (n.over) {
                             shr.setColor(WHITE);
                         } else {
-                            if (!mapScreen.isView && nodes[c - 1].way.isDone) shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+                            if (!mapScreen.isView && nodes[c - 1].way.isDone)
+                                shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
                             else shr.setColor(Color.LIGHT_GRAY);
                         }
                     } else shr.setColor(Color.LIGHT_GRAY);
@@ -117,19 +123,14 @@ public class MapScreen extends AbstractScreen {
         shr.end();
 
         sb.begin();
-        for(int i = 0; i < 13; i++) {
+        for (int i = 0; i < 13; i++) {
             nodes[i].render(sb);
         }
     }
 
-    public static void view() {
-        Labyrintale.mapScreen.isView = true;
-        Labyrintale.addTempScreen(Labyrintale.mapScreen);
-    }
-
     @Override
     public void show() {
-        if(music == null || (!isView && !music.music.isPlaying())) {
+        if (music == null || (!isView && !music.music.isPlaying())) {
             music = SoundHandler.addMusic("MAP", true, true);
             music.stop = false;
         }

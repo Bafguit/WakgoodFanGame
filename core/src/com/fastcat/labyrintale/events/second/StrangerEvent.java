@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.events.second;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.events.choices.BetEventChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.ItemRewardEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
@@ -21,7 +20,7 @@ public class StrangerEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new ItemRewardEventChoice(data.SELECT[0], new EventCondition.True(), this, 1));
             a.add(new ItemRewardEventChoice(data.SELECT[1], new EventCondition() {
                 @Override
@@ -43,11 +42,11 @@ public class StrangerEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 1) {
+        if (page == 1) {
             AbstractLabyrinth.gold += 50;
-        } else if(page == 2) {
+        } else if (page == 2) {
             AbstractLabyrinth.gold += 250;
-        } else if(page == 3) {
+        } else if (page == 3) {
             AbstractLabyrinth.gold -= 50;
         }
     }

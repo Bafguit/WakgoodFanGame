@@ -8,10 +8,10 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.interfaces.GetSelectedExp;
-import com.fastcat.labyrintale.rewards.ExpReward;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
-import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
+import com.fastcat.labyrintale.rewards.ExpReward;
+import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 
@@ -44,8 +44,8 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         exp[2] = adv;
 
         boolean canRevive = false;
-        for(AbstractPlayer p : AbstractLabyrinth.players) {
-            if(!p.isAlive()) {
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+            if (!p.isAlive()) {
                 canRevive = true;
                 break;
             }
@@ -56,6 +56,43 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         exp[3] = adv;
     }
 
+    public static AbstractPlayer[] getPlayers(ExpReward.ExpType type) {
+        if (type == ExpReward.ExpType.SKILL_SLOT) {
+            Array<AbstractPlayer> pp = new Array<>();
+            for (int i = 0; i < 4; i++) {
+                AbstractPlayer p = AbstractLabyrinth.players[i];
+                if (p.isAlive() && p.hasSlot()) pp.add(p);
+            }
+            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
+            for (int i = 0; i < pp.size; i++) {
+                pa[i] = pp.get(i);
+            }
+            return pa;
+        } else if (type == ExpReward.ExpType.REVIVE) {
+            Array<AbstractPlayer> pp = new Array<>();
+            for (int i = 0; i < 4; i++) {
+                AbstractPlayer p = AbstractLabyrinth.players[i];
+                if (!p.isAlive()) pp.add(p);
+            }
+            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
+            for (int i = 0; i < pp.size; i++) {
+                pa[i] = pp.get(i);
+            }
+            return pa;
+        } else {
+            Array<AbstractPlayer> pp = new Array<>();
+            for (int i = 0; i < 4; i++) {
+                AbstractPlayer p = AbstractLabyrinth.players[i];
+                if (p.isAlive()) pp.add(p);
+            }
+            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
+            for (int i = 0; i < pp.size; i++) {
+                pa[i] = pp.get(i);
+            }
+            return pa;
+        }
+    }
+
     @Override
     public void update() {
         for (ExpButton advisorButton : exp) {
@@ -63,7 +100,7 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         }
         nextButton.update();
         playerSelectText.update();
-        if(selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.name, selected.desc);
+        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.name, selected.desc);
     }
 
     @Override
@@ -74,43 +111,6 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         }
         nextButton.render(sb);
         playerSelectText.render(sb);
-    }
-
-    public static AbstractPlayer[] getPlayers(ExpReward.ExpType type) {
-        if(type == ExpReward.ExpType.SKILL_SLOT) {
-            Array<AbstractPlayer> pp = new Array<>();
-            for(int i = 0; i < 4; i++) {
-                AbstractPlayer p = AbstractLabyrinth.players[i];
-                if(p.isAlive() && p.hasSlot()) pp.add(p);
-            }
-            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
-            for(int i = 0; i < pp.size; i++) {
-                pa[i] = pp.get(i);
-            }
-            return pa;
-        } else if(type == ExpReward.ExpType.REVIVE) {
-            Array<AbstractPlayer> pp = new Array<>();
-            for(int i = 0; i < 4; i++) {
-                AbstractPlayer p = AbstractLabyrinth.players[i];
-                if(!p.isAlive()) pp.add(p);
-            }
-            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
-            for(int i = 0; i < pp.size; i++) {
-                pa[i] = pp.get(i);
-            }
-            return pa;
-        } else {
-            Array<AbstractPlayer> pp = new Array<>();
-            for(int i = 0; i < 4; i++) {
-                AbstractPlayer p = AbstractLabyrinth.players[i];
-                if(p.isAlive()) pp.add(p);
-            }
-            AbstractPlayer[] pa = new AbstractPlayer[pp.size];
-            for(int i = 0; i < pp.size; i++) {
-                pa[i] = pp.get(i);
-            }
-            return pa;
-        }
     }
 
     @Override
@@ -132,12 +132,12 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
 
     @Override
     public void playerSelected(AbstractPlayer player) {
-        if(selectedType == ExpReward.ExpType.SKILL_SLOT) {
+        if (selectedType == ExpReward.ExpType.SKILL_SLOT) {
             Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
-        } else if(selectedType == ExpReward.ExpType.HEAL) {
+        } else if (selectedType == ExpReward.ExpType.HEAL) {
             player.heal(4);
             Labyrintale.removeTempScreen(this);
-        } else if(selectedType == ExpReward.ExpType.MAX_HEALTH) {
+        } else if (selectedType == ExpReward.ExpType.MAX_HEALTH) {
             player.addMaxHealth(2);
             Labyrintale.removeTempScreen(this);
         } else {

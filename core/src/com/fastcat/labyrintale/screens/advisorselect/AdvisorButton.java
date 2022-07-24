@@ -1,17 +1,10 @@
 package com.fastcat.labyrintale.screens.advisorselect;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-import static com.fastcat.labyrintale.handlers.FileHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AdvisorButton extends AbstractUI {
 
@@ -21,7 +14,7 @@ public class AdvisorButton extends AbstractUI {
     public AdvisorSelectScreen select;
 
     public AdvisorButton(AbstractAdvisor adv, AdvisorSelectScreen select) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         advisor = adv;
         this.select = select;
     }
@@ -32,7 +25,7 @@ public class AdvisorButton extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(advisor.img, x, y, sWidth, sHeight);

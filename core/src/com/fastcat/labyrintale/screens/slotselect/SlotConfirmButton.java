@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
@@ -13,7 +12,7 @@ public class SlotConfirmButton extends AbstractUI {
     private final SlotSelectScreen sc;
 
     public SlotConfirmButton(SlotSelectScreen sc) {
-        super(FileHandler.ui.get("NEXT"));
+        super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
         text = "결정";
@@ -23,7 +22,7 @@ public class SlotConfirmButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class SlotConfirmButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(sc.selected != null) {
+        if (sc.selected != null) {
             sc.slotSelected(sc.selected.player, sc.selected.index);
             Labyrintale.removeTempScreen(sc);
         }

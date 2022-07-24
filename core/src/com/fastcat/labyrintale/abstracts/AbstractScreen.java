@@ -7,18 +7,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+import lombok.Getter;
 
 public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Disposable {
 
-    public final EffectHandler effectHandler = new EffectHandler();
     public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
     public ScreenType type = ScreenType.OTHER;
-    private Sprite bg;
     public Array<AtEndOfTempScreen> endTemp = new Array<>();
     public boolean playMusic = false;
+    private Sprite bg;
+
+    @Getter
+    private EffectHandler effectHandler;
 
     public abstract void update();
 
@@ -26,7 +29,7 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
 
     @Override
     public final void render(float delta) {
-        if(bg != null) bg.draw(Labyrintale.game.sb);
+        if (bg != null) bg.draw(Labyrintale.game.sb);
         render(Labyrintale.game.sb);
         effectHandler.render(Labyrintale.game.sb);
     }
@@ -42,7 +45,7 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     }
 
     public void onCreate() {
-
+        effectHandler = EffectHandler.newInstance();
     }
 
     @Override
@@ -57,13 +60,13 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
 
     @Override
     public final void atEndOfTempScreen() {
-        for(AtEndOfTempScreen e : endTemp) {
-            if(e != null) e.atEndOfTempScreen();
+        for (AtEndOfTempScreen e : endTemp) {
+            if (e != null) e.atEndOfTempScreen();
         }
     }
 
     @Override
-    public void hide () {
+    public void hide() {
 
     }
 

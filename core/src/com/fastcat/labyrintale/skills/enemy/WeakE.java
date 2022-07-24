@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.skills.enemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.LethargyStatus;
 import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class WeakE extends AbstractSkill {

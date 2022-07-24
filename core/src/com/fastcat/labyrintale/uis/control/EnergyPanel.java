@@ -11,15 +11,15 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 public class EnergyPanel extends AbstractUI {
 
     public EnergyPanel() {
-        super(FileHandler.ui.get("ENERGY_ORB"));
+        super(FileHandler.getUi().get("ENERGY_ORB"));
         fontData = FontHandler.ENERGY;
         overable = false;
         clickable = false;
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(AbstractLabyrinth.energy == 0) sb.setColor(Color.GRAY);
+        if (enabled) {
+            if (AbstractLabyrinth.energy == 0) sb.setColor(Color.GRAY);
             else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);

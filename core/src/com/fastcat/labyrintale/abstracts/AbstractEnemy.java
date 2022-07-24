@@ -17,7 +17,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public boolean isRandom = true;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
-        super(id, 1, maxHealth, FileHandler.atlas.get(id), FileHandler.skeleton.get(id), false);
+        super(id, 1, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), false);
         this.type = type;
         drawPile = new Array<>();
         discardPile = new Array<>();
@@ -36,21 +36,21 @@ public abstract class AbstractEnemy extends AbstractEntity {
     }
 
     public void shuffleHand() {
-        for(int i = 0; i < handSize; i++) {
+        for (int i = 0; i < handSize; i++) {
             AbstractSkill s = hand[i];
-            if(s != null) {
-                if(s.usedOnce) disposablePile.add(hand[i]);
+            if (s != null) {
+                if (s.usedOnce) disposablePile.add(hand[i]);
                 else discardPile.add(hand[i]);
             }
         }
         hand = new AbstractSkill[handSize];
-        if(drawPile.size < handSize && discardPile.size > 0) {
+        if (drawPile.size < handSize && discardPile.size > 0) {
             drawPile.addAll(discardPile);
             discardPile.clear();
         }
-        if(isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
-        for(int i = 0; i < handSize; i++) {
-            if(i < drawPile.size) {
+        if (isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
+        for (int i = 0; i < handSize; i++) {
+            if (i < drawPile.size) {
                 AbstractSkill s = drawPile.removeIndex(0);
                 hand[i] = s;
             } else break;

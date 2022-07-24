@@ -7,8 +7,8 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.BLOCK;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class ShieldIcon extends AbstractUI {
 
@@ -17,7 +17,7 @@ public class ShieldIcon extends AbstractUI {
     public int amount = 0;
 
     public ShieldIcon(AbstractEntity e) {
-        super(FileHandler.ui.get("SHIELD"));
+        super(FileHandler.getUi().get("SHIELD"));
         fontData = BLOCK;
         overable = false;
         clickable = false;
@@ -26,7 +26,7 @@ public class ShieldIcon extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(e.isAlive()) {
+        if (e.isAlive()) {
             amount = e.block;
             if (amount > 0) {
                 sb.setColor(Color.WHITE);

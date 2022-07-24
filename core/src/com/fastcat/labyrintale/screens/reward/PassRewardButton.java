@@ -15,7 +15,7 @@ public class PassRewardButton extends AbstractUI {
     public RewardScreen sc;
 
     public PassRewardButton(RewardScreen sc) {
-        super(FileHandler.ui.get("NEXT"));
+        super(FileHandler.getUi().get("NEXT"));
         this.sc = sc;
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.6f);
         fontData = MAIN_MENU;
@@ -25,7 +25,7 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override
@@ -36,8 +36,8 @@ public class PassRewardButton extends AbstractUI {
     @Override
     protected void onClick() {
         AbstractScreen s = Labyrintale.getBaseScreen();
-        if(s == Labyrintale.battleScreen) {
-            if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+        if (s == Labyrintale.battleScreen) {
+            if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
                 AbstractLabyrinth.endRoom();
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
@@ -45,7 +45,7 @@ public class PassRewardButton extends AbstractUI {
                 Labyrintale.eventScreen.event.endBattle();
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
             }
-        } else if(s == Labyrintale.restScreen) {
+        } else if (s == Labyrintale.restScreen) {
             Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
         } else {
             Labyrintale.removeTempScreen(sc);

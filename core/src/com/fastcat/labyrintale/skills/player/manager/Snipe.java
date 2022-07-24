@@ -37,8 +37,8 @@ public class Snipe extends AbstractSkill {
 
     @Override
     public int calculateAttack(int a) {
-        if(AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
-            if(AbstractLabyrinth.cPanel.battlePanel.selected == this && Labyrintale.battleScreen.looking.size == 1) {
+        if (AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
+            if (AbstractLabyrinth.cPanel.battlePanel.selected == this && Labyrintale.battleScreen.looking.size == 1) {
                 return a + owner.index + Labyrintale.battleScreen.looking.get(0).index;
             }
         }

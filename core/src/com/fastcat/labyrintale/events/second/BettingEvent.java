@@ -20,7 +20,7 @@ public class BettingEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new BetEventChoice(data.SELECT[0], this, 70, 1, 3, new EventCondition() {
                 @Override
                 public boolean condition() {
@@ -62,9 +62,9 @@ public class BettingEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if(page == 1) {
+        if (page == 1) {
             AbstractLabyrinth.gold += 100;
-        } else if(page == 2) {
+        } else if (page == 2) {
             AbstractLabyrinth.gold += 300;
         }
     }

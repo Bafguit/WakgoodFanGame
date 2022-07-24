@@ -1,11 +1,8 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
-
-import java.io.Serializable;
 
 public abstract class AbstractEffect implements Disposable {
 

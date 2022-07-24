@@ -19,17 +19,17 @@ public class AmbushAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
+        if (duration == baseDuration) {
             SoundHandler.playSfx("ATTACK_TEST");
-            if(target.size > 0) {
+            if (target.size > 0) {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
-                    if(te.isAlive()) {
+                    if (te.isAlive()) {
                         te.takeDamage(info);
                     }
                 }
                 skill.upgrade();
-                if(actor != null) {
+                if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "hit", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);
                     e.setTimeScale(1.0f);

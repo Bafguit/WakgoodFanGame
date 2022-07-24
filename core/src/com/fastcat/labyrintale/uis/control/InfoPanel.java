@@ -16,7 +16,7 @@ import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
 
 public class InfoPanel extends AbstractUI {
 
-    public Sprite border = FileHandler.ui.get("BORDER_B");
+    public Sprite border = FileHandler.getUi().get("BORDER_B");
     public String name = "";
     public String desc = "";
     public FontHandler.FontData fontName = CARD_BIG_NAME;
@@ -33,7 +33,7 @@ public class InfoPanel extends AbstractUI {
     public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
     public InfoPanel() {
-        super(FileHandler.ui.get("BORDER_B"));
+        super(FileHandler.getUi().get("BORDER_B"));
         clickable = false;
         overable = false;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -53,7 +53,7 @@ public class InfoPanel extends AbstractUI {
         bnh = 60 * InputHandler.scale;
         bdh = 60 * InputHandler.scale;
 
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(i);
             c.setPosition(w * (0.17f + 0.08f * i) - c.sWidth / 2, h * 0.275f);
             pIcons[i] = c;
@@ -63,7 +63,7 @@ public class InfoPanel extends AbstractUI {
 
     @Override
     public void updateButton() {
-        if(AbstractLabyrinth.cPanel.battlePanel.selected == null) {
+        if (AbstractLabyrinth.cPanel.battlePanel.selected == null) {
             type = InfoType.COLOR;
             skill = null;
             name = "";
@@ -77,7 +77,7 @@ public class InfoPanel extends AbstractUI {
             show = true;
         }
         status = null;
-        if(renderIcon) {
+        if (renderIcon) {
             for (int i = 0; i < 4; i++) {
                 pIcons[i].update();
             }
@@ -86,10 +86,10 @@ public class InfoPanel extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             sb.setColor(Color.WHITE);
-            if(img != null) {
-                if(renderIcon) {
+            if (img != null) {
+                if (renderIcon) {
                     renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
                     if (type == InfoType.SKILL) {
                         renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
@@ -106,7 +106,7 @@ public class InfoPanel extends AbstractUI {
                 }
             }
 
-            if(renderIcon) {
+            if (renderIcon) {
                 for (int i = 0; i < 4; i++) {
                     pIcons[i].render(sb);
                 }
@@ -115,7 +115,7 @@ public class InfoPanel extends AbstractUI {
     }
 
     public void setInfo(AbstractSkill s) {
-        if(s != null) {
+        if (s != null) {
             name = s.name;
             desc = s.desc;
             type = InfoType.SKILL;
@@ -125,7 +125,7 @@ public class InfoPanel extends AbstractUI {
     }
 
     public void setInfo(AbstractStatus s) {
-        if(s != null) {
+        if (s != null) {
             name = s.name;
             desc = s.getDesc();
             type = InfoType.STATUS;
@@ -135,7 +135,7 @@ public class InfoPanel extends AbstractUI {
     }
 
     public void setInfo(AbstractItem s) {
-        if(s != null) {
+        if (s != null) {
             name = s.name;
             desc = s.desc;
             type = ITEM;
@@ -145,7 +145,7 @@ public class InfoPanel extends AbstractUI {
     }
 
     public void setInfo(AbstractPlayer p) {
-        if(p != null) {
+        if (p != null) {
             name = p.name;
             desc = p.desc;
             type = PLAYER;

@@ -6,7 +6,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class LogoImage extends AbstractUI {
     public LogoImage() {
-        super(FileHandler.ui.get("LOGO"));
+        super(FileHandler.getUi().get("LOGO"));
         setPosition((Gdx.graphics.getWidth() - sWidth) * 0.5f, (Gdx.graphics.getHeight() - sHeight) * 0.5f);
         overable = false;
     }

@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.handlers.FileHandler.bg;
-
 public class DeadScreen extends AbstractScreen {
 
     public DeadText logo;
@@ -13,12 +11,12 @@ public class DeadScreen extends AbstractScreen {
 
     public DeadScreen(ScreenType type) {
         logo = new DeadText();
-        if(type == ScreenType.DEAD) {
+        if (type == ScreenType.DEAD) {
             logo.text = "개같이 멸망";
-            setBg(bg.get("BG_DEAD"));
+            setBg(FileHandler.getBg().get("BG_DEAD"));
         } else {
             logo.text = "해냈다 해냈어!";
-            setBg(bg.get("BG_WIN"));
+            setBg(FileHandler.getBg().get("BG_WIN"));
         }
         mainButton = new MainButton();
     }
@@ -49,7 +47,7 @@ public class DeadScreen extends AbstractScreen {
 
     }
 
-    public enum ScreenType{
+    public enum ScreenType {
         DEAD, WIN
     }
 }

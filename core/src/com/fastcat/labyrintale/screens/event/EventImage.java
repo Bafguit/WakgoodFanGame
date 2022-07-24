@@ -3,7 +3,8 @@ package com.fastcat.labyrintale.screens.event;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractEvent;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
@@ -19,7 +20,7 @@ public class EventImage extends AbstractUI {
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     public EventImage(AbstractEvent e) {
-        super(FileHandler.ui.get("WAY_SELECT"));
+        super(FileHandler.getUi().get("WAY_SELECT"));
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         setPosition(w * 0.25f - sWidth / 2, h * 0.7f - sHeight / 2);
         event = e;
@@ -38,8 +39,8 @@ public class EventImage extends AbstractUI {
     }
 
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(event != null) {
+        if (enabled) {
+            if (event != null) {
                 sb.draw(event.img, x, y, sWidth, sHeight);
                 renderLineLeft(sb, fontName, event.name, nx, ny, nw, nh);
                 renderColorLeft(sb, fontDesc, event.desc, dx, dy, dw);

@@ -9,10 +9,9 @@ import com.fastcat.labyrintale.items.starter.FabricMail;
 import com.fastcat.labyrintale.items.starter.OldSword;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
-import com.fastcat.labyrintale.skills.player.viichan.ChainMail;
 import com.fastcat.labyrintale.skills.player.viichan.DiaSword;
 
-import static com.badlogic.gdx.graphics.Color.*;
+import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 
 public class Viichan extends AbstractPlayer {
 

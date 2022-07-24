@@ -4,7 +4,6 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
-import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
 import com.fastcat.labyrintale.events.choices.SkillSlotEventChoice;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
@@ -21,7 +20,7 @@ public class UpgradeEvent extends AbstractEvent implements AtEndOfTempScreen {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new SkillSlotEventChoice(data.SELECT[0], new EventCondition.True(), this));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else {

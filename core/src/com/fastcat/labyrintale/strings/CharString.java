@@ -10,7 +10,7 @@ public class CharString {
     private final HashMap<String, CharData> data = new HashMap<>();
 
     public CharString() {
-        JsonValue json = FileHandler.CHAR_JSON;
+        JsonValue json = FileHandler.getJsonValue(FileHandler.JsonType.CHAR_JSON);
         for (JsonValue js : json) {
             String id = js.name;
             if (!id.equals("")) {

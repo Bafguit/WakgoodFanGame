@@ -12,17 +12,17 @@ public class RestIcon extends AbstractUI {
     public RestButton b;
 
     public RestIcon(RestButton b, Sprite i) {
-        super(FileHandler.ui.get("BORDER"));
+        super(FileHandler.getUi().get("BORDER"));
         icon = i;
         this.b = b;
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             if (!b.over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            if(b.showImg) sb.draw(icon, x, y, sWidth, sHeight);
+            if (b.showImg) sb.draw(icon, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }

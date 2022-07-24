@@ -1,10 +1,10 @@
 package com.fastcat.labyrintale.items.silver;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class Purplight extends AbstractItem {
 
@@ -27,7 +27,7 @@ public class Purplight extends AbstractItem {
 
     @Override
     public void onApplyStatus(AbstractStatus s, Array<AbstractEntity> t) {
-        if(s.id.equals("Infection")) {
+        if (s.id.equals("Infection")) {
             flashWithoutAction();
             s.amount++;
         }

@@ -28,14 +28,14 @@ public class ApplyStatusAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
-            if(actor != null && actor.isPlayer) {
+        if (duration == baseDuration) {
+            if (actor != null && actor.isPlayer) {
                 for (AbstractItem m : actor.item) {
                     if (m != null) m.onApplyStatus(status, target);
                 }
             }
 
-            for(AbstractEntity e : target) {
+            for (AbstractEntity e : target) {
                 e.applyStatus(status, status.amount);
             }
         }

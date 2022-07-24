@@ -7,9 +7,9 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.BurgerHat;
 import com.fastcat.labyrintale.items.starter.OldArmour;
-import com.fastcat.labyrintale.skills.player.basic.*;
+import com.fastcat.labyrintale.skills.player.basic.Barrier;
+import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.burger.Protect;
-import com.fastcat.labyrintale.skills.player.burger.Strong;
 
 import static com.badlogic.gdx.graphics.Color.YELLOW;
 

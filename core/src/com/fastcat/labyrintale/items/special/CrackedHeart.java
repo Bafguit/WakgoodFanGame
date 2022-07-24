@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.items.special;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.actions.ModifyMaxHealthAction;
 
 public class CrackedHeart extends AbstractItem {

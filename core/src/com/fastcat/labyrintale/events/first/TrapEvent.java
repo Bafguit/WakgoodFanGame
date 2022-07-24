@@ -1,8 +1,10 @@
 package com.fastcat.labyrintale.events.first;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractEvent;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.PlayerEventChoice;
@@ -24,7 +26,7 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1, new EventCondition() {
                 @Override
                 public boolean condition() {

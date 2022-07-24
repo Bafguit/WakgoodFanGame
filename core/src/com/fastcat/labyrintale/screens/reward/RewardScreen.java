@@ -21,7 +21,7 @@ public class RewardScreen extends AbstractScreen {
         cType = ControlPanel.ControlType.BASIC;
         this.rewards = rewards;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < rewards.size; i++) {
+        for (int i = 0; i < rewards.size; i++) {
             float hf = (float) rewards.size / 2 - 0.5f;
             RewardItemButton temp = new RewardItemButton(rewards.get(i));
             temp.setPosition(w * (0.5f - (hf - i) * 0.1f) - temp.sWidth * 0.5f, h * 0.7f - temp.sHeight * 0.5f);
@@ -34,7 +34,7 @@ public class RewardScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        for(RewardItemButton b : rewardButtons) {
+        for (RewardItemButton b : rewardButtons) {
             b.update();
         }
         passButton.update();
@@ -44,7 +44,7 @@ public class RewardScreen extends AbstractScreen {
     public void render(SpriteBatch sb) {
         bg.render(sb);
         rewardTypeText.render(sb);
-        for(RewardItemButton b : rewardButtons) {
+        for (RewardItemButton b : rewardButtons) {
             b.render(sb);
         }
         passButton.render(sb);
@@ -62,7 +62,7 @@ public class RewardScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        for(RewardItemButton t : rewardButtons) {
+        for (RewardItemButton t : rewardButtons) {
             t.dispose();
         }
     }

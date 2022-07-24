@@ -8,7 +8,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.ItemRewardEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.items.special.GreenHeart;
 
@@ -26,10 +25,10 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new ItemRewardEventChoice(data.SELECT[0], new GreenHeart(null), new EventCondition.True(), this, 1)); //TODO 특정 아이템 주도록 변경
             a.add(new NextPageEventChoice(data.SELECT[4], this, 5));
-        } else if(page == 1) {
+        } else if (page == 1) {
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
             a.add(new NextPageEventChoice(data.SELECT[2], this, 3));
             a.add(new NextPageEventChoice(data.SELECT[3], this, 4));
@@ -48,15 +47,15 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
 
     @Override
     public void onSetPage(int page) {
-        if(page == 2) {
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
-                if(p.isAlive() && p.maxHealth > 2) p.modifyMaxHealth(-2);
+        if (page == 2) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p.isAlive() && p.maxHealth > 2) p.modifyMaxHealth(-2);
             }
-        } else if(page == 3) {
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
-                if(p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 4, AbstractEntity.DamageType.LOSE));
+        } else if (page == 3) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 4, AbstractEntity.DamageType.LOSE));
             }
-        } else if(page == 4) {
+        } else if (page == 4) {
             AbstractLabyrinth.modifyBleak(20);
         }
     }

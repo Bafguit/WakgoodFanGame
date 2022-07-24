@@ -14,7 +14,7 @@ public class SkillSelectBG extends AbstractUI {
     public AbstractPlayer p;
 
     public SkillSelectBG(SkillSelectGroup g, AbstractPlayer p) {
-        super(FileHandler.ui.get("WAY_SELECT"));
+        super(FileHandler.getUi().get("WAY_SELECT"));
         group = g;
         this.p = p;
         overable = false;
@@ -22,7 +22,7 @@ public class SkillSelectBG extends AbstractUI {
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
+        if (enabled) {
             //if(reward.isDone) sb.setColor(p.pColorDG);
             if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);

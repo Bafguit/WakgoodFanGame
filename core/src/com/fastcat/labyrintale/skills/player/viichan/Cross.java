@@ -3,8 +3,6 @@ package com.fastcat.labyrintale.skills.player.viichan;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class Cross extends AbstractSkill {
 

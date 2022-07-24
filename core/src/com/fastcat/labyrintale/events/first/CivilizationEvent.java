@@ -18,15 +18,15 @@ public class CivilizationEvent extends AbstractEvent {
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1, new EventCondition.True()));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2, new EventCondition.True()));
             a.add(new NextPageEventChoice(data.SELECT[2], this, 3, new EventCondition.True()));
-        } else if(page == 1) {
+        } else if (page == 1) {
             a.add(new ItemRewardEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
-        } else if(page == 2) {
+        } else if (page == 2) {
             a.add(new SkillRewardEventChoice(data.SELECT[3], new EventCondition.True(), this, 4));
-        } else if(page == 3) {
+        } else if (page == 3) {
             a.add(new SkillSlotEventChoice(data.SELECT[3], new EventCondition() {
                 @Override
                 public boolean condition() {

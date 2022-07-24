@@ -20,7 +20,7 @@ public class MoveAction extends AbstractAction {
     private final HashMap<Integer, Float> position = new HashMap<>();
     private final MoveType type;
 
-    private boolean alive;
+    private final boolean alive;
     private boolean run = true;
     private boolean isLeft;
     private int toIndex;
@@ -49,12 +49,12 @@ public class MoveAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
-            if(toIndex < 0 || toIndex > 3 || from.movable > 0 || alive != from.isAlive()) {
+        if (duration == baseDuration) {
+            if (toIndex < 0 || toIndex > 3 || from.movable > 0 || alive != from.isAlive()) {
                 isDone = true;
                 run = false;
             } else {
-                if(type == MoveType.PLAYER) {
+                if (type == MoveType.PLAYER) {
                     isLeft = from.index < toIndex;
                     if (isLeft) {
                         while ((!AbstractLabyrinth.players[toIndex].isAlive() || AbstractLabyrinth.players[toIndex].movable > 0) && toIndex > from.index) {
@@ -77,27 +77,27 @@ public class MoveAction extends AbstractAction {
                         if (isLeft) {
                             for (int j = from.index; j < toIndex; j++) {
                                 AbstractPlayer p = AbstractLabyrinth.players[j + 1];
-                                if(p.movable > 0) {
+                                if (p.movable > 0) {
                                     v--;
                                 } else {
                                     int jv = j + v;
                                     to.put(jv, p);
                                     distance.put(jv, d);
                                     position.put(jv, w * 0.425f - w * 0.1f * jv);
-                                    if(v != 0) v++;
+                                    if (v != 0) v++;
                                 }
                             }
                         } else {
                             for (int j = from.index; j > toIndex; j--) {
                                 AbstractPlayer p = AbstractLabyrinth.players[j - 1];
-                                if(p.movable > 0) {
+                                if (p.movable > 0) {
                                     v++;
                                 } else {
                                     int jv = j + v;
                                     to.put(jv, p);
                                     distance.put(jv, d);
                                     position.put(jv, w * 0.425f - w * 0.1f * jv);
-                                    if(v != 0) v--;
+                                    if (v != 0) v--;
                                 }
                             }
                         }
@@ -125,27 +125,27 @@ public class MoveAction extends AbstractAction {
                         if (!isLeft) {
                             for (int j = from.index; j < toIndex; j++) {
                                 AbstractEnemy e = currentFloor.currentRoom.enemies[j + 1];
-                                if(e.movable > 0) {
+                                if (e.movable > 0) {
                                     v--;
                                 } else {
                                     int jv = j + v;
                                     to.put(jv, e);
                                     distance.put(jv, d);
                                     position.put(jv, w * 0.575f + w * 0.1f * jv);
-                                    if(v != 0) v++;
+                                    if (v != 0) v++;
                                 }
                             }
                         } else {
                             for (int j = from.index; j > toIndex; j--) {
                                 AbstractEnemy e = currentFloor.currentRoom.enemies[j - 1];
-                                if(e.movable > 0) {
+                                if (e.movable > 0) {
                                     v++;
                                 } else {
                                     int jv = j + v;
                                     to.put(jv, e);
                                     distance.put(jv, d);
                                     position.put(jv, w * 0.575f + w * 0.1f * jv);
-                                    if(v != 0) v--;
+                                    if (v != 0) v--;
                                 }
                             }
                         }
@@ -153,7 +153,7 @@ public class MoveAction extends AbstractAction {
                 }
             }
         }
-        if(run) {
+        if (run) {
             if (isDone) {
                 if (type == MoveType.PLAYER) {
                     for (Integer i : to.keySet()) {
@@ -190,14 +190,14 @@ public class MoveAction extends AbstractAction {
             } else {
                 float t = Labyrintale.tick * (1.0f / baseDuration);
                 from.animX += toDist * t;
-                if(isLeft && from.animX < toPos || !isLeft && from.animX > toPos) {
+                if (isLeft && from.animX < toPos || !isLeft && from.animX > toPos) {
                     from.animX = toPos;
                 }
                 for (Integer i : to.keySet()) {
                     AbstractEntity e = to.get(i);
                     float dist = distance.get(i), max = position.get(i);
                     e.animX += dist * t;
-                    if(isLeft && e.animX > max || !isLeft && e.animX < max) {
+                    if (isLeft && e.animX > max || !isLeft && e.animX < max) {
                         e.animX = max;
                     }
                 }

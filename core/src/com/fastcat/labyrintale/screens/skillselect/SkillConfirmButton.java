@@ -12,7 +12,7 @@ public class SkillConfirmButton extends AbstractUI {
     private final SkillSelectScreen sc;
 
     public SkillConfirmButton(SkillSelectScreen sc) {
-        super(FileHandler.ui.get("NEXT"));
+        super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;
         text = "결정";
@@ -22,7 +22,7 @@ public class SkillConfirmButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SkillConfirmButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if(sc.selected != null) {
+        if (sc.selected != null) {
             sc.skillSelected(sc.selected.group);
             Labyrintale.removeTempScreen(sc);
         }

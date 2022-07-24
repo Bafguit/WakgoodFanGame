@@ -1,17 +1,10 @@
 package com.fastcat.labyrintale.effects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.uis.EffectPublicText;
 import com.fastcat.labyrintale.uis.TurnEffectText;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
 
 public class TurnChangeEffect extends AbstractEffect {
 

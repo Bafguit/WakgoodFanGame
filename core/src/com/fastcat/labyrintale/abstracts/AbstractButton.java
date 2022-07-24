@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.abstracts;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class AbstractButton extends AbstractUI {

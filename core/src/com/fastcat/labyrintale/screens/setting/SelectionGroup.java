@@ -41,7 +41,7 @@ public class SelectionGroup {
     }
 
     public void render(SpriteBatch sb) {
-        if(can) sb.setColor(Color.WHITE);
+        if (can) sb.setColor(Color.WHITE);
         else sb.setColor(Color.DARK_GRAY);
         title.render(sb);
         text.render(sb);
@@ -75,7 +75,7 @@ public class SelectionGroup {
         public SelectionGroup ui;
 
         public Text(SelectionGroup ui) {
-            super(FileHandler.ui.get("BORDER_B"));
+            super(FileHandler.getUi().get("BORDER_B"));
             fontData = FontHandler.SETTING;
             this.ui = ui;
             overable = false;
@@ -94,7 +94,7 @@ public class SelectionGroup {
         public SelectionGroup ui;
 
         public Right(SelectionGroup ui) {
-            super(FileHandler.ui.get("RIGHT"));
+            super(FileHandler.getUi().get("RIGHT"));
             this.ui = ui;
         }
 
@@ -113,7 +113,7 @@ public class SelectionGroup {
         public SelectionGroup ui;
 
         public Left(SelectionGroup ui) {
-            super(FileHandler.ui.get("LEFT"));
+            super(FileHandler.getUi().get("LEFT"));
             this.ui = ui;
         }
 
@@ -132,7 +132,7 @@ public class SelectionGroup {
         public String title;
 
         public Title(String title, float x, float y) {
-            super(FileHandler.ui.get("SLIDE_A"), x, y);
+            super(FileHandler.getUi().get("SLIDE_A"), x, y);
             this.title = title;
             fontData = FontHandler.SETTING;
             overable = false;

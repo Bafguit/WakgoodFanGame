@@ -29,8 +29,8 @@ public class ModifyMaxHealthAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if (duration == baseDuration){
-            if(target.size > 0) {
+        if (duration == baseDuration) {
+            if (target.size > 0) {
                 for (AbstractEntity e : target) {
                     e.modifyMaxHealth(add);
                 }

@@ -19,7 +19,7 @@ public class RemoveStatusAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
+        if (duration == baseDuration) {
             actor.removeStatus(id);
         }
     }

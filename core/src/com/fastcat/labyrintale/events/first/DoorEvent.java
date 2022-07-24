@@ -4,7 +4,9 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.events.choices.*;
+import com.fastcat.labyrintale.events.choices.BattleEventChoice;
+import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 
 public class DoorEvent extends AbstractEvent {
@@ -19,16 +21,16 @@ public class DoorEvent extends AbstractEvent {
 
     @Override
     public void endBattle() {
-        if(page == 1) setPage(2);
+        if (page == 1) setPage(2);
     }
 
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if(page == 0) {
+        if (page == 0) {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 3));
-        } else if(page == 1) {
+        } else if (page == 1) {
             AbstractChoice[] c = AbstractLabyrinth.currentFloor.currentWay.choices;
             boolean b = false;
             for (AbstractChoice ch : c) {
@@ -38,7 +40,8 @@ public class DoorEvent extends AbstractEvent {
                     break;
                 }
             }
-            if(!b) a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal(AbstractLabyrinth.floorNum)));
+            if (!b)
+                a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal(AbstractLabyrinth.floorNum)));
         } else {
             a.add(new EndEventChoice());
         }

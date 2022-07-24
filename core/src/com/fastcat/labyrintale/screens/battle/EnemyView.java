@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -22,7 +20,7 @@ public class EnemyView extends AbstractUI {
     }
 
     public EnemyView(AbstractEnemy enemy) {
-        super(FileHandler.ui.get("ENTITY_POINT"));
+        super(FileHandler.getUi().get("ENTITY_POINT"));
         this.enemy = enemy;
         showImg = false;
         overable = false;
@@ -30,10 +28,10 @@ public class EnemyView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(battleScreen.isSelecting) {
+        if (battleScreen.isSelecting) {
             overable = enemy.isAlive() && isTarget;
             showImg = over && overable;
-            if(showImg) battleScreen.looking.add(enemy);
+            if (showImg) battleScreen.looking.add(enemy);
         } else {
             overable = false;
             showImg = isLooking;
@@ -43,9 +41,9 @@ public class EnemyView extends AbstractUI {
     @Override
     public void render(SpriteBatch sb) {
         setPosition(enemy.animX - sWidth / 2, enemy.animY - Gdx.graphics.getHeight() * 0.025f);
-        if(enabled && enemy != null && !enemy.isDead) {
+        if (enabled && enemy != null && !enemy.isDead) {
             sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(img, x, y, sWidth, sHeight);
             enemy.render(sb);
         }
     }

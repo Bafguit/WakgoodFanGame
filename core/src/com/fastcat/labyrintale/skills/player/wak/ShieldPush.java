@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.MoveAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class ShieldPush extends AbstractSkill {
 

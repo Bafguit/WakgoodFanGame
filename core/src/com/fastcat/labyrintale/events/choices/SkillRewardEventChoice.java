@@ -32,7 +32,7 @@ public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements
 
     @Override
     public void atEndOfTempScreen() {
-        if(toPage >= 0) {
+        if (toPage >= 0) {
             event.setPage(toPage);
         }
     }

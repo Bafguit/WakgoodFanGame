@@ -1,8 +1,11 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.fastcat.labyrintale.strings.*;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-public class StringHandler {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class StringHandler {
 
     public static SkillString skillString;
     public static StatusString statusString;

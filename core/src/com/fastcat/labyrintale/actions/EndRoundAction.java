@@ -13,21 +13,21 @@ public class EndRoundAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(isDone) {
+        if (isDone) {
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer t = battleScreen.players[i].player;
-                for(int j = 0; j < 3; j++) {
-                    if(t.hand[j].cooldown > 0) {
+                for (int j = 0; j < 3; j++) {
+                    if (t.hand[j].cooldown > 0) {
                         t.hand[j].cooldown--;
                     }
                 }
-                if(t.mLeftTemp.cooldown > 0) t.mLeftTemp.cooldown--;
-                if(t.mRightTemp.cooldown > 0) t.mRightTemp.cooldown--;
+                if (t.mLeftTemp.cooldown > 0) t.mLeftTemp.cooldown--;
+                if (t.mRightTemp.cooldown > 0) t.mRightTemp.cooldown--;
                 battleScreen.enemies[i].enemy.shuffleHand();
             }
-            if(AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
+            if (AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;
-            if(AbstractLabyrinth.cPanel.battlePanel.curPlayer == null || !AbstractLabyrinth.cPanel.battlePanel.curPlayer.isAlive()) {
+            if (AbstractLabyrinth.cPanel.battlePanel.curPlayer == null || !AbstractLabyrinth.cPanel.battlePanel.curPlayer.isAlive()) {
                 Array<AbstractEntity> temp = AbstractSkill.getTargets(PLAYER_FIRST);
                 if (temp.size > 0) {
                     AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));

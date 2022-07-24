@@ -16,7 +16,7 @@ public class UpTextEffect extends AbstractEffect {
 
     public UpTextEffect(float x, float y, String t, Color color) {
         super(x, y, 1);
-        text = new EffectPublicText(FileHandler.ui.get("MENU_SELECT"), 300, 60);
+        text = new EffectPublicText(FileHandler.getUi().get("MENU_SELECT"), 300, 60);
         text.fontData = new FontHandler.FontData(MEDIUM, 53, color);
         text.text = t;
         text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
@@ -24,8 +24,8 @@ public class UpTextEffect extends AbstractEffect {
 
     @Override
     protected void renderEffect(SpriteBatch sb) {
-        if(duration != baseDuration) {
-            if(text.fontData != null) {
+        if (duration != baseDuration) {
+            if (text.fontData != null) {
                 text.fontData.alpha -= Labyrintale.tick;
                 if (text.fontData.alpha < 0) text.fontData.alpha = 0;
                 text.y += Labyrintale.tick * 100;

@@ -3,8 +3,6 @@ package com.fastcat.labyrintale.skills.player.basic;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.SelectTargetAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
 
 public class Strike extends AbstractSkill {
@@ -17,7 +15,7 @@ public class Strike extends AbstractSkill {
 
     public Strike(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE,1);
+        setBaseAttack(VALUE, 1);
     }
 
     @Override

@@ -3,9 +3,11 @@ package com.fastcat.labyrintale.screens.shop.take;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.shop.ShopItemCharIcon;
 
 public class CharItemButton extends AbstractUI {
 
@@ -17,7 +19,7 @@ public class CharItemButton extends AbstractUI {
     public int index;
 
     public CharItemButton(ShopTakeScreen screen, int index, AbstractPlayer player, AbstractItem s) {
-        super(FileHandler.ui.get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_M"));
         toItem = s;
         item = player.item[index];
         this.player = player;
@@ -35,17 +37,17 @@ public class CharItemButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(over) {
+        if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
         }
     }
 
     @Override
     public void render(SpriteBatch sb) {
-        if(enabled) {
-            if(!over) sb.setColor(Color.LIGHT_GRAY);
+        if (enabled) {
+            if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            if(showImg) sb.draw(item.img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(item.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
             icon.render(sb);
         }
@@ -54,7 +56,7 @@ public class CharItemButton extends AbstractUI {
     @Override
     public void onClick() {
         player.gainItem(toItem, index);
-        if(sc.getItem != null) sc.itemSelected(toItem);
+        if (sc.getItem != null) sc.itemSelected(toItem);
         Labyrintale.removeTempScreen(sc);
     }
 }

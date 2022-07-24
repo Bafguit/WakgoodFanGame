@@ -23,7 +23,7 @@ public class BetEventChoice extends AbstractEvent.EventChoice {
     @Override
     protected void onSelect() {
         int r = AbstractLabyrinth.publicRandom.random(100);
-        if(r < rng) event.setPage(winPage);
+        if (r < rng) event.setPage(winPage);
         else event.setPage(losePage);
     }
 }

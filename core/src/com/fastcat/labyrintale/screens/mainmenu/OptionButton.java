@@ -10,7 +10,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class OptionButton extends AbstractUI {
 
     public OptionButton() {
-        super(FileHandler.ui.get("MENU_SELECT"));
+        super(FileHandler.getUi().get("MENU_SELECT"));
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.3f);
         fontData = MAIN_MENU;
         text = "설정";
@@ -19,7 +19,7 @@ public class OptionButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override

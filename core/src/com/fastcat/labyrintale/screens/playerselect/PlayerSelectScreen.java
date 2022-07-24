@@ -28,7 +28,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         int size = players.length;
         pPlayer = new PlayerButton[size];
         float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             PlayerButton adv = new PlayerButton(players[i], this);
             adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
             pPlayer[i] = adv;
@@ -42,7 +42,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         }
         nextButton.update();
         playerSelectText.update();
-        if(selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.player);
+        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.player);
     }
 
     @Override

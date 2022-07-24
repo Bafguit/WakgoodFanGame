@@ -22,7 +22,7 @@ public class UnfortifiedStatus extends AbstractStatus {
 
     @Override
     public float onAttackedMultiply(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if(type == AbstractEntity.DamageType.NORMAL) {
+        if (type == AbstractEntity.DamageType.NORMAL) {
             return 1.5f;
         } else return 1.0f;
     }

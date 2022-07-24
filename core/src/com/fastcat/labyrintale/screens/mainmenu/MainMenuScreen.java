@@ -3,14 +3,11 @@ package com.fastcat.labyrintale.screens.mainmenu;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
-import com.fastcat.labyrintale.uis.control.InfoPanel;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
-
-import static com.fastcat.labyrintale.handlers.FileHandler.bg;
 
 public class MainMenuScreen extends AbstractScreen {
 
@@ -24,7 +21,7 @@ public class MainMenuScreen extends AbstractScreen {
     public CheckBox check;
 
     public MainMenuScreen() {
-        setBg(bg.get("BG_MAIN"));
+        setBg(FileHandler.getBg().get("BG_MAIN"));
         logoText = new LogoText();
         gameStartButton = new GameStartButton();
         tutorialButton = new TutorialButton();
@@ -66,7 +63,7 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        if(Labyrintale.charSelectScreen != null) {
+        if (Labyrintale.charSelectScreen != null) {
             Labyrintale.charSelectScreen.selected = null;
             for (int i = 0; i < 4; i++) {
                 Labyrintale.charSelectScreen.chars[i].removeChar();
@@ -78,7 +75,7 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton.onHide();
         exitButton.onHide();
         SaveHandler.refresh();
-        if(playMusic) {
+        if (playMusic) {
             SoundHandler.playMusic("LOBBY", true, true);
             playMusic = false;
         }

@@ -26,40 +26,40 @@ public class VictoryAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
+        if (duration == baseDuration) {
             SoundHandler.fadeOutMusic("BATTLE_1");
         }
-        if(isDone) {
-            for(AbstractPlayer p : AbstractLabyrinth.players) {
+        if (isDone) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;
                 p.isNeut = false;
                 p.status = new Queue<>();
                 p.movable = 0;
             }
-            if(Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+            if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.victoryRoom();
             }
             Array<AbstractReward> temp = new Array<>();
             temp.add(new ExpReward());
             int r;
-            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
-                if(AbstractLabyrinth.advisor.cls == DOPA) {
-                    if(AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
+            if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
+                if (AbstractLabyrinth.advisor.cls == DOPA) {
+                    if (AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
                 }
                 temp.add(new SkillReward());
             } else {
                 r = AbstractLabyrinth.publicRandom.random(100);
-                if(r <= 10) temp.add(new SkillReward());
+                if (r <= 10) temp.add(new SkillReward());
             }
             r = AbstractLabyrinth.publicRandom.random(100);
-            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
+            if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
             }
-            if(r <= 40) {
+            if (r <= 40) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
             }
             int g = 20; //TODO 골드 보상 생성하는 메소드 만들기
-            if(AbstractLabyrinth.advisor.cls == SOPHIA) g = MathUtils.floor(g * 1.2f);
+            if (AbstractLabyrinth.advisor.cls == SOPHIA) g = MathUtils.floor(g * 1.2f);
             temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));
             Labyrintale.addTempScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
             Labyrintale.battleScreen.cType = ControlPanel.ControlType.BASIC;

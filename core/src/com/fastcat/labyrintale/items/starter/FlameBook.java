@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.BurnStatus;
-import com.fastcat.labyrintale.status.InfectionStatus;
 
 public class FlameBook extends AbstractItem {
 

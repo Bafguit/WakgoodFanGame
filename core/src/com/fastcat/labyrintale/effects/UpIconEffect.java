@@ -1,19 +1,21 @@
 package com.fastcat.labyrintale.effects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
+
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class UpIconEffect extends AbstractEffect {
 
     private final Sprite img;
     private float alpha = 0.9f;
-    private float x, y, rw, rh;
+    private final float x;
+    private float y;
+    private final float rw;
+    private final float rh;
 
     public UpIconEffect(float x, float y, Sprite img) {
         super(x, y, 1);
@@ -29,9 +31,9 @@ public class UpIconEffect extends AbstractEffect {
     protected void renderEffect(SpriteBatch sb) {
         y += Labyrintale.tick * 100;
         img.setPosition(x, y);
-        if(duration <= 0.5f) {
+        if (duration <= 0.5f) {
             float f = Labyrintale.tick * 1.8f;
-            if(alpha <= f) isDone = true;
+            if (alpha <= f) isDone = true;
             alpha = MathUtils.clamp(alpha - f, 0, 0.7f);
         }
         img.draw(sb, alpha);

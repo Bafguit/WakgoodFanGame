@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 import java.io.FileNotFoundException;
@@ -29,8 +28,8 @@ public class LogoEffect extends AbstractEffect {
         Labyrintale.videoPlayer.update();
         Texture frame = Labyrintale.videoPlayer.getTexture();
         if (frame != null) sb.draw(frame, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        if(InputHandler.isLeftClick && !isDone) isDone = true;
-        if(isDone) {
+        if (InputHandler.isLeftClick && !isDone) isDone = true;
+        if (isDone) {
             Labyrintale.fading = true;
             Labyrintale.game.setScreen(Labyrintale.mainMenuScreen);
         }

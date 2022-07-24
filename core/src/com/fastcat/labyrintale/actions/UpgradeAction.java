@@ -13,13 +13,13 @@ public class UpgradeAction extends AbstractAction {
     }
 
     public UpgradeAction(AbstractSkill skill) {
-        this(new AbstractSkill[] {skill});
+        this(new AbstractSkill[]{skill});
     }
 
     @Override
     protected void updateAction() {
-        if(duration == baseDuration) {
-            for(AbstractSkill s : skills) {
+        if (duration == baseDuration) {
+            for (AbstractSkill s : skills) {
                 s.upgrade();
             }
         }

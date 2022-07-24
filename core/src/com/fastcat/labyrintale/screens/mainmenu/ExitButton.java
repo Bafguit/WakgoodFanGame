@@ -9,7 +9,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 public class ExitButton extends AbstractUI {
 
     public ExitButton() {
-        super(FileHandler.ui.get("MENU_SELECT"));
+        super(FileHandler.getUi().get("MENU_SELECT"));
         setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
         fontData = MAIN_MENU;
         text = "종료";
@@ -18,7 +18,7 @@ public class ExitButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if(!over && showImg) showImg = false;
+        if (!over && showImg) showImg = false;
     }
 
     @Override

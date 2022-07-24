@@ -16,8 +16,8 @@ public class HealReward extends AbstractReward {
 
     @Override
     public void takeReward() {
-        for(AbstractPlayer p : AbstractLabyrinth.players) {
-            if(p.isAlive()) p.heal(amount);
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+            if (p.isAlive()) p.heal(amount);
         }
     }
 }
