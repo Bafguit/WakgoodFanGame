@@ -24,6 +24,10 @@ public class BlindStatus extends AbstractStatus {
         flash();
         ActionHandler.top(new RemoveStatusAction(this, true));
     }
+    @Override
+    public void endOfRound() {
+        bot(new RemoveStatusAction(this, true));
+    }
 
     @Override
     public float attackMultiply() {

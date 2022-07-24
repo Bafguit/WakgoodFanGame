@@ -19,7 +19,7 @@ public class SinStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfTurn() {
+    public void endOfRound() {
         bot(new RemoveStatusAction(this, true));
     }
 

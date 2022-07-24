@@ -19,7 +19,7 @@ public class LethargyStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfTurn() {
+    public void endOfRound() {
         bot(new ReduceStatusAction(this, 1, true));
     }
 

@@ -70,6 +70,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public abstract Array<AbstractItem> getStartingItem();
 
     public enum PlayerClass {
-        WAK, MANAGER, INE, VIICHAN, LILPA, BURGER, GOSEGU, JURURU
+        WAK, INE, VIICHAN, LILPA, BURGER, GOSEGU, JURURU, MANAGER
     }
 }
