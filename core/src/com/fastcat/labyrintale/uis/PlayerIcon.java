@@ -17,7 +17,7 @@ public class PlayerIcon extends AbstractUI {
     public AbstractPlayer p;
 
     public PlayerIcon(int index) {
-        super(FileHandler.getUi().get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_V"));
         this.index = index;
         p = AbstractLabyrinth.players[index];
     }
@@ -26,7 +26,7 @@ public class PlayerIcon extends AbstractUI {
     public void render(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(p.isAlive() ? p.animColor : Color.DARK_GRAY);
-            sb.draw(p.img, x, y, sWidth, sHeight);
+            sb.draw(p.imgPanel, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractItem.ItemRarity;
+import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
@@ -209,5 +210,10 @@ public class ShopRoom extends AbstractRoom {
         public void setPanel() {
             cPanel.infoPanel.setInfo(item);
         }
+    }
+
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
     }
 }

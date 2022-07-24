@@ -75,7 +75,7 @@ public class RestScreen extends AbstractScreen {
             RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.REVIVE);
             b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
 
-            RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b2.type));
+            RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b3.type));
             c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
 
             RestDesc d3 = desc[cnt] = new RestDesc("소생");
@@ -89,7 +89,7 @@ public class RestScreen extends AbstractScreen {
             RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.DISCOVER);
             b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
 
-            RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b2.type));
+            RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b3.type));
             c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
 
             RestDesc d3 = desc[cnt] = new RestDesc("탐색");

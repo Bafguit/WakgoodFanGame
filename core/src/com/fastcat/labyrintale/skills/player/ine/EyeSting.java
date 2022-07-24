@@ -18,7 +18,7 @@ public class EyeSting extends AbstractSkill {
     public EyeSting(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
-        cooltime = 3;
+        cooltime = 4;
     }
 
     @Override

@@ -38,10 +38,10 @@ public class InfoPanel extends AbstractUI {
         overable = false;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
-        nx = dx = w * 0.69f;
-        ny = h * 0.41f;
-        dy = h * 0.4f - 45 * scale;
-        nw = dw = 650 * InputHandler.scale;
+        nx = dx = w * 0.615f;
+        ny = h * 0.345f;
+        dy = h * 0.335f - 50 * scale;
+        nw = dw = 880 * InputHandler.scale;
         nh = 60 * InputHandler.scale;
         dh = 280 * InputHandler.scale;
 
@@ -55,10 +55,9 @@ public class InfoPanel extends AbstractUI {
 
         for (int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(i);
-            c.setPosition(w * (0.17f + 0.08f * i) - c.sWidth / 2, h * 0.275f);
+            c.setPosition(w * (0.0825f + 0.08f * i) - c.sWidth / 2, h * 0.1f);
             pIcons[i] = c;
         }
-
     }
 
     @Override

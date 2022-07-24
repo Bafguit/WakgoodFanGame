@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
@@ -15,6 +16,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final Color pColorLG;
     public final Color pColorDG;
     public final PlayerClass playerClass;
+    public Sprite imgPanel;
 
     public AbstractPlayer(String id, int maxHealth, Color c) {
         super(id, 4, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), true);
@@ -30,6 +32,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         mRight = mRightTemp = new MoveRight(this);
         setImage(FileHandler.getCharImg().get(playerClass), FileHandler.getCharImgBig().get(playerClass), FileHandler.getCharBgImg().get(playerClass));
         imgTiny = FileHandler.getCharImgTiny().get(playerClass);
+        imgPanel = FileHandler.getCharPanelImg().get(playerClass);
         Array<AbstractItem> t = getStartingItem();
         for (int j = 0; j < 2; j++) {
             AbstractItem it = t.get(j);

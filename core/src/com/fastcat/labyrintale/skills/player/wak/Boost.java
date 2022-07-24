@@ -12,11 +12,12 @@ public class Boost extends AbstractSkill {
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER;
-    private static final int VALUE = 1;
+    private static final int VALUE = 2;
 
     public Boost(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseSpell(3);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

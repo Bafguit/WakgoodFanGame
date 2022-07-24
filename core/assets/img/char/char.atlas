@@ -4,35 +4,33 @@ char.png
 burger_p
 	bounds: 940, 71, 467, 467
 burger_s
-	bounds: 1928, 1913, 67, 67
+	bounds: 2, 2, 67, 67
 gosegu_bg
 	bounds: 1286, 540, 640, 1440
-gosegu_cPanel
-	bounds: 1878, 213, 165, 325
 gosegu_s
-	bounds: 1947, 144, 67, 67
+	bounds: 1928, 1706, 67, 67
 ine_bg
 	bounds: 644, 540, 640, 1440
 ine_p
 	bounds: 1409, 71, 467, 467
 ine_s
-	bounds: 1878, 144, 67, 67
+	bounds: 1928, 1844, 67, 67
 jururu_bg
 	bounds: 2, 540, 640, 1440
 jururu_s
-	bounds: 1928, 1844, 67, 67
+	bounds: 1928, 1775, 67, 67
 lilpa_s
 	bounds: 71, 2, 67, 67
 manager_p
 	bounds: 471, 71, 467, 467
 manager_s
-	bounds: 2, 2, 67, 67
+	bounds: 1928, 1913, 67, 67
 viichan_s
-	bounds: 1878, 75, 67, 67
+	bounds: 140, 2, 67, 67
 wak_p
 	bounds: 2, 71, 467, 467
 wak_s
-	bounds: 140, 2, 67, 67
+	bounds: 209, 2, 67, 67
 
 char2.png
 	size: 2048, 2048
@@ -45,8 +43,6 @@ jururu_p
 	bounds: 471, 2, 467, 467
 lilpa_bg
 	bounds: 644, 471, 640, 1440
-lilpa_cPanel
-	bounds: 1878, 144, 165, 325
 lilpa_p
 	bounds: 2, 2, 467, 467
 manager_bg
@@ -58,34 +54,38 @@ char3.png
 	size: 2048, 2048
 	repeat: none
 burger
-	bounds: 849, 329, 171, 171
+	bounds: 1632, 1603, 171, 171
 burger_cPanel
-	bounds: 336, 175, 165, 325
+	bounds: 1459, 1285, 171, 330
 gosegu
-	bounds: 676, 329, 171, 171
+	bounds: 175, 2, 171, 171
+gosegu_cPanel
+	bounds: 2, 175, 171, 330
 ine
-	bounds: 1793, 1771, 171, 171
+	bounds: 1459, 1112, 171, 171
 ine_cPanel
-	bounds: 1453, 1617, 165, 325
+	bounds: 1286, 953, 171, 330
 jururu
-	bounds: 1022, 329, 171, 171
+	bounds: 1805, 1776, 171, 171
 jururu_cPanel
-	bounds: 169, 175, 165, 325
+	bounds: 1459, 1617, 171, 330
 lilpa
-	bounds: 503, 329, 171, 171
+	bounds: 521, 334, 171, 171
+lilpa_cPanel
+	bounds: 1286, 1617, 171, 330
 manager
-	bounds: 1620, 1771, 171, 171
+	bounds: 1632, 1776, 171, 171
 manager_cPanel
-	bounds: 1286, 1617, 165, 325
+	bounds: 1286, 1285, 171, 330
 viichan
 	bounds: 2, 2, 171, 171
 viichan_bg
-	bounds: 644, 502, 640, 1440
+	bounds: 644, 507, 640, 1440
 viichan_cPanel
-	bounds: 2, 175, 165, 325
+	bounds: 175, 175, 171, 330
 wak
-	bounds: 175, 2, 171, 171
+	bounds: 1286, 780, 171, 171
 wak_bg
-	bounds: 2, 502, 640, 1440
+	bounds: 2, 507, 640, 1440
 wak_cPanel
-	bounds: 1286, 1290, 165, 325
+	bounds: 348, 175, 171, 330

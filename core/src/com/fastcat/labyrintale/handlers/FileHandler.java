@@ -52,11 +52,10 @@ public class FileHandler implements Disposable {
     private static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
     @Getter
     private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
+    @Getter
     private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
     @Getter
     private static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
-    private static final HashMap<AdvisorClass, Sprite> advImgBig = new HashMap<>();
-    private static final HashMap<AdvisorClass, Sprite> advBgImg = new HashMap<>();
     //스킬
     @Getter
     private static final HashMap<String, Sprite> skillImg = new HashMap<>();
@@ -143,8 +142,6 @@ public class FileHandler implements Disposable {
         maps.add(charBgImg);
         maps.add(charPanelImg);
         maps.add(advImg);
-        maps.add(advImgBig);
-        maps.add(advBgImg);
         maps.add(skillImg);
         maps.add(statusImg);
         maps.add(itemImg);
@@ -202,6 +199,7 @@ public class FileHandler implements Disposable {
         ui.put("BORDER_B", new Sprite(new Texture("img/ui/border_p.png")));
         ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
         ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
+        ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
         ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
         ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
         ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));
@@ -257,13 +255,9 @@ public class FileHandler implements Disposable {
 
     private void generateAdvImg() {
         advImg.clear();
-        advImgBig.clear();
-        advBgImg.clear();
         for (AdvisorClass cls : AdvisorClass.values()) {
             String s = cls.toString().toLowerCase();
             advImg.put(cls, new Sprite(new Texture("img/advisor/" + s + ".png")));
-            advImgBig.put(cls, new Sprite(new Texture("img/advisor/" + s + "_s.png")));
-            advBgImg.put(cls, new Sprite(new Texture("img/advisor/" + s + "_bg.png")));
         }
     }
 

@@ -19,6 +19,7 @@ import com.fastcat.labyrintale.items.special.GolemHead;
 import com.fastcat.labyrintale.items.special.GreenHeart;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
+import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
@@ -71,12 +72,12 @@ public final class GroupHandler {
 
     public static class AdvisorGroup {
 
-        public static Array<AbstractAdvisor> sort = new Array<>();
+        public static Array<AdvisorClass> sort = new Array<>();
 
         public static void generateAdvisor() {
             for (AdvisorClass c : AdvisorClass.values()) {
                 if (c != AdvisorClass.BUSINESS && c != AdvisorClass.FREETER && c != AdvisorClass.CARNAR) {
-                    sort.add(getAdvisorInstance(c));
+                    sort.add(c);
                 }
             }
         }
@@ -123,23 +124,23 @@ public final class GroupHandler {
         }
 
         public static Array<AbstractAdvisor> getAdvisors(int amount) {
-            Array<AbstractAdvisor> t = new Array<>();
+            Array<AdvisorClass> t = new Array<>();
             Array<AbstractAdvisor> r = new Array<>();
-            for (AbstractAdvisor advisor : sort) {
-                if (advisor.cls != AbstractLabyrinth.advisor.cls) t.add(advisor);
+            for (AdvisorClass advisor : sort) {
+                if (advisor != AbstractLabyrinth.advisor.cls) t.add(advisor);
             }
             staticShuffle(t);
             for (int i = 0; i < amount; i++) {
-                r.add(t.get(i));
+                r.add(getAdvisorInstance(t.get(i)));
             }
             return r;
         }
 
-        public static Array<AbstractAdvisor> staticShuffle(Array<AbstractAdvisor> array) {
-            AbstractAdvisor[] items = array.toArray(AbstractAdvisor.class);
+        public static Array<AdvisorClass> staticShuffle(Array<AdvisorClass> array) {
+            AdvisorClass[] items = array.toArray(AdvisorClass.class);
             for (int i = array.size - 1; i >= 0; --i) {
                 int ii = publicRandom.random(i);
-                AbstractAdvisor temp = items[i];
+                AdvisorClass temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;
             }
@@ -152,12 +153,13 @@ public final class GroupHandler {
     public static class RoomGroup {
 
         public static HashMap<String, AbstractRoom> idSort = new HashMap<>();
+        public static HashMap<String, AbstractEvent> eventSort = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> weakGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> normalGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> eliteGroup = new HashMap<>();
         public static HashMap<Integer, Array<AbstractRoom>> bossGroup = new HashMap<>();
-        public static HashMap<Integer, Array<AbstractRoom>> eventGroup = new HashMap<>();
-        public static Array<AbstractRoom> eventNeut = new Array<>();
+        public static HashMap<Integer, Array<AbstractEvent>> eventGroup = new HashMap<>();
+        public static Array<AbstractEvent> eventNeut = new Array<>();
         public static int eventCount;
         public static int neutCount;
         public static int weakCount;
@@ -209,51 +211,52 @@ public final class GroupHandler {
             bossGroup.clear();
             Array<AbstractRoom> t = new Array<>();
             t.add(new TestBoss());
+            t.add(new Boss1());
             bossGroup.put(1, t);
         }
 
         private static void generateEvent() {
             eventGroup.clear();
-            Array<AbstractRoom> t = new Array<>();
-            t.add(new AbstractRoom(new DoorEvent()));
-            t.add(new AbstractRoom(new TrapEvent()));
-            t.add(new AbstractRoom(new SurvivorEvent()));
-            t.add(new AbstractRoom(new CivilizationEvent()));
-            t.add(new AbstractRoom(new SealedHeartEvent()));
+            Array<AbstractEvent> t = new Array<>();
+            t.add(new DoorEvent());
+            t.add(new TrapEvent());
+            t.add(new SurvivorEvent());
+            t.add(new CivilizationEvent());
+            t.add(new SealedHeartEvent());
             eventGroup.put(1, t);
-            Array<AbstractRoom> t2 = new Array<>();
-            t2.add(new AbstractRoom(new BettingEvent()));
-            t2.add(new AbstractRoom(new FogEvent()));
-            t2.add(new AbstractRoom(new StrangerEvent()));
-            t2.add(new AbstractRoom(new UpsetIdolEvent()));
-            t2.add(new AbstractRoom(new WeaponEvent()));
+            Array<AbstractEvent> t2 = new Array<>();
+            t2.add(new BettingEvent());
+            t2.add(new FogEvent());
+            t2.add(new StrangerEvent());
+            t2.add(new UpsetIdolEvent());
+            t2.add(new WeaponEvent());
             eventGroup.put(2, t2);
             //TODO 3층 4층 이벤트 만들기
-            Array<AbstractRoom> t3 = new Array<>();
-            t3.add(new AbstractRoom(new GeneralStoreEvent()));
-            t3.add(new AbstractRoom(new FogEvent()));
-            t3.add(new AbstractRoom(new StrangerEvent()));
-            t3.add(new AbstractRoom(new UpsetIdolEvent()));
-            t3.add(new AbstractRoom(new WeaponEvent()));
+            Array<AbstractEvent> t3 = new Array<>();
+            t3.add(new GeneralStoreEvent());
+            t3.add(new FogEvent());
+            t3.add(new StrangerEvent());
+            t3.add(new UpsetIdolEvent());
+            t3.add(new WeaponEvent());
             eventGroup.put(3, t3);
-            Array<AbstractRoom> t4 = new Array<>();
-            t4.add(new AbstractRoom(new BettingEvent()));
-            t4.add(new AbstractRoom(new FogEvent()));
-            t4.add(new AbstractRoom(new StrangerEvent()));
-            t4.add(new AbstractRoom(new UpsetIdolEvent()));
-            t4.add(new AbstractRoom(new WeaponEvent()));
+            Array<AbstractEvent> t4 = new Array<>();
+            t4.add(new BettingEvent());
+            t4.add(new FogEvent());
+            t4.add(new StrangerEvent());
+            t4.add(new UpsetIdolEvent());
+            t4.add(new WeaponEvent());
             eventGroup.put(4, t4);
         }
 
         private static void generateNeut() {
-            eventNeut.add(new AbstractRoom(new TransformEvent()));
-            eventNeut.add(new AbstractRoom(new UpgradeEvent()));
-            eventNeut.add(new AbstractRoom(new ChaosEvent()));
-            eventNeut.add(new AbstractRoom(new CureEvent()));
-            eventNeut.add(new AbstractRoom(new PurifyEvent()));
-            eventNeut.add(new AbstractRoom(new LightEvent()));
-            eventNeut.add(new AbstractRoom(new MetamorphEvent()));
-            eventNeut.add(new AbstractRoom(new GoldEvent()));
+            eventNeut.add(new TransformEvent());
+            eventNeut.add(new UpgradeEvent());
+            eventNeut.add(new ChaosEvent());
+            eventNeut.add(new CureEvent());
+            eventNeut.add(new PurifyEvent());
+            eventNeut.add(new LightEvent());
+            eventNeut.add(new MetamorphEvent());
+            eventNeut.add(new GoldEvent());
         }
 
         public static void shuffleAll() {
@@ -266,8 +269,8 @@ public final class GroupHandler {
             for (int i = 0; i < bossGroup.size(); i++)
                 staticShuffle(bossGroup.get(i + 1), groupRandom);
             for (int i = 0; i < eventGroup.size(); i++)
-                staticShuffle(eventGroup.get(i + 1), groupRandom);
-            staticShuffle(eventNeut, groupRandom);
+                eventShuffle(eventGroup.get(i + 1), groupRandom);
+            eventShuffle(eventNeut, groupRandom);
         }
 
         private static void sort() {
@@ -300,49 +303,51 @@ public final class GroupHandler {
                     idSort.put(r.id, r);
                 }
             }
-            for (Array<AbstractRoom> ar : eventGroup.values()) {
-                for (AbstractRoom r : ar) {
-                    idSort.put(r.id, r);
+
+            eventSort.clear();
+            for (Array<AbstractEvent> ar : eventGroup.values()) {
+                for (AbstractEvent r : ar) {
+                    eventSort.put(r.id, r);
                 }
             }
-            for (AbstractRoom r : eventNeut) {
-                idSort.put(r.id, r);
+            for (AbstractEvent r : eventNeut) {
+                eventSort.put(r.id, r);
             }
 
         }
 
         public static AbstractRoom getRoom(String id) {
-            return idSort.get(id).cpy();
+            return idSort.get(id).clone();
         }
 
         public static AbstractRoom getNextWeak(int f) {
-            return weakGroup.get(f).get(weakCount++).cpy();
+            return weakGroup.get(f).get(weakCount++).clone();
         }
 
         public static AbstractRoom getNextNormal(int f) {
-            return normalGroup.get(currentFloor.floorNum).get(normalCount++).cpy();
+            return normalGroup.get(currentFloor.floorNum).get(normalCount++).clone();
         }
 
         public static AbstractRoom getNextElite(int f) {
-            return eliteGroup.get(currentFloor.floorNum).get(eliteCount++).cpy();
+            return eliteGroup.get(currentFloor.floorNum).get(eliteCount++).clone();
         }
 
         public static AbstractRoom getNextBoss(int f) {
-            return bossGroup.get(currentFloor.floorNum).get(bossCount++).cpy();
+            return bossGroup.get(currentFloor.floorNum).get(bossCount++).clone();
         }
 
-        public static AbstractRoom getNextEvent(int floorNum) {
-            AbstractRoom r;
-            Array<AbstractRoom> t = eventGroup.get(floorNum);
+        public static AbstractEvent getNextEvent(int floorNum) {
+            AbstractEvent r;
+            Array<AbstractEvent> t = eventGroup.get(floorNum);
             boolean ef = eventCount < t.size, nf = neutCount < floorNum * 2;
             if (ef) {
                 if (nf && eventRandom.random(100) < 25) {
-                    r = eventNeut.get(neutCount++).cpy();
+                    r = eventNeut.get(neutCount++).clone();
                 } else {
-                    r = eventGroup.get(floorNum).get(eventCount++).cpy();
+                    r = eventGroup.get(floorNum).get(eventCount++).clone();
                 }
             } else {
-                r = eventNeut.get(neutCount++).cpy();
+                r = eventNeut.get(neutCount++).clone();
             }
             return r;
         }
@@ -367,6 +372,19 @@ public final class GroupHandler {
             for (int i = array.size - 1; i >= 0; --i) {
                 int ii = r.random(i);
                 AbstractRoom temp = items[i];
+                items[i] = items[ii];
+                items[ii] = temp;
+            }
+            array.clear();
+            array.addAll(items);
+            return array;
+        }
+
+        public static Array<AbstractEvent> eventShuffle(Array<AbstractEvent> array, RandomXC r) {
+            AbstractEvent[] items = array.toArray(AbstractEvent.class);
+            for (int i = array.size - 1; i >= 0; --i) {
+                int ii = r.random(i);
+                AbstractEvent temp = items[i];
                 items[i] = items[ii];
                 items[ii] = temp;
             }

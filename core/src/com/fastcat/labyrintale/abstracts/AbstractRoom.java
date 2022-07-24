@@ -14,7 +14,7 @@ import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
-public class AbstractRoom {
+public abstract class AbstractRoom implements Cloneable {
 
     public String id;
     public String text;
@@ -51,6 +51,10 @@ public class AbstractRoom {
 
     }
 
+    public final void refreshEnemy() {
+        enemies = getEnemies();
+    }
+
     public final void enter() {
         if (type == MYSTERY) {
             int b = 10, s = 5, r = 10, e = 75;
@@ -64,26 +68,29 @@ public class AbstractRoom {
             r = r + s;
             e = e + r;
             int x = AbstractLabyrinth.mapRandom.random(e);
-            AbstractRoom temp;
             if (x < b) {
-                //TODO 랜덤으로 변경
-                temp = AbstractLabyrinth.currentFloor.currentWay.enemies.cpy();
+                AbstractRoom temp;
+                temp = AbstractLabyrinth.currentFloor.currentWay.enemies.clone();
                 enemies = temp.getEnemies();
+                id = temp.id;
+                type = temp.type;
             } else if (x < s) {
+                AbstractRoom temp;
                 temp = new ShopRoom();
+                id = temp.id;
+                type = SHOP;
             } else if (x < r) {
+                AbstractRoom temp;
                 temp = new RestRoom();
+                id = temp.id;
+                type = REST;
             } else {
-                temp = GroupHandler.RoomGroup.getNextEvent(AbstractLabyrinth.floorNum);
-                event = temp.event;
+                event = GroupHandler.RoomGroup.getNextEvent(AbstractLabyrinth.floorNum);
+                type = EVENT;
             }
-            id = temp.id;
-            type = temp.type;
-            done();
-            battleDone = true;
-            AbstractLabyrinth.currentFloor.currentRoom = temp;
         }
         if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
+            refreshEnemy();
             SoundHandler.fadeOutMusic("MAP");
             SoundHandler.addMusic("BATTLE_1", true, true);
             battleScreen = new BattleScreen();
@@ -102,24 +109,19 @@ public class AbstractRoom {
         }
     }
 
-    public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
-    }
+    public abstract AbstractEnemy[] getEnemies();
 
     public void done() {
         this.isDone = true;
     }
 
-    public final AbstractRoom cpy() {
-        AbstractRoom r = new AbstractRoom();
-        r.id = id;
-        r.text = text;
-        r.enemies = getEnemies();
-        if (event != null) r.event = event.clone();
-        r.type = type;
-        r.battleDone = battleDone;
-        r.isDone = isDone;
-        return r;
+    @Override
+    public AbstractRoom clone() {
+        try {
+            return (AbstractRoom) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public enum RoomType {
