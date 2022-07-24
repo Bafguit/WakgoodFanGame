@@ -22,9 +22,10 @@ import static com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeT
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.BOLD;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public final class FontHandler implements Disposable {
-
+    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
     public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 64, true);
@@ -47,8 +48,7 @@ public final class FontHandler implements Disposable {
     public static final FontData STATUS = new FontData(MEDIUM, 24, true);
     public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
     public static final FontData SETTING = new FontData(BOLD, 44, true);
-    private static final FreeTypeFontGenerator medium = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
-    private static final FreeTypeFontGenerator bold = new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     private static final GlyphLayout layout = new GlyphLayout();
     private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
@@ -320,6 +320,7 @@ public final class FontHandler implements Disposable {
             this.color = color.cpy();
             this.bColor = bColor.cpy();
             this.font = generate(type, this.size, this.color, this.bColor, shadow, border);
+
             this.font.getData().markupEnabled = true;
             this.type = type;
             this.shadow = shadow;

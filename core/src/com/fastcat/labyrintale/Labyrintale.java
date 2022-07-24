@@ -32,6 +32,7 @@ import lombok.Getter;
 
 public class Labyrintale extends Game {
 
+
     public static Labyrintale game;
 
     public static PolygonSpriteBatch psb;
@@ -40,6 +41,8 @@ public class Labyrintale extends Game {
     public static OrthographicCamera camera;
     public static FitViewport viewport;
     public static VideoPlayer videoPlayer;
+
+    private EffectHandler effectHandler;
 
     public static AbstractLabyrinth labyrinth;
     public static MainMenuScreen mainMenuScreen;
@@ -122,6 +125,7 @@ public class Labyrintale extends Game {
             Gdx.graphics.setUndecorated(true);
             Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
         }
+
         screenShake = ScreenShake.newInstance();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
@@ -131,6 +135,15 @@ public class Labyrintale extends Game {
         psb = new PolygonSpriteBatch();
         sr = new SkeletonRenderer();
         sr.setPremultipliedAlpha(false);
+        InputHandler.getInstance();
+        FileHandler.getInstance();
+        FontHandler.getInstance();
+        SoundHandler.getInstance();
+        ActionHandler.getInstance();
+        effectHandler = EffectHandler.newInstance();
+        GroupHandler.getInstance();
+
+
         game = this;
         mainMenuScreen = new MainMenuScreen();
         charSelectScreen = new CharSelectScreen();

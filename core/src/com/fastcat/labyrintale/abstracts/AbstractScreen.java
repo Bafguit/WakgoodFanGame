@@ -21,7 +21,7 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     private Sprite bg;
 
     @Getter
-    private EffectHandler effectHandler;
+    private final EffectHandler effectHandler = EffectHandler.newInstance();
 
     public abstract void update();
 
@@ -45,7 +45,6 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     }
 
     public void onCreate() {
-        effectHandler = EffectHandler.newInstance();
     }
 
     @Override
