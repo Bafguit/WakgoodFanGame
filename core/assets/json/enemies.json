@@ -34,5 +34,9 @@
   "BossEnemy1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "BossEnemy2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }

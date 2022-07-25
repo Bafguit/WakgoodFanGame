@@ -18,7 +18,6 @@ public final class EffectHandler {
      * Instance of handler.
      * Initialized on getInstance()
      */
-    private static EffectHandler instance;
     public Queue<AbstractEffect> effectList = new Queue<>();
     public boolean isShaking = false;
 

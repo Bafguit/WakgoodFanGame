@@ -17,7 +17,7 @@ public class Impulse extends AbstractSkill {
 
     public Impulse(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

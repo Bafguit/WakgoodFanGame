@@ -101,9 +101,14 @@ public final class InputHandler {
             map = Gdx.input.isKeyJustPressed(Keys.M);
         }
 
-        if (map && Labyrintale.mapScreen != null && Labyrintale.getCurScreen().type != AbstractScreen.ScreenType.MAP) {
+        AbstractScreen s = Labyrintale.getCurScreen();
+        if (map && Labyrintale.mapScreen != null && s.type != AbstractScreen.ScreenType.MAP && s.type != AbstractScreen.ScreenType.SETTING) {
             MapScreen.view();
             map = false;
+        }
+
+        if(cancel && Labyrintale.settingScreen != null && Labyrintale.labyrinth != null && s.type != AbstractScreen.ScreenType.SETTING) {
+            Labyrintale.addTempScreen(Labyrintale.settingScreen);
         }
     }
 }

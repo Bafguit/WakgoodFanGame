@@ -42,8 +42,6 @@ public class Labyrintale extends Game {
     public static FitViewport viewport;
     public static VideoPlayer videoPlayer;
 
-    private EffectHandler effectHandler;
-
     public static AbstractLabyrinth labyrinth;
     public static MainMenuScreen mainMenuScreen;
     public static CharSelectScreen charSelectScreen;
@@ -140,7 +138,6 @@ public class Labyrintale extends Game {
         FontHandler.getInstance();
         SoundHandler.getInstance();
         ActionHandler.getInstance();
-        effectHandler = EffectHandler.newInstance();
         GroupHandler.getInstance();
 
 

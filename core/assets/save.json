@@ -1,15 +1,15 @@
 {
-  "date" : "2022_07_25_00_19_52",
+  "date" : "2022_07_25_20_46_12",
   "random" : {
-    "seed" : "104A6FO6",
-    "seedLong" : 4948526554707954,
-    "publicRandom" : 40,
-    "skillRandom" : 66,
-    "itemRandom" : 126,
-    "mapRandom" : 109,
+    "seed" : "OR6R611U",
+    "seedLong" : 7982548254494985,
+    "publicRandom" : 504,
+    "skillRandom" : 189,
+    "itemRandom" : 382,
+    "mapRandom" : 117,
     "monsterRandom" : 0,
-    "eventRandom" : 2,
-    "shopRandom" : 28
+    "eventRandom" : 7,
+    "shopRandom" : 84
   },
   "restriction" : {
     "GRW" : 0,
@@ -26,8 +26,8 @@
   "itemAble" : 0,
   "selection" : 3,
   "maxEnergy" : 3,
-  "gold" : 644,
-  "bleak" : 20,
+  "gold" : 132,
+  "bleak" : 65,
   "bleakMin" : 0,
   "bleakMax" : 100,
   "bleakAdd" : 9,
@@ -40,124 +40,115 @@
     }
   },
   "players" : [ {
-    "id" : "wak",
-    "item" : [ "OldShield", "Pendant" ],
+    "id" : "burger",
+    "item" : [ "Coffin", "BronzeItem5" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "Bless",
+      "usedOnly" : false,
+      "upgradeCount" : 3
+    }, {
+      "id" : "SuperSave",
       "usedOnly" : false,
       "upgradeCount" : 1
+    }, {
+      "id" : "Strong",
+      "usedOnly" : false,
+      "upgradeCount" : 2
+    } ],
+    "isDead" : false,
+    "slot" : [ 3, 1, 1 ],
+    "index" : 0,
+    "maxHealth" : 35,
+    "health" : 33
+  }, {
+    "id" : "jururu",
+    "item" : [ "ElasticRing", "GoldItem11" ],
+    "deck" : [ {
+      "id" : "IronWill",
+      "usedOnly" : false,
+      "upgradeCount" : 1
+    }, {
+      "id" : "Pray",
+      "usedOnly" : false,
+      "upgradeCount" : 1
+    }, {
+      "id" : "Scorn",
+      "usedOnly" : false,
+      "upgradeCount" : 3
+    } ],
+    "isDead" : false,
+    "slot" : [ 1, 1, 3 ],
+    "index" : 1,
+    "maxHealth" : 44,
+    "health" : 33
+  }, {
+    "id" : "viichan",
+    "item" : [ "CheeseBall", "Juggernaut" ],
+    "deck" : [ {
+      "id" : "Stab",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Cross",
+      "usedOnly" : false,
+      "upgradeCount" : 3
+    }, {
+      "id" : "Onslaught",
+      "usedOnly" : false,
+      "upgradeCount" : 3
+    } ],
+    "isDead" : false,
+    "slot" : [ 0, 3, 3 ],
+    "index" : 2,
+    "maxHealth" : 49,
+    "health" : 36
+  }, {
+    "id" : "manager",
+    "item" : [ "SilverItem2", "GoldItem12" ],
+    "deck" : [ {
+      "id" : "ShockZone",
+      "usedOnly" : false,
+      "upgradeCount" : 2
     }, {
       "id" : "Barrier",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Test78",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "isDead" : false,
-    "slot" : [ 1, 0, 0 ],
-    "index" : 0,
-    "maxHealth" : 26,
-    "health" : 26
-  }, {
-    "id" : "burger",
-    "item" : [ "GoldItem9", "BurgerHat" ],
-    "deck" : [ {
-      "id" : "SuperSave",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Bless",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Protect",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "isDead" : false,
-    "slot" : [ 0, 0, 0 ],
-    "index" : 1,
-    "maxHealth" : 47,
-    "health" : 47
-  }, {
-    "id" : "jururu",
-    "item" : [ "Bible", "ElasticRing" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "PureWill",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Scorn",
+      "id" : "Snipe",
       "usedOnly" : false,
       "upgradeCount" : 1
     } ],
     "isDead" : false,
-    "slot" : [ 0, 0, 1 ],
-    "index" : 2,
-    "maxHealth" : 22,
-    "health" : 22
-  }, {
-    "id" : "gosegu",
-    "item" : [ "ToxicFlask", "Coffin" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "BioCloud",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "RustyShard",
-      "usedOnly" : false,
-      "upgradeCount" : 2
-    } ],
-    "isDead" : false,
-    "slot" : [ 0, 0, 2 ],
+    "slot" : [ 2, 0, 1 ],
     "index" : 3,
-    "maxHealth" : 23,
-    "health" : 23
+    "maxHealth" : 55,
+    "health" : 45
   } ],
-  "currentFloor" : 1,
+  "currentFloor" : 4,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Normal1",
+      "id" : "Boss2",
       "battleDone" : false,
       "isDone" : false
     },
     "currentWay" : {
-      "type" : "NORMAL",
+      "type" : "BOSS",
       "enemies" : {
-        "id" : "Normal1",
+        "id" : "Boss2",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "BOSS",
         "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal1",
-          "battleDone" : false,
-          "isDone" : false
+          "id" : "Boss2",
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -168,6 +159,69 @@
           "id" : "StartEvent",
           "battleDone" : false,
           "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak3",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
         },
         "must" : true,
         "prob" : 1
@@ -193,78 +247,15 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : true
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : true
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak4",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
+          "battleDone" : true,
           "isDone" : true
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "REST",
         "room" : {
-          "id" : "Weak4",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -302,15 +293,6 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
           "isDone" : true
         },
         "must" : true,
@@ -324,26 +306,35 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
       } ],
       "isDone" : true
     }, {
       "type" : "SHOP",
       "enemies" : null,
       "choices" : [ {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
-          "battleDone" : false,
-          "isDone" : true
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "REST",
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -357,15 +348,6 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
@@ -374,8 +356,17 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -393,7 +384,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -406,7 +397,7 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -420,7 +411,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -429,6 +420,15 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
@@ -437,17 +437,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "REST",
       "enemies" : null,
@@ -456,41 +447,59 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "BOSS",
       "enemies" : {
-        "id" : "TestBoss",
+        "id" : "Boss2",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BOSS",
         "room" : {
-          "id" : "TestBoss",
+          "id" : "Boss2",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    } ],
+    "isDone" : true,
+    "floorNum" : 1,
+    "num" : 13
+  }, {
+    "currentRoom" : {
+      "id" : "Boss2",
+      "battleDone" : true,
+      "isDone" : true
+    },
+    "currentWay" : {
+      "type" : "BOSS",
+      "enemies" : {
+        "id" : "Boss2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BOSS",
+        "room" : {
+          "id" : "Boss2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
-    } ],
-    "isDone" : false,
-    "floorNum" : 1,
-    "num" : 8
-  }, {
-    "currentRoom" : {
-      "id" : "Placeholder",
-      "battleDone" : true,
       "isDone" : true
     },
-    "currentWay" : null,
     "ways" : [ {
       "type" : "ENTRY",
       "enemies" : null,
@@ -499,39 +508,12 @@
         "room" : {
           "id" : "SecondFloor",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -540,11 +522,11 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -558,29 +540,29 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Weak4",
+        "id" : "Weak3",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Weak4",
-          "battleDone" : false,
-          "isDone" : false
+          "id" : "Weak3",
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -594,7 +576,34 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -606,13 +615,13 @@
         "type" : "ELITE",
         "room" : {
           "id" : "Elite2",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -630,15 +639,6 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -648,11 +648,20 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "SHOP",
       "enemies" : null,
       "choices" : [ {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "REST",
         "room" : {
           "id" : "Rest",
@@ -661,17 +670,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -680,6 +680,15 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
@@ -697,17 +706,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -719,13 +719,13 @@
         "type" : "ELITE",
         "room" : {
           "id" : "Elite2",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -734,18 +734,18 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -761,7 +761,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -770,20 +770,20 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Normal1",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Normal1",
+          "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -797,7 +797,7 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "REST",
       "enemies" : null,
@@ -806,41 +806,59 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "BOSS",
       "enemies" : {
-        "id" : "TestBoss",
+        "id" : "Boss2",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BOSS",
         "room" : {
-          "id" : "TestBoss",
+          "id" : "Boss2",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     } ],
-    "isDone" : false,
+    "isDone" : true,
     "floorNum" : 2,
-    "num" : 0
+    "num" : 13
   }, {
     "currentRoom" : {
-      "id" : "Placeholder",
+      "id" : "TestBoss",
       "battleDone" : true,
       "isDone" : true
     },
-    "currentWay" : null,
+    "currentWay" : {
+      "type" : "BOSS",
+      "enemies" : {
+        "id" : "TestBoss",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BOSS",
+        "room" : {
+          "id" : "TestBoss",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    },
     "ways" : [ {
       "type" : "ENTRY",
       "enemies" : null,
@@ -858,38 +876,20 @@
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Weak2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
         "id" : "Weak1",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -908,74 +908,20 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Weak4",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak4",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "ELITE",
-      "enemies" : {
-        "id" : "Elite2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "Elite2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Normal1",
+        "id" : "Weak3",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
+          "id" : "Weak3",
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -989,7 +935,88 @@
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Elite2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Elite2",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Normal1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Normal1",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
     }, {
       "type" : "SHOP",
       "enemies" : null,
@@ -1007,12 +1034,12 @@
         "room" : {
           "id" : "Shop",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -1021,6 +1048,15 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal1",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -1029,26 +1065,8 @@
         },
         "must" : true,
         "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -1060,13 +1078,13 @@
         "type" : "ELITE",
         "room" : {
           "id" : "Elite2",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -1077,9 +1095,9 @@
       "choices" : [ {
         "type" : "LOOK",
         "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
+          "id" : "Normal1",
+          "battleDone" : true,
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
@@ -1092,8 +1110,17 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -1102,15 +1129,6 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
@@ -1119,8 +1137,17 @@
         },
         "must" : true,
         "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "REST",
       "enemies" : null,
@@ -1129,12 +1156,12 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "BOSS",
       "enemies" : {
@@ -1146,24 +1173,51 @@
         "type" : "BOSS",
         "room" : {
           "id" : "TestBoss",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    } ],
+    "isDone" : true,
+    "floorNum" : 3,
+    "num" : 13
+  }, {
+    "currentRoom" : {
+      "id" : "Weak1",
+      "battleDone" : false,
+      "isDone" : true
+    },
+    "currentWay" : {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       } ],
-      "isDone" : false
-    } ],
-    "isDone" : false,
-    "floorNum" : 3,
-    "num" : 0
-  }, {
-    "currentRoom" : {
-      "id" : "Placeholder",
-      "battleDone" : true,
       "isDone" : true
     },
-    "currentWay" : null,
     "ways" : [ {
       "type" : "ENTRY",
       "enemies" : null,
@@ -1171,6 +1225,69 @@
         "type" : "GOOD",
         "room" : {
           "id" : "StartEvent",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak1",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      } ],
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1186,81 +1303,9 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      } ],
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak4",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak4",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1303,6 +1348,15 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
@@ -1312,9 +1366,9 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1326,18 +1380,18 @@
       "type" : "SHOP",
       "enemies" : null,
       "choices" : [ {
-        "type" : "REST",
+        "type" : "SHOP",
         "room" : {
-          "id" : "Rest",
+          "id" : "Shop",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "SHOP",
+        "type" : "REST",
         "room" : {
-          "id" : "Shop",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1362,18 +1416,18 @@
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "REST",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Rest",
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1407,18 +1461,27 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Normal1",
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
         "must" : true,
         "prob" : 1
       }, {
-        "type" : "LOOK",
+        "type" : "REST",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal1",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1434,6 +1497,15 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "must" : true,
+        "prob" : 1
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -1446,15 +1518,6 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "must" : true,
-        "prob" : 1
-      }, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1497,11 +1560,11 @@
     } ],
     "isDone" : false,
     "floorNum" : 4,
-    "num" : 0
+    "num" : 2
   } ],
-  "eventCount" : 1,
-  "neutCount" : 1,
-  "weakCount" : 3,
+  "eventCount" : 0,
+  "neutCount" : 3,
+  "weakCount" : 0,
   "normalCount" : 0,
   "eliteCount" : 0,
   "bossCount" : 0

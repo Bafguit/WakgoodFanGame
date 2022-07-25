@@ -149,7 +149,6 @@ public abstract class AbstractEntity implements Cloneable {
     public void heal(int heal) {
         if (cPanel != null) {
             if (isAlive() && !hasStatus("Neut")) {
-                heal = calculateSpell(heal);
                 if (heal > 0) {
                     if (cPanel.type == ControlPanel.ControlType.BATTLE) {
                         EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, heal, CHARTREUSE, false));

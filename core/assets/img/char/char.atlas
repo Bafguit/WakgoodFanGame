@@ -68,7 +68,7 @@ ine_cPanel
 jururu
 	bounds: 1805, 1776, 171, 171
 jururu_cPanel
-	bounds: 1459, 1617, 171, 330
+	bounds: 348, 175, 171, 330
 lilpa
 	bounds: 521, 334, 171, 171
 lilpa_cPanel
@@ -88,4 +88,4 @@ wak
 wak_bg
 	bounds: 2, 507, 640, 1440
 wak_cPanel
-	bounds: 348, 175, 171, 330
+	bounds: 1459, 1617, 171, 330

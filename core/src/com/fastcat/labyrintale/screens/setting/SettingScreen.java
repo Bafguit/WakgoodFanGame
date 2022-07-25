@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.BgImg;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class SettingScreen extends AbstractScreen {
 
@@ -28,6 +29,7 @@ public class SettingScreen extends AbstractScreen {
     public SettingScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         panel = new OptionPanel();
+        cType = ControlPanel.ControlType.HIDE;
         close = new CloseSettingButton(this);
         Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
         String[] ms = new String[mo.length];

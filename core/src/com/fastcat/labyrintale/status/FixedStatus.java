@@ -9,9 +9,8 @@ public class FixedStatus extends AbstractStatus {
 
     private static final String ID = "Fixed";
 
-    public FixedStatus(AbstractEntity owner) {
-        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
-        this.owner = owner;
+    public FixedStatus() {
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
     }
 
     @Override

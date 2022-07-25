@@ -165,7 +165,7 @@ public class AbstractLabyrinth {
 
     public static void nextFloor() {
         currentFloor.done();
-        currentFloor = floors[++floorNum];
+        currentFloor = floors[floorNum++];
         GroupHandler.RoomGroup.weakCount = 0;
         GroupHandler.RoomGroup.normalCount = 0;
         GroupHandler.RoomGroup.eliteCount = 0;

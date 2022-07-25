@@ -10,6 +10,11 @@ public class LowHealAction extends AbstractAction {
 
     public int heal;
 
+    public LowHealAction(AbstractEntity actor, int heal, boolean isFast) {
+        super(actor, isFast ? 0.25f : 0.5f);
+        this.heal = heal;
+    }
+
     public LowHealAction(int heal) {
         super(null, 0.5f);
         this.heal = heal;
@@ -29,7 +34,7 @@ public class LowHealAction extends AbstractAction {
             }
             for (int i = 0; i < temp.size; i++) {
                 AbstractEntity te = temp.get(i);
-                te.heal(heal);
+                te.heal(actor != null ? actor.calculateSpell(heal) : heal);
             }
         }
     }

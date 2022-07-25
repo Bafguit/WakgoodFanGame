@@ -33,6 +33,13 @@ public class StatusDamageAction extends AbstractAction {
         this.remove = remove;
     }
 
+    public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect, boolean reduce, boolean remove, boolean isFast) {
+        this(s, effect);
+        if(isFast) duration = baseDuration = 0.25f;
+        this.reduce = reduce;
+        this.remove = remove;
+    }
+
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {

@@ -41,12 +41,12 @@ public class EventImage extends AbstractUI {
     public void render(SpriteBatch sb) {
         if (enabled) {
             if (event != null) {
+                sb.setColor(Color.WHITE);
                 sb.draw(event.img, x, y, sWidth, sHeight);
                 renderLineLeft(sb, fontName, event.name, nx, ny, nw, nh);
                 renderColorLeft(sb, fontDesc, event.desc, dx, dy, dw);
             }
             //sb.draw(img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
         }
     }
 }

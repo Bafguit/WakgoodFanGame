@@ -74,22 +74,32 @@ public abstract class AbstractRoom implements Cloneable {
                 enemies = temp.getEnemies();
                 id = temp.id;
                 type = temp.type;
+                SoundHandler.fadeOutMusic("MAP");
+                SoundHandler.addMusic("BATTLE_1", true, true);
+                battleScreen = new BattleScreen();
+                fadeOutAndChangeScreen(battleScreen);
             } else if (x < s) {
-                AbstractRoom temp;
+                ShopRoom temp;
                 temp = new ShopRoom();
                 id = temp.id;
                 type = SHOP;
+                temp.entry();
+                shopScreen = new ShopScreen(temp);
+                fadeOutAndChangeScreen(shopScreen);
             } else if (x < r) {
                 AbstractRoom temp;
                 temp = new RestRoom();
                 id = temp.id;
                 type = REST;
+                restScreen = new RestScreen();
+                fadeOutAndChangeScreen(restScreen);
             } else {
                 event = GroupHandler.RoomGroup.getNextEvent(AbstractLabyrinth.floorNum);
                 type = EVENT;
+                eventScreen = new EventScreen(event);
+                fadeOutAndChangeScreen(eventScreen);
             }
-        }
-        if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
+        } else if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE || type == AbstractRoom.RoomType.BOSS) {
             refreshEnemy();
             SoundHandler.fadeOutMusic("MAP");
             SoundHandler.addMusic("BATTLE_1", true, true);

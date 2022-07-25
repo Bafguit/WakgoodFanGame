@@ -75,6 +75,6 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     }
 
     public enum ScreenType {
-        MAP, OTHER
+        MAP, OTHER, SETTING
     }
 }

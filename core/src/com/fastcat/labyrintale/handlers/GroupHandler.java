@@ -20,6 +20,7 @@ import com.fastcat.labyrintale.items.special.GreenHeart;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
+import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
@@ -212,6 +213,7 @@ public final class GroupHandler {
             Array<AbstractRoom> t = new Array<>();
             t.add(new TestBoss());
             t.add(new Boss1());
+            t.add(new Boss2());
             bossGroup.put(1, t);
         }
 
@@ -437,6 +439,8 @@ public final class GroupHandler {
             t.add(new CrossPin(null));
             t.add(new Bible(null));
             t.add(new CottonNecklace(null));
+            t.add(new FlameBook(null));
+            t.add(new FireStaff(null));
 
             //브론즈
             t.add(new PlatedArmour(null));
@@ -609,10 +613,12 @@ public final class GroupHandler {
     public static class SkillGroup {
         public static final HashMap<String, AbstractSkill> idSort = new HashMap<>();
         public static final HashMap<PlayerClass, Array<AbstractSkill>> playerSort = new HashMap<>();
+        public static final HashMap<PlayerClass, Array<AbstractSkill>> normalSkills = new HashMap<>();
 
         public static void generateSkill() {
             idSort.clear();
             playerSort.clear();
+            normalSkills.clear();
             generateBurger();
             generateGosegu();
             generateIne();
@@ -629,9 +635,12 @@ public final class GroupHandler {
         private static void sort() {
             for (PlayerClass cls : playerSort.keySet()) {
                 Array<AbstractSkill> s = playerSort.get(cls);
+                Array<AbstractSkill> ss = new Array<>();
                 for (AbstractSkill item : s) {
                     idSort.put(item.id, item);
+                    if(item.rarity == AbstractSkill.SkillRarity.NORMAL) ss.add(item);
                 }
+                if(ss.size > 0) normalSkills.put(cls, ss);
             }
         }
 
@@ -746,7 +755,7 @@ public final class GroupHandler {
             Array<AbstractSkill> a = new Array<>();
             Array<AbstractSkill> b = new Array<>();
             boolean t;
-            for (AbstractSkill s : playerSort.get(p.playerClass)) {
+            for (AbstractSkill s : normalSkills.get(p.playerClass)) {
                 t = true;
                 for (AbstractSkill ss : p.deck) {
                     if (s.id.equals(ss.id)) {

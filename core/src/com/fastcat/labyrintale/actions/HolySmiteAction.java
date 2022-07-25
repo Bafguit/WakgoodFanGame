@@ -48,7 +48,7 @@ public class HolySmiteAction extends AbstractAction {
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
                     EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
-                    te.heal(heal);
+                    te.heal(actor != null ? actor.calculateSpell(heal) : heal);
                 }
                 if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);

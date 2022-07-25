@@ -4,6 +4,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
+import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
+import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal1;
 import com.fastcat.labyrintale.rooms.other.*;
@@ -134,7 +136,10 @@ public class AbstractFloor {
             AbstractRoom r = new Elite2();
             w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.ELITE, true), r, type);
         } else if (type == BOSS) {
-            AbstractRoom r = new TestBoss();
+            AbstractRoom r;
+            if(floor == 1) r = new Boss1();
+            else if(floor == 2) r = new Boss2();
+            else r = new Boss1();
             w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.BOSS, true), r, type);
         } else if (type == REST) {
             w = new AbstractWay(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true), type);
