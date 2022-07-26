@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
 import com.fastcat.labyrintale.actions.SelectTargetAction;
+import com.fastcat.labyrintale.actions.SetAnimationAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
@@ -307,6 +308,46 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     if (e.isAlive()) temp.add(e);
                 }
                 break;
+            case PLAYER_LOW_HP:
+                int low = 2147483647;
+                for (int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if (p.isAlive() && p.health < low) low = p.health;
+                }
+                for (PlayerView p : tp) {
+                    if (p.player.health == low) temp.add(p.player);
+                }
+                break;
+            case ENEMY_LOW_HP:
+                low = 2147483647;
+                for (int i = 0; i < 4; i++) {
+                    AbstractEnemy p = te[i].enemy;
+                    if (p.isAlive() && p.health < low) low = p.health;
+                }
+                for (EnemyView p : te) {
+                    if (p.enemy.health == low) temp.add(p.enemy);
+                }
+                break;
+            case PLAYER_HIGH_HP:
+                low = 0;
+                for (int i = 0; i < 4; i++) {
+                    AbstractPlayer p = tp[i].player;
+                    if (p.isAlive() && p.health > low) low = p.health;
+                }
+                for (PlayerView p : tp) {
+                    if (p.player.health == low) temp.add(p.player);
+                }
+                break;
+            case ENEMY_HIGH_HP:
+                low = 0;
+                for (int i = 0; i < 4; i++) {
+                    AbstractEnemy p = te[i].enemy;
+                    if (p.isAlive() && p.health > low) low = p.health;
+                }
+                for (EnemyView p : te) {
+                    if (p.enemy.health == low) temp.add(p.enemy);
+                }
+                break;
         }
         return temp;
     }
@@ -487,6 +528,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
             bot(new SelectTargetAction(this));
         } else {
+            if(type == SkillType.DEFENCE || type == SkillType.SCHEME) {
+                bot(new SetAnimationAction(owner, "skill"));
+            }
             use();
             if (disposable) usedOnce = true;
             if (rarity == SkillRarity.ADVISOR || owner.isPlayer) {
@@ -565,6 +609,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     @Override
     public final void onTargetSelected(AbstractEntity target) {
         onTarget(target);
+        if(type == SkillType.DEFENCE || type == SkillType.SCHEME) {
+            top(new SetAnimationAction(owner, "skill"));
+        }
         if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
         if (disposable) usedOnce = true;
         else cooldown = cooltime;
@@ -611,6 +658,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public enum SkillTarget {
         NONE, ALL, SELF, RIGHT, LEFT, BOTH, SELF_RIGHT, SELF_LEFT, SELF_BOTH,
         PLAYER_FIRST, ENEMY_FIRST, PLAYER_LAST, ENEMY_LAST, PLAYER_FIRST_TWO,
-        ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL, ENEMY, PLAYER
+        ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL,
+        ENEMY, PLAYER, PLAYER_LOW_HP, PLAYER_HIGH_HP, ENEMY_LOW_HP, ENEMY_HIGH_HP
     }
 }

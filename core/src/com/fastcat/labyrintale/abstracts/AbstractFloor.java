@@ -108,7 +108,7 @@ public class AbstractFloor {
             } else {
                 rest = true;
             }
-            AbstractRoom r = GroupHandler.RoomGroup.getNextWeak(floorNum);
+            AbstractRoom r = GroupHandler.RoomGroup.getNextWeak(floor);
             t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE, true));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
@@ -127,20 +127,17 @@ public class AbstractFloor {
             } else {
                 rest = true;
             }
-            AbstractRoom r = new Normal2();
+            AbstractRoom r = GroupHandler.RoomGroup.getNextNormal(floor);
             t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE, true));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
             shuffleChoice(t);
             w = new AbstractWay(t, r, type);
         } else if (type == ELITE) {
-            AbstractRoom r = new Elite2();
+            AbstractRoom r = GroupHandler.RoomGroup.getNextElite(floor);
             w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.ELITE, true), r, type);
         } else if (type == BOSS) {
-            AbstractRoom r;
-            if(floor == 1) r = new Boss1();
-            else if(floor == 2) r = new Boss2();
-            else r = new Boss1();
+            AbstractRoom r = GroupHandler.RoomGroup.getNextBoss(floor);
             w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.BOSS, true), r, type);
         } else if (type == REST) {
             w = new AbstractWay(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true), type);

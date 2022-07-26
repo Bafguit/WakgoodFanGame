@@ -31,9 +31,6 @@ public class ApplyStatusAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (actor != null && actor.isPlayer) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);
-                actor.state.addAnimation(0, "idle", true, 0.0F);
-                e.setTimeScale(1.0f);
                 for (AbstractItem m : actor.item) {
                     if (m != null) m.onApplyStatus(status, target);
                 }

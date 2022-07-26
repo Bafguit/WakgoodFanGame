@@ -22,10 +22,10 @@ import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
+import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
-import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal1;
-import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal2;
+import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
 import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
@@ -195,26 +195,36 @@ public final class GroupHandler {
             Array<AbstractRoom> t = new Array<>();
             t.add(new Normal1());
             t.add(new Normal2());
-            t.add(new Test());
+            t.add(new Normal3());
+            t.add(new Normal4());
+            t.add(new Normal5());
             normalGroup.put(1, t);
             normalGroup.put(2, t);
+            normalGroup.put(3, t);
+            normalGroup.put(4, t);
         }
 
         private static void generateElite() {
             eliteGroup.clear();
             Array<AbstractRoom> t = new Array<>();
-            t.add(new TestElite());
+            t.add(new Elite1());
             t.add(new Elite2());
             eliteGroup.put(1, t);
+            eliteGroup.put(2, t);
+            eliteGroup.put(3, t);
+            eliteGroup.put(4, t);
         }
 
         private static void generateBoss() {
             bossGroup.clear();
             Array<AbstractRoom> t = new Array<>();
-            t.add(new TestBoss());
             t.add(new Boss1());
-            t.add(new Boss2());
             bossGroup.put(1, t);
+            Array<AbstractRoom> t2 = new Array<>();
+            t2.add(new Boss2());
+            bossGroup.put(2, t2);
+            bossGroup.put(3, t2);
+            bossGroup.put(4, t2);
         }
 
         private static void generateEvent() {
@@ -327,15 +337,15 @@ public final class GroupHandler {
         }
 
         public static AbstractRoom getNextNormal(int f) {
-            return normalGroup.get(currentFloor.floorNum).get(normalCount++).clone();
+            return normalGroup.get(f).get(normalCount++).clone();
         }
 
         public static AbstractRoom getNextElite(int f) {
-            return eliteGroup.get(currentFloor.floorNum).get(eliteCount++).clone();
+            return eliteGroup.get(f).get(eliteCount++).clone();
         }
 
         public static AbstractRoom getNextBoss(int f) {
-            return bossGroup.get(currentFloor.floorNum).get(bossCount++).clone();
+            return bossGroup.get(f).get(bossCount++).clone();
         }
 
         public static AbstractEvent getNextEvent(int floorNum) {

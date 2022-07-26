@@ -87,6 +87,11 @@ public class AttackAction extends AbstractAction {
         if (duration == baseDuration) {
             if (target.size > 0) {
                 SoundHandler.playSfx("ATTACK_TEST");
+                if (actor != null) {
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
+                    actor.state.addAnimation(0, "idle", true, 0.0F);
+                    e.setTimeScale(1.0f);
+                }
                 if (effect != AttackType.NONE) {
                     for (AbstractEntity t : target) {
                         //TODO 이미지 좌표로 자동입력되게 설정
@@ -96,11 +101,6 @@ public class AttackAction extends AbstractAction {
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
                     if (te.isAlive()) te.takeDamage(info);
-                }
-                if (actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
                 }
             } else isDone = true;
         }

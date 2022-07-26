@@ -42,11 +42,6 @@ public class HealAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (target.size > 0) {
-                if (actor != null && motion) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
-                }
                 for (AbstractEntity e : target) {
                     e.heal(actor != null ? actor.calculateSpell(heal) : heal);
                 }

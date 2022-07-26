@@ -34,11 +34,6 @@ public class LowHealAction extends AbstractAction {
                 if (p.health == low) temp.add(p);
             }
             if(temp.size > 0) {
-                if(actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
-                }
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
                     te.heal(actor != null ? actor.calculateSpell(heal) : heal);
