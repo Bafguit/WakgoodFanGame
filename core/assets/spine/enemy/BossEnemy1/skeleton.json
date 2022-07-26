@@ -1,1 +1,115 @@
-{"skeleton":{"hash":"i725KQd4HTgoyIWcwco3fqx/AfE","spine":"3.8.75","x":-320,"y":-50,"width":640,"height":640,"images":"../../enemy/temp2/","audio":""},"bones":[{"name":"root"}],"slots":[{"name":"temp2","bone":"root","attachment":"temp2"}],"skins":[{"name":"default","attachments":{"temp2":{"temp2":{"y":270,"width":640,"height":640}}}}],"animations":{"attack":{},"die":{},"hit":{},"idle":{},"skill":{}}}
+{
+"skeleton": {
+	"hash": "86vefM0Mo/4Mzx6ZLvGR93BEV7E",
+	"spine": "3.8.75",
+	"x": -450,
+	"y": -50,
+	"width": 1600,
+	"height": 900,
+	"images": "../../enemy/boss/img/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "die", "bone": "root" },
+	{ "name": "attack", "bone": "root" },
+	{ "name": "hit", "bone": "root" },
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "root" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"die": {
+				"die": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			},
+			"attack": {
+				"attack": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			},
+			"skill": {
+				"skill": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			},
+			"hit": {
+				"hit": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			},
+			"idle": {
+				"idle": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": "attack" },
+					{ "time": 0.6667, "name": "attack" }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"die": {
+				"attachment": [
+					{ "name": "die" },
+					{ "time": 0.6667, "name": "die" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"hit": {
+				"attachment": [
+					{ "name": "hit" },
+					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "name": "idle" },
+					{ "time": 0.6667, "name": "idle" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"skill": {
+		"slots": {
+			"skill": {
+				"attachment": [
+					{ "time": 0.6667, "name": "skill" }
+				]
+			}
+		}
+	}
+}
+}

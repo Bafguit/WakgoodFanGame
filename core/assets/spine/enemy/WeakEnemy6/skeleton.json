@@ -1,12 +1,12 @@
 {
 "skeleton": {
-	"hash": "Rekb0nYlMlIn5Zzh6GiBcUpSFYo",
+	"hash": "RBOrQiWD6TTquF/PVLdES1aJvvA",
 	"spine": "3.8.75",
-	"x": -320,
-	"y": -50,
-	"width": 640,
-	"height": 640,
-	"images": "../../enemy/temp4/img/",
+	"x": -512,
+	"y": -62,
+	"width": 1024,
+	"height": 1024,
+	"images": "../../enemy/normal/img/",
 	"audio": ""
 },
 "bones": [
@@ -14,29 +14,29 @@
 ],
 "slots": [
 	{ "name": "die", "bone": "root" },
-	{ "name": "attack", "bone": "root" },
+	{ "name": "attack", "bone": "root", "attachment": "attack" },
 	{ "name": "hit", "bone": "root" },
 	{ "name": "skill", "bone": "root" },
-	{ "name": "idle", "bone": "root", "attachment": "idle" }
+	{ "name": "idle", "bone": "root" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
 			"die": {
-				"die": { "y": 270, "width": 640, "height": 640 }
+				"die": { "y": 450, "width": 1024, "height": 1024 }
 			},
 			"attack": {
-				"attack": { "y": 270, "width": 640, "height": 640 }
+				"attack": { "y": 450, "width": 1024, "height": 1024 }
 			},
 			"skill": {
-				"skill": { "y": 270, "width": 640, "height": 640 }
+				"skill": { "y": 450, "width": 1024, "height": 1024 }
 			},
 			"hit": {
-				"hit": { "y": 270, "width": 640, "height": 640 }
+				"hit": { "y": 450, "width": 1024, "height": 1024 }
 			},
 			"idle": {
-				"idle": { "y": 270, "width": 640, "height": 640 }
+				"idle": { "y": 450, "width": 1024, "height": 1024 }
 			}
 		}
 	}
@@ -46,43 +46,37 @@
 		"slots": {
 			"attack": {
 				"attachment": [
-					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
 	},
 	"die": {
 		"slots": {
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"die": {
 				"attachment": [
 					{ "name": "die" },
 					{ "time": 0.6667, "name": "die" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
 	},
 	"hit": {
 		"slots": {
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
 					{ "time": 0.6667, "name": "hit" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
@@ -91,7 +85,13 @@
 		"slots": {
 			"idle": {
 				"attachment": [
+					{ "name": "idle" },
 					{ "time": 0.6667, "name": "idle" }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}
@@ -104,7 +104,7 @@
 					{ "time": 0.6667, "name": "skill" }
 				]
 			},
-			"idle": {
+			"attack": {
 				"attachment": [
 					{ "name": null }
 				]

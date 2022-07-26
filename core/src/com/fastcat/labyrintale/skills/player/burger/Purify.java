@@ -25,7 +25,7 @@ public class Purify extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new PurifyAction(e));
+        top(new PurifyAction(owner, e));
         top(new HealAction(owner, e, spell));
     }
 

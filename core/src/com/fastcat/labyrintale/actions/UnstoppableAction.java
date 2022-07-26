@@ -6,12 +6,12 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
-public class AmbushAction extends AbstractAction {
+public class UnstoppableAction extends AbstractAction {
 
     public AbstractSkill skill;
     public AbstractEntity.DamageInfo info;
 
-    public AmbushAction(AbstractSkill s) {
+    public UnstoppableAction(AbstractSkill s) {
         super(s.owner, s.target, 0.5f);
         info = new AbstractEntity.DamageInfo(actor, s.attack);
         skill = s;

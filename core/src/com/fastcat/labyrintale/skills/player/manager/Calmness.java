@@ -22,7 +22,7 @@ public class Calmness extends AbstractSkill {
     @Override
     public void use() {
         bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
-        bot(new PurifyAction(owner));
+        bot(new PurifyAction(owner, owner));
     }
 
     @Override

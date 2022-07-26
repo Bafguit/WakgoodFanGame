@@ -25,6 +25,7 @@ import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 import static com.badlogic.gdx.graphics.Color.*;
@@ -206,15 +207,16 @@ public abstract class AbstractEntity implements Cloneable {
         }
         boolean done = false;
         String text;
-        for (int i = 0; i < this.status.size; i++) {
-            AbstractStatus temp = this.status.get(i);
+        Iterator<AbstractStatus> it = this.status.iterator();
+        while (it.hasNext()) {
+            AbstractStatus temp = it.next();
             if (temp.id.equals(s.id)) {
                 text = temp.name;
                 if (temp.hasAmount && amount != 0) {
                     temp.amount += amount;
                     if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
                         temp.onRemove();
-                        this.status.removeIndex(i);
+                        it.remove();
                     }
                     text += amount > 0 ? "+" + amount : amount;
                 }
@@ -244,9 +246,12 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void removeStatus(String id) {
-        for (int i = 0; i < status.size; i++) {
-            if (status.get(i).id.equals(id)) {
-                status.removeIndex(i).onRemove();
+        Iterator<AbstractStatus> it = status.iterator();
+        while (it.hasNext()) {
+            AbstractStatus e = it.next();
+            if (e.id.equals(id)) {
+                e.onRemove();
+                it.remove();
                 break;
             }
         }

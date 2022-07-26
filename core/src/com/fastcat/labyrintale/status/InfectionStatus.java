@@ -23,6 +23,6 @@ public class InfectionStatus extends AbstractStatus {
 
     @Override
     public void startOfTurn() {
-        ActionHandler.top(new StatusDamageAction(this, AttackAction.AttackType.INFECTION, true, false));
+        top(new StatusDamageAction(this, AttackAction.AttackType.INFECTION, true, false));
     }
 }

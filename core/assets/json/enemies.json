@@ -31,6 +31,10 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
+  "WeakEnemy6": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "BossEnemy1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"

@@ -11,9 +11,12 @@ public class BossEnemy1 extends AbstractEnemy {
     private static final EnemyType TYPE = EnemyType.BOSS;
     private static final int HEALTH = 158;
 
+    private int mod = 0;
+
     public BossEnemy1() {
         super(ID, TYPE, HEALTH);
         isRandom = false;
+        //TODO 너프 필요
     }
 
     @Override
@@ -29,12 +32,44 @@ public class BossEnemy1 extends AbstractEnemy {
             s2.upgrade();
         }
         temp.add(s2);
-        temp.add(new FrailStrongE(this));
-        AbstractSkill s3 = new SlashE(this);
-        s3.upgrade();
-        s3.upgrade();
+        AbstractSkill s3 = new StrikeE(this);
+        for(int i = 0; i < 5; i++) {
+            s3.upgrade();
+        }
         temp.add(s3);
+        temp.add(new FrailStrongE(this));
         temp.add(new GrowE(this));
         return temp;
+    }
+
+    @Override
+    public void atEndOfRound() {
+        if(health <= (maxHealth / 3) && mod == 1) {
+            mod = 2;
+            deck = getStartingDeck();
+            newDeck();
+        } else if(health <= ((maxHealth / 3) * 2) && mod == 0) {
+            mod = 1;
+            Array<AbstractSkill> temp = new Array<>();
+            AbstractSkill s = new SlashE(this);
+            for(int i = 0; i < 1; i++) {
+                s.upgrade();
+            }
+            temp.add(s);
+            AbstractSkill s2 = new BarrierE(this);
+            for(int i = 0; i < 5; i++) {
+                s2.upgrade();
+            }
+            temp.add(s2);
+            AbstractSkill s3 = new SlashE(this);
+            for(int i = 0; i < 1; i++) {
+                s3.upgrade();
+            }
+            temp.add(s3);
+            temp.add(new FrailStrongE(this));
+            temp.add(new GrowE(this));
+            deck = temp;
+            newDeck();
+        }
     }
 }

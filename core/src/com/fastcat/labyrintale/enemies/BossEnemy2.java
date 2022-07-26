@@ -52,4 +52,9 @@ public class BossEnemy2 extends AbstractEnemy {
         temp.add(new GrowE(this));
         return temp;
     }
+
+    @Override
+    public void atEndOfRound() {
+
+    }
 }

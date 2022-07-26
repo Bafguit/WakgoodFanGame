@@ -28,14 +28,14 @@ public abstract class AbstractEnemy extends AbstractEntity {
 
     @Override
     public void newDeck() {
-        hand = new AbstractSkill[4];
+        hand = new AbstractSkill[handSize];
         drawPile.clear();
         discardPile.clear();
         disposablePile.clear();
         drawPile = new Array<>(deck);
     }
 
-    public void shuffleHand() {
+    public final void shuffleHand() {
         for (int i = 0; i < handSize; i++) {
             AbstractSkill s = hand[i];
             if (s != null) {
@@ -55,6 +55,10 @@ public abstract class AbstractEnemy extends AbstractEntity {
                 hand[i] = s;
             } else break;
         }
+    }
+
+    public void atEndOfRound() {
+
     }
 
     public enum EnemyType {

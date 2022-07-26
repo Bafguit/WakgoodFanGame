@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
+import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -35,6 +36,11 @@ public class BlockAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (target.size > 0) {
+                if(actor != null) {
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "skill", false);
+                    actor.state.addAnimation(0, "idle", true, 0.0F);
+                    e.setTimeScale(1.0f);
+                }
                 for (AbstractEntity t : target) {
                     EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("SHIELD")));
                 }

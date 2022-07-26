@@ -28,6 +28,11 @@ public class LilpaaAction extends AbstractAction {
         if (duration == baseDuration) {
             SoundHandler.playSfx("LILPAA");
         } else if (duration < 1.1f && !ps) {
+            if (actor != null) {
+                AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
+                actor.state.addAnimation(0, "idle", true, 0.0F);
+                e.setTimeScale(1.0f);
+            }
             ps = true;
             if (SettingHandler.setting.shake)
                 Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
@@ -40,11 +45,6 @@ public class LilpaaAction extends AbstractAction {
             }
             for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
                 if (e.isAlive()) e.takeDamage(info);
-            }
-            if (actor != null) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "hit", false);
-                actor.state.addAnimation(0, "idle", true, 0.0F);
-                e.setTimeScale(1.0f);
             }
         }
     }

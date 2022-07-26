@@ -1,10 +1,10 @@
 {
-  "volumeBgm" : 30,
-  "volumeSfx" : 100,
-  "width" : 1280,
-  "height" : 720,
+  "volumeBgm" : 0,
+  "volumeSfx" : 30,
+  "width" : 1920,
+  "height" : 1080,
   "monitor" : 0,
-  "screenMode" : 0,
+  "screenMode" : 2,
   "shake" : true,
   "fastMode" : false
 }

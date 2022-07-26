@@ -23,7 +23,11 @@ public class EndRoundAction extends AbstractAction {
                 }
                 if (t.mLeftTemp.cooldown > 0) t.mLeftTemp.cooldown--;
                 if (t.mRightTemp.cooldown > 0) t.mRightTemp.cooldown--;
-                battleScreen.enemies[i].enemy.shuffleHand();
+                AbstractEnemy e = battleScreen.enemies[i].enemy;
+                if(e.isAlive()) {
+                    e.atEndOfRound();
+                    e.shuffleHand();
+                }
             }
             if (AbstractLabyrinth.advisor.skill.cooldown > 0) AbstractLabyrinth.advisor.skill.cooldown--;
             AbstractLabyrinth.energy = AbstractLabyrinth.maxEnergy;

@@ -27,6 +27,11 @@ public class HolySmiteAction extends AbstractAction {
         if (duration == baseDuration) {
             SoundHandler.playSfx("ATTACK_TEST");
             if (target.size > 0) {
+                if (actor != null) {
+                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
+                    actor.state.addAnimation(0, "idle", true, 0.0F);
+                    e.setTimeScale(1.0f);
+                }
                 if (SettingHandler.setting.shake)
                     Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
                 for (AbstractEntity t : target) {
@@ -49,11 +54,6 @@ public class HolySmiteAction extends AbstractAction {
                     AbstractEntity te = temp.get(i);
                     EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     te.heal(actor != null ? actor.calculateSpell(heal) : heal);
-                }
-                if (actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
                 }
             } else isDone = true;
         }

@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal1;
+import com.fastcat.labyrintale.rooms.enemy.normal.act1.Normal2;
 import com.fastcat.labyrintale.rooms.other.*;
 
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
@@ -126,7 +127,7 @@ public class AbstractFloor {
             } else {
                 rest = true;
             }
-            AbstractRoom r = new Normal1();
+            AbstractRoom r = new Normal2();
             t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE, true));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK, true));
             if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST, true));
