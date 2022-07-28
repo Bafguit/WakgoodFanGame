@@ -153,10 +153,7 @@ public class BattleScreen extends AbstractScreen {
                 int size = s.size(), pSize = pp.status.size();
                 if(pSize > size) {
                     for(int j = size; j < pSize; j++) {
-                        int line = j / 4;
-                        int num = j % 4;
                         StatusButton stb = new StatusButton();
-                        stb.setPosition(pp.animX + w * (0.012f + 0.019f * num) - pv.sWidth / 2, h * 0.517f - (w * 0.019f * line));
                         s.add(stb);
                     }
                 } else if(pSize < size) {
@@ -167,6 +164,9 @@ public class BattleScreen extends AbstractScreen {
                 for(int j = 0; j < s.size(); j++) {
                     StatusButton ts = s.get(j);
                     ts.status = pp.status.get(j);
+                    int line = j / 4;
+                    int num = j % 4;
+                    ts.setPosition(pp.animX + w * (0.012f + 0.019f * num) - pv.sWidth / 2, h * 0.517f - (w * 0.019f * line));
                     ts.update();
                 }
             }
@@ -176,10 +176,7 @@ public class BattleScreen extends AbstractScreen {
                 int size = s.size(), pSize = pp.status.size();
                 if(pSize > size) {
                     for(int j = size; j < pSize; j++) {
-                        int line = j / 4;
-                        int num = j % 4;
                         StatusButton stb = new StatusButton();
-                        stb.setPosition(pp.animX + w * (-0.068f + 0.019f * num) + ev.sWidth / 2 - stb.sWidth, h * 0.517f - (w * 0.019f * line));
                         s.add(stb);
                     }
                 } else if(pSize < size) {
@@ -190,6 +187,9 @@ public class BattleScreen extends AbstractScreen {
                 for(int j = 0; j < s.size(); j++) {
                     StatusButton ts = s.get(j);
                     ts.status = pp.status.get(j);
+                    int line = j / 4;
+                    int num = j % 4;
+                    ts.setPosition(pp.animX + w * (-0.068f + 0.019f * num) + ev.sWidth / 2 - ts.sWidth, h * 0.517f - (w * 0.019f * line));
                     ts.update();
                 }
             }

@@ -25,7 +25,7 @@ public class CounterStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfRound() {
+    public void startOfTurn() {
         bot(new RemoveStatusAction(this, true));
     }
 

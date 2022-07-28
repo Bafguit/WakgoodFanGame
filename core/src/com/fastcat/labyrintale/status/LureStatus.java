@@ -12,9 +12,8 @@ public class LureStatus extends AbstractStatus {
     private static final String ID = "Lure";
     private static final SkillTarget TARGET = SkillTarget.NONE;
 
-    public LureStatus(int amount) {
+    public LureStatus() {
         super(ID, TARGET, StatusType.STATIC);
-        setAmount(amount);
     }
 
     @Override

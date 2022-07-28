@@ -27,6 +27,7 @@ import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
+import com.fastcat.labyrintale.rooms.enemy.weak.act2.Act2Weak1;
 import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -185,7 +186,13 @@ public final class GroupHandler {
             t.add(new Weak4());
             t.add(new Weak5());
             weakGroup.put(1, t);
-            weakGroup.put(2, t);
+            Array<AbstractRoom> t2 = new Array<>();
+            t2.add(new Act2Weak1());
+            t2.add(new Act2Weak1());
+            t2.add(new Act2Weak1());
+            t2.add(new Act2Weak1());
+            t2.add(new Act2Weak1());
+            weakGroup.put(2, t2);
             weakGroup.put(3, t);
             weakGroup.put(4, t);
         }
