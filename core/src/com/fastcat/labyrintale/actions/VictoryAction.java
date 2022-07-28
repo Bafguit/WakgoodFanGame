@@ -11,6 +11,8 @@ import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.LinkedList;
+
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.DOPA;
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.SOPHIA;
 
@@ -33,7 +35,7 @@ public class VictoryAction extends AbstractAction {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;
                 p.isNeut = false;
-                p.status = new Queue<>();
+                p.status = new LinkedList<>();
                 p.movable = 0;
             }
             if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {

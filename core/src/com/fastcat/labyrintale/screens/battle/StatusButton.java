@@ -19,10 +19,9 @@ public class StatusButton extends AbstractUI {
     private final Sprite border = FileHandler.getUi().get("BORDER_SS");
     public AbstractStatus status;
 
-    public StatusButton(AbstractStatus s) {
+    public StatusButton() {
         super(FileHandler.getUi().get("BORDER_SS"));
         fontData = STATUS;
-        status = s;
         overable = true;
         clickable = false;
     }

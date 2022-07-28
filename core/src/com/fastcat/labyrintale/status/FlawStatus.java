@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.status;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
+import com.fastcat.labyrintale.actions.ReduceStatusAction;
 import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
 public class FlawStatus extends AbstractStatus {
@@ -19,7 +20,7 @@ public class FlawStatus extends AbstractStatus {
 
     @Override
     public void endOfRound() {
-        bot(new RemoveStatusAction(this, true));
+        bot(new ReduceStatusAction(this, 1, true));
     }
 
     @Override

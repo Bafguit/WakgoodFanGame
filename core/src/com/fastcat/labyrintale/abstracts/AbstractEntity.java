@@ -26,6 +26,7 @@ import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Objects;
 
 import static com.badlogic.gdx.graphics.Color.*;
@@ -52,7 +53,7 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractSkill mRight;
     public AbstractSkill mLeftTemp;
     public AbstractSkill mRightTemp;
-    public Queue<AbstractStatus> status = new Queue<>();
+    public LinkedList<AbstractStatus> status = new LinkedList<>();
     public AbstractItem[] item = new AbstractItem[2];
     public int[] slot = new int[3];
     public String id;
@@ -174,22 +175,24 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void gainBlock(int b) {
-        if (b > 0) {
-            if (isPlayer) {
-                for (AbstractItem m : item) {
-                    if (m != null) b = m.onGainBlock(b);
-                }
-            }
-            if (status != null) {
-                for (AbstractStatus s : status) {
-                    if (s != null) {
-                        b = s.onGainBlock(b);
+        if(!hasStatus("Unblockable")) {
+            if (b > 0) {
+                if (isPlayer) {
+                    for (AbstractItem m : item) {
+                        if (m != null) b = m.onGainBlock(b);
                     }
                 }
-            }
-            if (b > 0) {
-                EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, b, CYAN, false));
-                block += b;
+                if (status != null) {
+                    for (AbstractStatus s : status) {
+                        if (s != null) {
+                            b = s.onGainBlock(b);
+                        }
+                    }
+                }
+                if (b > 0) {
+                    EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, b, CYAN, false));
+                    block += b;
+                }
             }
         }
     }
@@ -228,7 +231,6 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         if (!done) {
-            if (this.status.size == 4) this.status.removeFirst().onRemove();
             text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
             this.status.addLast(s);
             s.onApply();
@@ -538,6 +540,10 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         return false;
+    }
+
+    public void preBattle() {
+
     }
 
     @Override

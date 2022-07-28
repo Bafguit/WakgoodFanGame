@@ -17,6 +17,8 @@ import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.LinkedList;
+
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
@@ -29,8 +31,8 @@ public class BattleScreen extends AbstractScreen {
     private final BgImg bgImg = new BgImg();
     public Sprite shield = FileHandler.getUi().get("SHIELD");
     public ShapeRenderer shr = new ShapeRenderer();
-    public StatusButton[][] playerStatus = new StatusButton[4][4];
-    public StatusButton[][] enemyStatus = new StatusButton[4][4];
+    public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
+    public LinkedList<StatusButton>[] enemyStatus = new LinkedList[4];
     public SkillButton[] enemySkills = new SkillButton[4];
     public PlayerView[] players = new PlayerView[4];
     public EnemyView[] enemies = new EnemyView[4];
@@ -61,9 +63,9 @@ public class BattleScreen extends AbstractScreen {
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
             pv.player.newDeck();
+            pv.player.preBattle();
             pv.player.ui = pv;
             players[i] = pv;
-
 
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
@@ -74,6 +76,8 @@ public class BattleScreen extends AbstractScreen {
                 ev.enemy.isRandom = false;
                 ev.enemy.isDead = true;
                 ev.enemy.isDie = true;
+            } else {
+                ev.enemy.preBattle();
             }
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;
@@ -87,19 +91,8 @@ public class BattleScreen extends AbstractScreen {
             es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.55f - es.sHeight * 0.35f);
             eShield[i] = es;
 
-            for (int j = 0; j < 4; j++) {
-                AbstractStatus s = null;
-                if (pv.player.status.size > j) s = pv.player.status.get(j);
-                StatusButton t = new StatusButton(s);
-                t.setPosition(w * 0.437f - w * 0.1f * i + w * 0.019f * j - pv.sWidth / 2, h * 0.517f);
-                playerStatus[i][j] = t;
-
-                AbstractStatus ss = null;
-                if (ev.enemy.status.size > j) ss = ev.enemy.status.get(j);
-                StatusButton t2 = new StatusButton(ss);
-                t2.setPosition(w * 0.507f + w * 0.1f * i + w * 0.019f * j + ev.sWidth / 2 - t2.sWidth, h * 0.517f);
-                enemyStatus[i][j] = t2;
-            }
+            playerStatus[i] = new LinkedList<>();
+            enemyStatus[i] = new LinkedList<>();
 
             SkillButton s3 = new SkillButton();
             s3.setScale(0.5f);
@@ -154,22 +147,50 @@ public class BattleScreen extends AbstractScreen {
             ss.update();
             ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
 
-            for (int j = 0; j < 4; j++) {
-                if (pv.player.isAlive()) {
-                    AbstractPlayer pp = AbstractLabyrinth.players[i];
-                    StatusButton ts = playerStatus[i][j];
-                    if (pp.status.size > j) ts.status = pp.status.get(j);
-                    else ts.status = null;
-                    ts.update();
-                    ts.setPosition(pv.player.animX + w * (0.012f + 0.019f * j) - pv.sWidth / 2, h * 0.517f);
+            if (pv.player.isAlive()) {
+                AbstractPlayer pp = pv.player;
+                LinkedList<StatusButton> s = playerStatus[i];
+                int size = s.size(), pSize = pp.status.size();
+                if(pSize > size) {
+                    for(int j = size; j < pSize; j++) {
+                        int line = j / 4;
+                        int num = j % 4;
+                        StatusButton stb = new StatusButton();
+                        stb.setPosition(pp.animX + w * (0.012f + 0.019f * num) - pv.sWidth / 2, h * 0.517f - (w * 0.019f * line));
+                        s.add(stb);
+                    }
+                } else if(pSize < size) {
+                    for(int j = pSize; j < size; j++) {
+                        s.removeLast();
+                    }
                 }
-                if (ev.enemy.isAlive()) {
-                    AbstractEnemy ee = AbstractLabyrinth.currentFloor.currentRoom.enemies[i];
-                    StatusButton ts = enemyStatus[i][j];
-                    if (ee.status.size > j) ts.status = ee.status.get(j);
-                    else ts.status = null;
+                for(int j = 0; j < s.size(); j++) {
+                    StatusButton ts = s.get(j);
+                    ts.status = pp.status.get(j);
                     ts.update();
-                    ts.setPosition(ev.enemy.animX + w * (-0.068f + 0.019f * j) + ev.sWidth / 2 - ts.sWidth, h * 0.517f);
+                }
+            }
+            if (ev.enemy.isAlive()) {
+                AbstractEnemy pp = ev.enemy;
+                LinkedList<StatusButton> s = enemyStatus[i];
+                int size = s.size(), pSize = pp.status.size();
+                if(pSize > size) {
+                    for(int j = size; j < pSize; j++) {
+                        int line = j / 4;
+                        int num = j % 4;
+                        StatusButton stb = new StatusButton();
+                        stb.setPosition(pp.animX + w * (-0.068f + 0.019f * num) + ev.sWidth / 2 - stb.sWidth, h * 0.517f - (w * 0.019f * line));
+                        s.add(stb);
+                    }
+                } else if(pSize < size) {
+                    for(int j = pSize; j < size; j++) {
+                        s.removeLast();
+                    }
+                }
+                for(int j = 0; j < s.size(); j++) {
+                    StatusButton ts = s.get(j);
+                    ts.status = pp.status.get(j);
+                    ts.update();
                 }
             }
         }
@@ -269,13 +290,15 @@ public class BattleScreen extends AbstractScreen {
             eShield[i].render(sb);
         }
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (players[i].player.isAlive()) playerStatus[i][j].render(sb);
-                if (enemies[i].enemy.isAlive()) {
-                    enemyStatus[i][j].render(sb);
+            if(players[i].player.isAlive()) {
+                for (StatusButton b : playerStatus[i]) {
+                    b.render(sb);
                 }
             }
             if (enemies[i].enemy.isAlive()) {
+                for (StatusButton b : enemyStatus[i]) {
+                    b.render(sb);
+                }
                 boolean t = AbstractLabyrinth.bleak < 100;
                 enemySkills[i].overable = t;
                 if (t) enemySkills[i].render(sb);

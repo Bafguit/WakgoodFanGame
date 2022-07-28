@@ -7,6 +7,8 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 
+import java.util.LinkedList;
+
 public class DieEffect extends AbstractEffect {
 
     private final AbstractEntity actor;
@@ -29,7 +31,7 @@ public class DieEffect extends AbstractEffect {
             if (isDone) {
                 actor.isDead = true;
                 actor.isDie = false;
-                actor.status = new Queue<>();
+                actor.status = new LinkedList<>();
             }
         }
     }

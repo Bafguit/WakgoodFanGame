@@ -21,9 +21,4 @@ public class UnblockableStatus extends AbstractStatus {
     public void endOfRound() {
         bot(new RemoveStatusAction(this, true));
     }
-
-    @Override
-    public float spellMultiply() {
-        return 0;
-    }
 }

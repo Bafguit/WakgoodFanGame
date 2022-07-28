@@ -37,7 +37,7 @@ public class EndPlayerTurnAction extends AbstractAction {
             for (int j = 3; j >= 0; j--) {
                 AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
                 if (e.isAlive()) {
-                    for (int i = e.status.size - 1; i >= 0; i--) {
+                    for (int i = e.status.size() - 1; i >= 0; i--) {
                         e.status.get(i).endOfTurn();
                     }
                 }
@@ -52,7 +52,7 @@ public class EndPlayerTurnAction extends AbstractAction {
             for (int j = 3; j >= 0; j--) {
                 AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
                 if (e.isAlive()) {
-                    for (int i = e.status.size - 1; i >= 0; i--) {
+                    for (int i = e.status.size() - 1; i >= 0; i--) {
                         e.status.get(i).endOfRound();
                     }
                 }
