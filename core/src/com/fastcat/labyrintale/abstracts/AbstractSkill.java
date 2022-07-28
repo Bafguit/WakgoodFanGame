@@ -490,7 +490,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                             }
                         }
                         for (AbstractStatus s : owner.status) {
-                            if (s != null) p *= s.spellMultiply(p);
+                            if (s != null) p *= s.spellMultiply();
                         }
                     }
                 }

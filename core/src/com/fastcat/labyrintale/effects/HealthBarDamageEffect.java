@@ -17,7 +17,7 @@ public class HealthBarDamageEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (cont) {
             if (duration == baseDuration) {
                 if (entity.hbEffect != null && entity.hbEffect != this) {
@@ -36,5 +36,10 @@ public class HealthBarDamageEffect extends AbstractEffect {
                 entity.hbEffect = null;
             }
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+
     }
 }

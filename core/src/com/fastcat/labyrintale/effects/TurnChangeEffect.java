@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.effects;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
@@ -18,7 +19,7 @@ public class TurnChangeEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         float d = Labyrintale.tick;
         if (duration < 0.5f) {
             alpha -= d;
@@ -28,6 +29,11 @@ public class TurnChangeEffect extends AbstractEffect {
         alpha = MathUtils.clamp(alpha, 0, 0.5f);
         text.img.setAlpha(alpha);
         text.fontData.alpha = MathUtils.clamp(alpha * 2, 0, 1.0f);
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
         text.render(sb);
     }
 }

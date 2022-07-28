@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.effects;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
@@ -24,11 +25,16 @@ public class HitEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (duration <= 0.4f) {
             alpha -= Labyrintale.tick * 2.5F;
             if (alpha < 0) alpha = 0;
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
         img.draw(sb, alpha);
     }
 }

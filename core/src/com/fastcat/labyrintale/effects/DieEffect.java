@@ -17,7 +17,7 @@ public class DieEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (actor != null) {
             if (duration == baseDuration) {
                 AnimationState.TrackEntry e = actor.state.setAnimation(0, "die", false);
@@ -32,5 +32,10 @@ public class DieEffect extends AbstractEffect {
                 actor.status = new Queue<>();
             }
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+
     }
 }

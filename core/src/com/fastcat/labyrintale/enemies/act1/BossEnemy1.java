@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.enemies;
+package com.fastcat.labyrintale.enemies.act1;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
@@ -16,7 +16,6 @@ public class BossEnemy1 extends AbstractEnemy {
     public BossEnemy1() {
         super(ID, TYPE, HEALTH);
         isRandom = false;
-        //TODO 너프 필요
     }
 
     @Override
@@ -52,7 +51,7 @@ public class BossEnemy1 extends AbstractEnemy {
             mod = 1;
             Array<AbstractSkill> temp = new Array<>();
             AbstractSkill s = new SlashE(this);
-            for(int i = 0; i < 1; i++) {
+            for(int i = 0; i < 5; i++) {
                 s.upgrade();
             }
             temp.add(s);
@@ -62,7 +61,7 @@ public class BossEnemy1 extends AbstractEnemy {
             }
             temp.add(s2);
             AbstractSkill s3 = new SlashE(this);
-            for(int i = 0; i < 1; i++) {
+            for(int i = 0; i < 5; i++) {
                 s3.upgrade();
             }
             temp.add(s3);

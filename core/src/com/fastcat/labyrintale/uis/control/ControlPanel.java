@@ -39,6 +39,7 @@ public class ControlPanel implements Disposable {
             infoPanel.renderIcon = type != BATTLE;
             infoPanel.update();
             if (type == BATTLE) battlePanel.update();
+            effectHandler.update();
         }
     }
 

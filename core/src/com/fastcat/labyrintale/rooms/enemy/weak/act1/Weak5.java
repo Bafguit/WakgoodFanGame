@@ -3,8 +3,7 @@ package com.fastcat.labyrintale.rooms.enemy.weak.act1;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
-import com.fastcat.labyrintale.enemies.WeakEnemy1;
-import com.fastcat.labyrintale.enemies.WeakEnemy6;
+import com.fastcat.labyrintale.enemies.act1.WeakEnemy6;
 
 public class Weak5 extends AbstractRoom {
 

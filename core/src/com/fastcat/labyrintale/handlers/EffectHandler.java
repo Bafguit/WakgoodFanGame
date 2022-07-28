@@ -30,21 +30,27 @@ public final class EffectHandler {
     }
 
     public static void add(AbstractEffect e) {
-        Labyrintale.getCurScreen().getEffectHandler().effectList.addLast(e);
+        Labyrintale.getBaseScreen().getEffectHandler().effectList.addLast(e);
     }
 
-    public void render(SpriteBatch sb) {
+    public void update() {
         if (effectList.size > 0) {
             Iterator<AbstractEffect> it = effectList.iterator();
             while (it.hasNext()) {
                 AbstractEffect e = it.next();
-                e.render(sb);
+                e.update();
                 if (e.isDone) {
                     e.onRemove();
                     e.dispose();
                     it.remove();
                 }
             }
+        }
+    }
+
+    public void render(SpriteBatch sb) {
+        for(AbstractEffect e : effectList) {
+            e.render(sb);
         }
     }
 

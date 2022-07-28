@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.enemies;
+package com.fastcat.labyrintale.enemies.ac2;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
@@ -49,7 +49,7 @@ public class BossEnemy2 extends AbstractEnemy {
         AbstractSkill s5 = new GrowE(this);
         s5.upgrade();
         s5.upgrade();
-        temp.add(new GrowE(this));
+        temp.add(s5);
         return temp;
     }
 

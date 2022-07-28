@@ -23,6 +23,11 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     @Getter
     private final EffectHandler effectHandler = EffectHandler.newInstance();
 
+    public final void updateAll() {
+        update();
+        effectHandler.update();
+    }
+
     public abstract void update();
 
     public abstract void render(SpriteBatch sb);

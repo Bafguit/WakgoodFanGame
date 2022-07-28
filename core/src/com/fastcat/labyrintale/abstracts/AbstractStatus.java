@@ -120,7 +120,7 @@ public abstract class AbstractStatus implements Cloneable {
         return 1.0f;
     }
 
-    public float spellMultiply(int base) {
+    public float spellMultiply() {
         return 1.0f;
     }
 

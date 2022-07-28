@@ -1,19 +1,20 @@
-package com.fastcat.labyrintale.enemies;
+package com.fastcat.labyrintale.enemies.act1;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.FrailE;
+import com.fastcat.labyrintale.skills.enemy.BarrierE;
+import com.fastcat.labyrintale.skills.enemy.ChargeE;
 import com.fastcat.labyrintale.skills.enemy.GrowE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
-public class WeakEnemy4 extends AbstractEnemy {
+public class WeakEnemy3 extends AbstractEnemy {
 
-    private static final String ID = "WeakEnemy4";
+    private static final String ID = "WeakEnemy3";
     private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 35;
+    private static final int HEALTH = 32;
 
-    public WeakEnemy4() {
+    public WeakEnemy3() {
         super(ID, TYPE, HEALTH);
     }
 
@@ -23,11 +24,11 @@ public class WeakEnemy4 extends AbstractEnemy {
         AbstractSkill s = new StrikeE(this);
         s.upgrade();
         temp.add(s);
-        AbstractSkill ss = new StrikeE(this);
+        temp.add(new GrowE(this));
+        temp.add(new ChargeE(this));
+        AbstractSkill ss = new BarrierE(this);
         ss.upgrade();
         temp.add(ss);
-        temp.add(new GrowE(this));
-        temp.add(new FrailE(this));
         return temp;
     }
 }

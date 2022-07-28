@@ -174,24 +174,22 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void gainBlock(int b) {
-        if (!hasStatus("Unblockable")) {
+        if (b > 0) {
+            if (isPlayer) {
+                for (AbstractItem m : item) {
+                    if (m != null) b = m.onGainBlock(b);
+                }
+            }
+            if (status != null) {
+                for (AbstractStatus s : status) {
+                    if (s != null) {
+                        b = s.onGainBlock(b);
+                    }
+                }
+            }
             if (b > 0) {
-                if (isPlayer) {
-                    for (AbstractItem m : item) {
-                        if (m != null) b = m.onGainBlock(b);
-                    }
-                }
-                if (status != null) {
-                    for (AbstractStatus s : status) {
-                        if (s != null) {
-                            b = s.onGainBlock(b);
-                        }
-                    }
-                }
-                if (b > 0) {
-                    EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, b, CYAN, false));
-                    block += b;
-                }
+                EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, b, CYAN, false));
+                block += b;
             }
         }
     }
@@ -264,7 +262,7 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         for (AbstractStatus s : status) {
-            if (s != null) d = s.showAttack(d);
+            d = s.showAttack(d);
         }
         if (isPlayer) {
             for (AbstractItem m : item) {
@@ -272,7 +270,7 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         for (AbstractStatus s : status) {
-            if (s != null) d *= s.attackMultiply();
+            d *= s.attackMultiply();
         }
         return d;
     }
@@ -284,7 +282,10 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         for (AbstractStatus s : status) {
-            if (s != null) d = s.showSpell(d);
+            d = s.showSpell(d);
+        }
+        for (AbstractStatus s : status) {
+            d *= s.spellMultiply();
         }
         return d;
     }

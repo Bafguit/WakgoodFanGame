@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.enemies;
+package com.fastcat.labyrintale.enemies.act1;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;

@@ -23,7 +23,7 @@ public class UpTextEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (duration != baseDuration) {
             if (text.fontData != null) {
                 text.fontData.alpha -= Labyrintale.tick;
@@ -31,6 +31,11 @@ public class UpTextEffect extends AbstractEffect {
                 text.y += Labyrintale.tick * 100;
             }
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
         text.render(sb);
     }
 

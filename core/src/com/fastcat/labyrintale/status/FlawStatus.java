@@ -4,11 +4,11 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
-public class UnblockableStatus extends AbstractStatus {
+public class FlawStatus extends AbstractStatus {
 
-    private static final String ID = "Unblockable";
+    private static final String ID = "Flaw";
 
-    public UnblockableStatus() {
+    public FlawStatus() {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
     }
 
@@ -24,6 +24,6 @@ public class UnblockableStatus extends AbstractStatus {
 
     @Override
     public float spellMultiply() {
-        return 0;
+        return 0.7f;
     }
 }

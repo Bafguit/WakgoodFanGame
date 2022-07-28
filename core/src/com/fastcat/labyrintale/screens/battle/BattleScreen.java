@@ -288,17 +288,6 @@ public class BattleScreen extends AbstractScreen {
         isSelecting = true;
     }
 
-    public PlayerView[] getPlayerTarget(AbstractSkill.SkillTarget target) {
-        if (target == AbstractSkill.SkillTarget.PLAYER_ALL) {
-            return players;
-        } else if (target == AbstractSkill.SkillTarget.PLAYER_FIRST_TWO) {
-            return new PlayerView[]{players[0], players[1]};
-        } else if (target == AbstractSkill.SkillTarget.PLAYER_LAST_TWO) {
-            return new PlayerView[]{players[2], players[3]};
-        }
-        return null;
-    }
-
     public void setEnemy(AbstractEnemy e, int index) {
         enemies[index].enemy = e;
     }

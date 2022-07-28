@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.effects;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
@@ -26,13 +27,18 @@ public class FlashEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (duration != baseDuration) {
             alpha -= Labyrintale.tick * 0.7f;
             sc -= Labyrintale.tick * 0.5f;
             if (alpha < 0) alpha = 0;
             img.setBounds(x - rw * 0.5f * scale, y - rh * 0.5f * scale, rw * sc, rh * sc);
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
         img.draw(sb, alpha);
     }
 }

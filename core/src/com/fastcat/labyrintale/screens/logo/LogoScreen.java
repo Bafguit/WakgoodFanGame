@@ -28,7 +28,6 @@ public class LogoScreen extends AbstractScreen {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        //effectHandler.effectList.addLast(new LogoEffect());
         videoPlayer.setOnCompletionListener(new VideoPlayer.CompletionListener() {
             @Override
             public void onCompletionListener(FileHandle file) {

@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.effects;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
@@ -23,11 +24,15 @@ public class TextEffect extends AbstractEffect {
     }
 
     @Override
-    protected void renderEffect(SpriteBatch sb) {
+    protected void updateEffect() {
         if (duration <= 0.15f) {
             f.setColor(f.getColor().r, f.getColor().g, f.getColor().b, f.getColor().a - Labyrintale.tick / 0.15f);
-            System.out.println("FONT ALPHA: " + f.getColor().a);
         }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
         text.render(sb);
     }
 

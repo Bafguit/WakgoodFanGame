@@ -1,12 +1,12 @@
 {
 "skeleton": {
-	"hash": "PNQ+jmZHMHkZs8D3RvsvoBKOEWA",
+	"hash": "yESUr3WQspsOH6HrcphJz+vYTPA",
 	"spine": "3.8.75",
-	"x": -320,
-	"y": -50,
-	"width": 640,
-	"height": 640,
-	"images": "../../enemy/temp5/img/",
+	"x": -512,
+	"y": -62,
+	"width": 1024,
+	"height": 1024,
+	"images": "../../enemy/normal2/img/",
 	"audio": ""
 },
 "bones": [
@@ -16,8 +16,8 @@
 	{ "name": "die", "bone": "root" },
 	{ "name": "attack", "bone": "root" },
 	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root" },
-	{ "name": "idle", "bone": "root", "attachment": "idle" }
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "root" }
 ],
 "skins": [
 	{
@@ -50,7 +50,7 @@
 					{ "time": 0.6667, "name": "attack" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -65,7 +65,7 @@
 					{ "time": 0.6667, "name": "die" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -80,7 +80,7 @@
 					{ "time": 0.6667, "name": "hit" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -89,8 +89,14 @@
 	},
 	"idle": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"idle": {
 				"attachment": [
+					{ "name": "idle" },
 					{ "time": 0.6667, "name": "idle" }
 				]
 			}
@@ -100,13 +106,7 @@
 		"slots": {
 			"skill": {
 				"attachment": [
-					{ "name": "skill" },
 					{ "time": 0.6667, "name": "skill" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}

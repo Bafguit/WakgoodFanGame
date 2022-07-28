@@ -2,8 +2,7 @@ package com.fastcat.labyrintale.rooms.enemy.boss.act2;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.enemies.BossEnemy1;
-import com.fastcat.labyrintale.enemies.BossEnemy2;
+import com.fastcat.labyrintale.enemies.ac2.BossEnemy2;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 
 public class Boss2 extends AbstractRoom {

@@ -28,6 +28,7 @@ import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 import lombok.Getter;
 
 public class Labyrintale extends Game {
@@ -160,15 +161,22 @@ public class Labyrintale extends Game {
         InputHandler.getInstance().update();
         InputHandler.getInstance().update();
         FontHandler.getInstance().update();
-        ActionHandler.getInstance().update();
-        if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.update();
+        if (AbstractLabyrinth.cPanel != null) {
+            AbstractLabyrinth.cPanel.update();
+        }
         if (tempScreen.size > 0) {
             AbstractScreen s = tempScreen.get(tempScreen.size - 1);
             if (s != null) {
                 s.update();
+                s.getEffectHandler().update();
             }
         } else if (screen instanceof AbstractScreen) {
-            ((AbstractScreen) screen).update();
+            if(AbstractLabyrinth.cPanel != null && AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
+                ActionHandler.getInstance().update();
+            }
+            AbstractScreen s = (AbstractScreen) screen;
+            s.update();
+            s.getEffectHandler().update();
         }
         SoundHandler.getInstance().update();
     }
