@@ -35,14 +35,14 @@ public class StatusDamageAction extends AbstractAction {
 
     public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect, boolean reduce, boolean remove, boolean isFast) {
         this(s, effect);
-        if(isFast) duration = baseDuration = 0.25f;
+        if(isFast) duration = baseDuration = 0.2f;
         this.reduce = reduce;
         this.remove = remove;
     }
 
     public StatusDamageAction(AbstractStatus s, AbstractEntity e, AttackAction.AttackType effect, boolean reduce, boolean remove, boolean isFast) {
         this(s, effect);
-        if(isFast) duration = baseDuration = 0.25f;
+        if(isFast) duration = baseDuration = 0.2f;
         this.reduce = reduce;
         this.remove = remove;
         this.e = e;

@@ -19,8 +19,8 @@ public class FlawStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfRound() {
-        bot(new ReduceStatusAction(this, 1, true));
+    public void endOfTurn() {
+        top(new ReduceStatusAction(this, 1, true));
     }
 
     @Override

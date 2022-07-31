@@ -14,7 +14,7 @@ public class HighAttackAction extends AbstractAction {
     public int damage;
 
     public HighAttackAction(AbstractEntity actor, int damage, boolean isFast) {
-        super(actor, actor != null && actor.isPlayer ? AbstractSkill.SkillTarget.ENEMY_HIGH_HP : AbstractSkill.SkillTarget.PLAYER_HIGH_HP, isFast ? 0.25f : 0.5f);
+        super(actor, actor != null && actor.isPlayer ? AbstractSkill.SkillTarget.ENEMY_HIGH_HP : AbstractSkill.SkillTarget.PLAYER_HIGH_HP, isFast ? 0.2f : 0.5f);
         this.damage = damage;
     }
 

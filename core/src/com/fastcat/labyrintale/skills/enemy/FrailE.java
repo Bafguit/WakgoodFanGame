@@ -11,7 +11,7 @@ public class FrailE extends AbstractSkill {
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST_TWO;
-    private static final int VALUE = 2;
+    private static final int VALUE = 1;
 
     public FrailE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

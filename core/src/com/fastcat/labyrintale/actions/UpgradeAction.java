@@ -8,7 +8,7 @@ public class UpgradeAction extends AbstractAction {
     private final AbstractSkill[] skills;
 
     public UpgradeAction(AbstractSkill[] skills) {
-        super(null, AbstractSkill.SkillTarget.NONE, 0.25f);
+        super(null, AbstractSkill.SkillTarget.NONE, 0.2f);
         this.skills = skills;
     }
 

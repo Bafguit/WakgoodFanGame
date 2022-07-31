@@ -13,6 +13,11 @@ public class EndLabyrinthAction extends AbstractAction {
     }
 
     @Override
+    protected void applySetting() {
+
+    }
+
+    @Override
     protected void updateAction() {
         if (duration == baseDuration) {
             ActionHandler.clear();

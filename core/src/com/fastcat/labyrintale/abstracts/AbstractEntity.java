@@ -439,8 +439,7 @@ public abstract class AbstractEntity implements Cloneable {
         isDie = false;
         health = 1;
         animColor.a = 1.0f;
-        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
-        e.setTimeScale(1.0f);
+        resetAnimation();
         infoSpine.setAnimation("idle");
     }
 

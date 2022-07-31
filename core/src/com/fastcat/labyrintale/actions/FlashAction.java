@@ -19,6 +19,11 @@ public class FlashAction extends AbstractAction {
     }
 
     @Override
+    protected void applySetting() {
+
+    }
+
+    @Override
     protected void updateAction() {
         if (duration == baseDuration)
             EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));

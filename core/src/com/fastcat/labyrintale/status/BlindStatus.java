@@ -25,8 +25,8 @@ public class BlindStatus extends AbstractStatus {
         ActionHandler.top(new RemoveStatusAction(this, true));
     }
     @Override
-    public void endOfRound() {
-        bot(new RemoveStatusAction(this, true));
+    public void endOfTurn() {
+        top(new RemoveStatusAction(this, true));
     }
 
     @Override

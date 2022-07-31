@@ -24,6 +24,11 @@ public class LilpaaAction extends AbstractAction {
     }
 
     @Override
+    protected void applySetting() {
+
+    }
+
+    @Override
     protected void updateAction() {
         if (duration == baseDuration) {
             SoundHandler.playSfx("LILPAA");

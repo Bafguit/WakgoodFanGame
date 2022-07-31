@@ -26,8 +26,9 @@ import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
+import com.fastcat.labyrintale.rooms.enemy.normal.act2.Act2Normal1;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
-import com.fastcat.labyrintale.rooms.enemy.weak.act2.Act2Weak1;
+import com.fastcat.labyrintale.rooms.enemy.weak.act2.*;
 import com.fastcat.labyrintale.rooms.other.*;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -188,13 +189,13 @@ public final class GroupHandler {
             weakGroup.put(1, t);
             Array<AbstractRoom> t2 = new Array<>();
             t2.add(new Act2Weak1());
-            t2.add(new Act2Weak1());
-            t2.add(new Act2Weak1());
-            t2.add(new Act2Weak1());
-            t2.add(new Act2Weak1());
+            t2.add(new Act2Weak2());
+            t2.add(new Act2Weak3());
+            t2.add(new Act2Weak4());
+            t2.add(new Act2Weak5());
             weakGroup.put(2, t2);
-            weakGroup.put(3, t);
-            weakGroup.put(4, t);
+            weakGroup.put(3, t2);
+            weakGroup.put(4, t2);
         }
 
         private static void generateNormal() {
@@ -206,9 +207,15 @@ public final class GroupHandler {
             t.add(new Normal4());
             t.add(new Normal5());
             normalGroup.put(1, t);
-            normalGroup.put(2, t);
-            normalGroup.put(3, t);
-            normalGroup.put(4, t);
+            Array<AbstractRoom> t2 = new Array<>();
+            t2.add(new Act2Normal1());
+            t2.add(new Act2Normal1());
+            t2.add(new Act2Normal1());
+            t2.add(new Act2Normal1());
+            t2.add(new Act2Normal1());
+            normalGroup.put(2, t2);
+            normalGroup.put(3, t2);
+            normalGroup.put(4, t2);
         }
 
         private static void generateElite() {

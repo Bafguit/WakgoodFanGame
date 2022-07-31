@@ -11,10 +11,14 @@ public class AmbushAction extends AbstractAction {
     public AbstractSkill skill;
     public AbstractEntity.DamageInfo info;
 
-    public AmbushAction(AbstractSkill s) {
-        super(s.owner, s.target, 0.5f);
+    public AmbushAction(AbstractSkill s, boolean isFast) {
+        super(s.owner, s.target, isFast ? 0.2f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, s.attack);
         skill = s;
+    }
+
+    public AmbushAction(AbstractSkill s) {
+        this(s, false);
     }
 
     @Override

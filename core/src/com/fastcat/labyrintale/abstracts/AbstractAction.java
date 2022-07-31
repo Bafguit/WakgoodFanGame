@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.interfaces.EventCallback;
 
 
@@ -21,6 +22,7 @@ public abstract class AbstractAction implements Cloneable {
         this.actor = actor;
         this.duration = duration;
         baseDuration = this.duration;
+        applySetting();
     }
 
     public AbstractAction(AbstractEntity actor, AbstractSkill.SkillTarget target, float duration) {
@@ -28,6 +30,7 @@ public abstract class AbstractAction implements Cloneable {
         tar = target;
         this.duration = duration;
         baseDuration = this.duration;
+        applySetting();
     }
 
     public AbstractAction(AbstractEntity actor, Array<AbstractEntity> target, float duration) {
@@ -35,6 +38,7 @@ public abstract class AbstractAction implements Cloneable {
         this.target = target;
         this.duration = duration;
         baseDuration = this.duration;
+        applySetting();
     }
 
     public AbstractAction(AbstractEntity actor, AbstractEntity target, float duration) {
@@ -43,6 +47,7 @@ public abstract class AbstractAction implements Cloneable {
         this.target.add(target);
         this.duration = duration;
         baseDuration = this.duration;
+        applySetting();
     }
 
     public final void update() {
@@ -57,6 +62,13 @@ public abstract class AbstractAction implements Cloneable {
             updateAction();
             onComplete();
             TickDuration();
+        }
+    }
+
+    protected void applySetting() {
+        if(SettingHandler.setting.fastMode) {
+            baseDuration *= 0.5f;
+            duration = baseDuration;
         }
     }
 

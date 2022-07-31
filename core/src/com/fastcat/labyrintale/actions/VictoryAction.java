@@ -19,11 +19,16 @@ import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.SOP
 public class VictoryAction extends AbstractAction {
 
     public VictoryAction() {
-        super(null, 2);
+        super(null, 1.0f);
     }
 
     public VictoryAction(float dur) {
         super(null, dur);
+    }
+
+    @Override
+    protected void applySetting() {
+
     }
 
     @Override

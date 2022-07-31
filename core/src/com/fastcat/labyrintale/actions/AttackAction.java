@@ -25,14 +25,14 @@ public class AttackAction extends AbstractAction {
     }
 
     public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AttackType effect, boolean fast) {
-        super(actor, target, fast ? 0.1f : 0.5f);
+        super(actor, target, fast ? 0.2f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage);
         this.effect = effect;
         img = getEffectImg(effect);
     }
 
     public AttackAction(AbstractEntity actor, AbstractEntity target, int damage, AbstractEntity.DamageType type, AttackType effect, boolean fast) {
-        super(actor, target, fast ? 0.1f : 0.5f);
+        super(actor, target, fast ? 0.2f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage, type);
         this.effect = effect;
         img = getEffectImg(effect);
@@ -46,14 +46,14 @@ public class AttackAction extends AbstractAction {
     }
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AttackType effect, boolean fast) {
-        super(actor, target, fast ? 0.1f : 0.5f);
+        super(actor, target, fast ? 0.2f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage);
         this.effect = effect;
         img = getEffectImg(effect);
     }
 
     public AttackAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, AbstractEntity.DamageType type, AttackType effect, boolean fast) {
-        super(actor, target, fast ? 0.1f : 0.5f);
+        super(actor, target, fast ? 0.2f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage, type);
         this.effect = effect;
         img = getEffectImg(effect);

@@ -24,7 +24,14 @@ public class ArmourStatus extends AbstractStatus {
 
     @Override
     public void endOfTurn() {
-        top(new ReduceStatusAction(this, -1, true));
+        top(new ReduceStatusAction(this, 1, true));
         top(new BlockAction(owner, owner, amount));
+    }
+
+    @Override
+    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        if(type == AbstractEntity.DamageType.NORMAL) {
+            owner.applyStatus(this, -1, false);
+        }
     }
 }

@@ -72,7 +72,7 @@ public class AbstractLabyrinth {
             maxSlotUp = 3;
             maxEnergy = 3;
             energy = 0;
-            gold = 1000;
+            gold = 100;
             bleak = 0;
             bleakMin = 0;
             bleakMax = 100;

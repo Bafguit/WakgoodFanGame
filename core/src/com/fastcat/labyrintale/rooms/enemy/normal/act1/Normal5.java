@@ -4,7 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.enemies.*;
 import com.fastcat.labyrintale.enemies.act1.WeakEnemy1;
-import com.fastcat.labyrintale.enemies.act1.WeakEnemy3;
+import com.fastcat.labyrintale.enemies.act1.BrutalChimp;
 
 public class Normal5 extends AbstractRoom {
 
@@ -14,6 +14,6 @@ public class Normal5 extends AbstractRoom {
 
     @Override
     public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new WeakEnemy1(), new WeakEnemy3(), new WeakEnemy1(), new EnemyPlaceholder()};
+        return new AbstractEnemy[]{new WeakEnemy1(), new BrutalChimp(), new WeakEnemy1(), new EnemyPlaceholder()};
     }
 }

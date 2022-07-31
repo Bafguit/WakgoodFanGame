@@ -27,8 +27,8 @@ public class Boost extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
-        top(new BlockAction(this.owner, target, spell));
+        top(new ApplyStatusAction(new CourageStatus(value), owner, e, false));
+        top(new BlockAction(this.owner, e, spell));
     }
 
     @Override

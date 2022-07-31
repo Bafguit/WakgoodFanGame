@@ -33,7 +33,7 @@ public class HolySmiteAction extends AbstractAction {
                     e.setTimeScale(1.0f);
                 }
                 if (SettingHandler.setting.shake)
-                    Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.MED, false);
+                    Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
                 for (AbstractEntity t : target) {
                     EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("LIGHTNING")));
                 }

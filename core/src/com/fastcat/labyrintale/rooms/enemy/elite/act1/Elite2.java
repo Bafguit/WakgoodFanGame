@@ -2,8 +2,8 @@ package com.fastcat.labyrintale.rooms.enemy.elite.act1;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.enemies.act1.TestEnemy2;
-import com.fastcat.labyrintale.enemies.act1.WeakEnemy2;
+import com.fastcat.labyrintale.enemies.act1.ModelA;
+import com.fastcat.labyrintale.enemies.act1.ModelB;
 
 public class Elite2 extends AbstractRoom {
 
@@ -13,6 +13,6 @@ public class Elite2 extends AbstractRoom {
 
     @Override
     public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new TestEnemy2(), new WeakEnemy2(), new WeakEnemy2(), new WeakEnemy2()};
+        return new AbstractEnemy[]{new ModelA(), new ModelB(), new ModelB(), new ModelB()};
     }
 }

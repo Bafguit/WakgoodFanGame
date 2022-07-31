@@ -27,8 +27,8 @@ public class Encourage extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new EnduranceStatus(value), owner, target, false));
-        top(new BlockAction(this.owner, target, spell));
+        top(new ApplyStatusAction(new EnduranceStatus(value), owner, e, false));
+        top(new BlockAction(this.owner, e, spell));
     }
 
     @Override

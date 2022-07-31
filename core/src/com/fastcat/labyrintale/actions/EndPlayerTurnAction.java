@@ -15,16 +15,7 @@ public class EndPlayerTurnAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (isDone) {
-            for (AbstractPlayer p : players) {
-                if (p.isAlive()) {
-                    for (AbstractItem s : p.item) {
-                        if (s != null) s.endOfTurn();
-                    }
-                    for (AbstractStatus s : p.status) {
-                        if (s != null) s.endOfTurn();
-                    }
-                }
-            }
+            ActionHandler.bot(new EndTurnAction(true));
             ActionHandler.bot(new TurnChangeAction(true));
             ActionHandler.bot(new RemoveAllBlockAction(true));
             ActionHandler.bot(new EnemyTurnStartAction());
@@ -34,29 +25,8 @@ public class EndPlayerTurnAction extends AbstractAction {
                     ts.skill.useCard();
                 }
             }
-            for (int j = 3; j >= 0; j--) {
-                AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
-                if (e.isAlive()) {
-                    for (int i = e.status.size() - 1; i >= 0; i--) {
-                        e.status.get(i).endOfTurn();
-                    }
-                }
-            }
-            for (AbstractPlayer p : players) {
-                if (p.isAlive()) {
-                    for (AbstractStatus s : p.status) {
-                        s.endOfRound();
-                    }
-                }
-            }
-            for (int j = 3; j >= 0; j--) {
-                AbstractEnemy e = AbstractLabyrinth.currentFloor.currentRoom.enemies[j];
-                if (e.isAlive()) {
-                    for (int i = e.status.size() - 1; i >= 0; i--) {
-                        e.status.get(i).endOfRound();
-                    }
-                }
-            }
+            ActionHandler.bot(new EndTurnAction(false));
+            ActionHandler.bot(new BeforeEndRoundAction());
             ActionHandler.bot(new EndRoundAction());
             ActionHandler.bot(new TurnChangeAction(false));
             ActionHandler.bot(new RemoveAllBlockAction(false));

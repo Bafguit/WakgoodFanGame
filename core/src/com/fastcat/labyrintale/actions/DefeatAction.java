@@ -13,6 +13,11 @@ public class DefeatAction extends AbstractAction {
     }
 
     @Override
+    protected void applySetting() {
+
+    }
+
+    @Override
     protected void updateAction() {
         if (duration == baseDuration) {
             ActionHandler.clear();

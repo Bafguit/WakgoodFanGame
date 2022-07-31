@@ -7,20 +7,20 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
-  "TestEnemy2": {
-    "NAME": "TestEnemy",
+  "ModelA": {
+    "NAME": "실험체α",
     "DESC": "DESCRIPTION"
   },
   "WeakEnemy1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
-  "WeakEnemy2": {
-    "NAME": "TestEnemy",
+  "ModelB": {
+    "NAME": "실험체β",
     "DESC": "DESCRIPTION"
   },
-  "WeakEnemy3": {
-    "NAME": "TestEnemy",
+  "BrutalChimp": {
+    "NAME": "흉폭한 침팬치",
     "DESC": "DESCRIPTION"
   },
   "WeakEnemy4": {
@@ -48,6 +48,26 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy2Weak1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Weak2": {
+    "NAME": "갈고리 수집가",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Weak3": {
+    "NAME": "갈고리 수집가",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Weak4": {
+    "NAME": "갈고리 수집가",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Weak5": {
+    "NAME": "감염된 조류",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Normal1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },

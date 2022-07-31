@@ -17,6 +17,11 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
     }
 
     @Override
+    protected void applySetting() {
+
+    }
+
+    @Override
     protected void updateAction() {
         if (duration == baseDuration) {
             isDone = !gets.setTarget();
