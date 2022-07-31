@@ -492,7 +492,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void gainSkill(int index, AbstractSkill skill) {
-        for (int i = 0; i < slot[i]; i++) {
+        for (int i = 0; i < slot[index]; i++) {
             skill.upgrade();
         }
         deck.set(index, skill);

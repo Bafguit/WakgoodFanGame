@@ -49,7 +49,7 @@ public class SkillButton extends AbstractUI {
         if (skill != null) {
             if (skill.owner != null && !skill.owner.isAlive()) {
                 skill = null;
-            } else if (over) {
+            } else if (overable && over) {
                 cPanel.infoPanel.setInfo(skill);
                 battleScreen.looking = getTargets(skill);
             }
