@@ -144,6 +144,7 @@ public class BattleScreen extends AbstractScreen {
 
             SkillButton ss = enemySkills[i];
             ss.skill = ev.enemy.hand[0];
+            ss.overable = AbstractLabyrinth.bleak < 100;
             ss.update();
             ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
 
@@ -299,9 +300,7 @@ public class BattleScreen extends AbstractScreen {
                 for (StatusButton b : enemyStatus[i]) {
                     b.render(sb);
                 }
-                boolean t = AbstractLabyrinth.bleak < 100;
-                enemySkills[i].overable = t;
-                if (t) enemySkills[i].render(sb);
+                if (AbstractLabyrinth.bleak < 100) enemySkills[i].render(sb);
             }
         }
     }
