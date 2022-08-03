@@ -17,6 +17,7 @@ public class Enemy2Weak3 extends AbstractEnemy {
     public Enemy2Weak3() {
         super(ID, TYPE, HEALTH);
         isRandom = false;
+        //TODO 다른 패턴으로 변경
     }
 
     @Override

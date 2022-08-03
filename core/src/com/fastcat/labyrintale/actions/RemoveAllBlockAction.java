@@ -19,11 +19,11 @@ public class RemoveAllBlockAction extends AbstractAction {
         if (duration == baseDuration) {
             if (isEnemy) {
                 for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                    e.block = 0;
+                    if(!e.hasStatus("Maintain")) e.block = 0;
                 }
             } else {
                 for (AbstractPlayer p : AbstractLabyrinth.players) {
-                    p.block = 0;
+                    if(!p.hasStatus("Maintain")) p.block = 0;
                 }
             }
         }

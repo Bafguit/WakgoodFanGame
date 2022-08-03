@@ -31,7 +31,7 @@ public class ArmourStatus extends AbstractStatus {
     @Override
     public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         if(type == AbstractEntity.DamageType.NORMAL) {
-            owner.applyStatus(this, -1, false);
+            top(new ReduceStatusAction(this, 1, true));
         }
     }
 }

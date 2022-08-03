@@ -9,13 +9,14 @@ public class FlawStatus extends AbstractStatus {
 
     private static final String ID = "Flaw";
 
-    public FlawStatus() {
+    public FlawStatus(int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+        setAmount(amount);
     }
 
     @Override
     public String getDesc() {
-        return exDesc[0];
+        return exDesc[0] + amount + exDesc[1];
     }
 
     @Override

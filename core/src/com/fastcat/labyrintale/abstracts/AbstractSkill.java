@@ -648,7 +648,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public enum SkillType {
-        ATTACK, DEFENCE, SCHEME
+        ATTACK, DEFENCE, SCHEME, MOVE
     }
 
     public enum SkillRarity {

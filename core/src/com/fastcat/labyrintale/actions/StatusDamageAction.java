@@ -52,19 +52,26 @@ public class StatusDamageAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
-            if (effect == AttackAction.AttackType.NONE) {
-                status.flash(e);
+            if(e != null) {
+                if (effect == AttackAction.AttackType.NONE) {
+                    status.flash(e);
+                }
+                e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
             } else {
-                for (AbstractEntity t : temp) {
-                    //TODO 이미지 좌표로 자동입력되게 설정
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, eImg));
+                if (effect == AttackAction.AttackType.NONE) {
+                    status.flash(actor);
+                } else {
+                    for (AbstractEntity t : temp) {
+                        //TODO 이미지 좌표로 자동입력되게 설정
+                        EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, eImg));
+                    }
+                }
+                for (AbstractEntity e : temp) {
+                    e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
                 }
             }
-            for (AbstractEntity e : temp) {
-                e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
-            }
-            if (reduce) e.applyStatus(status, -1);
-            if (remove) e.removeStatus(status.id);
+            if (reduce) actor.applyStatus(status, -1);
+            if (remove) actor.removeStatus(status.id);
         }
     }
 }

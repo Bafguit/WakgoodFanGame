@@ -349,12 +349,8 @@ public abstract class AbstractEntity implements Cloneable {
                                     health = 1;
                                     block = 0;
                                 } else if (!isNeut) {
-                                    health = 1;
-                                    block = 0;
                                     neutralize();
                                 } else {
-                                    health = 0;
-                                    block = 0;
                                     die(attacker);
                                 }
                             }
@@ -444,6 +440,8 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void die(AbstractEntity murder) {
+        health = 0;
+        block = 0;
         if (cPanel.type == ControlPanel.ControlType.BATTLE) {
             isDie = true;
             ActionHandler.top(new MoveAction(this, 3));
@@ -488,6 +486,8 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void neutralize() {
+        health = 1;
+        block = 0;
         applyStatus(new NeutStatus(this), 1);
     }
 

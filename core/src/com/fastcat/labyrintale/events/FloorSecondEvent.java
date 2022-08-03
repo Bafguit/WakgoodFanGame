@@ -2,14 +2,17 @@ package com.fastcat.labyrintale.events;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.AdvisorChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
 public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen {
 
     private static final String ID = "SecondFloor";
-    private static final int SIZE = 2;
+    private static final int SIZE = 3;
 
     public FloorSecondEvent() {
         super(ID, SIZE);
@@ -21,8 +24,18 @@ public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen
         Array<EventChoice> a = new Array<>();
         //TODO 1층 보스 보상 추가
         if (page == 0) a.add(new AdvisorChoice(data.SELECT[0], this));
+        else if(page == 1) a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         else a.add(new EndEventChoice());
         return a;
+    }
+
+    @Override
+    public void onSetPage(int page) {
+        if (page == 2) {
+            for (AbstractPlayer p : AbstractLabyrinth.players) {
+                if (p.isAlive()) p.heal((int)(p.maxHealth * 0.6f));
+            }
+        }
     }
 
     @Override
