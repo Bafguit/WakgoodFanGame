@@ -20,7 +20,7 @@ public class StatusDamageAction extends AbstractAction {
     public AbstractEntity e;
 
     public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect) {
-        super(null, 0.5f);
+        super(s.owner, 0.5f);
         status = s;
         this.effect = effect;
         eImg = AttackAction.getEffectImg(effect);
