@@ -24,12 +24,11 @@ import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
+import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite1;
+import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
-import com.fastcat.labyrintale.rooms.enemy.normal.act2.Act2Normal1;
-import com.fastcat.labyrintale.rooms.enemy.normal.act2.Act2Normal2;
-import com.fastcat.labyrintale.rooms.enemy.normal.act2.Act2Normal3;
-import com.fastcat.labyrintale.rooms.enemy.normal.act2.Act2Normal4;
+import com.fastcat.labyrintale.rooms.enemy.normal.act2.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act2.*;
 import com.fastcat.labyrintale.rooms.other.*;
@@ -215,7 +214,7 @@ public final class GroupHandler {
             t2.add(new Act2Normal2());
             t2.add(new Act2Normal3());
             t2.add(new Act2Normal4());
-            t2.add(new Act2Normal1());
+            t2.add(new Act2Normal5());
             normalGroup.put(2, t2);
             normalGroup.put(3, t2);
             normalGroup.put(4, t2);
@@ -227,9 +226,12 @@ public final class GroupHandler {
             t.add(new Elite1());
             t.add(new Elite2());
             eliteGroup.put(1, t);
-            eliteGroup.put(2, t);
-            eliteGroup.put(3, t);
-            eliteGroup.put(4, t);
+            Array<AbstractRoom> t2 = new Array<>();
+            t2.add(new Act2Elite1());
+            t2.add(new Act2Elite2());
+            eliteGroup.put(2, t2);
+            eliteGroup.put(3, t2);
+            eliteGroup.put(4, t2);
         }
 
         private static void generateBoss() {

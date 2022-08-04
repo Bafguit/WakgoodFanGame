@@ -22,7 +22,9 @@ public class WeakEnemy1 extends AbstractEnemy {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new StrikeE(this));
         temp.add(new BarrierE(this));
-        temp.add(new FuryE(this));
+        AbstractSkill s = new FuryE(this);
+        s.upgrade();
+        temp.add(s);
         return temp;
     }
 }

@@ -19,7 +19,7 @@ public class SinStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfRound() {
+    public void endOfTurn() {
         top(new RemoveStatusAction(this, true));
     }
 

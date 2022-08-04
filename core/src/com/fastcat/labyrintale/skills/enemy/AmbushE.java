@@ -16,6 +16,7 @@ public class AmbushE extends AbstractSkill {
     public AmbushE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
+        cooltime = 1;
     }
 
     @Override

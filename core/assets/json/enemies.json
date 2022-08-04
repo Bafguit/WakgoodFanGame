@@ -67,6 +67,10 @@
     "NAME": "감염된 조류",
     "DESC": "DESCRIPTION"
   },
+  "Enemy2Weak6": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "Enemy2Normal1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
@@ -80,6 +84,14 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy2Normal4": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Normal5": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Elite1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },

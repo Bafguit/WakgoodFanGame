@@ -19,7 +19,7 @@ public class Enemy2Normal4 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new SelfBombStatus(4), 4, false);
+        applyStatus(new SelfBombStatus(5), 5, false);
     }
 
     @Override

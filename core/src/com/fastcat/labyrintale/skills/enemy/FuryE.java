@@ -11,7 +11,7 @@ public class FuryE extends AbstractSkill {
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.SELF;
-    private static final int VALUE = 2;
+    private static final int VALUE = 1;
 
     public FuryE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

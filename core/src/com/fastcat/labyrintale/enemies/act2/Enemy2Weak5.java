@@ -37,6 +37,7 @@ public class Enemy2Weak5 extends AbstractEnemy {
         temp.add(s2);
         AbstractSkill s3 = new FuryE(this);
         s3.upgrade();
+        s3.upgrade();
         temp.add(s3);
         return temp;
     }
