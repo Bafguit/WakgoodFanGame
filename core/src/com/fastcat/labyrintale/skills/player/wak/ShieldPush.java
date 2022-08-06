@@ -10,9 +10,9 @@ public class ShieldPush extends AbstractSkill {
 
     private static final String ID = "ShieldPush";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
     private static final SkillTarget TARGET = SkillTarget.SELF;
-    private static final int VALUE = 4;
+    private static final int VALUE = 3;
 
     public ShieldPush(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

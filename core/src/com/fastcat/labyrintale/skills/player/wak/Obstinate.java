@@ -1,29 +1,31 @@
-package com.fastcat.labyrintale.skills.player.ine;
+package com.fastcat.labyrintale.skills.player.wak;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.status.LethargyStatus;
+import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.status.FixedStatus;
+import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
-public class Intimidate extends AbstractSkill {
+public class Obstinate extends AbstractSkill {
 
-    private static final String ID = "Intimidate";
+    private static final String ID = "Obstinate";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 4;
 
-    public Intimidate(AbstractEntity e) {
+    public Obstinate(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
-        setBaseValue(1, 1);
     }
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH));
-        bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, true));
+        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
+        bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
     }
 
     @Override

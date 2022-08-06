@@ -23,11 +23,13 @@ public class Stab extends AbstractSkill {
     @Override
     public void use() {
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true));
-        bot(new ApplyStatusAction(new ScarStatus(1), owner, target, true));
+        bot(new ApplyStatusAction(new ScarStatus(value), owner, target, true));
     }
 
     @Override
     protected void upgradeCard() {
-
+        if(upgradeCount % 2 == 1) {
+            value = ++baseValue;
+        }
     }
 }

@@ -11,12 +11,10 @@ public class Overpower extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 2;
 
     public Overpower(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(5, 1);
-        setBaseValue(1);
+        setBaseAttack(4, 2);
     }
 
     @Override

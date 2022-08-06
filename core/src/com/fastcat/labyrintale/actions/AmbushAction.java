@@ -12,7 +12,7 @@ public class AmbushAction extends AbstractAction {
     public AbstractEntity.DamageInfo info;
 
     public AmbushAction(AbstractSkill s, boolean isFast) {
-        super(s.owner, s.target, isFast ? 0.2f : 0.5f);
+        super(s.owner, s.target, isFast ? 0.25f : 0.5f);
         info = new AbstractEntity.DamageInfo(actor, s.attack);
         skill = s;
     }

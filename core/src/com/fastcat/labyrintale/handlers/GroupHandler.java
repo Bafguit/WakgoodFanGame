@@ -18,15 +18,12 @@ import com.fastcat.labyrintale.items.special.CrackedHeart;
 import com.fastcat.labyrintale.items.special.GolemHead;
 import com.fastcat.labyrintale.items.special.GreenHeart;
 import com.fastcat.labyrintale.items.starter.*;
-import com.fastcat.labyrintale.rooms.enemy.boss.TestBoss;
 import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
-import com.fastcat.labyrintale.rooms.enemy.elite.TestElite;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite2;
-import com.fastcat.labyrintale.rooms.enemy.normal.Test;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.act2.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
@@ -697,7 +694,7 @@ public final class GroupHandler {
             t.add(new Poison(null));
             t.add(new HealingPotion(null));
             t.add(new UpgradePotion(null));
-            t.add(new Test18(null));
+            t.add(new ConfidPotion(null));
             playerSort.put(PlayerClass.GOSEGU, t);
         }
 
@@ -709,8 +706,8 @@ public final class GroupHandler {
             t.add(new ThrowAxe(null));
             t.add(new Charge(null));
             t.add(new Intimidate(null));
-            t.add(new Test27(null));
-            t.add(new Test28(null));
+            t.add(new Sharp(null));
+            t.add(new Channeling(null));
             playerSort.put(PlayerClass.INE, t);
         }
 
@@ -722,8 +719,8 @@ public final class GroupHandler {
             t.add(new IronWill(null));
             t.add(new PureWill(null));
             t.add(new Penitence(null));
-            t.add(new Test37(null));
-            t.add(new Test38(null));
+            t.add(new Penance(null));
+            t.add(new BraveWill(null));
             playerSort.put(PlayerClass.JURURU, t);
         }
 
@@ -732,24 +729,24 @@ public final class GroupHandler {
             t.add(new Lilpaa(null));
             t.add(new FireBall(null));
             t.add(new CrystalStrike(null));
-            t.add(new ElectricFire(null));
-            t.add(new Test45(null));
-            t.add(new Test46(null));
-            t.add(new Test47(null));
-            t.add(new Test48(null));
+            t.add(new Flame(null));
+            t.add(new Ignite(null));
+            t.add(new Lightning(null));
+            t.add(new ShockZone(null));
+            t.add(new ChainExp(null));
             playerSort.put(PlayerClass.LILPA, t);
         }
 
         private static void generateManager() {
             Array<AbstractSkill> t = new Array<>();
             t.add(new Outburst(null));
-            t.add(new LightningBullet(null));
+            t.add(new ShockBomb(null));
             t.add(new Calmness(null));
             t.add(new DramaticExit(null));
             t.add(new PointBlank(null));
             t.add(new Snipe(null));
             t.add(new Impulse(null));
-            t.add(new ShockZone(null));
+            t.add(new RapidFire(null));
             playerSort.put(PlayerClass.MANAGER, t);
         }
 
@@ -757,13 +754,13 @@ public final class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
             t.add(new DiaSword(null));
-            t.add(new ChainMail(null));
             t.add(new Overpower(null));
             t.add(new Insight(null));
             t.add(new Cross(null));
             t.add(new Stab(null));
             t.add(new Onslaught(null));
-            t.add(new Test68(null));
+            t.add(new Counter(null));
+            t.add(new Linked(null));
             playerSort.put(PlayerClass.VIICHAN, t);
         }
 
@@ -771,11 +768,11 @@ public final class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             t.add(new Boost(null));
             t.add(new Encourage(null));
-            t.add(new Test78(null));
+            t.add(new AvantProtect(null));
             t.add(new ShieldPush(null));
-            t.add(new Test75(null));
-            t.add(new Test76(null));
-            t.add(new Test77(null));
+            t.add(new Faith(null));
+            t.add(new Obstinate(null));
+            t.add(new IronForm(null));
             t.add(new Guard(null));
             playerSort.put(PlayerClass.WAK, t);
         }

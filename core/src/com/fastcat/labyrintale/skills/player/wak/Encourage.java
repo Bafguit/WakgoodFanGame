@@ -16,8 +16,8 @@ public class Encourage extends AbstractSkill {
 
     public Encourage(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
-        setBaseValue(1, 1);
+        setBaseSpell(3, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

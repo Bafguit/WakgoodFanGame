@@ -4,20 +4,22 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.MoveAction;
 import com.fastcat.labyrintale.status.ShockStatus;
+import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
-public class LightningBullet extends AbstractSkill {
+public class ShockBomb extends AbstractSkill {
 
-    private static final String ID = "LightningBullet";
+    private static final String ID = "ShockBomb";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY;
     private static final int VALUE = 3;
 
-    public LightningBullet(AbstractEntity e) {
+    public ShockBomb(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
-        setBaseValue(2, 1);
+        setBaseAttack(VALUE, 1);
+        setBaseValue(1, 1);
     }
 
     @Override
@@ -27,8 +29,9 @@ public class LightningBullet extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
-        top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT));
+        top(new ApplyStatusAction(new UnfortifiedStatus(value), owner, e, true));
+        top(new MoveAction(e, false, 0.2f));
+        top(new AttackAction(owner, e, attack, AttackAction.AttackType.HEAVY));
     }
 
     @Override

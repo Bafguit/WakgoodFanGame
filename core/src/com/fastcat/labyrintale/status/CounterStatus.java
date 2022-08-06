@@ -30,9 +30,10 @@ public class CounterStatus extends AbstractStatus {
     }
 
     @Override
-    public void onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
         if (type == AbstractEntity.DamageType.NORMAL) {
-            top(new AttackAction(owner, t, amount, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
+            top(new AttackAction(owner, attacker, amount, AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHT, true));
         }
+        return damage;
     }
 }

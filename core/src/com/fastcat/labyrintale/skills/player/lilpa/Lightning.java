@@ -1,23 +1,26 @@
-package com.fastcat.labyrintale.skills.player.gosegu;
+package com.fastcat.labyrintale.skills.player.lilpa;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.ShockStatus;
 
-public class RustyShard extends AbstractSkill {
+public class Lightning extends AbstractSkill {
 
-    private static final String ID = "RustyShard";
+    private static final String ID = "Lightning";
     private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY;
-    private static final int VALUE = 2;
+    private static final int VALUE = 3;
 
-    public RustyShard(AbstractEntity e) {
+    public Lightning(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
-        setBaseValue(VALUE);
+        setBaseValue(VALUE, 1);
     }
 
     @Override
@@ -27,8 +30,8 @@ public class RustyShard extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new InfectionStatus(value), owner, e, true));
-        top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT));
+        top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
+        top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
     }
 
     @Override

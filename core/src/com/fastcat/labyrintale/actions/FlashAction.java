@@ -13,7 +13,7 @@ public class FlashAction extends AbstractAction {
     public Sprite img;
 
     public FlashAction(AbstractEntity e, Sprite img) {
-        super(null, 0.2f);
+        super(null, 0.25f);
         this.e = e;
         this.img = img;
     }
@@ -26,6 +26,6 @@ public class FlashAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration)
-            EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
+            EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.25f, img));
     }
 }

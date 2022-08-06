@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.items.starter.Bible;
 import com.fastcat.labyrintale.items.starter.CottonNecklace;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.jururu.Pray;
 import com.fastcat.labyrintale.skills.player.jururu.Scorn;
 
 import static com.badlogic.gdx.graphics.Color.MAGENTA;
@@ -28,7 +29,7 @@ public class Jururu extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new Scorn(this));
+        temp.add(new Pray(this));
         return temp;
     }
 

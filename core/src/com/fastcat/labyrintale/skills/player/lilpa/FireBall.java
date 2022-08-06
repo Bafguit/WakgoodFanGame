@@ -11,13 +11,13 @@ public class FireBall extends AbstractSkill {
     private static final String ID = "FireBall";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 2;
 
     public FireBall(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
-        setBaseValue(VALUE, 1);
+        setBaseAttack(VALUE, 1);
+        setBaseValue(2);
     }
 
     @Override

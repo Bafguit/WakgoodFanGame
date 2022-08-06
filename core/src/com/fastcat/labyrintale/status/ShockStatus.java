@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.actions.StatusDamageAction;
 public class ShockStatus extends AbstractStatus {
 
     private static final String ID = "Shock";
-    private static final SkillTarget TARGET = SkillTarget.BOTH;
+    private static final SkillTarget TARGET = SkillTarget.OTHER;
 
     public ShockStatus(int amount) {
         super(ID, TARGET, StatusType.DEBUFF);
@@ -24,7 +24,7 @@ public class ShockStatus extends AbstractStatus {
     @Override
     public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if (type == AbstractEntity.DamageType.NORMAL) {
-            top(new StatusDamageAction(this, AttackAction.AttackType.BURN, false, true, true));
+            top(new StatusDamageAction(this, AttackAction.AttackType.LIGHTNING, false, true, true));
         }
         return d;
     }

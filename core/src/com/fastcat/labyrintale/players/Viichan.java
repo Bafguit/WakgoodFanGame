@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.items.starter.FabricMail;
 import com.fastcat.labyrintale.items.starter.OldSword;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.viichan.ChainMail;
 import com.fastcat.labyrintale.skills.player.viichan.DiaSword;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
@@ -27,7 +28,7 @@ public class Viichan extends AbstractPlayer {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
-        temp.add(new Barrier(this));
+        temp.add(new ChainMail(this));
         temp.add(new DiaSword(this));
         return temp;
     }

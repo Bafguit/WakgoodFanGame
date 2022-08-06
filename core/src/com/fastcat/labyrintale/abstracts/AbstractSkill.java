@@ -179,6 +179,18 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     }
                 }
                 return temp;
+            } else if(target == SkillTarget.OTHER) {
+                Array<AbstractEntity> temp = new Array<>();
+                if(owner.isPlayer) {
+                    for(AbstractPlayer p : players) {
+                        if(p != owner && p.isAlive()) temp.add(p);
+                    }
+                } else {
+                    for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+                        if(e != owner && e.isAlive()) temp.add(e);
+                    }
+                }
+                return temp;
             }
         }
         return getTargets(target);
@@ -659,6 +671,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         NONE, ALL, SELF, RIGHT, LEFT, BOTH, SELF_RIGHT, SELF_LEFT, SELF_BOTH,
         PLAYER_FIRST, ENEMY_FIRST, PLAYER_LAST, ENEMY_LAST, PLAYER_FIRST_TWO,
         ENEMY_FIRST_TWO, PLAYER_LAST_TWO, ENEMY_LAST_TWO, PLAYER_ALL, ENEMY_ALL,
-        ENEMY, PLAYER, PLAYER_LOW_HP, PLAYER_HIGH_HP, ENEMY_LOW_HP, ENEMY_HIGH_HP
+        ENEMY, PLAYER, PLAYER_LOW_HP, PLAYER_HIGH_HP, ENEMY_LOW_HP, ENEMY_HIGH_HP, OTHER
     }
 }

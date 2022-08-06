@@ -13,7 +13,7 @@ public class RemoveStatusAction extends AbstractAction {
     }
 
     public RemoveStatusAction(String id, AbstractEntity actor, boolean fast) {
-        super(actor, fast ? 0.2f : DUR_DEFAULT);
+        super(actor, fast ? 0.25f : DUR_DEFAULT);
         this.id = id;
     }
 

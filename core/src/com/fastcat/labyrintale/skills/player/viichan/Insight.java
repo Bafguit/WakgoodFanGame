@@ -16,8 +16,8 @@ public class Insight extends AbstractSkill {
 
     public Insight(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
-        setBaseValue(1);
+        setBaseAttack(VALUE, 1);
+        setBaseValue(1, 1);
     }
 
     @Override

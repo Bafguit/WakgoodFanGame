@@ -11,7 +11,7 @@ public class ReduceStatusAction extends AbstractAction {
     public int amount;
 
     public ReduceStatusAction(AbstractStatus s, int amount, boolean isFast) {
-        super(s.owner, NONE, isFast ? 0.2f : 0.5f);
+        super(s.owner, NONE, isFast ? 0.25f : 0.5f);
         status = s;
         this.amount = amount;
     }

@@ -1,8 +1,10 @@
-package com.fastcat.labyrintale.skills.player.manager;
+package com.fastcat.labyrintale.skills.player.lilpa;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.status.ShockStatus;
 
 public class ShockZone extends AbstractSkill {
@@ -15,12 +17,12 @@ public class ShockZone extends AbstractSkill {
 
     public ShockZone(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE, 1);
+        setBaseValue(VALUE);
     }
 
     @Override
     public void use() {
-        bot(new ApplyStatusAction(new ShockStatus(value), owner, target, false));
+        bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
     }
 
     @Override

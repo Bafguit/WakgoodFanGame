@@ -14,7 +14,7 @@ public class IronWill extends AbstractSkill {
     private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER;
-    private static final int VALUE = 2;
+    private static final int VALUE = 3;
 
     public IronWill(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

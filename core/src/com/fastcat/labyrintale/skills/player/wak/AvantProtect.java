@@ -1,26 +1,25 @@
-package com.fastcat.labyrintale.skills.player.lilpa;
+package com.fastcat.labyrintale.skills.player.wak;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 
-public class Test46 extends AbstractSkill {
+public class AvantProtect extends AbstractSkill {
 
-    private static final String ID = "Test46";
+    private static final String ID = "AvantProtect";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;
+    private static final int VALUE = 6;
 
-    public Test46(AbstractEntity e) {
+    public AvantProtect(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
+        setBaseSpell(VALUE, 1);
     }
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+        bot(new BlockAction(owner, target, spell));
     }
 
     @Override

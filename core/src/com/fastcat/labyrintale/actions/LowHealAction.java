@@ -12,7 +12,7 @@ public class LowHealAction extends AbstractAction {
     public int heal;
 
     public LowHealAction(AbstractEntity actor, int heal, boolean isFast) {
-        super(actor, isFast ? 0.2f : 0.5f);
+        super(actor, isFast ? 0.25f : 0.5f);
         this.heal = heal;
     }
 

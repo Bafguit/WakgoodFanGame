@@ -4,19 +4,19 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
-import com.fastcat.labyrintale.status.CourageStatus;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.status.ArmourStatus;
 
-public class Boost extends AbstractSkill {
+public class Faith extends AbstractSkill {
 
-    private static final String ID = "Boost";
-    private static final SkillType TYPE = SkillType.DEFENCE;
+    private static final String ID = "Faith";
+    private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER;
     private static final int VALUE = 2;
 
-    public Boost(AbstractEntity e) {
+    public Faith(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(3, 1);
         setBaseValue(VALUE, 1);
     }
 
@@ -27,8 +27,7 @@ public class Boost extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new CourageStatus(value), owner, e, false));
-        top(new BlockAction(this.owner, e, spell));
+        top(new ApplyStatusAction(new ArmourStatus(value), owner, e, false));
     }
 
     @Override
