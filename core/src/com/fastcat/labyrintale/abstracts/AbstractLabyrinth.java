@@ -159,7 +159,6 @@ public class AbstractLabyrinth {
         if (currentFloor.num == 13) {
             nextFloor();
         }
-        Labyrintale.mapScreen.isView = false;
         SaveHandler.save();
     }
 

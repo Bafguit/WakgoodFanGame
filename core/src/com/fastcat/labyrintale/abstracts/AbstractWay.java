@@ -10,7 +10,8 @@ public class AbstractWay {
     public Sprite img = FileHandler.getCharImg().get(AbstractPlayer.PlayerClass.BURGER);
     public WayType type;
     public AbstractRoom enemies;
-    public AbstractChoice[] choices;
+    public int selected = -1;
+    public final AbstractChoice[] choices;
     public boolean isDone = false;
 
     public AbstractWay(SaveHandler.WayData data) {
@@ -21,39 +22,44 @@ public class AbstractWay {
             enemies.battleDone = data.enemies.battleDone;
         }
         int l = data.choices.length;
-        choices = new AbstractChoice[l];
+        choices = new AbstractChoice[3];
         for (int i = 0; i < l; i++) {
-            choices[i] = new AbstractChoice(data.choices[i]);
+            if(data.choices[i] != null) choices[i] = new AbstractChoice(data.choices[i]);
         }
         isDone = data.isDone;
+        selected = data.selected;
     }
 
     public AbstractWay(AbstractChoice c, WayType t) {
-        choices = new AbstractChoice[1];
-        choices[0] = c;
+        choices = new AbstractChoice[3];
+        choices[1] = c;
         type = t;
     }
 
     public AbstractWay(AbstractChoice c, AbstractRoom e, WayType t) {
-        choices = new AbstractChoice[1];
-        choices[0] = c;
+        choices = new AbstractChoice[3];
+        choices[1] = c;
         type = t;
         enemies = e;
     }
 
-    public AbstractWay(Array<AbstractChoice> s, WayType t) {
-        choices = s.toArray(AbstractChoice.class);
+    public AbstractWay(AbstractChoice[] s, WayType t) {
+        choices = s;
         type = t;
     }
 
-    public AbstractWay(Array<AbstractChoice> s, AbstractRoom e, WayType t) {
-        choices = s.toArray(AbstractChoice.class);
+    public AbstractWay(AbstractChoice[] s, AbstractRoom e, WayType t) {
+        choices = s;
         type = t;
         enemies = e;
     }
 
     public void done() {
         isDone = true;
+        for(int i = 0; i < 3; i++) {
+            AbstractChoice c = choices[i];
+            if(c != null) c.room.done();
+        }
     }
 
     public enum WayType {

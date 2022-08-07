@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -283,6 +284,7 @@ public final class SaveHandler {
         public String type;
         public RoomData enemies;
         public ChoiceData[] choices;
+        public int selected;
         public boolean isDone;
 
         public static WayData create(AbstractWay w) {
@@ -292,9 +294,11 @@ public final class SaveHandler {
             int l = w.choices.length;
             temp.choices = new ChoiceData[l];
             for (int i = 0; i < l; i++) {
-                temp.choices[i] = ChoiceData.create(w.choices[i]);
+                if(w.choices[i] != null)
+                    temp.choices[i] = ChoiceData.create(w.choices[i]);
             }
             temp.isDone = w.isDone;
+            temp.selected = w.selected;
             return temp;
         }
     }
@@ -302,15 +306,15 @@ public final class SaveHandler {
     public static class ChoiceData {
         public String type;
         public RoomData room;
-        public boolean must;
-        public int prob;
+        public ArrayList<Integer> linked;
+        public ArrayList<Integer> linked2;
 
         public static ChoiceData create(AbstractChoice c) {
             ChoiceData temp = new ChoiceData();
             temp.type = c.type.toString();
             temp.room = RoomData.create(c.room);
-            temp.must = c.must;
-            temp.prob = c.prob;
+            temp.linked = c.linked;
+            temp.linked2 = c.linked2;
             return temp;
         }
     }
