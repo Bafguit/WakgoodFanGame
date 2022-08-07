@@ -1,6 +1,6 @@
 {
-  "volumeBgm" : 30,
-  "volumeSfx" : 30,
+  "volumeBgm" : 0,
+  "volumeSfx" : 50,
   "width" : 1280,
   "height" : 720,
   "monitor" : 0,

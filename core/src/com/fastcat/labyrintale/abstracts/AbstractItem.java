@@ -5,10 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.actions.FlashAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.strings.ItemString;
 
 public class AbstractItem implements Cloneable {
@@ -40,12 +37,10 @@ public class AbstractItem implements Cloneable {
     }
 
     public final void flash() {
-        //TODO 소리 추가
         flash(owner);
     }
 
     public final void flash(AbstractEntity e) {
-        //TODO 소리 추가
         ActionHandler.bot(new FlashAction(e, img));
     }
 

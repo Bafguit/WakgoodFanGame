@@ -22,14 +22,14 @@ public class LowAttackAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if(target.size > 0) {
-                SoundHandler.playSfx("ATTACK_TEST");
+                AttackAction.playAttackSfx(AttackAction.AttackType.HEAVY);
                 if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);
                     e.setTimeScale(1.0f);
                 }
                 for (AbstractEntity t : target) {
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("HIT_HEAVY")));
+                    EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("HIT_HEAVY")));
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);

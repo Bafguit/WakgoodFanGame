@@ -26,6 +26,9 @@ public class PlayerTurnStartAction extends AbstractAction {
             for (AbstractPlayer p : players) {
                 if (p.isAlive()) {
                     if (isFirst) {
+                        for (AbstractSkill s : p.hand) {
+                            if(s != null) s.atBattleStart();
+                        }
                         for (AbstractItem m : p.item) {
                             if (m != null) m.atBattleStart();
                         }

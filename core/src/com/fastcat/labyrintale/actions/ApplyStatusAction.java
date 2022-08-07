@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.actions;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class ApplyStatusAction extends AbstractAction {
 
@@ -35,7 +36,13 @@ public class ApplyStatusAction extends AbstractAction {
                     if (m != null) m.onApplyStatus(status, target);
                 }
             }
-
+            if(status.type == AbstractStatus.StatusType.BUFF) {
+                SoundHandler.playSfx("BUFF");
+            } else if (status.type == AbstractStatus.StatusType.DEBUFF) {
+                SoundHandler.playSfx("DEBUFF");
+            } else {
+                SoundHandler.playSfx("STATIC");
+            }
             for (AbstractEntity e : target) {
                 e.applyStatus(status, status.amount);
             }

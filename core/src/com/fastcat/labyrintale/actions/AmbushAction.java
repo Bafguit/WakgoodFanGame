@@ -24,7 +24,7 @@ public class AmbushAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            SoundHandler.playSfx("ATTACK_TEST");
+            AttackAction.playAttackSfx(AttackAction.AttackType.LIGHT);
             if (target.size > 0) {
                 if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);

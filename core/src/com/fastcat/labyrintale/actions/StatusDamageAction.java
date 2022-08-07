@@ -51,23 +51,28 @@ public class StatusDamageAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
             if(e != null) {
+                AttackAction.playAttackSfx(effect);
                 if (effect == AttackAction.AttackType.NONE) {
                     status.flash(e);
+                } else {
+                    EffectHandler.add(new HitEffect(e, eImg));
                 }
                 e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
             } else {
-                if (effect == AttackAction.AttackType.NONE) {
-                    status.flash(actor);
-                } else {
-                    for (AbstractEntity t : temp) {
-                        //TODO 이미지 좌표로 자동입력되게 설정
-                        EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, eImg));
+                Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
+                if(temp.size > 0) {
+                    AttackAction.playAttackSfx(effect);
+                    if (effect == AttackAction.AttackType.NONE) {
+                        status.flash(actor);
+                    } else {
+                        for (AbstractEntity t : temp) {
+                            EffectHandler.add(new HitEffect(t, eImg));
+                        }
                     }
-                }
-                for (AbstractEntity e : temp) {
-                    e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
+                    for (AbstractEntity e : temp) {
+                        e.takeDamage(new AbstractEntity.DamageInfo(null, status.amount, AbstractEntity.DamageType.SPIKE));
+                    }
                 }
             }
             if (reduce) actor.applyStatus(status, -1);

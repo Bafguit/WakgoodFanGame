@@ -82,11 +82,37 @@ public class AttackAction extends AbstractAction {
         }
     }
 
+    public static void playAttackSfx(AttackType type) {
+        switch (type) {
+            case SMASH:
+                SoundHandler.playSfx("SMASH");
+                break;
+            case BURN:
+                SoundHandler.playSfx("BURN");
+                break;
+            case LIGHT:
+                SoundHandler.playSfx("BLUNT_LIGHT");
+                break;
+            case HEAVY:
+                SoundHandler.playSfx("BLUNT_HEAVY");
+                break;
+            case LIGHTNING:
+                SoundHandler.playSfx("LIGHTNING");
+                break;
+            case INFECTION:
+                SoundHandler.playSfx("POISON");
+                break;
+            default:
+                SoundHandler.playSfx("SLASH");
+                break;
+        }
+    }
+
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
             if (target.size > 0) {
-                SoundHandler.playSfx("ATTACK_TEST");
+                playAttackSfx(effect);
                 if (actor != null) {
                     AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
                     actor.state.addAnimation(0, "idle", true, 0.0F);
@@ -95,7 +121,7 @@ public class AttackAction extends AbstractAction {
                 if (effect != AttackType.NONE) {
                     for (AbstractEntity t : target) {
                         //TODO 이미지 좌표로 자동입력되게 설정
-                        EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, img));
+                        EffectHandler.add(new HitEffect(t, img));
                     }
                 }
                 for (int i = 0; i < target.size; i++) {

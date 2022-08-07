@@ -21,6 +21,7 @@ import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -152,6 +153,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (cPanel != null) {
             if (isAlive() && !hasStatus("Neut")) {
                 if (heal > 0) {
+                    SoundHandler.playSfx("HEAL");
                     if (cPanel.type == ControlPanel.ControlType.BATTLE) {
                         EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     } else {
@@ -463,11 +465,12 @@ public abstract class AbstractEntity implements Cloneable {
                 if (!a) {
                     ActionHandler.clear();
                     for (AbstractPlayer p : players) {
+                        for (AbstractSkill s : p.hand) {
+                            if(s != null) s.atBattleEnd();
+                        }
                         for (AbstractItem m : p.item) {
                             if (m != null) m.atBattleEnd();
                         }
-                    }
-                    for (AbstractPlayer p : players) {
                         for (AbstractStatus s : p.status) {
                             if (s != null) s.atBattleEnd();
                         }

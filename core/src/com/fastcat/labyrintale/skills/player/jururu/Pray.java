@@ -33,9 +33,8 @@ public class Pray extends AbstractSkill {
 
     @Override
     public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
-        bot(new HealAction(owner, target, spell));
+        top(new HealAction(owner, target, spell));
+        top(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
     }
 
     @Override

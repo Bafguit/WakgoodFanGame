@@ -43,7 +43,7 @@ public class LilpaaAction extends AbstractAction {
                 Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
             for (AbstractEntity t : target) {
                 if (t != actor)
-                    EffectHandler.add(new HitEffect(t.animX, t.animY + Gdx.graphics.getHeight() * 0.1f, FileHandler.getVfx().get("LIGHTNING")));
+                    EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("LIGHTNING")));
             }
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 if (p != actor && p.isAlive()) p.takeDamage(info2);
