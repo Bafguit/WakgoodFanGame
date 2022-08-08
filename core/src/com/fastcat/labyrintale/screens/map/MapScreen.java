@@ -53,7 +53,12 @@ public class MapScreen extends AbstractScreen {
     public void refreshFloor() {
         for (int i = 0; i < 13; i++) {
             for(int j = 0; j < 3; j++) {
-                nodes[i][j].choice = currentFloor.ways[i].choices[j];
+                AbstractChoice c = currentFloor.ways[i].choices[j];
+                MapNodeButton n = null;
+                if(c != null) {
+                    n = new MapNodeButton(c, j);
+                }
+                nodes[i][j] = n;
             }
         }
     }

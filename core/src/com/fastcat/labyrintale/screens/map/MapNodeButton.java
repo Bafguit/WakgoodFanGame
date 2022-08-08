@@ -22,9 +22,9 @@ public class MapNodeButton extends AbstractUI {
     public int wayIndex;
     public AbstractChoice choice;
 
-    public MapNodeButton(AbstractChoice w, int index) {
-        super(w.img);
-        this.choice = w;
+    public MapNodeButton(AbstractChoice c, int index) {
+        super(c.img);
+        this.choice = c;
         wayIndex = index;
     }
 

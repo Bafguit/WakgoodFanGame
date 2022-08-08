@@ -23,7 +23,6 @@ public class AbstractChoice {
     public ArrayList<Integer> linked = new ArrayList<>();
     public ArrayList<Integer> linked2 = new ArrayList<>();
     public boolean isFirst = false;
-    public boolean isOnly = false;
     public boolean isLast = false;
     public boolean canGo = false;
 
@@ -82,13 +81,6 @@ public class AbstractChoice {
             if (items.length > 0) {
                 addLink(items[0]);
                 w.choices[items[0]].addLink2(index);
-                /*if (items.length > 1) {
-                    int rand = AbstractLabyrinth.mapRandom.random(100);
-                    if (rand >= 70) {
-                        addLink(items[1]);
-                        w.choices[items[1]].addLink2(index);
-                    }
-                }*/
             }
         }
         if(!isFirst && linked2.size() == 0) {

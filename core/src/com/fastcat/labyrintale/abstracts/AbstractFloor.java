@@ -29,11 +29,6 @@ public class AbstractFloor {
             }
             ways[i] = w;
         }
-        ways[0].choices[1].isOnly = true;
-        ways[4].choices[1].isOnly = true;
-        ways[8].choices[1].isOnly = true;
-        ways[11].choices[1].isOnly = true;
-        ways[12].choices[1].isOnly = true;
         currentWay = ways[num];
         if (data.currentRoom != null) {
             currentRoom = GroupHandler.RoomGroup.getRoom(data.currentRoom.id);
@@ -80,12 +75,6 @@ public class AbstractFloor {
                 }
             }
         }
-
-        ways[0].choices[1].isOnly = true;
-        ways[4].choices[1].isOnly = true;
-        ways[8].choices[1].isOnly = true;
-        ways[11].choices[1].isOnly = true;
-        ways[12].choices[1].isOnly = true;
 
         currentWay = ways[0];
         currentRoom = new PlaceholderRoom();
@@ -215,8 +204,12 @@ public class AbstractFloor {
             shuffleChoice(aa);
             w = new AbstractWay(aa, r, type);
         } else if (type == ELITE) {
+            AbstractChoice[] aa = new AbstractChoice[3];
             AbstractRoom r = GroupHandler.RoomGroup.getNextElite(floor);
-            w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.ELITE), r, type);
+            aa[0] = new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.ELITE);
+            aa[1] = new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.ELITE);
+            shuffleChoice(aa);
+            w = new AbstractWay(aa, r, type);
         } else if (type == BOSS) {
             AbstractRoom r = GroupHandler.RoomGroup.getNextBoss(floor);
             w = new AbstractWay(new AbstractChoice(r, AbstractChoice.ChoiceType.BOSS), r, type);
@@ -224,12 +217,9 @@ public class AbstractFloor {
             w = new AbstractWay(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST), type);
         } else {
             AbstractChoice[] aa = new AbstractChoice[3];
-            Array<AbstractChoice> t = new Array<>();
-            t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST));
-            t.add(new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP));
-            for(int i = 0; i < t.size; i++) {
-                aa[i] = t.get(i);
-            }
+            aa[0] = new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST);
+            aa[1] = new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP);
+            aa[2] = new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP);
             shuffleChoice(aa);
             w = new AbstractWay(aa, type);
         }
