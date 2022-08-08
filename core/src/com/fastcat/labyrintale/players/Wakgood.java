@@ -29,7 +29,7 @@ public class Wakgood extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        temp.add(new Wakchori(this)); //TODO 테스트용 스킬
+        //temp.add(new Wakchori(this)); //TODO 테스트용 스킬
         temp.add(new ShieldPush(this));
         return temp;
     }

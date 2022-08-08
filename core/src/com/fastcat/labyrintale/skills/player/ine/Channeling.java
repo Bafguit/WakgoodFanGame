@@ -19,7 +19,7 @@ public class Channeling extends AbstractSkill {
 
     public Channeling(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

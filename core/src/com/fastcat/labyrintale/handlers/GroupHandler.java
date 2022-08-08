@@ -754,6 +754,7 @@ public final class GroupHandler {
             Array<AbstractSkill> t = new Array<>();
             //Bronze
             t.add(new DiaSword(null));
+            t.add(new ChainMail(null));
             t.add(new Overpower(null));
             t.add(new Insight(null));
             t.add(new Cross(null));

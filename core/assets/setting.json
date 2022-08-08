@@ -4,7 +4,7 @@
   "width" : 1280,
   "height" : 720,
   "monitor" : 0,
-  "screenMode" : 0,
+  "screenMode" : 2,
   "shake" : true,
   "fastMode" : true
 }

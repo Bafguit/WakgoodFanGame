@@ -51,15 +51,18 @@ public class MapScreen extends AbstractScreen {
     }
 
     public void refreshFloor() {
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
         for (int i = 0; i < 13; i++) {
             for(int j = 0; j < 3; j++) {
                 AbstractChoice c = currentFloor.ways[i].choices[j];
                 MapNodeButton n = null;
                 if(c != null) {
                     n = new MapNodeButton(c, j);
+                    n.setPosition(b - n.sWidth / 2, h * (0.85f - 0.15f * j) - n.sHeight / 2);
                 }
                 nodes[i][j] = n;
             }
+            b += w * 0.0666f;
         }
     }
 

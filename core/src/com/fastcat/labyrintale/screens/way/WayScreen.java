@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyView;
 import com.fastcat.labyrintale.screens.battle.PlayerView;
 import com.fastcat.labyrintale.screens.battle.ShieldIcon;
@@ -22,7 +23,6 @@ import static com.fastcat.labyrintale.screens.battle.BattleScreen.hbc;
 
 public class WayScreen extends AbstractScreen {
 
-    public BgImg bg = new BgImg();
     public ShapeRenderer shr = new ShapeRenderer();
 
     public Array<WaySelectButton> buttons;
@@ -34,7 +34,6 @@ public class WayScreen extends AbstractScreen {
 
     public WayScreen() {
         this(AbstractLabyrinth.currentFloor.currentWay);
-
     }
 
     public WayScreen(AbstractWay wy) {
@@ -43,8 +42,8 @@ public class WayScreen extends AbstractScreen {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < 4; i++) {
             PlayerWayView pv = new PlayerWayView(AbstractLabyrinth.players[i]);
-            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
-            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
+            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
+            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
             pv.player.ui = pv;
             players[i] = pv;
         }
@@ -57,19 +56,20 @@ public class WayScreen extends AbstractScreen {
                 float tw = w * (0.6f + 0.135f * i);
 
                 WaySelectButton b = new WaySelectButton(this, ch);
-                b.setPosition(tw - b.sWidth / 2, h * 0.72f - b.sHeight / 2);
+                b.setPosition(tw - b.sWidth / 2, h * 0.66f - b.sHeight / 2);
                 buttons.add(b);
 
                 WayIcon c = new WayIcon(b, ch.img);
-                c.setPosition(tw - c.sWidth / 2, h * 0.81f - c.sHeight / 2);
+                c.setPosition(tw - c.sWidth / 2, h * 0.75f - c.sHeight / 2);
                 icons.add(c);
 
                 WayDesc d = new WayDesc(ch.desc);
-                d.setPosition(tw - d.sWidth / 2, h * 0.69f - d.sHeight / 2);
+                d.setPosition(tw - d.sWidth / 2, h * 0.63f - d.sHeight / 2);
                 desc.add(d);
             }
         }
         wayCount = buttons.size;
+        setBg(FileHandler.getBg().get("BG_WAY"));
     }
 
     @Override
@@ -86,7 +86,6 @@ public class WayScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        bg.render(sb);
         for (int i = 3; i >= 0; i--) {
             players[i].render(sb);
         }

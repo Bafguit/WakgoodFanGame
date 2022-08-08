@@ -51,7 +51,7 @@ public class StatusDamageAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            if(e != null) {
+            if(e != null && status.target == AbstractSkill.SkillTarget.SELF) {
                 AttackAction.playAttackSfx(effect);
                 if (effect == AttackAction.AttackType.NONE) {
                     status.flash(e);

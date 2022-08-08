@@ -53,23 +53,23 @@ public class BattleScreen extends AbstractScreen {
         cPanel.battlePanel = new BattlePanel();
         this.type = type;
         AbstractLabyrinth.prepare();
-        setBg(FileHandler.getBg().get("BG_BATTLE"));
+        setBg(FileHandler.getBg().get("BG_WAY"));
         w = Gdx.graphics.getWidth();
         h = Gdx.graphics.getHeight();
         sw = shield.getWidth() * InputHandler.scale;
         sh = shield.getHeight() * InputHandler.scale;
         for (int i = 0; i < 4; i++) {
             PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
-            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.55f);
-            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.575f);
+            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
+            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
             pv.player.newDeck();
             pv.player.preBattle();
             pv.player.ui = pv;
             players[i] = pv;
 
             EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
-            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.55f);
-            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.575f);
+            ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.49f);
+            ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f);
             ev.enemy.index = i;
             ev.enemy.newDeck();
             if (isLoad) {
@@ -84,11 +84,11 @@ public class BattleScreen extends AbstractScreen {
             enemies[i] = ev;
 
             ShieldIcon ps = new ShieldIcon(pv.player);
-            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
+            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f);
             pShield[i] = ps;
 
             ShieldIcon es = new ShieldIcon(ev.enemy);
-            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.55f - es.sHeight * 0.35f);
+            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.49f - es.sHeight * 0.35f);
             eShield[i] = es;
 
             playerStatus[i] = new LinkedList<>();
@@ -96,7 +96,7 @@ public class BattleScreen extends AbstractScreen {
 
             SkillButton s3 = new SkillButton();
             s3.setScale(0.5f);
-            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.825f);
+            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.765f);
             s3.canClick = false;
             enemySkills[i] = s3;
             setEnemy(enemies[i].enemy, i);
@@ -146,7 +146,7 @@ public class BattleScreen extends AbstractScreen {
             ss.skill = ev.enemy.hand[0];
             ss.overable = AbstractLabyrinth.bleak < 100;
             ss.update();
-            ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.825f);
+            ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.765f);
 
             if (pv.player.isAlive()) {
                 AbstractPlayer pp = pv.player;
@@ -167,7 +167,7 @@ public class BattleScreen extends AbstractScreen {
                     ts.status = pp.status.get(j);
                     int line = j / 4;
                     int num = j % 4;
-                    ts.setPosition(pp.animX + w * (0.012f + 0.019f * num) - pv.sWidth / 2, h * 0.517f - (w * 0.019f * line));
+                    ts.setPosition(pp.animX + w * (0.012f + 0.019f * num) - pv.sWidth / 2, h * 0.457f - (w * 0.019f * line));
                     ts.update();
                 }
             }
@@ -190,7 +190,7 @@ public class BattleScreen extends AbstractScreen {
                     ts.status = pp.status.get(j);
                     int line = j / 4;
                     int num = j % 4;
-                    ts.setPosition(pp.animX + w * (-0.068f + 0.019f * num) + ev.sWidth / 2 - ts.sWidth, h * 0.517f - (w * 0.019f * line));
+                    ts.setPosition(pp.animX + w * (-0.068f + 0.019f * num) + ev.sWidth / 2 - ts.sWidth, h * 0.457f - (w * 0.019f * line));
                     ts.update();
                 }
             }
@@ -285,9 +285,9 @@ public class BattleScreen extends AbstractScreen {
             }
 
             ShieldIcon ps = pShield[i];
-            pShield[i].setPosition(px - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
+            pShield[i].setPosition(px - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f);
             pShield[i].render(sb);
-            eShield[i].setPosition(ex - ps.sWidth * 0.4f, h * 0.55f - ps.sHeight * 0.35f);
+            eShield[i].setPosition(ex - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f);
             eShield[i].render(sb);
         }
         for (int i = 0; i < 4; i++) {

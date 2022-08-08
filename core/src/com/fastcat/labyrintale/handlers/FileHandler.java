@@ -170,6 +170,7 @@ public class FileHandler implements Disposable {
         bg.put("BG_MAP", new Sprite(new Texture("img/bg/map.png")));
         bg.put("BG_CHARSELECT", new Sprite(new Texture("img/bg/charselect.png")));
         bg.put("BG_BATTLE", new Sprite(new Texture("img/bg/battle.png")));
+        bg.put("BG_WAY", new Sprite(new Texture("img/bg/way.png")));
     }
 
     private void generateVFX() {
