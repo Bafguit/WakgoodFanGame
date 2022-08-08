@@ -218,20 +218,20 @@ public class BattleScreen extends AbstractScreen {
     public void render(SpriteBatch sb) {
         int ci = cPanel.battlePanel.curPlayer.index;
         if (isSelecting) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 if (!enemies[i].isTarget) enemies[i].render(sb);
                 if (!players[i].isTarget) players[i].render(sb);
             }
             bgImg.render(sb);
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 if (enemies[i].isTarget) enemies[i].render(sb);
                 if (players[i].isTarget) players[i].render(sb);
             }
         } else {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 enemies[i].render(sb);
             }
-            for (int i = 0; i < 4; i++) {
+            for (int i = 3; i >= 0; i--) {
                 if (i != ci) players[i].render(sb);
             }
             players[ci].render(sb);

@@ -19,7 +19,7 @@ public class AbstractChoice {
     public String desc;
     public String[] rawDesc;
     public int index;
-    public Sprite img = FileHandler.getUi().get("DRAW");
+    public Sprite img;
     public ArrayList<Integer> linked = new ArrayList<>();
     public ArrayList<Integer> linked2 = new ArrayList<>();
     public boolean isFirst = false;
@@ -40,6 +40,7 @@ public class AbstractChoice {
         room = r;
         type = t;
         desc = rawDesc[0];
+        img = FileHandler.getUi().get(type.toString());
         if(t == ChoiceType.ENTRY) {
             isFirst = true;
             index = 1;

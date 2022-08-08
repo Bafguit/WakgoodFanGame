@@ -110,12 +110,21 @@ public class AbstractFloor {
             else w = new AbstractWay(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
         } else if (type == WEAK) {
             int x = AbstractLabyrinth.mapRandom.random(100);
+            boolean battle = false;
             boolean rest = false;
             boolean mystery = false;
 
-            if (x < 30) {
+            if (x < 10) {
                 rest = true;
                 mystery = true;
+            } else if (x < 20) {
+                rest = true;
+                battle = true;
+            }  else if (x < 40) {
+                battle = true;
+                mystery = true;
+            } else if (x < 60) {
+                battle = true;
             } else if (x < 90) {
                 mystery = true;
             } else {
@@ -124,7 +133,8 @@ public class AbstractFloor {
             AbstractRoom r = GroupHandler.RoomGroup.getNextWeak(floor);
             AbstractChoice[] aa = new AbstractChoice[3];
             Array<AbstractChoice> t = new Array<>();
-            t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE));
+            t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
+            if (battle) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
             if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST));
             for(int i = 0; i < t.size; i++) {
@@ -134,12 +144,21 @@ public class AbstractFloor {
             w = new AbstractWay(aa, r, type);
         } else if (type == NORMAL) {
             int x = AbstractLabyrinth.mapRandom.random(100);
+            boolean battle = false;
             boolean rest = false;
             boolean mystery = false;
 
-            if (x < 50) {
+            if (x < 10) {
                 rest = true;
                 mystery = true;
+            } else if (x < 20) {
+                rest = true;
+                battle = true;
+            }  else if (x < 40) {
+                battle = true;
+                mystery = true;
+            } else if (x < 65) {
+                battle = true;
             } else if (x < 90) {
                 mystery = true;
             } else {
@@ -148,7 +167,8 @@ public class AbstractFloor {
             AbstractRoom r = GroupHandler.RoomGroup.getNextNormal(floor);
             AbstractChoice[] aa = new AbstractChoice[3];
             Array<AbstractChoice> t = new Array<>();
-            t.add(new AbstractChoice(r, AbstractChoice.ChoiceType.BATTLE));
+            t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
+            if (battle) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
             if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST));
             for(int i = 0; i < t.size; i++) {

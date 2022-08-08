@@ -28,7 +28,6 @@ public class MapNodeButton extends AbstractUI {
         this.choice = w;
         canGo = w.type == AbstractChoice.ChoiceType.ENTRY;
         wayIndex = index;
-        setScale(0.5f);
     }
 
     @Override
