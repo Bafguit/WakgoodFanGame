@@ -12,8 +12,7 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
-import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
@@ -26,7 +25,7 @@ public class MapScreen extends AbstractScreen {
     public MapNodeButton[][] nodes = new MapNodeButton[13][3];
 
     public MapScreen() {
-        cType = ControlPanel.ControlType.BASIC;
+        cType = Labyrintale.getBaseScreen().cType;
         type = ScreenType.MAP;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
         for (int i = 0; i < 13; i++) {
@@ -40,11 +39,15 @@ public class MapScreen extends AbstractScreen {
             }
             b += w * 0.0666f;
         }
-        //setBg(FileHandler.getBg().get("BG_MAP"));
+        setBg(FileHandler.getBg().get("BG_MAP"));
     }
 
     public static void view() {
         Labyrintale.addTempScreen(Labyrintale.mapScreen);
+    }
+
+    public static void remove() {
+        Labyrintale.removeTempScreen(Labyrintale.mapScreen);
     }
 
     public void refreshFloor() {
@@ -57,22 +60,16 @@ public class MapScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        cType = Labyrintale.getBaseScreen().cType;
         if (InputHandler.cancel || InputHandler.map) Labyrintale.removeTempScreen(this);
-        for (int i = 1; i < 13; i++) {
-            int s = currentFloor.ways[i - 1].selected;
-            int s2 = currentFloor.ways[i].selected;
+        for (int i = 0; i < 13; i++) {
             for(int j = 0; j < 3; j++) {
-                MapNodeButton n = nodes[i - 1][j];
+                MapNodeButton n = nodes[i][j];
                 if(n != null) {
                     n.update();
-                    for (int k : n.choice.linked) {
-                        MapNodeButton n2 = nodes[i][k];
-                        n2.canGo = n.canGo && (s == -1 || s == j) && (s2 == -1 || s2 == k);
-                    }
                 }
             }
         }
-        nodes[12][1].update();
 
         if (!Labyrintale.fading) {
             if (!glow) {
@@ -110,10 +107,13 @@ public class MapScreen extends AbstractScreen {
                         int link = n.choice.linked2.get(k);
                         v1.y = h * (0.85f - 0.15f * link);
                         MapNodeButton n2 = nodes[i - 1][link];
-                        if (!n.choice.room.isDone && n2.canGo) {
-                            if(currentFloor.num == i) shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
-                            else shr.setColor(LIGHT_GRAY);
-                        } else shr.setColor(Color.DARK_GRAY);
+                        if (n.choice.canGo && n2.choice.canGo) {
+                            if (!n.choice.room.isDone && currentFloor.num == i) {
+                                if (currentFloor.ways[i - 1].selected == -1 || currentFloor.ways[i - 1].selected == link)
+                                    shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+                                else shr.setColor(DARK_GRAY);
+                            } else shr.setColor(LIGHT_GRAY);
+                        } else shr.setColor(DARK_GRAY);
                         shr.rectLine(v1, v2, 5 * InputHandler.scale);
                     }
                 }

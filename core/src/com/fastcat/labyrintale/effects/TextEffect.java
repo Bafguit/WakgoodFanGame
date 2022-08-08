@@ -25,8 +25,9 @@ public class TextEffect extends AbstractEffect {
 
     @Override
     protected void updateEffect() {
-        if (duration <= 0.15f) {
-            f.setColor(f.getColor().r, f.getColor().g, f.getColor().b, f.getColor().a - Labyrintale.tick / 0.15f);
+        float m = baseDuration * 0.3f;
+        if (duration <= m) {
+            f.setColor(f.getColor().r, f.getColor().g, f.getColor().b, f.getColor().a - Labyrintale.tick / m);
         }
     }
 

@@ -306,6 +306,7 @@ public final class SaveHandler {
     public static class ChoiceData {
         public String type;
         public RoomData room;
+        public boolean canGo;
         public ArrayList<Integer> linked;
         public ArrayList<Integer> linked2;
 
@@ -315,6 +316,7 @@ public final class SaveHandler {
             temp.room = RoomData.create(c.room);
             temp.linked = c.linked;
             temp.linked2 = c.linked2;
+            temp.canGo = c.canGo;
             return temp;
         }
     }

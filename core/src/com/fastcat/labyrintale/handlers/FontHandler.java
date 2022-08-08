@@ -47,6 +47,7 @@ public final class FontHandler implements Disposable {
     public static final FontData HP = new FontData(MEDIUM, 26, false);
     public static final FontData STATUS = new FontData(MEDIUM, 24, true);
     public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
+    public static final FontData WAY = new FontData(MEDIUM, 32, false);
     public static final FontData SETTING = new FontData(BOLD, 44, true);
 
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
@@ -286,6 +287,8 @@ public final class FontHandler implements Disposable {
         HP.dispose();
         STATUS.dispose();
         REST_DESC.dispose();
+        SETTING.dispose();
+        WAY.dispose();
     }
 
     public enum FontType {

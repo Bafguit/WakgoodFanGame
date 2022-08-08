@@ -31,6 +31,6 @@ public class PassShopButton extends AbstractUI {
     @Override
     protected void onClick() {
         AbstractLabyrinth.endRoom();
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        Labyrintale.returnToWay();
     }
 }

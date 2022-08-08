@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 
 public abstract class AbstractEffect implements Disposable {
 
@@ -14,7 +15,7 @@ public abstract class AbstractEffect implements Disposable {
     public AbstractEffect(float x, float y, float duration) {
         this.x = x;
         this.y = y;
-        this.duration = duration;
+        this.duration = SettingHandler.setting.fastMode ? duration * 0.5f : duration;
         this.baseDuration = this.duration;
     }
 

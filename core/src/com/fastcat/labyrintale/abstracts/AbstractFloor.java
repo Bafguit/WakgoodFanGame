@@ -4,7 +4,9 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.rooms.other.*;
+import com.fastcat.labyrintale.screens.map.MapNodeButton;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 import static com.fastcat.labyrintale.abstracts.AbstractWay.WayType.*;
 
 public class AbstractFloor {
@@ -20,11 +22,19 @@ public class AbstractFloor {
         floorNum = data.floorNum;
         num = data.num;
         for (int i = 0; i < 13; i++) {
-            ways[i] = new AbstractWay(data.ways[i]);
+            AbstractWay w = new AbstractWay(data.ways[i]);
+            for(int j = 0; j < 3; j++) {
+                AbstractChoice c = w.choices[j];
+                if(c != null) c.index = j;
+            }
+            ways[i] = w;
         }
-        if (data.currentWay != null) {
-            currentWay = ways[num - 1];
-        }
+        ways[0].choices[1].isOnly = true;
+        ways[4].choices[1].isOnly = true;
+        ways[8].choices[1].isOnly = true;
+        ways[11].choices[1].isOnly = true;
+        ways[12].choices[1].isOnly = true;
+        currentWay = ways[num];
         if (data.currentRoom != null) {
             currentRoom = GroupHandler.RoomGroup.getRoom(data.currentRoom.id);
             currentRoom.isDone = data.currentRoom.isDone;
@@ -71,6 +81,13 @@ public class AbstractFloor {
             }
         }
 
+        ways[0].choices[1].isOnly = true;
+        ways[4].choices[1].isOnly = true;
+        ways[8].choices[1].isOnly = true;
+        ways[11].choices[1].isOnly = true;
+        ways[12].choices[1].isOnly = true;
+
+        currentWay = ways[0];
         currentRoom = new PlaceholderRoom();
     }
 
@@ -96,6 +113,27 @@ public class AbstractFloor {
             items[ii] = temp;
         }
         return items;
+    }
+
+    public void update() {
+        for (int i = 1; i < 13; i++) {
+            int s = currentFloor.ways[i - 1].selected;
+            int s2 = currentFloor.ways[i].selected;
+            for(int j = 0; j < 3; j++) {
+                AbstractChoice c = ways[i].choices[j];
+                if(c != null) {
+                    boolean can = false;
+                    for (int k : c.linked2) {
+                        AbstractChoice c3 = ways[i - 1].choices[k];
+                        if(c3.canGo && (s == -1 || s == k) && (s2 == -1 || s2 == j)) {
+                            can = true;
+                            break;
+                        }
+                    }
+                    c.canGo = can;
+                }
+            }
+        }
     }
 
     public void done() {

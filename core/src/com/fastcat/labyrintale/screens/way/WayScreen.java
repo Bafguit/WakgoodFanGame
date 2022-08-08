@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -24,11 +25,16 @@ public class WayScreen extends AbstractScreen {
     public BgImg bg = new BgImg();
     public ShapeRenderer shr = new ShapeRenderer();
 
+    public Array<WaySelectButton> buttons;
+    public Array<WayIcon> icons;
+    public Array<WayDesc> desc;
     public AbstractWay way;
     public PlayerWayView[] players = new PlayerWayView[4];
+    public int wayCount;
 
     public WayScreen() {
         this(AbstractLabyrinth.currentFloor.currentWay);
+
     }
 
     public WayScreen(AbstractWay wy) {
@@ -42,12 +48,39 @@ public class WayScreen extends AbstractScreen {
             pv.player.ui = pv;
             players[i] = pv;
         }
+        buttons = new Array<>();
+        icons = new Array<>();
+        desc = new Array<>();
+        for (int i = 0; i < way.choices.length; i++) {
+            AbstractChoice ch = way.choices[i];
+            if(ch != null && ch.canGo) {
+                float tw = w * (0.6f + 0.135f * i);
+
+                WaySelectButton b = new WaySelectButton(this, ch);
+                b.setPosition(tw - b.sWidth / 2, h * 0.72f - b.sHeight / 2);
+                buttons.add(b);
+
+                WayIcon c = new WayIcon(b, ch.img);
+                c.setPosition(tw - c.sWidth / 2, h * 0.81f - c.sHeight / 2);
+                icons.add(c);
+
+                WayDesc d = new WayDesc(ch.desc);
+                d.setPosition(tw - d.sWidth / 2, h * 0.69f - d.sHeight / 2);
+                desc.add(d);
+            }
+        }
+        wayCount = buttons.size;
     }
 
     @Override
     public void update() {
         for (int i = 0; i < 4; i++) {
             players[i].update();
+        }
+        for (int i = 0; i < wayCount; i++) {
+            buttons.get(i).update();
+            icons.get(i).update();
+            desc.get(i).update();
         }
     }
 
@@ -85,6 +118,11 @@ public class WayScreen extends AbstractScreen {
             if (!tp.player.isDead) {
                 renderCenter(sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + tp.sHeight * 0.06f / 2, tw, tp.sHeight * 0.05f);
             }
+        }
+        for (int i = 0; i < wayCount; i++) {
+            buttons.get(i).render(sb);
+            icons.get(i).render(sb);
+            desc.get(i).render(sb);
         }
     }
 

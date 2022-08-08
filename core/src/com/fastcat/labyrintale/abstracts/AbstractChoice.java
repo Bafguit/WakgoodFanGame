@@ -23,12 +23,15 @@ public class AbstractChoice {
     public ArrayList<Integer> linked = new ArrayList<>();
     public ArrayList<Integer> linked2 = new ArrayList<>();
     public boolean isFirst = false;
+    public boolean isOnly = false;
     public boolean isLast = false;
+    public boolean canGo = false;
 
     public AbstractChoice(SaveHandler.ChoiceData data) {
         this(GroupHandler.RoomGroup.getRoom(data.room.id), ChoiceType.valueOf(data.type));
         room.isDone = data.room.isDone;
         room.battleDone = data.room.battleDone;
+        canGo = data.canGo;
         linked = data.linked;
         linked2 = data.linked2;
     }
@@ -44,6 +47,7 @@ public class AbstractChoice {
         if(t == ChoiceType.ENTRY) {
             isFirst = true;
             index = 1;
+            canGo = true;
         }
         else if(t == ChoiceType.BOSS) {
             isLast = true;

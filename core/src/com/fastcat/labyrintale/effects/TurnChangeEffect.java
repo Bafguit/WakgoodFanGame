@@ -16,6 +16,7 @@ public class TurnChangeEffect extends AbstractEffect {
         super(0, 0, 2);
         text = new TurnEffectText(isEnemy ? "적 턴" : "내 턴");
         alpha = 0;
+        duration = baseDuration = 2;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEffect;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.EffectPublicText;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
@@ -27,7 +28,7 @@ public class UpDamageEffect extends AbstractEffect {
     protected void updateEffect() {
         if (duration != baseDuration) {
             if (text.fontData != null) {
-                text.fontData.alpha -= Labyrintale.tick;
+                text.fontData.alpha -= Labyrintale.tick / baseDuration;
                 if (text.fontData.alpha < 0) text.fontData.alpha = 0;
                 text.y += Labyrintale.tick * 100;
             }

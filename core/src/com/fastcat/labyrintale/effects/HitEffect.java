@@ -28,8 +28,9 @@ public class HitEffect extends AbstractEffect {
     @Override
     protected void updateEffect() {
         img.setPosition(e.animX - rw * 0.5f, e.animY - rh * 0.5f + Gdx.graphics.getHeight() * 0.1f);
-        if (duration <= 0.4f) {
-            alpha -= Labyrintale.tick * 2.5F;
+        float m = baseDuration * 0.667f;
+        if (duration <= m) {
+            alpha -= Labyrintale.tick / m;
             if (alpha < 0) alpha = 0;
         }
     }

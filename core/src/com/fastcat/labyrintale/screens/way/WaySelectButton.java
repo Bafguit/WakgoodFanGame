@@ -20,8 +20,8 @@ public class WaySelectButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        currentFloor.num++;
         currentFloor.currentRoom = c.room;
+        currentFloor.currentWay.selected = c.index;
         SaveHandler.save();
         currentFloor.currentRoom.enter();
     }

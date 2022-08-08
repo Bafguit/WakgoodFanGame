@@ -17,6 +17,6 @@ public class EndEventChoice extends AbstractEvent.EventChoice {
     @Override
     protected void onSelect() {
         AbstractLabyrinth.endRoom();
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mapScreen);
+        Labyrintale.returnToWay();
     }
 }

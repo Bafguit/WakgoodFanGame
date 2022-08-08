@@ -156,8 +156,10 @@ public class AbstractLabyrinth {
         }
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
-        if (currentFloor.num == 13) {
+        if (currentFloor.num == 12) {
             nextFloor();
+        } else {
+            currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
         }
         SaveHandler.save();
     }
@@ -221,7 +223,8 @@ public class AbstractLabyrinth {
     }
 
     public void update() {
-
+        cPanel.update();
+        currentFloor.update();
     }
 
     public enum RunType {

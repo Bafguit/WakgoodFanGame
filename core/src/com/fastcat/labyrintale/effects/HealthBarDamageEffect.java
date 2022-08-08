@@ -28,7 +28,7 @@ public class HealthBarDamageEffect extends AbstractEffect {
                 entity.animColor.set(1, 0, 0, 1);
 
             } else {
-                alpha = Math.min(alpha + Labyrintale.tick * 5, 1);
+                alpha = Math.min(alpha + Labyrintale.tick / baseDuration, 1);
                 entity.animColor.set(1, alpha, alpha, entity.animColor.a);
             }
             if (isDone) {

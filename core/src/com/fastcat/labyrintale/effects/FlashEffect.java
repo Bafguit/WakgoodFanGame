@@ -29,8 +29,8 @@ public class FlashEffect extends AbstractEffect {
     @Override
     protected void updateEffect() {
         if (duration != baseDuration) {
-            alpha -= Labyrintale.tick * 0.7f;
-            sc -= Labyrintale.tick * 0.5f;
+            alpha -= Labyrintale.tick * (0.7f / baseDuration);
+            sc -= Labyrintale.tick * (0.5f / baseDuration);
             if (alpha < 0) alpha = 0;
             img.setBounds(x - rw * 0.5f * scale, y - rh * 0.5f * scale, rw * sc, rh * sc);
         }

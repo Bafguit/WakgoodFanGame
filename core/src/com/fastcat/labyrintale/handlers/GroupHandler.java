@@ -774,6 +774,7 @@ public final class GroupHandler {
             t.add(new Obstinate(null));
             t.add(new IronForm(null));
             t.add(new Guard(null));
+            t.add(new Wakchori(null));
             playerSort.put(PlayerClass.WAK, t);
         }
 
