@@ -7,7 +7,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class FourE extends AbstractSkill {
 
-    private static final String ID = "StrikeE";
+    private static final String ID = "FourE";
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.ENEMY;
     private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;

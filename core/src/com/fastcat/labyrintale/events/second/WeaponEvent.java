@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class WeaponEvent extends AbstractEvent {
 
@@ -32,6 +33,7 @@ public class WeaponEvent extends AbstractEvent {
     @Override
     public void onSetPage(int page) {
         if (page == 2) {
+            SoundHandler.playSfx("HEAL");
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 if (p.isAlive()) p.heal(6);
             }

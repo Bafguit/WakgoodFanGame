@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.AdvisorChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
 public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen {
@@ -32,6 +33,7 @@ public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen
     @Override
     public void onSetPage(int page) {
         if (page == 2) {
+            SoundHandler.playSfx("HEAL");
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 if (p.isAlive()) p.heal((int)(p.maxHealth * 0.6f));
             }

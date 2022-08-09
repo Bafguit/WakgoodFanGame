@@ -22,7 +22,7 @@ public class InduceE extends AbstractSkill {
     public void use() {
         AbstractEntity e = AbstractSkill.getTargets(target).get(0);
         bot(new MoveAction(e, 0, 0.2f));
-        bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
+        bot(new ApplyStatusAction(new FixedStatus(), owner, e, true));
     }
 
     @Override

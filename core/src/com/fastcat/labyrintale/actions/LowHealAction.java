@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class LowHealAction extends AbstractAction {
 
@@ -34,6 +35,7 @@ public class LowHealAction extends AbstractAction {
                 if (p.health == low) temp.add(p);
             }
             if(temp.size > 0) {
+                SoundHandler.playSfx("HEAL");
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
                     te.heal(actor != null ? actor.calculateSpell(heal) : heal);

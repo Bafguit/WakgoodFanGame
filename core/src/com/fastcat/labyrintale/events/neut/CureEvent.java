@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.PlayerEventChoice;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 
 public class CureEvent extends AbstractEvent implements GetSelectedPlayer {
@@ -32,6 +33,7 @@ public class CureEvent extends AbstractEvent implements GetSelectedPlayer {
 
     @Override
     public void playerSelected(AbstractPlayer player) {
+        SoundHandler.playSfx("HEAL");
         player.heal(6);
         setPage(1);
     }

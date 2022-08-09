@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.EVENT_CHOICE;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
@@ -35,7 +36,7 @@ public class EventChoiceButton extends AbstractUI {
             }
             sb.draw(img, x, y, sWidth, sHeight);
 
-            renderLineLeft(sb, fontData, choice.condition.condition() ? choice.text : choice.condition.cdText(), x + 10, y + sHeight * 0.55f, sWidth, sHeight);
+            renderLineLeft(sb, fontData, choice.condition.condition() ? choice.text : choice.condition.cdText(), x + 10 * InputHandler.scale, y + sHeight * 0.55f, sWidth, sHeight);
         }
     }
 

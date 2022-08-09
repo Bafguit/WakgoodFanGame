@@ -28,6 +28,6 @@ public class GoldItem2 extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
+        bot(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
     }
 }

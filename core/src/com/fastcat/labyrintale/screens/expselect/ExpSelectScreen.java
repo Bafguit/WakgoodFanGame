@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedExp;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
@@ -135,6 +136,7 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
         if (selectedType == ExpReward.ExpType.SKILL_SLOT) {
             Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
         } else if (selectedType == ExpReward.ExpType.HEAL) {
+            SoundHandler.playSfx("HEAL");
             player.heal(4);
             Labyrintale.removeTempScreen(this);
         } else if (selectedType == ExpReward.ExpType.MAX_HEALTH) {

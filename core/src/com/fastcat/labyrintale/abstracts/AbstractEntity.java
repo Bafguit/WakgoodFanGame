@@ -153,7 +153,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (cPanel != null) {
             if (isAlive() && !hasStatus("Neut")) {
                 if (heal > 0) {
-                    SoundHandler.playSfx("HEAL");
+                    //SoundHandler.playSfx("HEAL");
                     if (cPanel.type == ControlPanel.ControlType.BATTLE) {
                         EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, heal, CHARTREUSE, false));
                     } else {
@@ -465,14 +465,16 @@ public abstract class AbstractEntity implements Cloneable {
                 if (!a) {
                     ActionHandler.clear();
                     for (AbstractPlayer p : players) {
-                        for (AbstractSkill s : p.hand) {
-                            if(s != null) s.atBattleEnd();
-                        }
-                        for (AbstractItem m : p.item) {
-                            if (m != null) m.atBattleEnd();
-                        }
-                        for (AbstractStatus s : p.status) {
-                            if (s != null) s.atBattleEnd();
+                        if(p.isAlive()) {
+                            for (AbstractSkill s : p.hand) {
+                                if (s != null) s.atBattleEnd();
+                            }
+                            for (AbstractItem m : p.item) {
+                                if (m != null) m.atBattleEnd();
+                            }
+                            for (AbstractStatus s : p.status) {
+                                if (s != null) s.atBattleEnd();
+                            }
                         }
                     }
                     advisor.skill.atBattleEnd();

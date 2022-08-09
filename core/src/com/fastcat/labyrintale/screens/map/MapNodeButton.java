@@ -18,7 +18,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
 
 public class MapNodeButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.getUi().get("BORDER");
+    private final Sprite border = FileHandler.getUi().get("BORDER_S");
     public int wayIndex;
     public AbstractChoice choice;
 

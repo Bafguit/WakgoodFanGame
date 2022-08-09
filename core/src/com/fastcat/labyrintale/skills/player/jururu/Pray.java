@@ -1,14 +1,9 @@
 package com.fastcat.labyrintale.skills.player.jururu;
 
-import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.HealAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
-import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Pray extends AbstractSkill {

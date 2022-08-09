@@ -44,20 +44,21 @@ public final class SoundHandler implements Disposable {
 
     private static void generateSound() {
         sfx.put("LILPAA", getSound("sound/sfx/skill/lilpaa.mp3"));
-        sfx.put("BLUNT_LIGHT", getSound("sound/sfx/blunt_light.ogg"));
-        sfx.put("BLUNT_HEAVY", getSound("sound/sfx/blunt_heavy.ogg"));
-        sfx.put("SLASH", getSound("sound/sfx/slash.ogg"));
-        sfx.put("SMASH", getSound("sound/sfx/smash.ogg"));
-        sfx.put("BURN", getSound("sound/sfx/burn.ogg"));
         sfx.put("BLOCK", getSound("sound/sfx/block.ogg"));
         sfx.put("BLOCKED", getSound("sound/sfx/blocked.ogg"));
-        sfx.put("LIGHTNING", getSound("sound/sfx/lightning.ogg"));
-        sfx.put("POISON", getSound("sound/sfx/poison.ogg"));
+        sfx.put("BLUNT_HEAVY", getSound("sound/sfx/blunt_heavy.ogg"));
+        sfx.put("BLUNT_LIGHT", getSound("sound/sfx/blunt_light.ogg"));
         sfx.put("BUFF", getSound("sound/sfx/buff.ogg"));
-        sfx.put("DEBUFF", getSound("sound/sfx/debuff.ogg"));
-        sfx.put("STATIC", getSound("sound/sfx/static.ogg"));
+        sfx.put("BURN", getSound("sound/sfx/burn.ogg"));
         sfx.put("CLICK", getSound("sound/sfx/click.wav"));
+        sfx.put("DEBUFF", getSound("sound/sfx/debuff.ogg"));
+        sfx.put("HEAL", getSound("sound/sfx/heal.ogg"));
+        sfx.put("LIGHTNING", getSound("sound/sfx/lightning.ogg"));
         sfx.put("OVER", getSound("sound/sfx/over.wav"));
+        sfx.put("POISON", getSound("sound/sfx/poison.ogg"));
+        sfx.put("SLASH", getSound("sound/sfx/slash.ogg"));
+        sfx.put("SMASH", getSound("sound/sfx/smash.ogg"));
+        sfx.put("STATIC", getSound("sound/sfx/static.ogg"));
     }
 
     private static void generateMusic() {

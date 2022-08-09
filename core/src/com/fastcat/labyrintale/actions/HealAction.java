@@ -5,6 +5,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class HealAction extends AbstractAction {
 
@@ -42,6 +43,7 @@ public class HealAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (target.size > 0) {
+                SoundHandler.playSfx("HEAL");
                 for (AbstractEntity e : target) {
                     e.heal(actor != null ? actor.calculateSpell(heal) : heal);
                 }

@@ -240,6 +240,7 @@ public class FileHandler implements Disposable {
         ui.put("ENTRY", new Sprite(new Texture("img/ui/entryNode.png")));
         ui.put("SHOP", new Sprite(new Texture("img/ui/shopNode.png")));
         ui.put("MAP", new Sprite(new Texture("img/ui/map.png")));
+        ui.put("EVENT", new Sprite(new Texture("img/ui/event_img.png")));
     }
 
     private void generateCharImg() {

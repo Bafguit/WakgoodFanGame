@@ -1,21 +1,16 @@
-package com.fastcat.labyrintale.screens.way;
+package com.fastcat.labyrintale.uis;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-
-public class PlayerWayView extends AbstractUI {
+public class PlayerView extends AbstractUI {
 
     public AbstractPlayer player;
 
-    public PlayerWayView(AbstractPlayer cls) {
+    public PlayerView(AbstractPlayer cls) {
         super(FileHandler.getUi().get("ENTITY_POINT"));
         player = cls;
         showImg = false;

@@ -4,12 +4,10 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.actions.SelectTargetAction;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
+import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
+import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 
 public class Penance extends AbstractSkill {
 
@@ -49,7 +47,7 @@ public class Penance extends AbstractSkill {
         boolean can = false;
         if (enemySelect) {
             for (int i = 0; i < 4; i++) {
-                EnemyView pv = Labyrintale.battleScreen.enemies[i];
+                EnemyBattleView pv = Labyrintale.battleScreen.enemies[i];
                 if (pv.enemy.isAlive()) {
                     pv.isTarget = true;
                     can = true;
@@ -57,7 +55,7 @@ public class Penance extends AbstractSkill {
                 }
             }
         } else {
-            for (PlayerView pv : Labyrintale.battleScreen.players) {
+            for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
                 if (pv.player.isAlive()) {
                     pv.isTarget = true;
                     can = true;

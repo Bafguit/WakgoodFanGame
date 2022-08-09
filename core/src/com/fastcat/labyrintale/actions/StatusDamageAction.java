@@ -24,7 +24,7 @@ public class StatusDamageAction extends AbstractAction {
         status = s;
         this.effect = effect;
         eImg = AttackAction.getEffectImg(effect);
-        e = s.owner;
+        if(s.target == AbstractSkill.SkillTarget.SELF) e = s.owner;
     }
 
     public StatusDamageAction(AbstractStatus s, AttackAction.AttackType effect, boolean reduce, boolean remove) {
@@ -51,7 +51,7 @@ public class StatusDamageAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            if(e != null && status.target == AbstractSkill.SkillTarget.SELF) {
+            if(e != null) {
                 AttackAction.playAttackSfx(effect);
                 if (effect == AttackAction.AttackType.NONE) {
                     status.flash(e);

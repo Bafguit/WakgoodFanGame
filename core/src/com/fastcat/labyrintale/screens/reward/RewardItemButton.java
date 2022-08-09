@@ -17,7 +17,7 @@ public class RewardItemButton extends AbstractUI {
     private RewardItemCharIcon icon;
 
     public RewardItemButton(AbstractReward re) {
-        super(FileHandler.getUi().get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER"));
         image = re.img;
         this.reward = re;
         if (reward.type == AbstractReward.RewardType.SKILL) {

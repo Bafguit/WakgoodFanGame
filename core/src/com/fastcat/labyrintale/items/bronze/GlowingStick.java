@@ -28,6 +28,6 @@ public class GlowingStick extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new CourageStatus(3), owner, AbstractSkill.SkillTarget.SELF, false));
+        bot(new ApplyStatusAction(new CourageStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
     }
 }

@@ -50,6 +50,7 @@ public class HolySmiteAction extends AbstractAction {
                 for (AbstractPlayer p : AbstractLabyrinth.players) {
                     if (p.health == low) temp.add(p);
                 }
+                SoundHandler.playSfx("HEAL");
                 for (int i = 0; i < temp.size; i++) {
                     AbstractEntity te = temp.get(i);
                     EffectHandler.add(new UpDamageEffect(te.ui.x + te.ui.sWidth / 2, te.ui.y + te.ui.sHeight * 0.35f, heal, CHARTREUSE, false));

@@ -12,8 +12,8 @@ import com.fastcat.labyrintale.actions.SetAnimationAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
+import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
+import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 import com.fastcat.labyrintale.strings.SkillString;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -206,8 +206,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     //고정 대상
     public static Array<AbstractEntity> getTargets(SkillTarget target) {
         Array<AbstractEntity> temp = new Array<>();
-        PlayerView[] tp = battleScreen.players;
-        EnemyView[] te = battleScreen.enemies;
+        PlayerBattleView[] tp = battleScreen.players;
+        EnemyBattleView[] te = battleScreen.enemies;
         switch (target) {
             case NONE:
                 break;
@@ -323,7 +323,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     AbstractPlayer p = tp[i].player;
                     if (p.isAlive() && p.health < low) low = p.health;
                 }
-                for (PlayerView p : tp) {
+                for (PlayerBattleView p : tp) {
                     if (p.player.health == low) temp.add(p.player);
                 }
                 break;
@@ -333,7 +333,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     AbstractEnemy p = te[i].enemy;
                     if (p.isAlive() && p.health < low) low = p.health;
                 }
-                for (EnemyView p : te) {
+                for (EnemyBattleView p : te) {
                     if (p.enemy.health == low) temp.add(p.enemy);
                 }
                 break;
@@ -343,7 +343,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     AbstractPlayer p = tp[i].player;
                     if (p.isAlive() && p.health > low) low = p.health;
                 }
-                for (PlayerView p : tp) {
+                for (PlayerBattleView p : tp) {
                     if (p.player.health == low) temp.add(p.player);
                 }
                 break;
@@ -353,7 +353,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     AbstractEnemy p = te[i].enemy;
                     if (p.isAlive() && p.health > low) low = p.health;
                 }
-                for (EnemyView p : te) {
+                for (EnemyBattleView p : te) {
                     if (p.enemy.health == low) temp.add(p.enemy);
                 }
                 break;
@@ -636,7 +636,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         boolean can = false;
         if (target == SkillTarget.ENEMY) {
             for (int i = 0; i < 4; i++) {
-                EnemyView pv = Labyrintale.battleScreen.enemies[i];
+                EnemyBattleView pv = Labyrintale.battleScreen.enemies[i];
                 if (pv.enemy.isAlive()) {
                     pv.isTarget = true;
                     can = true;
@@ -644,7 +644,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
             }
         } else if (target == SkillTarget.PLAYER) {
-            for (PlayerView pv : Labyrintale.battleScreen.players) {
+            for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
                 if (pv.player.isAlive()) {
                     pv.isTarget = true;
                     can = true;

@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
+import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class IronWill extends AbstractSkill {
@@ -37,7 +37,7 @@ public class IronWill extends AbstractSkill {
     @Override
     public boolean setTarget() {
         boolean can = false;
-        for (PlayerView pv : Labyrintale.battleScreen.players) {
+        for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
             if (pv.player.isAlive() && pv.player != owner) {
                 pv.isTarget = true;
                 can = true;

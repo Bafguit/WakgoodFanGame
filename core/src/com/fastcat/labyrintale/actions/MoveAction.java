@@ -3,8 +3,8 @@ package com.fastcat.labyrintale.actions;
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
+import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
+import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 
 import java.util.HashMap;
 
@@ -167,7 +167,7 @@ public class MoveAction extends AbstractAction {
                     from.animX = toPos;
                     AbstractLabyrinth.players[toIndex] = (AbstractPlayer) from;
                     battleScreen.players[toIndex].player = (AbstractPlayer) from;
-                    for (PlayerView pv : battleScreen.players) {
+                    for (PlayerBattleView pv : battleScreen.players) {
                         pv.player.ui = pv;
                     }
                     cPanel.battlePanel.setPlayer((AbstractPlayer) from);
@@ -183,7 +183,7 @@ public class MoveAction extends AbstractAction {
                     from.animX = toPos;
                     currentFloor.currentRoom.enemies[toIndex] = (AbstractEnemy) from;
                     battleScreen.enemies[toIndex].enemy = (AbstractEnemy) from;
-                    for (EnemyView pv : battleScreen.enemies) {
+                    for (EnemyBattleView pv : battleScreen.enemies) {
                         pv.enemy.ui = pv;
                     }
                 }

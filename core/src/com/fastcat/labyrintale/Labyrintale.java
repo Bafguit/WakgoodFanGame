@@ -57,6 +57,7 @@ public class Labyrintale extends Game {
     public static SettingScreen settingScreen;
     public static boolean fading = false;
     public static boolean fadeIn = false;
+    public static boolean tempFade = false;
     public static float tick;
     private static AbstractScreen nextScreen = null;
     private static Sprite fadeTex;
@@ -77,6 +78,19 @@ public class Labyrintale extends Game {
         alphaDex = sec;
         fading = true;
         fadeIn = false;
+        tempFade = false;
+    }
+
+    public static void fadeOutAndAddScreen(AbstractScreen screen) {
+        fadeOutAndAddScreen(screen, 1.0f);
+    }
+
+    public static void fadeOutAndAddScreen(AbstractScreen screen, float sec) {
+        nextScreen = screen;
+        alphaDex = sec;
+        fading = true;
+        fadeIn = false;
+        tempFade = true;
     }
 
     public static AbstractScreen getCurScreen() {
@@ -216,7 +230,8 @@ public class Labyrintale extends Game {
                 if (alphaCount > 1.0f) {
                     if (nextScreen != null) {
                         alphaCount = 1.0f;
-                        setScreen(nextScreen);
+                        if(!tempFade) setScreen(nextScreen);
+                        else addTempScreen(nextScreen);
                         nextScreen = null;
                         fadeIn = true;
                     } else fading = false;
@@ -258,7 +273,7 @@ public class Labyrintale extends Game {
 
     public static void returnToWay() {
         wayScreen = new WayScreen();
-        fadeOutAndChangeScreen(wayScreen);
+        fadeOutAndChangeScreen(wayScreen, 1.5f);
     }
 
     @Override

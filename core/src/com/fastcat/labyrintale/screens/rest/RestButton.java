@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
@@ -62,6 +63,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
     @Override
     public void playerSelected(AbstractPlayer player) {
         if (type == RestType.HEAL) {
+            SoundHandler.playSfx("HEAL");
             player.heal(HEAL_AMOUNT);
             sc.finishRest();
         } else if (type == RestType.UPGRADE) {

@@ -20,16 +20,16 @@ public class EventImage extends AbstractUI {
     public float nx, ny, nw, nh, dx, dy, dw, dh;
 
     public EventImage(AbstractEvent e) {
-        super(FileHandler.getUi().get("WAY_SELECT"));
+        super(FileHandler.getUi().get("EVENT"));
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        setPosition(w * 0.25f - sWidth / 2, h * 0.7f - sHeight / 2);
+        setPosition(w * 0.5f, h * 0.48f);
         event = e;
         overable = false;
-        nx = dx = w * 0.4f;
-        ny = h * 0.93f;
-        dy = h * 0.93f - 60 * scale;
-        nw = dw = 1400 * InputHandler.scale;
-        nh = 60 * InputHandler.scale;
+        nx = dx = w * 0.5f;
+        ny = h * 0.75f;
+        dy = h * 0.75f - 50 * scale;
+        nw = dw = 1200 * InputHandler.scale;
+        nh = 50 * InputHandler.scale;
         dh = 360 * InputHandler.scale;
     }
 

@@ -34,8 +34,8 @@ public class BattleScreen extends AbstractScreen {
     public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
     public LinkedList<StatusButton>[] enemyStatus = new LinkedList[4];
     public SkillButton[] enemySkills = new SkillButton[4];
-    public PlayerView[] players = new PlayerView[4];
-    public EnemyView[] enemies = new EnemyView[4];
+    public PlayerBattleView[] players = new PlayerBattleView[4];
+    public EnemyBattleView[] enemies = new EnemyBattleView[4];
     public ShieldIcon[] pShield = new ShieldIcon[4];
     public ShieldIcon[] eShield = new ShieldIcon[4];
     public GetSelectedTarget gets;
@@ -59,7 +59,7 @@ public class BattleScreen extends AbstractScreen {
         sw = shield.getWidth() * InputHandler.scale;
         sh = shield.getHeight() * InputHandler.scale;
         for (int i = 0; i < 4; i++) {
-            PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
+            PlayerBattleView pv = new PlayerBattleView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
             pv.player.newDeck();
@@ -67,7 +67,7 @@ public class BattleScreen extends AbstractScreen {
             pv.player.ui = pv;
             players[i] = pv;
 
-            EnemyView ev = new EnemyView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
+            EnemyBattleView ev = new EnemyBattleView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
             ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.49f);
             ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f);
             ev.enemy.index = i;
@@ -139,8 +139,8 @@ public class BattleScreen extends AbstractScreen {
         }
 
         for (int i = 0; i < 4; i++) {
-            PlayerView pv = players[i];
-            EnemyView ev = enemies[i];
+            PlayerBattleView pv = players[i];
+            EnemyBattleView ev = enemies[i];
 
             SkillButton ss = enemySkills[i];
             ss.skill = ev.enemy.hand[0];
@@ -197,10 +197,10 @@ public class BattleScreen extends AbstractScreen {
         }
 
         for (int i = 0; i < 4; i++) {
-            PlayerView pv = players[i];
+            PlayerBattleView pv = players[i];
             pv.isLooking = looking.contains(pv.player, false);
             pv.update();
-            EnemyView ev = enemies[i];
+            EnemyBattleView ev = enemies[i];
             ev.isLooking = looking.contains(ev.enemy, false);
             ev.update();
             pShield[i].e = pv.player;
@@ -241,8 +241,8 @@ public class BattleScreen extends AbstractScreen {
         sb.end();
         shr.begin(ShapeRenderer.ShapeType.Filled);
         for (int i = 0; i < 4; i++) {
-            PlayerView tp = players[i];
-            EnemyView te = enemies[i];
+            PlayerBattleView tp = players[i];
+            EnemyBattleView te = enemies[i];
             float tw = tp.sWidth, th = tp.sHeight;
             float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
             float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
@@ -272,8 +272,8 @@ public class BattleScreen extends AbstractScreen {
         shr.end();
         sb.begin();
         for (int i = 0; i < 4; i++) {
-            PlayerView tp = players[i];
-            EnemyView te = enemies[i];
+            PlayerBattleView tp = players[i];
+            EnemyBattleView te = enemies[i];
             float tw = tp.sWidth, th = tp.sHeight;
             float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
             float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;

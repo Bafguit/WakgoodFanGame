@@ -216,7 +216,7 @@
   },
   "GoldItem2": {
     "NAME": "GoldItem2",
-    "DESC": "전투 시작 시 &y<면역>을 &b<1> 얻습니다.",
+    "DESC": "전투 시작 시 모든 아군이 &y<면역>을 &b<1> 얻습니다.",
     "FLAV": ""
   },
   "Turtle": {
@@ -229,9 +229,9 @@
     "DESC": "전투 시작 시 모든 아군이 보호막을 &b<8> 얻습니다.",
     "FLAV": ""
   },
-  "BronzeItem3": {
-    "NAME": "BronzeItem3",
-    "DESC": "테스트",
+  "EyePatch": {
+    "NAME": "검은 안대",
+    "DESC": "전투 시작 시 &y<주문력>을 &b<1> 얻습니다.",
     "FLAV": ""
   },
   "BronzeItem4": {
@@ -239,14 +239,14 @@
     "DESC": "테스트",
     "FLAV": ""
   },
-  "BronzeItem5": {
-    "NAME": "BronzeItem5",
+  "BronzeItem3": {
+    "NAME": "BronzeItem3",
     "DESC": "테스트",
     "FLAV": ""
   },
-  "BronzeItem7": {
-    "NAME": "BronzeItem7",
-    "DESC": "테스트",
+  "BigRibbon": {
+    "NAME": "거대 리본",
+    "DESC": "전투 시작 시 &y<인내>를 &b<5> 얻습니다.",
     "FLAV": ""
   },
   "BronzeItem10": {
@@ -264,9 +264,9 @@
     "DESC": "테스트",
     "FLAV": ""
   },
-  "SilverItem1": {
-    "NAME": "SilverItem1",
-    "DESC": "테스트",
+  "SuperLadle": {
+    "NAME": "초합금 국자",
+    "DESC": "전투 시작 시 모든 아군이 &y<공격력>을 &b<1> 얻습니다.",
     "FLAV": ""
   },
   "SilverItem2": {

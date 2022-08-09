@@ -10,10 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.screens.battle.EnemyView;
-import com.fastcat.labyrintale.screens.battle.PlayerView;
-import com.fastcat.labyrintale.screens.battle.ShieldIcon;
-import com.fastcat.labyrintale.uis.BgImg;
+import com.fastcat.labyrintale.uis.PlayerView;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
@@ -29,7 +26,7 @@ public class WayScreen extends AbstractScreen {
     public Array<WayIcon> icons;
     public Array<WayDesc> desc;
     public AbstractWay way;
-    public PlayerWayView[] players = new PlayerWayView[4];
+    public PlayerView[] players = new PlayerView[4];
     public int wayCount;
 
     public WayScreen() {
@@ -41,7 +38,7 @@ public class WayScreen extends AbstractScreen {
         cType = ControlPanel.ControlType.BASIC;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < 4; i++) {
-            PlayerWayView pv = new PlayerWayView(AbstractLabyrinth.players[i]);
+            PlayerView pv = new PlayerView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
             pv.player.ui = pv;
@@ -56,15 +53,15 @@ public class WayScreen extends AbstractScreen {
                 float tw = w * (0.6f + 0.135f * i);
 
                 WaySelectButton b = new WaySelectButton(this, ch);
-                b.setPosition(tw - b.sWidth / 2, h * 0.66f - b.sHeight / 2);
+                b.setPosition(tw - b.sWidth / 2, h * 0.65f - b.sHeight / 2);
                 buttons.add(b);
 
                 WayIcon c = new WayIcon(b, ch.img);
-                c.setPosition(tw - c.sWidth / 2, h * 0.75f - c.sHeight / 2);
+                c.setPosition(tw - c.sWidth / 2, h * 0.74f - c.sHeight / 2);
                 icons.add(c);
 
                 WayDesc d = new WayDesc(ch.desc);
-                d.setPosition(tw - d.sWidth / 2, h * 0.63f - d.sHeight / 2);
+                d.setPosition(tw - d.sWidth / 2, h * 0.62f - d.sHeight / 2);
                 desc.add(d);
             }
         }
@@ -93,7 +90,7 @@ public class WayScreen extends AbstractScreen {
         shr.begin(ShapeRenderer.ShapeType.Filled);
         float h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
-            PlayerWayView tp = players[i];
+            PlayerView tp = players[i];
             float tw = tp.sWidth, th = tp.sHeight;
             float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
             if (!tp.player.isDead) {
@@ -111,7 +108,7 @@ public class WayScreen extends AbstractScreen {
         shr.end();
         sb.begin();
         for (int i = 0; i < 4; i++) {
-            PlayerWayView tp = players[i];
+            PlayerView tp = players[i];
             float tw = tp.sWidth;
             float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
             if (!tp.player.isDead) {

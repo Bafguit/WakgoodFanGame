@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.rewards;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class HealReward extends AbstractReward {
 
@@ -16,6 +17,7 @@ public class HealReward extends AbstractReward {
 
     @Override
     public void takeReward() {
+        SoundHandler.playSfx("HEAL");
         for (AbstractPlayer p : AbstractLabyrinth.players) {
             if (p.isAlive()) p.heal(amount);
         }

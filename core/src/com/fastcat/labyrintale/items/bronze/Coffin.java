@@ -28,6 +28,6 @@ public class Coffin extends AbstractItem {
     @Override
     public void atBattleStart() {
         flash();
-        bot(new ApplyStatusAction(new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
+        bot(new ApplyStatusAction(new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
     }
 }

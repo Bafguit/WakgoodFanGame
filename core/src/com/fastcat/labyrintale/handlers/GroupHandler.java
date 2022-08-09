@@ -476,8 +476,8 @@ public final class GroupHandler {
             t.add(new Coffin(null));
             t.add(new BronzeItem3(null));
             t.add(new BronzeItem4(null));
-            t.add(new BronzeItem5(null));
-            t.add(new BronzeItem7(null));
+            t.add(new EyePatch(null));
+            t.add(new BigRibbon(null));
             t.add(new BronzeItem10(null));
             t.add(new BronzeItem11(null));
             t.add(new BronzeItem12(null));
@@ -488,7 +488,7 @@ public final class GroupHandler {
             t.add(new BunnyHat(null));
             t.add(new CheeseBall(null));
             t.add(new Purplight(null));
-            t.add(new SilverItem1(null));
+            t.add(new SuperLadle(null));
             t.add(new SilverItem2(null));
             t.add(new SilverItem3(null));
             t.add(new SilverItem4(null));
