@@ -49,9 +49,12 @@ public final class FontHandler implements Disposable {
     public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
     public static final FontData WAY = new FontData(MEDIUM, 32, false);
     public static final FontData SETTING = new FontData(BOLD, 44, true);
+    public static final FontData BLEAK = new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
+    public static final FontData SUB_NAME = new FontData(MEDIUM, 32, true);
+    public static final FontData SUB_DESC = new FontData(MEDIUM, 30, false);
 
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
-    private static final GlyphLayout layout = new GlyphLayout();
+    public static final GlyphLayout layout = new GlyphLayout();
     private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     /***
@@ -289,6 +292,9 @@ public final class FontHandler implements Disposable {
         REST_DESC.dispose();
         SETTING.dispose();
         WAY.dispose();
+        BLEAK.dispose();
+        SUB_NAME.dispose();
+        SUB_DESC.dispose();
     }
 
     public enum FontType {

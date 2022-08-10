@@ -17,7 +17,8 @@ public class EnergyPanel extends AbstractUI {
         clickable = false;
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (AbstractLabyrinth.energy == 0) sb.setColor(Color.GRAY);
             else sb.setColor(Color.WHITE);

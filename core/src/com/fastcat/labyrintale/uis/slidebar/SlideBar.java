@@ -48,7 +48,7 @@ public class SlideBar extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
             sideL.render(sb);
@@ -79,7 +79,8 @@ public class SlideBar extends AbstractUI {
             if (overTrack) setPosition(MathUtils.clamp(mx - sWidth / 2, min, max), y);
         }
 
-        public void render(SpriteBatch sb) {
+        @Override
+        protected void renderUi(SpriteBatch sb) {
             if (enabled) {
                 sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
@@ -93,7 +94,8 @@ public class SlideBar extends AbstractUI {
             clickable = false;
         }
 
-        public void render(SpriteBatch sb) {
+        @Override
+        protected void renderUi(SpriteBatch sb) {
             if (enabled) {
                 sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
@@ -107,7 +109,8 @@ public class SlideBar extends AbstractUI {
             clickable = false;
         }
 
-        public void render(SpriteBatch sb) {
+        @Override
+        protected void renderUi(SpriteBatch sb) {
             if (enabled) {
                 sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
@@ -121,7 +124,8 @@ public class SlideBar extends AbstractUI {
             clickable = false;
         }
 
-        public void render(SpriteBatch sb) {
+        @Override
+        protected void renderUi(SpriteBatch sb) {
             if (enabled) {
                 sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);

@@ -22,7 +22,8 @@ public class ItemButton extends AbstractUI {
 
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);

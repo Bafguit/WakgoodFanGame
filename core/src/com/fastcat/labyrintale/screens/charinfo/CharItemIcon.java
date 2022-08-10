@@ -25,7 +25,7 @@ public class CharItemIcon extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);

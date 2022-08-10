@@ -14,7 +14,8 @@ public class LogoText extends AbstractUI {
         overable = false;
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);

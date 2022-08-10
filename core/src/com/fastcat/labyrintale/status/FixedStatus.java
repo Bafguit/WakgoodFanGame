@@ -8,9 +8,11 @@ import com.fastcat.labyrintale.actions.RemoveStatusAction;
 public class FixedStatus extends AbstractStatus {
 
     private static final String ID = "Fixed";
+    private final boolean fromEnemy;
 
-    public FixedStatus() {
+    public FixedStatus(boolean fromEnemy) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
+        this.fromEnemy = fromEnemy;
     }
 
     @Override
@@ -19,13 +21,18 @@ public class FixedStatus extends AbstractStatus {
     }
 
     @Override
-    public void onApply() {
+    public void onInitial() {
         owner.movable++;
     }
 
     @Override
     public void endOfTurn() {
-        top(new RemoveStatusAction(this, true));
+        if(fromEnemy) top(new RemoveStatusAction(this, true));
+    }
+
+    @Override
+    public void startOfTurn() {
+        if(!fromEnemy) top(new RemoveStatusAction(this, true));
     }
 
     @Override

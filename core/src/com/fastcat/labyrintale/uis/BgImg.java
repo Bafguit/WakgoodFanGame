@@ -14,7 +14,7 @@ public class BgImg extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         img.draw(sb);
     }
 }

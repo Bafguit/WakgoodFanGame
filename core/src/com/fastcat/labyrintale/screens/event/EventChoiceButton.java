@@ -22,7 +22,8 @@ public class EventChoiceButton extends AbstractUI {
         clickable = choice.available();
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!clickable) {
                 sb.setColor(Color.DARK_GRAY);

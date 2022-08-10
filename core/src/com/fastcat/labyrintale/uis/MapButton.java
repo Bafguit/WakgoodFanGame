@@ -21,7 +21,7 @@ public class MapButton extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(isShowing || over ? Color.WHITE : Color.LIGHT_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);

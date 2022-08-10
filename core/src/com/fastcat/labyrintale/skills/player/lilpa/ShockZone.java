@@ -17,7 +17,7 @@ public class ShockZone extends AbstractSkill {
 
     public ShockZone(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

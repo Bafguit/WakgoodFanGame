@@ -5,7 +5,10 @@
   },
   "Barrier": {
     "NAME": "보호막",
-    "DESC": "보호막을 {S} 얻습니다."
+    "DESC": "보호막을 {S} 얻습니다.",
+    "KEY" : [
+      "Block"
+    ]
   },
   "MoveLeft": {
     "NAME": "후퇴",

@@ -33,7 +33,8 @@ public class CharButton extends AbstractUI {
 
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
             if (isCharSt) sb.setColor(Color.DARK_GRAY);

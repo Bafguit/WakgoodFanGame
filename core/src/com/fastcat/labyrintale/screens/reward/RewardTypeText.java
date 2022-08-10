@@ -21,7 +21,7 @@ public class RewardTypeText extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (fontData != null) {
                 renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);

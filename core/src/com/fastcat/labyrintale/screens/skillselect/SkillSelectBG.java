@@ -21,7 +21,7 @@ public class SkillSelectBG extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             //if(reward.isDone) sb.setColor(p.pColorDG);
             if (!over) sb.setColor(Color.LIGHT_GRAY);

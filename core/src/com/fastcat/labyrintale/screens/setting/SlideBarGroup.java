@@ -56,7 +56,7 @@ public class SlideBarGroup {
         }
 
         @Override
-        public void render(SpriteBatch sb) {
+        protected void renderUi(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
             renderKeywordCenter(sb, fontData, title, x, y + sHeight / 2, sWidth, sHeight);
             renderLineRight(sb, fontData, text, x + sWidth * 1.9f, y + sHeight / 2, sWidth * 0.5f, sHeight);

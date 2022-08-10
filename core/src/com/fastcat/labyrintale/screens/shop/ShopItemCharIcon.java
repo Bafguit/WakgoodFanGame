@@ -19,7 +19,7 @@ public class ShopItemCharIcon extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled && !item.isDone) {
             boolean can = item.canBuy();
             if (!can) sb.setColor(Color.DARK_GRAY);

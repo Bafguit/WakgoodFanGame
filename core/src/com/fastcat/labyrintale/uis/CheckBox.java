@@ -22,7 +22,7 @@ public class CheckBox extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);

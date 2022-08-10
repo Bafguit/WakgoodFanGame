@@ -543,7 +543,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             if (rarity == SkillRarity.ADVISOR || owner.isPlayer) {
                 if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
                 if (!disposable) cooldown = cooltime;
-                if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+                if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
                     bot(new EndPlayerTurnAction());
                 }
             }
@@ -622,7 +622,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
         if (disposable) usedOnce = true;
         else cooldown = cooltime;
-        if (AbstractLabyrinth.energy == 0 && noMoreSkill()) {
+        if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
             bot(new EndPlayerTurnAction());
         }
     }

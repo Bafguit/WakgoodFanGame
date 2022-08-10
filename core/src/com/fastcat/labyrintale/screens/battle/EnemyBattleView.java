@@ -41,7 +41,7 @@ public class EnemyBattleView extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         setPosition(enemy.animX - sWidth / 2, enemy.animY - Gdx.graphics.getHeight() * 0.025f);
         if (enabled && enemy != null && !enemy.isDead) {
             sb.setColor(Color.WHITE);

@@ -35,7 +35,8 @@ public class MapNodeButton extends AbstractUI {
         }
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!choice.room.isDone && choice.canGo) {
                 if(currentFloor.num == wayIndex) sb.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);

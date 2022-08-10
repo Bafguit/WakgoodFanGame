@@ -49,7 +49,8 @@ public class ExpButton extends AbstractUI {
 
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!clickable) sb.setColor(Color.DARK_GRAY);
             else if (select.selected == this || over) sb.setColor(Color.WHITE);

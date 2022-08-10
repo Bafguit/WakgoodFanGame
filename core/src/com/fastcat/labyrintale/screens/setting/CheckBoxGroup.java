@@ -45,7 +45,7 @@ public class CheckBoxGroup {
         }
 
         @Override
-        public void render(SpriteBatch sb) {
+        protected void renderUi(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
             renderKeywordCenter(sb, fontData, title, x, y + sHeight / 2, sWidth, sHeight);
         }

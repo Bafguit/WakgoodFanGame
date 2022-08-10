@@ -33,13 +33,9 @@ public class SkillString {
                 if (temp != null) {
                     data.DESC = temp.asString();
                 }
-                temp = js.get("UP_DESC");
+                temp = js.get("KEY");
                 if (temp != null) {
-                    data.UP_DESC = temp.asString();
-                }
-                temp = js.get("EX_DESC");
-                if (temp != null) {
-                    data.EX_DESC = temp.asStringArray();
+                    data.KEY = temp.asStringArray();
                 }
                 this.data.put(id, data);
             }
@@ -53,7 +49,6 @@ public class SkillString {
     public static class SkillData {
         public String NAME;
         public String DESC = "";
-        public String UP_DESC;
-        public String[] EX_DESC;
+        public String[] KEY;
     }
 }

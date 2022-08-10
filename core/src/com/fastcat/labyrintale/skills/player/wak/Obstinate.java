@@ -25,7 +25,7 @@ public class Obstinate extends AbstractSkill {
     @Override
     public void use() {
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
-        bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
+        bot(new ApplyStatusAction(new FixedStatus(true), owner, target, true));
     }
 
     @Override

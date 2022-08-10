@@ -22,7 +22,7 @@ public class PlayerView extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (!player.isDead) {
             sb.setColor(Color.WHITE);
             player.render(sb);

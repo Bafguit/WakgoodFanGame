@@ -69,6 +69,11 @@ public abstract class AbstractStatus implements Cloneable {
     }
 
     public void onApply() {
+
+    }
+
+    public void onInitial() {
+
     }
 
     public void onRemove() {

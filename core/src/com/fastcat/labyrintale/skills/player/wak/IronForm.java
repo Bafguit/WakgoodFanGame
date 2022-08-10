@@ -24,7 +24,7 @@ public class IronForm extends AbstractSkill {
     @Override
     public void use() {
         bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
-        bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
+        bot(new ApplyStatusAction(new FixedStatus(false), owner, target, true));
     }
 
     @Override

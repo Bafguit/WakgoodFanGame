@@ -17,6 +17,7 @@ import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
@@ -29,6 +30,7 @@ import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import com.fastcat.labyrintale.uis.BleakView;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import lombok.Getter;
 
@@ -55,6 +57,7 @@ public class Labyrintale extends Game {
     public static EventScreen eventScreen;
     public static ShopScreen shopScreen;
     public static SettingScreen settingScreen;
+    public static BleakView bleakView;
     public static boolean fading = false;
     public static boolean fadeIn = false;
     public static boolean tempFade = false;
@@ -63,6 +66,7 @@ public class Labyrintale extends Game {
     private static Sprite fadeTex;
     private static float alphaCount = 0;
     private static float alphaDex = 2;
+    public static AbstractUI subText;
     public Array<AbstractScreen> tempScreen = new Array<>();
     public SpriteBatch sb;
 
@@ -165,6 +169,7 @@ public class Labyrintale extends Game {
         //labyrinth = new AbstractLabyrinth();
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
+        bleakView = new BleakView();
 
         setScreen(new LogoScreen());
     }
@@ -177,6 +182,7 @@ public class Labyrintale extends Game {
         InputHandler.getInstance().update();
         InputHandler.getInstance().update();
         FontHandler.getInstance().update();
+        subText = null;
         if (labyrinth != null) {
             labyrinth.update();
         }
@@ -193,6 +199,9 @@ public class Labyrintale extends Game {
             AbstractScreen s = (AbstractScreen) screen;
             s.update();
             s.getEffectHandler().update();
+        }
+        if(labyrinth != null && AbstractLabyrinth.cPanel.type != ControlPanel.ControlType.HIDE) {
+            bleakView.update();
         }
         SoundHandler.getInstance().update();
     }
@@ -216,7 +225,11 @@ public class Labyrintale extends Game {
                 if (s != null) s.render(Labyrintale.tick);
             }
         }
+        if(labyrinth != null && AbstractLabyrinth.cPanel.type != ControlPanel.ControlType.HIDE) {
+            bleakView.render(sb);
+        }
         if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
+        if (subText != null) subText.renderSub(sb);
         /** ============== */
         fade();
 

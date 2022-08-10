@@ -18,7 +18,7 @@ public class EffectPublicText extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (fontData != null) {
                 if (showImg) img.draw(sb);

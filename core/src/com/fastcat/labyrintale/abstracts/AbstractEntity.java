@@ -235,6 +235,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (!done) {
             text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
             this.status.addLast(s);
+            s.onInitial();
             s.onApply();
             if (effect) {
                 s.flash(this);

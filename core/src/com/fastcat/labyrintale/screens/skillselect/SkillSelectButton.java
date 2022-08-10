@@ -36,7 +36,7 @@ public class SkillSelectButton extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (over || SkillSelectGroup.screen.selected == this || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);

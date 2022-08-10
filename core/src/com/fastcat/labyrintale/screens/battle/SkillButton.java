@@ -31,7 +31,7 @@ public class SkillButton extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (isSelected) sb.setColor(Color.DARK_GRAY);
             else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);

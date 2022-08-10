@@ -25,7 +25,7 @@ public class ShieldIcon extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (e.isAlive()) {
             amount = e.block;
             if (amount > 0) {

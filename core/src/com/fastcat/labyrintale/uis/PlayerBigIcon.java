@@ -21,7 +21,7 @@ public class PlayerBigIcon extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled && p != null) {
             sb.setColor(Color.WHITE);
             sb.draw(p.imgBig, x, y, sWidth, sHeight);

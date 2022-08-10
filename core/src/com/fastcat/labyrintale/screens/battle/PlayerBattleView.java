@@ -46,7 +46,7 @@ public class PlayerBattleView extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled && player != null && !player.isDead) {
             sb.setColor(Color.WHITE);
             if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)

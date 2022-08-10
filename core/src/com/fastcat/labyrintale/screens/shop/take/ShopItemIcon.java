@@ -31,7 +31,7 @@ public class ShopItemIcon extends AbstractUI {
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
 

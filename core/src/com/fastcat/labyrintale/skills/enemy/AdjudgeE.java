@@ -20,7 +20,7 @@ public class AdjudgeE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
+        bot(new ApplyStatusAction(new FixedStatus(true), owner, target, true));
         bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, false));
     }
 

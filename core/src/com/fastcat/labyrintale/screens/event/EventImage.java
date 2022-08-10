@@ -38,7 +38,8 @@ public class EventImage extends AbstractUI {
 
     }
 
-    public void render(SpriteBatch sb) {
+    @Override
+    protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (event != null) {
                 sb.setColor(Color.WHITE);
