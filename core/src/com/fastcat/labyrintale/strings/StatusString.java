@@ -27,6 +27,10 @@ public class StatusString {
                 if (temp != null) {
                     data.DESC_B = temp.asStringArray();
                 }
+                temp = js.get("KEY");
+                if (temp != null) {
+                    data.KEY = temp.asStringArray();
+                }
                 this.data.put(id, data);
             }
         }
@@ -40,5 +44,6 @@ public class StatusString {
         public String NAME;
         public String DESC = "";
         public String[] DESC_B;
+        public String[] KEY;
     }
 }

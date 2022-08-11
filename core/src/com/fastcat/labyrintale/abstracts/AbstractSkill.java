@@ -14,8 +14,11 @@ import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
+import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.SkillString;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+
+import java.util.HashMap;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
@@ -32,6 +35,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public String id;
     public String name;
     public String desc;
+    public Array<AbstractUI.SubText> key = new Array<>();
     public boolean upgraded = false;
     public boolean usedOnce = false;
     public boolean usedOnly = false;
@@ -58,6 +62,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         this.skillData = StringHandler.skillString.get(this.id);
         this.name = this.skillData.NAME;
         this.desc = this.skillData.DESC;
+        if(skillData.KEY != null) {
+            for (String k : skillData.KEY) {
+                KeyString.KeyData kd = StringHandler.keyString.get(k);
+                key.add(new AbstractUI.SubText(kd.NAME, kd.DESC));
+            }
+        }
         this.type = type;
         this.target = target;
         this.rarity = rarity;

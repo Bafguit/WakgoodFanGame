@@ -62,11 +62,7 @@ public class SkillButtonPanel extends AbstractUI {
 
     @Override
     protected Array<SubText> getSubText() {
-        Array<SubText> temp = new Array<>();
-        temp.add(new SubText("테스트1", "대충 설명"));
-        temp.add(new SubText("테스트2", "아무튼 쥰내 긴 설명이라고 볼 수 있는 설명"));
-        temp.add(new SubText("테스트3", "아무튼 쥰내 긴 설명이라고 볼 수 있을 것 같은 설명인 것이라고 볼 수 있다."));
-        return temp;
+        return skill != null ? skill.key : null;
     }
 
     public void resetImg() {

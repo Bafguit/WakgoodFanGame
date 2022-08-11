@@ -5,37 +5,32 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 import java.util.HashMap;
 
-public class ItemString {
+public class KeyString {
 
-    private final HashMap<String, ItemData> data = new HashMap<>();
+    private final HashMap<String, KeyData> data = new HashMap<>();
 
-    public ItemString() {
-        generateString(FileHandler.getJsonValue(FileHandler.JsonType.ITEM_JSON));
+    public KeyString() {
+        generateString(FileHandler.getJsonValue(FileHandler.JsonType.KEY_JSON));
     }
 
     private void generateString(JsonValue json) {
         for (JsonValue js : json) {
             String id = js.name;
             if (!id.equals("")) {
-                ItemData data = new ItemData();
+                KeyData data = new KeyData();
                 data.NAME = js.get("NAME").asString();
                 data.DESC = js.get("DESC").asString();
-                JsonValue temp = js.get("KEY");
-                if (temp != null) {
-                    data.KEY = temp.asStringArray();
-                }
                 this.data.put(id, data);
             }
         }
     }
 
-    public ItemData get(String id) {
+    public KeyData get(String id) {
         return data.get(id);
     }
 
-    public static class ItemData {
+    public static class KeyData {
         public String NAME;
-        public String DESC = "";
-        public String[] KEY;
+        public String DESC;
     }
 }

@@ -1,358 +1,379 @@
 {
   "Item1": {
     "NAME": "테스트 아이템",
-    "DESC": "&b<테스트> &y<아이템>",
-    "FLAV": "테스트"
+    "DESC": "&b<테스트> &y<아이템>"
   },
   "OldShield": {
     "NAME": "낡은 방패",
     "DESC": "전투 시작 시 모든 아군이 보호막을 &b<1> 얻습니다.",
-    "FLAV": "오랫동안 사용해서 낡아버린 방패이다."
+    "KEY": [
+      "Block"
+    ]
   },
   "Pendant": {
     "NAME": "팬던트",
-    "DESC": "전투 종료 시 체력을 &b<1> 회복합니다.",
-    "FLAV": "두 사람과 개의 초상화가 끼워져 있다."
+    "DESC": "전투 종료 시 체력을 &b<1> 회복합니다."
   },
   "OldArmour": {
     "NAME": "낡은 갑옷",
-    "DESC": "최대 체력 &b<+3>.",
-    "FLAV": "오랫동안 사용해서 낡아버린 갑옷이다."
+    "DESC": "최대 체력 &b<+3>."
   },
   "BurgerHat": {
     "NAME": "햄버거 모자",
-    "DESC": "전투 시작 시 체력을 &b<1> 회복합니다.",
-    "FLAV": "이것을 쓰고 있으면 배고픔을 달랠 수 있다고 한다."
+    "DESC": "전투 시작 시 체력을 &b<1> 회복합니다."
   },
   "ShoulderPlate": {
     "NAME": "어깨 갑옷",
     "DESC": "전투 시작 시 보호막을 &b<2> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Block"
+    ]
   },
   "BattleAxe": {
     "NAME": "전투 도끼",
-    "DESC": "전투 시작 시 앞의 적 하나에게 피해를 &b<3> 줍니다.",
-    "FLAV": ""
+    "DESC": "전투 시작 시 앞의 적 하나에게 피해를 &b<3> 줍니다."
   },
   "OldSword": {
     "NAME": "낡은 검",
     "DESC": "전투 시작 시 &y<용기>를 &b<1> 얻습니다.",
-    "FLAV": "오랫동안 사용해서 낡아버린 검이다."
+    "KEY": [
+      "Courage"
+    ]
   },
   "FabricMail": {
     "NAME": "천 갑옷",
     "DESC": "전투 시작 시 &y<인내>를 &b<1> 얻습니다.",
-    "FLAV": "방어력은 높지 않지만 충격을 줄여주는 조끼이다."
+    "KEY": [
+      "Endurance"
+    ]
   },
   "ToxicFlask": {
     "NAME": "독성 플라스크",
     "DESC": "전투 시작 시 모든 적에게 &y<감염>을 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Infection"
+    ]
   },
   "CrossPin": {
     "NAME": "십자 머리핀",
     "DESC": "전투 시작 시 뒤의 적 하나에게 &y<약화>를 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Lethargy"
+    ]
   },
   "Bible": {
     "NAME": "성서",
     "DESC": "전투 시작 시 바로 앞의 아군 하나에게 &y<용기>를 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Courage"
+    ]
   },
   "CottonNecklace": {
     "NAME": "목화 목걸이",
     "DESC": "전투 시작 시 앞의 아군 하나에게 &y<인내>를 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Endurance"
+    ]
   },
   "FlameBook": {
     "NAME": "화염 마법서",
     "DESC": "전투 시작 시 앞의 적 둘에게 &y<화상>을 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Burn"
+    ]
   },
   "FireStaff": {
     "NAME": "불꽃 수정 지팡이",
     "DESC": "전투 시작 시 앞의 적 하나에게 &y<취약>을 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Unfortified"
+    ]
   },
   "PlatedArmour": {
     "NAME": "판금 갑옷",
-    "DESC": "최대 체력 &b<+5>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+5>."
   },
   "GlowingStick": {
     "NAME": "야광봉",
     "DESC": "최대 체력 &b<+2>. 전투 시작 시 &y<용기>를 &b<3> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Courage"
+    ]
   },
   "ElasticRing": {
     "NAME": "탄성 고리",
     "DESC": "최대 체력 &b<+2>. 전투 시작 시 모든 아군에게 &y<인내>를 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Endurance"
+    ]
   },
   "NaviNecklace": {
     "NAME": "나비 목걸이",
     "DESC": "최대 체력 &b<+2>. 전투 시작 시 모든 적에게 &y<취약>을 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Unfortified"
+    ]
   },
   "Coffin": {
     "NAME": "관 모양 장식",
     "DESC": "최대 체력 &b<+2>. 전투 시작 시 모든 적에게 &y<약화>를 &b<1> 부여합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Lethargy"
+    ]
   },
   "SafetyHat": {
     "NAME": "안전모",
-    "DESC": "최대 체력 &b<+10>.",
-    "FLAV": "괴상하게 생긴 투구이다."
+    "DESC": "최대 체력 &b<+10>."
   },
   "BunnyHat": {
     "NAME": "토끼 귀 머리띠",
     "DESC": "최대 체력 &b<+4>. 공격력 &b<+1>. 주문력 &b<+1>.",
-    "FLAV": ""
+    "KEY": [
+      "Attack",
+      "Spell"
+    ]
   },
   "Purplight": {
     "NAME": "보랏빛 광석",
     "DESC": "최대 체력 &b<+4>. 적에게 부여하는 &y<감염>이 &b<1> 증가합니다.",
-    "FLAV": "보고 있으면 짜증이 날 것만 같다."
+    "KEY": [
+      "Infection"
+    ]
   },
   "AutoFire": {
     "NAME": "자동 발사 장치",
-    "DESC": "최대 체력 &b<+4>. 턴 시작 시 모든 적에게 피해를 &b<2> 줍니다.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+4>. 턴 시작 시 모든 적에게 피해를 &b<2> 줍니다."
   },
   "CheeseBall": {
     "NAME": "치즈볼",
-    "DESC": "최대 체력 &b<+4>. 전투 시작 시 자신의 모든 스킬이 강화됩니다.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+4>. 전투 시작 시 자신의 모든 스킬이 강화됩니다."
   },
   "BossItem": {
     "NAME": "도박사의 카드뭉치",
     "DESC": "공격력 &b<+5>. 획득 시 최대 체력이 &r<10>이 됩니다.",
-    "FLAV": "스트레이트 플러쉬가 맨 위에 놓여 있다."
+    "KEY": [
+      "Attack"
+    ]
   },
   "BrokenTicker": {
     "NAME": "고장난 회중시계",
-    "DESC": "최대 체력 &r<-10>. 전투 시작 시 체력을 모두 회복합니다.",
-    "FLAV": "멈춰 있는 시간 속에서 노랫소리가 들려오는 것 같다."
+    "DESC": "최대 체력 &r<-10>. 전투 시작 시 체력을 모두 회복합니다."
   },
   "BossItem4": {
     "NAME": "전나무 모형",
     "DESC": "행동력 &b<+1>. 모든 적의 공격력 &r<+1>.",
-    "FLAV": "누군가가 위장용으로 사용한다는 소문이 있다."
+    "KEY": [
+      "Energy",
+      "Attack"
+    ]
   },
   "BossItem5": {
     "NAME": "",
     "DESC": "행동력 &b<+1>. 스킬 보상의 선택지가 1 감소합니다.",
-    "FLAV": ""
+    "KEY": [
+      "Energy"
+    ]
   },
   "BossItem6": {
     "NAME": "",
     "DESC": "행동력 &b<+1>. 전투 보상으로 아이템을 획득할 수 없습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Energy"
+    ]
   },
   "BossItem7": {
     "NAME": "",
     "DESC": "행동력 &b<+1>. 골드를 획득할 수 없습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Energy"
+    ]
   },
   "BossItem8": {
     "NAME": "",
-    "DESC": "행동력 &b<+1>. 전투 시작 턴에 행동할 수 없습니다.",
-    "FLAV": ""
+    "DESC": "행동력 &b<+1>. 첫 턴에 행동할 수 없습니다.",
+    "KEY": [
+      "Energy"
+    ]
   },
   "BossItem9": {
     "NAME": "",
     "DESC": "엘리트와 보스 전투에서 행동력 &b<+1>.",
-    "FLAV": ""
+    "KEY": [
+      "Energy"
+    ]
   },
   "ShopItem1": {
     "NAME": "상점용 아이템1",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem2": {
     "NAME": "상점용 아이템2",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem3": {
     "NAME": "상점용 아이템3",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem4": {
     "NAME": "상점용 아이템4",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem5": {
     "NAME": "상점용 아이템5",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem6": {
     "NAME": "상점용 아이템6",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem7": {
     "NAME": "상점용 아이템7",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem8": {
     "NAME": "상점용 아이템8",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "ShopItem9": {
     "NAME": "상점용 아이템9",
-    "DESC": "",
-    "FLAV": ""
+    "DESC": ""
   },
   "Juggernaut": {
     "NAME": "저거너트",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem2": {
     "NAME": "GoldItem2",
     "DESC": "전투 시작 시 모든 아군이 &y<면역>을 &b<1> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Immune"
+    ]
   },
   "Turtle": {
     "NAME": "거북 등딱지 방패",
     "DESC": "전투 시작 시 보호막을 &b<15> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Block"
+    ]
   },
   "GoldenRing": {
     "NAME": "항금 고리",
     "DESC": "전투 시작 시 모든 아군이 보호막을 &b<8> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Block"
+    ]
   },
   "EyePatch": {
     "NAME": "검은 안대",
     "DESC": "전투 시작 시 &y<주문력>을 &b<1> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Spell"
+    ]
   },
   "BronzeItem4": {
     "NAME": "BronzeItem4",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "BronzeItem3": {
     "NAME": "BronzeItem3",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "BigRibbon": {
     "NAME": "거대 리본",
     "DESC": "전투 시작 시 &y<인내>를 &b<5> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Endurance"
+    ]
   },
   "BronzeItem10": {
     "NAME": "BronzeItem10",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "BronzeItem11": {
     "NAME": "BronzeItem11",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "BronzeItem12": {
     "NAME": "BronzeItem12",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SuperLadle": {
     "NAME": "초합금 국자",
     "DESC": "전투 시작 시 모든 아군이 &y<공격력>을 &b<1> 얻습니다.",
-    "FLAV": ""
+    "KEY": [
+      "Attack"
+    ]
   },
   "SilverItem2": {
     "NAME": "SilverItem2",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SilverItem3": {
     "NAME": "SilverItem3",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SilverItem4": {
     "NAME": "SilverItem4",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SilverItem5": {
     "NAME": "SilverItem5",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SilverItem6": {
     "NAME": "SilverItem6",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "SilverItem7": {
     "NAME": "SilverItem7",
-    "DESC": "테스트",
-    "FLAV": ""
+    "DESC": "테스트"
   },
   "GoldItem5": {
     "NAME": "GoldItem5",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem6": {
     "NAME": "GoldItem6",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem7": {
     "NAME": "GoldItem7",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem8": {
     "NAME": "GoldItem8",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem9": {
     "NAME": "GoldItem9",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem10": {
     "NAME": "GoldItem10",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem11": {
     "NAME": "GoldItem11",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GoldItem12": {
     "NAME": "GoldItem12",
-    "DESC": "최대 체력 &b<+20>.",
-    "FLAV": ""
+    "DESC": "최대 체력 &b<+20>."
   },
   "GreenHeart": {
     "NAME": "초록 심장",
-    "DESC": "전투 종료 시 체력을 &b<3> 회복합니다.",
-    "FLAV": ""
+    "DESC": "전투 종료 시 체력을 &b<3> 회복합니다."
   },
   "CrackedHeart": {
     "NAME": "갈라진 심장",
-    "DESC": "전투 종료 시 최대 체력이 &b<2> 증가합니다.",
-    "FLAV": ""
+    "DESC": "전투 종료 시 최대 체력이 &b<2> 증가합니다."
   },
   "GolemHead": {
     "NAME": "강철 골렘의 머리",
-    "DESC": "획득 시 음산함이 &b<0>이 됩니다. 음산함의 최대치가 &b<60>이 됩니다.",
-    "FLAV": ""
+    "DESC": "획득 시 음산함이 &b<0>이 됩니다. 음산함이 &b<60> 위로 올라가지 않습니다.",
+    "KEY": [
+      "Bleak"
+    ]
   },
   "": {
     "NAME": "",

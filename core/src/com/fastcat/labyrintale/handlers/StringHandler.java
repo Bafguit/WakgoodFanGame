@@ -14,6 +14,7 @@ public final class StringHandler {
     public static EventString eventString;
     public static ItemString itemString;
     public static AdvisorString advisorString;
+    public static KeyString keyString;
 
     public static void generate() {
         skillString = new SkillString();
@@ -23,5 +24,6 @@ public final class StringHandler {
         eventString = new EventString();
         itemString = new ItemString();
         advisorString = new AdvisorString();
+        keyString = new KeyString();
     }
 }

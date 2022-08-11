@@ -7,6 +7,9 @@ import com.fastcat.labyrintale.actions.FlashAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.strings.ItemString;
+import com.fastcat.labyrintale.strings.KeyString;
+
+import java.util.HashMap;
 
 public class AbstractItem implements Cloneable {
 
@@ -16,9 +19,9 @@ public class AbstractItem implements Cloneable {
     public String id;
     public String name;
     public String desc;
-    public String flav;
     public AbstractPlayer owner;
     public ItemRarity rarity;
+    public Array<AbstractUI.SubText> key = new Array<>();
 
     public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
         this.id = id;
@@ -27,7 +30,12 @@ public class AbstractItem implements Cloneable {
         data = StringHandler.itemString.get(this.id);
         name = data.NAME;
         desc = data.DESC;
-        flav = data.FLAV;
+        if(data.KEY != null) {
+            for (String k : data.KEY) {
+                KeyString.KeyData kd = StringHandler.keyString.get(k);
+                key.add(new AbstractUI.SubText(kd.NAME, kd.DESC));
+            }
+        }
         this.rarity = rarity;
         this.owner = owner;
     }

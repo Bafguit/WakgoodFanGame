@@ -19,6 +19,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.*;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;

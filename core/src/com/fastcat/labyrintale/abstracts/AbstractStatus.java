@@ -2,9 +2,14 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.StatusString;
+import org.graalvm.compiler.nodes.spi.SwitchFoldable;
+
+import java.util.HashMap;
 
 
 public abstract class AbstractStatus implements Cloneable {
@@ -14,6 +19,7 @@ public abstract class AbstractStatus implements Cloneable {
     public String name;
     public String desc;
     public String[] exDesc;
+    public Array<AbstractUI.SubText> key = new Array<>();
     public StatusType type;
     public StatusString.StatusData data;
     public AbstractSkill.SkillTarget target;
@@ -29,6 +35,12 @@ public abstract class AbstractStatus implements Cloneable {
         name = data.NAME;
         desc = data.DESC;
         exDesc = data.DESC_B;
+        if(data.KEY != null) {
+            for (String k : data.KEY) {
+                KeyString.KeyData kd = StringHandler.keyString.get(k);
+                key.add(new AbstractUI.SubText(kd.NAME, kd.DESC));
+            }
+        }
         this.target = target;
         this.type = type;
     }
