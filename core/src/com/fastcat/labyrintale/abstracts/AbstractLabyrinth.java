@@ -218,8 +218,8 @@ public class AbstractLabyrinth {
             players[p.index] = p;
         }
         //AbstractLabyrinth.prepare();
-        AbstractLabyrinth.reduceBleak();
         SaveHandler.save();
+        AbstractLabyrinth.reduceBleak();
     }
 
     public void update() {

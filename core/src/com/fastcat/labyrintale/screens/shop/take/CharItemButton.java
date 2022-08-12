@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.shop.take;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -40,6 +41,11 @@ public class CharItemButton extends AbstractUI {
         if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return item != null ? item.key : null;
     }
 
     @Override

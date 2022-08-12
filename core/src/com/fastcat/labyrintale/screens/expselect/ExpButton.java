@@ -3,9 +3,13 @@ package com.fastcat.labyrintale.screens.expselect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.rewards.ExpReward;
+import com.fastcat.labyrintale.strings.KeyString;
 
 public class ExpButton extends AbstractUI {
 
@@ -21,6 +25,10 @@ public class ExpButton extends AbstractUI {
         this.select = select;
         name = getName(type);
         desc = getDesc(type);
+        if(type == ExpReward.ExpType.SKILL_SLOT) {
+            KeyString.KeyData data = StringHandler.keyString.get("SkillSlot");
+            subs.add(new SubText(data.NAME, data.DESC));
+        }
     }
 
     private static Sprite getImage(ExpReward.ExpType type) { //TODO 이미지 바꾸기
@@ -46,7 +54,14 @@ public class ExpButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
+        if(over) {
+            AbstractLabyrinth.cPanel.infoPanel.setInfo(name, desc);
+        }
+    }
 
+    @Override
+    protected Array<SubText> getSubText() {
+        return subs;
     }
 
     @Override

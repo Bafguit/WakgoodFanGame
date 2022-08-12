@@ -14,7 +14,6 @@ public class ThrowE extends AbstractSkill {
     private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;
     private static final int ATTACK = 5;
     private static final int UP = 1;
-    private static final int VALUE = 1;
 
     public ThrowE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

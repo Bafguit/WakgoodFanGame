@@ -123,7 +123,7 @@ public class ShopRoom extends AbstractRoom {
         }
     }
 
-    private static class RollItem extends ShopItem {
+    public static class RollItem extends ShopItem {
 
         private final ShopRoom shop;
 
@@ -177,7 +177,7 @@ public class ShopRoom extends AbstractRoom {
         }
     }
 
-    private static class ItemItem extends ShopItem {
+    public static class ItemItem extends ShopItem {
         public AbstractItem item;
 
         public ItemItem(ItemRarity r) {

@@ -66,6 +66,7 @@ public class BattlePanel implements Disposable {
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
+        energy.update();
     }
 
     public void render(SpriteBatch sb) {

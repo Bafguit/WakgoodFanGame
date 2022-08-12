@@ -33,7 +33,7 @@ public class MapScreen extends AbstractScreen {
                 AbstractChoice tw = currentFloor.ways[i].choices[j];
                 if(tw != null) {
                     MapNodeButton node = new MapNodeButton(tw, i);
-                    node.setPosition(b - node.sWidth / 2, h * (0.85f - 0.15f * j) - node.sHeight / 2);
+                    node.setPosition(b - node.sWidth / 2, h * (0.8f - 0.15f * j) - node.sHeight / 2);
                     nodes[i][j] = node;
                 }
             }
@@ -58,7 +58,7 @@ public class MapScreen extends AbstractScreen {
                 MapNodeButton n = null;
                 if(c != null) {
                     n = new MapNodeButton(c, j);
-                    n.setPosition(b - n.sWidth / 2, h * (0.85f - 0.15f * j) - n.sHeight / 2);
+                    n.setPosition(b - n.sWidth / 2, h * (0.8f - 0.15f * j) - n.sHeight / 2);
                 }
                 nodes[i][j] = n;
             }
@@ -110,10 +110,10 @@ public class MapScreen extends AbstractScreen {
                 MapNodeButton n = nodes[i][j];
                 if (n != null) {
                     int len = n.choice.linked2.size();
-                    v2.y = h * (0.85f - 0.15f * j);
+                    v2.y = h * (0.8f - 0.15f * j);
                     for(int k = 0; k < len; k++) {
                         int link = n.choice.linked2.get(k);
-                        v1.y = h * (0.85f - 0.15f * link);
+                        v1.y = h * (0.8f - 0.15f * link);
                         MapNodeButton n2 = nodes[i - 1][link];
                         if (n.choice.canGo && n2.choice.canGo) {
                             if (!n.choice.room.isDone && currentFloor.num == i) {

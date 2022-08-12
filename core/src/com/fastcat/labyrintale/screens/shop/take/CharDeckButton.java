@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.shop.take;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -38,6 +39,11 @@ public class CharDeckButton extends AbstractUI {
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : null;
     }
 
     @Override

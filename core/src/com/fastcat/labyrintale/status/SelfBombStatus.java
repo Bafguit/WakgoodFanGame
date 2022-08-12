@@ -11,7 +11,7 @@ public class SelfBombStatus extends AbstractStatus {
     private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
 
     public SelfBombStatus(int amount) {
-        super(ID, TARGET, StatusType.BUFF);
+        super(ID, TARGET, StatusType.STATIC);
         setAmount(amount);
     }
 

@@ -98,5 +98,17 @@
   "BossEnemy2": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "Enemy3Weak1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Weak2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Weak3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }

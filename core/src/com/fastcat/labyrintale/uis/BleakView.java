@@ -4,10 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.strings.KeyString;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
@@ -25,6 +28,9 @@ public class BleakView extends AbstractUI {
         B_80 = new TempUI(FileHandler.getUi().get("BLEAK_80"));
         B_100 = new TempUI(FileHandler.getUi().get("BLEAK_100"));
         fontData = FontHandler.BLEAK;
+        subDown = true;
+        KeyString.KeyData k = StringHandler.keyString.get("Bleak");
+        subs.add(new SubText(k.NAME, k.DESC));
     }
 
     @Override
@@ -32,6 +38,11 @@ public class BleakView extends AbstractUI {
         if(over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo("음산함", getBleakDesc(AbstractLabyrinth.bleak));
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return subs;
     }
 
     @Override

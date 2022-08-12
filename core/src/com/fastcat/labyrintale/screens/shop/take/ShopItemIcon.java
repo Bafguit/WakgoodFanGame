@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -51,6 +52,15 @@ public class ShopItemIcon extends AbstractUI {
             } else {
                 AbstractLabyrinth.cPanel.infoPanel.setInfo(screen.item);
             }
+        }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        if (screen.type == ShopTakeScreen.TakeType.SKILL) {
+            return screen.skill.key;
+        } else {
+            return screen.item.key;
         }
     }
 }

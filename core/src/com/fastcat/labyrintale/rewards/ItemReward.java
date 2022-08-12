@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 public class ItemReward extends AbstractReward implements GetSelectedItem {
 
-    private final AbstractItem item;
+    public final AbstractItem item;
 
     public ItemReward(AbstractItem item) {
         super(RewardType.ITEM);

@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -14,7 +15,6 @@ public class ItemPanel extends AbstractUI {
 
     public ItemPanel() {
         super(FileHandler.getUi().get("BORDER"));
-        overable = false;
         clickable = false;
     }
 
@@ -23,6 +23,11 @@ public class ItemPanel extends AbstractUI {
         if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return item != null ? item.key : null;
     }
 
     @Override

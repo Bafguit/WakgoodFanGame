@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.skillselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -45,6 +46,11 @@ public class SkillSelectButton extends AbstractUI {
                 FontHandler.renderCenter(sb, FontHandler.BORDER, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.03f);
             sb.draw(img, x, y, sWidth, sHeight);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : null;
     }
 
     @Override

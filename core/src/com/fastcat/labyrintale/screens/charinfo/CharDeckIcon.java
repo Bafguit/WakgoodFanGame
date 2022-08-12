@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.charinfo;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -15,6 +16,7 @@ public class CharDeckIcon extends AbstractUI {
         super(FileHandler.getUi().get("BORDER_M"));
         skill = s;
         clickable = false;
+        subDown = true;
     }
 
     @Override
@@ -22,6 +24,11 @@ public class CharDeckIcon extends AbstractUI {
         if (over) {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : null;
     }
 
     @Override

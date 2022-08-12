@@ -3,17 +3,22 @@ package com.fastcat.labyrintale.screens.reward;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.rewards.ItemReward;
 import com.fastcat.labyrintale.rewards.SkillReward;
+import com.fastcat.labyrintale.strings.KeyString;
 
 public class RewardItemButton extends AbstractUI {
 
     private final Sprite image;
     public AbstractReward reward;
     public SkillReward sReward;
+    public ItemReward iReward;
     private RewardItemCharIcon icon;
 
     public RewardItemButton(AbstractReward re) {
@@ -23,6 +28,8 @@ public class RewardItemButton extends AbstractUI {
         if (reward.type == AbstractReward.RewardType.SKILL) {
             sReward = (SkillReward) reward;
             icon = new RewardItemCharIcon(sReward);
+        } else if (reward.type == AbstractReward.RewardType.ITEM) {
+            iReward = (ItemReward) reward;
         }
     }
 
@@ -54,6 +61,19 @@ public class RewardItemButton extends AbstractUI {
     @Override
     protected void onOver() {
 
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        if(reward.type == AbstractReward.RewardType.SKILL) {
+            return sReward.skill.key;
+        } else if(reward.type == AbstractReward.RewardType.ITEM) {
+            return iReward.item.key;
+        } else if(reward.type == AbstractReward.RewardType.EXP) {
+            return subs;
+        }
+
+        return null;
     }
 
     @Override

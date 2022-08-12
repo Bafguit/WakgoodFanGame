@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.itemselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -31,6 +32,11 @@ public class ItemButton extends AbstractUI {
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return item != null ? item.key : null;
     }
 
     @Override

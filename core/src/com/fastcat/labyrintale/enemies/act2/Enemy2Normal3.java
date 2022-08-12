@@ -21,7 +21,7 @@ public class Enemy2Normal3 extends AbstractEnemy {
     @Override
     public void preBattle() {
         applyStatus(new MaintainStatus(this), 1, false);
-        block = 30;
+        block = 40;
     }
 
     @Override

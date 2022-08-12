@@ -96,12 +96,12 @@ public class ExpSelectScreen extends AbstractScreen implements GetSelectedPlayer
 
     @Override
     public void update() {
+        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.name, selected.desc);
         for (ExpButton advisorButton : exp) {
             advisorButton.update();
         }
         nextButton.update();
         playerSelectText.update();
-        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.name, selected.desc);
     }
 
     @Override

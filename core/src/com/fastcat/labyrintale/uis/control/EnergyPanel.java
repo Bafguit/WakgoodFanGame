@@ -2,10 +2,13 @@ package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.strings.KeyString;
 
 
 public class EnergyPanel extends AbstractUI {
@@ -13,8 +16,9 @@ public class EnergyPanel extends AbstractUI {
     public EnergyPanel() {
         super(FileHandler.getUi().get("ENERGY_ORB"));
         fontData = FontHandler.ENERGY;
-        overable = false;
         clickable = false;
+        KeyString.KeyData k = StringHandler.keyString.get("Energy");
+        subs.add(new SubText(k.NAME, k.DESC));
     }
 
     @Override
@@ -26,5 +30,10 @@ public class EnergyPanel extends AbstractUI {
             sb.setColor(Color.WHITE);
             FontHandler.renderCenter(sb, fontData, AbstractLabyrinth.energy + "/" + AbstractLabyrinth.maxEnergy, x, y + sHeight / 2, sWidth, sHeight);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return subs;
     }
 }

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.battle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -46,6 +47,11 @@ public class StatusButton extends AbstractUI {
             AbstractLabyrinth.cPanel.infoPanel.setInfo(status);
             battleScreen.looking = getTargets(status);
         }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return status != null ? status.key : null;
     }
 
     private String valueColor() {

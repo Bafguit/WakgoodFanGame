@@ -28,7 +28,7 @@ public class UnfortifiedStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfTurn() {
+    public void startOfTurn() {
         top(new ReduceStatusAction(this, 1, true));
     }
 

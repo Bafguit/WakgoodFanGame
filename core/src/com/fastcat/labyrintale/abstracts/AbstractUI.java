@@ -31,8 +31,10 @@ public abstract class AbstractUI implements Disposable {
 
     private static final SpriteBatch uib = new SpriteBatch();
 
+    protected final Array<SubText> subs = new Array<>();
     public AbstractScreen screen;
     public Array<SubText> subTexts;
+    public boolean subDown = false;
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
     public String text;
@@ -152,10 +154,19 @@ public abstract class AbstractUI implements Disposable {
     }
 
     public final void renderSub(SpriteBatch sb) {
-        if (subTexts.size > 0) {
-            float sc = 10 * scale, subY = y + sHeight + sc;
-            for (SubText s : subTexts) {
-                subY = s.render(sb, subY) + sc;
+        if(subTexts != null) {
+            if (subTexts.size > 0) {
+                float sc, subY;
+                if (subDown) {
+                    sc = -10 * scale;
+                    subY = y + sc;
+                } else {
+                    sc = 10 * scale;
+                    subY = y + sHeight + sc;
+                }
+                for (SubText s : subTexts) {
+                    subY = s.render(sb, subY, subDown) + sc;
+                }
             }
         }
     }
@@ -276,16 +287,24 @@ public abstract class AbstractUI implements Disposable {
             this.icon = new TempUI(icon);
         }
 
-        public float render(SpriteBatch sb, float y) {
+        public float render(SpriteBatch sb, float y, boolean isDown) {
             float xx = mx - ww * 0.5f, yy = 0;
-            sb.draw(bot.img, xx, y, ww, hh);
-            sb.draw(mid.img, xx, y + (yy += hh), ww, mh);
-            sb.draw(top.img, xx, y + (yy += mh), ww, hh);
-            yy += hh;
-            float ny = y + yy - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
-            nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
-            descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
-
+            if(!isDown) {
+                sb.draw(bot.img, xx, y, ww, hh);
+                sb.draw(mid.img, xx, y + (yy += hh), ww, mh);
+                sb.draw(top.img, xx, y + (yy += mh), ww, hh);
+                yy += hh;
+                float ny = y + yy - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
+                nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
+                descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
+            } else {
+                sb.draw(top.img, xx, y + (yy -= hh), ww, hh);
+                sb.draw(mid.img, xx, y + (yy -= mh), ww, mh);
+                sb.draw(bot.img, xx, y + (yy -= hh), ww, hh);
+                float ny = y - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
+                nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
+                descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
+            }
             return y + yy;
         }
     }
