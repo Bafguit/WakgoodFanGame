@@ -110,5 +110,13 @@
   "Enemy3Weak3": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "Enemy3Normal1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Normal2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }
