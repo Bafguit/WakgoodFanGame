@@ -44,20 +44,6 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         
     }
-}
-
-project(":core") {
-    apply plugin: "java-library"
-
-    dependencies {
-        implementation "com.badlogicgames.gdx-video:gdx-video:1.3.2-SNAPSHOT"
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        api "com.esotericsoftware.spine:spine-libgdx:$spineVersion"
-        api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:1.0.2"
-        api "com.fasterxml.jackson.core:jackson-databind:2.13.3"
-    }
     def props = new Properties()
     file("../.gradle/gradle.properties").withInputStream { props.load(it) }
 
@@ -73,6 +59,21 @@ project(":core") {
         overwrite true
         allowUploadToExisting.set true
     }
+}
+
+project(":core") {
+    apply plugin: "java-library"
+
+    dependencies {
+        implementation "com.badlogicgames.gdx-video:gdx-video:1.3.2-SNAPSHOT"
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        api "com.esotericsoftware.spine:spine-libgdx:$spineVersion"
+        api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:1.0.2"
+        api "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+    }
+
 }
 
 
