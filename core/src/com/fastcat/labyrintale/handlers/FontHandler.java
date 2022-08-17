@@ -33,7 +33,8 @@ public final class FontHandler implements Disposable {
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
     //private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
-    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
+    public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 40, WHITE, true, true);
+    public static final FontData BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
     public static final FontData SEED = new FontData(MEDIUM, 44, WHITE, true, false);
     public static final FontData SHOP_OK = new FontData(MEDIUM, 30, WHITE, true, true);
     public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true);
@@ -277,6 +278,7 @@ public final class FontHandler implements Disposable {
         CARD_BIG_ORB.dispose();
         CARD_BIG_NAME.dispose();
         CARD_BIG_DESC.dispose();
+        BIG_DESC.dispose();
         SEED.dispose();
         SHOP_OK.dispose();
         SHOP_NO.dispose();

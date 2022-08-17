@@ -159,6 +159,13 @@
       "Flaw"
     ]
   },
+  "DecayE": {
+    "NAME": "부패",
+    "DESC": "모든 적에게 &y<쇠약>을 {V} 부여합니다.",
+    "KEY" : [
+      "Flaw"
+    ]
+  },
   "FourE": {
     "NAME": "연타",
     "DESC": "앞의 적 하나에게 피해를 {A} 만큼 네 번 줍니다."
@@ -166,5 +173,50 @@
   "AllTwoE": {
     "NAME": "휘몰아치기",
     "DESC": "모든 적에게 피해를 {A} 만큼 두 번 줍니다."
+  },
+  "ConfuseE": {
+    "NAME": "혼란",
+    "DESC": "앞의 적 둘에게 &y<방어 불가>를 부여하고 뒤의 적 둘에게 &y<실명>을 부여합니다.",
+    "KEY" : [
+      "Unblockable",
+      "Blind"
+    ]
+  },
+  "EncourageE": {
+    "NAME": "격양",
+    "DESC": "모든 아군에게 &y<공격력>을 {V} 부여합니다.",
+    "KEY" : [
+      "Attack"
+    ]
+  },
+  "HinderE": {
+    "NAME": "행동 방해",
+    "DESC": "앞의 적 하나에게 피해를 {A} 주고 모든 스킬 쿨타임을 {V} 증가시킵니다.",
+    "KEY" : [
+      "Cooltime"
+    ]
+  },
+  "HinderAllE": {
+    "NAME": "제약",
+    "DESC": "모든 적에게 피해를 {A} 주고 모든 스킬 쿨타임을 {V} 증가시킵니다.",
+    "KEY" : [
+      "Cooltime"
+    ]
+  },
+  "BattleE": {
+    "NAME": "승부",
+    "DESC": "앞의 적 하나에게 &y<방어 불가>를 부여하고 다른 모든 적에게 &y<실명>을 부여합니다.",
+    "KEY" : [
+      "Unblockable",
+      "Blind"
+    ]
+  },
+  "CoercionE": {
+    "NAME": "강압",
+    "DESC": "앞의 적 하나에게 &y<실명>을 부여하고 다른 모든 적에게 &y<방어 불가>를 부여합니다.",
+    "KEY" : [
+      "Unblockable",
+      "Blind"
+    ]
   }
 }

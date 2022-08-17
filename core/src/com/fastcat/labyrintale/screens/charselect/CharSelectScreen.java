@@ -122,9 +122,9 @@ public class CharSelectScreen extends AbstractScreen {
     public static class CharSelectGroup {
 
         private final FontHandler.FontData nData = TURN_CHANGE;
-        private final FontHandler.FontData dData = CARD_BIG_DESC;
+        private final FontHandler.FontData dData = BIG_DESC;
         private final FontHandler.FontData inData = CARD_BIG_NAME;
-        private final FontHandler.FontData idData = CARD_BIG_DESC;
+        private final FontHandler.FontData idData = BIG_DESC;
 
         public InfoPanel.InfoType type;
         public AbstractPlayer player;

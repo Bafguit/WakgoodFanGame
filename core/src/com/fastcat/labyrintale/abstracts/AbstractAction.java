@@ -12,7 +12,7 @@ public abstract class AbstractAction implements Cloneable {
     protected static final float DUR_DEFAULT = 0.5f;
 
     public AbstractEntity actor;
-    public Array<AbstractEntity> target;
+    public Array<AbstractEntity> target = new Array<>();
     public AbstractSkill.SkillTarget tar = AbstractSkill.SkillTarget.NONE;
     public boolean isDone = false;
     public float baseDuration = DUR_DEFAULT;

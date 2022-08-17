@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.enemies.act2.*;
 public class Act2Elite2 extends AbstractRoom {
 
     public Act2Elite2() {
-        super("Act2Elite2", RoomType.BATTLE);
+        super("Act2Elite2", RoomType.ELITE);
     }
 
     @Override

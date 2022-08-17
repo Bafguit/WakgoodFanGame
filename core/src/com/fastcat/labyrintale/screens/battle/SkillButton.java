@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.abstracts.AbstractSkill.getTargets;
-import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
 
 public class SkillButton extends AbstractUI {
 
@@ -27,7 +26,6 @@ public class SkillButton extends AbstractUI {
 
     public SkillButton() {
         super(FileHandler.getUi().get("BORDER"));
-        fontData = CARD_BIG_DESC;
         clickable = false;
     }
 

@@ -118,5 +118,21 @@
   "Enemy3Normal2": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "Enemy3Normal3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Elite1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Elite2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "BossEnemy3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }

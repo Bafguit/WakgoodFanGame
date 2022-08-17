@@ -597,7 +597,7 @@ public abstract class AbstractEntity implements Cloneable {
             SkeletonData skeletonData = json.readSkeletonData(skel);
             skeleton = new Skeleton(skeletonData);
             skeleton.setColor(Color.WHITE);
-            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.525f);
+            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.475f);
             stateData = new AnimationStateData(skeletonData);
             state = new AnimationState(stateData);
             AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);

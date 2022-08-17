@@ -16,7 +16,6 @@ public class CharDeckIcon extends AbstractUI {
         super(FileHandler.getUi().get("BORDER_M"));
         skill = s;
         clickable = false;
-        subDown = true;
     }
 
     @Override

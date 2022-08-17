@@ -22,12 +22,17 @@ public class ReduceCooldownAction extends AbstractAction {
         this.amount = amount;
     }
 
+    public ReduceCooldownAction(AbstractSkill.SkillTarget target, int amount) {
+        super(null, target, 0.5f);
+        this.amount = amount;
+    }
+
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
             for(AbstractEntity e : target) {
                 for(AbstractSkill s : e.hand) {
-                    s.cooldown = Math.min(Math.max(s.cooldown - amount, 0), s.cooldown);
+                    s.cooldown = Math.max(s.cooldown - amount, 0);
                 }
             }
         }
