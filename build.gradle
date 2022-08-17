@@ -1,5 +1,6 @@
 plugins{
     id "io.freefair.lombok" version "5.3.0" apply false
+    id "com.github.breadmoirai.github-release" version "2.4.1"
 }
 allprojects {
 
@@ -25,8 +26,8 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
-}
 
+}
 project(":desktop") {
 
     apply plugin: "java-library"
@@ -57,5 +58,21 @@ project(":core") {
         api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:1.0.2"
         api "com.fasterxml.jackson.core:jackson-databind:2.13.3"
     }
+    def props = new Properties()
+    file("../.gradle/gradle.properties").withInputStream { props.load(it) }
+
+    githubRelease {
+        token props.getProperty("githubToken")
+        owner "Bafguit"
+        repo "WakgoodFanGame"
+        tagName version.toString()
+        targetCommitish "master"
+        releaseName "v${version.toString()}"
+        generateReleaseNotes true
+        releaseAssets jar.destinationDir.listFiles()
+        overwrite true
+        allowUploadToExisting.set true
+    }
 }
+
 
