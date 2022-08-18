@@ -4,7 +4,6 @@ plugins{
     id "distribution"
 }
 allprojects {
-
     apply plugin: "eclipse"
 
     version = '1.0.01'
@@ -42,36 +41,16 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core-gamejolt:1.0.2"
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        
-    }
-    def props = new Properties()
-    file("../.gradle/gradle.properties").withInputStream { props.load(it) }
-
-    githubRelease {
-        token props.getProperty("githubToken")
-        owner "Bafguit"
-        repo "WakgoodFanGame"
-        tagName version.toString()
-        targetCommitish "master"
-        releaseName "v${version.toString()}"
-        generateReleaseNotes true
-        releaseAssets distsDirectory.asFile.get().listFiles()
-        overwrite true
-        allowUploadToExisting.set true
-    }
-    distZip{
-        dependsOn ':desktop:dist'
     }
     distributions {
         main{
             distributionBaseName = "WakestDungeon"
             contents{
-                from "bin"
+                from "../bin"
                 from jar.destinationDir
             }
         }
     }
-
 }
 
 project(":core") {
@@ -88,5 +67,22 @@ project(":core") {
     }
 }
 
+def props = new Properties()
+file(".gradle/gradle.properties").withInputStream { props.load(it) }
+githubRelease {
+    token props.getProperty("githubToken")
+    owner "Bafguit"
+    repo "WakgoodFanGame"
+    tagName version.toString()
+    targetCommitish "master"
+    releaseName "v${version.toString()}"
+    generateReleaseNotes true
+    releaseAssets project(":desktop").distsDirectory.asFile.get().listFiles()
+    overwrite true
+    allowUploadToExisting.set true
+}
+distZip{
+    dependsOn ':desktop:dist'
+}
 
 
