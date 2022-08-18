@@ -7,7 +7,7 @@ import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.StatusString;
-import org.graalvm.compiler.nodes.spi.SwitchFoldable;
+
 
 import java.util.HashMap;
 
