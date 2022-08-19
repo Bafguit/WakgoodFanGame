@@ -11,7 +11,7 @@ import com.fastcat.labyrintale.enemies.act3.Enemy3Weak1;
 public class Act3Weak2 extends AbstractRoom {
 
     public Act3Weak2() {
-        super("Act2Weak2", RoomType.BATTLE);
+        super("Act3Weak2", RoomType.BATTLE);
     }
 
     @Override

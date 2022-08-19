@@ -1,40 +1,36 @@
-package com.fastcat.labyrintale.enemies.act3;
+package com.fastcat.labyrintale.enemies.act4;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.CounterE;
+import com.fastcat.labyrintale.skills.enemy.DoubleE;
 import com.fastcat.labyrintale.skills.enemy.GrowE;
-import com.fastcat.labyrintale.skills.enemy.StrikeE;
+import com.fastcat.labyrintale.skills.enemy.HinderE;
 import com.fastcat.labyrintale.skills.enemy.UnblockE;
 import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.LureStatus;
 
-public class Enemy3Weak1 extends AbstractEnemy {
+public class Enemy4Weak1 extends AbstractEnemy {
 
-    private static final String ID = "Enemy3Weak1";
+    private static final String ID = "Enemy4Weak1";
     private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 49;
+    private static final int HEALTH = 51;
 
-    public Enemy3Weak1() {
+    public Enemy4Weak1() {
         super(ID, TYPE, HEALTH);
         isRandom = false;
     }
 
     @Override
     public void preBattle() {
-        applyStatus(new AttackStatus(4), 4, false);
+        applyStatus(new AttackStatus(3), 3, false);
     }
 
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        temp.add(new UnblockE(this));
-        temp.add(new UnblockE(this));
-        temp.add(new UnblockE(this));
-        AbstractSkill s1 = new GrowE(this);
-        s1.upgrade();
-        temp.add(s1);
+        temp.add(new HinderE(this));
+        temp.add(new DoubleE(this));
+        temp.add(new GrowE(this));
         return temp;
     }
 }

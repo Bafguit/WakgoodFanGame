@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractWay;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.PlayerView;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -19,6 +20,8 @@ import static com.fastcat.labyrintale.screens.battle.BattleScreen.bc;
 import static com.fastcat.labyrintale.screens.battle.BattleScreen.hbc;
 
 public class WayScreen extends AbstractScreen {
+
+    private static SoundHandler.MusicData music;
 
     public ShapeRenderer shr = new ShapeRenderer();
 
@@ -124,7 +127,12 @@ public class WayScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        if(music != null && !music.music.isPlaying()) {
+            music = SoundHandler.addMusic("MAP", true, true);
+            music.stop = false;
+        } else if(music == null) {
+            music = SoundHandler.addMusic("MAP", true, true);
+        }
     }
 
     @Override
