@@ -1,7 +1,7 @@
 package com.fastcat.labyrintale.interfaces;
 
-import com.fastcat.labyrintale.rewards.ExpReward;
+import com.fastcat.labyrintale.rewards.HealReward;
 
 public interface GetSelectedExp {
-    void expSelected(ExpReward.ExpType type);
+    void expSelected(HealReward.HealType type);
 }

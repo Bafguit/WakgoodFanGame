@@ -222,5 +222,12 @@
       "Unblockable",
       "Blind"
     ]
+  },
+  "RestrictE": {
+    "NAME": "속박",
+    "DESC": "체력이 가장 낮은 적에게 &y<속박>을 {V} 부여합니다.",
+    "KEY" : [
+      "Restrict"
+    ]
   }
 }

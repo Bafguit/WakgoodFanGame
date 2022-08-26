@@ -29,9 +29,7 @@ import com.fastcat.labyrintale.rooms.enemy.elite.act3.Act3Elite1;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.act2.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.act3.*;
-import com.fastcat.labyrintale.rooms.enemy.normal.act4.Act4Normal1;
-import com.fastcat.labyrintale.rooms.enemy.normal.act4.Act4Normal2;
-import com.fastcat.labyrintale.rooms.enemy.normal.act4.Act4Normal3;
+import com.fastcat.labyrintale.rooms.enemy.normal.act4.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act2.*;
 import com.fastcat.labyrintale.rooms.enemy.weak.act3.*;
@@ -244,8 +242,8 @@ public final class GroupHandler {
             t4.add(new Act4Normal1());
             t4.add(new Act4Normal2());
             t4.add(new Act4Normal3());
-            t4.add(new Act4Normal1());
-            t4.add(new Act4Normal1());
+            t4.add(new Act4Normal4());
+            t4.add(new Act4Normal5());
             normalGroup.put(4, t4);
         }
 

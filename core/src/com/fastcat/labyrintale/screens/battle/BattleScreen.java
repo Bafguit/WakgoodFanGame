@@ -7,11 +7,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
 import com.fastcat.labyrintale.actions.PlayerTurnStartAction;
 import com.fastcat.labyrintale.actions.VictoryAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
@@ -40,6 +42,7 @@ public class BattleScreen extends AbstractScreen {
     public ShieldIcon[] eShield = new ShieldIcon[4];
     public GetSelectedTarget gets;
     public boolean isSelecting = false;
+    public boolean isEnemyTurn = false;
     public Array<AbstractEntity> looking;
     public BattleType type;
     public float w, h, sw, sh;
@@ -304,6 +307,11 @@ public class BattleScreen extends AbstractScreen {
                 if (AbstractLabyrinth.bleak < 100) enemySkills[i].render(sb);
             }
         }
+    }
+
+    public void endPlayerTurn() {
+        ActionHandler.bot(new EndPlayerTurnAction());
+        isEnemyTurn = true;
     }
 
     public void selectTarget(GetSelectedTarget gets) {

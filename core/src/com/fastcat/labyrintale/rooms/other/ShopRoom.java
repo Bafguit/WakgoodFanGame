@@ -84,7 +84,14 @@ public class ShopRoom extends AbstractRoom {
             s = 2;
             g = 1;
         }
-
+        Array<AbstractItem> sh = ItemGroup.getRandomItemByRarity(ItemRarity.SHOP, 1);
+        boolean shop;
+        if(sh.size > 0) {
+            shop = true;
+        } else {
+            shop = false;
+            g++;
+        }
         Array<AbstractItem> bs = ItemGroup.getRandomItemByRarity(ItemRarity.BRONZE, b);
         Array<AbstractItem> ss = ItemGroup.getRandomItemByRarity(ItemRarity.SILVER, s);
         for (int i = 0; i < b; i++) {
@@ -94,9 +101,11 @@ public class ShopRoom extends AbstractRoom {
             items[b + i] = new ItemItem(ss.get(i));
         }
         if (g > 0) {
-            items[3] = new ItemItem(ItemRarity.GOLD);
+            for(int i = 0; i < g; i++) {
+                items[b + s + i] = new ItemItem(ItemRarity.GOLD);
+            }
         }
-        items[4] = new ItemItem(ItemRarity.SHOP);
+        if(shop) items[4] = new ItemItem(ItemRarity.SHOP);
     }
 
     public abstract static class ShopItem {

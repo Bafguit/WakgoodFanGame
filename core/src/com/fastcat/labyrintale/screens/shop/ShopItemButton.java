@@ -29,6 +29,7 @@ public class ShopItemButton extends AbstractUI {
         if(item instanceof ShopRoom.SkillItem) {
             type = ShopItemType.SKILL;
             sItem = (ShopRoom.SkillItem) item;
+            subDown = true;
         } else if(item instanceof ShopRoom.ItemItem) {
             type = ShopItemType.ITEM;
             iItem = (ShopRoom.ItemItem) item;

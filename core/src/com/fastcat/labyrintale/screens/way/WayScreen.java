@@ -21,8 +21,6 @@ import static com.fastcat.labyrintale.screens.battle.BattleScreen.hbc;
 
 public class WayScreen extends AbstractScreen {
 
-    private static SoundHandler.MusicData music;
-
     public ShapeRenderer shr = new ShapeRenderer();
 
     public Array<WaySelectButton> buttons;
@@ -127,12 +125,7 @@ public class WayScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        if(music != null && !music.music.isPlaying()) {
-            music = SoundHandler.addMusic("MAP", true, true);
-            music.stop = false;
-        } else if(music == null) {
-            music = SoundHandler.addMusic("MAP", true, true);
-        }
+        SoundHandler.addMusic("MAP", true, true).stop = false;
     }
 
     @Override

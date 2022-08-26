@@ -372,10 +372,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public static boolean noMoreSkill() {
-        if (AbstractLabyrinth.advisor.skill.canUse()) return false;
+        if (AbstractLabyrinth.advisor.skill.canUse() && !AbstractLabyrinth.advisor.skill.passive) return false;
         for (AbstractPlayer p : players) {
-            for (AbstractSkill s : p.hand) {
-                if (s.canUse() && !s.passive) return false;
+            if(p.isAlive()) {
+                for (AbstractSkill s : p.hand) {
+                    if (s.canUse() && !s.passive) return false;
+                }
             }
         }
         return true;
@@ -545,7 +547,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
             bot(new SelectTargetAction(this));
         } else {
-            if(type == SkillType.DEFENCE || type == SkillType.SCHEME) {
+            if(owner != null && type == SkillType.DEFENCE || type == SkillType.SCHEME) {
                 bot(new SetAnimationAction(owner, "skill"));
             }
             use();
@@ -554,7 +556,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
                 if (!disposable) cooldown = cooltime;
                 if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
-                    bot(new EndPlayerTurnAction());
+                    battleScreen.endPlayerTurn();
                 }
             }
         }
@@ -633,7 +635,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (disposable) usedOnce = true;
         else cooldown = cooltime;
         if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
-            bot(new EndPlayerTurnAction());
+            battleScreen.endPlayerTurn();
         }
     }
 

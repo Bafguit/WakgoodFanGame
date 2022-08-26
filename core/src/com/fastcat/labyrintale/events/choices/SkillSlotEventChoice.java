@@ -4,9 +4,9 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
-import com.fastcat.labyrintale.rewards.ExpReward;
+import com.fastcat.labyrintale.rewards.HealReward;
 import com.fastcat.labyrintale.rewards.SlotReward;
-import com.fastcat.labyrintale.screens.expselect.ExpSelectScreen;
+import com.fastcat.labyrintale.screens.healselect.HealSelectScreen;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 
 public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
@@ -28,7 +28,7 @@ public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements G
     protected void onSelect() {
         SlotReward s = new SlotReward();
         s.gets = this;
-        Labyrintale.addTempScreen(new PlayerSelectScreen(ExpSelectScreen.getPlayers(ExpReward.ExpType.SKILL_SLOT), s));
+        Labyrintale.addTempScreen(new PlayerSelectScreen(HealSelectScreen.getPlayers(HealReward.HealType.SKILL_SLOT), s));
     }
 
     @Override

@@ -21,7 +21,7 @@ public abstract class AbstractReward {
             case SLOT:
                 return FileHandler.getUi().get("SLOT_UP");
             case HEAL:
-                return FileHandler.getSkillImg().get("Heal"); //TODO 이미지 변경
+                return FileHandler.getUi().get("HEAL"); //TODO 이미지 변경
             case GOLD:
                 return FileHandler.getUi().get("GOLD");
             default:

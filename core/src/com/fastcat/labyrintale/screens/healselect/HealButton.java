@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.expselect;
+package com.fastcat.labyrintale.screens.healselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,47 +8,40 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.rewards.ExpReward;
+import com.fastcat.labyrintale.rewards.HealReward;
 import com.fastcat.labyrintale.strings.KeyString;
 
-public class ExpButton extends AbstractUI {
+public class HealButton extends AbstractUI {
 
     private final Sprite border = FileHandler.getUi().get("BORDER_M");
-    public ExpReward.ExpType type;
-    public ExpSelectScreen select;
+    public HealReward.HealType type;
+    public HealSelectScreen select;
     public String name;
     public String desc;
 
-    public ExpButton(ExpReward.ExpType type, ExpSelectScreen select) {
+    public HealButton(HealReward.HealType type, HealSelectScreen select) {
         super(getImage(type));
         this.type = type;
         this.select = select;
         name = getName(type);
         desc = getDesc(type);
-        if(type == ExpReward.ExpType.SKILL_SLOT) {
-            KeyString.KeyData data = StringHandler.keyString.get("SkillSlot");
-            subs.add(new SubText(data.NAME, data.DESC));
-        }
     }
 
-    private static Sprite getImage(ExpReward.ExpType type) { //TODO 이미지 바꾸기
-        if (type == ExpReward.ExpType.SKILL_SLOT) return FileHandler.getUi().get("SLOT_UP");
-        else if (type == ExpReward.ExpType.HEAL) return FileHandler.getUi().get("DECK");
-        else if (type == ExpReward.ExpType.MAX_HEALTH) return FileHandler.getUi().get("DECK");
+    private static Sprite getImage(HealReward.HealType type) { //TODO 이미지 바꾸기
+        if (type == HealReward.HealType.HEAL) return FileHandler.getUi().get("DECK");
+        else if (type == HealReward.HealType.MAX_HEALTH) return FileHandler.getUi().get("DECK");
         else return FileHandler.getUi().get("DECK");
     }
 
-    private static String getName(ExpReward.ExpType type) {
-        if (type == ExpReward.ExpType.SKILL_SLOT) return "슬롯 강화";
-        else if (type == ExpReward.ExpType.HEAL) return "회복";
-        else if (type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력 증가";
+    private static String getName(HealReward.HealType type) {
+        if (type == HealReward.HealType.HEAL) return "회복";
+        else if (type == HealReward.HealType.MAX_HEALTH) return "최대 체력 증가";
         else return "소생";
     }
 
-    private static String getDesc(ExpReward.ExpType type) {
-        if (type == ExpReward.ExpType.SKILL_SLOT) return "스킬 슬롯을 하나 선택해 강화합니다.";
-        else if (type == ExpReward.ExpType.HEAL) return "체력을 4 회복합니다.";
-        else if (type == ExpReward.ExpType.MAX_HEALTH) return "최대 체력이 2 증가합니다. (회복은 하지 않습니다.)";
+    private static String getDesc(HealReward.HealType type) {
+        if (type == HealReward.HealType.HEAL) return "체력을 4 회복합니다.";
+        else if (type == HealReward.HealType.MAX_HEALTH) return "최대 체력이 2 증가합니다. (회복은 하지 않습니다.)";
         else return "사망한 플레이어를 되살립니다.";
     }
 

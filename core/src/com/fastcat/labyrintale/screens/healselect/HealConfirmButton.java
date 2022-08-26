@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.expselect;
+package com.fastcat.labyrintale.screens.healselect;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -6,11 +6,11 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
-public class ExpConfirmButton extends AbstractUI {
+public class HealConfirmButton extends AbstractUI {
 
-    private final ExpSelectScreen sc;
+    private final HealSelectScreen sc;
 
-    public ExpConfirmButton(ExpSelectScreen sc) {
+    public HealConfirmButton(HealSelectScreen sc) {
         super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
         fontData = MAIN_MENU;

@@ -2,14 +2,12 @@ package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Queue;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.reward.RewardScreen;
-import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.LinkedList;
 
@@ -48,16 +46,15 @@ public class VictoryAction extends AbstractAction {
             }
             Array<AbstractReward> temp = new Array<>();
             temp.add(new ExpReward());
+            temp.add(new HealReward());
             int r;
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 if (AbstractLabyrinth.advisor.cls == DOPA) {
                     if (AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
                 }
                 temp.add(new SkillReward());
-            } else {
-                r = AbstractLabyrinth.publicRandom.random(100);
-                if (r <= 10) temp.add(new SkillReward());
             }
+            temp.add(new SkillReward());
             r = AbstractLabyrinth.publicRandom.random(100);
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));

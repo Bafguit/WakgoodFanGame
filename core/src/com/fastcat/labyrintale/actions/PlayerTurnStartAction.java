@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.actions;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 
 public class PlayerTurnStartAction extends AbstractAction {
@@ -41,7 +42,7 @@ public class PlayerTurnStartAction extends AbstractAction {
                     }
                 }
             }
-            if (AbstractSkill.noMoreSkill()) ActionHandler.bot(new EndPlayerTurnAction());
+            if (AbstractSkill.noMoreSkill()) battleScreen.endPlayerTurn();;
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.expselect;
+package com.fastcat.labyrintale.screens.healselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,9 +8,9 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_ORB;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
-public class ExpSelectText extends AbstractUI {
+public class HealSelectText extends AbstractUI {
 
-    public ExpSelectText() {
+    public HealSelectText() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.925f);
         fontData = CARD_BIG_ORB;
