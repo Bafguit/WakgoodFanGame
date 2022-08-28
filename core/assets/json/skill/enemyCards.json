@@ -229,5 +229,32 @@
     "KEY" : [
       "Restrict"
     ]
+  },
+  "ApproachE": {
+    "NAME": "접근",
+    "DESC": "모든 적에게 피해를 {A} 줍니다. 사용 후 강화됩니다."
+  },
+  "ImpregE": {
+    "NAME": "철벽",
+    "DESC": "맨 앞으로 이동합니다. &y<도발>과 &y<고정>을 얻습니다.",
+    "KEY" : [
+      "Provoke",
+      "Fixed"
+    ]
+  },
+  "ProtectE": {
+    "NAME": "보호",
+    "DESC": "다른 모든 아군에게 보호막을 {S} 부여합니다.",
+    "KEY" : [
+      "Block"
+    ]
+  },
+  "RecapE": {
+    "NAME": "예방",
+    "DESC": "보호막을 {S} 얻고 &y<면역>을 {V} 얻습니다.",
+    "KEY" : [
+      "Block",
+      "Immune"
+    ]
   }
 }

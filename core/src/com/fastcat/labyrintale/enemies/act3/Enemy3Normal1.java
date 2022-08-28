@@ -23,7 +23,10 @@ public class Enemy3Normal1 extends AbstractEnemy {
     @Override
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
-        temp.add(new AllTwoE(this));
+        AbstractSkill s1 = new AllTwoE(this);
+        s1.upgrade();
+        s1.upgrade();
+        temp.add(s1);
         temp.add(new FuryE(this));
         return temp;
     }

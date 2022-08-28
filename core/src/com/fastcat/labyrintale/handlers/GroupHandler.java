@@ -21,11 +21,14 @@ import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
 import com.fastcat.labyrintale.rooms.enemy.boss.act3.Boss3;
+import com.fastcat.labyrintale.rooms.enemy.boss.act4.Boss4;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act3.Act3Elite1;
+import com.fastcat.labyrintale.rooms.enemy.elite.act4.Act4Elite1;
+import com.fastcat.labyrintale.rooms.enemy.elite.act4.Act4Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.act2.*;
 import com.fastcat.labyrintale.rooms.enemy.normal.act3.*;
@@ -261,7 +264,10 @@ public final class GroupHandler {
             t3.add(new Act3Elite1());
             t3.add(new Act3Elite1());
             eliteGroup.put(3, t3);
-            eliteGroup.put(4, t2);
+            Array<AbstractRoom> t4 = new Array<>();
+            t4.add(new Act4Elite1());
+            t4.add(new Act4Elite2());
+            eliteGroup.put(4, t4);
         }
 
         private static void generateBoss() {
@@ -275,7 +281,9 @@ public final class GroupHandler {
             Array<AbstractRoom> t3 = new Array<>();
             t3.add(new Boss3());
             bossGroup.put(3, t3);
-            bossGroup.put(4, t3);
+            Array<AbstractRoom> t4 = new Array<>();
+            t4.add(new Boss4());
+            bossGroup.put(4, t4);
         }
 
         private static void generateEvent() {

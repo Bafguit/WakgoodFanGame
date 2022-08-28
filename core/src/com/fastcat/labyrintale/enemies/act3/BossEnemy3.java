@@ -37,7 +37,7 @@ public class BossEnemy3 extends AbstractEnemy {
         temp.add(s);
 
         AbstractSkill s2 = new AllTwoE(this);
-        for(int i = 0; i < 2; i++) {
+        for(int i = 0; i < 4; i++) {
             s2.upgrade();
         }
         temp.add(s2);
@@ -57,7 +57,7 @@ public class BossEnemy3 extends AbstractEnemy {
         temp.add(s3);
 
         AbstractSkill s5 = new AllTwoE(this);
-        for(int i = 0; i < 2; i++) {
+        for(int i = 0; i < 4; i++) {
             s5.upgrade();
         }
         temp.add(s5);

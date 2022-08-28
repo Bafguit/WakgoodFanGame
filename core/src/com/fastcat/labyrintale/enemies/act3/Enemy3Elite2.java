@@ -35,7 +35,10 @@ public class Enemy3Elite2 extends AbstractEnemy {
             s.upgrade();
         }
         temp.add(s);
-        temp.add(new AllTwoE(this));
+        AbstractSkill s1 = new AllTwoE(this);
+        s1.upgrade();
+        s1.upgrade();
+        temp.add(s1);
         temp.add(new GrowE(this));
         return temp;
     }

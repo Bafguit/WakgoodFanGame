@@ -29,6 +29,7 @@ public class Enemy3Elite1 extends AbstractEnemy {
         for(int i = 0; i < 1; i++) {
             s2.upgrade();
         }
+        temp.add(s2);
         AbstractSkill s1 = new HinderE(this);
         for(int i = 0; i < 3; i++) {
             s1.upgrade();

@@ -158,5 +158,21 @@
   "Enemy4Normal3": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
+  },
+  "Enemy4Elite1": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Elite2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Elite3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "BossEnemy4": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
   }
 }

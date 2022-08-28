@@ -63,7 +63,7 @@ public final class SoundHandler implements Disposable {
 
     private static void generateMusic() {
         music.put("BATTLE_1", new MusicData("BATTLE_1", getMusic("sound/bgm/lobby.mp3")));
-        music.put("BATTLE_BOSS", new MusicData("BATTLE_1", getMusic("sound/bgm/battle_1.mp3")));
+        music.put("BATTLE_BOSS", new MusicData("BATTLE_BOSS", getMusic("sound/bgm/battle_1.mp3")));
         music.put("LOBBY", new MusicData("LOBBY", getMusic("sound/bgm/demo.mp3")));
         music.put("MAP", new MusicData("MAP", getMusic("sound/bgm/map.mp3")));
     }
