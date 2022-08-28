@@ -23,7 +23,7 @@ public class ShieldPush extends AbstractSkill {
     public void use() {
         bot(new BlockAction(this.owner, target, spell));
         AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(SkillTarget.ENEMY_FIRST).get(0);
-        bot(new MoveAction(e, false, 0.2f));
+        bot(new MoveAction(e, owner, false, 0.2f));
     }
 
     @Override

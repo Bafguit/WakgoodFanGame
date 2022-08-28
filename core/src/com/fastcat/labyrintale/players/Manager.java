@@ -20,6 +20,10 @@ public class Manager extends AbstractPlayer {
 
     public Manager() {
         super(ID, HEALTH, COLOR);
+        stat.debuRes = 5;
+        stat.neutRes = 10;
+        stat.critical = 15;
+        stat.moveRes = 10;
     }
 
     @Override

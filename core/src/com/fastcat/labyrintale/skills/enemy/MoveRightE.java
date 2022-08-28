@@ -19,7 +19,7 @@ public class MoveRightE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction(enemy, false));
+        bot(new MoveAction(enemy, owner, false));
     }
 
     @Override

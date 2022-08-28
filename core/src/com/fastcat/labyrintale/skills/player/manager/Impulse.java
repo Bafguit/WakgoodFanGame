@@ -22,7 +22,7 @@ public class Impulse extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction(owner, 0, 0.3f));
+        bot(new MoveAction(owner, owner, 0, 0.3f));
         bot(new ApplyStatusAction(new CourageStatus(value), owner, target, true));
     }
 

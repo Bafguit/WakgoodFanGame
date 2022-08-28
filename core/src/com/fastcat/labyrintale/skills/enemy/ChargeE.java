@@ -22,7 +22,7 @@ public class ChargeE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction(owner, true, 0.05f));
+        bot(new MoveAction(owner, owner, true, 0.05f));
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
         bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
     }

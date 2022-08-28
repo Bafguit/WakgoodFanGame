@@ -19,7 +19,7 @@ public class NeutStatus extends AbstractStatus {
     }
 
     @Override
-    public void onApply() {
+    public void onInitial() {
         owner.isNeut = true;
     }
 

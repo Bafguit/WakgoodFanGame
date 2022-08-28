@@ -23,7 +23,7 @@ public class PungSkill extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new MoveAction(e, 3, 0.25f));
+        top(new MoveAction(e, owner, 3, 0.25f));
     }
 
     @Override

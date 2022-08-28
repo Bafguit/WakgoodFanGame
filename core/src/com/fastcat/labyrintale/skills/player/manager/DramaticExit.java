@@ -22,7 +22,7 @@ public class DramaticExit extends AbstractSkill {
     @Override
     public void use() {
         bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true));
-        bot(new MoveAction(owner, 3, 0.3f));
+        bot(new MoveAction(owner, owner, 3, 0.3f));
     }
 
     @Override

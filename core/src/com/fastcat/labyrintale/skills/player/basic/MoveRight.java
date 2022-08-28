@@ -17,7 +17,7 @@ public class MoveRight extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction(owner, false));
+        bot(new MoveAction(owner, owner, false));
     }
 
     @Override

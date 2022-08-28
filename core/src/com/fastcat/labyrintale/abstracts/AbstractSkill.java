@@ -461,6 +461,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (AbstractLabyrinth.cPanel != null) {
                     a = calculateAttack(a);
                     if (owner != null) {
+                        a += owner.stat.attack;
                         if (owner.isPlayer) {
                             for (AbstractItem m : owner.item) {
                                 if (m != null) a = m.showAttack(a);
@@ -495,6 +496,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (AbstractLabyrinth.cPanel != null) {
                     p = calculateSpell(p);
                     if (owner != null) {
+                        p += owner.stat.spell;
                         if (owner.isPlayer) {
                             for (AbstractItem m : owner.item) {
                                 if (m != null) p = m.showSpell(p);

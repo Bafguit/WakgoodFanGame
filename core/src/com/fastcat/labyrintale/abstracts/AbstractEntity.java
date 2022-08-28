@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Queue;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.DefeatAction;
@@ -21,7 +20,8 @@ import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.status.AttackStatus;
+import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -70,6 +70,7 @@ public abstract class AbstractEntity implements Cloneable {
     public int maxHealth;
     public float animX = -10000;
     public float animY = -10000;
+    public EntityStat stat;
     public Sprite img;
     public Sprite imgBig;
     public Sprite imgTiny;
@@ -96,6 +97,7 @@ public abstract class AbstractEntity implements Cloneable {
         state = new AnimationState(stateData);
         resetAnimation();
         infoSpine = new InfoSpine(atlas, skel);
+        stat = new EntityStat();
     }
 
     public void update() {
@@ -201,9 +203,13 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void applyStatus(AbstractStatus status, int amount, boolean effect) {
         AbstractStatus s = getStatus("Immune");
-        if (status.type == AbstractStatus.StatusType.DEBUFF && s != null) {
-            amount = -1;
-            effect = true;
+        if (status.type == AbstractStatus.StatusType.DEBUFF) {
+            if(s != null) {
+                amount = -1;
+                effect = true;
+            } else if(stat.debuRes > 0 && publicRandom.random(0, 99) < stat.debuRes) {
+                EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
+            }
         } else {
             s = Objects.requireNonNull(status.cpy());
             s.owner = this;
@@ -222,8 +228,8 @@ public abstract class AbstractEntity implements Cloneable {
                         it.remove();
                     }
                     text += amount > 0 ? "+" + amount : amount;
+                    temp.onApply(amount);
                 }
-                temp.onApply();
                 if (effect) {
                     temp.flash(this);
                     EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
@@ -236,7 +242,7 @@ public abstract class AbstractEntity implements Cloneable {
             text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
             this.status.addLast(s);
             s.onInitial();
-            s.onApply();
+            if(s.hasAmount) s.onApply(amount);
             if (effect) {
                 s.flash(this);
                 EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
@@ -261,6 +267,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public int calculateAttack(int d) {
+        d += stat.attack;
         if (isPlayer) {
             for (AbstractItem m : item) {
                 if (m != null) d = m.showAttack(d);
@@ -277,10 +284,15 @@ public abstract class AbstractEntity implements Cloneable {
         for (AbstractStatus s : status) {
             d *= s.attackMultiply();
         }
+        if(publicRandom.random(0, 99) < stat.critical) {
+            EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
+            d *= 1 + stat.multiply * 0.01f;
+        }
         return d;
     }
 
     public int calculateSpell(int d) {
+        d = stat.spell;
         if (isPlayer) {
             for (AbstractItem m : item) {
                 if (m != null) d = m.showSpell(d);
@@ -338,7 +350,11 @@ public abstract class AbstractEntity implements Cloneable {
                         if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
                     }
                     if (damage > 0) {
-                        damage = loseBlock(damage);
+                        if(attacker != null && attacker.stat.ignBlock > 0 && publicRandom.random(0, 99) < attacker.stat.ignBlock) {
+                            EffectHandler.add(new UpTextEffect(attacker.ui.x + ui.sWidth / 2, attacker.ui.y + ui.sHeight * 0.35f, "방어 무시", CYAN));
+                        } else {
+                            damage = loseBlock(damage);
+                        }
                         if (damage > 0) {
                             EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
                             EffectHandler.add(new HealthBarDamageEffect(this));
@@ -353,6 +369,9 @@ public abstract class AbstractEntity implements Cloneable {
                                     block = 0;
                                 } else if (!isNeut) {
                                     neutralize();
+                                } else if (stat.neutRes > 0 && publicRandom.random(0, 99) < stat.neutRes) {
+                                    EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
+                                    applyStatus(new NeutResStatus(this, 10), 10, false);
                                 } else {
                                     die(attacker);
                                 }
@@ -447,7 +466,7 @@ public abstract class AbstractEntity implements Cloneable {
         block = 0;
         if (cPanel.type == ControlPanel.ControlType.BATTLE) {
             isDie = true;
-            ActionHandler.top(new MoveAction(this, 3));
+            ActionHandler.top(new MoveAction(this, this, 3));
             if (isPlayer) {
                 for (AbstractItem m : item) {
                     if (m != null) m.onDeath(murder);
@@ -474,7 +493,10 @@ public abstract class AbstractEntity implements Cloneable {
                                 if (m != null) m.atBattleEnd();
                             }
                             for (AbstractStatus s : p.status) {
-                                if (s != null) s.atBattleEnd();
+                                if (s != null) {
+                                    s.atBattleEnd();
+                                    s.onRemove();
+                                }
                             }
                         }
                     }
@@ -545,6 +567,12 @@ public abstract class AbstractEntity implements Cloneable {
             }
         }
         return false;
+    }
+
+    public final void beforeBattle() {
+        if(stat.attack > 0) applyStatus(new AttackStatus(stat.attack), stat.attack, false);
+        if(stat.spell > 0) applyStatus(new AttackStatus(stat.spell), stat.spell, false);
+        preBattle();
     }
 
     public void preBattle() {
@@ -625,5 +653,16 @@ public abstract class AbstractEntity implements Cloneable {
             e.setTrackTime(MathUtils.random(0.0f, 1.0f));
             e.setTimeScale(1.0f);
         }
+    }
+
+    public static class EntityStat {
+        public int attack = 0;
+        public int spell = 0;
+        public int critical = 10;
+        public int multiply = 50;
+        public int ignBlock = 0;
+        public int moveRes = 10;
+        public int debuRes = 10;
+        public int neutRes = 10;
     }
 }

@@ -24,6 +24,11 @@ public abstract class AbstractEnemy extends AbstractEntity {
         disposablePile = new Array<>();
         mLeft = mLeftTemp = new MoveLeftE(this);
         mRight = mRightTemp = new MoveRightE(this);
+        stat.debuRes = 0;
+        stat.neutRes = 0;
+        stat.critical = 0;
+        stat.moveRes = 0;
+        stat.multiply = 0;
     }
 
     @Override

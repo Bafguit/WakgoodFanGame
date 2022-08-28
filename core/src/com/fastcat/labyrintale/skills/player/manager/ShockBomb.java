@@ -30,7 +30,7 @@ public class ShockBomb extends AbstractSkill {
     @Override
     public void onTarget(AbstractEntity e) {
         top(new ApplyStatusAction(new UnfortifiedStatus(value), owner, e, true));
-        top(new MoveAction(e, false, 0.2f));
+        top(new MoveAction(e, owner, false, 0.2f));
         top(new AttackAction(owner, e, attack, AttackAction.AttackType.HEAVY));
     }
 

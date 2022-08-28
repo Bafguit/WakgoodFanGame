@@ -50,6 +50,7 @@ public abstract class AbstractStatus implements Cloneable {
     protected void setAmount(int amt) {
         amount = amt;
         hasAmount = true;
+        if(amount < 0) canGoNegative = true;
     }
 
     protected final void top(AbstractAction a) {
@@ -80,7 +81,7 @@ public abstract class AbstractStatus implements Cloneable {
 
     }
 
-    public void onApply() {
+    public void onApply(int amount) {
 
     }
 

@@ -13,6 +13,7 @@ import java.util.LinkedList;
 
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.DOPA;
 import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.SOPHIA;
+import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 
 public class VictoryAction extends AbstractAction {
 
@@ -48,13 +49,23 @@ public class VictoryAction extends AbstractAction {
             temp.add(new ExpReward());
             temp.add(new HealReward());
             int r;
+            AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
+                AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
                 if (AbstractLabyrinth.advisor.cls == DOPA) {
                     if (AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
                 }
-                temp.add(new SkillReward());
+                if(tp.id.equals(tp2.id)) {
+                    Array<AbstractSkill> ss = getRandomSkill(tp, 2);
+                    temp.add(new SkillReward(ss.get(0)));
+                    temp.add(new SkillReward(ss.get(1)));
+                } else {
+                    temp.add(new SkillReward(getRandomSkill(tp)));
+                    temp.add(new SkillReward(getRandomSkill(tp2)));
+                }
+            } else {
+                temp.add(new SkillReward(getRandomSkill(tp)));
             }
-            temp.add(new SkillReward());
             r = AbstractLabyrinth.publicRandom.random(100);
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));

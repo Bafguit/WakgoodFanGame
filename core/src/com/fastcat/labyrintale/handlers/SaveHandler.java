@@ -122,6 +122,7 @@ public final class SaveHandler {
                 p.slot[j] = d.slot[j];
             }
             p.deck = new Array<>(ss);
+            p.stat = d.stat;
             if (p.isDead) p.infoSpine.setAnimation("die");
             players[i] = p;
         }
@@ -341,6 +342,7 @@ public final class SaveHandler {
         public String id;
         public String[] item = new String[2];
         public SkillData[] deck;
+        public AbstractEntity.EntityStat stat;
         public boolean isDead;
         public int[] slot = new int[3];
         public int index;
@@ -363,6 +365,7 @@ public final class SaveHandler {
             temp.index = e.index;
             temp.maxHealth = e.maxHealth;
             temp.health = e.health;
+            temp.stat = e.stat;
             return temp;
         }
     }

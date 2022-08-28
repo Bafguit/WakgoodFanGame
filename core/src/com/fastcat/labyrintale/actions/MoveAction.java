@@ -3,14 +3,16 @@ package com.fastcat.labyrintale.actions;
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 
 import java.util.HashMap;
 
+import static com.badlogic.gdx.graphics.Color.CYAN;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 public class MoveAction extends AbstractAction {
 
@@ -18,6 +20,7 @@ public class MoveAction extends AbstractAction {
     private final HashMap<Integer, AbstractEntity> to = new HashMap<>();
     private final HashMap<Integer, Float> distance = new HashMap<>();
     private final HashMap<Integer, Float> position = new HashMap<>();
+    private final MoveType fromType;
     private final MoveType type;
 
     private final boolean alive;
@@ -27,21 +30,22 @@ public class MoveAction extends AbstractAction {
     private float toDist;
     private float toPos;
 
-    public MoveAction(AbstractEntity e, boolean isLeft) {
-        this(e, isLeft, 0.5f);
+    public MoveAction(AbstractEntity e, AbstractEntity source, boolean isLeft) {
+        this(e, source, isLeft, 0.5f);
     }
 
-    public MoveAction(AbstractEntity e, boolean isLeft, float dur) {
-        this(e, e.isPlayer ? (isLeft ? e.index + 1 : e.index - 1) : (isLeft ? e.index - 1 : e.index + 1), dur);
+    public MoveAction(AbstractEntity e, AbstractEntity source, boolean isLeft, float dur) {
+        this(e, source, e.isPlayer ? (isLeft ? e.index + 1 : e.index - 1) : (isLeft ? e.index - 1 : e.index + 1), dur);
     }
 
-    public MoveAction(AbstractEntity e, int index) {
-        this(e, index, 0.5f);
+    public MoveAction(AbstractEntity e, AbstractEntity source, int index) {
+        this(e, source, index, 0.5f);
     }
 
-    public MoveAction(AbstractEntity e, int index, float dur) {
+    public MoveAction(AbstractEntity e, AbstractEntity source, int index, float dur) {
         super(null, dur);
         from = e;
+        fromType = source.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
         type = e.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
         toIndex = index;
         alive = e.isAlive();
@@ -51,6 +55,10 @@ public class MoveAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (toIndex < 0 || toIndex > 3 || from.movable > 0 || alive != from.isAlive()) {
+                isDone = true;
+                run = false;
+            } else if (fromType != type && from.stat.moveRes > 0 && publicRandom.random(0, 99) < from.stat.moveRes) {
+                EffectHandler.add(new UpTextEffect(from.ui.x + from.ui.sWidth / 2, from.ui.y + from.ui.sHeight * 0.35f, "이동 저항", CYAN));
                 isDone = true;
                 run = false;
             } else {

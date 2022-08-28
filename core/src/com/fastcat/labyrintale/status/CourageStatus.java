@@ -17,7 +17,7 @@ public class CourageStatus extends AbstractStatus {
     }
 
     @Override
-    public void onApply() {
+    public void onInitial() {
         used = false;
     }
 

@@ -25,7 +25,7 @@ public class LureStatus extends AbstractStatus {
     public void onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if (type == AbstractEntity.DamageType.NORMAL) {
             flash();
-            top(new MoveAction(t, 0, 0.2f));
+            top(new MoveAction(t, owner, 0, 0.2f));
         }
     }
 }

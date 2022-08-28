@@ -22,7 +22,7 @@ public class MoveP extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity target) {
-        top(new MoveAction(owner, target.index));
+        top(new MoveAction(owner, owner, target.index));
     }
 
     @Override

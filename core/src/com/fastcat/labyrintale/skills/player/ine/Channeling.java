@@ -25,7 +25,7 @@ public class Channeling extends AbstractSkill {
     @Override
     public void use() {
         AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(target).get(0);
-        bot(new MoveAction(e, 0, 0.2f));
+        bot(new MoveAction(e, owner, 0, 0.2f));
         bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true));
     }
 

@@ -66,7 +66,7 @@ public class BattleScreen extends AbstractScreen {
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
             pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
             pv.player.newDeck();
-            pv.player.preBattle();
+            pv.player.beforeBattle();
             pv.player.ui = pv;
             players[i] = pv;
 
@@ -80,7 +80,7 @@ public class BattleScreen extends AbstractScreen {
                 ev.enemy.isDead = true;
                 ev.enemy.isDie = true;
             } else {
-                ev.enemy.preBattle();
+                ev.enemy.beforeBattle();
             }
             ev.enemy.shuffleHand();
             ev.enemy.ui = ev;

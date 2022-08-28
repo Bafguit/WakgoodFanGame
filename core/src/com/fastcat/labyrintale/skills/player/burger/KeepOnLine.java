@@ -21,7 +21,7 @@ public class KeepOnLine extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new MoveAction(owner, 0, 0.3f));
+        bot(new MoveAction(owner, owner, 0, 0.3f));
         top(new BlockAction(owner, owner, spell));
     }
 

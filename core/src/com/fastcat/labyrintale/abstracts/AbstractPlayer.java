@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.basic.MoveLeft;
 import com.fastcat.labyrintale.skills.player.basic.MoveRight;
+import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.strings.CharString;
 
 public abstract class AbstractPlayer extends AbstractEntity {
