@@ -18,6 +18,7 @@ public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen
     public FloorSecondEvent() {
         super(ID, SIZE);
         img = getImage(0);
+        isEntry = true;
     }
 
     @Override

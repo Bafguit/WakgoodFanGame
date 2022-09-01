@@ -13,6 +13,7 @@ public class StartEvent extends AbstractEvent {
     public StartEvent() {
         super(ID, SIZE);
         img = getImage(0);
+        isEntry = true;
     }
 
     @Override

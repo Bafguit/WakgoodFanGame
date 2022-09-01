@@ -9,9 +9,11 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.BgImg;
+import com.fastcat.labyrintale.uis.StatIcon;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.INFO_NAME;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class CharInfoScreen extends AbstractScreen {
 
@@ -25,6 +27,7 @@ public class CharInfoScreen extends AbstractScreen {
     public ShapeRenderer shr = new ShapeRenderer();
     public CharDeckIcon[] deck = new CharDeckIcon[3];
     public CharItemIcon[] item = new CharItemIcon[2];
+    public StatIcon[] stats = new StatIcon[8];
     public AbstractPlayer player;
 
     public CharInfoScreen(AbstractPlayer player) {
@@ -35,8 +38,16 @@ public class CharInfoScreen extends AbstractScreen {
         }
         for (int i = 0; i < 2; i++) {
             CharItemIcon b = new CharItemIcon(null);
-            b.setPosition(w * (0.66f + 0.08f * i) - b.sWidth / 2, h * 0.65f);
+            b.setPosition(w * (0.75f + 0.08f * i) - b.sWidth / 2, h * 0.5f);
             item[i] = b;
+        }
+        int cnt = 0;
+        for(int j = 3; j >= 0; j--) {
+            for(int i = 0; i < 2; i++) {
+                StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
+                s.setPosition(w * (0.7f + 0.08f * i), h * (0.65f + 0.027f * j));
+                stats[cnt++] = s;
+            }
         }
         setPlayer(player);
         cType = Labyrintale.getBaseScreen().cType;
@@ -50,6 +61,9 @@ public class CharInfoScreen extends AbstractScreen {
         for (int i = 0; i < 2; i++) {
             item[i].skill = player.item[i];
         }
+        for(int i = 0; i < 8; i++) {
+            stats[i].entity = p;
+        }
     }
 
     @Override
@@ -58,6 +72,9 @@ public class CharInfoScreen extends AbstractScreen {
 
         for (CharDeckIcon b : deck) b.update();
         for (CharItemIcon b : item) b.update();
+        for (int i = 0; i < 8; i++) {
+            stats[i].update();
+        }
     }
 
     @Override
@@ -85,6 +102,9 @@ public class CharInfoScreen extends AbstractScreen {
 
         for (CharDeckIcon b : deck) b.render(sb);
         for (CharItemIcon b : item) b.render(sb);
+        for(int i = 0; i < 8; i++) {
+            stats[i].render(sb);
+        }
     }
 
     @Override

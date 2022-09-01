@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 public class NeutResStatus extends AbstractStatus {
 
     private static final String ID = "NeutRes";
+    private int base;
 
     public NeutResStatus(AbstractEntity owner, int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
@@ -21,11 +22,7 @@ public class NeutResStatus extends AbstractStatus {
 
     @Override
     public void onApply(int amt) {
-        if(owner.stat.neutRes < amt) {
-            owner.stat.neutRes = 0;
-        } else {
-            owner.stat.neutRes -= amt;
-        }
+        owner.stat.neutRes -= amt;
     }
 
     @Override

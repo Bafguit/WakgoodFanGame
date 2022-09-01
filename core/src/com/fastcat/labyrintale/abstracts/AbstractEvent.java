@@ -16,6 +16,7 @@ public abstract class AbstractEvent implements Cloneable {
     public String desc = "";
     public int page;
     public int size;
+    public boolean isEntry = false;
     public Array<EventChoice>[] choices;
 
     public AbstractEvent(String id, int size) {

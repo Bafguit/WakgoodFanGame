@@ -43,6 +43,7 @@ public class PlayerBattleView extends AbstractUI {
             showImg = isLooking || isOnLock || over;
             clickable = player.isAlive();
         }
+        mute = isOnLock;
     }
 
     @Override

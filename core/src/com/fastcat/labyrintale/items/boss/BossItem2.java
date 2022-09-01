@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.status.SpellStatus;
 
 public class BossItem2 extends AbstractItem {
 
-    private static final String ID = "BossItem";
+    private static final String ID = "BossItem2";
     private static final ItemRarity RARITY = ItemRarity.BOSS;
 
     public BossItem2(AbstractPlayer owner) {
@@ -17,9 +17,14 @@ public class BossItem2 extends AbstractItem {
     }
 
     @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new AttackStatus(-5), owner, AbstractSkill.SkillTarget.SELF, true));
-        bot(new ApplyStatusAction(new SpellStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+    public void onGain() {
+        owner.stat.attack -= 5;
+        owner.stat.spell += 5;
+    }
+
+    @Override
+    public void onRemove() {
+        owner.stat.attack += 5;
+        owner.stat.spell -= 5;
     }
 }

@@ -202,6 +202,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public void applyStatus(AbstractStatus status, int amount, boolean effect) {
+        boolean done = false;
         AbstractStatus s = getStatus("Immune");
         if (status.type == AbstractStatus.StatusType.DEBUFF) {
             if(s != null) {
@@ -209,43 +210,48 @@ public abstract class AbstractEntity implements Cloneable {
                 effect = true;
             } else if(stat.debuRes > 0 && publicRandom.random(0, 99) < stat.debuRes) {
                 EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
+                done = true;
+            } else {
+                s = Objects.requireNonNull(status.cpy());
+                s.owner = this;
             }
         } else {
             s = Objects.requireNonNull(status.cpy());
             s.owner = this;
         }
-        boolean done = false;
-        String text;
-        Iterator<AbstractStatus> it = this.status.iterator();
-        while (it.hasNext()) {
-            AbstractStatus temp = it.next();
-            if (temp.id.equals(s.id)) {
-                text = temp.name;
-                if (temp.hasAmount && amount != 0) {
-                    temp.amount += amount;
-                    if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
-                        temp.onRemove();
-                        it.remove();
+        if(!done) {
+            String text;
+            Iterator<AbstractStatus> it = this.status.iterator();
+            while (it.hasNext()) {
+                AbstractStatus temp = it.next();
+                if (temp.id.equals(s.id)) {
+                    text = temp.name;
+                    if (temp.hasAmount && amount != 0) {
+                        temp.amount += amount;
+                        if ((temp.amount < 0 && !temp.canGoNegative) || temp.amount == 0) {
+                            temp.onRemove();
+                            it.remove();
+                        }
+                        text += amount > 0 ? "+" + amount : amount;
+                        temp.onApply(amount);
                     }
-                    text += amount > 0 ? "+" + amount : amount;
-                    temp.onApply(amount);
+                    if (effect) {
+                        temp.flash(this);
+                        EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
+                    }
+                    done = true;
+                    break;
                 }
+            }
+            if (!done) {
+                text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
+                this.status.addLast(s);
+                s.onInitial();
+                if (s.hasAmount) s.onApply(amount);
                 if (effect) {
-                    temp.flash(this);
+                    s.flash(this);
                     EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
                 }
-                done = true;
-                break;
-            }
-        }
-        if (!done) {
-            text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
-            this.status.addLast(s);
-            s.onInitial();
-            if(s.hasAmount) s.onApply(amount);
-            if (effect) {
-                s.flash(this);
-                EffectHandler.add(new UpTextEffect(animX, animY + Gdx.graphics.getHeight() * 0.2f, text, s.id.equals("NeutE") ? SCARLET : YELLOW));
             }
         }
     }
@@ -292,7 +298,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public int calculateSpell(int d) {
-        d = stat.spell;
+        d += stat.spell;
         if (isPlayer) {
             for (AbstractItem m : item) {
                 if (m != null) d = m.showSpell(d);

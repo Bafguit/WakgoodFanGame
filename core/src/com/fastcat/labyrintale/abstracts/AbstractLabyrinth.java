@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
@@ -151,7 +152,8 @@ public class AbstractLabyrinth {
     }
 
     public static void endRoom() {
-        if (currentFloor.currentRoom.type != AbstractRoom.RoomType.BATTLE && currentFloor.currentRoom.type != AbstractRoom.RoomType.ELITE && currentFloor.currentRoom.type != AbstractRoom.RoomType.BOSS) {
+        RoomType type = currentFloor.currentRoom.type;
+        if (type != RoomType.BATTLE && type != RoomType.ELITE && type != RoomType.BOSS && !(type == RoomType.EVENT && currentFloor.currentRoom.event.isEntry)) {
             AbstractLabyrinth.addBleak();
         }
         currentFloor.currentWay.done();

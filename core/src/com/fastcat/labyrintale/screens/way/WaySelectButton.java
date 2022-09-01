@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.way;
 
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -16,6 +17,11 @@ public class WaySelectButton extends AbstractUI {
         super(FileHandler.getUi().get("WAY_SELECT"));
         screen = s;
         c = r;
+    }
+
+    @Override
+    protected void updateButton() {
+        overable = !Labyrintale.wayScreen.isSelecting;
     }
 
     @Override

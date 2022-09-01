@@ -549,7 +549,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
             bot(new SelectTargetAction(this));
         } else {
-            if(owner != null && type == SkillType.DEFENCE || type == SkillType.SCHEME) {
+            if(owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
                 bot(new SetAnimationAction(owner, "skill"));
             }
             use();
@@ -630,7 +630,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     @Override
     public final void onTargetSelected(AbstractEntity target) {
         onTarget(target);
-        if(type == SkillType.DEFENCE || type == SkillType.SCHEME) {
+        if(owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
             top(new SetAnimationAction(owner, "skill"));
         }
         if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;

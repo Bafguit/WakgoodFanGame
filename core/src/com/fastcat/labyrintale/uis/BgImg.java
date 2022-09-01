@@ -11,6 +11,7 @@ public class BgImg extends AbstractUI {
         super(FileHandler.getBg().get("BG_BLACK"));
         setPosition(0, 0);
         img.setAlpha(0.75f);
+        overable = false;
     }
 
     @Override

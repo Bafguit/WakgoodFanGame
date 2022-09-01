@@ -40,7 +40,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
         } else if (type == RestType.UPGRADE) {
             Array<AbstractPlayer> temp = new Array<>();
             for (AbstractPlayer p : AbstractLabyrinth.players) {
-                if (p.isAlive()) temp.add(p);
+                if (p.isAlive() && p.hasSlot()) temp.add(p);
             }
             AbstractPlayer[] tp = new AbstractPlayer[temp.size];
             for (int i = 0; i < temp.size; i++) {

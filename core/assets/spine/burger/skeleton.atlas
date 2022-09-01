@@ -1,13 +1,69 @@
 
 skeleton.png
-size: 576,1197
+size: 1471,1555
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-burger_sd_t
+arm_left
   rotate: false
-  xy: 2, 2
-  size: 572, 1193
+  xy: 1111, 502
+  size: 185, 208
   orig: 1280, 1280
-  offset: 373, 20
+  offset: 416, 467
+  index: -1
+arm_right
+  rotate: false
+  xy: 1111, 712
+  size: 260, 331
+  orig: 1280, 1280
+  offset: 661, 345
+  index: -1
+body
+  rotate: false
+  xy: 1111, 1045
+  size: 322, 508
+  orig: 1280, 1280
+  offset: 465, 223
+  index: -1
+hair
+  rotate: true
+  xy: 1298, 549
+  size: 161, 132
+  orig: 1280, 1280
+  offset: 665, 1061
+  index: -1
+head
+  rotate: false
+  xy: 553, 2
+  size: 492, 477
+  orig: 1280, 1280
+  offset: 385, 663
+  index: -1
+hit
+  rotate: false
+  xy: 553, 481
+  size: 556, 1072
+  orig: 1280, 1280
+  offset: 365, 47
+  index: -1
+idle
+  rotate: false
+  xy: 2, 388
+  size: 549, 1165
+  orig: 1280, 1280
+  offset: 379, 28
+  index: -1
+leg
+  rotate: false
+  xy: 2, 14
+  size: 519, 372
+  orig: 1280, 1280
+  offset: 379, 53
+  index: -1
+sword
+  rotate: false
+  xy: 1047, 42
+  size: 422, 437
+  orig: 1280, 1280
+  offset: 506, 28
   index: -1

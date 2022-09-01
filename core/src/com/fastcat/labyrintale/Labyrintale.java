@@ -193,7 +193,7 @@ public class Labyrintale extends Game {
                 s.getEffectHandler().update();
             }
         } else if (screen instanceof AbstractScreen) {
-            if(AbstractLabyrinth.cPanel != null && AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
+            if(AbstractLabyrinth.cPanel != null) {
                 ActionHandler.getInstance().update();
             }
             AbstractScreen s = (AbstractScreen) screen;

@@ -19,17 +19,14 @@ public class BunnyHat extends AbstractItem {
     @Override
     public void onGain() {
         owner.modifyMaxHealth(4);
+        owner.stat.attack++;
+        owner.stat.spell++;
     }
 
     @Override
     public void onRemove() {
         owner.modifyMaxHealth(-4);
-    }
-
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new AttackStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
-        bot(new ApplyStatusAction(new SpellStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
+        owner.stat.attack--;
+        owner.stat.spell--;
     }
 }

@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.status.AttackStatus;
 
 public class BossItem7 extends AbstractItem {
 
-    private static final String ID = "BossItem";
+    private static final String ID = "BossItem7";
     private static final ItemRarity RARITY = ItemRarity.BOSS;
 
     public BossItem7(AbstractPlayer owner) {
@@ -18,11 +18,11 @@ public class BossItem7 extends AbstractItem {
     @Override
     public void onGain() {
         owner.setMaxHealth(10, true);
+        owner.stat.attack += 5;
     }
 
     @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new AttackStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+    public void onRemove() {
+        owner.stat.attack -= 5;
     }
 }

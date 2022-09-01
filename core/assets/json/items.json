@@ -155,6 +155,14 @@
       "Attack"
     ]
   },
+  "BossItem2": {
+    "NAME": "",
+    "DESC": "공격력 &r<-5>, 주문력 &b<+5>.",
+    "KEY": [
+      "Attack",
+      "Spell"
+    ]
+  },
   "BrokenTicker": {
     "NAME": "고장난 회중시계",
     "DESC": "최대 체력 &r<-10>. 전투 시작 시 체력을 모두 회복합니다."

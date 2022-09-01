@@ -17,7 +17,6 @@ public class NaviNecklace extends AbstractItem {
 
     @Override
     public void onGain() {
-        System.out.println("Navi!");
         owner.modifyMaxHealth(2);
     }
 

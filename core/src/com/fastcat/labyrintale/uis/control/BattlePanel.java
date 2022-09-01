@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
+import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.TurnSkipButton;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
@@ -26,6 +27,7 @@ public class BattlePanel implements Disposable {
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
     public SkillButtonPanel aSkill;
+    public StatIcon[] stats = new StatIcon[8];
     public ItemPanel[] item = new ItemPanel[2];
     public AbstractPlayer curPlayer;
     public PlayerBigIcon cpIcon;
@@ -53,9 +55,17 @@ public class BattlePanel implements Disposable {
         cpIcon.setPosition(w * 0.13f - cpIcon.sWidth / 2, h * 0.22f - cpIcon.sHeight / 2);
         energy.setPosition(w * 0.23f - energy.sWidth / 2, h * 0.32f);
         rx = 440 * scale;
-        ry = h * 0.075f;
         ex = w * 0.3f;
-        ey = aSkill.sHeight;
+        ey = aSkill.sHeight * 0.5f;
+        ry = h * 0.075f + ey;
+        int cnt = 0;
+        for(int j = 1; j >= 0; j--) {
+            for(int i = 0; i < 4; i++) {
+                StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
+                s.setPosition(550 * scale + w * 0.05f * i, h * 0.075f + h * 0.027f * j);
+                stats[cnt++] = s;
+            }
+        }
 
         turnSkip.setPosition(w * 0.92f, h * 0.12f);
     }
@@ -72,6 +82,10 @@ public class BattlePanel implements Disposable {
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
         energy.update();
+        for(int i = 0; i < 8; i++) {
+            stats[i].entity = curPlayer;
+            stats[i].update();
+        }
 
         turnSkip.update();
     }
@@ -85,7 +99,7 @@ public class BattlePanel implements Disposable {
         shr.rect(rx, ry, Math.max(ex * ((float) curPlayer.health / (float) curPlayer.maxHealth), 0), ey);
         shr.end();
         sb.begin();
-        FontHandler.renderCenter(sb, fontHp, curPlayer.health + "/" + curPlayer.maxHealth, rx, h * 0.135f, ex, ey);
+        FontHandler.renderCenter(sb, fontHp, curPlayer.health + "/" + curPlayer.maxHealth, rx, h * 0.135f + ey * 0.5f, ex, ey);
 
         for (int i = 0; i < 2; i++) {
             item[i].render(sb);
@@ -97,6 +111,9 @@ public class BattlePanel implements Disposable {
         aSkill.render(sb);
         cpIcon.render(sb);
         energy.render(sb);
+        for(int i = 0; i < 8; i++) {
+            stats[i].render(sb);
+        }
 
         turnSkip.render(sb);
     }

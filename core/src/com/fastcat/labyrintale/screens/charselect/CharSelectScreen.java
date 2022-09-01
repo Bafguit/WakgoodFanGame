@@ -4,11 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -131,6 +133,7 @@ public class CharSelectScreen extends AbstractScreen {
         public AbstractItem item;
         public AbstractSkill skill;
         public HealthIcon health;
+        public StatIcon[] stats;
         public CharInfoItemButton[] items = new CharInfoItemButton[2];
         public CharInfoItemButton[] skills = new CharInfoItemButton[3];
         public float x, ny, dy, iny, idy, bgx, bgy;
@@ -151,6 +154,17 @@ public class CharSelectScreen extends AbstractScreen {
                 b.setPosition(w * 0.655f + w * 0.06f * i, h * 0.47f);
                 skills[i] = b;
             }
+            stats = new StatIcon[6];
+            int cnt = 0;
+            for(int i = 0; i < 3; i++) {
+                float cw = w * 0.675f, ch = h * 0.7f - h * 0.027f * i;
+                for(int j = 0; j < 2; j++) {
+                    StatIcon c = new StatIcon(StatIcon.StatType.values()[cnt + 2]);
+                    c.setPosition(cw + w * 0.046f * j, ch);
+                    stats[cnt] = c;
+                    cnt++;
+                }
+            }
             tw = w * 0.325f;
             x = w * 0.515f;
             bgx = w * 0.175f;
@@ -170,6 +184,9 @@ public class CharSelectScreen extends AbstractScreen {
             for (int i = 0; i < 3; i++) {
                 skills[i].setSkill(player.deck.get(i));
             }
+            for(int i = 0; i < 6; i++) {
+                stats[i].entity = player;
+            }
             cw = player.bg.getWidth() * InputHandler.scale;
             ch = player.bg.getHeight() * InputHandler.scale;
         }
@@ -181,6 +198,9 @@ public class CharSelectScreen extends AbstractScreen {
             }
             for (int i = 0; i < 3; i++) {
                 skills[i].update();
+            }
+            for (int i = 0; i < 6; i++) {
+                stats[i].update();
             }
         }
 
@@ -203,6 +223,9 @@ public class CharSelectScreen extends AbstractScreen {
             } else if (type == InfoPanel.InfoType.ITEM) {
                 renderLineBotLeft(sb, inData, item.name, x, iny, tw, 0);
                 renderColorLeft(sb, idData, item.desc, x, idy, tw);
+            }
+            for (int i = 0; i < 6; i++) {
+                stats[i].render(sb);
             }
         }
     }
@@ -255,6 +278,13 @@ public class CharSelectScreen extends AbstractScreen {
         public void setItem(AbstractItem item) {
             this.item = item;
             type = InfoPanel.InfoType.ITEM;
+        }
+
+        @Override
+        protected Array<SubText> getSubText() {
+            if(type == InfoPanel.InfoType.SKILL) return skill.key;
+            else if (type == InfoPanel.InfoType.ITEM) return item.key;
+            else return new Array<>();
         }
 
         @Override

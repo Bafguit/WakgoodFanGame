@@ -18,11 +18,11 @@ public class BossItem12 extends AbstractItem {
     @Override
     public void onGain() {
         owner.setMaxHealth(10, true);
+        owner.stat.attack += 5;
     }
 
     @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new AttackStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+    public void onRemove() {
+        owner.stat.attack -= 5;
     }
 }

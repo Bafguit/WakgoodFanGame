@@ -2,9 +2,12 @@ package com.fastcat.labyrintale.uis;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 
 public class PlayerView extends AbstractUI {
 
@@ -18,7 +21,7 @@ public class PlayerView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        clickable = player.isAlive();
+        clickable = false;
     }
 
     @Override
@@ -26,13 +29,6 @@ public class PlayerView extends AbstractUI {
         if (!player.isDead) {
             sb.setColor(Color.WHITE);
             player.render(sb);
-        }
-    }
-
-    @Override
-    protected void onClick() {
-        if (player != null && player.isAlive()) {
-
         }
     }
 }
