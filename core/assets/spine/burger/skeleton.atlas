@@ -1,68 +1,75 @@
 
 skeleton.png
-size: 1471,1555
+size: 2023,1757
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 arm_left
-  rotate: false
-  xy: 1111, 502
+  rotate: true
+  xy: 1169, 2
   size: 185, 208
   orig: 1280, 1280
   offset: 416, 467
   index: -1
 arm_right
-  rotate: false
-  xy: 1111, 712
+  rotate: true
+  xy: 1648, 25
   size: 260, 331
   orig: 1280, 1280
   offset: 661, 345
   index: -1
+attack
+  rotate: true
+  xy: 2, 632
+  size: 1123, 1037
+  orig: 1280, 1280
+  offset: 138, 83
+  index: -1
 body
   rotate: false
-  xy: 1111, 1045
+  xy: 1648, 287
   size: 322, 508
   orig: 1280, 1280
   offset: 465, 223
   index: -1
 hair
   rotate: true
-  xy: 1298, 549
+  xy: 1379, 26
   size: 161, 132
   orig: 1280, 1280
   offset: 665, 1061
   index: -1
 head
-  rotate: false
-  xy: 553, 2
+  rotate: true
+  xy: 1169, 189
   size: 492, 477
   orig: 1280, 1280
   offset: 385, 663
   index: -1
 hit
   rotate: false
-  xy: 553, 481
+  xy: 1041, 683
   size: 556, 1072
   orig: 1280, 1280
   offset: 365, 47
   index: -1
 idle
-  rotate: false
-  xy: 2, 388
+  rotate: true
+  xy: 2, 81
   size: 549, 1165
   orig: 1280, 1280
   offset: 379, 28
   index: -1
 leg
-  rotate: false
-  xy: 2, 14
+  rotate: true
+  xy: 1599, 1236
   size: 519, 372
   orig: 1280, 1280
   offset: 379, 53
   index: -1
 sword
   rotate: false
-  xy: 1047, 42
+  xy: 1599, 797
   size: 422, 437
   orig: 1280, 1280
   offset: 506, 28

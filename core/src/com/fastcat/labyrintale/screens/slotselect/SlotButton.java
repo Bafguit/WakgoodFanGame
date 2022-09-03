@@ -23,7 +23,7 @@ public class SlotButton extends AbstractUI {
         this.player = player;
         this.index = index;
         upCount = this.player.slot[this.index];
-        clickable = upCount < 3;
+        clickable = upCount < AbstractLabyrinth.maxSlotUp;
         skill = player.deck.get(index);
         this.select = select;
         fontData = FontHandler.COOLDOWN;

@@ -34,6 +34,7 @@ public class VictoryAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             SoundHandler.fadeOutMusic("BATTLE_1");
+            SoundHandler.fadeOutMusic("BATTLE_BOSS");
         }
         if (isDone) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
@@ -46,7 +47,7 @@ public class VictoryAction extends AbstractAction {
                 AbstractLabyrinth.victoryRoom();
             }
             Array<AbstractReward> temp = new Array<>();
-            temp.add(new ExpReward());
+            temp.add(new StatReward());
             temp.add(new HealReward());
             int r;
             AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
