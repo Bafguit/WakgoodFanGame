@@ -68,9 +68,11 @@ project(":core") {
 }
 
 def props = new Properties()
-file(".gradle/gradle.properties").withInputStream { props.load(it) }
+def propertiesFile = file(".gradle/gradle.properties")
+if(propertiesFile.exists())
+    propertiesFile.withInputStream { props.load(it) }
 githubRelease {
-    token props.getProperty("githubToken")
+    token props.getProperty("githubToken","token")
     owner "Bafguit"
     repo "WakgoodFanGame"
     tagName version.toString()
