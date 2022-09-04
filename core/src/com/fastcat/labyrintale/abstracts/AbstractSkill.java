@@ -328,7 +328,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 }
                 break;
             case PLAYER_LOW_HP:
-                int low = 2147483647;
+                float low = 2147483647;
                 for (int i = 0; i < 4; i++) {
                     AbstractPlayer p = tp[i].player;
                     if (p.isAlive() && p.health < low) low = p.health;

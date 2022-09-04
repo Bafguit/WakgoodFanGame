@@ -55,14 +55,17 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
     public void apply(AbstractEntity abstractEntity) {
         if(loadedStats.containsKey(abstractEntity.getClass())){
             DummyEntityStat entityStat = loadedStats.get(abstractEntity.getClass());
-            abstractEntity.stat.attack = (int) entityStat.getAttack();
-            abstractEntity.stat.spell = (int) entityStat.getSpell();
-            abstractEntity.stat.critical = (int) entityStat.getCritical();
-            abstractEntity.stat.multiply = (int) entityStat.getMultiply();
-            abstractEntity.stat.moveRes = (int) entityStat.getMoveRes();
-            abstractEntity.stat.neutRes =  (int) entityStat.getNeutRes();
-            abstractEntity.stat.ignBlock = (int)entityStat.getIgnBlock();
-            abstractEntity.stat.debuRes = (int) entityStat.getDebuRes();
+            abstractEntity.stat.attack = entityStat.getAttack();
+            abstractEntity.stat.spell =  entityStat.getSpell();
+            abstractEntity.stat.critical = entityStat.getCritical();
+            abstractEntity.stat.multiply =  entityStat.getMultiply();
+            abstractEntity.stat.moveRes = entityStat.getMoveRes();
+            abstractEntity.stat.neutRes =  entityStat.getNeutRes();
+            abstractEntity.stat.ignBlock = entityStat.getIgnBlock();
+            abstractEntity.stat.debuRes =  entityStat.getDebuRes();
+
+            abstractEntity.desc = entityStat.getDescription();
+            abstractEntity.health = (int) entityStat.getHealth();
         }
     }
 

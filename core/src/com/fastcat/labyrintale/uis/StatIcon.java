@@ -22,7 +22,7 @@ public class StatIcon extends AbstractUI {
     private final Sprite icon;
     public AbstractEntity entity;
     public StatType type;
-    public int amount;
+    public float amount;
     public boolean isUp = false;
 
     private GetSelectedStat gets;

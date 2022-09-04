@@ -660,16 +660,16 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public static class EntityStat {
-        public int attack = 0;
-        public int spell = 0;
-        public int critical = 10;
-        public int multiply = 50;
-        public int ignBlock = 0;
-        public int moveRes = 10;
-        public int debuRes = 10;
-        public int neutRes = 10;
+        public float attack = 0;
+        public float spell = 0;
+        public float critical = 10;
+        public float multiply = 50;
+        public float ignBlock = 0;
+        public float moveRes = 10;
+        public float debuRes = 10;
+        public float neutRes = 10;
 
-        public static int cap(int i) {
+        public static float cap(float i) {
             return Math.min(i, 80);
         }
     }
