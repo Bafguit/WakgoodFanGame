@@ -1,5 +1,5 @@
 plugins{
-    id "io.freefair.lombok" version "5.3.0" apply false
+    id "io.freefair.lombok" version "6.5.1" apply false
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "distribution"
 }
@@ -64,6 +64,8 @@ project(":core") {
         api "com.esotericsoftware.spine:spine-libgdx:$spineVersion"
         api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-core:1.0.2"
         api "com.fasterxml.jackson.core:jackson-databind:2.13.3"
+        api 'com.opencsv:opencsv:5.6'
+
     }
 }
 
