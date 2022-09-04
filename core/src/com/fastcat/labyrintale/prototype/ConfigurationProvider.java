@@ -44,6 +44,8 @@ public interface ConfigurationProvider<T> {
 
 
     default void applyTracker(Object tracker){
-        this.apply(((Tracker<T>)tracker).get());
+        Tracker<T> withType = (Tracker<T>) tracker;
+        if(! withType.isEmpty())
+            this.apply(withType.get());
     }
 }
