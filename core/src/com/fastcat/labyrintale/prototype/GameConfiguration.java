@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +32,12 @@ public final class GameConfiguration {
     public final void setProviderClasses(Class<? extends ConfigurationProvider<?>>... providerClasses) {
         this.providerClasses = Arrays.asList(providerClasses);
     }
-
+    public Collection<ConfigurationProvider<?>> getConfigurationProviders(){
+        return loadedProviders.values();
+    }
+    public List<Class<? extends ConfigurationProvider<?>>> getProviderClasses(){
+        return providerClasses;
+    }
     public void loadAllProviders(File parentFile) throws NoSuchMethodException, FileNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         if (providerClasses == null)
             return;
@@ -47,8 +53,11 @@ public final class GameConfiguration {
             loadedProviders.put(providerClass,provider);
         }
     }
+    public boolean hasProvider(Class<? extends ConfigurationProvider<?>> providerClass){
+        return loadedProviders.containsKey(providerClass);
+    }
 
-    public <T> ConfigurationProvider<T> getProvider(Class<T> providerClass){
+    public <T> ConfigurationProvider<T> getProvider(Class<? extends ConfigurationProvider<T>> providerClass){
         return (ConfigurationProvider<T>) loadedProviders.get(providerClass);
     }
 }

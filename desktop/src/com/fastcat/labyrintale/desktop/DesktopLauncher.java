@@ -19,6 +19,7 @@ public class DesktopLauncher {
 				GameConfiguration configuration = GameConfiguration.getInstance();
 				configuration.setProviderClasses(EntityStatProvider.class);
 				configuration.loadAllProviders(parentFile);
+				new ReloadWindow().setVisible(true);
 			}
 
 		}catch (Exception e){

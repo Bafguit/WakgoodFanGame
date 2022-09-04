@@ -20,6 +20,9 @@ import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.prototype.GameConfiguration;
+import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
+import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
@@ -98,6 +101,13 @@ public abstract class AbstractEntity implements Cloneable {
         resetAnimation();
         infoSpine = new InfoSpine(atlas, skel);
         stat = new EntityStat();
+
+        if(GameConfiguration.getInstance().hasProvider(EntityStatProvider.class)){
+            EntityStatProvider provider = (EntityStatProvider) GameConfiguration.getInstance().getProvider(EntityStatProvider.class);
+            provider.apply(this);
+            provider.addTracker(new Tracker<>(this));
+        }
+
     }
 
     public void update() {

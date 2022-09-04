@@ -1,6 +1,9 @@
 package com.fastcat.labyrintale.prototype;
 
+import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.opencsv.CSVReader;
+
+import java.util.List;
 
 /**
  * @author Singlerr
@@ -25,4 +28,22 @@ public interface ConfigurationProvider<T> {
      * @param t An object to be applied.
      */
     void apply(T t);
+
+    /***
+     * Add to tracker list.
+     * It will be called when reloading.
+     * @param t Tracker to keep track of.
+     */
+    void addTracker(Tracker<T> t);
+
+    /***
+     * Get trackers
+     * @return trackers
+     */
+    List<Tracker<T>> getTrackers();
+
+
+    default void applyTracker(Object tracker){
+        this.apply(((Tracker<T>)tracker).get());
+    }
 }

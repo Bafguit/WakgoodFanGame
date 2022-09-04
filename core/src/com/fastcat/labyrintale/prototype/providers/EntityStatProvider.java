@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.prototype.providers;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.prototype.ConfigurationProvider;
+import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
@@ -11,11 +12,16 @@ import com.opencsv.exceptions.CsvException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public final class EntityStatProvider implements ConfigurationProvider<AbstractEntity> {
 
     private HashMap<Class<? extends AbstractEntity>,DummyEntityStat> loadedStats = new HashMap<>();
+
+    private ArrayList<Tracker<AbstractEntity>> trackers = new ArrayList<>();
+
     /***
      * name of file that this is supposed to read
      * @return name of file
@@ -67,6 +73,16 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
             abstractEntity.desc = entityStat.getDescription();
             abstractEntity.health = (int) entityStat.getHealth();
         }
+    }
+
+    @Override
+    public List<Tracker<AbstractEntity>> getTrackers() {
+        return trackers;
+    }
+
+    @Override
+    public void addTracker(Tracker<AbstractEntity> t) {
+        trackers.add(t);
     }
 
     private Class<? extends AbstractEntity> parseEntityClass(String simpleClassName) throws ClassNotFoundException {
