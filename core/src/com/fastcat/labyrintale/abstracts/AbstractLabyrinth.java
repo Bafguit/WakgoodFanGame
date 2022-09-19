@@ -33,8 +33,6 @@ public class AbstractLabyrinth {
     public static int floorNum;
     public static int itemAble;
     public static int maxSlotUp;
-    public static int maxEnergy;
-    public static int energy;
     public static int gold;
     public static int bleak;
     public static int bleakMin;
@@ -71,8 +69,6 @@ public class AbstractLabyrinth {
             floors[3] = new AbstractFloor(4);
             itemAble = 0;
             maxSlotUp = 3;
-            maxEnergy = 3;
-            energy = 0;
             gold = 100;
             bleak = 0;
             bleakMin = 0;
@@ -90,7 +86,6 @@ public class AbstractLabyrinth {
     }
 
     public static void prepare() {
-        energy = maxEnergy;
         advisor.skill.usedOnce = false;
         advisor.skill.cooldown = 0;
     }
@@ -126,10 +121,6 @@ public class AbstractLabyrinth {
 
     public static void modifyItemAble(int a) {
         itemAble = Math.max(itemAble + a, 0);
-    }
-
-    public static void modifyMaxEnergy(int a) {
-        maxEnergy = Math.max(maxEnergy + a, 0);
     }
 
     public static void modifySelection(int a) {

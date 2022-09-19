@@ -15,13 +15,11 @@ public class BossItem6 extends AbstractItem {
 
     @Override
     public void onGain() {
-        AbstractLabyrinth.modifyMaxEnergy(1);
         AbstractLabyrinth.modifyItemAble(1);
     }
 
     @Override
     public void onRemove() {
-        AbstractLabyrinth.modifyMaxEnergy(-1);
         AbstractLabyrinth.modifyItemAble(-1);
     }
 }

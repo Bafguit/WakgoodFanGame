@@ -23,7 +23,6 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
 import com.fastcat.labyrintale.prototype.tracker.Tracker;
-import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
@@ -366,11 +365,7 @@ public abstract class AbstractEntity implements Cloneable {
                         if (s != null) damage *= s.onAttackedMultiply(attacker, damage, type);
                     }
                     if (damage > 0) {
-                        if(attacker != null && attacker.stat.ignBlock > 0 && publicRandom.random(0, 99) < EntityStat.cap(attacker.stat.ignBlock)) {
-                            EffectHandler.add(new UpTextEffect(attacker.ui.x + ui.sWidth / 2, attacker.ui.y + ui.sHeight * 0.35f, "방어 무시", CYAN));
-                        } else {
-                            damage = loseBlock(damage);
-                        }
+                        damage = loseBlock(damage);
                         if (damage > 0) {
                             EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
                             EffectHandler.add(new HealthBarDamageEffect(this));
@@ -670,17 +665,17 @@ public abstract class AbstractEntity implements Cloneable {
     }
 
     public static class EntityStat {
-        public float attack = 0;
-        public float spell = 0;
-        public float critical = 10;
-        public float multiply = 50;
-        public float ignBlock = 0;
-        public float moveRes = 10;
-        public float debuRes = 10;
-        public float neutRes = 10;
+        public int attack = 0;
+        public int spell = 0;
+        public int speed = 0;
+        public float critical = 0.1f;
+        public float multiply = 0.5f;
+        public float moveRes = 0.1f;
+        public float debuRes = 0.1f;
+        public float neutRes = 0.1f;
 
-        public static float cap(float i) {
-            return Math.min(i, 80);
+        public static int cap(float i) {
+            return (int) Math.min(i * 100, 80f);
         }
     }
 }

@@ -21,10 +21,11 @@ public class Burger extends AbstractPlayer {
 
     public Burger() {
         super(ID, HEALTH, COLOR);
-        stat.debuRes = 5;
-        stat.neutRes = 10;
-        stat.critical = 5;
-        stat.moveRes = 20;
+        stat.speed = 5;
+        stat.debuRes = 0.05f;
+        stat.neutRes = 0.1f;
+        stat.critical = 0.05f;
+        stat.moveRes = 0.2f;
     }
 
     @Override

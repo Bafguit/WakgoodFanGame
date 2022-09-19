@@ -6,9 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
-import com.fastcat.labyrintale.actions.SelectTargetAction;
-import com.fastcat.labyrintale.actions.SetAnimationAction;
+import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
@@ -554,18 +552,13 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             }
             use();
             if (disposable) usedOnce = true;
-            if (rarity == SkillRarity.ADVISOR || owner.isPlayer) {
-                if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
-                if (!disposable) cooldown = cooltime;
-                if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
-                    battleScreen.endPlayerTurn();
-                }
-            }
+            bot(new TurnEndAction(owner));
+            bot(new NextTurnAction());
         }
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && AbstractLabyrinth.energy > 0 && available();
+        return cooldown == 0 && !usedOnce && !usedOnly && available();
     }
 
     protected boolean available() {
@@ -629,16 +622,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     @Override
     public final void onTargetSelected(AbstractEntity target) {
+        top(new NextTurnAction());
         onTarget(target);
         if(owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
             top(new SetAnimationAction(owner, "skill"));
         }
-        if (!isTrick && AbstractLabyrinth.energy > 0) AbstractLabyrinth.energy--;
         if (disposable) usedOnce = true;
-        else cooldown = cooltime;
-        if (AbstractLabyrinth.energy == 0 || noMoreSkill()) {
-            battleScreen.endPlayerTurn();
-        }
     }
 
     public void onTarget(AbstractEntity target) {

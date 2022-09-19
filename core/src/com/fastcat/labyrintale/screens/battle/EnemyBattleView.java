@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.battle;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -16,6 +17,7 @@ public class EnemyBattleView extends AbstractUI {
     public AbstractEnemy enemy;
     public boolean isLooking = false;
     public boolean isTarget = false;
+    private Sprite pImg;
 
     public EnemyBattleView() {
         this(null);
@@ -26,6 +28,7 @@ public class EnemyBattleView extends AbstractUI {
         this.enemy = enemy;
         showImg = false;
         overable = false;
+        pImg = FileHandler.getUi().get("PLAYER_POINT");
     }
 
     @Override
@@ -45,7 +48,8 @@ public class EnemyBattleView extends AbstractUI {
         setPosition(enemy.animX - sWidth / 2, enemy.animY - Gdx.graphics.getHeight() * 0.025f);
         if (enabled && enemy != null && !enemy.isDead) {
             sb.setColor(Color.WHITE);
-            if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) sb.draw(img, x, y, sWidth, sHeight);
+            if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
+                sb.draw(battleScreen.currentTurnEntity() == enemy ? pImg : img, x, y, sWidth, sHeight);
             enemy.render(sb);
         }
     }

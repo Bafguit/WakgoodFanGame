@@ -30,8 +30,8 @@ public class PlayerBattleView extends AbstractUI {
 
     @Override
     protected void updateButton() {
+        isOnLock = battleScreen.currentTurnEntity() == player;
         if (battleScreen.isSelecting) {
-            isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
             clickable = player.isAlive() && isTarget;
             showImg = isLooking || isOnLock || (over && isTarget);
             if (over && clickable) {
@@ -39,8 +39,7 @@ public class PlayerBattleView extends AbstractUI {
                 isLooking = true;
             }
         } else {
-            isOnLock = AbstractLabyrinth.cPanel.battlePanel.curPlayer == player;
-            showImg = isLooking || isOnLock || over;
+            showImg = isLooking || isOnLock;
             clickable = player.isAlive();
         }
         mute = isOnLock;
@@ -48,12 +47,11 @@ public class PlayerBattleView extends AbstractUI {
 
     @Override
     protected void renderUi(SpriteBatch sb) {
-        if (enabled && player != null && !player.isDead) {
+        if (enabled && player != null) {
             sb.setColor(Color.WHITE);
             if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
-                sb.draw(isLooking ? img : pImg, player.animX - sWidth / 2, player.animY - Gdx.graphics.getHeight() * 0.025f, sWidth, sHeight);
+                sb.draw(isLooking || (over && isTarget) ? img : pImg, player.animX - sWidth / 2, player.animY - Gdx.graphics.getHeight() * 0.025f, sWidth, sHeight);
             player.render(sb);
-            //애니메이션
         }
     }
 
@@ -61,7 +59,7 @@ public class PlayerBattleView extends AbstractUI {
     protected void onClick() {
         if (player != null && player.isAlive()) {
             if (battleScreen.isSelecting) battleScreen.gets.onTargetSelected(player);
-            else AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
+            //else AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
         }
     }
 }

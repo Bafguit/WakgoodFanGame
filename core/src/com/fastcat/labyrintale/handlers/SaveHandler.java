@@ -138,7 +138,6 @@ public final class SaveHandler {
 
         itemAble = data.itemAble;
         maxSlotUp = data.selection;
-        maxEnergy = data.maxEnergy;
         gold = data.gold;
         bleak = data.bleak;
         bleakMin = data.bleakMin;
@@ -188,7 +187,6 @@ public final class SaveHandler {
             temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
             temp.itemAble = AbstractLabyrinth.itemAble;
             temp.selection = AbstractLabyrinth.maxSlotUp;
-            temp.maxEnergy = AbstractLabyrinth.maxEnergy;
             temp.gold = AbstractLabyrinth.gold;
             temp.bleak = AbstractLabyrinth.bleak;
             temp.bleakMin = AbstractLabyrinth.bleakMin;

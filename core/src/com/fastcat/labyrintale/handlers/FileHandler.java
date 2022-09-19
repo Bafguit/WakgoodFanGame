@@ -256,7 +256,7 @@ public class FileHandler implements Disposable {
         ui.put("STAT_SPELL", new Sprite(new Texture("img/stat/spell.png")));
         ui.put("STAT_CRITICAL", new Sprite(new Texture("img/stat/critical.png")));
         ui.put("STAT_MULTIPLY", new Sprite(new Texture("img/stat/multiply.png")));
-        ui.put("STAT_IGNBLOCK", new Sprite(new Texture("img/stat/ignBlock.png")));
+        ui.put("STAT_SPEED", new Sprite(new Texture("img/stat/speed.png")));
         ui.put("STAT_MOVERES", new Sprite(new Texture("img/stat/moveRes.png")));
         ui.put("STAT_DEBURES", new Sprite(new Texture("img/stat/debuRes.png")));
         ui.put("STAT_NEUTRES", new Sprite(new Texture("img/stat/neutRes.png")));

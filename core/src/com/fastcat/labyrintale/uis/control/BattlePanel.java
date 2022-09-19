@@ -21,7 +21,6 @@ public class BattlePanel implements Disposable {
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
     private static final FontHandler.FontData fontHp = COOLDOWN;
     public static ShapeRenderer shr = new ShapeRenderer();
-    public static EnergyPanel energy = new EnergyPanel();
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     public AbstractSkill selected;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
@@ -53,7 +52,6 @@ public class BattlePanel implements Disposable {
         }
         cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.13f - cpIcon.sWidth / 2, h * 0.22f - cpIcon.sHeight / 2);
-        energy.setPosition(w * 0.23f - energy.sWidth / 2, h * 0.32f);
         rx = 440 * scale;
         ex = w * 0.3f;
         ey = aSkill.sHeight * 0.5f;
@@ -81,7 +79,6 @@ public class BattlePanel implements Disposable {
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
-        energy.update();
         for(int i = 0; i < 8; i++) {
             stats[i].entity = curPlayer;
             stats[i].update();
@@ -110,7 +107,6 @@ public class BattlePanel implements Disposable {
         }
         aSkill.render(sb);
         cpIcon.render(sb);
-        energy.render(sb);
         for(int i = 0; i < 8; i++) {
             stats[i].render(sb);
         }
@@ -143,6 +139,5 @@ public class BattlePanel implements Disposable {
         }
         aSkill.dispose();
         cpIcon.dispose();
-        energy.dispose();
     }
 }

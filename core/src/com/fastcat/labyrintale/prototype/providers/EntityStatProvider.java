@@ -7,8 +7,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.bean.exceptionhandler.CsvExceptionHandler;
-import com.opencsv.exceptions.CsvException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -67,7 +65,7 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
             abstractEntity.stat.multiply =  entityStat.getMultiply();
             abstractEntity.stat.moveRes = entityStat.getMoveRes();
             abstractEntity.stat.neutRes =  entityStat.getNeutRes();
-            abstractEntity.stat.ignBlock = entityStat.getIgnBlock();
+            abstractEntity.stat.speed = entityStat.getSpeed();
             abstractEntity.stat.debuRes =  entityStat.getDebuRes();
 
             abstractEntity.desc = entityStat.getDescription();
@@ -96,17 +94,17 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
         @CsvBindByName(column = "이름")
         private String className;
         @CsvBindByName(column = "체력")
-        private float health;
+        private int health;
         @CsvBindByName(column = "기본 공격력")
-        private float attack = 0;
+        private int attack = 0;
         @CsvBindByName(column = "기본 주문력")
-        private float spell = 0;
+        private int spell = 0;
+        @CsvBindByName(column = "쉴드 무시")
+        private int speed = 0;
         @CsvBindByName(column = "치명타 확률")
         private float critical = 10;
         @CsvBindByName(column = "치명타 배율")
         private float multiply = 50;
-        @CsvBindByName(column = "쉴드 무시")
-        private float ignBlock = 0;
         @CsvBindByName(column = "이동 저항")
         private float moveRes = 10;
         @CsvBindByName(column = "디버프 저항")

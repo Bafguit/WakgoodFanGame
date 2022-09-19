@@ -6,10 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.EndPlayerTurnAction;
-import com.fastcat.labyrintale.actions.PlayerTurnStartAction;
-import com.fastcat.labyrintale.actions.VictoryAction;
+import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
@@ -21,7 +20,9 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.LinkedList;
 
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
@@ -44,6 +45,8 @@ public class BattleScreen extends AbstractScreen {
     public boolean isSelecting = false;
     public boolean isEnemyTurn = false;
     public Array<AbstractEntity> looking;
+    private Array<AbstractEntity> turn;
+    private int turnIndex;
     public BattleType type;
     public float w, h, sw, sh;
 
@@ -117,10 +120,12 @@ public class BattleScreen extends AbstractScreen {
                 break;
             }
         }
+        turn = new Array<>();
         if (isLoad) {
             ActionHandler.top(new VictoryAction(0));
         } else {
-            ActionHandler.bot(new PlayerTurnStartAction(true));
+            resetTurn();
+            ActionHandler.top(new StartBattleAction());
         }
     }
 
@@ -307,6 +312,57 @@ public class BattleScreen extends AbstractScreen {
                 if (AbstractLabyrinth.bleak < 100) enemySkills[i].render(sb);
             }
         }
+    }
+
+    public void resetTurn() {
+        Array<AbstractEntity> temp = new Array<>();
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+            if(p.isAlive()) temp.add(p);
+        }
+        for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+            if(e.isAlive()) temp.add(e);
+        }
+
+        Sort.instance().sort(temp, (o1, o2) -> {
+            int i = o2.stat.speed - o1.stat.speed;
+            if(i == 0) {
+                i = o1.index - o2.index;
+                if(i == 0) {
+                    if(o1.isPlayer) return -1;
+                    else return 1;
+                }
+            }
+            return i;
+        });
+
+        setTurn(temp);
+    }
+
+    public void setTurn(Array<AbstractEntity> t) {
+        turn = t;
+        turnIndex = -1;
+        nextTurn();
+    }
+
+    public Array<AbstractEntity> getTurns() {
+        return turn;
+    }
+
+    public void nextTurn() {
+        turnIndex++;
+        if(turnIndex == turn.size) {
+            resetTurn();
+        } else {
+            AbstractEntity t = currentTurnEntity();
+            ActionHandler.bot(new TurnStartAction(t));
+            if (t.isPlayer) cPanel.battlePanel.setPlayer((AbstractPlayer) t);
+            else ActionHandler.bot(new EnemyTurnAction((AbstractEnemy) t));
+        }
+    }
+
+    public AbstractEntity currentTurnEntity() {
+        if(turn != null) return turn.get(turnIndex);
+        else return null;
     }
 
     public void endPlayerTurn() {

@@ -18,12 +18,12 @@ public class BossItem4 extends AbstractItem {
 
     @Override
     public void onGain() {
-        AbstractLabyrinth.modifyMaxEnergy(1);
+
     }
 
     @Override
     public void onRemove() {
-        AbstractLabyrinth.modifyMaxEnergy(-1);
+
     }
 
     @Override
