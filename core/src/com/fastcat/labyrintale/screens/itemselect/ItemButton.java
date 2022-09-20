@@ -3,7 +3,9 @@ package com.fastcat.labyrintale.screens.itemselect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -20,13 +22,13 @@ public class ItemButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        if(over) AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
     }
 
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (select.selected == this || over) sb.setColor(Color.WHITE);
+            if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(item.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
@@ -46,6 +48,7 @@ public class ItemButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        select.selected = this;
+        select.itemSelected(item);
+        Labyrintale.removeTempScreen(select);
     }
 }

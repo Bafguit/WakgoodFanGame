@@ -29,6 +29,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
         stat.critical = 0;
         stat.moveRes = 0;
         stat.multiply = 0;
+        img = FileHandler.getUi().get("E_IMAGE");
     }
 
     @Override

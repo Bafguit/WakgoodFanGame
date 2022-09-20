@@ -95,13 +95,13 @@ public class StatIcon extends AbstractUI {
 
     @Override
     public void onClick() {
-        if (type == StatType.MULTIPLY) entity.stat.multiply += 5;
+        if (type == StatType.MULTIPLY) entity.stat.multiply += 0.05f;
         else if (type == StatType.SPEED) entity.stat.speed += 5;
         else if(amount < 80) {
-            if (type == StatType.CRITICAL) entity.stat.critical += 5;
-            else if (type == StatType.MOVERES) entity.stat.moveRes += 5;
-            else if (type == StatType.DEBURES) entity.stat.debuRes += 5;
-            else if (type == StatType.NEUTRES) entity.stat.neutRes += 5;
+            if (type == StatType.CRITICAL) entity.stat.critical += 0.05f;
+            else if (type == StatType.MOVERES) entity.stat.moveRes += 0.05f;
+            else if (type == StatType.DEBURES) entity.stat.debuRes += 0.05f;
+            else if (type == StatType.NEUTRES) entity.stat.neutRes += 0.05f;
         }
         gets.statSelected(entity, type);
     }

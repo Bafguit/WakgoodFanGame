@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.TurnSkipButton;
+import com.fastcat.labyrintale.uis.TurnView;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -30,6 +31,7 @@ public class BattlePanel implements Disposable {
     public ItemPanel[] item = new ItemPanel[2];
     public AbstractPlayer curPlayer;
     public PlayerBigIcon cpIcon;
+    public TurnView turnView;
     public float rx, ry, ex, ey;
 
     public TurnSkipButton turnSkip = new TurnSkipButton();
@@ -66,6 +68,7 @@ public class BattlePanel implements Disposable {
         }
 
         turnSkip.setPosition(w * 0.92f, h * 0.12f);
+        turnView = new TurnView();
     }
 
     public void update() {
@@ -85,6 +88,7 @@ public class BattlePanel implements Disposable {
         }
 
         turnSkip.update();
+        turnView.update();
     }
 
     public void render(SpriteBatch sb) {
@@ -112,6 +116,7 @@ public class BattlePanel implements Disposable {
         }
 
         turnSkip.render(sb);
+        turnView.render(sb);
     }
 
     public void setPlayer(AbstractPlayer p) {

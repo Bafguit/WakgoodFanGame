@@ -7,14 +7,18 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class EnemyTurnAction extends AbstractAction {
 
+    private final AbstractEnemy e;
+
     public EnemyTurnAction(AbstractEnemy e) {
-        super(e, 0.5f);
+        super(null, 0.5f);
+        this.e = e;
     }
 
     @Override
     protected void updateAction() {
         if(isDone) {
-            actor.hand[0].useCard();
+            if(e.isAlive()) e.hand[0].useCard();
+            ActionHandler.bot(new NextTurnAction());
         }
     }
 }

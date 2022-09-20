@@ -39,7 +39,7 @@ public class EnemyBattleView extends AbstractUI {
             if (showImg) battleScreen.looking.add(enemy);
         } else {
             overable = false;
-            showImg = isLooking;
+            showImg = isLooking || battleScreen.currentTurnEntity() == enemy;
         }
     }
 

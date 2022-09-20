@@ -1,28 +1,34 @@
 package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 
 public class TurnStartAction extends AbstractAction {
 
-    boolean isEnemy;
+    private final AbstractEntity e;
 
     public TurnStartAction(AbstractEntity e) {
-        super(e, 0);
+        super(null, 0);
+        this.e = e;
     }
 
     @Override
     protected void updateAction() {
         if (isDone) {
-            if (actor.isAlive()) {
-                if(actor.isPlayer) {
-                    for (AbstractItem m : actor.item) {
+            if (e.isAlive()) {
+                if(e.isPlayer) {
+                    for (AbstractItem m : e.item) {
                         if (m != null) m.startOfTurn();
                     }
                 }
-                for(AbstractStatus s : actor.status) {
+                for(AbstractStatus s : e.status) {
                     s.startOfTurn();
                 }
             }
+            if (e.isPlayer) ActionHandler.bot(new PlayerTurnAction((AbstractPlayer) e));
+            else ActionHandler.bot(new EnemyTurnAction((AbstractEnemy) e));
         }
     }
 }

@@ -334,7 +334,7 @@ public class BattleScreen extends AbstractScreen {
             }
             return i;
         });
-
+        cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
         setTurn(temp);
     }
 
@@ -342,6 +342,7 @@ public class BattleScreen extends AbstractScreen {
         turn = t;
         turnIndex = -1;
         nextTurn();
+        cPanel.battlePanel.turnView.setNewTurns(turn);
     }
 
     public Array<AbstractEntity> getTurns() {
@@ -354,10 +355,13 @@ public class BattleScreen extends AbstractScreen {
             resetTurn();
         } else {
             AbstractEntity t = currentTurnEntity();
-            ActionHandler.bot(new TurnStartAction(t));
-            if (t.isPlayer) cPanel.battlePanel.setPlayer((AbstractPlayer) t);
-            else ActionHandler.bot(new EnemyTurnAction((AbstractEnemy) t));
+            if(t.isAlive()) ActionHandler.bot(new TurnStartAction(t));
+            else nextTurn();
         }
+    }
+
+    public int getCurrentTurn() {
+        return turnIndex;
     }
 
     public AbstractEntity currentTurnEntity() {

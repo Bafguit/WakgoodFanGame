@@ -57,7 +57,6 @@ public class Labyrintale extends Game {
     public static EventScreen eventScreen;
     public static ShopScreen shopScreen;
     public static SettingScreen settingScreen;
-    public static BleakView bleakView;
     public static boolean fading = false;
     public static boolean fadeIn = false;
     public static boolean tempFade = false;
@@ -169,7 +168,6 @@ public class Labyrintale extends Game {
         //labyrinth = new AbstractLabyrinth();
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
-        bleakView = new BleakView();
 
         setScreen(new LogoScreen());
     }
@@ -200,9 +198,6 @@ public class Labyrintale extends Game {
             s.update();
             s.getEffectHandler().update();
         }
-        if(labyrinth != null && AbstractLabyrinth.cPanel.type != ControlPanel.ControlType.HIDE) {
-            bleakView.update();
-        }
         SoundHandler.getInstance().update();
     }
 
@@ -224,9 +219,6 @@ public class Labyrintale extends Game {
             for (Screen s : tempScreen) {
                 if (s != null) s.render(Labyrintale.tick);
             }
-        }
-        if(labyrinth != null && AbstractLabyrinth.cPanel.type != ControlPanel.ControlType.HIDE) {
-            bleakView.render(sb);
         }
         if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
         if (subText != null) subText.renderSub(sb);

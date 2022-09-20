@@ -2,6 +2,8 @@ package com.fastcat.labyrintale.screens.playerselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -19,13 +21,13 @@ public class PlayerButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-
+        if(over) AbstractLabyrinth.cPanel.infoPanel.setInfo(player);
     }
 
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (select.selected == this || over) sb.setColor(Color.WHITE);
+            if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(player.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
@@ -40,6 +42,7 @@ public class PlayerButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        select.selected = this;
+        select.playerSelected(player);
+        Labyrintale.removeTempScreen(select);
     }
 }

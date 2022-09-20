@@ -20,14 +20,12 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
 
     public BgImg bg = new BgImg();
     public HealSelectText playerSelectText;
-    public HealConfirmButton nextButton;
     public HealButton selected;
     public HealButton[] exp;
     private HealReward.HealType selectedType;
 
     public HealSelectScreen() {
         playerSelectText = new HealSelectText();
-        nextButton = new HealConfirmButton(this);
 
         exp = new HealButton[3];
         float w = Gdx.graphics.getWidth() * 0.25f, h = Gdx.graphics.getHeight();
@@ -92,11 +90,9 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
 
     @Override
     public void update() {
-        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.name, selected.desc);
         for (HealButton advisorButton : exp) {
             advisorButton.update();
         }
-        nextButton.update();
         playerSelectText.update();
     }
 
@@ -106,7 +102,6 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
         for (HealButton advisorButton : exp) {
             advisorButton.render(sb);
         }
-        nextButton.render(sb);
         playerSelectText.render(sb);
     }
 

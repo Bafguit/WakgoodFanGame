@@ -61,7 +61,7 @@ public class HealButton extends AbstractUI {
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!clickable) sb.setColor(Color.DARK_GRAY);
-            else if (select.selected == this || over) sb.setColor(Color.WHITE);
+            else if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.draw(border, x, y, sWidth, sHeight);
@@ -76,6 +76,6 @@ public class HealButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        select.selected = this;
+        select.expSelected(type);
     }
 }

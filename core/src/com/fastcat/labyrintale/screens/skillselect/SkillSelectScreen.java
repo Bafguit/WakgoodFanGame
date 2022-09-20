@@ -22,9 +22,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
     public final SkillRewardType type;
     public final SkillSelectGroup[] groups;
     private final BgImg bgImg;
-    public SkillSelectButton selected;
     public GetSelectedSkill gets;
-    public SkillConfirmButton confirm;
 
     public SkillSelectScreen(SkillRewardType type, Array<Array<AbstractSkill>> group, GetSelectedSkill gets) {
         this(type, group);
@@ -36,7 +34,6 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         SkillSelectGroup.screen = this;
         this.type = type;
         bgImg = new BgImg();
-        confirm = new SkillConfirmButton(this);
         groups = new SkillSelectGroup[group.size];
         for (int i = 0; i < group.size; i++) {
             Array<AbstractSkill> a = group.get(i);
@@ -65,7 +62,6 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         for (SkillSelectGroup g : groups) {
             g.update();
         }
-        confirm.update();
     }
 
     @Override
@@ -74,7 +70,6 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         for (SkillSelectGroup g : groups) {
             g.render(sb);
         }
-        confirm.render(sb);
     }
 
     @Override

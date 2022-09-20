@@ -12,14 +12,12 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
 
     public BgImg bg = new BgImg();
     public ItemSelectText itemSelectText;
-    public ItemConfirmButton nextButton;
     public ItemButton selected;
     public ItemButton[] items;
     public GetSelectedItem gets;
 
     public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets) {
         itemSelectText = new ItemSelectText();
-        nextButton = new ItemConfirmButton(this);
         this.gets = gets;
         int size = items.length;
         float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
@@ -35,9 +33,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
         for (ItemButton item : items) {
             item.update();
         }
-        nextButton.update();
         itemSelectText.update();
-        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.item);
     }
 
     @Override
@@ -46,7 +42,6 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
         for (ItemButton advisorButton : items) {
             advisorButton.render(sb);
         }
-        nextButton.render(sb);
         itemSelectText.render(sb);
     }
 

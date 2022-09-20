@@ -12,8 +12,6 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
 
     public BgImg bg = new BgImg();
     public PlayerSelectText playerSelectText;
-    public PlayerConfirmButton nextButton;
-    public PlayerButton selected;
     public PlayerButton[] pPlayer;
     public GetSelectedPlayer gets;
 
@@ -23,7 +21,6 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
 
     public PlayerSelectScreen(AbstractPlayer[] players, GetSelectedPlayer gets) {
         playerSelectText = new PlayerSelectText();
-        nextButton = new PlayerConfirmButton(this);
         this.gets = gets;
         int size = players.length;
         pPlayer = new PlayerButton[size];
@@ -40,9 +37,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         for (PlayerButton advisorButton : pPlayer) {
             advisorButton.update();
         }
-        nextButton.update();
         playerSelectText.update();
-        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.player);
     }
 
     @Override
@@ -51,7 +46,6 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         for (PlayerButton advisorButton : pPlayer) {
             advisorButton.render(sb);
         }
-        nextButton.render(sb);
         playerSelectText.render(sb);
     }
 

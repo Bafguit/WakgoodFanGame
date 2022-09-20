@@ -301,7 +301,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
         if(publicRandom.random(0, 99) < EntityStat.cap(stat.critical)) {
             EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
-            d *= 1 + stat.multiply * 0.01f;
+            d *= 1 + stat.multiply;
         }
         return d;
     }

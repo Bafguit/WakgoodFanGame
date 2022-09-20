@@ -4,12 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup;
+
+import static com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup.screen;
 
 public class SkillSelectButton extends AbstractUI {
 
@@ -39,7 +42,7 @@ public class SkillSelectButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (over || SkillSelectGroup.screen.selected == this || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
+            if (over || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             if (isTo)
@@ -56,8 +59,8 @@ public class SkillSelectButton extends AbstractUI {
     @Override
     protected void onClick() {
         if (!isTo) {
-            group.selected = skill;
-            SkillSelectGroup.screen.selected = this;
+            SkillSelectGroup.screen.skillSelected(group);
+            Labyrintale.removeTempScreen(SkillSelectGroup.screen);
         }
     }
 }

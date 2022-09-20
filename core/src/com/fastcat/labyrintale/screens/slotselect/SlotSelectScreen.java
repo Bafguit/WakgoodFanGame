@@ -12,8 +12,6 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
 
     public BgImg bg = new BgImg();
     public SlotSelectText slotSelectText;
-    public SlotConfirmButton nextButton;
-    public SlotButton selected;
     public SlotButton[] pPlayer;
     public GetSelectedSlot gets;
     public AbstractPlayer player;
@@ -25,7 +23,6 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
 
     public SlotSelectScreen(AbstractPlayer players, GetSelectedSlot gets, SlotType type) {
         slotSelectText = new SlotSelectText();
-        nextButton = new SlotConfirmButton(this);
         this.gets = gets;
         this.player = players;
         this.type = type;
@@ -40,11 +37,9 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
 
     @Override
     public void update() {
-        if (selected != null) AbstractLabyrinth.cPanel.infoPanel.setInfo(selected.skill);
         for (SlotButton advisorButton : pPlayer) {
             advisorButton.update();
         }
-        nextButton.update();
         slotSelectText.update();
     }
 
@@ -54,7 +49,6 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         for (SlotButton advisorButton : pPlayer) {
             advisorButton.render(sb);
         }
-        nextButton.render(sb);
         slotSelectText.render(sb);
     }
 

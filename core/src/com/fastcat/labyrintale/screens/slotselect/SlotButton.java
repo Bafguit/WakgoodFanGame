@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.slotselect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -40,7 +41,7 @@ public class SlotButton extends AbstractUI {
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!clickable) sb.setColor(Color.DARK_GRAY);
-            else if (select.selected == this || over) sb.setColor(Color.WHITE);
+            else if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
@@ -55,6 +56,7 @@ public class SlotButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        select.selected = this;
+        select.slotSelected(player, index);
+        Labyrintale.removeTempScreen(select);
     }
 }
