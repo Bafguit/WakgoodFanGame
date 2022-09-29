@@ -16,7 +16,7 @@ public class HakuSkill extends AbstractSkill {
     public HakuSkill() {
         super(ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE);
-        cooltime = 3;
+
     }
 
     @Override

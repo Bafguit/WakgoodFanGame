@@ -39,7 +39,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public boolean usedOnly = false;
     public boolean passive = false;
     public boolean disposable = false;
-    public boolean isTrick = false;
     public int upgradeCount = 0;
     public int attack = -1;
     public int baseAttack = -1;
@@ -50,7 +49,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public int value = -1;
     public int baseValue = -1;
     public int upValue = -1;
-    public int cooltime = 2;
     public int cooldown = 0;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
@@ -521,8 +519,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     v = calculateValue(v);
                 }
                 return getHexColor(Color.CYAN) + v;
-            case "C":
-                return getHexColor(Color.CYAN) + cooltime;
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }
@@ -558,7 +554,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public final boolean canUse() {
-        return cooldown == 0 && !usedOnce && !usedOnly && available();
+        return !usedOnce && !usedOnly && available();
     }
 
     protected boolean available() {
@@ -622,7 +618,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     @Override
     public final void onTargetSelected(AbstractEntity target) {
-        if(owner != null && owner.isPlayer) top(new NextTurnAction());
+        if(owner != null && owner.isPlayer) {
+            top(new NextTurnAction());
+            top(new TurnEndAction(owner));
+        }
         onTarget(target);
         if(owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
             top(new SetAnimationAction(owner, "skill"));

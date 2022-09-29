@@ -69,6 +69,14 @@ public class AbstractItem implements Cloneable {
 
     }
 
+    public void startOfRound() {
+
+    }
+
+    public void endOfRound() {
+
+    }
+
     public void onLoseBlock(int block) {
 
     }

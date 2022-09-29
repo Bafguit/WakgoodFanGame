@@ -25,8 +25,8 @@ public class Jururu extends AbstractPlayer {
         stat.speed = 5;
         stat.debuRes = 0.15f;
         stat.neutRes = 0.15f;
-        stat.critical = 0.5f;
-        stat.moveRes = 0.5f;
+        stat.critical = 0.05f;
+        stat.moveRes = 0.05f;
     }
 
     @Override

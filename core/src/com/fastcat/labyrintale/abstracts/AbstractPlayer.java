@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.skills.player.basic.MoveLeft;
+import com.fastcat.labyrintale.skills.player.basic.MoveP;
 import com.fastcat.labyrintale.skills.player.basic.MoveRight;
 import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.strings.CharString;
@@ -30,8 +31,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorW = c.cpy().mul(0.827f, 0.827f, 0.827f, 1);
         pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
-        mLeft = mLeftTemp = new MoveLeft(this);
-        mRight = mRightTemp = new MoveRight(this);
+        move = new MoveP(this);
         setImage(FileHandler.getCharImg().get(playerClass), FileHandler.getCharImgBig().get(playerClass), FileHandler.getCharBgImg().get(playerClass));
         imgTiny = FileHandler.getCharImgTiny().get(playerClass);
         imgPanel = FileHandler.getCharPanelImg().get(playerClass);
@@ -53,8 +53,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         for (int i = 0; i < 3; i++) {
             hand[i] = deck.get(i).clone();
         }
-        mRightTemp = mRight.clone();
-        mLeftTemp = mLeft.clone();
+        moveTemp = move.clone();
     }
 
     public void gainItem(AbstractItem i, int index) {

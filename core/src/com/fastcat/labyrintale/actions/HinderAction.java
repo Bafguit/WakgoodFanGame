@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.status.TempSpeedStatus;
 
 import static com.badlogic.gdx.graphics.Color.CHARTREUSE;
 
@@ -18,7 +19,7 @@ public class HinderAction extends AbstractAction {
     public HinderAction(AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, int cool) {
         super(actor, target, 0.5f);
         info = new AbstractEntity.DamageInfo(actor, damage);
-        this.cool = cool;
+        this.cool = -cool;
     }
 
     @Override
@@ -41,9 +42,7 @@ public class HinderAction extends AbstractAction {
                     if (te.isAlive()) te.takeDamage(info);
                 }
                 for(AbstractEntity e : target) {
-                    for(AbstractSkill s : e.hand) {
-                        s.cooldown = Math.max(s.cooldown + cool, 0);
-                    }
+                    e.applyStatus(new TempSpeedStatus(cool), cool);
                 }
             } else isDone = true;
         }

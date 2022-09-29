@@ -18,15 +18,15 @@ public class BunnyHat extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(4);
-        owner.stat.attack++;
-        owner.stat.spell++;
+        owner.stat.attack += 1;
+        owner.stat.spell += 1;
+        owner.stat.critical += 0.1f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-4);
-        owner.stat.attack--;
-        owner.stat.spell--;
+        owner.stat.attack -= 1;
+        owner.stat.spell -= 1;
+        owner.stat.critical -= 0.1f;
     }
 }

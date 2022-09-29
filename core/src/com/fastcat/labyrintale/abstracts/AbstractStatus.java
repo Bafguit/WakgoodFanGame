@@ -77,6 +77,10 @@ public abstract class AbstractStatus implements Cloneable {
 
     }
 
+    public void startOfRound() {
+
+    }
+
     public void endOfRound() {
 
     }

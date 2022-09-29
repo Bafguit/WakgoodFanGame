@@ -335,12 +335,9 @@ public class BattleScreen extends AbstractScreen {
             return i;
         });
         cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
-        setTurn(temp);
-    }
-
-    public void setTurn(Array<AbstractEntity> t) {
-        turn = t;
+        turn = temp;
         turnIndex = -1;
+        ActionHandler.bot(new RoundStartAction());
         nextTurn();
         cPanel.battlePanel.turnView.setNewTurns(turn);
     }

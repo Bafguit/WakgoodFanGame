@@ -87,7 +87,6 @@ public class AbstractLabyrinth {
 
     public static void prepare() {
         advisor.skill.usedOnce = false;
-        advisor.skill.cooldown = 0;
     }
 
     public static boolean hasSlot() {
@@ -200,14 +199,12 @@ public class AbstractLabyrinth {
 
     public static void victoryRoom() {
         advisor.skill.usedOnce = false;
-        advisor.skill.cooldown = 0;
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
         AbstractPlayer[] temp = players;
         players = new AbstractPlayer[4];
         for (AbstractPlayer p : temp) {
-            p.mRightTemp = p.mRight;
-            p.mLeftTemp = p.mLeft;
+            p.moveTemp = p.move;
             players[p.index] = p;
         }
         //AbstractLabyrinth.prepare();

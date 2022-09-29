@@ -518,7 +518,7 @@ public final class GroupHandler {
             t.add(new ElasticRing(null));
             t.add(new Coffin(null));
             t.add(new BronzeItem3(null));
-            t.add(new BronzeItem4(null));
+            t.add(new Shield(null));
             t.add(new EyePatch(null));
             t.add(new BigRibbon(null));
             t.add(new BronzeItem10(null));
@@ -541,7 +541,7 @@ public final class GroupHandler {
 
             //골드
             t.add(new Juggernaut(null));
-            t.add(new GoldItem2(null));
+            t.add(new Brainize(null));
             t.add(new Turtle(null));
             t.add(new GoldenRing(null));
             t.add(new GoldItem5(null));
@@ -818,7 +818,6 @@ public final class GroupHandler {
             t.add(new Obstinate(null));
             t.add(new IronForm(null));
             t.add(new Guard(null));
-            t.add(new Wakchori(null));
             playerSort.put(PlayerClass.WAK, t);
         }
 

@@ -10,7 +10,6 @@ import com.fastcat.labyrintale.items.starter.Pendant;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.wak.ShieldPush;
-import com.fastcat.labyrintale.skills.player.wak.Wakchori;
 
 import static com.badlogic.gdx.graphics.Color.FOREST;
 
@@ -34,7 +33,6 @@ public class Wakgood extends AbstractPlayer {
         Array<AbstractSkill> temp = new Array<>();
         temp.add(new Strike(this));
         temp.add(new Barrier(this));
-        //temp.add(new Wakchori(this));
         temp.add(new ShieldPush(this));
         return temp;
     }

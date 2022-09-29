@@ -15,7 +15,7 @@ public class UnstoppableE extends AbstractSkill {
     public UnstoppableE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 3);
-        cooltime = 1;
+
     }
 
     @Override

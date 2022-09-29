@@ -52,10 +52,8 @@ public abstract class AbstractEntity implements Cloneable {
     public AbstractUI ui;
     public Array<AbstractSkill> deck;
     public AbstractSkill[] hand;
-    public AbstractSkill mLeft;
-    public AbstractSkill mRight;
-    public AbstractSkill mLeftTemp;
-    public AbstractSkill mRightTemp;
+    public AbstractSkill move;
+    public AbstractSkill moveTemp;
     public LinkedList<AbstractStatus> status = new LinkedList<>();
     public AbstractItem[] item = new AbstractItem[2];
     public int[] slot = new int[3];

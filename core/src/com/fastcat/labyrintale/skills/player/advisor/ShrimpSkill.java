@@ -16,7 +16,7 @@ public class ShrimpSkill extends AbstractSkill {
     public ShrimpSkill() {
         super(ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE);
-        cooltime = 3;
+
     }
 
     @Override

@@ -48,8 +48,6 @@ public class SkillButtonPanel extends AbstractUI {
             if (skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            if (skill.cooldown > 0 && !skill.usedOnce && !skill.usedOnly)
-                FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cooldown), x, y + sHeight / 2, sWidth, sHeight);
         }
     }
 

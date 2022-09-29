@@ -25,7 +25,7 @@ public class BattlePanel implements Disposable {
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     public AbstractSkill selected;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
-    public SkillButtonPanel[] mSkill = new SkillButtonPanel[2];
+    public SkillButtonPanel mSkill;
     public SkillButtonPanel aSkill;
     public StatIcon[] stats = new StatIcon[8];
     public ItemPanel[] item = new ItemPanel[2];
@@ -43,10 +43,8 @@ public class BattlePanel implements Disposable {
         item[1].setPosition(w * 0.32f - item[1].sWidth / 2, h * 0.225f);
         aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
         aSkill.setPosition(w * 0.58f - aSkill.sWidth, h * 0.075f);
-        mSkill[0] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
-        mSkill[0].setPosition(w * 0.84f - mSkill[0].sWidth, h * 0.225f);
-        mSkill[1] = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
-        mSkill[1].setPosition(w * 0.9f - mSkill[1].sWidth, h * 0.225f);
+        mSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
+        mSkill.setPosition(w * 0.9f - mSkill.sWidth, h * 0.225f);
         for (int i = 0; i < 3; i++) {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
             s.setPosition(w * 0.9f - w * 0.08f * i - s.sWidth, h * 0.075f);
@@ -75,8 +73,8 @@ public class BattlePanel implements Disposable {
         for (int i = 0; i < 3; i++) {
             skill[i].update();
         }
+        mSkill.update();
         for (int i = 0; i < 2; i++) {
-            mSkill[i].update();
             item[i].update();
         }
         aSkill.update();
@@ -104,8 +102,8 @@ public class BattlePanel implements Disposable {
 
         for (int i = 0; i < 2; i++) {
             item[i].render(sb);
-            mSkill[i].render(sb);
         }
+        mSkill.render(sb);
         for (int i = 0; i < 3; i++) {
             skill[i].render(sb);
         }
@@ -126,8 +124,7 @@ public class BattlePanel implements Disposable {
                 skill[j].skill = p.hand[2 - j];
             }
             aSkill.skill = AbstractLabyrinth.advisor.skill;
-            mSkill[0].skill = p.mLeftTemp;
-            mSkill[1].skill = p.mRightTemp;
+            mSkill.skill = p.moveTemp;
             item[0].item = p.item[0];
             item[1].item = p.item[1];
         }
@@ -138,8 +135,8 @@ public class BattlePanel implements Disposable {
         for (int i = 0; i < 3; i++) {
             skill[i].dispose();
         }
+        mSkill.dispose();
         for (int i = 0; i < 2; i++) {
-            mSkill[i].dispose();
             item[i].dispose();
         }
         aSkill.dispose();

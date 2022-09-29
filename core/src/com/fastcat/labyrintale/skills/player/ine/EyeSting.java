@@ -18,7 +18,6 @@ public class EyeSting extends AbstractSkill {
     public EyeSting(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
-        cooltime = 5;
     }
 
     @Override
@@ -29,6 +28,6 @@ public class EyeSting extends AbstractSkill {
 
     @Override
     protected void upgradeCard() {
-        if(upgradeCount == 2) cooltime = 4;
+
     }
 }

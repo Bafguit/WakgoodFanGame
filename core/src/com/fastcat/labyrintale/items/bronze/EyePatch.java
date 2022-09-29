@@ -17,12 +17,14 @@ public class EyePatch extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(2);
+        owner.stat.spell += 2;
+        owner.stat.debuRes += 0.1f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-2);
+        owner.stat.spell -= 2;
+        owner.stat.debuRes -= 0.1f;
     }
 
     @Override

@@ -56,9 +56,5 @@
     "KEY" : [
       "Block"
     ]
-  },
-  "Wakchori": {
-    "NAME": "왁초리",
-    "DESC": "모든 적에게 피해 {A}"
   }
 }

@@ -15,12 +15,17 @@ public class GolemHead extends AbstractItem {
 
     @Override
     public void onGain() {
-        AbstractLabyrinth.bleakMax = 60;
-        AbstractLabyrinth.modifyBleak(-100);
+        owner.stat.speed -= 500;
+        owner.stat.neutRes += 5;
+        owner.stat.debuRes += 5;
+        owner.stat.moveRes += 5;
     }
 
     @Override
     public void onRemove() {
-        AbstractLabyrinth.bleakMax = 100;
+        owner.stat.speed += 500;
+        owner.stat.neutRes -= 5;
+        owner.stat.debuRes -= 5;
+        owner.stat.moveRes -= 5;
     }
 }

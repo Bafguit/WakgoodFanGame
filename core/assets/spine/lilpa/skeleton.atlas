@@ -1,41 +1,103 @@
 
 skeleton.png
-size: 1706,482
+size: 1945,1515
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 939, 1102
+  size: 411, 448
+  orig: 1280, 1280
+  offset: 458, 291
+  index: -1
+cape
+  rotate: false
+  xy: 462, 894
+  size: 459, 439
+  orig: 1280, 1280
+  offset: 435, 238
+  index: -1
+die
+  rotate: true
+  xy: 2, 243
+  size: 649, 800
+  orig: 1280, 1280
+  offset: 311, 154
+  index: -1
+hair
+  rotate: true
+  xy: 398, 1335
+  size: 178, 539
+  orig: 1280, 1280
+  offset: 731, 609
+  index: -1
+hand_left
+  rotate: false
+  xy: 2, 1398
+  size: 138, 115
+  orig: 1280, 1280
+  offset: 424, 526
+  index: -1
+hand_right
+  rotate: false
+  xy: 142, 1340
+  size: 254, 173
+  orig: 1280, 1280
+  offset: 685, 425
+  index: -1
+head
+  rotate: true
+  xy: 2, 906
+  size: 427, 458
+  orig: 1280, 1280
+  offset: 425, 603
+  index: -1
+hit
+  rotate: true
+  xy: 804, 2
+  size: 589, 1139
+  orig: 1280, 1280
+  offset: 326, 61
+  index: -1
+leg
+  rotate: true
+  xy: 923, 593
+  size: 502, 503
+  orig: 1280, 1280
+  offset: 386, 30
+  index: -1
+staff
+  rotate: true
+  xy: 1389, 1097
+  size: 416, 506
+  orig: 1280, 1280
+  offset: 703, 271
+  index: -1
+
+skeleton2.png
+size: 1978,1819
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
-  rotate: false
-  xy: 705, 2
-  size: 330, 478
-  orig: 640, 640
-  offset: 155, 39
-  index: -1
-die
-  rotate: false
-  xy: 1037, 55
-  size: 364, 425
-  orig: 640, 640
-  offset: 126, 49
-  index: -1
-hit
-  rotate: false
-  xy: 2, 4
-  size: 369, 476
-  orig: 640, 640
-  offset: 122, 39
+  rotate: true
+  xy: 1091, 870
+  size: 947, 885
+  orig: 1280, 1280
+  offset: 246, 71
   index: -1
 idle
-  rotate: false
-  xy: 373, 2
-  size: 330, 478
-  orig: 640, 640
-  offset: 140, 39
+  rotate: true
+  xy: 2, 2
+  size: 733, 1118
+  orig: 1280, 1280
+  offset: 386, 30
   index: -1
 skill
-  rotate: false
-  xy: 1403, 2
-  size: 301, 478
-  orig: 640, 640
-  offset: 156, 39
+  rotate: true
+  xy: 2, 737
+  size: 1080, 1087
+  orig: 1280, 1280
+  offset: 176, 33
   index: -1

@@ -18,17 +18,15 @@ public class SuperLadle extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(5);
-        for(AbstractPlayer p : AbstractLabyrinth.players) {
-            p.stat.attack++;
-        }
+        owner.stat.attack += 2;
+        owner.stat.critical += 0.1f;
+        owner.stat.multiply += 0.2f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-5);
-        for(AbstractPlayer p : AbstractLabyrinth.players) {
-            p.stat.attack--;
-        }
+        owner.stat.attack -= 2;
+        owner.stat.critical -= 0.1f;
+        owner.stat.multiply -= 0.2f;
     }
 }

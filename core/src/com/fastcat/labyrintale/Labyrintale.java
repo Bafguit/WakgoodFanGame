@@ -30,8 +30,6 @@ import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
-import com.fastcat.labyrintale.uis.BleakView;
-import com.fastcat.labyrintale.uis.control.ControlPanel;
 import lombok.Getter;
 
 public class Labyrintale extends Game {

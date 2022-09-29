@@ -17,12 +17,12 @@ public class GlowingStick extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(2);
+        owner.stat.attack += 1;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-2);
+        owner.stat.attack -= 1;
     }
 
     @Override

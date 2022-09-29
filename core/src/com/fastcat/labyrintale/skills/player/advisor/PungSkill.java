@@ -13,7 +13,7 @@ public class PungSkill extends AbstractSkill {
 
     public PungSkill() {
         super(ID, TYPE, RARITY, TARGET);
-        cooltime = 3;
+
     }
 
     @Override

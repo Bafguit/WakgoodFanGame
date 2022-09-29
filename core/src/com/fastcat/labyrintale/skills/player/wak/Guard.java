@@ -17,7 +17,6 @@ public class Guard extends AbstractSkill {
     public Guard(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE, 1);
-        cooltime = 4;
     }
 
     @Override

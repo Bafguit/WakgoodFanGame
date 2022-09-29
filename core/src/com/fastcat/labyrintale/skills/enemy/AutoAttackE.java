@@ -16,7 +16,7 @@ public class AutoAttackE extends AbstractSkill {
     public AutoAttackE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
-        cooltime = 1;
+
     }
 
     @Override

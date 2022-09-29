@@ -17,19 +17,15 @@ public class Purplight extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(4);
+        owner.stat.attack += 2;
+        owner.stat.speed += 10;
+        owner.stat.debuRes -= 0.05f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-4);
-    }
-
-    @Override
-    public void onApplyStatus(AbstractStatus s, Array<AbstractEntity> t) {
-        if (s.id.equals("Infection")) {
-            flashWithoutAction();
-            s.amount++;
-        }
+        owner.stat.attack -= 2;
+        owner.stat.speed -= 10;
+        owner.stat.debuRes += 0.05f;
     }
 }

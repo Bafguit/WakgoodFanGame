@@ -15,12 +15,14 @@ public class CheeseBall extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(4);
+        owner.stat.speed += 5;
+        owner.stat.debuRes += 0.1f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(-4);
+        owner.stat.speed -= 5;
+        owner.stat.debuRes -= 0.1f;
     }
 
     @Override

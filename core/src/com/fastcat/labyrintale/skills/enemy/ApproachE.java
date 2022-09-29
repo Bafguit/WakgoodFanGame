@@ -16,7 +16,7 @@ public class ApproachE extends AbstractSkill {
     public ApproachE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 3);
-        cooltime = 1;
+
     }
 
     @Override

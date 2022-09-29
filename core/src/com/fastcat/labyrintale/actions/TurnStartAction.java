@@ -18,6 +18,7 @@ public class TurnStartAction extends AbstractAction {
     protected void updateAction() {
         if (isDone) {
             if (e.isAlive()) {
+                if(!e.hasStatus("Maintain")) e.block = 0;
                 if(e.isPlayer) {
                     for (AbstractItem m : e.item) {
                         if (m != null) m.startOfTurn();

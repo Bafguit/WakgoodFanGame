@@ -1,13 +1,103 @@
 
 skeleton.png
-size: 334,503
+size: 2036,1534
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-viichan_sd_t
+arm
+  rotate: true
+  xy: 2, 1390
+  size: 142, 213
+  orig: 1280, 1280
+  offset: 454, 476
+  index: -1
+body
+  rotate: true
+  xy: 217, 1293
+  size: 239, 376
+  orig: 1280, 1280
+  offset: 512, 382
+  index: -1
+case
   rotate: false
-  xy: 2, 2
-  size: 330, 499
-  orig: 640, 640
-  offset: 140, 39
+  xy: 1562, 1173
+  size: 472, 359
+  orig: 1280, 1280
+  offset: 319, 135
+  index: -1
+die
+  rotate: false
+  xy: 1115, 2
+  size: 828, 757
+  orig: 1280, 1280
+  offset: 235, 124
+  index: -1
+hair
+  rotate: true
+  xy: 2, 841
+  size: 450, 584
+  orig: 1280, 1280
+  offset: 408, 431
+  index: -1
+hand
+  rotate: false
+  xy: 1227, 1244
+  size: 333, 288
+  orig: 1280, 1280
+  offset: 465, 395
+  index: -1
+head
+  rotate: false
+  xy: 1085, 761
+  size: 463, 481
+  orig: 1280, 1280
+  offset: 432, 648
+  index: -1
+idle
+  rotate: true
+  xy: 2, 183
+  size: 576, 1111
+  orig: 1280, 1280
+  offset: 319, 18
+  index: -1
+leg
+  rotate: false
+  xy: 588, 806
+  size: 495, 458
+  orig: 1280, 1280
+  offset: 381, 18
+  index: -1
+sword
+  rotate: true
+  xy: 595, 1266
+  size: 266, 630
+  orig: 1280, 1280
+  offset: 352, 362
+  index: -1
+
+skeleton2.png
+size: 2014,1758
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack
+  rotate: false
+  xy: 930, 2
+  size: 1045, 855
+  orig: 1280, 1280
+  offset: 226, 72
+  index: -1
+hit
+  rotate: true
+  xy: 930, 859
+  size: 897, 1082
+  orig: 1280, 1280
+  offset: 12, 64
+  index: -1
+skill
+  rotate: false
+  xy: 2, 638
+  size: 926, 1118
+  orig: 1280, 1280
+  offset: 10, 18
   index: -1

@@ -16,7 +16,7 @@ public class HolyLight extends AbstractSkill {
     public HolyLight(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE, 1);
-        cooltime = 3;
+
     }
 
     @Override

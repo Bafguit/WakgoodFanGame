@@ -17,12 +17,13 @@ public class BossItem extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.setMaxHealth(10, true);
+        owner.modifyMaxHealth(-10);
         owner.stat.attack += 5;
     }
 
     @Override
     public void onRemove() {
+        owner.modifyMaxHealth(10);
         owner.stat.attack -= 5;
     }
 }

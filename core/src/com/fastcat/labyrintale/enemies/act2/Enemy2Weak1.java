@@ -30,7 +30,6 @@ public class Enemy2Weak1 extends AbstractEnemy {
         for(int i = 0; i < 3; i++) {
             s1.upgrade();
         }
-        s1.cooltime = 1;
         temp.add(s1);
         temp.add(new CounterE(this));
         return temp;

@@ -18,7 +18,7 @@ public class ThrowE extends AbstractSkill {
     public ThrowE(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
-        cooltime = 1;
+
     }
 
     @Override

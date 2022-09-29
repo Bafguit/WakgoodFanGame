@@ -6,12 +6,12 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
 
-public class BronzeItem4 extends AbstractItem {
+public class Shield extends AbstractItem {
 
-    private static final String ID = "BronzeItem4";
+    private static final String ID = "Shield";
     private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-    public BronzeItem4(AbstractPlayer owner) {
+    public Shield(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
