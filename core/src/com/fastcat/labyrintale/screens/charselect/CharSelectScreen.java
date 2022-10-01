@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.StatIcon;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -47,6 +48,7 @@ public class CharSelectScreen extends AbstractScreen {
         chars[2] = char3;
         chars[3] = char4;
         addChars();
+        cType = ControlPanel.ControlType.HIDE;
     }
 
     private void addChars() {

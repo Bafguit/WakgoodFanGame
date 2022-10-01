@@ -21,7 +21,7 @@ public class Enemy2Weak5 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new HostStatus(2), 1, false);
+        applyStatus(new HostStatus(2), this, 1, false);
     }
 
     @Override

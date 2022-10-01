@@ -40,7 +40,6 @@ public class PassRewardButton extends AbstractUI {
             if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
                 AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
                 AbstractLabyrinth.endRoom();
-                Labyrintale.returnToWay();
             } else {
                 Labyrintale.eventScreen.event.endBattle();
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);

@@ -54,7 +54,7 @@ public class MoveAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            if (toIndex < 0 || toIndex > 3 || from.movable > 0 || alive != from.isAlive()) {
+            if (toIndex < 0 || toIndex > 3 || (alive && from.movable > 0) || alive != from.isAlive()) {
                 isDone = true;
                 run = false;
             } else if (fromType != type && from.stat.moveRes > 0 && publicRandom.random(0, 99) < AbstractEntity.EntityStat.cap(from.stat.moveRes)) {

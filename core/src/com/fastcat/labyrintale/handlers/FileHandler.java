@@ -69,6 +69,9 @@ public class FileHandler implements Disposable {
     //이벤트
     @Getter
     private static final HashMap<String, Sprite> eventImg = new HashMap<>();
+    //제약
+    @Getter
+    private static final HashMap<String, Sprite> riskImg = new HashMap<>();
     //영상
     @Getter
     private static final HashMap<String, FileHandle> video = new HashMap<>();
@@ -113,6 +116,7 @@ public class FileHandler implements Disposable {
         generateItemImg();
         generateEventImg();
         generateVideo();
+        generateRiskImg();
         setAntiAliased();
     }
 
@@ -147,6 +151,7 @@ public class FileHandler implements Disposable {
         maps.add(statusImg);
         maps.add(itemImg);
         maps.add(itemImgTrans);
+        maps.add(riskImg);
         //maps.put("eventImg", eventImg);
     }
 
@@ -273,6 +278,50 @@ public class FileHandler implements Disposable {
             charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
             skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
             atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
+        }
+    }
+
+    private void generateRiskImg() {
+        riskImg.clear();
+        for(int i = 1; i <= 3; i++) {
+            String k = "FAM_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "FTG_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "GRW_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "HUG_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "INT_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "MSR_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "POV_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "RST_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "SPD_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
+        }
+        for(int i = 1; i <= 3; i++) {
+            String k = "STR_" + i;
+            riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
         }
     }
 

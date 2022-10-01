@@ -20,7 +20,7 @@ public class Enemy3Elite2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ImmuneStatus(3), 3, false);
+        applyStatus(new ImmuneStatus(3), this, 3, false);
     }
 
     @Override

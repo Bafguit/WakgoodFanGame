@@ -34,7 +34,7 @@ public class BettingEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 50;
+                    AbstractLabyrinth.modifyGold(-50);
                 }
             }));
             a.add(new BetEventChoice(data.SELECT[1], this, 30, 2, 3, new EventCondition() {
@@ -50,7 +50,7 @@ public class BettingEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 50;
+                    AbstractLabyrinth.modifyGold(-50);
                 }
             }));
             a.add(new NextPageEventChoice(data.SELECT[3], this, 4));
@@ -63,9 +63,9 @@ public class BettingEvent extends AbstractEvent {
     @Override
     public void onSetPage(int page) {
         if (page == 1) {
-            AbstractLabyrinth.gold += 100;
+            AbstractLabyrinth.modifyGold(100);
         } else if (page == 2) {
-            AbstractLabyrinth.gold += 300;
+            AbstractLabyrinth.modifyGold(300);
         }
     }
 }

@@ -54,15 +54,16 @@ public final class SaveHandler {
 
     public static void finish(boolean refresh) {
         if (refresh) refresh();
-        /*if(hasSave) {
+        if(hasSave) {
+            data = SaveData.create();
             try {
                 mapper.writeValue(new File("run_" + data.date + ".json"), data);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             saveFile.delete();
-        }*/
-        refresh();
+            data = null;
+        }
     }
 
     public static void load() {
@@ -235,11 +236,11 @@ public final class SaveHandler {
         public int INT;
         public int HUG;
         public int FAM;
-        public int FOG;
+        public int SPD;
         public int POV;
         public int MSR;
         public int FTG;
-        public int ANX;
+        public int RST;
 
         public static RestrictionData create() {
             RestrictionData temp = new RestrictionData();
@@ -248,11 +249,11 @@ public final class SaveHandler {
             temp.INT = restriction.INT;
             temp.HUG = restriction.HUG;
             temp.FAM = restriction.FAM;
-            temp.FOG = restriction.FOG;
+            temp.SPD = restriction.SPD;
             temp.POV = restriction.POV;
             temp.MSR = restriction.MSR;
             temp.FTG = restriction.FTG;
-            temp.ANX = restriction.ANX;
+            temp.RST = restriction.RST;
             return temp;
         }
     }

@@ -29,14 +29,14 @@ public class CoercionAction extends AbstractAction {
             AbstractStatus b = new BlindStatus();
             AbstractStatus u = new UnblockableStatus();
             if(isBlind) {
-                first.applyStatus(b, b.amount);
+                first.applyStatus(b, actor, b.amount);
                 for (AbstractEntity e : target) {
-                    e.applyStatus(u.cpy(), u.amount);
+                    e.applyStatus(u.cpy(), actor, u.amount);
                 }
             } else {
-                first.applyStatus(u, u.amount);
+                first.applyStatus(u, actor, u.amount);
                 for (AbstractEntity e : target) {
-                    e.applyStatus(b.cpy(), b.amount);
+                    e.applyStatus(b.cpy(), actor, b.amount);
                 }
             }
         }

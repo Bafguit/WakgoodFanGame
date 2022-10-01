@@ -120,7 +120,7 @@ public class ShopRoom extends AbstractRoom {
         public final void takeItem() {
             take();
             isDone = true;
-            AbstractLabyrinth.gold -= price;
+            AbstractLabyrinth.modifyGold(-price);
         }
 
         protected abstract void take();

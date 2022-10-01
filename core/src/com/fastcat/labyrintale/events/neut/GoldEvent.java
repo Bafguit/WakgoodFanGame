@@ -30,6 +30,6 @@ public class GoldEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if (page == 1) AbstractLabyrinth.gold += 100;
+        if (page == 1) AbstractLabyrinth.modifyGold(100);
     }
 }

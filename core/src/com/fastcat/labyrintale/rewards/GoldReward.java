@@ -40,6 +40,6 @@ public class GoldReward extends AbstractReward {
 
     @Override
     public void takeReward() {
-        AbstractLabyrinth.gold += gold;
+        AbstractLabyrinth.modifyGold(gold);
     }
 }

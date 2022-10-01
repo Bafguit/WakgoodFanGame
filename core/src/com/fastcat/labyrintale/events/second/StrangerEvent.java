@@ -43,11 +43,11 @@ public class StrangerEvent extends AbstractEvent {
     @Override
     public void onSetPage(int page) {
         if (page == 1) {
-            AbstractLabyrinth.gold += 50;
+            AbstractLabyrinth.modifyGold(50);
         } else if (page == 2) {
-            AbstractLabyrinth.gold += 250;
+            AbstractLabyrinth.modifyGold(250);
         } else if (page == 3) {
-            AbstractLabyrinth.gold -= 50;
+            AbstractLabyrinth.modifyGold(-50);
         }
     }
 }

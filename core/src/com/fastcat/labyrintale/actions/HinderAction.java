@@ -42,7 +42,7 @@ public class HinderAction extends AbstractAction {
                     if (te.isAlive()) te.takeDamage(info);
                 }
                 for(AbstractEntity e : target) {
-                    e.applyStatus(new TempSpeedStatus(cool), cool);
+                    e.applyStatus(new TempSpeedStatus(cool), actor, cool);
                 }
             } else isDone = true;
         }

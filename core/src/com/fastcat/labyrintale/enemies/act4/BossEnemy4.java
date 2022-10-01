@@ -21,8 +21,8 @@ public class BossEnemy4 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new AttackStatus(2), 2, false);
-        applyStatus(new ImmuneStatus(5), 5, false);
+        applyStatus(new AttackStatus(2), this, 2, false);
+        applyStatus(new ImmuneStatus(5), this, 5, false);
     }
 
     @Override

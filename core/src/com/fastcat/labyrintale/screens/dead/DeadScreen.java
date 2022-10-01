@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.dead;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class DeadScreen extends AbstractScreen {
 
@@ -19,6 +20,7 @@ public class DeadScreen extends AbstractScreen {
             setBg(FileHandler.getBg().get("BG_WIN"));
         }
         mainButton = new MainButton();
+        cType = ControlPanel.ControlType.HIDE;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class Enemy4Elite2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ArmourStatus(10), 10, false);
+        applyStatus(new ArmourStatus(10), this, 10, false);
     }
 
     @Override

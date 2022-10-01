@@ -36,7 +36,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 50;
+                    AbstractLabyrinth.modifyGold(-50);
                 }
             }, this, 7));
             a.add(new NextPageEventChoice(data.SELECT[11], this, 1));
@@ -55,7 +55,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 100;
+                    AbstractLabyrinth.modifyGold(-100);
                 }
             }, this, 7));
             a.add(new NextPageEventChoice(data.SELECT[11], this, 2));
@@ -74,7 +74,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 200;
+                    AbstractLabyrinth.modifyGold(-200);
                 }
             }));
             a.add(new NextPageEventChoice(data.SELECT[11], this, 3));
@@ -93,7 +93,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 300;
+                    AbstractLabyrinth.modifyGold(-300);
                 }
             }, this, 7));
             a.add(new NextPageEventChoice(data.SELECT[11], this, 4));
@@ -112,7 +112,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                    AbstractLabyrinth.gold -= 500;
+                    AbstractLabyrinth.modifyGold(-500);
                 }
             }, this, 5));
             a.add(new NextPageEventChoice(data.SELECT[10], this, 8));

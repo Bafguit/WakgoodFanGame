@@ -20,7 +20,7 @@ public class LethargyStatus extends AbstractStatus {
 
     @Override
     public void endOfTurn() {
-        top(new ReduceStatusAction(this, 1, true));
+        top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
     }
 
     @Override

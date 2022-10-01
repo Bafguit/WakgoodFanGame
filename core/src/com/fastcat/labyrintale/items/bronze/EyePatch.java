@@ -17,19 +17,13 @@ public class EyePatch extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.stat.spell += 2;
+        owner.stat.spell += 1;
         owner.stat.debuRes += 0.1f;
     }
 
     @Override
     public void onRemove() {
-        owner.stat.spell -= 2;
+        owner.stat.spell -= 1;
         owner.stat.debuRes -= 0.1f;
-    }
-
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new SpellStatus(1), owner, AbstractSkill.SkillTarget.SELF, true));
     }
 }

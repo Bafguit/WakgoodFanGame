@@ -39,6 +39,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public boolean usedOnly = false;
     public boolean passive = false;
     public boolean disposable = false;
+    public boolean nextTurn = true;
     public int upgradeCount = 0;
     public int attack = -1;
     public int baseAttack = -1;
@@ -548,8 +549,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             }
             use();
             if (disposable) usedOnce = true;
-            bot(new TurnEndAction(owner));
-            if(owner != null && owner.isPlayer) bot(new NextTurnAction());
+            if(owner != null) {
+                bot(new TurnEndAction(owner));
+                if(owner.isPlayer) bot(new NextTurnAction());
+            }
         }
     }
 
@@ -618,10 +621,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     @Override
     public final void onTargetSelected(AbstractEntity target) {
-        if(owner != null && owner.isPlayer) {
-            top(new NextTurnAction());
-            top(new TurnEndAction(owner));
-        }
+        beforeOnTarget();
         onTarget(target);
         if(owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
             top(new SetAnimationAction(owner, "skill"));
@@ -633,6 +633,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     }
 
+    protected void beforeOnTarget() {
+        if(owner != null && owner.isPlayer) {
+            top(new NextTurnAction());
+            top(new TurnEndAction(owner));
+        }
+    }
     @Override
     public boolean setTarget() {
         boolean can = false;

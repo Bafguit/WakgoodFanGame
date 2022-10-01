@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
 public class MainMenuScreen extends AbstractScreen {
@@ -30,6 +31,8 @@ public class MainMenuScreen extends AbstractScreen {
 
         slide = new SlideBar(100, 100, 50);
         check = new CheckBox(100, 300, false);
+
+        cType = ControlPanel.ControlType.HIDE;
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
+import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
@@ -103,6 +104,11 @@ public class AbstractLabyrinth {
     }
 
     public static void modifyGold(int add) {
+        for(AbstractPlayer p : players) {
+            for(AbstractItem i : p.item) {
+                if(add > 0) add = i.onGainGold(add);
+            }
+        }
         gold = Math.max(gold + add, 0);
     }
 
@@ -153,6 +159,7 @@ public class AbstractLabyrinth {
         } else {
             currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
         }
+        Labyrintale.returnToWay();
         SaveHandler.save();
     }
 

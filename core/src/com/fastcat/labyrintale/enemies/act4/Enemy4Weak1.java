@@ -22,7 +22,7 @@ public class Enemy4Weak1 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new AttackStatus(3), 3, false);
+        applyStatus(new AttackStatus(3), this, 3, false);
     }
 
     @Override

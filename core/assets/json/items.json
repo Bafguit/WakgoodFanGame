@@ -144,12 +144,12 @@
     "NAME": "치즈볼",
     "DESC": "속도 &b<+5>\n디버프 저항 &b<+10%>\n전투 시작 시 자신의 모든 스킬이 강화됩니다."
   },
-  "BossItem": {
+  "TotoDeck": {
     "NAME": "도박사의 카드뭉치",
     "DESC": "최대 체력 &r<-10>\n공격력 &b<+5>"
   },
-  "BossItem2": {
-    "NAME": "",
+  "Snow": {
+    "NAME": "눈송이",
     "DESC": "공격력 &r<-5>\n주문력 &b<+5>"
   },
   "BrokenTicker": {
@@ -199,16 +199,16 @@
       "Energy"
     ]
   },
-  "ShopItem1": {
-    "NAME": "상점용 아이템1",
-    "DESC": ""
+  "TrickDeck": {
+    "NAME": "속임수 덱",
+    "DESC": "속도 &b<+10>\n치명타 확률 &b<+10%>\n획득하는 골드가 &b<20%> 증가합니다."
   },
-  "ShopItem2": {
-    "NAME": "상점용 아이템2",
-    "DESC": ""
+  "LifeContract": {
+    "NAME": "종신계약서",
+    "DESC": "속도 &b<-10>\n치명타 확률 &b<+10%>\n모든 저항 &b<+10%>"
   },
   "ShopItem3": {
-    "NAME": "상점용 아이템3",
+    "NAME": "",
     "DESC": ""
   },
   "ShopItem4": {
@@ -272,9 +272,9 @@
     "NAME": "쉴드",
     "DESC": "최대 체력 &b<+8>\n"
   },
-  "BronzeItem3": {
-    "NAME": "BronzeItem3",
-    "DESC": "테스트"
+  "RobotHand": {
+    "NAME": "로봇 손",
+    "DESC": "공격력 &b<+1>\n치명타 확률 &b<+10%>"
   },
   "BigRibbon": {
     "NAME": "거대 리본",

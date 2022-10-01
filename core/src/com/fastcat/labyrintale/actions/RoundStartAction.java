@@ -14,6 +14,7 @@ public class RoundStartAction extends AbstractAction {
     protected void updateAction() {
         if (isDone) {
             for(AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
+                e.blockRemove = e.block;
                 if(e.isPlayer) {
                     for (AbstractItem m : e.item) {
                         if (m != null) m.startOfRound();

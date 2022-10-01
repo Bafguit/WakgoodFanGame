@@ -31,7 +31,7 @@ public class FixedStatus extends AbstractStatus {
     }
 
     @Override
-    public void startOfTurn() {
+    public void endOfRound() {
         if(!fromEnemy) top(new RemoveStatusAction(this, true));
     }
 

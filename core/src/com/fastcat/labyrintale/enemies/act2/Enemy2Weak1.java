@@ -20,7 +20,7 @@ public class Enemy2Weak1 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new LureStatus(), 1, false);
+        applyStatus(new LureStatus(), this, 1, false);
     }
 
     @Override

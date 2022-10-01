@@ -517,7 +517,7 @@ public final class GroupHandler {
             t.add(new GlowingStick(null));
             t.add(new ElasticRing(null));
             t.add(new Coffin(null));
-            t.add(new BronzeItem3(null));
+            t.add(new RobotHand(null));
             t.add(new Shield(null));
             t.add(new EyePatch(null));
             t.add(new BigRibbon(null));
@@ -553,8 +553,8 @@ public final class GroupHandler {
             t.add(new GoldItem12(null));
 
             //보스
-            t.add(new BossItem(null));
-            t.add(new BossItem2(null));
+            t.add(new TotoDeck(null));
+            t.add(new Snow(null));
             t.add(new BossItem4(null));
             t.add(new BossItem5(null));
             t.add(new BossItem6(null));
@@ -567,8 +567,8 @@ public final class GroupHandler {
             t.add(new BrokenTicker(null));
 
             //상점
-            t.add(new ShopItem1(null));
-            t.add(new ShopItem2(null));
+            t.add(new TrickDeck(null));
+            t.add(new LifeContract(null));
             t.add(new ShopItem3(null));
             t.add(new ShopItem4(null));
             t.add(new ShopItem5(null));

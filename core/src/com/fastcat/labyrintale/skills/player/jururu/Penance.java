@@ -3,9 +3,7 @@ package com.fastcat.labyrintale.skills.player.jururu;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.actions.HealAction;
-import com.fastcat.labyrintale.actions.SelectTargetAction;
+import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 
@@ -37,8 +35,17 @@ public class Penance extends AbstractSkill {
             top(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN, true));
         } else {
             enemySelect = true;
+            nextTurn = true;
             top(new HealAction(owner, target, spell));
             top(new SelectTargetAction(this));
+        }
+    }
+
+    @Override
+    protected void beforeOnTarget() {
+        if(enemySelect) {
+            top(new NextTurnAction());
+            top(new TurnEndAction(owner));
         }
     }
 

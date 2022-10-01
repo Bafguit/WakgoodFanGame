@@ -39,6 +39,7 @@ public class VictoryAction extends AbstractAction {
         if (isDone) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 p.block = 0;
+                p.blockRemove = 0;
                 p.isNeut = false;
                 p.status = new LinkedList<>();
                 p.movable = 0;

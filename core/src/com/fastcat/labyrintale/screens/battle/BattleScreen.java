@@ -9,10 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
@@ -83,6 +80,7 @@ public class BattleScreen extends AbstractScreen {
                 ev.enemy.isDead = true;
                 ev.enemy.isDie = true;
             } else {
+                RestrictionHandler.getInstance().onEnemySpawn(ev.enemy);
                 ev.enemy.beforeBattle();
             }
             ev.enemy.shuffleHand();

@@ -19,7 +19,7 @@ public class Enemy2Normal2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new SpikeStatus(1), 1, false);
+        applyStatus(new SpikeStatus(1), this, 1, false);
     }
 
     @Override

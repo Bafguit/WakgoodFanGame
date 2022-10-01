@@ -22,7 +22,6 @@ public class Flame extends AbstractSkill {
     @Override
     public void use() {
         bot(new ApplyStatusAction(new BurnStatus(value), owner, target, true));
-        bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
     }
 
     @Override

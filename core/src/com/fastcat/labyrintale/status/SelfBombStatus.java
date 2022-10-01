@@ -27,7 +27,7 @@ public class SelfBombStatus extends AbstractStatus {
 
     public void endOfTurn() {
         if(amount > 1) {
-            top(new ReduceStatusAction(this, 1, true));
+            top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
         } else {
             top(new DieAction(owner, 0.3f));
             top(new FlashAction(owner, img));

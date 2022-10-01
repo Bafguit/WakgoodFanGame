@@ -20,7 +20,7 @@ public class Enemy2Normal3 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new MaintainStatus(this), 1, false);
+        applyStatus(new MaintainStatus(this), this, 1, false);
         block = 40;
     }
 

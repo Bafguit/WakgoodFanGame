@@ -18,7 +18,7 @@ public class Counter extends AbstractSkill {
     public Counter(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
-        setBaseAttack(VALUE, 1);
+        setBaseValue(VALUE, 1);
     }
 
     @Override

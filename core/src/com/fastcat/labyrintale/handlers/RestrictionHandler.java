@@ -17,11 +17,11 @@ public final class RestrictionHandler {
     public int INT; //TODO
     public int HUG;
     public int FAM;
-    public int FOG;
+    public int SPD;
     public int POV;
     public int MSR;
     public int FTG;
-    public int ANX;
+    public int RST;
 
     private RestrictionHandler() {
         reset();
@@ -43,11 +43,11 @@ public final class RestrictionHandler {
         INT = 0;
         HUG = 0;
         FAM = 0;
-        FOG = 0;
+        SPD = 0;
         POV = 0;
         MSR = 0;
         FTG = 0;
-        ANX = 0;
+        RST = 0;
     }
 
     public void setData(SaveHandler.RestrictionData data) {
@@ -56,20 +56,17 @@ public final class RestrictionHandler {
         INT = data.INT;
         HUG = data.HUG;
         FAM = data.FAM;
-        FOG = data.FOG;
+        SPD = data.SPD;
         POV = data.POV;
         MSR = data.MSR;
         FTG = data.FTG;
-        ANX = data.ANX;
+        RST = data.RST;
     }
 
     public void onCreateLabyrinth() {
         if (POV == 1) AbstractLabyrinth.gold -= 10;
         else if (POV == 2) AbstractLabyrinth.gold -= 30;
         else if (POV == 3) AbstractLabyrinth.gold -= 50;
-
-        if (FOG > 0) AbstractLabyrinth.bleak += FOG * 10;
-        if (ANX > 0) AbstractLabyrinth.bleakAdd += ANX;
     }
 
     public void onCreatePlayer(AbstractPlayer player) {
@@ -79,6 +76,12 @@ public final class RestrictionHandler {
 
     public void onEnemySpawn(AbstractEnemy enemy) {
         if (GRW > 0) enemy.setMaxHealth((int) (enemy.maxHealth * (1.0f + GRW * 0.1f)), true);
+        if (SPD > 0) enemy.stat.speed += 2 + (4 * (SPD - 1));
+        if (RST > 0) {
+            enemy.stat.moveRes += 5 * RST;
+            enemy.stat.debuRes += 5 * RST;
+            enemy.stat.neutRes += 5 * RST;
+        }
     }
 
     public void atBattleStart() {

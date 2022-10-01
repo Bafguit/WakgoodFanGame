@@ -149,6 +149,10 @@ public class AbstractItem implements Cloneable {
 
     }
 
+    public int onGainGold(int amount) {
+        return amount;
+    }
+
     protected final void top(AbstractAction a) {
         ActionHandler.top(a);
     }
