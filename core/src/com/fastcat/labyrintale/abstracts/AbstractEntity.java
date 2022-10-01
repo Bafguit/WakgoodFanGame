@@ -386,7 +386,12 @@ public abstract class AbstractEntity implements Cloneable {
                                     blockRemove = 0;
                                 } else if (!isNeut) {
                                     neutralize();
+                                    block = 0;
+                                    blockRemove = 0;
                                 } else if (stat.neutRes > 0 && publicRandom.random(0, 99) < EntityStat.cap(stat.neutRes)) {
+                                    health = 1;
+                                    block = 0;
+                                    blockRemove = 0;
                                     EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
                                     applyStatus(new NeutResStatus(this, 10), this, 10, false);
                                 } else {

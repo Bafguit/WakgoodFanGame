@@ -39,7 +39,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public boolean usedOnly = false;
     public boolean passive = false;
     public boolean disposable = false;
-    public boolean nextTurn = true;
     public int upgradeCount = 0;
     public int attack = -1;
     public int baseAttack = -1;

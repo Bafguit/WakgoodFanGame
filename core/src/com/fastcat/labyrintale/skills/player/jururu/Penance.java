@@ -15,7 +15,7 @@ public class Penance extends AbstractSkill {
     private static final SkillTarget TARGET = SkillTarget.ENEMY;
     private static final int VALUE = 2;
 
-    private boolean enemySelect = false;
+    private boolean enemySelect = true;
 
     public Penance(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
@@ -33,17 +33,16 @@ public class Penance extends AbstractSkill {
         if(enemySelect) {
             enemySelect = false;
             top(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN, true));
+            top(new SelectTargetAction(this));
         } else {
             enemySelect = true;
-            nextTurn = true;
             top(new HealAction(owner, target, spell));
-            top(new SelectTargetAction(this));
         }
     }
 
     @Override
     protected void beforeOnTarget() {
-        if(enemySelect) {
+        if(!enemySelect) {
             top(new NextTurnAction());
             top(new TurnEndAction(owner));
         }

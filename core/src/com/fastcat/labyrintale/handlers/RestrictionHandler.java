@@ -50,6 +50,19 @@ public final class RestrictionHandler {
         RST = 0;
     }
 
+    public void setSetting() {
+        GRW = SettingHandler.setting.risk.get(RiskType.GRW);
+        STR = SettingHandler.setting.risk.get(RiskType.STR);
+        INT = SettingHandler.setting.risk.get(RiskType.INT);
+        HUG = SettingHandler.setting.risk.get(RiskType.HUG);
+        FAM = SettingHandler.setting.risk.get(RiskType.FAM);
+        SPD = SettingHandler.setting.risk.get(RiskType.SPD);
+        POV = SettingHandler.setting.risk.get(RiskType.POV);
+        MSR = SettingHandler.setting.risk.get(RiskType.MSR);
+        FTG = SettingHandler.setting.risk.get(RiskType.FTG);
+        RST = SettingHandler.setting.risk.get(RiskType.RST);
+    }
+
     public void setData(SaveHandler.RestrictionData data) {
         GRW = data.GRW;
         STR = data.STR;
@@ -64,58 +77,43 @@ public final class RestrictionHandler {
     }
 
     public void onCreateLabyrinth() {
-        if (POV == 1) AbstractLabyrinth.gold -= 10;
-        else if (POV == 2) AbstractLabyrinth.gold -= 30;
-        else if (POV == 3) AbstractLabyrinth.gold -= 50;
+        if (POV > 0) AbstractLabyrinth.gold -= 10 * POV;
     }
 
     public void onCreatePlayer(AbstractPlayer player) {
-        if (HUG > 0) player.setMaxHealth((int) (player.maxHealth * (1.0f - GRW * 0.1f)), true);
-        if (FTG > 0) player.health -= FTG * 2;
+        if (HUG > 0) player.setMaxHealth((int) (player.maxHealth * (1.0f - GRW * 0.05f)), true);
+        if (FTG > 0) player.health -= FTG;
     }
 
     public void onEnemySpawn(AbstractEnemy enemy) {
-        if (GRW > 0) enemy.setMaxHealth((int) (enemy.maxHealth * (1.0f + GRW * 0.1f)), true);
-        if (SPD > 0) enemy.stat.speed += 2 + (4 * (SPD - 1));
+        if (GRW > 0) enemy.setMaxHealth((int) (enemy.maxHealth * (1.05f + GRW * 0.05f)), true);
+        if (SPD > 0) enemy.stat.speed += 1 + SPD;
         if (RST > 0) {
-            enemy.stat.moveRes += 5 * RST;
-            enemy.stat.debuRes += 5 * RST;
-            enemy.stat.neutRes += 5 * RST;
+            enemy.stat.moveRes += 0.05f * RST;
+            enemy.stat.debuRes += 0.05f * RST;
+            enemy.stat.neutRes += 0.05f * RST;
+        }
+
+        if (INT > 0) {
+            enemy.stat.spell += INT;
         }
     }
 
     public void atBattleStart() {
         if (STR == 1) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_LAST_TWO);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new AttackStatus(1), 1, false);
+            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+                e.stat.critical += 0.1f;
             }
         } else if (STR == 2) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_ALL);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new AttackStatus(1), 1, false);
+            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+                e.stat.critical += 0.1f;
+                e.stat.attack += 1;
             }
         } else if (STR == 3) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_ALL);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new AttackStatus(2), 2, false);
-            }
-        }
-
-        if (INT == 1) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_FIRST_TWO);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new SpellStatus(1), 1, false);
-            }
-        } else if (INT == 2) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_ALL);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new SpellStatus(1), 1, false);
-            }
-        } else if (INT == 3) {
-            Array<AbstractEntity> temp = AbstractSkill.getTargets(AbstractSkill.SkillTarget.ENEMY_ALL);
-            for (AbstractEntity e : temp) {
-                e.applyStatus(new SpellStatus(2), 2, false);
+            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+                e.stat.critical += 0.1f;
+                e.stat.multiply += 0.1f;
+                e.stat.attack += 1;
             }
         }
     }
@@ -125,14 +123,16 @@ public final class RestrictionHandler {
     }
 
     public int onGainGoldReward(int gold) {
-        if (FAM == 1) return (int) ((float) gold * 0.9f);
-        else if (FAM == 2) return (int) ((float) gold * 0.7f);
-        else if (FAM == 3) return (int) ((float) gold * 0.5f);
+        if (FAM > 0) return (int) ((float) gold * (1 - 0.1f * FAM));
         else return gold;
     }
 
     public int onCreateShopItem(int price) {
-        if (MSR > 0) return (int) (price * (1.0f - MSR * 0.1f));
+        if (MSR > 0) return (int) (price * (1.0f + MSR * 0.1f));
         else return price;
+    }
+
+    public enum RiskType {
+        GRW, STR, INT, SPD, RST, MSR, FAM, POV, FTG, HUG
     }
 }

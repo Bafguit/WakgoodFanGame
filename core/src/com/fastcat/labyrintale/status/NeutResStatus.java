@@ -22,7 +22,7 @@ public class NeutResStatus extends AbstractStatus {
 
     @Override
     public void onApply(int amt) {
-        owner.stat.neutRes -= amt;
+        owner.stat.neutRes -= amt * 0.01f;
     }
 
     @Override

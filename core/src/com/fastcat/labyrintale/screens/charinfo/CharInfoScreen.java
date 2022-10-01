@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.BgImg;
+import com.fastcat.labyrintale.uis.CloseTempScreenButton;
 import com.fastcat.labyrintale.uis.StatIcon;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
@@ -20,6 +21,7 @@ public class CharInfoScreen extends AbstractScreen {
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
 
     private final BgImg bg = new BgImg();
+    private final CloseTempScreenButton close;
     private final FontHandler.FontData fontName = INFO_NAME;
     private final FontHandler.FontData fontHp = INFO_HP;
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -49,6 +51,7 @@ public class CharInfoScreen extends AbstractScreen {
                 stats[cnt++] = s;
             }
         }
+        close = new CloseTempScreenButton(this);
         setPlayer(player);
         cType = Labyrintale.getBaseScreen().cType;
     }
@@ -75,6 +78,8 @@ public class CharInfoScreen extends AbstractScreen {
         for (int i = 0; i < 8; i++) {
             stats[i].update();
         }
+
+        close.update();
     }
 
     @Override
@@ -105,6 +110,8 @@ public class CharInfoScreen extends AbstractScreen {
         for(int i = 0; i < 8; i++) {
             stats[i].render(sb);
         }
+
+        close.render(sb);
     }
 
     @Override

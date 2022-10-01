@@ -106,6 +106,7 @@ public class BattleScreen extends AbstractScreen {
             enemySkills[i] = s3;
             setEnemy(enemies[i].enemy, i);
         }
+        RestrictionHandler.getInstance().atBattleStart();
         if (AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.DUKSU) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 p.hand[0].upgrade();
@@ -332,7 +333,12 @@ public class BattleScreen extends AbstractScreen {
             }
             return i;
         });
-        cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
+        for(AbstractEntity e : temp) {
+            if(e.isPlayer) {
+                cPanel.battlePanel.setPlayer((AbstractPlayer) e);
+                break;
+            }
+        }
         turn = temp;
         turnIndex = -1;
         ActionHandler.bot(new RoundStartAction());

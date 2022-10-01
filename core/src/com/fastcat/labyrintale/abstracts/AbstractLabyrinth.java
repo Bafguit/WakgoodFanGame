@@ -51,6 +51,7 @@ public class AbstractLabyrinth {
             SaveHandler.load();
         } else {
             if (seed.equals("")) seed = generateRandomSeed();
+            restriction.setSetting();
             seedLong = seedToLong(seed);
             publicRandom = new RandomXC(seedLong);
             skillRandom = new RandomXC(seedLong);

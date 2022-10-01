@@ -1,10 +1,22 @@
 {
-  "volumeBgm" : 30,
+  "volumeBgm" : 18,
   "volumeSfx" : 50,
   "width" : 1600,
   "height" : 900,
   "monitor" : 0,
   "screenMode" : 0,
   "shake" : true,
-  "fastMode" : true
+  "fastMode" : true,
+  "risk" : {
+    "FTG" : 3,
+    "FAM" : 3,
+    "RST" : 3,
+    "STR" : 3,
+    "SPD" : 3,
+    "HUG" : 3,
+    "INT" : 3,
+    "POV" : 3,
+    "MSR" : 3,
+    "GRW" : 3
+  }
 }
