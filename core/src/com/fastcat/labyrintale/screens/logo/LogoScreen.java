@@ -25,15 +25,11 @@ public class LogoScreen extends AbstractScreen {
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
         try {
             videoPlayer.play(FileHandler.getVideo().get("LOGO"));
+            videoPlayer.setVolume(0);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        videoPlayer.setOnCompletionListener(new VideoPlayer.CompletionListener() {
-            @Override
-            public void onCompletionListener(FileHandle file) {
-                isDone = true;
-            }
-        });
+        videoPlayer.setOnCompletionListener(file -> isDone = true);
     }
 
     @Override

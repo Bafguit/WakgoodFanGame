@@ -95,8 +95,6 @@ public final class GroupHandler {
             switch (cls) {
                 case PUNG:
                     return new Pungsin();
-                case NEGATIVE:
-                    return new NegativeHuman();
                 case JK:
                     return new Hyeji();
                 case FREETER:
@@ -117,8 +115,10 @@ public final class GroupHandler {
                     return new HikiKing();
                 case RUSEOK:
                     return new Haeruseok();
-                case SHRIMP:
-                    return new FriedShrimp();
+                case CALLYCARLY:
+                    return new CallyCarlyDavidson();
+                case MANDU:
+                    return new KimchiMandu();
                 default:
                     return new MitsuneHaku();
             }
@@ -555,15 +555,15 @@ public final class GroupHandler {
             //보스
             t.add(new TotoDeck(null));
             t.add(new Snow(null));
-            t.add(new BossItem4(null));
-            t.add(new BossItem5(null));
-            t.add(new BossItem6(null));
-            t.add(new BossItem7(null));
-            t.add(new BossItem8(null));
-            t.add(new BossItem9(null));
-            t.add(new BossItem10(null));
-            t.add(new BossItem11(null));
-            t.add(new BossItem12(null));
+            t.add(new Tree(null));
+            t.add(new IceFrag(null));
+            t.add(new ToyPlane(null));
+            t.add(new Gyeruek(null));
+            t.add(new Hwacha(null));
+            t.add(new TrafficLight(null));
+            t.add(new SportsCar(null));
+            t.add(new Butter(null));
+            t.add(new OldHood(null));
             t.add(new BrokenTicker(null));
 
             //상점

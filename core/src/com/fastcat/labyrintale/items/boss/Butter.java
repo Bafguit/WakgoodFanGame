@@ -1,25 +1,24 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
-public class BossItem6 extends AbstractItem {
+public class Butter extends AbstractItem {
 
-    private static final String ID = "BossItem6";
+    private static final String ID = "Butter";
     private static final ItemRarity RARITY = ItemRarity.BOSS;
 
-    public BossItem6(AbstractPlayer owner) {
+    public Butter(AbstractPlayer owner) {
         super(ID, owner, RARITY);
     }
 
     @Override
     public void onGain() {
-        AbstractLabyrinth.modifyItemAble(1);
+        owner.stat.debuRes += 0.8f;
     }
 
     @Override
     public void onRemove() {
-        AbstractLabyrinth.modifyItemAble(-1);
+        owner.stat.debuRes -= 0.8f;
     }
 }

@@ -14,13 +14,13 @@ public class TotoDeck extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.modifyMaxHealth(-10);
-        owner.stat.attack += 5;
+        owner.stat.critical -= 0.5f;
+        owner.stat.multiply += 2.5f;
     }
 
     @Override
     public void onRemove() {
-        owner.modifyMaxHealth(10);
-        owner.stat.attack -= 5;
+        owner.stat.critical += 0.5f;
+        owner.stat.multiply -= 2.5f;
     }
 }

@@ -14,12 +14,14 @@ public class Snow extends AbstractItem {
 
     @Override
     public void onGain() {
+        owner.modifyMaxHealth(10);
         owner.stat.attack -= 5;
         owner.stat.spell += 5;
     }
 
     @Override
     public void onRemove() {
+        owner.modifyMaxHealth(-10);
         owner.stat.attack += 5;
         owner.stat.spell -= 5;
     }

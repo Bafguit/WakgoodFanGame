@@ -19,13 +19,9 @@
     "NAME": "풍신",
     "DESC": "DESCRIPTION"
   },
-  "shrimp": {
+  "callycarly": {
     "NAME": "새우튀김",
     "DESC": "적 전체에게 무기력 1 부여, 쿨타임 3"
-  },
-  "negative": {
-    "NAME": "부정형 인간",
-    "DESC": "DESCRIPTION"
   },
   "jk": {
     "NAME": "독고혜지",
@@ -45,6 +41,10 @@
   },
   "business": {
     "NAME": "비즈니스킴",
+    "DESC": "DESCRIPTION"
+  },
+  "mandu": {
+    "NAME": "김치만두번영택사스가",
     "DESC": "DESCRIPTION"
   },
   "freeter": {

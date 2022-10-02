@@ -33,19 +33,10 @@
     "NAME": "회오리바람",
     "DESC": "&y<쿨타임 >&b<3>&y<:> 적 하나를 맨 뒤로 밀어냅니다."
   },
-  "shrimp": {
+  "callycarly": {
     "NAME": "불면증",
     "DESC": "모든 적에게 &y<약화>를 {V} 부여합니다.",
     "KEY" : [
-      "Lethargy"
-    ]
-  },
-  "negative": {
-    "NAME": "비관",
-    "DESC": "&y<지속:> 전투 시작 시 모든 아군에게 &y<공격력>과 &y<약화>를 {V} 부여합니다.",
-    "KEY" : [
-      "Passive",
-      "Attack",
       "Lethargy"
     ]
   },
@@ -81,6 +72,14 @@
   },
   "business": {
     "NAME": "기사도",
+    "DESC": "&y<지속:> 전투 시작 시 뒤의 아군 둘에게 &y<인내>를 {V} 부여합니다.",
+    "KEY" : [
+      "Passive",
+      "Endurance"
+    ]
+  },
+  "mandu": {
+    "NAME": "만두",
     "DESC": "&y<지속:> 전투 시작 시 뒤의 아군 둘에게 &y<인내>를 {V} 부여합니다.",
     "KEY" : [
       "Passive",
