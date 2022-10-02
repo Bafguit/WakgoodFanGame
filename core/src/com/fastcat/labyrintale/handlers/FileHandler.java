@@ -90,6 +90,7 @@ public class FileHandler implements Disposable {
         jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
         jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
         jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
+        jsonMap.put(JsonType.RISK_JSON, generateJson("json/restrictions.json"));
         jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
         jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
         jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
@@ -436,6 +437,7 @@ public class FileHandler implements Disposable {
         ENEMY_JSON,
         EVENT_JSON,
         ITEM_JSON,
+        RISK_JSON,
         KEY_JSON,
         CARD_JSON_BASIC,
         CARD_JSON_WAK,

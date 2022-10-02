@@ -3,12 +3,17 @@ package com.fastcat.labyrintale.screens.riskselect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.strings.RiskString;
 
 public class RiskButton extends AbstractUI {
+
+    private RiskString.RiskData data;
 
     private Sprite icon;
     private RestrictionHandler.RiskType type;
@@ -20,6 +25,16 @@ public class RiskButton extends AbstractUI {
         icon = FileHandler.getRiskImg().get(type.name() + "_" + diff);
         this.type = type;
         this.diff = diff;
+        data = StringHandler.riskString.get(type.name());
+        subTexts = new Array<>();
+        if(diff > 0) {
+            subTexts.add(new SubText(data.NAME + " " + "I".repeat(diff), data.DESC[diff - 1]));
+        }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return subTexts;
     }
 
     @Override

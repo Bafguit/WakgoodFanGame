@@ -81,7 +81,7 @@ public final class RestrictionHandler {
     }
 
     public void onCreatePlayer(AbstractPlayer player) {
-        if (HUG > 0) player.setMaxHealth((int) (player.maxHealth * (1.0f - GRW * 0.05f)), true);
+        if (HUG > 0) player.setMaxHealth((int) (player.maxHealth * (1.0f - HUG * 0.05f)), true);
         if (FTG > 0) player.health -= FTG;
     }
 
@@ -93,6 +93,16 @@ public final class RestrictionHandler {
             enemy.stat.debuRes += 0.05f * RST;
             enemy.stat.neutRes += 0.05f * RST;
         }
+        if (STR == 1) {
+            enemy.stat.critical += 0.1f;
+        } else if (STR == 2) {
+            enemy.stat.critical += 0.1f;
+            enemy.stat.attack += 1;
+        } else if (STR == 3) {
+            enemy.stat.critical += 0.1f;
+            enemy.stat.multiply += 0.1f;
+            enemy.stat.attack += 1;
+        }
 
         if (INT > 0) {
             enemy.stat.spell += INT;
@@ -100,22 +110,6 @@ public final class RestrictionHandler {
     }
 
     public void atBattleStart() {
-        if (STR == 1) {
-            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                e.stat.critical += 0.1f;
-            }
-        } else if (STR == 2) {
-            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                e.stat.critical += 0.1f;
-                e.stat.attack += 1;
-            }
-        } else if (STR == 3) {
-            for (AbstractEntity e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-                e.stat.critical += 0.1f;
-                e.stat.multiply += 0.1f;
-                e.stat.attack += 1;
-            }
-        }
     }
 
     public void atBattleEnd() {
