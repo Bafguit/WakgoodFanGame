@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
 import com.fastcat.labyrintale.skills.enemy.MoveRightE;
 

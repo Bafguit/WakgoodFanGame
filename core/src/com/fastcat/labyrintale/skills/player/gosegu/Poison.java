@@ -16,7 +16,7 @@ public class Poison extends AbstractSkill {
     public Poison(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
-
+        cost = 2;
     }
 
     @Override

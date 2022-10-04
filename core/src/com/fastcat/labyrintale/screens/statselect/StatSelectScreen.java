@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.uis.BgImg;
+import com.fastcat.labyrintale.uis.CloseTempScreenButton;
 import com.fastcat.labyrintale.uis.StatIcon;
 
 public class StatSelectScreen extends AbstractScreen implements GetSelectedStat {
@@ -17,19 +18,21 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
     public PlayerStat[][] player;
     public StatIcon[][][][] stats;
     public GetSelectedStat gets;
+    public CloseTempScreenButton close;
 
     public StatSelectScreen() {
         statSelectText = new StatSelectText();
         //this.gets = gets;
         player = new PlayerStat[2][2];
         stats = new StatIcon[2][2][2][3];
+        close = new CloseTempScreenButton(this);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         int cnt = 0;
         for (int i = 0; i < 2; i++) {
             for(int j = 0; j < 2; j++) {
                 AbstractPlayer p = AbstractLabyrinth.players[cnt];
                 PlayerStat temp = new PlayerStat(p);
-                temp.setPosition(w * (0.375f * i + 0.175f), h * (0.7f - 0.15f * j));
+                temp.setPosition(w * (0.375f * i + 0.175f), h * (0.675f - 0.175f * j));
                 player[i][j] = temp;
                 int sc = 2;
                 for(int k = 0; k < 2; k++) {
@@ -58,6 +61,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
             }
         }
         statSelectText.update();
+        close.update();
     }
 
     @Override
@@ -74,6 +78,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
             }
         }
         statSelectText.render(sb);
+        close.render(sb);
     }
 
     @Override
@@ -88,7 +93,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
 
     @Override
     public void statSelected(AbstractEntity entity, StatIcon.StatType stat) {
-        Labyrintale.removeTempScreen(this);
+
     }
 
     public static class PlayerStat extends AbstractUI.TempUI {

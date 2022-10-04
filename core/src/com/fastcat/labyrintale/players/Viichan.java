@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.FabricMail;
 import com.fastcat.labyrintale.items.starter.OldSword;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.viichan.ChainMail;
@@ -41,8 +42,13 @@ public class Viichan extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new OldSword(this));
-        temp.add(new FabricMail(this));
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
         return temp;
+    }
+
+    @Override
+    public AbstractItem getPassive() {
+        return new OldSword(this);
     }
 }

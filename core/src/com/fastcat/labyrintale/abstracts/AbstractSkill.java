@@ -49,7 +49,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public int value = -1;
     public int baseValue = -1;
     public int upValue = -1;
-    public int cooldown = 0;
+    public int cost = 1;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         this.owner = owner;
@@ -459,6 +459,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     if (owner != null) {
                         a += owner.stat.attack;
                         if (owner.isPlayer) {
+                            a = owner.passive.showAttack(a);
                             for (AbstractItem m : owner.item) {
                                 if (m != null) a = m.showAttack(a);
                             }
@@ -467,6 +468,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                             if (s != null) a = s.showAttack(a);
                         }
                         if (owner.isPlayer) {
+                            a *= owner.passive.attackMultiply(a);
                             for (AbstractItem m : owner.item) {
                                 if (m != null) a *= m.attackMultiply(a);
                             }
@@ -494,6 +496,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     if (owner != null) {
                         p += owner.stat.spell;
                         if (owner.isPlayer) {
+                            p = owner.passive.showSpell(p);
                             for (AbstractItem m : owner.item) {
                                 if (m != null) p = m.showSpell(p);
                             }
@@ -502,6 +505,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                             if (s != null) p = s.showSpell(p);
                         }
                         if (owner.isPlayer) {
+                            p *= owner.passive.spellMultiply(p);
                             for (AbstractItem m : owner.item) {
                                 if (m != null) p *= m.spellMultiply(p);
                             }
@@ -553,10 +557,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if(owner.isPlayer) bot(new NextTurnAction());
             }
         }
+        if(owner != null && owner.isPlayer) AbstractLabyrinth.energy -= cost;
     }
 
     public final boolean canUse() {
-        return !usedOnce && !usedOnly && available();
+        return !usedOnce && !usedOnly && available() && AbstractLabyrinth.energy >= cost;
     }
 
     protected boolean available() {

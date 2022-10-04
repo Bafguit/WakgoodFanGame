@@ -53,6 +53,7 @@ public final class FontHandler implements Disposable {
     public static final FontData BLEAK = new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
     public static final FontData SUB_NAME = new FontData(MEDIUM, 32, true);
     public static final FontData SUB_DESC = new FontData(MEDIUM, 26, false);
+    public static final FontData EXP = new FontData(MEDIUM, 26, true);
 
     //private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     public static final GlyphLayout layout = new GlyphLayout();

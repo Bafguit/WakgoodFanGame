@@ -1,31 +1,32 @@
 package com.fastcat.labyrintale.screens.logo;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.video.VideoPlayer;
 import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.VideoSyncPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.io.FileNotFoundException;
 
 public class LogoScreen extends AbstractScreen {
 
-    public VideoPlayer videoPlayer;
+    public VideoSyncPlayer videoPlayer;
     public boolean isDone = false;
 
     public LogoScreen() {
         cType = ControlPanel.ControlType.HIDE;
         setBg(FileHandler.getUi().get("FADE"));
-        videoPlayer = VideoPlayerCreator.createVideoPlayer();
+        videoPlayer = new VideoSyncPlayer();
         try {
-            videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-            videoPlayer.setVolume(0);
+            videoPlayer.play(FileHandler.getVideo().get("LOGO"), 0);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

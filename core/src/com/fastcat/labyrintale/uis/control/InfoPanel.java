@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.MapButton;
 import com.fastcat.labyrintale.uis.PlayerIcon;
+import com.fastcat.labyrintale.uis.PlayerInfoButton;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -24,6 +25,7 @@ public class InfoPanel extends AbstractUI {
     public FontHandler.FontData fontDesc = CARD_BIG_DESC;
     public PlayerIcon[] pIcons = new PlayerIcon[4];
     public MapButton map;
+    public PlayerInfoButton playerInfo;
     public InfoType type = InfoType.COLOR;
     public AbstractSkill skill;
     public AbstractStatus status;
@@ -61,7 +63,9 @@ public class InfoPanel extends AbstractUI {
             pIcons[i] = c;
         }
         map = new MapButton();
-        map.setPosition(w * 0.52f - map.sWidth * 0.5f, h * 0.275f);
+        map.setPosition(w * 0.47f - map.sWidth * 0.5f, h * 0.275f);
+        playerInfo = new PlayerInfoButton();
+        playerInfo.setPosition(w * 0.4f - playerInfo.sWidth * 0.5f, h * 0.275f);
     }
 
     @Override
@@ -86,6 +90,7 @@ public class InfoPanel extends AbstractUI {
             }
         }
         map.update();
+        playerInfo.update();
     }
 
     @Override
@@ -116,6 +121,7 @@ public class InfoPanel extends AbstractUI {
                 }
             }
             map.render(sb);
+            playerInfo.render(sb);
         }
     }
 

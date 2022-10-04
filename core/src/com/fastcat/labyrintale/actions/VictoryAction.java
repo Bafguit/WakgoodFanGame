@@ -48,7 +48,7 @@ public class VictoryAction extends AbstractAction {
                 AbstractLabyrinth.victoryRoom();
             }
             Array<AbstractReward> temp = new Array<>();
-            temp.add(new StatReward());
+            //temp.add(new StatReward());
             temp.add(new HealReward());
             int r;
             AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
@@ -68,16 +68,22 @@ public class VictoryAction extends AbstractAction {
             } else {
                 temp.add(new SkillReward(getRandomSkill(tp)));
             }
-            r = AbstractLabyrinth.publicRandom.random(100);
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
             }
-            if (r <= 40) {
-                temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
-            }
-            int g = 20; //TODO 골드 보상 생성하는 메소드 만들기
+            int g;
+            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) g = 100;
+            else if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) g = 60;
+            else g = 30;
+            g += AbstractLabyrinth.publicRandom.random(-5, 5);
             if (AbstractLabyrinth.advisor.cls == SOPHIA) g = MathUtils.floor(g * 1.2f);
             temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));
+            int e;
+            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) e = 300;
+            else if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) e = 200;
+            else e = 100;
+            e += AbstractLabyrinth.currentFloor.floorNum * 2;
+            AbstractLabyrinth.gainExp(e);
             Labyrintale.fadeOutAndAddScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
         }
     }

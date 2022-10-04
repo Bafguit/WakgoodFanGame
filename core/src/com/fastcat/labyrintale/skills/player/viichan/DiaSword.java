@@ -10,11 +10,12 @@ public class DiaSword extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 5;
+    private static final int VALUE = 7;
 
     public DiaSword(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
+        cost = 2;
     }
 
     @Override

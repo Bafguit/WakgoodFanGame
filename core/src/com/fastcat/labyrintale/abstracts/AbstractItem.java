@@ -26,7 +26,7 @@ public class AbstractItem implements Cloneable {
     public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
         this.id = id;
         img = FileHandler.getItemImg().get(this.id);
-        //tImg = FileHandler.itemImgTrans.get(this.id);
+        tImg = FileHandler.getItemImgTrans().get(this.id);
         data = StringHandler.itemString.get(this.id);
         name = data.NAME;
         desc = data.DESC;
@@ -172,6 +172,6 @@ public class AbstractItem implements Cloneable {
     }
 
     public enum ItemRarity {
-        STARTER, BRONZE, SILVER, GOLD, BOSS, SHOP, SPECIAL
+        EMPTY, STARTER, BRONZE, SILVER, GOLD, BOSS, SHOP, SPECIAL
     }
 }

@@ -5,10 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.skills.player.basic.MoveLeft;
 import com.fastcat.labyrintale.skills.player.basic.MoveP;
-import com.fastcat.labyrintale.skills.player.basic.MoveRight;
-import com.fastcat.labyrintale.status.AttackStatus;
+import com.fastcat.labyrintale.skills.player.basic.PassTurn;
 import com.fastcat.labyrintale.strings.CharString;
 
 public abstract class AbstractPlayer extends AbstractEntity {
@@ -32,6 +30,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
         pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
         move = new MoveP(this);
+        pass = new PassTurn(this);
         setImage(FileHandler.getCharImg().get(playerClass), FileHandler.getCharImgBig().get(playerClass), FileHandler.getCharBgImg().get(playerClass));
         imgTiny = FileHandler.getCharImgTiny().get(playerClass);
         imgPanel = FileHandler.getCharPanelImg().get(playerClass);
@@ -41,6 +40,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
             it.onGain();
             item[j] = it;
         }
+        passive = getPassive();
     }
 
     public static String getClassName(PlayerClass playerClass) {
@@ -54,6 +54,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
             hand[i] = deck.get(i).clone();
         }
         moveTemp = move.clone();
+        pass = new PassTurn(this);
     }
 
     public void gainItem(AbstractItem i, int index) {
@@ -69,6 +70,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public abstract Array<AbstractItem> getStartingItem();
+
+    public abstract AbstractItem getPassive();
 
     public enum PlayerClass {
         WAK, INE, VIICHAN, LILPA, BURGER, GOSEGU, JURURU, MANAGER

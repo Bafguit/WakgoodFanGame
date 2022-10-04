@@ -32,6 +32,7 @@ public class ApplyStatusAction extends AbstractAction {
     protected void updateAction() {
         if (duration == baseDuration) {
             if (actor != null && actor.isPlayer) {
+                actor.passive.onApplyStatus(status, target);
                 for (AbstractItem m : actor.item) {
                     if (m != null) m.onApplyStatus(status, target);
                 }

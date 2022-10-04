@@ -12,12 +12,13 @@ public class Linked extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 3;
+    private static final int VALUE = 2;
 
     public Linked(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE, 1);
         setBaseValue(2, 1);
+        cost = 0;
     }
 
     @Override

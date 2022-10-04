@@ -140,10 +140,10 @@ public final class SaveHandler {
         itemAble = data.itemAble;
         maxSlotUp = data.selection;
         gold = data.gold;
-        bleak = data.bleak;
-        bleakMin = data.bleakMin;
-        bleakMax = data.bleakMax;
-        bleakAdd = data.bleakAdd;
+        AbstractLabyrinth.charge = data.charge;
+        level = data.level;
+        exp = data.exp;
+        AbstractLabyrinth.maxExp = data.maxExp;
     }
 
     public static class SaveData {
@@ -152,12 +152,11 @@ public final class SaveHandler {
         public RestrictionData restriction;
         public int itemAble;
         public int selection;
-        public int maxEnergy;
+        public int charge;
         public int gold;
-        public int bleak;
-        public int bleakMin;
-        public int bleakMax;
-        public int bleakAdd;
+        public int level;
+        public int exp;
+        public int maxExp;
         public AdvisorData advisor;
         public PlayerData[] players = new PlayerData[4];
         public int currentFloor;
@@ -189,10 +188,10 @@ public final class SaveHandler {
             temp.itemAble = AbstractLabyrinth.itemAble;
             temp.selection = AbstractLabyrinth.maxSlotUp;
             temp.gold = AbstractLabyrinth.gold;
-            temp.bleak = AbstractLabyrinth.bleak;
-            temp.bleakMin = AbstractLabyrinth.bleakMin;
-            temp.bleakMax = AbstractLabyrinth.bleakMax;
-            temp.bleakAdd = AbstractLabyrinth.bleakAdd;
+            temp.charge = AbstractLabyrinth.charge;
+            temp.level = AbstractLabyrinth.level;
+            temp.exp = AbstractLabyrinth.exp;
+            temp.maxExp = AbstractLabyrinth.maxExp;
             temp.eventCount = GroupHandler.RoomGroup.eventCount;
             temp.neutCount = GroupHandler.RoomGroup.neutCount;
             temp.weakCount = GroupHandler.RoomGroup.weakCount;

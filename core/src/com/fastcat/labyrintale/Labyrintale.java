@@ -26,6 +26,7 @@ import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
+import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.riskselect.RiskSelectScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
@@ -48,6 +49,7 @@ public class Labyrintale extends Game {
     public static AbstractLabyrinth labyrinth;
     public static MainMenuScreen mainMenuScreen;
     public static CharSelectScreen charSelectScreen;
+    public static PlayerInfoScreen playerInfoScreen;
     public static MapScreen mapScreen;
     public static WayScreen wayScreen;
     public static BattleScreen battleScreen;

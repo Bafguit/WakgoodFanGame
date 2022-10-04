@@ -14,7 +14,7 @@ import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot {
 
-    public static final int HEAL_AMOUNT = 10;
+    public static final int HEAL_AMOUNT = 8;
 
     public RestScreen sc;
     public RestType type;
@@ -36,7 +36,11 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
             for (int i = 0; i < temp.size; i++) {
                 tp[i] = temp.get(i);
             }
-            Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
+            SoundHandler.playSfx("HEAL");
+            for(AbstractPlayer p : tp) {
+                p.heal(HEAL_AMOUNT);
+            }
+            sc.finishRest();
         } else if (type == RestType.UPGRADE) {
             Array<AbstractPlayer> temp = new Array<>();
             for (AbstractPlayer p : AbstractLabyrinth.players) {
@@ -62,11 +66,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
 
     @Override
     public void playerSelected(AbstractPlayer player) {
-        if (type == RestType.HEAL) {
-            SoundHandler.playSfx("HEAL");
-            player.heal(HEAL_AMOUNT);
-            sc.finishRest();
-        } else if (type == RestType.UPGRADE) {
+        if (type == RestType.UPGRADE) {
             Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
         } else if (type == RestType.REVIVE) {
             player.revive();

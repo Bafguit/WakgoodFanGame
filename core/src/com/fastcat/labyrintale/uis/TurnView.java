@@ -34,7 +34,7 @@ public class TurnView extends AbstractUI {
     @Override
     protected void updateButton() {
         if(icons.size() > 0) {
-            int index = Labyrintale.battleScreen.getCurrentTurn(), cnt = 0;
+            int index = Labyrintale.battleScreen.getCurrentTurn();
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), wc = w * 0.5f - sWidth * 0.5f, wcc = w * 0.5f + sWidth * 0.5f, wh = h * 0.9f;
             for (int i = 0; i < index; i++) {
                 TurnIcon t = icons.get(i);

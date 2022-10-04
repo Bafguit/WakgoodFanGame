@@ -58,12 +58,6 @@ public abstract class AbstractRoom implements Cloneable {
     public final void enter() {
         if (type == MYSTERY) {
             int b = 10, s = 5, r = 10, e = 75;
-            if (AbstractLabyrinth.bleak >= 20) {
-                b = 35;
-                if (AbstractLabyrinth.bleak >= 40) {
-                    r = 0;
-                }
-            }
             s = s + b;
             r = r + s;
             e = e + r;

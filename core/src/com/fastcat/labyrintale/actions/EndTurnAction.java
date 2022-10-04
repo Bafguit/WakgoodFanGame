@@ -22,6 +22,7 @@ public class EndTurnAction extends AbstractAction {
                         for (AbstractStatus s : p.status) {
                             if (s != null) s.endOfTurn();
                         }
+                        p.passive.endOfTurn();
                         for (AbstractItem s : p.item) {
                             if (s != null) s.endOfTurn();
                         }

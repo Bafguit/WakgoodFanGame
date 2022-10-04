@@ -12,7 +12,7 @@ public class Stab extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 2;
+    private static final int VALUE = 3;
 
     public Stab(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);

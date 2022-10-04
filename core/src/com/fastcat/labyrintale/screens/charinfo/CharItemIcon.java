@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.charinfo;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
@@ -10,6 +11,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharItemIcon extends AbstractUI {
 
+    private final Sprite border = FileHandler.getUi().get("BORDER_R");
     public AbstractItem skill;
 
     public CharItemIcon(AbstractItem s) {
@@ -36,7 +38,7 @@ public class CharItemIcon extends AbstractUI {
         if (enabled) {
             sb.setColor(Color.WHITE);
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
-            sb.draw(img, x, y, sWidth, sHeight);
+            sb.draw(skill.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);
         }
     }
 }

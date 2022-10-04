@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.skillselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
@@ -11,11 +12,13 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup;
+import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 import static com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup.screen;
 
 public class SkillSelectButton extends AbstractUI {
 
+    private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
     public final SkillSelectGroup group;
     public AbstractSkill skill;
     public boolean isTo;
@@ -30,6 +33,7 @@ public class SkillSelectButton extends AbstractUI {
         skill = s;
         this.isTo = isTo;
         clickable = !isTo;
+        fontData = FontHandler.CARD_BIG_DESC;
     }
 
     @Override
@@ -48,6 +52,12 @@ public class SkillSelectButton extends AbstractUI {
             if (isTo)
                 FontHandler.renderCenter(sb, FontHandler.BORDER, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.03f);
             sb.draw(img, x, y, sWidth, sHeight);
+
+            sb.setColor(Color.WHITE);
+            if(!skill.passive) {
+                sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cost), x - sWidth * 0.05f, y + sWidth * 0.95f, sWidth * 0.2f, sWidth * 0.2f);
+            }
         }
     }
 

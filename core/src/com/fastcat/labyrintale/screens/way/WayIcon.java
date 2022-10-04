@@ -26,7 +26,7 @@ public class WayIcon extends AbstractUI {
         if (enabled) {
             if (!b.over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
-            sb.draw(AbstractLabyrinth.bleak >= 60 ? bIcon : icon, x, y, sWidth, sHeight);
+            sb.draw(icon, x, y, sWidth, sHeight);
         }
     }
 }

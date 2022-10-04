@@ -62,9 +62,10 @@ public class FileHandler implements Disposable {
     //상태
     @Getter
     private static final HashMap<String, Sprite> statusImg = new HashMap<>();
-    //상태
+    //아이템
     @Getter
     private static final HashMap<String, Sprite> itemImg = new HashMap<>();
+    @Getter
     private static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
     //이벤트
     @Getter
@@ -158,7 +159,7 @@ public class FileHandler implements Disposable {
 
     private void generateVideo() {
         video.clear();
-        video.put("LOGO", Gdx.files.internal("video/logo.webm"));
+        video.put("LOGO", Gdx.files.internal("video/b.webm"));
     }
 
     private void generateSkeleton() {
@@ -208,6 +209,7 @@ public class FileHandler implements Disposable {
         ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
         ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
         ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
+        ui.put("BORDER_R", new Sprite(new Texture("img/ui/border_r.png")));
         ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
         ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
         ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));
@@ -260,6 +262,7 @@ public class FileHandler implements Disposable {
         ui.put("STAT_DEBURES", new Sprite(new Texture("img/stat/debuRes.png")));
         ui.put("STAT_NEUTRES", new Sprite(new Texture("img/stat/neutRes.png")));
         ui.put("E_IMAGE", new Sprite(new Texture("img/ui/e_img.png")));
+        ui.put("STAT_PLUS", new Sprite(new Texture("img/ui/statPlus.png")));
     }
 
     private void generateCharImg() {
@@ -386,7 +389,7 @@ public class FileHandler implements Disposable {
         for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
             if (!js.name.equals("")) {
                 itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
-                //itemImgTrans.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_t.png"))); //TODO 이미지 추가
+                itemImgTrans.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_t.png")));
             }
         }
     }

@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.BurgerHat;
 import com.fastcat.labyrintale.items.starter.OldArmour;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.burger.Protect;
@@ -40,8 +41,13 @@ public class Burger extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new OldArmour(this));
-        temp.add(new BurgerHat(this));
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
         return temp;
+    }
+
+    @Override
+    public AbstractItem getPassive() {
+        return new BurgerHat(this);
     }
 }

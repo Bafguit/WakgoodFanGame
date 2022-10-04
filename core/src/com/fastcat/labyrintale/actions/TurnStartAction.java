@@ -23,6 +23,7 @@ public class TurnStartAction extends AbstractAction {
                     e.blockRemove = 0;
                 }
                 if(e.isPlayer) {
+                    e.passive.startOfTurn();
                     for (AbstractItem m : e.item) {
                         if (m != null) m.startOfTurn();
                     }

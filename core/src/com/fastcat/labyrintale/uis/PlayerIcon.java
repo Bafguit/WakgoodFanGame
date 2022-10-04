@@ -13,7 +13,7 @@ import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
 
 public class PlayerIcon extends AbstractUI {
 
-    public final int index;
+    public int index;
     public AbstractPlayer p;
 
     public PlayerIcon(int index) {

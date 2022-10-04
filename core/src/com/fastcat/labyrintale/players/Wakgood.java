@@ -5,8 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.starter.OldArmour;
 import com.fastcat.labyrintale.items.starter.OldShield;
 import com.fastcat.labyrintale.items.starter.Pendant;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.wak.ShieldPush;
@@ -40,8 +42,13 @@ public class Wakgood extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new OldShield(this));
-        temp.add(new Pendant(this));
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
         return temp;
+    }
+
+    @Override
+    public AbstractItem getPassive() {
+        return new OldShield(this);
     }
 }

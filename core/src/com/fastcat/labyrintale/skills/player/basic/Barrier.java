@@ -9,8 +9,8 @@ public class Barrier extends AbstractSkill {
 
     private static final String ID = "Barrier";
     private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.ENEMY;
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final SkillRarity RARITY = SkillRarity.STARTER;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER;
     private static final int VALUE = 3;
 
     public Barrier(AbstractEntity e) {
@@ -20,7 +20,12 @@ public class Barrier extends AbstractSkill {
 
     @Override
     public void use() {
-        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+
+    }
+
+    @Override
+    public void onTarget(AbstractEntity e) {
+        top(new BlockAction(this.owner, e, spell));
     }
 
     @Override

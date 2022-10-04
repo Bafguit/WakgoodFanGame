@@ -34,7 +34,6 @@ project(":desktop") {
     apply plugin: "distribution"
     dependencies {
         implementation project(":core")
-        implementation "com.badlogicgames.gdx-video:gdx-video-lwjgl:1.3.2-SNAPSHOT"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -58,6 +57,7 @@ project(":core") {
 
     dependencies {
         implementation "com.badlogicgames.gdx-video:gdx-video:1.3.2-SNAPSHOT"
+        implementation "com.badlogicgames.gdx-video:gdx-video-lwjgl:1.3.2-SNAPSHOT"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"

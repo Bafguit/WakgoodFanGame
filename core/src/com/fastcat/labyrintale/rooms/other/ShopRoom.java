@@ -32,6 +32,16 @@ public class ShopRoom extends AbstractRoom {
         generateItems();
         roll = new RollItem(this);
         shopScreen = new ShopScreen(this);
+        for(AbstractPlayer p : players) {
+            if(p.hasStatus("Badge")) {
+                int i = shopRandom.random(0, 10);
+                if(i < 6) {
+                    skills[i].price = 0;
+                } else {
+                    items[i - 6].price = 0;
+                }
+            }
+        }
         fadeOutAndChangeScreen(shopScreen);
     }
 

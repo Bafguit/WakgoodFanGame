@@ -30,6 +30,7 @@ public class PlayerTurnStartAction extends AbstractAction {
                         for (AbstractSkill s : p.hand) {
                             if(s != null) s.atBattleStart();
                         }
+                        p.passive.atBattleStart();
                         for (AbstractItem m : p.item) {
                             if (m != null) m.atBattleStart();
                         }
@@ -37,6 +38,7 @@ public class PlayerTurnStartAction extends AbstractAction {
                     for (AbstractItem m : p.item) {
                         if (m != null) m.startOfTurn();
                     }
+                    p.passive.startOfTurn();
                     for (AbstractStatus s : p.status) {
                         if (s != null) s.startOfTurn();
                     }

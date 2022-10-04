@@ -136,34 +136,34 @@ public class AbstractFloor {
             else if (floor == 2) w = new AbstractWay(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
             else w = new AbstractWay(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
         } else if (type == WEAK) {
-            int x = AbstractLabyrinth.mapRandom.random(100);
+            int x = AbstractLabyrinth.mapRandom.random(0, 100);
             boolean battle = false;
-            boolean rest = false;
+            boolean battle2 = false;
             boolean mystery = false;
+            boolean mystery2 = false;
 
-            if (x < 10) {
-                rest = true;
+            if (x < 30) {
                 mystery = true;
-            } else if (x < 20) {
-                rest = true;
+            } else if (x < 50) {
                 battle = true;
-            }  else if (x < 40) {
+            }  else if (x < 80) {
                 battle = true;
                 mystery = true;
-            } else if (x < 60) {
-                battle = true;
             } else if (x < 90) {
-                mystery = true;
+                battle = true;
+                battle2 = true;
             } else {
-                rest = true;
+                mystery = true;
+                mystery2 = true;
             }
             AbstractRoom r = GroupHandler.RoomGroup.getNextWeak(floor);
             AbstractChoice[] aa = new AbstractChoice[3];
             Array<AbstractChoice> t = new Array<>();
             t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (battle) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
+            if (battle2) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
-            if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST));
+            if (mystery2) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
             for(int i = 0; i < t.size; i++) {
                 aa[i] = t.get(i);
             }
@@ -172,32 +172,32 @@ public class AbstractFloor {
         } else if (type == NORMAL) {
             int x = AbstractLabyrinth.mapRandom.random(100);
             boolean battle = false;
-            boolean rest = false;
+            boolean battle2 = false;
             boolean mystery = false;
+            boolean mystery2 = false;
 
-            if (x < 10) {
-                rest = true;
+            if (x < 20) {
                 mystery = true;
-            } else if (x < 20) {
-                rest = true;
+            } else if (x < 50) {
                 battle = true;
-            }  else if (x < 40) {
+            }  else if (x < 65) {
                 battle = true;
                 mystery = true;
-            } else if (x < 65) {
-                battle = true;
             } else if (x < 90) {
-                mystery = true;
+                battle = true;
+                battle2 = true;
             } else {
-                rest = true;
+                mystery = true;
+                mystery2 = true;
             }
             AbstractRoom r = GroupHandler.RoomGroup.getNextNormal(floor);
             AbstractChoice[] aa = new AbstractChoice[3];
             Array<AbstractChoice> t = new Array<>();
             t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (battle) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
+            if (battle2) t.add(new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE));
             if (mystery) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
-            if (rest) t.add(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST));
+            if (mystery2) t.add(new AbstractChoice(new MysteryRoom(), AbstractChoice.ChoiceType.LOOK));
             for(int i = 0; i < t.size; i++) {
                 aa[i] = t.get(i);
             }
@@ -206,7 +206,7 @@ public class AbstractFloor {
         } else if (type == ELITE) {
             AbstractChoice[] aa = new AbstractChoice[3];
             AbstractRoom r = GroupHandler.RoomGroup.getNextElite(floor);
-            aa[0] = new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.ELITE);
+            aa[0] = new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST);
             aa[1] = new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.ELITE);
             shuffleChoice(aa);
             w = new AbstractWay(aa, r, type);
@@ -216,10 +216,10 @@ public class AbstractFloor {
         } else if (type == REST) {
             w = new AbstractWay(new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST), type);
         } else {
+            AbstractRoom r = GroupHandler.RoomGroup.getNextNormal(floor);
             AbstractChoice[] aa = new AbstractChoice[3];
-            aa[0] = new AbstractChoice(new RestRoom(), AbstractChoice.ChoiceType.REST);
             aa[1] = new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP);
-            aa[2] = new AbstractChoice(new ShopRoom(), AbstractChoice.ChoiceType.SHOP);
+            aa[2] = new AbstractChoice(r.clone(), AbstractChoice.ChoiceType.BATTLE);
             shuffleChoice(aa);
             w = new AbstractWay(aa, type);
         }

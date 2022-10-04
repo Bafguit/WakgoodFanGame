@@ -4,12 +4,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
-import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.RestrictionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
-import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
@@ -34,11 +32,13 @@ public class AbstractLabyrinth {
     public static int floorNum;
     public static int itemAble;
     public static int maxSlotUp;
+    public static int energy = 0;
+    public static int charge;
     public static int gold;
-    public static int bleak;
-    public static int bleakMin;
-    public static int bleakMax;
-    public static int bleakAdd;
+    public static int level;
+    public static int maxExp;
+    public static int exp;
+    public static int sp;
 
     public AbstractLabyrinth() {
         this(RunType.NEW);
@@ -72,10 +72,11 @@ public class AbstractLabyrinth {
             itemAble = 0;
             maxSlotUp = 3;
             gold = 100;
-            bleak = 0;
-            bleakMin = 0;
-            bleakMax = 100;
-            bleakAdd = 9;
+            level = 1;
+            exp = 0;
+            maxExp = 100;
+            charge = 5;
+            sp = 0;
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].player.playerClass);
                 p.defineIndex(i);
@@ -89,6 +90,19 @@ public class AbstractLabyrinth {
 
     public static void prepare() {
         advisor.skill.usedOnce = false;
+        energy = 0;
+    }
+
+    public static void gainExp(int amt) {
+        exp += amt;
+        if(exp >= maxExp) {
+            level++;
+            int i = exp - maxExp;
+            maxExp *= 1.3f;
+            exp = 0;
+            sp += 4;
+            gainExp(i);
+        }
     }
 
     public static boolean hasSlot() {
@@ -100,25 +114,14 @@ public class AbstractLabyrinth {
         return hasSlot;
     }
 
-    public static void addBleak() {
-        bleak = Math.min(bleak + (9 + floorNum), bleakMax);
-    }
-
     public static void modifyGold(int add) {
         for(AbstractPlayer p : players) {
+            if(add > 0) add = p.passive.onGainGold(add);
             for(AbstractItem i : p.item) {
                 if(add > 0) add = i.onGainGold(add);
             }
         }
         gold = Math.max(gold + add, 0);
-    }
-
-    public static void modifyBleak(int add) {
-        bleak = Math.max(Math.min(bleak + add, bleakMax), bleakMin);
-    }
-
-    public static void reduceBleak() {
-        bleak = Math.max(bleak - (11 - floorNum), bleakMin);
     }
 
     public static boolean canGetItem() {
@@ -150,9 +153,6 @@ public class AbstractLabyrinth {
 
     public static void endRoom() {
         RoomType type = currentFloor.currentRoom.type;
-        if (type != RoomType.BATTLE && type != RoomType.ELITE && type != RoomType.BOSS && !(type == RoomType.EVENT && currentFloor.currentRoom.event.isEntry)) {
-            AbstractLabyrinth.addBleak();
-        }
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
         if (currentFloor.num == 12) {
@@ -217,7 +217,6 @@ public class AbstractLabyrinth {
         }
         //AbstractLabyrinth.prepare();
         SaveHandler.save();
-        AbstractLabyrinth.reduceBleak();
     }
 
     public void update() {

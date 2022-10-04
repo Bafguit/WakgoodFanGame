@@ -15,6 +15,7 @@ public class SuperSave extends AbstractSkill {
     public SuperSave(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE, 1);
+        cost = 2;
     }
 
     @Override

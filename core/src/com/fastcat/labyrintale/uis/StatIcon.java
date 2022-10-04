@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractEntity.EntityStat;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -46,12 +47,13 @@ public class StatIcon extends AbstractUI {
         fontData = FontHandler.SUB_NAME;
         entity = e;
         isUp = true;
-        clickable = e.isAlive();
+        clickable = e.isAlive() && AbstractLabyrinth.sp > 0;
         gets = get;
     }
 
     @Override
     protected void updateButton() {
+        if(isUp) clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80;
         if(type == StatType.ATTACK) amount = entity.stat.attack;
         else if(type == StatType.SPELL) amount = entity.stat.spell;
         else if (type == StatType.SPEED) amount = entity.stat.speed;
@@ -61,7 +63,6 @@ public class StatIcon extends AbstractUI {
             else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
             else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
             else if (type == StatType.NEUTRES) amount = EntityStat.cap(entity.stat.neutRes);
-            if(isUp) clickable = entity.isAlive() && amount < 80;
         }
     }
 
@@ -103,6 +104,7 @@ public class StatIcon extends AbstractUI {
             else if (type == StatType.DEBURES) entity.stat.debuRes += 0.05f;
             else if (type == StatType.NEUTRES) entity.stat.neutRes += 0.05f;
         }
+        AbstractLabyrinth.sp--;
         gets.statSelected(entity, type);
     }
 

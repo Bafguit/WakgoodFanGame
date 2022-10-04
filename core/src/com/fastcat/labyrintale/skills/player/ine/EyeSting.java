@@ -18,6 +18,7 @@ public class EyeSting extends AbstractSkill {
     public EyeSting(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK, UP);
+        cost = 5;
     }
 
     @Override

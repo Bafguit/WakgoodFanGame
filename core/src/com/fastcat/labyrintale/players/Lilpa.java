@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.FireStaff;
 import com.fastcat.labyrintale.items.starter.FlameBook;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.lilpa.FireBall;
@@ -40,8 +41,13 @@ public class Lilpa extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new FlameBook(this));
-        temp.add(new FireStaff(this));
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
         return temp;
+    }
+
+    @Override
+    public AbstractItem getPassive() {
+        return new FlameBook(this);
     }
 }

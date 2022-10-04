@@ -9,8 +9,10 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
+import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
+import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
 
 public class MapButton extends AbstractUI {
 
@@ -33,6 +35,9 @@ public class MapButton extends AbstractUI {
         if (!isShowing) {
             MapScreen.view();
             isShowing = true;
+            if(playerInfoScreen.showing) {
+                PlayerInfoScreen.remove();
+            }
         } else {
             MapScreen.remove();
             isShowing = false;

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.events.choices;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -25,6 +26,8 @@ public class BattleEventChoice extends AbstractEvent.EventChoice {
     protected void onSelect() {
         AbstractLabyrinth.currentFloor.currentRoom.enemies = battle.enemies;
         battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
+        SoundHandler.fadeOutMusic("MAP");
+        SoundHandler.addMusic("BATTLE_1", true, true);
         fadeOutAndChangeScreen(battleScreen);
     }
 }

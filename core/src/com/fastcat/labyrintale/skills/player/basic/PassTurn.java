@@ -4,25 +4,21 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.MoveAction;
 
-public class MoveRight extends AbstractSkill {
+public class PassTurn extends AbstractSkill {
 
-    private static final String ID = "MoveRight";
+    private static final String ID = "PassTurn";
     private static final SkillType TYPE = SkillType.MOVE;
     private static final SkillRarity RARITY = SkillRarity.BASIC;
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final SkillTarget TARGET = SkillTarget.NONE;
 
-    public MoveRight(AbstractEntity e) {
+    public PassTurn(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
+        cost = 0;
     }
 
     @Override
     public void use() {
-        bot(new MoveAction(owner, owner, false));
-    }
 
-    @Override
-    protected boolean available() {
-        return owner.index > 0;
     }
 
     @Override

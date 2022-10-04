@@ -495,7 +495,7 @@ public final class GroupHandler {
         private static void generateAll() {
             Array<AbstractItem> t = allItem;
             //시작 아이템
-            t.add(new Item1(null)); //삭제 예정
+            t.add(new PlaceHolder(null));
             t.add(new OldShield(null));
             t.add(new Pendant(null));
             t.add(new OldArmour(null));
@@ -570,7 +570,7 @@ public final class GroupHandler {
             t.add(new TrickDeck(null));
             t.add(new LifeContract(null));
             t.add(new ShopItem3(null));
-            t.add(new ShopItem4(null));
+            t.add(new Badge(null));
             t.add(new ShopItem5(null));
             t.add(new ShopItem6(null));
             t.add(new ShopItem7(null));

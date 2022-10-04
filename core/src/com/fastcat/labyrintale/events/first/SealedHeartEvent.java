@@ -56,7 +56,7 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
                 if (p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 4, AbstractEntity.DamageType.LOSE));
             }
         } else if (page == 4) {
-            AbstractLabyrinth.modifyBleak(20);
+            //TODO
         }
     }
 }

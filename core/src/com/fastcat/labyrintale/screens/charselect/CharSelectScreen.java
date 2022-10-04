@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
+import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
@@ -140,7 +141,7 @@ public class CharSelectScreen extends AbstractScreen {
         public AbstractSkill skill;
         public HealthIcon health;
         public StatIcon[] stats;
-        public CharInfoItemButton[] items = new CharInfoItemButton[2];
+        public CharInfoItemButton passive;
         public CharInfoItemButton[] skills = new CharInfoItemButton[3];
         public float x, ny, dy, iny, idy, bgx, bgy;
         public float tw, cw = 0, ch = 0;
@@ -149,12 +150,9 @@ public class CharSelectScreen extends AbstractScreen {
             type = InfoPanel.InfoType.COLOR;
             float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
             health = new HealthIcon();
-            health.setPosition(w * 0.77f, h * 0.635f);
-            for (int i = 0; i < 2; i++) {
-                CharInfoItemButton b = new CharInfoItemButton(this);
-                b.setPosition(w * 0.515f + w * 0.06f * i, h * 0.47f);
-                items[i] = b;
-            }
+            health.setPosition(w * 0.515f, h * 0.47f);
+            passive = new CharInfoItemButton(this);
+            passive.setPosition(w * 0.575f, h * 0.47f);
             for (int i = 0; i < 3; i++) {
                 CharInfoItemButton b = new CharInfoItemButton(this);
                 b.setPosition(w * 0.655f + w * 0.06f * i, h * 0.47f);
@@ -163,7 +161,7 @@ public class CharSelectScreen extends AbstractScreen {
             stats = new StatIcon[6];
             int cnt = 0;
             for(int i = 0; i < 3; i++) {
-                float cw = w * 0.675f, ch = h * 0.7f - h * 0.027f * i;
+                float cw = w * 0.715f, ch = h * 0.645f - h * 0.027f * i;
                 for(int j = 0; j < 2; j++) {
                     StatIcon c = new StatIcon(StatIcon.StatType.values()[cnt + 2]);
                     c.setPosition(cw + w * 0.046f * j, ch);
@@ -176,7 +174,7 @@ public class CharSelectScreen extends AbstractScreen {
             bgx = w * 0.175f;
             bgy = h * -0.15f;
             ny = h * 0.715f;
-            dy = h * 0.635f;
+            dy = h * 0.65f;
             iny = h * 0.45f;
             idy = h * 0.4f;
         }
@@ -184,9 +182,7 @@ public class CharSelectScreen extends AbstractScreen {
         public void setPlayer(AbstractPlayer player) {
             this.player = player;
             health.setHealth(player.maxHealth);
-            for (int i = 0; i < 2; i++) {
-                items[i].setItem(player.item[i]);
-            }
+            passive.setItem(player.passive);
             for (int i = 0; i < 3; i++) {
                 skills[i].setSkill(player.deck.get(i));
             }
@@ -199,9 +195,7 @@ public class CharSelectScreen extends AbstractScreen {
 
         public void update() {
             type = InfoPanel.InfoType.COLOR;
-            for (int i = 0; i < 2; i++) {
-                items[i].update();
-            }
+            passive.update();
             for (int i = 0; i < 3; i++) {
                 skills[i].update();
             }
@@ -213,13 +207,10 @@ public class CharSelectScreen extends AbstractScreen {
         public void render(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
             sb.draw(player.bg, bgx, bgy, cw, ch);
-            renderLineBotLeft(sb, nData, player.name, x, ny, tw, 0);
-            renderColorLeft(sb, dData, player.desc, x, dy, tw);
+            renderLineBotLeft(sb, nData, player.name, x, dy, tw, 0);
 
             health.render(sb);
-            for (int i = 0; i < 2; i++) {
-                items[i].render(sb);
-            }
+            passive.render(sb);
             for (int i = 0; i < 3; i++) {
                 skills[i].render(sb);
             }
@@ -264,6 +255,8 @@ public class CharSelectScreen extends AbstractScreen {
 
     public static class CharInfoItemButton extends AbstractUI {
 
+        private final Sprite border = FileHandler.getUi().get("BORDER_R");
+        private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
         public InfoPanel.InfoType type = InfoPanel.InfoType.COLOR;
         public AbstractSkill skill;
         public AbstractItem item;
@@ -274,6 +267,7 @@ public class CharSelectScreen extends AbstractScreen {
         public CharInfoItemButton(CharSelectGroup group) {
             super(FileHandler.getUi().get("BORDER"));
             this.group = group;
+            fontData = FontHandler.SUB_NAME;
         }
 
         public void setSkill(AbstractSkill skill) {
@@ -307,12 +301,17 @@ public class CharSelectScreen extends AbstractScreen {
             if (enabled) {
                 sb.setColor(Color.WHITE);
                 if (type != InfoPanel.InfoType.COLOR) {
-                    sb.draw(type == InfoPanel.InfoType.SKILL ? skill.img : item.img, x, y, sWidth, sHeight);
-                }
-                sb.draw(img, x, y, sWidth, sHeight);
-
-                if (fontData != null) {
-                    renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+                    if(type == InfoPanel.InfoType.SKILL) {
+                        sb.draw(skill.img, x, y, sWidth, sHeight);
+                        sb.draw(img, x, y, sWidth, sHeight);
+                        if(!skill.passive) {
+                            sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                            FontHandler.renderCenter(sb, fontData, Integer.toString(skill.cost), x - sWidth * 0.05f, y + sWidth * 0.95f, sWidth * 0.2f, sWidth * 0.2f);
+                        }
+                    } else {
+                        sb.draw(item.img, x, y, sWidth, sHeight);
+                        sb.draw(item.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);
+                    }
                 }
             }
         }

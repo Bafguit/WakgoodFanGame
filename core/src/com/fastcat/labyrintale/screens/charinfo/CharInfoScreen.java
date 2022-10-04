@@ -29,6 +29,7 @@ public class CharInfoScreen extends AbstractScreen {
     public ShapeRenderer shr = new ShapeRenderer();
     public CharDeckIcon[] deck = new CharDeckIcon[3];
     public CharItemIcon[] item = new CharItemIcon[2];
+    public CharItemIcon passive;
     public StatIcon[] stats = new StatIcon[8];
     public AbstractPlayer player;
 
@@ -43,11 +44,13 @@ public class CharInfoScreen extends AbstractScreen {
             b.setPosition(w * (0.75f + 0.08f * i) - b.sWidth / 2, h * 0.5f);
             item[i] = b;
         }
+        passive = new CharItemIcon(null);
+        passive.setPosition(w * 0.67f - passive.sWidth / 2, h * 0.65f);
         int cnt = 0;
         for(int j = 3; j >= 0; j--) {
             for(int i = 0; i < 2; i++) {
                 StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-                s.setPosition(w * (0.7f + 0.08f * i), h * (0.65f + 0.027f * j));
+                s.setPosition(w * (0.72f + 0.08f * i), h * (0.65f + 0.027f * j));
                 stats[cnt++] = s;
             }
         }
@@ -61,6 +64,7 @@ public class CharInfoScreen extends AbstractScreen {
         for (int i = 0; i < 3; i++) {
             deck[i].skill = player.deck.get(i);
         }
+        passive.skill = player.passive;
         for (int i = 0; i < 2; i++) {
             item[i].skill = player.item[i];
         }
@@ -75,6 +79,7 @@ public class CharInfoScreen extends AbstractScreen {
 
         for (CharDeckIcon b : deck) b.update();
         for (CharItemIcon b : item) b.update();
+        passive.update();
         for (int i = 0; i < 8; i++) {
             stats[i].update();
         }
@@ -107,6 +112,7 @@ public class CharInfoScreen extends AbstractScreen {
 
         for (CharDeckIcon b : deck) b.render(sb);
         for (CharItemIcon b : item) b.render(sb);
+        passive.render(sb);
         for(int i = 0; i < 8; i++) {
             stats[i].render(sb);
         }
@@ -121,10 +127,6 @@ public class CharInfoScreen extends AbstractScreen {
 
     @Override
     public void hide() {
-
-    }
-
-    private void resetAnimationScale() {
 
     }
 

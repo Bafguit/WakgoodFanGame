@@ -46,7 +46,7 @@ public class FogEvent extends AbstractEvent {
     @Override
     public void onSetPage(int page) {
         if (page == 4) {
-            AbstractLabyrinth.modifyBleak(10);
+            //TODO
         }
     }
 }

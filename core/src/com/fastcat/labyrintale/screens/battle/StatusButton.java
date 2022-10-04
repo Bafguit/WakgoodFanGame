@@ -35,7 +35,7 @@ public class StatusButton extends AbstractUI {
             if (status != null) {
                 sb.draw(status.img, x, y, sWidth, sHeight);
                 if (status.hasAmount)
-                    renderKeywordCenter(sb, fontData, valueColor() + status.amount, x, y + sHeight / 2, sWidth, sHeight);
+                    renderKeywordCenter(sb, fontData, valueColor() + status.amount, x - sWidth * 0.5f, y + sHeight / 2, sWidth * 2, sHeight);
                 sb.draw(border, x, y, sWidth, sHeight);
             }
         }

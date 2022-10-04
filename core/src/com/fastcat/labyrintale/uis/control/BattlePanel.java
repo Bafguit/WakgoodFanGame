@@ -5,14 +5,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.uis.PlayerBigIcon;
-import com.fastcat.labyrintale.uis.StatIcon;
-import com.fastcat.labyrintale.uis.TurnSkipButton;
-import com.fastcat.labyrintale.uis.TurnView;
+import com.fastcat.labyrintale.uis.*;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.COOLDOWN;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -22,10 +20,12 @@ public class BattlePanel implements Disposable {
     public static final Color hbc = new Color(0.4f, 0, 0, 1);
     private static final FontHandler.FontData fontHp = COOLDOWN;
     public static ShapeRenderer shr = new ShapeRenderer();
+    public static EnergyPanel energy = new EnergyPanel();
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     public AbstractSkill selected;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel mSkill;
+    public SkillButtonPanel pSkill;
     public SkillButtonPanel aSkill;
     public StatIcon[] stats = new StatIcon[8];
     public ItemPanel[] item = new ItemPanel[2];
@@ -34,8 +34,6 @@ public class BattlePanel implements Disposable {
     public TurnView turnView;
     public float rx, ry, ex, ey;
 
-    public TurnSkipButton turnSkip = new TurnSkipButton();
-
     public BattlePanel() {
         item[0] = new ItemPanel();
         item[0].setPosition(w * 0.26f - item[0].sWidth / 2, h * 0.225f);
@@ -43,8 +41,10 @@ public class BattlePanel implements Disposable {
         item[1].setPosition(w * 0.32f - item[1].sWidth / 2, h * 0.225f);
         aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
         aSkill.setPosition(w * 0.58f - aSkill.sWidth, h * 0.075f);
-        mSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.MOVE);
+        mSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.BASIC);
         mSkill.setPosition(w * 0.9f - mSkill.sWidth, h * 0.225f);
+        pSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.BASIC);
+        pSkill.setPosition(w * 0.84f - pSkill.sWidth, h * 0.225f);
         for (int i = 0; i < 3; i++) {
             SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
             s.setPosition(w * 0.9f - w * 0.08f * i - s.sWidth, h * 0.075f);
@@ -52,6 +52,7 @@ public class BattlePanel implements Disposable {
         }
         cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
         cpIcon.setPosition(w * 0.13f - cpIcon.sWidth / 2, h * 0.22f - cpIcon.sHeight / 2);
+        energy.setPosition(w * 0.23f - energy.sWidth / 2, h * 0.32f);
         rx = 440 * scale;
         ex = w * 0.3f;
         ey = aSkill.sHeight * 0.5f;
@@ -65,7 +66,6 @@ public class BattlePanel implements Disposable {
             }
         }
 
-        turnSkip.setPosition(w * 0.92f, h * 0.12f);
         turnView = new TurnView();
     }
 
@@ -74,18 +74,19 @@ public class BattlePanel implements Disposable {
             skill[i].update();
         }
         mSkill.update();
+        pSkill.update();
         for (int i = 0; i < 2; i++) {
             item[i].update();
         }
         aSkill.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
+        energy.update();
         for(int i = 0; i < 8; i++) {
             stats[i].entity = curPlayer;
             stats[i].update();
         }
 
-        turnSkip.update();
         turnView.update();
     }
 
@@ -104,17 +105,20 @@ public class BattlePanel implements Disposable {
             item[i].render(sb);
         }
         mSkill.render(sb);
+        pSkill.render(sb);
         for (int i = 0; i < 3; i++) {
             skill[i].render(sb);
         }
         aSkill.render(sb);
         cpIcon.render(sb);
+        energy.render(sb);
         for(int i = 0; i < 8; i++) {
             stats[i].render(sb);
         }
 
-        turnSkip.render(sb);
-        turnView.render(sb);
+        if(!Labyrintale.playerInfoScreen.showing) {
+            turnView.render(sb);
+        }
     }
 
     public void setPlayer(AbstractPlayer p) {
@@ -125,6 +129,7 @@ public class BattlePanel implements Disposable {
             }
             aSkill.skill = AbstractLabyrinth.advisor.skill;
             mSkill.skill = p.moveTemp;
+            pSkill.skill = p.pass;
             item[0].item = p.item[0];
             item[1].item = p.item[1];
         }
@@ -136,10 +141,12 @@ public class BattlePanel implements Disposable {
             skill[i].dispose();
         }
         mSkill.dispose();
+        pSkill.dispose();
         for (int i = 0; i < 2; i++) {
             item[i].dispose();
         }
         aSkill.dispose();
         cpIcon.dispose();
+        energy.dispose();
     }
 }

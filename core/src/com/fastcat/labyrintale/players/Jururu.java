@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.items.starter.Bible;
 import com.fastcat.labyrintale.items.starter.CottonNecklace;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.jururu.Pray;
@@ -41,8 +42,13 @@ public class Jururu extends AbstractPlayer {
     @Override
     public Array<AbstractItem> getStartingItem() {
         Array<AbstractItem> temp = new Array<>();
-        temp.add(new Bible(this));
-        temp.add(new CottonNecklace(this));
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
         return temp;
+    }
+
+    @Override
+    public AbstractItem getPassive() {
+        return new Bible(this);
     }
 }

@@ -27,6 +27,7 @@ public class StartBattleAction extends AbstractAction {
                     for (AbstractSkill s : p.hand) {
                         if(s != null) s.atBattleStart();
                     }
+                    p.passive.atBattleStart();
                     for (AbstractItem m : p.item) {
                         if (m != null) m.atBattleStart();
                     }

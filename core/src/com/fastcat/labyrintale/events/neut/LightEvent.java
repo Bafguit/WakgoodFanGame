@@ -30,6 +30,8 @@ public class LightEvent extends AbstractEvent {
 
     @Override
     public void onSetPage(int page) {
-        if (page == 1) AbstractLabyrinth.modifyBleak(-20);
+        if (page == 1) {
+            //TODO
+        }
     }
 }

@@ -74,7 +74,7 @@ public class UpsetIdolEvent extends AbstractEvent {
                 }
             }
         } else if (page == 3) {
-            AbstractLabyrinth.modifyBleak(20);
+            //TODO
         }
     }
 }

@@ -18,6 +18,7 @@ public class TurnEndAction extends AbstractAction {
                     if (s != null) s.endOfTurn();
                 }
                 if(actor.isPlayer) {
+                    actor.passive.endOfTurn();
                     for (AbstractItem s : actor.item) {
                         if (s != null) s.endOfTurn();
                     }
