@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 
 public class LogoScreen extends AbstractScreen {
 
-    public VideoSyncPlayer videoPlayer;
+    public VideoPlayer videoPlayer;
     public boolean isDone = false;
 
     public LogoScreen() {
@@ -26,7 +26,8 @@ public class LogoScreen extends AbstractScreen {
         setBg(FileHandler.getUi().get("FADE"));
         videoPlayer = new VideoSyncPlayer();
         try {
-            videoPlayer.play(FileHandler.getVideo().get("LOGO"), 0);
+            videoPlayer.play(FileHandler.getVideo().get("LOGO"));
+            videoPlayer.setVolume(0);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

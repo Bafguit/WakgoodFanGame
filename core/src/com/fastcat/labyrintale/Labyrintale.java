@@ -44,7 +44,6 @@ public class Labyrintale extends Game {
 
     public static OrthographicCamera camera;
     public static FitViewport viewport;
-    public static VideoPlayer videoPlayer;
 
     public static AbstractLabyrinth labyrinth;
     public static MainMenuScreen mainMenuScreen;
@@ -150,7 +149,6 @@ public class Labyrintale extends Game {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
         viewport = new FitViewport(SettingHandler.setting.width, SettingHandler.setting.height, camera);
-        videoPlayer = VideoPlayerCreator.createVideoPlayer();
         sb = new SpriteBatch();
         psb = new PolygonSpriteBatch();
         sr = new SkeletonRenderer();
@@ -172,7 +170,9 @@ public class Labyrintale extends Game {
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
 
-        setScreen(new LogoScreen());
+        mainMenuScreen.onCreate();
+        fadeOutAndChangeScreen(mainMenuScreen);
+        //setScreen(new LogoScreen());
     }
 
     public void update() {
@@ -301,6 +301,5 @@ public class Labyrintale extends Game {
         if (restScreen != null) restScreen.dispose();
         if (eventScreen != null) eventScreen.dispose();
         if (shopScreen != null) shopScreen.dispose();
-        if (videoPlayer != null) videoPlayer.dispose();
     }
 }
