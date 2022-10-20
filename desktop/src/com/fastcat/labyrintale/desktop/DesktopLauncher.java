@@ -6,11 +6,13 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
+import io.github.singlerr.Main;
 
 import java.io.File;
 import java.lang.reflect.Field;
 
 public class DesktopLauncher {
+
 	private static void loadConfiguration(){
 		try{
 			File parentFile = new File("settings");

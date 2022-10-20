@@ -1,4 +1,7 @@
-sourceCompatibility = 17
+plugins{
+    id 'io.freefair.lombok'
+}
+sourceCompatibility = 11
 sourceSets.main.java.srcDirs = [ "src/" ]
 sourceSets.main.resources.srcDirs = ["../core/assets"]
 

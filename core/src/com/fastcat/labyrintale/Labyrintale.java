@@ -32,6 +32,7 @@ import com.fastcat.labyrintale.screens.riskselect.RiskSelectScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import io.github.singlerr.Main;
 import lombok.Getter;
 
 public class Labyrintale extends Game {
@@ -173,6 +174,11 @@ public class Labyrintale extends Game {
         mainMenuScreen.onCreate();
         fadeOutAndChangeScreen(mainMenuScreen);
         //setScreen(new LogoScreen());
+        /**
+         * Generate csv files
+         * If you don't want this task, comment below
+         */
+        Main.main(new String[]{});
     }
 
     public void update() {

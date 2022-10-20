@@ -1,7 +1,7 @@
 plugins{
     id 'io.freefair.lombok'
 }
-sourceCompatibility = 17
+sourceCompatibility = 11
 dependencies {
     implementation 'org.jetbrains:annotations-java5:23.0.0'
     implementation 'nl.weeaboo.gdx-video:gdx-video:1.0.0-anonl'
