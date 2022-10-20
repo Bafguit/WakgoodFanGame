@@ -2,8 +2,12 @@ package com.fastcat.labyrintale.skills.player.burger;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
+import com.fastcat.labyrintale.status.CriticalPlusStatus;
+import com.fastcat.labyrintale.status.SpeedPlusStatus;
+import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Bless extends AbstractSkill {
 
@@ -11,12 +15,13 @@ public class Bless extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.PLAYER;
-  private static final int VALUE = 2;
+  private static final int VALUE = 3;
 
   public Bless(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
-    cost = 2;
+    setBaseValue(1, 1);
+    setBaseCost(2);
   }
 
   @Override
@@ -24,8 +29,9 @@ public class Bless extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new BlockAction(this.owner, e, spell));
-    top(new HealAction(this.owner, e, spell));
+    top(new ApplyStatusAction(new SpeedPlusStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new CriticalPlusStatus(value), owner, e, true));
+    top(new HealAction(owner, e, spell));
   }
 
   @Override

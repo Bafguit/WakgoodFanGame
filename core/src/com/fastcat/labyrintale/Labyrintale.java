@@ -169,7 +169,7 @@ public class Labyrintale extends Game {
     fadeOutAndChangeScreen(mainMenuScreen);
     // setScreen(new LogoScreen());
     /** Generate csv files If you don't want this task, comment below */
-    Main.main(new String[] {});
+    //Main.main(new String[] {});
   }
 
   public void update() {

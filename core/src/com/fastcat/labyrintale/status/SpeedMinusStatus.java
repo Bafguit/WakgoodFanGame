@@ -2,13 +2,13 @@ package com.fastcat.labyrintale.status;
 
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
-import com.fastcat.labyrintale.actions.RemoveStatusAction;
+import com.fastcat.labyrintale.actions.ReduceStatusAction;
 
-public class SinStatus extends AbstractStatus {
+public class SpeedMinusStatus extends AbstractStatus {
 
-  private static final String ID = "Sin";
+  private static final String ID = "SpeedMinus";
 
-  public SinStatus(int amount) {
+  public SpeedMinusStatus(int amount) {
     super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
     setAmount(amount);
   }
@@ -19,13 +19,18 @@ public class SinStatus extends AbstractStatus {
   }
 
   @Override
-  public void startOfTurn() {
-    if (notSelf) notSelf = false;
-    else top(new RemoveStatusAction(this, true));
+  public void onInitial() {
+    owner.stat.speed -= 2;
   }
 
   @Override
-  public int showAttack(int base) {
-    return base - amount;
+  public void startOfTurn() {
+    if (notSelf) notSelf = false;
+    else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.speed += 2;
   }
 }

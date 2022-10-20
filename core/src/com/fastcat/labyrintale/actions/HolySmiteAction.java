@@ -13,13 +13,11 @@ import com.fastcat.labyrintale.handlers.*;
 public class HolySmiteAction extends AbstractAction {
 
   public AbstractEntity.DamageInfo info;
-  public int heal;
 
   public HolySmiteAction(
-      AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, int heal) {
+      AbstractEntity actor, AbstractSkill.SkillTarget target, int damage) {
     super(actor, target, 0.5f);
     info = new AbstractEntity.DamageInfo(actor, damage);
-    this.heal = heal;
   }
 
   @Override
@@ -38,31 +36,13 @@ public class HolySmiteAction extends AbstractAction {
         for (AbstractEntity t : target) {
           EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("LIGHTNING")));
         }
+        int dmg = 0;
         for (int i = 0; i < target.size; i++) {
           AbstractEntity te = target.get(i);
-          if (te.isAlive()) te.takeDamage(info);
+          if (te.isAlive()) dmg += te.takeDamage(info);
         }
-        Array<AbstractPlayer> temp = new Array<>();
-        int low = 2147483647;
-        for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = AbstractLabyrinth.players[i];
-          if (p.isAlive() && p.health < low) low = p.health;
-        }
-        for (AbstractPlayer p : AbstractLabyrinth.players) {
-          if (p.health == low) temp.add(p);
-        }
-        SoundHandler.playSfx("HEAL");
-        for (int i = 0; i < temp.size; i++) {
-          AbstractEntity te = temp.get(i);
-          EffectHandler.add(
-              new UpDamageEffect(
-                  te.ui.x + te.ui.sWidth / 2,
-                  te.ui.y + te.ui.sHeight * 0.35f,
-                  heal,
-                  CHARTREUSE,
-                  false));
-          te.heal(actor != null ? actor.calculateSpell(heal) : heal);
-        }
+        if (dmg > 0)
+          ActionHandler.top(new HealAction(actor, AbstractSkill.SkillTarget.PLAYER_ALL, dmg));
       } else isDone = true;
     }
   }

@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.status.FixedStatus;
+import com.fastcat.labyrintale.status.ResistPlusStatus;
 
 public class Strong extends AbstractSkill {
 
@@ -17,12 +18,13 @@ public class Strong extends AbstractSkill {
   public Strong(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
+    setBaseValue(1, 1);
   }
 
   @Override
   public void use() {
     bot(new BlockAction(owner, owner, spell));
-    bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
+    bot(new ApplyStatusAction(new ResistPlusStatus(value), owner, owner, true));
   }
 
   @Override
