@@ -18,7 +18,7 @@ public class Tree extends AbstractItem {
     @Override
     public void onGain() {
         owner.modifyMaxHealth(10);
-        owner.stat.speed += 50;
+        owner.stat.speed += 5;
         owner.stat.debuRes -= 0.1f;
         owner.stat.neutRes -= 0.1f;
         owner.stat.moveRes -= 0.1f;
@@ -27,7 +27,7 @@ public class Tree extends AbstractItem {
     @Override
     public void onRemove() {
         owner.modifyMaxHealth(-10);
-        owner.stat.speed -= 50;
+        owner.stat.speed -= 5;
         owner.stat.debuRes += 0.1f;
         owner.stat.neutRes += 0.1f;
         owner.stat.moveRes += 0.1f;

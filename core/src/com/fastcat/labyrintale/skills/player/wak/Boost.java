@@ -12,12 +12,10 @@ public class Boost extends AbstractSkill {
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.PLAYER;
-    private static final int VALUE = 2;
 
     public Boost(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(3, 1);
-        setBaseValue(VALUE, 1);
+        setBaseCost(3);
     }
 
     @Override
@@ -27,12 +25,11 @@ public class Boost extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new CourageStatus(value), owner, e, false));
-        top(new BlockAction(this.owner, e, spell));
+        top(new BlockAction(owner, e, owner.block));
     }
 
     @Override
     protected void upgradeCard() {
-
+        if(cost > 0) cost--;
     }
 }

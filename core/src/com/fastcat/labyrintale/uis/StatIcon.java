@@ -56,7 +56,7 @@ public class StatIcon extends AbstractUI {
         if(isUp) clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80;
         if(type == StatType.ATTACK) amount = entity.stat.attack;
         else if(type == StatType.SPELL) amount = entity.stat.spell;
-        else if (type == StatType.SPEED) amount = entity.stat.speed;
+        else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
         else {
             if (type == StatType.CRITICAL) amount = EntityStat.cap(entity.stat.critical);
             else if(type == StatType.MULTIPLY) amount = (int) (entity.stat.multiply * 100);
@@ -96,9 +96,7 @@ public class StatIcon extends AbstractUI {
 
     @Override
     public void onClick() {
-        if (type == StatType.MULTIPLY) entity.stat.multiply += 0.05f;
-        else if (type == StatType.SPEED) entity.stat.speed += 5;
-        else if(amount < 80) {
+        if(amount < 80) {
             if (type == StatType.CRITICAL) entity.stat.critical += 0.05f;
             else if (type == StatType.MOVERES) entity.stat.moveRes += 0.05f;
             else if (type == StatType.DEBURES) entity.stat.debuRes += 0.05f;
@@ -109,6 +107,6 @@ public class StatIcon extends AbstractUI {
     }
 
     public enum StatType {
-        ATTACK, SPELL, CRITICAL, MULTIPLY, SPEED, MOVERES, DEBURES, NEUTRES
+        ATTACK, SPELL, SPEED, MULTIPLY, CRITICAL, MOVERES, DEBURES, NEUTRES
     }
 }

@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
@@ -20,8 +21,11 @@ public class DoubleE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_H, true));
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_V, true));
+        AbstractAction aa = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_H, true);
+        bot(aa);
+        AbstractAction a = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_V, true);
+        a.preAction = aa;
+        bot(a);
     }
 
     @Override

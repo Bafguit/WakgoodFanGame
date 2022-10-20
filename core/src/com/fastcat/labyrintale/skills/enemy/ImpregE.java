@@ -24,7 +24,7 @@ public class ImpregE extends AbstractSkill {
     public void use() {
         bot(new MoveAction(owner, owner, 0, 0.3f));
         bot(new ApplyStatusAction(new ProvokeStatus(owner), owner, owner, true));
-        bot(new ApplyStatusAction(new FixedStatus(false), owner, owner, true));
+        bot(new ApplyStatusAction(new FixedStatus(), owner, owner, true));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
@@ -20,10 +21,13 @@ public class FourE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true));
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true));
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true));
-        bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true));
+        AbstractAction a = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true);
+        bot(a);
+        for(int i = 0; i < 3; i++) {
+            AbstractAction aa = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true);
+            aa.preAction = a;
+            bot(aa);
+        }
     }
 
     @Override

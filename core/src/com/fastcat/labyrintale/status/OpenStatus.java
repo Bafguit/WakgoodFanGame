@@ -23,9 +23,10 @@ public class OpenStatus extends AbstractStatus {
     }
 
     @Override
-    public void onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
         if (type == AbstractEntity.DamageType.NORMAL) {
             top(new ApplyStatusAction(new ScarStatus(amount), owner, owner, true));
         }
+        return d;
     }
 }

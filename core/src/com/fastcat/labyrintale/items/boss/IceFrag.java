@@ -16,7 +16,7 @@ public class IceFrag extends AbstractItem {
     @Override
     public void onGain() {
         owner.modifyMaxHealth(10);
-        owner.stat.speed -= 30;
+        owner.stat.speed -= 3;
         owner.stat.debuRes += 0.3f;
         owner.stat.neutRes += 0.3f;
         owner.stat.moveRes += 0.3f;
@@ -25,7 +25,7 @@ public class IceFrag extends AbstractItem {
     @Override
     public void onRemove() {
         owner.modifyMaxHealth(10);
-        owner.stat.speed += 30;
+        owner.stat.speed += 3;
         owner.stat.debuRes -= 0.3f;
         owner.stat.neutRes -= 0.3f;
         owner.stat.moveRes -= 0.3f;

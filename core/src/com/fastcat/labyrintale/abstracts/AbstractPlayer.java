@@ -65,7 +65,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public boolean hasSlot() {
-        int i = AbstractLabyrinth.maxSlotUp;
+        int i = AbstractLabyrinth.maxSkillUp;
         return slot[0] < i || slot[1] < i || slot[2] < i;
     }
 

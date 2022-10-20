@@ -1,8 +1,12 @@
 package com.fastcat.labyrintale.skills.player.ine;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.status.BurnStatus;
+import com.fastcat.labyrintale.status.LethargyStatus;
 
 public class ThrowAxe extends AbstractSkill {
 
@@ -14,13 +18,17 @@ public class ThrowAxe extends AbstractSkill {
 
     public ThrowAxe(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE);
-
+        setBaseAttack(VALUE, 1);
+        setBaseValue(1, 1);
     }
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY));
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY, true);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new LethargyStatus(value), owner, target, true);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

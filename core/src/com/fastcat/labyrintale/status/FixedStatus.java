@@ -3,21 +3,26 @@ package com.fastcat.labyrintale.status;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
+import com.fastcat.labyrintale.actions.ReduceStatusAction;
 import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
 public class FixedStatus extends AbstractStatus {
 
     private static final String ID = "Fixed";
-    private final boolean fromEnemy;
+    
 
-    public FixedStatus(boolean fromEnemy) {
+    public FixedStatus() {
+        this(1);
+    }
+
+    public FixedStatus(int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
-        this.fromEnemy = fromEnemy;
+        setAmount(amount);
     }
 
     @Override
     public String getDesc() {
-        return exDesc[0];
+        return exDesc[0] + amount + exDesc[1];
     }
 
     @Override
@@ -26,13 +31,9 @@ public class FixedStatus extends AbstractStatus {
     }
 
     @Override
-    public void endOfTurn() {
-        if(fromEnemy) top(new RemoveStatusAction(this, true));
-    }
-
-    @Override
-    public void startOfRound() {
-        if(!fromEnemy) top(new RemoveStatusAction(this, true));
+    public void startOfTurn() {
+        if(notSelf) notSelf = false;
+        else top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
     }
 
     @Override

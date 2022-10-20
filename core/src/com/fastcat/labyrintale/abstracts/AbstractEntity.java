@@ -10,10 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.actions.DefeatAction;
-import com.fastcat.labyrintale.actions.EndLabyrinthAction;
-import com.fastcat.labyrintale.actions.MoveAction;
-import com.fastcat.labyrintale.actions.VictoryAction;
+import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
 import com.fastcat.labyrintale.effects.UpDamageEffect;
@@ -334,10 +331,10 @@ public abstract class AbstractEntity implements Cloneable {
         return d;
     }
 
-    public void takeDamage(DamageInfo info) {
+    public int takeDamage(DamageInfo info) {
+        int damage = info.damage;
         if (isAlive()) {
             AbstractEntity attacker = info.actor;
-            int damage = info.damage;
             DamageType type = info.type;
             if (cPanel.type == ControlPanel.ControlType.BATTLE) {
                 if (attacker != null && type == DamageType.NORMAL) {
@@ -374,32 +371,6 @@ public abstract class AbstractEntity implements Cloneable {
                     if (damage > 0) {
                         damage = loseBlock(damage);
                         if (damage > 0) {
-                            EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
-                            EffectHandler.add(new HealthBarDamageEffect(this));
-                            AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
-                            state.addAnimation(0, "idle", true, 0.0F);
-                            e.setTimeScale(1.0f);
-                            health -= damage;
-                            if (health <= 0) {
-                                if (isPlayer && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnce) {
-                                    advisor.skill.use();
-                                    health = 1;
-                                    block = 0;
-                                    blockRemove = 0;
-                                } else if (!isNeut) {
-                                    neutralize();
-                                    block = 0;
-                                    blockRemove = 0;
-                                } else if (stat.neutRes > 0 && publicRandom.random(0, 99) < EntityStat.cap(stat.neutRes)) {
-                                    health = 1;
-                                    block = 0;
-                                    blockRemove = 0;
-                                    EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
-                                    applyStatus(new NeutResStatus(this, 10), this, 10, false);
-                                } else {
-                                    die(attacker);
-                                }
-                            }
                             if (attacker != null && type == DamageType.NORMAL) {
                                 if (isPlayer) {
                                     passive.onDamage(this, damage, type);
@@ -415,20 +386,51 @@ public abstract class AbstractEntity implements Cloneable {
                                 }
                             }
                             if (isPlayer) {
-                                passive.onDamaged(attacker, damage, type);
+                                damage = passive.onDamaged(attacker, damage, type);
                                 for (AbstractItem m : item) {
-                                    if (m != null) m.onDamaged(attacker, damage, type);
+                                    if (m != null) damage = m.onDamaged(attacker, damage, type);
                                 }
                             }
                             for (AbstractSkill s : hand) {
-                                if (s != null) s.onDamaged(attacker, damage, type);
+                                if (s != null) damage = s.onDamaged(attacker, damage, type);
                             }
                             for (AbstractStatus s : status) {
-                                if (s != null) s.onDamaged(attacker, damage, type);
+                                if (s != null) damage = s.onDamaged(attacker, damage, type);
                             }
-                            return;
+                            if(damage > 0) {
+                                EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                                EffectHandler.add(new HealthBarDamageEffect(this));
+                                AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
+                                state.addAnimation(0, "idle", true, 0.0F);
+                                e.setTimeScale(1.0f);
+                                health -= damage;
+                                if (health <= 0) {
+                                    if (isPlayer && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET && !advisor.skill.usedOnce) {
+                                        advisor.skill.use();
+                                        health = 1;
+                                        block = 0;
+                                        blockRemove = 0;
+                                    } else if (!isNeut) {
+                                        neutralize();
+                                        block = 0;
+                                        blockRemove = 0;
+                                    } else if (stat.neutRes > 0 && publicRandom.random(0, 99) < EntityStat.cap(stat.neutRes)) {
+                                        health = 1;
+                                        block = 0;
+                                        blockRemove = 0;
+                                        EffectHandler.add(new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
+                                        applyStatus(new NeutResStatus(this, 10), this, 10, false);
+                                    } else {
+                                        die(attacker);
+                                    }
+                                }
+                                return damage;
+                            } else {
+                                return 0;
+                            }
+                        } else {
+                            return 0;
                         }
-                        return;
                     }
                 }
                 EffectHandler.add(new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
@@ -444,6 +446,7 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
         }
+        return damage;
     }
 
     public int loseBlock(int damage) {
@@ -496,6 +499,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (cPanel.type == ControlPanel.ControlType.BATTLE) {
             isDie = true;
             ActionHandler.top(new MoveAction(this, this, 3));
+            ActionHandler.top(new WaitAction(1));
             if (isPlayer) {
                 passive.onDeath(murder);
                 for (AbstractItem m : item) {
@@ -503,8 +507,12 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
             for (AbstractStatus s : status) {
-                if (s != null) s.onDeath(murder);
+                if (s != null) {
+                    s.onDeath(murder);
+                    s.onRemove();
+                }
             }
+            status.clear();
             EffectHandler.add(new DieEffect(this));
             boolean a = false;
             if (!isPlayer) {
@@ -543,7 +551,10 @@ public abstract class AbstractEntity implements Cloneable {
                     a = players[i].isAlive();
                     if (a) break;
                 }
-                if (!a) ActionHandler.top(new EndLabyrinthAction(DeadScreen.ScreenType.DEAD));
+                if (!a) {
+                    ActionHandler.clear();
+                    ActionHandler.top(new EndLabyrinthAction(DeadScreen.ScreenType.DEAD));
+                }
             }
         } else isDead = true;
     }
@@ -700,6 +711,10 @@ public abstract class AbstractEntity implements Cloneable {
 
         public static int cap(float i) {
             return (int) Math.min(i * 100, 80f);
+        }
+
+        public int capSpeed() {
+            return Math.max(speed, -20);
         }
     }
 }

@@ -1,42 +1,43 @@
 {
 "skeleton": {
-	"hash": "RBOrQiWD6TTquF/PVLdES1aJvvA",
+	"hash": "wcxCr2y8TpLC1PZdy+9KvxjyasA",
 	"spine": "3.8.75",
-	"x": -512,
-	"y": -62,
-	"width": 1024,
-	"height": 1024,
-	"images": "../../enemy/normal/img/",
-	"audio": ""
+	"x": -320.04,
+	"y": -50.28,
+	"width": 640.56,
+	"height": 640.56,
+	"images": "./img/",
+	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root", "rotation": -0.05 },
+	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
 	{ "name": "die", "bone": "root" },
-	{ "name": "attack", "bone": "root", "attachment": "attack" },
+	{ "name": "attack", "bone": "root" },
 	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root" },
-	{ "name": "idle", "bone": "root" }
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "bone" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
 			"die": {
-				"die": { "y": 450, "width": 1024, "height": 1024 }
+				"die": { "y": 270, "width": 640, "height": 640 }
 			},
 			"attack": {
-				"attack": { "y": 450, "width": 1024, "height": 1024 }
+				"attack": { "y": 270, "width": 640, "height": 640 }
 			},
 			"skill": {
-				"skill": { "y": 450, "width": 1024, "height": 1024 }
+				"skill": { "y": 270, "width": 640, "height": 640 }
 			},
 			"hit": {
-				"hit": { "y": 450, "width": 1024, "height": 1024 }
+				"hit": { "y": 270, "width": 640, "height": 640 }
 			},
 			"idle": {
-				"idle": { "y": 450, "width": 1024, "height": 1024 }
+				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			}
 		}
 	}
@@ -44,8 +45,14 @@
 "animations": {
 	"attack": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"attack": {
 				"attachment": [
+					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
 				]
 			}
@@ -53,7 +60,7 @@
 	},
 	"die": {
 		"slots": {
-			"attack": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -68,15 +75,15 @@
 	},
 	"hit": {
 		"slots": {
-			"attack": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
 					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}
@@ -89,7 +96,7 @@
 					{ "time": 0.6667, "name": "idle" }
 				]
 			},
-			"attack": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -100,13 +107,7 @@
 		"slots": {
 			"skill": {
 				"attachment": [
-					{ "name": "skill" },
 					{ "time": 0.6667, "name": "skill" }
-				]
-			},
-			"attack": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}

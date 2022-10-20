@@ -17,6 +17,7 @@ public abstract class AbstractAction implements Cloneable {
     public boolean isDone = false;
     public float baseDuration = DUR_DEFAULT;
     public float duration = DUR_DEFAULT;
+    public AbstractAction preAction;
 
     public AbstractAction(AbstractEntity actor, float duration) {
         this.actor = actor;
@@ -56,8 +57,9 @@ public abstract class AbstractAction implements Cloneable {
                 isDone = true;
                 return;
             } else if (duration <= 0) isDone = true;
-            else if (duration == baseDuration && tar != AbstractSkill.SkillTarget.NONE)
-                target = AbstractSkill.getTargets(actor, tar);
+            else if (duration == baseDuration)
+                if(preAction != null) target = preAction.target;
+                else if(tar != AbstractSkill.SkillTarget.NONE) target = AbstractSkill.getTargets(actor, tar);
             onStart();
             updateAction();
             onComplete();

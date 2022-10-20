@@ -12,7 +12,7 @@ public class RoundStartAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (isDone) {
-            AbstractLabyrinth.energy += AbstractLabyrinth.charge;
+            AbstractLabyrinth.energy = Math.min(AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);
             for(AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
                 e.blockRemove = e.block;
                 if(e.isPlayer) {

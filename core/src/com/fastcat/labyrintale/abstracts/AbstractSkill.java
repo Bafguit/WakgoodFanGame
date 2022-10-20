@@ -49,7 +49,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     public int value = -1;
     public int baseValue = -1;
     public int upValue = -1;
+    public int value2 = -1;
+    public int baseValue2 = -1;
+    public int upValue2 = -1;
     public int cost = 1;
+    public int baseCost = 1;
+    public int upCost = 0;
 
     public AbstractSkill(AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
         this.owner = owner;
@@ -402,6 +407,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         value = baseValue;
     }
 
+    public void setBaseCost(int i) {
+        baseCost = i;
+        cost = baseCost;
+    }
+
     public void setBaseAttack(int i, int up) {
         baseAttack = i;
         attack = baseAttack;
@@ -420,10 +430,17 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         upValue = up;
     }
 
+    public void setBaseCost(int i, int up) {
+        baseCost = i;
+        cost = baseCost;
+        upCost = up;
+    }
+
     public void update() {
         attack = calculateAttack(baseAttack);
         spell = calculateSpell(baseSpell);
         value = calculateValue(baseValue);
+        value2 = calculateValue2(baseValue2);
     }
 
     public void render(SpriteBatch sb) {
@@ -446,7 +463,19 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         return s;
     }
 
+    public int calculateAttackStat(int a) {
+        return a;
+    }
+
+    public int calculateSpellStat(int s) {
+        return s;
+    }
+
     public int calculateValue(int v) {
+        return v;
+    }
+
+    public int calculateValue2(int v) {
         return v;
     }
 
@@ -457,7 +486,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (AbstractLabyrinth.cPanel != null) {
                     a = calculateAttack(a);
                     if (owner != null) {
-                        a += owner.stat.attack;
+                        a += calculateAttackStat(owner.stat.attack);
                         if (owner.isPlayer) {
                             a = owner.passive.showAttack(a);
                             for (AbstractItem m : owner.item) {
@@ -494,7 +523,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 if (AbstractLabyrinth.cPanel != null) {
                     p = calculateSpell(p);
                     if (owner != null) {
-                        p += owner.stat.spell;
+                        p += calculateSpellStat(owner.stat.spell);
                         if (owner.isPlayer) {
                             p = owner.passive.showSpell(p);
                             for (AbstractItem m : owner.item) {
@@ -523,6 +552,12 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                     v = calculateValue(v);
                 }
                 return getHexColor(Color.CYAN) + v;
+            case "I":
+                int v2 = baseValue2;
+                if (AbstractLabyrinth.cPanel != null) {
+                    v2 = calculateValue(v2);
+                }
+                return getHexColor(Color.CYAN) + v2;
             default:
                 return "ERROR_UNIDENTIFIABLE";
         }
@@ -585,6 +620,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
                 baseValue += upValue;
                 value = baseValue;
             }
+            if (upValue2 != -1) {
+                baseValue2 += upValue2;
+                value2 = baseValue2;
+            }
             upgraded = true;
             upgradeCount++;
             name = skillData.NAME + "+" + upgradeCount;
@@ -609,8 +648,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
     }
 
-    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-
+    public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return damage;
     }
 
     @Override

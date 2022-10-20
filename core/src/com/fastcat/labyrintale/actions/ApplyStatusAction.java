@@ -45,7 +45,9 @@ public class ApplyStatusAction extends AbstractAction {
                 SoundHandler.playSfx("STATIC");
             }
             for (AbstractEntity e : target) {
-                e.applyStatus(status.cpy(), actor, status.amount);
+                AbstractStatus s = status.cpy();
+                if(actor != e) s.notSelf = true;
+                e.applyStatus(s, actor, status.amount);
             }
         }
     }

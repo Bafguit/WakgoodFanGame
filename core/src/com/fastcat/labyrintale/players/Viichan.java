@@ -23,7 +23,6 @@ public class Viichan extends AbstractPlayer {
 
     public Viichan() {
         super(ID, HEALTH, COLOR);
-        stat.speed = 5;
         stat.debuRes = 0.05f;
         stat.neutRes = 0.1f;
         stat.critical = 0.2f;

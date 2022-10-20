@@ -23,7 +23,6 @@ public class Jururu extends AbstractPlayer {
 
     public Jururu() {
         super(ID, HEALTH, COLOR);
-        stat.speed = 5;
         stat.debuRes = 0.15f;
         stat.neutRes = 0.15f;
         stat.critical = 0.05f;

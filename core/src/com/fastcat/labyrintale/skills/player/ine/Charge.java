@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.BlockAction;
+import com.fastcat.labyrintale.actions.ChargeAction;
 import com.fastcat.labyrintale.actions.MoveAction;
 
 public class Charge extends AbstractSkill {
@@ -23,8 +24,7 @@ public class Charge extends AbstractSkill {
     @Override
     public void use() {
         bot(new MoveAction(owner, owner, false, 0.05f));
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
-        bot(new BlockAction(this.owner, SkillTarget.SELF, spell));
+        bot(new ChargeAction(this, target));
     }
 
     @Override

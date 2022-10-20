@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.player.lilpa;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -21,8 +22,11 @@ public class CrystalStrike extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY, true));
-        bot(new ApplyStatusAction(new UnblockableStatus(), owner, target, true));
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY, true);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new UnblockableStatus(), owner, target, true);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

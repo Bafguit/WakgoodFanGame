@@ -17,13 +17,13 @@ public class ToyPlane extends AbstractItem {
     public void onGain() {
         owner.modifyMaxHealth(-10);
         owner.stat.spell -= 10;
-        owner.stat.speed += 100;
+        owner.stat.speed += 10;
     }
 
     @Override
     public void onRemove() {
         owner.modifyMaxHealth(+10);
         owner.stat.spell += 10;
-        owner.stat.speed -= 100;
+        owner.stat.speed -= 10;
     }
 }

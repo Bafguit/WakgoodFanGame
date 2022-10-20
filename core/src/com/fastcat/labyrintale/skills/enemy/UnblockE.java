@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -25,8 +26,11 @@ public class UnblockE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
-        bot(new ApplyStatusAction(new FlawStatus(value), owner, target, false));
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new FlawStatus(value), owner, target, false);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

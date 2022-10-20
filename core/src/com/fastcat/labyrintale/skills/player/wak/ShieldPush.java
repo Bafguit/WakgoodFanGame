@@ -1,33 +1,40 @@
 package com.fastcat.labyrintale.skills.player.wak;
 
-import com.fastcat.labyrintale.abstracts.AbstractEnemy;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.MoveAction;
+import com.fastcat.labyrintale.actions.ShieldPushAction;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class ShieldPush extends AbstractSkill {
 
     private static final String ID = "ShieldPush";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.STARTER;
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
     private static final int VALUE = 3;
 
     public ShieldPush(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE, 1);
+        setBaseAttack(0);
     }
 
     @Override
     public void use() {
-        bot(new BlockAction(this.owner, target, spell));
-        AbstractEnemy e = (AbstractEnemy) AbstractSkill.getTargets(SkillTarget.ENEMY_FIRST).get(0);
-        bot(new MoveAction(e, owner, false, 0.2f));
+        bot(new BlockAction(owner, owner, spell));
+        bot(new ShieldPushAction(this, target));
     }
 
     @Override
     protected void upgradeCard() {
 
+    }
+
+    @Override
+    public int calculateAttack(int a) {
+        return a + owner.block;
     }
 }

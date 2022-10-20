@@ -10,7 +10,6 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.uis.control.SkillButtonPanel;
 
 public class SlotButton extends AbstractUI {
 
@@ -27,7 +26,7 @@ public class SlotButton extends AbstractUI {
         this.player = player;
         this.index = index;
         upCount = this.player.slot[this.index];
-        clickable = upCount < AbstractLabyrinth.maxSlotUp;
+        clickable = upCount < AbstractLabyrinth.maxSkillUp;
         skill = player.deck.get(index);
         this.select = select;
         fontData = FontHandler.COOLDOWN;

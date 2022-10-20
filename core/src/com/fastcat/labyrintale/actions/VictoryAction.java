@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rewards.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
@@ -50,7 +51,6 @@ public class VictoryAction extends AbstractAction {
             Array<AbstractReward> temp = new Array<>();
             //temp.add(new StatReward());
             temp.add(new HealReward());
-            int r;
             AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
@@ -85,6 +85,7 @@ public class VictoryAction extends AbstractAction {
             e += AbstractLabyrinth.currentFloor.floorNum * 2;
             AbstractLabyrinth.gainExp(e);
             Labyrintale.fadeOutAndAddScreen(new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
+            ActionHandler.clear();
         }
     }
 }

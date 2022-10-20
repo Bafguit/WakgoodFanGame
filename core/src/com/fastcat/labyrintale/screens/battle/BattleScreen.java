@@ -15,6 +15,7 @@ import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
@@ -227,16 +228,16 @@ public class BattleScreen extends AbstractScreen {
         int ci = cPanel.battlePanel.curPlayer.index;
         if (isSelecting) {
             for (int i = 3; i >= 0; i--) {
-                if (!enemies[i].isTarget) enemies[i].render(sb);
+                if (!enemies[3 - i].isTarget) enemies[3 - i].render(sb);
                 if (!players[i].isTarget) players[i].render(sb);
             }
             bgImg.render(sb);
             for (int i = 3; i >= 0; i--) {
-                if (enemies[i].isTarget) enemies[i].render(sb);
+                if (enemies[3 - i].isTarget) enemies[3 - i].render(sb);
                 if (players[i].isTarget) players[i].render(sb);
             }
         } else {
-            for (int i = 3; i >= 0; i--) {
+            for (int i = 0; i < 3; i++) {
                 enemies[i].render(sb);
             }
             for (int i = 3; i >= 0; i--) {
@@ -322,17 +323,25 @@ public class BattleScreen extends AbstractScreen {
             if(e.isAlive()) temp.add(e);
         }
 
+
         Sort.instance().sort(temp, (o1, o2) -> {
-            int i = o2.stat.speed - o1.stat.speed;
-            if(i == 0) {
-                i = o1.index - o2.index;
-                if(i == 0) {
-                    if(o1.isPlayer) return -1;
-                    else return 1;
-                }
-            }
-            return i;
+            do {
+                int s1 = o1.stat.capSpeed();
+                int s2 = o2.stat.capSpeed();
+                int a = s1 + AbstractLabyrinth.publicRandom.random(0, 7);
+                int b = s2 + AbstractLabyrinth.publicRandom.random(0, 7);
+                int i = b - a;
+                if (i == 0) {
+                    i = s2 - s1;
+                    if (i > 0) {
+                        return 1;
+                    } else if(i < 0) {
+                        return -1;
+                    }
+                } else return i;
+            } while(true);
         });
+
         for(AbstractEntity e : temp) {
             if(e.isPlayer) {
                 cPanel.battlePanel.setPlayer((AbstractPlayer) e);

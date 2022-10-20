@@ -23,11 +23,11 @@ public abstract class AbstractEnemy extends AbstractEntity {
         drawPile = new Array<>();
         discardPile = new Array<>();
         disposablePile = new Array<>();
-        stat.debuRes = 0;
-        stat.neutRes = 0;
-        stat.critical = 0;
-        stat.moveRes = 0;
-        stat.multiply = 0;
+        stat.debuRes = 0.05f;
+        stat.neutRes = 0.05f;
+        stat.critical = 0.05f;
+        stat.moveRes = 0.05f;
+        stat.multiply = 0.5f;
         img = FileHandler.getUi().get("E_IMAGE");
     }
 

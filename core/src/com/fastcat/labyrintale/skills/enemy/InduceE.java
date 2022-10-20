@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -21,8 +22,11 @@ public class InduceE extends AbstractSkill {
     @Override
     public void use() {
         AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-        bot(new MoveAction(e, owner, 0, 0.2f));
-        bot(new ApplyStatusAction(new FixedStatus(true), owner, e, true));
+        AbstractAction a = new MoveAction(e, owner, 0, 0.2f);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new FixedStatus(), owner, e, true);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

@@ -1,29 +1,32 @@
 package com.fastcat.labyrintale.skills.player.ine;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.LethargyStatus;
+import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Intimidate extends AbstractSkill {
 
     private static final String ID = "Intimidate";
-    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillType TYPE = SkillType.SCHEME;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 4;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 2;
 
     public Intimidate(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE, 1);
-        setBaseValue(1, 1);
+        setBaseValue(VALUE, 1);
+        setBaseCost(3);
     }
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH));
-        bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, true));
+        bot(new ApplyStatusAction(new AttackStatus(value), owner, owner, true));
+        bot(new ApplyStatusAction(new SpellStatus(-1), owner, owner, true));
     }
 
     @Override

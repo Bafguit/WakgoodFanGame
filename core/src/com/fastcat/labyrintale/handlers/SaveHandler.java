@@ -138,7 +138,7 @@ public final class SaveHandler {
         }
 
         itemAble = data.itemAble;
-        maxSlotUp = data.selection;
+        maxSkillUp = data.selection;
         gold = data.gold;
         AbstractLabyrinth.charge = data.charge;
         level = data.level;
@@ -186,7 +186,7 @@ public final class SaveHandler {
             }
             temp.advisor = AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
             temp.itemAble = AbstractLabyrinth.itemAble;
-            temp.selection = AbstractLabyrinth.maxSlotUp;
+            temp.selection = AbstractLabyrinth.maxSkillUp;
             temp.gold = AbstractLabyrinth.gold;
             temp.charge = AbstractLabyrinth.charge;
             temp.level = AbstractLabyrinth.level;

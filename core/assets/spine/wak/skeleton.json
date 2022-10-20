@@ -1,35 +1,231 @@
 {
-"skeleton": {
-	"hash": "j7CsrsZolwieqEfFp1fS4xVpUcs",
-	"spine": "3.8.75",
-	"x": -320,
-	"y": -50,
-	"width": 640,
-	"height": 640,
-	"images": "../../sd/wak/",
-	"audio": ""
-},
+"skeleton": { "hash": "eOmg4skg0RXnO0DQhwZINgE2nLE", "spine": "3.8.75", "images": "", "audio": "" },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root" },
+	{ "name": "body", "parent": "root", "length": 112.63, "rotation": 88.79, "x": -9.39, "y": 186.07 },
+	{ "name": "arm", "parent": "body", "length": 74.56, "rotation": -154.95, "x": 83.39, "y": -42.66 },
+	{ "name": "shield", "parent": "body", "length": 156.78, "rotation": -161.73, "x": 1.43, "y": 82.52 },
+	{ "name": "head", "parent": "body", "length": 143.06, "rotation": -2.6, "x": 120.58, "y": -0.63 }
 ],
 "slots": [
-	{ "name": "gosegu_sd_t", "bone": "root", "attachment": "wak_sd_t" }
+	{ "name": "idle", "bone": "root" },
+	{ "name": "arm", "bone": "arm" },
+	{ "name": "back", "bone": "body" },
+	{ "name": "leg", "bone": "root" },
+	{ "name": "body", "bone": "body" },
+	{ "name": "head", "bone": "head" },
+	{ "name": "shield", "bone": "shield" },
+	{ "name": "attack", "bone": "root" },
+	{ "name": "die", "bone": "root" },
+	{ "name": "hit", "bone": "root" },
+	{ "name": "skill", "bone": "root" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"gosegu_sd_t": {
-				"wak_sd_t": { "y": 270, "width": 640, "height": 640 }
+			"die": {
+				"die": { "x": 20, "y": 240, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"attack": {
+				"attack": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"leg": {
+				"leg": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"skill": {
+				"skill": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"hit": {
+				"hit": { "x": -10, "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"idle": {
+				"idle": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			},
+			"arm": {
+				"arm": {
+					"x": -15.49,
+					"y": -31.44,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": 66.16,
+					"width": 1280,
+					"height": 1280
+				}
+			},
+			"head": {
+				"head": {
+					"x": -36.11,
+					"y": -8.64,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": -86.19,
+					"width": 1280,
+					"height": 1280
+				}
+			},
+			"body": {
+				"body": {
+					"x": 84.11,
+					"y": -7.62,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": -88.79,
+					"width": 1280,
+					"height": 1280
+				}
+			},
+			"back": {
+				"back": {
+					"x": 84.11,
+					"y": -7.62,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": -88.79,
+					"width": 1280,
+					"height": 1280
+				}
+			},
+			"shield": {
+				"shield": {
+					"x": -50.25,
+					"y": 111.51,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": 72.94,
+					"width": 1280,
+					"height": 1280
+				}
 			}
 		}
 	}
 ],
 "animations": {
-	"attack": {},
-	"die": {},
-	"hit": {},
-	"idle": {},
-	"skill": {}
+	"attack": {
+		"slots": {
+			"attack": {
+				"attachment": [
+					{ "name": "attack" },
+					{ "time": 0.6667, "name": "attack" }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"die": {
+				"attachment": [
+					{ "name": "die" },
+					{ "time": 0.6667, "name": "die" }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"hit": {
+				"attachment": [
+					{ "name": "hit" },
+					{ "time": 0.6667, "name": "hit" }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"leg": {
+				"attachment": [
+					{ "name": "leg" }
+				]
+			},
+			"arm": {
+				"attachment": [
+					{ "name": "arm" }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": "body" }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": "head" }
+				]
+			},
+			"shield": {
+				"attachment": [
+					{ "name": "shield" }
+				]
+			},
+			"back": {
+				"attachment": [
+					{ "name": "back" }
+				]
+			}
+		},
+		"bones": {
+			"body": {
+				"translate": [
+					{ "time": 0.0333 },
+					{ "time": 0.2, "y": 0.33 },
+					{ "time": 0.7, "y": 2.75 },
+					{ "time": 0.8667, "y": 3.15, "curve": "stepped" },
+					{ "time": 0.9333, "y": 3.15 },
+					{ "time": 1.1, "y": 2.75 },
+					{ "time": 1.6, "y": 0.33 },
+					{ "time": 1.7667 }
+				]
+			},
+			"arm": {
+				"rotate": [
+					{ "angle": -7.41, "curve": "stepped" },
+					{ "time": 0.0333, "angle": -7.41 },
+					{ "time": 0.2, "angle": -6.73 },
+					{ "time": 0.7, "angle": -2.29 },
+					{ "time": 0.8667, "angle": -1.74, "curve": "stepped" },
+					{ "time": 0.9333, "angle": -1.74 },
+					{ "time": 1.1, "angle": -2.29 },
+					{ "time": 1.6, "angle": -6.73 },
+					{ "time": 1.7667, "angle": -7.41 }
+				]
+			},
+			"head": {
+				"translate": [
+					{ "x": -1.88, "y": -0.04, "curve": "stepped" },
+					{ "time": 0.0333, "x": -1.88, "y": -0.04 },
+					{ "time": 0.2, "x": -2.06, "y": -0.04 },
+					{ "time": 0.7, "x": -0.42, "y": -0.01 },
+					{ "time": 0.8667, "x": -0.47, "y": -0.01, "curve": "stepped" },
+					{ "time": 0.9333, "x": -0.47, "y": -0.01 },
+					{ "time": 1.1, "x": -0.42, "y": -0.01 },
+					{ "time": 1.6, "x": -2.06, "y": -0.04 },
+					{ "time": 1.7667, "x": -1.88, "y": -0.04 }
+				]
+			},
+			"shield": {
+				"translate": [
+					{ "time": 0.0333 },
+					{ "time": 0.2, "x": 0.66, "y": 0.01 },
+					{ "time": 0.7, "x": 7.01, "y": 0.15 },
+					{ "time": 0.8667, "x": 7.78, "y": 0.16, "curve": "stepped" },
+					{ "time": 0.9333, "x": 7.78, "y": 0.16 },
+					{ "time": 1.1, "x": 7.01, "y": 0.15 },
+					{ "time": 1.6, "x": 0.66, "y": 0.01 },
+					{ "time": 1.7667 }
+				]
+			}
+		}
+	},
+	"skill": {
+		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": "skill" },
+					{ "time": 0.6667, "name": "skill" }
+				]
+			}
+		}
+	}
 }
 }

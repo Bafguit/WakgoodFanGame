@@ -16,14 +16,14 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 public class MoveAction extends AbstractAction {
 
-    private final AbstractEntity from;
+    private  AbstractEntity from;
     private final HashMap<Integer, AbstractEntity> to = new HashMap<>();
     private final HashMap<Integer, Float> distance = new HashMap<>();
     private final HashMap<Integer, Float> position = new HashMap<>();
     private final MoveType fromType;
-    private final MoveType type;
+    private  MoveType type;
 
-    private final boolean alive;
+    private  boolean alive;
     private boolean run = true;
     private boolean isLeft;
     private int toIndex;
@@ -54,6 +54,11 @@ public class MoveAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
+            if(preAction != null) {
+                from = preAction.target.get(0);
+                type = from.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
+                alive = from.isAlive();
+            }
             if (toIndex < 0 || toIndex > 3 || (alive && from.movable > 0) || alive != from.isAlive()) {
                 isDone = true;
                 run = false;

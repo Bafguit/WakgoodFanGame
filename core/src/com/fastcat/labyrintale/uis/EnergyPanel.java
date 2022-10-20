@@ -28,7 +28,7 @@ public class EnergyPanel extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            FontHandler.renderCenter(sb, fontData, Integer.toString(AbstractLabyrinth.energy), x, y + sHeight / 2, sWidth, sHeight);
+            FontHandler.renderCenter(sb, fontData, AbstractLabyrinth.energy + "/" + AbstractLabyrinth.MAX_ENERGY, x, y + sHeight / 2, sWidth, sHeight);
         }
     }
 

@@ -1,13 +1,82 @@
 
 skeleton.png
-size: 334,501
+size: 2036,1767
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-roent_sd_t
+arm_left
+  rotate: true
+  xy: 2, 1564
+  size: 201, 264
+  orig: 1280, 1280
+  offset: 396, 352
+  index: -1
+arm_right
+  rotate: false
+  xy: 701, 1385
+  size: 415, 380
+  orig: 1280, 1280
+  offset: 681, 227
+  index: -1
+body
+  rotate: false
+  xy: 1616, 1317
+  size: 418, 448
+  orig: 1280, 1280
+  offset: 433, 294
+  index: -1
+die
+  rotate: false
+  xy: 2, 251
+  size: 751, 637
+  orig: 1280, 1280
+  offset: 361, 130
+  index: -1
+head
+  rotate: false
+  xy: 268, 1395
+  size: 431, 370
+  orig: 1280, 1280
+  offset: 407, 677
+  index: -1
+hit
+  rotate: true
+  xy: 2, 890
+  size: 493, 996
+  orig: 1280, 1280
+  offset: 326, 54
+  index: -1
+idle
+  rotate: true
+  xy: 755, 2
+  size: 708, 999
+  orig: 1280, 1280
+  offset: 388, 48
+  index: -1
+leg
+  rotate: false
+  xy: 1118, 1376
+  size: 496, 389
+  orig: 1280, 1280
+  offset: 388, 48
+  index: -1
+skill
+  rotate: true
+  xy: 1000, 712
+  size: 603, 999
+  orig: 1280, 1280
+  offset: 288, 48
+  index: -1
+
+skeleton2.png
+size: 964,1003
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack
   rotate: false
   xy: 2, 2
-  size: 330, 497
-  orig: 640, 640
-  offset: 140, 39
+  size: 960, 999
+  orig: 1280, 1280
+  offset: 288, 48
   index: -1

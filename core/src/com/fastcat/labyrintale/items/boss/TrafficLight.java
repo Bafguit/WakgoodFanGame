@@ -15,14 +15,14 @@ public class TrafficLight extends AbstractItem {
     @Override
     public void onGain() {
         owner.modifyMaxHealth(10);
-        owner.stat.speed += 20;
+        owner.stat.speed += 2;
         owner.stat.moveRes += 0.3f;
     }
 
     @Override
     public void onRemove() {
         owner.modifyMaxHealth(-10);
-        owner.stat.speed -= 20;
+        owner.stat.speed -= 2;
         owner.stat.moveRes -= 0.3f;
     }
 }

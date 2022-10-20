@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.player.ine;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -12,8 +13,8 @@ public class EyeSting extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int ATTACK = 2;
-    private static final int UP = 1;
+    private static final int ATTACK = 5;
+    private static final int UP = 5;
 
     public EyeSting(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
@@ -23,8 +24,11 @@ public class EyeSting extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT));
-        bot(new ApplyStatusAction(new BlindStatus(), owner, target, true));
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new BlindStatus(), owner, target, true);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

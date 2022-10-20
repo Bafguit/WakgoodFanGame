@@ -59,13 +59,13 @@ public class InfoPanel extends AbstractUI {
 
         for (int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(i);
-            c.setPosition(w * (0.0825f + 0.08f * i) - c.sWidth / 2, h * 0.1f);
+            c.setPosition((89 + 209 * i) * scale, 110 * scale);
             pIcons[i] = c;
         }
         map = new MapButton();
-        map.setPosition(w * 0.47f - map.sWidth * 0.5f, h * 0.275f);
+        map.setPosition(1300 * scale, 376 * scale);
         playerInfo = new PlayerInfoButton();
-        playerInfo.setPosition(w * 0.4f - playerInfo.sWidth * 0.5f, h * 0.275f);
+        playerInfo.setPosition(1300 * scale, 223 * scale);
     }
 
     @Override

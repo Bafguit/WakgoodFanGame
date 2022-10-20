@@ -1,13 +1,89 @@
 
 skeleton.png
-size: 334,509
+size: 2005,1680
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-wak_sd_t
+arm
+  rotate: false
+  xy: 2, 1466
+  size: 282, 212
+  orig: 1280, 1280
+  offset: 673, 442
+  index: -1
+back
+  rotate: false
+  xy: 286, 1328
+  size: 352, 350
+  orig: 1280, 1280
+  offset: 455, 162
+  index: -1
+body
+  rotate: true
+  xy: 640, 1323
+  size: 355, 448
+  orig: 1280, 1280
+  offset: 454, 293
+  index: -1
+die
+  rotate: true
+  xy: 2, 250
+  size: 650, 881
+  orig: 1280, 1280
+  offset: 330, 118
+  index: -1
+head
+  rotate: false
+  xy: 2, 938
+  size: 513, 388
+  orig: 1280, 1280
+  offset: 385, 679
+  index: -1
+hit
+  rotate: true
+  xy: 1014, 708
+  size: 605, 989
+  orig: 1280, 1280
+  offset: 385, 78
+  index: -1
+idle
+  rotate: true
+  xy: 885, 2
+  size: 704, 1014
+  orig: 1280, 1280
+  offset: 251, 53
+  index: -1
+leg
+  rotate: false
+  xy: 517, 902
+  size: 495, 419
+  orig: 1280, 1280
+  offset: 393, 53
+  index: -1
+shield
+  rotate: true
+  xy: 1090, 1315
+  size: 363, 622
+  orig: 1280, 1280
+  offset: 251, 134
+  index: -1
+
+skeleton2.png
+size: 1577,1018
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack
+  rotate: false
+  xy: 788, 9
+  size: 787, 1007
+  orig: 1280, 1280
+  offset: 353, 55
+  index: -1
+skill
   rotate: false
   xy: 2, 2
-  size: 330, 505
-  orig: 640, 640
-  offset: 140, 39
+  size: 784, 1014
+  orig: 1280, 1280
+  offset: 251, 53
   index: -1

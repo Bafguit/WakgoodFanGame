@@ -1,41 +1,41 @@
 
 skeleton.png
-size: 333,368
+size: 2032,523
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
   xy: 2, 2
-  size: 329, 364
+  size: 489, 519
   orig: 640, 640
-  offset: 167, 29
+  offset: 55, 29
   index: -1
 die
-  rotate: false
-  xy: 2, 2
-  size: 329, 364
+  rotate: true
+  xy: 1879, 51
+  size: 470, 151
   orig: 640, 640
-  offset: 167, 29
+  offset: 96, 29
   index: -1
 hit
   rotate: false
-  xy: 2, 2
-  size: 329, 364
+  xy: 965, 2
+  size: 457, 519
   orig: 640, 640
-  offset: 167, 29
+  offset: 132, 29
   index: -1
 idle
   rotate: false
-  xy: 2, 2
-  size: 329, 364
+  xy: 493, 2
+  size: 470, 519
   orig: 640, 640
-  offset: 167, 29
+  offset: 96, 29
   index: -1
 skill
   rotate: false
-  xy: 2, 2
-  size: 329, 364
+  xy: 1424, 38
+  size: 453, 483
   orig: 640, 640
-  offset: 167, 29
+  offset: 113, 65
   index: -1

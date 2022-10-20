@@ -97,8 +97,8 @@ public class AbstractItem implements Cloneable {
 
     }
 
-    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-
+    public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return damage;
     }
 
     public void onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {

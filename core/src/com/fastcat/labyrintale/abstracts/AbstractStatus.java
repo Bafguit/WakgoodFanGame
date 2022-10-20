@@ -9,9 +9,6 @@ import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.StatusString;
 
 
-import java.util.HashMap;
-
-
 public abstract class AbstractStatus implements Cloneable {
 
     public String id;
@@ -26,6 +23,7 @@ public abstract class AbstractStatus implements Cloneable {
     public AbstractEntity owner;
     public boolean hasAmount = false;
     public boolean canGoNegative = false;
+    public boolean notSelf = false;
     public int amount = 0;
 
     public AbstractStatus(String id, AbstractSkill.SkillTarget target, StatusType type) {
@@ -117,8 +115,8 @@ public abstract class AbstractStatus implements Cloneable {
 
     }
 
-    public void onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-
+    public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        return damage;
     }
 
     public void onAttack(AbstractEntity target, int damage, AbstractEntity.DamageType type) {

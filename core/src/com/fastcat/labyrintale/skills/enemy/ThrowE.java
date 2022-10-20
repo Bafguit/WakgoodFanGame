@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AmbushAction;
@@ -23,9 +24,12 @@ public class ThrowE extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AmbushAction(this, true));
+        AbstractAction a = new AmbushAction(this, true);
+        bot(a);
         AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-        bot(new MoveAction(e, owner, 3, 0.2f));
+        AbstractAction m = new MoveAction(e, owner, 3, 0.2f);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

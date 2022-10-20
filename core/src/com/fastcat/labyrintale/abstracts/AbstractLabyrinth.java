@@ -12,6 +12,8 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
 
+    public static final int MAX_ENERGY = 8;
+
     public static String seed;
     public static long seedLong;
 
@@ -31,7 +33,7 @@ public class AbstractLabyrinth {
     public static ControlPanel cPanel;
     public static int floorNum;
     public static int itemAble;
-    public static int maxSlotUp;
+    public static int maxSkillUp;
     public static int energy = 0;
     public static int charge;
     public static int gold;
@@ -70,7 +72,7 @@ public class AbstractLabyrinth {
             floors[2] = new AbstractFloor(3);
             floors[3] = new AbstractFloor(4);
             itemAble = 0;
-            maxSlotUp = 3;
+            maxSkillUp = 1;
             gold = 100;
             level = 1;
             exp = 0;
@@ -133,7 +135,7 @@ public class AbstractLabyrinth {
     }
 
     public static void modifySelection(int a) {
-        maxSlotUp = Math.max(maxSlotUp + a, 0);
+        maxSkillUp = Math.max(maxSkillUp + a, 0);
     }
 
     private static String generateRandomSeed() {

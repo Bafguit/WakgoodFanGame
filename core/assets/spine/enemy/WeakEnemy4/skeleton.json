@@ -1,23 +1,24 @@
 {
 "skeleton": {
-	"hash": "Lvss16kcDYYFwC7MIGTmGT7XvuQ",
+	"hash": "fdJVd7sb88+w6WuH8pH3uWcjPjQ",
 	"spine": "3.8.75",
-	"x": -320,
-	"y": -50,
-	"width": 640,
-	"height": 640,
-	"images": "../../enemy/temp3/img/",
-	"audio": ""
+	"x": -320.04,
+	"y": -50.28,
+	"width": 640.56,
+	"height": 640.56,
+	"images": "./img/",
+	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root", "rotation": -0.05 },
+	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
 	{ "name": "die", "bone": "root" },
 	{ "name": "attack", "bone": "root" },
 	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root" },
-	{ "name": "idle", "bone": "root", "attachment": "idle" }
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "bone" }
 ],
 "skins": [
 	{
@@ -36,7 +37,7 @@
 				"hit": { "y": 270, "width": 640, "height": 640 }
 			},
 			"idle": {
-				"idle": { "y": 270, "width": 640, "height": 640 }
+				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			}
 		}
 	}
@@ -44,53 +45,59 @@
 "animations": {
 	"attack": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"attack": {
 				"attachment": [
 					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
 	},
 	"die": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"die": {
 				"attachment": [
 					{ "name": "die" },
 					{ "time": 0.6667, "name": "die" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
 	},
 	"hit": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
 					{ "time": 0.6667, "name": "hit" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
 	},
 	"idle": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"idle": {
 				"attachment": [
+					{ "name": "idle" },
 					{ "time": 0.6667, "name": "idle" }
 				]
 			}
@@ -100,13 +107,7 @@
 		"slots": {
 			"skill": {
 				"attachment": [
-					{ "name": "skill" },
 					{ "time": 0.6667, "name": "skill" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}

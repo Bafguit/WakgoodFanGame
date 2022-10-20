@@ -14,7 +14,7 @@ public class SportsCar extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.stat.speed += 30;
+        owner.stat.speed += 3;
         owner.stat.critical += 0.3f;
         owner.stat.multiply += 0.3f;
         owner.stat.moveRes -= 0.3f;
@@ -22,7 +22,7 @@ public class SportsCar extends AbstractItem {
 
     @Override
     public void onRemove() {
-        owner.stat.speed -= 30;
+        owner.stat.speed -= 3;
         owner.stat.critical -= 0.3f;
         owner.stat.multiply -= 0.3f;
         owner.stat.moveRes += 0.3f;

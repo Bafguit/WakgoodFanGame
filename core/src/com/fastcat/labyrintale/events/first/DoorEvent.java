@@ -31,17 +31,7 @@ public class DoorEvent extends AbstractEvent {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 3));
         } else if (page == 1) {
-            AbstractChoice[] c = AbstractLabyrinth.currentFloor.currentWay.choices;
-            boolean b = false;
-            for (AbstractChoice ch : c) {
-                if (ch.type == AbstractChoice.ChoiceType.BATTLE) {
-                    a.add(new BattleEventChoice(data.SELECT[2], ch.room));
-                    b = true;
-                    break;
-                }
-            }
-            if (!b)
-                a.add(new BattleEventChoice(data.SELECT[2], GroupHandler.RoomGroup.getNextNormal(AbstractLabyrinth.floorNum)));
+            a.add(new BattleEventChoice(data.SELECT[2], AbstractLabyrinth.currentFloor.currentWay.enemies));
         } else {
             a.add(new EndEventChoice());
         }

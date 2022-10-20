@@ -11,24 +11,18 @@ public class Encourage extends AbstractSkill {
     private static final String ID = "Encourage";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER;
-    private static final int VALUE = 2;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+    private static final int VALUE = 4;
 
     public Encourage(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(3, 1);
-        setBaseValue(VALUE, 1);
+        setBaseSpell(VALUE, 1);
+        setBaseCost(2);
     }
 
     @Override
     public void use() {
-
-    }
-
-    @Override
-    public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new EnduranceStatus(value), owner, e, false));
-        top(new BlockAction(this.owner, e, spell));
+        top(new BlockAction(owner, target, spell));
     }
 
     @Override

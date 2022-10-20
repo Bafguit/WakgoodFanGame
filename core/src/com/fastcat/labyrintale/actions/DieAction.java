@@ -2,33 +2,20 @@ package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.effects.DieEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.EffectHandler;
 
 public class DieAction extends AbstractAction {
-    public DieAction(AbstractEntity target) {
-        this(target, 0);
-    }
-    public DieAction(AbstractSkill.SkillTarget target) {
-        this(target, 0);
-    }
-
-    public DieAction(AbstractEntity target, float duration) {
-        super(null, target, duration);
-
-    }
-
-    public DieAction(AbstractSkill.SkillTarget target, float duration) {
-        super(null, target, duration);
+    public DieAction(AbstractEntity e) {
+        super(e, 1f);
     }
 
     @Override
     protected void updateAction() {
         if(duration == baseDuration) {
-            if(target != null) {
-                for(AbstractEntity e : target) {
-                    e.die(actor);
-                }
-            }
+            ActionHandler.top(new MoveAction(actor, actor, 3));
+            EffectHandler.add(new DieEffect(actor));
         }
     }
 }

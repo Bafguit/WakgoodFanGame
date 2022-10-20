@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.player.viichan;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -22,8 +23,11 @@ public class Insight extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true));
-        bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true));
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true);
+        m.preAction = a;
+        bot(m);
     }
 
     @Override

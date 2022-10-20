@@ -22,7 +22,6 @@ public class Burger extends AbstractPlayer {
 
     public Burger() {
         super(ID, HEALTH, COLOR);
-        stat.speed = 5;
         stat.debuRes = 0.05f;
         stat.neutRes = 0.1f;
         stat.critical = 0.05f;

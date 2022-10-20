@@ -29,7 +29,7 @@ public class SelfBombStatus extends AbstractStatus {
         if(amount > 1) {
             top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
         } else {
-            top(new DieAction(owner, 0.3f));
+            top(new SuicideAction(owner, 0.3f));
             top(new FlashAction(owner, img));
         }
     }

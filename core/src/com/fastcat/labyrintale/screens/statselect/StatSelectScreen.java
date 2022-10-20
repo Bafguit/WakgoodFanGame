@@ -34,9 +34,9 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
                 PlayerStat temp = new PlayerStat(p);
                 temp.setPosition(w * (0.375f * i + 0.175f), h * (0.675f - 0.175f * j));
                 player[i][j] = temp;
-                int sc = 2;
+                int sc = 4;
                 for(int k = 0; k < 2; k++) {
-                    for(int l = 0; l < 3; l++) {
+                    for(int l = 0; l < 2; l++) {
                         StatIcon adv = new StatIcon(p, StatIcon.StatType.values()[sc], this);
                         adv.setScale(2);
                         adv.setPosition(temp.x + temp.sWidth * 1.1f + w * 0.08f * l, temp.y + (temp.sHeight - adv.sHeight) * 0.5f + h * 0.03f * (1 - k * 2));
@@ -54,7 +54,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
         for (int i = 0; i < 2; i++) {
             for(int j = 0; j < 2; j++) {
                 for(int k = 0; k < 2; k++) {
-                    for(int l = 0; l < 3; l++) {
+                    for(int l = 0; l < 2; l++) {
                         stats[i][j][k][l].update();
                     }
                 }
@@ -70,7 +70,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
         for (int i = 0; i < 2; i++) {
             for(int j = 0; j < 2; j++) {
                 for(int k = 0; k < 2; k++) {
-                    for(int l = 0; l < 3; l++) {
+                    for(int l = 0; l < 2; l++) {
                         stats[i][j][k][l].render(sb);
                     }
                 }

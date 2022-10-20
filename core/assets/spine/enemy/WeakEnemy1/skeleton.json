@@ -1,23 +1,24 @@
 {
 "skeleton": {
-	"hash": "Uy6Y6G3p6rIFmqUfggm5GlZQSNU",
+	"hash": "XbvyurluclIH35ylMVlQ1MZGKDk",
 	"spine": "3.8.75",
-	"x": -320,
-	"y": -50,
-	"width": 640,
-	"height": 640,
-	"images": "../../enemy/temp/img/",
-	"audio": ""
+	"x": -224.03,
+	"y": -35.2,
+	"width": 448.39,
+	"height": 448.39,
+	"images": "./img/",
+	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root", "rotation": -0.05, "scaleX": 0.7, "scaleY": 0.7 },
+	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
 	{ "name": "die", "bone": "root" },
 	{ "name": "attack", "bone": "root" },
 	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root" },
-	{ "name": "idle", "bone": "root", "attachment": "idle" }
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "bone" }
 ],
 "skins": [
 	{
@@ -36,7 +37,7 @@
 				"hit": { "y": 270, "width": 640, "height": 640 }
 			},
 			"idle": {
-				"idle": { "y": 270, "width": 640, "height": 640 }
+				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			}
 		}
 	}
@@ -50,7 +51,7 @@
 					{ "time": 0.6667, "name": "attack" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -65,7 +66,7 @@
 					{ "time": 0.6667, "name": "die" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -80,7 +81,7 @@
 					{ "time": 0.6667, "name": "hit" }
 				]
 			},
-			"idle": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -91,7 +92,34 @@
 		"slots": {
 			"idle": {
 				"attachment": [
-					{ "time": 0.6667, "name": "idle" }
+					{ "name": "idle" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"translate": [
+					{},
+					{ "time": 0.1333, "y": 2 },
+					{ "time": 0.5333, "x": -0.02, "y": 18 },
+					{ "time": 0.6667, "x": -0.02, "y": 20 },
+					{ "time": 0.8, "x": -0.02, "y": 18 },
+					{ "time": 1.2, "y": 2 },
+					{ "time": 1.3333 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.1333, "x": 1.005 },
+					{ "time": 0.5333, "x": 1.045 },
+					{ "time": 0.6667, "x": 1.05 },
+					{ "time": 0.8, "x": 1.045 },
+					{ "time": 1.2, "x": 1.005 },
+					{ "time": 1.3333 }
 				]
 			}
 		}
@@ -100,13 +128,7 @@
 		"slots": {
 			"skill": {
 				"attachment": [
-					{ "name": "skill" },
 					{ "time": 0.6667, "name": "skill" }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
