@@ -5,22 +5,22 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class RobotHand extends AbstractItem {
 
-    private static final String ID = "RobotHand";
-    private static final ItemRarity RARITY = ItemRarity.BRONZE;
+  private static final String ID = "RobotHand";
+  private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-    public RobotHand(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public RobotHand(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.stat.attack += 1;
-        owner.stat.critical += 0.1f;
-    }
+  @Override
+  public void onGain() {
+    owner.stat.attack += 1;
+    owner.stat.critical += 0.1f;
+  }
 
-    @Override
-    public void onRemove() {
-        owner.stat.attack -= 1;
-        owner.stat.critical -= 0.1f;
-    }
+  @Override
+  public void onRemove() {
+    owner.stat.attack -= 1;
+    owner.stat.critical -= 0.1f;
+  }
 }

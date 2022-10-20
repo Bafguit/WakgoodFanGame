@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.CallyCarlySkill;
 
 public class CallyCarlyDavidson extends AbstractAdvisor {
 
-    public CallyCarlyDavidson() {
-        super(AdvisorClass.CALLYCARLY, new CallyCarlySkill());
-    }
+  public CallyCarlyDavidson() {
+    super(AdvisorClass.CALLYCARLY, new CallyCarlySkill());
+  }
 }

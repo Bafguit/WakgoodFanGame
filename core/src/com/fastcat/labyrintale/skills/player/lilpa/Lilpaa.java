@@ -6,26 +6,26 @@ import com.fastcat.labyrintale.actions.LilpaaAction;
 
 public class Lilpaa extends AbstractSkill {
 
-    private static final String ID = "Lilpaa";
-    private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ALL;
-    private static final int ATTACK = 6;
-    private static final int UP = 1;
+  private static final String ID = "Lilpaa";
+  private static final SkillType TYPE = SkillType.ATTACK;
+  private static final SkillRarity RARITY = SkillRarity.NORMAL;
+  private static final SkillTarget TARGET = SkillTarget.ALL;
+  private static final int ATTACK = 6;
+  private static final int UP = 1;
 
-    public Lilpaa(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(ATTACK, UP);
-        setBaseValue(1);
-    }
+  public Lilpaa(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(ATTACK, UP);
+    setBaseValue(1);
+  }
 
-    @Override
-    public void use() {
-        bot(new LilpaaAction(owner, attack, value));
-    }
+  @Override
+  public void use() {
+    bot(new LilpaaAction(owner, attack, value));
+  }
 
-    @Override
-    protected void upgradeCard() {
-        if(upgradeCount == 2) value = ++baseValue;
-    }
+  @Override
+  protected void upgradeCard() {
+    if (upgradeCount == 2) value = ++baseValue;
+  }
 }

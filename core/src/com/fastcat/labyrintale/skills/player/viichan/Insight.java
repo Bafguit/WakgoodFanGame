@@ -9,29 +9,28 @@ import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Insight extends AbstractSkill {
 
-    private static final String ID = "Insight";
-    private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int VALUE = 4;
+  private static final String ID = "Insight";
+  private static final SkillType TYPE = SkillType.ATTACK;
+  private static final SkillRarity RARITY = SkillRarity.NORMAL;
+  private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
+  private static final int VALUE = 4;
 
-    public Insight(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE, 1);
-        setBaseValue(1, 1);
-    }
+  public Insight(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(VALUE, 1);
+    setBaseValue(1, 1);
+  }
 
-    @Override
-    public void use() {
-        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true);
-        bot(a);
-        AbstractAction m = new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true);
-        m.preAction = a;
-        bot(m);
-    }
+  @Override
+  public void use() {
+    AbstractAction a =
+        new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true);
+    bot(a);
+    AbstractAction m = new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true);
+    m.preAction = a;
+    bot(m);
+  }
 
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

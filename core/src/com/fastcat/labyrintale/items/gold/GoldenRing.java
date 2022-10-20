@@ -7,26 +7,26 @@ import com.fastcat.labyrintale.actions.BlockAction;
 
 public class GoldenRing extends AbstractItem {
 
-    private static final String ID = "GoldenRing";
-    private static final ItemRarity RARITY = ItemRarity.GOLD;
+  private static final String ID = "GoldenRing";
+  private static final ItemRarity RARITY = ItemRarity.GOLD;
 
-    public GoldenRing(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public GoldenRing(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.modifyMaxHealth(8);
-    }
+  @Override
+  public void onGain() {
+    owner.modifyMaxHealth(8);
+  }
 
-    @Override
-    public void onRemove() {
-        owner.modifyMaxHealth(-8);
-    }
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-8);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 8));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 8));
+  }
 }

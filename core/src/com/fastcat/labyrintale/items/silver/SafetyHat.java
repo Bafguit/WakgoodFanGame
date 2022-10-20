@@ -5,22 +5,22 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class SafetyHat extends AbstractItem {
 
-    private static final String ID = "SafetyHat";
-    private static final ItemRarity RARITY = ItemRarity.SILVER;
+  private static final String ID = "SafetyHat";
+  private static final ItemRarity RARITY = ItemRarity.SILVER;
 
-    public SafetyHat(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public SafetyHat(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.modifyMaxHealth(10);
-        owner.stat.neutRes += 0.1f;
-    }
+  @Override
+  public void onGain() {
+    owner.modifyMaxHealth(10);
+    owner.stat.neutRes += 0.1f;
+  }
 
-    @Override
-    public void onRemove() {
-        owner.modifyMaxHealth(-10);
-        owner.stat.neutRes -= 0.1f;
-    }
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-10);
+    owner.stat.neutRes -= 0.1f;
+  }
 }

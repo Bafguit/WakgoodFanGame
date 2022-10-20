@@ -11,44 +11,42 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class ItemButton extends AbstractUI {
 
-    public AbstractItem item;
-    public ItemSelectScreen select;
+  public AbstractItem item;
+  public ItemSelectScreen select;
 
-    public ItemButton(AbstractItem item, ItemSelectScreen select) {
-        super(FileHandler.getUi().get("BORDER_M"));
-        this.item = item;
-        this.select = select;
+  public ItemButton(AbstractItem item, ItemSelectScreen select) {
+    super(FileHandler.getUi().get("BORDER_M"));
+    this.item = item;
+    this.select = select;
+  }
+
+  @Override
+  protected void updateButton() {
+    if (over) AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
+  }
+
+  @Override
+  protected void renderUi(SpriteBatch sb) {
+    if (enabled) {
+      if (over) sb.setColor(Color.WHITE);
+      else sb.setColor(Color.LIGHT_GRAY);
+      sb.draw(item.img, x, y, sWidth, sHeight);
+      sb.draw(img, x, y, sWidth, sHeight);
+      sb.setColor(Color.WHITE);
     }
+  }
 
-    @Override
-    protected void updateButton() {
-        if(over) AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
-    }
+  @Override
+  protected Array<SubText> getSubText() {
+    return item != null ? item.key : null;
+  }
 
-    @Override
-    protected void renderUi(SpriteBatch sb) {
-        if (enabled) {
-            if (over) sb.setColor(Color.WHITE);
-            else sb.setColor(Color.LIGHT_GRAY);
-            sb.draw(item.img, x, y, sWidth, sHeight);
-            sb.draw(img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
-        }
-    }
+  @Override
+  protected void onOver() {}
 
-    @Override
-    protected Array<SubText> getSubText() {
-        return item != null ? item.key : null;
-    }
-
-    @Override
-    protected void onOver() {
-
-    }
-
-    @Override
-    protected void onClick() {
-        select.itemSelected(item);
-        Labyrintale.removeTempScreen(select);
-    }
+  @Override
+  protected void onClick() {
+    select.itemSelected(item);
+    Labyrintale.removeTempScreen(select);
+  }
 }

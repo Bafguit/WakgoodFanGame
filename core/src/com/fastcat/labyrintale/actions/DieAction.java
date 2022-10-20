@@ -7,15 +7,15 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 
 public class DieAction extends AbstractAction {
-    public DieAction(AbstractEntity e) {
-        super(e, 1f);
-    }
+  public DieAction(AbstractEntity e) {
+    super(e, 1f);
+  }
 
-    @Override
-    protected void updateAction() {
-        if(duration == baseDuration) {
-            ActionHandler.top(new MoveAction(actor, actor, 3));
-            EffectHandler.add(new DieEffect(actor));
-        }
+  @Override
+  protected void updateAction() {
+    if (duration == baseDuration) {
+      ActionHandler.top(new MoveAction(actor, actor, 3));
+      EffectHandler.add(new DieEffect(actor));
     }
+  }
 }

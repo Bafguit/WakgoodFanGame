@@ -8,26 +8,26 @@ import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class BigRibbon extends AbstractItem {
 
-    private static final String ID = "BigRibbon";
-    private static final ItemRarity RARITY = ItemRarity.BRONZE;
+  private static final String ID = "BigRibbon";
+  private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-    public BigRibbon(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public BigRibbon(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.modifyMaxHealth(2);
-    }
+  @Override
+  public void onGain() {
+    owner.modifyMaxHealth(2);
+  }
 
-    @Override
-    public void onRemove() {
-        owner.modifyMaxHealth(-2);
-    }
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-2);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new EnduranceStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(new ApplyStatusAction(new EnduranceStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+  }
 }

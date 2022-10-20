@@ -8,26 +8,27 @@ import com.fastcat.labyrintale.actions.StatusDamageAction;
 
 public class ShockStatus extends AbstractStatus {
 
-    private static final String ID = "Shock";
-    private static final SkillTarget TARGET = SkillTarget.OTHER;
+  private static final String ID = "Shock";
+  private static final SkillTarget TARGET = SkillTarget.OTHER;
 
-    public ShockStatus(int amount) {
-        super(ID, TARGET, StatusType.DEBUFF);
-        setAmount(amount);
-    }
+  public ShockStatus(int amount) {
+    super(ID, TARGET, StatusType.DEBUFF);
+    setAmount(amount);
+  }
 
-    @Override
-    public String getDesc() {
-        return exDesc[0] + amount + exDesc[1];
-    }
+  @Override
+  public String getDesc() {
+    return exDesc[0] + amount + exDesc[1];
+  }
 
-    @Override
-    public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if (type == AbstractEntity.DamageType.NORMAL) {
-            StatusDamageAction s = new StatusDamageAction(this, AttackAction.AttackType.LIGHTNING, false, true, true);
-            s.e = null;
-            top(s);
-        }
-        return d;
+  @Override
+  public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    if (type == AbstractEntity.DamageType.NORMAL) {
+      StatusDamageAction s =
+          new StatusDamageAction(this, AttackAction.AttackType.LIGHTNING, false, true, true);
+      s.e = null;
+      top(s);
     }
+    return d;
+  }
 }

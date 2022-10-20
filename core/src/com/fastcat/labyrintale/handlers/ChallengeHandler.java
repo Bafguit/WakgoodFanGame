@@ -1,4 +1,3 @@
 package com.fastcat.labyrintale.handlers;
 
-public class ChallengeHandler {
-}
+public class ChallengeHandler {}

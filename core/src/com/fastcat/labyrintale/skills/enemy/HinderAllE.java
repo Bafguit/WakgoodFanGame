@@ -6,24 +6,22 @@ import com.fastcat.labyrintale.actions.HinderAction;
 
 public class HinderAllE extends AbstractSkill {
 
-    private static final String ID = "HinderAllE";
-    private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.ENEMY;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+  private static final String ID = "HinderAllE";
+  private static final SkillType TYPE = SkillType.ATTACK;
+  private static final SkillRarity RARITY = SkillRarity.ENEMY;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
 
-    public HinderAllE(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(4, 1);
-        setBaseValue(10, 5);
-    }
+  public HinderAllE(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(4, 1);
+    setBaseValue(10, 5);
+  }
 
-    @Override
-    public void use() {
-        bot(new HinderAction(owner, target, attack, value));
-    }
+  @Override
+  public void use() {
+    bot(new HinderAction(owner, target, attack, value));
+  }
 
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

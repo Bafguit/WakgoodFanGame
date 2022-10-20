@@ -10,25 +10,25 @@ import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
 public class BrutalChimp extends AbstractEnemy {
 
-    private static final String ID = "BrutalChimp";
-    private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 32;
+  private static final String ID = "BrutalChimp";
+  private static final EnemyType TYPE = EnemyType.WEAK;
+  private static final int HEALTH = 32;
 
-    public BrutalChimp() {
-        super(ID, TYPE, HEALTH);
-    }
+  public BrutalChimp() {
+    super(ID, TYPE, HEALTH);
+  }
 
-    @Override
-    public Array<AbstractSkill> getStartingDeck() {
-        Array<AbstractSkill> temp = new Array<>();
-        AbstractSkill s = new StrikeE(this);
-        s.upgrade();
-        temp.add(s);
-        temp.add(new GrowE(this));
-        temp.add(new ChargeE(this));
-        AbstractSkill ss = new BarrierE(this);
-        ss.upgrade();
-        temp.add(ss);
-        return temp;
-    }
+  @Override
+  public Array<AbstractSkill> getStartingDeck() {
+    Array<AbstractSkill> temp = new Array<>();
+    AbstractSkill s = new StrikeE(this);
+    s.upgrade();
+    temp.add(s);
+    temp.add(new GrowE(this));
+    temp.add(new ChargeE(this));
+    AbstractSkill ss = new BarrierE(this);
+    ss.upgrade();
+    temp.add(ss);
+    return temp;
+  }
 }

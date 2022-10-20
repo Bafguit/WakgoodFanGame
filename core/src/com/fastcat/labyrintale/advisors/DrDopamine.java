@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.DopaSkill;
 
 public class DrDopamine extends AbstractAdvisor {
 
-    public DrDopamine() {
-        super(AdvisorClass.DOPA, new DopaSkill());
-    }
+  public DrDopamine() {
+    super(AdvisorClass.DOPA, new DopaSkill());
+  }
 }

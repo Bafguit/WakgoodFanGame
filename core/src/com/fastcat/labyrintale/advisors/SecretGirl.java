@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.SecretSkill;
 
 public class SecretGirl extends AbstractAdvisor {
 
-    public SecretGirl() {
-        super(AdvisorClass.SECRET, new SecretSkill());
-    }
+  public SecretGirl() {
+    super(AdvisorClass.SECRET, new SecretSkill());
+  }
 }

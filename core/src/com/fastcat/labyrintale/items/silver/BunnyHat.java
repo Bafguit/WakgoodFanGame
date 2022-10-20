@@ -2,31 +2,27 @@ package com.fastcat.labyrintale.items.silver;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.AttackStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class BunnyHat extends AbstractItem {
 
-    private static final String ID = "BunnyHat";
-    private static final ItemRarity RARITY = ItemRarity.SILVER;
+  private static final String ID = "BunnyHat";
+  private static final ItemRarity RARITY = ItemRarity.SILVER;
 
-    public BunnyHat(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public BunnyHat(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.stat.attack += 1;
-        owner.stat.spell += 1;
-        owner.stat.critical += 0.1f;
-    }
+  @Override
+  public void onGain() {
+    owner.stat.attack += 1;
+    owner.stat.spell += 1;
+    owner.stat.critical += 0.1f;
+  }
 
-    @Override
-    public void onRemove() {
-        owner.stat.attack -= 1;
-        owner.stat.spell -= 1;
-        owner.stat.critical -= 0.1f;
-    }
+  @Override
+  public void onRemove() {
+    owner.stat.attack -= 1;
+    owner.stat.spell -= 1;
+    owner.stat.critical -= 0.1f;
+  }
 }

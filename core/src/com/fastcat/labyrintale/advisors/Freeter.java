@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.FreeterSkill;
 
 public class Freeter extends AbstractAdvisor {
 
-    public Freeter() {
-        super(AdvisorClass.FREETER, new FreeterSkill());
-    }
+  public Freeter() {
+    super(AdvisorClass.FREETER, new FreeterSkill());
+  }
 }

@@ -8,30 +8,26 @@ import com.fastcat.labyrintale.status.InfectionStatus;
 
 public class HealingPotion extends AbstractSkill {
 
-    private static final String ID = "HealingPotion";
-    private static final SkillType TYPE = SkillType.DEFENCE;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER;
-    private static final int VALUE = 4;
+  private static final String ID = "HealingPotion";
+  private static final SkillType TYPE = SkillType.DEFENCE;
+  private static final SkillRarity RARITY = SkillRarity.NORMAL;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER;
+  private static final int VALUE = 4;
 
-    public HealingPotion(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseSpell(VALUE);
-    }
+  public HealingPotion(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseSpell(VALUE);
+  }
 
-    @Override
-    public void use() {
+  @Override
+  public void use() {}
 
-    }
+  @Override
+  public void onTarget(AbstractEntity e) {
+    top(new ApplyStatusAction(new InfectionStatus(1), owner, e, true));
+    top(new HealAction(owner, e, spell));
+  }
 
-    @Override
-    public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new InfectionStatus(1), owner, e, true));
-        top(new HealAction(owner, e, spell));
-    }
-
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

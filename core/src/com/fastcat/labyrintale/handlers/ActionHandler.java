@@ -13,56 +13,52 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ActionHandler {
 
-    private static final Queue<AbstractAction> actionList = new Queue<>();
-    @Getter
-    private static final Array<EventCallback<AbstractAction>> listeners = new Array<>();
-    @Getter
-    private static boolean isRunning = false;
-    /***
-     * Instance of handler.
-     * Initialized on getInstance()
-     */
-    private static ActionHandler instance;
-    private AbstractAction current;
+  private static final Queue<AbstractAction> actionList = new Queue<>();
+  @Getter private static final Array<EventCallback<AbstractAction>> listeners = new Array<>();
+  @Getter private static boolean isRunning = false;
+  /***
+   * Instance of handler.
+   * Initialized on getInstance()
+   */
+  private static ActionHandler instance;
 
-    /***
-     * Returns instance of handler, if not exist, create new.
-     * @return instance of handler
-     */
-    public static ActionHandler getInstance() {
-        if (instance == null)
-            return (instance = new ActionHandler());
-        return instance;
-    }
+  private AbstractAction current;
 
-    public static void clear() {
-        actionList.clear();
-    }
+  /***
+   * Returns instance of handler, if not exist, create new.
+   * @return instance of handler
+   */
+  public static ActionHandler getInstance() {
+    if (instance == null) return (instance = new ActionHandler());
+    return instance;
+  }
 
-    public static void bot(AbstractAction action) {
-        actionList.addLast(action);
-    }
+  public static void clear() {
+    actionList.clear();
+  }
 
-    public static void top(AbstractAction action) {
-        actionList.addFirst(action);
-    }
+  public static void bot(AbstractAction action) {
+    actionList.addLast(action);
+  }
 
-    public void update() {
-        if (actionList.size > 0 || current != null) {
-            isRunning = true;
-            if (current == null) {
-                current = actionList.removeFirst();
-            }
-            if (!Labyrintale.fading) {
-                current.update();
-            }
-            if (current.isDone) {
-                current = null;
-            }
-        } else isRunning = false;
-    }
+  public static void top(AbstractAction action) {
+    actionList.addFirst(action);
+  }
 
-    public void render(SpriteBatch sb) {
+  public void update() {
+    if (actionList.size > 0 || current != null) {
+      isRunning = true;
+      if (current == null) {
+        current = actionList.removeFirst();
+      }
+      if (!Labyrintale.fading) {
+        current.update();
+      }
+      if (current.isDone) {
+        current = null;
+      }
+    } else isRunning = false;
+  }
 
-    }
+  public void render(SpriteBatch sb) {}
 }

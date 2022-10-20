@@ -8,24 +8,24 @@ import com.fastcat.labyrintale.actions.StatusDamageAction;
 
 public class BurnStatus extends AbstractStatus {
 
-    private static final String ID = "Burn";
-    private static final SkillTarget TARGET = SkillTarget.SELF;
+  private static final String ID = "Burn";
+  private static final SkillTarget TARGET = SkillTarget.SELF;
 
-    public BurnStatus(int amount) {
-        super(ID, TARGET, StatusType.DEBUFF);
-        setAmount(amount);
-    }
+  public BurnStatus(int amount) {
+    super(ID, TARGET, StatusType.DEBUFF);
+    setAmount(amount);
+  }
 
-    @Override
-    public String getDesc() {
-        return exDesc[0] + amount + exDesc[1];
-    }
+  @Override
+  public String getDesc() {
+    return exDesc[0] + amount + exDesc[1];
+  }
 
-    @Override
-    public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        if (type == AbstractEntity.DamageType.NORMAL) {
-            top(new StatusDamageAction(this, AttackAction.AttackType.BURN, true, false, true));
-        }
-        return d;
+  @Override
+  public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    if (type == AbstractEntity.DamageType.NORMAL) {
+      top(new StatusDamageAction(this, AttackAction.AttackType.BURN, true, false, true));
     }
+    return d;
+  }
 }

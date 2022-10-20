@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.HikiSkill;
 
 public class HikiKing extends AbstractAdvisor {
 
-    public HikiKing() {
-        super(AdvisorClass.HIKI, new HikiSkill());
-    }
+  public HikiKing() {
+    super(AdvisorClass.HIKI, new HikiSkill());
+  }
 }

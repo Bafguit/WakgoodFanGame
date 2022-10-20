@@ -18,12 +18,12 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.video.VideoDecoder;
-
 import java.nio.ByteBuffer;
 
 public class VideoSyncPlayer extends VideoPlayerDesktop {
-	@Override
-	Music createMusic (VideoDecoder decoder, ByteBuffer audioBuffer, int audioChannels, int sampleRate) {
-		return new RawMusic(decoder, audioBuffer, audioChannels, sampleRate);
-	}
+  @Override
+  Music createMusic(
+      VideoDecoder decoder, ByteBuffer audioBuffer, int audioChannels, int sampleRate) {
+    return new RawMusic(decoder, audioBuffer, audioChannels, sampleRate);
+  }
 }

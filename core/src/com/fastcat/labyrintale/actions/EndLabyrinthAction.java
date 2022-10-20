@@ -8,24 +8,22 @@ import com.fastcat.labyrintale.screens.dead.DeadScreen;
 
 public class EndLabyrinthAction extends AbstractAction {
 
-    private DeadScreen.ScreenType dType;
+  private DeadScreen.ScreenType dType;
 
-    public EndLabyrinthAction(DeadScreen.ScreenType type) {
-        super(null, 2);
-        dType = type;
+  public EndLabyrinthAction(DeadScreen.ScreenType type) {
+    super(null, 2);
+    dType = type;
+  }
+
+  @Override
+  protected void applySetting() {}
+
+  @Override
+  protected void updateAction() {
+    if (duration == baseDuration) {
+      ActionHandler.clear();
+      Labyrintale.fadeOutAndChangeScreen(new DeadScreen(dType), 2.0f);
+      SaveHandler.finish(false);
     }
-
-    @Override
-    protected void applySetting() {
-
-    }
-
-    @Override
-    protected void updateAction() {
-        if (duration == baseDuration) {
-            ActionHandler.clear();
-            Labyrintale.fadeOutAndChangeScreen(new DeadScreen(dType), 2.0f);
-            SaveHandler.finish(false);
-        }
-    }
+  }
 }

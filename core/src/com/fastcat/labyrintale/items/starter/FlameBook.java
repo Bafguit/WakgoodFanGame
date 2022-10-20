@@ -8,16 +8,18 @@ import com.fastcat.labyrintale.status.BurnStatus;
 
 public class FlameBook extends AbstractItem {
 
-    private static final String ID = "FlameBook";
-    private static final ItemRarity RARITY = ItemRarity.STARTER;
+  private static final String ID = "FlameBook";
+  private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public FlameBook(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public FlameBook(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new BurnStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_FIRST_TWO, false));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(
+        new ApplyStatusAction(
+            new BurnStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_FIRST_TWO, false));
+  }
 }

@@ -7,28 +7,28 @@ import com.fastcat.labyrintale.actions.BlockAction;
 
 public class Turtle extends AbstractItem {
 
-    private static final String ID = "Turtle";
-    private static final ItemRarity RARITY = ItemRarity.GOLD;
+  private static final String ID = "Turtle";
+  private static final ItemRarity RARITY = ItemRarity.GOLD;
 
-    public Turtle(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public Turtle(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void onGain() {
-        owner.modifyMaxHealth(10);
-        owner.stat.moveRes += 0.1f;
-    }
+  @Override
+  public void onGain() {
+    owner.modifyMaxHealth(10);
+    owner.stat.moveRes += 0.1f;
+  }
 
-    @Override
-    public void onRemove() {
-        owner.modifyMaxHealth(-10);
-        owner.stat.moveRes -= 0.1f;
-    }
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-10);
+    owner.stat.moveRes -= 0.1f;
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 15));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 15));
+  }
 }

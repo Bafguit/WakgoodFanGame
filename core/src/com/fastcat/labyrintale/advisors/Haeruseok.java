@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.RuseokSkill;
 
 public class Haeruseok extends AbstractAdvisor {
 
-    public Haeruseok() {
-        super(AdvisorClass.RUSEOK, new RuseokSkill());
-    }
+  public Haeruseok() {
+    super(AdvisorClass.RUSEOK, new RuseokSkill());
+  }
 }

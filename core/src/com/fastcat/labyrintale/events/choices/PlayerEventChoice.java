@@ -7,20 +7,21 @@ import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 
 public class PlayerEventChoice extends AbstractEvent.EventChoice {
 
-    public GetSelectedPlayer event;
+  public GetSelectedPlayer event;
 
-    public PlayerEventChoice(String t, GetSelectedPlayer callback) {
-        super(t);
-        event = callback;
-    }
+  public PlayerEventChoice(String t, GetSelectedPlayer callback) {
+    super(t);
+    event = callback;
+  }
 
-    public PlayerEventChoice(String t, AbstractEvent.EventCondition condition, GetSelectedPlayer callback) {
-        super(t, condition);
-        event = callback;
-    }
+  public PlayerEventChoice(
+      String t, AbstractEvent.EventCondition condition, GetSelectedPlayer callback) {
+    super(t, condition);
+    event = callback;
+  }
 
-    @Override
-    protected void onSelect() {
-        Labyrintale.addTempScreen(new PlayerSelectScreen(event));
-    }
+  @Override
+  protected void onSelect() {
+    Labyrintale.addTempScreen(new PlayerSelectScreen(event));
+  }
 }

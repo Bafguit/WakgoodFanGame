@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.SophiaSkill;
 
 public class Sophia extends AbstractAdvisor {
 
-    public Sophia() {
-        super(AdvisorClass.SOPHIA, new SophiaSkill());
-    }
+  public Sophia() {
+    super(AdvisorClass.SOPHIA, new SophiaSkill());
+  }
 }

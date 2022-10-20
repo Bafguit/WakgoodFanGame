@@ -4,18 +4,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
-
 public class BgImg extends AbstractUI {
 
-    public BgImg() {
-        super(FileHandler.getBg().get("BG_BLACK"));
-        setPosition(0, 0);
-        img.setAlpha(0.85f);
-        overable = false;
-    }
+  public BgImg() {
+    super(FileHandler.getBg().get("BG_BLACK"));
+    setPosition(0, 0);
+    img.setAlpha(0.85f);
+    overable = false;
+  }
 
-    @Override
-    protected void renderUi(SpriteBatch sb) {
-        img.draw(sb);
-    }
+  @Override
+  protected void renderUi(SpriteBatch sb) {
+    img.draw(sb);
+  }
 }

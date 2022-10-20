@@ -1,25 +1,23 @@
 package com.fastcat.labyrintale.actions;
 
-import com.fastcat.labyrintale.Labyrintale;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
+
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.handlers.SettingHandler;
-
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 
 public class PlayerTurnAction extends AbstractAction {
 
-    private final AbstractPlayer p;
+  private final AbstractPlayer p;
 
-    public PlayerTurnAction(AbstractPlayer e) {
-        super(null, 0.5f);
-        p = e;
-    }
+  public PlayerTurnAction(AbstractPlayer e) {
+    super(null, 0.5f);
+    p = e;
+  }
 
-    @Override
-    protected void updateAction() {
-        if(duration == baseDuration) {
-            cPanel.battlePanel.setPlayer(p);
-        }
+  @Override
+  protected void updateAction() {
+    if (duration == baseDuration) {
+      cPanel.battlePanel.setPlayer(p);
     }
+  }
 }

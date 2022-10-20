@@ -5,26 +5,28 @@ import com.fastcat.labyrintale.abstracts.*;
 
 public class RoundStartAction extends AbstractAction {
 
-    public RoundStartAction() {
-        super(null, 0);
-    }
+  public RoundStartAction() {
+    super(null, 0);
+  }
 
-    @Override
-    protected void updateAction() {
-        if (isDone) {
-            AbstractLabyrinth.energy = Math.min(AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);
-            for(AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
-                e.blockRemove = e.block;
-                if(e.isPlayer) {
-                    e.passive.startOfRound();
-                    for (AbstractItem m : e.item) {
-                        if (m != null) m.startOfRound();
-                    }
-                }
-                for (AbstractStatus s : e.status) {
-                    s.startOfRound();
-                }
-            }
+  @Override
+  protected void updateAction() {
+    if (isDone) {
+      AbstractLabyrinth.energy =
+          Math.min(
+              AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);
+      for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
+        e.blockRemove = e.block;
+        if (e.isPlayer) {
+          e.passive.startOfRound();
+          for (AbstractItem m : e.item) {
+            if (m != null) m.startOfRound();
+          }
         }
+        for (AbstractStatus s : e.status) {
+          s.startOfRound();
+        }
+      }
     }
+  }
 }

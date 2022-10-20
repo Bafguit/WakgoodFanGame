@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.BusinessSkill;
 
 public class BusinessKim extends AbstractAdvisor {
 
-    public BusinessKim() {
-        super(AdvisorClass.BUSINESS, new BusinessSkill());
-    }
+  public BusinessKim() {
+    super(AdvisorClass.BUSINESS, new BusinessSkill());
+  }
 }

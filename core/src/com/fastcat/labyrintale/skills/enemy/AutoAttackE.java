@@ -7,25 +7,22 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class AutoAttackE extends AbstractSkill {
 
-    private static final String ID = "AutoAttackE";
-    private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.ENEMY;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;
-    private static final int VALUE = 4;
+  private static final String ID = "AutoAttackE";
+  private static final SkillType TYPE = SkillType.ATTACK;
+  private static final SkillRarity RARITY = SkillRarity.ENEMY;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;
+  private static final int VALUE = 4;
 
-    public AutoAttackE(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE, 1);
+  public AutoAttackE(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(VALUE, 1);
+  }
 
-    }
+  @Override
+  public void use() {
+    ActionHandler.bot(new AmbushAction(this));
+  }
 
-    @Override
-    public void use() {
-        ActionHandler.bot(new AmbushAction(this));
-    }
-
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

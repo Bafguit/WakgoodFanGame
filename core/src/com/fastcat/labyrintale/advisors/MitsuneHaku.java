@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.HakuSkill;
 
 public class MitsuneHaku extends AbstractAdvisor {
 
-    public MitsuneHaku() {
-        super(AdvisorClass.HAKU, new HakuSkill());
-    }
+  public MitsuneHaku() {
+    super(AdvisorClass.HAKU, new HakuSkill());
+  }
 }

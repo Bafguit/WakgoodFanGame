@@ -8,29 +8,30 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class BlindStatus extends AbstractStatus {
 
-    private static final String ID = "Blind";
+  private static final String ID = "Blind";
 
-    public BlindStatus() {
-        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
-    }
+  public BlindStatus() {
+    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+  }
 
-    @Override
-    public String getDesc() {
-        return desc;
-    }
+  @Override
+  public String getDesc() {
+    return desc;
+  }
 
-    @Override
-    public void onAttack(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-        flash();
-        ActionHandler.top(new RemoveStatusAction(this, true));
-    }
-    @Override
-    public void endOfTurn() {
-        top(new RemoveStatusAction(this, true));
-    }
+  @Override
+  public void onAttack(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+    flash();
+    ActionHandler.top(new RemoveStatusAction(this, true));
+  }
 
-    @Override
-    public float attackMultiply() {
-        return 0;
-    }
+  @Override
+  public void endOfTurn() {
+    top(new RemoveStatusAction(this, true));
+  }
+
+  @Override
+  public float attackMultiply() {
+    return 0;
+  }
 }

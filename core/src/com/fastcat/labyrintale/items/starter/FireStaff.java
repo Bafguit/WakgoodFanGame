@@ -8,16 +8,18 @@ import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class FireStaff extends AbstractItem {
 
-    private static final String ID = "FireStaff";
-    private static final ItemRarity RARITY = ItemRarity.STARTER;
+  private static final String ID = "FireStaff";
+  private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public FireStaff(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public FireStaff(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new UnfortifiedStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_FIRST, false));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(
+        new ApplyStatusAction(
+            new UnfortifiedStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_FIRST, false));
+  }
 }

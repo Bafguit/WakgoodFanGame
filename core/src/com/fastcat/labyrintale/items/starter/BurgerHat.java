@@ -7,16 +7,16 @@ import com.fastcat.labyrintale.actions.HealAction;
 
 public class BurgerHat extends AbstractItem {
 
-    private static final String ID = "BurgerHat";
-    private static final ItemRarity RARITY = ItemRarity.STARTER;
+  private static final String ID = "BurgerHat";
+  private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public BurgerHat(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public BurgerHat(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1, false));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1, false));
+  }
 }

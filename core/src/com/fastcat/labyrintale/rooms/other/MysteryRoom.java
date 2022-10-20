@@ -6,14 +6,16 @@ import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 
 public class MysteryRoom extends AbstractRoom {
 
-    private static final String ID = "Mystery";
+  private static final String ID = "Mystery";
 
-    public MysteryRoom() {
-        super(ID, RoomType.MYSTERY);
-    }
+  public MysteryRoom() {
+    super(ID, RoomType.MYSTERY);
+  }
 
-    @Override
-    public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
-    }
+  @Override
+  public AbstractEnemy[] getEnemies() {
+    return new AbstractEnemy[] {
+      new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+    };
+  }
 }

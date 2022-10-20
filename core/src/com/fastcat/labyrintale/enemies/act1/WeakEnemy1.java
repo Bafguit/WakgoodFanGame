@@ -9,22 +9,22 @@ import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
 public class WeakEnemy1 extends AbstractEnemy {
 
-    private static final String ID = "WeakEnemy1";
-    private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 15;
+  private static final String ID = "WeakEnemy1";
+  private static final EnemyType TYPE = EnemyType.WEAK;
+  private static final int HEALTH = 15;
 
-    public WeakEnemy1() {
-        super(ID, TYPE, HEALTH);
-    }
+  public WeakEnemy1() {
+    super(ID, TYPE, HEALTH);
+  }
 
-    @Override
-    public Array<AbstractSkill> getStartingDeck() {
-        Array<AbstractSkill> temp = new Array<>();
-        temp.add(new StrikeE(this));
-        temp.add(new BarrierE(this));
-        AbstractSkill s = new FuryE(this);
-        s.upgrade();
-        temp.add(s);
-        return temp;
-    }
+  @Override
+  public Array<AbstractSkill> getStartingDeck() {
+    Array<AbstractSkill> temp = new Array<>();
+    temp.add(new StrikeE(this));
+    temp.add(new BarrierE(this));
+    AbstractSkill s = new FuryE(this);
+    s.upgrade();
+    temp.add(s);
+    return temp;
+  }
 }

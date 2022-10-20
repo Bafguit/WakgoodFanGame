@@ -6,28 +6,24 @@ import com.fastcat.labyrintale.status.CourageStatus;
 
 public class FreeterSkill extends AbstractSkill {
 
-    private static final String ID = "freeter";
-    private static final SkillType TYPE = SkillType.SCHEME;
-    private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST_TWO;
+  private static final String ID = "freeter";
+  private static final SkillType TYPE = SkillType.SCHEME;
+  private static final SkillRarity RARITY = SkillRarity.ADVISOR;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST_TWO;
 
-    public FreeterSkill() {
-        super(ID, TYPE, RARITY, TARGET);
-        passive = true;
-        setBaseValue(1, 1);
-    }
+  public FreeterSkill() {
+    super(ID, TYPE, RARITY, TARGET);
+    passive = true;
+    setBaseValue(1, 1);
+  }
 
-    @Override
-    public void use() {
+  @Override
+  public void use() {}
 
-    }
+  public void atBattleStart() {
+    bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
+  }
 
-    public void atBattleStart() {
-        bot(new ApplyStatusAction(new CourageStatus(value), owner, target, false));
-    }
-
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

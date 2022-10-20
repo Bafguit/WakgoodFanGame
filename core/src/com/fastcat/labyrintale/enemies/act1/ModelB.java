@@ -8,20 +8,20 @@ import com.fastcat.labyrintale.skills.enemy.CorrosiveE;
 
 public class ModelB extends AbstractEnemy {
 
-    private static final String ID = "ModelB";
-    private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 15;
+  private static final String ID = "ModelB";
+  private static final EnemyType TYPE = EnemyType.WEAK;
+  private static final int HEALTH = 15;
 
-    public ModelB() {
-        super(ID, TYPE, HEALTH);
-        isRandom = false;
-    }
+  public ModelB() {
+    super(ID, TYPE, HEALTH);
+    isRandom = false;
+  }
 
-    @Override
-    public Array<AbstractSkill> getStartingDeck() {
-        Array<AbstractSkill> temp = new Array<>();
-        temp.add(new AmbushE(this));
-        temp.add(new CorrosiveE(this));
-        return temp;
-    }
+  @Override
+  public Array<AbstractSkill> getStartingDeck() {
+    Array<AbstractSkill> temp = new Array<>();
+    temp.add(new AmbushE(this));
+    temp.add(new CorrosiveE(this));
+    return temp;
+  }
 }

@@ -7,16 +7,16 @@ import com.fastcat.labyrintale.actions.BlockAction;
 
 public class OldShield extends AbstractItem {
 
-    private static final String ID = "OldShield";
-    private static final ItemRarity RARITY = ItemRarity.STARTER;
+  private static final String ID = "OldShield";
+  private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public OldShield(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public OldShield(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 1));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 1));
+  }
 }

@@ -6,12 +6,14 @@ import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.events.StartEvent;
 
 public class EntryRoom extends AbstractRoom {
-    public EntryRoom() {
-        super(new StartEvent());
-    }
+  public EntryRoom() {
+    super(new StartEvent());
+  }
 
-    @Override
-    public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
-    }
+  @Override
+  public AbstractEnemy[] getEnemies() {
+    return new AbstractEnemy[] {
+      new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+    };
+  }
 }

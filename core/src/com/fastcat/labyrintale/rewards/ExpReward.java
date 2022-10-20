@@ -12,25 +12,24 @@ import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 public class ExpReward extends AbstractReward implements GetSelectedPlayer, GetSelectedSlot {
 
-    private AbstractScreen sc;
+  private AbstractScreen sc;
 
-    public ExpReward() {
-        super(RewardType.EXP);
-        setInfo("스킬 슬롯 강화", "스킬 슬롯을 하나 선택해 강화합니다.");
-    }
+  public ExpReward() {
+    super(RewardType.EXP);
+    setInfo("스킬 슬롯 강화", "스킬 슬롯을 하나 선택해 강화합니다.");
+  }
 
-    @Override
-    public void takeReward() {
-        Labyrintale.addTempScreen(new PlayerSelectScreen(HealSelectScreen.getPlayers(HealReward.HealType.SKILL_SLOT), this));
-    }
+  @Override
+  public void takeReward() {
+    Labyrintale.addTempScreen(
+        new PlayerSelectScreen(HealSelectScreen.getPlayers(HealReward.HealType.SKILL_SLOT), this));
+  }
 
-    @Override
-    public void playerSelected(AbstractPlayer player) {
-        Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
-    }
+  @Override
+  public void playerSelected(AbstractPlayer player) {
+    Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
+  }
 
-    @Override
-    public void slotSelected(AbstractPlayer player, int index) {
-
-    }
+  @Override
+  public void slotSelected(AbstractPlayer player, int index) {}
 }

@@ -8,16 +8,18 @@ import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class FabricMail extends AbstractItem {
 
-    private static final String ID = "FabricMail";
-    private static final ItemRarity RARITY = ItemRarity.STARTER;
+  private static final String ID = "FabricMail";
+  private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-    public FabricMail(AbstractPlayer owner) {
-        super(ID, owner, RARITY);
-    }
+  public FabricMail(AbstractPlayer owner) {
+    super(ID, owner, RARITY);
+  }
 
-    @Override
-    public void atBattleStart() {
-        flash();
-        bot(new ApplyStatusAction(new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
-    }
+  @Override
+  public void atBattleStart() {
+    flash();
+    bot(
+        new ApplyStatusAction(
+            new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
+  }
 }

@@ -8,17 +8,17 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class LogoText extends AbstractUI {
 
-    public LogoText() {
-        super(FileHandler.getUi().get("TITLE"));
-        setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.6f);
-        overable = false;
-    }
+  public LogoText() {
+    super(FileHandler.getUi().get("TITLE"));
+    setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.6f);
+    overable = false;
+  }
 
-    @Override
-    protected void renderUi(SpriteBatch sb) {
-        if (enabled) {
-            sb.setColor(Color.WHITE);
-            sb.draw(img, x, y, sWidth, sHeight);
-        }
+  @Override
+  protected void renderUi(SpriteBatch sb) {
+    if (enabled) {
+      sb.setColor(Color.WHITE);
+      sb.draw(img, x, y, sWidth, sHeight);
     }
+  }
 }

@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.skills.player.advisor.CarnarSkill;
 
 public class CarnarYungter extends AbstractAdvisor {
 
-    public CarnarYungter() {
-        super(AdvisorClass.CARNAR, new CarnarSkill());
-    }
+  public CarnarYungter() {
+    super(AdvisorClass.CARNAR, new CarnarSkill());
+  }
 }

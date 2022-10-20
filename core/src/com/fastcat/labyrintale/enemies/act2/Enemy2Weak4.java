@@ -7,19 +7,19 @@ import com.fastcat.labyrintale.skills.enemy.ThrowE;
 
 public class Enemy2Weak4 extends AbstractEnemy {
 
-    private static final String ID = "Enemy2Weak4";
-    private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 42;
+  private static final String ID = "Enemy2Weak4";
+  private static final EnemyType TYPE = EnemyType.WEAK;
+  private static final int HEALTH = 42;
 
-    public Enemy2Weak4() {
-        super(ID, TYPE, HEALTH);
-        isRandom = false;
-    }
+  public Enemy2Weak4() {
+    super(ID, TYPE, HEALTH);
+    isRandom = false;
+  }
 
-    @Override
-    public Array<AbstractSkill> getStartingDeck() {
-        Array<AbstractSkill> temp = new Array<>();
-        temp.add(new ThrowE(this));
-        return temp;
-    }
+  @Override
+  public Array<AbstractSkill> getStartingDeck() {
+    Array<AbstractSkill> temp = new Array<>();
+    temp.add(new ThrowE(this));
+    return temp;
+  }
 }

@@ -7,23 +7,21 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class Overpower extends AbstractSkill {
 
-    private static final String ID = "Overpower";
-    private static final SkillType TYPE = SkillType.ATTACK;
-    private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
+  private static final String ID = "Overpower";
+  private static final SkillType TYPE = SkillType.ATTACK;
+  private static final SkillRarity RARITY = SkillRarity.NORMAL;
+  private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
 
-    public Overpower(AbstractEntity e) {
-        super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(5, 1);
-    }
+  public Overpower(AbstractEntity e) {
+    super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(5, 1);
+  }
 
-    @Override
-    public void use() {
-        ActionHandler.bot(new AmbushAction(this));
-    }
+  @Override
+  public void use() {
+    ActionHandler.bot(new AmbushAction(this));
+  }
 
-    @Override
-    protected void upgradeCard() {
-
-    }
+  @Override
+  protected void upgradeCard() {}
 }

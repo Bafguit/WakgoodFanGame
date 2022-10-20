@@ -6,12 +6,14 @@ import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.events.FloorSecondEvent;
 
 public class SecondFloorRoom extends AbstractRoom {
-    public SecondFloorRoom() {
-        super(new FloorSecondEvent());
-    }
+  public SecondFloorRoom() {
+    super(new FloorSecondEvent());
+  }
 
-    @Override
-    public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[]{new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()};
-    }
+  @Override
+  public AbstractEnemy[] getEnemies() {
+    return new AbstractEnemy[] {
+      new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+    };
+  }
 }
