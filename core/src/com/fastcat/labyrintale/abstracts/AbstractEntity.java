@@ -328,7 +328,7 @@ public abstract class AbstractEntity implements Cloneable {
     int cr = 0;
     if(hasItem("TotoDeck")) cr = 10;
     else if(stat.critical > 0) cr = EntityStat.cap(stat.critical);
-    if (cr > 0 && publicRandom.random(0, 99) < cr) {
+    if (publicRandom.random(0, 99) < cr) {
       EffectHandler.add(
           new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
       d *= 1 + stat.multiply;
@@ -753,7 +753,7 @@ public abstract class AbstractEntity implements Cloneable {
     public float neutRes = 0.1f;
 
     public static int cap(float i) {
-      return MathUtils.clamp((int) i * 100, 5, 80);
+      return Math.max(Math.min((int) (i * 100), 80), 5);
     }
 
     public int capSpeed() {

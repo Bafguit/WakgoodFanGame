@@ -8,15 +8,15 @@
   "shake" : true,
   "fastMode" : true,
   "risk" : {
-    "POV" : 3,
-    "STR" : 3,
     "MSR" : 3,
-    "SPD" : 3,
-    "GRW" : 3,
-    "FAM" : 3,
-    "HUG" : 3,
+    "POV" : 3,
+    "INT" : 3,
     "RST" : 3,
+    "FAM" : 3,
+    "STR" : 3,
+    "SPD" : 3,
     "FTG" : 3,
-    "INT" : 3
+    "HUG" : 3,
+    "GRW" : 3
   }
 }

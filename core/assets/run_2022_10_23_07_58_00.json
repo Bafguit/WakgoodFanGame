@@ -1,10 +1,10 @@
 {
-  "date" : "2022_10_23_08_05_10",
+  "date" : "2022_10_23_07_58_00",
   "random" : {
     "seed" : "YN155WB0",
     "seedLong" : 8978495353876648,
-    "publicRandom" : 172,
-    "skillRandom" : 7,
+    "publicRandom" : 0,
+    "skillRandom" : 0,
     "itemRandom" : 0,
     "mapRandom" : 395,
     "monsterRandom" : 0,
@@ -26,18 +26,11 @@
   "itemAble" : 0,
   "selection" : 1,
   "charge" : 5,
-  "gold" : 88,
-  "level" : 2,
-  "exp" : 2,
-  "maxExp" : 130,
-  "advisor" : {
-    "cls" : "FREETER",
-    "skill" : {
-      "id" : "freeter",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }
-  },
+  "gold" : 70,
+  "level" : 1,
+  "exp" : 0,
+  "maxExp" : 100,
+  "advisor" : null,
   "players" : [ {
     "id" : "ine",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -68,7 +61,7 @@
     "slot" : [ 0, 0, 0 ],
     "index" : 0,
     "maxHealth" : 21,
-    "health" : 14
+    "health" : 18
   }, {
     "id" : "viichan",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -81,7 +74,7 @@
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Onslaught",
+      "id" : "DiaSword",
       "usedOnly" : false,
       "upgradeCount" : 0
     } ],
@@ -89,7 +82,7 @@
       "attack" : 0,
       "spell" : 0,
       "speed" : 0,
-      "critical" : 0.40000004,
+      "critical" : 0.2,
       "multiply" : 0.5,
       "moveRes" : 0.05,
       "debuRes" : 0.05,
@@ -166,50 +159,26 @@
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Weak4",
-      "battleDone" : false,
+      "id" : "Placeholder",
+      "battleDone" : true,
       "isDone" : true
     },
     "currentWay" : {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak4",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
+      "type" : "ENTRY",
+      "enemies" : null,
+      "choices" : [ null, {
+        "type" : "ENTRY",
         "room" : {
-          "id" : "Weak4",
+          "id" : "StartEvent",
           "battleDone" : false,
-          "isDone" : true
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak4",
-          "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 0, 1 ],
-        "linked2" : [ 1, 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak4",
-          "battleDone" : false,
-          "isDone" : true
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : 1,
-      "isDone" : true
+        "linked" : [ 1, 2 ],
+        "linked2" : [ ]
+      }, null ],
+      "selected" : -1,
+      "isDone" : false
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -219,14 +188,14 @@
         "room" : {
           "id" : "StartEvent",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : true,
         "linked" : [ 1, 2 ],
         "linked2" : [ ]
       }, null ],
-      "selected" : 1,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -239,7 +208,7 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 1, 2 ],
@@ -249,14 +218,14 @@
         "room" : {
           "id" : "Weak3",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 0 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : 2,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -269,7 +238,7 @@
         "room" : {
           "id" : "Weak4",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
@@ -279,9 +248,9 @@
         "room" : {
           "id" : "Weak4",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 1 ],
         "linked2" : [ 1, 2 ]
       }, {
@@ -289,14 +258,14 @@
         "room" : {
           "id" : "Weak4",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : 1,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -311,7 +280,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2, 0 ],
         "linked2" : [ 0, 1, 2 ]
       }, {
@@ -321,7 +290,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 1 ]
       }, null ],
@@ -341,7 +310,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0 ]
       }, null, {
@@ -351,7 +320,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0, 1 ]
       } ],
@@ -371,7 +340,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0 ]
       }, null, {
@@ -381,7 +350,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 2 ]
       } ],
@@ -397,7 +366,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 2 ]
       }, null, {
@@ -407,7 +376,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0 ]
       } ],
@@ -427,7 +396,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2, 0 ],
         "linked2" : [ 0 ]
       }, {
@@ -437,7 +406,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 2 ]
       } ],
@@ -457,7 +426,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       }, null, {
@@ -467,7 +436,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1, 2 ]
       } ],
@@ -487,7 +456,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 0 ],
         "linked2" : [ 2 ]
       }, {
@@ -497,7 +466,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 2 ],
         "linked2" : [ 0 ]
       }, null ],
@@ -517,7 +486,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       }, {
@@ -527,7 +496,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 1 ]
       }, {
@@ -537,7 +506,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
@@ -553,7 +522,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 1, 2 ]
       }, null ],
@@ -573,7 +542,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ ],
         "linked2" : [ 1 ]
       }, null ],
@@ -582,7 +551,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 2
+    "num" : 0
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -1804,5 +1773,5 @@
   "weakCount" : 3,
   "normalCount" : 5,
   "eliteCount" : 2,
-  "bossCount" : 0
+  "bossCount" : 1
 }
