@@ -9,10 +9,10 @@ import com.fastcat.labyrintale.status.CourageStatus;
 public class Calmness extends AbstractSkill {
 
   private static final String ID = "Calmness";
-  private static final SkillType TYPE = SkillType.DEFENCE;
+  private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.SELF;
-  private static final int VALUE = 2;
+  private static final int VALUE = 3;
 
   public Calmness(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

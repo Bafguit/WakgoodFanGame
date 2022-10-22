@@ -14,27 +14,27 @@ public class Gyeruek extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
+    owner.modifyMaxHealth(10);
     owner.stat.attack += 1;
     owner.stat.spell += 1;
     owner.stat.speed += 1;
-    owner.stat.critical += 0.05f;
-    owner.stat.multiply += 0.05f;
-    owner.stat.neutRes += 0.05f;
-    owner.stat.debuRes += 0.05f;
-    owner.stat.moveRes += 0.05f;
+    owner.stat.critical += 0.1f;
+    owner.stat.multiply += 0.1f;
+    owner.stat.neutRes += 0.1f;
+    owner.stat.debuRes += 0.1f;
+    owner.stat.moveRes += 0.1f;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
+    owner.modifyMaxHealth(-10);
     owner.stat.attack -= 1;
     owner.stat.spell -= 1;
     owner.stat.speed -= 1;
-    owner.stat.critical -= 0.05f;
-    owner.stat.multiply -= 0.05f;
-    owner.stat.neutRes -= 0.05f;
-    owner.stat.debuRes -= 0.05f;
-    owner.stat.moveRes -= 0.05f;
+    owner.stat.critical -= 0.1f;
+    owner.stat.multiply -= 0.1f;
+    owner.stat.neutRes -= 0.1f;
+    owner.stat.debuRes -= 0.1f;
+    owner.stat.moveRes -= 0.1f;
   }
 }

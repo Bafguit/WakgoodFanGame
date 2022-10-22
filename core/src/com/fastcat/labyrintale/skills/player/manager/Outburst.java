@@ -15,7 +15,7 @@ public class Outburst extends AbstractSkill {
   public Outburst(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    cost = 2;
+    setBaseCost(2);
   }
 
   @Override

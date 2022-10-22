@@ -17,8 +17,8 @@ public class Linked extends AbstractSkill {
   public Linked(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseValue(2, 1);
-    cost = 0;
+    setBaseValue(3, 1);
+    setBaseCost(0);
   }
 
   @Override

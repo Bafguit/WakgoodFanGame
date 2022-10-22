@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class Butter extends AbstractItem {
@@ -14,11 +15,13 @@ public class Butter extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.debuRes += 0.8f;
+    AbstractLabyrinth.charge++;
+    owner.stat.debuRes += 0.2f;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes -= 0.8f;
+    AbstractLabyrinth.charge--;
+    owner.stat.debuRes -= 0.2f;
   }
 }

@@ -58,7 +58,7 @@ public class StatIcon extends AbstractUI {
     else if (type == StatType.SPELL) amount = entity.stat.spell;
     else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
     else {
-      if (type == StatType.CRITICAL) amount = EntityStat.cap(entity.stat.critical);
+      if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 10 : EntityStat.cap(entity.stat.critical);
       else if (type == StatType.MULTIPLY) amount = (int) (entity.stat.multiply * 100);
       else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
       else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);

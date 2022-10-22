@@ -46,7 +46,7 @@ public class MoveAction extends AbstractAction {
   }
 
   public MoveAction(AbstractEntity e, AbstractEntity source, int index, float dur) {
-    super(null, dur);
+    super(source, dur);
     from = e;
     fromType = source.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
     type = e.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
@@ -218,6 +218,12 @@ public class MoveAction extends AbstractAction {
             pv.enemy.ui = pv;
           }
         }
+        for(int i = 0; i < 2; i++) {
+          from.item[i].onMove(actor);
+          for(AbstractEntity e : to.values()) e.item[i].onMove(actor);
+        }
+        from.passive.onMove(actor);
+        for(AbstractEntity e : to.values()) e.passive.onMove(actor);
       } else {
         float t = Labyrintale.tick * (1.0f / baseDuration);
         from.animX += toDist * t;

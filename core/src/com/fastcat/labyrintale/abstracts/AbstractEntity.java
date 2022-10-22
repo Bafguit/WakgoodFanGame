@@ -325,7 +325,10 @@ public abstract class AbstractEntity implements Cloneable {
     for (AbstractStatus s : status) {
       d *= s.attackMultiply();
     }
-    if (publicRandom.random(0, 99) < EntityStat.cap(stat.critical)) {
+    int cr = 0;
+    if(hasItem("TotoDeck")) cr = 10;
+    else if(stat.critical > 0) cr = EntityStat.cap(stat.critical);
+    if (cr > 0 && publicRandom.random(0, 99) < cr) {
       EffectHandler.add(
           new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
       d *= 1 + stat.multiply;
@@ -640,6 +643,15 @@ public abstract class AbstractEntity implements Cloneable {
   public boolean hasStatus(String id) {
     if (status != null) {
       for (AbstractStatus s : status) {
+        if (s != null && s.id.equals(id)) return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean hasItem(String id) {
+    if (status != null) {
+      for (AbstractItem s : item) {
         if (s != null && s.id.equals(id)) return true;
       }
     }

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class SportsCar extends AbstractItem {
@@ -14,17 +15,13 @@ public class SportsCar extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.speed += 3;
-    owner.stat.critical += 0.3f;
-    owner.stat.multiply += 0.3f;
-    owner.stat.moveRes -= 0.3f;
+    AbstractLabyrinth.charge++;
+    owner.stat.speed += 2;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.speed -= 3;
-    owner.stat.critical -= 0.3f;
-    owner.stat.multiply -= 0.3f;
-    owner.stat.moveRes += 0.3f;
+    AbstractLabyrinth.charge--;
+    owner.stat.speed -= 2;
   }
 }

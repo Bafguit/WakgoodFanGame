@@ -17,8 +17,9 @@ public class Snipe extends AbstractSkill {
 
   public Snipe(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(VALUE, 1);
-    cost = 2;
+    setBaseAttack(VALUE);
+    setBaseValue(2, 1);
+    setBaseCost(3);
   }
 
   @Override
@@ -42,7 +43,7 @@ public class Snipe extends AbstractSkill {
     if (AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
       if (AbstractLabyrinth.cPanel.battlePanel.selected == this
           && Labyrintale.battleScreen.looking.size == 1) {
-        return a + owner.index + Labyrintale.battleScreen.looking.get(0).index;
+        return a + (owner.index + Labyrintale.battleScreen.looking.get(0).index) * value;
       }
     }
     return a;

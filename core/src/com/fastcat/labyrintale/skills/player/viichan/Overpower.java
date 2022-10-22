@@ -1,9 +1,14 @@
 package com.fastcat.labyrintale.skills.player.viichan;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AmbushAction;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.status.BurnStatus;
+import com.fastcat.labyrintale.status.SpeedPlusStatus;
 
 public class Overpower extends AbstractSkill {
 
@@ -14,12 +19,14 @@ public class Overpower extends AbstractSkill {
 
   public Overpower(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(5, 1);
+    setBaseAttack(4, 1);
+    setBaseValue(1, 1);
   }
 
   @Override
   public void use() {
-    ActionHandler.bot(new AmbushAction(this));
+    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H));
+    bot(new ApplyStatusAction(new SpeedPlusStatus(value), owner, owner, true));
   }
 
   @Override

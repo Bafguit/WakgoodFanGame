@@ -10,11 +10,12 @@ public class Cross extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST_TWO;
-  private static final int VALUE = 3;
+  private static final int VALUE = 6;
 
   public Cross(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
+    setBaseCost(2);
   }
 
   @Override

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class Snow extends AbstractItem {
@@ -14,15 +15,13 @@ public class Snow extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(10);
-    owner.stat.attack -= 5;
-    owner.stat.spell += 5;
+    AbstractLabyrinth.charge++;
+    owner.stat.spell += 2;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-10);
-    owner.stat.attack += 5;
-    owner.stat.spell -= 5;
+    AbstractLabyrinth.charge--;
+    owner.stat.spell -= 2;
   }
 }

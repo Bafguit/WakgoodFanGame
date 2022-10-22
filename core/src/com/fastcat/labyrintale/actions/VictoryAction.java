@@ -67,6 +67,8 @@ public class VictoryAction extends AbstractAction {
       }
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
         temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
+      } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
+        temp.add(new ItemReward(ItemReward.ItemRewardType.BOSS));
       }
       int g;
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) g = 100;

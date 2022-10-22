@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.status.CriticalPlusStatus;
 import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Insight extends AbstractSkill {
@@ -18,7 +19,7 @@ public class Insight extends AbstractSkill {
   public Insight(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseValue(1, 1);
+    setBaseValue(2, 1);
   }
 
   @Override
@@ -26,9 +27,7 @@ public class Insight extends AbstractSkill {
     AbstractAction a =
         new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true);
     bot(a);
-    AbstractAction m = new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true);
-    m.preAction = a;
-    bot(m);
+    bot(new ApplyStatusAction(new CriticalPlusStatus(value), owner, owner, true));
   }
 
   @Override

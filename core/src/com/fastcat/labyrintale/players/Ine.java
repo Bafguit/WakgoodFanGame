@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.items.starter.BattleAxe;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.skills.player.ine.Charge;
 import com.fastcat.labyrintale.skills.player.ine.Pruning;
 
 public class Ine extends AbstractPlayer {
@@ -30,7 +31,7 @@ public class Ine extends AbstractPlayer {
     Array<AbstractSkill> temp = new Array<>();
     temp.add(new Strike(this));
     temp.add(new Barrier(this));
-    temp.add(new Pruning(this));
+    temp.add(new Charge(this));
     return temp;
   }
 

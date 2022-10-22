@@ -124,6 +124,8 @@ public class AbstractItem implements Cloneable {
     return amount;
   }
 
+  public void onMove(AbstractEntity source) {}
+
   protected final void top(AbstractAction a) {
     ActionHandler.top(a);
   }

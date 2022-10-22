@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class IceFrag extends AbstractItem {
@@ -14,19 +15,13 @@ public class IceFrag extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(10);
-    owner.stat.speed -= 3;
-    owner.stat.debuRes += 0.3f;
-    owner.stat.neutRes += 0.3f;
-    owner.stat.moveRes += 0.3f;
+    AbstractLabyrinth.charge++;
+    owner.modifyMaxHealth(5);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(10);
-    owner.stat.speed += 3;
-    owner.stat.debuRes -= 0.3f;
-    owner.stat.neutRes -= 0.3f;
-    owner.stat.moveRes -= 0.3f;
+    AbstractLabyrinth.charge--;
+    owner.modifyMaxHealth(-5);
   }
 }
