@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.SpeedPlusStatus;
 
 public class ConfidPotion extends AbstractSkill {
 
@@ -13,11 +14,12 @@ public class ConfidPotion extends AbstractSkill {
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.PLAYER;
-  private static final int VALUE = 3;
+  private static final int VALUE = 2;
 
   public ConfidPotion(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setBaseCost(3);
   }
 
   @Override
@@ -25,9 +27,8 @@ public class ConfidPotion extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new InfectionStatus(2), owner, e, true));
-    top(new ApplyStatusAction(new EnduranceStatus(value), owner, e, true));
-    top(new ApplyStatusAction(new CourageStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new InfectionStatus(3), owner, e, true));
+    top(new ApplyStatusAction(new SpeedPlusStatus(value), owner, e, true));
   }
 
   @Override

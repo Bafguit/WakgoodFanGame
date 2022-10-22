@@ -1,15 +1,15 @@
 {
-  "date" : "2022_10_23_02_30_26",
+  "date" : "2022_10_23_02_24_28",
   "random" : {
     "seed" : "A34RKED3",
     "seedLong" : 6551528275696851,
-    "publicRandom" : 180,
-    "skillRandom" : 56,
-    "itemRandom" : 53,
-    "mapRandom" : 414,
+    "publicRandom" : 0,
+    "skillRandom" : 0,
+    "itemRandom" : 0,
+    "mapRandom" : 412,
     "monsterRandom" : 0,
-    "eventRandom" : 2,
-    "shopRandom" : 14
+    "eventRandom" : 0,
+    "shopRandom" : 0
   },
   "restriction" : {
     "GRW" : 3,
@@ -26,27 +26,20 @@
   "itemAble" : 0,
   "selection" : 1,
   "charge" : 5,
-  "gold" : 29,
-  "level" : 2,
-  "exp" : 104,
-  "maxExp" : 130,
-  "advisor" : {
-    "cls" : "BUSINESS",
-    "skill" : {
-      "id" : "business",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }
-  },
+  "gold" : 70,
+  "level" : 1,
+  "exp" : 0,
+  "maxExp" : 100,
+  "advisor" : null,
   "players" : [ {
     "id" : "wak",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
-      "id" : "Encourage",
+      "id" : "Strike",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Guard",
+      "id" : "Barrier",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -67,11 +60,11 @@
     "isDead" : false,
     "slot" : [ 0, 0, 0 ],
     "index" : 0,
-    "maxHealth" : 24,
-    "health" : 22
+    "maxHealth" : 22,
+    "health" : 19
   }, {
     "id" : "ine",
-    "item" : [ "RobotHand", "PlaceHolder" ],
+    "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
       "id" : "Strike",
       "usedOnly" : false,
@@ -83,20 +76,20 @@
     }, {
       "id" : "Pruning",
       "usedOnly" : false,
-      "upgradeCount" : 1
+      "upgradeCount" : 0
     } ],
     "stat" : {
-      "attack" : 1,
+      "attack" : 0,
       "spell" : 0,
       "speed" : 0,
-      "critical" : 0.4,
+      "critical" : 0.1,
       "multiply" : 0.5,
       "moveRes" : 0.1,
       "debuRes" : 0.1,
       "neutRes" : 0.1
     },
     "isDead" : false,
-    "slot" : [ 0, 0, 1 ],
+    "slot" : [ 0, 0, 0 ],
     "index" : 1,
     "maxHealth" : 21,
     "health" : 18
@@ -139,7 +132,7 @@
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Support",
+      "id" : "Barrier",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -166,39 +159,25 @@
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Normal3",
-      "battleDone" : false,
-      "isDone" : false
+      "id" : "Placeholder",
+      "battleDone" : true,
+      "isDone" : true
     },
     "currentWay" : {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Normal3",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
+      "type" : "ENTRY",
+      "enemies" : null,
+      "choices" : [ null, {
+        "type" : "ENTRY",
         "room" : {
-          "id" : "Normal3",
+          "id" : "StartEvent",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 0 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 0, 1 ],
-        "linked2" : [ 0, 2 ]
+        "linked" : [ 0, 1, 2 ],
+        "linked2" : [ ]
       }, null ],
-      "selected" : 0,
+      "selected" : -1,
       "isDone" : false
     },
     "ways" : [ {
@@ -209,14 +188,14 @@
         "room" : {
           "id" : "StartEvent",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : true,
         "linked" : [ 0, 1, 2 ],
         "linked2" : [ ]
       }, null ],
-      "selected" : 1,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -228,10 +207,10 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak1",
-          "battleDone" : true,
-          "isDone" : true
+          "battleDone" : false,
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       }, {
@@ -239,7 +218,7 @@
         "room" : {
           "id" : "Weak1",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
@@ -249,14 +228,14 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : 0,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -268,10 +247,10 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak5",
-          "battleDone" : true,
-          "isDone" : true
+          "battleDone" : false,
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0, 1 ]
       }, {
@@ -279,14 +258,14 @@
         "room" : {
           "id" : "Weak5",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 2, 1 ],
         "linked2" : [ 2 ]
       }, null ],
-      "selected" : 0,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -299,7 +278,7 @@
         "room" : {
           "id" : "Weak3",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 2 ],
@@ -309,14 +288,14 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0, 1 ]
       } ],
-      "selected" : 2,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -329,9 +308,9 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 2 ],
         "linked2" : [ 2 ]
       }, null, {
@@ -339,14 +318,14 @@
         "room" : {
           "id" : "Elite2",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : 0,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -359,9 +338,9 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0 ]
       }, {
@@ -369,7 +348,7 @@
         "room" : {
           "id" : "Normal2",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 2 ],
@@ -379,14 +358,14 @@
         "room" : {
           "id" : "Normal2",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0 ]
       } ],
-      "selected" : 0,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "SHOP",
       "enemies" : null,
@@ -395,7 +374,7 @@
         "room" : {
           "id" : "Normal1",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 1 ],
@@ -405,14 +384,14 @@
         "room" : {
           "id" : "Shop",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 0 ],
         "linked2" : [ 0, 1 ]
       } ],
-      "selected" : 2,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -427,7 +406,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 2 ]
       }, {
@@ -437,11 +416,11 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 1 ],
         "linked2" : [ 0, 2 ]
       }, null ],
-      "selected" : 0,
+      "selected" : -1,
       "isDone" : false
     }, {
       "type" : "ELITE",
@@ -457,7 +436,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 1 ],
         "linked2" : [ 0, 1 ]
       }, {
@@ -467,7 +446,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       }, null ],
@@ -487,7 +466,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2, 1 ],
         "linked2" : [ 0, 1 ]
       }, {
@@ -497,7 +476,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0 ]
       }, null ],
@@ -517,7 +496,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       }, {
@@ -527,7 +506,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       }, {
@@ -537,7 +516,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       } ],
@@ -553,7 +532,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 1, 2 ]
       }, null ],
@@ -573,7 +552,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ ],
         "linked2" : [ 1 ]
       }, null ],
@@ -582,7 +561,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 7
+    "num" : 0
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -1829,7 +1808,7 @@
     "floorNum" : 4,
     "num" : 0
   } ],
-  "eventCount" : 2,
+  "eventCount" : 0,
   "neutCount" : 0,
   "weakCount" : 3,
   "normalCount" : 5,

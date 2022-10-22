@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.ResistMinusStatus;
 
 public class HealingPotion extends AbstractSkill {
 
@@ -12,11 +13,13 @@ public class HealingPotion extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.PLAYER;
-  private static final int VALUE = 4;
+  private static final int VALUE = 6;
 
   public HealingPotion(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(VALUE);
+    setBaseSpell(VALUE, 1);
+    setBaseValue(1);
+    setBaseCost(2);
   }
 
   @Override
@@ -24,7 +27,7 @@ public class HealingPotion extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new InfectionStatus(1), owner, e, true));
+    top(new ApplyStatusAction(new ResistMinusStatus(value), owner, e, true));
     top(new HealAction(owner, e, spell));
   }
 

@@ -11,12 +11,11 @@ public class Poison extends AbstractSkill {
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY;
-  private static final int VALUE = 4;
+  private static final int VALUE = 5;
 
   public Poison(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    cost = 2;
   }
 
   @Override

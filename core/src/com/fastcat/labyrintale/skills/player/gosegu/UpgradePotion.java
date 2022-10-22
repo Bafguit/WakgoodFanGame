@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.AttackStatus;
+import com.fastcat.labyrintale.status.CriticalMinusStatus;
 import com.fastcat.labyrintale.status.InfectionStatus;
 
 public class UpgradePotion extends AbstractSkill {
@@ -24,7 +25,7 @@ public class UpgradePotion extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new InfectionStatus(2), owner, e, true));
+    top(new ApplyStatusAction(new CriticalMinusStatus(1), owner, e, true));
     top(new ApplyStatusAction(new AttackStatus(value), owner, e, true));
   }
 

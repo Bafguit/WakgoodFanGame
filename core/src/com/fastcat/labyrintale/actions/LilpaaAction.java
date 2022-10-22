@@ -7,18 +7,19 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.status.BurnStatus;
 
 public class LilpaaAction extends AbstractAction {
 
   public boolean ps = false;
   public AbstractEffect effect;
   public AbstractEntity.DamageInfo info;
-  public AbstractEntity.DamageInfo info2;
+  public int burn;
 
-  public LilpaaAction(AbstractEntity actor, int damageE, int damageA) {
-    super(actor, ALL, 2.0f);
-    info = new AbstractEntity.DamageInfo(actor, damageE);
-    info2 = new AbstractEntity.DamageInfo(actor, damageA, AbstractEntity.DamageType.SPIKE);
+  public LilpaaAction(AbstractSkill s) {
+    super(s.owner, ALL, 2.0f);
+    info = new AbstractEntity.DamageInfo(actor, s.attack);
+    burn = s.value;
     // TODO 릴파파 이펙트 추가 요망
   }
 
@@ -42,11 +43,11 @@ public class LilpaaAction extends AbstractAction {
       for (AbstractEntity t : target) {
         if (t != actor) EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("LIGHTNING")));
       }
-      for (AbstractPlayer p : AbstractLabyrinth.players) {
-        if (p != actor && p.isAlive()) p.takeDamage(info2);
-      }
       for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
         if (e.isAlive()) e.takeDamage(info);
+      }
+      for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+        if (e.isAlive()) e.applyStatus(new BurnStatus(burn), burn, true);
       }
     }
   }

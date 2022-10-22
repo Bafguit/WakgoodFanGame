@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.ShieldPushAction;
 import com.fastcat.labyrintale.status.NeutResPlusStatus;
 
 public class Obstinate extends AbstractSkill {
@@ -16,12 +17,13 @@ public class Obstinate extends AbstractSkill {
 
   public Obstinate(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
+    setBaseValue(VALUE);
+    setBaseCost(1, -1);
   }
 
   @Override
   public void use() {
-    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
+    bot(new ShieldPushAction(this, target));
     bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, owner, true));
   }
 

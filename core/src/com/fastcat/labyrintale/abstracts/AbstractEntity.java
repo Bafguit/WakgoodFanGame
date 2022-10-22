@@ -741,7 +741,7 @@ public abstract class AbstractEntity implements Cloneable {
     public float neutRes = 0.1f;
 
     public static int cap(float i) {
-      return (int) Math.min(i * 100, 80f);
+      return MathUtils.clamp((int) i * 100, 5, 80);
     }
 
     public int capSpeed() {

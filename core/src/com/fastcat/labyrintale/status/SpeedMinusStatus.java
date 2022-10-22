@@ -20,7 +20,7 @@ public class SpeedMinusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.speed -= 2;
+    owner.stat.speed -= 3;
   }
 
   @Override
@@ -31,6 +31,6 @@ public class SpeedMinusStatus extends AbstractStatus {
 
   @Override
   public void onRemove() {
-    owner.stat.speed += 2;
+    owner.stat.speed += 3;
   }
 }

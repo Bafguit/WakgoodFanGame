@@ -30,7 +30,7 @@ public class Pruning extends AbstractSkill {
   protected void upgradeCard() {}
 
   @Override
-  public int calculateAttackStat(int a) {
-    return a * value;
+  public int calculateAttack(int a) {
+    return a + owner.stat.attack * (value - 1);
   }
 }

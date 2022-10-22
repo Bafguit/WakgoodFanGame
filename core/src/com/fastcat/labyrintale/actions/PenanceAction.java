@@ -6,21 +6,24 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.effects.HitEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.status.ResistMinusStatus;
+import com.fastcat.labyrintale.status.ResistPlusStatus;
 
-public class ShieldPushAction extends AbstractAction {
+public class PenanceAction extends AbstractAction {
 
   private final Sprite img;
   private AbstractSkill skill;
   public AttackType effect;
   public AbstractEntity.DamageInfo info;
 
-  public ShieldPushAction(AbstractSkill s, AbstractSkill.SkillTarget target) {
-    super(s.owner, target, 0.25f);
-    img = FileHandler.getVfx().get("HIT_HEAVY");
-    effect = AttackType.HEAVY;
+  public PenanceAction(AbstractSkill s, AbstractEntity target) {
+    super(s.owner, target, 0.5f);
+    img = FileHandler.getVfx().get("BURN");
+    effect = AttackType.BURN;
     skill = s;
   }
 
@@ -67,9 +70,13 @@ public class ShieldPushAction extends AbstractAction {
         }
         for (int i = 0; i < target.size; i++) {
           AbstractEntity te = target.get(i);
-          if (te.isAlive()) te.takeDamage(info);
+          if (te.isAlive()) {
+            te.takeDamage(info);
+            if(!te.isAlive()) {
+              ActionHandler.top(new ApplyStatusAction(new ResistPlusStatus(skill.value), actor, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+            }
+          }
         }
-        actor.loseBlock(actor.block);
       } else isDone = true;
     }
   }

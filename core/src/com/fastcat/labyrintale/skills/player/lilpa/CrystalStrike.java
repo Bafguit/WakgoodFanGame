@@ -5,6 +5,8 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.status.DebuResMinusStatus;
+import com.fastcat.labyrintale.status.FlawStatus;
 import com.fastcat.labyrintale.status.UnblockableStatus;
 
 public class CrystalStrike extends AbstractSkill {
@@ -18,15 +20,15 @@ public class CrystalStrike extends AbstractSkill {
   public CrystalStrike(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
+    setBaseValue(1, 1);
   }
 
   @Override
   public void use() {
     AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY, true);
     bot(a);
-    AbstractAction m = new ApplyStatusAction(new UnblockableStatus(), owner, target, true);
-    m.preAction = a;
-    bot(m);
+    bot(new ApplyStatusAction(new FlawStatus(value), owner, target, true), a);
+    bot(new ApplyStatusAction(new DebuResMinusStatus(value), owner, target, true), a);
   }
 
   @Override

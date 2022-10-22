@@ -388,7 +388,17 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     ActionHandler.top(a);
   }
 
+  protected final void top(AbstractAction a, AbstractAction pre) {
+    a.preAction = pre;
+    ActionHandler.top(a);
+  }
+
   protected final void bot(AbstractAction a) {
+    ActionHandler.bot(a);
+  }
+
+  protected final void bot(AbstractAction a, AbstractAction pre) {
+    a.preAction = pre;
     ActionHandler.bot(a);
   }
 
@@ -430,6 +440,17 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     upValue = up;
   }
 
+  public void setBaseValue2(int i) {
+    baseValue2 = i;
+    value2 = baseValue2;
+  }
+
+  public void setBaseValue2(int i, int up) {
+    baseValue2 = i;
+    value2 = baseValue2;
+    upValue2 = up;
+  }
+
   public void setBaseCost(int i, int up) {
     baseCost = i;
     cost = baseCost;
@@ -461,14 +482,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     return s;
   }
 
-  public int calculateAttackStat(int a) {
-    return a;
-  }
-
-  public int calculateSpellStat(int s) {
-    return s;
-  }
-
   public int calculateValue(int v) {
     return v;
   }
@@ -482,9 +495,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       case "A":
         int a = baseAttack;
         if (AbstractLabyrinth.cPanel != null) {
-          a = calculateAttack(a);
+          a = calculateAttack(a + owner.stat.attack);
           if (owner != null) {
-            a += calculateAttackStat(owner.stat.attack);
             if (owner.isPlayer) {
               a = owner.passive.showAttack(a);
               for (AbstractItem m : owner.item) {
@@ -520,9 +532,8 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       case "S":
         int p = baseSpell;
         if (AbstractLabyrinth.cPanel != null) {
-          p = calculateSpell(p);
+          p = calculateSpell(p + owner.stat.spell);
           if (owner != null) {
-            p += calculateSpellStat(owner.stat.spell);
             if (owner.isPlayer) {
               p = owner.passive.showSpell(p);
               for (AbstractItem m : owner.item) {
@@ -622,6 +633,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       if (upValue2 != -1) {
         baseValue2 += upValue2;
         value2 = baseValue2;
+      }
+      if(upCost != 0) {
+        baseCost = Math.max(baseCost + upCost, 0);
       }
       upgraded = true;
       upgradeCount++;

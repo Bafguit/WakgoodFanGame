@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.skills.player.jururu;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.status.RestrictStatus;
 import com.fastcat.labyrintale.status.SinStatus;
 
 public class Penitence extends AbstractSkill {
@@ -11,7 +12,7 @@ public class Penitence extends AbstractSkill {
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY;
-  private static final int VALUE = 2;
+  private static final int VALUE = 3;
 
   public Penitence(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
@@ -23,7 +24,8 @@ public class Penitence extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new SinStatus(value), owner, e, false));
+    top(new ApplyStatusAction(new SinStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new RestrictStatus(value), owner, e, true));
   }
 
   @Override
