@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.HealAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class BattleAxe extends AbstractItem {
@@ -16,16 +17,8 @@ public class BattleAxe extends AbstractItem {
     super(ID, owner, RARITY);
   }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    ActionHandler.bot(
-        new AttackAction(
-            owner,
-            AbstractSkill.SkillTarget.ENEMY_FIRST,
-            3,
-            AbstractEntity.DamageType.SPIKE,
-            AttackAction.AttackType.LIGHT,
-            true));
+  public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
+    int h = (int) (damage * 0.25f);
+    if(h > 0) top(new HealAction(owner, owner, h));
   }
 }

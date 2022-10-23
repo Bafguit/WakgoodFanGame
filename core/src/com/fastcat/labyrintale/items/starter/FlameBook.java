@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.BurnStatus;
+import com.fastcat.labyrintale.status.ResistMinusStatus;
 
 public class FlameBook extends AbstractItem {
 
@@ -17,9 +18,8 @@ public class FlameBook extends AbstractItem {
 
   @Override
   public void atBattleStart() {
-    flash();
     bot(
         new ApplyStatusAction(
-            new BurnStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_FIRST_TWO, false));
+            new ResistMinusStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
   }
 }

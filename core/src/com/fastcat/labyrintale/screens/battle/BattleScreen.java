@@ -42,6 +42,7 @@ public class BattleScreen extends AbstractScreen {
   public Array<AbstractEntity> looking;
   private Array<AbstractEntity> turn;
   private int turnIndex;
+  public int round;
   public BattleType type;
   public float w, h, sw, sh;
 
@@ -122,6 +123,7 @@ public class BattleScreen extends AbstractScreen {
     if (isLoad) {
       ActionHandler.top(new VictoryAction(0));
     } else {
+      round = 0;
       resetTurn();
       ActionHandler.top(new StartBattleAction());
     }
@@ -375,7 +377,7 @@ public class BattleScreen extends AbstractScreen {
     }
     turn = temp;
     turnIndex = -1;
-    ActionHandler.bot(new RoundStartAction());
+    ActionHandler.bot(new RoundStartAction(++round));
     nextTurn();
     cPanel.battlePanel.turnView.setNewTurns(turn);
   }

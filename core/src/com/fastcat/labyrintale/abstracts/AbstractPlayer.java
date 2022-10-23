@@ -45,6 +45,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
       item[j] = it;
     }
     passive = getPassive();
+    passive.onGain();
   }
 
   public static String getClassName(PlayerClass playerClass) {

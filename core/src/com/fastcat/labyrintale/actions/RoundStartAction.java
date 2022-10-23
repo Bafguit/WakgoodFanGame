@@ -2,16 +2,23 @@ package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.effects.TurnChangeEffect;
+import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.uis.TurnEffectText;
 
 public class RoundStartAction extends AbstractAction {
 
-  public RoundStartAction() {
-    super(null, 0);
+  private final int round;
+
+  public RoundStartAction(int round) {
+    super(null, 2);
+    this.round = round;
   }
 
   @Override
   protected void updateAction() {
-    if (isDone) {
+    if (duration == baseDuration) {
+      EffectHandler.add(new TurnChangeEffect(round));
       AbstractLabyrinth.energy =
           Math.min(
               AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);

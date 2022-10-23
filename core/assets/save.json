@@ -1,9 +1,9 @@
 {
-  "date" : "2022_10_23_16_08_02",
+  "date" : "2022_10_23_17_33_48",
   "random" : {
     "seed" : "8DO39TX8",
     "seedLong" : 5668795157848856,
-    "publicRandom" : 204,
+    "publicRandom" : 388,
     "skillRandom" : 18,
     "itemRandom" : 0,
     "mapRandom" : 385,
@@ -58,7 +58,7 @@
       "attack" : 0,
       "spell" : 0,
       "speed" : 0,
-      "critical" : 0.40000004,
+      "critical" : 0.40000007,
       "multiply" : 0.5,
       "moveRes" : 0.1,
       "debuRes" : 0.1,
@@ -68,7 +68,7 @@
     "slot" : [ 1, 0, 0 ],
     "index" : 0,
     "maxHealth" : 27,
-    "health" : 27
+    "health" : 24
   }, {
     "id" : "burger",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -168,7 +168,7 @@
     "currentRoom" : {
       "id" : "Normal5",
       "battleDone" : false,
-      "isDone" : false
+      "isDone" : true
     },
     "currentWay" : {
       "type" : "NORMAL",
@@ -182,7 +182,7 @@
         "room" : {
           "id" : "Normal5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 0 ],
@@ -192,14 +192,14 @@
         "room" : {
           "id" : "Normal5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       } ],
       "selected" : 1,
-      "isDone" : false
+      "isDone" : true
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -369,7 +369,7 @@
         "room" : {
           "id" : "Normal5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 0 ],
@@ -379,14 +379,14 @@
         "room" : {
           "id" : "Normal5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       } ],
       "selected" : 1,
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "SHOP",
       "enemies" : null,

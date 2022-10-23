@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.items.starter.OldPistol;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
@@ -46,6 +47,6 @@ public class Manager extends AbstractPlayer {
 
   @Override
   public AbstractItem getPassive() {
-    return new PlaceHolder(this);
+    return new OldPistol(this);
   }
 }

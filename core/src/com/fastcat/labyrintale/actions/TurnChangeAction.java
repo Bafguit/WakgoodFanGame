@@ -17,7 +17,7 @@ public class TurnChangeAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      EffectHandler.add(new TurnChangeEffect(isEnemy));
+      EffectHandler.add(new TurnChangeEffect(0));
     }
     if (isDone && !isEnemy) {
       Labyrintale.battleScreen.isEnemyTurn = false;

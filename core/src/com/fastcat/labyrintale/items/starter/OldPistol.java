@@ -1,26 +1,33 @@
 package com.fastcat.labyrintale.items.starter;
 
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.ResistMinusStatus;
-import com.fastcat.labyrintale.status.ResistPlusStatus;
 
-public class Bible extends AbstractItem {
+public class OldPistol extends AbstractItem {
 
-  private static final String ID = "Bible";
+  private static final String ID = "OldPistol";
   private static final ItemRarity RARITY = ItemRarity.STARTER;
 
-  public Bible(AbstractPlayer owner) {
+  public OldPistol(AbstractPlayer owner) {
     super(ID, owner, RARITY);
   }
 
   @Override
-  public void atBattleStart() {
-    bot(
-            new ApplyStatusAction(
-                    new ResistPlusStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+  public void onGain() {
+    owner.stat.moveRes += 0.2f;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.multiply -= 0.2f;
+  }
+
+  public void onMove(AbstractEntity source) {
+    bot(new ApplyStatusAction(new CourageStatus(2), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
   }
 }

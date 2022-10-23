@@ -34,7 +34,7 @@ public class CounterStatus extends AbstractStatus {
               owner,
               attacker,
               amount,
-              AbstractEntity.DamageType.SPIKE,
+              AbstractEntity.DamageType.NORMAL,
               AttackAction.AttackType.LIGHT,
               true));
     }

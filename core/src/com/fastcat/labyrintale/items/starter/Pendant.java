@@ -17,6 +17,6 @@ public class Pendant extends AbstractItem {
   @Override
   public void atBattleEnd() {
     flash();
-    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1, false));
+    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1));
   }
 }

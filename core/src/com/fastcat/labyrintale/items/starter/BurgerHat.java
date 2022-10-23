@@ -1,8 +1,7 @@
 package com.fastcat.labyrintale.items.starter;
 
-import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.HealAction;
 
 public class BurgerHat extends AbstractItem {
@@ -17,6 +16,16 @@ public class BurgerHat extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1, false));
+    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1));
+  }
+
+  public void endOfTurn() {
+    Array<AbstractEntity> temp = new Array<>();
+    for(AbstractPlayer p : AbstractLabyrinth.players) {
+      if(p.block > 0) temp.add(p);
+    }
+    if(temp.size > 0) {
+      bot(new HealAction(owner, temp, 1));
+    }
   }
 }

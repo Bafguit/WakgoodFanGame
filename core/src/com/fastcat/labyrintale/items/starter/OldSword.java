@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.starter;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -16,8 +17,14 @@ public class OldSword extends AbstractItem {
   }
 
   @Override
-  public void atBattleStart() {
-    flash();
-    bot(new ApplyStatusAction(new CourageStatus(1), owner, AbstractSkill.SkillTarget.SELF, false));
+  public void onGain() {
+    owner.stat.multiply += 0.5f;
+    owner.stat.speed += 1;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.multiply -= 0.5f;
+    owner.stat.speed -= 1;
   }
 }

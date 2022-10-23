@@ -12,9 +12,9 @@ public class TurnChangeEffect extends AbstractEffect {
   private final TurnEffectText text;
   private float alpha;
 
-  public TurnChangeEffect(boolean isEnemy) {
+  public TurnChangeEffect(int round) {
     super(0, 0, 2);
-    text = new TurnEffectText(isEnemy ? "적 턴" : "내 턴");
+    text = new TurnEffectText(round + " 번째 라운드");
     alpha = 0;
     duration = baseDuration = 2;
   }
