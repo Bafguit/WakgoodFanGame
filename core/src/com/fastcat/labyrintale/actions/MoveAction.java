@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class MoveAction extends AbstractAction {
 
   private AbstractEntity from;
+  private AbstractEntity source;
   private final HashMap<Integer, AbstractEntity> to = new HashMap<>();
   private final HashMap<Integer, Float> distance = new HashMap<>();
   private final HashMap<Integer, Float> position = new HashMap<>();
@@ -46,7 +47,8 @@ public class MoveAction extends AbstractAction {
   }
 
   public MoveAction(AbstractEntity e, AbstractEntity source, int index, float dur) {
-    super(source, dur);
+    super(null, dur);
+    this.source = source;
     from = e;
     fromType = source.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
     type = e.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
@@ -219,11 +221,17 @@ public class MoveAction extends AbstractAction {
           }
         }
         for(int i = 0; i < 2; i++) {
-          from.item[i].onMove(actor);
-          for(AbstractEntity e : to.values()) e.item[i].onMove(actor);
+          AbstractItem t = from.item[i];
+          if(t != null) t.onMove(source);
+          for(AbstractEntity e : to.values()) {
+            t = e.item[i];
+            if(t != null) t.onMove(source);
+          }
         }
-        from.passive.onMove(actor);
-        for(AbstractEntity e : to.values()) e.passive.onMove(actor);
+        if(from.passive != null) from.passive.onMove(source);
+        for(AbstractEntity e : to.values()) {
+          if(e.passive != null) e.passive.onMove(source);
+        }
       } else {
         float t = Labyrintale.tick * (1.0f / baseDuration);
         from.animX += toDist * t;
