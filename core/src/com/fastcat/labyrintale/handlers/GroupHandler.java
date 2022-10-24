@@ -488,22 +488,16 @@ public final class GroupHandler {
 
     private static void generateAll() {
       Array<AbstractItem> t = allItem;
-      // 시작 아이템
       t.add(new PlaceHolder(null));
+      // 패시브
       t.add(new OldShield(null));
-      t.add(new Pendant(null));
-      t.add(new OldArmour(null));
       t.add(new BurgerHat(null));
-      t.add(new ShoulderPlate(null));
       t.add(new BattleAxe(null));
       t.add(new OldSword(null));
-      t.add(new FabricMail(null));
       t.add(new ToxicFlask(null));
-      t.add(new CrossPin(null));
       t.add(new Bible(null));
-      t.add(new CottonNecklace(null));
       t.add(new FlameBook(null));
-      t.add(new FireStaff(null));
+      t.add(new OldPistol(null));
 
       // 브론즈
       t.add(new PlatedArmour(null));
@@ -515,9 +509,9 @@ public final class GroupHandler {
       t.add(new Shield(null));
       t.add(new EyePatch(null));
       t.add(new BigRibbon(null));
-      t.add(new BronzeItem10(null));
-      t.add(new BronzeItem11(null));
-      t.add(new BronzeItem12(null));
+      t.add(new Bomb(null));
+      t.add(new Rocket(null));
+      t.add(new Tail(null));
 
       // 실버
       t.add(new SafetyHat(null));
@@ -526,32 +520,30 @@ public final class GroupHandler {
       t.add(new CheeseBall(null));
       t.add(new Purplight(null));
       t.add(new SuperLadle(null));
-      t.add(new SilverItem2(null));
-      t.add(new SilverItem3(null));
-      t.add(new SilverItem4(null));
-      t.add(new SilverItem5(null));
-      t.add(new SilverItem6(null));
-      t.add(new SilverItem7(null));
+      t.add(new LifePotion(null));
+      t.add(new OldArmour(null));
+      t.add(new Pendant(null));
+      t.add(new CottonNecklace(null));
+      t.add(new CrossPin(null));
+      t.add(new FabricMail(null));
 
       // 골드
       t.add(new Juggernaut(null));
       t.add(new Brainize(null));
       t.add(new Turtle(null));
       t.add(new GoldenRing(null));
-      t.add(new GoldItem5(null));
-      t.add(new GoldItem7(null));
-      t.add(new GoldItem8(null));
-      t.add(new GoldItem9(null));
-      t.add(new GoldItem10(null));
-      t.add(new GoldItem11(null));
-      t.add(new GoldItem12(null));
+      t.add(new Tree(null));
+      t.add(new IceFrag(null));
+      t.add(new ToyPlane(null));
+      t.add(new Rose(null));
+      t.add(new SandClock(null));
+      t.add(new Flight(null));
+      t.add(new FireStaff(null));
+      t.add(new ShoulderPlate(null));
 
       // 보스
       t.add(new TotoDeck(null));
       t.add(new Snow(null));
-      t.add(new Tree(null));
-      t.add(new IceFrag(null));
-      t.add(new ToyPlane(null));
       t.add(new Gyeruek(null));
       t.add(new Hwacha(null));
       t.add(new TrafficLight(null));
@@ -559,17 +551,20 @@ public final class GroupHandler {
       t.add(new Butter(null));
       t.add(new OldHood(null));
       t.add(new BrokenTicker(null));
+      t.add(new AhpuHat(null));
+      t.add(new Megaphone(null));
+      t.add(new Spaceship(null));
 
       // 상점
       t.add(new TrickDeck(null));
       t.add(new LifeContract(null));
-      t.add(new ShopItem3(null));
+      t.add(new Protection(null));
       t.add(new Badge(null));
-      t.add(new ShopItem5(null));
-      t.add(new ShopItem6(null));
-      t.add(new ShopItem7(null));
-      t.add(new ShopItem8(null));
-      t.add(new ShopItem9(null));
+      t.add(new Potato(null));
+      t.add(new BabyDish(null));
+      t.add(new Cane(null));
+      t.add(new Toadstool(null));
+      t.add(new PeridotStone(null));
 
       // 특별
       t.add(new GreenHeart(null));

@@ -25,7 +25,7 @@ public class Manager extends AbstractPlayer {
     stat.debuRes = 0.05f;
     stat.neutRes = 0.1f;
     stat.critical = 0.15f;
-    stat.moveRes = 0.1f;
+    stat.moveRes = 0.3f;
   }
 
   @Override

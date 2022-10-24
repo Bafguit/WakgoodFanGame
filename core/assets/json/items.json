@@ -10,24 +10,9 @@
       "Block"
     ]
   },
-  "Pendant": {
-    "NAME": "팬던트",
-    "DESC": "전투 종료 시 체력을 &b<1> 회복합니다."
-  },
-  "OldArmour": {
-    "NAME": "낡은 갑옷",
-    "DESC": "최대 체력 &b<+3>."
-  },
   "BurgerHat": {
     "NAME": "햄버거 모자",
     "DESC": "턴 종료 시 보호막을 가진 모든 아군의 체력을 &b<1> 회복합니다."
-  },
-  "ShoulderPlate": {
-    "NAME": "어깨 갑옷",
-    "DESC": "전투 시작 시 보호막을 &b<2> 얻습니다.",
-    "KEY": [
-      "Block"
-    ]
   },
   "BattleAxe": {
     "NAME": "전투 도끼",
@@ -37,25 +22,11 @@
     "NAME": "낡은 검",
     "DESC": "속도 &b<+1>\n치명타 피해 &b<+50%>"
   },
-  "FabricMail": {
-    "NAME": "천 갑옷",
+  "ToxicFlask": {
+    "NAME": "독성 플라스크",
     "DESC": "&y<감염>된 적에게 받는 공격 피해가 &b<30%> 감소합니다.",
     "KEY": [
       "Infection"
-    ]
-  },
-  "ToxicFlask": {
-    "NAME": "독성 플라스크",
-    "DESC": "전투 시작 시 모든 적에게 &y<감염>을 &b<1> 부여합니다.",
-    "KEY": [
-      "Infection"
-    ]
-  },
-  "CrossPin": {
-    "NAME": "십자 머리핀",
-    "DESC": "전투 시작 시 뒤의 적 하나에게 &y<약화>를 &b<1> 부여합니다.",
-    "KEY": [
-      "Lethargy"
     ]
   },
   "Bible": {
@@ -65,25 +36,11 @@
       "resist"
     ]
   },
-  "CottonNecklace": {
-    "NAME": "목화 목걸이",
-    "DESC": "전투 시작 시 앞의 아군 하나에게 &y<인내>를 &b<1> 부여합니다.",
-    "KEY": [
-      "Endurance"
-    ]
-  },
   "FlameBook": {
     "NAME": "화염 마법서",
     "DESC": "전투 시작 시 &b<1> 턴 동안 모든 적의 모든 저항을 감소시킵니다.",
     "KEY": [
       "resist"
-    ]
-  },
-  "FireStaff": {
-    "NAME": "불꽃 수정 지팡이",
-    "DESC": "전투 시작 시 앞의 적 하나에게 &y<취약>을 &b<1> 부여합니다.",
-    "KEY": [
-      "Unfortified"
     ]
   },
   "OldPistol": {
@@ -93,6 +50,7 @@
       "Courage"
     ]
   },
+
   "PlatedArmour": {
     "NAME": "판금 갑옷",
     "DESC": "최대 체력 &b<+5>\n이동 저항 &b<+5%>\n디버프 저항 &b<+5%>"
@@ -125,6 +83,38 @@
       "Lethargy"
     ]
   },
+  "EyePatch": {
+    "NAME": "검은 안대",
+    "DESC": "주문력 &b<+1>\n디버프 저항 &b<+10%>"
+  },
+  "Shield": {
+    "NAME": "쉴드",
+    "DESC": "최대 체력 &b<+8>\n"
+  },
+  "RobotHand": {
+    "NAME": "로봇 손",
+    "DESC": "공격력 &b<+1>\n치명타 확률 &b<+10%>"
+  },
+  "BigRibbon": {
+    "NAME": "거대 리본",
+    "DESC": "디버프 저항 &b<+5%>\n죽음 저항 &b<+5%>\n전투 시작 시 &y<인내>를 &b<5> 얻습니다.",
+    "KEY": [
+      "Endurance"
+    ]
+  },
+  "Bomb": {
+    "NAME": "BronzeItem10",
+    "DESC": "테스트"
+  },
+  "Rocket": {
+    "NAME": "BronzeItem11",
+    "DESC": "테스트"
+  },
+  "Tail": {
+    "NAME": "BronzeItem11",
+    "DESC": "테스트"
+  },
+
   "SafetyHat": {
     "NAME": "안전모",
     "DESC": "최대 체력 &b<+10>\n죽음 저항 &b<+10%>"
@@ -148,17 +138,72 @@
     "NAME": "치즈볼",
     "DESC": "속도 &b<+5>\n디버프 저항 &b<+10%>\n전투 시작 시 자신의 모든 스킬이 강화됩니다."
   },
-  "TotoDeck": {
-    "NAME": "도박사의 카드뭉치",
-    "DESC": "치명타 확률이 &b<20%>로 고정됩니다.\n치명타 피해 &b<+250%>"
+  "LifePotion": {
+    "NAME": "활精",
+    "DESC": "테스트"
   },
-  "Snow": {
-    "NAME": "눈송이",
-    "DESC": "행동력 회복량 &b<+1>\n주문력 &b<+2>"
+  "SuperLadle": {
+    "NAME": "초합금 국자",
+    "DESC": "공격력 &b<+2>\n치명타 확률 &b<+10%>\n치명타 피해 &b<+20%>"
   },
-  "BrokenTicker": {
-    "NAME": "고장난 회중시계",
-    "DESC": "최대 체력 &r<-10>\n모든 저항 &b<+10%>\n전투 시작 시 체력을 모두 회복합니다."
+  "Pendant": {
+    "NAME": "팬던트",
+    "DESC": "전투 종료 시 체력을 &b<1> 회복합니다."
+  },
+  "CrossPin": {
+    "NAME": "십자 머리핀",
+    "DESC": "전투 시작 시 뒤의 적 하나에게 &y<약화>를 &b<1> 부여합니다.",
+    "KEY": [
+      "Lethargy"
+    ]
+  },
+  "CottonNecklace": {
+    "NAME": "목화 목걸이",
+    "DESC": "전투 시작 시 앞의 아군 하나에게 &y<인내>를 &b<1> 부여합니다.",
+    "KEY": [
+      "Endurance"
+    ]
+  },
+  "FabricMail": {
+    "NAME": "천 갑옷",
+    "DESC": "&y<감염>된 적에게 받는 공격 피해가 &b<30%> 감소합니다.",
+    "KEY": [
+      "Infection"
+    ]
+  },
+  "OldArmour": {
+    "NAME": "낡은 갑옷",
+    "DESC": "최대 체력 &b<+3>."
+  },
+
+  "Juggernaut": {
+    "NAME": "살인전차",
+    "DESC": "최대 체력 &b<+10>\n모든 저항 &b<+10%>",
+    "KEY": [
+      "resist"
+    ]
+  },
+  "Brainize": {
+    "NAME": "전기의자",
+    "DESC": "모든 저항 &b<+10%>\n전투 시작 시 모든 아군이 &y<면역>을 &b<1> 얻습니다.",
+    "KEY": [
+      "resist",
+      "Immune"
+    ]
+  },
+  "Turtle": {
+    "NAME": "거북 등딱지",
+    "DESC": "최대 체력 &b<+10>\n이동 저항 &b<+10%>\n전투 시작 시 보호막을 &b<15> 얻습니다.",
+    "KEY": [
+      "Block"
+    ]
+  },
+  "GoldenRing": {
+    "NAME": "천사 고리",
+    "DESC": "전투 시작 시 모든 아군이 보호막을 &b<8> 얻습니다.",
+    "KEY": [
+      "Block"
+    ]
   },
   "Tree": {
     "NAME": "전나무 모형",
@@ -177,6 +222,45 @@
   "ToyPlane": {
     "NAME": "모형 비행기",
     "DESC": "행동력 회복량 &b<+1>\n주문력 &r<-5>\n속도 &b<+5>"
+  },
+  "SandClock": {
+    "NAME": "GoldItem6",
+    "DESC": "최대 체력 &b<+20>."
+  },
+  "Rose": {
+    "NAME": "GoldItem7",
+    "DESC": "최대 체력 &b<+20>."
+  },
+  "FireStaff": {
+    "NAME": "불꽃 수정 지팡이",
+    "DESC": "전투 시작 시 앞의 적 하나에게 &y<취약>을 &b<1> 부여합니다.",
+    "KEY": [
+      "Unfortified"
+    ]
+  },
+  "ShoulderPlate": {
+    "NAME": "어깨 갑옷",
+    "DESC": "전투 시작 시 보호막을 &b<2> 얻습니다.",
+    "KEY": [
+      "Block"
+    ]
+  },
+  "Flight": {
+    "NAME": "GoldItem8",
+    "DESC": "최대 체력 &b<+20>."
+  },
+
+  "TotoDeck": {
+    "NAME": "도박사의 카드뭉치",
+    "DESC": "치명타 확률이 &b<20%>로 고정됩니다.\n치명타 피해 &b<+250%>"
+  },
+  "Snow": {
+    "NAME": "눈송이",
+    "DESC": "행동력 회복량 &b<+1>\n주문력 &b<+2>"
+  },
+  "BrokenTicker": {
+    "NAME": "고장난 회중시계",
+    "DESC": "최대 체력 &r<-10>\n모든 저항 &b<+10%>\n전투 시작 시 체력을 모두 회복합니다."
   },
   "Gyeruek": {
     "NAME": "벼슬",
@@ -205,6 +289,19 @@
     "NAME": "낡은 망토",
     "DESC": "행동력 회복량 &b<+1>\n죽음 저항 &b<+20%>"
   },
+  "Megaphone": {
+    "NAME": "확성기",
+    "DESC": "최대 체력 &b<+20>."
+  },
+  "Spaceship": {
+    "NAME": "우주선",
+    "DESC": "최대 체력 &b<+20>."
+  },
+  "AhpuHat": {
+    "NAME": "밀짚모자",
+    "DESC": "최대 체력 &b<+20>"
+  },
+
   "TrickDeck": {
     "NAME": "속임수 덱",
     "DESC": "속도 &b<+1>\n치명타 확률 &b<+10%>\n획득하는 골드가 &b<20%> 증가합니다."
@@ -216,154 +313,35 @@
       "resist"
     ]
   },
-  "ShopItem3": {
-    "NAME": "",
-    "DESC": ""
-  },
   "Badge": {
     "NAME": "인증 뱃지",
     "DESC": "최대 체력 &b<+5>\n죽음 저항 &b<+10%>\n상점의 무작위 품목의 가격이 0이 됩니다."
   },
-  "ShopItem5": {
-    "NAME": "상점용 아이템5",
+  "Protection": {
+    "NAME": "까임방지권",
     "DESC": ""
   },
-  "ShopItem6": {
-    "NAME": "상점용 아이템6",
+  "Potato": {
+    "NAME": "감자",
     "DESC": ""
   },
-  "ShopItem7": {
-    "NAME": "상점용 아이템7",
+  "BabyDish": {
+    "NAME": "이유식",
     "DESC": ""
   },
-  "ShopItem8": {
-    "NAME": "상점용 아이템8",
+  "Cane": {
+    "NAME": "회초리",
     "DESC": ""
   },
-  "ShopItem9": {
-    "NAME": "상점용 아이템9",
+  "Toadstool": {
+    "NAME": "독버섯",
     "DESC": ""
   },
-  "Juggernaut": {
-    "NAME": "살인전차",
-    "DESC": "최대 체력 &b<+10>\n모든 저항 &b<+10%>",
-    "KEY": [
-      "resist"
-    ]
+  "PeridotStone": {
+    "NAME": "감람석",
+    "DESC": ""
   },
-  "Brainize": {
-    "NAME": "뇌이징",
-    "DESC": "모든 저항 &b<+10%>\n전투 시작 시 모든 아군이 &y<면역>을 &b<1> 얻습니다.",
-    "KEY": [
-      "resist",
-      "Immune"
-    ]
-  },
-  "Turtle": {
-    "NAME": "거북 등딱지",
-    "DESC": "최대 체력 &b<+10>\n이동 저항 &b<+10%>\n전투 시작 시 보호막을 &b<15> 얻습니다.",
-    "KEY": [
-      "Block"
-    ]
-  },
-  "GoldenRing": {
-    "NAME": "천사 고리",
-    "DESC": "전투 시작 시 모든 아군이 보호막을 &b<8> 얻습니다.",
-    "KEY": [
-      "Block"
-    ]
-  },
-  "EyePatch": {
-    "NAME": "검은 안대",
-    "DESC": "주문력 &b<+1>\n디버프 저항 &b<+10%>"
-  },
-  "Shield": {
-    "NAME": "쉴드",
-    "DESC": "최대 체력 &b<+8>\n"
-  },
-  "RobotHand": {
-    "NAME": "로봇 손",
-    "DESC": "공격력 &b<+1>\n치명타 확률 &b<+10%>"
-  },
-  "BigRibbon": {
-    "NAME": "거대 리본",
-    "DESC": "디버프 저항 &b<+5%>\n죽음 저항 &b<+5%>\n전투 시작 시 &y<인내>를 &b<5> 얻습니다.",
-    "KEY": [
-      "Endurance"
-    ]
-  },
-  "BronzeItem10": {
-    "NAME": "BronzeItem10",
-    "DESC": "테스트"
-  },
-  "BronzeItem11": {
-    "NAME": "BronzeItem11",
-    "DESC": "테스트"
-  },
-  "BronzeItem12": {
-    "NAME": "BronzeItem12",
-    "DESC": "테스트"
-  },
-  "SuperLadle": {
-    "NAME": "초합금 국자",
-    "DESC": "공격력 &b<+2>\n치명타 확률 &b<+10%>\n치명타 피해 &b<+20%>"
-  },
-  "SilverItem2": {
-    "NAME": "SilverItem2",
-    "DESC": "테스트"
-  },
-  "SilverItem3": {
-    "NAME": "SilverItem3",
-    "DESC": "테스트"
-  },
-  "SilverItem4": {
-    "NAME": "SilverItem4",
-    "DESC": "테스트"
-  },
-  "SilverItem5": {
-    "NAME": "SilverItem5",
-    "DESC": "테스트"
-  },
-  "SilverItem6": {
-    "NAME": "SilverItem6",
-    "DESC": "테스트"
-  },
-  "SilverItem7": {
-    "NAME": "SilverItem7",
-    "DESC": "테스트"
-  },
-  "GoldItem5": {
-    "NAME": "GoldItem5",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem6": {
-    "NAME": "GoldItem6",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem7": {
-    "NAME": "GoldItem7",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem8": {
-    "NAME": "GoldItem8",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem9": {
-    "NAME": "GoldItem9",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem10": {
-    "NAME": "GoldItem10",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem11": {
-    "NAME": "GoldItem11",
-    "DESC": "최대 체력 &b<+20>."
-  },
-  "GoldItem12": {
-    "NAME": "GoldItem12",
-    "DESC": "최대 체력 &b<+20>"
-  },
+
   "GreenHeart": {
     "NAME": "초록 심장",
     "DESC": "전투 종료 시 체력을 &b<3> 회복합니다."
