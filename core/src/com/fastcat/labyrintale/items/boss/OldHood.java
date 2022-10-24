@@ -16,12 +16,12 @@ public class OldHood extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.neutRes += 0.2f;
+    owner.stat.neutRes += 20;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.neutRes -= 0.2f;
+    owner.stat.neutRes -= 20;
   }
 }

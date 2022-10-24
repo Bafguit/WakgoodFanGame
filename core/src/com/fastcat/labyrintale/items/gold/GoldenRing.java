@@ -16,17 +16,17 @@ public class GoldenRing extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(8);
+    owner.modifyMaxHealth(10);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-8);
+    owner.modifyMaxHealth(-10);
   }
 
   @Override
   public void atBattleStart() {
     flash();
-    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 8));
+    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 10));
   }
 }

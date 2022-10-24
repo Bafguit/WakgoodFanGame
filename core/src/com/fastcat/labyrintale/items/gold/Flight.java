@@ -14,11 +14,15 @@ public class Flight extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(20);
+    owner.stat.attack += 3;
+    owner.stat.critical += 30;
+    owner.stat.multiply += 30;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-20);
+    owner.stat.attack -= 3;
+    owner.stat.critical -= 30;
+    owner.stat.multiply -= 30;
   }
 }

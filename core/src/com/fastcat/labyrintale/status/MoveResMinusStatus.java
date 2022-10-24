@@ -20,7 +20,7 @@ public class MoveResMinusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.moveRes -= 0.4f;
+    owner.stat.moveRes -= 40;
   }
 
   @Override
@@ -31,6 +31,6 @@ public class MoveResMinusStatus extends AbstractStatus {
 
   @Override
   public void onRemove() {
-    owner.stat.moveRes += 0.4f;
+    owner.stat.moveRes += 40;
   }
 }

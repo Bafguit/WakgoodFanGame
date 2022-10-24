@@ -14,11 +14,11 @@ public class TotoDeck extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.multiply += 2.5f;
+    owner.stat.multiply += 250;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.multiply -= 2.5f;
+    owner.stat.multiply -= 250;
   }
 }

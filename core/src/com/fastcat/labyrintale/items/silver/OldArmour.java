@@ -14,11 +14,13 @@ public class OldArmour extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(3);
+    owner.modifyMaxHealth(10);
+    owner.stat.spell++;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-3);
+    owner.modifyMaxHealth(-10);
+    owner.stat.spell--;
   }
 }

@@ -14,11 +14,17 @@ public class Tail extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(20);
+    owner.modifyMaxHealth(3);
+    owner.stat.debuRes += 3;
+    owner.stat.neutRes += 3;
+    owner.stat.moveRes += 3;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-20);
+    owner.modifyMaxHealth(-3);
+    owner.stat.debuRes -= 3;
+    owner.stat.neutRes -= 3;
+    owner.stat.moveRes -= 3;
   }
 }

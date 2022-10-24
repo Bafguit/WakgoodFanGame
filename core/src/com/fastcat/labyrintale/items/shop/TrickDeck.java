@@ -15,13 +15,13 @@ public class TrickDeck extends AbstractItem {
   @Override
   public void onGain() {
     owner.stat.speed += 1;
-    owner.stat.critical += 0.1f;
+    owner.stat.critical += 10;
   }
 
   @Override
   public void onRemove() {
     owner.stat.speed -= 1;
-    owner.stat.critical -= 0.1f;
+    owner.stat.critical -= 10;
   }
 
   @Override

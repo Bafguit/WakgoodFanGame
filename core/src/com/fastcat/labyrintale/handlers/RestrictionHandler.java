@@ -86,18 +86,18 @@ public final class RestrictionHandler {
     if (GRW > 0) enemy.setMaxHealth((int) (enemy.maxHealth * (1.05f + GRW * 0.05f)), true);
     if (SPD > 0) enemy.stat.speed += 1 + SPD;
     if (RST > 0) {
-      enemy.stat.moveRes += 0.05f * RST;
-      enemy.stat.debuRes += 0.05f * RST;
-      enemy.stat.neutRes += 0.05f * RST;
+      enemy.stat.moveRes += 5 * RST;
+      enemy.stat.debuRes += 5 * RST;
+      enemy.stat.neutRes += 5 * RST;
     }
     if (STR == 1) {
-      enemy.stat.critical += 0.1f;
+      enemy.stat.critical += 10;
     } else if (STR == 2) {
-      enemy.stat.critical += 0.1f;
+      enemy.stat.critical += 10;
       enemy.stat.attack += 1;
     } else if (STR == 3) {
-      enemy.stat.critical += 0.1f;
-      enemy.stat.multiply += 0.1f;
+      enemy.stat.critical += 10;
+      enemy.stat.multiply += 10;
       enemy.stat.attack += 1;
     }
 

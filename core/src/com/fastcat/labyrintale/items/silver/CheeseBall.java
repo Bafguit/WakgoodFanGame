@@ -15,14 +15,12 @@ public class CheeseBall extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.speed += 5;
-    owner.stat.debuRes += 0.1f;
+    owner.stat.speed += 3;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.speed -= 5;
-    owner.stat.debuRes -= 0.1f;
+    owner.stat.speed -= 3;
   }
 
   @Override

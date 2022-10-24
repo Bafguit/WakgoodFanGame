@@ -18,13 +18,13 @@ public class OldSword extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.multiply += 0.5f;
+    owner.stat.multiply += 50;
     owner.stat.speed += 1;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.multiply -= 0.5f;
+    owner.stat.multiply -= 50;
     owner.stat.speed -= 1;
   }
 }

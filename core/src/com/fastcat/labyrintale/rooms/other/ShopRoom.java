@@ -41,6 +41,7 @@ public class ShopRoom extends AbstractRoom {
           items[i - 6].price = 0;
         }
       }
+      if(p.hasItem("Protection")) roll.price = 0;
     }
     fadeOutAndChangeScreen(shopScreen);
   }

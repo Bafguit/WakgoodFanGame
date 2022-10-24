@@ -15,12 +15,12 @@ public class EyePatch extends AbstractItem {
   @Override
   public void onGain() {
     owner.stat.spell += 1;
-    owner.stat.debuRes += 0.1f;
+    owner.stat.debuRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.stat.spell -= 1;
-    owner.stat.debuRes -= 0.1f;
+    owner.stat.debuRes -= 10;
   }
 }

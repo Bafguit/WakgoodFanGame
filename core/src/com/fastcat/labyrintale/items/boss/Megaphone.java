@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.boss;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class Megaphone extends AbstractItem {
@@ -14,27 +15,13 @@ public class Megaphone extends AbstractItem {
 
   @Override
   public void onGain() {
+    AbstractLabyrinth.charge++;
     owner.modifyMaxHealth(10);
-    owner.stat.attack += 1;
-    owner.stat.spell += 1;
-    owner.stat.speed += 1;
-    owner.stat.critical += 0.1f;
-    owner.stat.multiply += 0.1f;
-    owner.stat.neutRes += 0.1f;
-    owner.stat.debuRes += 0.1f;
-    owner.stat.moveRes += 0.1f;
   }
 
   @Override
   public void onRemove() {
+    AbstractLabyrinth.charge++;
     owner.modifyMaxHealth(-10);
-    owner.stat.attack -= 1;
-    owner.stat.spell -= 1;
-    owner.stat.speed -= 1;
-    owner.stat.critical -= 0.1f;
-    owner.stat.multiply -= 0.1f;
-    owner.stat.neutRes -= 0.1f;
-    owner.stat.debuRes -= 0.1f;
-    owner.stat.moveRes -= 0.1f;
   }
 }

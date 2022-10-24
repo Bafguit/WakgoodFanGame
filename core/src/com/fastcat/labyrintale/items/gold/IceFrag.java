@@ -15,13 +15,15 @@ public class IceFrag extends AbstractItem {
 
   @Override
   public void onGain() {
-    AbstractLabyrinth.charge++;
-    owner.modifyMaxHealth(5);
+    owner.stat.debuRes += 20;
+    owner.stat.neutRes += 20;
+    owner.stat.moveRes += 20;
   }
 
   @Override
   public void onRemove() {
-    AbstractLabyrinth.charge--;
-    owner.modifyMaxHealth(-5);
+    owner.stat.debuRes -= 20;
+    owner.stat.neutRes -= 20;
+    owner.stat.moveRes -= 20;
   }
 }

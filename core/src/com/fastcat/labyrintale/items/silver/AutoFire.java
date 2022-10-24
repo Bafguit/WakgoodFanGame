@@ -18,12 +18,12 @@ public class AutoFire extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.speed += 15;
+    owner.stat.speed += 3;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.speed -= 15;
+    owner.stat.speed -= 3;
   }
 
   @Override

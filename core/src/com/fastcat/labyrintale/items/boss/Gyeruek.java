@@ -18,11 +18,11 @@ public class Gyeruek extends AbstractItem {
     owner.stat.attack += 1;
     owner.stat.spell += 1;
     owner.stat.speed += 1;
-    owner.stat.critical += 0.1f;
-    owner.stat.multiply += 0.1f;
-    owner.stat.neutRes += 0.1f;
-    owner.stat.debuRes += 0.1f;
-    owner.stat.moveRes += 0.1f;
+    owner.stat.critical += 10;
+    owner.stat.multiply += 10;
+    owner.stat.neutRes += 10;
+    owner.stat.debuRes += 10;
+    owner.stat.moveRes += 10;
   }
 
   @Override
@@ -31,10 +31,10 @@ public class Gyeruek extends AbstractItem {
     owner.stat.attack -= 1;
     owner.stat.spell -= 1;
     owner.stat.speed -= 1;
-    owner.stat.critical -= 0.1f;
-    owner.stat.multiply -= 0.1f;
-    owner.stat.neutRes -= 0.1f;
-    owner.stat.debuRes -= 0.1f;
-    owner.stat.moveRes -= 0.1f;
+    owner.stat.critical -= 10;
+    owner.stat.multiply -= 10;
+    owner.stat.neutRes -= 10;
+    owner.stat.debuRes -= 10;
+    owner.stat.moveRes -= 10;
   }
 }

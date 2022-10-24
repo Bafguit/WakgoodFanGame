@@ -16,13 +16,13 @@ public class BunnyHat extends AbstractItem {
   public void onGain() {
     owner.stat.attack += 1;
     owner.stat.spell += 1;
-    owner.stat.critical += 0.1f;
+    owner.stat.critical += 10;
   }
 
   @Override
   public void onRemove() {
     owner.stat.attack -= 1;
     owner.stat.spell -= 1;
-    owner.stat.critical -= 0.1f;
+    owner.stat.critical -= 10;
   }
 }

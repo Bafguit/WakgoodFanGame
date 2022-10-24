@@ -241,7 +241,7 @@ public class BattleScreen extends AbstractScreen {
         if (players[i].isTarget) players[i].render(sb);
       }
     } else {
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < 4; i++) {
         enemies[i].render(sb);
       }
       for (int i = 3; i >= 0; i--) {

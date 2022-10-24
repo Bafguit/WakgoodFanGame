@@ -13,10 +13,4 @@ public class OldShield extends AbstractItem {
   public OldShield(AbstractPlayer owner) {
     super(ID, owner, RARITY);
   }
-
-  @Override
-  public void atBattleStart() {
-    flash();
-    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 1));
-  }
 }

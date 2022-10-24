@@ -331,7 +331,7 @@ public abstract class AbstractEntity implements Cloneable {
     if (publicRandom.random(0, 99) < cr) {
       EffectHandler.add(
           new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
-      d *= 1 + stat.multiply;
+      d *= 1 + ((float) stat.multiply * 0.01f);
     }
     return d;
   }
@@ -746,14 +746,14 @@ public abstract class AbstractEntity implements Cloneable {
     public int attack = 0;
     public int spell = 0;
     public int speed = 0;
-    public float critical = 0.1f;
-    public float multiply = 0.5f;
-    public float moveRes = 0.1f;
-    public float debuRes = 0.1f;
-    public float neutRes = 0.1f;
+    public int critical = 5;
+    public int multiply = 50;
+    public int moveRes = 5;
+    public int debuRes = 5;
+    public int neutRes = 5;
 
-    public static int cap(float i) {
-      return Math.max(Math.min((int) (i * 100), 80), 5);
+    public static int cap(int i) {
+      return Math.max(Math.min(i, 80), 5);
     }
 
     public int capSpeed() {

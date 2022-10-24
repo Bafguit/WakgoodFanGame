@@ -16,12 +16,12 @@ public class Butter extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.debuRes += 0.2f;
+    owner.stat.debuRes += 20;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.debuRes -= 0.2f;
+    owner.stat.debuRes -= 20;
   }
 }

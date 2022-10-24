@@ -16,10 +16,22 @@ public class CottonNecklace extends AbstractItem {
   }
 
   @Override
+  public void onGain() {
+    owner.modifyMaxHealth(5);
+    owner.stat.neutRes += 5;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-5);
+    owner.stat.neutRes -= 5;
+  }
+
+  @Override
   public void atBattleStart() {
     flash();
     bot(
         new ApplyStatusAction(
-            new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_FIRST, false));
+            new EnduranceStatus(3), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
   }
 }

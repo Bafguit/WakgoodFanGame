@@ -17,12 +17,12 @@ public class NaviNecklace extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.critical += 0.1f;
+    owner.stat.critical += 10;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.critical -= 0.1f;
+    owner.stat.critical -= 10;
   }
 
   @Override

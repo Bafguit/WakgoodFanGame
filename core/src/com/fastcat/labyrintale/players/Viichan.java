@@ -21,10 +21,10 @@ public class Viichan extends AbstractPlayer {
 
   public Viichan() {
     super(ID, HEALTH, COLOR);
-    stat.debuRes = 0.05f;
-    stat.neutRes = 0.1f;
-    stat.critical = 0.2f;
-    stat.moveRes = 0.05f;
+    stat.debuRes = 5;
+    stat.neutRes = 10;
+    stat.critical = 20;
+    stat.moveRes = 5;
   }
 
   @Override

@@ -21,10 +21,10 @@ public class Jururu extends AbstractPlayer {
 
   public Jururu() {
     super(ID, HEALTH, COLOR);
-    stat.debuRes = 0.15f;
-    stat.neutRes = 0.15f;
-    stat.critical = 0.05f;
-    stat.moveRes = 0.05f;
+    stat.debuRes = 15;
+    stat.neutRes = 15;
+    stat.critical = 5;
+    stat.moveRes = 5;
   }
 
   @Override

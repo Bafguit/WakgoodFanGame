@@ -15,18 +15,18 @@ public class LifeContract extends AbstractItem {
   @Override
   public void onGain() {
     owner.stat.speed -= 1;
-    owner.stat.critical += 0.1f;
-    owner.stat.moveRes += 0.1f;
-    owner.stat.debuRes += 0.1f;
-    owner.stat.neutRes += 0.1f;
+    owner.stat.critical += 10;
+    owner.stat.moveRes += 10;
+    owner.stat.debuRes += 10;
+    owner.stat.neutRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.stat.speed += 1;
-    owner.stat.critical -= 0.1f;
-    owner.stat.moveRes -= 0.1f;
-    owner.stat.debuRes -= 0.1f;
-    owner.stat.neutRes -= 0.1f;
+    owner.stat.critical -= 10;
+    owner.stat.moveRes -= 10;
+    owner.stat.debuRes -= 10;
+    owner.stat.neutRes -= 10;
   }
 }

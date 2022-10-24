@@ -14,11 +14,15 @@ public class Rose extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(20);
+    owner.stat.spell += 2;
+    owner.stat.moveRes += 20;
+    owner.stat.neutRes += 20;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-20);
+    owner.stat.spell -= 2;
+    owner.stat.moveRes -= 20;
+    owner.stat.neutRes -= 20;
   }
 }

@@ -17,27 +17,19 @@ public class Tree extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(10);
-    owner.stat.speed += 5;
-    owner.stat.debuRes -= 0.1f;
-    owner.stat.neutRes -= 0.1f;
-    owner.stat.moveRes -= 0.1f;
+    owner.modifyMaxHealth(5);
+    owner.stat.critical += 30;
+    owner.stat.debuRes += 5;
+    owner.stat.neutRes += 5;
+    owner.stat.moveRes += 5;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-10);
-    owner.stat.speed -= 5;
-    owner.stat.debuRes += 0.1f;
-    owner.stat.neutRes += 0.1f;
-    owner.stat.moveRes += 0.1f;
-  }
-
-  @Override
-  public void atBattleStart() {
-    flash();
-    bot(
-        new ApplyStatusAction(
-            new AttackStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
+    owner.modifyMaxHealth(-5);
+    owner.stat.critical -= 30;
+    owner.stat.debuRes -= 5;
+    owner.stat.neutRes -= 5;
+    owner.stat.moveRes -= 5;
   }
 }

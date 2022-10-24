@@ -19,12 +19,12 @@ public class OldPistol extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.moveRes += 0.2f;
+    owner.stat.moveRes += 20;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.multiply -= 0.2f;
+    owner.stat.multiply -= 20;
   }
 
   public void onMove(AbstractEntity source) {

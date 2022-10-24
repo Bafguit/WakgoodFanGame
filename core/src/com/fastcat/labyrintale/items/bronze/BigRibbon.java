@@ -28,6 +28,6 @@ public class BigRibbon extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new ApplyStatusAction(new EnduranceStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+    bot(new ApplyStatusAction(new EnduranceStatus(5), owner, AbstractSkill.SkillTarget.SELF, false));
   }
 }

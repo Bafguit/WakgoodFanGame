@@ -20,7 +20,7 @@ public class DebuResMinusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.debuRes -= 0.4f;
+    owner.stat.debuRes -= 40;
   }
 
   @Override
@@ -31,6 +31,6 @@ public class DebuResMinusStatus extends AbstractStatus {
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes += 0.4f;
+    owner.stat.debuRes += 40;
   }
 }

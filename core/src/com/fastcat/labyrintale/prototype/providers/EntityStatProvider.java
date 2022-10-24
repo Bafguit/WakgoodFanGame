@@ -114,18 +114,18 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
     private int speed = 0;
 
     @CsvBindByName(column = "치명타 확률")
-    private float critical = 10;
+    private int critical = 5;
 
     @CsvBindByName(column = "치명타 배율")
-    private float multiply = 50;
+    private int multiply = 50;
 
     @CsvBindByName(column = "이동 저항")
-    private float moveRes = 10;
+    private int moveRes = 5;
 
     @CsvBindByName(column = "디버프 저항")
-    private float debuRes = 10;
+    private int debuRes = 5;
 
     @CsvBindByName(column = "죽음 저항")
-    private float neutRes = 10;
+    private int neutRes = 5;
   }
 }

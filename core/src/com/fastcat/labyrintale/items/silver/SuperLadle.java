@@ -15,14 +15,14 @@ public class SuperLadle extends AbstractItem {
   @Override
   public void onGain() {
     owner.stat.attack += 2;
-    owner.stat.critical += 0.1f;
-    owner.stat.multiply += 0.2f;
+    owner.stat.critical += 10;
+    owner.stat.multiply += 10;
   }
 
   @Override
   public void onRemove() {
     owner.stat.attack -= 2;
-    owner.stat.critical -= 0.1f;
-    owner.stat.multiply -= 0.2f;
+    owner.stat.critical -= 10;
+    owner.stat.multiply -= 10;
   }
 }

@@ -15,12 +15,12 @@ public class SafetyHat extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(10);
-    owner.stat.neutRes += 0.1f;
+    owner.stat.neutRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-10);
-    owner.stat.neutRes -= 0.1f;
+    owner.stat.neutRes -= 10;
   }
 }
