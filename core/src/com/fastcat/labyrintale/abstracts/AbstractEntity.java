@@ -394,8 +394,8 @@ public abstract class AbstractEntity implements Cloneable {
             damage = loseBlock(damage);
             if (damage > 0) {
               if (attacker != null && type == DamageType.NORMAL) {
-                if (isPlayer) {
-                  passive.onDamage(this, damage, type);
+                if (attacker.isPlayer) {
+                  attacker.passive.onDamage(this, damage, type);
                   for (AbstractItem m : attacker.item) {
                     if (m != null) m.onDamage(this, damage, type);
                   }

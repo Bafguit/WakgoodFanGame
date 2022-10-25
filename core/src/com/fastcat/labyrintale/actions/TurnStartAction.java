@@ -18,7 +18,7 @@ public class TurnStartAction extends AbstractAction {
       if (e.isAlive()) {
         if (e.block > 0
             && e.blockRemove > 0
-            && ((e.isPlayer && !e.id.equals("wak")) && !e.hasStatus("Maintain"))) {
+            && (e.isPlayer ? (!e.id.equals("wak") && !e.hasStatus("Maintain")) : !e.hasStatus("Maintain"))) {
           e.block = Math.max(e.block - e.blockRemove, 0);
           e.blockRemove = 0;
         }

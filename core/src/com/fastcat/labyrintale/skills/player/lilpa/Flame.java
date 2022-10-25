@@ -19,6 +19,7 @@ public class Flame extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
     setBaseValue(VALUE, 1);
+    setBaseCost(2);
   }
 
   @Override

@@ -18,7 +18,7 @@ public class BattleAxe extends AbstractItem {
   }
 
   public void onDamage(AbstractEntity target, int damage, AbstractEntity.DamageType type) {
-    int h = (int) (damage * 0.25f);
+    int h = (int) ((float) damage * 0.25f);
     if(h > 0) top(new HealAction(owner, owner, h));
   }
 }
