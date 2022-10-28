@@ -372,8 +372,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
   }
 
   public static boolean noMoreSkill() {
-    if (AbstractLabyrinth.advisor.skill.canUse() && !AbstractLabyrinth.advisor.skill.passive)
-      return false;
     for (AbstractPlayer p : players) {
       if (p.isAlive()) {
         for (AbstractSkill s : p.hand) {

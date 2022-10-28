@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.GroupHandler;
@@ -29,7 +30,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
 
   private void addAdvisor(boolean start) {
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-    Array<AbstractAdvisor> a;
+    Array<AbstractItem> a;
     if (start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
     else a = GroupHandler.AdvisorGroup.getAdvisors(4);
     int s = a.size;

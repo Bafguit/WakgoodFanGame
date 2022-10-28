@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.uis.control;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
@@ -11,6 +12,11 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 public class ItemPanel extends AbstractUI {
 
   public AbstractItem item;
+
+  public ItemPanel(Sprite s) {
+    super(s);
+    clickable = false;
+  }
 
   public ItemPanel() {
     super(FileHandler.getUi().get("BORDER"));

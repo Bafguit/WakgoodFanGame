@@ -29,7 +29,7 @@ public class AbstractLabyrinth {
   public static AbstractFloor[] floors;
   public static AbstractFloor currentFloor;
   public static AbstractPlayer[] players;
-  public static AbstractAdvisor advisor;
+  public static AbstractItem advisor;
   public static ControlPanel cPanel;
   public static int floorNum;
   public static int itemAble;
@@ -92,7 +92,6 @@ public class AbstractLabyrinth {
   }
 
   public static void prepare() {
-    advisor.skill.usedOnce = false;
     energy = 0;
   }
 
@@ -209,7 +208,6 @@ public class AbstractLabyrinth {
   }
 
   public static void victoryRoom() {
-    advisor.skill.usedOnce = false;
     currentFloor.currentWay.done();
     currentFloor.currentRoom.done();
     AbstractPlayer[] temp = players;

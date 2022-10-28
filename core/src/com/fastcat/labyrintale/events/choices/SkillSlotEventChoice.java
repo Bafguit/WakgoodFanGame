@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.rewards.HealReward;
 import com.fastcat.labyrintale.rewards.SlotReward;
 import com.fastcat.labyrintale.screens.healselect.HealSelectScreen;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
 public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
 
@@ -27,10 +28,8 @@ public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements G
 
   @Override
   protected void onSelect() {
-    SlotReward s = new SlotReward();
-    s.gets = this;
     Labyrintale.addTempScreen(
-        new PlayerSelectScreen(HealSelectScreen.getPlayers(HealReward.HealType.SKILL_SLOT), s));
+        new SlotSelectScreen(this));
   }
 
   @Override

@@ -71,7 +71,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
   public boolean hasSlot() {
     int i = AbstractLabyrinth.maxSkillUp;
-    return slot[0] < i || slot[1] < i || slot[2] < i;
+    return deck.get(0).upgradeCount < i || deck.get(1).upgradeCount < i || deck.get(2).upgradeCount < i;
   }
 
   public abstract Array<AbstractItem> getStartingItem();

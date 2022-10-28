@@ -1,29 +1,21 @@
 package com.fastcat.labyrintale.skills.player.advisor;
 
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 
-public class BusinessSkill extends AbstractSkill {
+public class BusinessSkill extends AbstractItem {
 
   private static final String ID = "business";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ADVISOR;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
+  private static final ItemRarity RARITY = ItemRarity.ADVISOR;
 
   public BusinessSkill() {
-    super(ID, TYPE, RARITY, TARGET);
-    setBaseValue(1, 1);
-    passive = true;
+    super(ID, null, RARITY);
   }
-
-  @Override
-  public void use() {}
 
   public void atBattleStart() {
-    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, false));
+    bot(new ApplyStatusAction(new EnduranceStatus(2), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
   }
-
-  @Override
-  protected void upgradeCard() {}
 }

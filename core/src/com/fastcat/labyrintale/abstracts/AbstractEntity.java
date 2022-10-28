@@ -56,7 +56,6 @@ public abstract class AbstractEntity implements Cloneable {
   public LinkedList<AbstractStatus> status = new LinkedList<>();
   public AbstractItem[] item = new AbstractItem[2];
   public AbstractItem passive;
-  public int[] slot = new int[3];
   public String id;
   public String name;
   public String desc;
@@ -429,14 +428,7 @@ public abstract class AbstractEntity implements Cloneable {
                 e.setTimeScale(1.0f);
                 health -= damage;
                 if (health <= 0) {
-                  if (isPlayer
-                      && advisor.cls == AbstractAdvisor.AdvisorClass.SECRET
-                      && !advisor.skill.usedOnce) {
-                    advisor.skill.use();
-                    health = 1;
-                    block = 0;
-                    blockRemove = 0;
-                  } else if (!isNeut) {
+                  if (!isNeut && (isPlayer || !advisor.id.equals("callycarly"))) {
                     neutralize();
                     block = 0;
                     blockRemove = 0;
@@ -573,7 +565,7 @@ public abstract class AbstractEntity implements Cloneable {
               }
             }
           }
-          advisor.skill.atBattleEnd();
+          advisor.atBattleEnd();
           if (currentFloor.floorNum == 4 && currentFloor.num == 12) {
             ActionHandler.bot(new EndLabyrinthAction(DeadScreen.ScreenType.WIN));
           } else {
@@ -600,14 +592,10 @@ public abstract class AbstractEntity implements Cloneable {
   }
 
   public void gainSkill(int index, AbstractSkill skill) {
-    for (int i = 0; i < slot[index]; i++) {
-      skill.upgrade();
-    }
     deck.set(index, skill);
   }
 
-  public void upgradeSlot(int index, int amount) {
-    slot[index] += amount;
+  public void upgradeSkill(int index, int amount) {
     for (int i = 0; i < amount; i++) {
       deck.get(index).upgrade();
     }
@@ -638,6 +626,15 @@ public abstract class AbstractEntity implements Cloneable {
       }
     }
     return null;
+  }
+
+  public boolean hasSkill(String id) {
+    if (status != null) {
+      for (AbstractSkill s : deck) {
+        if (s != null && s.id.equals(id)) return true;
+      }
+    }
+    return false;
   }
 
   public boolean hasStatus(String id) {

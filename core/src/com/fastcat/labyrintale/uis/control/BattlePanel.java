@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.*;
 
@@ -26,7 +27,7 @@ public class BattlePanel implements Disposable {
   public SkillButtonPanel[] skill = new SkillButtonPanel[3];
   public SkillButtonPanel mSkill;
   public SkillButtonPanel pSkill;
-  public SkillButtonPanel aSkill;
+  public ItemPanel aSkill;
   public StatIcon[] stats = new StatIcon[8];
   public ItemPanel[] item = new ItemPanel[2];
   public AbstractPlayer curPlayer;
@@ -39,7 +40,7 @@ public class BattlePanel implements Disposable {
     item[0].setPosition(w * 0.26f - item[0].sWidth / 2, h * 0.225f);
     item[1] = new ItemPanel();
     item[1].setPosition(w * 0.32f - item[1].sWidth / 2, h * 0.225f);
-    aSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.ADVISOR);
+    aSkill = new ItemPanel(FileHandler.getUi().get("BORDER_M"));
     aSkill.setPosition(w * 0.58f - aSkill.sWidth, h * 0.075f);
     mSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.BASIC);
     mSkill.setPosition(w * 0.9f - mSkill.sWidth, h * 0.225f);
@@ -135,7 +136,7 @@ public class BattlePanel implements Disposable {
       for (int j = 0; j < 3; j++) {
         skill[j].skill = p.hand[2 - j];
       }
-      aSkill.skill = AbstractLabyrinth.advisor.skill;
+      aSkill.item = AbstractLabyrinth.advisor;
       mSkill.skill = p.moveTemp;
       pSkill.skill = p.pass;
       item[0].item = p.item[0];

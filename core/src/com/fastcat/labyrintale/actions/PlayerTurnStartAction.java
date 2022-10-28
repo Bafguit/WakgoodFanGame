@@ -22,7 +22,7 @@ public class PlayerTurnStartAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      if (isFirst) AbstractLabyrinth.advisor.skill.atBattleStart();
+      if (isFirst) AbstractLabyrinth.advisor.atBattleStart();
       for (AbstractPlayer p : players) {
         if (p.isAlive()) {
           if (isFirst) {

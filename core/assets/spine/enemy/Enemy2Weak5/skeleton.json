@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "XbvyurluclIH35ylMVlQ1MZGKDk",
+	"hash": "mRph/EcuDqVnuAOsEGUstUPjcAU",
 	"spine": "3.8.75",
 	"x": -224.03,
 	"y": -35.2,
@@ -60,15 +60,15 @@
 	},
 	"die": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"die": {
 				"attachment": [
 					{ "name": "die" },
 					{ "time": 0.6667, "name": "die" }
-				]
-			},
-			"skill": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}

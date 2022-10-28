@@ -8,6 +8,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.strings.ItemString;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
@@ -122,22 +123,15 @@ public final class SaveHandler {
           s.upgrade();
         }
         ss[j] = s;
-        p.slot[j] = d.slot[j];
       }
       p.deck = new Array<>(ss);
       p.stat = d.stat;
       if (p.isDead) p.infoSpine.setAnimation("die");
       players[i] = p;
     }
-    AdvisorData ad = data.advisor;
+    String ad = data.advisor;
     if (ad != null) {
-      AbstractAdvisor a =
-          getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad.cls.toUpperCase()));
-      a.skill.usedOnly = ad.skill.usedOnly;
-      for (int i = 0; i < ad.skill.upgradeCount; i++) {
-        a.skill.upgrade();
-      }
-      advisor = a;
+      advisor = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad));
     }
 
     itemAble = data.itemAble;
@@ -160,7 +154,7 @@ public final class SaveHandler {
     public int level;
     public int exp;
     public int maxExp;
-    public AdvisorData advisor;
+    public String advisor;
     public PlayerData[] players = new PlayerData[4];
     public int currentFloor;
     public FloorData[] floors = new FloorData[4];
@@ -188,7 +182,7 @@ public final class SaveHandler {
         temp.players[i] = PlayerData.create(AbstractLabyrinth.players[i]);
       }
       temp.advisor =
-          AbstractLabyrinth.advisor != null ? AdvisorData.create(AbstractLabyrinth.advisor) : null;
+          AbstractLabyrinth.advisor != null ? AbstractLabyrinth.advisor.id : null;
       temp.itemAble = AbstractLabyrinth.itemAble;
       temp.selection = AbstractLabyrinth.maxSkillUp;
       temp.gold = AbstractLabyrinth.gold;
@@ -345,7 +339,6 @@ public final class SaveHandler {
     public SkillData[] deck;
     public AbstractEntity.EntityStat stat;
     public boolean isDead;
-    public int[] slot = new int[3];
     public int index;
     public int maxHealth;
     public int health;
@@ -360,25 +353,12 @@ public final class SaveHandler {
       temp.deck = new SkillData[3];
       for (int i = 0; i < 3; i++) {
         temp.deck[i] = SkillData.create(e.deck.get(i));
-        temp.slot[i] = e.slot[i];
       }
       temp.isDead = !e.isAlive();
       temp.index = e.index;
       temp.maxHealth = e.maxHealth;
       temp.health = e.health;
       temp.stat = e.stat;
-      return temp;
-    }
-  }
-
-  public static class AdvisorData {
-    public String cls;
-    public SkillData skill;
-
-    public static AdvisorData create(AbstractAdvisor a) {
-      AdvisorData temp = new AdvisorData();
-      temp.cls = a.cls.toString();
-      temp.skill = SkillData.create(a.skill);
       return temp;
     }
   }

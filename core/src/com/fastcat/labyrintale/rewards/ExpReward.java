@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.screens.healselect.HealSelectScreen;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
-public class ExpReward extends AbstractReward implements GetSelectedPlayer, GetSelectedSlot {
+public class ExpReward extends AbstractReward implements GetSelectedSlot {
 
   private AbstractScreen sc;
 
@@ -21,13 +21,7 @@ public class ExpReward extends AbstractReward implements GetSelectedPlayer, GetS
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(
-        new PlayerSelectScreen(HealSelectScreen.getPlayers(HealReward.HealType.SKILL_SLOT), this));
-  }
-
-  @Override
-  public void playerSelected(AbstractPlayer player) {
-    Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
+    Labyrintale.addTempScreen(new SlotSelectScreen(this));
   }
 
   @Override

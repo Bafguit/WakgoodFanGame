@@ -8,10 +8,11 @@ import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.strings.ItemString;
 import com.fastcat.labyrintale.strings.KeyString;
+import com.fastcat.labyrintale.strings.SkillString;
 
 public class AbstractItem implements Cloneable {
 
-  public ItemString.ItemData data;
+  public SkillString.SkillData data;
   public Sprite img;
   public Sprite tImg;
   public String id;
@@ -23,9 +24,15 @@ public class AbstractItem implements Cloneable {
 
   public AbstractItem(String id, AbstractPlayer owner, ItemRarity rarity) {
     this.id = id;
-    img = FileHandler.getItemImg().get(this.id);
-    tImg = FileHandler.getItemImgTrans().get(this.id);
-    data = StringHandler.itemString.get(this.id);
+    if(rarity == ItemRarity.ADVISOR) {
+      img = FileHandler.getAdvImg().get(AbstractAdvisor.AdvisorClass.valueOf(this.id.toUpperCase()));
+      tImg = img;
+      data = StringHandler.skillString.get(this.id);
+    } else {
+      img = FileHandler.getItemImg().get(this.id);
+      tImg = FileHandler.getItemImgTrans().get(this.id);
+      data = StringHandler.itemString.get(this.id);
+    }
     name = data.NAME;
     desc = data.DESC;
     if (data.KEY != null) {
@@ -152,6 +159,7 @@ public class AbstractItem implements Cloneable {
     GOLD,
     BOSS,
     SHOP,
-    SPECIAL
+    SPECIAL,
+    ADVISOR
   }
 }

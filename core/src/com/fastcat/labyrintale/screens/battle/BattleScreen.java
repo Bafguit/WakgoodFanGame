@@ -107,7 +107,7 @@ public class BattleScreen extends AbstractScreen {
       setEnemy(enemies[i].enemy, i);
     }
     RestrictionHandler.getInstance().atBattleStart();
-    if (AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.DUKSU) {
+    if (AbstractLabyrinth.advisor.id.equals("duksu")) {
       for (AbstractPlayer p : AbstractLabyrinth.players) {
         p.hand[0].upgrade();
       }

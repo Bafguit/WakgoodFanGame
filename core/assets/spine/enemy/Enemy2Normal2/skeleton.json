@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "E5CnCLz6dNI1Jl8+zwLPBZZ5LL0",
+	"hash": "EM3PFiCY/H85z/fTcfJRd0amoIk",
 	"spine": "3.8.75",
 	"x": -320.04,
 	"y": -50.28,
@@ -45,15 +45,15 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"attack": {
 				"attachment": [
 					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}
@@ -90,14 +90,14 @@
 	},
 	"idle": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"idle": {
 				"attachment": [
 					{ "name": "idle" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		},

@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class ItemString {
 
-  private final HashMap<String, ItemData> data = new HashMap<>();
+  private final HashMap<String, SkillString.SkillData> data = new HashMap<>();
 
   public ItemString() {
     generateString(FileHandler.getJsonValue(FileHandler.JsonType.ITEM_JSON));
@@ -16,7 +16,7 @@ public class ItemString {
     for (JsonValue js : json) {
       String id = js.name;
       if (!id.equals("")) {
-        ItemData data = new ItemData();
+        SkillString.SkillData data = new SkillString.SkillData();
         data.NAME = js.get("NAME").asString();
         data.DESC = js.get("DESC").asString();
         JsonValue temp = js.get("KEY");
@@ -28,13 +28,7 @@ public class ItemString {
     }
   }
 
-  public ItemData get(String id) {
+  public SkillString.SkillData get(String id) {
     return data.get(id);
-  }
-
-  public static class ItemData {
-    public String NAME;
-    public String DESC = "";
-    public String[] KEY;
   }
 }

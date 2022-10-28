@@ -42,15 +42,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
       }
       sc.finishRest();
     } else if (type == RestType.UPGRADE) {
-      Array<AbstractPlayer> temp = new Array<>();
-      for (AbstractPlayer p : AbstractLabyrinth.players) {
-        if (p.isAlive() && p.hasSlot()) temp.add(p);
-      }
-      AbstractPlayer[] tp = new AbstractPlayer[temp.size];
-      for (int i = 0; i < temp.size; i++) {
-        tp[i] = temp.get(i);
-      }
-      Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
+      Labyrintale.addTempScreen(new SlotSelectScreen(this));
     } else if (type == RestType.REVIVE) {
       Array<AbstractPlayer> temp = new Array<>();
       for (AbstractPlayer p : AbstractLabyrinth.players) {
@@ -66,9 +58,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
 
   @Override
   public void playerSelected(AbstractPlayer player) {
-    if (type == RestType.UPGRADE) {
-      Labyrintale.addTempScreen(new SlotSelectScreen(player, this));
-    } else if (type == RestType.REVIVE) {
+    if (type == RestType.REVIVE) {
       player.revive();
       sc.finishRest();
     } else {

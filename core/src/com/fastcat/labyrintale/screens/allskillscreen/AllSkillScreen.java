@@ -1,8 +1,7 @@
-package com.fastcat.labyrintale.screens.slotselect;
+package com.fastcat.labyrintale.screens.allskillscreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
@@ -10,28 +9,28 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
+import com.fastcat.labyrintale.screens.slotselect.SlotButton;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectText;
 import com.fastcat.labyrintale.uis.BgImg;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-
-public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot {
+public class AllSkillScreen extends AbstractScreen implements GetSelectedSlot {
 
   public BgImg bg = new BgImg();
-  public SlotSelectText slotSelectText;
+  public AllSkillText slotSelectText;
   public PlayerSlotIcon[] pIcons = new PlayerSlotIcon[4];
-  public SlotButton[][] pPlayer;
+  public AllSlotButton[][] pPlayer;
   public GetSelectedSlot gets;
   public SlotType type;
 
-  public SlotSelectScreen(GetSelectedSlot gets) {
+  public AllSkillScreen(GetSelectedSlot gets) {
     this(gets, SlotType.UPGRADE);
   }
 
-  public SlotSelectScreen(GetSelectedSlot gets, SlotType type) {
-    slotSelectText = new SlotSelectText();
+  public AllSkillScreen(GetSelectedSlot gets, SlotType type) {
+    slotSelectText = new AllSkillText();
     this.gets = gets;
     this.type = type;
-    pPlayer = new SlotButton[4][3];
+    pPlayer = new AllSlotButton[4][3];
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     int cnt = 0;
     for(int l = 0; l < 2; l++) {
@@ -41,7 +40,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         PlayerSlotIcon c = new PlayerSlotIcon(p);
         c.setPosition(bw - c.sWidth / 2, h * (0.69f - 0.275f * l));
         for (int i = 0; i < 3; i++) {
-          SlotButton adv = new SlotButton(p, i, this);
+          AllSlotButton adv = new AllSlotButton(p, i, this);
           adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.69f - 0.275f * l));
           pPlayer[cnt][i] = adv;
         }
@@ -91,9 +90,6 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
 
   @Override
   public void slotSelected(AbstractPlayer player, int index) {
-    if (type == SlotType.UPGRADE) {
-      player.upgradeSkill(index, 1);
-    }
     gets.slotSelected(player, index);
   }
 

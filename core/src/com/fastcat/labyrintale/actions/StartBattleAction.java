@@ -15,7 +15,7 @@ public class StartBattleAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      AbstractLabyrinth.advisor.skill.atBattleStart();
+      AbstractLabyrinth.advisor.atBattleStart();
       for (AbstractEntity p : battleScreen.getTurns()) {
         if (p.isPlayer) {
           for (AbstractSkill s : p.hand) {

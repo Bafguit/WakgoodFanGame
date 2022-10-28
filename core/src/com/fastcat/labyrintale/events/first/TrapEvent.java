@@ -35,7 +35,7 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
               new EventCondition() {
                 @Override
                 public boolean condition() {
-                  return advisor.cls == AdvisorClass.SOPHIA || advisor.cls == AdvisorClass.SECRET;
+                  return advisor.id.equals("sophia") || advisor.id.equals("secret");
                 }
 
                 @Override

@@ -34,7 +34,7 @@ public class GoldReward extends AbstractReward {
     if (AbstractLabyrinth.restriction.FAM == 1) g *= 0.9f;
     else if (AbstractLabyrinth.restriction.FAM == 2) g *= 0.7f;
     else if (AbstractLabyrinth.restriction.FAM == 3) g *= 0.5f;
-    if (AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.SOPHIA) g *= 1.2f;
+    if (AbstractLabyrinth.advisor.id.equals("sophia")) g *= 1.2f;
     return g + AbstractLabyrinth.publicRandom.random(-5, 5);
   }
 

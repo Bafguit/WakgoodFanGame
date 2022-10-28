@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
+import com.fastcat.labyrintale.events.fourth.AmnesiaEvent;
 import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.events.second.*;
 import com.fastcat.labyrintale.events.third.GeneralStoreEvent;
@@ -89,7 +90,7 @@ public final class GroupHandler {
       }
     }
 
-    public static AbstractAdvisor getAdvisorInstance(AdvisorClass cls) {
+    public static AbstractItem getAdvisorInstance(AdvisorClass cls) {
       switch (cls) {
         case PUNG:
           return new Pungsin();
@@ -122,19 +123,19 @@ public final class GroupHandler {
       }
     }
 
-    public static Array<AbstractAdvisor> getStartAdvisor() {
-      Array<AbstractAdvisor> a = new Array<>();
+    public static Array<AbstractItem> getStartAdvisor() {
+      Array<AbstractItem> a = new Array<>();
       a.add(getAdvisorInstance(AdvisorClass.BUSINESS));
       a.add(getAdvisorInstance(AdvisorClass.FREETER));
       a.add(getAdvisorInstance(AdvisorClass.CARNAR));
       return a;
     }
 
-    public static Array<AbstractAdvisor> getAdvisors(int amount) {
+    public static Array<AbstractItem> getAdvisors(int amount) {
       Array<AdvisorClass> t = new Array<>();
-      Array<AbstractAdvisor> r = new Array<>();
+      Array<AbstractItem> r = new Array<>();
       for (AdvisorClass advisor : sort) {
-        if (advisor != AbstractLabyrinth.advisor.cls) t.add(advisor);
+        if (!advisor.toString().toLowerCase().equals(AbstractLabyrinth.advisor.id)) t.add(advisor);
       }
       staticShuffle(t);
       for (int i = 0; i < amount; i++) {
@@ -309,7 +310,7 @@ public final class GroupHandler {
       t3.add(new WeaponEvent());
       eventGroup.put(3, t3);
       Array<AbstractEvent> t4 = new Array<>();
-      t4.add(new BettingEvent());
+      t4.add(new AmnesiaEvent());
       t4.add(new FogEvent());
       t4.add(new StrangerEvent());
       t4.add(new UpsetIdolEvent());

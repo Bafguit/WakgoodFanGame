@@ -1,7 +1,5 @@
 package com.fastcat.labyrintale.actions;
 
-import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.DOPA;
-import static com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass.SOPHIA;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 
 import com.badlogic.gdx.math.MathUtils;
@@ -51,7 +49,7 @@ public class VictoryAction extends AbstractAction {
       AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
         AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
-        if (AbstractLabyrinth.advisor.cls == DOPA) {
+        if (AbstractLabyrinth.advisor.id.equals("dopa")) {
           if (AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
         }
         if (tp.id.equals(tp2.id)) {
@@ -76,7 +74,7 @@ public class VictoryAction extends AbstractAction {
         g = 60;
       else g = 30;
       g += AbstractLabyrinth.publicRandom.random(-5, 5);
-      if (AbstractLabyrinth.advisor.cls == SOPHIA) g = MathUtils.floor(g * 1.2f);
+      if (AbstractLabyrinth.advisor.id.equals("sophia")) g = MathUtils.floor(g * 1.2f);
       temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));
       int e;
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) e = 300;

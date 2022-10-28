@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.screens.slotselect;
+package com.fastcat.labyrintale.screens.allskillscreen;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -10,24 +10,23 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
-public class SlotButton extends AbstractUI {
+public class AllSlotButton extends AbstractUI {
 
   private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
   private final FontHandler.FontData fd = FontHandler.CARD_BIG_DESC;
   public AbstractPlayer player;
   public AbstractSkill skill;
   public int index;
-  public SlotSelectScreen select;
+  public AllSkillScreen select;
 
-  public SlotButton(AbstractPlayer player, int index, SlotSelectScreen select) {
+  public AllSlotButton(AbstractPlayer player, int index, AllSkillScreen select) {
     super(FileHandler.getUi().get("SLOT_UP"));
     this.player = player;
     this.index = index;
     skill = player.deck.get(index);
-    clickable = skill.upgradeCount < AbstractLabyrinth.maxSkillUp;
     this.select = select;
-    fontData = FontHandler.COOLDOWN;
   }
 
   @Override
@@ -40,8 +39,7 @@ public class SlotButton extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      if (!clickable) sb.setColor(Color.DARK_GRAY);
-      else if (over) sb.setColor(Color.WHITE);
+      if (over) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
       sb.draw(skill.img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);

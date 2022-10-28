@@ -30,7 +30,7 @@ public class FogEvent extends AbstractEvent {
               new EventCondition() {
                 @Override
                 public boolean condition() {
-                  return AbstractLabyrinth.advisor.cls == AbstractAdvisor.AdvisorClass.PUNG;
+                  return AbstractLabyrinth.advisor.id.equals("pung");
                 }
 
                 @Override
