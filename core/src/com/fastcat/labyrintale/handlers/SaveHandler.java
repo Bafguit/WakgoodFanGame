@@ -101,6 +101,8 @@ public final class SaveHandler {
       PlayerData d = data.players[i];
       AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
       p.defineIndex(d.index);
+      p.maxRes = d.maxRes;
+      p.minRes = d.minRes;
       p.isDead = d.isDead;
       p.maxHealth = d.maxHealth;
       p.health = d.health;
@@ -131,7 +133,7 @@ public final class SaveHandler {
     }
     String ad = data.advisor;
     if (ad != null) {
-      advisor = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad));
+      advisor = getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(ad.toUpperCase()));
     }
 
     itemAble = data.itemAble;
@@ -340,6 +342,8 @@ public final class SaveHandler {
     public AbstractEntity.EntityStat stat;
     public boolean isDead;
     public int index;
+    public int maxRes;
+    public int minRes;
     public int maxHealth;
     public int health;
 
@@ -356,6 +360,8 @@ public final class SaveHandler {
       }
       temp.isDead = !e.isAlive();
       temp.index = e.index;
+      temp.maxRes = e.maxRes;
+      temp.minRes = e.minRes;
       temp.maxHealth = e.maxHealth;
       temp.health = e.health;
       temp.stat = e.stat;

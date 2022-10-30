@@ -79,7 +79,7 @@ public class BettingEvent extends AbstractEvent {
     if (page == 1) {
       AbstractLabyrinth.modifyGold(100);
     } else if (page == 2) {
-      AbstractLabyrinth.modifyGold(300);
+      AbstractLabyrinth.modifyGold(250);
     }
   }
 }

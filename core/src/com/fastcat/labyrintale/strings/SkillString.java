@@ -48,6 +48,7 @@ public class SkillString {
   public static class SkillData {
     public String NAME;
     public String DESC = "";
+    public String SUB = "";
     public String[] KEY;
   }
 }

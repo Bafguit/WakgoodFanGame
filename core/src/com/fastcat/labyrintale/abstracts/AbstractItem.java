@@ -18,6 +18,7 @@ public class AbstractItem implements Cloneable {
   public String id;
   public String name;
   public String desc;
+  public String sub;
   public AbstractPlayer owner;
   public ItemRarity rarity;
   public Array<AbstractUI.SubText> key = new Array<>();
@@ -35,6 +36,7 @@ public class AbstractItem implements Cloneable {
     }
     name = data.NAME;
     desc = data.DESC;
+    if (data.SUB != null) sub = data.SUB;
     if (data.KEY != null) {
       for (String k : data.KEY) {
         KeyString.KeyData kd = StringHandler.keyString.get(k);

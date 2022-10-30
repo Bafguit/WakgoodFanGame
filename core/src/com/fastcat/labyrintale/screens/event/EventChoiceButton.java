@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -20,6 +21,11 @@ public class EventChoiceButton extends AbstractUI {
     fontData = EVENT_CHOICE;
     this.choice = choice;
     clickable = choice.available();
+  }
+
+  @Override
+  public Array<SubText> getSubText() {
+    return choice.getSubText();
   }
 
   @Override

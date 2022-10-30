@@ -9,18 +9,21 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
+import com.fastcat.labyrintale.events.fourth.AmbushEvent;
 import com.fastcat.labyrintale.events.fourth.AmnesiaEvent;
+import com.fastcat.labyrintale.events.fourth.PunkEvent;
+import com.fastcat.labyrintale.events.fourth.RevelationEvent;
 import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.events.second.*;
+import com.fastcat.labyrintale.events.third.CorruptedIdolEvent;
+import com.fastcat.labyrintale.events.third.FogEvent;
 import com.fastcat.labyrintale.events.third.GeneralStoreEvent;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
 import com.fastcat.labyrintale.items.shop.*;
 import com.fastcat.labyrintale.items.silver.*;
-import com.fastcat.labyrintale.items.special.CrackedHeart;
-import com.fastcat.labyrintale.items.special.GolemHead;
-import com.fastcat.labyrintale.items.special.GreenHeart;
+import com.fastcat.labyrintale.items.special.*;
 import com.fastcat.labyrintale.items.starter.*;
 import com.fastcat.labyrintale.rooms.enemy.boss.act1.Boss1;
 import com.fastcat.labyrintale.rooms.enemy.boss.act2.Boss2;
@@ -289,14 +292,14 @@ public final class GroupHandler {
       eventGroup.clear();
       Array<AbstractEvent> t = new Array<>();
       t.add(new DoorEvent());
-      t.add(new TrapEvent());
+      t.add(new LoyalistEvent());
       t.add(new SurvivorEvent());
       t.add(new CivilizationEvent());
       t.add(new SealedHeartEvent());
       eventGroup.put(1, t);
       Array<AbstractEvent> t2 = new Array<>();
       t2.add(new BettingEvent());
-      t2.add(new FogEvent());
+      t2.add(new TrapEvent());
       t2.add(new StrangerEvent());
       t2.add(new UpsetIdolEvent());
       t2.add(new WeaponEvent());
@@ -305,15 +308,15 @@ public final class GroupHandler {
       Array<AbstractEvent> t3 = new Array<>();
       t3.add(new GeneralStoreEvent());
       t3.add(new FogEvent());
-      t3.add(new StrangerEvent());
+      t3.add(new CorruptedIdolEvent());
       t3.add(new UpsetIdolEvent());
       t3.add(new WeaponEvent());
       eventGroup.put(3, t3);
       Array<AbstractEvent> t4 = new Array<>();
       t4.add(new AmnesiaEvent());
-      t4.add(new FogEvent());
-      t4.add(new StrangerEvent());
-      t4.add(new UpsetIdolEvent());
+      t4.add(new RevelationEvent());
+      t4.add(new PunkEvent());
+      t4.add(new AmbushEvent());
       t4.add(new WeaponEvent());
       eventGroup.put(4, t4);
     }
@@ -571,6 +574,8 @@ public final class GroupHandler {
       t.add(new GreenHeart(null));
       t.add(new CrackedHeart(null));
       t.add(new GolemHead(null));
+      t.add(new DevilIdol(null));
+      t.add(new LoyalVirus(null));
     }
 
     public static AbstractItem getRandomItemByRarity(AbstractItem.ItemRarity rarity) {

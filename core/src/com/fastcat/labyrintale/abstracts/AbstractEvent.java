@@ -92,6 +92,10 @@ public abstract class AbstractEvent implements Cloneable {
       isUsed = true;
     }
 
+    public Array<AbstractUI.SubText> getSubText() {
+      return new Array<>();
+    }
+
     protected abstract void onSelect();
 
     public final boolean available() {

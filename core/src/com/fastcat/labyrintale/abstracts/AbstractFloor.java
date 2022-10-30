@@ -131,18 +131,10 @@ public class AbstractFloor {
   private AbstractWay generateWay(int floor, int way, AbstractWay.WayType type) {
     AbstractWay w;
     if (type == ENTRY) {
-      if (floor == 1)
-        w =
-            new AbstractWay(
-                new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.ENTRY), type);
-      else if (floor == 2)
-        w =
-            new AbstractWay(
-                new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
-      else
-        w =
-            new AbstractWay(
-                new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
+      if (floor == 1) w = new AbstractWay(new AbstractChoice(new EntryRoom(), AbstractChoice.ChoiceType.ENTRY), type);
+      else if (floor == 2) w = new AbstractWay(new AbstractChoice(new SecondFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
+      else if (floor == 3) w = new AbstractWay(new AbstractChoice(new ThirdFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
+      else w = new AbstractWay(new AbstractChoice(new FourthFloorRoom(), AbstractChoice.ChoiceType.ENTRY), type);
     } else if (type == WEAK) {
       int x = AbstractLabyrinth.mapRandom.random(0, 100);
       boolean battle = false;

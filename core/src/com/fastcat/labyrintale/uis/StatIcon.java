@@ -62,7 +62,7 @@ public class StatIcon extends AbstractUI {
       else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
       else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
       else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-      else if (type == StatType.NEUTRES) amount = EntityStat.cap(entity.stat.neutRes);
+      else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
     }
   }
 

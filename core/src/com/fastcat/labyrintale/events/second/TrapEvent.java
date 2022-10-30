@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events.first;
+package com.fastcat.labyrintale.events.second;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.advisor;
 
@@ -43,7 +43,7 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
                   return data.SELECT[1];
                 }
               }));
-      a.add(new PlayerEventChoice(data.SELECT[2], this));
+      a.add(new PlayerEventChoice(data.SELECT[2], this, true));
     } else {
       a.add(new EndEventChoice());
     }

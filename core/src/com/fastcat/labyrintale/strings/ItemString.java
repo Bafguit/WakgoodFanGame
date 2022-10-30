@@ -19,6 +19,10 @@ public class ItemString {
         SkillString.SkillData data = new SkillString.SkillData();
         data.NAME = js.get("NAME").asString();
         data.DESC = js.get("DESC").asString();
+        JsonValue t = js.get("SUB");
+        if (t != null) {
+          data.SUB = t.asString();
+        }
         JsonValue temp = js.get("KEY");
         if (temp != null) {
           data.KEY = temp.asStringArray();

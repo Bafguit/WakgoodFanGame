@@ -36,7 +36,7 @@ public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen
     if (page == 2) {
       SoundHandler.playSfx("HEAL");
       for (AbstractPlayer p : AbstractLabyrinth.players) {
-        if (p.isAlive()) p.heal((int) (p.maxHealth * 0.6f));
+        if (p.isAlive()) p.heal((int) (p.maxHealth * 0.5f));
       }
     }
   }

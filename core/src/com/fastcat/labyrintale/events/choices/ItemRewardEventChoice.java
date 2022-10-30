@@ -1,8 +1,10 @@
 package com.fastcat.labyrintale.events.choices;
 
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
@@ -13,6 +15,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
   private final int toPage;
   public AbstractItem item;
   public AbstractItem.ItemRarity rarity;
+  public Array<AbstractUI.SubText> sub = new Array<>();
 
   public ItemRewardEventChoice(
       String t, AbstractEvent.EventCondition condition, AbstractEvent event) {
@@ -48,6 +51,12 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
     this.event = event;
     toPage = page;
     this.item = item;
+    if(item.sub != null) sub.add(new AbstractUI.SubText(item.name, item.sub));
+  }
+
+  @Override
+  public Array<AbstractUI.SubText> getSubText() {
+    return sub;
   }
 
   @Override

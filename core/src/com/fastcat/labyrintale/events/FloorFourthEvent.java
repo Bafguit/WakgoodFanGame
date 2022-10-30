@@ -4,18 +4,16 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.events.choices.AdvisorChoice;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.handlers.SoundHandler;
-import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
-public class FloorThirdEvent extends AbstractEvent {
+public class FloorFourthEvent extends AbstractEvent {
 
-  private static final String ID = "ThirdFloor";
+  private static final String ID = "FourthFloor";
   private static final int SIZE = 2;
 
-  public FloorThirdEvent() {
+  public FloorFourthEvent() {
     super(ID, SIZE);
     img = getImage(0);
     isEntry = true;

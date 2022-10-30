@@ -1,10 +1,10 @@
 {
-  "date" : "2022_10_29_05_52_55",
+  "date" : "2022_10_30_16_53_28",
   "random" : {
     "seed" : "3G78C641",
     "seedLong" : 5171555667545249,
-    "publicRandom" : 107,
-    "skillRandom" : 34,
+    "publicRandom" : 202,
+    "skillRandom" : 48,
     "itemRandom" : 42,
     "mapRandom" : 415,
     "monsterRandom" : 0,
@@ -26,12 +26,42 @@
   "itemAble" : 0,
   "selection" : 1,
   "charge" : 5,
-  "gold" : 70,
-  "level" : 1,
-  "exp" : 0,
-  "maxExp" : 100,
+  "gold" : 112,
+  "level" : 2,
+  "exp" : 104,
+  "maxExp" : 130,
   "advisor" : "carnar",
   "players" : [ {
+    "id" : "burger",
+    "item" : [ "PlaceHolder", "PlaceHolder" ],
+    "deck" : [ {
+      "id" : "Strike",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Bless",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Protect",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    } ],
+    "stat" : {
+      "attack" : 0,
+      "spell" : 0,
+      "speed" : 0,
+      "critical" : 5,
+      "multiply" : 50,
+      "moveRes" : 20,
+      "debuRes" : 5,
+      "neutRes" : 10
+    },
+    "isDead" : false,
+    "index" : 0,
+    "maxHealth" : 22,
+    "health" : 20
+  }, {
     "id" : "lilpa",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
@@ -51,46 +81,16 @@
       "attack" : 0,
       "spell" : 0,
       "speed" : 1,
-      "critical" : 20,
+      "critical" : 40,
       "multiply" : 50,
       "moveRes" : 5,
       "debuRes" : 10,
       "neutRes" : 5
     },
     "isDead" : false,
-    "index" : 0,
-    "maxHealth" : 18,
-    "health" : 12
-  }, {
-    "id" : "burger",
-    "item" : [ "PlaceHolder", "PlaceHolder" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Barrier",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Protect",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "stat" : {
-      "attack" : 0,
-      "spell" : 0,
-      "speed" : 0,
-      "critical" : 5,
-      "multiply" : 50,
-      "moveRes" : 20,
-      "debuRes" : 5,
-      "neutRes" : 10
-    },
-    "isDead" : false,
     "index" : 1,
-    "maxHealth" : 22,
-    "health" : 21
+    "maxHealth" : 18,
+    "health" : 16
   }, {
     "id" : "gosegu",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -105,7 +105,7 @@
     }, {
       "id" : "RustyShard",
       "usedOnly" : false,
-      "upgradeCount" : 0
+      "upgradeCount" : 1
     } ],
     "stat" : {
       "attack" : 0,
@@ -120,12 +120,12 @@
     "isDead" : false,
     "index" : 2,
     "maxHealth" : 17,
-    "health" : 14
+    "health" : 16
   }, {
     "id" : "jururu",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "Support",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -150,28 +150,28 @@
     "isDead" : false,
     "index" : 3,
     "maxHealth" : 17,
-    "health" : 14
+    "health" : 16
   } ],
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Weak2",
+      "id" : "Normal4",
       "battleDone" : false,
-      "isDone" : true
+      "isDone" : false
     },
     "currentWay" : {
-      "type" : "WEAK",
+      "type" : "NORMAL",
       "enemies" : {
-        "id" : "Weak2",
+        "id" : "Normal4",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Normal4",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : true,
         "linked" : [ 2 ],
@@ -179,16 +179,26 @@
       }, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Weak2",
+          "id" : "Normal4",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
+        },
+        "canGo" : true,
+        "linked" : [ 1 ],
+        "linked2" : [ 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal4",
+          "battleDone" : false,
+          "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1, 2 ]
-      }, null ],
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
+      } ],
       "selected" : 0,
-      "isDone" : true
+      "isDone" : false
     },
     "ways" : [ {
       "type" : "ENTRY",
@@ -278,7 +288,7 @@
         "room" : {
           "id" : "Weak1",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : false,
         "linked" : [ 1 ],
@@ -287,15 +297,15 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 2 ],
         "linked2" : [ 0 ]
       } ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 2,
+      "isDone" : true
     }, {
       "type" : "ELITE",
       "enemies" : {
@@ -308,7 +318,7 @@
         "room" : {
           "id" : "Elite1",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : false,
         "linked" : [ 2 ],
@@ -318,14 +328,14 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 0, 1 ],
         "linked2" : [ 2 ]
       } ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 2,
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -364,7 +374,7 @@
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : -1,
+      "selected" : 0,
       "isDone" : false
     }, {
       "type" : "SHOP",
@@ -571,7 +581,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 2
+    "num" : 5
   }, {
     "currentRoom" : {
       "id" : "Placeholder",

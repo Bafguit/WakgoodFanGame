@@ -23,7 +23,7 @@ public class CureEvent extends AbstractEvent implements GetSelectedPlayer {
   public Array<EventChoice> getChoices(int page) {
     Array<EventChoice> a = new Array<>();
     if (page == 0) {
-      a.add(new PlayerEventChoice(data.SELECT[0], this));
+      a.add(new PlayerEventChoice(data.SELECT[0], this, true));
       a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
     } else {
       a.add(new EndEventChoice());

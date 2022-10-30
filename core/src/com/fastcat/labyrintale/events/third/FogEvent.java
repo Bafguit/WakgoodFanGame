@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale.events.second;
+package com.fastcat.labyrintale.events.third;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;

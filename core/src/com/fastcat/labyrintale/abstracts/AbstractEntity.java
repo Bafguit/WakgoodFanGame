@@ -68,6 +68,8 @@ public abstract class AbstractEntity implements Cloneable {
   public int blockRemove = 0;
   public int health;
   public int maxHealth;
+  public int minRes = 5;
+  public int maxRes = 80;
   public float animX = -10000;
   public float animY = -10000;
   public EntityStat stat;
@@ -433,7 +435,7 @@ public abstract class AbstractEntity implements Cloneable {
                     block = 0;
                     blockRemove = 0;
                   } else if (stat.neutRes > 0
-                      && publicRandom.random(0, 99) < EntityStat.cap(stat.neutRes)) {
+                      && publicRandom.random(0, 99) < EntityStat.neutCap(this)) {
                     health = 1;
                     block = 0;
                     blockRemove = 0;
@@ -751,6 +753,10 @@ public abstract class AbstractEntity implements Cloneable {
 
     public static int cap(int i) {
       return Math.max(Math.min(i, 80), 5);
+    }
+
+    public static int neutCap(AbstractEntity e) {
+      return Math.max(Math.min(e.stat.neutRes, e.maxRes), e.minRes);
     }
 
     public int capSpeed() {

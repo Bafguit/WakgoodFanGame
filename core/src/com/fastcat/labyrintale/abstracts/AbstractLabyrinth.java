@@ -100,7 +100,7 @@ public class AbstractLabyrinth {
     if (exp >= maxExp) {
       level++;
       int i = exp - maxExp;
-      maxExp *= 1.3f;
+      maxExp *= 1.4f;
       exp = 0;
       sp += 4;
       gainExp(i);
