@@ -101,6 +101,8 @@ public final class SaveHandler {
       PlayerData d = data.players[i];
       AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
       p.defineIndex(d.index);
+      p.goodLuck = d.goodLuck;
+      p.badLuck = d.badLuck;
       p.maxRes = d.maxRes;
       p.minRes = d.minRes;
       p.isDead = d.isDead;
@@ -341,6 +343,8 @@ public final class SaveHandler {
     public SkillData[] deck;
     public AbstractEntity.EntityStat stat;
     public boolean isDead;
+    public int goodLuck;
+    public int badLuck;
     public int index;
     public int maxRes;
     public int minRes;

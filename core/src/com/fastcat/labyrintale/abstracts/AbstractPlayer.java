@@ -41,8 +41,8 @@ public abstract class AbstractPlayer extends AbstractEntity {
     Array<AbstractItem> t = getStartingItem();
     for (int j = 0; j < 2; j++) {
       AbstractItem it = t.get(j);
-      it.onGain();
       item[j] = it;
+      it.onGain();
     }
     passive = getPassive();
     passive.onGain();

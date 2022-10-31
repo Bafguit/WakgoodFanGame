@@ -325,27 +325,31 @@
   },
   "Protection": {
     "NAME": "까임방지권",
-    "DESC": ""
+    "DESC": "모든 저항 &b<+3%>\n상점 방문 시 골드를 &b<50> 얻습니다."
   },
   "Potato": {
     "NAME": "감자",
-    "DESC": ""
+    "DESC": "최대 체력 &b<+10>\n획득 시 소모됩니다."
   },
   "BabyDish": {
     "NAME": "이유식",
-    "DESC": ""
+    "DESC": "공격력 &b<+1>\n주문력 &b<+1>\n획득 시 소모됩니다."
   },
   "Cane": {
     "NAME": "회초리",
-    "DESC": ""
+    "DESC": "치명타 피해 &b<+75%>"
   },
   "Toadstool": {
     "NAME": "독버섯",
-    "DESC": ""
+    "DESC": "모든 저항 &b<+5%>\n획득 시 소모됩니다."
   },
   "PeridotStone": {
     "NAME": "감람석",
-    "DESC": ""
+    "DESC": "치명타 확률과 &y<모든 저항>에 &y<행운>이 적용됩니다.",
+    "KEY": [
+      "resist",
+      "GoodLuck"
+    ]
   },
 
   "GreenHeart": {

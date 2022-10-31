@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.items.shop;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 
 public class BabyDish extends AbstractItem {
 
@@ -14,11 +15,13 @@ public class BabyDish extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
-  }
-
-  @Override
-  public void onRemove() {
-    owner.modifyMaxHealth(-5);
+    owner.stat.attack += 1;
+    owner.stat.spell += 1;
+    for(int i = 0; i < 2; i++) {
+      if(owner.item[i] == this) {
+        owner.gainItem(new PlaceHolder(owner), i);
+        break;
+      }
+    }
   }
 }

@@ -67,17 +67,20 @@ public class MoveAction extends AbstractAction {
       if (toIndex < 0 || toIndex > 3 || (alive && from.movable > 0) || alive != from.isAlive()) {
         isDone = true;
         run = false;
-      } else if (fromType != type
-          && from.stat.moveRes > 0
-          && publicRandom.random(0, 99) < AbstractEntity.EntityStat.cap(from.stat.moveRes)) {
-        EffectHandler.add(
-            new UpTextEffect(
-                from.ui.x + from.ui.sWidth / 2,
-                from.ui.y + from.ui.sHeight * 0.35f,
-                "이동 저항",
-                CYAN));
-        isDone = true;
-        run = false;
+      } else if (fromType != type) {
+        int a = publicRandom.random(0, 99);
+        if(from.badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
+        if(from.goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+        if(a < AbstractEntity.EntityStat.cap(from.stat.moveRes)) {
+          EffectHandler.add(
+                  new UpTextEffect(
+                          from.ui.x + from.ui.sWidth / 2,
+                          from.ui.y + from.ui.sHeight * 0.35f,
+                          "이동 저항",
+                          CYAN));
+          isDone = true;
+          run = false;
+        }
       } else {
         if (type == MoveType.PLAYER) {
           isLeft = from.index < toIndex;

@@ -62,6 +62,8 @@ public abstract class AbstractEntity implements Cloneable {
   public boolean isDead = false;
   public boolean isDie = false;
   public boolean isNeut = false;
+  public int goodLuck = 0;
+  public int badLuck = 0;
   public int movable = 0;
   public int index;
   public int block = 0;
@@ -229,12 +231,15 @@ public abstract class AbstractEntity implements Cloneable {
       if (s != null) {
         amount = -1;
         effect = true;
-      } else if ((actor == null || actor.isPlayer != isPlayer)
-          && stat.debuRes > 0
-          && publicRandom.random(0, 99) < EntityStat.cap(stat.debuRes)) {
-        EffectHandler.add(
-            new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
-        done = true;
+      } else if (actor == null || actor.isPlayer != isPlayer) {
+        int a = publicRandom.random(0, 99);
+        if(badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
+        if(goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+        if(a < EntityStat.cap(stat.debuRes)) {
+          EffectHandler.add(
+                  new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
+          done = true;
+        }
       } else {
         s = Objects.requireNonNull(status.cpy());
         s.owner = this;
@@ -326,10 +331,12 @@ public abstract class AbstractEntity implements Cloneable {
     for (AbstractStatus s : status) {
       d *= s.attackMultiply();
     }
-    int cr = 0;
+    int cr = EntityStat.cap(stat.critical);
     if(hasItem("TotoDeck")) cr = 10;
-    else if(stat.critical > 0) cr = EntityStat.cap(stat.critical);
-    if (publicRandom.random(0, 99) < cr) {
+    int a = publicRandom.random(0, 99);
+    if(badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
+    if(goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+    if (a < cr) {
       EffectHandler.add(
           new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
       d *= 1 + ((float) stat.multiply * 0.01f);
@@ -434,17 +441,21 @@ public abstract class AbstractEntity implements Cloneable {
                     neutralize();
                     block = 0;
                     blockRemove = 0;
-                  } else if (stat.neutRes > 0
-                      && publicRandom.random(0, 99) < EntityStat.neutCap(this)) {
-                    health = 1;
-                    block = 0;
-                    blockRemove = 0;
-                    EffectHandler.add(
-                        new UpTextEffect(
-                            ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
-                    applyStatus(new NeutResStatus(this, 10), this, 10, false);
                   } else {
-                    die(attacker);
+                    int a = publicRandom.random(0, 99);
+                    if(badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
+                    if(goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+                    if(a < EntityStat.neutCap(this)) {
+                      health = 1;
+                      block = 0;
+                      blockRemove = 0;
+                      EffectHandler.add(
+                              new UpTextEffect(
+                                      ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
+                      applyStatus(new NeutResStatus(this, 10), this, 10, false);
+                    } else {
+                      die(attacker);
+                    }
                   }
                 }
                 return damage;

@@ -14,11 +14,11 @@ public class PeridotStone extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
+    owner.goodLuck++;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
+    owner.goodLuck--;
   }
 }

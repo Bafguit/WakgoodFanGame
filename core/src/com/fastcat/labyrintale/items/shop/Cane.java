@@ -14,11 +14,11 @@ public class Cane extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
+    owner.stat.multiply += 75;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
+    owner.stat.multiply -= 75;
   }
 }
