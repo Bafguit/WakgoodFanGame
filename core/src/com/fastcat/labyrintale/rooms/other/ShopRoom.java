@@ -185,7 +185,7 @@ public class ShopRoom extends AbstractRoom {
     private static int generateSkillPrice() {
       return MathUtils.floor(
           (80 + (10 - shopRandom.random(20)))
-              * (advisor.id.equals("ruseok") ? 0.8f : 1));
+              * (advisor.id.equals("rusuk") ? 0.8f : 1));
     }
 
     @Override
@@ -210,7 +210,7 @@ public class ShopRoom extends AbstractRoom {
       super(
           MathUtils.floor(
               generateItemPrice(item)
-                  * (advisor.id.equals("ruseok") ? 0.8f : 1)));
+                  * (advisor.id.equals("rusuk") ? 0.8f : 1)));
       this.item = item;
       img = this.item.img;
     }

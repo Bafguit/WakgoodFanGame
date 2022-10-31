@@ -38,10 +38,12 @@ public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSe
     Array<AbstractSkill> s = new Array<>();
     for(AbstractPlayer p : AbstractLabyrinth.players) {
       for (AbstractSkill sk : GroupHandler.SkillGroup.normalSkills.get(p.playerClass)) {
-        if(p.hasSkill(sk.id)) s.add(sk);
+        if(!p.hasSkill(sk.id)) s.add(sk);
       }
     }
-    player.deck.set(index, s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone());
+    AbstractSkill sk = s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
+    sk.owner = player;
+    player.gainSkill(index, sk);
     if (toPage >= 0) {
       event.setPage(toPage);
     }

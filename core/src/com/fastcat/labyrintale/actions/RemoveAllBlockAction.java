@@ -23,7 +23,9 @@ public class RemoveAllBlockAction extends AbstractAction {
         }
       } else {
         for (AbstractPlayer p : AbstractLabyrinth.players) {
-          if (p.playerClass != AbstractPlayer.PlayerClass.WAK && !p.hasStatus("Maintain"))
+          if(p.playerClass != AbstractPlayer.PlayerClass.WAK) {
+            p.block = p.block / 2;
+          } else if (!p.hasStatus("Maintain"))
             p.block = 0;
         }
       }

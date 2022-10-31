@@ -33,7 +33,7 @@ public class UpsetIdolEvent extends AbstractEvent {
                 public boolean condition() {
                   boolean has = false;
                   for (AbstractPlayer p : AbstractLabyrinth.players) {
-                    if (p.item[0].id.equals("GreenHeart") || p.item[1].id.equals("GreenHeart")) {
+                    if (p.hasSkill("GreenHeart")) {
                       has = true;
                       break;
                     }
@@ -79,7 +79,11 @@ public class UpsetIdolEvent extends AbstractEvent {
         }
       }
     } else if (page == 3) {
-      // TODO
+      for (AbstractPlayer p : AbstractLabyrinth.players) {
+        p.stat.debuRes -= 3;
+        p.stat.moveRes -= 3;
+        p.stat.neutRes -= 3;
+      }
     }
   }
 }

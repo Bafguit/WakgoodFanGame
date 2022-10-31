@@ -13,7 +13,7 @@ public class Boost extends AbstractSkill {
 
   public Boost(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseCost(3);
+    setBaseCost(5);
   }
 
   @Override

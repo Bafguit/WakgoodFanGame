@@ -1,6 +1,6 @@
 {
-  "volumeBgm" : 0,
-  "volumeSfx" : 55,
+  "volumeBgm" : 51,
+  "volumeSfx" : 49,
   "width" : 1600,
   "height" : 900,
   "monitor" : 0,
@@ -8,15 +8,15 @@
   "shake" : true,
   "fastMode" : true,
   "risk" : {
-    "FTG" : 3,
-    "SPD" : 3,
-    "HUG" : 3,
-    "RST" : 3,
-    "MSR" : 3,
-    "POV" : 3,
-    "GRW" : 3,
-    "STR" : 3,
-    "FAM" : 3,
-    "INT" : 3
+    "HUG" : 0,
+    "FTG" : 0,
+    "INT" : 0,
+    "STR" : 0,
+    "POV" : 0,
+    "SPD" : 0,
+    "RST" : 0,
+    "FAM" : 0,
+    "GRW" : 0,
+    "MSR" : 0
   }
 }

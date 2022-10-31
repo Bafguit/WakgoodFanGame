@@ -3,8 +3,6 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.strings.AdvisorString;
-import com.fastcat.labyrintale.strings.ItemString;
 import com.fastcat.labyrintale.strings.SkillString;
 
 public abstract class AbstractAdvisor implements Cloneable {
@@ -37,7 +35,7 @@ public abstract class AbstractAdvisor implements Cloneable {
   public enum AdvisorClass {
     DOPA,
     SECRET,
-    RUSEOK,
+    RUSUK,
     HIKI,
     PUNG,
     CALLYCARLY,

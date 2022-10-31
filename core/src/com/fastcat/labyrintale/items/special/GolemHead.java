@@ -14,17 +14,17 @@ public class GolemHead extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.speed -= 500;
-    owner.stat.neutRes += 5;
-    owner.stat.debuRes += 5;
-    owner.stat.moveRes += 5;
+    owner.stat.speed -= 100;
+    owner.stat.neutRes += 100;
+    owner.stat.debuRes += 100;
+    owner.stat.moveRes += 100;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.speed += 500;
-    owner.stat.neutRes -= 5;
-    owner.stat.debuRes -= 5;
-    owner.stat.moveRes -= 5;
+    owner.stat.speed += 100;
+    owner.stat.neutRes -= 100;
+    owner.stat.debuRes -= 100;
+    owner.stat.moveRes -= 100;
   }
 }

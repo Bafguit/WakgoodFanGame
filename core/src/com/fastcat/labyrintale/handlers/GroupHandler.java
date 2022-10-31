@@ -9,15 +9,10 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
 import com.fastcat.labyrintale.events.first.*;
-import com.fastcat.labyrintale.events.fourth.AmbushEvent;
-import com.fastcat.labyrintale.events.fourth.AmnesiaEvent;
-import com.fastcat.labyrintale.events.fourth.PunkEvent;
-import com.fastcat.labyrintale.events.fourth.RevelationEvent;
+import com.fastcat.labyrintale.events.fourth.*;
 import com.fastcat.labyrintale.events.neut.*;
 import com.fastcat.labyrintale.events.second.*;
-import com.fastcat.labyrintale.events.third.CorruptedIdolEvent;
-import com.fastcat.labyrintale.events.third.FogEvent;
-import com.fastcat.labyrintale.events.third.GeneralStoreEvent;
+import com.fastcat.labyrintale.events.third.*;
 import com.fastcat.labyrintale.items.boss.*;
 import com.fastcat.labyrintale.items.bronze.*;
 import com.fastcat.labyrintale.items.gold.*;
@@ -115,8 +110,8 @@ public final class GroupHandler {
           return new SecretGirl();
         case HIKI:
           return new HikiKing();
-        case RUSEOK:
-          return new Haeruseok();
+        case RUSUK:
+          return new Haerusuk();
         case CALLYCARLY:
           return new CallyCarlyDavidson();
         case MANDU:
@@ -304,20 +299,19 @@ public final class GroupHandler {
       t2.add(new UpsetIdolEvent());
       t2.add(new WeaponEvent());
       eventGroup.put(2, t2);
-      // TODO 3층 4층 이벤트 만들기
       Array<AbstractEvent> t3 = new Array<>();
       t3.add(new GeneralStoreEvent());
       t3.add(new FogEvent());
       t3.add(new CorruptedIdolEvent());
-      t3.add(new UpsetIdolEvent());
-      t3.add(new WeaponEvent());
+      t3.add(new GhostEvent());
+      t3.add(new GotchaEvent());
       eventGroup.put(3, t3);
       Array<AbstractEvent> t4 = new Array<>();
       t4.add(new AmnesiaEvent());
       t4.add(new RevelationEvent());
       t4.add(new PunkEvent());
       t4.add(new AmbushEvent());
-      t4.add(new WeaponEvent());
+      t4.add(new BarEvent());
       eventGroup.put(4, t4);
     }
 
@@ -576,6 +570,8 @@ public final class GroupHandler {
       t.add(new GolemHead(null));
       t.add(new DevilIdol(null));
       t.add(new LoyalVirus(null));
+      t.add(new ShortBase(null));
+      t.add(new Sanpellegrino(null));
     }
 
     public static AbstractItem getRandomItemByRarity(AbstractItem.ItemRarity rarity) {
