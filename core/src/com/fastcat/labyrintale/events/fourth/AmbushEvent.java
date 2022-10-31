@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 
 public class AmbushEvent extends AbstractEvent {
 
-  private static final String ID = "Door";
+  private static final String ID = "Ambush";
   private static final int SIZE = 4;
 
   public AmbushEvent() {

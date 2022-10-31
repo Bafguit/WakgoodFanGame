@@ -341,6 +341,8 @@ public final class GroupHandler {
 
       idSort.put("StartEvent", new EntryRoom());
       idSort.put("SecondFloor", new SecondFloorRoom());
+      idSort.put("ThirdFloor", new ThirdFloorRoom());
+      idSort.put("FourthFloor", new FourthFloorRoom());
       idSort.put("Shop", new ShopRoom());
       idSort.put("Rest", new RestRoom());
       idSort.put("Mystery", new MysteryRoom());
