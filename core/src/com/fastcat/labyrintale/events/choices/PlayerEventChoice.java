@@ -38,7 +38,11 @@ public class PlayerEventChoice extends AbstractEvent.EventChoice {
       for(AbstractPlayer p : AbstractLabyrinth.players) {
         if(p.isAlive()) temp.add(p);
       }
-      if(temp.size > 0) Labyrintale.addTempScreen(new PlayerSelectScreen(temp.items, event));
+      AbstractPlayer[] t = new AbstractPlayer[temp.size];
+      for(int i = 0; i < temp.size; i++) {
+        t[i] = temp.get(i);
+      }
+      if(temp.size > 0) Labyrintale.addTempScreen(new PlayerSelectScreen(t, event));
     }
     else Labyrintale.addTempScreen(new PlayerSelectScreen(event));
   }

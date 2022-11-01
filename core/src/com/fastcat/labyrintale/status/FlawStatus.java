@@ -19,8 +19,9 @@ public class FlawStatus extends AbstractStatus {
   }
 
   @Override
-  public void endOfTurn() {
-    top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
+  public void startOfTurn() {
+    if (notSelf) notSelf = false;
+    else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
   }
 
   @Override

@@ -62,6 +62,7 @@ public class MainMenuScreen extends AbstractScreen {
   @Override
   public void onCreate() {
     playMusic = true;
+    Labyrintale.labyrinth = null;
   }
 
   @Override

@@ -16,7 +16,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
   public final Color pColorLG;
   public final Color pColorDG;
   public final PlayerClass playerClass;
-  public Sprite imgPanel;
 
   public AbstractPlayer(String id, int maxHealth, Color c) {
     super(

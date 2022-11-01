@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.handlers.RestrictionHandler;
+import com.fastcat.labyrintale.handlers.DifficultyHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -25,7 +25,8 @@ public class AbstractLabyrinth {
   public static RandomXC eventRandom;
   public static RandomXC shopRandom;
   public static RandomXC groupRandom;
-  public static RestrictionHandler restriction;
+  public static DifficultyHandler restriction;
+  public static Difficulty diff = Difficulty.NORMAL;
   public static AbstractFloor[] floors;
   public static AbstractFloor currentFloor;
   public static AbstractPlayer[] players;
@@ -48,12 +49,11 @@ public class AbstractLabyrinth {
 
   public AbstractLabyrinth(RunType type) {
     players = new AbstractPlayer[4];
-    restriction = RestrictionHandler.getInstance();
+    restriction = DifficultyHandler.getInstance();
     if (type == RunType.SAVE) {
       SaveHandler.load();
     } else {
       if (seed.equals("")) seed = generateRandomSeed();
-      restriction.setSetting();
       seedLong = seedToLong(seed);
       publicRandom = new RandomXC(seedLong);
       skillRandom = new RandomXC(seedLong);
@@ -86,6 +86,7 @@ public class AbstractLabyrinth {
         restriction.onCreatePlayer(p);
         players[i] = p;
       }
+      diff = Labyrintale.charSelectScreen.diff;
       restriction.onCreateLabyrinth();
     }
     cPanel = new ControlPanel();
@@ -228,5 +229,9 @@ public class AbstractLabyrinth {
   public enum RunType {
     NEW,
     SAVE
+  }
+
+  public enum Difficulty {
+    NORMAL, HARD, COFFIN
   }
 }

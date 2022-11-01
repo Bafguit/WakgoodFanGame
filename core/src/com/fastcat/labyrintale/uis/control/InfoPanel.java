@@ -30,7 +30,8 @@ public class InfoPanel extends AbstractUI {
   public AbstractSkill skill;
   public AbstractStatus status;
   public AbstractItem item;
-  public AbstractPlayer player;
+  public ItemPanel aSkill;
+  public AbstractEntity player;
   public boolean show;
   public boolean renderIcon = true;
   public float nx, ny, nw, nh, dx, dy, dw, dh;
@@ -43,8 +44,8 @@ public class InfoPanel extends AbstractUI {
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
     nx = dx = w * 0.615f;
-    ny = h * 0.345f;
-    dy = h * 0.335f - 50 * scale;
+    ny = h * 0.34f;
+    dy = h * 0.33f - 50 * scale;
     nw = dw = 880 * InputHandler.scale;
     nh = 60 * InputHandler.scale;
     dh = 280 * InputHandler.scale;
@@ -62,10 +63,13 @@ public class InfoPanel extends AbstractUI {
       c.setPosition((89 + 209 * i) * scale, 110 * scale);
       pIcons[i] = c;
     }
+    aSkill = new ItemPanel();
+    aSkill.setPosition(993 * scale, 290 * scale);
+    aSkill.item = AbstractLabyrinth.advisor;
     map = new MapButton();
-    map.setPosition(1300 * scale, 376 * scale);
+    map.setPosition(1269 * scale, 217 * scale);
     playerInfo = new PlayerInfoButton();
-    playerInfo.setPosition(1300 * scale, 223 * scale);
+    playerInfo.setPosition(1269 * scale, 364 * scale);
   }
 
   @Override
@@ -89,6 +93,8 @@ public class InfoPanel extends AbstractUI {
         pIcons[i].update();
       }
     }
+    aSkill.item = AbstractLabyrinth.advisor;
+    aSkill.update();
     map.update();
     playerInfo.update();
   }
@@ -97,29 +103,19 @@ public class InfoPanel extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
       sb.setColor(Color.WHITE);
-      if (img != null) {
-        if (renderIcon) {
-          renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
-          if (type == InfoType.SKILL) {
-            renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
-          } else {
-            renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
-          }
-        } else {
-          renderLineBotLeft(sb, fontName, name, bnx, bny, bnw, bnh);
-          if (type == InfoType.SKILL) {
-            renderCardLeft(sb, skill, fontDesc, desc, bdx, bdy, bdw, bdh);
-          } else {
-            renderColorLeft(sb, fontDesc, desc, bdx, bdy, bdw);
-          }
-        }
+      renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
+      if (type == InfoType.SKILL) {
+        renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
+      } else {
+        renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
       }
-
       if (renderIcon) {
         for (int i = 0; i < 4; i++) {
           pIcons[i].render(sb);
         }
       }
+      FontHandler.renderColorCenter(sb, EVENT_TITLE, "&y<" + AbstractLabyrinth.gold + "G>", 1150 * scale, 120 * scale, 200 * scale);
+      if(AbstractLabyrinth.advisor != null) aSkill.render(sb);
       map.render(sb);
       playerInfo.render(sb);
     }
@@ -155,7 +151,7 @@ public class InfoPanel extends AbstractUI {
     }
   }
 
-  public void setInfo(AbstractPlayer p) {
+  public void setInfo(AbstractEntity p) {
     if (p != null) {
       name = p.name;
       desc = p.desc;

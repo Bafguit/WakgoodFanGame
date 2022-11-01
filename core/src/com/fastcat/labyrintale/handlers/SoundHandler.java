@@ -128,6 +128,17 @@ public final class SoundHandler implements Disposable {
     }
   }
 
+  public static void fadeOutAll() {
+    for(MusicData d : music.values()) {
+      if (d != null) {
+        d.isFadingOut = true;
+        d.isFading = true;
+        d.fadeOutStartVolume = d.music.getVolume();
+        d.setFadeTime(FADE);
+      }
+    }
+  }
+
   public static void fadeOutMusic(String key) {
     MusicData d = music.get(key);
     if (d != null) {

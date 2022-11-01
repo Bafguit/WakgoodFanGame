@@ -22,8 +22,8 @@ public class CharSelectScreen extends AbstractScreen {
   public BackButton backButton;
   public NextToAdvisorButton nextButton;
   public SeedText seedText;
-  public RiskMenuButton riskMenuButton;
   public CharSelectGroup group;
+  public AbstractLabyrinth.Difficulty diff = AbstractLabyrinth.Difficulty.NORMAL;
   public AbstractPlayer selected;
   public CharButton[] chars = new CharButton[4];
   public CharButton[] aChars = new CharButton[8];
@@ -34,7 +34,6 @@ public class CharSelectScreen extends AbstractScreen {
     backButton = new BackButton();
     nextButton = new NextToAdvisorButton();
     seedText = new SeedText();
-    riskMenuButton = new RiskMenuButton();
     group = new CharSelectGroup();
     CharButton char1 = new CharButton();
     CharButton char2 = new CharButton();
@@ -84,7 +83,6 @@ public class CharSelectScreen extends AbstractScreen {
     if (selected != null) group.update();
 
     seedText.update();
-    riskMenuButton.update();
     backButton.update();
     nextButton.update();
     if (!Labyrintale.fading && InputHandler.cancel) {
@@ -104,7 +102,6 @@ public class CharSelectScreen extends AbstractScreen {
     }
 
     seedText.render(sb);
-    riskMenuButton.render(sb);
     backButton.render(sb);
     nextButton.render(sb);
   }

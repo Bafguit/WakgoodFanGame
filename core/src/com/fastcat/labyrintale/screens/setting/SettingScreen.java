@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -14,6 +15,8 @@ public class SettingScreen extends AbstractScreen {
   public BgImg bgImg = new BgImg();
   public OptionPanel panel;
   public CloseSettingButton close;
+  public ReturnToMainButton main;
+  public ExitGameButton exit;
   public SelectionGroup monitor;
   public SelectionGroup screenMode;
   public SelectionGroup resolution;
@@ -31,6 +34,8 @@ public class SettingScreen extends AbstractScreen {
     panel = new OptionPanel();
     cType = ControlPanel.ControlType.HIDE;
     close = new CloseSettingButton(this);
+    main = new ReturnToMainButton(this);
+    exit = new ExitGameButton(this);
     Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
     String[] ms = new String[mo.length];
     int[] mi = new int[mo.length];
@@ -71,6 +76,10 @@ public class SettingScreen extends AbstractScreen {
   public void update() {
     resolution.can = screenMode.index == 0;
     close.update();
+    if(Labyrintale.labyrinth != null) {
+      main.update();
+      exit.update();
+    }
     monitor.update();
     screenMode.update();
     resolution.update();
@@ -96,6 +105,10 @@ public class SettingScreen extends AbstractScreen {
     shake.render(sb);
     fastMode.render(sb);
     close.render(sb);
+    if(Labyrintale.labyrinth != null) {
+      main.render(sb);
+      exit.render(sb);
+    }
   }
 
   private void setResolution() {

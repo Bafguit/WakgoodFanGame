@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
@@ -12,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.*;
@@ -40,7 +40,7 @@ public class BattleScreen extends AbstractScreen {
   public boolean isSelecting = false;
   public boolean isEnemyTurn = false;
   public Array<AbstractEntity> looking;
-  private Array<AbstractEntity> turn;
+  private Array<BattleView> turn;
   private int turnIndex;
   public int round;
   public BattleType type;
@@ -63,35 +63,34 @@ public class BattleScreen extends AbstractScreen {
     for (int i = 0; i < 4; i++) {
       PlayerBattleView pv = new PlayerBattleView(AbstractLabyrinth.players[i]);
       pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
-      pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
-      pv.player.newDeck();
-      pv.player.beforeBattle();
-      pv.player.ui = pv;
+      pv.entity.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
+      pv.entity.newDeck();
+      pv.entity.beforeBattle();
+      pv.entity.ui = pv;
       players[i] = pv;
 
       EnemyBattleView ev =
           new EnemyBattleView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
       ev.setPosition(w * 0.575f + w * 0.1f * i - ev.sWidth / 2, h * 0.49f);
-      ev.enemy.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f);
-      ev.enemy.index = i;
-      ev.enemy.newDeck();
+      ev.entity.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f);
+      ev.entity.index = i;
+      ev.entity.newDeck();
       if (isLoad) {
-        ev.enemy.isRandom = false;
-        ev.enemy.isDead = true;
-        ev.enemy.isDie = true;
+        ev.entity.isDead = true;
+        ev.entity.isDie = true;
       } else {
-        RestrictionHandler.getInstance().onEnemySpawn(ev.enemy);
-        ev.enemy.beforeBattle();
+        DifficultyHandler.getInstance().onEnemySpawn(ev.entity);
+        ev.entity.beforeBattle();
       }
-      ev.enemy.shuffleHand();
-      ev.enemy.ui = ev;
+      ev.entity.shuffleHand();
+      ev.entity.ui = ev;
       enemies[i] = ev;
 
-      ShieldIcon ps = new ShieldIcon(pv.player);
+      ShieldIcon ps = new ShieldIcon(pv.entity);
       ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f);
       pShield[i] = ps;
 
-      ShieldIcon es = new ShieldIcon(ev.enemy);
+      ShieldIcon es = new ShieldIcon(ev.entity);
       es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.49f - es.sHeight * 0.35f);
       eShield[i] = es;
 
@@ -104,9 +103,9 @@ public class BattleScreen extends AbstractScreen {
       s3.canClick = false;
       s3.subDown = true;
       enemySkills[i] = s3;
-      setEnemy(enemies[i].enemy, i);
+      setEnemy(enemies[i].entity, i);
     }
-    RestrictionHandler.getInstance().atBattleStart();
+    DifficultyHandler.getInstance().atBattleStart();
     if (AbstractLabyrinth.advisor.id.equals("duksu")) {
       for (AbstractPlayer p : AbstractLabyrinth.players) {
         p.hand[0].upgrade();
@@ -133,7 +132,7 @@ public class BattleScreen extends AbstractScreen {
   public void update() {
     if (!cPanel.battlePanel.curPlayer.isAlive()) {
       for (int i = 0; i < 4; i++) {
-        AbstractPlayer tp = players[i].player;
+        AbstractEntity tp = players[i].entity;
         if (tp.isAlive()) {
           cPanel.battlePanel.setPlayer(tp);
           break;
@@ -142,23 +141,20 @@ public class BattleScreen extends AbstractScreen {
     }
 
     if (cPanel.infoPanel.skill != null) {
-      looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
-    } else {
-      looking = new Array<>();
+      Labyrintale.battleScreen.looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
     }
-
     for (int i = 0; i < 4; i++) {
       PlayerBattleView pv = players[i];
       EnemyBattleView ev = enemies[i];
 
       SkillButton ss = enemySkills[i];
-      ss.skill = ev.enemy.hand[0];
+      ss.skill = ev.entity.hand[0];
       ss.overable = true;
       ss.update();
-      ss.setPosition(ev.enemy.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.765f);
+      ss.setPosition(ev.entity.animX - w * 0.07f + ev.sWidth / 2 - ss.sWidth, h * 0.765f);
 
-      if (pv.player.isAlive()) {
-        AbstractPlayer pp = pv.player;
+      if (pv.entity.isAlive()) {
+        AbstractEntity pp = pv.entity;
         LinkedList<StatusButton> s = playerStatus[i];
         int size = s.size(), pSize = pp.status.size();
         if (pSize > size) {
@@ -182,8 +178,8 @@ public class BattleScreen extends AbstractScreen {
           ts.update();
         }
       }
-      if (ev.enemy.isAlive()) {
-        AbstractEnemy pp = ev.enemy;
+      if (ev.entity.isAlive()) {
+        AbstractEntity pp = ev.entity;
         LinkedList<StatusButton> s = enemyStatus[i];
         int size = s.size(), pSize = pp.status.size();
         if (pSize > size) {
@@ -211,13 +207,13 @@ public class BattleScreen extends AbstractScreen {
 
     for (int i = 0; i < 4; i++) {
       PlayerBattleView pv = players[i];
-      pv.isLooking = looking.contains(pv.player, false);
+      pv.isLooking = looking.contains(pv.entity, false);
       pv.update();
       EnemyBattleView ev = enemies[i];
-      ev.isLooking = looking.contains(ev.enemy, false);
+      ev.isLooking = looking.contains(ev.entity, false);
       ev.update();
-      pShield[i].e = pv.player;
-      eShield[i].e = ev.enemy;
+      pShield[i].e = pv.entity;
+      eShield[i].e = ev.entity;
     }
 
     for (int i = 0; i < 4; i++) {
@@ -256,10 +252,10 @@ public class BattleScreen extends AbstractScreen {
       PlayerBattleView tp = players[i];
       EnemyBattleView te = enemies[i];
       float tw = tp.sWidth, th = tp.sHeight;
-      float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
-      float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
-      if (!tp.player.isDead) {
-        boolean isBlock = tp.player.block > 0;
+      float px = tp.entity.animX - tp.sWidth / 2, py = tp.entity.animY - h * 0.025f;
+      float ex = te.entity.animX - te.sWidth / 2, ey = te.entity.animY - h * 0.025f;
+      if (!tp.entity.isDead) {
+        boolean isBlock = tp.entity.block > 0;
         if (isBlock) {
           shr.setColor(bc);
           shr.rect(px + tw * 0.075f, py - th * 0.01f, tw * 0.85f, th * 0.07f);
@@ -270,11 +266,11 @@ public class BattleScreen extends AbstractScreen {
         shr.rect(
             px + tw * 0.1f,
             py,
-            Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0),
+            Math.max(tw * 0.8f * ((float) tp.entity.health / (float) tp.entity.maxHealth), 0),
             th * 0.05f);
       }
-      if (!te.enemy.isDead) {
-        boolean isBlock = te.enemy.block > 0;
+      if (!te.entity.isDead) {
+        boolean isBlock = te.entity.block > 0;
         if (isBlock) {
           shr.setColor(bc);
           shr.rect(ex + tw * 0.075f, ey - th * 0.01f, tw * 0.85f, th * 0.07f);
@@ -285,7 +281,7 @@ public class BattleScreen extends AbstractScreen {
         shr.rect(
             ex + tw * 0.1f,
             ey,
-            Math.max(tw * 0.8f * ((float) te.enemy.health / (float) te.enemy.maxHealth), 0),
+            Math.max(tw * 0.8f * ((float) te.entity.health / (float) te.entity.maxHealth), 0),
             th * 0.05f);
       }
     }
@@ -295,23 +291,23 @@ public class BattleScreen extends AbstractScreen {
       PlayerBattleView tp = players[i];
       EnemyBattleView te = enemies[i];
       float tw = tp.sWidth, th = tp.sHeight;
-      float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
-      float ex = te.enemy.animX - te.sWidth / 2, ey = te.enemy.animY - h * 0.025f;
-      if (!tp.player.isDead) {
+      float px = tp.entity.animX - tp.sWidth / 2, py = tp.entity.animY - h * 0.025f;
+      float ex = te.entity.animX - te.sWidth / 2, ey = te.entity.animY - h * 0.025f;
+      if (!tp.entity.isDead) {
         renderCenter(
             sb,
             HP,
-            tp.player.health + "/" + tp.player.maxHealth,
+            tp.entity.health + "/" + tp.entity.maxHealth,
             px,
             py + tp.sHeight * 0.06f / 2,
             tw,
             tp.sHeight * 0.05f);
       }
-      if (!te.enemy.isDead) {
+      if (!te.entity.isDead) {
         renderCenter(
             sb,
             HP,
-            te.enemy.health + "/" + te.enemy.maxHealth,
+            te.entity.health + "/" + te.entity.maxHealth,
             ex,
             ey + te.sHeight * 0.06f / 2,
             tw,
@@ -325,12 +321,12 @@ public class BattleScreen extends AbstractScreen {
       eShield[i].render(sb);
     }
     for (int i = 0; i < 4; i++) {
-      if (players[i].player.isAlive()) {
+      if (players[i].entity.isAlive()) {
         for (StatusButton b : playerStatus[i]) {
           b.render(sb);
         }
       }
-      if (enemies[i].enemy.isAlive()) {
+      if (enemies[i].entity.isAlive()) {
         for (StatusButton b : enemyStatus[i]) {
           b.render(sb);
         }
@@ -340,12 +336,12 @@ public class BattleScreen extends AbstractScreen {
   }
 
   public void resetTurn() {
-    Array<AbstractEntity> temp = new Array<>();
-    for (AbstractPlayer p : AbstractLabyrinth.players) {
-      if (p.isAlive()) temp.add(p);
+    Array<BattleView> temp = new Array<>();
+    for (PlayerBattleView p : players) {
+      if (p.entity.isAlive()) temp.add(p);
     }
-    for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-      if (e.isAlive()) temp.add(e);
+    for (EnemyBattleView e : enemies) {
+      if (e.entity.isAlive()) temp.add(e);
     }
 
     Sort.instance()
@@ -353,8 +349,8 @@ public class BattleScreen extends AbstractScreen {
             temp,
             (o1, o2) -> {
               do {
-                int s1 = o1.stat.capSpeed();
-                int s2 = o2.stat.capSpeed();
+                int s1 = o1.entity.stat.capSpeed();
+                int s2 = o2.entity.stat.capSpeed();
                 int a = s1 + AbstractLabyrinth.publicRandom.random(0, 7);
                 int b = s2 + AbstractLabyrinth.publicRandom.random(0, 7);
                 int i = b - a;
@@ -369,9 +365,9 @@ public class BattleScreen extends AbstractScreen {
               } while (true);
             });
 
-    for (AbstractEntity e : temp) {
-      if (e.isPlayer) {
-        cPanel.battlePanel.setPlayer((AbstractPlayer) e);
+    for (BattleView e : temp) {
+      if (e.entity.isPlayer) {
+        cPanel.battlePanel.setPlayer((AbstractPlayer) e.entity);
         break;
       }
     }
@@ -382,7 +378,7 @@ public class BattleScreen extends AbstractScreen {
     cPanel.battlePanel.turnView.setNewTurns(turn);
   }
 
-  public Array<AbstractEntity> getTurns() {
+  public Array<BattleView> getTurns() {
     return turn;
   }
 
@@ -402,7 +398,7 @@ public class BattleScreen extends AbstractScreen {
   }
 
   public AbstractEntity currentTurnEntity() {
-    if (turn != null) return turn.get(turnIndex);
+    if (turn != null && turn.size > 0) return turn.get(turnIndex).entity;
     else return null;
   }
 
@@ -416,8 +412,8 @@ public class BattleScreen extends AbstractScreen {
     isSelecting = true;
   }
 
-  public void setEnemy(AbstractEnemy e, int index) {
-    enemies[index].enemy = e;
+  public void setEnemy(AbstractEntity e, int index) {
+    enemies[index].entity = e;
   }
 
   @Override

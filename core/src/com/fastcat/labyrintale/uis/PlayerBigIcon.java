@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -13,10 +14,11 @@ import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 
 public class PlayerBigIcon extends AbstractUI {
 
-  public AbstractPlayer p;
+  public AbstractEntity p;
 
   public PlayerBigIcon(AbstractPlayer p) {
-    super(FileHandler.getUi().get("BORDER_B"));
+    super(FileHandler.getUi().get("BORDER_V"));
+    setScale(1.16f);
     this.p = p;
   }
 
@@ -24,7 +26,7 @@ public class PlayerBigIcon extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled && p != null) {
       sb.setColor(Color.WHITE);
-      sb.draw(p.imgBig, x, y, sWidth, sHeight);
+      sb.draw(p.imgPanel, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
     }
   }
@@ -36,7 +38,7 @@ public class PlayerBigIcon extends AbstractUI {
     }
   }
 
-  public void setPlayer(AbstractPlayer p) {
+  public void setPlayer(AbstractEntity p) {
     this.p = p;
   }
 
@@ -45,23 +47,26 @@ public class PlayerBigIcon extends AbstractUI {
 
   @Override
   protected void onClick() {
-    if (charInfoScreen == null) {
-      charInfoScreen = new CharInfoScreen(p);
-      Labyrintale.addTempScreen(charInfoScreen);
-    } else if (charInfoScreen.player == p) {
-      if (Labyrintale.getCurScreen() != charInfoScreen) {
-        Labyrintale.removeTempScreen(charInfoScreen);
+    if(p.isPlayer) {
+      AbstractPlayer player = (AbstractPlayer) p;
+      if (charInfoScreen == null) {
+        charInfoScreen = new CharInfoScreen(player);
         Labyrintale.addTempScreen(charInfoScreen);
+      } else if (charInfoScreen.player == player) {
+        if (Labyrintale.getCurScreen() != charInfoScreen) {
+          Labyrintale.removeTempScreen(charInfoScreen);
+          Labyrintale.addTempScreen(charInfoScreen);
+        } else {
+          Labyrintale.removeTempScreen(charInfoScreen);
+          charInfoScreen = null;
+        }
       } else {
-        Labyrintale.removeTempScreen(charInfoScreen);
-        charInfoScreen = null;
+        if (Labyrintale.getCurScreen() != charInfoScreen) {
+          Labyrintale.removeTempScreen(charInfoScreen);
+          charInfoScreen.setPlayer(player);
+          Labyrintale.addTempScreen(charInfoScreen);
+        } else charInfoScreen.setPlayer(player);
       }
-    } else {
-      if (Labyrintale.getCurScreen() != charInfoScreen) {
-        Labyrintale.removeTempScreen(charInfoScreen);
-        charInfoScreen.setPlayer(p);
-        Labyrintale.addTempScreen(charInfoScreen);
-      } else charInfoScreen.setPlayer(p);
     }
   }
 }

@@ -650,7 +650,7 @@ public final class GroupHandler {
       raritySort.put(AbstractItem.ItemRarity.BRONZE, bronzeItem);
       raritySort.put(AbstractItem.ItemRarity.SILVER, silverItem);
       raritySort.put(AbstractItem.ItemRarity.GOLD, goldItem);
-      raritySort.put(AbstractItem.ItemRarity.BOSS, shopItem);
+      raritySort.put(AbstractItem.ItemRarity.BOSS, bossItem);
       raritySort.put(AbstractItem.ItemRarity.SHOP, shopItem);
       raritySort.put(AbstractItem.ItemRarity.STARTER, starterItem);
     }

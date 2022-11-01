@@ -20,6 +20,7 @@ import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
@@ -78,6 +79,7 @@ public abstract class AbstractEntity implements Cloneable {
   public Sprite img;
   public Sprite imgBig;
   public Sprite imgTiny;
+  public Sprite imgPanel;
   public Sprite bg;
 
   public AbstractEntity(
@@ -119,6 +121,12 @@ public abstract class AbstractEntity implements Cloneable {
       }
     }
   }
+
+  public void atEndOfRound() {
+
+  }
+
+  public void shuffleHand() {}
 
   public final void resetAnimation() {
     AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
@@ -239,6 +247,9 @@ public abstract class AbstractEntity implements Cloneable {
           EffectHandler.add(
                   new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
           done = true;
+        } else {
+          s = Objects.requireNonNull(status.cpy());
+          s.owner = this;
         }
       } else {
         s = Objects.requireNonNull(status.cpy());

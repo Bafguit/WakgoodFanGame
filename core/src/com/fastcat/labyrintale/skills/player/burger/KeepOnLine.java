@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.skills.player.burger;
 
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -38,7 +37,7 @@ public class KeepOnLine extends AbstractSkill {
   public boolean setTarget() {
     boolean can = false;
     for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
-      if (pv.player.isAlive() && pv.player != owner) {
+      if (pv.entity.isAlive() && pv.entity != owner) {
         pv.isTarget = true;
         can = true;
       }

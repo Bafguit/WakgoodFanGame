@@ -33,14 +33,14 @@ public class MoveP extends AbstractSkill {
     if (owner != null) {
       if (owner.index > 0) {
         PlayerBattleView pv = battleScreen.players[owner.index - 1];
-        if (pv.player.isAlive()) {
+        if (pv.entity.isAlive()) {
           pv.isTarget = true;
           can = true;
         }
       }
       if (owner.index < 3) {
         PlayerBattleView pv = battleScreen.players[owner.index + 1];
-        if (pv.player.isAlive()) {
+        if (pv.entity.isAlive()) {
           pv.isTarget = true;
           can = true;
         }

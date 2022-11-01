@@ -83,12 +83,8 @@ public class StatIcon extends AbstractUI {
       sb.draw(img, x, y, sWidth, sHeight);
       if (entity != null) {
         String t = "";
-        if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED)
-          t += amount;
-        else {
-          if (type == StatType.MULTIPLY) t += "+" + amount + "%";
-          else t = amount + "%";
-        }
+        if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED) t += amount;
+        else t = amount + "%";
         renderLineLeft(sb, fontData, t, x + sWidth, y + sHeight / 2, sWidth * 3, sHeight);
       }
     }

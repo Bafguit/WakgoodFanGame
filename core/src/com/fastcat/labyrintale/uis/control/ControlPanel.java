@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -22,8 +23,8 @@ public class ControlPanel implements Disposable {
 
   public InfoPanel infoPanel;
   public BattlePanel battlePanel;
-  public Sprite bg;
-  public Sprite bbg;
+  public AbstractUI.TempUI bg;
+  public AbstractUI.TempUI bbg;
   public ControlType type = HIDE;
   public EffectHandler effectHandler;
   public FontHandler.FontData font;
@@ -32,12 +33,10 @@ public class ControlPanel implements Disposable {
     infoPanel = new InfoPanel();
     battlePanel = new BattlePanel();
     effectHandler = EffectHandler.newInstance();
-    bg = FileHandler.getUi().get("CONTROL_PANEL");
-    bg.setSize(bg.getWidth() * scale, bg.getHeight() * scale);
-    bg.setPosition((Gdx.graphics.getWidth() - bg.getWidth()) * 0.5f, 0);
-    bbg = FileHandler.getUi().get("BATTLE_PANEL");
-    bbg.setSize(bbg.getWidth() * scale, bbg.getHeight() * scale);
-    bbg.setPosition((Gdx.graphics.getWidth() - bbg.getWidth()) * 0.5f, 0);
+    bg = new AbstractUI.TempUI(FileHandler.getUi().get("CONTROL_PANEL"));
+    bg.setPosition((Gdx.graphics.getWidth() - bg.sWidth) * 0.5f, 0);
+    bbg = new AbstractUI.TempUI(FileHandler.getUi().get("BATTLE_PANEL"));
+    bbg.setPosition((Gdx.graphics.getWidth() - bbg.sWidth) * 0.5f, 0);
     font = FontHandler.EXP;
   }
 
@@ -54,10 +53,10 @@ public class ControlPanel implements Disposable {
   public void render(SpriteBatch sb) {
     if (type != HIDE) {
       if (type == BATTLE) {
-        bbg.draw(sb);
+        bbg.render(sb);
         battlePanel.render(sb);
       } else {
-        bg.draw(sb);
+        bg.render(sb);
       }
       infoPanel.render(sb);
       effectHandler.render(sb);

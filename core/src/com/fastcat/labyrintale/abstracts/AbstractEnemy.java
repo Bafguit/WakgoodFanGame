@@ -28,7 +28,8 @@ public abstract class AbstractEnemy extends AbstractEntity {
         stat.critical = 5;
         stat.moveRes = 5;
         stat.multiply = 50;
-        img = FileHandler.getUi().get("E_IMAGE");
+        img = imgBig = FileHandler.getUi().get("E_IMAGE");
+        imgPanel = FileHandler.getUi().get("E_PANEL");
     }
 
     @Override
@@ -60,10 +61,6 @@ public abstract class AbstractEnemy extends AbstractEntity {
                 hand[i] = s;
             } else break;
         }
-    }
-
-    public void atEndOfRound() {
-
     }
 
     public enum EnemyType {

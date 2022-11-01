@@ -29,8 +29,7 @@ public class VictoryAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      SoundHandler.fadeOutMusic("BATTLE_1");
-      SoundHandler.fadeOutMusic("BATTLE_BOSS");
+      SoundHandler.fadeOutAll();
     }
     if (isDone) {
       for (AbstractPlayer p : AbstractLabyrinth.players) {
@@ -66,13 +65,14 @@ public class VictoryAction extends AbstractAction {
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
         temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
       } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
-        temp.add(new ItemReward(ItemReward.ItemRewardType.BOSS));
+        ItemReward t = new ItemReward(ItemReward.ItemRewardType.BOSS);
+        temp.add(t);
       }
       int g;
-      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) g = 100;
+      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) g = 115;
       else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE)
-        g = 60;
-      else g = 30;
+        g = 75;
+      else g = 35;
       g += AbstractLabyrinth.publicRandom.random(-5, 5);
       if (AbstractLabyrinth.advisor.id.equals("sophia")) g = MathUtils.floor(g * 1.2f);
       temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));

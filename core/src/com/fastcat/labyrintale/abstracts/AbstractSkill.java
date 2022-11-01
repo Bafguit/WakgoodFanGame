@@ -223,7 +223,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         break;
       case PLAYER_FIRST:
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive()) {
             temp.add(p);
             break;
@@ -232,7 +232,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         break;
       case ENEMY_FIRST:
         for (int i = 0; i < 4; i++) {
-          AbstractEnemy e = te[i].enemy;
+          AbstractEntity e = te[i].entity;
           if (e.isAlive()) {
             temp.add(e);
             break;
@@ -242,7 +242,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       case PLAYER_LAST:
         boolean has = false;
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive() && p.hasStatus("Provoke")) {
             temp.add(p);
             has = true;
@@ -251,7 +251,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         }
         if (!has) {
           for (int i = 3; i >= 0; i--) {
-            AbstractPlayer p = tp[i].player;
+            AbstractEntity p = tp[i].entity;
             if (p.isAlive()) {
               temp.add(p);
               break;
@@ -262,7 +262,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       case ENEMY_LAST:
         has = false;
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive() && p.hasStatus("Provoke")) {
             temp.add(p);
             has = true;
@@ -271,7 +271,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         }
         if (!has) {
           for (int i = 3; i >= 0; i--) {
-            AbstractEnemy e = te[i].enemy;
+            AbstractEntity e = te[i].entity;
             if (e.isAlive()) {
               temp.add(e);
               break;
@@ -281,48 +281,48 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         break;
       case PLAYER_FIRST_TWO:
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive()) temp.add(p);
           if (temp.size == 2) break;
         }
         break;
       case ENEMY_FIRST_TWO:
         for (int i = 0; i < 4; i++) {
-          AbstractEnemy e = te[i].enemy;
+          AbstractEntity e = te[i].entity;
           if (e.isAlive()) temp.add(e);
           if (temp.size == 2) break;
         }
         break;
       case PLAYER_LAST_TWO:
         for (int i = 3; i >= 0; i--) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive()) temp.add(p);
           if (temp.size == 2) break;
         }
         break;
       case ENEMY_LAST_TWO:
         for (int i = 3; i >= 0; i--) {
-          AbstractEnemy e = te[i].enemy;
+          AbstractEntity e = te[i].entity;
           if (e.isAlive()) temp.add(e);
           if (temp.size == 2) break;
         }
         break;
       case PLAYER_ALL:
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive()) temp.add(p);
         }
         break;
       case ENEMY_ALL:
         for (int i = 0; i < 4; i++) {
-          AbstractEnemy e = te[i].enemy;
+          AbstractEntity e = te[i].entity;
           if (e.isAlive()) temp.add(e);
         }
         break;
       case ALL:
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
-          AbstractEnemy e = te[i].enemy;
+          AbstractEntity p = tp[i].entity;
+          AbstractEntity e = te[i].entity;
           if (p.isAlive()) temp.add(p);
           if (e.isAlive()) temp.add(e);
         }
@@ -330,41 +330,41 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       case PLAYER_LOW_HP:
         float low = 2147483647;
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive() && p.health < low) low = p.health;
         }
         for (PlayerBattleView p : tp) {
-          if (p.player.health == low) temp.add(p.player);
+          if (p.entity.health == low) temp.add(p.entity);
         }
         break;
       case ENEMY_LOW_HP:
         low = 2147483647;
         for (int i = 0; i < 4; i++) {
-          AbstractEnemy p = te[i].enemy;
+          AbstractEntity p = te[i].entity;
           if (p.isAlive() && p.health < low) low = p.health;
         }
         for (EnemyBattleView p : te) {
-          if (p.enemy.health == low) temp.add(p.enemy);
+          if (p.entity.health == low) temp.add(p.entity);
         }
         break;
       case PLAYER_HIGH_HP:
         low = 0;
         for (int i = 0; i < 4; i++) {
-          AbstractPlayer p = tp[i].player;
+          AbstractEntity p = tp[i].entity;
           if (p.isAlive() && p.health > low) low = p.health;
         }
         for (PlayerBattleView p : tp) {
-          if (p.player.health == low) temp.add(p.player);
+          if (p.entity.health == low) temp.add(p.entity);
         }
         break;
       case ENEMY_HIGH_HP:
         low = 0;
         for (int i = 0; i < 4; i++) {
-          AbstractEnemy p = te[i].enemy;
+          AbstractEntity p = te[i].entity;
           if (p.isAlive() && p.health > low) low = p.health;
         }
         for (EnemyBattleView p : te) {
-          if (p.enemy.health == low) temp.add(p.enemy);
+          if (p.entity.health == low) temp.add(p.entity);
         }
         break;
     }
@@ -692,15 +692,15 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     if (target == SkillTarget.ENEMY) {
       for (int i = 0; i < 4; i++) {
         EnemyBattleView pv = Labyrintale.battleScreen.enemies[i];
-        if (pv.enemy.isAlive()) {
+        if (pv.entity.isAlive()) {
           pv.isTarget = true;
           can = true;
-          if (pv.enemy.hasStatus("Provoke")) break;
+          if (pv.entity.hasStatus("Provoke")) break;
         }
       }
     } else if (target == SkillTarget.PLAYER) {
       for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
-        if (pv.player.isAlive()) {
+        if (pv.entity.isAlive()) {
           pv.isTarget = true;
           can = true;
         }

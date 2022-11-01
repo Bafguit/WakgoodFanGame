@@ -76,6 +76,7 @@ public final class SaveHandler {
     GroupHandler.RoomGroup.bossCount = data.eventCount;
     seed = data.random.seed;
     seedLong = data.random.seedLong;
+    diff = Difficulty.valueOf(data.diff);
     publicRandom = new RandomXC(seedLong, data.random.publicRandom);
     skillRandom = new RandomXC(seedLong, data.random.skillRandom);
     itemRandom = new RandomXC(seedLong, data.random.itemRandom);
@@ -85,7 +86,6 @@ public final class SaveHandler {
     shopRandom = new RandomXC(seedLong, data.random.shopRandom);
     groupRandom = new RandomXC(seedLong);
     GroupHandler.RoomGroup.shuffleAll();
-    restriction.setData(data.restriction);
 
     floors = new AbstractFloor[4];
     for (int i = 0; i < 4; i++) {
@@ -150,7 +150,6 @@ public final class SaveHandler {
   public static class SaveData {
     public String date;
     public RandomData random;
-    public RestrictionData restriction;
     public int itemAble;
     public int selection;
     public int charge;
@@ -159,6 +158,7 @@ public final class SaveHandler {
     public int exp;
     public int maxExp;
     public String advisor;
+    public String diff;
     public PlayerData[] players = new PlayerData[4];
     public int currentFloor;
     public FloorData[] floors = new FloorData[4];
@@ -176,7 +176,6 @@ public final class SaveHandler {
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
       temp.date = formatter.format(now);
       temp.random = RandomData.create();
-      temp.restriction = RestrictionData.create();
       for (int i = 0; i < 4; i++) {
         AbstractFloor f = AbstractLabyrinth.floors[i];
         temp.floors[i] = f != null ? FloorData.create(f) : null;
@@ -189,6 +188,7 @@ public final class SaveHandler {
           AbstractLabyrinth.advisor != null ? AbstractLabyrinth.advisor.id : null;
       temp.itemAble = AbstractLabyrinth.itemAble;
       temp.selection = AbstractLabyrinth.maxSkillUp;
+      temp.diff = AbstractLabyrinth.diff.toString();
       temp.gold = AbstractLabyrinth.gold;
       temp.charge = AbstractLabyrinth.charge;
       temp.level = AbstractLabyrinth.level;
@@ -227,34 +227,6 @@ public final class SaveHandler {
       temp.monsterRandom = AbstractLabyrinth.monsterRandom.getCounter();
       temp.eventRandom = AbstractLabyrinth.eventRandom.getCounter();
       temp.shopRandom = AbstractLabyrinth.shopRandom.getCounter();
-      return temp;
-    }
-  }
-
-  public static class RestrictionData {
-    public int GRW;
-    public int STR;
-    public int INT;
-    public int HUG;
-    public int FAM;
-    public int SPD;
-    public int POV;
-    public int MSR;
-    public int FTG;
-    public int RST;
-
-    public static RestrictionData create() {
-      RestrictionData temp = new RestrictionData();
-      temp.GRW = restriction.GRW;
-      temp.STR = restriction.STR;
-      temp.INT = restriction.INT;
-      temp.HUG = restriction.HUG;
-      temp.FAM = restriction.FAM;
-      temp.SPD = restriction.SPD;
-      temp.POV = restriction.POV;
-      temp.MSR = restriction.MSR;
-      temp.FTG = restriction.FTG;
-      temp.RST = restriction.RST;
       return temp;
     }
   }

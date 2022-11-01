@@ -6,63 +6,59 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-public class PlayerBattleView extends AbstractUI {
+public class PlayerBattleView extends BattleView {
 
-  public AbstractPlayer player;
-  public boolean isLooking = false;
   public boolean isOnLock = false;
-  public boolean isTarget = false;
-  private final Sprite pImg;
 
   public PlayerBattleView(AbstractPlayer cls) {
     super(FileHandler.getUi().get("ENTITY_POINT"));
-    player = cls;
-    player.block = 0;
+    entity = cls;
+    entity.block = 0;
     pImg = FileHandler.getUi().get("PLAYER_POINT");
     showImg = false;
   }
 
   @Override
   protected void updateButton() {
-    isOnLock = battleScreen.currentTurnEntity() == player;
+    isOnLock = battleScreen.currentTurnEntity() == entity;
     if (battleScreen.isSelecting) {
-      clickable = player.isAlive() && isTarget;
+      clickable = entity.isAlive() && isTarget;
       showImg = isLooking || isOnLock || (over && isTarget);
       if (over && clickable) {
-        battleScreen.looking.add(player);
+        battleScreen.looking.add(entity);
         isLooking = true;
       }
     } else {
       showImg = isLooking || isOnLock;
-      clickable = player.isAlive();
+      clickable = entity.isAlive();
     }
     mute = isOnLock;
   }
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    if (enabled && player != null) {
+    if (enabled && entity != null) {
       sb.setColor(Color.WHITE);
       if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
         sb.draw(
             isLooking || (over && isTarget) ? img : pImg,
-            player.animX - sWidth / 2,
-            player.animY - Gdx.graphics.getHeight() * 0.025f,
+            entity.animX - sWidth / 2,
+            entity.animY - Gdx.graphics.getHeight() * 0.025f,
             sWidth,
             sHeight);
-      player.render(sb);
+      entity.render(sb);
     }
   }
 
   @Override
   protected void onClick() {
-    if (player != null && player.isAlive()) {
-      if (battleScreen.isSelecting) battleScreen.gets.onTargetSelected(player);
+    if (entity != null && entity.isAlive()) {
+      if (battleScreen.isSelecting) battleScreen.gets.onTargetSelected(entity);
       // else AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
     }
   }

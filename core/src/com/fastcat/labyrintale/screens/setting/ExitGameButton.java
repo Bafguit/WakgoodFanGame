@@ -1,23 +1,23 @@
-package com.fastcat.labyrintale.screens.riskselect;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+package com.fastcat.labyrintale.screens.setting;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
-public class CloseRiskScreenButton extends AbstractUI {
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
-  public CloseRiskScreenButton(AbstractScreen screen) {
+public class ExitGameButton extends AbstractUI {
+
+  public ExitGameButton(SettingScreen sc) {
     super(FileHandler.getUi().get("NEXT"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
+    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.7f);
     fontData = MAIN_MENU;
-    text = "닫기";
+    text = "종료";
     showImg = false;
-    this.screen = screen;
+    screen = sc;
   }
 
   @Override
@@ -32,7 +32,7 @@ public class CloseRiskScreenButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    SettingHandler.save();
-    Labyrintale.removeTempScreen(screen);
+    logger.log("Shutting Down...");
+    Gdx.app.exit();
   }
 }

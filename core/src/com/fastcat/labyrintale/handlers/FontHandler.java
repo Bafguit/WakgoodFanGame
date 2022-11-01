@@ -29,7 +29,7 @@ public final class FontHandler implements Disposable {
       new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
   public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
   public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
-  public static final FontData ENERGY = new FontData(BOLD, 64, true);
+  public static final FontData ENERGY = new FontData(BOLD, 48, true);
   public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
   public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
   // private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");

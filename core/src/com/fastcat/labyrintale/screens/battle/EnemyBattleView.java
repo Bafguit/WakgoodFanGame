@@ -7,16 +7,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-public class EnemyBattleView extends AbstractUI {
+public class EnemyBattleView extends BattleView {
 
-  public AbstractEnemy enemy;
-  public boolean isLooking = false;
-  public boolean isTarget = false;
-  private Sprite pImg;
 
   public EnemyBattleView() {
     this(null);
@@ -24,7 +20,7 @@ public class EnemyBattleView extends AbstractUI {
 
   public EnemyBattleView(AbstractEnemy enemy) {
     super(FileHandler.getUi().get("ENTITY_POINT"));
-    this.enemy = enemy;
+    this.entity = enemy;
     showImg = false;
     overable = false;
     pImg = FileHandler.getUi().get("PLAYER_POINT");
@@ -33,28 +29,28 @@ public class EnemyBattleView extends AbstractUI {
   @Override
   protected void updateButton() {
     if (battleScreen.isSelecting) {
-      overable = enemy.isAlive() && isTarget;
+      overable = entity.isAlive() && isTarget;
       showImg = over && overable;
-      if (showImg) battleScreen.looking.add(enemy);
+      if (showImg) battleScreen.looking.add(entity);
     } else {
       overable = false;
-      showImg = isLooking || battleScreen.currentTurnEntity() == enemy;
+      showImg = isLooking || battleScreen.currentTurnEntity() == entity;
     }
   }
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    setPosition(enemy.animX - sWidth / 2, enemy.animY - Gdx.graphics.getHeight() * 0.025f);
-    if (enabled && enemy != null && !enemy.isDead) {
+    setPosition(entity.animX - sWidth / 2, entity.animY - Gdx.graphics.getHeight() * 0.025f);
+    if (enabled && entity != null && !entity.isDead) {
       sb.setColor(Color.WHITE);
       if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
-        sb.draw(battleScreen.currentTurnEntity() == enemy ? pImg : img, x, y, sWidth, sHeight);
-      enemy.render(sb);
+        sb.draw(battleScreen.currentTurnEntity() == entity ? pImg : img, x, y, sWidth, sHeight);
+      entity.render(sb);
     }
   }
 
   @Override
   protected void onClick() {
-    battleScreen.gets.onTargetSelected(enemy);
+    battleScreen.gets.onTargetSelected(entity);
   }
 }

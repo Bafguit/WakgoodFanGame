@@ -13,19 +13,14 @@ public class ItemPanel extends AbstractUI {
 
   public AbstractItem item;
 
-  public ItemPanel(Sprite s) {
-    super(s);
-    clickable = false;
-  }
-
   public ItemPanel() {
-    super(FileHandler.getUi().get("BORDER"));
+    super(FileHandler.getUi().get("BORDER_M"));
     clickable = false;
   }
 
   @Override
   protected void updateButton() {
-    if (over) {
+    if (over && item != null) {
       AbstractLabyrinth.cPanel.infoPanel.setInfo(item);
     }
   }
@@ -37,9 +32,10 @@ public class ItemPanel extends AbstractUI {
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
+    if (enabled && item != null) {
       sb.setColor(Color.WHITE);
       if (item != null) sb.draw(item.img, x, y, sWidth, sHeight);
+      sb.draw(img, x, y, sWidth, sHeight);
     }
   }
 }

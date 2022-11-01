@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
-import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
+import static com.fastcat.labyrintale.Labyrintale.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
 import com.badlogic.gdx.Gdx;
@@ -31,13 +30,6 @@ public class GameStartButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    for (int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
-      Labyrintale.charSelectScreen.chars[i].removeChar();
-    }
-    Labyrintale.charSelectScreen.nextButton.disable();
-    Labyrintale.charSelectScreen.backButton.onHide();
-    Labyrintale.charSelectScreen.nextButton.onHide();
-    charSelectScreen.seedText.text = "";
-    fadeOutAndChangeScreen(charSelectScreen, 1.0f);
+    fadeOutAndChangeScreen(diffScreen, 1.0f);
   }
 }

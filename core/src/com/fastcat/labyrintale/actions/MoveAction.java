@@ -197,14 +197,14 @@ public class MoveAction extends AbstractAction {
             e.index = i;
             e.animX = position.get(i);
             AbstractLabyrinth.players[i] = (AbstractPlayer) e;
-            battleScreen.players[i].player = (AbstractPlayer) e;
+            battleScreen.players[i].entity = (AbstractPlayer) e;
           }
           from.index = toIndex;
           from.animX = toPos;
           AbstractLabyrinth.players[toIndex] = (AbstractPlayer) from;
-          battleScreen.players[toIndex].player = (AbstractPlayer) from;
+          battleScreen.players[toIndex].entity = (AbstractPlayer) from;
           for (PlayerBattleView pv : battleScreen.players) {
-            pv.player.ui = pv;
+            pv.entity.ui = pv;
           }
           cPanel.battlePanel.setPlayer((AbstractPlayer) from);
         } else {
@@ -218,9 +218,9 @@ public class MoveAction extends AbstractAction {
           from.index = toIndex;
           from.animX = toPos;
           currentFloor.currentRoom.enemies[toIndex] = (AbstractEnemy) from;
-          battleScreen.enemies[toIndex].enemy = (AbstractEnemy) from;
+          battleScreen.enemies[toIndex].entity = (AbstractEnemy) from;
           for (EnemyBattleView pv : battleScreen.enemies) {
-            pv.enemy.ui = pv;
+            pv.entity.ui = pv;
           }
         }
         for(int i = 0; i < 2; i++) {

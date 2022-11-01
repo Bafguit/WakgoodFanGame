@@ -1,21 +1,23 @@
-package com.fastcat.labyrintale.screens.dead;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+package com.fastcat.labyrintale.screens.setting;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
-public class MainButton extends AbstractUI {
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 
-  public MainButton() {
-    super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 300, 50);
-    setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+public class ReturnToMainButton extends AbstractUI {
+
+  public ReturnToMainButton(SettingScreen sc) {
+    super(FileHandler.getUi().get("NEXT"));
+    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.8f);
     fontData = MAIN_MENU;
-    text = "처음으로";
+    text = "메인 메뉴";
     showImg = false;
+    screen = sc;
   }
 
   @Override
@@ -30,6 +32,7 @@ public class MainButton extends AbstractUI {
 
   @Override
   protected void onClick() {
+    SettingHandler.save();
     SoundHandler.fadeOutAll();
     Labyrintale.mainMenuScreen.onCreate();
     Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);

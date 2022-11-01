@@ -25,28 +25,25 @@ public class SkillButtonPanel extends AbstractUI {
   public boolean isUsed = false;
 
   public SkillButtonPanel(SkillButtonType type) {
-    super(
-        type == SkillButtonType.BASIC
-            ? FileHandler.getUi().get("BORDER")
-            : FileHandler.getUi().get("BORDER_M"));
+    super(FileHandler.getUi().get("BORDER_M"));
     this.type = type;
     fontData = type == SkillButtonType.BASIC ? FontHandler.SUB_NAME : FontHandler.CARD_BIG_DESC;
   }
 
   @Override
   protected void updateButton() {
-    clickable =
-        !skill.passive
-            && skill.canUse()
-            && type != SkillButtonType.VIEW
-            && !battleScreen.isSelecting
-            && !ActionHandler.isRunning()
-            && Labyrintale.getCurScreen() == battleScreen;
-    if (type == SkillButtonType.PLAYER || type == SkillButtonType.BASIC) {
-      isUsed = !skill.canUse();
-    }
-    if (over) {
-      if (skill != null) {
+    if (skill != null) {
+      clickable =
+              !skill.passive
+                      && skill.canUse()
+                      && type != SkillButtonType.VIEW
+                      && !battleScreen.isSelecting
+                      && !ActionHandler.isRunning()
+                      && Labyrintale.getCurScreen() == battleScreen;
+      if (type == SkillButtonType.PLAYER || type == SkillButtonType.BASIC) {
+        isUsed = !skill.canUse();
+      }
+      if (over) {
         cPanel.infoPanel.setInfo(skill);
       }
     }
@@ -54,14 +51,14 @@ public class SkillButtonPanel extends AbstractUI {
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
+    if (enabled && skill != null) {
       if (isUsed
-          || (type != SkillButtonType.VIEW && skill != null && !skill.canUse())
+          || (type != SkillButtonType.VIEW && !skill.canUse())
           || (battleScreen.isSelecting && cPanel.battlePanel.selected != skill)) {
         sb.setColor(Color.DARK_GRAY);
       } else if (over && clickable) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
-      if (skill != null) sb.draw(skill.img, x, y, sWidth, sHeight);
+      sb.draw(skill.img, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
       if (!skill.passive) {

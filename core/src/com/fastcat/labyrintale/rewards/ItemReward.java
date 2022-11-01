@@ -32,7 +32,8 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
     } else if (type == ItemRewardType.GOLD) {
       return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.GOLD);
     } else {
-      return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BOSS);
+      AbstractItem i = GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BOSS);
+      return i;
     }
   }
 

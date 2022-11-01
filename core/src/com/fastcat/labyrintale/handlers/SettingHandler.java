@@ -51,7 +51,6 @@ public final class SettingHandler {
         // 기타 설정
         setting.shake = data.shake;
         setting.fastMode = data.fastMode;
-        setting.risk = data.risk;
         InputHandler.monitor = monitor;
       } catch (IOException e) {
         hasSave = false;
@@ -85,11 +84,6 @@ public final class SettingHandler {
       setting.fastMode = false;
       InputHandler.monitor = monitor;
 
-      setting.risk = new HashMap<>();
-      for (RestrictionHandler.RiskType type : RestrictionHandler.RiskType.values()) {
-        setting.risk.put(type, 0);
-      }
-
       // 저장
       save();
     }
@@ -115,6 +109,5 @@ public final class SettingHandler {
     public int screenMode; // 0:창, 1:전체화면, 2:전체창(테두리 없음)
     public boolean shake; // 화면 흔들림
     public boolean fastMode; // 효과와 액션 배속
-    public HashMap<RestrictionHandler.RiskType, Integer> risk;
   }
 }

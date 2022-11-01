@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.TurnChangeEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.screens.battle.BattleView;
 import com.fastcat.labyrintale.uis.TurnEffectText;
 
 public class RoundStartAction extends AbstractAction {
@@ -22,7 +23,8 @@ public class RoundStartAction extends AbstractAction {
       AbstractLabyrinth.energy =
           Math.min(
               AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);
-      for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
+      for (BattleView b : Labyrintale.battleScreen.getTurns()) {
+        AbstractEntity e = b.entity;
         e.blockRemove = e.block;
         if (e.isPlayer) {
           e.passive.startOfRound();

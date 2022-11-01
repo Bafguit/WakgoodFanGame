@@ -37,7 +37,7 @@ public class IronWill extends AbstractSkill {
   public boolean setTarget() {
     boolean can = false;
     for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
-      if (pv.player.isAlive() && pv.player != owner) {
+      if (pv.entity.isAlive() && pv.entity != owner) {
         pv.isTarget = true;
         can = true;
       }
