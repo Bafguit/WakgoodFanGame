@@ -17,6 +17,6 @@ public class ShoulderPlate extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 2));
+    top(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 2));
   }
 }

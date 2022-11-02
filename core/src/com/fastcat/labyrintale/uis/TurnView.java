@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -21,7 +22,7 @@ public class TurnView extends AbstractUI {
     super(FileHandler.getUi().get("BORDER"));
   }
 
-  public void setNewTurns(Array<BattleView> turns) {
+  public void setNewTurns(Array<AbstractEntity> turns) {
     icons.clear();
     for (int i = 0; i < turns.size; i++) {
       TurnIcon c = new TurnIcon(turns.get(i));
@@ -68,10 +69,10 @@ public class TurnView extends AbstractUI {
 
     private final Sprite bb;
     private final float ww, hh;
-    public BattleView view;
+    public AbstractEntity view;
     public boolean isMain;
 
-    public TurnIcon(BattleView entity) {
+    public TurnIcon(AbstractEntity entity) {
       super(FileHandler.getUi().get("BORDER"));
       ww = sWidth;
       hh = sHeight;
@@ -84,9 +85,9 @@ public class TurnView extends AbstractUI {
 
     @Override
     protected void updateButton() {
-      if(over && view.entity.isAlive()) {
-        Labyrintale.battleScreen.looking.add(view.entity);
-        AbstractLabyrinth.cPanel.battlePanel.setPlayer(view.entity);
+      if(over && view.isAlive()) {
+        Labyrintale.battleScreen.looking.add(view);
+        AbstractLabyrinth.cPanel.battlePanel.setPlayer(view);
       }
     }
 
@@ -96,12 +97,12 @@ public class TurnView extends AbstractUI {
         sb.setColor(Color.WHITE);
         if (isMain) {
           if (view != null) {
-            sb.draw(view.entity.img, x, y, ww, hh);
+            sb.draw(view.img, x, y, ww, hh);
           }
           sb.draw(bb, x, y, ww, hh);
         } else {
           if (view != null) {
-            sb.draw(view.entity.img, x, y, sWidth, sHeight);
+            sb.draw(view.img, x, y, sWidth, sHeight);
           }
           sb.draw(img, x, y, sWidth, sHeight);
         }

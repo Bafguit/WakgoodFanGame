@@ -3,9 +3,11 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
 import com.fastcat.labyrintale.skills.enemy.MoveRightE;
+import com.fastcat.labyrintale.strings.CharString;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
 
@@ -20,6 +22,9 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
         super(id, 1, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), false);
         this.type = type;
+        CharString.CharData temp = StringHandler.enemyString.get(id);
+        name = temp.NAME;
+        desc = temp.DESC;
         drawPile = new Array<>();
         discardPile = new Array<>();
         disposablePile = new Array<>();

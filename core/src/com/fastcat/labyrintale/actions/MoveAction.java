@@ -64,7 +64,7 @@ public class MoveAction extends AbstractAction {
         type = from.isPlayer ? MoveType.PLAYER : MoveType.ENEMY;
         alive = from.isAlive();
       }
-      if (toIndex < 0 || toIndex > 3 || (alive && from.movable > 0) || alive != from.isAlive()) {
+      if (toIndex < 0 || toIndex > 3 || (alive && from.movable > 0) || alive != from.isAlive() || from.index == toIndex) {
         isDone = true;
         run = false;
       } else if (fromType != type) {
@@ -81,7 +81,8 @@ public class MoveAction extends AbstractAction {
           isDone = true;
           run = false;
         }
-      } else {
+      }
+      if(run) {
         if (type == MoveType.PLAYER) {
           isLeft = from.index < toIndex;
           if (isLeft) {
@@ -197,28 +198,28 @@ public class MoveAction extends AbstractAction {
             e.index = i;
             e.animX = position.get(i);
             AbstractLabyrinth.players[i] = (AbstractPlayer) e;
-            battleScreen.players[i].entity = (AbstractPlayer) e;
+            battleScreen.players[i].entity = e;
           }
           from.index = toIndex;
           from.animX = toPos;
           AbstractLabyrinth.players[toIndex] = (AbstractPlayer) from;
-          battleScreen.players[toIndex].entity = (AbstractPlayer) from;
+          battleScreen.players[toIndex].entity = from;
           for (PlayerBattleView pv : battleScreen.players) {
             pv.entity.ui = pv;
           }
-          cPanel.battlePanel.setPlayer((AbstractPlayer) from);
+          cPanel.battlePanel.setPlayer(from);
         } else {
           for (Integer i : to.keySet()) {
             AbstractEntity e = to.get(i);
             e.index = i;
             e.animX = position.get(i);
             currentFloor.currentRoom.enemies[i] = (AbstractEnemy) e;
-            battleScreen.setEnemy((AbstractEnemy) e, i);
+            battleScreen.setEnemy(e, i);
           }
           from.index = toIndex;
           from.animX = toPos;
           currentFloor.currentRoom.enemies[toIndex] = (AbstractEnemy) from;
-          battleScreen.enemies[toIndex].entity = (AbstractEnemy) from;
+          battleScreen.enemies[toIndex].entity = from;
           for (EnemyBattleView pv : battleScreen.enemies) {
             pv.entity.ui = pv;
           }

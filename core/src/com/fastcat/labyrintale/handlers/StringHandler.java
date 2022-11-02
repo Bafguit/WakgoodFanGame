@@ -10,6 +10,7 @@ public final class StringHandler {
   public static SkillString skillString;
   public static StatusString statusString;
   public static CharString charString;
+  public static EnemyString enemyString;
   public static ChoiceString choiceString;
   public static EventString eventString;
   public static ItemString itemString;
@@ -21,6 +22,7 @@ public final class StringHandler {
     skillString = new SkillString();
     statusString = new StatusString();
     charString = new CharString();
+    enemyString = new EnemyString();
     choiceString = new ChoiceString();
     eventString = new EventString();
     itemString = new ItemString();

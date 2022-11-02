@@ -30,7 +30,7 @@ public class CrossPin extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(
+    top(
         new ApplyStatusAction(
             new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
   }

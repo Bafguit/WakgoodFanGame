@@ -30,7 +30,7 @@ public class CottonNecklace extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(
+    top(
         new ApplyStatusAction(
             new EnduranceStatus(3), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
   }

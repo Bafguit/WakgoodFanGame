@@ -26,6 +26,6 @@ public class CheeseBall extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new UpgradeAction(owner.hand));
+    top(new UpgradeAction(owner.hand));
   }
 }

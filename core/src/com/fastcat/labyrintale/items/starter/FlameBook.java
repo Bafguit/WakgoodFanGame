@@ -18,7 +18,7 @@ public class FlameBook extends AbstractItem {
 
   @Override
   public void atBattleStart() {
-    bot(
+    top(
         new ApplyStatusAction(
             new ResistMinusStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
   }

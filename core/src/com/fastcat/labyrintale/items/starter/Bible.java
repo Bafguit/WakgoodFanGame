@@ -19,8 +19,8 @@ public class Bible extends AbstractItem {
 
   @Override
   public void atBattleStart() {
-    bot(
+    top(
             new ApplyStatusAction(
-                    new ResistPlusStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+                    new ResistPlusStatus(1), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
   }
 }

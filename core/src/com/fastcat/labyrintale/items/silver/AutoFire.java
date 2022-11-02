@@ -29,7 +29,7 @@ public class AutoFire extends AbstractItem {
   @Override
   public void startOfTurn() {
     flash();
-    ActionHandler.bot(
+    top(
         new AttackAction(
             owner,
             AbstractSkill.SkillTarget.ENEMY_ALL,

@@ -33,6 +33,6 @@ public class BrokenTicker extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, owner.maxHealth));
+    top(new HealAction(owner, AbstractSkill.SkillTarget.SELF, owner.maxHealth));
   }
 }

@@ -28,6 +28,6 @@ public class OldPistol extends AbstractItem {
   }
 
   public void onMove(AbstractEntity source) {
-    bot(new ApplyStatusAction(new CourageStatus(2), owner, owner, true));
+    top(new ApplyStatusAction(new CourageStatus(2), owner, owner, true));
   }
 }

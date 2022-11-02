@@ -27,6 +27,6 @@ public class GoldenRing extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 10));
+    top(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 10));
   }
 }

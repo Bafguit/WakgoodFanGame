@@ -16,7 +16,7 @@ public class BurgerHat extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1));
+    top(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1));
   }
 
   public void endOfTurn() {
@@ -25,7 +25,7 @@ public class BurgerHat extends AbstractItem {
       if(p.block > 0) temp.add(p);
     }
     if(temp.size > 0) {
-      bot(new HealAction(owner, temp, 1));
+      top(new HealAction(owner, temp, 1));
     }
   }
 }

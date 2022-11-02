@@ -40,7 +40,7 @@ public class BattleScreen extends AbstractScreen {
   public boolean isSelecting = false;
   public boolean isEnemyTurn = false;
   public Array<AbstractEntity> looking;
-  private Array<BattleView> turn;
+  private Array<AbstractEntity> turn;
   private int turnIndex;
   public int round;
   public BattleType type;
@@ -336,12 +336,12 @@ public class BattleScreen extends AbstractScreen {
   }
 
   public void resetTurn() {
-    Array<BattleView> temp = new Array<>();
+    Array<AbstractEntity> temp = new Array<>();
     for (PlayerBattleView p : players) {
-      if (p.entity.isAlive()) temp.add(p);
+      if (p.entity.isAlive()) temp.add(p.entity);
     }
     for (EnemyBattleView e : enemies) {
-      if (e.entity.isAlive()) temp.add(e);
+      if (e.entity.isAlive()) temp.add(e.entity);
     }
 
     Sort.instance()
@@ -349,8 +349,8 @@ public class BattleScreen extends AbstractScreen {
             temp,
             (o1, o2) -> {
               do {
-                int s1 = o1.entity.stat.capSpeed();
-                int s2 = o2.entity.stat.capSpeed();
+                int s1 = o1.stat.capSpeed();
+                int s2 = o2.stat.capSpeed();
                 int a = s1 + AbstractLabyrinth.publicRandom.random(0, 7);
                 int b = s2 + AbstractLabyrinth.publicRandom.random(0, 7);
                 int i = b - a;
@@ -365,9 +365,9 @@ public class BattleScreen extends AbstractScreen {
               } while (true);
             });
 
-    for (BattleView e : temp) {
-      if (e.entity.isPlayer) {
-        cPanel.battlePanel.setPlayer((AbstractPlayer) e.entity);
+    for (AbstractEntity e : temp) {
+      if (e.isPlayer) {
+        cPanel.battlePanel.setPlayer(e);
         break;
       }
     }
@@ -378,7 +378,7 @@ public class BattleScreen extends AbstractScreen {
     cPanel.battlePanel.turnView.setNewTurns(turn);
   }
 
-  public Array<BattleView> getTurns() {
+  public Array<AbstractEntity> getTurns() {
     return turn;
   }
 
@@ -398,7 +398,7 @@ public class BattleScreen extends AbstractScreen {
   }
 
   public AbstractEntity currentTurnEntity() {
-    if (turn != null && turn.size > 0) return turn.get(turnIndex).entity;
+    if (turn != null && turn.size > 0) return turn.get(turnIndex);
     else return null;
   }
 

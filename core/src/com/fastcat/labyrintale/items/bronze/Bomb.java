@@ -29,6 +29,6 @@ public class Bomb extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(new ApplyStatusAction(new BurnStatus(2), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
+    top(new ApplyStatusAction(new BurnStatus(2), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
   }
 }

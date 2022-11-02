@@ -47,7 +47,6 @@ public class ShopRoom extends AbstractRoom {
   }
 
   public void generateSkills() {
-    // 스킬 생성
     int p1 = 1, p2 = 1, p3 = 1, p4 = 1;
 
     for (int i = 0; i < 2; i++) {

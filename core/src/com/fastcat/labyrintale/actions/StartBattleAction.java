@@ -7,8 +7,6 @@ import com.fastcat.labyrintale.screens.battle.BattleView;
 
 public class StartBattleAction extends AbstractAction {
 
-  boolean isFirst;
-
   public StartBattleAction() {
     super(null, 0.5f);
   }
@@ -17,8 +15,7 @@ public class StartBattleAction extends AbstractAction {
   protected void updateAction() {
     if (duration == baseDuration) {
       AbstractLabyrinth.advisor.atBattleStart();
-      for (BattleView b : battleScreen.getTurns()) {
-        AbstractEntity p = b.entity;
+      for (AbstractEntity p : battleScreen.getTurns()) {
         if (p.isPlayer) {
           for (AbstractSkill s : p.hand) {
             if (s != null) s.atBattleStart();

@@ -28,7 +28,7 @@ public class ElasticRing extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(
+    top(
         new ApplyStatusAction(
             new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
   }

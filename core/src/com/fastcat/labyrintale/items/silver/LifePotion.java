@@ -28,7 +28,7 @@ public class LifePotion extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    bot(
+    top(
             new ApplyStatusAction(
                     new ImmuneStatus(1), owner, owner, false));
   }
