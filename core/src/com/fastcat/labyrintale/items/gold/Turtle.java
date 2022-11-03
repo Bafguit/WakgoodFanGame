@@ -29,6 +29,6 @@ public class Turtle extends AbstractItem {
   @Override
   public void atBattleStart() {
     flash();
-    top(new BlockAction(owner, AbstractSkill.SkillTarget.SELF, 15));
+    top(new BlockAction(owner, owner, 15));
   }
 }

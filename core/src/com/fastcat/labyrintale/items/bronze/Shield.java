@@ -17,19 +17,11 @@ public class Shield extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(2);
+    owner.modifyMaxHealth(8);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-2);
-  }
-
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(
-        new ApplyStatusAction(
-            new CourageStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
+    owner.modifyMaxHealth(-8);
   }
 }

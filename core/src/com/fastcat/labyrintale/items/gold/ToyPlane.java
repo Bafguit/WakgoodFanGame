@@ -15,15 +15,15 @@ public class ToyPlane extends AbstractItem {
 
   @Override
   public void onGain() {
-    AbstractLabyrinth.charge++;
-    owner.stat.spell -= 5;
-    owner.stat.speed += 5;
+    owner.modifyMaxHealth(10);
+    owner.stat.speed += 3;
+    owner.stat.moveRes += 30;
   }
 
   @Override
   public void onRemove() {
-    AbstractLabyrinth.charge--;
-    owner.stat.spell += 5;
-    owner.stat.speed -= 5;
+    owner.modifyMaxHealth(-10);
+    owner.stat.speed -= 3;
+    owner.stat.moveRes -= 30;
   }
 }

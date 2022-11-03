@@ -43,8 +43,6 @@ public class VictoryAction extends AbstractAction {
         AbstractLabyrinth.victoryRoom();
       }
       Array<AbstractReward> temp = new Array<>();
-      // temp.add(new StatReward());
-      temp.add(new HealReward());
       AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
         AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];

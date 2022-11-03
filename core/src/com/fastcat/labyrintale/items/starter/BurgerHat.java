@@ -13,16 +13,10 @@ public class BurgerHat extends AbstractItem {
     super(ID, owner, RARITY);
   }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 1));
-  }
-
   public void endOfTurn() {
     Array<AbstractEntity> temp = new Array<>();
     for(AbstractPlayer p : AbstractLabyrinth.players) {
-      if(p.block > 0) temp.add(p);
+      if(p.isAlive() && p.block > 0) temp.add(p);
     }
     if(temp.size > 0) {
       top(new HealAction(owner, temp, 1));

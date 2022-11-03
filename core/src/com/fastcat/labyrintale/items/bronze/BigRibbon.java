@@ -17,12 +17,14 @@ public class BigRibbon extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(2);
+    owner.stat.debuRes += 5;
+    owner.stat.neutRes += 5;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-2);
+    owner.stat.debuRes -= 5;
+    owner.stat.neutRes -= 5;
   }
 
   @Override

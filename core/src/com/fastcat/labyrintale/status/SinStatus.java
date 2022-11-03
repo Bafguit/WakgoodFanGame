@@ -19,9 +19,8 @@ public class SinStatus extends AbstractStatus {
   }
 
   @Override
-  public void startOfTurn() {
-    if (notSelf) notSelf = false;
-    else top(new RemoveStatusAction(this, true));
+  public void endOfTurn() {
+    top(new RemoveStatusAction(this, true));
   }
 
   @Override

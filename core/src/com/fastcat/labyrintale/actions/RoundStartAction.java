@@ -35,6 +35,7 @@ public class RoundStartAction extends AbstractAction {
           s.startOfRound();
         }
       }
+      if(AbstractLabyrinth.advisor != null) AbstractLabyrinth.advisor.startOfRound();
     }
   }
 }

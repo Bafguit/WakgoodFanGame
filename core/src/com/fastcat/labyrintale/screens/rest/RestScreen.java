@@ -25,17 +25,9 @@ public class RestScreen extends AbstractScreen {
     count = 2;
     end = new RestEndButton();
     end.disable();
-    boolean rev = false, item = false;
     for (AbstractPlayer p : AbstractLabyrinth.players) {
-      if (!rev && !p.isAlive()) {
-        rev = true;
-        count++;
-      }
-      for (AbstractItem i : p.item) {
-        if (!item && i.id.equals("삽 같은거")) { // TODO 아이템 만들어서 ID 넣기
-          item = true;
-          count++;
-        }
+      if (!p.isAlive()) {
+        break;
       }
     }
 
@@ -56,6 +48,20 @@ public class RestScreen extends AbstractScreen {
     RestDesc d = desc[cnt] = new RestDesc("휴식");
     d.setPosition(tw - d.sWidth / 2, h * 0.6f - d.sHeight / 2);
 
+    if (count > 2) {
+      tw += tww;
+      cnt++;
+
+      RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.REVIVE);
+      b3.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
+
+      RestIcon c3 = icons[cnt] = new RestIcon(b3, getImg(b3.type));
+      c3.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
+
+      RestDesc d3 = desc[cnt] = new RestDesc("소생");
+      d3.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
+    }
+
     tw += tww;
     cnt++;
 
@@ -67,34 +73,6 @@ public class RestScreen extends AbstractScreen {
 
     RestDesc d2 = desc[cnt] = new RestDesc("단련");
     d2.setPosition(tw - d2.sWidth / 2, h * 0.6f - d2.sHeight / 2);
-
-    if (rev) {
-      tw += tww;
-      cnt++;
-
-      RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.REVIVE);
-      b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
-
-      RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b3.type));
-      c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
-
-      RestDesc d3 = desc[cnt] = new RestDesc("소생");
-      d2.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
-    }
-
-    if (item) {
-      tw += tww;
-      cnt++;
-
-      RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.DISCOVER);
-      b2.setPosition(tw - b3.sWidth / 2, h * 0.73f - b3.sHeight / 2);
-
-      RestIcon c3 = icons[cnt] = new RestIcon(b2, getImg(b3.type));
-      c2.setPosition(tw - c3.sWidth / 2, h * 0.85f - c3.sHeight / 2);
-
-      RestDesc d3 = desc[cnt] = new RestDesc("탐색");
-      d2.setPosition(tw - d3.sWidth / 2, h * 0.6f - d3.sHeight / 2);
-    }
   }
 
   public static Sprite getImg(RestButton.RestType type) {

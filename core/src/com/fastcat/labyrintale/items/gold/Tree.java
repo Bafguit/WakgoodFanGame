@@ -17,7 +17,7 @@ public class Tree extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
+    owner.modifyMaxHealth(10);
     owner.stat.critical += 30;
     owner.stat.debuRes += 5;
     owner.stat.neutRes += 5;
@@ -26,7 +26,7 @@ public class Tree extends AbstractItem {
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
+    owner.modifyMaxHealth(-10);
     owner.stat.critical -= 30;
     owner.stat.debuRes -= 5;
     owner.stat.neutRes -= 5;

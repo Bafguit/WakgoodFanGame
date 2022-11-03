@@ -18,13 +18,13 @@ public class CottonNecklace extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(5);
-    owner.stat.neutRes += 5;
+    owner.stat.neutRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-5);
-    owner.stat.neutRes -= 5;
+    owner.stat.neutRes -= 10;
   }
 
   @Override
@@ -32,6 +32,6 @@ public class CottonNecklace extends AbstractItem {
     flash();
     top(
         new ApplyStatusAction(
-            new EnduranceStatus(3), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
+            new EnduranceStatus(3), null, AbstractSkill.SkillTarget.PLAYER_ALL, false));
   }
 }

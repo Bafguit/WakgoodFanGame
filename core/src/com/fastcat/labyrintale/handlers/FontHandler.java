@@ -47,7 +47,7 @@ public final class FontHandler implements Disposable {
   public static final FontData BORDER = new FontData(MEDIUM, 40, true);
   public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
   public static final FontData HP = new FontData(MEDIUM, 26, false);
-  public static final FontData STATUS = new FontData(MEDIUM, 24, true);
+  public static final FontData STATUS = new FontData(MEDIUM, 20, true);
   public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
   public static final FontData WAY = new FontData(MEDIUM, 32, false);
   public static final FontData SETTING = new FontData(BOLD, 44, true);
@@ -94,7 +94,7 @@ public final class FontHandler implements Disposable {
     parameter.size = size;
     parameter.color = color;
     parameter.borderColor = bColor;
-    parameter.borderWidth = border ? parameter.size * 0.03f : 0.0f;
+    parameter.borderWidth = border ? parameter.size * 0.1f : 0.0f;
     if (type.equals(BOLD)) return bold.generateFont(parameter);
     else return medium.generateFont(parameter);
   }

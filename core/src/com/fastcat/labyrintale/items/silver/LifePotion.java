@@ -30,6 +30,6 @@ public class LifePotion extends AbstractItem {
     flash();
     top(
             new ApplyStatusAction(
-                    new ImmuneStatus(1), owner, owner, false));
+                    new ImmuneStatus(1), owner, owner, true));
   }
 }

@@ -18,12 +18,12 @@ public class Rocket extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(20);
+    owner.modifyMaxHealth(3);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-20);
+    owner.modifyMaxHealth(-3);
   }
 
   @Override

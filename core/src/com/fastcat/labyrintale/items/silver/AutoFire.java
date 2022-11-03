@@ -31,7 +31,7 @@ public class AutoFire extends AbstractItem {
     flash();
     top(
         new AttackAction(
-            owner,
+            null,
             AbstractSkill.SkillTarget.ENEMY_ALL,
             2,
             AbstractEntity.DamageType.SPIKE,

@@ -14,15 +14,15 @@ public class Purplight extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.attack += 2;
-    owner.stat.speed += 2;
+    owner.stat.attack += 3;
+    owner.stat.speed += 3;
     owner.stat.debuRes -= 10;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.attack -= 2;
-    owner.stat.speed -= 2;
+    owner.stat.attack -= 3;
+    owner.stat.speed -= 3;
     owner.stat.debuRes += 10;
   }
 }

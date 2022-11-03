@@ -39,8 +39,8 @@ public class StatusButton extends AbstractUI {
               sb,
               fontData,
               valueColor() + status.amount,
-              x - sWidth * 0.5f,
-              y + sHeight / 2,
+              x - sWidth * 0.2f,
+              y + sHeight * 0.2f,
               sWidth * 2,
               sHeight);
         sb.draw(border, x, y, sWidth, sHeight);

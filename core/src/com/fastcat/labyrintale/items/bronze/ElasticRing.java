@@ -30,6 +30,6 @@ public class ElasticRing extends AbstractItem {
     flash();
     top(
         new ApplyStatusAction(
-            new EnduranceStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+            new EnduranceStatus(1), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
   }
 }
