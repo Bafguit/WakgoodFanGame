@@ -81,8 +81,12 @@ public class SettingScreen extends AbstractScreen {
       exit.update();
     }
     monitor.update();
+    SettingHandler.setting.monitor = monitor.index;
     screenMode.update();
+    SettingHandler.setting.screenMode = screenMode.index;
     resolution.update();
+    SettingHandler.setting.width = width[resolution.index];
+    SettingHandler.setting.height = height[resolution.index];
     volumeSfx.update();
     SettingHandler.setting.volumeSfx = volumeSfx.getValue();
     volumeBgm.update();

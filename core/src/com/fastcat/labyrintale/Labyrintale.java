@@ -189,7 +189,9 @@ public class Labyrintale extends Game {
     if (!tutorial && labyrinth != null) {
       labyrinth.update();
     }
-    if(tutorial) {
+    if(setting) {
+      settingScreen.update();
+    } if(tutorial) {
       tutorialScreen.update();
     } else if (tempScreen.size > 0) {
       AbstractScreen s = tempScreen.get(tempScreen.size - 1);
