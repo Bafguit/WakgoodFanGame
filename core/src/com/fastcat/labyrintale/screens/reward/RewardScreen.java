@@ -6,17 +6,19 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RewardScreen extends AbstractScreen {
 
   public RewardTypeText rewardTypeText;
+  public RewardText rewardText;
   public PassRewardButton passButton;
   public Array<RewardItemButton> rewardButtons = new Array<>();
   public Array<AbstractReward> rewards;
-  public RewardScreenType sType;
 
-  public RewardScreen(RewardScreenType type, Array<AbstractReward> rewards) {
+  public RewardScreen(Array<AbstractReward> rewards) {
     cType = ControlPanel.ControlType.BASIC;
     this.rewards = rewards;
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -24,12 +26,12 @@ public class RewardScreen extends AbstractScreen {
       float hf = (float) rewards.size / 2 - 0.5f;
       RewardItemButton temp = new RewardItemButton(rewards.get(i));
       temp.setPosition(
-          w * (0.75f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, h * 0.7f - temp.sHeight * 0.5f);
+          w * (0.75f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, h * 0.65f - temp.sHeight * 0.5f);
       rewardButtons.add(temp);
     }
-    rewardTypeText = new RewardTypeText(type);
+    rewardTypeText = new RewardTypeText();
+    rewardText = new RewardText();
     passButton = new PassRewardButton(this);
-    sType = type;
   }
 
   @Override
@@ -43,6 +45,7 @@ public class RewardScreen extends AbstractScreen {
   @Override
   public void render(SpriteBatch sb) {
     rewardTypeText.render(sb);
+    rewardText.render(sb);
     for (RewardItemButton b : rewardButtons) {
       b.render(sb);
     }
@@ -52,6 +55,11 @@ public class RewardScreen extends AbstractScreen {
   @Override
   public void show() {
     Labyrintale.getBaseScreen().cType = ControlPanel.ControlType.BASIC;
+    if(SettingHandler.setting.rewardTutorial) {
+      Labyrintale.openTutorial(TutorialScreen.TutorialType.REWARD);
+      SettingHandler.setting.rewardTutorial = false;
+      SettingHandler.save();
+    }
   }
 
   @Override
@@ -62,12 +70,5 @@ public class RewardScreen extends AbstractScreen {
     for (RewardItemButton t : rewardButtons) {
       t.dispose();
     }
-  }
-
-  public enum RewardScreenType {
-    VICTORY,
-    REST,
-    CHEST,
-    EVENT
   }
 }

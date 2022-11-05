@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CriticalPlusStatus;
 import com.fastcat.labyrintale.status.SpeedPlusStatus;
-import com.fastcat.labyrintale.status.TempSpeedStatus;
 
 public class Support extends AbstractSkill {
 

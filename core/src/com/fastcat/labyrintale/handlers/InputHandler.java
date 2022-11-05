@@ -114,9 +114,12 @@ public final class InputHandler {
 
     if (cancel
         && Labyrintale.settingScreen != null
-        && Labyrintale.labyrinth != null
-        && s.type != AbstractScreen.ScreenType.SETTING) {
-      Labyrintale.addTempScreen(Labyrintale.settingScreen);
+        && Labyrintale.labyrinth != null) {
+      if(s.type != AbstractScreen.ScreenType.SETTING) {
+        Labyrintale.openSetting();
+      } else {
+        Labyrintale.closeSetting();
+      }
     }
   }
 }

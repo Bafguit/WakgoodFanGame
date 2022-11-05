@@ -82,7 +82,7 @@ public class VictoryAction extends AbstractAction {
       e += AbstractLabyrinth.currentFloor.floorNum * 2;
       AbstractLabyrinth.gainExp(e);
       Labyrintale.fadeOutAndAddScreen(
-          new RewardScreen(RewardScreen.RewardScreenType.VICTORY, temp));
+          new RewardScreen(temp));
       ActionHandler.clear();
     }
   }

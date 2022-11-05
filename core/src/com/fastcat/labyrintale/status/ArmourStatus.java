@@ -24,7 +24,7 @@ public class ArmourStatus extends AbstractStatus {
   @Override
   public void endOfTurn() {
     top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
-    top(new BlockAction(owner, owner, amount));
+    top(new BlockAction(null, owner, amount));
   }
 
   @Override

@@ -3,8 +3,11 @@ package com.fastcat.labyrintale.actions;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.TurnChangeEffect;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.screens.battle.BattleView;
+import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.TurnEffectText;
 
 public class RoundStartAction extends AbstractAction {
@@ -36,6 +39,9 @@ public class RoundStartAction extends AbstractAction {
         }
       }
       if(AbstractLabyrinth.advisor != null) AbstractLabyrinth.advisor.startOfRound();
+      if(SettingHandler.setting.battleTutorial) {
+        ActionHandler.bot(new TutorialAction());
+      }
     }
   }
 }

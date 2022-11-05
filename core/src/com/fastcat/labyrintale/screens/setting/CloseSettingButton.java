@@ -32,6 +32,6 @@ public class CloseSettingButton extends AbstractUI {
   @Override
   protected void onClick() {
     SettingHandler.save();
-    Labyrintale.removeTempScreen(screen);
+    Labyrintale.closeSetting();
   }
 }

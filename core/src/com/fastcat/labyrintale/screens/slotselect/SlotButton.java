@@ -32,6 +32,7 @@ public class SlotButton extends AbstractUI {
 
   @Override
   protected void updateButton() {
+    clickable = skill.upgradeCount < AbstractLabyrinth.maxSkillUp;
     if (over) {
       AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
     }
@@ -64,7 +65,6 @@ public class SlotButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    select.slotSelected(player, index);
-    Labyrintale.removeTempScreen(select);
+    Labyrintale.addTempScreen(new ConfirmSlotScreen(player, index, select));
   }
 }

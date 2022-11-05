@@ -10,13 +10,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractChoice;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.abstracts.AbstractWay;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
+import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.PlayerWayView;
 import com.fastcat.labyrintale.uis.WayBgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -160,6 +160,12 @@ public class WayScreen extends AbstractScreen {
   @Override
   public void show() {
     SoundHandler.addMusic("MAP", true, true).stop = false;
+    if(SettingHandler.setting.wayTutorial) {
+      AbstractLabyrinth.cPanel.type = ControlPanel.ControlType.BASIC;
+      Labyrintale.openTutorial(TutorialScreen.TutorialType.WAY);
+      SettingHandler.setting.wayTutorial = false;
+      SettingHandler.save();
+    }
   }
 
   @Override

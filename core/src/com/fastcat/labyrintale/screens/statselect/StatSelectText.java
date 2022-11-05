@@ -27,7 +27,7 @@ public class StatSelectText extends AbstractUI {
         renderColorCenter(
             sb,
             CARD_BIG_NAME,
-            "보유한 스탯 포인트: &y<" + AbstractLabyrinth.sp + ">",
+            "보유한 능력치 포인트: &y<" + AbstractLabyrinth.sp + ">",
             x,
             y - sHeight * 0.7f,
             sWidth);

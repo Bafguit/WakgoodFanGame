@@ -101,9 +101,12 @@ public class AbstractLabyrinth {
     if (exp >= maxExp) {
       level++;
       int i = exp - maxExp;
-      maxExp *= 1.4f;
+      maxExp *= 1.27f;
       exp = 0;
-      sp += 4;
+      sp += 2;
+      for(AbstractPlayer p : players) {
+        if(p.isAlive()) p.modifyMaxHealth(1);
+      }
       gainExp(i);
     }
   }

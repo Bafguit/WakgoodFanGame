@@ -29,6 +29,6 @@ public class OptionButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    Labyrintale.addTempScreen(Labyrintale.settingScreen);
+    Labyrintale.openSetting();
   }
 }

@@ -94,7 +94,7 @@ public final class FontHandler implements Disposable {
     parameter.size = size;
     parameter.color = color;
     parameter.borderColor = bColor;
-    parameter.borderWidth = border ? parameter.size * 0.1f : 0.0f;
+    parameter.borderWidth = border ? parameter.size * 0.07f : 0.0f;
     if (type.equals(BOLD)) return bold.generateFont(parameter);
     else return medium.generateFont(parameter);
   }

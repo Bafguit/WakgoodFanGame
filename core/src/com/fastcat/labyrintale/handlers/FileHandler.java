@@ -51,8 +51,8 @@ public class FileHandler implements Disposable {
   @Getter private static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
   // 이벤트
   @Getter private static final HashMap<String, Sprite> eventImg = new HashMap<>();
-  // 제약
-  @Getter private static final HashMap<String, Sprite> riskImg = new HashMap<>();
+  // 튜토리얼
+  @Getter private static final HashMap<String, Sprite> tutorialImg = new HashMap<>();
   // 영상
   @Getter private static final HashMap<String, FileHandle> video = new HashMap<>();
   /***
@@ -98,7 +98,7 @@ public class FileHandler implements Disposable {
     generateItemImg();
     generateEventImg();
     generateVideo();
-    generateRiskImg();
+    generateTutorialImg();
     setAntiAliased();
   }
 
@@ -132,7 +132,7 @@ public class FileHandler implements Disposable {
     maps.add(statusImg);
     maps.add(itemImg);
     maps.add(itemImgTrans);
-    maps.add(riskImg);
+    maps.add(tutorialImg);
     // maps.put("eventImg", eventImg);
   }
 
@@ -246,6 +246,7 @@ public class FileHandler implements Disposable {
     ui.put("DIFF_NORMAL", new Sprite(new Texture("img/ui/diff_normal.png")));
     ui.put("DIFF_HARD", new Sprite(new Texture("img/ui/diff_hard.png")));
     ui.put("DIFF_COFFIN", new Sprite(new Texture("img/ui/diff_coffin.png")));
+    ui.put("ARROW_RIGHT", new Sprite(new Texture("img/ui/arrow_right.png")));
   }
 
   private void generateCharImg() {
@@ -268,48 +269,19 @@ public class FileHandler implements Disposable {
     }
   }
 
-  private void generateRiskImg() {
-    riskImg.clear();
-    for (int i = 1; i <= 3; i++) {
-      String k = "FAM_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "FTG_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "GRW_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "HUG_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "INT_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "MSR_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "POV_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "RST_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "SPD_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
-    for (int i = 1; i <= 3; i++) {
-      String k = "STR_" + i;
-      riskImg.put(k, new Sprite(new Texture("img/risk/" + k + ".png")));
-    }
+  private void generateTutorialImg() {
+    tutorialImg.clear();
+    String s;
+    tutorialImg.put(s = "CHARSELECT_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "CHARSELECT_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "CHARSELECT_3", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "BATTLE_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "BATTLE_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "BATTLE_3", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "WAY_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "WAY_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "REWARD_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+    tutorialImg.put(s = "REWARD_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
   }
 
   private void generateAdvImg() {

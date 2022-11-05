@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -95,6 +96,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
       player.upgradeSkill(index, 1);
     }
     gets.slotSelected(player, index);
+    Labyrintale.removeTempScreen(this);
   }
 
   private static class PlayerSlotIcon extends AbstractUI {

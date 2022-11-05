@@ -17,7 +17,7 @@ public class PassRewardButton extends AbstractUI {
   public PassRewardButton(RewardScreen sc) {
     super(FileHandler.getUi().get("NEXT"));
     this.sc = sc;
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.6f);
+    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.55f);
     fontData = MAIN_MENU;
     text = "넘기기";
     showImg = false;

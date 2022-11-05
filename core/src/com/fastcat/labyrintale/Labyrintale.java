@@ -28,6 +28,7 @@ import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 import com.fastcat.labyrintale.screens.rest.RestScreen;
 import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
+import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
 import io.github.singlerr.Main;
 import lombok.Getter;
@@ -55,9 +56,12 @@ public class Labyrintale extends Game {
   public static EventScreen eventScreen;
   public static ShopScreen shopScreen;
   public static SettingScreen settingScreen;
+  public static TutorialScreen tutorialScreen;
   public static boolean fading = false;
   public static boolean fadeIn = false;
   public static boolean tempFade = false;
+  public static boolean tutorial = false;
+  public static boolean setting = false;
   public static float tick;
   private static AbstractScreen nextScreen = null;
   private static Sprite fadeTex;
@@ -161,6 +165,7 @@ public class Labyrintale extends Game {
     charSelectScreen = new CharSelectScreen();
     settingScreen = new SettingScreen();
     diffScreen = new DifficultyScreen();
+    tutorialScreen = new TutorialScreen();
     // labyrinth = new AbstractLabyrinth();
     fadeTex = FileHandler.getUi().get("FADE");
     fadeTex.setPosition(0, 0);
@@ -181,10 +186,12 @@ public class Labyrintale extends Game {
     InputHandler.getInstance().update();
     FontHandler.getInstance().update();
     subText = null;
-    if (labyrinth != null) {
+    if (!tutorial && labyrinth != null) {
       labyrinth.update();
     }
-    if (tempScreen.size > 0) {
+    if(tutorial) {
+      tutorialScreen.update();
+    } else if (tempScreen.size > 0) {
       AbstractScreen s = tempScreen.get(tempScreen.size - 1);
       if (s != null) {
         s.update();
@@ -222,6 +229,8 @@ public class Labyrintale extends Game {
     }
     if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
     if (subText != null) subText.renderSub(sb);
+    if (tutorial) tutorialScreen.render(sb);
+    if (setting) settingScreen.render(sb);
     /** ============== */
     fade();
 
@@ -237,6 +246,7 @@ public class Labyrintale extends Game {
             alphaCount = 1.0f;
             if (!tempFade) setScreen(nextScreen);
             else addTempScreen(nextScreen);
+            if(setting) closeSetting();
             nextScreen = null;
             fadeIn = true;
           } else fading = false;
@@ -279,6 +289,24 @@ public class Labyrintale extends Game {
   public static void returnToWay() {
     wayScreen = new WayScreen();
     fadeOutAndChangeScreen(wayScreen, 1.5f);
+  }
+
+  public static void openTutorial(TutorialScreen.TutorialType type) {
+    tutorialScreen.setType(type);
+    tutorial = true;
+  }
+
+  public static void closeTutorial() {
+    tutorial = false;
+  }
+
+  public static void openSetting() {
+    setting = true;
+  }
+
+  public static void closeSetting() {
+    SettingHandler.save();
+    setting = false;
   }
 
   @Override

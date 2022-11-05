@@ -5,7 +5,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.status.TempSpeedStatus;
+import com.fastcat.labyrintale.status.SpeedMinusStatus;
 
 public class HinderAction extends AbstractAction {
 
@@ -16,7 +16,6 @@ public class HinderAction extends AbstractAction {
       AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, int cool) {
     super(actor, target, 0.5f);
     info = new AbstractEntity.DamageInfo(actor, damage);
-    this.cool = -cool;
   }
 
   @Override
@@ -40,7 +39,7 @@ public class HinderAction extends AbstractAction {
           if (te.isAlive()) te.takeDamage(info);
         }
         for (AbstractEntity e : target) {
-          e.applyStatus(new TempSpeedStatus(cool), actor, cool);
+          e.applyStatus(new SpeedMinusStatus(cool), actor, cool);
         }
       } else isDone = true;
     }
