@@ -33,7 +33,7 @@ public class UpsetIdolEvent extends AbstractEvent {
                 public boolean condition() {
                   boolean has = false;
                   for (AbstractPlayer p : AbstractLabyrinth.players) {
-                    if (p.hasSkill("GreenHeart")) {
+                    if (p.hasItem("GreenHeart")) {
                       has = true;
                       break;
                     }

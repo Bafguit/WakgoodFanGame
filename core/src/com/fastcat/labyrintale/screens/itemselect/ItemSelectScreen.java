@@ -2,9 +2,12 @@ package com.fastcat.labyrintale.screens.itemselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
+import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 
 public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem {
@@ -14,17 +17,26 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
   public ItemButton selected;
   public ItemButton[] items;
   public GetSelectedItem gets;
+  public CancelItemButton cancel;
+  public boolean pass;
 
-  public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets) {
+  public ItemSelectScreen(int amount, GetSelectedItem gets, boolean passable) {
+    this(GroupHandler.ItemGroup.getRandomItem(amount).toArray(AbstractItem.class), gets, passable);
+  }
+
+  public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets, boolean passable) {
     itemSelectText = new ItemSelectText();
     this.gets = gets;
     int size = items.length;
     float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
+    this.items = new ItemButton[size];
     for (int i = 0; i < size; i++) {
       ItemButton adv = new ItemButton(items[i], this);
       adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
       this.items[i] = adv;
     }
+    pass = passable;
+    cancel = new CancelItemButton(this);
   }
 
   @Override
@@ -33,6 +45,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
       item.update();
     }
     itemSelectText.update();
+    if(pass) cancel.update();
   }
 
   @Override
@@ -42,6 +55,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
       advisorButton.render(sb);
     }
     itemSelectText.render(sb);
+    if(pass) cancel.render(sb);
   }
 
   @Override
@@ -59,6 +73,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
 
   @Override
   public void itemSelected(AbstractItem item) {
-    gets.itemSelected(item);
+    Labyrintale.removeTempScreen(this);
+    Labyrintale.addTempScreen(new ShopTakeScreen(item, gets));
   }
 }

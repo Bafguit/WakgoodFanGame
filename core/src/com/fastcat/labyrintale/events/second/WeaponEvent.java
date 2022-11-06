@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.ItemSelectEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
@@ -22,7 +23,7 @@ public class WeaponEvent extends AbstractEvent {
   public Array<EventChoice> getChoices(int page) {
     Array<EventChoice> a = new Array<>();
     if (page == 0) {
-      a.add(new NextPageEventChoice(data.SELECT[0], this, 1)); // TODO 아이템 10개 중 선택으로 변경
+      a.add(new ItemSelectEventChoice(data.SELECT[0], 10, new EventCondition.True(), this, 1));
       a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
     } else {
       a.add(new EndEventChoice());

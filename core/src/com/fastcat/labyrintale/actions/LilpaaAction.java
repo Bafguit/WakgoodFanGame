@@ -20,7 +20,6 @@ public class LilpaaAction extends AbstractAction {
     super(s.owner, ALL, 2.0f);
     info = new AbstractEntity.DamageInfo(actor, s.attack);
     burn = s.value;
-    // TODO 릴파파 이펙트 추가 요망
   }
 
   @Override
@@ -29,7 +28,7 @@ public class LilpaaAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      SoundHandler.playSfx("LILPAA");
+      //SoundHandler.playSfx("LILPAA");
     } else if (duration < 1.1f && !ps) {
       if (actor != null) {
         AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);

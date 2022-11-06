@@ -24,7 +24,6 @@ public class FloorSecondEvent extends AbstractEvent implements AtEndOfTempScreen
   @Override
   public Array<EventChoice> getChoices(int page) {
     Array<EventChoice> a = new Array<>();
-    // TODO 1층 보스 보상 추가
     if (page == 0) a.add(new AdvisorChoice(data.SELECT[0], this));
     else if (page == 1) a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
     else a.add(new EndEventChoice());

@@ -22,7 +22,7 @@ public class BossEnemy1 extends AbstractEnemy {
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
     AbstractSkill s = new StrikeE(this);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
       s.upgrade();
     }
     temp.add(s);
@@ -32,12 +32,11 @@ public class BossEnemy1 extends AbstractEnemy {
     }
     temp.add(s2);
     AbstractSkill s3 = new StrikeE(this);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
       s3.upgrade();
     }
     temp.add(s3);
-    temp.add(new FrailStrongE(this));
-    temp.add(new GrowE(this));
+    temp.add(new GrowE(this).upgrade().upgrade());
     return temp;
   }
 
@@ -45,13 +44,9 @@ public class BossEnemy1 extends AbstractEnemy {
   public void atEndOfRound() {
     if (health <= (maxHealth / 3) && mod == 1) {
       mod = 2;
-      deck = getStartingDeck();
-      newDeck();
-    } else if (health <= ((maxHealth / 3) * 2) && mod == 0) {
-      mod = 1;
       Array<AbstractSkill> temp = new Array<>();
       AbstractSkill s = new SlashE(this);
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 6; i++) {
         s.upgrade();
       }
       temp.add(s);
@@ -61,12 +56,28 @@ public class BossEnemy1 extends AbstractEnemy {
       }
       temp.add(s2);
       AbstractSkill s3 = new SlashE(this);
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 6; i++) {
         s3.upgrade();
       }
       temp.add(s3);
-      temp.add(new FrailStrongE(this));
-      temp.add(new GrowE(this));
+      temp.add(new GrowE(this).upgrade().upgrade());
+      deck = temp;
+      newDeck();
+    } else if (health <= ((maxHealth / 3) * 2) && mod == 0) {
+      mod = 1;
+      Array<AbstractSkill> temp = new Array<>();
+      AbstractSkill s = new DualAttackE(this);
+      for (int i = 0; i < 6; i++) {
+        s.upgrade();
+      }
+      temp.add(s);
+      temp.add(new FrailStrongE(this).upgrade());
+      AbstractSkill s3 = new DualAttackE(this);
+      for (int i = 0; i < 6; i++) {
+        s3.upgrade();
+      }
+      temp.add(s3);
+      temp.add(new GrowE(this).upgrade().upgrade());
       deck = temp;
       newDeck();
     }

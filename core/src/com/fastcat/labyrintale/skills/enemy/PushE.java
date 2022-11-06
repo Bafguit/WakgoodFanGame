@@ -22,12 +22,9 @@ public class PushE extends AbstractSkill {
 
   @Override
   public void use() {
-    AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true);
-    bot(a);
-    AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-    AbstractAction m = new MoveAction(e, owner, 3, 0.2f);
-    m.preAction = a;
-    bot(m);
+    AbstractAction a;
+    bot(a = new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
+    bot(new MoveAction(AbstractSkill.getTargets(target).get(0), owner, 3, 0.2f), a);
   }
 
   @Override

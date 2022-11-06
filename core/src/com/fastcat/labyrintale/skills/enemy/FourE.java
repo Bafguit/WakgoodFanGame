@@ -20,13 +20,10 @@ public class FourE extends AbstractSkill {
 
   @Override
   public void use() {
-    AbstractAction a = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true);
-    bot(a);
+    AbstractAction a;
+    bot(a = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true));
     for (int i = 0; i < 3; i++) {
-      AbstractAction aa =
-          new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true);
-      aa.preAction = a;
-      bot(aa);
+      bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.LIGHT, true), a);
     }
   }
 

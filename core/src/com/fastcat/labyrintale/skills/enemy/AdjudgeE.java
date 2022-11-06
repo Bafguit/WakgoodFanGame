@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -20,8 +21,9 @@ public class AdjudgeE extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new FixedStatus(), owner, target, true));
-    bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, false));
+    AbstractAction a;
+    bot(a = new ApplyStatusAction(new FixedStatus(), owner, target, true));
+    bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true), a);
   }
 
   @Override

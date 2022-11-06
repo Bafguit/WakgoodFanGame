@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 public class ShopItemIcon extends AbstractUI {
 
   private static final FontHandler.FontData fontData = FontHandler.MAIN_MENU;
+  private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
   public ShopTakeScreen screen;
   public Sprite icon;
   public String text;
@@ -23,10 +24,10 @@ public class ShopItemIcon extends AbstractUI {
     this.screen = screen;
     if (screen.type == ShopTakeScreen.TakeType.SKILL) {
       icon = screen.skill.img;
-      text = "버릴 스킬을 선택하세요.";
+      text = "교체할 스킬을 선택하세요.";
     } else {
       icon = screen.item.img;
-      text = "버릴 아이템을 선택하세요.";
+      text = "교체할 아이템을 선택하세요.";
     }
   }
 
@@ -42,6 +43,17 @@ public class ShopItemIcon extends AbstractUI {
 
       sb.draw(icon, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
+      if (screen.type == ShopTakeScreen.TakeType.SKILL) {
+        sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+        FontHandler.renderCenter(
+                sb,
+                fontData,
+                Integer.toString(screen.skill.cost),
+                x - sWidth * 0.05f,
+                y + sWidth * 0.95f,
+                sWidth * 0.2f,
+                sWidth * 0.2f);
+      }
     }
   }
 

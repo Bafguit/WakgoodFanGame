@@ -21,8 +21,8 @@ public class GuardE extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new BlockAction(owner, target, spell));
-    bot(new ApplyStatusAction(new ProvokeStatus(owner), owner, target, true));
+    bot(new BlockAction(owner, owner, spell));
+    bot(new ApplyStatusAction(new ProvokeStatus(owner), owner, owner, true));
   }
 
   @Override

@@ -60,7 +60,6 @@ public class AbstractItem implements Cloneable {
   }
 
   public final void flashWithoutAction() {
-    // TODO 소리 추가
     flashWithoutAction(owner);
   }
 

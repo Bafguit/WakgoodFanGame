@@ -335,7 +335,7 @@ public abstract class VideoPlayerDesktop implements VideoPlayer {
 
   @Override
   public void setLooping(boolean looping) {
-    // TODO
+
   }
 
   @Override

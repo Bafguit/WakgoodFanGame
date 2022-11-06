@@ -24,11 +24,9 @@ public class UnblockE extends AbstractSkill {
 
   @Override
   public void use() {
-    AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true);
-    bot(a);
-    AbstractAction m = new ApplyStatusAction(new FlawStatus(value), owner, target, false);
-    m.preAction = a;
-    bot(m);
+    AbstractAction a;
+    bot(a = new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, true));
+    bot(new ApplyStatusAction(new FlawStatus(value), owner, target, false), a);
   }
 
   @Override

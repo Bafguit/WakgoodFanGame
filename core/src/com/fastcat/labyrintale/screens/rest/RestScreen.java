@@ -78,7 +78,7 @@ public class RestScreen extends AbstractScreen {
   public static Sprite getImg(RestButton.RestType type) {
     switch (type) {
       case HEAL:
-        return FileHandler.getUi().get("HEAL"); // TODO 이미지 변경
+        return FileHandler.getUi().get("HEAL");
       case UPGRADE:
         return FileHandler.getUi().get("UPGRADE");
       default:

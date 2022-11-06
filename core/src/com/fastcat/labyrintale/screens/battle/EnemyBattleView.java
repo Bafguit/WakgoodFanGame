@@ -34,7 +34,8 @@ public class EnemyBattleView extends BattleView {
       if (showImg) battleScreen.looking.add(entity);
     } else {
       overable = false;
-      showImg = isLooking || battleScreen.currentTurnEntity() == entity;
+      AbstractEntity t = battleScreen.currentTurnEntity();
+      showImg = isLooking || (t != null && t == entity);
     }
   }
 

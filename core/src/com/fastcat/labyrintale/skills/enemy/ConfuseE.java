@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.enemy;
 
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -19,8 +20,9 @@ public class ConfuseE extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new UnblockableStatus(), owner, SkillTarget.PLAYER_FIRST_TWO, true));
-    bot(new ApplyStatusAction(new BlindStatus(), owner, SkillTarget.PLAYER_LAST_TWO, true));
+    AbstractAction a;
+    bot(a = new ApplyStatusAction(new UnblockableStatus(), owner, SkillTarget.PLAYER_FIRST_TWO, true));
+    bot(new ApplyStatusAction(new BlindStatus(), owner, SkillTarget.PLAYER_LAST_TWO, true), a);
   }
 
   @Override

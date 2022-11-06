@@ -21,11 +21,9 @@ public class InduceE extends AbstractSkill {
   @Override
   public void use() {
     AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-    AbstractAction a = new MoveAction(e, owner, 0, 0.2f);
-    bot(a);
-    AbstractAction m = new ApplyStatusAction(new FixedStatus(), owner, e, true);
-    m.preAction = a;
-    bot(m);
+    AbstractAction a;
+    bot(a = new MoveAction(e, owner, 0, 0.2f));
+    bot(new ApplyStatusAction(new FixedStatus(), owner, e, true), a);
   }
 
   @Override

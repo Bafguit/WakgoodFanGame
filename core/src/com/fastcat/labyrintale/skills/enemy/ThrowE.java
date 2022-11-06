@@ -22,12 +22,9 @@ public class ThrowE extends AbstractSkill {
 
   @Override
   public void use() {
-    AbstractAction a = new AmbushAction(this, true);
-    bot(a);
-    AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-    AbstractAction m = new MoveAction(e, owner, 3, 0.2f);
-    m.preAction = a;
-    bot(m);
+    AbstractAction a;
+    bot(a = new AmbushAction(this, true));
+    bot(new MoveAction(AbstractSkill.getTargets(target).get(0), owner, 3, 0.2f), a);
   }
 
   @Override

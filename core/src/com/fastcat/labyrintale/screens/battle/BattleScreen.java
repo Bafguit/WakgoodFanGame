@@ -352,7 +352,6 @@ public class BattleScreen extends AbstractScreen {
     Array<TurnSpeedData> speedData = new Array<>();
     for (PlayerBattleView p : players) {
       if (p.entity.isAlive())
-        speedData.add(null);
         speedData.add(new TurnSpeedData(p.entity.stat.capSpeed(), AbstractLabyrinth.publicRandom.random(0, 7), p.entity));
     }
     for (EnemyBattleView e : enemies) {
@@ -392,10 +391,10 @@ public class BattleScreen extends AbstractScreen {
   }
 
   public void nextTurn() {
-    turnIndex++;
-    if (turnIndex == turn.size) {
-      resetTurn();
+    if (turnIndex == turn.size - 1) {
+      ActionHandler.bot(new RoundEndAction());
     } else {
+      turnIndex++;
       AbstractEntity t = currentTurnEntity();
       if (t.isAlive()) ActionHandler.bot(new TurnStartAction(t));
       else nextTurn();

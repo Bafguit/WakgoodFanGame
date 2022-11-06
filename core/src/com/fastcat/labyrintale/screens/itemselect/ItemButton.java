@@ -47,6 +47,5 @@ public class ItemButton extends AbstractUI {
   @Override
   protected void onClick() {
     select.itemSelected(item);
-    Labyrintale.removeTempScreen(select);
   }
 }

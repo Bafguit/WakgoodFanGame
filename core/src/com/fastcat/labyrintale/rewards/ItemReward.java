@@ -1,45 +1,51 @@
 package com.fastcat.labyrintale.rewards;
 
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
+import com.fastcat.labyrintale.screens.itemselect.ItemSelectScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
 public class ItemReward extends AbstractReward implements GetSelectedItem {
 
-  public final AbstractItem item;
-
-  public ItemReward(AbstractItem item) {
-    super(RewardType.ITEM);
-    this.item = item;
-    setInfo(item.name, item.desc);
-    img = item.img;
-  }
+  public final ItemRewardType type;
+  public AbstractItem item;
+  public AbstractItem[] items;
 
   public ItemReward(ItemRewardType type) {
-    this(generateItem(type));
+    super(RewardType.ITEM);
+    this.type = type;
+    if(type == ItemRewardType.BOSS) {
+      items = GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BOSS, 3).toArray(AbstractItem.class);
+      img = FileHandler.getUi().get("DISCARD");
+      setInfo("보스 아이템", "보스 아이템 3개 중 하나를 선택해 획득합니다.");
+    } else {
+      item = generateItem(type);
+      img = item.img;
+      setInfo(item.name, item.desc);
+    }
   }
 
   private static AbstractItem generateItem(ItemRewardType type) {
-    if (type == ItemRewardType.NORMAL) {
-      return GroupHandler.ItemGroup.getRandomItem();
-    } else if (type == ItemRewardType.BRONZE) {
+    if (type == ItemRewardType.BRONZE) {
       return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BRONZE);
     } else if (type == ItemRewardType.SILVER) {
       return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.SILVER);
     } else if (type == ItemRewardType.GOLD) {
       return GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.GOLD);
     } else {
-      AbstractItem i = GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BOSS);
-      return i;
+      return GroupHandler.ItemGroup.getRandomItem();
     }
   }
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(new ShopTakeScreen(item, this));
+    if(type == ItemRewardType.BOSS) Labyrintale.addTempScreen(new ItemSelectScreen(items, this, true));
+    else Labyrintale.addTempScreen(new ShopTakeScreen(item, this));
   }
 
   @Override

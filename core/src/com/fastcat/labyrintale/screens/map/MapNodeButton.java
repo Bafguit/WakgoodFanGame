@@ -45,12 +45,4 @@ public class MapNodeButton extends AbstractUI {
       sb.setColor(WHITE);
     }
   }
-
-  // TODO 삭제 요망
-  /*@Override
-  protected void onClick() {
-  	if (!choice.room.isDone && canGo && !mapScreen.isView) {
-  		addTempScreen(new WayScreen());
-  	}
-  }*/
 }

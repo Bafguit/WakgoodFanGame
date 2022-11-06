@@ -24,7 +24,7 @@ public class Counter extends AbstractSkill {
   @Override
   public void use() {
     bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SLASH_H, true));
-    top(new ApplyStatusAction(new CounterStatus(value), owner, owner, true));
+    bot(new ApplyStatusAction(new CounterStatus(value), owner, owner, true));
   }
 
   @Override

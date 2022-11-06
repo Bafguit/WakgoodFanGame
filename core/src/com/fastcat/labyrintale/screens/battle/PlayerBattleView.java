@@ -1,14 +1,17 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
+import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class PlayerBattleView extends BattleView {
@@ -25,7 +28,8 @@ public class PlayerBattleView extends BattleView {
 
   @Override
   protected void updateButton() {
-    isOnLock = battleScreen.currentTurnEntity() == entity;
+    AbstractEntity t = battleScreen.currentTurnEntity();
+    isOnLock = t != null && t == entity;
     if (battleScreen.isSelecting) {
       clickable = entity.isAlive() && isTarget;
       showImg = isLooking || isOnLock || (over && isTarget);
@@ -59,7 +63,26 @@ public class PlayerBattleView extends BattleView {
   protected void onClick() {
     if (entity != null && entity.isAlive()) {
       if (battleScreen.isSelecting) battleScreen.gets.onTargetSelected(entity);
-      // else AbstractLabyrinth.cPanel.battlePanel.setPlayer(player);
+      else {
+        if (charInfoScreen == null) {
+          charInfoScreen = new CharInfoScreen(entity);
+          Labyrintale.addTempScreen(charInfoScreen);
+        } else if (charInfoScreen.player == entity) {
+          if (Labyrintale.getCurScreen() != charInfoScreen) {
+            Labyrintale.removeTempScreen(charInfoScreen);
+            Labyrintale.addTempScreen(charInfoScreen);
+          } else {
+            Labyrintale.removeTempScreen(charInfoScreen);
+            charInfoScreen = null;
+          }
+        } else {
+          if (Labyrintale.getCurScreen() != charInfoScreen) {
+            Labyrintale.removeTempScreen(charInfoScreen);
+            charInfoScreen.setPlayer(entity);
+            Labyrintale.addTempScreen(charInfoScreen);
+          } else charInfoScreen.setPlayer(entity);
+        }
+      }
     }
   }
 }

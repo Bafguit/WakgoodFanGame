@@ -81,13 +81,13 @@ public class RewardItemButton extends AbstractUI {
   protected Array<SubText> getSubText() {
     if (reward.type == AbstractReward.RewardType.SKILL) {
       return sReward.skill.key;
-    } else if (reward.type == AbstractReward.RewardType.ITEM) {
+    } else if (reward.type == AbstractReward.RewardType.ITEM && iReward.type != ItemReward.ItemRewardType.BOSS) {
       return iReward.item.key;
     } else if (reward.type == AbstractReward.RewardType.EXP) {
       return subs;
     }
 
-    return null;
+    return subTexts;
   }
 
   @Override

@@ -14,7 +14,6 @@ public class AdvisorSelectScreen extends AbstractScreen {
 
   public BgImg bg = new BgImg();
   public AdvisorSelectText advisorSelectText;
-  public NextButton nextButton;
   public AdvisorButton selected;
   public AdvisorButton[] aAdvisor;
 
@@ -24,7 +23,6 @@ public class AdvisorSelectScreen extends AbstractScreen {
 
   public AdvisorSelectScreen(boolean isStart) {
     advisorSelectText = new AdvisorSelectText();
-    nextButton = new NextButton(this);
     addAdvisor(isStart);
   }
 
@@ -48,7 +46,6 @@ public class AdvisorSelectScreen extends AbstractScreen {
     for (AdvisorButton advisorButton : aAdvisor) {
       advisorButton.update();
     }
-    nextButton.update();
     advisorSelectText.update();
     if (selected != null)
       AbstractLabyrinth.cPanel.infoPanel.setInfo(
@@ -61,7 +58,6 @@ public class AdvisorSelectScreen extends AbstractScreen {
     for (AdvisorButton advisorButton : aAdvisor) {
       advisorButton.render(sb);
     }
-    nextButton.render(sb);
     advisorSelectText.render(sb);
   }
 

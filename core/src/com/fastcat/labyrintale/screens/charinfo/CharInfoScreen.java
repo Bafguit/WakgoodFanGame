@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FontHandler;
@@ -30,9 +31,9 @@ public class CharInfoScreen extends AbstractScreen {
   public CharItemIcon[] item = new CharItemIcon[2];
   public CharItemIcon passive;
   public StatIcon[] stats = new StatIcon[8];
-  public AbstractPlayer player;
+  public AbstractEntity player;
 
-  public CharInfoScreen(AbstractPlayer player) {
+  public CharInfoScreen(AbstractEntity player) {
     for (int i = 0; i < 3; i++) {
       CharDeckIcon b = new CharDeckIcon(null);
       b.setPosition(w * (0.5f + 0.08f * i) - b.sWidth / 2, h * 0.5f);
@@ -58,7 +59,7 @@ public class CharInfoScreen extends AbstractScreen {
     cType = Labyrintale.getBaseScreen().cType;
   }
 
-  public void setPlayer(AbstractPlayer p) {
+  public void setPlayer(AbstractEntity p) {
     player = p;
     for (int i = 0; i < 3; i++) {
       deck[i].skill = player.deck.get(i);

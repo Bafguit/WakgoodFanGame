@@ -138,7 +138,6 @@ public class AttackAction extends AbstractAction {
         }
         if (effect != AttackType.NONE) {
           for (AbstractEntity t : target) {
-            // TODO 이미지 좌표로 자동입력되게 설정
             if (t.isAlive()) EffectHandler.add(new HitEffect(t, img));
           }
         }

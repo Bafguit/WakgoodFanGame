@@ -27,7 +27,6 @@ public class RoundStartAction extends AbstractAction {
           Math.min(
               AbstractLabyrinth.energy + AbstractLabyrinth.charge, AbstractLabyrinth.MAX_ENERGY);
       for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
-        e.blockRemove = e.block;
         if (e.isPlayer) {
           e.passive.startOfRound();
           for (AbstractItem m : e.item) {

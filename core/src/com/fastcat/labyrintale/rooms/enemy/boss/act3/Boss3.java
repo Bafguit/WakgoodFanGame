@@ -2,8 +2,8 @@ package com.fastcat.labyrintale.rooms.enemy.boss.act3;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.enemies.BossEnemy3;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
+import com.fastcat.labyrintale.enemies.act3.BossEnemy3;
 
 public class Boss3 extends AbstractRoom {
 

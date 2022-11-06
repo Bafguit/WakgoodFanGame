@@ -590,10 +590,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
       bot(new SelectTargetAction(this));
     } else {
-      if (owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
-        bot(new SetAnimationAction(owner, "skill"));
-      }
       use();
+      if (owner != null && (type == SkillType.DEFENCE || type == SkillType.SCHEME)) {
+        top(new SetAnimationAction(owner, "skill"));
+      }
       if (disposable) usedOnce = true;
       if (owner != null) {
         bot(new TurnEndAction(owner));
@@ -613,7 +613,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
 
   protected abstract void use();
 
-  public void upgrade() {
+  public AbstractSkill upgrade() {
     if (upgradable()) {
       upgradeCard();
       if (upAttack != -1) {
@@ -639,6 +639,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       upgradeCount++;
       name = skillData.NAME + "+" + upgradeCount;
     }
+    return this;
   }
 
   public boolean upgradable() {

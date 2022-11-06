@@ -2,8 +2,10 @@ package com.fastcat.labyrintale.screens.advisorselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -21,7 +23,11 @@ public class AdvisorButton extends AbstractUI {
   }
 
   @Override
-  protected void updateButton() {}
+  protected void updateButton() {
+    if (over) {
+      AbstractLabyrinth.cPanel.infoPanel.setInfo(advisor);
+    }
+  }
 
   @Override
   protected void renderUi(SpriteBatch sb) {
@@ -39,6 +45,9 @@ public class AdvisorButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    select.selected = this;
+    if (AbstractLabyrinth.advisor != null) AbstractLabyrinth.advisor.onRemove();
+    AbstractLabyrinth.advisor = advisor;
+    AbstractLabyrinth.advisor.onGain();
+    Labyrintale.removeTempScreen(select);
   }
 }

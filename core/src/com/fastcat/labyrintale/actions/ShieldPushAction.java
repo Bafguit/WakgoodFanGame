@@ -61,7 +61,6 @@ public class ShieldPushAction extends AbstractAction {
         e.setTimeScale(1.0f);
         if (effect != AttackType.NONE) {
           for (AbstractEntity t : target) {
-            // TODO 이미지 좌표로 자동입력되게 설정
             EffectHandler.add(new HitEffect(t, img));
           }
         }

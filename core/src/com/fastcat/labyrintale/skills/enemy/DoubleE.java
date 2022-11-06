@@ -20,13 +20,9 @@ public class DoubleE extends AbstractSkill {
 
   @Override
   public void use() {
-    AbstractAction aa =
-        new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_H, true);
-    bot(aa);
-    AbstractAction a =
-        new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_V, true);
-    a.preAction = aa;
-    bot(a);
+    AbstractAction a;
+    bot(a = new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_H, true));
+    bot(new AttackAction(owner, TARGET, attack, AttackAction.AttackType.SLASH_V, true), a);
   }
 
   @Override
