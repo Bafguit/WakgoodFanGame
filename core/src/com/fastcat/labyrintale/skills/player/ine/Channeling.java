@@ -12,7 +12,7 @@ public class Channeling extends AbstractSkill {
   private static final String ID = "Channeling";
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY_LAST;
+  private static final SkillTarget TARGET = SkillTarget.SELF;
   private static final int VALUE = 2;
 
   public Channeling(AbstractEntity e) {

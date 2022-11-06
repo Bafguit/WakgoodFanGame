@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
 import com.fastcat.labyrintale.skills.enemy.MoveRightE;
+import com.fastcat.labyrintale.skills.enemy.StrikeE;
 import com.fastcat.labyrintale.strings.CharString;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
@@ -18,6 +19,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public Array<AbstractSkill> discardPile;
     public Array<AbstractSkill> disposablePile;
     public boolean isRandom = true;
+    public boolean hasChange = false;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
         super(id, 1, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), false);
@@ -60,12 +62,20 @@ public abstract class AbstractEnemy extends AbstractEntity {
             discardPile.clear();
         }
         if (isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
-        for (int i = 0; i < handSize; i++) {
-            if (i < drawPile.size) {
-                AbstractSkill s = drawPile.removeIndex(0);
-                hand[i] = s;
-            } else break;
+        if(hasChange) {
+            hand[0] = makeHand();
+        } else {
+            for (int i = 0; i < handSize; i++) {
+                if (i < drawPile.size) {
+                    AbstractSkill s = drawPile.removeIndex(0);
+                    hand[i] = s;
+                } else break;
+            }
         }
+    }
+
+    protected AbstractSkill makeHand() {
+        return new StrikeE(this);
     }
 
     public enum EnemyType {

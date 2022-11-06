@@ -23,7 +23,7 @@ public class TurnEndAction extends AbstractAction {
             if (s != null) s.endOfTurn();
           }
         } else {
-          ((AbstractEnemy) actor).shuffleHand();
+          actor.shuffleHand();
         }
       }
     }
