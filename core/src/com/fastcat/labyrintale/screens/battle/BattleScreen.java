@@ -335,43 +335,52 @@ public class BattleScreen extends AbstractScreen {
     }
   }
 
+  public class TurnSpeedData {
+    public final int originalSpeed;
+    public final int randomSpeed;
+    public final AbstractEntity entity;
+
+    public TurnSpeedData(int originalSpeed, int randomSpeed, AbstractEntity entity) {
+      this.originalSpeed = originalSpeed;
+      this.randomSpeed = randomSpeed;
+      this.entity = entity;
+    }
+  }
+
   public void resetTurn() {
-    Array<AbstractEntity> temp = new Array<>();
+    //Sort priority: origSpeed+rand(0-7) -> origSpeed -> random
+    Array<TurnSpeedData> speedData = new Array<>();
     for (PlayerBattleView p : players) {
-      if (p.entity.isAlive()) temp.add(p.entity);
+      if (p.entity.isAlive())
+        speedData.add(null);
+        speedData.add(new TurnSpeedData(p.entity.stat.capSpeed(), AbstractLabyrinth.publicRandom.random(0, 7), p.entity));
     }
     for (EnemyBattleView e : enemies) {
-      if (e.entity.isAlive()) temp.add(e.entity);
+      if (e.entity.isAlive())
+        speedData.add(new TurnSpeedData(e.entity.stat.capSpeed(), AbstractLabyrinth.publicRandom.random(0, 7), e.entity));
     }
 
-    Sort.instance()
-        .sort(
-            temp,
-            (o1, o2) -> {
-              do {
-                int s1 = o1.stat.capSpeed();
-                int s2 = o2.stat.capSpeed();
-                int a = s1 + AbstractLabyrinth.publicRandom.random(0, 7);
-                int b = s2 + AbstractLabyrinth.publicRandom.random(0, 7);
-                int i = b - a;
-                if (i == 0) {
-                  i = s2 - s1;
-                  if (i > 0) {
-                    return 1;
-                  } else if (i < 0) {
-                    return -1;
-                  }
-                } else return i;
-              } while (true);
-            });
+    speedData.shuffle();
 
-    for (AbstractEntity e : temp) {
+    Sort.instance()
+        .sort(speedData, (data1, data2) -> {
+          int originalSpeedDiff = data2.originalSpeed - data1.originalSpeed;
+          int randomAppliedSpeedDiff = originalSpeedDiff + data2.randomSpeed - data1.randomSpeed;
+          return randomAppliedSpeedDiff == 0 ? originalSpeedDiff : randomAppliedSpeedDiff;
+        });
+
+    Array<AbstractEntity> sortedEntities = new Array<>();
+    for (TurnSpeedData aSpeedData : speedData) {
+      sortedEntities.add(aSpeedData.entity);
+    }
+
+    for (AbstractEntity e : sortedEntities) {
       if (e.isPlayer) {
         cPanel.battlePanel.setPlayer(e);
         break;
       }
     }
-    turn = temp;
+    turn = sortedEntities;
     turnIndex = -1;
     ActionHandler.bot(new RoundStartAction(++round));
     nextTurn();
