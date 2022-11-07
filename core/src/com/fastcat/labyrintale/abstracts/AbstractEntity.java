@@ -454,8 +454,8 @@ public abstract class AbstractEntity implements Cloneable {
                     blockRemove = 0;
                   } else {
                     int a = publicRandom.random(0, 99);
-                    if(badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
-                    if(goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+                    if(badLuck > 0) a = Math.min(a, publicRandom.random(0, 99));
+                    if(goodLuck > 0) a = Math.max(a, publicRandom.random(0, 99));
                     if(a < EntityStat.neutCap(this)) {
                       health = 1;
                       block = 0;

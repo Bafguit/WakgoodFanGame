@@ -27,6 +27,7 @@ public class RestScreen extends AbstractScreen {
     end.disable();
     for (AbstractPlayer p : AbstractLabyrinth.players) {
       if (!p.isAlive()) {
+        count++;
         break;
       }
     }
