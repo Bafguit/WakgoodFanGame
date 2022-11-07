@@ -40,20 +40,18 @@ public final class DifficultyHandler {
   public void onEnemySpawn(AbstractEntity enemy) {
     if(diff == HARD) {
       enemy.setMaxHealth((int) ((float) enemy.maxHealth * 1.15f), true);
-      enemy.stat.speed += 2;
+      enemy.stat.speed += 1;
       enemy.stat.moveRes += 10;
       enemy.stat.debuRes += 10;
       enemy.stat.neutRes += 10;
-      enemy.stat.critical += 10;
       enemy.stat.attack += 1;
       enemy.stat.spell += 1;
     } else if(diff == COFFIN) {
       enemy.setMaxHealth((int) ((float) enemy.maxHealth * 1.3f), true);
-      enemy.stat.speed += 3;
+      enemy.stat.speed += 2;
       enemy.stat.moveRes += 20;
       enemy.stat.debuRes += 20;
       enemy.stat.neutRes += 20;
-      enemy.stat.critical += 20;
       enemy.stat.attack += 2;
       enemy.stat.spell += 2;
     }

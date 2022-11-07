@@ -15,6 +15,11 @@ public class Enemy3Normal2 extends AbstractEnemy {
   public Enemy3Normal2() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
+    stat.speed = 3;
+    stat.critical = 20;
+    stat.debuRes = 10;
+    stat.neutRes = 20;
+    stat.moveRes = 10;
   }
 
   @Override

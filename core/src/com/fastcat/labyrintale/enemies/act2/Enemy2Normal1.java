@@ -17,11 +17,17 @@ public class Enemy2Normal1 extends AbstractEnemy {
   public Enemy2Normal1() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
+    stat.speed = 1;
+    stat.critical = 20;
+    stat.debuRes = 20;
+    stat.neutRes = 5;
+    stat.moveRes = 10;
   }
 
   @Override
   public void preBattle() {
     applyStatus(new ArmourStatus(10), this, 10, false);
+    block = 10;
   }
 
   @Override

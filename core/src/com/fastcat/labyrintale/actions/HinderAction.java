@@ -16,6 +16,7 @@ public class HinderAction extends AbstractAction {
       AbstractEntity actor, AbstractSkill.SkillTarget target, int damage, int cool) {
     super(actor, target, 0.5f);
     info = new AbstractEntity.DamageInfo(actor, damage);
+    this.cool = cool;
   }
 
   @Override

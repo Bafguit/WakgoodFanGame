@@ -16,6 +16,11 @@ public class BrutalChimp extends AbstractEnemy {
 
   public BrutalChimp() {
     super(ID, TYPE, HEALTH);
+    stat.speed = 0;
+    stat.debuRes = 5;
+    stat.neutRes = 15;
+    stat.critical = 15;
+    stat.moveRes = 5;
   }
 
   @Override

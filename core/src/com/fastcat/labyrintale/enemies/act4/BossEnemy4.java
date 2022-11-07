@@ -16,6 +16,11 @@ public class BossEnemy4 extends AbstractEnemy {
   public BossEnemy4() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
+    stat.speed = 4;
+    stat.critical = 20;
+    stat.debuRes = 30;
+    stat.neutRes = 30;
+    stat.moveRes = 30;
   }
 
   @Override

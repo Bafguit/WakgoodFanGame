@@ -22,15 +22,13 @@ public class NeutStatus extends AbstractStatus {
   public void onInitial() {
     owner.isNeut = true;
     owner.stat.critical -= 10;
-    owner.stat.moveRes -= 10;
-    owner.stat.debuRes -= 10;
+    owner.stat.speed -= 3;
   }
 
   @Override
   public void onRemove() {
     owner.isNeut = false;
     owner.stat.critical += 10;
-    owner.stat.moveRes += 10;
-    owner.stat.debuRes += 10;
+    owner.stat.speed += 3;
   }
 }

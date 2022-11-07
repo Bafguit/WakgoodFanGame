@@ -18,9 +18,6 @@ public class MainMenuScreen extends AbstractScreen {
   private final OptionButton optionButton;
   private final ExitButton exitButton;
 
-  public SlideBar slide;
-  public CheckBox check;
-
   public MainMenuScreen() {
     setBg(FileHandler.getBg().get("BG_MAIN"));
     logoText = new LogoText();
@@ -28,9 +25,6 @@ public class MainMenuScreen extends AbstractScreen {
     tutorialButton = new TutorialButton();
     optionButton = new OptionButton();
     exitButton = new ExitButton();
-
-    slide = new SlideBar(100, 100, 50);
-    check = new CheckBox(100, 300, false);
 
     cType = ControlPanel.ControlType.HIDE;
   }
@@ -42,9 +36,6 @@ public class MainMenuScreen extends AbstractScreen {
     tutorialButton.update();
     optionButton.update();
     exitButton.update();
-
-    slide.update();
-    check.update();
   }
 
   @Override
@@ -54,9 +45,6 @@ public class MainMenuScreen extends AbstractScreen {
     tutorialButton.render(sb);
     optionButton.render(sb);
     exitButton.render(sb);
-
-    slide.render(sb);
-    check.render(sb);
   }
 
   @Override

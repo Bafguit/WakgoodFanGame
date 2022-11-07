@@ -14,6 +14,11 @@ public class TestEnemy extends AbstractEnemy {
 
   public TestEnemy() {
     super(ID, TYPE, HEALTH);
+    stat.speed = 0;
+    stat.debuRes = 10;
+    stat.neutRes = 10;
+    stat.critical = 10;
+    stat.moveRes = 10;
   }
 
   @Override

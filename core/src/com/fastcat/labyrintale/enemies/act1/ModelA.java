@@ -17,6 +17,11 @@ public class ModelA extends AbstractEnemy {
   public ModelA() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
+    stat.speed = 0;
+    stat.critical = 10;
+    stat.debuRes = 15;
+    stat.neutRes = 5;
+    stat.moveRes = 10;
   }
 
   @Override
