@@ -134,7 +134,7 @@ public class Labyrintale extends Game {
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
     SettingHandler.initialize();
 
-    Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode(InputHandler.monitor);
+    Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
 
     if (SettingHandler.setting.screenMode == 0) { // 창모드
       Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);

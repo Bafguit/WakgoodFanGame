@@ -8,13 +8,14 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.SETTING;
 
 public class ReturnToMainButton extends AbstractUI {
 
   public ReturnToMainButton(SettingScreen sc) {
     super(FileHandler.getUi().get("NEXT"));
     setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.8f);
-    fontData = MAIN_MENU;
+    fontData = SETTING;
     text = "메인 메뉴";
     showImg = false;
     screen = sc;

@@ -24,7 +24,6 @@ public final class InputHandler {
   public static int my;
 
   public static boolean textInputMode;
-  public static Graphics.Monitor monitor;
   private static String typedText = "";
   private static int backspaces = 0;
   /***

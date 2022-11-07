@@ -25,13 +25,7 @@ public final class SettingHandler {
     if (hasSave) {
       try {
         SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
-        Graphics.Monitor monitor;
-        if (Gdx.graphics.getMonitors().length > data.monitor) {
-          setting.monitor = data.monitor;
-          monitor = Gdx.graphics.getMonitors()[setting.monitor];
-        } else {
-          monitor = Gdx.graphics.getMonitor();
-        }
+        Graphics.Monitor monitor = Gdx.graphics.getMonitor();
 
         // 화면 모드 설정
         setting.screenMode = data.screenMode;
@@ -51,7 +45,6 @@ public final class SettingHandler {
         // 기타 설정
         setting.shake = data.shake;
         setting.fastMode = data.fastMode;
-        InputHandler.monitor = monitor;
 
         //튜토리얼
         setting.charTutorial = data.charTutorial;
@@ -65,17 +58,6 @@ public final class SettingHandler {
 
     if (!hasSave) {
 
-      // 모니터 설정
-      setting.monitor = 0;
-      Graphics.Monitor monitor = Gdx.graphics.getMonitor();
-      Graphics.Monitor[] m = Gdx.graphics.getMonitors();
-      for (int i = 0; i < m.length; i++) {
-        if (m[i].name.equals(monitor.name)) {
-          setting.monitor = i;
-          break;
-        }
-      }
-
       // 화면 모드 설정
       setting.screenMode = 0;
       setting.width = 1600;
@@ -88,7 +70,6 @@ public final class SettingHandler {
       // 기타 설정
       setting.shake = true;
       setting.fastMode = false;
-      InputHandler.monitor = monitor;
 
       //튜토리얼
       setting.charTutorial = true;
@@ -117,7 +98,6 @@ public final class SettingHandler {
     public int volumeSfx; // 효과음 볼륨
     public int width; // 창모드일때만 활성화
     public int height; // 창모드일때만 활성화
-    public int monitor; // 모니터 여러개일때 활성화
     public int screenMode; // 0:창, 1:전체화면, 2:전체창(테두리 없음)
     public boolean shake; // 화면 흔들림
     public boolean fastMode; // 효과와 액션 배속

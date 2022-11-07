@@ -1,14 +1,13 @@
 {
-  "volumeBgm" : 11,
-  "volumeSfx" : 36,
+  "volumeBgm" : 100,
+  "volumeSfx" : 100,
   "width" : 1600,
   "height" : 900,
-  "monitor" : 0,
   "screenMode" : 0,
   "shake" : true,
   "fastMode" : false,
-  "charTutorial" : false,
-  "wayTutorial" : false,
-  "battleTutorial" : false,
-  "rewardTutorial" : false
+  "charTutorial" : true,
+  "wayTutorial" : true,
+  "battleTutorial" : true,
+  "rewardTutorial" : true
 }

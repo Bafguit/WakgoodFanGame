@@ -16,8 +16,8 @@ public class SettingScreen extends AbstractScreen {
   public OptionPanel panel;
   public CloseSettingButton close;
   public ReturnToMainButton main;
+  public ResetTutorialButton reset;
   public ExitGameButton exit;
-  public SelectionGroup monitor;
   public SelectionGroup screenMode;
   public SelectionGroup resolution;
   public SlideBarGroup volumeSfx;
@@ -36,6 +36,8 @@ public class SettingScreen extends AbstractScreen {
     close = new CloseSettingButton(this);
     main = new ReturnToMainButton(this);
     exit = new ExitGameButton(this);
+    reset = new ResetTutorialButton(this);
+    reset.setPosition(w * 0.15f, h * 0.6f);
     Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
     String[] ms = new String[mo.length];
     int[] mi = new int[mo.length];
@@ -43,10 +45,6 @@ public class SettingScreen extends AbstractScreen {
       ms[i] = mo[i].name;
       mi[i] = i;
     }
-    monitor = new SelectionGroup("모니터", ms, w * 0.15f, h * 0.6f);
-    monitor.index = SettingHandler.setting.monitor;
-    monitor.item = mi;
-    monitor.setText();
     screenMode =
         new SelectionGroup("화면 모드", new String[] {"창 모드", "전체 화면", "전체 창 모드"}, w * 0.15f, h * 0.5f);
     screenMode.index = SettingHandler.setting.screenMode;
@@ -76,12 +74,11 @@ public class SettingScreen extends AbstractScreen {
   public void update() {
     resolution.can = screenMode.index == 0;
     close.update();
+    reset.update();
     if(Labyrintale.labyrinth != null) {
       main.update();
       exit.update();
     }
-    monitor.update();
-    SettingHandler.setting.monitor = monitor.index;
     screenMode.update();
     SettingHandler.setting.screenMode = screenMode.index;
     resolution.update();
@@ -101,7 +98,6 @@ public class SettingScreen extends AbstractScreen {
   public void render(SpriteBatch sb) {
     bgImg.render(sb);
     panel.render(sb);
-    monitor.render(sb);
     screenMode.render(sb);
     resolution.render(sb);
     volumeSfx.render(sb);
@@ -109,6 +105,7 @@ public class SettingScreen extends AbstractScreen {
     shake.render(sb);
     fastMode.render(sb);
     close.render(sb);
+    reset.render(sb);
     if(Labyrintale.labyrinth != null) {
       main.render(sb);
       exit.render(sb);
@@ -117,7 +114,7 @@ public class SettingScreen extends AbstractScreen {
 
   private void setResolution() {
     Graphics.DisplayMode dp =
-        Gdx.graphics.getDisplayMode(Gdx.graphics.getMonitors()[monitor.getItem()]);
+        Gdx.graphics.getDisplayMode(Gdx.graphics.getMonitor());
     int mw = dp.width, mh = mw * 9 / 16;
     Array<String> s = new Array<>();
     Array<Integer> w = new Array<>(), h = new Array<>();

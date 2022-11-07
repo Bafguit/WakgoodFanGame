@@ -2,23 +2,23 @@ package com.fastcat.labyrintale.screens.setting;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FontHandler.SETTING;
 
-public class ExitGameButton extends AbstractUI {
+public class ResetTutorialButton extends AbstractUI {
 
-  public ExitGameButton(SettingScreen sc) {
-    super(FileHandler.getUi().get("NEXT"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.7f);
+  public ResetTutorialButton(AbstractScreen screen) {
+    super(FileHandler.getUi().get("MENU_SELECT"));
+    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.8f);
     fontData = SETTING;
-    text = "종료";
+    text = "튜토리얼 초기화";
     showImg = false;
-    screen = sc;
+    this.screen = screen;
   }
 
   @Override
@@ -33,7 +33,10 @@ public class ExitGameButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    logger.log("Shutting Down...");
-    Gdx.app.exit();
+    SettingHandler.setting.rewardTutorial = true;
+    SettingHandler.setting.wayTutorial = true;
+    SettingHandler.setting.charTutorial = true;
+    SettingHandler.setting.battleTutorial = true;
+    SettingHandler.save();
   }
 }
