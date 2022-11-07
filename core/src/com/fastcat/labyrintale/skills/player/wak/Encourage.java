@@ -10,7 +10,7 @@ public class Encourage extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
-  private static final int VALUE = 4;
+  private static final int VALUE = 3;
 
   public Encourage(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

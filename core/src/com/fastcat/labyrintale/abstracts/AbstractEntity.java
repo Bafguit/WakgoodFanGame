@@ -115,7 +115,7 @@ public abstract class AbstractEntity implements Cloneable {
   public void update() {
     if (hand != null) {
       for (AbstractSkill s : hand) {
-        s.update();
+        if(s != null) s.update();
       }
     }
   }
