@@ -9,7 +9,7 @@ public class BossEnemy1 extends AbstractEnemy {
 
   private static final String ID = "BossEnemy1";
   private static final EnemyType TYPE = EnemyType.BOSS;
-  private static final int HEALTH = 158;
+  private static final int HEALTH = 200;
 
   private int mod = 0;
 
@@ -46,8 +46,8 @@ public class BossEnemy1 extends AbstractEnemy {
   }
 
   @Override
-  public void atEndOfRound() {
-    if (health <= (maxHealth / 3) && mod == 1) {
+  public void atEndOfTurn() {
+    if (health <= (maxHealth / 2) && mod == 1) {
       mod = 2;
       Array<AbstractSkill> temp = new Array<>();
       AbstractSkill s = new SlashE(this);
@@ -68,7 +68,7 @@ public class BossEnemy1 extends AbstractEnemy {
       temp.add(new GrowE(this).upgrade());
       deck = temp;
       newDeck();
-    } else if (health <= ((maxHealth / 3) * 2) && mod == 0) {
+    } else if (health <= ((maxHealth / 4) * 3) && mod == 0) {
       mod = 1;
       Array<AbstractSkill> temp = new Array<>();
       AbstractSkill s = new DualAttackE(this);

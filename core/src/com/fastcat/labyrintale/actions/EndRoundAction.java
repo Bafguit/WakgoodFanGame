@@ -17,7 +17,7 @@ public class EndRoundAction extends AbstractAction {
       for (int i = 0; i < 4; i++) {
         AbstractEntity e = battleScreen.enemies[i].entity;
         if (e.isAlive()) {
-          e.atEndOfRound();
+          e.atEndOfTurn();
           e.shuffleHand();
         }
       }

@@ -14,7 +14,6 @@ public class RoundEndAction extends AbstractAction {
     if (isDone) {
       for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
         e.blockRemove = e.block;
-        e.atEndOfRound();
         if (e.isPlayer) {
           e.passive.endOfRound();
           for (AbstractItem m : e.item) {

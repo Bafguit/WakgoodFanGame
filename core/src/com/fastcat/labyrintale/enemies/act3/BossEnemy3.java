@@ -79,5 +79,5 @@ public class BossEnemy3 extends AbstractEnemy {
   }
 
   @Override
-  public void atEndOfRound() {}
+  public void atEndOfTurn() {}
 }

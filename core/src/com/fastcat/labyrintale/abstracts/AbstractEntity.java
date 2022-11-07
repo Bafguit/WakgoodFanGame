@@ -120,7 +120,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
   }
 
-  public void atEndOfRound() {
+  public void atEndOfTurn() {
 
   }
 
