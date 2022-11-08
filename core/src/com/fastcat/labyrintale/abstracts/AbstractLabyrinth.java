@@ -12,6 +12,8 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
 
+  private float tick;
+
   public static final int MAX_ENERGY = 8;
 
   public static String seed;
@@ -32,6 +34,8 @@ public class AbstractLabyrinth {
   public static AbstractPlayer[] players;
   public static AbstractItem advisor;
   public static ControlPanel cPanel;
+  public static int minute;
+  public static int second;
   public static int floorNum;
   public static int itemAble;
   public static int maxSkillUp;
@@ -71,6 +75,9 @@ public class AbstractLabyrinth {
       floors[1] = new AbstractFloor(2);
       floors[2] = new AbstractFloor(3);
       floors[3] = new AbstractFloor(4);
+      tick = 0;
+      minute = 0;
+      second = 0;
       itemAble = 0;
       maxSkillUp = 1;
       gold = 100;
@@ -225,8 +232,21 @@ public class AbstractLabyrinth {
   }
 
   public void update() {
-    cPanel.update();
-    currentFloor.update();
+    tick();
+    if(cPanel != null) cPanel.update();
+    if(currentFloor != null) currentFloor.update();
+  }
+
+  private void tick() {
+    tick += Labyrintale.tick;
+    if(tick >= 1) {
+      tick = 0;
+      second++;
+      if(second == 60) {
+        minute++;
+        second = 0;
+      }
+    }
   }
 
   public enum RunType {

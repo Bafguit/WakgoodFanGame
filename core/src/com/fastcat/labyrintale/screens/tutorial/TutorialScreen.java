@@ -3,6 +3,8 @@ package com.fastcat.labyrintale.screens.tutorial;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -26,6 +28,9 @@ public class TutorialScreen extends AbstractScreen {
     @Override
     public void update() {
         if(type != null) {
+            if(type == TutorialType.BATTLE) {
+                AbstractLabyrinth.cPanel.infoPanel.setInfo(AbstractLabyrinth.players[0]);
+            }
             nextPage.update();
             close.update();
             bg.image = img.get(index);

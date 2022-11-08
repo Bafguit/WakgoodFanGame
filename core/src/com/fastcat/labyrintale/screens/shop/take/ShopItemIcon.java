@@ -47,7 +47,7 @@ public class ShopItemIcon extends AbstractUI {
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(
                 sb,
-                fontData,
+                FontHandler.CARD_BIG_DESC,
                 Integer.toString(screen.skill.cost),
                 x - sWidth * 0.05f,
                 y + sWidth * 0.95f,

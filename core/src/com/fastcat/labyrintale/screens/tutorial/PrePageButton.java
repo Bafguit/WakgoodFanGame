@@ -20,6 +20,7 @@ public class PrePageButton extends AbstractUI {
     text = "이전";
     showImg = false;
     this.sc = sc;
+    clicked = false;
   }
 
   @Override

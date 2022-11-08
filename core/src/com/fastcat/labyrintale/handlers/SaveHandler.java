@@ -74,6 +74,8 @@ public final class SaveHandler {
     GroupHandler.RoomGroup.normalCount = data.normalCount;
     GroupHandler.RoomGroup.eliteCount = data.eliteCount;
     GroupHandler.RoomGroup.bossCount = data.eventCount;
+    minute = data.minute;
+    second = data.second;
     seed = data.random.seed;
     seedLong = data.random.seedLong;
     diff = Difficulty.valueOf(data.diff);
@@ -168,6 +170,8 @@ public final class SaveHandler {
     public int normalCount;
     public int eliteCount;
     public int bossCount;
+    public int minute;
+    public int second;
 
     public static SaveData create() {
       SaveData temp = new SaveData();
@@ -200,6 +204,8 @@ public final class SaveHandler {
       temp.normalCount = GroupHandler.RoomGroup.normalCount;
       temp.eliteCount = GroupHandler.RoomGroup.eliteCount;
       temp.bossCount = GroupHandler.RoomGroup.bossCount;
+      temp.minute = AbstractLabyrinth.minute;
+      temp.second = AbstractLabyrinth.second;
 
       return temp;
     }

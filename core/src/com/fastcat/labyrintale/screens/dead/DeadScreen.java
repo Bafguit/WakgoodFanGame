@@ -1,14 +1,20 @@
 package com.fastcat.labyrintale.screens.dead;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class DeadScreen extends AbstractScreen {
 
   public DeadText logo;
   public MainButton mainButton;
+  public FontHandler.FontData font;
+  public int m, s;
 
   public DeadScreen(ScreenType type) {
     logo = new DeadText();
@@ -21,6 +27,9 @@ public class DeadScreen extends AbstractScreen {
     }
     mainButton = new MainButton();
     cType = ControlPanel.ControlType.HIDE;
+    font = FontHandler.MAIN_MENU;
+    m = AbstractLabyrinth.minute;
+    s = AbstractLabyrinth.second;
   }
 
   @Override
@@ -33,10 +42,13 @@ public class DeadScreen extends AbstractScreen {
   public void render(SpriteBatch sb) {
     mainButton.render(sb);
     logo.render(sb);
+    FontHandler.renderCenter(sb, font, "소요 시간: " + m + "분 " + s + "초", Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.5f);
   }
 
   @Override
-  public void show() {}
+  public void show() {
+
+  }
 
   @Override
   public void hide() {}

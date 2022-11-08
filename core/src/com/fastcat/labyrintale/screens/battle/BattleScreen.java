@@ -335,7 +335,7 @@ public class BattleScreen extends AbstractScreen {
     }
   }
 
-  public class TurnSpeedData {
+  public static class TurnSpeedData {
     public final int originalSpeed;
     public final int randomSpeed;
     public final AbstractEntity entity;

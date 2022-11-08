@@ -6,7 +6,7 @@
   "screenMode" : 0,
   "shake" : true,
   "fastMode" : true,
-  "charTutorial" : true,
+  "charTutorial" : false,
   "wayTutorial" : false,
   "battleTutorial" : false,
   "rewardTutorial" : false
