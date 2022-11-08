@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.mainmenu;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
@@ -50,7 +51,6 @@ public class MainMenuScreen extends AbstractScreen {
   @Override
   public void onCreate() {
     playMusic = true;
-    Labyrintale.labyrinth = null;
   }
 
   @Override
@@ -70,6 +70,10 @@ public class MainMenuScreen extends AbstractScreen {
     if (playMusic) {
       SoundHandler.playMusic("LOBBY", true, true);
       playMusic = false;
+    }
+    if(Labyrintale.labyrinth != null) {
+      AbstractLabyrinth.reset();
+      Labyrintale.labyrinth = null;
     }
   }
 

@@ -12,7 +12,7 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
 
-  private float tick;
+  public static float tick;
 
   public static final int MAX_ENERGY = 8;
 
@@ -195,6 +195,36 @@ public class AbstractLabyrinth {
       sb.append((int) c);
     }
     return Long.parseLong(sb.toString());
+  }
+
+  public static void reset() {
+    seed = "";
+    seedLong = 0;
+    publicRandom = null;
+    skillRandom = null;
+    itemRandom = null;
+    mapRandom = null;
+    monsterRandom = null;
+    eventRandom = null;
+    shopRandom = null;
+    groupRandom = null;
+    floorNum = 1;
+    floors = new AbstractFloor[4];
+    currentFloor = null;
+    tick = 0;
+    minute = 0;
+    second = 0;
+    itemAble = 0;
+    maxSkillUp = 1;
+    gold = 100;
+    level = 1;
+    exp = 0;
+    maxExp = 100;
+    charge = 5;
+    sp = 0;
+    players = new AbstractPlayer[4];
+    diff = null;
+    cPanel = null;
   }
 
   public static AbstractPlayer getPlayerInstance(AbstractPlayer.PlayerClass cls) {
