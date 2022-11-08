@@ -20,6 +20,7 @@ public class DramaticExit extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 2);
     setBaseCost(2);
+    setBaseValue(1);
   }
 
   @Override
