@@ -8,16 +8,10 @@ import com.fastcat.labyrintale.actions.ReduceStatusAction;
 public class CourageStatus extends AbstractStatus {
 
   private static final String ID = "Courage";
-  private boolean used = false;
 
   public CourageStatus(int amount) {
     super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
     setAmount(amount);
-  }
-
-  @Override
-  public void onInitial() {
-    used = false;
   }
 
   @Override
@@ -27,11 +21,8 @@ public class CourageStatus extends AbstractStatus {
 
   @Override
   public void onAttack(AbstractEntity e, int dmg, AbstractEntity.DamageType type) {
-    if (!used) {
-      used = true;
-      flash();
-      bot(new ReduceStatusAction(this, amount, StatusType.STATIC, true));
-    }
+    flash();
+    bot(new ReduceStatusAction(this, amount, StatusType.STATIC, true));
   }
 
   @Override
