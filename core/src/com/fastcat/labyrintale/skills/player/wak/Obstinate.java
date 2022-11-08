@@ -17,8 +17,8 @@ public class Obstinate extends AbstractSkill {
 
   public Obstinate(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE);
-    setBaseCost(1, -1);
+    setBaseValue(VALUE, 1);
+    setBaseCost(1);
   }
 
   @Override

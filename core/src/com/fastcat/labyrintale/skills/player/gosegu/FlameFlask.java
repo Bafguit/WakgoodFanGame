@@ -16,7 +16,7 @@ public class FlameFlask extends AbstractSkill {
 
   public FlameFlask(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseCost(VALUE, -1);
+    setBaseCost(VALUE);
   }
 
   @Override
@@ -25,5 +25,7 @@ public class FlameFlask extends AbstractSkill {
   }
 
   @Override
-  protected void upgradeCard() {}
+  protected void upgradeCard() {
+    if (cost > 0) cost--;
+  }
 }

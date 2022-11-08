@@ -449,12 +449,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     upValue2 = up;
   }
 
-  public void setBaseCost(int i, int up) {
-    baseCost = i;
-    cost = baseCost;
-    upCost = up;
-  }
-
   public void update() {
     attack = calculateAttack(baseAttack);
     spell = calculateSpell(baseSpell);

@@ -211,6 +211,7 @@ public class AbstractLabyrinth {
     floorNum = 1;
     floors = new AbstractFloor[4];
     currentFloor = null;
+    advisor = null;
     tick = 0;
     minute = 0;
     second = 0;
