@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -13,7 +14,11 @@ public class RoundEndAction extends AbstractAction {
   protected void updateAction() {
     if (isDone) {
       for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
-        e.blockRemove = e.block;
+        if(e.isPlayer && e.id.equals("wak")) {
+          e.blockRemove = MathUtils.ceil(e.block * 0.5f);
+        } else if(!e.hasStatus("Maintain")) {
+          e.blockRemove = e.block;
+        }
         if (e.isPlayer) {
           e.passive.endOfRound();
           for (AbstractItem m : e.item) {
