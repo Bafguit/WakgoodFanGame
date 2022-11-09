@@ -48,7 +48,6 @@ public class ApplyStatusAction extends AbstractAction {
       }
       for (AbstractEntity e : target) {
         AbstractStatus s = status.cpy();
-        if (actor == null || actor != e) s.notSelf = true;
         e.applyStatus(s, actor, status.amount);
       }
     }

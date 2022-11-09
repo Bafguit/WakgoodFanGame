@@ -22,7 +22,7 @@ public class Obstinate extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, false));
+    bot(new ShieldPushAction(this, target));
   }
 
   @Override

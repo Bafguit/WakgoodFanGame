@@ -18,6 +18,7 @@ public class UpgradePotion extends AbstractSkill {
   public UpgradePotion(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setBaseCost(2);
   }
 
   @Override

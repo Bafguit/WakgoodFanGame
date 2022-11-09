@@ -11,7 +11,7 @@ public class HolySmite extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int ATK = 2;
+  private static final int ATK = 1;
 
   public HolySmite(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

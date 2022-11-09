@@ -289,6 +289,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
         if (!done) {
           text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
+          if (actor != this) s.notSelf = true;
           this.status.addLast(s);
           s.onInitial();
           if (s.hasAmount) s.onApply(amount);

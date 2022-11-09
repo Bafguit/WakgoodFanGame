@@ -14,7 +14,7 @@ import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 public class RevelationEvent extends AbstractEvent implements GetSelectedPlayer {
 
   private static final String ID = "Revelation";
-  private static final int SIZE = 2;
+  private static final int SIZE = 4;
 
   public RevelationEvent() {
     super(ID, SIZE);

@@ -14,13 +14,11 @@ public class DevilIdol extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.neutRes += 100;
-    owner.minRes = 20;
+    owner.minRes = 80;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.neutRes -= 100;
     owner.minRes = 5;
   }
 }
