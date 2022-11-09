@@ -69,20 +69,20 @@ shield
   index: -1
 
 skeleton2.png
-size: 1577,1018
+size: 1882,1018
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 788, 9
-  size: 787, 1007
+  xy: 2, 9
+  size: 1092, 1007
   orig: 1280, 1280
-  offset: 353, 55
+  offset: 110, 55
   index: -1
 skill
   rotate: false
-  xy: 2, 2
+  xy: 1096, 2
   size: 784, 1014
   orig: 1280, 1280
   offset: 251, 53

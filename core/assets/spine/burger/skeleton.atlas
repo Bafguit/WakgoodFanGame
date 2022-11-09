@@ -82,10 +82,10 @@ filter: Linear,Linear
 repeat: none
 attack
   rotate: true
-  xy: 2, 93
-  size: 1123, 1037
+  xy: 2, 83
+  size: 1133, 1037
   orig: 1280, 1280
-  offset: 138, 83
+  offset: 128, 83
   index: -1
 skill
   rotate: false

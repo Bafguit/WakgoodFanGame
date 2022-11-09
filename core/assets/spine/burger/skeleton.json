@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "/TDNBSJjkd8QWVjj+SKQd4WhSL8",
+	"hash": "u90WCqS/05dXi0DpFFHtPZxQex8",
 	"spine": "3.8.75",
 	"x": -320,
 	"y": -100,
@@ -126,37 +126,7 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"head": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"die2": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"sword": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"leg": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"body": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_left": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -166,7 +136,37 @@
 					{ "name": null }
 				]
 			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"idle": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"die2": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"sword": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -182,7 +182,27 @@
 	},
 	"die": {
 		"slots": {
-			"head": {
+			"leg": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hair": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"idle": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -192,11 +212,30 @@
 					{ "time": 0.6667, "name": "die" }
 				]
 			},
-			"sword": {
+			"head": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"sword": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
 			"leg": {
 				"attachment": [
 					{ "name": null }
@@ -207,7 +246,7 @@
 					{ "name": null }
 				]
 			},
-			"idle": {
+			"hair": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -217,26 +256,7 @@
 					{ "name": null }
 				]
 			},
-			"arm_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"hair": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			}
-		}
-	},
-	"hit": {
-		"slots": {
-			"head": {
+			"idle": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -246,27 +266,7 @@
 					{ "name": null }
 				]
 			},
-			"sword": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"leg": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"attack": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"body": {
+			"head": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -276,17 +276,17 @@
 					{ "name": "hit" }
 				]
 			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"arm_left": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"hair": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_right": {
+			"sword": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -302,17 +302,17 @@
 	},
 	"idle": {
 		"slots": {
-			"die2": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"attack": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
 			"idle": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"die2": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -397,19 +397,9 @@
 	},
 	"skill": {
 		"slots": {
-			"head": {
+			"skill": {
 				"attachment": [
-					{ "name": null }
-				]
-			},
-			"die2": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"sword": {
-				"attachment": [
-					{ "name": null }
+					{ "name": "skill" }
 				]
 			},
 			"leg": {
@@ -417,27 +407,7 @@
 					{ "name": null }
 				]
 			},
-			"skill": {
-				"attachment": [
-					{ "name": "skill" }
-				]
-			},
 			"attack": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"idle": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"body": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_left": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -447,7 +417,37 @@
 					{ "name": null }
 				]
 			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"idle": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"die2": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"sword": {
 				"attachment": [
 					{ "name": null }
 				]

@@ -69,14 +69,14 @@ skill
   index: -1
 
 skeleton2.png
-size: 964,1003
+size: 959,1083
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
   xy: 2, 2
-  size: 960, 999
+  size: 955, 1079
   orig: 1280, 1280
   offset: 288, 48
   index: -1

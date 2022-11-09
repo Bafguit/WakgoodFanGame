@@ -69,20 +69,20 @@ leg
   index: -1
 
 skeleton2.png
-size: 1443,1004
+size: 1443,1121
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
   xy: 2, 2
-  size: 754, 1000
+  size: 754, 1117
   orig: 1280, 1280
   offset: 347, 42
   index: -1
 skill
   rotate: false
-  xy: 758, 5
+  xy: 758, 122
   size: 683, 997
   orig: 1280, 1280
   offset: 374, 58

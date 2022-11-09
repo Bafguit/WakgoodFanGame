@@ -76,27 +76,27 @@ sword
   index: -1
 
 skeleton2.png
-size: 2014,1758
+size: 2014,1832
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 930, 2
-  size: 1045, 855
+  xy: 930, 901
+  size: 1045, 929
   orig: 1280, 1280
   offset: 226, 72
   index: -1
 hit
   rotate: true
-  xy: 930, 859
+  xy: 930, 2
   size: 897, 1082
   orig: 1280, 1280
   offset: 12, 64
   index: -1
 skill
   rotate: false
-  xy: 2, 638
+  xy: 2, 712
   size: 926, 1118
   orig: 1280, 1280
   offset: 10, 18

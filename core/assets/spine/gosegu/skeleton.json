@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "9/aW6lxVA6Dp5RhkYlMwA/KgEtw", "spine": "3.8.75", "images": "C:/Users/유민/Pictures/게임개발/sd/gosegu", "audio": "" },
+"skeleton": { "hash": "+nSJmlV00JrVyuTr14vqPOET9+s", "spine": "3.8.75", "images": "", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "body", "parent": "root", "length": 153.2, "rotation": 88.95, "x": -3.87, "y": 145.53 },
@@ -121,20 +121,19 @@
 	},
 	"idle": {
 		"slots": {
-			"body": {
-				"attachment": [
-					{ "name": "body" }
-				]
-			},
 			"arm_right": {
 				"attachment": [
 					{ "name": "arm_right" }
 				]
 			},
-			"head": {
+			"leg": {
 				"attachment": [
-					{ "name": "head" },
-					{ "time": 1.5333, "name": "head" }
+					{ "name": "leg" }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": "body" }
 				]
 			},
 			"arm_left": {
@@ -142,9 +141,10 @@
 					{ "name": "arm_left" }
 				]
 			},
-			"leg": {
+			"head": {
 				"attachment": [
-					{ "name": "leg" }
+					{ "name": "head" },
+					{ "time": 1.5333, "name": "head" }
 				]
 			}
 		},

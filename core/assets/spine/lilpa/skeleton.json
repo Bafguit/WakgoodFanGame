@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "bAq7hVBcmPTfGf3F8968O5zowcE", "spine": "3.8.75", "images": "", "audio": "" },
+"skeleton": { "hash": "6MnT+fyD7Sy+bEtbhzdu+09scRA", "spine": "3.8.75", "images": "", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "body", "parent": "root", "length": 170.48, "rotation": 89.41, "x": -7.77, "y": 118.78 },
@@ -30,13 +30,13 @@
 			"die": {
 				"die": { "x": 10, "y": 210, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
 			},
-			"body": {
-				"body": {
-					"x": 151.29,
-					"y": -6.22,
+			"head": {
+				"head": {
+					"x": -32.61,
+					"y": 4.67,
 					"scaleX": 0.5,
 					"scaleY": 0.5,
-					"rotation": -89.41,
+					"rotation": -89.08,
 					"width": 1280,
 					"height": 1280
 				}
@@ -51,17 +51,6 @@
 					"scaleX": 0.5,
 					"scaleY": 0.5,
 					"rotation": 40.09,
-					"width": 1280,
-					"height": 1280
-				}
-			},
-			"head": {
-				"head": {
-					"x": -32.61,
-					"y": 4.67,
-					"scaleX": 0.5,
-					"scaleY": 0.5,
-					"rotation": -89.08,
 					"width": 1280,
 					"height": 1280
 				}
@@ -93,6 +82,17 @@
 					"scaleX": 0.5,
 					"scaleY": 0.5,
 					"rotation": 128.03,
+					"width": 1280,
+					"height": 1280
+				}
+			},
+			"body": {
+				"body": {
+					"x": 151.29,
+					"y": -6.22,
+					"scaleX": 0.5,
+					"scaleY": 0.5,
+					"rotation": -89.41,
 					"width": 1280,
 					"height": 1280
 				}
@@ -158,19 +158,9 @@
 	},
 	"idle": {
 		"slots": {
-			"staff": {
-				"attachment": [
-					{ "name": "staff" }
-				]
-			},
 			"cape": {
 				"attachment": [
 					{ "name": "cape" }
-				]
-			},
-			"hand_right": {
-				"attachment": [
-					{ "name": "hand_right" }
 				]
 			},
 			"body": {
@@ -178,9 +168,24 @@
 					{ "name": "body" }
 				]
 			},
-			"hand_left": {
+			"leg": {
 				"attachment": [
-					{ "name": "hand_left" }
+					{ "name": "leg" }
+				]
+			},
+			"staff": {
+				"attachment": [
+					{ "name": "staff" }
+				]
+			},
+			"hand_right": {
+				"attachment": [
+					{ "name": "hand_right" }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": "head" }
 				]
 			},
 			"hair": {
@@ -188,14 +193,9 @@
 					{ "name": "hair" }
 				]
 			},
-			"leg": {
+			"hand_left": {
 				"attachment": [
-					{ "name": "leg" }
-				]
-			},
-			"head": {
-				"attachment": [
-					{ "name": "head" }
+					{ "name": "hand_left" }
 				]
 			}
 		},

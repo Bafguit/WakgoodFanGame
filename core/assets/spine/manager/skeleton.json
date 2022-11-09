@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "TeCxzanYHsO+YmXY6w/GkMgEeR0", "spine": "3.8.75", "images": "", "audio": "" },
+"skeleton": { "hash": "gdimffgdwT5hGlVdNpvcW/HC9b8", "spine": "3.8.75", "images": "", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "body", "parent": "root", "length": 150.88, "rotation": 89.12, "x": -5.09, "y": 142.97 },
@@ -121,6 +121,11 @@
 	},
 	"idle": {
 		"slots": {
+			"arm_left": {
+				"attachment": [
+					{ "name": "arm_left" }
+				]
+			},
 			"arm_right": {
 				"attachment": [
 					{ "name": "arm_right" }
@@ -129,11 +134,6 @@
 			"head": {
 				"attachment": [
 					{ "name": "head" }
-				]
-			},
-			"arm_left": {
-				"attachment": [
-					{ "name": "arm_left" }
 				]
 			},
 			"body": {
