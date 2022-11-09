@@ -18,12 +18,13 @@ public class Pray extends AbstractSkill {
   public Pray(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setBaseValue2(1, 1);
   }
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
     bot(new ApplyStatusAction(new CourageStatus(value), owner, target, true));
+    bot(new ApplyStatusAction(new EnduranceStatus(value2), owner, target, true));
   }
 
   @Override

@@ -13,22 +13,22 @@ public class Obstinate extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int VALUE = 2;
 
   public Obstinate(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
-    setBaseCost(1);
+    setBaseAttack(0);
+    setBaseCost(2);
   }
 
   @Override
   public void use() {
-    bot(new ShieldPushAction(this, target));
-    bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, owner, true));
+    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.SMASH, false));
   }
 
   @Override
-  protected void upgradeCard() {}
+  protected void upgradeCard() {
+    if (cost > 0) cost--;
+  }
 
   @Override
   public int calculateAttack(int a) {

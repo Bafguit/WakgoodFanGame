@@ -17,14 +17,14 @@ public class SecretGirl extends AbstractItem {
   @Override
   public void onGain() {
     for(AbstractPlayer p : AbstractLabyrinth.players) {
-      p.stat.neutRes += 40;
+      p.stat.neutRes += 30;
     }
   }
 
   @Override
   public void onRemove() {
     for(AbstractPlayer p : AbstractLabyrinth.players) {
-      p.stat.neutRes -= 40;
+      p.stat.neutRes -= 30;
     }
   }
 }

@@ -25,7 +25,6 @@ public class UpgradePotion extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new CriticalMinusStatus(1), owner, e, true));
     top(new ApplyStatusAction(new AttackStatus(value), owner, e, true));
   }
 

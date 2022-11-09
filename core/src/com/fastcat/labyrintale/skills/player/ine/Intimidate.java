@@ -17,13 +17,12 @@ public class Intimidate extends AbstractSkill {
   public Intimidate(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(3);
+    setBaseCost(2);
   }
 
   @Override
   public void use() {
     bot(new ApplyStatusAction(new AttackStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new SpellStatus(-1), owner, owner, true));
   }
 
   @Override

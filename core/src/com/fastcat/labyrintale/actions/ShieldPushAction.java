@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
@@ -68,7 +69,6 @@ public class ShieldPushAction extends AbstractAction {
           AbstractEntity te = target.get(i);
           if (te.isAlive()) te.takeDamage(info);
         }
-        actor.loseBlock(actor.block);
       } else isDone = true;
     }
   }

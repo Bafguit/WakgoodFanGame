@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.HealAction;
+import com.fastcat.labyrintale.status.FlawStatus;
 import com.fastcat.labyrintale.status.InfectionStatus;
 import com.fastcat.labyrintale.status.ResistMinusStatus;
 
@@ -27,7 +28,7 @@ public class HealingPotion extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new ResistMinusStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new FlawStatus(value), owner, e, true));
     top(new HealAction(owner, e, spell));
   }
 

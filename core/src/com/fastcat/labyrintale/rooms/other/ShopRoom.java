@@ -33,7 +33,7 @@ public class ShopRoom extends AbstractRoom {
     roll = new RollItem(this);
     shopScreen = new ShopScreen(this);
     for (AbstractPlayer p : players) {
-      if (p.hasStatus("Badge")) {
+      if (p.hasItem("Badge")) {
         int i = shopRandom.random(0, 10);
         if (i < 6) {
           skills[i].price = 0;
