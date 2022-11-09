@@ -79,13 +79,13 @@ public class MapScreen extends AbstractScreen {
 
     if (!Labyrintale.fading) {
       if (!glow) {
-        alpha -= Labyrintale.tick * 0.34f;
-        if (alpha <= 0.83f) {
-          alpha = 0.83f;
+        alpha -= Labyrintale.tick * 0.75f;
+        if (alpha <= 0.5f) {
+          alpha = 0.5f;
           glow = true;
         }
       } else {
-        alpha += Labyrintale.tick * 0.34f;
+        alpha += Labyrintale.tick * 0.75f;
         if (alpha >= 1) {
           alpha = 1;
           glow = false;
@@ -117,7 +117,7 @@ public class MapScreen extends AbstractScreen {
               if (!n.choice.room.isDone && currentFloor.num == i) {
                 if (currentFloor.ways[i - 1].selected == -1
                     || currentFloor.ways[i - 1].selected == link)
-                  shr.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+                  shr.setColor(mapScreen.alpha, mapScreen.alpha, 0, 1.0f);
                 else shr.setColor(DARK_GRAY);
               } else shr.setColor(LIGHT_GRAY);
             } else shr.setColor(DARK_GRAY);

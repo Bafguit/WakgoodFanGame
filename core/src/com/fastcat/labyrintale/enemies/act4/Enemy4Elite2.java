@@ -35,12 +35,12 @@ public class Enemy4Elite2 extends AbstractEnemy {
       s.upgrade();
     }
     temp.add(s);
-    temp.add(new ImpregE(this));
     AbstractSkill s1 = new SlashE(this);
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 6; i++) {
       s1.upgrade();
     }
     temp.add(s1);
+    temp.add(new ImpregE(this));
     temp.add(new GrowE(this));
     return temp;
   }

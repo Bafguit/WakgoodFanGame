@@ -52,6 +52,7 @@ public abstract class AbstractEntity implements Cloneable {
   public AbstractSkill move;
   public AbstractSkill moveTemp;
   public AbstractSkill pass;
+  public AbstractSkill pre;
   public LinkedList<AbstractStatus> status = new LinkedList<>();
   public AbstractItem[] item = new AbstractItem[2];
   public AbstractItem passive;
@@ -574,6 +575,7 @@ public abstract class AbstractEntity implements Cloneable {
           ActionHandler.clear();
           for (AbstractPlayer p : players) {
             if (p.isAlive()) {
+              p.pre = null;
               for (AbstractSkill s : p.hand) {
                 if (s != null) s.atBattleEnd();
               }

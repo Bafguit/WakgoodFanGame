@@ -23,7 +23,7 @@ public class Enemy4Normal1 extends AbstractEnemy {
 
   @Override
   public void preBattle() {
-    applyStatus(new AttackStatus(4), this, 4, false);
+    applyStatus(new AttackStatus(6), this, 4, false);
   }
 
   @Override
@@ -31,7 +31,7 @@ public class Enemy4Normal1 extends AbstractEnemy {
     Array<AbstractSkill> temp = new Array<>();
     temp.add(new AttackHighE(this));
     temp.add(new AttackLowE(this));
-    temp.add(new FrailStrongE(this));
+    temp.add(new FrailStrongE(this).upgrade());
     AbstractSkill s = new FuryE(this);
     s.upgrade();
     temp.add(s);

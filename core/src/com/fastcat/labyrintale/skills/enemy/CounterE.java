@@ -16,6 +16,7 @@ public class CounterE extends AbstractSkill {
 
   public CounterE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setBaseAttack(4, 1);
     setBaseValue(VALUE, 1);
   }
 

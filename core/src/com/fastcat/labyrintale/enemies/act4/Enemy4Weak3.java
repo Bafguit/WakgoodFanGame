@@ -31,9 +31,9 @@ public class Enemy4Weak3 extends AbstractEnemy {
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    temp.add(new AttackLowE(this));
-    temp.add(new AttackHighE(this));
-    temp.add(new CounterE(this));
+    temp.add(new AttackLowE(this).upgrade().upgrade().upgrade());
+    temp.add(new AttackHighE(this).upgrade().upgrade().upgrade());
+    temp.add(new CounterE(this).upgrade());
     return temp;
   }
 }

@@ -17,10 +17,6 @@ public class SkillButton extends AbstractUI {
   private final Sprite border = FileHandler.getUi().get("BORDER");
   public AbstractSkill skill;
   public boolean isInfo = false;
-  public boolean isOnLock = false;
-  public boolean isCS = true;
-  public boolean isSkill = true;
-  public boolean isSelected = false;
   public boolean canClick = true;
   public boolean advisor = false;
 
@@ -32,8 +28,11 @@ public class SkillButton extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      if (isSelected) sb.setColor(Color.DARK_GRAY);
-      else if (!over && !isInfo) sb.setColor(Color.LIGHT_GRAY);
+      if (skill.nextTurn) {
+        sb.setColor(1, 1, 1, 0.5f);
+      } else {
+        sb.setColor(Color.WHITE);
+      }
 
       if (skill != null) {
         if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
@@ -58,12 +57,5 @@ public class SkillButton extends AbstractUI {
   @Override
   protected Array<SubText> getSubText() {
     return skill != null ? skill.key : null;
-  }
-
-  public void removeChar() {
-    skill = null;
-    showImg = false;
-    isOnLock = false;
-    isSelected = false;
   }
 }

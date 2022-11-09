@@ -25,15 +25,15 @@ public class Enemy3Weak1 extends AbstractEnemy {
 
   @Override
   public void preBattle() {
-    applyStatus(new AttackStatus(4), this, 4, false);
+    applyStatus(new AttackStatus(3), this, 4, false);
   }
 
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    temp.add(new UnblockE(this));
-    temp.add(new UnblockE(this));
-    temp.add(new UnblockE(this));
+    temp.add(new UnblockE(this).upgrade());
+    temp.add(new UnblockE(this).upgrade());
+    temp.add(new UnblockE(this).upgrade());
     AbstractSkill s1 = new GrowE(this);
     s1.upgrade();
     temp.add(s1);

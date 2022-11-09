@@ -4,6 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.enemy.*;
+import com.fastcat.labyrintale.status.AttackStatus;
 
 public class Enemy4Normal2 extends AbstractEnemy {
 
@@ -21,7 +22,9 @@ public class Enemy4Normal2 extends AbstractEnemy {
   }
 
   @Override
-  public void preBattle() {}
+  public void preBattle() {
+    applyStatus(new AttackStatus(2), this, 4, false);
+  }
 
   @Override
   public Array<AbstractSkill> getStartingDeck() {

@@ -29,7 +29,7 @@ public class Enemy3Normal1 extends AbstractEnemy {
     s1.upgrade();
     s1.upgrade();
     temp.add(s1);
-    temp.add(new FuryE(this));
+    temp.add(new FuryE(this).upgrade());
     return temp;
   }
 }

@@ -36,7 +36,7 @@ public class Enemy4Elite3 extends AbstractEnemy {
     AbstractSkill s2 = new DecayE(this);
     s2.upgrade();
     temp.add(s2);
-    temp.add(new AllTwoE(this));
+    temp.add(new AllTwoE(this).upgrade().upgrade());
     temp.add(new FuryE(this));
     return temp;
   }

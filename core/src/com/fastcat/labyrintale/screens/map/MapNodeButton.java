@@ -16,6 +16,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 public class MapNodeButton extends AbstractUI {
 
   private final Sprite border = FileHandler.getUi().get("BORDER_S");
+  private final Sprite bg = FileHandler.getUi().get("BORDER_BACK");
   public int wayIndex;
   public AbstractChoice choice;
 
@@ -35,9 +36,11 @@ public class MapNodeButton extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
+      sb.setColor(WHITE);
+      sb.draw(bg, x, y, sWidth, sHeight);
       if (!choice.room.isDone && choice.canGo) {
         if (currentFloor.num == wayIndex)
-          sb.setColor(mapScreen.alpha, mapScreen.alpha, mapScreen.alpha, 1.0f);
+          sb.setColor(mapScreen.alpha, mapScreen.alpha, 0, 1.0f);
         else sb.setColor(LIGHT_GRAY);
       } else sb.setColor(Color.DARK_GRAY);
       sb.draw(img, x, y, sWidth, sHeight);

@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.*;
@@ -359,7 +360,18 @@ public class BattleScreen extends AbstractScreen {
         speedData.add(new TurnSpeedData(e.entity.stat.capSpeed(), AbstractLabyrinth.publicRandom.random(0, 7), e.entity));
     }
 
-    speedData.shuffle();
+    TurnSpeedData[] items = new TurnSpeedData[speedData.size];
+    for(int i = 0; i < speedData.size; i++) {
+      items[i] = speedData.get(i);
+    }
+    for (int i = speedData.size - 1; i >= 0; --i) {
+      int ii = AbstractLabyrinth.publicRandom.random(i);
+      TurnSpeedData temp = items[i];
+      items[i] = items[ii];
+      items[ii] = temp;
+    }
+    speedData.clear();
+    speedData.addAll(items);
 
     Sort.instance()
         .sort(speedData, (data1, data2) -> {

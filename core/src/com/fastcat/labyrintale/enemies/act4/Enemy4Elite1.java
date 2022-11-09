@@ -31,24 +31,24 @@ public class Enemy4Elite1 extends AbstractEnemy {
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
     AbstractSkill s = new StrikeE(this);
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
       s.upgrade();
     }
     s.disposable = true;
     temp.add(s);
-    AbstractSkill s2 = new FrailStrongE(this);
+    AbstractSkill s2 = new FrailStrongE(this).upgrade();
     for (int i = 0; i < 1; i++) {
       s2.upgrade();
     }
     s2.disposable = true;
     temp.add(s2);
     AbstractSkill s1 = new HinderAllE(this);
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 4; i++) {
       s1.upgrade();
     }
     s1.disposable = true;
     temp.add(s1);
-    AbstractSkill s3 = new DecayE(this);
+    AbstractSkill s3 = new DecayE(this).upgrade();
     s3.upgrade();
     s3.disposable = true;
     temp.add(s3);
@@ -57,6 +57,7 @@ public class Enemy4Elite1 extends AbstractEnemy {
       s4.upgrade();
     }
     temp.add(s4);
+    temp.add(new FuryE(this).upgrade().upgrade().upgrade());
     return temp;
   }
 }

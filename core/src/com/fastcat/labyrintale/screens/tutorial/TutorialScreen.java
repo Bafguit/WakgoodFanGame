@@ -29,7 +29,7 @@ public class TutorialScreen extends AbstractScreen {
     public void update() {
         if(type != null) {
             if(type == TutorialType.BATTLE) {
-                AbstractLabyrinth.cPanel.infoPanel.setInfo(AbstractLabyrinth.players[0]);
+                AbstractLabyrinth.cPanel.battlePanel.setPlayer(AbstractLabyrinth.players[0]);
             }
             nextPage.update();
             close.update();

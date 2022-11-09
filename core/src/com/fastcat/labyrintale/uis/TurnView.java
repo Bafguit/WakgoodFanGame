@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.BattleView;
@@ -67,9 +68,11 @@ public class TurnView extends AbstractUI {
 
   private static class TurnIcon extends AbstractUI {
 
+    private final TurnSkillIcon sView;
     private final Sprite bb;
     private final float ww, hh;
     public AbstractEntity view;
+    public AbstractSkill skill;
     public boolean isMain;
 
     public TurnIcon(AbstractEntity entity) {
@@ -81,6 +84,7 @@ public class TurnView extends AbstractUI {
       clickable = false;
       this.view = entity;
       isMain = false;
+      sView = new TurnSkillIcon(entity);
     }
 
     @Override
@@ -88,6 +92,51 @@ public class TurnView extends AbstractUI {
       if(over && view.isAlive()) {
         Labyrintale.battleScreen.looking.add(view);
         AbstractLabyrinth.cPanel.battlePanel.setPlayer(view);
+      } else if(sView.over && view.pre != null) {
+        AbstractLabyrinth.cPanel.infoPanel.setInfo(view.pre);
+      }
+      sView.update();
+    }
+
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+      if (enabled) {
+        if(view.isAlive()) sb.setColor(Color.WHITE);
+        else sb.setColor(Color.DARK_GRAY);
+        float sx, sy;
+        sy = y - sView.sHeight * 1.1f;
+        if (isMain) {
+          if (view != null) {
+            sb.draw(view.img, x, y, ww, hh);
+          }
+          sb.draw(bb, x, y, ww, hh);
+          sx = x + (ww - sView.sWidth) / 2;
+        } else {
+          if (view != null) {
+            sb.draw(view.img, x, y, sWidth, sHeight);
+          }
+          sb.draw(img, x, y, sWidth, sHeight);
+          sx = x + (sWidth - sView.sWidth) / 2;
+        }
+        sView.setPosition(sx, sy);
+        sView.render(sb);
+      }
+    }
+  }
+
+  private static class TurnSkillIcon extends AbstractUI {
+    public AbstractEntity view;
+
+    public TurnSkillIcon(AbstractEntity entity) {
+      super(FileHandler.getUi().get("BORDER_SS"));
+      this.view = entity;
+      clickable = false;
+    }
+
+    @Override
+    protected void updateButton() {
+      if(over && view.pre != null) {
+        AbstractLabyrinth.cPanel.infoPanel.setInfo(view.pre);
       }
     }
 
@@ -95,15 +144,8 @@ public class TurnView extends AbstractUI {
     protected void renderUi(SpriteBatch sb) {
       if (enabled) {
         sb.setColor(Color.WHITE);
-        if (isMain) {
-          if (view != null) {
-            sb.draw(view.img, x, y, ww, hh);
-          }
-          sb.draw(bb, x, y, ww, hh);
-        } else {
-          if (view != null) {
-            sb.draw(view.img, x, y, sWidth, sHeight);
-          }
+        if(view.pre != null) {
+          sb.draw(view.pre.img, x, y, sWidth, sHeight);
           sb.draw(img, x, y, sWidth, sHeight);
         }
       }

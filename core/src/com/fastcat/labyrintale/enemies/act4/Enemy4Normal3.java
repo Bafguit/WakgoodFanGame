@@ -10,7 +10,7 @@ public class Enemy4Normal3 extends AbstractEnemy {
 
   private static final String ID = "Enemy4Normal3";
   private static final EnemyType TYPE = EnemyType.NORMAL;
-  private static final int HEALTH = 112;
+  private static final int HEALTH = 122;
 
   public Enemy4Normal3() {
     super(ID, TYPE, HEALTH);
@@ -24,13 +24,13 @@ public class Enemy4Normal3 extends AbstractEnemy {
 
   @Override
   public void preBattle() {
-    applyStatus(new AttackStatus(5), this, 5, false);
+    applyStatus(new AttackStatus(8), this, 5, false);
   }
 
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s = new RestrictE(this);
+    AbstractSkill s = new RestrictE(this).upgrade();
     s.disposable = true;
     temp.add(s);
     temp.add(new AttackLowE(this));

@@ -64,10 +64,12 @@ public abstract class AbstractEnemy extends AbstractEntity {
         if (isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
         if(hasChange) {
             hand[0] = makeHand();
+            hand[0].nextTurn = true;
         } else {
             for (int i = 0; i < handSize; i++) {
                 if (i < drawPile.size) {
                     AbstractSkill s = drawPile.removeIndex(0);
+                    s.nextTurn = true;
                     hand[i] = s;
                 } else break;
             }

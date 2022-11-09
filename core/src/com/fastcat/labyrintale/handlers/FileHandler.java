@@ -189,6 +189,7 @@ public class FileHandler implements Disposable {
     ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
     ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
     ui.put("BORDER_R", new Sprite(new Texture("img/ui/border_r.png")));
+    ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
     ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
     ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
     ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));

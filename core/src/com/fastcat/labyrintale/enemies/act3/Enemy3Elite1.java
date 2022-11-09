@@ -25,7 +25,7 @@ public class Enemy3Elite1 extends AbstractEnemy {
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
     AbstractSkill s = new HinderE(this);
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 5; i++) {
       s.upgrade();
     }
     temp.add(s);
@@ -35,7 +35,7 @@ public class Enemy3Elite1 extends AbstractEnemy {
     }
     temp.add(s2);
     AbstractSkill s1 = new HinderE(this);
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 5; i++) {
       s1.upgrade();
     }
     temp.add(s1);

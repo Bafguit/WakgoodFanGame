@@ -29,12 +29,12 @@ public class Enemy3Weak2 extends AbstractEnemy {
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s1 = new AttackLowE(this);
+    AbstractSkill s1 = new AttackLowE(this).upgrade();
     for (int i = 0; i < 3; i++) {
       s1.upgrade();
     }
     temp.add(s1);
-    AbstractSkill s4 = new AttackLowE(this);
+    AbstractSkill s4 = new AttackLowE(this).upgrade();
     for (int i = 0; i < 3; i++) {
       s4.upgrade();
     }
@@ -44,7 +44,7 @@ public class Enemy3Weak2 extends AbstractEnemy {
     s2.upgrade();
     temp.add(s2);
     AbstractSkill s3 = new WeakE(this);
-    s3.upgrade();
+    s3.upgrade().upgrade();
     temp.add(s3);
     return temp;
   }

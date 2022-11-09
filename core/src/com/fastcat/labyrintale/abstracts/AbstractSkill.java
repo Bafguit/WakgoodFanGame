@@ -37,6 +37,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
   public boolean usedOnly = false;
   public boolean passive = false;
   public boolean disposable = false;
+  public boolean nextTurn = false;
   public int upgradeCount = 0;
   public int attack = -1;
   public int baseAttack = -1;
@@ -580,6 +581,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       for (AbstractStatus s : owner.status) {
         if (s != null) s.onUseCard(this);
       }
+      owner.pre = this;
     }
     if (target == SkillTarget.ENEMY || target == SkillTarget.PLAYER) {
       bot(new SelectTargetAction(this));
@@ -594,6 +596,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         if (owner.isPlayer) bot(new NextTurnAction());
       }
     }
+
     if (owner != null && owner.isPlayer) AbstractLabyrinth.energy -= cost;
   }
 

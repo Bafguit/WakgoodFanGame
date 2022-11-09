@@ -31,7 +31,8 @@ public class CounterStatus extends AbstractStatus {
 
   @Override
   public void startOfTurn() {
-    top(new RemoveStatusAction(this, true));
+    if (notSelf) notSelf = false;
+    else top(new RemoveStatusAction(this, true));
   }
 
   @Override
