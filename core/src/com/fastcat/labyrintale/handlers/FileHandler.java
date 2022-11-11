@@ -37,11 +37,13 @@ public class FileHandler implements Disposable {
   @Getter private static final HashMap<String, TextureAtlas> atlas = new HashMap<>();
   // 캐릭터
   @Getter private static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
-  @Getter private static final HashMap<PlayerClass, Sprite> charImgBig = new HashMap<>();
+  @Getter private static final HashMap<PlayerClass, Sprite> charImgTurn = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
   @Getter private static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
+  @Getter private static final HashMap<String, Sprite> enemyImg = new HashMap<>();
+  @Getter private static final HashMap<String, Sprite> enemyPanelImg = new HashMap<>();
   // 스킬
   @Getter private static final HashMap<String, Sprite> skillImg = new HashMap<>();
   // 상태
@@ -93,6 +95,7 @@ public class FileHandler implements Disposable {
     generateSkeleton();
     StringHandler.generate();
     generateAdvImg();
+    generateEnemyImg();
     generateSkillImg();
     generateStatusImg();
     generateItemImg();
@@ -123,17 +126,19 @@ public class FileHandler implements Disposable {
     maps.add(ui);
     maps.add(vfx);
     maps.add(charImg);
-    maps.add(charImgBig);
+    maps.add(charImgTurn);
     maps.add(charImgTiny);
     maps.add(charBgImg);
     maps.add(charPanelImg);
     maps.add(advImg);
+    maps.add(enemyImg);
+    maps.add(enemyPanelImg);
     maps.add(skillImg);
     maps.add(statusImg);
     maps.add(itemImg);
     maps.add(itemImgTrans);
+    maps.add(eventImg);
     maps.add(tutorialImg);
-    // maps.put("eventImg", eventImg);
   }
 
   private void generateVideo() {
@@ -189,6 +194,8 @@ public class FileHandler implements Disposable {
     ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
     ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
     ui.put("BORDER_R", new Sprite(new Texture("img/ui/border_r.png")));
+    ui.put("BORDER_T", new Sprite(new Texture("img/ui/border_turn.png")));
+    ui.put("BORDER_T2", new Sprite(new Texture("img/ui/border_turn2.png")));
     ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
     ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
     ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
@@ -252,7 +259,7 @@ public class FileHandler implements Disposable {
 
   private void generateCharImg() {
     charImg.clear();
-    charImgBig.clear();
+    charImgTurn.clear();
     charImgTiny.clear();
     charBgImg.clear();
     charPanelImg.clear();
@@ -261,7 +268,7 @@ public class FileHandler implements Disposable {
     for (PlayerClass cls : PlayerClass.values()) {
       String s = cls.toString().toLowerCase();
       charImg.put(cls, character.createSprite(s));
-      charImgBig.put(cls, character.createSprite(s + "_p"));
+      charImgTurn.put(cls, character.createSprite(s + "_p"));
       charImgTiny.put(cls, character.createSprite(s + "_s"));
       charBgImg.put(cls, character.createSprite(s + "_bg"));
       charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
@@ -290,6 +297,15 @@ public class FileHandler implements Disposable {
     for (AdvisorClass cls : AdvisorClass.values()) {
       String s = cls.toString().toLowerCase();
       advImg.put(cls, new Sprite(new Texture("img/advisor/" + s + ".png")));
+    }
+  }
+
+  private void generateEnemyImg() {
+    enemyImg.clear();
+    enemyPanelImg.clear();
+    for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
+      enemyImg.put(js.name, new Sprite(new Texture("spine/enemy/" + js.name + "/img.png")));
+      enemyPanelImg.put(js.name, new Sprite(new Texture("spine/enemy/" + js.name + "/img_p.png")));
     }
   }
 

@@ -76,11 +76,11 @@ public class TurnView extends AbstractUI {
     public boolean isMain;
 
     public TurnIcon(AbstractEntity entity) {
-      super(FileHandler.getUi().get("BORDER"));
+      super(FileHandler.getUi().get("BORDER_T"));
       ww = sWidth;
       hh = sHeight;
       setScale(0.75f);
-      bb = FileHandler.getUi().get("BORDER");
+      bb = FileHandler.getUi().get("BORDER_T2");
       clickable = false;
       this.view = entity;
       isMain = false;
@@ -107,13 +107,13 @@ public class TurnView extends AbstractUI {
         sy = y - sView.sHeight * 1.1f;
         if (isMain) {
           if (view != null) {
-            sb.draw(view.img, x, y, ww, hh);
+            sb.draw(view.imgTurn, x, y, ww, hh);
           }
           sb.draw(bb, x, y, ww, hh);
           sx = x + (ww - sView.sWidth) / 2;
         } else {
           if (view != null) {
-            sb.draw(view.img, x, y, sWidth, sHeight);
+            sb.draw(view.imgTurn, x, y, sWidth, sHeight);
           }
           sb.draw(img, x, y, sWidth, sHeight);
           sx = x + (sWidth - sView.sWidth) / 2;

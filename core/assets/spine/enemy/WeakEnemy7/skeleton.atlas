@@ -1,104 +1,104 @@
 
 skeleton.png
-size: 1961,1206
+size: 1509,1580
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 625, 625
-  size: 719, 579
+  xy: 794, 454
+  size: 694, 549
   orig: 900, 900
-  offset: 43, 17
+  offset: 81, 22
   index: -1
 die
   rotate: false
-  xy: 2, 89
-  size: 522, 383
+  xy: 2, 1234
+  size: 889, 344
   orig: 900, 900
-  offset: 201, 8
+  offset: 7, 34
   index: -1
 hit
   rotate: false
-  xy: 625, 2
-  size: 516, 621
+  xy: 2, 2
+  size: 442, 657
   orig: 900, 900
-  offset: 250, 20
+  offset: 302, 11
   index: -1
 idle
   rotate: false
-  xy: 1346, 631
+  xy: 893, 1005
   size: 613, 573
   orig: 900, 900
   offset: 175, 17
   index: -1
 lion_arm_right
   rotate: false
-  xy: 526, 247
+  xy: 794, 1007
   size: 89, 225
   orig: 900, 900
   offset: 402, 188
   index: -1
 lion_body
   rotate: false
-  xy: 1425, 243
+  xy: 728, 66
   size: 257, 386
   orig: 900, 900
   offset: 388, 132
   index: -1
 lion_foot_left
-  rotate: false
-  xy: 1837, 382
+  rotate: true
+  xy: 987, 53
   size: 113, 247
   orig: 900, 900
   offset: 368, 67
   index: -1
 lion_foot_right
   rotate: false
-  xy: 1684, 345
+  xy: 987, 168
   size: 151, 284
   orig: 900, 900
   offset: 408, 20
   index: -1
 lion_hand_left
-  rotate: true
-  xy: 1495, 55
+  rotate: false
+  xy: 1321, 211
   size: 186, 241
   orig: 900, 900
   offset: 175, 40
   index: -1
 lion_hand_right
   rotate: false
-  xy: 1143, 2
+  xy: 446, 454
   size: 179, 205
   orig: 900, 900
   offset: 287, 17
   index: -1
 lion_head
   rotate: false
-  xy: 1143, 209
+  xy: 446, 38
   size: 280, 414
   orig: 900, 900
   offset: 230, 176
   index: -1
 lion_leg_right
   rotate: false
-  xy: 1324, 16
+  xy: 1236, 9
   size: 169, 191
   orig: 900, 900
   offset: 463, 153
   index: -1
 lion_tail
   rotate: false
-  xy: 1738, 93
+  xy: 1140, 202
   size: 179, 250
   orig: 900, 900
   offset: 609, 53
   index: -1
 skill
-  rotate: false
-  xy: 2, 474
-  size: 621, 730
+  rotate: true
+  xy: 2, 661
+  size: 571, 790
   orig: 900, 900
-  offset: 159, 20
+  offset: 177, 19
   index: -1

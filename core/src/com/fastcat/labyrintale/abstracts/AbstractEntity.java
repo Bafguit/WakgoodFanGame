@@ -76,7 +76,7 @@ public abstract class AbstractEntity implements Cloneable {
   public float animY = -10000;
   public EntityStat stat;
   public Sprite img;
-  public Sprite imgBig;
+  public Sprite imgTurn;
   public Sprite imgTiny;
   public Sprite imgPanel;
   public Sprite bg;
@@ -641,7 +641,7 @@ public abstract class AbstractEntity implements Cloneable {
 
   public void setImage(Sprite i, Sprite ib, Sprite bg) {
     img = i;
-    imgBig = ib;
+    imgTurn = ib;
     this.bg = bg;
   }
 

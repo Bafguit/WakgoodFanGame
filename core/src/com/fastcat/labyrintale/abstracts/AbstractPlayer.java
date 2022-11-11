@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
@@ -33,7 +32,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     pass = new PassTurn(this);
     setImage(
         FileHandler.getCharImg().get(playerClass),
-        FileHandler.getCharImgBig().get(playerClass),
+        FileHandler.getCharImgTurn().get(playerClass),
         FileHandler.getCharBgImg().get(playerClass));
     imgTiny = FileHandler.getCharImgTiny().get(playerClass);
     imgPanel = FileHandler.getCharPanelImg().get(playerClass);

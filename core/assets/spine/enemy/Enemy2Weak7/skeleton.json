@@ -1,0 +1,117 @@
+{
+"skeleton": {
+	"hash": "vPNcgKi27jzwhk6SrkiLiBhnJtA",
+	"spine": "3.8.75",
+	"x": -450.16,
+	"y": -70.39,
+	"width": 900.79,
+	"height": 900.79,
+	"images": "./img/",
+	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
+},
+"bones": [
+	{ "name": "root", "rotation": -0.05 }
+],
+"slots": [
+	{ "name": "die", "bone": "root" },
+	{ "name": "attack", "bone": "root", "attachment": "attack" },
+	{ "name": "hit", "bone": "root" },
+	{ "name": "skill", "bone": "root" },
+	{ "name": "idle", "bone": "root" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"die": {
+				"die": { "x": -0.1, "y": 380, "width": 900, "height": 900 }
+			},
+			"attack": {
+				"attack": { "x": -0.1, "y": 380, "width": 900, "height": 900 }
+			},
+			"skill": {
+				"skill": { "x": -0.1, "y": 380, "width": 900, "height": 900 }
+			},
+			"hit": {
+				"hit": { "x": -0.1, "y": 380, "width": 900, "height": 900 }
+			},
+			"idle": {
+				"idle": { "x": -0.1, "y": 380, "width": 900, "height": 900 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"slots": {
+			"attack": {
+				"attachment": [
+					{ "time": 0.6667, "name": "attack" }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"die": {
+				"attachment": [
+					{ "name": "die" },
+					{ "time": 0.6667, "name": "die" }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"hit": {
+				"attachment": [
+					{ "name": "hit" },
+					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "name": "idle" }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0.6667 }
+		]
+	},
+	"skill": {
+		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": "skill" },
+					{ "time": 0.6667, "name": "skill" }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	}
+}
+}

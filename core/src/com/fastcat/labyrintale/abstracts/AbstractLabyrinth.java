@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.DifficultyHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.players.*;
+import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class AbstractLabyrinth {
@@ -185,7 +186,7 @@ public class AbstractLabyrinth {
     GroupHandler.RoomGroup.eliteCount = 0;
     GroupHandler.RoomGroup.bossCount = 0;
     GroupHandler.RoomGroup.eventCount = 0;
-    Labyrintale.mapScreen.refreshFloor();
+    Labyrintale.mapScreen = new MapScreen();
   }
 
   public static long seedToLong(String s) {

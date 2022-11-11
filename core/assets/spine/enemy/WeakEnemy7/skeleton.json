@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "V/sr+aQQlT99N/bb8neTwhoguQo", "spine": "3.8.75", "images": "../elite/수왁자/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
+"skeleton": { "hash": "zEnfri+wVzTcZWs+e3bO3h+a36A", "spine": "3.8.75", "images": "", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
 "bones": [
 	{ "name": "root", "rotation": -0.05 },
 	{ "name": "leg", "parent": "root", "length": 204.71, "rotation": -45.65, "x": 22.13, "y": 251.71 },
@@ -106,9 +106,9 @@
 	},
 	"idle": {
 		"slots": {
-			"lion_arm_right": {
+			"lion_foot_left": {
 				"attachment": [
-					{ "name": "lion_arm_right" }
+					{ "name": "lion_foot_left" }
 				]
 			},
 			"lion_hand_left": {
@@ -116,19 +116,19 @@
 					{ "name": "lion_hand_left" }
 				]
 			},
-			"lion_body": {
-				"attachment": [
-					{ "name": "lion_body" }
-				]
-			},
 			"lion_foot_right": {
 				"attachment": [
 					{ "name": "lion_foot_right" }
 				]
 			},
-			"lion_leg_right": {
+			"lion_head": {
 				"attachment": [
-					{ "name": "lion_leg_right" }
+					{ "name": "lion_head" }
+				]
+			},
+			"lion_body": {
+				"attachment": [
+					{ "name": "lion_body" }
 				]
 			},
 			"lion_hand_right": {
@@ -136,14 +136,14 @@
 					{ "name": "lion_hand_right" }
 				]
 			},
-			"lion_foot_left": {
+			"lion_leg_right": {
 				"attachment": [
-					{ "name": "lion_foot_left" }
+					{ "name": "lion_leg_right" }
 				]
 			},
-			"lion_head": {
+			"lion_arm_right": {
 				"attachment": [
-					{ "name": "lion_head" }
+					{ "name": "lion_arm_right" }
 				]
 			},
 			"lion_tail": {
