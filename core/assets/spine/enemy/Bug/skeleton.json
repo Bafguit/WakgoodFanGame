@@ -1,0 +1,75 @@
+{
+"skeleton": {
+	"hash": "M+3Bm/7utUllBmhvO9OkPeBKPkY",
+	"spine": "3.8.75",
+	"x": -320,
+	"y": -50,
+	"width": 640,
+	"height": 640,
+	"images": "C:/Users/유민/Pictures/게임개발/enemy",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "idle", "bone": "root", "attachment": "idle" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"idle": {
+				"idle": { "y": 270, "scaleX": 0.5, "scaleY": 0.5, "width": 1280, "height": 1280 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "time": 0.6667, "name": "idle" }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "time": 0.6667, "name": "idle" }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "time": 0.6667, "name": "idle" }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "time": 0.6667, "name": "idle" }
+				]
+			}
+		}
+	},
+	"skill": {
+		"slots": {
+			"idle": {
+				"attachment": [
+					{ "time": 0.6667, "name": "idle" }
+				]
+			}
+		}
+	}
+}
+}

@@ -5,11 +5,9 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.enemies.BugEnemy;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 
-public class PlaceholderRoom extends AbstractRoom {
-  public PlaceholderRoom() {
-    super("Placeholder", RoomType.ENTRY);
-    isDone = true;
-    battleDone = true;
+public class BugRoom extends AbstractRoom {
+  public BugRoom() {
+    super("Bug", RoomType.BATTLE);
   }
 
   @Override

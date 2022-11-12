@@ -69,7 +69,7 @@ public class ShieldPushAction extends AbstractAction {
           AbstractEntity te = target.get(i);
           if (te.isAlive()) te.takeDamage(info);
         }
-        actor.loseBlock(actor.block);
+        //actor.loseBlock(actor.block);
       } else isDone = true;
     }
   }
