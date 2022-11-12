@@ -16,6 +16,7 @@ public class BarrierE extends AbstractSkill {
   public BarrierE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
+    setIntent(IntentType.SHIELD);
   }
 
   @Override

@@ -17,6 +17,7 @@ public class AdjudgeE extends AbstractSkill {
   public AdjudgeE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(1, 1);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

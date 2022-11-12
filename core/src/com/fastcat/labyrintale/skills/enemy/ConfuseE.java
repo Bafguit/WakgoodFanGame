@@ -16,6 +16,7 @@ public class ConfuseE extends AbstractSkill {
 
   public ConfuseE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

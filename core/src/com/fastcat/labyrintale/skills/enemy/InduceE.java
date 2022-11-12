@@ -16,6 +16,7 @@ public class InduceE extends AbstractSkill {
 
   public InduceE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

@@ -20,6 +20,7 @@ public class UnblockE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(ATTACK, 1);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.ATTACK_DEBUFF);
   }
 
   @Override

@@ -16,6 +16,7 @@ public class CorrosE extends AbstractSkill {
   public CorrosE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

@@ -16,6 +16,7 @@ public class FrailStrongE extends AbstractSkill {
   public FrailStrongE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

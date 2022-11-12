@@ -14,6 +14,7 @@ public class BlindE extends AbstractSkill {
 
   public BlindE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

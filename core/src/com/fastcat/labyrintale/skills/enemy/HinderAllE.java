@@ -15,6 +15,7 @@ public class HinderAllE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(4, 1);
     setBaseValue(1);
+    setIntent(IntentType.ATTACK_DEBUFF);
   }
 
   @Override

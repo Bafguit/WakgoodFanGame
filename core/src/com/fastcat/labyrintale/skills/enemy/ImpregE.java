@@ -16,6 +16,7 @@ public class ImpregE extends AbstractSkill {
 
   public ImpregE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

@@ -13,6 +13,7 @@ public class CoercionE extends AbstractSkill {
 
   public CoercionE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

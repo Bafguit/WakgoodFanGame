@@ -16,6 +16,7 @@ public class DoubleE extends AbstractSkill {
   public DoubleE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
+    setIntent(IntentType.ATTACK);
   }
 
   @Override

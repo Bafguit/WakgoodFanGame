@@ -99,7 +99,7 @@ public class BattleScreen extends AbstractScreen {
       enemyStatus[i] = new LinkedList<>();
 
       SkillButton s3 = new SkillButton();
-      s3.setScale(0.5f);
+      s3.setScale(0.75f);
       s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.765f);
       s3.canClick = false;
       s3.subDown = true;

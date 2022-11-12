@@ -15,6 +15,8 @@ import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import lombok.Getter;
 
 public class FileHandler implements Disposable {
@@ -343,6 +345,9 @@ public class FileHandler implements Disposable {
     }
     for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_ADV)) {
       skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
+    }
+    for (AbstractSkill.IntentType it : AbstractSkill.IntentType.values()) {
+      skillImg.put(it.toString(), new Sprite(new Texture("img/skill/intent/" + it.toString().toLowerCase() + ".png")));
     }
   }
 

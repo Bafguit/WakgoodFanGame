@@ -18,6 +18,6 @@ public class ToxicFlask extends AbstractItem {
 
   public float onAttackedMultiply(
           AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-    return attacker.hasStatus("Infection") ? 0.7f : 1.0f;
+    return attacker != null && attacker.hasStatus("Infection") ? 0.7f : 1.0f;
   }
 }

@@ -18,6 +18,7 @@ public class ChargeE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
     setBaseSpell(3, 1);
+    setIntent(IntentType.ATTACK_SHIELD);
   }
 
   @Override

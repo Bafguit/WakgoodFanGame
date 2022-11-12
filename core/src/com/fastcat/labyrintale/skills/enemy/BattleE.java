@@ -13,6 +13,7 @@ public class BattleE extends AbstractSkill {
 
   public BattleE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

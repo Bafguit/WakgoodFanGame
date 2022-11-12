@@ -16,6 +16,7 @@ public class FuryE extends AbstractSkill {
   public FuryE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.BUFF);
   }
 
   @Override

@@ -383,6 +383,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     return true;
   }
 
+  protected void setIntent(IntentType type) {
+    img = FileHandler.getSkillImg().get(type.toString());
+  }
+
   protected final void top(AbstractAction a) {
     ActionHandler.top(a);
   }
@@ -750,5 +754,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     ENEMY_LOW_HP,
     ENEMY_HIGH_HP,
     OTHER
+  }
+
+  public enum IntentType {
+    ATTACK, ATTACK_SHIELD, ATTACK_DEBUFF, ATTACK_BUFF, SHIELD, SHIELD_DEBUFF, SHIELD_BUFF, DEBUFF, BUFF
   }
 }

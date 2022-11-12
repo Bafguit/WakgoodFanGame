@@ -18,6 +18,7 @@ public class PushE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(ATTACK, UP);
     setBaseValue(VALUE);
+    setIntent(IntentType.ATTACK);
   }
 
   @Override

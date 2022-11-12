@@ -15,6 +15,7 @@ public class ProtectE extends AbstractSkill {
   public ProtectE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
+    setIntent(IntentType.SHIELD);
   }
 
   @Override

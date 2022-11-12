@@ -16,6 +16,7 @@ public class EncourageE extends AbstractSkill {
   public EncourageE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.BUFF);
   }
 
   @Override

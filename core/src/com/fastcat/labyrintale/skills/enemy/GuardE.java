@@ -17,6 +17,7 @@ public class GuardE extends AbstractSkill {
   public GuardE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
+    setIntent(IntentType.SHIELD_BUFF);
   }
 
   @Override

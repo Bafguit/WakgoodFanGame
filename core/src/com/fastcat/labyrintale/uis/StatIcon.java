@@ -53,7 +53,7 @@ public class StatIcon extends AbstractUI {
 
   @Override
   protected void updateButton() {
-    if (isUp) clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80;
+    if (isUp) clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
     if (type == StatType.ATTACK) amount = entity.stat.attack;
     else if (type == StatType.SPELL) amount = entity.stat.spell;
     else if (type == StatType.SPEED) amount = entity.stat.capSpeed();

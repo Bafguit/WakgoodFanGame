@@ -15,6 +15,7 @@ public class AllTwoE extends AbstractSkill {
   public AllTwoE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
+    setIntent(IntentType.ATTACK);
   }
 
   @Override

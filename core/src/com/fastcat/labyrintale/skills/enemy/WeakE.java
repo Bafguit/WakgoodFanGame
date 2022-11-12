@@ -16,6 +16,7 @@ public class WeakE extends AbstractSkill {
   public WeakE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.DEBUFF);
   }
 
   @Override

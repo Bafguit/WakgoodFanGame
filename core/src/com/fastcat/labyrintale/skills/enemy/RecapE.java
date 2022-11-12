@@ -18,6 +18,7 @@ public class RecapE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
     setBaseValue(2, 1);
+    setIntent(IntentType.SHIELD_BUFF);
   }
 
   @Override

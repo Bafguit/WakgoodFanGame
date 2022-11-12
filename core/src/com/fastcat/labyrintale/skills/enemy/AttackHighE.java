@@ -15,6 +15,7 @@ public class AttackHighE extends AbstractSkill {
   public AttackHighE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
+    setIntent(IntentType.ATTACK);
   }
 
   @Override

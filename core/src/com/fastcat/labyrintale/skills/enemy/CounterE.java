@@ -18,6 +18,7 @@ public class CounterE extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(4, 1);
     setBaseValue(VALUE, 1);
+    setIntent(IntentType.BUFF);
   }
 
   @Override
