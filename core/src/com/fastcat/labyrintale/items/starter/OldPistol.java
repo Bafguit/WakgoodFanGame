@@ -17,6 +17,16 @@ public class OldPistol extends AbstractItem {
     super(ID, owner, RARITY);
   }
 
+  @Override
+  public void onGain() {
+    owner.stat.moveRes += 20;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.moveRes -= 20;
+  }
+
   public void onMove(AbstractEntity source) {
     bot(new ApplyStatusAction(new CourageStatus(2), owner, owner, true));
   }

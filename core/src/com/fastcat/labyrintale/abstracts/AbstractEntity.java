@@ -18,9 +18,7 @@ import com.fastcat.labyrintale.effects.DieEffect;
 import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
 import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
 import com.fastcat.labyrintale.prototype.tracker.Tracker;
@@ -602,7 +600,17 @@ public abstract class AbstractEntity implements Cloneable {
           ActionHandler.top(new EndLabyrinthAction(DeadScreen.ScreenType.DEAD));
         }
       }
-    } else isDead = true;
+    } else {
+      isDead = true;
+      if (AbstractLabyrinth.stillAlive()) {
+        ActionHandler.clear();
+        SoundHandler.fadeOutMusic("BATTLE_1");
+        SoundHandler.fadeOutMusic("BATTLE_BOSS");
+        ActionHandler.clear();
+        Labyrintale.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
+        SaveHandler.finish(false);
+      }
+    }
   }
 
   public void neutralize() {
@@ -770,7 +778,7 @@ public abstract class AbstractEntity implements Cloneable {
     public int neutRes = 5;
 
     public static int cap(int i) {
-      return Math.max(Math.min(i, 80), 5);
+      return Math.max(Math.min(i, 100), 5);
     }
 
     public static int neutCap(AbstractEntity e) {

@@ -17,13 +17,12 @@ public class IronForm extends AbstractSkill {
   public IronForm(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(3);
+    setBaseCost(2);
   }
 
   @Override
   public void use() {
     bot(new ApplyStatusAction(new MoveResPlusStatus(value), owner, target, true));
-    bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, target, true));
   }
 
   @Override

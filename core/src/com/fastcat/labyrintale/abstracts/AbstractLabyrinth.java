@@ -281,6 +281,14 @@ public class AbstractLabyrinth {
     }
   }
 
+  public static boolean allAlive() {
+    return players[0].isAlive() && players[1].isAlive() && players[2].isAlive() && players[3].isAlive();
+  }
+
+  public static boolean stillAlive() {
+    return players[0].isAlive() || players[1].isAlive() || players[2].isAlive() || players[3].isAlive();
+  }
+
   public enum RunType {
     NEW,
     SAVE

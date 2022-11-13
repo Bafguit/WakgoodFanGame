@@ -58,7 +58,6 @@ public class RewardScreen extends AbstractScreen {
     if(SettingHandler.setting.rewardTutorial) {
       Labyrintale.openTutorial(TutorialScreen.TutorialType.REWARD);
       SettingHandler.setting.rewardTutorial = false;
-      SettingHandler.save();
     }
   }
 

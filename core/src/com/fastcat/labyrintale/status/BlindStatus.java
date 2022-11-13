@@ -38,6 +38,6 @@ public class BlindStatus extends AbstractStatus {
 
   @Override
   public float attackMultiply() {
-    return 0.4f;
+    return 0.3f;
   }
 }

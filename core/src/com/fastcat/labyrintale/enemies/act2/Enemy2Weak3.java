@@ -9,15 +9,15 @@ public class Enemy2Weak3 extends AbstractEnemy {
 
   private static final String ID = "Enemy2Weak3";
   private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 39;
+  private static final int HEALTH = 31;
 
   public Enemy2Weak3() {
     super(ID, TYPE, HEALTH);
-    stat.speed = 3;
+    stat.speed = 2;
     stat.critical = 20;
-    stat.debuRes = 25;
+    stat.debuRes = 5;
     stat.neutRes = 5;
-    stat.moveRes = 5;
+    stat.moveRes = 25;
   }
 
   @Override

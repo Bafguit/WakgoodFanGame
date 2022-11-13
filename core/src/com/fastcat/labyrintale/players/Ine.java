@@ -20,6 +20,7 @@ public class Ine extends AbstractPlayer {
 
   public Ine() {
     super(ID, HEALTH, COLOR);
+    stat.speed = 1;
     stat.debuRes = 10;
     stat.neutRes = 10;
     stat.critical = 10;

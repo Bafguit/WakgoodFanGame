@@ -21,7 +21,7 @@ public class Manager extends AbstractPlayer {
 
   public Manager() {
     super(ID, HEALTH, COLOR);
-    stat.speed = 1;
+    stat.speed = 2;
     stat.debuRes = 5;
     stat.neutRes = 10;
     stat.critical = 15;

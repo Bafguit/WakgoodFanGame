@@ -21,6 +21,7 @@ public class Wakgood extends AbstractPlayer {
 
   public Wakgood() {
     super(ID, HEALTH, COLOR);
+    stat.speed = 1;
     stat.debuRes = 10;
     stat.neutRes = 15;
     stat.critical = 5;

@@ -1,41 +1,97 @@
 
 skeleton.png
-size: 474,523
+size: 1922,922
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 2, 2
-  size: 470, 519
-  orig: 640, 640
-  offset: 96, 29
+  xy: 2, 309
+  size: 575, 611
+  orig: 900, 900
+  offset: 152, 52
+  index: -1
+belly
+  rotate: false
+  xy: 1707, 190
+  size: 207, 253
+  orig: 900, 900
+  offset: 336, 54
+  index: -1
+chest
+  rotate: false
+  xy: 642, 79
+  size: 331, 284
+  orig: 900, 900
+  offset: 144, 179
   index: -1
 die
   rotate: false
   xy: 2, 2
-  size: 470, 519
-  orig: 640, 640
-  offset: 96, 29
+  size: 638, 305
+  orig: 900, 900
+  offset: 89, 31
+  index: -1
+foot_left
+  rotate: false
+  xy: 1859, 844
+  size: 61, 76
+  orig: 900, 900
+  offset: 223, 118
+  index: -1
+foot_right
+  rotate: false
+  xy: 975, 259
+  size: 85, 104
+  orig: 900, 900
+  offset: 329, 108
+  index: -1
+hand_left
+  rotate: false
+  xy: 1707, 105
+  size: 48, 83
+  orig: 900, 900
+  offset: 198, 121
+  index: -1
+hand_right
+  rotate: true
+  xy: 642, 19
+  size: 58, 82
+  orig: 900, 900
+  offset: 269, 122
+  index: -1
+head
+  rotate: true
+  xy: 1667, 445
+  size: 195, 249
+  orig: 900, 900
+  offset: 117, 151
   index: -1
 hit
   rotate: false
-  xy: 2, 2
-  size: 470, 519
-  orig: 640, 640
-  offset: 96, 29
+  xy: 579, 365
+  size: 514, 555
+  orig: 900, 900
+  offset: 214, 53
   index: -1
 idle
   rotate: false
-  xy: 2, 2
-  size: 470, 519
-  orig: 640, 640
-  offset: 96, 29
+  xy: 1095, 22
+  size: 610, 411
+  orig: 900, 900
+  offset: 117, 52
+  index: -1
+leg
+  rotate: true
+  xy: 1667, 642
+  size: 278, 190
+  orig: 900, 900
+  offset: 449, 52
   index: -1
 skill
-  rotate: false
-  xy: 2, 2
-  size: 470, 519
-  orig: 640, 640
-  offset: 96, 29
+  rotate: true
+  xy: 1095, 435
+  size: 485, 570
+  orig: 900, 900
+  offset: 243, 53
   index: -1
