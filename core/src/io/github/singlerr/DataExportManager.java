@@ -7,6 +7,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,7 +61,7 @@ public final class DataExportManager {
             exporter.getTargetFileName(),
             new CSVWriter(
                 new FileWriter(
-                    new File(parentFile, exporter.getTargetFileName()), StandardCharsets.UTF_8)));
+                    new File(parentFile, exporter.getTargetFileName()), Charset.forName("MS949"))));
       } catch (Exception ex) {
         JOptionPane.showMessageDialog(
             null,

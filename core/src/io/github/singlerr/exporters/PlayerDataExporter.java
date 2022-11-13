@@ -64,7 +64,7 @@ public final class PlayerDataExporter implements DataExporter<AbstractEnemy> {
 
         data.setName(name);
         data.setDescription(description);
-        data.setHealth(entity.health);
+        data.setHealth(entity.maxHealth);
         data.setAttack(entity.stat.attack);
         data.setCritical(entity.stat.critical);
         data.setMultiply(entity.stat.multiply);

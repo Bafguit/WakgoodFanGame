@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.prototype.GameConfiguration;
+import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
+import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
+import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.fastcat.labyrintale.skills.player.basic.MoveP;
 import com.fastcat.labyrintale.skills.player.basic.PassTurn;
 import com.fastcat.labyrintale.strings.CharString;
@@ -44,6 +48,12 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
     passive = getPassive();
     passive.onGain();
+    if (GameConfiguration.getInstance().hasProvider(PlayerStatProvider.class)) {
+      PlayerStatProvider provider =
+              GameConfiguration.getInstance().getProvider(PlayerStatProvider.class);
+      provider.apply(this);
+      provider.addTracker(new Tracker<>(this));
+    }
   }
 
   public static String getClassName(PlayerClass playerClass) {

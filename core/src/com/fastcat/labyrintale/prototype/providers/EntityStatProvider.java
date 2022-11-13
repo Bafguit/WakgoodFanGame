@@ -12,8 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-public final class EntityStatProvider implements ConfigurationProvider<AbstractEntity> {
+public class EntityStatProvider implements ConfigurationProvider<AbstractEntity> {
 
   private HashMap<Class<? extends AbstractEntity>, DummyEntityStat> loadedStats = new HashMap<>();
 
@@ -46,7 +47,7 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
         Class<? extends AbstractEntity> entityClass = parseEntityClass(loadedStat.getClassName());
         loadedStats.put(entityClass, loadedStat);
       } catch (ClassNotFoundException ex) {
-        throw new RuntimeException("이름이 적히지 않은 레코드가 있습니다.");
+        throw new RuntimeException("해당 클래스를 찾을 수 없습니다 : " + loadedStat.getClassName());
       }
     }
   }
@@ -69,9 +70,12 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
       abstractEntity.stat.debuRes = entityStat.getDebuRes();
 
       abstractEntity.desc = entityStat.getDescription();
-      abstractEntity.health = (int) entityStat.getHealth();
+      abstractEntity.maxHealth = entityStat.getHealth();
+      abstractEntity.health = entityStat.getHealth();
     }
   }
+
+
 
   @Override
   public List<Tracker<AbstractEntity>> getTrackers() {
@@ -83,12 +87,12 @@ public final class EntityStatProvider implements ConfigurationProvider<AbstractE
     trackers.add(t);
   }
 
-  private Class<? extends AbstractEntity> parseEntityClass(String simpleClassName)
+  protected Class<? extends AbstractEntity> parseEntityClass(String className)
       throws ClassNotFoundException {
-    return (Class<? extends AbstractEntity>)
-        Class.forName("com.fastcat.labyrintale.players.".concat(simpleClassName));
+    return (Class<? extends AbstractEntity>) Class.forName(className);
   }
 
+  @ToString
   @NoArgsConstructor
   @Data
   public static class DummyEntityStat {

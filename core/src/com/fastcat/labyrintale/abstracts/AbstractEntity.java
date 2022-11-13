@@ -105,12 +105,6 @@ public abstract class AbstractEntity implements Cloneable {
     infoSpine = new InfoSpine(atlas, skel);
     stat = new EntityStat();
 
-    if (GameConfiguration.getInstance().hasProvider(EntityStatProvider.class)) {
-      EntityStatProvider provider =
-          GameConfiguration.getInstance().getProvider(EntityStatProvider.class);
-      provider.apply(this);
-      provider.addTracker(new Tracker<>(this));
-    }
   }
 
   public void update() {

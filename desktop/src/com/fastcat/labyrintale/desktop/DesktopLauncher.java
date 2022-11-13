@@ -6,6 +6,9 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
+import com.fastcat.labyrintale.prototype.providers.MonsterStatProvider;
+import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
+
 import java.io.File;
 import java.lang.reflect.Field;
 
@@ -17,9 +20,9 @@ public class DesktopLauncher {
 
       if (parentFile.exists() && parentFile.listFiles().length > 0) {
         GameConfiguration configuration = GameConfiguration.getInstance();
-        configuration.setProviderClasses(EntityStatProvider.class);
+        configuration.setProviderClasses( PlayerStatProvider.class);
         configuration.loadAllProviders(parentFile);
-        new ReloadWindow().setVisible(true);
+        new ReloadWindow(parentFile).setVisible(true);
       }
 
     } catch (Exception e) {

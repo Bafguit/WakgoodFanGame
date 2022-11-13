@@ -5,6 +5,10 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
+import com.fastcat.labyrintale.prototype.GameConfiguration;
+import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
+import com.fastcat.labyrintale.prototype.providers.MonsterStatProvider;
+import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
 import com.fastcat.labyrintale.skills.enemy.MoveRightE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
@@ -37,6 +41,13 @@ public abstract class AbstractEnemy extends AbstractEntity {
         stat.multiply = 50;
         img = imgTurn = FileHandler.getEnemyImg().get(id);
         imgPanel = FileHandler.getEnemyPanelImg().get(id);
+
+        if (GameConfiguration.getInstance().hasProvider(MonsterStatProvider.class)) {
+            MonsterStatProvider provider =
+                    GameConfiguration.getInstance().getProvider(MonsterStatProvider.class);
+            provider.apply(this);
+            provider.addTracker(new Tracker<>(this));
+        }
     }
 
     @Override
