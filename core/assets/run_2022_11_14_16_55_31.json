@@ -1,5 +1,5 @@
 {
-  "date" : "2022_11_14_16_55_41",
+  "date" : "2022_11_14_16_55_31",
   "random" : {
     "seed" : "MJ8L9L83",
     "seedLong" : 7774567657765651,
@@ -18,7 +18,7 @@
   "level" : 1,
   "exp" : 0,
   "maxExp" : 100,
-  "advisor" : "carnar",
+  "advisor" : null,
   "diff" : "NORMAL",
   "players" : [ {
     "id" : "burger",
@@ -80,14 +80,14 @@
       "debuRes" : 20,
       "neutRes" : 5
     },
-    "isDead" : true,
+    "isDead" : false,
     "goodLuck" : 0,
     "badLuck" : 0,
     "index" : 1,
     "maxRes" : 80,
     "minRes" : 5,
     "maxHealth" : 21,
-    "health" : 0
+    "health" : 21
   }, {
     "id" : "jururu",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -114,14 +114,14 @@
       "debuRes" : 15,
       "neutRes" : 15
     },
-    "isDead" : true,
+    "isDead" : false,
     "goodLuck" : 0,
     "badLuck" : 0,
     "index" : 2,
     "maxRes" : 80,
     "minRes" : 5,
     "maxHealth" : 20,
-    "health" : 0
+    "health" : 20
   }, {
     "id" : "manager",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -148,51 +148,37 @@
       "debuRes" : 5,
       "neutRes" : 10
     },
-    "isDead" : true,
+    "isDead" : false,
     "goodLuck" : 0,
     "badLuck" : 0,
     "index" : 3,
     "maxRes" : 80,
     "minRes" : 5,
     "maxHealth" : 25,
-    "health" : 0
+    "health" : 25
   } ],
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Weak2",
-      "battleDone" : false,
-      "isDone" : false
+      "id" : "Placeholder",
+      "battleDone" : true,
+      "isDone" : true
     },
     "currentWay" : {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
+      "type" : "ENTRY",
+      "enemies" : null,
+      "choices" : [ null, {
+        "type" : "ENTRY",
         "room" : {
-          "id" : "Weak2",
+          "id" : "StartEvent",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 2 ],
-        "linked2" : [ 1 ]
+        "linked" : [ 0, 1 ],
+        "linked2" : [ ]
       }, null ],
-      "selected" : 0,
+      "selected" : -1,
       "isDone" : false
     },
     "ways" : [ {
@@ -203,14 +189,14 @@
         "room" : {
           "id" : "StartEvent",
           "battleDone" : false,
-          "isDone" : true
+          "isDone" : false
         },
         "canGo" : true,
         "linked" : [ 0, 1 ],
         "linked2" : [ ]
       }, null ],
-      "selected" : 1,
-      "isDone" : true
+      "selected" : -1,
+      "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -225,7 +211,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       }, {
@@ -235,11 +221,11 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 1 ]
       }, null ],
-      "selected" : 0,
+      "selected" : -1,
       "isDone" : false
     }, {
       "type" : "WEAK",
@@ -255,7 +241,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       }, null, {
@@ -265,7 +251,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 1 ]
       } ],
@@ -285,7 +271,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 2 ],
         "linked2" : [ 0 ]
       }, {
@@ -295,7 +281,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 2 ]
       } ],
@@ -315,7 +301,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2, 1 ],
         "linked2" : [ 1, 2 ]
       }, null, {
@@ -325,7 +311,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       } ],
@@ -345,7 +331,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 2 ]
       }, {
@@ -355,7 +341,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0 ]
       }, {
@@ -365,7 +351,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 0 ]
       } ],
@@ -381,7 +367,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1, 2 ]
       }, null, {
@@ -391,7 +377,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
       } ],
@@ -411,7 +397,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 0 ]
       }, {
@@ -421,7 +407,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 2 ]
       }, null ],
@@ -441,7 +427,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 1 ]
       }, null, {
@@ -451,7 +437,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0, 1, 2 ],
         "linked2" : [ 0 ]
       } ],
@@ -471,7 +457,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 2 ]
       }, {
@@ -481,7 +467,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 2 ]
       }, {
@@ -491,7 +477,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 0 ],
         "linked2" : [ 2 ]
       } ],
@@ -511,7 +497,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 2 ]
       }, {
@@ -521,7 +507,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 1 ]
       }, null ],
@@ -537,7 +523,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 1 ]
       }, null ],
@@ -557,7 +543,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ ],
         "linked2" : [ 1 ]
       }, null ],
@@ -566,7 +552,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 1
+    "num" : 0
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -1790,5 +1776,5 @@
   "eliteCount" : 2,
   "bossCount" : 1,
   "minute" : 0,
-  "second" : 10
+  "second" : 0
 }

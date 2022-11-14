@@ -26,6 +26,9 @@ public class SelectTargetAction extends AbstractAction implements GetSelectedTar
       if (!isDone) {
         Labyrintale.battleScreen.selectTarget(this);
         AbstractLabyrinth.cPanel.battlePanel.selected = gets;
+      } else {
+        gets.beforeOnTarget();
+        gets.afterOnTarget();
       }
     } else if (!isDone) {
       duration = 10000;
