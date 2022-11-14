@@ -602,19 +602,21 @@ public abstract class AbstractEntity implements Cloneable {
       }
     } else {
       isDead = true;
-      if(isPlayer && index < 3) {
-        for(int i = index; i < 3; i++) {
-          players[i] = players[i + 1];
-        }
-        players[3] = (AbstractPlayer) this;
-      }
-      if (AbstractLabyrinth.stillAlive()) {
+      if (!AbstractLabyrinth.stillAlive()) {
         ActionHandler.clear();
-        SoundHandler.fadeOutMusic("BATTLE_1");
-        SoundHandler.fadeOutMusic("BATTLE_BOSS");
+        SoundHandler.fadeOutAll();
         ActionHandler.clear();
         Labyrintale.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
         SaveHandler.finish(false);
+      } else {
+        if(isPlayer && index < 3) {
+          for(int i = index; i < 3; i++) {
+            players[i] = players[i + 1];
+            players[i].index = i;
+          }
+          index = 3;
+          players[3] = (AbstractPlayer) this;
+        }
       }
     }
   }
