@@ -20,6 +20,7 @@ import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
+import com.fastcat.labyrintale.screens.resultscreen.ResultScreen;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -609,7 +610,7 @@ public abstract class AbstractEntity implements Cloneable {
         ActionHandler.clear();
         SoundHandler.fadeOutAll();
         ActionHandler.clear();
-        Labyrintale.fadeOutAndChangeScreen(new DeadScreen(DeadScreen.ScreenType.DEAD), 2.0f);
+        Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD), 2.0f);
         SaveHandler.finish(false);
       } else {
         if(isPlayer && index < 3) {

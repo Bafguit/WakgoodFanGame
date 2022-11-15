@@ -17,6 +17,8 @@ public class AbstractLabyrinth {
 
   public static final int MAX_ENERGY = 8;
 
+  public static String date;
+
   public static String seed;
   public static long seedLong;
 

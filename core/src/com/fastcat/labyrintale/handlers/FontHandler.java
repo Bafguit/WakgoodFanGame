@@ -33,6 +33,7 @@ public final class FontHandler implements Disposable {
   public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
   public static final FontData MAIN_MENU_BORDER = new FontData(MEDIUM, 53, true);
   public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
+  public static final FontData CARD_BORDER = new FontData(MEDIUM, 67, true);
   // private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
   public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
   public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 40, WHITE, true, true);
@@ -42,6 +43,7 @@ public final class FontHandler implements Disposable {
   public static final FontData SHOP_NO = new FontData(MEDIUM, 30, SCARLET, true, true);
   public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
   public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
+  public static final FontData INFO_HP_BORDER = new FontData(MEDIUM, 35, true);
   public static final FontData EVENT_TITLE = new FontData(MEDIUM, 44, true);
   public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, true);
   public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 32, false);
@@ -322,6 +324,7 @@ public final class FontHandler implements Disposable {
     SHOP_NO.dispose();
     INFO_NAME.dispose();
     INFO_HP.dispose();
+    INFO_HP_BORDER.dispose();
     EVENT_TITLE.dispose();
     EVENT_DESC.dispose();
     EVENT_CHOICE.dispose();
@@ -337,6 +340,7 @@ public final class FontHandler implements Disposable {
     SUB_DESC.dispose();
     MAIN_MENU_BORDER.dispose();
     EXP.dispose();
+    CARD_BORDER.dispose();
   }
 
   public enum FontType {

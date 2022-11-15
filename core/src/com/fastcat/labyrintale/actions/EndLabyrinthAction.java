@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
+import com.fastcat.labyrintale.screens.resultscreen.ResultScreen;
 
 public class EndLabyrinthAction extends AbstractAction {
 
@@ -25,7 +26,7 @@ public class EndLabyrinthAction extends AbstractAction {
       SoundHandler.fadeOutMusic("BATTLE_1");
       SoundHandler.fadeOutMusic("BATTLE_BOSS");
       ActionHandler.clear();
-      Labyrintale.fadeOutAndChangeScreen(new DeadScreen(dType), 2.0f);
+      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType), 2.0f);
       SaveHandler.finish(false);
     }
   }

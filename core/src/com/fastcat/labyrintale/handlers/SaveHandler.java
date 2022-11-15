@@ -178,7 +178,7 @@ public final class SaveHandler {
 
       Date now = new Date();
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-      temp.date = formatter.format(now);
+      temp.date = AbstractLabyrinth.date = formatter.format(now);
       temp.random = RandomData.create();
       for (int i = 0; i < 4; i++) {
         AbstractFloor f = AbstractLabyrinth.floors[i];

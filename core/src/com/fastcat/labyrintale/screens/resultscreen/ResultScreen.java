@@ -4,13 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.fastcat.labyrintale.BuildInfo;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
+import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoItemIcon;
 import com.fastcat.labyrintale.screens.playerinfo.UpgradeStatButton;
@@ -18,20 +21,19 @@ import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.StatIcon;
+import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.INFO_HP;
-import static com.fastcat.labyrintale.handlers.FontHandler.INFO_NAME;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class ResultScreen extends AbstractScreen implements GetSelectedStat {
 
   public static final Color hbc = new Color(0.4f, 0, 0, 1);
 
-  private final BgImg bg = new BgImg();
-  private final FontHandler.FontData fontName = INFO_NAME;
-  private final FontHandler.FontData fontHp = INFO_HP;
+  private final FontHandler.FontData fontName = ENERGY;
+  private final FontHandler.FontData fontHp = INFO_HP_BORDER;
+  private final FontHandler.FontData fontData = ENERGY;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-  public StatSelectScreen statScreen;
 
   public ShapeRenderer shr = new ShapeRenderer();
   public PlayerInfoDeckIcon[][] deck = new PlayerInfoDeckIcon[4][3];
@@ -39,10 +41,21 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
   public PlayerInfoItemIcon[] passive = new PlayerInfoItemIcon[4];
   public StatIcon[][] stats = new StatIcon[4][8];
   public PlayerIcon[] pIcons = new PlayerIcon[4];
-  public UpgradeStatButton upStat;
+  public ResultText text;
+  public BackToMainButton back;
+  public ScreenshotButton shot;
+  public String diff;
+  public String time;
+  public String ver;
+  public String seed;
   public boolean showing;
 
-  public ResultScreen() {
+  public ResultScreen(DeadScreen.ScreenType type) {
+    if (type == DeadScreen.ScreenType.DEAD) {
+      setBg(FileHandler.getBg().get("BG_DEAD"));
+    } else {
+      setBg(FileHandler.getBg().get("BG_WIN"));
+    }
     int c = 0;
     for (int g = 0; g < 2; g++) {
       for (int f = 0; f < 2; f++) {
@@ -50,17 +63,17 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
         for (int i = 0; i < 3; i++) {
           PlayerInfoDeckIcon b = new PlayerInfoDeckIcon(player.deck.get(i));
           b.setPosition(
-              w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+              w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           deck[c][i] = b;
         }
         for (int i = 0; i < 2; i++) {
           PlayerInfoItemIcon b = new PlayerInfoItemIcon(player.item[i]);
           b.setPosition(
-              w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+              w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           item[c][i] = b;
         }
         PlayerInfoItemIcon ps = new PlayerInfoItemIcon(player.passive);
-        ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.81f - 0.275f * f));
+        ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
         passive[c] = ps;
         int cnt = 0;
         for (int j = 3; j >= 0; j--) {
@@ -68,25 +81,33 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
             s.entity = player;
             s.setPosition(
-                w * (0.398f + 0.46f * g - 0.055f * i), h * (0.8f - 0.275f * f + 0.027f * j));
+                w * (0.398f + 0.46f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
             stats[c][cnt++] = s;
           }
         }
         PlayerIcon pc = new PlayerIcon(c);
         pc.clickable = false;
-        pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.69f - 0.275f * f));
+        pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
         pIcons[c] = pc;
         c++;
       }
     }
-    cType = Labyrintale.getBaseScreen().cType;
-    upStat = new UpgradeStatButton();
-    statScreen = new StatSelectScreen();
+    text = new ResultText(type);
+    cType = ControlPanel.ControlType.HIDE;
+    diff = "난이도: ";
+    if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) diff += "일반";
+    else if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
+    else diff += "관";
+    time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
+    ver = "버전: " + BuildInfo.BUILD_VERSION;
+    seed = "시드: " + AbstractLabyrinth.seed;
+    shot = new ScreenshotButton();
+    back = new BackToMainButton();
   }
 
   @Override
   public void update() {
-    cType = Labyrintale.getBaseScreen().cType;
+    cType = ControlPanel.ControlType.HIDE;
 
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 3; j++) {
@@ -106,22 +127,22 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       pIcons[i].index = AbstractLabyrinth.players[i].index;
       pIcons[i].update();
     }
-    if (AbstractLabyrinth.sp > 0) {
-      upStat.update();
-    }
+    text.update();
+    shot.update();
+    back.update();
   }
 
   @Override
   public void render(SpriteBatch sb) {
-    bg.render(sb);
-
     // spine
     // player.infoSpine.render(sb);
 
     // health bar
 
     // button
-
+    text.render(sb);
+    shot.render(sb);
+    back.render(sb);
     sb.end();
     shr.begin(ShapeRenderer.ShapeType.Filled);
     int cnt = 0;
@@ -129,11 +150,11 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       for (int g = 0; g < 2; g++) {
         AbstractPlayer player = AbstractLabyrinth.players[cnt++];
         shr.setColor(hbc);
-        shr.rect(w * (0.15f + 0.46f * f), h * (0.83f - 0.275f * g), w * 0.12f, h * 0.03f);
+        shr.rect(w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
         shr.setColor(Color.SCARLET.cpy());
         shr.rect(
             w * (0.15f + 0.46f * f),
-            h * (0.83f - 0.275f * g),
+            h * (0.73f - 0.275f * g),
             Math.max(w * 0.12f * ((float) player.health / (float) player.maxHealth), 0),
             h * 0.03f);
       }
@@ -150,7 +171,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             fontName,
             player.name,
             w * (0.15f + 0.46f * f),
-            h * (0.89f - 0.275f * g),
+            h * (0.79f - 0.275f * g),
             w * 0.12f,
             50);
         FontHandler.renderCenter(
@@ -158,9 +179,13 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             fontHp,
             player.health + "/" + player.maxHealth,
             w * (0.15f + 0.46f * f),
-            h * (0.847f - 0.275f * g),
+            h * (0.747f - 0.275f * g),
             w * 0.12f,
             h * 0.03f);
+        renderCenter(sb, fontData, diff, w * 0.1f, h * 0.25f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, time, w * 0.6f, h * 0.25f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, ver, w * 0.1f, h * 0.18f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, seed, w * 0.6f, h * 0.18f, w * 0.3f, h * 0.1f);
       }
     }
 
@@ -177,21 +202,6 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       passive[i].render(sb);
       pIcons[i].render(sb);
     }
-    if (AbstractLabyrinth.sp > 0) upStat.render(sb);
-  }
-
-  public static void view() {
-    playerInfoScreen.showing = true;
-    Labyrintale.addTempScreen(playerInfoScreen);
-  }
-
-  public static void remove() {
-    playerInfoScreen.showing = false;
-    if (playerInfoScreen.statScreen != null) {
-      Labyrintale.removeTempScreen(playerInfoScreen.statScreen);
-      playerInfoScreen.statScreen = null;
-    }
-    Labyrintale.removeTempScreen(playerInfoScreen);
   }
 
   @Override
@@ -199,8 +209,6 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
 
   @Override
   public void hide() {}
-
-  private void resetAnimationScale() {}
 
   @Override
   public void dispose() {}
