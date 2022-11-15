@@ -128,7 +128,7 @@ public class Labyrintale extends Game {
   @Override
   public void create() {
     Gdx.graphics.setResizable(false);
-    Gdx.graphics.setTitle("Wakest Dungeon");
+    Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
     Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor.png"));
     pix.setFilter(Pixmap.Filter.BiLinear);
     Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
