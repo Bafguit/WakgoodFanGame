@@ -25,8 +25,8 @@ public class ProvokeStatus extends AbstractStatus {
   }
 
   @Override
-  public void startOfTurn() {
-    if (notSelf) notSelf = false;
-    else top(new ReduceStatusAction(this, 1, StatusType.DEBUFF, true));
+  public void endOfTurn() {
+    if (isSelf) isSelf = false;
+    else top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
   }
 }

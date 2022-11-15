@@ -94,6 +94,14 @@ public class AbstractLabyrinth {
         restriction.onCreatePlayer(p);
         players[i] = p;
       }
+      for(AbstractPlayer p : players) {
+        if(p.playerClass == AbstractPlayer.PlayerClass.JURURU) {
+          for(AbstractPlayer pl : players) {
+            pl.stat.debuRes += 20;
+          }
+          break;
+        }
+      }
       diff = Labyrintale.charSelectScreen.diff;
       restriction.onCreateLabyrinth();
     }
@@ -264,7 +272,7 @@ public class AbstractLabyrinth {
   }
 
   public void update() {
-    tick();
+    if(!Labyrintale.setting && !Labyrintale.tutorial) tick();
     if(cPanel != null) cPanel.update();
     if(currentFloor != null) currentFloor.update();
   }

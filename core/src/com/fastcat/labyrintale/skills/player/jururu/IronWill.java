@@ -7,30 +7,25 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 import com.fastcat.labyrintale.status.EnduranceStatus;
+import com.fastcat.labyrintale.status.NeutResPlusStatus;
 
 public class IronWill extends AbstractSkill {
 
   private static final String ID = "IronWill";
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER;
-  private static final int VALUE = 4;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+  private static final int VALUE = 2;
 
   public IronWill(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(2);
   }
 
   @Override
-  public void use() {}
-
-  @Override
-  public void onTarget(AbstractEntity e) {
-    Array<AbstractEntity> temp = new Array<>();
-    temp.add(owner);
-    temp.add(e);
-    top(new ApplyStatusAction(new EnduranceStatus(value), owner, temp, false));
+  public void use() {
+    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, SkillTarget.SELF, true));
+    bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, SkillTarget.SELF, true));
   }
 
   @Override

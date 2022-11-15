@@ -21,6 +21,16 @@ public class InfectionStatus extends AbstractStatus {
   }
 
   @Override
+  public void onInitial() {
+    owner.stat.debuRes -= 10;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.debuRes += 10;
+  }
+
+  @Override
   public void startOfTurn() {
     top(new StatusDamageAction(this, AttackAction.AttackType.INFECTION, true, false));
   }

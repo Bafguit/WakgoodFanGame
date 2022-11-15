@@ -12,7 +12,7 @@ public class ModelA extends AbstractEnemy {
 
   private static final String ID = "ModelA";
   private static final EnemyType TYPE = EnemyType.NORMAL;
-  private static final int HEALTH = 36;
+  private static final int HEALTH = 33;
 
   public ModelA() {
     super(ID, TYPE, HEALTH);

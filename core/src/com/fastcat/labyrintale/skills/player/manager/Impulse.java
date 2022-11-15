@@ -10,7 +10,7 @@ import com.fastcat.labyrintale.status.CriticalPlusStatus;
 public class Impulse extends AbstractSkill {
 
   private static final String ID = "Impulse";
-  private static final SkillType TYPE = SkillType.DEFENCE;
+  private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.SELF;
   private static final int VALUE = 3;

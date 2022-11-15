@@ -19,7 +19,7 @@ public class BurgerHat extends AbstractItem {
       if(p.isAlive() && p.block > 0) temp.add(p);
     }
     if(temp.size > 0) {
-      top(new HealAction(owner, temp, 1));
+      top(new HealAction(owner, temp, 1 + owner.stat.spell));
     }
   }
 }

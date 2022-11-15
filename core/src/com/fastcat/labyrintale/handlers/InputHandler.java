@@ -114,7 +114,7 @@ public final class InputHandler {
     if (cancel
         && Labyrintale.settingScreen != null
         && Labyrintale.labyrinth != null) {
-      if(s.type != AbstractScreen.ScreenType.SETTING) {
+      if(!Labyrintale.setting) {
         Labyrintale.openSetting();
       } else {
         Labyrintale.closeSetting();

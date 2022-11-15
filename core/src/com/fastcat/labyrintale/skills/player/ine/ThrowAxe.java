@@ -12,8 +12,8 @@ public class ThrowAxe extends AbstractSkill {
   private static final String ID = "ThrowAxe";
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY_LAST;
-  private static final int VALUE = 5;
+  private static final SkillTarget TARGET = SkillTarget.ENEMY;
+  private static final int VALUE = 4;
 
   public ThrowAxe(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
@@ -22,12 +22,12 @@ public class ThrowAxe extends AbstractSkill {
   }
 
   @Override
-  public void use() {
-    AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.HEAVY, true);
-    bot(a);
-    AbstractAction m = new ApplyStatusAction(new LethargyStatus(value), owner, target, true);
-    m.preAction = a;
-    bot(m);
+  public void use() {}
+
+  @Override
+  public void onTarget(AbstractEntity e) {
+    top(new ApplyStatusAction(new LethargyStatus(value), owner, e, true));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.HEAVY, true));
   }
 
   @Override

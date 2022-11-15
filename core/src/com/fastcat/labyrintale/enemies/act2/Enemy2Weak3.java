@@ -9,26 +9,26 @@ public class Enemy2Weak3 extends AbstractEnemy {
 
   private static final String ID = "Enemy2Weak3";
   private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 31;
+  private static final int HEALTH = 29;
 
   public Enemy2Weak3() {
     super(ID, TYPE, HEALTH);
-    stat.speed = 2;
-    stat.critical = 20;
+    stat.speed = -1;
+    stat.critical = 5;
     stat.debuRes = 5;
     stat.neutRes = 5;
-    stat.moveRes = 25;
+    stat.moveRes = 35;
   }
 
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    temp.add(new FourE(this));
     AbstractSkill s = new StrikeE(this);
     for (int i = 0; i < 5; i++) {
       s.upgrade();
     }
     temp.add(s);
+    temp.add(new FourE(this));
     temp.add(new FuryE(this));
     return temp;
   }

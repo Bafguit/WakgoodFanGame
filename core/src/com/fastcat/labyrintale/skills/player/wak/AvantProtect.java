@@ -15,7 +15,8 @@ public class AvantProtect extends AbstractSkill {
 
   public AvantProtect(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(0);
+    setBaseSpell(8);
+    setBaseValue(2, 1);
     setBaseCost(2);
   }
 
@@ -25,15 +26,10 @@ public class AvantProtect extends AbstractSkill {
   }
 
   @Override
-  protected void upgradeCard() {
-    if (cost > 0) cost--;
-  }
+  protected void upgradeCard() {}
 
   @Override
   public int calculateSpell(int a) {
-    for (AbstractPlayer p : AbstractLabyrinth.players) {
-      if (p.index != 0 && p.isAlive()) a += p.block;
-    }
-    return a;
+    return a + owner.stat.speed * (value - 1);
   }
 }

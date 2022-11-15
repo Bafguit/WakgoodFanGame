@@ -17,6 +17,7 @@ public class MoveP extends AbstractSkill {
 
   public MoveP(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setBaseCost(0);
   }
 
   @Override

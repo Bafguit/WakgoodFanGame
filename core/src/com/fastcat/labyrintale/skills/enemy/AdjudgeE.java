@@ -17,13 +17,14 @@ public class AdjudgeE extends AbstractSkill {
   public AdjudgeE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(1, 1);
+    setBaseValue2(2);
     setIntent(IntentType.DEBUFF);
   }
 
   @Override
   public void use() {
     AbstractAction a;
-    bot(a = new ApplyStatusAction(new FixedStatus(), owner, target, true));
+    bot(a = new ApplyStatusAction(new FixedStatus(value2), owner, target, true));
     bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true), a);
   }
 

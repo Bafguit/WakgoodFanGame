@@ -10,14 +10,14 @@ public class Enemy2Weak7 extends AbstractEnemy {
 
   private static final String ID = "Enemy2Weak7";
   private static final EnemyType TYPE = EnemyType.NORMAL;
-  private static final int HEALTH = 46;
+  private static final int HEALTH = 42;
 
   public Enemy2Weak7() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
     stat.speed = 0;
     stat.debuRes = 5;
-    stat.neutRes = 25;
+    stat.neutRes = 20;
     stat.critical = 5;
     stat.moveRes = 5;
   }

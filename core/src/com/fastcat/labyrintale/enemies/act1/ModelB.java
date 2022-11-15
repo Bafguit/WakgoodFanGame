@@ -10,7 +10,7 @@ public class ModelB extends AbstractEnemy {
 
   private static final String ID = "ModelB";
   private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 15;
+  private static final int HEALTH = 12;
 
   public ModelB() {
     super(ID, TYPE, HEALTH);

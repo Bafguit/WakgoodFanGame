@@ -19,7 +19,6 @@ public class ConfidPotion extends AbstractSkill {
   public ConfidPotion(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(2);
   }
 
   @Override

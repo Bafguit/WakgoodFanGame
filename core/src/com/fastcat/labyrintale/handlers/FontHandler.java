@@ -31,6 +31,7 @@ public final class FontHandler implements Disposable {
   public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
   public static final FontData ENERGY = new FontData(BOLD, 48, true);
   public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
+  public static final FontData MAIN_MENU_BORDER = new FontData(MEDIUM, 53, true);
   public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
   // private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
   public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
@@ -334,6 +335,8 @@ public final class FontHandler implements Disposable {
     BLEAK.dispose();
     SUB_NAME.dispose();
     SUB_DESC.dispose();
+    MAIN_MENU_BORDER.dispose();
+    EXP.dispose();
   }
 
   public enum FontType {

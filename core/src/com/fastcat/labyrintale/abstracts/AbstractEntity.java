@@ -19,9 +19,6 @@ import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
 import com.fastcat.labyrintale.effects.UpDamageEffect;
 import com.fastcat.labyrintale.effects.UpTextEffect;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.prototype.GameConfiguration;
-import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
-import com.fastcat.labyrintale.prototype.tracker.Tracker;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
@@ -231,7 +228,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (s != null) {
           amount = -1;
           effect = true;
-        } else if (actor == null || actor.isPlayer != isPlayer) {
+        } else if (actor != this) {
           int a = publicRandom.random(0, 99);
           if (badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
           if (goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
@@ -282,7 +279,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
         if (!done) {
           text = s.name + (s.hasAmount && amount != 0 ? (amount > 0 ? "+" + amount : amount) : "");
-          if (actor != this) s.notSelf = true;
+          if (actor == this) s.isSelf = true;
           this.status.addLast(s);
           s.onInitial();
           if (s.hasAmount) s.onApply(amount);
@@ -336,6 +333,10 @@ public abstract class AbstractEntity implements Cloneable {
     for (AbstractStatus s : status) {
       d *= s.attackMultiply();
     }
+    return critical(d);
+  }
+
+  private int critical(int d) {
     int cr = EntityStat.cap(stat.critical);
     if(hasItem("TotoDeck")) cr = 10;
     int a = publicRandom.random(0, 99);
@@ -343,7 +344,7 @@ public abstract class AbstractEntity implements Cloneable {
     if(goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
     if (a < cr) {
       EffectHandler.add(
-          new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
+              new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
       d *= 1 + ((float) stat.multiply * 0.01f);
     }
     return d;
@@ -383,6 +384,8 @@ public abstract class AbstractEntity implements Cloneable {
           for (AbstractStatus s : attacker.status) {
             if (s != null) s.onAttack(this, damage, type);
           }
+        } else if (attacker != null && type == DamageType.COUNTER) {
+          damage = attacker.critical(damage);
         }
         if (damage > 0) {
           if (isPlayer) {
@@ -682,6 +685,15 @@ public abstract class AbstractEntity implements Cloneable {
     return false;
   }
 
+  public boolean hasDebuff() {
+    if(status != null && status.size() > 0) {
+      for (AbstractStatus s : status) {
+        if(s.type == AbstractStatus.StatusType.DEBUFF) return true;
+      }
+    }
+    return false;
+  }
+
   public boolean hasItem(String id) {
     if (status != null) {
       for (AbstractItem s : item) {
@@ -708,6 +720,7 @@ public abstract class AbstractEntity implements Cloneable {
 
   public enum DamageType {
     NORMAL,
+    COUNTER,
     SPIKE,
     LOSE
   }

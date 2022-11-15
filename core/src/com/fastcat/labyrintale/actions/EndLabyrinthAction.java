@@ -9,7 +9,7 @@ import com.fastcat.labyrintale.screens.dead.DeadScreen;
 
 public class EndLabyrinthAction extends AbstractAction {
 
-  private DeadScreen.ScreenType dType;
+  private final DeadScreen.ScreenType dType;
 
   public EndLabyrinthAction(DeadScreen.ScreenType type) {
     super(null, 2);

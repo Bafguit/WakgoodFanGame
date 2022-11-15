@@ -17,8 +17,8 @@ public class Stab extends AbstractSkill {
 
   public Stab(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(VALUE, 1);
-    setBaseValue(1, 1);
+    setBaseAttack(VALUE, 2);
+    setBaseValue(1);
   }
 
   @Override

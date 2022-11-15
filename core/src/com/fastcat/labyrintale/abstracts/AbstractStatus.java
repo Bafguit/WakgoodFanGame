@@ -22,7 +22,7 @@ public abstract class AbstractStatus implements Cloneable {
   public AbstractEntity owner;
   public boolean hasAmount = false;
   public boolean canGoNegative = false;
-  public boolean notSelf = false;
+  public boolean isSelf = false;
   public int amount = 0;
 
   public AbstractStatus(String id, AbstractSkill.SkillTarget target, StatusType type) {

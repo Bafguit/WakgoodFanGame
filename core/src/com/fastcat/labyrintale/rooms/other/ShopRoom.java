@@ -41,7 +41,7 @@ public class ShopRoom extends AbstractRoom {
           items[i - 6].price = 0;
         }
       }
-      if(p.hasItem("Protection")) roll.price = 0;
+      if(p.hasItem("Protection")) roll.price *= 0.5f;
     }
     fadeOutAndChangeScreen(shopScreen);
   }
@@ -168,7 +168,7 @@ public class ShopRoom extends AbstractRoom {
 
     @Override
     public void setPanel() {
-      cPanel.infoPanel.setInfo("새로고침", "제단을 초기화합니다. ");
+      cPanel.infoPanel.setInfo("새로고침", "상점을 초기화합니다. ");
     }
   }
 
@@ -184,7 +184,7 @@ public class ShopRoom extends AbstractRoom {
     private static int generateSkillPrice() {
       return MathUtils.floor(
           (80 + (10 - shopRandom.random(20)))
-              * (advisor.id.equals("rusuk") ? 0.8f : 1));
+              * (advisor.id.equals("rusuk") ? 0.7f : 1));
     }
 
     @Override
@@ -209,7 +209,7 @@ public class ShopRoom extends AbstractRoom {
       super(
           MathUtils.floor(
               generateItemPrice(item)
-                  * (advisor.id.equals("rusuk") ? 0.8f : 1)));
+                  * (advisor.id.equals("rusuk") ? 0.7f : 1)));
       this.item = item;
       img = this.item.img;
     }

@@ -11,7 +11,7 @@ public class Onslaught extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int VALUE = 4;
+  private static final int VALUE = 3;
 
   public Onslaught(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

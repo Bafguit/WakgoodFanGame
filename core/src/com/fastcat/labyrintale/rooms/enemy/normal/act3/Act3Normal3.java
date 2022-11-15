@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.enemies.act2.Enemy2Weak3;
 import com.fastcat.labyrintale.enemies.act3.Enemy3Normal2;
+import com.fastcat.labyrintale.enemies.act3.Enemy3Weak5;
 
 public class Act3Normal3 extends AbstractRoom {
 
@@ -15,7 +16,7 @@ public class Act3Normal3 extends AbstractRoom {
   @Override
   public AbstractEnemy[] getEnemies() {
     return new AbstractEnemy[] {
-      new Enemy2Weak3(), new Enemy3Normal2(), new EnemyPlaceholder(), new EnemyPlaceholder()
+      new Enemy3Weak5(), new Enemy3Normal2(), new EnemyPlaceholder(), new EnemyPlaceholder()
     };
   }
 }

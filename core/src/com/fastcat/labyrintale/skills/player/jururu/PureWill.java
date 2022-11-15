@@ -19,7 +19,7 @@ public class PureWill extends AbstractSkill {
   public PureWill(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(2);
+    setBaseCost(1);
   }
 
   @Override
@@ -28,7 +28,7 @@ public class PureWill extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new DebuResPlusStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new DebuResPlusStatus(value), owner, SkillTarget.PLAYER_ALL, true));
     top(new PurifyAction(owner, e));
   }
 

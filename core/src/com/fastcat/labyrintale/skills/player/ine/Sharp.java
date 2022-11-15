@@ -22,7 +22,7 @@ public class Sharp extends AbstractSkill {
   public void use() {
     bot(new ApplyStatusAction(new EnduranceStatus(value), owner, owner, true));
     bot(new ApplyStatusAction(new CounterStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new CriticalPlusStatus(1), owner, owner, true));
+    bot(new ApplyStatusAction(new CriticalPlusStatus(2), owner, owner, true));
   }
 
   @Override

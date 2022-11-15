@@ -21,7 +21,7 @@ public class Penance extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(5, 1);
     setBaseValue(VALUE, 1);
-    setBaseCost(3);
+    setBaseCost(1);
   }
 
   @Override

@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.skills.player.jururu;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.CriticalPlusStatus;
 import com.fastcat.labyrintale.status.SpeedPlusStatus;
 
@@ -16,6 +17,7 @@ public class Support extends AbstractSkill {
   public Support(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(1, 1);
+    setBaseCost(3);
   }
 
   @Override
@@ -24,7 +26,7 @@ public class Support extends AbstractSkill {
   @Override
   public void onTarget(AbstractEntity e) {
     top(new ApplyStatusAction(new SpeedPlusStatus(value), owner, e, true));
-    top(new ApplyStatusAction(new CriticalPlusStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new AttackStatus(value), owner, e, true));
   }
 
   @Override

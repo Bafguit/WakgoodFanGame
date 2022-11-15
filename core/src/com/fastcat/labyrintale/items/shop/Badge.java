@@ -1,7 +1,12 @@
 package com.fastcat.labyrintale.items.shop;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractRoom;
+import com.fastcat.labyrintale.rooms.other.ShopRoom;
+
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.shopRandom;
 
 public class Badge extends AbstractItem {
 
@@ -14,6 +19,10 @@ public class Badge extends AbstractItem {
 
   @Override
   public void onGain() {
+    if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.SHOP) {
+      ShopRoom s = (ShopRoom) AbstractLabyrinth.currentFloor.currentRoom;
+      s.roll.price *= 0.5f;
+    }
     owner.modifyMaxHealth(5);
     owner.stat.neutRes += 10;
   }

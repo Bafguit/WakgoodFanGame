@@ -81,6 +81,12 @@ public class BattleScreen extends AbstractScreen {
         ev.entity.isDie = true;
       } else {
         DifficultyHandler.getInstance().onEnemySpawn(ev.entity);
+        for(AbstractPlayer p : AbstractLabyrinth.players) {
+          if(p.playerClass == AbstractPlayer.PlayerClass.LILPA) {
+            ev.entity.stat.debuRes -= 10;
+            break;
+          }
+        }
         ev.entity.beforeBattle();
       }
       ev.entity.shuffleHand();
@@ -120,10 +126,10 @@ public class BattleScreen extends AbstractScreen {
       }
     }
     turn = new Array<>();
+    round = 0;
     if (isLoad) {
       ActionHandler.top(new VictoryAction(0));
     } else {
-      round = 0;
       resetTurn();
       ActionHandler.top(new StartBattleAction());
     }

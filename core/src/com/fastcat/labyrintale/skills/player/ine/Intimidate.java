@@ -23,7 +23,7 @@ public class Intimidate extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new AttackStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new SpellStatus(-1), owner, owner, true));
+    bot(new ApplyStatusAction(new SpellStatus(-value), owner, owner, true));
   }
 
   @Override

@@ -24,9 +24,8 @@ public class SpeedMinusStatus extends AbstractStatus {
   }
 
   @Override
-  public void startOfTurn() {
-    if (notSelf) notSelf = false;
-    else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
+  public void startOfRound() {
+    top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
   }
 
   @Override

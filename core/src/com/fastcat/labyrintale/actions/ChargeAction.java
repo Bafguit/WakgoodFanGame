@@ -72,7 +72,7 @@ public class ChargeAction extends AbstractAction {
           AbstractEntity te = target.get(i);
           if (te.isAlive()) block += te.takeDamage(info);
         }
-        if(block > 0) ActionHandler.top(new BlockAction(actor, actor, block));
+        if(block > 0) ActionHandler.top(new BlockAction(actor, actor, block / 2));
       } else isDone = true;
     }
   }

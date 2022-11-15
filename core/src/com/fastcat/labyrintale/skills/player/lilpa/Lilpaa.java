@@ -16,7 +16,7 @@ public class Lilpaa extends AbstractSkill {
   public Lilpaa(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(ATTACK, UP);
-    setBaseValue(1, UP);
+    setBaseValue(2, UP);
     setBaseCost(3);
   }
 

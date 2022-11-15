@@ -72,7 +72,7 @@ public class VictoryAction extends AbstractAction {
         g = 75;
       else g = 35;
       g += AbstractLabyrinth.publicRandom.random(-5, 5);
-      if (AbstractLabyrinth.advisor.id.equals("sophia")) g = MathUtils.floor(g * 1.2f);
+      if (AbstractLabyrinth.advisor.id.equals("sophia")) g = MathUtils.floor(g * 1.5f);
       temp.add(new GoldReward(AbstractLabyrinth.restriction.onGainGoldReward(g)));
       int e;
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) e = 300;

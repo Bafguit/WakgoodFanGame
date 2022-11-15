@@ -18,7 +18,7 @@ public class Enemy4Elite1 extends AbstractEnemy {
     stat.speed = 0;
     stat.critical = 20;
     stat.debuRes = 30;
-    stat.neutRes = 30;
+    stat.neutRes = 20;
     stat.moveRes = 5;
   }
 

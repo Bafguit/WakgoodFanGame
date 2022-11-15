@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.BlockAction;
 import com.fastcat.labyrintale.actions.HealAction;
+import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.CriticalPlusStatus;
 import com.fastcat.labyrintale.status.SpeedPlusStatus;
 import com.fastcat.labyrintale.status.UnfortifiedStatus;
@@ -20,8 +21,7 @@ public class Bless extends AbstractSkill {
   public Bless(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
-    setBaseValue(1, 1);
-    setBaseCost(2);
+    setBaseValue(value, 1);
   }
 
   @Override
@@ -29,8 +29,7 @@ public class Bless extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new SpeedPlusStatus(value), owner, e, true));
-    top(new ApplyStatusAction(new CriticalPlusStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new CourageStatus(value), owner, e, true));
     top(new HealAction(owner, e, spell));
   }
 

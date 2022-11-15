@@ -18,7 +18,7 @@ public class ShockZone extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
     setBaseValue2(1, 1);
-    setBaseCost(3);
+    setBaseCost(2);
   }
 
   @Override

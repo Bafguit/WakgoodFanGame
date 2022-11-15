@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.CriticalPlusStatus;
 import com.fastcat.labyrintale.status.DebuResPlusStatus;
+import com.fastcat.labyrintale.status.ResistPlusStatus;
 
 public class Channeling extends AbstractSkill {
 
@@ -23,8 +24,7 @@ public class Channeling extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new CourageStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new CriticalPlusStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new DebuResPlusStatus(value), owner, owner, true));
+    bot(new ApplyStatusAction(new ResistPlusStatus(value), owner, owner, true));
   }
 
   @Override

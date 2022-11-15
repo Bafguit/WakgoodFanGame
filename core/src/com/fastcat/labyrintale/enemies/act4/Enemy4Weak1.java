@@ -17,7 +17,7 @@ public class Enemy4Weak1 extends AbstractEnemy {
   public Enemy4Weak1() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
-    stat.speed = 5;
+    stat.speed = 4;
     stat.critical = 10;
     stat.debuRes = 15;
     stat.neutRes = 5;

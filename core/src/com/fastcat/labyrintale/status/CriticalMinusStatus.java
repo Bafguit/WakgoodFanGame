@@ -24,8 +24,8 @@ public class CriticalMinusStatus extends AbstractStatus {
   }
 
   @Override
-  public void startOfTurn() {
-    if (notSelf) notSelf = false;
+  public void endOfTurn() {
+    if (isSelf) isSelf = false;
     else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
   }
 
