@@ -12,7 +12,7 @@ public class FlameFlask extends AbstractSkill {
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
-  private static final int VALUE = 5;
+  private static final int VALUE = 2;
 
   public FlameFlask(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
