@@ -44,6 +44,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
   public ResultText text;
   public BackToMainButton back;
   public ScreenshotButton shot;
+  public ResultAdvisor adv;
   public String diff;
   public String time;
   public String ver;
@@ -92,6 +93,9 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
         c++;
       }
     }
+    adv = new ResultAdvisor();
+    adv.item = AbstractLabyrinth.advisor;
+    adv.setPosition(w * 0.1f, h * 0.15f);
     text = new ResultText(type);
     cType = ControlPanel.ControlType.HIDE;
     diff = "난이도: ";
@@ -127,6 +131,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       pIcons[i].index = AbstractLabyrinth.players[i].index;
       pIcons[i].update();
     }
+    adv.update();
     text.update();
     shot.update();
     back.update();
@@ -143,6 +148,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     text.render(sb);
     shot.render(sb);
     back.render(sb);
+    adv.render(sb);
     sb.end();
     shr.begin(ShapeRenderer.ShapeType.Filled);
     int cnt = 0;
@@ -182,9 +188,9 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             h * (0.747f - 0.275f * g),
             w * 0.12f,
             h * 0.03f);
-        renderCenter(sb, fontData, diff, w * 0.1f, h * 0.25f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, diff, w * 0.3f, h * 0.25f, w * 0.3f, h * 0.1f);
         renderCenter(sb, fontData, time, w * 0.6f, h * 0.25f, w * 0.3f, h * 0.1f);
-        renderCenter(sb, fontData, ver, w * 0.1f, h * 0.18f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, ver, w * 0.3f, h * 0.18f, w * 0.3f, h * 0.1f);
         renderCenter(sb, fontData, seed, w * 0.6f, h * 0.18f, w * 0.3f, h * 0.1f);
       }
     }

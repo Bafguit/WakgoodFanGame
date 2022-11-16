@@ -15,11 +15,4 @@ public class FlameBook extends AbstractItem {
   public FlameBook(AbstractPlayer owner) {
     super(ID, owner, RARITY);
   }
-
-  @Override
-  public void atBattleStart() {
-    top(
-        new ApplyStatusAction(
-            new ResistMinusStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
-  }
 }

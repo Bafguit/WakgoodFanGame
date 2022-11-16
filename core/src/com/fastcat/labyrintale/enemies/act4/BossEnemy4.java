@@ -41,7 +41,7 @@ public class BossEnemy4 extends AbstractEnemy {
     temp.add(s);
     /////////////////////////
     AbstractSkill s2 = new StrikeE(this);
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 16; i++) {
       s2.upgrade();
     }
     temp.add(s2);
@@ -61,9 +61,9 @@ public class BossEnemy4 extends AbstractEnemy {
     /////////////////////////
     temp.add(new RecapE(this));
     /////////////////////////
-    temp.add(new HinderAllE(this).upgrade().upgrade().upgrade().upgrade());
+    temp.add(new HinderAllE(this).upgrade().upgrade().upgrade().upgrade().upgrade());
     /////////////////////////
-    temp.add(new RestrictE(this).upgrade());
+    temp.add(new RestrictE(this).upgrade().upgrade().upgrade());
     /////////////////////////
     AbstractSkill s4 = new GrowE(this);
     temp.add(s4);

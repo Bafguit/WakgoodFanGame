@@ -11,7 +11,7 @@ public class SuperSave extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.PLAYER;
-  private static final int VALUE = 5;
+  private static final int VALUE = 4;
 
   public SuperSave(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
@@ -24,8 +24,8 @@ public class SuperSave extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new HealAction(owner, e, spell));
     top(new BlockAction(owner, e, spell));
+    top(new HealAction(owner, e, spell));
   }
 
   @Override

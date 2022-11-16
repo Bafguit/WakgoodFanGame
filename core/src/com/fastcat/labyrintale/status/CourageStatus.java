@@ -30,7 +30,7 @@ public class CourageStatus extends AbstractStatus {
     if (!used) {
       used = true;
       flash();
-      bot(new ReduceStatusAction(this, amount, StatusType.STATIC, true));
+      bot(new ReduceStatusAction(this, amount, StatusType.BUFF, true));
     }
   }
 

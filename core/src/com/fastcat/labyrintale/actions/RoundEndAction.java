@@ -15,7 +15,7 @@ public class RoundEndAction extends AbstractAction {
     if (isDone) {
       for (AbstractEntity e : Labyrintale.battleScreen.getTurns()) {
         if(e.isPlayer && e.id.equals("wak")) {
-          e.blockRemove = MathUtils.ceil(e.block * 0.34f);
+          e.blockRemove = MathUtils.ceil(e.block * 0.5f);
         } else if(!e.hasStatus("Maintain")) {
           e.blockRemove = e.block;
         }

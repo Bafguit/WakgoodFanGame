@@ -83,13 +83,13 @@ public class BattleScreen extends AbstractScreen {
         DifficultyHandler.getInstance().onEnemySpawn(ev.entity);
         for(AbstractPlayer p : AbstractLabyrinth.players) {
           if(p.playerClass == AbstractPlayer.PlayerClass.LILPA) {
-            ev.entity.stat.debuRes -= 10;
+            ev.entity.stat.debuRes -= 15;
             break;
           }
         }
         ev.entity.beforeBattle();
       }
-      ev.entity.shuffleHand();
+      if(!isLoad) ev.entity.shuffleHand();
       ev.entity.ui = ev;
       enemies[i] = ev;
 

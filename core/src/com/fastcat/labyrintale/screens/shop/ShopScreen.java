@@ -13,8 +13,10 @@ public class ShopScreen extends AbstractScreen {
   public ShopItemCharIcon[] icons = new ShopItemCharIcon[6];
   public ShopItemButton roll;
   public PassShopButton pass;
+  public ShopRoom room;
 
   public ShopScreen(ShopRoom room) {
+    this.room = room;
     cType = ControlPanel.ControlType.BASIC;
     int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     for (int i = 0; i < 6; i++) {

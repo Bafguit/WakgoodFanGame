@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.status.BurnStatus;
+import com.fastcat.labyrintale.status.DebuResMinusStatus;
 
 public class LilpaaAction extends AbstractAction {
 
@@ -39,14 +40,14 @@ public class LilpaaAction extends AbstractAction {
       if (SettingHandler.setting.shake)
         Labyrintale.getScreenShake()
             .shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.LONG, false);
-      for (AbstractEntity t : target) {
-        if (t != actor) EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("LIGHTNING")));
+      for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
+        if(e.isAlive()) EffectHandler.add(new HitEffect(e, FileHandler.getVfx().get("LIGHTNING")));
       }
       for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
         if (e.isAlive()) e.takeDamage(info);
       }
       for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-        if (e.isAlive()) e.applyStatus(new BurnStatus(burn), burn, true);
+        if (e.isAlive()) e.applyStatus(new DebuResMinusStatus(burn), burn, true);
       }
     }
   }

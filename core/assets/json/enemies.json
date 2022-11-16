@@ -143,6 +143,14 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
+  "Enemy3Weak6": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Weak7": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "Enemy3Normal1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
@@ -160,6 +168,10 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy3Normal5": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Normal6": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },

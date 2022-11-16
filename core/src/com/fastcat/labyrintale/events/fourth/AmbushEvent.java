@@ -55,6 +55,8 @@ public class AmbushEvent extends AbstractEvent {
       for(AbstractEnemy e : AbstractLabyrinth.currentFloor.currentWay.enemies.enemies) {
         e.stat.attack += 3;
       }
+    } else if(p == 4) {
+      AbstractLabyrinth.gold = 0;
     }
   }
 }

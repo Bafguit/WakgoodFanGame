@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ReduceStatusAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
 public class UnfortifiedStatus extends AbstractStatus {
 
@@ -29,7 +30,8 @@ public class UnfortifiedStatus extends AbstractStatus {
   @Override
   public void endOfTurn() {
     if (isSelf) isSelf = false;
-    else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
+    else if(amount > 1) amount--;
+    else top(new RemoveStatusAction(this, true));
   }
 
   @Override

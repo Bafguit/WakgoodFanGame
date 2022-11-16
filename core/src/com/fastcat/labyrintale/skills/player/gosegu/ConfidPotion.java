@@ -3,10 +3,7 @@ package com.fastcat.labyrintale.skills.player.gosegu;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.CourageStatus;
-import com.fastcat.labyrintale.status.EnduranceStatus;
-import com.fastcat.labyrintale.status.InfectionStatus;
-import com.fastcat.labyrintale.status.SpeedPlusStatus;
+import com.fastcat.labyrintale.status.*;
 
 public class ConfidPotion extends AbstractSkill {
 

@@ -24,24 +24,8 @@ public class IronWill extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, SkillTarget.SELF, true));
-    bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, SkillTarget.SELF, true));
-  }
-
-  @Override
-  public boolean setTarget() {
-    boolean can = false;
-    for (PlayerBattleView pv : Labyrintale.battleScreen.players) {
-      if (pv.entity.isAlive() && pv.entity != owner) {
-        pv.isTarget = true;
-        can = true;
-      }
-    }
-    if (can) return true;
-    else {
-      top(new ApplyStatusAction(new EnduranceStatus(value), owner, SkillTarget.SELF, false));
-      return false;
-    }
+    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
+    bot(new ApplyStatusAction(new NeutResPlusStatus(value), owner, target, true));
   }
 
   @Override

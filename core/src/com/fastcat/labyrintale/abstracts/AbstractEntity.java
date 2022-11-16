@@ -585,6 +585,7 @@ public abstract class AbstractEntity implements Cloneable {
                   s.onRemove();
                 }
               }
+              p.status.clear();
             }
           }
           advisor.atBattleEnd();

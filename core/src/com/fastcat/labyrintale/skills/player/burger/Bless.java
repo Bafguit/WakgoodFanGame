@@ -21,7 +21,7 @@ public class Bless extends AbstractSkill {
   public Bless(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseSpell(VALUE, 1);
-    setBaseValue(value, 1);
+    setBaseValue(VALUE, 1);
   }
 
   @Override

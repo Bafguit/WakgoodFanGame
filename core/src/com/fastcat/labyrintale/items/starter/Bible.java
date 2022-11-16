@@ -16,11 +16,4 @@ public class Bible extends AbstractItem {
   public Bible(AbstractPlayer owner) {
     super(ID, owner, RARITY);
   }
-
-  @Override
-  public void atBattleStart() {
-    top(
-            new ApplyStatusAction(
-                    new ResistPlusStatus(1), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
-  }
 }

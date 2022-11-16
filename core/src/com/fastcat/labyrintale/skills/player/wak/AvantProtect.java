@@ -30,6 +30,6 @@ public class AvantProtect extends AbstractSkill {
 
   @Override
   public int calculateSpell(int a) {
-    return a + owner.stat.speed * (value - 1);
+    return a + owner.stat.spell * (value - 1);
   }
 }

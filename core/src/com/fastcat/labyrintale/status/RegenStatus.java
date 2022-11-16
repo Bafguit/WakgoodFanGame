@@ -24,14 +24,14 @@ public class RegenStatus extends AbstractStatus {
 
   @Override
   public void endOfTurn() {
-    top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
+    top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
     top(new HealAction(null, owner, amount));
   }
 
   @Override
   public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
     if (type == AbstractEntity.DamageType.NORMAL) {
-      top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
+      top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
     }
     return damage;
   }

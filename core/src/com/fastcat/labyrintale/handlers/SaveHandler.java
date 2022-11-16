@@ -143,6 +143,7 @@ public final class SaveHandler {
     itemAble = data.itemAble;
     maxSkillUp = data.selection;
     gold = data.gold;
+    sp = data.sp;
     AbstractLabyrinth.charge = data.charge;
     level = data.level;
     exp = data.exp;
@@ -157,6 +158,7 @@ public final class SaveHandler {
     public int charge;
     public int gold;
     public int level;
+    public int sp;
     public int exp;
     public int maxExp;
     public String advisor;
@@ -206,6 +208,7 @@ public final class SaveHandler {
       temp.bossCount = GroupHandler.RoomGroup.bossCount;
       temp.minute = AbstractLabyrinth.minute;
       temp.second = AbstractLabyrinth.second;
+      temp.sp = AbstractLabyrinth.sp;
 
       return temp;
     }

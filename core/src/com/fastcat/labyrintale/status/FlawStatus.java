@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.status;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.ReduceStatusAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
 public class FlawStatus extends AbstractStatus {
 
@@ -21,7 +22,8 @@ public class FlawStatus extends AbstractStatus {
   @Override
   public void endOfTurn() {
     if (isSelf) isSelf = false;
-    else top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
+    else if(amount > 1) amount--;
+    else top(new RemoveStatusAction(this, true));
   }
 
   @Override

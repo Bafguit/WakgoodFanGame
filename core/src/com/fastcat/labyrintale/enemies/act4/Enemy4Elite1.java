@@ -10,7 +10,7 @@ public class Enemy4Elite1 extends AbstractEnemy {
 
   private static final String ID = "Enemy4Elite1";
   private static final EnemyType TYPE = EnemyType.ELITE;
-  private static final int HEALTH = 220;
+  private static final int HEALTH = 200;
 
   public Enemy4Elite1() {
     super(ID, TYPE, HEALTH);
@@ -20,11 +20,6 @@ public class Enemy4Elite1 extends AbstractEnemy {
     stat.debuRes = 30;
     stat.neutRes = 20;
     stat.moveRes = 5;
-  }
-
-  @Override
-  public void preBattle() {
-    applyStatus(new OpenStatus(1), this, 1, false);
   }
 
   @Override

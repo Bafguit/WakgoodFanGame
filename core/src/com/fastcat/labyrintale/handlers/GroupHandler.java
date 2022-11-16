@@ -517,7 +517,7 @@ public final class GroupHandler {
       t.add(new SafetyHat(null));
       t.add(new AutoFire(null));
       t.add(new BunnyHat(null));
-      t.add(new CheeseBall(null));
+      t.add(new Brainize(null));
       t.add(new Purplight(null));
       t.add(new SuperLadle(null));
       t.add(new LifePotion(null));
@@ -529,7 +529,7 @@ public final class GroupHandler {
 
       // 골드
       t.add(new Juggernaut(null));
-      t.add(new Brainize(null));
+      t.add(new CheeseBall(null));
       t.add(new Turtle(null));
       t.add(new GoldenRing(null));
       t.add(new Tree(null));

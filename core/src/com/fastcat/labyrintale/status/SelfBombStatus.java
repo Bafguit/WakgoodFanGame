@@ -22,12 +22,14 @@ public class SelfBombStatus extends AbstractStatus {
 
   @Override
   public void onDeath(AbstractEntity m) {
+    hasAmount = false;
+    amount = 10;
     top(new StatusDamageAction(this, AttackAction.AttackType.BURN, false, false, false));
   }
 
   public void endOfTurn() {
     if (amount > 1) {
-      top(new ReduceStatusAction(this, 1, StatusType.STATIC, true));
+      amount--;
     } else {
       top(new SuicideAction(owner, 0.3f));
       top(new FlashAction(owner, img));

@@ -15,7 +15,7 @@ public class RapidFire extends AbstractSkill {
   public RapidFire(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseCost(2);
+    setBaseCost(3);
   }
 
   @Override
