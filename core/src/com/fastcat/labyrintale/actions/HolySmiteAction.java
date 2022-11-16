@@ -42,7 +42,7 @@ public class HolySmiteAction extends AbstractAction {
           if (te.isAlive()) dmg += te.takeDamage(info);
         }
         if (dmg > 0)
-          ActionHandler.top(new BlockAction(actor, AbstractSkill.SkillTarget.PLAYER_ALL, dmg));
+          ActionHandler.top(new BlockAction(null, AbstractSkill.SkillTarget.PLAYER_ALL, dmg));
       } else isDone = true;
     }
   }

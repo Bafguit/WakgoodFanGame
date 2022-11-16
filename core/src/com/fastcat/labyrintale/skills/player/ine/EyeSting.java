@@ -13,7 +13,7 @@ public class EyeSting extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int ATTACK = 5;
+  private static final int ATTACK = 10;
   private static final int UP = 5;
 
   public EyeSting(AbstractEntity e) {
