@@ -24,7 +24,7 @@ public class EnduranceStatus extends AbstractStatus {
   public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
     if (type == AbstractEntity.DamageType.NORMAL) {
       flash();
-      ActionHandler.top(new RemoveStatusAction(this, true));
+      top(new RemoveStatusAction(this, true));
       return d - amount;
     } else return d;
   }

@@ -25,7 +25,7 @@ public class ReduceStatusAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      status.amount--;
+      actor.applyStatus(status, actor, -amount);
     }
   }
 }
