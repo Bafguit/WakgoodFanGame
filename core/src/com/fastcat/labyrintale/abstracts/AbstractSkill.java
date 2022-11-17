@@ -522,6 +522,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             for (AbstractStatus s : t.status) {
               if (s != null) a *= s.attackedMultiply();
             }
+            if(t.isPlayer && t.id.equals("gosegu") && owner != null && owner.hasDebuff()) a *= 0.6f;
           }
         }
         a = Math.max(a, 0);
@@ -599,9 +600,9 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         bot(new TurnEndAction(owner));
         if (owner.isPlayer) bot(new NextTurnAction());
       }
-    }
 
-    if (owner != null && owner.isPlayer) AbstractLabyrinth.energy -= cost;
+      if (owner != null && owner.isPlayer) AbstractLabyrinth.energy -= cost;
+    }
   }
 
   public final boolean canUse() {
@@ -679,10 +680,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
   public void onTarget(AbstractEntity target) {}
 
   public final void beforeOnTarget() {
-    if (owner != null && owner.isPlayer) {
-      bot(new TurnEndAction(owner));
-      bot(new NextTurnAction());
-    }
+    if (owner != null && owner.isPlayer) AbstractLabyrinth.energy -= cost;
   }
 
   public final void afterOnTarget() {
@@ -690,6 +688,10 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       top(new SetAnimationAction(owner, "skill"));
     }
     if (disposable) usedOnce = true;
+    if (owner != null && owner.isPlayer) {
+      bot(new TurnEndAction(owner));
+      bot(new NextTurnAction());
+    }
   }
 
   @Override

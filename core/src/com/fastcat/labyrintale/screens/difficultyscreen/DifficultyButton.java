@@ -27,6 +27,6 @@ public class DifficultyButton extends AbstractUI {
         charSelectScreen.backButton.onHide();
         charSelectScreen.nextButton.onHide();
         charSelectScreen.seedText.text = "";
-        fadeOutAndChangeScreen(charSelectScreen, 1.0f);
+        fadeOutAndChangeScreen(charSelectScreen);
     }
 }

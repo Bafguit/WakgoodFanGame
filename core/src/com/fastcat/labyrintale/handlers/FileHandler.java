@@ -206,6 +206,8 @@ public class FileHandler implements Disposable {
     ui.put("GOLD", new Sprite(new Texture("img/ui/gold.png")));
     ui.put("DISCARD", new Sprite(new Texture("img/ui/discard.png")));
     ui.put("REWARD_CARD", new Sprite(new Texture("img/ui/deck.png")));
+    ui.put("ENTITY_POINT_B", new Sprite(new Texture("img/ui/entityPoint_boss.png")));
+    ui.put("PLAYER_POINT_B", new Sprite(new Texture("img/ui/playerPoint_boss.png")));
     ui.put("ENTITY_POINT", new Sprite(new Texture("img/ui/entityPoint.png")));
     ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
     ui.put("CHAR_SKILL_REWARD", new Sprite(new Texture("img/ui/charSkillReward.png")));

@@ -23,10 +23,9 @@ public class EndLabyrinthAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      SoundHandler.fadeOutMusic("BATTLE_1");
-      SoundHandler.fadeOutMusic("BATTLE_BOSS");
+      SoundHandler.fadeOutAll();
       ActionHandler.clear();
-      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType), 2.0f);
+      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType));
       SaveHandler.finish(false);
     }
   }

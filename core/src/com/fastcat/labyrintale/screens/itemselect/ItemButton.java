@@ -31,6 +31,7 @@ public class ItemButton extends AbstractUI {
       if (over) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
       sb.draw(item.img, x, y, sWidth, sHeight);
+      sb.setColor(item.getRarityColor());
       sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
     }

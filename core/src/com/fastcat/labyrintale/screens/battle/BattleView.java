@@ -10,6 +10,7 @@ public class BattleView extends AbstractUI {
     public AbstractEntity entity;
     public boolean isLooking = false;
     public boolean isTarget = false;
+    public int statSize = 4;
 
     public BattleView(Sprite s) {
         super(s);

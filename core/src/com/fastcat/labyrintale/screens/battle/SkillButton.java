@@ -23,6 +23,7 @@ public class SkillButton extends AbstractUI {
   public SkillButton() {
     super(FileHandler.getUi().get("BORDER"));
     clickable = false;
+    subWay = SubText.SubWay.DOWN;
   }
 
   @Override

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ActionHandler {
 
-  private static final Queue<AbstractAction> actionList = new Queue<>();
+  private final Queue<AbstractAction> actionList = new Queue<>();
   @Getter private static final Array<EventCallback<AbstractAction>> listeners = new Array<>();
   @Getter private static boolean isRunning = false;
   /***
@@ -34,15 +34,22 @@ public final class ActionHandler {
   }
 
   public static void clear() {
-    actionList.clear();
+    getInstance().actionList.clear();
+  }
+
+  public static void reset() {
+    ActionHandler a = getInstance();
+    a.actionList.clear();
+    a.current = null;
+
   }
 
   public static void bot(AbstractAction action) {
-    actionList.addLast(action);
+    getInstance().actionList.addLast(action);
   }
 
   public static void top(AbstractAction action) {
-    actionList.addFirst(action);
+    getInstance().actionList.addFirst(action);
   }
 
   public void update() {

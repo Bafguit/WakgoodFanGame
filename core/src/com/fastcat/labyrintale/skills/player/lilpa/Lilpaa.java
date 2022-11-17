@@ -11,7 +11,7 @@ public class Lilpaa extends AbstractSkill {
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
   private static final int ATTACK = 5;
-  private static final int UP = 1;
+  private static final int UP = 2;
 
   public Lilpaa(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

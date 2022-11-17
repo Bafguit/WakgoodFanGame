@@ -13,17 +13,20 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class EnemyBattleView extends BattleView {
 
-
-  public EnemyBattleView() {
-    this(null);
-  }
-
   public EnemyBattleView(AbstractEnemy enemy) {
-    super(FileHandler.getUi().get("ENTITY_POINT"));
+    super(enemy != null && enemy.type == AbstractEnemy.EnemyType.BOSS
+            ? FileHandler.getUi().get("ENTITY_POINT_B")
+            : FileHandler.getUi().get("ENTITY_POINT"));
     this.entity = enemy;
     showImg = false;
     overable = false;
-    pImg = FileHandler.getUi().get("PLAYER_POINT");
+
+    if(enemy != null && enemy.type == AbstractEnemy.EnemyType.BOSS) {
+      pImg = FileHandler.getUi().get("PLAYER_POINT_B");
+      statSize = 9;
+    } else {
+      pImg = FileHandler.getUi().get("PLAYER_POINT");
+    }
   }
 
   @Override
@@ -44,8 +47,9 @@ public class EnemyBattleView extends BattleView {
     setPosition(entity.animX - sWidth / 2, entity.animY - Gdx.graphics.getHeight() * 0.025f);
     if (enabled && entity != null && !entity.isDead) {
       sb.setColor(Color.WHITE);
-      if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
+      if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) {
         sb.draw(battleScreen.currentTurnEntity() == entity ? pImg : img, x, y, sWidth, sHeight);
+      }
       entity.render(sb);
     }
   }

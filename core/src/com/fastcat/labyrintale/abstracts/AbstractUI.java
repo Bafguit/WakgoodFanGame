@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
@@ -22,7 +23,7 @@ public abstract class AbstractUI implements Disposable {
   protected final Array<SubText> subs = new Array<>();
   public AbstractScreen screen;
   public Array<SubText> subTexts;
-  public boolean subDown = false;
+  public SubText.SubWay subWay = SubText.SubWay.UP;
   protected LogHandler logger = new LogHandler(this.getClass().getName());
   public Sprite img;
   public String text;
@@ -144,16 +145,25 @@ public abstract class AbstractUI implements Disposable {
   public final void renderSub(SpriteBatch sb) {
     if (subTexts != null) {
       if (subTexts.size > 0) {
-        float sc, subY;
-        if (subDown) {
+        float sc, subP;
+        if (subWay == SubText.SubWay.DOWN) {
           sc = -10 * scale;
-          subY = y + sc;
-        } else {
+          subP = y + sc;
+          for (SubText s : subTexts) {
+            subP = s.render(sb, 0, subP, subWay).y + sc;
+          }
+        } else if(subWay == SubText.SubWay.UP) {
           sc = 10 * scale;
-          subY = y + sHeight + sc;
-        }
-        for (SubText s : subTexts) {
-          subY = s.render(sb, subY, subDown) + sc;
+          subP = y + sHeight + sc;
+          for (SubText s : subTexts) {
+            subP = s.render(sb, 0, subP, subWay).y + sc;
+          }
+        } else if(subWay == SubText.SubWay.LEFT) {
+          sc = -10 * scale;
+          subP = x + sc;
+          for (SubText s : subTexts) {
+            subP = s.render(sb, subP, y + sHeight, subWay).x + sc;
+          }
         }
       }
     }
@@ -276,9 +286,11 @@ public abstract class AbstractUI implements Disposable {
       this.icon = new TempUI(icon);
     }
 
-    public float render(SpriteBatch sb, float y, boolean isDown) {
-      float xx = mx - ww * 0.5f, yy = 0;
-      if (!isDown) {
+    public Vector2 render(SpriteBatch sb, float x, float y, SubWay way) {
+      float xx = 0, yy = 0;
+      if (way == SubWay.UP) {
+        xx = mx - ww * 0.5f;
+        yy = 0;
         sb.draw(bot.img, xx, y, ww, hh);
         sb.draw(mid.img, xx, y + (yy += hh), ww, mh);
         sb.draw(top.img, xx, y + (yy += mh), ww, hh);
@@ -286,15 +298,40 @@ public abstract class AbstractUI implements Disposable {
         float ny = y + yy - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
         nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
         descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
-      } else {
+      } else if(way == SubWay.DOWN) {
+        xx = mx - ww * 0.5f;
+        yy = 0;
         sb.draw(top.img, xx, y + (yy -= hh), ww, hh);
         sb.draw(mid.img, xx, y + (yy -= mh), ww, mh);
         sb.draw(bot.img, xx, y + (yy -= hh), ww, hh);
         float ny = y - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
         nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
         descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
+      } else if(way == SubWay.LEFT) {
+        xx = x - ww;
+        yy = 0;
+        sb.draw(top.img, xx, y + (yy -= hh), ww, hh);
+        sb.draw(mid.img, xx, y + (yy -= mh), ww, mh);
+        sb.draw(bot.img, xx, y + (yy -= hh), ww, hh);
+        float ny = y - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
+        nameFont.draw(sb, nameLayout, nameFont.alpha, xx + ww * 0.03f, ny);
+        descFont.draw(sb, descLayout, descFont.alpha, xx + ww * 0.03f, dy);
+      } else if(way == SubWay.RIGHT) {
+        xx = x;
+        yy = 0;
+        sb.draw(top.img, xx, y + (yy -= hh), ww, hh);
+        sb.draw(mid.img, xx, y + (yy -= mh), ww, mh);
+        sb.draw(bot.img, xx, y + (yy -= hh), ww, hh);
+        float ny = y - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
+        nameFont.draw(sb, nameLayout, nameFont.alpha, xx + ww * 0.03f, ny);
+        descFont.draw(sb, descLayout, descFont.alpha, xx + ww * 0.03f, dy);
+        xx += ww;
       }
-      return y + yy;
+      return new Vector2(xx, y + yy);
+    }
+
+    public enum SubWay {
+      DOWN, UP, RIGHT, LEFT
     }
   }
 }

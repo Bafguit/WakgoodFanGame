@@ -30,7 +30,7 @@ public class ShopItemButton extends AbstractUI {
     if (item instanceof ShopRoom.SkillItem) {
       type = ShopItemType.SKILL;
       sItem = (ShopRoom.SkillItem) item;
-      subDown = true;
+      subWay = SubText.SubWay.DOWN;
     } else if (item instanceof ShopRoom.ItemItem) {
       type = ShopItemType.ITEM;
       iItem = (ShopRoom.ItemItem) item;
@@ -47,7 +47,6 @@ public class ShopItemButton extends AbstractUI {
       else if (!over) sb.setColor(Color.LIGHT_GRAY);
       else sb.setColor(Color.WHITE);
       sb.draw(itemImg, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
       FontHandler.renderCenter(
           sb,
@@ -58,7 +57,7 @@ public class ShopItemButton extends AbstractUI {
           sWidth,
           sHeight * 0.2f);
       if (type == ShopItemType.SKILL) {
-        sb.setColor(Color.WHITE);
+        sb.draw(img, x, y, sWidth, sHeight);
         if (!sItem.skill.passive) {
           sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
           FontHandler.renderCenter(
@@ -70,6 +69,9 @@ public class ShopItemButton extends AbstractUI {
               sWidth * 0.2f,
               sWidth * 0.2f);
         }
+      } else if(type == ShopItemType.ITEM) {
+        sb.setColor(iItem.item.getRarityColor());
+        sb.draw(img, x, y, sWidth, sHeight);
       }
     }
   }

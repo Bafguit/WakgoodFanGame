@@ -4,9 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.status.ResistMinusStatus;
-import com.fastcat.labyrintale.status.SpeedMinusStatus;
-import com.fastcat.labyrintale.status.UnfortifiedStatus;
+import com.fastcat.labyrintale.status.*;
 
 public class ChainExp extends AbstractSkill {
 
@@ -18,19 +16,20 @@ public class ChainExp extends AbstractSkill {
 
   public ChainExp(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(VALUE);
-    setBaseValue(1);
-    setBaseValue2(2, 1);
-    setBaseCost(3);
+    setBaseAttack(VALUE, 1);
+    setBaseValue(VALUE, 1);
+    setBaseValue2(3);
+    setBaseCost(5);
   }
 
   @Override
   public void use() {
     for(int i = 0; i < value2; i++) {
-      bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN));
+      bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN, true));
     }
     for(int i = 0; i < value2; i++) {
-      bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, target, true));
+      bot(new ApplyStatusAction(new BurnStatus(value), owner, target, true));
+      bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
     }
   }
 

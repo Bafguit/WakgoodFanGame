@@ -12,7 +12,7 @@ public class RecapE extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.ENEMY;
   private static final SkillTarget TARGET = SkillTarget.SELF;
-  private static final int VALUE = 6;
+  private static final int VALUE = 2;
 
   public RecapE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

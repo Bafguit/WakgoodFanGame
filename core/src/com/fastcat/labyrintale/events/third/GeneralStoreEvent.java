@@ -29,7 +29,7 @@ public class GeneralStoreEvent extends AbstractEvent {
               new EventCondition() {
                 @Override
                 public boolean condition() {
-                  return AbstractLabyrinth.gold >= 50;
+                  return AbstractLabyrinth.gold >= 100;
                 }
 
                 @Override
@@ -39,7 +39,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                  AbstractLabyrinth.modifyGold(-50);
+                  AbstractLabyrinth.modifyGold(-100);
                 }
               },
               this,
@@ -54,7 +54,7 @@ public class GeneralStoreEvent extends AbstractEvent {
               new EventCondition() {
                 @Override
                 public boolean condition() {
-                  return AbstractLabyrinth.gold >= 100;
+                  return AbstractLabyrinth.gold >= 150;
                 }
 
                 @Override
@@ -64,7 +64,7 @@ public class GeneralStoreEvent extends AbstractEvent {
 
                 @Override
                 public void onSelect() {
-                  AbstractLabyrinth.modifyGold(-100);
+                  AbstractLabyrinth.modifyGold(-150);
                 }
               },
               this,
@@ -97,9 +97,10 @@ public class GeneralStoreEvent extends AbstractEvent {
       a.add(new NextPageEventChoice(data.SELECT[10], this, 8));
     } else if (page == 3) {
       a.add(
-          new SkillGetEventChoice(
-              data.SELECT[2],
-              new EventCondition() { // TODO 특정 스킬
+              new ItemRewardEventChoice(
+                      data.SELECT[2],
+                      AbstractItem.ItemRarity.BOSS,
+              new EventCondition() {
                 @Override
                 public boolean condition() {
                   return AbstractLabyrinth.gold >= 300;

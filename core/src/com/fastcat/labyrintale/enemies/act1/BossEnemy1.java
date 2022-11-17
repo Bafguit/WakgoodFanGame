@@ -3,6 +3,8 @@ package com.fastcat.labyrintale.enemies.act1;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.SetSkinAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.skills.enemy.*;
 
 public class BossEnemy1 extends AbstractEnemy {
@@ -21,6 +23,7 @@ public class BossEnemy1 extends AbstractEnemy {
     stat.debuRes = 15;
     stat.neutRes = 15;
     stat.moveRes = 15;
+    skeleton.setSkin("first");
   }
 
   @Override
@@ -68,6 +71,7 @@ public class BossEnemy1 extends AbstractEnemy {
       temp.add(new GrowE(this).upgrade());
       deck = temp;
       newDeck();
+      ActionHandler.top(new SetSkinAction(this, "third", 0.5f));
     } else if (health <= ((maxHealth / 4) * 3) && mod == 0) {
       mod = 1;
       Array<AbstractSkill> temp = new Array<>();
@@ -85,6 +89,7 @@ public class BossEnemy1 extends AbstractEnemy {
       temp.add(new GrowE(this).upgrade());
       deck = temp;
       newDeck();
+      ActionHandler.top(new SetSkinAction(this, "second", 0.5f));
     }
   }
 }

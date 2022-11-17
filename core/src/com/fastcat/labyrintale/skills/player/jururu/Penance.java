@@ -19,7 +19,7 @@ public class Penance extends AbstractSkill {
 
   public Penance(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(5, 1);
+    setBaseAttack(4, 1);
     setBaseValue(VALUE, 1);
     setBaseCost(1);
   }

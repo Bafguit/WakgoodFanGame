@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.ActionHandler;
@@ -37,8 +38,7 @@ public class SkillButtonPanel extends AbstractUI {
               !skill.passive
                       && skill.canUse()
                       && type != SkillButtonType.VIEW
-                      && !battleScreen.isSelecting
-                      && !ActionHandler.isRunning()
+                      && (!battleScreen.isSelecting ? !ActionHandler.isRunning() : cPanel.battlePanel.selected == skill)
                       && Labyrintale.getCurScreen() == battleScreen;
       if (type == SkillButtonType.PLAYER || type == SkillButtonType.BASIC) {
         isUsed = !skill.canUse();
@@ -72,7 +72,9 @@ public class SkillButtonPanel extends AbstractUI {
 
   @Override
   protected void onClick() {
-    if (!isUsed && skill.canUse()) {
+    if(cPanel.battlePanel.selected == skill && battleScreen.gets != null) {
+      battleScreen.gets.onTargetSelected(null);
+    } else if (!isUsed && skill.canUse()) {
       skill.useCard();
     }
   }

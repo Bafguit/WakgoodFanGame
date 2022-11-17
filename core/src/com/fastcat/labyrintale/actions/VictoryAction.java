@@ -46,16 +46,25 @@ public class VictoryAction extends AbstractAction {
       AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
         AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
-        if (AbstractLabyrinth.advisor.id.equals("dopa")) {
-          if (AbstractLabyrinth.hasSlot()) temp.add(new SlotReward());
-        }
-        if (tp.id.equals(tp2.id)) {
+        if (tp.playerClass == tp2.playerClass) {
           Array<AbstractSkill> ss = getRandomSkill(tp, 2);
-          temp.add(new SkillReward(ss.get(0)));
-          temp.add(new SkillReward(ss.get(1)));
+          if (AbstractLabyrinth.advisor.id.equals("dopa")) {
+            temp.add(new SkillReward(ss.get(0).upgrade()));
+            temp.add(new SkillReward(ss.get(1).upgrade()));
+          } else {
+            temp.add(new SkillReward(ss.get(0)));
+            temp.add(new SkillReward(ss.get(1)));
+          }
         } else {
-          temp.add(new SkillReward(getRandomSkill(tp)));
-          temp.add(new SkillReward(getRandomSkill(tp2)));
+          AbstractSkill s1 = getRandomSkill(tp);
+          AbstractSkill s2 = getRandomSkill(tp2);
+          if (AbstractLabyrinth.advisor.id.equals("dopa")) {
+            temp.add(new SkillReward(s1.upgrade()));
+            temp.add(new SkillReward(s2.upgrade()));
+          } else {
+            temp.add(new SkillReward(s1));
+            temp.add(new SkillReward(s2));
+          }
         }
       } else {
         temp.add(new SkillReward(getRandomSkill(tp)));

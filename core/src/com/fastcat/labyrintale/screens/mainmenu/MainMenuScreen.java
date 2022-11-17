@@ -67,13 +67,14 @@ public class MainMenuScreen extends AbstractScreen {
     optionButton.onHide();
     exitButton.onHide();
     SaveHandler.refresh();
-    if (playMusic) {
-      SoundHandler.playMusic("LOBBY", true, true);
-      playMusic = false;
-    }
     if(Labyrintale.labyrinth != null) {
+      SoundHandler.fadeOutAll();
       AbstractLabyrinth.reset();
       Labyrintale.labyrinth = null;
+    }
+    if (playMusic) {
+      SoundHandler.addMusic("LOBBY", true, true);
+      playMusic = false;
     }
   }
 

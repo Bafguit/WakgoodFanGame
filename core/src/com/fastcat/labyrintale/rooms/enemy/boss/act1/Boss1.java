@@ -14,7 +14,7 @@ public class Boss1 extends AbstractRoom {
   @Override
   public AbstractEnemy[] getEnemies() {
     return new AbstractEnemy[] {
-      new BossEnemy1(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+      new EnemyPlaceholder(), new BossEnemy1(), new EnemyPlaceholder(), new EnemyPlaceholder()
     };
   }
 }

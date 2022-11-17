@@ -39,7 +39,7 @@ public class TurnView extends AbstractUI {
           h = Gdx.graphics.getHeight(),
           wc = w * 0.5f - sWidth * 0.5f,
           wcc = w * 0.5f + sWidth * 0.5f,
-          wh = h * 0.9f;
+          wh = h * 0.90f;
       for (int i = 0; i < index; i++) {
         TurnIcon t = icons.get(i);
         t.isMain = false;

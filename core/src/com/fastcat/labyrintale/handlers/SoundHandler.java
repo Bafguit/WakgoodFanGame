@@ -217,7 +217,7 @@ public final class SoundHandler implements Disposable {
     }
 
     public void updateFadeIn() {
-      fadeTimer -= Labyrintale.tick;
+      fadeTimer -= Labyrintale.tick * 1.5;
       if (fadeTimer <= 0.0F) {
         fadeTimer = 0.0F;
         isFading = false;
@@ -227,7 +227,7 @@ public final class SoundHandler implements Disposable {
     }
 
     public void updateFadeOut() {
-      fadeTimer -= Labyrintale.tick;
+      fadeTimer -= Labyrintale.tick * 1.5;
       if (fadeTimer <= 0.0F) {
         fadeTimer = 0.0F;
         isDone = true;

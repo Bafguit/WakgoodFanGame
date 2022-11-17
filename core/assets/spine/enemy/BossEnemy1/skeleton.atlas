@@ -1,47 +1,123 @@
 
 skeleton.png
-size: 1998,1504
+size: 2040,1955
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-hit
-  rotate: false
-  xy: 2, 817
-  size: 1176, 685
-  orig: 1600, 900
-  offset: 176, 8
-  index: -1
-idle
-  rotate: false
-  xy: 2, 2
-  size: 1134, 813
-  orig: 1600, 900
-  offset: 176, 25
-  index: -1
-skill
+first_attack
   rotate: true
-  xy: 1180, 348
-  size: 1154, 816
+  xy: 2, 28
+  size: 1117, 857
   orig: 1600, 900
-  offset: 217, 26
+  offset: 233, 29
+  index: -1
+first_hit
+  rotate: true
+  xy: 861, 2
+  size: 1101, 777
+  orig: 1600, 900
+  offset: 275, 81
+  index: -1
+first_skill
+  rotate: false
+  xy: 2, 1147
+  size: 1214, 806
+  orig: 1600, 900
+  offset: 131, 29
+  index: -1
+second_skill
+  rotate: false
+  xy: 1218, 1105
+  size: 820, 848
+  orig: 1600, 900
+  offset: 400, 37
+  index: -1
+third_die
+  rotate: true
+  xy: 1640, 512
+  size: 591, 359
+  orig: 1600, 900
+  offset: 463, 27
   index: -1
 
 skeleton2.png
-size: 1433,1094
+size: 2035,1711
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-attack
+first_die
   rotate: true
-  xy: 2, 2
-  size: 1090, 788
+  xy: 1443, 124
+  size: 1056, 566
   orig: 1600, 900
-  offset: 82, 31
+  offset: 276, 36
   index: -1
-die
-  rotate: true
-  xy: 792, 148
-  size: 944, 639
+second_attack
+  rotate: false
+  xy: 1145, 1182
+  size: 888, 527
   orig: 1600, 900
-  offset: 224, 0
+  offset: 257, 18
+  index: -1
+second_die
+  rotate: false
+  xy: 572, 623
+  size: 869, 557
+  orig: 1600, 900
+  offset: 240, 31
+  index: -1
+third_attack
+  rotate: false
+  xy: 2, 2
+  size: 885, 619
+  orig: 1600, 900
+  offset: 186, 4
+  index: -1
+third_hit
+  rotate: false
+  xy: 2, 1237
+  size: 632, 472
+  orig: 1600, 900
+  offset: 422, 1
+  index: -1
+third_idle
+  rotate: false
+  xy: 2, 706
+  size: 568, 529
+  orig: 1600, 900
+  offset: 463, 18
+  index: -1
+third_skill
+  rotate: false
+  xy: 636, 1213
+  size: 507, 496
+  orig: 1600, 900
+  offset: 489, 16
+  index: -1
+
+skeleton3.png
+size: 1549,1365
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+first_idle
+  rotate: true
+  xy: 2, 449
+  size: 914, 727
+  orig: 1600, 900
+  offset: 428, 29
+  index: -1
+second_hit
+  rotate: true
+  xy: 731, 693
+  size: 670, 816
+  orig: 1600, 900
+  offset: 303, 56
+  index: -1
+second_idle
+  rotate: true
+  xy: 731, 2
+  size: 689, 790
+  orig: 1600, 900
+  offset: 456, 18
   index: -1

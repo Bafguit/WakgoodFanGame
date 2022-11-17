@@ -571,26 +571,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
         if (!a) {
           ActionHandler.clear();
-          for (AbstractPlayer p : players) {
-            if (p.isAlive()) {
-              p.pre = null;
-              for (AbstractSkill s : p.hand) {
-                if (s != null) s.atBattleEnd();
-              }
-              p.passive.atBattleEnd();
-              for (AbstractItem m : p.item) {
-                if (m != null) m.atBattleEnd();
-              }
-              for (AbstractStatus s : p.status) {
-                if (s != null) {
-                  s.atBattleEnd();
-                  s.onRemove();
-                }
-              }
-              p.status.clear();
-            }
-          }
-          advisor.atBattleEnd();
+          ActionHandler.bot(new AtBattleEndAction());
           if (currentFloor.floorNum == 4 && currentFloor.num == 12) {
             ActionHandler.bot(new EndLabyrinthAction(DeadScreen.ScreenType.WIN));
           } else {
@@ -613,7 +594,7 @@ public abstract class AbstractEntity implements Cloneable {
         ActionHandler.clear();
         SoundHandler.fadeOutAll();
         ActionHandler.clear();
-        Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD), 2.0f);
+        Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD));
         SaveHandler.finish(false);
       } else {
         if(isPlayer && index < 3) {

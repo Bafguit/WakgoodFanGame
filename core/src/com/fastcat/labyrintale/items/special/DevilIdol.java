@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.special;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public class DevilIdol extends AbstractItem {
@@ -14,11 +15,17 @@ public class DevilIdol extends AbstractItem {
 
   @Override
   public void onGain() {
+    for(AbstractPlayer p : AbstractLabyrinth.players) {
+      p.stat.speed += 5;
+    }
     owner.minRes = 80;
   }
 
   @Override
   public void onRemove() {
+    for(AbstractPlayer p : AbstractLabyrinth.players) {
+      p.stat.speed -= 5;
+    }
     owner.minRes = 5;
   }
 }

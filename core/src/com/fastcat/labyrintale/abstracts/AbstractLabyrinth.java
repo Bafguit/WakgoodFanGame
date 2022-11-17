@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.DifficultyHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
@@ -112,6 +113,7 @@ public class AbstractLabyrinth {
 
   public static void prepare() {
     energy = 0;
+    ActionHandler.reset();
   }
 
   public static void gainExp(int amt) {
@@ -237,6 +239,7 @@ public class AbstractLabyrinth {
     players = new AbstractPlayer[4];
     diff = null;
     cPanel = null;
+    ActionHandler.reset();
   }
 
   public static AbstractPlayer getPlayerInstance(AbstractPlayer.PlayerClass cls) {

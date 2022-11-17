@@ -9,7 +9,7 @@ public class NeutResStatus extends AbstractStatus {
   private static final String ID = "NeutRes";
 
   public NeutResStatus(int amount) {
-    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
     setAmount(amount);
   }
 

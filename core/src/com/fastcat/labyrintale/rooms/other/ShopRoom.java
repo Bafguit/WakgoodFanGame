@@ -127,7 +127,7 @@ public class ShopRoom extends AbstractRoom {
       price = restriction.onCreateShopItem(p);
     }
 
-    public final void takeItem() {
+    public void takeItem() {
       take();
       isDone = true;
       AbstractLabyrinth.modifyGold(-price);
@@ -150,6 +150,13 @@ public class ShopRoom extends AbstractRoom {
       super(50);
       shop = s;
       img = FileHandler.getUi().get("REWARD_CARD");
+    }
+
+    @Override
+    public void takeItem() {
+      take();
+      if(!advisor.id.equals("rusuk")) isDone = true;
+      AbstractLabyrinth.modifyGold(-price);
     }
 
     @Override

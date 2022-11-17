@@ -16,6 +16,8 @@ public class BossEnemy4 extends AbstractEnemy {
   public BossEnemy4() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
+    stat.attack = 8;
+    stat.spell = 8;
     stat.speed = 4;
     stat.critical = 20;
     stat.debuRes = 30;
@@ -25,7 +27,6 @@ public class BossEnemy4 extends AbstractEnemy {
 
   @Override
   public void preBattle() {
-    applyStatus(new AttackStatus(2), this, 2, false);
     applyStatus(new ImmuneStatus(5), this, 5, false);
   }
 
@@ -40,28 +41,26 @@ public class BossEnemy4 extends AbstractEnemy {
     s.disposable = true;
     temp.add(s);
     /////////////////////////
-    AbstractSkill s2 = new StrikeE(this);
-    for (int i = 0; i < 16; i++) {
-      s2.upgrade();
-    }
-    temp.add(s2);
+    AbstractSkill ss = new DoubleE(this);
+    temp.add(ss);
     /////////////////////////
     AbstractSkill s6 = new DecayE(this).upgrade();
+    s6.upgrade();
     s6.upgrade();
     s6.upgrade();
     temp.add(s6);
     /////////////////////////
     temp.add(new InduceE(this));
     /////////////////////////
-    AbstractSkill ss = new DoubleE(this);
+    AbstractSkill s2 = new StrikeE(this);
     for (int i = 0; i < 6; i++) {
-      ss.upgrade();
+      s2.upgrade();
     }
-    temp.add(ss);
+    temp.add(s2);
     /////////////////////////
     temp.add(new RecapE(this));
     /////////////////////////
-    temp.add(new HinderAllE(this).upgrade().upgrade().upgrade().upgrade().upgrade());
+    temp.add(new HinderAllE(this));
     /////////////////////////
     temp.add(new RestrictE(this).upgrade().upgrade().upgrade());
     /////////////////////////

@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.status.BurnStatus;
 import com.fastcat.labyrintale.status.DebuResMinusStatus;
+import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class LilpaaAction extends AbstractAction {
 
@@ -47,7 +48,7 @@ public class LilpaaAction extends AbstractAction {
         if (e.isAlive()) e.takeDamage(info);
       }
       for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-        if (e.isAlive()) e.applyStatus(new DebuResMinusStatus(burn), burn, true);
+        if (e.isAlive()) e.applyStatus(new UnfortifiedStatus(burn), burn, true);
       }
     }
   }

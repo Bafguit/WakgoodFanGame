@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.statselect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
@@ -48,6 +49,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
         cnt++;
       }
     }
+    cType = Labyrintale.getBaseScreen().cType;
   }
 
   @Override

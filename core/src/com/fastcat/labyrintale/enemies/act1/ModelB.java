@@ -15,7 +15,7 @@ public class ModelB extends AbstractEnemy {
   public ModelB() {
     super(ID, TYPE, HEALTH);
     isRandom = false;
-    stat.speed = 3;
+    stat.speed = 1;
     stat.critical = 5;
     stat.debuRes = 5;
     stat.neutRes = 5;

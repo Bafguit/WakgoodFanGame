@@ -18,7 +18,7 @@ public class PlayerInfoItemIcon extends AbstractUI {
     super(FileHandler.getUi().get("BORDER"));
     skill = s;
     clickable = false;
-    subDown = true;
+    subWay = SubText.SubWay.DOWN;
   }
 
   @Override
@@ -38,6 +38,7 @@ public class PlayerInfoItemIcon extends AbstractUI {
     if (enabled) {
       sb.setColor(Color.WHITE);
       if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+      sb.setColor(skill.getRarityColor());
       sb.draw(
           skill.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);
     }

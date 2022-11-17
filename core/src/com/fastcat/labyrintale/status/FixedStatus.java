@@ -14,7 +14,7 @@ public class FixedStatus extends AbstractStatus {
   }
 
   public FixedStatus(int amount) {
-    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.STATIC);
+    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
     setAmount(amount);
   }
 

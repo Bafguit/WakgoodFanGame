@@ -22,7 +22,7 @@ public class DefeatAction extends AbstractAction {
     if (duration == baseDuration) {
       SoundHandler.fadeOutAll();
       ActionHandler.clear();
-      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD), 2.0f);
+      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD));
       SaveHandler.finish(false);
     }
   }

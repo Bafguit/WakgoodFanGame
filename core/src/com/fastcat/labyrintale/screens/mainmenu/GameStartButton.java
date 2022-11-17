@@ -30,6 +30,6 @@ public class GameStartButton extends AbstractUI {
 
   @Override
   protected void onClick() {
-    fadeOutAndChangeScreen(diffScreen, 1.0f);
+    fadeOutAndChangeScreen(diffScreen);
   }
 }

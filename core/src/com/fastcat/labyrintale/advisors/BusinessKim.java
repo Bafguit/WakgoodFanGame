@@ -18,6 +18,6 @@ public class BusinessKim extends AbstractItem {
   }
 
   public void atBattleStart() {
-    bot(new ApplyStatusAction(new EnduranceStatus(2), null, AbstractSkill.SkillTarget.PLAYER_LAST_TWO, false));
+    bot(new ApplyStatusAction(new EnduranceStatus(2), null, AbstractSkill.SkillTarget.PLAYER_FIRST_TWO, false));
   }
 }

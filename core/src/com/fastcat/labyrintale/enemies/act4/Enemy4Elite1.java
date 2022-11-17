@@ -38,7 +38,7 @@ public class Enemy4Elite1 extends AbstractEnemy {
     s2.disposable = true;
     temp.add(s2);
     AbstractSkill s1 = new HinderAllE(this);
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 6; i++) {
       s1.upgrade();
     }
     s1.disposable = true;

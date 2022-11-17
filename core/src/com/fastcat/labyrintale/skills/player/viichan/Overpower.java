@@ -20,7 +20,7 @@ public class Overpower extends AbstractSkill {
 
   public Overpower(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(3, 2);
+    setBaseAttack(2, 2);
   }
 
   @Override

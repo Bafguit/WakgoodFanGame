@@ -18,7 +18,7 @@ public class CharItemIcon extends AbstractUI {
     super(FileHandler.getUi().get("BORDER_M"));
     skill = s;
     clickable = false;
-    subDown = true;
+    subWay = SubText.SubWay.DOWN;
   }
 
   @Override

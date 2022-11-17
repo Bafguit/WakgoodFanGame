@@ -186,12 +186,12 @@ public class Labyrintale extends Game {
     InputHandler.getInstance().update();
     FontHandler.getInstance().update();
     subText = null;
-    if (!tutorial && labyrinth != null) {
+    if (!setting && !tutorial && labyrinth != null) {
       labyrinth.update();
     }
     if(setting) {
       settingScreen.update();
-    } if(tutorial) {
+    } else if(tutorial) {
       tutorialScreen.update();
     } else if (tempScreen.size > 0) {
       AbstractScreen s = tempScreen.get(tempScreen.size - 1);
@@ -290,7 +290,7 @@ public class Labyrintale extends Game {
 
   public static void returnToWay() {
     wayScreen = new WayScreen();
-    fadeOutAndChangeScreen(wayScreen, 1.5f);
+    fadeOutAndChangeScreen(wayScreen);
   }
 
   public static void openTutorial(TutorialScreen.TutorialType type) {

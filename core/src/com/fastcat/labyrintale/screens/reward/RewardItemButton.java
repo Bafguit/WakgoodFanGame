@@ -42,8 +42,8 @@ public class RewardItemButton extends AbstractUI {
       else if (!over) sb.setColor(Color.LIGHT_GRAY);
       else sb.setColor(Color.WHITE);
       sb.draw(image, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
       if (reward.type == AbstractReward.RewardType.SKILL) {
+        sb.draw(img, x, y, sWidth, sHeight);
         sb.draw(
             icon.item.skill.owner.imgTiny, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
         sb.draw(icon.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
@@ -60,6 +60,9 @@ public class RewardItemButton extends AbstractUI {
               sWidth * 0.2f,
               sWidth * 0.2f);
         }
+      } else if(reward.type == AbstractReward.RewardType.ITEM) {
+        sb.setColor(iReward.item.getRarityColor());
+        sb.draw(img, x, y, sWidth, sHeight);
       }
       sb.setColor(Color.WHITE);
     }

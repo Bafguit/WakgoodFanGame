@@ -9,10 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
@@ -43,21 +40,25 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
     int c = 0;
     for (int g = 0; g < 2; g++) {
       for (int f = 0; f < 2; f++) {
+        AbstractUI.SubText.SubWay sw = AbstractUI.SubText.SubWay.values()[f];
         AbstractPlayer player = AbstractLabyrinth.players[c];
         for (int i = 0; i < 3; i++) {
           PlayerInfoDeckIcon b = new PlayerInfoDeckIcon(player.deck.get(i));
           b.setPosition(
               w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+          b.subWay = sw;
           deck[c][i] = b;
         }
         for (int i = 0; i < 2; i++) {
           PlayerInfoItemIcon b = new PlayerInfoItemIcon(player.item[i]);
           b.setPosition(
               w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+          b.subWay = sw;
           item[c][i] = b;
         }
         PlayerInfoItemIcon ps = new PlayerInfoItemIcon(player.passive);
         ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.81f - 0.275f * f));
+        ps.subWay = sw;
         passive[c] = ps;
         int cnt = 0;
         for (int j = 3; j >= 0; j--) {
@@ -66,6 +67,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
             s.entity = player;
             s.setPosition(
                 w * (0.398f + 0.46f * g - 0.055f * i), h * (0.8f - 0.275f * f + 0.027f * j));
+            s.subWay = sw;
             stats[c][cnt++] = s;
           }
         }

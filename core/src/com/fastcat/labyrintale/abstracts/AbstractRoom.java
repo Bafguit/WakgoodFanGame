@@ -62,7 +62,7 @@ public abstract class AbstractRoom implements Cloneable {
         enemies = temp.getEnemies();
         id = temp.id;
         type = temp.type;
-        SoundHandler.fadeOutMusic("MAP");
+        SoundHandler.fadeOutAll();
         if (type == BOSS) SoundHandler.addMusic("BATTLE_BOSS", true, true);
         else SoundHandler.addMusic("BATTLE_1", true, true);
         battleScreen = new BattleScreen();
@@ -90,13 +90,13 @@ public abstract class AbstractRoom implements Cloneable {
       }
     } else if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE) {
       refreshEnemy();
-      SoundHandler.fadeOutMusic("MAP");
+      SoundHandler.fadeOutAll();
       SoundHandler.addMusic("BATTLE_1", true, true);
       battleScreen = new BattleScreen();
       fadeOutAndChangeScreen(battleScreen);
     } else if (type == AbstractRoom.RoomType.BOSS) {
       refreshEnemy();
-      SoundHandler.fadeOutMusic("MAP");
+      SoundHandler.fadeOutAll();
       SoundHandler.addMusic("BATTLE_BOSS", true, true);
       battleScreen = new BattleScreen();
       fadeOutAndChangeScreen(battleScreen);

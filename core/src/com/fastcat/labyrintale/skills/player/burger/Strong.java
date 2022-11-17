@@ -12,8 +12,8 @@ public class Strong extends AbstractSkill {
   private static final String ID = "Strong";
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.SELF;
-  private static final int VALUE = 4;
+  private static final SkillTarget TARGET = SkillTarget.PLAYER;
+  private static final int VALUE = 5;
 
   public Strong(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

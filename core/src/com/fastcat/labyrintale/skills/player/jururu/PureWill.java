@@ -19,7 +19,6 @@ public class PureWill extends AbstractSkill {
   public PureWill(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseValue(VALUE, 1);
-    setBaseCost(1);
   }
 
   @Override

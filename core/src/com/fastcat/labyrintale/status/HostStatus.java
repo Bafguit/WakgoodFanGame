@@ -22,6 +22,6 @@ public class HostStatus extends AbstractStatus {
 
   public void onDeath(AbstractEntity murder) {
     flash();
-    top(new ApplyStatusAction(new UnfortifiedStatus(amount), owner, target, true));
+    top(new ApplyStatusAction(new UnfortifiedStatus(amount), null, target, true));
   }
 }

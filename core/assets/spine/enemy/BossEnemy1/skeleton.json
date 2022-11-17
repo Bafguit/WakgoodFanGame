@@ -1,112 +1,204 @@
 {
-"skeleton": {
-	"hash": "86vefM0Mo/4Mzx6ZLvGR93BEV7E",
-	"spine": "3.8.75",
-	"x": -450,
-	"y": -50,
-	"width": 1600,
-	"height": 900,
-	"images": "../../enemy/boss/img/",
-	"audio": ""
-},
+"skeleton": { "hash": "ei/1vGoP55IFRQm42ZHOaycx+iM", "spine": "3.8.75", "images": "C:/Users/유민/Pictures/게임개발/enemy/boss/왁무새/img", "audio": "" },
 "bones": [
-	{ "name": "root" }
+	{ "name": "root" },
+	{ "name": "first", "parent": "root", "x": 189.76, "y": 199.96, "skin": true },
+	{ "name": "first_attack", "parent": "first", "x": -189.76, "y": -199.96, "skin": true },
+	{ "name": "first_idle", "parent": "first", "x": -197.05, "y": -158.01, "skin": true },
+	{ "name": "first_die", "parent": "first", "x": 260.26, "y": -83.65, "skin": true },
+	{ "name": "first_skill", "parent": "first", "x": -9.29, "y": 37.18, "skin": true },
+	{ "name": "first_hit", "parent": "first", "x": 24.17, "y": 109.68, "skin": true },
+	{ "name": "second", "parent": "root", "x": 3.86, "y": 393.29, "skin": true },
+	{ "name": "second_hit", "parent": "second", "x": 40.9, "y": 107.82, "skin": true },
+	{ "name": "second_attack", "parent": "second", "x": 280.71, "y": 50.19, "skin": true },
+	{ "name": "second_idle", "parent": "second", "x": 11.15, "y": -239.81, "skin": true },
+	{ "name": "second_skill", "parent": "second", "x": -9.3, "y": -295.58, "skin": true },
+	{ "name": "second_die", "parent": "second", "x": -61.35, "y": -245.39, "skin": true },
+	{ "name": "third", "parent": "root", "x": -1.72, "y": 41.94, "skin": true },
+	{ "name": "third_idle", "parent": "third", "x": 13.01, "y": 52.05, "skin": true },
+	{ "name": "third_attack", "parent": "third", "x": 117.12, "y": 66.92, "skin": true },
+	{ "name": "third_hit", "parent": "third", "x": 178.46, "y": 96.67, "skin": true },
+	{ "name": "third_die", "parent": "third", "x": -72.5, "y": 5.58, "skin": true },
+	{ "name": "third_skill", "parent": "third", "x": -55.77, "y": 91.09, "skin": true }
 ],
 "slots": [
-	{ "name": "die", "bone": "root" },
-	{ "name": "attack", "bone": "root" },
-	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root", "attachment": "skill" },
-	{ "name": "idle", "bone": "root" }
+	{ "name": "first_attack", "bone": "first_attack" },
+	{ "name": "first_die", "bone": "first_die" },
+	{ "name": "first_idle", "bone": "first_idle" },
+	{ "name": "first_hit", "bone": "first_hit" },
+	{ "name": "first_skill", "bone": "first_skill" },
+	{ "name": "second_attack", "bone": "second_attack" },
+	{ "name": "second_die", "bone": "second_die" },
+	{ "name": "second_hit", "bone": "second_hit" },
+	{ "name": "second_idle", "bone": "second_idle" },
+	{ "name": "second_skill", "bone": "second_skill" },
+	{ "name": "third_idle", "bone": "third_idle" },
+	{ "name": "third_attack", "bone": "third_attack" },
+	{ "name": "third_die", "bone": "third_die" },
+	{ "name": "third_hit", "bone": "third_hit" },
+	{ "name": "third_skill", "bone": "third_skill" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
-			"die": {
-				"die": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			"first_skill": {
+				"first_skill": { "x": -180.46, "y": 152.86, "width": 1600, "height": 900 }
 			},
-			"attack": {
-				"attack": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			"first_idle": {
+				"first_idle": { "x": 7.3, "y": 348.06, "width": 1600, "height": 900 }
 			},
-			"skill": {
-				"skill": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			"first_hit": {
+				"first_hit": { "x": -213.92, "y": -39.64, "width": 1600, "height": 900 }
 			},
-			"hit": {
-				"hit": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			"second_skill": {
+				"second_skill": { "x": 5.44, "y": 292.29, "width": 1600, "height": 900 }
 			},
-			"idle": {
-				"idle": { "x": 350, "y": 400, "width": 1600, "height": 900 }
+			"second_hit": {
+				"second_hit": { "x": 125.25, "y": -111.11, "width": 1600, "height": 900 }
+			},
+			"third_attack": {
+				"third_attack": { "x": -115.4, "y": 281.14, "width": 1600, "height": 900 }
+			},
+			"third_die": {
+				"third_die": { "x": 74.22, "y": 332.48, "width": 1600, "height": 900 }
+			},
+			"third_idle": {
+				"third_idle": { "x": -11.29, "y": 296.01, "width": 1600, "height": 900 }
+			},
+			"first_die": {
+				"first_die": { "x": -450.02, "y": 193.7, "width": 1600, "height": 900 }
+			},
+			"second_attack": {
+				"second_attack": { "x": -284.57, "y": -53.48, "width": 1600, "height": 900 }
+			},
+			"second_die": {
+				"second_die": { "x": 57.49, "y": 242.1, "width": 1600, "height": 900 }
+			},
+			"first_attack": {
+				"first_attack": { "y": 390, "width": 1600, "height": 900 }
+			},
+			"third_skill": {
+				"third_skill": { "x": 57.49, "y": 256.97, "width": 1600, "height": 900 }
+			},
+			"third_hit": {
+				"third_hit": { "x": -136.74, "y": 251.39, "width": 1600, "height": 900 }
+			},
+			"second_idle": {
+				"second_idle": { "x": -15.01, "y": 236.52, "width": 1600, "height": 900 }
 			}
 		}
+	},
+	{
+		"name": "first",
+		"bones": [ "first", "first_attack", "first_die", "first_hit", "first_idle", "first_skill" ]
+	},
+	{
+		"name": "second",
+		"bones": [ "second", "second_attack", "second_die", "second_hit", "second_idle", "second_skill" ]
+	},
+	{
+		"name": "third",
+		"bones": [ "third", "third_attack", "third_die", "third_hit", "third_idle", "third_skill" ]
 	}
 ],
 "animations": {
 	"attack": {
 		"slots": {
-			"skill": {
+			"third_attack": {
 				"attachment": [
-					{ "name": null }
+					{ "name": "third_attack" },
+					{ "time": 0.6667, "name": "third_attack" }
 				]
 			},
-			"attack": {
+			"second_attack": {
 				"attachment": [
-					{ "name": "attack" },
-					{ "time": 0.6667, "name": "attack" }
+					{ "name": "second_attack" }
+				]
+			},
+			"first_attack": {
+				"attachment": [
+					{ "name": "first_attack" }
 				]
 			}
 		}
 	},
 	"die": {
 		"slots": {
-			"die": {
+			"first_die": {
 				"attachment": [
-					{ "name": "die" },
-					{ "time": 0.6667, "name": "die" }
+					{ "name": "first_die" }
 				]
 			},
-			"skill": {
+			"second_die": {
 				"attachment": [
-					{ "name": null }
+					{ "name": "second_die" }
+				]
+			},
+			"third_die": {
+				"attachment": [
+					{ "name": "third_die" },
+					{ "time": 0.6667, "name": "third_die" }
 				]
 			}
 		}
 	},
 	"hit": {
 		"slots": {
-			"hit": {
+			"first_hit": {
 				"attachment": [
-					{ "name": "hit" },
-					{ "time": 0.6667, "name": "hit" }
+					{ "name": "first_hit" }
 				]
 			},
-			"skill": {
+			"third_hit": {
 				"attachment": [
-					{ "name": null }
+					{ "name": "third_hit" },
+					{ "time": 0.6667, "name": "third_hit" }
+				]
+			},
+			"second_hit": {
+				"attachment": [
+					{ "name": "second_hit" }
 				]
 			}
 		}
 	},
 	"idle": {
 		"slots": {
-			"idle": {
+			"third_idle": {
 				"attachment": [
-					{ "name": "idle" },
-					{ "time": 0.6667, "name": "idle" }
+					{ "name": "third_idle" },
+					{ "time": 0.6667, "name": "third_idle" }
 				]
 			},
-			"skill": {
+			"second_idle": {
 				"attachment": [
-					{ "name": null }
+					{ "name": "second_idle" }
+				]
+			},
+			"first_idle": {
+				"attachment": [
+					{ "name": "first_idle" }
 				]
 			}
 		}
 	},
 	"skill": {
 		"slots": {
-			"skill": {
+			"third_skill": {
 				"attachment": [
-					{ "time": 0.6667, "name": "skill" }
+					{ "name": "third_skill" },
+					{ "time": 0.6667, "name": "third_skill" }
+				]
+			},
+			"second_skill": {
+				"attachment": [
+					{ "name": "second_skill" }
+				]
+			},
+			"first_skill": {
+				"attachment": [
+					{ "name": "first_skill" }
 				]
 			}
 		}

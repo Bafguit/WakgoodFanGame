@@ -30,10 +30,10 @@ public final class DifficultyHandler {
   public void onCreatePlayer(AbstractPlayer player) {
     if(diff == HARD) {
       player.setMaxHealth((int) ((float) player.maxHealth * 0.9f), true);
-      player.health -= 2;
+      player.health = player.maxHealth - 2;
     } else if(diff == COFFIN) {
       player.setMaxHealth((int) ((float) player.maxHealth * 0.8f), true);
-      player.health -= 3;
+      player.health = player.maxHealth - 3;
     }
   }
 
