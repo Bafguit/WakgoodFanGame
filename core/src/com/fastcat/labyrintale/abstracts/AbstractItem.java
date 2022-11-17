@@ -155,18 +155,20 @@ public class AbstractItem implements Cloneable {
 
   //TODO 임시 희귀도 구분
   public Color getRarityColor() {
-    if(rarity == ItemRarity.BRONZE) {
-      return Color.BROWN;
-    } else if(rarity == ItemRarity.SILVER) {
-      return Color.SKY;
-    } else if(rarity == ItemRarity.GOLD) {
-      return Color.GOLD;
-    } else if(rarity == ItemRarity.BOSS) {
-      return Color.MAROON;
-    } else if(rarity == ItemRarity.SHOP) {
-      return Color.WHITE;
-    } else if(rarity == ItemRarity.SPECIAL) {
-      return Color.VIOLET;
+    if(rarity != null) {
+      if (rarity == ItemRarity.BRONZE) {
+        return Color.BROWN;
+      } else if (rarity == ItemRarity.SILVER) {
+        return Color.SKY;
+      } else if (rarity == ItemRarity.GOLD) {
+        return Color.GOLD;
+      } else if (rarity == ItemRarity.BOSS) {
+        return Color.MAROON;
+      } else if (rarity == ItemRarity.SHOP) {
+        return Color.WHITE;
+      } else if (rarity == ItemRarity.SPECIAL) {
+        return Color.VIOLET;
+      }
     }
     return Color.WHITE;
   }

@@ -24,7 +24,7 @@ public class WeakEnemy6 extends AbstractEnemy {
   @Override
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s = new GrowE(this);
+    AbstractSkill s = new FuryE(this).upgrade();
     s.disposable = true;
     temp.add(s);
     temp.add(new UnstoppableE(this));

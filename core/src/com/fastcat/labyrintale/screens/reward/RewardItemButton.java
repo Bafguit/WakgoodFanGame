@@ -60,7 +60,7 @@ public class RewardItemButton extends AbstractUI {
               sWidth * 0.2f,
               sWidth * 0.2f);
         }
-      } else if(reward.type == AbstractReward.RewardType.ITEM) {
+      } else if(reward.type == AbstractReward.RewardType.ITEM && iReward.item != null) {
         sb.setColor(iReward.item.getRarityColor());
         sb.draw(img, x, y, sWidth, sHeight);
       }
