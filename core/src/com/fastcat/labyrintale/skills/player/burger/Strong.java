@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.skills.player.burger;
 
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -22,9 +23,13 @@ public class Strong extends AbstractSkill {
   }
 
   @Override
+  public void onTarget(AbstractEntity e) {
+    top(new ApplyStatusAction(new ResistPlusStatus(value), owner, e, true));
+    top(new BlockAction(owner, e, spell));
+  }
+
+  @Override
   public void use() {
-    bot(new BlockAction(owner, owner, spell));
-    bot(new ApplyStatusAction(new ResistPlusStatus(value), owner, owner, true));
   }
 
   @Override
