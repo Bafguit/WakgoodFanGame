@@ -522,7 +522,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             for (AbstractStatus s : t.status) {
               if (s != null) a *= s.attackedMultiply();
             }
-            if(t.isPlayer && t.id.equals("gosegu") && owner != null && owner.hasDebuff()) a *= 0.6f;
+            if(t.isPlayer && t.id.equals("gosegu") && owner != null && owner.hasDebuff()) a *= 0.7f;
           }
         }
         a = Math.max(a, 0);
