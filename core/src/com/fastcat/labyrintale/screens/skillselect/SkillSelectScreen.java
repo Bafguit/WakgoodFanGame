@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.rewards.SkillRewardUpgrade;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -22,11 +23,13 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
   public final SkillSelectGroup[] groups;
   private final BgImg bgImg;
   public GetSelectedSkill gets;
+  public GetRewardDone rewardDone;
 
   public SkillSelectScreen(
-      SkillRewardType type, Array<Array<AbstractSkill>> group, GetSelectedSkill gets) {
+      SkillRewardType type, Array<Array<AbstractSkill>> group, GetSelectedSkill gets, GetRewardDone rewardDone) {
     this(type, group);
     this.gets = gets;
+    this.rewardDone = rewardDone;
   }
 
   public SkillSelectScreen(SkillRewardType type, Array<Array<AbstractSkill>> group) {
@@ -52,10 +55,6 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
         g.skills[0].setPosition(wc - g.skills[0].sWidth * 0.5f, hc - g.skills[0].sHeight * 0.5f);
       g.toSkill.setPosition(wc - g.toSkill.sWidth * 0.5f, h * 0.575f - g.toSkill.sHeight * 0.5f);
     }
-  }
-
-  public SkillSelectScreen(SkillRewardType type, SkillRewardUpgrade r) {
-    this(type, r.group, r);
   }
 
   @Override

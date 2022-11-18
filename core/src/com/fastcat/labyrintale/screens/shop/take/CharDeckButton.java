@@ -67,6 +67,7 @@ public class CharDeckButton extends AbstractUI {
   @Override
   public void onClick() {
     skill.owner.gainSkill(index, toSkill);
+    sc.isRewardDone(true);
     Labyrintale.removeTempScreen(sc);
   }
 }

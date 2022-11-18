@@ -278,7 +278,7 @@ public abstract class AbstractUI implements Disposable {
       line = descLayout.runs.size;
       ww = mid.sWidth;
       hh = bot.sHeight;
-      mh = mid.sHeight * line;
+      mh = mid.sHeight * 0.35f + descLayout.height;
     }
 
     public SubText(Sprite icon, String name, String desc) {

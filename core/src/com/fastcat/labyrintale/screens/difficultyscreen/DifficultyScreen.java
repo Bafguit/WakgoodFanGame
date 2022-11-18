@@ -13,7 +13,7 @@ public class DifficultyScreen extends AbstractScreen {
     public BackButton backButton;
 
     public DifficultyScreen() {
-        setBg(FileHandler.getBg().get("BG_MAIN"));
+        setBg(FileHandler.getBg().get("BG_MAP"));
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for(int i = 0; i < 3; i++) {
             DifficultyButton b = new DifficultyButton(AbstractLabyrinth.Difficulty.values()[i]);

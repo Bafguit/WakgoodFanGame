@@ -29,7 +29,7 @@ public class SkillSlotEventChoice extends AbstractEvent.EventChoice implements G
   @Override
   protected void onSelect() {
     Labyrintale.addTempScreen(
-        new SlotSelectScreen(this));
+        new SlotSelectScreen(this, SlotSelectScreen.SlotType.UPGRADE));
   }
 
   @Override

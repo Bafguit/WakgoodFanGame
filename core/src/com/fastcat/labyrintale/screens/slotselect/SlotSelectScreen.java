@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.uis.BgImg;
 
@@ -22,10 +23,13 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
   public PlayerSlotIcon[] pIcons = new PlayerSlotIcon[4];
   public SlotButton[][] pPlayer;
   public GetSelectedSlot gets;
+  public GetRewardDone rewardDone;
+  public CancelUpgradeButton cancel;
   public SlotType type;
 
-  public SlotSelectScreen(GetSelectedSlot gets) {
+  public SlotSelectScreen(GetSelectedSlot gets, GetRewardDone rewardDone) {
     this(gets, SlotType.UPGRADE);
+    this.rewardDone = rewardDone;
   }
 
   public SlotSelectScreen(GetSelectedSlot gets, SlotType type) {
@@ -49,6 +53,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         pIcons[cnt++] = c;
       }
     }
+    cancel = new CancelUpgradeButton(this);
   }
 
   @Override
@@ -60,6 +65,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
       }
     }
     slotSelectText.update();
+    if(rewardDone != null) cancel.update();
   }
 
   @Override
@@ -72,6 +78,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
       }
     }
     slotSelectText.render(sb);
+    if(rewardDone != null) cancel.render(sb);
   }
 
   @Override
@@ -96,6 +103,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
       player.upgradeSkill(index, 1);
     }
     gets.slotSelected(player, index);
+    if(rewardDone != null) rewardDone.isRewardDone(true);
     Labyrintale.removeTempScreen(this);
   }
 

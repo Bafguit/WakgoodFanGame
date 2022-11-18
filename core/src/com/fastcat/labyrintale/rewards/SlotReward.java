@@ -15,12 +15,12 @@ public class SlotReward extends AbstractReward implements GetSelectedSlot {
 
   public SlotReward() {
     super(RewardType.EXP);
-    setInfo("스킬 슬롯 강화", "스킬 슬롯 강화");
+    setInfo("스킬 강화", "스킬을 강화합니다.");
   }
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(new SlotSelectScreen(this));
+    Labyrintale.addTempScreen(new SlotSelectScreen(this, this));
   }
 
   @Override

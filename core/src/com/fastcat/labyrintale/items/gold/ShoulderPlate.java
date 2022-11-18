@@ -18,6 +18,16 @@ public class ShoulderPlate extends AbstractItem {
   }
 
   @Override
+  public void onGain() {
+    owner.modifyMaxHealth(10);
+  }
+
+  @Override
+  public void onRemove() {
+    owner.modifyMaxHealth(-10);
+  }
+
+  @Override
   public void atBattleStart() {
     flash();
     top(new ApplyStatusAction(new ArmourStatus(5), owner, owner, true));

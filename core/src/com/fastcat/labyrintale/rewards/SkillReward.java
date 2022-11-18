@@ -25,6 +25,6 @@ public class SkillReward extends AbstractReward {
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(new ShopTakeScreen(skill));
+    Labyrintale.addTempScreen(new ShopTakeScreen(skill, this));
   }
 }

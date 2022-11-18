@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public final class FontHandler implements Disposable {
   private static final FreeTypeFontGenerator medium =
-      new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+      new FreeTypeFontGenerator(Gdx.files.internal("font/hlm.ttf"));
   private static final FreeTypeFontGenerator bold =
       new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
   public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);

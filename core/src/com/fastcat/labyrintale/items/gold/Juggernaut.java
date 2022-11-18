@@ -14,7 +14,7 @@ public class Juggernaut extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(10);
+    owner.modifyMaxHealth(20);
     owner.stat.debuRes += 10;
     owner.stat.neutRes += 10;
     owner.stat.moveRes += 10;
@@ -22,7 +22,7 @@ public class Juggernaut extends AbstractItem {
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-10);
+    owner.modifyMaxHealth(-20);
     owner.stat.debuRes -= 10;
     owner.stat.neutRes -= 10;
     owner.stat.moveRes -= 10;

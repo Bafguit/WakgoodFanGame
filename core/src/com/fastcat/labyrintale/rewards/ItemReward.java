@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.screens.itemselect.ItemSelectScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
@@ -44,8 +45,8 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
 
   @Override
   public void takeReward() {
-    if(type == ItemRewardType.BOSS) Labyrintale.addTempScreen(new ItemSelectScreen(items, this, true));
-    else Labyrintale.addTempScreen(new ShopTakeScreen(item, this));
+    if(type == ItemRewardType.BOSS) Labyrintale.addTempScreen(new ItemSelectScreen(items, this, this, true));
+    else Labyrintale.addTempScreen(new ShopTakeScreen(item, this, this));
   }
 
   @Override

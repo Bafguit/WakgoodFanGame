@@ -50,7 +50,7 @@ public class BossEnemy1 extends AbstractEnemy {
 
   @Override
   public void atEndOfTurn() {
-    if (health <= (maxHealth / 2) && mod == 1) {
+    if (health <= ((maxHealth / 7) * 3) && mod == 1) {
       mod = 2;
       Array<AbstractSkill> temp = new Array<>();
       AbstractSkill s = new SlashE(this);
@@ -72,7 +72,7 @@ public class BossEnemy1 extends AbstractEnemy {
       deck = temp;
       newDeck();
       ActionHandler.top(new SetSkinAction(this, "third", 0.5f));
-    } else if (health <= ((maxHealth / 4) * 3) && mod == 0) {
+    } else if (health <= ((maxHealth / 7) * 5) && mod == 0) {
       mod = 1;
       Array<AbstractSkill> temp = new Array<>();
       AbstractSkill s = new DualAttackE(this);

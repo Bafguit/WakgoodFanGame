@@ -17,5 +17,6 @@ public class GoldReward extends AbstractReward {
   @Override
   public void takeReward() {
     AbstractLabyrinth.modifyGold(gold);
+    isDone = true;
   }
 }

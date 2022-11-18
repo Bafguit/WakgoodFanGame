@@ -6,26 +6,29 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 
-public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem {
+public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem, GetRewardDone {
 
   public BgImg bg = new BgImg();
   public ItemSelectText itemSelectText;
   public ItemButton selected;
   public ItemButton[] items;
   public GetSelectedItem gets;
+  public GetRewardDone rewardDone;
   public CancelItemButton cancel;
   public boolean pass;
 
-  public ItemSelectScreen(int amount, GetSelectedItem gets, boolean passable) {
-    this(GroupHandler.ItemGroup.getRandomItem(amount).toArray(AbstractItem.class), gets, passable);
+  public ItemSelectScreen(int amount, GetSelectedItem gets, GetRewardDone rewardDone, boolean passable) {
+    this(GroupHandler.ItemGroup.getRandomItem(amount).toArray(AbstractItem.class), gets, rewardDone, passable);
   }
 
-  public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets, boolean passable) {
+  public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets, GetRewardDone rewardDone, boolean passable) {
     itemSelectText = new ItemSelectText();
+    this.rewardDone = rewardDone;
     this.gets = gets;
     int size = items.length;
     float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
@@ -73,7 +76,12 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem 
 
   @Override
   public void itemSelected(AbstractItem item) {
+    Labyrintale.addTempScreen(new ShopTakeScreen(item, this, gets));
+  }
+
+  @Override
+  public void isRewardDone(boolean isDone) {
+    if(rewardDone != null) rewardDone.isRewardDone(isDone);
     Labyrintale.removeTempScreen(this);
-    Labyrintale.addTempScreen(new ShopTakeScreen(item, gets));
   }
 }

@@ -41,7 +41,7 @@ public class RevelationEvent extends AbstractEvent implements GetSelectedPlayer 
         public String cdText() {
           return data.SELECT[3];
         }
-      }, this, true));
+      }, this, PlayerEventChoice.SelectType.LIVE));
     }
     else a.add(new EndEventChoice());
     return a;

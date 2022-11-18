@@ -15,15 +15,15 @@ public class IceFrag extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.debuRes += 20;
-    owner.stat.neutRes += 20;
-    owner.stat.moveRes += 20;
+    owner.stat.debuRes += 30;
+    owner.stat.neutRes += 30;
+    owner.stat.moveRes += 30;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes -= 20;
-    owner.stat.neutRes -= 20;
-    owner.stat.moveRes -= 20;
+    owner.stat.debuRes -= 30;
+    owner.stat.neutRes -= 30;
+    owner.stat.moveRes -= 30;
   }
 }

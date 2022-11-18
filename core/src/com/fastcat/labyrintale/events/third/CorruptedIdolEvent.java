@@ -30,7 +30,7 @@ public class CorruptedIdolEvent extends AbstractEvent implements GetSelectedPlay
     Array<EventChoice> a = new Array<>();
     if (page == 0) {
       a.add(new NextPageEventChoice(data.SELECT[0], this, 1));
-      a.add(new PlayerEventChoice(data.SELECT[1], this, true));
+      a.add(new PlayerEventChoice(data.SELECT[1], this, PlayerEventChoice.SelectType.LIVE));
     } else {
       a.add(new EndEventChoice());
     }

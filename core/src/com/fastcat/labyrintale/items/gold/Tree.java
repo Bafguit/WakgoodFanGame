@@ -19,17 +19,17 @@ public class Tree extends AbstractItem {
   public void onGain() {
     owner.modifyMaxHealth(10);
     owner.stat.critical += 30;
-    owner.stat.debuRes += 5;
-    owner.stat.neutRes += 5;
-    owner.stat.moveRes += 5;
+    owner.stat.debuRes += 10;
+    owner.stat.neutRes += 10;
+    owner.stat.moveRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-10);
     owner.stat.critical -= 30;
-    owner.stat.debuRes -= 5;
-    owner.stat.neutRes -= 5;
-    owner.stat.moveRes -= 5;
+    owner.stat.debuRes -= 10;
+    owner.stat.neutRes -= 10;
+    owner.stat.moveRes -= 10;
   }
 }

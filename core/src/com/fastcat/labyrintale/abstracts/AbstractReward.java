@@ -2,8 +2,9 @@ package com.fastcat.labyrintale.abstracts;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 
-public abstract class AbstractReward {
+public abstract class AbstractReward implements GetRewardDone {
 
   public Sprite img;
   public String name;
@@ -35,6 +36,10 @@ public abstract class AbstractReward {
   }
 
   public abstract void takeReward();
+
+  public final void isRewardDone(boolean isDone) {
+    this.isDone = isDone;
+  }
 
   public enum RewardType {
     SKILL,

@@ -4,10 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.uis.BgImg;
 
-public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
+public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, GetRewardDone {
 
   private final BgImg bg = new BgImg();
   public TakeType type;
@@ -16,11 +17,18 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
   public ShopItemIcon shopItem;
   public CharDeckButton[] deck;
   public CharItemButton[][] items;
+  public CancelShopButton cancel;
   public GetSelectedItem getItem;
+  public GetRewardDone rewardDone;
   public int count;
 
   public ShopTakeScreen(AbstractSkill skill) {
+    this(skill, null);
+  }
+
+  public ShopTakeScreen(AbstractSkill skill, GetRewardDone rewardDone) {
     this.skill = skill;
+    this.rewardDone = rewardDone;
     type = TakeType.SKILL;
     deck = new CharDeckButton[3];
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -31,6 +39,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
     }
     shopItem = new ShopItemIcon(this);
     shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
+    cancel = new CancelShopButton(this);
   }
 
   public ShopTakeScreen(AbstractItem item) {
@@ -38,8 +47,13 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
   }
 
   public ShopTakeScreen(AbstractItem item, GetSelectedItem gets) {
+    this(item, null, gets);
+  }
+
+  public ShopTakeScreen(AbstractItem item, GetRewardDone rewardDone, GetSelectedItem gets) {
     this.item = item;
     type = TakeType.ITEM;
+    this.rewardDone = rewardDone;
     getItem = gets;
     Array<AbstractPlayer> p = new Array<>();
     for (int i = 0; i < 4; i++) {
@@ -61,6 +75,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
     }
     shopItem = new ShopItemIcon(this);
     shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
+    cancel = new CancelShopButton(this);
   }
 
   @Override
@@ -77,6 +92,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         }
       }
     }
+    if(rewardDone != null) cancel.update();
   }
 
   @Override
@@ -95,6 +111,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
         }
       }
     }
+    if(rewardDone != null) cancel.render(sb);
   }
 
   @Override
@@ -109,6 +126,11 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem {
   @Override
   public void itemSelected(AbstractItem item) {
     if (getItem != null) getItem.itemSelected(item);
+  }
+
+  @Override
+  public void isRewardDone(boolean isDone) {
+    if(rewardDone != null) rewardDone.isRewardDone(isDone);
   }
 
   public enum TakeType {

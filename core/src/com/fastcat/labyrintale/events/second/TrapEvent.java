@@ -43,7 +43,7 @@ public class TrapEvent extends AbstractEvent implements GetSelectedPlayer {
                   return data.SELECT[1];
                 }
               }));
-      a.add(new PlayerEventChoice(data.SELECT[2], this, true));
+      a.add(new PlayerEventChoice(data.SELECT[2], this, PlayerEventChoice.SelectType.LIVE));
     } else {
       a.add(new EndEventChoice());
     }

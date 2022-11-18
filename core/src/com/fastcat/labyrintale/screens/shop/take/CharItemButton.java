@@ -63,6 +63,7 @@ public class CharItemButton extends AbstractUI {
   public void onClick() {
     player.gainItem(toItem, index);
     if (sc.getItem != null) sc.itemSelected(toItem);
+    sc.isRewardDone(true);
     Labyrintale.removeTempScreen(sc);
   }
 }

@@ -7,11 +7,12 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.screens.itemselect.ItemSelectScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
-public class ItemSelectEventChoice extends AbstractEvent.EventChoice implements GetSelectedItem {
+public class ItemSelectEventChoice extends AbstractEvent.EventChoice implements GetSelectedItem, GetRewardDone {
 
   private final AbstractEvent event;
   private final int toPage;
@@ -35,11 +36,16 @@ public class ItemSelectEventChoice extends AbstractEvent.EventChoice implements 
 
   @Override
   protected void onSelect() {
-    Labyrintale.addTempScreen(new ItemSelectScreen(amount, this, false));
+    Labyrintale.addTempScreen(new ItemSelectScreen(amount, this, this, false));
   }
 
   @Override
   public void itemSelected(AbstractItem item) {
+
+  }
+
+  @Override
+  public void isRewardDone(boolean isDone) {
     if (toPage >= 0) {
       event.setPage(toPage);
     }

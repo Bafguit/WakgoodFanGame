@@ -7,12 +7,13 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
-public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot {
+public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot, GetRewardDone {
 
   public static final int HEAL_AMOUNT = 8;
 
@@ -47,7 +48,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
       }
       sc.finishRest();
     } else if (type == RestType.UPGRADE) {
-      Labyrintale.addTempScreen(new SlotSelectScreen(this));
+      Labyrintale.addTempScreen(new SlotSelectScreen(this, this));
     } else if (type == RestType.REVIVE) {
       Array<AbstractPlayer> temp = new Array<>();
       for (AbstractPlayer p : AbstractLabyrinth.players) {
@@ -57,7 +58,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
       for (int i = 0; i < temp.size; i++) {
         tp[i] = temp.get(i);
       }
-      Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this));
+      Labyrintale.addTempScreen(new PlayerSelectScreen(tp, this, this));
     }
   }
 
@@ -74,6 +75,11 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
   @Override
   public void slotSelected(AbstractPlayer player, int index) {
     sc.finishRest();
+  }
+
+  @Override
+  public void isRewardDone(boolean isDone) {
+
   }
 
   public enum RestType {

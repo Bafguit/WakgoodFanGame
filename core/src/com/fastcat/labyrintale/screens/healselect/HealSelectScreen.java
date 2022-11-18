@@ -8,19 +8,22 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedExp;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.rewards.HealReward;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 
-public class HealSelectScreen extends AbstractScreen implements GetSelectedPlayer, GetSelectedExp {
+public class HealSelectScreen extends AbstractScreen implements GetSelectedPlayer, GetSelectedExp, GetRewardDone {
 
   public BgImg bg = new BgImg();
   public HealSelectText playerSelectText;
   public HealButton selected;
   public HealButton[] exp;
   private HealReward.HealType selectedType;
+  public GetRewardDone rewardDone;
+  private CancelHealButton cancel;
 
   public HealSelectScreen() {
     playerSelectText = new HealSelectText();
@@ -47,6 +50,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
     adv.clickable = canRevive;
     adv.setPosition(w * 3 - adv.sWidth / 2, h * 0.6f);
     exp[2] = adv;
+    cancel = new CancelHealButton(this);
   }
 
   public static AbstractPlayer[] getPlayers(HealReward.HealType type) {
@@ -92,6 +96,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
       advisorButton.update();
     }
     playerSelectText.update();
+    if(rewardDone != null) cancel.update();
   }
 
   @Override
@@ -101,6 +106,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
       advisorButton.render(sb);
     }
     playerSelectText.render(sb);
+    if(rewardDone != null) cancel.render(sb);
   }
 
   @Override
@@ -129,11 +135,17 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
       player.revive();
       Labyrintale.removeTempScreen(this);
     }
+    if(rewardDone != null) rewardDone.isRewardDone(true);
   }
 
   @Override
   public void expSelected(HealReward.HealType type) {
     selectedType = type;
-    Labyrintale.addTempScreen(new PlayerSelectScreen(getPlayers(type), this));
+    Labyrintale.addTempScreen(new PlayerSelectScreen(getPlayers(type), this, this));
+  }
+
+  @Override
+  public void isRewardDone(boolean isDone) {
+
   }
 }

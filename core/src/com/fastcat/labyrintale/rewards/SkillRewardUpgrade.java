@@ -23,15 +23,11 @@ public class SkillRewardUpgrade extends SkillUpgradeReward {
         group.add(t);
       }
     }
-    setInfo("스킬 강화", "무작위 스킬을 강화합니다.");
-  }
-
-  public SkillRewardUpgrade() {
-    this(null);
+    setInfo("스킬 강화", "스킬을 강화합니다.");
   }
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(new SkillSelectScreen(SkillRewardType.UPGRADE, group, this));
+    Labyrintale.addTempScreen(new SkillSelectScreen(SkillRewardType.UPGRADE, group, this, this));
   }
 }

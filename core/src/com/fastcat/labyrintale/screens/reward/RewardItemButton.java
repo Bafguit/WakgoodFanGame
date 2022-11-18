@@ -97,7 +97,6 @@ public class RewardItemButton extends AbstractUI {
   protected void onClick() {
     if (!reward.isDone) {
       reward.takeReward();
-      reward.isDone = true;
     }
   }
 }

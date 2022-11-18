@@ -10,7 +10,7 @@ public class ExitButton extends AbstractUI {
 
   public ExitButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+    setPosition(Gdx.graphics.getWidth() * 0.75f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
     fontData = MAIN_MENU;
     text = "종료";
     showImg = false;

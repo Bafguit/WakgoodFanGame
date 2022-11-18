@@ -13,7 +13,7 @@ public class TutorialButton extends AbstractUI {
 
   public TutorialButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.4f);
+    setPosition(Gdx.graphics.getWidth() * 0.75f - sWidth / 2, Gdx.graphics.getHeight() * 0.4f);
     fontData = MAIN_MENU;
     text = "불러오기";
     showImg = false;

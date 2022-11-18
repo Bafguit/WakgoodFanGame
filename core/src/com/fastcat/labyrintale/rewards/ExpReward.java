@@ -21,7 +21,7 @@ public class ExpReward extends AbstractReward implements GetSelectedSlot {
 
   @Override
   public void takeReward() {
-    Labyrintale.addTempScreen(new SlotSelectScreen(this));
+    Labyrintale.addTempScreen(new SlotSelectScreen(this, this));
   }
 
   @Override
