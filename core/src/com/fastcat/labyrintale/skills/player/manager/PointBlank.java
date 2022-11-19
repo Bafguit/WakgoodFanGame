@@ -13,7 +13,7 @@ public class PointBlank extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY;
-  private static final int VALUE = 5;
+  private static final int VALUE = 6;
 
   public PointBlank(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
@@ -27,25 +27,25 @@ public class PointBlank extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(
-        new AttackAction(
-            owner,
-            e,
-            attack,
-            attack > 4 ? AttackAction.AttackType.HEAVY : AttackAction.AttackType.LIGHT));
+    top(new AttackAction(new AbstractEntity.DamageInfo(this), e, AttackAction.AttackType.HEAVY));
   }
 
   @Override
   protected void upgradeCard() {}
 
   @Override
-  public int calculateAttack(int a) {
+  public float showMultiply() {
     if (AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
       if (AbstractLabyrinth.cPanel.battlePanel.selected == this
           && Labyrintale.battleScreen.looking.size == 1) {
-        return a + (6 - (owner.index + Labyrintale.battleScreen.looking.get(0).index) * value);
+        return (float) (6 * value - ((owner.index + Labyrintale.battleScreen.looking.get(0).index) * value)) / 6;
       }
     }
-    return a;
+    return 1.0f;
+  }
+
+  @Override
+  public float attackMultiply(AbstractEntity target) {
+    return (float) (6 * value - ((owner.index + Labyrintale.battleScreen.looking.get(0).index) * value)) / 6;
   }
 }

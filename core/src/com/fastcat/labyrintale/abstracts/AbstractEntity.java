@@ -377,6 +377,9 @@ public abstract class AbstractEntity implements Cloneable {
       if (cPanel.type == ControlPanel.ControlType.BATTLE) {
         if (attacker != null && type == DamageType.NORMAL) {
           damage = attacker.calculateAttack(damage);
+          if(info.skill != null) {
+            damage *= info.skill.attackMultiply(this);
+          }
           if (attacker.isPlayer) {
             attacker.passive.onAttack(this, damage, type);
             for (AbstractItem m : attacker.item) {
@@ -536,7 +539,7 @@ public abstract class AbstractEntity implements Cloneable {
   public void revive() {
     isDead = false;
     isDie = false;
-    health = 1;
+    health = maxHealth / 4;
     animColor.a = 1.0f;
     resetAnimation();
     infoSpine.setAnimation("idle");
@@ -713,6 +716,7 @@ public abstract class AbstractEntity implements Cloneable {
   public static class DamageInfo {
 
     public AbstractEntity actor;
+    public AbstractSkill skill;
     public int damage;
     public DamageType type;
 
@@ -725,6 +729,13 @@ public abstract class AbstractEntity implements Cloneable {
     public DamageInfo(AbstractEntity actor, int damage) {
       this.actor = actor;
       this.damage = damage;
+      this.type = DamageType.NORMAL;
+    }
+
+    public DamageInfo(AbstractSkill skill) {
+      this.skill = skill;
+      this.actor = skill.owner;
+      this.damage = skill.attack;
       this.type = DamageType.NORMAL;
     }
   }

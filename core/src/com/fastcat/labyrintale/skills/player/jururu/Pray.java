@@ -12,7 +12,7 @@ public class Pray extends AbstractSkill {
   private static final String ID = "Pray";
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.STARTER;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+  private static final SkillTarget TARGET = SkillTarget.SELF_BOTH;
   private static final int VALUE = 1;
 
   public Pray(AbstractEntity e) {

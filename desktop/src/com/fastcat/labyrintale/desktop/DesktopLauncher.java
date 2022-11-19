@@ -35,7 +35,7 @@ public class DesktopLauncher {
 
     loadConfiguration();
     LwjglApplication app = new LwjglApplication(new Labyrintale(), config);
-    config.samples = 3;
+    config.samples = 10;
 
     try {
       Field field = LwjglApplication.class.getDeclaredField("mainLoopThread");

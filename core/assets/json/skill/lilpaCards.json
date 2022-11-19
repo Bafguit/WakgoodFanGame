@@ -8,7 +8,10 @@
   },
   "Lilpaa": {
     "NAME": "충격파",
-    "DESC": "모든 적에게 피해를 {A} 주고 &y<취약>을 {V} 부여합니다."
+    "DESC": "모든 적에게 피해를 {A} 주고 &y<취약>을 {V} 부여합니다.",
+    "KEY" : [
+      "Unfortified"
+    ]
   },
   "CrystalStrike": {
     "NAME": "수정 타격",

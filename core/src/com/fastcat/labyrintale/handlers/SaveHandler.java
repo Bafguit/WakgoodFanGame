@@ -87,6 +87,7 @@ public final class SaveHandler {
     eventRandom = new RandomXC(seedLong, data.random.eventRandom);
     shopRandom = new RandomXC(seedLong, data.random.shopRandom);
     groupRandom = new RandomXC(seedLong);
+    GroupHandler.RoomGroup.generateRoom();
     GroupHandler.RoomGroup.shuffleAll();
 
     floors = new AbstractFloor[4];

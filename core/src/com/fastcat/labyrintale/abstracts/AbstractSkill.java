@@ -475,6 +475,14 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     return a;
   }
 
+  public float showMultiply() {
+    return 1.0f;
+  }
+
+  public float attackMultiply(AbstractEntity target) {
+    return 1.0f;
+  }
+
   public int calculateSpell(int s) {
     return s;
   }
@@ -503,6 +511,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             for (AbstractStatus s : owner.status) {
               if (s != null) a = s.showAttack(a);
             }
+            a *= showMultiply();
             if (owner.isPlayer) {
               a *= owner.passive.attackMultiply(a);
               for (AbstractItem m : owner.item) {

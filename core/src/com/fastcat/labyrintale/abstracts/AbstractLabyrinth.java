@@ -71,6 +71,7 @@ public class AbstractLabyrinth {
       eventRandom = new RandomXC(seedLong);
       shopRandom = new RandomXC(seedLong);
       groupRandom = new RandomXC(seedLong);
+      GroupHandler.RoomGroup.generateRoom();
       GroupHandler.RoomGroup.shuffleAll();
       floorNum = 1;
       floors = new AbstractFloor[4];

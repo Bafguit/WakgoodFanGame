@@ -56,7 +56,7 @@ public class BattleScreen extends AbstractScreen {
     cPanel.battlePanel = new BattlePanel();
     this.type = type;
     AbstractLabyrinth.prepare();
-    setBg(FileHandler.getBg().get("BG_WAY"));
+    setBg(FileHandler.getBg().get("BG_WAY_3"));
     w = Gdx.graphics.getWidth();
     h = Gdx.graphics.getHeight();
     sw = shield.getWidth() * InputHandler.scale;

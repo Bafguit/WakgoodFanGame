@@ -10,7 +10,7 @@ public class Pruning extends AbstractSkill {
   private static final SkillType TYPE = SkillType.ATTACK;
   private static final SkillRarity RARITY = SkillRarity.STARTER;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int ATTACK = 8;
+  private static final int ATTACK = 9;
   private static final int UP = 1;
   private static final int VALUE = 2;
 
