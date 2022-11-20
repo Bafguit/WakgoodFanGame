@@ -2,7 +2,9 @@ package com.fastcat.labyrintale.screens.shop;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -37,6 +39,7 @@ public class ShopScreen extends AbstractScreen {
     roll = new ShopItemButton(room.roll);
     roll.setPosition(w * 0.75f - roll.sWidth / 2, h * 0.55f);
     pass = new PassShopButton();
+    setBg(FileHandler.getBg().get("BG_WAY_" + AbstractLabyrinth.floorNum));
   }
 
   @Override

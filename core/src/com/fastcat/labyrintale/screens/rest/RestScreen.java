@@ -74,6 +74,7 @@ public class RestScreen extends AbstractScreen {
 
     RestDesc d2 = desc[cnt] = new RestDesc("단련");
     d2.setPosition(tw - d2.sWidth / 2, h * 0.6f - d2.sHeight / 2);
+    setBg(AbstractLabyrinth.curBg);
   }
 
   public static Sprite getImg(RestButton.RestType type) {

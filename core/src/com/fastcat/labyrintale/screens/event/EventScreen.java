@@ -40,7 +40,7 @@ public class EventScreen extends AbstractScreen {
       players[i] = pv;
     }
     setPage(event.page);
-    setBg(FileHandler.getBg().get("BG_WAY"));
+    setBg(AbstractLabyrinth.curBg);
   }
 
   public void setPage(int page) {

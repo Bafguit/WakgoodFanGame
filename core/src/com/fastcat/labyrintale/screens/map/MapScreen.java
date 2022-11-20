@@ -37,7 +37,7 @@ public class MapScreen extends AbstractScreen {
       }
       b += w * 0.0666f;
     }
-    setBg(FileHandler.getBg().get("BG_MAP"));
+    setBg(AbstractLabyrinth.curBg);
   }
 
   public static void view() {

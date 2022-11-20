@@ -1,13 +1,11 @@
 package com.fastcat.labyrintale.abstracts;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.GroupHandler;
-import com.fastcat.labyrintale.handlers.DifficultyHandler;
-import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -38,6 +36,7 @@ public class AbstractLabyrinth {
   public static AbstractPlayer[] players;
   public static AbstractItem advisor;
   public static ControlPanel cPanel;
+  public static Sprite curBg;
   public static int minute;
   public static int second;
   public static int floorNum;
@@ -110,6 +109,7 @@ public class AbstractLabyrinth {
       restriction.onCreateLabyrinth();
     }
     cPanel = new ControlPanel();
+    curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);
   }
 
   public static void prepare() {
@@ -195,6 +195,7 @@ public class AbstractLabyrinth {
     currentFloor.done();
     currentFloor = floors[floorNum++];
     currentFloor.num = 0;
+    curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);
     GroupHandler.RoomGroup.weakCount = 0;
     GroupHandler.RoomGroup.normalCount = 0;
     GroupHandler.RoomGroup.eliteCount = 0;

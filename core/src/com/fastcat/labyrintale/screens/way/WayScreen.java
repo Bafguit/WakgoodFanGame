@@ -71,7 +71,7 @@ public class WayScreen extends AbstractScreen {
       }
     }
     wayCount = buttons.size;
-    setBg(FileHandler.getBg().get("BG_WAY"));
+    setBg(FileHandler.getBg().get("BG_WAY_" + AbstractLabyrinth.floorNum));
     bgImg = new WayBgImg(this);
   }
 

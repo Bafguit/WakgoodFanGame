@@ -28,6 +28,7 @@ public class BattleScreen extends AbstractScreen {
   public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
   private final BgImg bgImg = new BgImg();
+
   public Sprite shield = FileHandler.getUi().get("SHIELD");
   public ShapeRenderer shr = new ShapeRenderer();
   public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
@@ -56,7 +57,7 @@ public class BattleScreen extends AbstractScreen {
     cPanel.battlePanel = new BattlePanel();
     this.type = type;
     AbstractLabyrinth.prepare();
-    setBg(FileHandler.getBg().get("BG_WAY_3"));
+    setBg(AbstractLabyrinth.curBg);
     w = Gdx.graphics.getWidth();
     h = Gdx.graphics.getHeight();
     sw = shield.getWidth() * InputHandler.scale;
