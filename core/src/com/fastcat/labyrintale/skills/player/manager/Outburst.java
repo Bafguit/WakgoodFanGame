@@ -23,7 +23,7 @@ public class Outburst extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.GUN));
   }
 
   @Override

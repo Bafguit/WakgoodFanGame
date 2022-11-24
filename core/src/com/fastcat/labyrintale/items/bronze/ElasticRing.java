@@ -17,12 +17,12 @@ public class ElasticRing extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.moveRes += 10;
+    owner.stat.moveRes += 15;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.moveRes -= 10;
+    owner.stat.moveRes -= 15;
   }
 
   @Override
@@ -30,6 +30,6 @@ public class ElasticRing extends AbstractItem {
     flash();
     top(
         new ApplyStatusAction(
-            new EnduranceStatus(1), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+            new EnduranceStatus(2), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
   }
 }

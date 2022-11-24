@@ -8,7 +8,13 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Queue;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractRoom;
+
 import java.util.HashMap;
+
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
+import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
 
 public final class SoundHandler implements Disposable {
 
@@ -41,29 +47,40 @@ public final class SoundHandler implements Disposable {
   }
 
   private static void generateSound() {
-    sfx.put("LILPAA", getSound("sound/sfx/skill/lilpaa.mp3"));
+    sfx.put("LILPAA", getSound("sound/sfx/lilpaa.ogg"));
     sfx.put("BLOCK", getSound("sound/sfx/block.ogg"));
-    sfx.put("BLOCKED", getSound("sound/sfx/blocked.ogg"));
     sfx.put("BLUNT_HEAVY", getSound("sound/sfx/blunt_heavy.ogg"));
     sfx.put("BLUNT_LIGHT", getSound("sound/sfx/blunt_light.ogg"));
     sfx.put("BUFF", getSound("sound/sfx/buff.ogg"));
     sfx.put("BURN", getSound("sound/sfx/burn.ogg"));
-    sfx.put("CLICK", getSound("sound/sfx/click.wav"));
+    sfx.put("CLICK", getSound("sound/sfx/click.ogg"));
     sfx.put("DEBUFF", getSound("sound/sfx/debuff.ogg"));
     sfx.put("HEAL", getSound("sound/sfx/heal.ogg"));
     sfx.put("LIGHTNING", getSound("sound/sfx/lightning.ogg"));
-    sfx.put("OVER", getSound("sound/sfx/over.wav"));
     sfx.put("POISON", getSound("sound/sfx/poison.ogg"));
     sfx.put("SLASH", getSound("sound/sfx/slash.ogg"));
     sfx.put("SMASH", getSound("sound/sfx/smash.ogg"));
+    sfx.put("GUN", getSound("sound/sfx/gun.ogg"));
     sfx.put("STATIC", getSound("sound/sfx/static.ogg"));
   }
 
   private static void generateMusic() {
-    music.put("BATTLE_1", new MusicData("BATTLE_1", getMusic("sound/bgm/lobby.mp3")));
-    music.put("BATTLE_BOSS", new MusicData("BATTLE_BOSS", getMusic("sound/bgm/battle_1.mp3")));
+    String s;
+    music.put(s = "BATTLE_1", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BATTLE_2", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BATTLE_3", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BATTLE_4", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BOSS_1", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BOSS_2", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BOSS_3", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "BOSS_4", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "WAY_1", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "WAY_2", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "WAY_3", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
+    music.put(s = "WAY_4", new MusicData(s, getMusic("sound/bgm/" + s.toLowerCase() + ".mp3")));
     music.put("LOBBY", new MusicData("LOBBY", getMusic("sound/bgm/demo.mp3")));
-    music.put("MAP", new MusicData("MAP", getMusic("sound/bgm/map.mp3")));
+    music.put("WIN", new MusicData("LOBBY", getMusic("sound/bgm/win.mp3")));
+    music.put("LOSS", new MusicData("LOBBY", getMusic("sound/bgm/loss.mp3")));
     // music.put("LOGO", new MusicData("LOGO", getMusic("sound/bgm/logo.mp3")));
   }
 
@@ -107,6 +124,18 @@ public final class SoundHandler implements Disposable {
     }
   }
 
+  public static MusicData addWay() {
+    return addMusic("WAY_" + AbstractLabyrinth.floorNum, true, true);
+  }
+
+  public static MusicData addBattle() {
+    if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE) {
+      return addMusic("BATTLE_" + AbstractLabyrinth.floorNum, true, true);
+    } else {
+      return addMusic("BOSS_" + AbstractLabyrinth.floorNum, true, true);
+    }
+  }
+
   public static MusicData addMusic(String key, boolean isLoop, boolean fadeIn) {
     if (curMusic != null && curMusic.key.equals(key)) return curMusic;
     else {
@@ -130,7 +159,7 @@ public final class SoundHandler implements Disposable {
 
   public static void fadeOutAll() {
     for(MusicData d : music.values()) {
-      if (d != null) {
+      if (d != null && d.music.isPlaying()) {
         d.isFadingOut = true;
         d.isFading = true;
         d.fadeOutStartVolume = d.music.getVolume();

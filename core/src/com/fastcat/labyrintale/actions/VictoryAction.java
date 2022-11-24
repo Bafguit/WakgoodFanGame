@@ -48,28 +48,18 @@ public class VictoryAction extends AbstractAction {
         AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
         if (tp.playerClass == tp2.playerClass) {
           Array<AbstractSkill> ss = getRandomSkill(tp, 2);
-          if (AbstractLabyrinth.advisor.id.equals("dopa")) {
-            temp.add(new SkillReward(ss.get(0).upgrade()));
-            temp.add(new SkillReward(ss.get(1).upgrade()));
-          } else {
-            temp.add(new SkillReward(ss.get(0)));
-            temp.add(new SkillReward(ss.get(1)));
-          }
+          temp.add(new SkillReward(ss.get(0)));
+          temp.add(new SkillReward(ss.get(1)));
         } else {
           AbstractSkill s1 = getRandomSkill(tp);
           AbstractSkill s2 = getRandomSkill(tp2);
-          if (AbstractLabyrinth.advisor.id.equals("dopa")) {
-            temp.add(new SkillReward(s1.upgrade()));
-            temp.add(new SkillReward(s2.upgrade()));
-          } else {
-            temp.add(new SkillReward(s1));
-            temp.add(new SkillReward(s2));
-          }
+          temp.add(new SkillReward(s1));
+          temp.add(new SkillReward(s2));
         }
       } else {
         temp.add(new SkillReward(getRandomSkill(tp)));
       }
-      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
+      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE || AbstractLabyrinth.advisor.id.equals("dopa")) {
         temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
       } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
         ItemReward t = new ItemReward(ItemReward.ItemRewardType.BOSS);

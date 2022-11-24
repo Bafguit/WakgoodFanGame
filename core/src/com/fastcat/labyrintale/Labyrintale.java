@@ -22,6 +22,7 @@ import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
 import com.fastcat.labyrintale.screens.difficultyscreen.DifficultyScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
+import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
@@ -171,8 +172,7 @@ public class Labyrintale extends Game {
     fadeTex.setPosition(0, 0);
 
     mainMenuScreen.onCreate();
-    fadeOutAndChangeScreen(mainMenuScreen);
-    // setScreen(new LogoScreen());
+    fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
     /** Generate csv files If you don't want this task, comment below */
     //Main.main(new String[] {});
   }
@@ -217,6 +217,7 @@ public class Labyrintale extends Game {
 
     /** Render */
     ScreenUtils.clear(0, 0, 0, 0.3f);
+    psb.setProjectionMatrix(camera.combined);
     sb.setProjectionMatrix(camera.combined);
     sb.enableBlending();
     sb.begin();
@@ -237,6 +238,10 @@ public class Labyrintale extends Game {
     fade();
 
     sb.end();
+  }
+
+  public static void resetCamera() {
+    camera.zoom = 1;
   }
 
   private void fade() {

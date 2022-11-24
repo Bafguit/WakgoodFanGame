@@ -15,12 +15,12 @@ public class RobotHand extends AbstractItem {
   @Override
   public void onGain() {
     owner.stat.attack += 1;
-    owner.stat.critical += 10;
+    owner.stat.critical += 15;
   }
 
   @Override
   public void onRemove() {
     owner.stat.attack -= 1;
-    owner.stat.critical -= 10;
+    owner.stat.critical -= 15;
   }
 }

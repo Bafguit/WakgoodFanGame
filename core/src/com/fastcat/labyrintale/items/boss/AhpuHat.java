@@ -16,16 +16,16 @@ public class AhpuHat extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.neutRes += 8;
-    owner.stat.debuRes += 8;
-    owner.stat.moveRes += 8;
+    owner.stat.neutRes += 10;
+    owner.stat.debuRes += 10;
+    owner.stat.moveRes += 10;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.neutRes -= 8;
-    owner.stat.debuRes -= 8;
-    owner.stat.moveRes -= 8;
+    owner.stat.neutRes -= 10;
+    owner.stat.debuRes -= 10;
+    owner.stat.moveRes -= 10;
   }
 }

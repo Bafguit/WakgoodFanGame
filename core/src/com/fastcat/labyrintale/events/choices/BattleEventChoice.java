@@ -27,7 +27,7 @@ public class BattleEventChoice extends AbstractEvent.EventChoice {
     AbstractLabyrinth.currentFloor.currentRoom.enemies = battle.enemies;
     battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
     SoundHandler.fadeOutAll();
-    SoundHandler.addMusic("BATTLE_1", true, true);
+    SoundHandler.addBattle();
     fadeOutAndChangeScreen(battleScreen);
   }
 }

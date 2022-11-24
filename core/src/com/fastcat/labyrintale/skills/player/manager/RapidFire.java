@@ -20,9 +20,9 @@ public class RapidFire extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT, true));
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT, true));
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHT, true));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.GUN, true));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.GUN, true));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.GUN, true));
   }
 
   @Override

@@ -10,7 +10,7 @@ public class LogoText extends AbstractUI {
 
   public LogoText() {
     super(FileHandler.getUi().get("TITLE"));
-    setPosition(Gdx.graphics.getWidth() * 0.75f - sWidth / 2, Gdx.graphics.getHeight() * 0.6f);
+    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.6f);
     overable = false;
   }
 

@@ -102,6 +102,7 @@ public class AttackAction extends AbstractAction {
       case SLASH_V:
         return FileHandler.getVfx().get("SLASH_V");
       case LIGHT:
+      case GUN:
         return FileHandler.getVfx().get("HIT_LIGHT");
       case HEAVY:
         return FileHandler.getVfx().get("HIT_HEAVY");
@@ -121,6 +122,9 @@ public class AttackAction extends AbstractAction {
         break;
       case BURN:
         SoundHandler.playSfx("BURN");
+        break;
+      case GUN:
+        SoundHandler.playSfx("GUN");
         break;
       case LIGHT:
         SoundHandler.playSfx("BLUNT_LIGHT");
@@ -173,6 +177,7 @@ public class AttackAction extends AbstractAction {
     SLASH_V,
     SLASH_D,
     SMASH,
-    BURN
+    BURN,
+    GUN
   }
 }

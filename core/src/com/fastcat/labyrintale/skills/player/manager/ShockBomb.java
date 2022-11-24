@@ -29,7 +29,7 @@ public class ShockBomb extends AbstractSkill {
     top(new MoveAction(e, owner, 3, 0.15f));
     top(new ApplyStatusAction(new UnfortifiedStatus(value), owner, e, true));
     top(new MoveAction(owner, owner, 3, 0.15f));
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.HEAVY, true));
+    top(new AttackAction(owner, e, attack, AttackAction.AttackType.GUN, true));
   }
 
   @Override

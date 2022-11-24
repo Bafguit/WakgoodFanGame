@@ -119,6 +119,14 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
+  "Enemy2Elite2": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy2Elite3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "BossEnemy2": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
@@ -148,6 +156,10 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy3Weak7": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy3Weak8": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
@@ -199,6 +211,10 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
+  "Enemy4Weak4": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "Enemy4Normal1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
@@ -208,6 +224,10 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy4Normal3": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Normal4": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },

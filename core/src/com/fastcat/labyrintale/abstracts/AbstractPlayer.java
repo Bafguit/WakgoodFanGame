@@ -54,6 +54,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
       provider.apply(this);
       provider.addTracker(new Tracker<>(this));
     }
+    stat.neutRes = 50;
   }
 
   public static String getClassName(PlayerClass playerClass) {

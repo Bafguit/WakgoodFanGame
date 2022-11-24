@@ -17,16 +17,18 @@ public class Pendant extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(5);
+    owner.stat.neutRes += 5;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-5);
+    owner.stat.neutRes -= 5;
   }
 
   @Override
   public void atBattleEnd() {
     flash();
-    bot(new HealAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 2));
+    top(new HealAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 2));
   }
 }

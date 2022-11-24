@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.items.silver;
 
 import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
@@ -17,14 +18,16 @@ public class CottonNecklace extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
-    owner.stat.neutRes += 10;
+    for(AbstractPlayer p : AbstractLabyrinth.players) {
+      p.stat.neutRes += 10;
+    }
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
-    owner.stat.neutRes -= 10;
+    for(AbstractPlayer p : AbstractLabyrinth.players) {
+      p.stat.neutRes -= 10;
+    }
   }
 
   @Override

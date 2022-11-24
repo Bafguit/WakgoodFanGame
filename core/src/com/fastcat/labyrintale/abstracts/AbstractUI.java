@@ -103,7 +103,6 @@ public abstract class AbstractUI implements Disposable {
 
       if (over) {
         if (!justOver) {
-          // if(overable) SoundHandler.playSfx("OVER");
           onOver();
           justOver = true;
         }
@@ -145,6 +144,7 @@ public abstract class AbstractUI implements Disposable {
   public final void renderSub(SpriteBatch sb) {
     if (subTexts != null) {
       if (subTexts.size > 0) {
+        sb.setColor(Color.WHITE);
         float sc, subP;
         if (subWay == SubText.SubWay.DOWN) {
           sc = -10 * scale;

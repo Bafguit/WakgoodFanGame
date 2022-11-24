@@ -6,8 +6,12 @@ import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvi
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.JsonWriter;
+import com.fastcat.labyrintale.BuildInfo;
 import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.strings.ItemString;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -22,11 +26,13 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SaveHandler {
-  private static final ObjectMapper mapper =
+  public static final ObjectMapper mapper =
       new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
   public static FileHandle saveFile = Gdx.files.local("save.json");
+  public static FileHandle runsFile = Gdx.files.local("runs.json");
   public static SaveData data;
   public static boolean hasSave;
+  public static boolean hasRuns;
   private static SaveHandler instance;
 
   static {
@@ -35,6 +41,7 @@ public final class SaveHandler {
 
   public static void refresh() {
     hasSave = saveFile.exists();
+    hasRuns = runsFile.exists();
     if (hasSave) {
       try {
         data = mapper.readValue(new File("save.json"), SaveData.class);
@@ -58,7 +65,18 @@ public final class SaveHandler {
     if (hasSave) {
       data = SaveData.create();
       try {
-        mapper.writeValue(new File("run_" + data.date + ".json"), data);
+        String name = "run_" + data.date + ".json";
+        FileHandle f = Gdx.files.local("runs.json");
+        JsonValue js;
+        if(hasRuns) {
+          js = FileHandler.generateJson(f);
+          js.addChild(new JsonValue(name));
+        } else {
+          js = new JsonValue(JsonValue.ValueType.array);
+          js.addChild(new JsonValue(name));
+        }
+        mapper.writeValue(new File("runs.json"), js.asStringArray());
+        mapper.writeValue(new File("runs/" + name), data);
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -78,7 +96,7 @@ public final class SaveHandler {
     second = data.second;
     seed = data.random.seed;
     seedLong = data.random.seedLong;
-    diff = Difficulty.valueOf(data.diff);
+    diff = data.diff;
     publicRandom = new RandomXC(seedLong, data.random.publicRandom);
     skillRandom = new RandomXC(seedLong, data.random.skillRandom);
     itemRandom = new RandomXC(seedLong, data.random.itemRandom);
@@ -145,14 +163,16 @@ public final class SaveHandler {
     maxSkillUp = data.selection;
     gold = data.gold;
     sp = data.sp;
-    AbstractLabyrinth.charge = data.charge;
+    charge = data.charge;
     level = data.level;
     exp = data.exp;
-    AbstractLabyrinth.maxExp = data.maxExp;
+    maxExp = data.maxExp;
+    scoreHandle = data.scoreHandle;
   }
 
   public static class SaveData {
     public String date;
+    public String version;
     public RandomData random;
     public int itemAble;
     public int selection;
@@ -163,7 +183,7 @@ public final class SaveHandler {
     public int exp;
     public int maxExp;
     public String advisor;
-    public String diff;
+    public Difficulty diff;
     public PlayerData[] players = new PlayerData[4];
     public int currentFloor;
     public FloorData[] floors = new FloorData[4];
@@ -175,6 +195,8 @@ public final class SaveHandler {
     public int bossCount;
     public int minute;
     public int second;
+    public DeadScreen.ScreenType result;
+    public ScoreHandle scoreHandle;
 
     public static SaveData create() {
       SaveData temp = new SaveData();
@@ -182,6 +204,7 @@ public final class SaveHandler {
       Date now = new Date();
       SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
       temp.date = AbstractLabyrinth.date = formatter.format(now);
+      temp.version = BuildInfo.BUILD_VERSION;
       temp.random = RandomData.create();
       for (int i = 0; i < 4; i++) {
         AbstractFloor f = AbstractLabyrinth.floors[i];
@@ -195,7 +218,7 @@ public final class SaveHandler {
           AbstractLabyrinth.advisor != null ? AbstractLabyrinth.advisor.id : null;
       temp.itemAble = AbstractLabyrinth.itemAble;
       temp.selection = AbstractLabyrinth.maxSkillUp;
-      temp.diff = AbstractLabyrinth.diff.toString();
+      temp.diff = AbstractLabyrinth.diff;
       temp.gold = AbstractLabyrinth.gold;
       temp.charge = AbstractLabyrinth.charge;
       temp.level = AbstractLabyrinth.level;
@@ -210,6 +233,8 @@ public final class SaveHandler {
       temp.minute = AbstractLabyrinth.minute;
       temp.second = AbstractLabyrinth.second;
       temp.sp = AbstractLabyrinth.sp;
+      temp.result = AbstractLabyrinth.result;
+      temp.scoreHandle = AbstractLabyrinth.scoreHandle;
 
       return temp;
     }

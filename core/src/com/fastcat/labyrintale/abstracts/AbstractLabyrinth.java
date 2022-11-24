@@ -7,8 +7,11 @@ import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.players.*;
+import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+
+import java.util.HashMap;
 
 public class AbstractLabyrinth {
 
@@ -30,7 +33,9 @@ public class AbstractLabyrinth {
   public static RandomXC shopRandom;
   public static RandomXC groupRandom;
   public static DifficultyHandler restriction;
+  public static DeadScreen.ScreenType result;
   public static Difficulty diff = Difficulty.NORMAL;
+  public static ScoreHandle scoreHandle;
   public static AbstractFloor[] floors;
   public static AbstractFloor currentFloor;
   public static AbstractPlayer[] players;
@@ -100,13 +105,14 @@ public class AbstractLabyrinth {
       for(AbstractPlayer p : players) {
         if(p.playerClass == AbstractPlayer.PlayerClass.JURURU) {
           for(AbstractPlayer pl : players) {
-            pl.stat.debuRes += 20;
+            pl.stat.debuRes += 15;
           }
           break;
         }
       }
       diff = Labyrintale.charSelectScreen.diff;
       restriction.onCreateLabyrinth();
+      scoreHandle = new ScoreHandle();
     }
     cPanel = new ControlPanel();
     curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);
@@ -124,9 +130,15 @@ public class AbstractLabyrinth {
       int i = exp - maxExp;
       maxExp *= 1.27f;
       exp = 0;
-      sp += 2;
+      //sp += 2;
       for(AbstractPlayer p : players) {
-        if(p.isAlive()) p.modifyMaxHealth(1);
+        if(p.isAlive()) {
+          p.modifyMaxHealth(1);
+          p.stat.critical += 1;
+          p.stat.debuRes += 1;
+          p.stat.moveRes += 1;
+          p.stat.neutRes += 1;
+        }
       }
       gainExp(i);
     }
@@ -269,6 +281,7 @@ public class AbstractLabyrinth {
   public static void victoryRoom() {
     currentFloor.currentWay.done();
     currentFloor.currentRoom.done();
+
     AbstractPlayer[] temp = players;
     players = new AbstractPlayer[4];
     for (AbstractPlayer p : temp) {
@@ -276,6 +289,14 @@ public class AbstractLabyrinth {
       players[p.index] = p;
     }
     // AbstractLabyrinth.prepare();
+    if(currentFloor.currentRoom.type == RoomType.BATTLE) {
+      scoreHandle.normal++;
+    } else if(currentFloor.currentRoom.type == RoomType.ELITE) {
+      int s = scoreHandle.elite.get(floorNum) + 1;
+      scoreHandle.elite.put(floorNum, s);
+    } else if(currentFloor.currentRoom.type == RoomType.BOSS) {
+      scoreHandle.boss.put(floorNum, floorNum);
+    }
     SaveHandler.save();
   }
 
@@ -312,5 +333,63 @@ public class AbstractLabyrinth {
 
   public enum Difficulty {
     NORMAL, HARD, COFFIN
+  }
+
+  public static class ScoreHandle {
+    public int score = 0;
+    public int normal = 0;
+    public int death = 0;
+    public int pSkill = 0;
+    public int alive = 0;
+    public boolean more99 = false;
+    public boolean devil = false;
+    public HashMap<Integer, Integer> elite = new HashMap<>();
+    public HashMap<Integer, Integer> boss = new HashMap<>();
+
+    public ScoreHandle() {
+        for(int i = 1; i <= 4; i++) {
+          elite.put(i, 0);
+          boss.put(i, 0);
+        }
+    }
+
+    public void calculateScore() {
+      score = 0;
+
+      score += normal * 2;
+      for(int i = 1; i <= 4; i++) {
+        score += elite.get(i) * 10 * i;
+        score += elite.get(i) * 50;
+      }
+
+      if(gold >= 2000) score += 75;
+      else if(gold >= 1000) score += 50;
+      else if(gold >= 500) score += 25;
+
+      if(death > 0) score += death * 10;
+      else score += 200;
+
+      for(AbstractPlayer p : players) {
+        if(p.isAlive()) alive++;
+        for(AbstractSkill s : p.deck) {
+          if(s.id.equals("Strike") || s.id.equals("Barrier")) pSkill++;
+        }
+      }
+
+      score += pSkill + 50;
+
+      if(alive < 4) score += alive * 50;
+      else score += 250;
+
+      if(more99) score += 25;
+      if(devil) score += 25;
+
+      if(minute < 30) score += 75;
+      else if(minute < 45) score += 50;
+      else if(minute < 60) score += 25;
+
+      if(diff == Difficulty.HARD) score *= 1.5f;
+      else if(diff == Difficulty.COFFIN) score *= 2;
+    }
   }
 }

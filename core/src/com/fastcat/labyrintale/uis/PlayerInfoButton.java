@@ -25,7 +25,7 @@ public class PlayerInfoButton extends AbstractUI {
     if (enabled) {
       sb.setColor(playerInfoScreen.showing || over ? Color.WHITE : Color.LIGHT_GRAY);
       sb.draw(img, x, y, sWidth, sHeight);
-      if (AbstractLabyrinth.sp > 0) {
+      /*if (AbstractLabyrinth.sp > 0) {
         sb.end();
         shr.setColor(Color.ORANGE);
         shr.begin(ShapeRenderer.ShapeType.Filled);
@@ -40,7 +40,7 @@ public class PlayerInfoButton extends AbstractUI {
             y + sHeight * 0.9f,
             sWidth * 0.4f,
             sHeight * 0.4f);
-      }
+      }*/
     }
   }
 

@@ -19,6 +19,7 @@ public class DevilIdol extends AbstractItem {
       p.stat.speed += 5;
     }
     owner.minRes = 80;
+    AbstractLabyrinth.scoreHandle.devil = true;
   }
 
   @Override

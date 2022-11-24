@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.actions;
 
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
@@ -25,6 +26,7 @@ public class EndLabyrinthAction extends AbstractAction {
     if (duration == baseDuration) {
       SoundHandler.fadeOutAll();
       ActionHandler.clear();
+      AbstractLabyrinth.scoreHandle.calculateScore();
       Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType));
       SaveHandler.finish(false);
     }

@@ -16,15 +16,15 @@ public class InduceE extends AbstractSkill {
 
   public InduceE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setBaseValue(2);
     setIntent(IntentType.DEBUFF);
   }
 
   @Override
   public void use() {
     AbstractEntity e = AbstractSkill.getTargets(target).get(0);
-    AbstractAction a;
-    bot(a = new MoveAction(e, owner, 0, 0.2f));
-    bot(new ApplyStatusAction(new FixedStatus(2), owner, e, true), a);
+    bot(new MoveAction(e, owner, 0, 0.2f));
+    bot(new ApplyStatusAction(new FixedStatus(2), owner, e, true));
   }
 
   @Override

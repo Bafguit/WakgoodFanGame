@@ -12,7 +12,7 @@ public class GameStartButton extends AbstractUI {
 
   public GameStartButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.75f - sWidth / 2, Gdx.graphics.getHeight() * 0.5f);
+    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.5f);
     fontData = MAIN_MENU;
     text = "게임 시작";
     showImg = false;

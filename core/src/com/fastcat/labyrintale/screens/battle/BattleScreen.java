@@ -1,14 +1,17 @@
 package com.fastcat.labyrintale.screens.battle;
 
+import static com.fastcat.labyrintale.Labyrintale.camera;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.Labyrintale;
@@ -27,7 +30,12 @@ public class BattleScreen extends AbstractScreen {
   public static final Color hbc = new Color(0.4f, 0, 0, 1);
   public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
+  public static final SpriteBatch batch = new SpriteBatch();
+  public static final OrthographicCamera bCamera = new OrthographicCamera();
+
   private final BgImg bgImg = new BgImg();
+  private final Vector3 point = new Vector3(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.5f, -1);
+  private final Vector3 axis = new Vector3(Gdx.graphics.getWidth(), 0, 0);
 
   public Sprite shield = FileHandler.getUi().get("SHIELD");
   public ShapeRenderer shr = new ShapeRenderer();
@@ -41,6 +49,7 @@ public class BattleScreen extends AbstractScreen {
   public GetSelectedTarget gets;
   public boolean isSelecting = false;
   public boolean isEnemyTurn = false;
+  public boolean zoom = false;
   public Array<AbstractEntity> looking;
   private Array<AbstractEntity> turn;
   private int turnIndex;
@@ -58,6 +67,9 @@ public class BattleScreen extends AbstractScreen {
     this.type = type;
     AbstractLabyrinth.prepare();
     setBg(AbstractLabyrinth.curBg);
+    bCamera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
+    bCamera.rotate(-3);
+    bCamera.zoom = 0.85f;
     w = Gdx.graphics.getWidth();
     h = Gdx.graphics.getHeight();
     sw = shield.getWidth() * InputHandler.scale;
@@ -138,6 +150,7 @@ public class BattleScreen extends AbstractScreen {
 
   @Override
   public void update() {
+    bCamera.update();
     if (!cPanel.battlePanel.curPlayer.isAlive()) {
       for (int i = 0; i < 4; i++) {
         AbstractEntity tp = players[i].entity;
@@ -233,6 +246,11 @@ public class BattleScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
+    bCamera.update();
+    if(zoom) {
+      sb.setProjectionMatrix(bCamera.combined);
+      Labyrintale.psb.setProjectionMatrix(bCamera.combined);
+    }
     int ci = cPanel.battlePanel.curPlayer.index;
     if (isSelecting) {
       for (int i = 3; i >= 0; i--) {
@@ -255,6 +273,7 @@ public class BattleScreen extends AbstractScreen {
     }
 
     sb.end();
+    shr.setProjectionMatrix(zoom ? bCamera.combined : camera.combined);
     shr.begin(ShapeRenderer.ShapeType.Filled);
     for (int i = 0; i < 4; i++) {
       PlayerBattleView tp = players[i];
@@ -342,6 +361,9 @@ public class BattleScreen extends AbstractScreen {
         }
         enemySkills[i].render(sb);
       }
+    }
+    if(zoom) {
+      sb.setProjectionMatrix(camera.combined);
     }
   }
 

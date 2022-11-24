@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.desktop;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -34,6 +35,7 @@ public class DesktopLauncher {
     LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
     loadConfiguration();
+    config.addIcon("img/icon.png", Files.FileType.Internal);
     LwjglApplication app = new LwjglApplication(new Labyrintale(), config);
     config.samples = 10;
 

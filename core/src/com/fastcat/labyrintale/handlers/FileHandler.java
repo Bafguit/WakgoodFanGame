@@ -5,12 +5,14 @@ import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.fastcat.labyrintale.GifDecoder;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -57,8 +59,8 @@ public class FileHandler implements Disposable {
   @Getter private static final HashMap<String, Sprite> eventImg = new HashMap<>();
   // 튜토리얼
   @Getter private static final HashMap<String, Sprite> tutorialImg = new HashMap<>();
-  // 영상
-  @Getter private static final HashMap<String, FileHandle> video = new HashMap<>();
+  // 움짤
+  @Getter private static final HashMap<String, Animation<Sprite>> gif = new HashMap<>();
   /***
    * Instance of handler.
    * Initialized on getInstance()
@@ -102,8 +104,8 @@ public class FileHandler implements Disposable {
     generateStatusImg();
     generateItemImg();
     generateEventImg();
-    generateVideo();
     generateTutorialImg();
+    generateGif();
     setAntiAliased();
   }
 
@@ -119,6 +121,12 @@ public class FileHandler implements Disposable {
   private static JsonValue generateJson(String url) {
     JsonReader jsonReader = new JsonReader();
     FileHandle fileHandle = Gdx.files.internal(url);
+    InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
+    return jsonReader.parse(is);
+  }
+
+  public static JsonValue generateJson(FileHandle fileHandle) {
+    JsonReader jsonReader = new JsonReader();
     InputStreamReader is = new InputStreamReader(fileHandle.read(), StandardCharsets.UTF_8);
     return jsonReader.parse(is);
   }
@@ -143,9 +151,9 @@ public class FileHandler implements Disposable {
     maps.add(tutorialImg);
   }
 
-  private void generateVideo() {
-    video.clear();
-    video.put("LOGO", Gdx.files.internal("video/b.webm"));
+  private void generateGif() {
+    gif.clear();
+    gif.put("MAIN_MENU", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/main_gif.gif").read()));
   }
 
   private void generateSkeleton() {
@@ -158,6 +166,8 @@ public class FileHandler implements Disposable {
   private void generateBG() {
     bg.clear();
     bg.put("BG_BLACK", new Sprite(new Texture("img/ui/fade.png")));
+    bg.put("BG_GREY", new Sprite(new Texture("img/bg/white.png")));
+    bg.put("BG_LOGO", new Sprite(new Texture("img/ui/logo.png")));
     bg.put("BG_MAIN", new Sprite(new Texture("img/bg/main.png")));
     bg.put("BG_DEAD", new Sprite(new Texture("img/bg/dead.png")));
     bg.put("BG_WIN", new Sprite(new Texture("img/bg/win.png")));
@@ -392,12 +402,15 @@ public class FileHandler implements Disposable {
   private void setAntiAliased() {
     for (HashMap h : maps) {
       for (Object s : h.values()) {
-        ((Sprite) s)
-            .getTexture()
-            .setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
       }
     }
     /*
+    for(Animation<Sprite> arr : gif.values()) {
+      for(Sprite s : arr.getKeyFrames()) {
+        s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+      }
+    }
     for(TextureAtlas a : atlas.values()) {
     	for (Texture t : a.getTextures()) {
     		t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);

@@ -18,6 +18,7 @@ public class HikiKing extends AbstractItem {
   public void onGain() {
     for(AbstractPlayer p : AbstractLabyrinth.players) {
       p.stat.attack++;
+      p.stat.critical += 20;
     }
   }
 
@@ -25,6 +26,7 @@ public class HikiKing extends AbstractItem {
   public void onRemove() {
     for(AbstractPlayer p : AbstractLabyrinth.players) {
       p.stat.attack--;
+      p.stat.critical -= 20;
     }
   }
 }

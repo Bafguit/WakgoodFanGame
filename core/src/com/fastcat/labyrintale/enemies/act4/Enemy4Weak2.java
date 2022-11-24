@@ -26,6 +26,7 @@ public class Enemy4Weak2 extends AbstractEnemy {
 
   @Override
   public void preBattle() {
+    block = 30;
     applyStatus(new MaintainStatus(this), this, 1, false);
     applyStatus(new AttackStatus(3), this, 3, false);
   }

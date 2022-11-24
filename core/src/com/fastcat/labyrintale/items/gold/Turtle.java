@@ -17,13 +17,13 @@ public class Turtle extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(15);
-    owner.stat.moveRes += 15;
+    owner.stat.moveRes += 20;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-15);
-    owner.stat.moveRes -= 15;
+    owner.stat.moveRes -= 20;
   }
 
   @Override

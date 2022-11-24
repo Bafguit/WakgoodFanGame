@@ -17,11 +17,11 @@ public class Shield extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(8);
+    owner.modifyMaxHealth(10);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-8);
+    owner.modifyMaxHealth(-10);
   }
 }

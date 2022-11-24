@@ -19,6 +19,6 @@ public class CarnarYungter extends AbstractItem {
 
   @Override
   public void atBattleEnd() {
-    bot(new LowHealAction(2));
+    top(new LowHealAction(2));
   }
 }

@@ -31,7 +31,6 @@ public class MainButton extends AbstractUI {
   @Override
   protected void onClick() {
     SoundHandler.fadeOutAll();
-    Labyrintale.mainMenuScreen.onCreate();
     Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
   }
 }

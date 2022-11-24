@@ -17,21 +17,13 @@ public class CrossPin extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(5);
-    owner.stat.debuRes += 5;
+    owner.stat.debuRes += 20;
+    owner.stat.moveRes += 20;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-5);
-    owner.stat.debuRes -= 5;
-  }
-
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(
-        new ApplyStatusAction(
-            new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, false));
+    owner.stat.debuRes -= 20;
+    owner.stat.moveRes -= 20;
   }
 }

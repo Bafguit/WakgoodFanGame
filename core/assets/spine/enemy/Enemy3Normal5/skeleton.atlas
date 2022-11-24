@@ -1,41 +1,118 @@
 
 skeleton.png
-size: 483,494
+size: 1333,1039
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
-  rotate: false
-  xy: 2, 2
-  size: 479, 490
+  rotate: true
+  xy: 462, 103
+  size: 442, 443
   orig: 640, 640
-  offset: 124, 130
+  offset: 118, 153
+  index: -1
+body
+  rotate: false
+  xy: 287, 102
+  size: 170, 205
+  orig: 640, 640
+  offset: 263, 252
   index: -1
 die
-  rotate: false
-  xy: 2, 2
-  size: 479, 490
+  rotate: true
+  xy: 2, 14
+  size: 532, 283
   orig: 640, 640
-  offset: 124, 130
+  offset: 64, 19
+  index: -1
+foot_left
+  rotate: true
+  xy: 726, 13
+  size: 88, 118
+  orig: 640, 640
+  offset: 292, 131
+  index: -1
+foot_right
+  rotate: false
+  xy: 1242, 919
+  size: 86, 118
+  orig: 640, 640
+  offset: 394, 142
+  index: -1
+head
+  rotate: false
+  xy: 287, 309
+  size: 173, 237
+  orig: 640, 640
+  offset: 124, 281
   index: -1
 hit
   rotate: false
-  xy: 2, 2
-  size: 479, 490
+  xy: 907, 23
+  size: 424, 522
   orig: 640, 640
-  offset: 124, 130
+  offset: 199, 99
   index: -1
 idle
   rotate: false
-  xy: 2, 2
+  xy: 520, 547
   size: 479, 490
   orig: 640, 640
   offset: 124, 130
   index: -1
+leg_left
+  rotate: false
+  xy: 1001, 556
+  size: 70, 62
+  orig: 640, 640
+  offset: 291, 226
+  index: -1
+leg_right
+  rotate: false
+  xy: 1242, 773
+  size: 75, 144
+  orig: 640, 640
+  offset: 370, 232
+  index: -1
+neck
+  rotate: false
+  xy: 1001, 620
+  size: 158, 148
+  orig: 640, 640
+  offset: 198, 353
+  index: -1
+sign
+  rotate: true
+  xy: 287, 6
+  size: 94, 127
+  orig: 640, 640
+  offset: 249, 269
+  index: -1
 skill
   rotate: false
-  xy: 2, 2
-  size: 479, 490
+  xy: 2, 548
+  size: 516, 489
   orig: 640, 640
-  offset: 124, 130
+  offset: 87, 130
+  index: -1
+tail
+  rotate: true
+  xy: 1161, 574
+  size: 194, 121
+  orig: 640, 640
+  offset: 409, 303
+  index: -1
+wing_left
+  rotate: true
+  xy: 459, 2
+  size: 99, 265
+  orig: 640, 640
+  offset: 219, 353
+  index: -1
+wing_right
+  rotate: false
+  xy: 1001, 770
+  size: 239, 267
+  orig: 640, 640
+  offset: 351, 353
   index: -1

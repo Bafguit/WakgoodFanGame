@@ -16,12 +16,12 @@ public class Spaceship extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.critical += 20;
+    owner.stat.critical += 30;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.critical -= 20;
+    owner.stat.critical -= 30;
   }
 }

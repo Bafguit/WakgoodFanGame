@@ -42,8 +42,8 @@ public class ShopItemIcon extends AbstractUI {
           sb, fontData, "▼", x, Gdx.graphics.getHeight() * 0.675f, sWidth, sHeight);
 
       sb.draw(icon, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
       if (screen.type == ShopTakeScreen.TakeType.SKILL) {
+        sb.draw(img, x, y, sWidth, sHeight);
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(
                 sb,
@@ -53,6 +53,9 @@ public class ShopItemIcon extends AbstractUI {
                 y + sWidth * 0.95f,
                 sWidth * 0.2f,
                 sWidth * 0.2f);
+      } else if(screen.type == ShopTakeScreen.TakeType.ITEM) {
+        sb.setColor(screen.item.getRarityColor());
+        sb.draw(img, x, y, sWidth, sHeight);
       }
     }
   }

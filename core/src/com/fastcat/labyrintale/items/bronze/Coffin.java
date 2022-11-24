@@ -17,12 +17,14 @@ public class Coffin extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.neutRes += 10;
+    owner.modifyMaxHealth(5);
+    owner.stat.neutRes += 5;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.neutRes -= 10;
+    owner.modifyMaxHealth(-5);
+    owner.stat.neutRes -= 5;
   }
 
   @Override

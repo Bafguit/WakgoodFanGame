@@ -5,6 +5,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.ImmuneStatus;
+import com.fastcat.labyrintale.status.ResistPlusStatus;
 
 public class LifePotion extends AbstractItem {
 
@@ -17,12 +18,12 @@ public class LifePotion extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.debuRes += 10;
+    owner.stat.moveRes += 20;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes -= 10;
+    owner.stat.moveRes -= 20;
   }
 
   @Override
@@ -30,6 +31,6 @@ public class LifePotion extends AbstractItem {
     flash();
     top(
             new ApplyStatusAction(
-                    new ImmuneStatus(1), owner, owner, true));
+                    new ResistPlusStatus(1), owner, owner, true));
   }
 }

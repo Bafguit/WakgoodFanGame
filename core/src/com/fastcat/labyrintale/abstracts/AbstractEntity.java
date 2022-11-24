@@ -441,6 +441,7 @@ public abstract class AbstractEntity implements Cloneable {
                 if (s != null) damage = s.onDamaged(attacker, damage, type);
               }
               if (damage > 0) {
+                if(!isPlayer && damage >= 99) scoreHandle.more99 = true;
                 EffectHandler.add(
                     new UpDamageEffect(
                         ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
@@ -458,6 +459,7 @@ public abstract class AbstractEntity implements Cloneable {
                     int a = publicRandom.random(0, 99);
                     if(badLuck > 0) a = Math.min(a, publicRandom.random(0, 99));
                     if(goodLuck > 0) a = Math.max(a, publicRandom.random(0, 99));
+                    if(isPlayer) a += 7;
                     if(a < EntityStat.neutCap(this)) {
                       health = 1;
                       block = 0;
@@ -557,6 +559,7 @@ public abstract class AbstractEntity implements Cloneable {
         for (AbstractItem m : item) {
           if (m != null) m.onDeath(murder);
         }
+        scoreHandle.death++;
       }
       for (AbstractStatus s : status) {
         if (s != null) {

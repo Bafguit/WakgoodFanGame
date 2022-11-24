@@ -14,7 +14,7 @@ public class SlotSelectText extends AbstractUI {
     super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
     setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.925f);
     fontData = CARD_BIG_ORB;
-    text = "강화할 슬롯을 선택하세요";
+    text = "강화할 스킬을 선택하세요";
     showImg = false;
     overable = false;
   }

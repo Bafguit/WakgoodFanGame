@@ -30,7 +30,7 @@ public class LilpaaAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      //SoundHandler.playSfx("LILPAA");
+      SoundHandler.playSfx("LILPAA");
     } else if (duration < 1.1f && !ps) {
       if (actor != null) {
         AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);

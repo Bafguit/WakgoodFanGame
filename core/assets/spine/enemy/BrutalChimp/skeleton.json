@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "bFX8CjN8qyXxkN+0esgNregKbT4",
+	"hash": "WSzCVSeE6m7fkmA/CZQamuxeZdw",
 	"spine": "3.8.75",
 	"x": -320,
 	"y": -50,
@@ -92,7 +92,7 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"skill": {
+			"hand_right": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -103,37 +103,12 @@
 					{ "time": 0.6667, "name": "attack" }
 				]
 			},
-			"head": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"feet_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"feet_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"leg_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"hand_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg_left": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -143,21 +118,17 @@
 					{ "name": null }
 				]
 			},
-			"hand_right": {
+			"feet_right": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"leg_left": {
+			"leg_right": {
 				"attachment": [
 					{ "name": null }
 				]
-			}
-		}
-	},
-	"die": {
-		"slots": {
-			"skill": {
+			},
+			"feet_left": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -167,7 +138,31 @@
 					{ "name": null }
 				]
 			},
-			"feet_right": {
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"hand_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_right": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -178,12 +173,17 @@
 					{ "time": 0.6667, "name": "die" }
 				]
 			},
-			"feet_left": {
+			"leg_left": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"arm_left": {
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -193,17 +193,36 @@
 					{ "name": null }
 				]
 			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"hand_left": {
 				"attachment": [
 					{ "name": null }
 				]
-			},
-			"arm_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"body": {
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"leg_right": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -213,26 +232,23 @@
 					{ "name": null }
 				]
 			},
-			"leg_left": {
+			"arm_right": {
 				"attachment": [
 					{ "name": null }
 				]
-			}
-		}
-	},
-	"hit": {
-		"slots": {
-			"skill": {
+			},
+			"hit": {
+				"attachment": [
+					{ "name": "hit" },
+					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"leg_left": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
 			"body": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"head": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -247,12 +263,17 @@
 					{ "name": null }
 				]
 			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"arm_left": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"leg_right": {
+			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -260,27 +281,6 @@
 			"hand_left": {
 				"attachment": [
 					{ "name": null }
-				]
-			},
-			"arm_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"leg_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"hand_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"hit": {
-				"attachment": [
-					{ "name": "hit" },
-					{ "time": 0.6667, "name": "hit" }
 				]
 			}
 		}
@@ -408,42 +408,12 @@
 	},
 	"skill": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "time": 0.6667, "name": "skill" }
-				]
-			},
-			"body": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"head": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"feet_right": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"feet_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
-			"arm_left": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"leg_right": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"hand_left": {
+			"hand_right": {
 				"attachment": [
 					{ "name": null }
 				]
@@ -458,7 +428,37 @@
 					{ "name": null }
 				]
 			},
-			"hand_right": {
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "time": 0.6667, "name": "skill" }
+				]
+			},
+			"hand_left": {
 				"attachment": [
 					{ "name": null }
 				]

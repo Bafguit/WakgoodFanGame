@@ -19,7 +19,7 @@ public class CounterStatus extends AbstractStatus {
 
   @Override
   public String getDesc() {
-    return exDesc[0] + amount + exDesc[1] + amount + exDesc[2];
+    return exDesc[0] + amount + exDesc[1];
   }
 
   @Override

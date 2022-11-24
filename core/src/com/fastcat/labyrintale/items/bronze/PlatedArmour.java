@@ -15,14 +15,14 @@ public class PlatedArmour extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(5);
-    owner.stat.moveRes += 5;
-    owner.stat.debuRes += 5;
+    owner.stat.moveRes += 10;
+    owner.stat.debuRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-5);
-    owner.stat.moveRes -= 5;
-    owner.stat.debuRes -= 5;
+    owner.stat.moveRes -= 10;
+    owner.stat.debuRes -= 10;
   }
 }

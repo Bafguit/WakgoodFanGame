@@ -27,7 +27,7 @@ public class DramaticExit extends AbstractSkill {
   public void use() {
     AbstractAction a = new ApplyStatusAction(new ResistMinusStatus(value), owner, target, true);
     bot(a);
-    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT, true), a);
+    bot(new AttackAction(owner, target, attack, AttackAction.AttackType.GUN, true), a);
     bot(new MoveAction(owner, owner, 3, 0.3f));
   }
 

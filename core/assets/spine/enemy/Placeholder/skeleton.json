@@ -1,1 +1,469 @@
-{"skeleton":{"hash":"5010Tg9bCyn1S23z8MJUilOx2Jg","spine":"3.8.75","x":-320,"y":-50,"width":640,"height":640,"images":"../../enemy/temp/","audio":""},"bones":[{"name":"root"}],"slots":[{"name":"temp","bone":"root","attachment":"temp"}],"skins":[{"name":"default","attachments":{"temp":{"temp":{"y":270,"width":640,"height":640}}}}],"animations":{"attack":{},"die":{},"hit":{},"idle":{},"skill":{}}}
+{
+"skeleton": {
+	"hash": "WSzCVSeE6m7fkmA/CZQamuxeZdw",
+	"spine": "3.8.75",
+	"x": -320,
+	"y": -50,
+	"width": 640,
+	"height": 640,
+	"images": "./img/",
+	"audio": "C:/Users/유민/Pictures/게임개발/enemy/temp5"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "body", "parent": "root", "length": 160, "rotation": 104.18, "x": 2.1, "y": 193.94 },
+	{ "name": "leg_right", "parent": "body", "length": 119.34, "rotation": 152.07, "x": 8.69, "y": -84.78 },
+	{ "name": "leg_left", "parent": "body", "length": 94.32, "rotation": 144.02, "x": 9.61, "y": 41.44 },
+	{ "name": "head", "parent": "body", "length": 132.4, "rotation": 3.8, "x": 167.89, "y": 0.59 },
+	{ "name": "arm_right", "parent": "body", "length": 158.68, "rotation": -154.3, "x": 207.52, "y": -84.27 },
+	{ "name": "hand_right", "parent": "arm_right", "length": 144.75, "rotation": -44.51, "x": 159.32, "y": -0.53 },
+	{ "name": "arm_left", "parent": "body", "length": 96.17, "rotation": 177.32, "x": 179.57, "y": 60.43 },
+	{ "name": "hand_left", "parent": "arm_left", "length": 87.71, "rotation": -14.78, "x": 96.17 }
+],
+"slots": [
+	{ "name": "die", "bone": "root" },
+	{ "name": "attack", "bone": "root" },
+	{ "name": "hit", "bone": "root" },
+	{ "name": "skill", "bone": "root", "attachment": "skill" },
+	{ "name": "idle", "bone": "root" },
+	{ "name": "hand_left", "bone": "hand_left", "attachment": "hand_left" },
+	{ "name": "arm_left", "bone": "arm_left", "attachment": "arm_left" },
+	{ "name": "feet_left", "bone": "root", "attachment": "feet_left" },
+	{ "name": "leg_left", "bone": "leg_left", "attachment": "leg_left" },
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "feet_right", "bone": "root", "attachment": "feet_right" },
+	{ "name": "leg_right", "bone": "leg_right", "attachment": "leg_right" },
+	{ "name": "hand_right", "bone": "hand_right", "attachment": "hand_right" },
+	{ "name": "arm_right", "bone": "arm_right", "attachment": "arm_right" },
+	{ "name": "head", "bone": "head", "attachment": "head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"die": {
+				"die": { "y": 270, "width": 640, "height": 640 }
+			},
+			"attack": {
+				"attack": { "y": 270, "width": 640, "height": 640 }
+			},
+			"arm_left": {
+				"arm_left": { "x": 101.6, "y": 81.87, "rotation": 78.5, "width": 640, "height": 640 }
+			},
+			"feet_right": {
+				"feet_right": { "y": 270, "width": 640, "height": 640 }
+			},
+			"hand_right": {
+				"hand_right": { "x": 33.98, "y": -132.39, "rotation": 94.63, "width": 640, "height": 640 }
+			},
+			"skill": {
+				"skill": { "y": 270, "width": 640, "height": 640 }
+			},
+			"hit": {
+				"hit": { "y": 270, "width": 640, "height": 640 }
+			},
+			"idle": {
+				"idle": { "y": 270, "width": 640, "height": 640 }
+			},
+			"hand_left": {
+				"hand_left": { "x": -15.63, "y": 80.54, "rotation": 93.27, "width": 640, "height": 640 }
+			},
+			"leg_left": {
+				"leg_left": { "x": -86.41, "y": 8.99, "rotation": 111.8, "width": 640, "height": 640 }
+			},
+			"head": {
+				"head": { "x": -94.57, "y": -10.95, "rotation": -107.98, "width": 640, "height": 640 }
+			},
+			"body": {
+				"body": { "x": 74.26, "y": -16.6, "rotation": -104.18, "width": 640, "height": 640 }
+			},
+			"leg_right": {
+				"leg_right": { "x": -26.01, "y": -90.94, "rotation": 103.74, "width": 640, "height": 640 }
+			},
+			"feet_left": {
+				"feet_left": { "y": 270, "width": 640, "height": 640 }
+			},
+			"arm_right": {
+				"arm_right": { "x": 90.74, "y": -118.77, "rotation": 50.12, "width": 640, "height": 640 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"slots": {
+			"hand_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"attack": {
+				"attachment": [
+					{ "name": "attack" },
+					{ "time": 0.6667, "name": "attack" }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"die": {
+		"slots": {
+			"hand_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"die": {
+				"attachment": [
+					{ "name": "die" },
+					{ "time": 0.6667, "name": "die" }
+				]
+			},
+			"leg_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"leg_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hit": {
+				"attachment": [
+					{ "name": "hit" },
+					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"leg_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		},
+		"bones": {
+			"body": {
+				"translate": [
+					{},
+					{ "time": 0.2, "x": 0.82, "y": -1.02 },
+					{ "time": 0.7333, "x": 8.96, "y": -9 },
+					{ "time": 0.9333, "x": 10, "y": -10 },
+					{ "time": 1.1333, "x": 8.96, "y": -9 },
+					{ "time": 1.6667, "x": 0.82, "y": -1.02 },
+					{ "time": 1.8667 }
+				]
+			},
+			"arm_left": {
+				"rotate": [
+					{},
+					{ "time": 0.9333, "angle": 4.9 },
+					{ "time": 1.8667 }
+				]
+			},
+			"hand_left": {
+				"rotate": [
+					{},
+					{ "time": 0.9333, "angle": -10.07 },
+					{ "time": 1.8667 }
+				]
+			},
+			"arm_right": {
+				"rotate": [
+					{},
+					{ "time": 0.9333, "angle": 2.19 },
+					{ "time": 1.8667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.2, "x": 0.34, "y": 0.12 },
+					{ "time": 0.7333, "x": -0.48, "y": -0.28 },
+					{ "time": 0.9333 },
+					{ "time": 1.1333, "x": -0.48, "y": -0.28 },
+					{ "time": 1.6667, "x": 0.34, "y": 0.12 },
+					{ "time": 1.8667 }
+				]
+			},
+			"hand_right": {
+				"rotate": [
+					{},
+					{ "time": 0.2, "angle": -1.43 },
+					{ "time": 0.7333, "angle": -12.15 },
+					{ "time": 0.9333, "angle": -13.93 },
+					{ "time": 1.1333, "angle": -12.15 },
+					{ "time": 1.6333, "angle": -1.43 },
+					{ "time": 1.8667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.2, "x": -0.73, "y": -0.82 },
+					{ "time": 0.7333, "x": -2.24, "y": -2.48 },
+					{ "time": 0.9333, "x": -2.92, "y": -3.24 },
+					{ "time": 1.1333, "x": -2.24, "y": -2.48 },
+					{ "time": 1.6333, "x": -0.73, "y": -0.82 },
+					{ "time": 1.8667 }
+				]
+			},
+			"head": {
+				"translate": [
+					{ "x": -1.57, "y": 0.4 },
+					{ "time": 0.7333, "x": -4.11, "y": 0.66 },
+					{ "time": 0.9333, "x": -4.23, "y": 1.07 },
+					{ "time": 1.1333, "x": -4.11, "y": 0.66 },
+					{ "time": 1.8667, "x": -1.57, "y": 0.4 }
+				]
+			},
+			"leg_left": {
+				"rotate": [
+					{},
+					{ "time": 0.2, "angle": -0.73 },
+					{ "time": 0.7333, "angle": -6.14 },
+					{ "time": 0.9333, "angle": -6.78 },
+					{ "time": 1.1333, "angle": -6.14 },
+					{ "time": 1.6667, "angle": -0.73 },
+					{ "time": 1.8667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.2, "x": 0.17, "y": -0.18 },
+					{ "time": 0.7333, "x": 4.34, "y": -1.97 },
+					{ "time": 0.9333, "x": 4.55, "y": -2.01 },
+					{ "time": 1.1333, "x": 4.34, "y": -1.97 },
+					{ "time": 1.6667, "x": 0.17, "y": -0.18 },
+					{ "time": 1.8667 }
+				]
+			},
+			"leg_right": {
+				"rotate": [
+					{},
+					{ "time": 0.2, "angle": -0.79 },
+					{ "time": 0.7333, "angle": -6.07 },
+					{ "time": 0.9333, "angle": -7.07 },
+					{ "time": 1.1333, "angle": -6.07 },
+					{ "time": 1.6667, "angle": -0.79 },
+					{ "time": 1.8667 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.2, "x": 0.48, "y": -1.36 },
+					{ "time": 0.7333, "x": 2.91, "y": -6.13 },
+					{ "time": 0.9333, "x": 2.79, "y": -6.86 },
+					{ "time": 1.1333, "x": 2.91, "y": -6.13 },
+					{ "time": 1.6667, "x": 0.48, "y": -1.36 },
+					{ "time": 1.8667 }
+				]
+			}
+		}
+	},
+	"skill": {
+		"slots": {
+			"leg_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"hand_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"leg_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_right": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"feet_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "time": 0.6667, "name": "skill" }
+				]
+			},
+			"hand_left": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	}
+}
+}

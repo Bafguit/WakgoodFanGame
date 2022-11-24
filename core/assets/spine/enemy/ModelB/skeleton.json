@@ -1,24 +1,22 @@
 {
-"skeleton": {
-	"hash": "Wp7Dan7JevqITPLvC8f7l9OZiRg",
-	"spine": "3.8.75",
-	"x": -320.04,
-	"y": -50.28,
-	"width": 640.56,
-	"height": 640.56,
-	"images": "../temp6/img/",
-	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
-},
+"skeleton": { "hash": "9lfkpYsRe+t3CvccAI1pm5deM5o", "spine": "3.8.75", "images": "./image/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
 "bones": [
 	{ "name": "root", "rotation": -0.05 },
-	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
+	{ "name": "body", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.02, "y": 19.25 },
+	{ "name": "head", "parent": "body", "length": 263.9, "rotation": 0.24, "x": 35.5, "y": 114.75 },
+	{ "name": "eye_left", "parent": "head", "length": 98.78, "rotation": 58.36, "x": 232.28, "y": 32.98 },
+	{ "name": "eye_right", "parent": "head", "length": 83.64, "rotation": 45.82, "x": 241.65, "y": -84.22 }
 ],
 "slots": [
 	{ "name": "die", "bone": "root" },
 	{ "name": "attack", "bone": "root" },
 	{ "name": "hit", "bone": "root" },
-	{ "name": "skill", "bone": "root", "attachment": "skill" },
-	{ "name": "idle", "bone": "bone" }
+	{ "name": "skill", "bone": "root" },
+	{ "name": "idle", "bone": "root" },
+	{ "name": "body", "bone": "body" },
+	{ "name": "eye_left", "bone": "eye_left" },
+	{ "name": "head", "bone": "head" },
+	{ "name": "eye_right", "bone": "eye_right" }
 ],
 "skins": [
 	{
@@ -30,6 +28,9 @@
 			"attack": {
 				"attack": { "y": 270, "width": 640, "height": 640 }
 			},
+			"eye_right": {
+				"eye_right": { "x": -41.26, "y": -2.63, "rotation": -136.11, "width": 640, "height": 640 }
+			},
 			"skill": {
 				"skill": { "y": 270, "width": 640, "height": 640 }
 			},
@@ -37,7 +38,16 @@
 				"hit": { "y": 270, "width": 640, "height": 640 }
 			},
 			"idle": {
-				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+				"idle": { "y": 270, "width": 640, "height": 640 }
+			},
+			"eye_left": {
+				"eye_left": { "x": -135.72, "y": -63.06, "rotation": -148.65, "width": 640, "height": 640 }
+			},
+			"head": {
+				"head": { "x": 214.78, "y": -115.65, "rotation": -90.29, "width": 640, "height": 640 }
+			},
+			"body": {
+				"body": { "x": 250.75, "rotation": -90.05, "width": 640, "height": 640 }
 			}
 		}
 	}
@@ -45,11 +55,6 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"attack": {
 				"attachment": [
 					{ "name": "attack" },
@@ -65,21 +70,11 @@
 					{ "name": "die" },
 					{ "time": 0.6667, "name": "die" }
 				]
-			},
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
 			}
 		}
 	},
 	"hit": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
@@ -90,36 +85,75 @@
 	},
 	"idle": {
 		"slots": {
-			"idle": {
+			"body": {
 				"attachment": [
-					{ "name": "idle" }
+					{ "name": "body" }
 				]
 			},
-			"skill": {
+			"head": {
 				"attachment": [
-					{ "name": null }
+					{ "name": "head" }
+				]
+			},
+			"eye_right": {
+				"attachment": [
+					{ "name": "eye_right" }
+				]
+			},
+			"eye_left": {
+				"attachment": [
+					{ "name": "eye_left" }
 				]
 			}
 		},
 		"bones": {
-			"bone": {
-				"translate": [
-					{},
-					{ "time": 0.1333, "y": 2 },
-					{ "time": 0.5333, "x": -0.02, "y": 18 },
-					{ "time": 0.6667, "x": -0.02, "y": 20 },
-					{ "time": 0.8, "x": -0.02, "y": 18 },
-					{ "time": 1.2, "y": 2 },
-					{ "time": 1.3333 }
-				],
+			"body": {
 				"scale": [
-					{},
-					{ "time": 0.1333, "x": 1.005 },
-					{ "time": 0.5333, "x": 1.045 },
-					{ "time": 0.6667, "x": 1.05 },
-					{ "time": 0.8, "x": 1.045 },
-					{ "time": 1.2, "x": 1.005 },
-					{ "time": 1.3333 }
+					{ "time": 0.0333 },
+					{ "time": 0.1667, "y": 1.005 },
+					{ "time": 0.6667, "y": 1.045 },
+					{ "time": 0.8, "y": 1.05, "curve": "stepped" },
+					{ "time": 0.8667, "y": 1.05 },
+					{ "time": 1, "y": 1.045 },
+					{ "time": 1.5, "y": 1.005 },
+					{ "time": 1.6333 }
+				]
+			},
+			"head": {
+				"scale": [
+					{ "time": 0.0333 },
+					{ "time": 0.1667, "x": 0.995 },
+					{ "time": 0.6667, "x": 0.955 },
+					{ "time": 0.8, "x": 0.95, "curve": "stepped" },
+					{ "time": 0.8667, "x": 0.95 },
+					{ "time": 1, "x": 0.955 },
+					{ "time": 1.5, "x": 0.995 },
+					{ "time": 1.6333 }
+				]
+			},
+			"eye_left": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.1667, "angle": 1.25 },
+					{ "time": 0.6667, "angle": 10.98 },
+					{ "time": 0.8, "angle": 12.23, "curve": "stepped" },
+					{ "time": 0.8667, "angle": 12.23 },
+					{ "time": 1, "angle": 10.98 },
+					{ "time": 1.5, "angle": 1.25 },
+					{ "time": 1.6333 }
+				]
+			},
+			"eye_right": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.1667, "angle": 1.12 },
+					{ "time": 0.6667, "angle": 9.48 },
+					{ "time": 0.8, "angle": 10.6, "curve": "stepped" },
+					{ "time": 0.8667, "angle": 10.6 },
+					{ "time": 1, "angle": 9.48 },
+					{ "time": 1.5, "angle": 1.12 },
+					{ "time": 1.6333, "curve": "stepped" },
+					{ "time": 1.6667 }
 				]
 			}
 		}
@@ -128,6 +162,7 @@
 		"slots": {
 			"skill": {
 				"attachment": [
+					{ "name": "skill" },
 					{ "time": 0.6667, "name": "skill" }
 				]
 			}

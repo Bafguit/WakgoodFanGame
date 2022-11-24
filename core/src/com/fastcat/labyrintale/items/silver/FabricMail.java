@@ -19,18 +19,18 @@ public class FabricMail extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(5);
-    owner.stat.moveRes += 5;
+    owner.stat.moveRes += 10;
   }
 
   @Override
   public void onRemove() {
     owner.modifyMaxHealth(-5);
-    owner.stat.moveRes -= 5;
+    owner.stat.moveRes -= 10;
   }
 
   public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
     flash();
-    top(new ApplyStatusAction(new EnduranceStatus(1), owner, owner, false));
+    top(new ApplyStatusAction(new EnduranceStatus(1), owner, owner, true));
     return damage;
   }
 }

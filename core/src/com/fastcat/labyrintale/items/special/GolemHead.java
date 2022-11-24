@@ -14,7 +14,7 @@ public class GolemHead extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.speed -= 100;
+    owner.modifyMaxHealth(20);
     owner.stat.neutRes += 100;
     owner.stat.debuRes += 100;
     owner.stat.moveRes += 100;
@@ -22,6 +22,7 @@ public class GolemHead extends AbstractItem {
 
   @Override
   public void onRemove() {
+    owner.modifyMaxHealth(-20);
     owner.stat.speed += 100;
     owner.stat.neutRes -= 100;
     owner.stat.debuRes -= 100;

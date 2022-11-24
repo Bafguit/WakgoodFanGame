@@ -1,41 +1,76 @@
 
 skeleton.png
-size: 1234,1132
+size: 1851,1162
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
-  rotate: false
-  xy: 503, 62
-  size: 519, 526
-  orig: 640, 640
-  offset: 35, 30
+  rotate: true
+  xy: 740, 447
+  size: 713, 559
+  orig: 900, 900
+  offset: 90, 43
+  index: -1
+body
+  rotate: true
+  xy: 838, 21
+  size: 377, 221
+  orig: 900, 900
+  offset: 269, 46
   index: -1
 die
-  rotate: true
-  xy: 920, 595
-  size: 535, 312
-  orig: 640, 640
-  offset: 69, 45
+  rotate: false
+  xy: 2, 20
+  size: 563, 327
+  orig: 900, 900
+  offset: 210, 44
+  index: -1
+ground
+  rotate: false
+  xy: 740, 400
+  size: 539, 45
+  orig: 900, 900
+  offset: 210, 44
+  index: -1
+head
+  rotate: false
+  xy: 567, 26
+  size: 269, 321
+  orig: 900, 900
+  offset: 227, 271
   index: -1
 hit
   rotate: false
-  xy: 2, 566
-  size: 447, 564
-  orig: 640, 640
-  offset: 155, 21
+  xy: 1301, 2
+  size: 539, 617
+  orig: 900, 900
+  offset: 210, 44
   index: -1
 idle
   rotate: true
-  xy: 2, 2
-  size: 562, 499
-  orig: 640, 640
-  offset: 39, 52
+  xy: 1301, 621
+  size: 539, 548
+  orig: 900, 900
+  offset: 210, 44
+  index: -1
+mouth
+  rotate: false
+  xy: 1061, 187
+  size: 160, 157
+  orig: 900, 900
+  offset: 308, 235
+  index: -1
+neck
+  rotate: true
+  xy: 1061, 346
+  size: 52, 201
+  orig: 900, 900
+  offset: 424, 194
   index: -1
 skill
-  rotate: false
-  xy: 451, 590
-  size: 467, 540
-  orig: 640, 640
-  offset: 66, 47
+  rotate: true
+  xy: 2, 349
+  size: 811, 736
+  orig: 900, 900
+  offset: 29, 44
   index: -1

@@ -15,7 +15,7 @@ public class Act4Weak1 extends AbstractRoom {
   @Override
   public AbstractEnemy[] getEnemies() {
     return new AbstractEnemy[] {
-      new Enemy2Weak5(), new Enemy4Weak1(), new EnemyPlaceholder(), new EnemyPlaceholder()
+      new Enemy2Weak5(), new Enemy2Weak5(), new Enemy4Weak1(), new EnemyPlaceholder()
     };
   }
 }

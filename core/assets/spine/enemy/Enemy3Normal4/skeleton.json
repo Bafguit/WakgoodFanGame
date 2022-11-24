@@ -1,16 +1,16 @@
 {
 "skeleton": {
-	"hash": "EM3PFiCY/H85z/fTcfJRd0amoIk",
+	"hash": "EiZi3kyiJC6ug5HaN1Zlkze/5dc",
 	"spine": "3.8.75",
-	"x": -320.04,
-	"y": -50.28,
-	"width": 640.56,
-	"height": 640.56,
-	"images": "./img/",
+	"x": -384.19,
+	"y": -122.34,
+	"width": 768.67,
+	"height": 768.67,
+	"images": "",
 	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root", "rotation": -0.05 },
+	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
@@ -25,19 +25,19 @@
 		"name": "default",
 		"attachments": {
 			"die": {
-				"die": { "y": 270, "width": 640, "height": 640 }
+				"die": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"attack": {
-				"attack": { "y": 270, "width": 640, "height": 640 }
+				"attack": { "x": -0.16, "y": 450, "width": 1280, "height": 1280 }
 			},
 			"skill": {
-				"skill": { "y": 270, "width": 640, "height": 640 }
+				"skill": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"hit": {
-				"hit": { "y": 270, "width": 640, "height": 640 }
+				"hit": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"idle": {
-				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+				"idle": { "y": -0.24, "rotation": -90.05, "width": 1280, "height": 1280 }
 			}
 		}
 	}
@@ -90,14 +90,14 @@
 	},
 	"idle": {
 		"slots": {
-			"idle": {
-				"attachment": [
-					{ "name": "idle" }
-				]
-			},
 			"skill": {
 				"attachment": [
 					{ "name": null }
+				]
+			},
+			"idle": {
+				"attachment": [
+					{ "name": "idle" }
 				]
 			}
 		},

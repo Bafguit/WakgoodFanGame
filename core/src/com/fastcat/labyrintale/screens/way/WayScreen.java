@@ -159,7 +159,7 @@ public class WayScreen extends AbstractScreen {
 
   @Override
   public void show() {
-    SoundHandler.addMusic("MAP", true, true).stop = false;
+    SoundHandler.addWay().stop = false;
     if(SettingHandler.setting.wayTutorial) {
       AbstractLabyrinth.cPanel.type = ControlPanel.ControlType.BASIC;
       Labyrintale.openTutorial(TutorialScreen.TutorialType.WAY);

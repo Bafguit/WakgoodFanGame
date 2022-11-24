@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
@@ -45,11 +46,12 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
   public BackToMainButton back;
   public ScreenshotButton shot;
   public ResultAdvisor adv;
+  public DeadScreen.ScreenType dType;
   public String diff;
   public String time;
   public String ver;
   public String seed;
-  public boolean showing;
+  public String score;
 
   public ResultScreen(DeadScreen.ScreenType type) {
     if (type == DeadScreen.ScreenType.DEAD) {
@@ -57,6 +59,8 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     } else {
       setBg(FileHandler.getBg().get("BG_WIN"));
     }
+    dType = type;
+    AbstractLabyrinth.result = type;
     int c = 0;
     for (int g = 0; g < 2; g++) {
       for (int f = 0; f < 2; f++) {
@@ -80,7 +84,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
         for (int j = 3; j >= 0; j--) {
           for (int i = 1; i >= 0; i--) {
             StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-            s.entity = player;
+            s.setEntity(player);
             s.setPosition(
                 w * (0.398f + 0.46f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
             stats[c][cnt++] = s;
@@ -105,6 +109,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
     ver = "버전: " + BuildInfo.BUILD_VERSION;
     seed = "시드: " + AbstractLabyrinth.seed;
+    score = "점수: " + AbstractLabyrinth.scoreHandle.score;
     shot = new ScreenshotButton();
     back = new BackToMainButton();
   }
@@ -188,10 +193,11 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             h * (0.747f - 0.275f * g),
             w * 0.12f,
             h * 0.03f);
-        renderCenter(sb, fontData, diff, w * 0.3f, h * 0.25f, w * 0.3f, h * 0.1f);
-        renderCenter(sb, fontData, time, w * 0.6f, h * 0.25f, w * 0.3f, h * 0.1f);
-        renderCenter(sb, fontData, ver, w * 0.3f, h * 0.18f, w * 0.3f, h * 0.1f);
-        renderCenter(sb, fontData, seed, w * 0.6f, h * 0.18f, w * 0.3f, h * 0.1f);
+        renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
+        renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
+        renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
+        renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
+        renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
       }
     }
 
@@ -211,7 +217,9 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
   }
 
   @Override
-  public void show() {}
+  public void show() {
+    SoundHandler.addMusic(dType == DeadScreen.ScreenType.WIN ? "WIN" : "LOSS", false, false);
+  }
 
   @Override
   public void hide() {}

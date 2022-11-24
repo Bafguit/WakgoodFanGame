@@ -22,10 +22,9 @@ public class Lilpa extends AbstractPlayer {
   public Lilpa() {
     super(ID, HEALTH, COLOR);
     stat.speed = 2;
-    stat.debuRes = 10;
-    stat.neutRes = 5;
-    stat.critical = 20;
-    stat.moveRes = 5;
+    stat.debuRes = 25;
+    stat.critical = 15;
+    stat.moveRes = 10;
   }
 
   @Override

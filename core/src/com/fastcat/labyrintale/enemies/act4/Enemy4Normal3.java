@@ -31,7 +31,6 @@ public class Enemy4Normal3 extends AbstractEnemy {
   public Array<AbstractSkill> getStartingDeck() {
     Array<AbstractSkill> temp = new Array<>();
     AbstractSkill s = new RestrictE(this).upgrade();
-    s.disposable = true;
     temp.add(s);
     temp.add(new AttackLowE(this));
     AbstractSkill s2 = new DecayE(this);

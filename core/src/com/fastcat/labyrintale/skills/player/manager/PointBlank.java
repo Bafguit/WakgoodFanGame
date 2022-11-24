@@ -27,7 +27,7 @@ public class PointBlank extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new AttackAction(new AbstractEntity.DamageInfo(this), e, AttackAction.AttackType.HEAVY));
+    top(new AttackAction(new AbstractEntity.DamageInfo(this), e, AttackAction.AttackType.GUN));
   }
 
   @Override

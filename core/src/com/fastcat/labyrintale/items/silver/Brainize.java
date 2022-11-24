@@ -17,16 +17,14 @@ public class Brainize extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.debuRes += 10;
-    owner.stat.neutRes += 10;
-    owner.stat.moveRes += 10;
+    owner.modifyMaxHealth(5);
+    owner.stat.debuRes += 20;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes -= 10;
-    owner.stat.neutRes -= 10;
-    owner.stat.moveRes -= 10;
+    owner.modifyMaxHealth(-5);
+    owner.stat.debuRes -= 20;
   }
 
   @Override
@@ -34,6 +32,6 @@ public class Brainize extends AbstractItem {
     flash();
     top(
         new ApplyStatusAction(
-            new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, false));
+            new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
   }
 }

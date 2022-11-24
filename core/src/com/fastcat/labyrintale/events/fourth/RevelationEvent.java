@@ -70,9 +70,9 @@ public class RevelationEvent extends AbstractEvent implements GetSelectedPlayer 
   public void playerSelected(AbstractPlayer player) {
     setPage(3);
     for (AbstractPlayer p : AbstractLabyrinth.players) {
-      p.stat.neutRes += 3;
-      p.stat.debuRes += 3;
-      p.stat.moveRes += 3;
+      p.stat.neutRes += 30;
+      p.stat.debuRes += 30;
+      p.stat.moveRes += 30;
     }
     player.takeDamage(new AbstractEntity.DamageInfo(null, 50, AbstractEntity.DamageType.LOSE));
   }

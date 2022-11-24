@@ -51,18 +51,39 @@ public class StatIcon extends AbstractUI {
     gets = get;
   }
 
+  public void setEntity(AbstractEntity entity) {
+    this.entity = entity;
+    if(entity != null) {
+      if (isUp)
+        clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
+      if (type == StatType.ATTACK) amount = entity.stat.attack;
+      else if (type == StatType.SPELL) amount = entity.stat.spell;
+      else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
+      else {
+        if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
+        else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
+        else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
+        else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
+        else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+      }
+    }
+  }
+
   @Override
   protected void updateButton() {
-    if (isUp) clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
-    if (type == StatType.ATTACK) amount = entity.stat.attack;
-    else if (type == StatType.SPELL) amount = entity.stat.spell;
-    else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
-    else {
-      if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
-      else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
-      else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
-      else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-      else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+    if(entity != null) {
+      if (isUp)
+        clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
+      if (type == StatType.ATTACK) amount = entity.stat.attack;
+      else if (type == StatType.SPELL) amount = entity.stat.spell;
+      else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
+      else {
+        if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
+        else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
+        else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
+        else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
+        else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+      }
     }
   }
 
@@ -73,7 +94,7 @@ public class StatIcon extends AbstractUI {
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
+    if (enabled && entity != null) {
       if (isUp) {
         if (!clickable || (type != StatType.MULTIPLY && amount >= 80)) sb.setColor(Color.DARK_GRAY);
         else if (over) sb.setColor(Color.WHITE);

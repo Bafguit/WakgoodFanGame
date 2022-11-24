@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 1891,719
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antena
+  rotate: true
+  xy: 424, 2
+  size: 228, 176
+  orig: 900, 900
+  offset: 166, 456
+  index: -1
+attack
+  rotate: false
+  xy: 2, 232
+  size: 481, 485
+  orig: 900, 900
+  offset: 77, 93
+  index: -1
+body
+  rotate: true
+  xy: 2, 6
+  size: 224, 420
+  orig: 900, 900
+  offset: 303, 133
+  index: -1
+die
+  rotate: false
+  xy: 1309, 87
+  size: 567, 260
+  orig: 900, 900
+  offset: 107, 10
+  index: -1
+hit
+  rotate: true
+  xy: 1048, 349
+  size: 368, 591
+  orig: 900, 900
+  offset: 172, 54
+  index: -1
+idle
+  rotate: true
+  xy: 485, 309
+  size: 408, 561
+  orig: 900, 900
+  offset: 166, 71
+  index: -1
+other
+  rotate: true
+  xy: 1641, 444
+  size: 273, 248
+  orig: 900, 900
+  offset: 301, 71
+  index: -1
+skill
+  rotate: true
+  xy: 602, 31
+  size: 276, 705
+  orig: 900, 900
+  offset: 298, 71
+  index: -1

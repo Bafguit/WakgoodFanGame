@@ -17,6 +17,6 @@ public class CrackedHeart extends AbstractItem {
   @Override
   public void atBattleEnd() {
     flash();
-    bot(new ModifyMaxHealthAction(owner, AbstractSkill.SkillTarget.SELF, 2));
+    top(new ModifyMaxHealthAction(owner, AbstractSkill.SkillTarget.SELF, 2));
   }
 }

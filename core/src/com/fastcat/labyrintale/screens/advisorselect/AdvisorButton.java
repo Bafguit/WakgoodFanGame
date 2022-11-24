@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.advisorselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
@@ -20,6 +21,11 @@ public class AdvisorButton extends AbstractUI {
     super(FileHandler.getUi().get("BORDER_M"));
     advisor = adv;
     this.select = select;
+  }
+
+  @Override
+  protected Array<SubText> getSubText() {
+    return advisor != null ? advisor.key : subs;
   }
 
   @Override

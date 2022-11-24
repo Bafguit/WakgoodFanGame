@@ -29,6 +29,7 @@ import com.fastcat.labyrintale.rooms.enemy.elite.act1.Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act2.Act2Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act3.Act3Elite1;
+import com.fastcat.labyrintale.rooms.enemy.elite.act3.Act3Elite2;
 import com.fastcat.labyrintale.rooms.enemy.elite.act4.Act4Elite1;
 import com.fastcat.labyrintale.rooms.enemy.elite.act4.Act4Elite2;
 import com.fastcat.labyrintale.rooms.enemy.normal.act1.*;
@@ -259,7 +260,7 @@ public final class GroupHandler {
       eliteGroup.put(2, t2);
       Array<AbstractRoom> t3 = new Array<>();
       t3.add(new Act3Elite1());
-      t3.add(new Act3Elite1());
+      t3.add(new Act3Elite2());
       eliteGroup.put(3, t3);
       Array<AbstractRoom> t4 = new Array<>();
       t4.add(new Act4Elite1());

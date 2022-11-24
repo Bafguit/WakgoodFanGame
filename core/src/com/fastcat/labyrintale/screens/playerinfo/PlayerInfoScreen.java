@@ -105,9 +105,9 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
       pIcons[i].index = AbstractLabyrinth.players[i].index;
       pIcons[i].update();
     }
-    if (AbstractLabyrinth.sp > 0) {
+    /*if (AbstractLabyrinth.sp > 0) {
       upStat.update();
-    }
+    }*/
   }
 
   @Override
@@ -176,7 +176,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
       passive[i].render(sb);
       pIcons[i].render(sb);
     }
-    if (AbstractLabyrinth.sp > 0) upStat.render(sb);
+    /*if (AbstractLabyrinth.sp > 0) upStat.render(sb);*/
   }
 
   public static void view() {

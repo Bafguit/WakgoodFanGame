@@ -1,51 +1,70 @@
 package com.fastcat.labyrintale.screens.logo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.video.VideoPlayer;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.VideoSyncPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import java.io.FileNotFoundException;
 
 public class LogoScreen extends AbstractScreen {
 
-  public VideoPlayer videoPlayer;
   public boolean isDone = false;
+  private int mode = 0;
+  private float elapsed = 0;
+  private float timer = 0;
+  private float color = 0;
+  private int dup = 1;
+  private final AbstractUI.TempUI logo;
+  private final Sprite back;
 
   public LogoScreen() {
     cType = ControlPanel.ControlType.HIDE;
-    setBg(FileHandler.getUi().get("FADE"));
-    videoPlayer = new VideoSyncPlayer();
-    try {
-      videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-      videoPlayer.setVolume(0);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-    videoPlayer.setOnCompletionListener(file -> isDone = true);
+    setBg(FileHandler.getBg().get("BG_BLACK"));
+    back = FileHandler.getBg().get("BG_GREY");
+    back.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    logo = new AbstractUI.TempUI(FileHandler.getUi().get("LOGO"));
+    logo.setPosition(Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f, Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
   }
 
   @Override
   public void update() {
-    videoPlayer.update();
-    if (InputHandler.isLeftClick && !isDone) isDone = true;
-    if (isDone) {
-      Labyrintale.mainMenuScreen.onCreate();
+    timer += Labyrintale.tick / dup;
+    if(timer >= 3 && mode == 0) {
+      dup = 2;
+      mode = 1;
+    } else if(mode == 1) {
+      color += Labyrintale.tick / dup;
+      if(color > 1) color = 1;
+      if(timer >= 4) {
+        mode = 2;
+        dup = 1;
+      }
+    } else {
+      if(timer >= 5) isDone = true;
+    }
+    if(!isDone) {
+      if (InputHandler.isLeftClick) isDone = true;
+    } else {
+      SoundHandler.fadeOutAll();
       Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
     }
   }
 
   @Override
   public void render(SpriteBatch sb) {
-    Texture frame = videoPlayer.getTexture();
-    if (frame != null) {
-      sb.draw(frame, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    }
+    sb.setColor(Color.WHITE);
+    back.draw(sb, color);
+    logo.render(sb);
   }
 
   @Override
@@ -53,8 +72,6 @@ public class LogoScreen extends AbstractScreen {
 
   @Override
   public void hide() {
-    videoPlayer.stop();
-    videoPlayer.dispose();
   }
 
   @Override
