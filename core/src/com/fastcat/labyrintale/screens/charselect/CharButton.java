@@ -39,8 +39,8 @@ public class CharButton extends AbstractUI {
       else if (over) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
       if (showImg) sb.draw(player.img, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
+      sb.draw(img, x, y, sWidth, sHeight);
     }
   }
 

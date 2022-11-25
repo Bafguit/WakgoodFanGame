@@ -74,7 +74,6 @@ public abstract class AbstractEntity implements Cloneable {
   public EntityStat stat;
   public Sprite img;
   public Sprite imgTurn;
-  public Sprite imgTiny;
   public Sprite imgPanel;
   public Sprite bg;
 

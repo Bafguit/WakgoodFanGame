@@ -16,7 +16,7 @@ public class EnergyPanel extends AbstractUI {
     super(FileHandler.getUi().get("ENERGY_ORB"));
     fontData = FontHandler.ENERGY;
     clickable = false;
-    setScale(0.7f);
+    //setScale(0.7f);
     KeyString.KeyData k = StringHandler.keyString.get("Energy");
     subs.add(new SubText(k.NAME, k.DESC));
   }

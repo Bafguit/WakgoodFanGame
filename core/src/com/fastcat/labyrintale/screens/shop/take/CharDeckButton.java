@@ -42,9 +42,9 @@ public class CharDeckButton extends AbstractUI {
       if (!over) sb.setColor(Color.LIGHT_GRAY);
       else sb.setColor(Color.WHITE);
       if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+      sb.setColor(Color.WHITE);
       sb.draw(img, x, y, sWidth, sHeight);
 
-      sb.setColor(Color.WHITE);
       if (!skill.passive) {
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(

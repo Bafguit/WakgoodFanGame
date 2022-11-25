@@ -68,6 +68,7 @@ public class MainMenuScreen extends AbstractScreen {
         Labyrintale.charSelectScreen.chars[i].removeChar();
       }
     }
+    Labyrintale.closeTutorial();
     logoText.onHide();
     gameStartButton.onHide();
     loadButton.onHide();

@@ -18,7 +18,7 @@ public class RewardItemCharIcon extends AbstractUI {
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    sb.draw(item.skill.owner.imgTiny, x, y, sWidth, sHeight);
+    sb.draw(item.skill.owner.img, x, y, sWidth, sHeight);
     sb.draw(img, x, y, sWidth, sHeight);
   }
 

@@ -46,6 +46,7 @@ public class SkillSelectButton extends AbstractUI {
       if (over || (isTo && group.bg.over)) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
       if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+      sb.setColor(Color.WHITE);
       if (isTo)
         FontHandler.renderCenter(
             sb,
@@ -55,7 +56,6 @@ public class SkillSelectButton extends AbstractUI {
             y + sHeight + Gdx.graphics.getHeight() * 0.03f);
       sb.draw(img, x, y, sWidth, sHeight);
 
-      sb.setColor(Color.WHITE);
       if (!skill.passive) {
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(

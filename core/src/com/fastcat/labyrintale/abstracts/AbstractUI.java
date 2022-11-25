@@ -126,6 +126,7 @@ public abstract class AbstractUI implements Disposable {
   }
 
   public final void render(SpriteBatch sb) {
+    sb.setColor(Color.WHITE);
     renderUi(sb);
   }
 

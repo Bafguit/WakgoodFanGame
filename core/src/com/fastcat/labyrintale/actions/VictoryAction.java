@@ -59,12 +59,13 @@ public class VictoryAction extends AbstractAction {
       } else {
         temp.add(new SkillReward(getRandomSkill(tp)));
       }
-      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE || AbstractLabyrinth.advisor.id.equals("dopa")) {
+
+      if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
+        temp.add(new ItemReward(ItemReward.ItemRewardType.BOSS));
+      } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE || AbstractLabyrinth.advisor.id.equals("dopa")) {
         temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
-      } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
-        ItemReward t = new ItemReward(ItemReward.ItemRewardType.BOSS);
-        temp.add(t);
       }
+
       int g;
       if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) g = 115;
       else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE)

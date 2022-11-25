@@ -42,7 +42,6 @@ public class FileHandler implements Disposable {
   // 캐릭터
   @Getter private static final HashMap<PlayerClass, Sprite> charImg = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charImgTurn = new HashMap<>();
-  @Getter private static final HashMap<PlayerClass, Sprite> charImgTiny = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
   @Getter private static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
@@ -137,7 +136,6 @@ public class FileHandler implements Disposable {
     maps.add(vfx);
     maps.add(charImg);
     maps.add(charImgTurn);
-    maps.add(charImgTiny);
     maps.add(charBgImg);
     maps.add(charPanelImg);
     maps.add(advImg);
@@ -278,7 +276,6 @@ public class FileHandler implements Disposable {
   private void generateCharImg() {
     charImg.clear();
     charImgTurn.clear();
-    charImgTiny.clear();
     charBgImg.clear();
     charPanelImg.clear();
     skeleton.clear();
@@ -287,7 +284,6 @@ public class FileHandler implements Disposable {
       String s = cls.toString().toLowerCase();
       charImg.put(cls, character.createSprite(s));
       charImgTurn.put(cls, character.createSprite(s + "_p"));
-      charImgTiny.put(cls, character.createSprite(s + "_s"));
       charBgImg.put(cls, character.createSprite(s + "_bg"));
       charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
       skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));

@@ -6,247 +6,191 @@ filter: Nearest, Nearest
 repeat: none
 burger
   rotate: false
-  xy: 521, 71
+  xy: 521, 2
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 burger_cPanel
   rotate: false
-  xy: 1213, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 1213, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 burger_p
   rotate: false
-  xy: 1521, 268
+  xy: 1521, 209
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-burger_s
-  rotate: false
-  xy: 2, 2
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 gosegu
   rotate: false
-  xy: 1732, 403
+  xy: 1732, 344
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 gosegu_bg
   rotate: false
-  xy: 1286, 576
+  xy: 1286, 517
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
 gosegu_cPanel
   rotate: false
-  xy: 2, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 2, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 gosegu_p
   rotate: false
-  xy: 1272, 109
+  xy: 1272, 40
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-gosegu_s
-  rotate: false
-  xy: 1928, 1742
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 ine
   rotate: false
-  xy: 348, 71
+  xy: 348, 2
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 ine_bg
   rotate: false
-  xy: 644, 576
+  xy: 644, 517
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
 ine_cPanel
   rotate: false
-  xy: 1040, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 1040, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 ine_p
   rotate: false
-  xy: 1002, 109
+  xy: 1002, 40
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-ine_s
-  rotate: false
-  xy: 1928, 1880
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 jururu
   rotate: false
-  xy: 694, 71
+  xy: 694, 2
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 jururu_bg
   rotate: false
-  xy: 2, 576
+  xy: 2, 517
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
 jururu_cPanel
   rotate: false
-  xy: 348, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 521, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 jururu_p
   rotate: false
-  xy: 1137, 109
+  xy: 1137, 40
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-jururu_s
-  rotate: false
-  xy: 1928, 1811
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 lilpa
   rotate: false
-  xy: 175, 71
+  xy: 175, 2
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 lilpa_cPanel
   rotate: false
-  xy: 175, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 175, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 lilpa_p
   rotate: false
-  xy: 1656, 268
+  xy: 1656, 209
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-lilpa_s
-  rotate: false
-  xy: 71, 2
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 manager
   rotate: false
-  xy: 1386, 403
+  xy: 1386, 344
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 manager_cPanel
   rotate: false
-  xy: 521, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 694, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 manager_p
   rotate: false
-  xy: 867, 109
+  xy: 867, 40
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-manager_s
-  rotate: false
-  xy: 1928, 1949
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 viichan
   rotate: false
-  xy: 2, 71
+  xy: 2, 2
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 viichan_cPanel
   rotate: false
-  xy: 694, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 348, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 viichan_p
   rotate: false
-  xy: 1791, 268
+  xy: 1791, 209
   size: 133, 133
   orig: 133, 133
   offset: 0, 0
   index: -1
-viichan_s
-  rotate: false
-  xy: 140, 2
-  size: 67, 67
-  orig: 67, 67
-  offset: 0, 0
-  index: -1
 wak
   rotate: false
-  xy: 1559, 403
+  xy: 1559, 344
   size: 171, 171
   orig: 171, 171
   offset: 0, 0
   index: -1
 wak_cPanel
   rotate: false
-  xy: 867, 244
-  size: 171, 330
-  orig: 171, 330
+  xy: 867, 175
+  size: 171, 340
+  orig: 171, 340
   offset: 0, 0
   index: -1
 wak_p
   rotate: false
-  xy: 1386, 268
+  xy: 1386, 209
   size: 133, 133
   orig: 133, 133
-  offset: 0, 0
-  index: -1
-wak_s
-  rotate: false
-  xy: 209, 2
-  size: 67, 67
-  orig: 67, 67
   offset: 0, 0
   index: -1
 

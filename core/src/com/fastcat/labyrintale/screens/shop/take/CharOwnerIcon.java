@@ -21,7 +21,7 @@ public class CharOwnerIcon extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
       sb.setColor(Color.WHITE);
-      sb.draw(player.imgTiny, x, y, sWidth, sHeight);
+      sb.draw(player.img, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
     }
   }

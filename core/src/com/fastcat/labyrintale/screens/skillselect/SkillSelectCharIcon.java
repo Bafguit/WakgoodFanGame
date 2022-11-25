@@ -29,8 +29,7 @@ public class SkillSelectCharIcon extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      if (group.bg.over) sb.setColor(Color.WHITE);
-      else sb.setColor(Color.LIGHT_GRAY);
+      sb.setColor(Color.WHITE);
       if (showImg) sb.draw(border, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
     }

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.actions;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
@@ -147,21 +148,22 @@ public class AttackAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      if (target.size > 0) {
+      Array<AbstractEntity> temp = new Array<>();
+      for (AbstractEntity t : target) {
+        if (t.isAlive()) {
+          temp.add(t);
+        }
+      }
+      if(temp.size > 0) {
         playAttackSfx(effect);
         if (actor != null) {
           AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
           actor.state.addAnimation(0, "idle", true, 0.0F);
           e.setTimeScale(1.0f);
         }
-        if (effect != AttackType.NONE) {
-          for (AbstractEntity t : target) {
-            if (t.isAlive()) EffectHandler.add(new HitEffect(t, img));
-          }
-        }
-        for (int i = 0; i < target.size; i++) {
-          AbstractEntity te = target.get(i);
-          if (te.isAlive()) te.takeDamage(info);
+        for (AbstractEntity t : temp) {
+          if (effect != AttackType.NONE) EffectHandler.add(new HitEffect(t, img));
+          t.takeDamage(info);
         }
       } else isDone = true;
     }

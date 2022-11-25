@@ -23,7 +23,7 @@ public class ShopItemCharIcon extends AbstractUI {
       boolean can = item.canBuy();
       if (!can) sb.setColor(Color.DARK_GRAY);
       else sb.setColor(Color.WHITE);
-      sb.draw(item.skill.owner.imgTiny, x, y, sWidth, sHeight);
+      sb.draw(item.skill.owner.img, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
     }

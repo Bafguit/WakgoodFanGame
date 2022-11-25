@@ -41,8 +41,8 @@ public class AdvisorButton extends AbstractUI {
       if (select.selected == this || over) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);
       sb.draw(advisor.img, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
+      sb.draw(img, x, y, sWidth, sHeight);
     }
   }
 

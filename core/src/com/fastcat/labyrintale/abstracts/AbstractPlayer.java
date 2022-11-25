@@ -38,7 +38,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
         FileHandler.getCharImg().get(playerClass),
         FileHandler.getCharImgTurn().get(playerClass),
         FileHandler.getCharBgImg().get(playerClass));
-    imgTiny = FileHandler.getCharImgTiny().get(playerClass);
     imgPanel = FileHandler.getCharPanelImg().get(playerClass);
     Array<AbstractItem> t = getStartingItem();
     for (int j = 0; j < 2; j++) {
