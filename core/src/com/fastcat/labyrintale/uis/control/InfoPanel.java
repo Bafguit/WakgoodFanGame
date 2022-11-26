@@ -118,7 +118,7 @@ public class InfoPanel extends AbstractUI {
       FontHandler.renderColorCenter(sb, EVENT_TITLE, AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second, 975 * scale, 120 * scale, 200 * scale);
       FontHandler.renderColorCenter(sb, EVENT_TITLE, AbstractLabyrinth.currentFloor.floorNum + "층", 1120 * scale, 120 * scale, 200 * scale);
       FontHandler.renderColorCenter(sb, EVENT_TITLE, "&y<" + AbstractLabyrinth.gold + "G>", 1270 * scale, 120 * scale, 200 * scale);
-      if(AbstractLabyrinth.advisor != null) aSkill.render(sb);
+      aSkill.render(sb);
       map.render(sb);
       playerInfo.render(sb);
     }

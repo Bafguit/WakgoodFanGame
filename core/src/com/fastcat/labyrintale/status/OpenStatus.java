@@ -22,7 +22,7 @@ public class OpenStatus extends AbstractStatus {
 
   @Override
   public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
+    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       top(new ApplyStatusAction(new ScarStatus(amount), owner, owner, true));
     }
     return d;

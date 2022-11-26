@@ -36,7 +36,7 @@ public class ItemPanel extends AbstractUI {
 
   @Override
   protected void renderUi(SpriteBatch sb) {
-    if (enabled && item != null) {
+    if (enabled) {
       sb.setColor(Color.WHITE);
       if(adv) sb.draw(paper.img, x + sWidth / 2 - paper.sWidth / 2, y - 68 * InputHandler.scale, paper.sWidth, paper.sHeight);
       if (item != null) {

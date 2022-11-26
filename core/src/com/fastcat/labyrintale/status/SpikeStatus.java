@@ -23,7 +23,7 @@ public class SpikeStatus extends AbstractStatus {
 
   @Override
   public int onAttacked(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
+    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       top(
           new StatusDamageAction(
               this, attacker, AttackAction.AttackType.LIGHT, false, false, true));

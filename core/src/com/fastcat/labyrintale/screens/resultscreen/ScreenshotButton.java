@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.zip.Deflater;
 
@@ -14,12 +15,19 @@ import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU_BORDER;
 
 public class ScreenshotButton extends AbstractUI {
 
+  private String date;
+
   public ScreenshotButton() {
     super(FileHandler.getUi().get("NEXT"));
     setPosition(Gdx.graphics.getWidth() * 0.83f - sWidth, Gdx.graphics.getHeight() * 0.05f);
     fontData = MAIN_MENU_BORDER;
     text = "스크린샷";
     showImg = false;
+    setDate("");
+  }
+
+  public void setDate(String s) {
+    date = s;
   }
 
   @Override
@@ -33,7 +41,8 @@ public class ScreenshotButton extends AbstractUI {
       pixels.put(i, (byte) 255);
     }
 
-    PixmapIO.writePNG(Gdx.files.local("screenshot_" + AbstractLabyrinth.date + ".png"), pixmap, Deflater.DEFAULT_COMPRESSION, true);
+    new File("screenshots").mkdir();
+    PixmapIO.writePNG(Gdx.files.local("screenshots/screenshot_" + date + ".png"), pixmap, Deflater.DEFAULT_COMPRESSION, true);
     pixmap.dispose();
     text = "스크린샷 저장됨";
   }

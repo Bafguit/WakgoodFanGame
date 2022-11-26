@@ -337,6 +337,16 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         for (PlayerBattleView p : tp) {
           if (p.entity.health == low) temp.add(p.entity);
         }
+        if(temp.size == 1) {
+          for (int i = 0; i < 4; i++) {
+            AbstractEntity p = tp[i].entity;
+            if (p.isAlive() && p.hasStatus("Provoke")) {
+              temp.clear();
+              temp.add(p);
+              break;
+            }
+          }
+        }
         break;
       case ENEMY_LOW_HP:
         low = 2147483647;
@@ -346,6 +356,16 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         }
         for (EnemyBattleView p : te) {
           if (p.entity.health == low) temp.add(p.entity);
+        }
+        if(temp.size == 1) {
+          for (int i = 0; i < 4; i++) {
+            AbstractEntity p = te[i].entity;
+            if (p.isAlive() && p.hasStatus("Provoke")) {
+              temp.clear();
+              temp.add(p);
+              break;
+            }
+          }
         }
         break;
       case PLAYER_HIGH_HP:
@@ -357,6 +377,16 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         for (PlayerBattleView p : tp) {
           if (p.entity.health == low) temp.add(p.entity);
         }
+        if(temp.size == 1) {
+          for (int i = 0; i < 4; i++) {
+            AbstractEntity p = tp[i].entity;
+            if (p.isAlive() && p.hasStatus("Provoke")) {
+              temp.clear();
+              temp.add(p);
+              break;
+            }
+          }
+        }
         break;
       case ENEMY_HIGH_HP:
         low = 0;
@@ -366,6 +396,16 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
         }
         for (EnemyBattleView p : te) {
           if (p.entity.health == low) temp.add(p.entity);
+        }
+        if(temp.size == 1) {
+          for (int i = 0; i < 4; i++) {
+            AbstractEntity p = te[i].entity;
+            if (p.isAlive() && p.hasStatus("Provoke")) {
+              temp.clear();
+              temp.add(p);
+              break;
+            }
+          }
         }
         break;
     }

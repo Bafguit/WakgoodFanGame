@@ -80,8 +80,9 @@ public class MainMenuScreen extends AbstractScreen {
     if(Labyrintale.labyrinth != null) {
       SoundHandler.fadeOutAll();
       AbstractLabyrinth.reset();
+      SoundHandler.reset();
       Labyrintale.labyrinth = null;
-      SoundHandler.playMusic("LOBBY", true, true);
+      SoundHandler.addMusic("LOBBY", true, true);
     } else if(playMusic) {
       playMusic = false;
       SoundHandler.addMusic("LOBBY", true, true);

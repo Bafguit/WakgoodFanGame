@@ -29,10 +29,9 @@ public final class SaveHandler {
   public static final ObjectMapper mapper =
       new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
   public static FileHandle saveFile = Gdx.files.local("save.json");
-  public static FileHandle runsFile = Gdx.files.local("runs.json");
+  public static File runsFile = new File("runs");
   public static SaveData data;
   public static boolean hasSave;
-  public static boolean hasRuns;
   private static SaveHandler instance;
 
   static {
@@ -41,7 +40,6 @@ public final class SaveHandler {
 
   public static void refresh() {
     hasSave = saveFile.exists();
-    hasRuns = runsFile.exists();
     if (hasSave) {
       try {
         data = mapper.readValue(new File("save.json"), SaveData.class);
@@ -61,25 +59,17 @@ public final class SaveHandler {
   }
 
   public static void finish(boolean refresh) {
-    if (refresh) refresh();
-    if (hasSave) {
+    if (refresh) {
+      refresh();
+    } else {
       data = SaveData.create();
+    }
+    if (hasSave) {
       if(data.result == null) data.result = DeadScreen.ScreenType.DEAD;
       try {
         String name = "run_" + data.date + ".json";
-        FileHandle f = Gdx.files.local("runs.json");
-        JsonValue js;
-        if(f.exists()) {
-          js = FileHandler.generateJson(f);
-          js.addChild(new JsonValue(name));
-        } else {
-          js = new JsonValue(JsonValue.ValueType.array);
-          js.addChild(new JsonValue(name));
-        }
-        File fl = new File("/runs");
-        fl.mkdir();
-        mapper.writeValue(new File("runs.json"), js.asStringArray());
-        mapper.writeValue(new File("/runs/" + name), data);
+        new File("runs").mkdir();
+        mapper.writeValue(new File("runs/" + name), data);
       } catch (IOException e) {
         e.printStackTrace();
       }

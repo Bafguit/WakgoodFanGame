@@ -168,6 +168,14 @@ public final class SoundHandler implements Disposable {
     }
   }
 
+  public static void reset() {
+    for(MusicData d : music.values()) {
+      if (d != null) {
+        d.stop = true;
+      }
+    }
+  }
+
   public static void fadeOutMusic(String key) {
     MusicData d = music.get(key);
     if (d != null) {
@@ -246,7 +254,7 @@ public final class SoundHandler implements Disposable {
     }
 
     public void updateFadeIn() {
-      fadeTimer -= Labyrintale.tick * 1.5;
+      fadeTimer -= Labyrintale.tick * 2;
       if (fadeTimer <= 0.0F) {
         fadeTimer = 0.0F;
         isFading = false;
@@ -256,7 +264,7 @@ public final class SoundHandler implements Disposable {
     }
 
     public void updateFadeOut() {
-      fadeTimer -= Labyrintale.tick * 1.5;
+      fadeTimer -= Labyrintale.tick * 2;
       if (fadeTimer <= 0.0F) {
         fadeTimer = 0.0F;
         isDone = true;

@@ -22,7 +22,7 @@ public class EnduranceStatus extends AbstractStatus {
 
   @Override
   public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
+    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       flash();
       top(new RemoveStatusAction(this, true));
       return d - amount;

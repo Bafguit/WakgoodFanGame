@@ -23,7 +23,7 @@ public class ScarStatus extends AbstractStatus {
 
   @Override
   public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
+    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       top(new StatusDamageAction(this, AttackAction.AttackType.LIGHT, false, false, true));
     }
     return d;

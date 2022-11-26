@@ -21,6 +21,7 @@ import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.getPlayerInstance;
@@ -57,6 +58,7 @@ public class RunViewScreen extends AbstractScreen {
   public String ver;
   public String seed;
   public String score;
+  public String date;
   public int index = -1;
 
   public RunViewScreen() {
@@ -108,6 +110,7 @@ public class RunViewScreen extends AbstractScreen {
     ver = "버전: ";
     seed = "시드: ";
     score = "점수: ";
+    date = "";
     shot = new ScreenshotButton();
     back = new BackToMainRunButton();
     noRuns = new NoRunsText();
@@ -173,6 +176,8 @@ public class RunViewScreen extends AbstractScreen {
     }
     if(data.advisor != null) {
       adv.item = GroupHandler.AdvisorGroup.getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(data.advisor.toUpperCase()));
+    } else {
+      adv.item = null;
     }
     text = new ResultText(data.result);
     diff = "난이도: ";
@@ -183,6 +188,8 @@ public class RunViewScreen extends AbstractScreen {
     ver = "버전: " + BuildInfo.BUILD_VERSION;
     seed = "시드: " + data.random.seed;
     score = "점수: " + data.scoreHandle.score;
+    shot.setDate(data.date);
+    shot.text = "스크린샷";
   }
 
   @Override

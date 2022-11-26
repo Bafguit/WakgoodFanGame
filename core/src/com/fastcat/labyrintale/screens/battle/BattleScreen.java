@@ -184,7 +184,7 @@ public class BattleScreen extends AbstractScreen {
           int line = j / pv.statSize;
           int num = j % pv.statSize;
           ts.setPosition(
-              pv.x + w * 0.019f * num + pv.sWidth * 0.11f,
+                  pv.entity.animX - pv.sWidth / 2 + w * 0.019f * num + pv.sWidth * 0.11f,
               h * 0.457f - (w * 0.019f * line));
           ts.update();
         }
@@ -209,7 +209,7 @@ public class BattleScreen extends AbstractScreen {
           int line = j / ev.statSize;
           int num = j % ev.statSize;
           ts.setPosition(
-              ev.x + w * 0.019f * num + ev.sWidth * 0.11f,
+                  ev.entity.animX - ev.sWidth / 2 + w * 0.019f * num + ev.sWidth * 0.11f,
               h * 0.457f - (w * 0.019f * line));
           ts.update();
         }

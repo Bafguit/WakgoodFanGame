@@ -115,6 +115,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     seed = "시드: " + AbstractLabyrinth.seed;
     score = "점수: " + AbstractLabyrinth.scoreHandle.score;
     shot = new ScreenshotButton();
+    shot.setDate(AbstractLabyrinth.date);
     back = new BackToMainButton();
   }
 
@@ -209,7 +210,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
 
   @Override
   public void show() {
-    SoundHandler.playMusic(dType == DeadScreen.ScreenType.WIN ? "WIN" : "LOSS", false, false);
+    SoundHandler.addMusic(dType == DeadScreen.ScreenType.WIN ? "WIN" : "LOSS", false, false);
   }
 
   @Override

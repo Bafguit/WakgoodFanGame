@@ -23,8 +23,14 @@ public class SelfBombStatus extends AbstractStatus {
   @Override
   public void onDeath(AbstractEntity m) {
     hasAmount = false;
-    amount = 10;
-    top(new StatusDamageAction(this, AttackAction.AttackType.BURN, false, false, false));
+    top(
+            new AttackAction(
+                    null,
+                    SkillTarget.PLAYER_ALL,
+                    10,
+                    AbstractEntity.DamageType.SPIKE,
+                    AttackAction.AttackType.BURN,
+                    true));
   }
 
   public void endOfTurn() {

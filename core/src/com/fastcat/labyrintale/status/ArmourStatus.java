@@ -29,7 +29,7 @@ public class ArmourStatus extends AbstractStatus {
 
   @Override
   public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
+    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       top(new ReduceStatusAction(this, 1, StatusType.BUFF, true));
     }
     return damage;

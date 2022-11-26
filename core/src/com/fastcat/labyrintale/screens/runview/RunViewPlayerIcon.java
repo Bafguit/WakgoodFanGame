@@ -16,7 +16,7 @@ public class RunViewPlayerIcon extends AbstractUI {
   public AbstractPlayer p;
 
   public RunViewPlayerIcon() {
-    super(FileHandler.getUi().get("BORDER_V"));
+    super(FileHandler.getUi().get("BORDER_V2"));
   }
 
   public void setPlayer(AbstractPlayer p) {
