@@ -7,6 +7,7 @@ import static com.fastcat.labyrintale.screens.battle.BattleScreen.hbc;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
@@ -23,8 +24,9 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class WayScreen extends AbstractScreen {
   private final WayBgImg bgImg;
-  public ShapeRenderer shr = new ShapeRenderer();
 
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public Array<WaySelectButton> buttons;
   public Array<WayIcon> icons;
   public Array<WayDesc> desc;
@@ -105,44 +107,23 @@ public class WayScreen extends AbstractScreen {
         players[i].render(sb);
       }
     }
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
     float h = Gdx.graphics.getHeight();
     for (int i = 0; i < 4; i++) {
       PlayerWayView tp = players[i];
       float tw = tp.sWidth, th = tp.sHeight;
       float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
       if (!tp.player.isDead) {
-        boolean isBlock = tp.player.block > 0;
-        if (isBlock) {
-          shr.setColor(bc);
-          shr.rect(px + tw * 0.075f, py - th * 0.01f, tw * 0.85f, th * 0.07f);
-        }
-        shr.setColor(hbc);
-        shr.rect(px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
-        shr.setColor(Color.SCARLET);
-        shr.rect(
-            px + tw * 0.1f,
-            py,
-            Math.max(tw * 0.8f * ((float) tp.player.health / (float) tp.player.maxHealth), 0),
-            th * 0.05f);
-      }
-    }
-    shr.end();
-    sb.begin();
-    for (int i = 0; i < 4; i++) {
-      PlayerWayView tp = players[i];
-      float tw = tp.sWidth;
-      float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
-      if (!tp.player.isDead) {
+        sb.draw(hbb, px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
+        sb.draw(hb, px + tw * 0.1f, py, 0, 0, tw * 0.8f, th * 0.05f,
+            Math.max(((float) tp.player.health) / ((float) tp.player.maxHealth), 0), 1, 0);
         renderCenter(
-            sb,
-            HP,
-            tp.player.health + "/" + tp.player.maxHealth,
-            px,
-            py + tp.sHeight * 0.06f / 2,
-            tw,
-            tp.sHeight * 0.05f);
+                sb,
+                HP,
+                tp.player.health + "/" + tp.player.maxHealth,
+                px,
+                py + tp.sHeight * 0.06f / 2,
+                tw,
+                tp.sHeight * 0.05f);
       }
     }
     for (int i = 0; i < wayCount; i++) {

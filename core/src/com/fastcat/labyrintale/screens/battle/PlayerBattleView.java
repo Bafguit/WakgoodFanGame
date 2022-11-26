@@ -63,26 +63,6 @@ public class PlayerBattleView extends BattleView {
   protected void onClick() {
     if (entity != null && entity.isAlive()) {
       if (battleScreen.isSelecting) battleScreen.gets.onTargetSelected(entity);
-      else {
-        if (charInfoScreen == null) {
-          charInfoScreen = new CharInfoScreen(entity);
-          Labyrintale.addTempScreen(charInfoScreen);
-        } else if (charInfoScreen.player == entity) {
-          if (Labyrintale.getCurScreen() != charInfoScreen) {
-            Labyrintale.removeTempScreen(charInfoScreen);
-            Labyrintale.addTempScreen(charInfoScreen);
-          } else {
-            Labyrintale.removeTempScreen(charInfoScreen);
-            charInfoScreen = null;
-          }
-        } else {
-          if (Labyrintale.getCurScreen() != charInfoScreen) {
-            Labyrintale.removeTempScreen(charInfoScreen);
-            charInfoScreen.setPlayer(entity);
-            Labyrintale.addTempScreen(charInfoScreen);
-          } else charInfoScreen.setPlayer(entity);
-        }
-      }
     }
   }
 }

@@ -64,19 +64,22 @@ public final class SaveHandler {
     if (refresh) refresh();
     if (hasSave) {
       data = SaveData.create();
+      if(data.result == null) data.result = DeadScreen.ScreenType.DEAD;
       try {
         String name = "run_" + data.date + ".json";
         FileHandle f = Gdx.files.local("runs.json");
         JsonValue js;
-        if(hasRuns) {
+        if(f.exists()) {
           js = FileHandler.generateJson(f);
           js.addChild(new JsonValue(name));
         } else {
           js = new JsonValue(JsonValue.ValueType.array);
           js.addChild(new JsonValue(name));
         }
+        File fl = new File("/runs");
+        fl.mkdir();
         mapper.writeValue(new File("runs.json"), js.asStringArray());
-        mapper.writeValue(new File("runs/" + name), data);
+        mapper.writeValue(new File("/runs/" + name), data);
       } catch (IOException e) {
         e.printStackTrace();
       }

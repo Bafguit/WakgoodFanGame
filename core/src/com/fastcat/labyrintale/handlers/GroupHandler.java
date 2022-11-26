@@ -317,6 +317,7 @@ public final class GroupHandler {
     }
 
     private static void generateNeut() {
+      eventNeut.clear();
       eventNeut.add(new TransformEvent());
       eventNeut.add(new UpgradeEvent());
       eventNeut.add(new ChaosEvent());

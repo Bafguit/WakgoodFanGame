@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.resultscreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.BuildInfo;
@@ -16,6 +17,7 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
+import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoIcon;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoItemIcon;
 import com.fastcat.labyrintale.screens.playerinfo.UpgradeStatButton;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
@@ -36,12 +38,14 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
   private final FontHandler.FontData fontData = ENERGY;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public PlayerInfoDeckIcon[][] deck = new PlayerInfoDeckIcon[4][3];
   public PlayerInfoItemIcon[][] item = new PlayerInfoItemIcon[4][2];
   public PlayerInfoItemIcon[] passive = new PlayerInfoItemIcon[4];
   public StatIcon[][] stats = new StatIcon[4][8];
-  public PlayerIcon[] pIcons = new PlayerIcon[4];
+  public PlayerInfoIcon[] pIcons = new PlayerInfoIcon[4];
   public ResultText text;
   public BackToMainButton back;
   public ScreenshotButton shot;
@@ -90,7 +94,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             stats[c][cnt++] = s;
           }
         }
-        PlayerIcon pc = new PlayerIcon(c);
+        PlayerInfoIcon pc = new PlayerInfoIcon(c);
         pc.clickable = false;
         pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
         pIcons[c] = pc;
@@ -154,52 +158,39 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     shot.render(sb);
     back.render(sb);
     adv.render(sb);
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
     int cnt = 0;
     for (int f = 0; f < 2; f++) {
       for (int g = 0; g < 2; g++) {
         AbstractPlayer player = AbstractLabyrinth.players[cnt++];
-        shr.setColor(hbc);
-        shr.rect(w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
-        shr.setColor(Color.SCARLET.cpy());
-        shr.rect(
-            w * (0.15f + 0.46f * f),
-            h * (0.73f - 0.275f * g),
-            Math.max(w * 0.12f * ((float) player.health / (float) player.maxHealth), 0),
-            h * 0.03f);
-      }
-    }
-    shr.end();
-    sb.begin();
-
-    cnt = 0;
-    for (int f = 0; f < 2; f++) {
-      for (int g = 0; g < 2; g++) {
-        AbstractPlayer player = AbstractLabyrinth.players[cnt++];
+        sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+        sb.draw(hb,
+                w * (0.15f + 0.46f * f),
+                h * (0.73f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
+                Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
         FontHandler.renderLineLeft(
-            sb,
-            fontName,
-            player.name,
-            w * (0.15f + 0.46f * f),
-            h * (0.79f - 0.275f * g),
-            w * 0.12f,
-            50);
+                sb,
+                fontName,
+                player.name,
+                w * (0.15f + 0.46f * f),
+                h * (0.79f - 0.275f * g),
+                w * 0.12f,
+                50);
         FontHandler.renderCenter(
-            sb,
-            fontHp,
-            player.health + "/" + player.maxHealth,
-            w * (0.15f + 0.46f * f),
-            h * (0.747f - 0.275f * g),
-            w * 0.12f,
-            h * 0.03f);
-        renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
-        renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
-        renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
-        renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
-        renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
+                sb,
+                fontHp,
+                player.health + "/" + player.maxHealth,
+                w * (0.15f + 0.46f * f),
+                h * (0.747f - 0.275f * g),
+                w * 0.12f,
+                h * 0.03f);
       }
     }
+
+    renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
+    renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
+    renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
+    renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
+    renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
 
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 3; j++) {
@@ -218,7 +209,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
 
   @Override
   public void show() {
-    SoundHandler.addMusic(dType == DeadScreen.ScreenType.WIN ? "WIN" : "LOSS", false, false);
+    SoundHandler.playMusic(dType == DeadScreen.ScreenType.WIN ? "WIN" : "LOSS", false, false);
   }
 
   @Override

@@ -5,12 +5,14 @@ import static com.fastcat.labyrintale.handlers.FontHandler.INFO_NAME;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.CloseTempScreenButton;
@@ -26,6 +28,8 @@ public class CharInfoScreen extends AbstractScreen {
   private final FontHandler.FontData fontHp = INFO_HP;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public CharDeckIcon[] deck = new CharDeckIcon[3];
   public CharItemIcon[] item = new CharItemIcon[2];
@@ -97,19 +101,11 @@ public class CharInfoScreen extends AbstractScreen {
     // health bar
 
     // button
-
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
-    shr.setColor(hbc);
-    shr.rect(w * 0.47f, h * 0.68f, w * 0.14f, h * 0.03f);
-    shr.setColor(Color.SCARLET.cpy());
-    shr.rect(
-        w * 0.47f,
-        h * 0.68f,
-        Math.max(w * 0.14f * ((float) player.health / (float) player.maxHealth), 0),
-        h * 0.03f);
-    shr.end();
-    sb.begin();
+    sb.draw(hbb, w * 0.47f, h * 0.68f, w * 0.14f, h * 0.03f);
+    sb.draw(hb,
+            w * 0.47f,
+            h * 0.68f, 0, 0, w * 0.14f, h * 0.03f,
+            Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
 
     FontHandler.renderLineLeft(sb, fontName, player.name, w * 0.47f, h * 0.74f, w * 0.14f, 50);
     FontHandler.renderCenter(

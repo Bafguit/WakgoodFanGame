@@ -72,17 +72,4 @@ public final class DifficultyHandler {
     else if (diff == COFFIN) return (int) ((float) price * 1.3f);
     else return price;
   }
-
-  public enum RiskType {
-    GRW,
-    STR,
-    INT,
-    SPD,
-    RST,
-    MSR,
-    FAM,
-    POV,
-    FTG,
-    HUG
-  }
 }

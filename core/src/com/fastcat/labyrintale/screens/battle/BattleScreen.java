@@ -29,15 +29,11 @@ public class BattleScreen extends AbstractScreen {
   public static final Color hbc = new Color(0.4f, 0, 0, 1);
   public static final Color bc = new Color(0.549f, 0.573f, 0.675f, 1);
 
-  public static final SpriteBatch batch = new SpriteBatch();
-  public static final OrthographicCamera bCamera = new OrthographicCamera();
-
   private final BgImg bgImg = new BgImg();
-  private final Vector3 point = new Vector3(Gdx.graphics.getWidth() * 0.5f, Gdx.graphics.getHeight() * 0.5f, -1);
-  private final Vector3 axis = new Vector3(Gdx.graphics.getWidth(), 0, 0);
 
   public Sprite shield = FileHandler.getUi().get("SHIELD");
-  public ShapeRenderer shr = new ShapeRenderer();
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
   public LinkedList<StatusButton>[] enemyStatus = new LinkedList[4];
   public SkillButton[] enemySkills = new SkillButton[4];
@@ -48,7 +44,6 @@ public class BattleScreen extends AbstractScreen {
   public GetSelectedTarget gets;
   public boolean isSelecting = false;
   public boolean isEnemyTurn = false;
-  public boolean zoom = false;
   public Array<AbstractEntity> looking;
   private Array<AbstractEntity> turn;
   private int turnIndex;
@@ -66,9 +61,6 @@ public class BattleScreen extends AbstractScreen {
     this.type = type;
     AbstractLabyrinth.prepare();
     setBg(AbstractLabyrinth.curBg);
-    bCamera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
-    bCamera.rotate(-3);
-    bCamera.zoom = 0.85f;
     w = Gdx.graphics.getWidth();
     h = Gdx.graphics.getHeight();
     sw = shield.getWidth() * InputHandler.scale;
@@ -149,7 +141,6 @@ public class BattleScreen extends AbstractScreen {
 
   @Override
   public void update() {
-    bCamera.update();
     if (!cPanel.battlePanel.curPlayer.isAlive()) {
       for (int i = 0; i < 4; i++) {
         AbstractEntity tp = players[i].entity;
@@ -245,11 +236,6 @@ public class BattleScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
-    bCamera.update();
-    if(zoom) {
-      sb.setProjectionMatrix(bCamera.combined);
-      Labyrintale.psb.setProjectionMatrix(bCamera.combined);
-    }
     int ci = cPanel.battlePanel.curPlayer.index;
     if (isSelecting) {
       for (int i = 3; i >= 0; i--) {
@@ -271,8 +257,6 @@ public class BattleScreen extends AbstractScreen {
       players[ci].render(sb);
     }
 
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
     for (int i = 0; i < 4; i++) {
       PlayerBattleView tp = players[i];
       EnemyBattleView te = enemies[i];
@@ -280,73 +264,44 @@ public class BattleScreen extends AbstractScreen {
       float px = tp.entity.animX - tp.sWidth / 2, py = tp.entity.animY - h * 0.025f;
       float ex = te.entity.animX - te.sWidth / 2, ey = te.entity.animY - h * 0.025f;
       if (!tp.entity.isDead) {
-        boolean isBlock = tp.entity.block > 0;
-        if (isBlock) {
-          shr.setColor(bc);
-          shr.rect(px + tw * 0.075f, py - th * 0.01f, tw * 0.85f, th * 0.07f);
-        }
-        shr.setColor(hbc);
-        shr.rect(px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
-        shr.setColor(Color.SCARLET);
-        shr.rect(
+        sb.draw(hbb, px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
+        sb.draw(hb,
             px + tw * 0.1f,
-            py,
-            Math.max(tw * 0.8f * ((float) tp.entity.health / (float) tp.entity.maxHealth), 0),
-            th * 0.05f);
-      }
-      if (!te.entity.isDead) {
-        boolean isBlock = te.entity.block > 0;
-        float thh = th * 0.01f;
-        if (isBlock) {
-          shr.setColor(bc);
-          shr.rect(ex + ew * 0.1f - thh, ey - thh, ew * 0.8f + thh * 2, th * 0.07f);
-        }
-        shr.setColor(hbc);
-        shr.rect(ex + ew * 0.1f, ey, ew * 0.8f, th * 0.05f);
-        shr.setColor(Color.SCARLET);
-        shr.rect(
-            ex + ew * 0.1f,
-            ey,
-            Math.max(ew * 0.8f * ((float) te.entity.health / (float) te.entity.maxHealth), 0),
-            th * 0.05f);
-      }
-    }
-    shr.end();
-    sb.begin();
-    for (int i = 0; i < 4; i++) {
-      PlayerBattleView tp = players[i];
-      EnemyBattleView te = enemies[i];
-      float tw = tp.sWidth, ew = te.sWidth;
-      float px = tp.entity.animX - tw / 2, py = tp.entity.animY - h * 0.025f;
-      float ex = te.entity.animX - ew / 2, ey = te.entity.animY - h * 0.025f;
-      if (!tp.entity.isDead) {
+            py, 0, 0, tw * 0.8f, th * 0.05f,
+            Math.max(((float) tp.entity.health) / ((float) tp.entity.maxHealth), 0), 1, 0);
         renderCenter(
-            sb,
-            HP,
-            tp.entity.health + "/" + tp.entity.maxHealth,
-            px,
-            py + tp.sHeight * 0.06f / 2,
-            tw,
-            tp.sHeight * 0.05f);
-      }
-      if (!te.entity.isDead) {
-        renderCenter(
-            sb,
-            HP,
-            te.entity.health + "/" + te.entity.maxHealth,
-            ex,
-            ey + te.sHeight * 0.06f / 2,
-            ew,
-            te.sHeight * 0.05f);
-      }
+                sb,
+                HP,
+                tp.entity.health + "/" + tp.entity.maxHealth,
+                px,
+                py + tp.sHeight * 0.06f / 2,
+                tw,
+                tp.sHeight * 0.05f);
 
-      ShieldIcon ps = pShield[i];
-      pShield[i].setPosition(px + tw * 0.075f - ps.sWidth * 0.65f, h * 0.49f - ps.sHeight * 0.35f);
-      pShield[i].render(sb);
-      ShieldIcon es = eShield[i];
-      eShield[i].setPosition(ex + ew * 0.075f - es.sWidth * 0.65f, h * 0.49f - es.sHeight * 0.35f);
-      eShield[i].render(sb);
+        ShieldIcon ps = pShield[i];
+        pShield[i].setPosition(px + tw * 0.075f - ps.sWidth * 0.65f, h * 0.49f - ps.sHeight * 0.35f);
+        pShield[i].render(sb);
+      }
+      if (!te.entity.isDead) {
+        sb.draw(hbb, ex + ew * 0.1f, ey, ew * 0.8f, th * 0.05f);
+        sb.draw(hb,
+            ex + ew * 0.1f,
+            ey, 0, 0, ew * 0.8f, th * 0.05f,
+            Math.max(((float) te.entity.health) / ((float) te.entity.maxHealth), 0), 1, 0);
+        renderCenter(
+                sb,
+                HP,
+                te.entity.health + "/" + te.entity.maxHealth,
+                ex,
+                ey + te.sHeight * 0.06f / 2,
+                ew,
+                te.sHeight * 0.05f);
+        ShieldIcon es = eShield[i];
+        eShield[i].setPosition(ex + ew * 0.075f - es.sWidth * 0.65f, h * 0.49f - es.sHeight * 0.35f);
+        eShield[i].render(sb);
+      }
     }
+
     for (int i = 0; i < 4; i++) {
       if (players[i].entity.isAlive()) {
         for (StatusButton b : playerStatus[i]) {

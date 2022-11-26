@@ -14,7 +14,7 @@ public class HolyLight extends AbstractSkill {
   private static final SkillType TYPE = SkillType.DEFENCE;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ALL;
-  private static final int VALUE = 3;
+  private static final int VALUE = 2;
 
   public HolyLight(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);

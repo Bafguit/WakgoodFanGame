@@ -23,9 +23,6 @@ import com.fastcat.labyrintale.uis.*;
 
 public class BattlePanel implements Disposable {
 
-  public static final Color hbc = new Color(0.4f, 0, 0, 1);
-  private static final FontHandler.FontData fontHp = HP;
-  public static ShapeRenderer shr = new ShapeRenderer();
   public static EnergyPanel energy = new EnergyPanel();
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
   public AbstractSkill selected;
@@ -44,27 +41,27 @@ public class BattlePanel implements Disposable {
     float bottom = 61 * scale, mid = 187 * scale, panel = 82 * scale;
     passive = new ItemPanel();
     passive.setScale(0.6f);
-    passive.setPosition(310 * scale, bottom);
+    passive.setPosition(320 * scale, bottom);
     item[0] = new ItemPanel();
     item[0].setScale(0.6f);
-    item[0].setPosition(425 * scale, bottom);
+    item[0].setPosition(435 * scale, bottom);
     item[1] = new ItemPanel();
     item[1].setScale(0.6f);
-    item[1].setPosition(540 * scale, bottom);
+    item[1].setPosition(550 * scale, bottom);
     mSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.BASIC);
     mSkill.setScale(0.6f);
-    mSkill.setPosition(673 * scale, bottom);
+    mSkill.setPosition(683 * scale, bottom);
     pSkill = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.BASIC);
     pSkill.setScale(0.6f);
-    pSkill.setPosition(788 * scale, bottom);
+    pSkill.setPosition(798 * scale, bottom);
     for (int i = 0; i < 3; i++) {
       SkillButtonPanel s = new SkillButtonPanel(SkillButtonPanel.SkillButtonType.PLAYER);
-      s.setPosition((718 - 204 * i) * scale, mid);
+      s.setPosition((728 - 204 * i) * scale, mid);
       skill[i] = s;
     }
     cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
     cpIcon.setPosition(panel, 473 * scale - cpIcon.sHeight);
-    energy.setPosition(770 * scale, 490 * scale - energy.sHeight);
+    energy.setPosition(780 * scale, 490 * scale - energy.sHeight);
     rx = panel;
     ex = cpIcon.sWidth;
     ey = cpIcon.y - bottom;
@@ -73,7 +70,7 @@ public class BattlePanel implements Disposable {
     for (int j = 1; j >= 0; j--) {
       for (int i = 0; i < 4; i++) {
         StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-        s.setPosition(310 * scale + w * 0.044f * i, 395 * scale + h * 0.027f * j);
+        s.setPosition(320 * scale + w * 0.044f * i, 395 * scale + h * 0.027f * j);
         stats[cnt++] = s;
       }
     }
@@ -105,23 +102,6 @@ public class BattlePanel implements Disposable {
 
   public void render(SpriteBatch sb) {
     cpIcon.render(sb);
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
-    shr.setColor(hbc);
-    shr.rect(rx, ry, ex, ey);
-    shr.setColor(Color.SCARLET.cpy());
-    shr.rect(
-        rx, ry, Math.max(ex * ((float) curPlayer.health / (float) curPlayer.maxHealth), 0), ey);
-    shr.end();
-    sb.begin();
-    FontHandler.renderCenter(
-        sb,
-        fontHp,
-        curPlayer.health + "/" + curPlayer.maxHealth,
-        rx,
-        ry + ey / 2,
-        ex,
-        ey);
 
     passive.render(sb);
     for (int i = 0; i < 2; i++) {

@@ -207,7 +207,9 @@ public class FileHandler implements Disposable {
     ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
     ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
     ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
+    ui.put("BORDER_V2", new Sprite(new Texture("img/ui/border_v2.png")));
     ui.put("BORDER_R", new Sprite(new Texture("img/ui/border_r.png")));
+    ui.put("BORDER_ADV", new Sprite(new Texture("img/ui/border_adv.png")));
     ui.put("BORDER_T", new Sprite(new Texture("img/ui/border_turn.png")));
     ui.put("BORDER_T2", new Sprite(new Texture("img/ui/border_turn2.png")));
     ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
@@ -271,6 +273,8 @@ public class FileHandler implements Disposable {
     ui.put("DIFF_HARD", new Sprite(new Texture("img/ui/diff_hard.png")));
     ui.put("DIFF_COFFIN", new Sprite(new Texture("img/ui/diff_coffin.png")));
     ui.put("ARROW_RIGHT", new Sprite(new Texture("img/ui/arrow_right.png")));
+    ui.put("HEALTH_BAR", new Sprite(new Texture("img/ui/health_bar.png")));
+    ui.put("HEALTH_BACK", new Sprite(new Texture("img/ui/hb_block.png")));
   }
 
   private void generateCharImg() {

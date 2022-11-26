@@ -6,10 +6,12 @@ import static com.fastcat.labyrintale.handlers.FontHandler.INFO_NAME;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
@@ -27,6 +29,8 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
   public StatSelectScreen statScreen;
 
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public PlayerInfoDeckIcon[][] deck = new PlayerInfoDeckIcon[4][3];
   public PlayerInfoItemIcon[][] item = new PlayerInfoItemIcon[4][2];
@@ -120,46 +124,31 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
     // health bar
 
     // button
-
-    sb.end();
-    shr.begin(ShapeRenderer.ShapeType.Filled);
     int cnt = 0;
     for (int f = 0; f < 2; f++) {
       for (int g = 0; g < 2; g++) {
         AbstractPlayer player = AbstractLabyrinth.players[cnt++];
-        shr.setColor(hbc);
-        shr.rect(w * (0.15f + 0.46f * f), h * (0.83f - 0.275f * g), w * 0.12f, h * 0.03f);
-        shr.setColor(Color.SCARLET.cpy());
-        shr.rect(
-            w * (0.15f + 0.46f * f),
-            h * (0.83f - 0.275f * g),
-            Math.max(w * 0.12f * ((float) player.health / (float) player.maxHealth), 0),
-            h * 0.03f);
-      }
-    }
-    shr.end();
-    sb.begin();
-
-    cnt = 0;
-    for (int f = 0; f < 2; f++) {
-      for (int g = 0; g < 2; g++) {
-        AbstractPlayer player = AbstractLabyrinth.players[cnt++];
+        sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.83f - 0.275f * g), w * 0.12f, h * 0.03f);
+        sb.draw(hb,
+                w * (0.15f + 0.46f * f),
+                h * (0.83f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
+                Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
         FontHandler.renderLineLeft(
-            sb,
-            fontName,
-            player.name,
-            w * (0.15f + 0.46f * f),
-            h * (0.89f - 0.275f * g),
-            w * 0.12f,
-            50);
+                sb,
+                fontName,
+                player.name,
+                w * (0.15f + 0.46f * f),
+                h * (0.89f - 0.275f * g),
+                w * 0.12f,
+                50);
         FontHandler.renderCenter(
-            sb,
-            fontHp,
-            player.health + "/" + player.maxHealth,
-            w * (0.15f + 0.46f * f),
-            h * (0.847f - 0.275f * g),
-            w * 0.12f,
-            h * 0.03f);
+                sb,
+                fontHp,
+                player.health + "/" + player.maxHealth,
+                w * (0.15f + 0.46f * f),
+                h * (0.847f - 0.275f * g),
+                w * 0.12f,
+                h * 0.03f);
       }
     }
 

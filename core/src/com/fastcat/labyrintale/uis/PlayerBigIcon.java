@@ -1,8 +1,11 @@
 package com.fastcat.labyrintale.uis;
 
 import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
+import static com.fastcat.labyrintale.handlers.FontHandler.HP;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
@@ -10,16 +13,24 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 
 public class PlayerBigIcon extends AbstractUI {
+  private static final FontHandler.FontData fontHp = HP;
 
   public AbstractEntity p;
+  public Sprite hb;
+  public float hx, hy, hw, hh;
 
   public PlayerBigIcon(AbstractPlayer p) {
     super(FileHandler.getUi().get("BORDER_V"));
-    setScale(1.2f);
     this.p = p;
+    hb = FileHandler.getUi().get("HEALTH_BAR");
+    hx = 22 * scale;
+    hy = 21 * scale;
+    hw = 162 * scale;
+    hh = 26 * scale;
   }
 
   @Override
@@ -28,6 +39,16 @@ public class PlayerBigIcon extends AbstractUI {
       sb.setColor(Color.WHITE);
       sb.draw(p.imgPanel, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
+      float sc = ((float)p.health) / ((float)p.maxHealth);
+      sb.draw(hb, x + hx, y + hy, 0, 0, hw, hh, sc, 1, 0);
+      FontHandler.renderCenter(
+              sb,
+              fontHp,
+              p.health + "/" + p.maxHealth,
+              x,
+              y + hy + 18 * scale,
+              sWidth,
+              y);
     }
   }
 

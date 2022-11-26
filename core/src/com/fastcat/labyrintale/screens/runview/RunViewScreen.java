@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.runview;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
@@ -35,6 +36,8 @@ public class RunViewScreen extends AbstractScreen {
   private final FontData fontData = ENERGY;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
+  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public RunViewDeckIcon[][] deck = new RunViewDeckIcon[4][3];
   public RunViewItemIcon[][] item = new RunViewItemIcon[4][2];
@@ -168,7 +171,9 @@ public class RunViewScreen extends AbstractScreen {
         c++;
       }
     }
-    adv.item = GroupHandler.AdvisorGroup.getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(data.advisor.toUpperCase()));
+    if(data.advisor != null) {
+      adv.item = GroupHandler.AdvisorGroup.getAdvisorInstance(AbstractAdvisor.AdvisorClass.valueOf(data.advisor.toUpperCase()));
+    }
     text = new ResultText(data.result);
     diff = "난이도: ";
     if(data.diff == AbstractLabyrinth.Difficulty.NORMAL) diff += "일반";
@@ -211,29 +216,15 @@ public class RunViewScreen extends AbstractScreen {
       text.render(sb);
       shot.render(sb);
       adv.render(sb);
-      sb.end();
-      shr.begin(ShapeRenderer.ShapeType.Filled);
       int cnt = 0;
       for (int f = 0; f < 2; f++) {
         for (int g = 0; g < 2; g++) {
           AbstractPlayer player = pIcons[cnt++].p;
-          shr.setColor(hbc);
-          shr.rect(w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
-          shr.setColor(Color.SCARLET.cpy());
-          shr.rect(
+          sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+          sb.draw(hb,
                   w * (0.15f + 0.46f * f),
-                  h * (0.73f - 0.275f * g),
-                  Math.max(w * 0.12f * ((float) player.health / (float) player.maxHealth), 0),
-                  h * 0.03f);
-        }
-      }
-      shr.end();
-      sb.begin();
-
-      cnt = 0;
-      for (int f = 0; f < 2; f++) {
-        for (int g = 0; g < 2; g++) {
-          AbstractPlayer player = pIcons[cnt++].p;
+                  h * (0.73f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
+                  Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
           FontHandler.renderLineLeft(
                   sb,
                   fontName,
@@ -250,13 +241,14 @@ public class RunViewScreen extends AbstractScreen {
                   h * (0.747f - 0.275f * g),
                   w * 0.12f,
                   h * 0.03f);
-          renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
-          renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
-          renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
-          renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
-          renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
         }
       }
+
+      renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
+      renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
+      renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
+      renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
+      renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
 
       for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 3; j++) {

@@ -38,7 +38,7 @@ public class PointBlank extends AbstractSkill {
     if (AbstractLabyrinth.cPanel.type == ControlPanel.ControlType.BATTLE) {
       if (AbstractLabyrinth.cPanel.battlePanel.selected == this
           && Labyrintale.battleScreen.looking.size == 1) {
-        return (float) (6 * value - ((owner.index + Labyrintale.battleScreen.looking.get(0).index) * value)) / 6;
+        return (float) (6 * value - ((owner.index + Labyrintale.battleScreen.looking.get(0).index) * (value - 1))) / 6;
       }
     }
     return 1.0f;
@@ -46,6 +46,6 @@ public class PointBlank extends AbstractSkill {
 
   @Override
   public float attackMultiply(AbstractEntity target) {
-    return (float) (6 * value - ((owner.index + Labyrintale.battleScreen.looking.get(0).index) * value)) / 6;
+    return (float) (6 * value - ((owner.index + target.index) * (value - 1))) / 6;
   }
 }

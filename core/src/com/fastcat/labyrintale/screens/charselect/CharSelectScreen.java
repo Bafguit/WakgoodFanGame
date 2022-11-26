@@ -11,11 +11,13 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
+import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
 
 public class CharSelectScreen extends AbstractScreen {
+  private final GifBg back;
 
   public CharSelectText charSelectText;
   public BackButton backButton;
@@ -49,6 +51,7 @@ public class CharSelectScreen extends AbstractScreen {
     chars[3] = char4;
     addChars();
     cType = ControlPanel.ControlType.HIDE;
+    back = new GifBg("MAIN_MENU");
   }
 
   private void addChars() {
@@ -91,6 +94,7 @@ public class CharSelectScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
+    back.render(sb);
     if (selected != null) group.render(sb);
     charSelectText.render(sb);
     for (CharButton aChar : chars) {

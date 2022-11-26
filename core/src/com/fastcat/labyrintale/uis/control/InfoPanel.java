@@ -64,7 +64,8 @@ public class InfoPanel extends AbstractUI {
       pIcons[i] = c;
     }
     aSkill = new ItemPanel();
-    aSkill.setPosition(993 * scale, 290 * scale);
+    aSkill.adv = true;
+    aSkill.setPosition(993 * scale, 280 * scale);
     aSkill.item = AbstractLabyrinth.advisor;
     map = new MapButton();
     map.setPosition(1269 * scale, 217 * scale);

@@ -6,9 +6,11 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.charselect.BackButton;
+import com.fastcat.labyrintale.uis.GifBg;
 
 public class DifficultyScreen extends AbstractScreen {
 
+    private final GifBg back;
     private DifficultyButton[] buttons = new DifficultyButton[3];
     public BackButton backButton;
 
@@ -21,6 +23,7 @@ public class DifficultyScreen extends AbstractScreen {
             buttons[i] = b;
         }
         backButton = new BackButton();
+        back = new GifBg("MAIN_MENU");
     }
 
     @Override
@@ -33,6 +36,7 @@ public class DifficultyScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
+        back.render(sb);
         for(DifficultyButton b : buttons) {
             b.render(sb);
         }

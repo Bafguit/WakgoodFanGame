@@ -28,6 +28,7 @@ public class RunViewPlayerIcon extends AbstractUI {
     if (enabled && p != null) {
       sb.setColor(p.isAlive() ? p.animColor : Color.DARK_GRAY);
       sb.draw(p.imgPanel, x, y, sWidth, sHeight);
+      sb.setColor(Color.WHITE);
       sb.draw(img, x, y, sWidth, sHeight);
     }
   }
