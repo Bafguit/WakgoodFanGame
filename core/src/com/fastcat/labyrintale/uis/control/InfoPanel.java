@@ -60,7 +60,7 @@ public class InfoPanel extends AbstractUI {
 
     for (int i = 0; i < 4; i++) {
       PlayerIcon c = new PlayerIcon(i);
-      c.setPosition((89 + 209 * i) * scale, 110 * scale);
+      c.setPosition((68 + 212 * i) * scale, (70 * scale));
       pIcons[i] = c;
     }
     aSkill = new ItemPanel();

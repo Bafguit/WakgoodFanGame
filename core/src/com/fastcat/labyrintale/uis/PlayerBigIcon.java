@@ -18,7 +18,7 @@ public class PlayerBigIcon extends AbstractUI {
 
   public PlayerBigIcon(AbstractPlayer p) {
     super(FileHandler.getUi().get("BORDER_V"));
-    setScale(1.16f);
+    setScale(1.2f);
     this.p = p;
   }
 

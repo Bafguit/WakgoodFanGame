@@ -240,10 +240,6 @@ public class Labyrintale extends Game {
     sb.end();
   }
 
-  public static void resetCamera() {
-    camera.zoom = 1;
-  }
-
   private void fade() {
     if (fading) {
       if (!fadeIn) {

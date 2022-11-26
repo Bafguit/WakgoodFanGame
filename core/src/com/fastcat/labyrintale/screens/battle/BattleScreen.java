@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.screens.battle;
 
-import static com.fastcat.labyrintale.Labyrintale.camera;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
@@ -273,7 +272,6 @@ public class BattleScreen extends AbstractScreen {
     }
 
     sb.end();
-    shr.setProjectionMatrix(zoom ? bCamera.combined : camera.combined);
     shr.begin(ShapeRenderer.ShapeType.Filled);
     for (int i = 0; i < 4; i++) {
       PlayerBattleView tp = players[i];
@@ -361,9 +359,6 @@ public class BattleScreen extends AbstractScreen {
         }
         enemySkills[i].render(sb);
       }
-    }
-    if(zoom) {
-      sb.setProjectionMatrix(camera.combined);
     }
   }
 

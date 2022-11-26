@@ -1,6 +1,4 @@
-package com.fastcat.labyrintale.uis;
-
-import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
+package com.fastcat.labyrintale.screens.playerinfo;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,15 +9,16 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 
-public class PlayerIcon extends AbstractUI {
+import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
+
+public class PlayerInfoIcon extends AbstractUI {
 
   public int index;
   public AbstractPlayer p;
 
-  public PlayerIcon(int index) {
+  public PlayerInfoIcon(int index) {
     super(FileHandler.getUi().get("BORDER_V"));
     this.index = index;
-    setScale(1.2f);
     p = AbstractLabyrinth.players[index];
   }
 

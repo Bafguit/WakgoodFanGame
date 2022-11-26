@@ -32,7 +32,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
   public PlayerInfoItemIcon[][] item = new PlayerInfoItemIcon[4][2];
   public PlayerInfoItemIcon[] passive = new PlayerInfoItemIcon[4];
   public StatIcon[][] stats = new StatIcon[4][8];
-  public PlayerIcon[] pIcons = new PlayerIcon[4];
+  public PlayerInfoIcon[] pIcons = new PlayerInfoIcon[4];
   public UpgradeStatButton upStat;
   public boolean showing;
 
@@ -71,7 +71,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
             stats[c][cnt++] = s;
           }
         }
-        PlayerIcon pc = new PlayerIcon(c);
+        PlayerInfoIcon pc = new PlayerInfoIcon(c);
         pc.clickable = false;
         pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.69f - 0.275f * f));
         pIcons[c] = pc;
