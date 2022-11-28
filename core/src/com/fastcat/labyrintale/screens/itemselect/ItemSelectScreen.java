@@ -82,6 +82,8 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
   @Override
   public void isRewardDone(boolean isDone) {
     if(rewardDone != null) rewardDone.isRewardDone(isDone);
-    Labyrintale.removeTempScreen(this);
+    if(isDone) {
+      Labyrintale.removeTempScreen(this);
+    }
   }
 }

@@ -22,7 +22,6 @@ public class SelfBombStatus extends AbstractStatus {
 
   @Override
   public void onDeath(AbstractEntity m) {
-    hasAmount = false;
     top(
             new AttackAction(
                     null,

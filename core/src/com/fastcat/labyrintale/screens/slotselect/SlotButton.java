@@ -21,7 +21,7 @@ public class SlotButton extends AbstractUI {
   public SlotSelectScreen select;
 
   public SlotButton(AbstractPlayer player, int index, SlotSelectScreen select) {
-    super(FileHandler.getUi().get("SLOT_UP"));
+    super(FileHandler.getUi().get("BORDER_M"));
     this.player = player;
     this.index = index;
     skill = player.deck.get(index);
@@ -46,6 +46,7 @@ public class SlotButton extends AbstractUI {
       else sb.setColor(Color.LIGHT_GRAY);
       sb.draw(skill.img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
+      sb.draw(img, x, y, sWidth, sHeight);
       if (!skill.passive) {
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(

@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
+
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class LogoText extends AbstractUI {
 
   public LogoText() {
     super(FileHandler.getUi().get("TITLE"));
-    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.6f);
+    setPosition(1350 * scale, 740 * scale);
     overable = false;
   }
 

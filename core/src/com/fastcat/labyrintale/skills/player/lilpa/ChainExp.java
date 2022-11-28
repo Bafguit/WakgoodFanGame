@@ -18,18 +18,15 @@ public class ChainExp extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
     setBaseValue(VALUE, 1);
-    setBaseValue2(3);
+    setBaseValue2(2);
     setBaseCost(5);
   }
 
   @Override
   public void use() {
     for(int i = 0; i < value2; i++) {
-      bot(new AttackAction(owner, target, attack, AttackAction.AttackType.BURN, true));
-    }
-    for(int i = 0; i < value2; i++) {
-      bot(new ApplyStatusAction(new BurnStatus(value), owner, target, true));
       bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
+      bot(new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHTNING, true));
     }
   }
 

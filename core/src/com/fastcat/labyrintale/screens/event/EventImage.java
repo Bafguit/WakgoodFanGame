@@ -14,21 +14,21 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 public class EventImage extends AbstractUI {
 
   public AbstractEvent event;
-  public FontHandler.FontData fontName = EVENT_TITLE;
+  public FontHandler.FontData fontName = MAIN_MENU_BORDER;
   public FontHandler.FontData fontDesc = EVENT_DESC;
   public float nx, ny, nw, nh, dx, dy, dw, dh;
 
   public EventImage(AbstractEvent e) {
     super(FileHandler.getUi().get("EVENT"));
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-    setPosition(w * 0.5f, h * 0.48f);
+    setPosition(w * 0.5f - sWidth / 2, h * 0.48f);
     event = e;
     overable = false;
-    nx = dx = w * 0.5f;
-    ny = h * 0.75f;
-    dy = h * 0.75f - 50 * scale;
-    nw = dw = 1200 * InputHandler.scale;
-    nh = 50 * InputHandler.scale;
+    nx = dx = x;
+    ny = h * 0.8f;
+    dy = h * 0.8f - 60 * scale;
+    nw = dw = sWidth * 0.9f;
+    nh = 60 * InputHandler.scale;
     dh = 360 * InputHandler.scale;
   }
 

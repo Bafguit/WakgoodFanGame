@@ -75,7 +75,7 @@ public class Labyrintale extends Game {
   @Getter private static ScreenShake screenShake;
 
   public static void fadeOutAndChangeScreen(AbstractScreen screen) {
-    fadeOutAndChangeScreen(screen, 1.0f);
+    fadeOutAndChangeScreen(screen, 1.25f);
   }
 
   public static void fadeOutAndChangeScreen(AbstractScreen screen, float sec) {
@@ -87,7 +87,7 @@ public class Labyrintale extends Game {
   }
 
   public static void fadeOutAndAddScreen(AbstractScreen screen) {
-    fadeOutAndAddScreen(screen, 1.0f);
+    fadeOutAndAddScreen(screen, 1.25f);
   }
 
   public static void fadeOutAndAddScreen(AbstractScreen screen, float sec) {

@@ -13,22 +13,31 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class MainMenuScreen extends AbstractScreen {
 
-  private final LogoText logoText;
+  private final LogoText logo;
   private final GameStartButton gameStartButton;
   private final LoadButton loadButton;
   private final RunsButton runsButton;
   private final OptionButton optionButton;
+  private final CreditButton creditButton;
   private final ExitButton exitButton;
-  private final GifBg back;
+  public final GifBg back;
 
   public MainMenuScreen() {
     setBg(FileHandler.getBg().get("BG_MAIN"));
-    logoText = new LogoText();
+    logo = new LogoText();
     gameStartButton = new GameStartButton();
+    float lx = logo.x + (logo.sWidth - gameStartButton.sWidth) / 2;
+    gameStartButton.setX(lx);
     loadButton = new LoadButton();
+    loadButton.setX(lx);
     runsButton = new RunsButton();
+    runsButton.setX(lx);
     optionButton = new OptionButton();
+    optionButton.setX(lx);
+    creditButton = new CreditButton();
+    creditButton.setX(lx);
     exitButton = new ExitButton();
+    exitButton.setX(lx);
     back = new GifBg("MAIN_MENU");
 
     cType = ControlPanel.ControlType.HIDE;
@@ -36,22 +45,24 @@ public class MainMenuScreen extends AbstractScreen {
 
   @Override
   public void update() {
-    logoText.update();
+    logo.update();
     gameStartButton.update();
     loadButton.update();
     runsButton.update();
     optionButton.update();
+    creditButton.update();
     exitButton.update();
   }
 
   @Override
   public void render(SpriteBatch sb) {
     back.render(sb);
-    logoText.render(sb);
+    logo.render(sb);
     gameStartButton.render(sb);
     loadButton.render(sb);
     runsButton.render(sb);
     optionButton.render(sb);
+    creditButton.render(sb);
     exitButton.render(sb);
   }
 
@@ -69,11 +80,12 @@ public class MainMenuScreen extends AbstractScreen {
       }
     }
     Labyrintale.closeTutorial();
-    logoText.onHide();
+    logo.onHide();
     gameStartButton.onHide();
     loadButton.onHide();
     runsButton.onHide();
     optionButton.onHide();
+    creditButton.onHide();
     exitButton.onHide();
     SaveHandler.refresh();
     RunHandler.load();

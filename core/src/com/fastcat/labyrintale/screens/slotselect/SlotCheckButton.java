@@ -18,7 +18,7 @@ public class SlotCheckButton extends AbstractUI {
   public AbstractSkill skill;
 
   public SlotCheckButton(AbstractSkill skill) {
-    super(FileHandler.getUi().get("SLOT_UP"));
+    super(FileHandler.getUi().get("BORDER_M"));
     this.skill = skill;
     clickable = false;
     fontData = FontHandler.COOLDOWN;
@@ -36,6 +36,7 @@ public class SlotCheckButton extends AbstractUI {
     if (enabled) {
       sb.setColor(Color.WHITE);
       sb.draw(skill.img, x, y, sWidth, sHeight);
+      sb.draw(img, x, y, sWidth, sHeight);
       if (!skill.passive) {
         sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
         FontHandler.renderCenter(

@@ -46,7 +46,7 @@ public class ItemSelectEventChoice extends AbstractEvent.EventChoice implements 
 
   @Override
   public void isRewardDone(boolean isDone) {
-    if (toPage >= 0) {
+    if (isDone && toPage >= 0) {
       event.setPage(toPage);
     }
   }

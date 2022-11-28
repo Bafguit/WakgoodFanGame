@@ -81,6 +81,7 @@ public final class SoundHandler implements Disposable {
     music.put("LOBBY", new MusicData("LOBBY", getMusic("sound/bgm/demo.mp3")));
     music.put("WIN", new MusicData("LOBBY", getMusic("sound/bgm/win.mp3")));
     music.put("LOSS", new MusicData("LOBBY", getMusic("sound/bgm/loss.mp3")));
+    music.put("CREDIT", new MusicData("LOBBY", getMusic("sound/bgm/credit.mp3")));
     // music.put("LOGO", new MusicData("LOGO", getMusic("sound/bgm/logo.mp3")));
   }
 
@@ -129,10 +130,10 @@ public final class SoundHandler implements Disposable {
   }
 
   public static MusicData addBattle() {
-    if(currentFloor.currentRoom.type == BATTLE || currentFloor.currentRoom.type == ELITE) {
-      return addMusic("BATTLE_" + AbstractLabyrinth.floorNum, true, true);
-    } else {
+    if(currentFloor.currentRoom.type == BOSS) {
       return addMusic("BOSS_" + AbstractLabyrinth.floorNum, true, true);
+    } else {
+      return addMusic("BATTLE_" + AbstractLabyrinth.floorNum, true, true);
     }
   }
 

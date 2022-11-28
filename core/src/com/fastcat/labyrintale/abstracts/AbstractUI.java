@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -126,14 +127,14 @@ public abstract class AbstractUI implements Disposable {
   }
 
   public final void render(SpriteBatch sb) {
-    sb.setColor(Color.WHITE);
+    sb.setColor(WHITE);
     renderUi(sb);
   }
 
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      if (!over) sb.setColor(Color.LIGHT_GRAY);
-      else sb.setColor(Color.WHITE);
+      if (overable && !over) sb.setColor(Color.LIGHT_GRAY);
+      else sb.setColor(WHITE);
       if (showImg) sb.draw(img, x, y, sWidth, sHeight);
 
       if (fontData != null) {
@@ -145,7 +146,7 @@ public abstract class AbstractUI implements Disposable {
   public final void renderSub(SpriteBatch sb) {
     if (subTexts != null) {
       if (subTexts.size > 0) {
-        sb.setColor(Color.WHITE);
+        sb.setColor(WHITE);
         float sc, subP;
         if (subWay == SubText.SubWay.DOWN) {
           sc = -10 * scale;

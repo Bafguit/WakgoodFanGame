@@ -2,6 +2,8 @@ package com.fastcat.labyrintale.events.neut;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 
@@ -30,7 +32,11 @@ public class LightEvent extends AbstractEvent {
   @Override
   public void onSetPage(int page) {
     if (page == 1) {
-      // TODO
+      for(AbstractPlayer p : AbstractLabyrinth.players) {
+        p.stat.moveRes += 5;
+        p.stat.neutRes += 5;
+        p.stat.debuRes += 5;
+      }
     }
   }
 }

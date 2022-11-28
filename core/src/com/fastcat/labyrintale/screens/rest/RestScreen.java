@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -119,7 +120,9 @@ public class RestScreen extends AbstractScreen {
   }
 
   @Override
-  public void show() {}
+  public void show() {
+    SoundHandler.addWay().stop = false;
+  }
 
   @Override
   public void hide() {}

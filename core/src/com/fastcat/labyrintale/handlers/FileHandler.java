@@ -76,6 +76,7 @@ public class FileHandler implements Disposable {
     jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
     jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
     jsonMap.put(JsonType.RISK_JSON, generateJson("json/restrictions.json"));
+    jsonMap.put(JsonType.CREDIT_JSON, generateJson("json/credit.json"));
     jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
     jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
     jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
@@ -275,6 +276,7 @@ public class FileHandler implements Disposable {
     ui.put("ARROW_RIGHT", new Sprite(new Texture("img/ui/arrow_right.png")));
     ui.put("HEALTH_BAR", new Sprite(new Texture("img/ui/health_bar.png")));
     ui.put("HEALTH_BACK", new Sprite(new Texture("img/ui/hb_block.png")));
+    ui.put("CREDIT", new Sprite(new Texture("img/credit.png")));
   }
 
   private void generateCharImg() {
@@ -437,6 +439,7 @@ public class FileHandler implements Disposable {
     STATUS_JSON,
     ENEMY_JSON,
     EVENT_JSON,
+    CREDIT_JSON,
     ITEM_JSON,
     RISK_JSON,
     KEY_JSON,

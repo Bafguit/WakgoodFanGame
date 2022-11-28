@@ -69,8 +69,8 @@ public class MoveAction extends AbstractAction {
         run = false;
       } else if (fromType != type) {
         int a = publicRandom.random(0, 99);
-        if(from.badLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
-        if(from.goodLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+        if(from.badLuck > 1) a = Math.max(a, publicRandom.random(0, 99));
+        if(from.goodLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
         if(a < AbstractEntity.EntityStat.cap(from.stat.moveRes)) {
           EffectHandler.add(
                   new UpTextEffect(

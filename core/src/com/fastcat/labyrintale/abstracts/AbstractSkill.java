@@ -338,9 +338,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
           if (p.entity.health == low) temp.add(p.entity);
         }
         if(temp.size == 1) {
+          AbstractEntity e = temp.get(0);
           for (int i = 0; i < 4; i++) {
             AbstractEntity p = tp[i].entity;
-            if (p.isAlive() && p.hasStatus("Provoke")) {
+            if(p == e) break;
+            else if (p.isAlive() && p.hasStatus("Provoke")) {
               temp.clear();
               temp.add(p);
               break;
@@ -358,9 +360,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
           if (p.entity.health == low) temp.add(p.entity);
         }
         if(temp.size == 1) {
+          AbstractEntity e = temp.get(0);
           for (int i = 0; i < 4; i++) {
             AbstractEntity p = te[i].entity;
-            if (p.isAlive() && p.hasStatus("Provoke")) {
+            if(p == e) break;
+            else if (p.isAlive() && p.hasStatus("Provoke")) {
               temp.clear();
               temp.add(p);
               break;
@@ -378,9 +382,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
           if (p.entity.health == low) temp.add(p.entity);
         }
         if(temp.size == 1) {
+          AbstractEntity e = temp.get(0);
           for (int i = 0; i < 4; i++) {
             AbstractEntity p = tp[i].entity;
-            if (p.isAlive() && p.hasStatus("Provoke")) {
+            if(p == e) break;
+            else if (p.isAlive() && p.hasStatus("Provoke")) {
               temp.clear();
               temp.add(p);
               break;
@@ -398,9 +404,11 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
           if (p.entity.health == low) temp.add(p.entity);
         }
         if(temp.size == 1) {
+          AbstractEntity e = temp.get(0);
           for (int i = 0; i < 4; i++) {
             AbstractEntity p = te[i].entity;
-            if (p.isAlive() && p.hasStatus("Provoke")) {
+            if(p == e) break;
+            else if (p.isAlive() && p.hasStatus("Provoke")) {
               temp.clear();
               temp.add(p);
               break;

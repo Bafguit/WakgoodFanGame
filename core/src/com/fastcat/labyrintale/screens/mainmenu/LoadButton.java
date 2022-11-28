@@ -13,7 +13,7 @@ public class LoadButton extends AbstractUI {
 
   public LoadButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.425f);
+    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.385f);
     fontData = MAIN_MENU;
     text = "불러오기";
     showImg = false;
