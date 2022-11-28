@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class ChargeAction extends AbstractAction {
 
@@ -72,7 +73,7 @@ public class ChargeAction extends AbstractAction {
           AbstractEntity te = target.get(i);
           if (te.isAlive()) block += te.takeDamage(info);
         }
-        if(block > 0) ActionHandler.top(new BlockAction(null, actor, block / 2));
+        if(block > 0) ActionHandler.top(new ApplyStatusAction(new EnduranceStatus(block / 2), null, actor, true));
       } else isDone = true;
     }
   }

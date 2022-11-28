@@ -32,8 +32,8 @@ public class UpIconEffect extends AbstractEffect {
   protected void updateEffect() {
     y += Labyrintale.tick * 100;
     img.setPosition(x, y);
-    if (duration <= baseDuration * 0.5f) {
-      float f = Labyrintale.tick * (1.8f / baseDuration);
+    if (duration <= baseDuration / 2) {
+      float f = Labyrintale.tick / baseDuration * 2;
       if (alpha <= f) isDone = true;
       alpha = MathUtils.clamp(alpha - f, 0, 0.7f);
     }

@@ -22,6 +22,18 @@ public class ShockStatus extends AbstractStatus {
   }
 
   @Override
+  public void onInitial() {
+    owner.stat.speed -= 2;
+    owner.stat.critical -= 20;
+  }
+
+  @Override
+  public void onRemove() {
+    owner.stat.speed += 2;
+    owner.stat.debuRes += 20;
+  }
+
+  @Override
   public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
     if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
       StatusDamageAction s =

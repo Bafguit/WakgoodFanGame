@@ -26,7 +26,6 @@ public class Lightning extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new SpeedMinusStatus(1), owner, e, true));
     top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
     top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
   }

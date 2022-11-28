@@ -22,14 +22,16 @@ public class SelfBombStatus extends AbstractStatus {
 
   @Override
   public void onDeath(AbstractEntity m) {
-    top(
-            new AttackAction(
-                    null,
-                    SkillTarget.PLAYER_ALL,
-                    10,
-                    AbstractEntity.DamageType.SPIKE,
-                    AttackAction.AttackType.BURN,
-                    true));
+    if(m == owner) {
+      top(
+              new AttackAction(
+                      null,
+                      SkillTarget.PLAYER_ALL,
+                      10,
+                      AbstractEntity.DamageType.SPIKE,
+                      AttackAction.AttackType.BURN,
+                      true));
+    }
   }
 
   public void endOfTurn() {

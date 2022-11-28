@@ -17,7 +17,7 @@ public class UpTextEffect extends AbstractEffect {
   public UpTextEffect(float x, float y, String t, Color color) {
     super(x, y, 1);
     text = new EffectPublicText(FileHandler.getUi().get("MENU_SELECT"), 300, 60);
-    text.fontData = new FontHandler.FontData(MEDIUM, 53, color);
+    text.fontData = new FontHandler.FontData(MEDIUM, 53, color, true, true);
     text.text = t;
     text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
   }
@@ -26,8 +26,10 @@ public class UpTextEffect extends AbstractEffect {
   protected void updateEffect() {
     if (duration != baseDuration) {
       if (text.fontData != null) {
-        text.fontData.alpha -= Labyrintale.tick / baseDuration;
-        if (text.fontData.alpha < 0) text.fontData.alpha = 0;
+        if(duration <= baseDuration / 2) {
+          text.fontData.alpha -= Labyrintale.tick / baseDuration * 2;
+          if (text.fontData.alpha < 0) text.fontData.alpha = 0;
+        }
         text.y += Labyrintale.tick * 100;
       }
     }

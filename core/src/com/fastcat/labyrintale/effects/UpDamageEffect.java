@@ -17,7 +17,7 @@ public class UpDamageEffect extends AbstractEffect {
   public UpDamageEffect(float x, float y, int damage, Color color, boolean isNegative) {
     super(x, y, 1);
     text = new EffectPublicText(FileHandler.getUi().get("MENU_SELECT"), 300, 60);
-    text.fontData = new FontHandler.FontData(MEDIUM, 53, color);
+    text.fontData = new FontHandler.FontData(MEDIUM, 53, color, true, true);
     damage = Math.max(damage, 0);
     text.text = damage != 0 ? isNegative ? "-" + damage : "+" + damage : "0";
     text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
@@ -27,8 +27,10 @@ public class UpDamageEffect extends AbstractEffect {
   protected void updateEffect() {
     if (duration != baseDuration) {
       if (text.fontData != null) {
-        text.fontData.alpha -= Labyrintale.tick / baseDuration;
-        if (text.fontData.alpha < 0) text.fontData.alpha = 0;
+        if(duration <= baseDuration / 2) {
+          text.fontData.alpha -= Labyrintale.tick / baseDuration * 2;
+          if (text.fontData.alpha < 0) text.fontData.alpha = 0;
+        }
         text.y += Labyrintale.tick * 100;
       }
     }

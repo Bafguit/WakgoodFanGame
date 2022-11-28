@@ -314,7 +314,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
   }
 
-  public int calculateAttack(int d) {
+  public int calculateAttack(AbstractEntity tar, int d) {
     d += stat.attack;
     if (isPlayer) {
       d = passive.showAttack(d);
@@ -334,10 +334,10 @@ public abstract class AbstractEntity implements Cloneable {
     for (AbstractStatus s : status) {
       d *= s.attackMultiply();
     }
-    return critical(d);
+    return critical(tar, d);
   }
 
-  private int critical(int d) {
+  private int critical(AbstractEntity tar, int d) {
     int cr = EntityStat.cap(stat.critical);
     if(hasItem("TotoDeck")) cr = 10;
     int a = publicRandom.random(0, 99);
@@ -345,7 +345,9 @@ public abstract class AbstractEntity implements Cloneable {
     if(goodLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
     if (a < cr) {
       EffectHandler.add(
-              new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "치명타", CYAN));
+              new UpTextEffect(tar.ui.x + tar.ui.sWidth / 2, tar.ui.y + tar.ui.sHeight * 0.475f, "치명타", CYAN));
+      Labyrintale.getScreenShake()
+              .shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
       d *= 1 + ((float) stat.multiply * 0.01f);
     }
     return d;
@@ -375,7 +377,7 @@ public abstract class AbstractEntity implements Cloneable {
       DamageType type = info.type;
       if (cPanel.type == ControlPanel.ControlType.BATTLE) {
         if (attacker != null && type == DamageType.NORMAL) {
-          damage = attacker.calculateAttack(damage);
+          damage = attacker.calculateAttack(this, damage);
           if(info.skill != null) {
             damage *= info.skill.attackMultiply(this);
           }
@@ -389,7 +391,7 @@ public abstract class AbstractEntity implements Cloneable {
             if (s != null) s.onAttack(this, damage, type);
           }
         } else if (attacker != null && type == DamageType.COUNTER) {
-          damage = attacker.critical(damage);
+          damage = attacker.critical(this, damage);
         }
         if (damage > 0) {
           if (isPlayer) {
@@ -413,7 +415,7 @@ public abstract class AbstractEntity implements Cloneable {
           if (damage > 0) {
             damage = loseBlock(damage);
             if (damage > 0) {
-              if (attacker != null && type == DamageType.NORMAL) {
+              if (attacker != null) {
                 if (attacker.isPlayer) {
                   attacker.passive.onDamage(this, damage, type);
                   for (AbstractItem m : attacker.item) {

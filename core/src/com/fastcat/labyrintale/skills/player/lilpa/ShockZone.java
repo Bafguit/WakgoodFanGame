@@ -24,7 +24,6 @@ public class ShockZone extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
-    bot(new ApplyStatusAction(new SpeedMinusStatus(value2), owner, target, true));
   }
 
   @Override
