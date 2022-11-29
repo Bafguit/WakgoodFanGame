@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.skills.player.lilpa;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.status.ParalyzedStatus;
 import com.fastcat.labyrintale.status.ShockStatus;
 import com.fastcat.labyrintale.status.SpeedMinusStatus;
 
@@ -24,6 +25,7 @@ public class ShockZone extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
+    bot(new ApplyStatusAction(new ParalyzedStatus(value), owner, target, true));
   }
 
   @Override

@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.status.ParalyzedStatus;
 import com.fastcat.labyrintale.status.ShockStatus;
 import com.fastcat.labyrintale.status.SpeedMinusStatus;
 
@@ -26,6 +27,7 @@ public class Lightning extends AbstractSkill {
 
   @Override
   public void onTarget(AbstractEntity e) {
+    top(new ApplyStatusAction(new ParalyzedStatus(value), owner, e, true));
     top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
     top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
   }
