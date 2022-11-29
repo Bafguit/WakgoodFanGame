@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.uis;
 
 import static com.fastcat.labyrintale.Labyrintale.charInfoScreen;
 import static com.fastcat.labyrintale.handlers.FontHandler.HP;
+import static com.fastcat.labyrintale.handlers.FontHandler.HP_N;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.graphics.Color;
@@ -19,6 +20,7 @@ import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 public class PlayerBigIcon extends AbstractUI {
   private static final FontHandler.FontData fontHp = HP;
 
+  public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public AbstractEntity p;
   public Sprite hb;
   public float hx, hy, hw, hh;
@@ -40,10 +42,11 @@ public class PlayerBigIcon extends AbstractUI {
       sb.draw(p.imgPanel, x, y, sWidth, sHeight);
       sb.draw(img, x, y, sWidth, sHeight);
       float sc = ((float)p.health) / ((float)p.maxHealth);
+      sb.draw(hbb, x + hx, y + hy, hw, hh);
       sb.draw(hb, x + hx, y + hy, 0, 0, hw, hh, sc, 1, 0);
       FontHandler.renderCenter(
               sb,
-              fontHp,
+              p.isNeut || !p.isAlive() ? HP_N : FontHandler.HP,
               p.health + "/" + p.maxHealth,
               x,
               y + hy + 18 * scale,

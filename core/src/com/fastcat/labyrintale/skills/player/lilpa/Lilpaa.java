@@ -2,7 +2,10 @@ package com.fastcat.labyrintale.skills.player.lilpa;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.LilpaaAction;
+import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.UnfortifiedStatus;
 
 public class Lilpaa extends AbstractSkill {
 
@@ -23,6 +26,7 @@ public class Lilpaa extends AbstractSkill {
   @Override
   public void use() {
     bot(new LilpaaAction(this));
+    bot(new ApplyStatusAction(new UnfortifiedStatus(value), owner, TARGET, true));
   }
 
   @Override

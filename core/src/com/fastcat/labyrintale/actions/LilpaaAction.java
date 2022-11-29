@@ -47,9 +47,6 @@ public class LilpaaAction extends AbstractAction {
       for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
         if (e.isAlive()) e.takeDamage(info);
       }
-      for (AbstractEnemy e : AbstractLabyrinth.currentFloor.currentRoom.enemies) {
-        if (e.isAlive()) e.applyStatus(new UnfortifiedStatus(burn), burn, true);
-      }
     }
   }
 }

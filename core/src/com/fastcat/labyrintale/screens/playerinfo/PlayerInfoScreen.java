@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -90,6 +91,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
   @Override
   public void update() {
     cType = Labyrintale.getBaseScreen().cType;
+    if (InputHandler.cancel || InputHandler.info) remove();
 
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 3; j++) {

@@ -50,6 +50,7 @@ public final class FontHandler implements Disposable {
   public static final FontData BORDER = new FontData(MEDIUM, 40, true);
   public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
   public static final FontData HP = new FontData(MEDIUM, 26, false);
+  public static final FontData HP_N = new FontData(MEDIUM, 26, SCARLET, false, false);
   public static final FontData STATUS = new FontData(MEDIUM, 20, true);
   public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
   public static final FontData WAY = new FontData(MEDIUM, 32, false);
@@ -57,6 +58,7 @@ public final class FontHandler implements Disposable {
   public static final FontData BLEAK =
       new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
   public static final FontData SUB_NAME = new FontData(MEDIUM, 32, true);
+  public static final FontData STAT = new FontData(MEDIUM, 28, true);
   public static final FontData SUB_DESC = new FontData(MEDIUM, 26, false);
   public static final FontData EXP = new FontData(MEDIUM, 26, true);
 
@@ -338,6 +340,7 @@ public final class FontHandler implements Disposable {
     BLEAK.dispose();
     SUB_NAME.dispose();
     SUB_DESC.dispose();
+    STAT.dispose();
     MAIN_MENU_BORDER.dispose();
     EXP.dispose();
     CARD_BORDER.dispose();

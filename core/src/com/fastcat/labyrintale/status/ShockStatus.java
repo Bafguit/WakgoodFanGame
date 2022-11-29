@@ -1,9 +1,11 @@
 package com.fastcat.labyrintale.status;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractSkill.SkillTarget;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 import com.fastcat.labyrintale.actions.AttackAction;
+import com.fastcat.labyrintale.actions.RemoveStatusAction;
 import com.fastcat.labyrintale.actions.StatusDamageAction;
 
 public class ShockStatus extends AbstractStatus {
@@ -22,24 +24,11 @@ public class ShockStatus extends AbstractStatus {
   }
 
   @Override
-  public void onInitial() {
-    owner.stat.speed -= 2;
-    owner.stat.critical -= 20;
-  }
-
-  @Override
-  public void onRemove() {
-    owner.stat.speed += 2;
-    owner.stat.debuRes += 20;
-  }
-
-  @Override
   public int onAttacked(AbstractEntity t, int d, AbstractEntity.DamageType type) {
     if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
-      StatusDamageAction s =
-          new StatusDamageAction(this, AttackAction.AttackType.LIGHTNING, false, true, true);
-      s.e = null;
-      top(s);
+      top(new RemoveStatusAction(this, true));
+      top(new AttackAction(null, AbstractSkill.getTargets(this), amount,
+              AbstractEntity.DamageType.SPIKE, AttackAction.AttackType.LIGHTNING, true));
     }
     return d;
   }

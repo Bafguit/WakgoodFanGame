@@ -22,7 +22,7 @@ public class AllSlotButton extends AbstractUI {
   public AllSkillScreen select;
 
   public AllSlotButton(AbstractPlayer player, int index, AllSkillScreen select) {
-    super(FileHandler.getUi().get("SLOT_UP"));
+    super(FileHandler.getUi().get("BORDER_M"));
     this.player = player;
     this.index = index;
     skill = player.deck.get(index);

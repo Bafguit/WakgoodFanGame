@@ -19,8 +19,6 @@ public abstract class AbstractReward implements GetRewardDone {
 
   private static Sprite getImg(AbstractReward.RewardType type) {
     switch (type) {
-      case SLOT:
-        return FileHandler.getUi().get("SLOT_UP");
       case HEAL:
         return FileHandler.getUi().get("HEAL");
       case GOLD:
@@ -47,7 +45,6 @@ public abstract class AbstractReward implements GetRewardDone {
     STAT,
     GOLD,
     HEAL,
-    ITEM,
-    SLOT
+    ITEM
   }
 }

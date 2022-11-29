@@ -8,6 +8,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
+import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 
 public final class InputHandler {
 
@@ -100,24 +101,34 @@ public final class InputHandler {
 
     if (!textInputMode) {
       map = Gdx.input.isKeyJustPressed(Keys.M);
+      info = Gdx.input.isKeyJustPressed(Keys.I);
     }
 
-    AbstractScreen s = Labyrintale.getCurScreen();
     if (map
         && Labyrintale.mapScreen != null
-        && s.type != AbstractScreen.ScreenType.MAP
-        && s.type != AbstractScreen.ScreenType.SETTING) {
+        && !Labyrintale.mapScreen.showing
+        && !Labyrintale.setting) {
       MapScreen.view();
       map = false;
     }
+    if (info
+            && Labyrintale.playerInfoScreen != null
+            && !Labyrintale.playerInfoScreen.showing
+            && !Labyrintale.setting) {
+      PlayerInfoScreen.view();
+      info = false;
+    }
 
-    if (cancel
-        && Labyrintale.settingScreen != null
-        && Labyrintale.labyrinth != null) {
-      if(!Labyrintale.setting) {
-        Labyrintale.openSetting();
-      } else {
-        Labyrintale.closeSetting();
+    if (cancel) {
+      if(Labyrintale.labyrinth != null) {
+        if(!Labyrintale.setting) {
+          if (Labyrintale.mapScreen != null && !Labyrintale.mapScreen.showing
+                  && Labyrintale.playerInfoScreen != null && !Labyrintale.playerInfoScreen.showing) {
+            Labyrintale.openSetting();
+          }
+        } else {
+          Labyrintale.closeSetting();
+        }
       }
     }
   }

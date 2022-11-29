@@ -18,6 +18,7 @@ public class MapScreen extends AbstractScreen {
 
   public ShapeRenderer shr = new ShapeRenderer();
   public boolean glow = false;
+  public boolean showing = false;
   public float alpha = 1.0f;
 
   public MapNodeButton[][] nodes = new MapNodeButton[13][3];
@@ -41,10 +42,12 @@ public class MapScreen extends AbstractScreen {
   }
 
   public static void view() {
+    mapScreen.showing = true;
     Labyrintale.addTempScreen(Labyrintale.mapScreen);
   }
 
   public static void remove() {
+    mapScreen.showing = false;
     Labyrintale.removeTempScreen(Labyrintale.mapScreen);
   }
 
@@ -67,7 +70,7 @@ public class MapScreen extends AbstractScreen {
   @Override
   public void update() {
     cType = Labyrintale.getBaseScreen().cType;
-    if (InputHandler.cancel || InputHandler.map) Labyrintale.removeTempScreen(this);
+    if (InputHandler.cancel || InputHandler.map) remove();
     for (int i = 0; i < 13; i++) {
       for (int j = 0; j < 3; j++) {
         MapNodeButton n = nodes[i][j];

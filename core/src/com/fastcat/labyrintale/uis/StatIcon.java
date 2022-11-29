@@ -33,7 +33,7 @@ public class StatIcon extends AbstractUI {
     KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
     subTexts = new Array<>();
     subTexts.add(new SubText(data.NAME, data.DESC));
-    fontData = FontHandler.SUB_NAME;
+    fontData = FontHandler.STAT;
     clickable = false;
   }
 
@@ -44,7 +44,7 @@ public class StatIcon extends AbstractUI {
     KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
     subTexts = new Array<>();
     subTexts.add(new SubText(data.NAME, data.DESC));
-    fontData = FontHandler.SUB_NAME;
+    fontData = FontHandler.STAT;
     entity = e;
     isUp = true;
     clickable = e.isAlive() && AbstractLabyrinth.sp > 0;

@@ -80,6 +80,19 @@ public class AttackAction extends AbstractAction {
   }
 
   public AttackAction(
+          AbstractEntity actor,
+          Array<AbstractEntity> tar,
+          int damage,
+          AbstractEntity.DamageType type,
+          AttackType effect,
+          boolean fast) {
+    super(actor, tar, fast ? 0.25f : 0.5f);
+    info = new AbstractEntity.DamageInfo(actor, damage, type);
+    this.effect = effect;
+    img = getEffectImg(effect);
+  }
+
+  public AttackAction(
       AbstractEntity actor,
       AbstractSkill.SkillTarget target,
       int damage,

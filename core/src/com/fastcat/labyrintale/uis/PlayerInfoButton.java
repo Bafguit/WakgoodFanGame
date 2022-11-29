@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.uis;
 
+import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 import com.badlogic.gdx.graphics.Color;
@@ -9,11 +11,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 
 public class PlayerInfoButton extends AbstractUI {
-
-  private static final ShapeRenderer shr = new ShapeRenderer();
 
   public PlayerInfoButton() {
     super(FileHandler.getUi().get("STAT_PLUS"));
@@ -48,6 +49,9 @@ public class PlayerInfoButton extends AbstractUI {
   protected void onClick() {
     if (!playerInfoScreen.showing) {
       PlayerInfoScreen.view();
+      if (mapScreen.showing) {
+        MapScreen.remove();
+      }
     } else {
       PlayerInfoScreen.remove();
     }

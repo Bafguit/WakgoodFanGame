@@ -62,6 +62,7 @@ public final class SoundHandler implements Disposable {
     sfx.put("SMASH", getSound("sound/sfx/smash.ogg"));
     sfx.put("GUN", getSound("sound/sfx/gun.ogg"));
     sfx.put("STATIC", getSound("sound/sfx/static.ogg"));
+    sfx.put("NEUT", getSound("sound/sfx/neut.ogg"));
   }
 
   private static void generateMusic() {

@@ -314,7 +314,7 @@ public abstract class AbstractEntity implements Cloneable {
     }
   }
 
-  public int calculateAttack(AbstractEntity tar, int d) {
+  public int calculateAttack(int d) {
     d += stat.attack;
     if (isPlayer) {
       d = passive.showAttack(d);
@@ -334,7 +334,7 @@ public abstract class AbstractEntity implements Cloneable {
     for (AbstractStatus s : status) {
       d *= s.attackMultiply();
     }
-    return critical(tar, d);
+    return d;
   }
 
   private int critical(AbstractEntity tar, int d) {
@@ -371,13 +371,17 @@ public abstract class AbstractEntity implements Cloneable {
   }
 
   public int takeDamage(DamageInfo info) {
+    boolean isCrit = false;
     int damage = info.damage;
     if (isAlive()) {
       AbstractEntity attacker = info.actor;
       DamageType type = info.type;
       if (cPanel.type == ControlPanel.ControlType.BATTLE) {
         if (attacker != null && type == DamageType.NORMAL) {
-          damage = attacker.calculateAttack(this, damage);
+          damage = attacker.calculateAttack(damage);
+          int dd = attacker.critical(this, damage);
+          if(dd > damage) isCrit = true;
+          damage = dd;
           if(info.skill != null) {
             damage *= info.skill.attackMultiply(this);
           }
@@ -391,7 +395,9 @@ public abstract class AbstractEntity implements Cloneable {
             if (s != null) s.onAttack(this, damage, type);
           }
         } else if (attacker != null && type == DamageType.COUNTER) {
-          damage = attacker.critical(this, damage);
+          int dd = attacker.critical(this, damage);
+          if(dd > damage) isCrit = true;
+          damage = dd;
         }
         if (damage > 0) {
           if (isPlayer) {
@@ -628,6 +634,7 @@ public abstract class AbstractEntity implements Cloneable {
   public void neutralize() {
     health = 1;
     block = 0;
+    SoundHandler.playSfx("NEUT");
     applyStatus(new NeutStatus(this), this, 1);
   }
 

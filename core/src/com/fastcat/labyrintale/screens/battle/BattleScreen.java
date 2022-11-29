@@ -1,20 +1,15 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.handlers.FontHandler.HP;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
 import com.fastcat.labyrintale.handlers.*;
@@ -271,7 +266,7 @@ public class BattleScreen extends AbstractScreen {
             Math.max(((float) tp.entity.health) / ((float) tp.entity.maxHealth), 0), 1, 0);
         renderCenter(
                 sb,
-                HP,
+                tp.entity.isNeut || !tp.entity.isAlive() ? HP_N : FontHandler.HP,
                 tp.entity.health + "/" + tp.entity.maxHealth,
                 px,
                 py + tp.sHeight * 0.06f / 2,
@@ -290,7 +285,7 @@ public class BattleScreen extends AbstractScreen {
             Math.max(((float) te.entity.health) / ((float) te.entity.maxHealth), 0), 1, 0);
         renderCenter(
                 sb,
-                HP,
+                te.entity.isNeut || !te.entity.isAlive() ? HP_N : FontHandler.HP,
                 te.entity.health + "/" + te.entity.maxHealth,
                 ex,
                 ey + te.sHeight * 0.06f / 2,

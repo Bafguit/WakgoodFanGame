@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.way;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.HP;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.screens.battle.BattleScreen.bc;
 import static com.fastcat.labyrintale.screens.battle.BattleScreen.hbc;
 

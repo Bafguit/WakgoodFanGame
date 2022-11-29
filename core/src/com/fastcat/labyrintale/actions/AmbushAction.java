@@ -23,7 +23,7 @@ public class AmbushAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      AttackAction.playAttackSfx(AttackAction.AttackType.LIGHT);
+      AttackAction.playAttackSfx(skill.upgradeCount > 3 ? AttackAction.AttackType.HEAVY : AttackAction.AttackType.LIGHT);
       if (target.size > 0) {
         if (actor != null) {
           AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);

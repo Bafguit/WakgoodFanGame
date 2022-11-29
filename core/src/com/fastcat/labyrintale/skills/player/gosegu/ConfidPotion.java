@@ -21,7 +21,6 @@ public class ConfidPotion extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new SpeedPlusStatus(value), owner, TARGET, true));
-    bot(new ApplyStatusAction(new InfectionStatus(2), owner, TARGET, true));
   }
 
   @Override

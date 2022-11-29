@@ -36,16 +36,18 @@
   },
   "Lightning": {
     "NAME": "벼락",
-    "DESC": "적 하나에게 피해를 {A} 주고 &y<감전>을 {V} 부여합니다.",
+    "DESC": "적 하나에게 피해를 {A} 주고 &y<감전>과 &y<마비>를 {V} 부여합니다.",
     "KEY" : [
-      "Shock"
+      "Shock",
+      "Paralyzed"
     ]
   },
   "ShockZone": {
     "NAME": "감전 지대",
-    "DESC": "모든 적에게 &y<감전>을 {V} 부여합니다.",
+    "DESC": "모든 적에게 &y<감전>과 &y<마비>를 {V} 부여합니다.",
     "KEY" : [
-      "Shock"
+      "Shock",
+      "Paralyzed"
     ]
   },
   "ChainExp": {
