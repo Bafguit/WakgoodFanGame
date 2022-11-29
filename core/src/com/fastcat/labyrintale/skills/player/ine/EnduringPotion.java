@@ -22,7 +22,7 @@ public class EnduringPotion extends AbstractSkill {
 
   @Override
   public void use() {
-    ActionHandler.bot(new HealAction(owner, TARGET, value));
+    ActionHandler.bot(new HealAction(null, TARGET, value));
   }
 
   @Override

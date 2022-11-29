@@ -1,5 +1,5 @@
 {
-  "date" : "2022_11_29_11_11_37",
+  "date" : "2022_11_30_00_48_59",
   "version" : "b0.9.15",
   "random" : {
     "seed" : "F0190B1Z",
@@ -57,6 +57,40 @@
     "maxHealth" : 32,
     "health" : 2
   }, {
+    "id" : "gosegu",
+    "item" : [ "PlaceHolder", "PlaceHolder" ],
+    "deck" : [ {
+      "id" : "Strike",
+      "usedOnly" : false,
+      "upgradeCount" : 1
+    }, {
+      "id" : "BioCloud",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "RustyShard",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    } ],
+    "stat" : {
+      "attack" : 0,
+      "spell" : 0,
+      "speed" : 2,
+      "critical" : 10,
+      "multiply" : 50,
+      "moveRes" : 10,
+      "debuRes" : 60,
+      "neutRes" : 55
+    },
+    "isDead" : false,
+    "goodLuck" : 0,
+    "badLuck" : 0,
+    "index" : 1,
+    "maxRes" : 80,
+    "minRes" : 5,
+    "maxHealth" : 26,
+    "health" : 6
+  }, {
     "id" : "jururu",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
@@ -82,48 +116,14 @@
       "debuRes" : 60,
       "neutRes" : 55
     },
-    "isDead" : false,
-    "goodLuck" : 0,
-    "badLuck" : 0,
-    "index" : 1,
-    "maxRes" : 80,
-    "minRes" : 5,
-    "maxHealth" : 25,
-    "health" : 11
-  }, {
-    "id" : "gosegu",
-    "item" : [ "PlaceHolder", "PlaceHolder" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "BioCloud",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "RustyShard",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "stat" : {
-      "attack" : 0,
-      "spell" : 0,
-      "speed" : 2,
-      "critical" : 10,
-      "multiply" : 50,
-      "moveRes" : 10,
-      "debuRes" : 60,
-      "neutRes" : 55
-    },
-    "isDead" : false,
+    "isDead" : true,
     "goodLuck" : 0,
     "badLuck" : 0,
     "index" : 2,
     "maxRes" : 80,
     "minRes" : 5,
-    "maxHealth" : 26,
-    "health" : 10
+    "maxHealth" : 25,
+    "health" : 11
   }, {
     "id" : "lilpa",
     "item" : [ "Purplight", "PlaceHolder" ],
@@ -150,7 +150,7 @@
       "debuRes" : 25,
       "neutRes" : 55
     },
-    "isDead" : false,
+    "isDead" : true,
     "goodLuck" : 0,
     "badLuck" : 0,
     "index" : 3,
@@ -162,39 +162,39 @@
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Normal2",
+      "id" : "Normal3",
       "battleDone" : false,
       "isDone" : false
     },
     "currentWay" : {
       "type" : "NORMAL",
       "enemies" : {
-        "id" : "Normal2",
+        "id" : "Normal3",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Normal2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal2",
+          "id" : "Normal3",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 1, 0 ],
-        "linked2" : [ 0 ]
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : true,
+        "linked" : [ 1 ],
+        "linked2" : [ 0, 1 ]
       }, null ],
-      "selected" : 1,
+      "selected" : 0,
       "isDone" : false
     },
     "ways" : [ {
@@ -491,7 +491,7 @@
         "room" : {
           "id" : "Normal2",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : false,
         "linked" : [ 1 ],
@@ -501,14 +501,14 @@
         "room" : {
           "id" : "Normal2",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1, 0 ],
         "linked2" : [ 0 ]
       }, null ],
       "selected" : 1,
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -537,7 +537,7 @@
         "linked" : [ 1 ],
         "linked2" : [ 0, 1 ]
       }, null ],
-      "selected" : -1,
+      "selected" : 0,
       "isDone" : false
     }, {
       "type" : "REST",
@@ -578,7 +578,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 9
+    "num" : 10
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -1862,7 +1862,7 @@
   "eliteCount" : 2,
   "bossCount" : 1,
   "minute" : 7,
-  "second" : 14,
+  "second" : 24,
   "result" : null,
   "scoreHandle" : {
     "score" : 0,

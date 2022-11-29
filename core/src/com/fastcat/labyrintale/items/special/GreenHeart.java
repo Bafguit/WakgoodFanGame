@@ -17,6 +17,6 @@ public class GreenHeart extends AbstractItem {
   @Override
   public void atBattleEnd() {
     flash();
-    top(new HealAction(owner, AbstractSkill.SkillTarget.SELF, 3));
+    top(new HealAction(null, AbstractSkill.SkillTarget.SELF, 3));
   }
 }

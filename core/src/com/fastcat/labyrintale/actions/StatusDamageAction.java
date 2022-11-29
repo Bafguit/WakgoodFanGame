@@ -89,7 +89,7 @@ public class StatusDamageAction extends AbstractAction {
           }
         }
       }
-      if (reduce) actor.applyStatus(status, actor, -1);
+      if (reduce) actor.applyStatus(status, actor, -1, true, true);
       if (remove) actor.removeStatus(status.id);
     }
   }

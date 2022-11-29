@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
 import static com.badlogic.gdx.graphics.Color.*;
+import static com.fastcat.labyrintale.Labyrintale.wayScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 import com.badlogic.gdx.Gdx;
@@ -24,6 +25,7 @@ import com.fastcat.labyrintale.screens.resultscreen.ResultScreen;
 import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
+import com.fastcat.labyrintale.uis.PlayerWayView;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -222,10 +224,14 @@ public abstract class AbstractEntity implements Cloneable {
   }
 
   public void applyStatus(AbstractStatus status, AbstractEntity actor, int amount, boolean effect) {
+    applyStatus(status, actor, amount, effect, false);
+  }
+
+  public void applyStatus(AbstractStatus status, AbstractEntity actor, int amount, boolean effect, boolean isReduce) {
     if(isAlive()) {
       boolean done = false;
       AbstractStatus s = getStatus("Immune");
-      if (status.type == AbstractStatus.StatusType.DEBUFF) {
+      if (!isReduce && status.type == AbstractStatus.StatusType.DEBUFF) {
         if (s != null) {
           amount = -1;
           effect = true;
@@ -549,10 +555,19 @@ public abstract class AbstractEntity implements Cloneable {
     isDie = false;
     if(isPlayer) {
       for (int i = 0; i < index; i++) {
-        AbstractEntity e = players[i];
-        if(!e.isAlive()) {
-          e.index = index;
-          index = i;
+        AbstractPlayer tar = players[i];
+        if(!tar.isAlive()) {
+          int pi = index, ti = tar.index;
+          float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+          index = ti;
+          tar.index = pi;
+          AbstractLabyrinth.players[ti] = (AbstractPlayer) this;
+          AbstractLabyrinth.players[pi] = tar;
+          AbstractUI tv = tar.ui;
+          tar.setAnimXY(w * 0.425f - w * 0.1f * pi, h * 0.515f);
+          tar.ui = ui;
+          setAnimXY(w * 0.425f - w * 0.1f * ti, h * 0.515f);
+          ui = tv;
           break;
         }
       }

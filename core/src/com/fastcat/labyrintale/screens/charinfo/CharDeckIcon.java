@@ -57,7 +57,7 @@ public class CharDeckIcon extends AbstractUI {
                 sb,
                 fontData,
                 "+" + skill.upgradeCount,
-                x + sWidth * 0.8f, y,
+                x + sWidth * 0.75f, y + sWidth * 0.2f,
                 sWidth * 0.2f,
                 sWidth * 0.2f);
       }

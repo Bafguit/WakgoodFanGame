@@ -5,6 +5,8 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.LoseBlockAction;
 import com.fastcat.labyrintale.status.FlawStatus;
+import com.fastcat.labyrintale.status.InfectionStatus;
+import com.fastcat.labyrintale.status.UnblockableStatus;
 
 public class FlameFlask extends AbstractSkill {
 
@@ -22,6 +24,7 @@ public class FlameFlask extends AbstractSkill {
   @Override
   public void use() {
     bot(new LoseBlockAction(owner, target));
+    bot(new ApplyStatusAction(new UnblockableStatus(value), owner, target, true));
   }
 
   @Override

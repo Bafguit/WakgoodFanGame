@@ -55,7 +55,6 @@ public class RewardScreen extends AbstractScreen {
 
   @Override
   public void show() {
-    SoundHandler.addWay().stop = false;
     Labyrintale.getBaseScreen().cType = ControlPanel.ControlType.BASIC;
     if(SettingHandler.setting.rewardTutorial) {
       Labyrintale.openTutorial(TutorialScreen.TutorialType.REWARD);

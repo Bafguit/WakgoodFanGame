@@ -20,6 +20,7 @@ public class Lightning extends AbstractSkill {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
     setBaseValue(VALUE, 1);
+    setBaseValue2(1, 1);
   }
 
   @Override
@@ -28,7 +29,7 @@ public class Lightning extends AbstractSkill {
   @Override
   public void onTarget(AbstractEntity e) {
     top(new ApplyStatusAction(new ParalyzedStatus(value), owner, e, true));
-    top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
+    top(new ApplyStatusAction(new ShockStatus(value2), owner, e, true));
     top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
   }
 

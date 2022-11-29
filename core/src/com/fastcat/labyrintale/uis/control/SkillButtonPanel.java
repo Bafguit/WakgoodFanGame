@@ -74,7 +74,7 @@ public class SkillButtonPanel extends AbstractUI {
   protected void onClick() {
     if(cPanel.battlePanel.selected == skill && battleScreen.gets != null) {
       battleScreen.gets.onTargetSelected(null);
-    } else if (!isUsed && skill.canUse()) {
+    } else if (!isUsed && skill != null && skill.canUse()) {
       skill.useCard();
     }
   }

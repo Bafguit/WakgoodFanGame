@@ -13,7 +13,7 @@ public class ShockZone extends AbstractSkill {
   private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
-  private static final int VALUE = 5;
+  private static final int VALUE = 4;
 
   public ShockZone(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
@@ -25,7 +25,7 @@ public class ShockZone extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new ShockStatus(value), owner, target, true));
-    bot(new ApplyStatusAction(new ParalyzedStatus(value), owner, target, true));
+    bot(new ApplyStatusAction(new ParalyzedStatus(value2), owner, target, true));
   }
 
   @Override

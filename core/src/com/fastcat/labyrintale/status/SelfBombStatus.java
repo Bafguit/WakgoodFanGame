@@ -20,9 +20,10 @@ public class SelfBombStatus extends AbstractStatus {
     return exDesc[0] + amount + exDesc[1];
   }
 
-  @Override
-  public void onDeath(AbstractEntity m) {
-    if(m == owner) {
+  public void endOfTurn() {
+    if (amount > 1) {
+      amount--;
+    } else {
       top(
               new AttackAction(
                       null,
@@ -31,13 +32,6 @@ public class SelfBombStatus extends AbstractStatus {
                       AbstractEntity.DamageType.SPIKE,
                       AttackAction.AttackType.BURN,
                       true));
-    }
-  }
-
-  public void endOfTurn() {
-    if (amount > 1) {
-      amount--;
-    } else {
       top(new SuicideAction(owner, 0.3f));
       top(new FlashAction(owner, img));
     }
