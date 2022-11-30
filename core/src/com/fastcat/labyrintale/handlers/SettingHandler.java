@@ -59,13 +59,13 @@ public final class SettingHandler {
     if (!hasSave) {
 
       // 화면 모드 설정
-      setting.screenMode = 0;
+      setting.screenMode = 2;
       setting.width = 1600;
       setting.height = 900;
 
       // 볼륨 설정
-      setting.volumeBgm = 100;
-      setting.volumeSfx = 100;
+      setting.volumeBgm = 80;
+      setting.volumeSfx = 80;
 
       // 기타 설정
       setting.shake = true;

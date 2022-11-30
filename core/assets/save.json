@@ -1,5 +1,5 @@
 {
-  "date" : "2022_11_30_16_41_54",
+  "date" : "2022_11_30_21_06_06",
   "version" : "b0.9.16",
   "random" : {
     "seed" : "849X14JC",
@@ -7,9 +7,9 @@
     "publicRandom" : 0,
     "skillRandom" : 0,
     "itemRandom" : 0,
-    "mapRandom" : 416,
+    "mapRandom" : 417,
     "monsterRandom" : 0,
-    "eventRandom" : 0,
+    "eventRandom" : 1,
     "shopRandom" : 0
   },
   "itemAble" : 0,
@@ -26,7 +26,7 @@
     "id" : "ine",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "EnduringPotion",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -169,11 +169,11 @@
     "currentWay" : {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Weak1",
+        "id" : "Weak2",
         "battleDone" : false,
         "isDone" : false
       },
-      "choices" : [ {
+      "choices" : [ null, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -181,30 +181,20 @@
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
         "linked" : [ 2 ],
-        "linked2" : [ 1 ]
+        "linked2" : [ 0, 2 ]
       }, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Weak1",
+          "id" : "Weak2",
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
-        "linked" : [ 1 ],
+        "canGo" : false,
+        "linked" : [ 1, 0 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : 0,
+      "selected" : 1,
       "isDone" : false
     },
     "ways" : [ {
@@ -235,7 +225,7 @@
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1 ],
@@ -245,9 +235,9 @@
         "room" : {
           "id" : "Weak1",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 1 ]
       }, {
@@ -255,14 +245,14 @@
         "room" : {
           "id" : "Weak1",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
       "selected" : 0,
-      "isDone" : false
+      "isDone" : true
     }, {
       "type" : "WEAK",
       "enemies" : {
@@ -287,11 +277,11 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 0 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : -1,
+      "selected" : 1,
       "isDone" : false
     }, {
       "type" : "WEAK",
@@ -307,7 +297,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 2 ]
       }, {
@@ -317,7 +307,7 @@
           "battleDone" : false,
           "isDone" : false
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 2 ]
       }, {
@@ -588,7 +578,7 @@
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 1
+    "num" : 2
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -1835,14 +1825,14 @@
     "floorNum" : 4,
     "num" : 0
   } ],
-  "eventCount" : 0,
+  "eventCount" : 1,
   "neutCount" : 0,
   "weakCount" : 3,
   "normalCount" : 5,
   "eliteCount" : 2,
-  "bossCount" : 1,
+  "bossCount" : 0,
   "minute" : 0,
-  "second" : 14,
+  "second" : 24,
   "result" : null,
   "scoreHandle" : {
     "score" : 0,

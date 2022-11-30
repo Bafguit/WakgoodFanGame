@@ -29,7 +29,7 @@ public class ParalyzedStatus extends AbstractStatus {
   @Override
   public void onRemove() {
     owner.stat.speed += 2;
-    owner.stat.debuRes += 20;
+    owner.stat.critical += 20;
   }
 
   @Override

@@ -87,11 +87,5 @@ public class EventScreen extends AbstractScreen {
   public void hide() {}
 
   @Override
-  public void dispose() {
-    if(ecb != null) {
-      for (EventChoiceButton bb : ecb) {
-        bb.dispose();
-      }
-    }
-  }
+  public void dispose() {}
 }

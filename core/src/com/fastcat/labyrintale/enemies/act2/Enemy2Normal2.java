@@ -32,12 +32,12 @@ public class Enemy2Normal2 extends AbstractEnemy {
     temp.add(new SpikeE(this));
     temp.add(new SpikeE(this));
     AbstractSkill s1 = new BarrierE(this);
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
       s1.upgrade();
     }
     temp.add(s1);
     AbstractSkill s2 = new StrikeE(this);
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 1; i++) {
       s2.upgrade();
     }
     temp.add(s2);

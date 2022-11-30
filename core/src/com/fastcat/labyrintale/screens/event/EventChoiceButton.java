@@ -67,9 +67,4 @@ public class EventChoiceButton extends AbstractUI {
       Labyrintale.eventScreen.event.onChoose();
     }
   }
-
-  @Override
-  public void dispose() {
-    fontData.dispose();
-  }
 }

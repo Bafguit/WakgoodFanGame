@@ -27,6 +27,7 @@ public class AllSlotButton extends AbstractUI {
     this.index = index;
     skill = player.deck.get(index);
     this.select = select;
+    fontData = FontHandler.CARD_BIG_DESC;
   }
 
   @Override
@@ -54,6 +55,15 @@ public class AllSlotButton extends AbstractUI {
             y + sWidth * 0.95f,
             sWidth * 0.2f,
             sWidth * 0.2f);
+      }
+      if(skill.upgradeCount > 0) {
+        FontHandler.renderLineRight(
+                sb,
+                fontData,
+                "+" + skill.upgradeCount,
+                x + sWidth * 0.75f, y + sWidth * 0.2f,
+                sWidth * 0.2f,
+                sWidth * 0.2f);
       }
     }
   }

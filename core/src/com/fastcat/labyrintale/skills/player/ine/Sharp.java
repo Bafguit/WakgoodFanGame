@@ -15,8 +15,8 @@ public class Sharp extends AbstractSkill {
 
   public Sharp(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
+    setBaseCost(2);
     setBaseValue(VALUE, 1);
-    setBaseValue(2);
   }
 
   @Override

@@ -367,7 +367,7 @@ public class AbstractLabyrinth {
       else if(gold >= 500) score += 25;
 
       if(death > 0) score += death * 10;
-      else score += 200;
+      else score += 125;
 
       for(AbstractPlayer p : players) {
         if(p.isAlive()) alive++;
@@ -376,7 +376,7 @@ public class AbstractLabyrinth {
         }
       }
 
-      score += pSkill + 50;
+      score += pSkill * 25;
 
       if(alive < 4) score += alive * 50;
       else score += 250;
