@@ -17,7 +17,7 @@ public class KeepOnLine extends AbstractSkill {
 
   public KeepOnLine(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(VALUE, 1);
+    setBaseSpell(VALUE, 2);
   }
 
   @Override

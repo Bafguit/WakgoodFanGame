@@ -14,14 +14,14 @@ public class Sanpellegrino extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(3);
+    owner.modifyMaxHealth(10);
     owner.stat.speed += 3;
     owner.stat.critical += 30;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-3);
+    owner.modifyMaxHealth(-10);
     owner.stat.speed -= 3;
     owner.stat.critical -= 30;
   }

@@ -67,6 +67,15 @@ public class SkillButtonPanel extends AbstractUI {
         FontHandler.renderColorCenter(
             sb, fontData, t, x - sWidth * 0.05f, y + sWidth * 0.95f, sWidth * 0.2f);
       }
+      if(skill.upgradeCount > 0) {
+        FontHandler.renderLineRight(
+                sb,
+                fontData,
+                "+" + skill.upgradeCount,
+                x + sWidth * 0.75f, y + sWidth * 0.2f,
+                sWidth * 0.2f,
+                sWidth * 0.2f);
+      }
     }
   }
 
@@ -87,8 +96,6 @@ public class SkillButtonPanel extends AbstractUI {
   public enum SkillButtonType {
     PLAYER,
     BASIC,
-    ADVISOR,
-    PASSIVE,
     VIEW
   }
 }

@@ -76,14 +76,16 @@ public class ScreenShake {
         return;
       }
 
-      float tmp =
-          Interpolation.fade.apply(0.1F, this.intensityValue, this.duration / this.startDuration);
-      this.x =
-          MathUtils.cosDeg((float) (System.currentTimeMillis() % 360L) / this.intervalSpeed) * tmp;
-      if (this.vertical) {
-        viewport.update(iw, (int) (sh + Math.abs(this.x)));
-      } else {
-        viewport.update((int) (sw + this.x), ih);
+      if(SettingHandler.setting.shake) {
+        float tmp =
+                Interpolation.fade.apply(0.1F, this.intensityValue, this.duration / this.startDuration);
+        this.x =
+                MathUtils.cosDeg((float) (System.currentTimeMillis() % 360L) / this.intervalSpeed) * tmp;
+        if (this.vertical) {
+          viewport.update(iw, (int) (sh + Math.abs(this.x)));
+        } else {
+          viewport.update((int) (sw + this.x), ih);
+        }
       }
     }
   }

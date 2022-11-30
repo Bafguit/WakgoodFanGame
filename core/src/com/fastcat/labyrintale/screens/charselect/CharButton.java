@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.charselect;
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -10,6 +11,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharButton extends AbstractUI {
 
+  private final Sprite back = FileHandler.getUi().get("BORDER_BACK");
   public AbstractPlayer player;
   public boolean isCharSt = false;
   public boolean isOnLock = false;
@@ -35,6 +37,7 @@ public class CharButton extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
       sb.setColor(Color.WHITE);
+      sb.draw(back, x, y, sWidth, sHeight);
       if (isCharSt) sb.setColor(Color.DARK_GRAY);
       else if (over) sb.setColor(Color.WHITE);
       else sb.setColor(Color.LIGHT_GRAY);

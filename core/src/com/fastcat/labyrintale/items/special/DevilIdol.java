@@ -18,7 +18,8 @@ public class DevilIdol extends AbstractItem {
     for(AbstractPlayer p : AbstractLabyrinth.players) {
       p.stat.speed += 5;
     }
-    owner.minRes = 80;
+    owner.minRes = 88;
+    owner.maxRes = 88;
     AbstractLabyrinth.scoreHandle.devil = true;
   }
 
@@ -28,5 +29,6 @@ public class DevilIdol extends AbstractItem {
       p.stat.speed -= 5;
     }
     owner.minRes = 5;
+    owner.maxRes = 80;
   }
 }

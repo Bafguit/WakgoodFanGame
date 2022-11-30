@@ -44,8 +44,9 @@ public final class FontHandler implements Disposable {
   public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
   public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
   public static final FontData INFO_HP_BORDER = new FontData(MEDIUM, 35, true);
-  public static final FontData EVENT_TITLE = new FontData(MEDIUM, 44, true);
-  public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, true);
+  public static final FontData BORDER_44 = new FontData(MEDIUM, 44, true);
+  public static final FontData EVENT_TITLE = new FontData(MEDIUM, 42, new Color(0.85f, 0.8f, 0.745f, 1), false, false);
+  public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, new Color(0.85f, 0.8f, 0.745f, 1), false, false);
   public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 32, false);
   public static final FontData BORDER = new FontData(MEDIUM, 40, true);
   public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
@@ -327,7 +328,7 @@ public final class FontHandler implements Disposable {
     INFO_NAME.dispose();
     INFO_HP.dispose();
     INFO_HP_BORDER.dispose();
-    EVENT_TITLE.dispose();
+    BORDER_44.dispose();
     EVENT_DESC.dispose();
     EVENT_CHOICE.dispose();
     BORDER.dispose();

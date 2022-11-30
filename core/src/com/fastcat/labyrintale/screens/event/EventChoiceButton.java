@@ -1,8 +1,5 @@
 package com.fastcat.labyrintale.screens.event;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.EVENT_CHOICE;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -12,13 +9,16 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
+
 public class EventChoiceButton extends AbstractUI {
 
   public AbstractEvent.EventChoice choice;
 
   public EventChoiceButton(AbstractEvent.EventChoice choice) {
     super(FileHandler.getUi().get("EVENT_CHOICE"));
-    fontData = EVENT_CHOICE;
+    fontData = new FontData(MEDIUM, 26, new Color(0.85f, 0.8f, 0.745f, 1), false, false);
     this.choice = choice;
     clickable = choice.available();
   }
@@ -47,7 +47,7 @@ public class EventChoiceButton extends AbstractUI {
           sb,
           fontData,
           choice.condition.condition() ? choice.text : choice.condition.cdText(),
-          x + 10 * InputHandler.scale,
+          x + 20 * InputHandler.scale,
           y + sHeight * 0.55f,
           sWidth,
           sHeight);
@@ -66,5 +66,10 @@ public class EventChoiceButton extends AbstractUI {
       choice.select();
       Labyrintale.eventScreen.event.onChoose();
     }
+  }
+
+  @Override
+  public void dispose() {
+    fontData.dispose();
   }
 }

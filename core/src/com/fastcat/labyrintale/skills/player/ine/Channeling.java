@@ -3,15 +3,12 @@ package com.fastcat.labyrintale.skills.player.ine;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.CourageStatus;
-import com.fastcat.labyrintale.status.CriticalPlusStatus;
-import com.fastcat.labyrintale.status.DebuResPlusStatus;
-import com.fastcat.labyrintale.status.ResistPlusStatus;
+import com.fastcat.labyrintale.status.*;
 
 public class Channeling extends AbstractSkill {
 
   private static final String ID = "Channeling";
-  private static final SkillType TYPE = SkillType.DEFENCE;
+  private static final SkillType TYPE = SkillType.SCHEME;
   private static final SkillRarity RARITY = SkillRarity.NORMAL;
   private static final SkillTarget TARGET = SkillTarget.SELF;
   private static final int VALUE = 2;
@@ -23,7 +20,7 @@ public class Channeling extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new CourageStatus(value), owner, owner, true));
+    bot(new ApplyStatusAction(new SpeedPlusStatus(value), owner, owner, true));
     bot(new ApplyStatusAction(new ResistPlusStatus(value), owner, owner, true));
   }
 

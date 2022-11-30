@@ -18,7 +18,7 @@ public class HealingPotion extends AbstractSkill {
 
   public HealingPotion(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(VALUE, 1);
+    setBaseSpell(VALUE, 2);
     setBaseValue(1);
     setBaseCost(2);
   }

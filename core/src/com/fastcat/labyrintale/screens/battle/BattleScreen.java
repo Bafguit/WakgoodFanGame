@@ -85,6 +85,9 @@ public class BattleScreen extends AbstractScreen {
             ev.entity.stat.debuRes -= 15;
             break;
           }
+          if(p.hasItem("IceFrag")) {
+            ev.entity.stat.speed -= 3;
+          }
         }
         ev.entity.beforeBattle();
       }

@@ -227,8 +227,10 @@ public class ShopRoom extends AbstractRoom {
           return 180 + shopRandom.random(20) - 10;
         case BRONZE:
           return 60 + shopRandom.random(20) - 10;
-        default:
+        case SILVER:
           return 120 + shopRandom.random(20) - 10;
+        default:
+          return 90 + shopRandom.random(20) - 10;
       }
     }
 

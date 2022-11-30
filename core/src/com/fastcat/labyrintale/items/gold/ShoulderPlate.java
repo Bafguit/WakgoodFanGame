@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.items.gold;
 
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
@@ -19,17 +20,19 @@ public class ShoulderPlate extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(15);
+    owner.modifyMaxHealth(20);
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-15);
+    owner.modifyMaxHealth(-20);
   }
 
   @Override
-  public void atBattleStart() {
-    flash();
-    top(new ApplyStatusAction(new ArmourStatus(5), owner, owner, true));
+  public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+    if(damage > 0 && (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER)) {
+      return damage - 1;
+    }
+    return damage;
   }
 }

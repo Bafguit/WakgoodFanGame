@@ -1,36 +1,36 @@
 {
-  "date" : "2022_11_30_16_41_54",
-  "version" : "b0.9.16",
+  "date" : "2022_11_30_16_24_43",
+  "version" : "b0.9.15",
   "random" : {
-    "seed" : "849X14JC",
-    "seedLong" : 5652578849527467,
-    "publicRandom" : 0,
-    "skillRandom" : 0,
-    "itemRandom" : 0,
-    "mapRandom" : 416,
+    "seed" : "F0G7R8AZ",
+    "seedLong" : 7048715582566590,
+    "publicRandom" : 836,
+    "skillRandom" : 115,
+    "itemRandom" : 131,
+    "mapRandom" : 396,
     "monsterRandom" : 0,
     "eventRandom" : 0,
-    "shopRandom" : 0
+    "shopRandom" : 28
   },
   "itemAble" : 0,
   "selection" : 1,
   "charge" : 5,
-  "gold" : 100,
-  "level" : 1,
+  "gold" : 118,
+  "level" : 5,
   "sp" : 0,
-  "exp" : 0,
-  "maxExp" : 100,
-  "advisor" : "freeter",
-  "diff" : "NORMAL",
+  "exp" : 222,
+  "maxExp" : 259,
+  "advisor" : "carnar",
+  "diff" : "COFFIN",
   "players" : [ {
     "id" : "ine",
-    "item" : [ "PlaceHolder", "PlaceHolder" ],
+    "item" : [ "NaviNecklace", "PlaceHolder" ],
     "deck" : [ {
-      "id" : "Strike",
+      "id" : "EnduringPotion",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
-      "id" : "Barrier",
+      "id" : "Sharp",
       "usedOnly" : false,
       "upgradeCount" : 0
     }, {
@@ -42,11 +42,11 @@
       "attack" : 0,
       "spell" : 0,
       "speed" : 1,
-      "critical" : 10,
+      "critical" : 24,
       "multiply" : 50,
-      "moveRes" : 30,
-      "debuRes" : 45,
-      "neutRes" : 50
+      "moveRes" : 34,
+      "debuRes" : 49,
+      "neutRes" : 54
     },
     "isDead" : false,
     "goodLuck" : 0,
@@ -54,76 +54,8 @@
     "index" : 0,
     "maxRes" : 80,
     "minRes" : 5,
-    "maxHealth" : 25,
-    "health" : 25
-  }, {
-    "id" : "viichan",
-    "item" : [ "PlaceHolder", "PlaceHolder" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "ChainMail",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "DiaSword",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "stat" : {
-      "attack" : 0,
-      "spell" : 0,
-      "speed" : 3,
-      "critical" : 15,
-      "multiply" : 100,
-      "moveRes" : 20,
-      "debuRes" : 30,
-      "neutRes" : 50
-    },
-    "isDead" : false,
-    "goodLuck" : 0,
-    "badLuck" : 0,
-    "index" : 1,
-    "maxRes" : 80,
-    "minRes" : 5,
-    "maxHealth" : 23,
-    "health" : 23
-  }, {
-    "id" : "lilpa",
-    "item" : [ "PlaceHolder", "PlaceHolder" ],
-    "deck" : [ {
-      "id" : "Strike",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "Barrier",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    }, {
-      "id" : "FireBall",
-      "usedOnly" : false,
-      "upgradeCount" : 0
-    } ],
-    "stat" : {
-      "attack" : 0,
-      "spell" : 0,
-      "speed" : 2,
-      "critical" : 15,
-      "multiply" : 50,
-      "moveRes" : 10,
-      "debuRes" : 40,
-      "neutRes" : 50
-    },
-    "isDead" : false,
-    "goodLuck" : 0,
-    "badLuck" : 0,
-    "index" : 2,
-    "maxRes" : 80,
-    "minRes" : 5,
-    "maxHealth" : 22,
-    "health" : 22
+    "maxHealth" : 29,
+    "health" : 7
   }, {
     "id" : "jururu",
     "item" : [ "PlaceHolder", "PlaceHolder" ],
@@ -138,73 +70,121 @@
     }, {
       "id" : "Pray",
       "usedOnly" : false,
+      "upgradeCount" : 1
+    } ],
+    "stat" : {
+      "attack" : 0,
+      "spell" : 0,
+      "speed" : 1,
+      "critical" : 9,
+      "multiply" : 50,
+      "moveRes" : 29,
+      "debuRes" : 59,
+      "neutRes" : 54
+    },
+    "isDead" : false,
+    "goodLuck" : 0,
+    "badLuck" : 0,
+    "index" : 1,
+    "maxRes" : 80,
+    "minRes" : 5,
+    "maxHealth" : 24,
+    "health" : 5
+  }, {
+    "id" : "gosegu",
+    "item" : [ "PlaceHolder", "PlaceHolder" ],
+    "deck" : [ {
+      "id" : "Poison",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "UpgradePotion",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "RustyShard",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    } ],
+    "stat" : {
+      "attack" : 0,
+      "spell" : 0,
+      "speed" : 2,
+      "critical" : 9,
+      "multiply" : 50,
+      "moveRes" : 9,
+      "debuRes" : 59,
+      "neutRes" : 54
+    },
+    "isDead" : false,
+    "goodLuck" : 0,
+    "badLuck" : 0,
+    "index" : 2,
+    "maxRes" : 80,
+    "minRes" : 5,
+    "maxHealth" : 25,
+    "health" : 18
+  }, {
+    "id" : "ine",
+    "item" : [ "NaviNecklace", "PlaceHolder" ],
+    "deck" : [ {
+      "id" : "EnduringPotion",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Sharp",
+      "usedOnly" : false,
+      "upgradeCount" : 0
+    }, {
+      "id" : "Charge",
+      "usedOnly" : false,
       "upgradeCount" : 0
     } ],
     "stat" : {
       "attack" : 0,
       "spell" : 0,
       "speed" : 1,
-      "critical" : 5,
+      "critical" : 24,
       "multiply" : 50,
-      "moveRes" : 25,
-      "debuRes" : 55,
-      "neutRes" : 50
+      "moveRes" : 34,
+      "debuRes" : 49,
+      "neutRes" : 54
     },
     "isDead" : false,
     "goodLuck" : 0,
     "badLuck" : 0,
-    "index" : 3,
+    "index" : 0,
     "maxRes" : 80,
     "minRes" : 5,
-    "maxHealth" : 20,
-    "health" : 20
+    "maxHealth" : 29,
+    "health" : 7
   } ],
   "currentFloor" : 1,
   "floors" : [ {
     "currentRoom" : {
-      "id" : "Mystery",
+      "id" : "Boss1",
       "battleDone" : false,
       "isDone" : false
     },
     "currentWay" : {
-      "type" : "WEAK",
+      "type" : "BOSS",
       "enemies" : {
-        "id" : "Weak1",
+        "id" : "Boss1",
         "battleDone" : false,
         "isDone" : false
       },
-      "choices" : [ {
-        "type" : "LOOK",
+      "choices" : [ null, {
+        "type" : "BOSS",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Boss1",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 1 ],
+        "linked" : [ ],
         "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 2 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : 0,
+      }, null ],
+      "selected" : 1,
       "isDone" : false
     },
     "ways" : [ {
@@ -226,76 +206,6 @@
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Weak1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 2 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : 0,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Weak2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ null, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 2 ],
-        "linked2" : [ 0, 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1, 0 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
         "id" : "Weak4",
         "battleDone" : false,
         "isDone" : false
@@ -304,121 +214,135 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Weak4",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 2 ]
+        "linked" : [ 2 ],
+        "linked2" : [ 1 ]
       }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
-        "linked2" : [ 2 ]
+        "linked2" : [ 1 ]
       }, {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Weak4",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
-        "linked" : [ 1, 0 ],
+        "canGo" : false,
+        "linked" : [ 1 ],
         "linked2" : [ 1 ]
       } ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 0,
+      "isDone" : true
     }, {
-      "type" : "ELITE",
+      "type" : "WEAK",
       "enemies" : {
-        "id" : "Elite1",
+        "id" : "Weak2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 0, 1 ],
+        "linked2" : [ 1, 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak2",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "canGo" : true,
+        "linked" : [ 2 ],
+        "linked2" : [ 0 ]
+      } ],
+      "selected" : 2,
+      "isDone" : true
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Weak5",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "ELITE",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Elite1",
+          "id" : "Weak5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Weak5",
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
-        "linked" : [ 2 ],
+        "linked" : [ 0 ],
         "linked2" : [ 2 ]
-      }, {
+      } ],
+      "selected" : 2,
+      "isDone" : true
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Elite2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
         "type" : "REST",
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
-        "linked" : [ 2, 0 ],
-        "linked2" : [ 0, 1, 2 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Normal3",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 0, 1 ],
-        "linked2" : [ 1 ]
+        "linked" : [ 1, 0 ],
+        "linked2" : [ 2 ]
       }, null, {
-        "type" : "BATTLE",
+        "type" : "ELITE",
         "room" : {
-          "id" : "Normal3",
+          "id" : "Elite2",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
-        "linked" : [ 0 ],
+        "canGo" : false,
+        "linked" : [ 1 ],
         "linked2" : [ 0, 1 ]
       } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "SHOP",
-      "enemies" : null,
-      "choices" : [ {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 0, 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 0 ],
-        "linked2" : [ 0 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 0,
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -430,55 +354,51 @@
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal4",
-          "battleDone" : false,
-          "isDone" : false
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
+        "linked" : [ 1 ],
+        "linked2" : [ 0 ]
       }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Normal4",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 0 ]
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 2 ]
       }, null ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 0,
+      "isDone" : true
     }, {
-      "type" : "ELITE",
-      "enemies" : {
-        "id" : "Elite2",
-        "battleDone" : false,
-        "isDone" : false
-      },
+      "type" : "SHOP",
+      "enemies" : null,
       "choices" : [ {
-        "type" : "ELITE",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Elite2",
+          "id" : "Normal5",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1, 0 ],
-        "linked2" : [ 0 ]
+        "linked2" : [ 1 ]
       }, {
-        "type" : "REST",
+        "type" : "SHOP",
         "room" : {
-          "id" : "Rest",
+          "id" : "Shop",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1 ],
-        "linked2" : [ 1 ]
+        "linked2" : [ 0 ]
       }, null ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 1,
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -491,24 +411,54 @@
         "room" : {
           "id" : "Normal2",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 0, 2 ],
+        "linked2" : [ 0 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "canGo" : true,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 1 ]
+      }, null ],
+      "selected" : 1,
+      "isDone" : true
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Elite1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Elite1",
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1 ],
-        "linked2" : [ 0 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 0, 2 ],
         "linked2" : [ 0, 1 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
+      }, null, {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 1, 0 ],
+        "linked2" : [ 0 ]
+      } ],
+      "selected" : 0,
+      "isDone" : true
     }, {
       "type" : "NORMAL",
       "enemies" : {
@@ -521,34 +471,54 @@
         "room" : {
           "id" : "Normal1",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal1",
+          "battleDone" : true,
+          "isDone" : true
+        },
+        "canGo" : true,
+        "linked" : [ 1 ],
+        "linked2" : [ 0, 2 ]
+      }, null ],
+      "selected" : 1,
+      "isDone" : true
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Normal3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Normal3",
+          "battleDone" : true,
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1 ],
         "linked2" : [ 1 ]
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Normal1",
+          "id" : "Mystery",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
-        "canGo" : true,
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : true,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
       } ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 1,
+      "isDone" : true
     }, {
       "type" : "REST",
       "enemies" : null,
@@ -557,14 +527,14 @@
         "room" : {
           "id" : "Rest",
           "battleDone" : false,
-          "isDone" : false
+          "isDone" : true
         },
         "canGo" : true,
         "linked" : [ 1 ],
-        "linked2" : [ 0, 1, 2 ]
+        "linked2" : [ 1, 2 ]
       }, null ],
-      "selected" : -1,
-      "isDone" : false
+      "selected" : 1,
+      "isDone" : true
     }, {
       "type" : "BOSS",
       "enemies" : {
@@ -583,12 +553,12 @@
         "linked" : [ ],
         "linked2" : [ 1 ]
       }, null ],
-      "selected" : -1,
+      "selected" : 1,
       "isDone" : false
     } ],
     "isDone" : false,
     "floorNum" : 1,
-    "num" : 1
+    "num" : 12
   }, {
     "currentRoom" : {
       "id" : "Placeholder",
@@ -606,7 +576,7 @@
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 0, 1 ],
+        "linked" : [ 0, 1, 2 ],
         "linked2" : [ ]
       }, null ],
       "selected" : -1,
@@ -623,7 +593,7 @@
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 0, 1 ],
+        "linked" : [ 0, 1, 2 ],
         "linked2" : [ ]
       }, null ],
       "selected" : -1,
@@ -631,37 +601,7 @@
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Act2Weak5",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Weak5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 2 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Weak5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Act2Weak3",
+        "id" : "Act2Weak4",
         "battleDone" : false,
         "isDone" : false
       },
@@ -674,7 +614,47 @@
         },
         "canGo" : false,
         "linked" : [ 1 ],
-        "linked2" : [ 0 ]
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Weak4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Weak4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1, 2 ],
+        "linked2" : [ 1 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Act2Weak3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Weak3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 0, 1, 2 ]
       }, {
         "type" : "BATTLE",
         "room" : {
@@ -684,38 +664,144 @@
         },
         "canGo" : false,
         "linked" : [ 2 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Weak3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 0 ]
+        "linked2" : [ 2 ]
       } ],
       "selected" : -1,
       "isDone" : false
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Act2Weak1",
+        "id" : "Act2Weak2",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ null, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act2Weak1",
+          "id" : "Act2Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2, 0 ],
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Weak2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Act2Elite2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 2 ]
+      }, {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Act2Elite2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 2 ],
+        "linked2" : [ 1 ]
+      }, null ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act2Normal1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 1 ]
+      }, null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 1 ],
+        "linked2" : [ 1 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "SHOP",
+      "enemies" : null,
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
         "linked2" : [ 0, 2 ]
       }, {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 2 ],
+        "linked2" : [ 2 ]
+      }, null ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act2Normal4",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 1 ]
+      }, null, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -736,6 +822,16 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0 ]
+      }, null, {
         "type" : "ELITE",
         "room" : {
           "id" : "Act2Elite1",
@@ -743,164 +839,8 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 1 ]
-      }, null, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
         "linked" : [ 2, 1 ],
-        "linked2" : [ 1, 2 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act2Normal2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
         "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2, 0 ],
-        "linked2" : [ 0, 2 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "SHOP",
-      "enemies" : null,
-      "choices" : [ {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 2 ]
-      }, null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal4",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1, 2 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act2Normal5",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 0 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "ELITE",
-      "enemies" : {
-        "id" : "Act2Elite2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 2 ]
-      }, null, {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "Act2Elite2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act2Normal1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 2 ]
-      }, null, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 1 ],
-        "linked2" : [ 0 ]
       } ],
       "selected" : -1,
       "isDone" : false
@@ -912,35 +852,75 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Act2Normal3",
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act2Normal3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
+        "linked" : [ 0 ],
         "linked2" : [ 0 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 1 ],
+        "linked2" : [ 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act2Normal5",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 0, 2 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act2Normal5",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
       } ],
       "selected" : -1,
       "isDone" : false
@@ -1026,74 +1006,34 @@
     }, {
       "type" : "WEAK",
       "enemies" : {
-        "id" : "Act3Weak5",
+        "id" : "Act3Weak4",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act3Weak5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2, 0 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Weak5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Act3Weak1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
+          "id" : "Act3Weak4",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
-        "linked2" : [ 0, 2 ]
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 1 ]
       }, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act3Weak1",
+          "id" : "Act3Weak4",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1111,6 +1051,16 @@
         "isDone" : false
       },
       "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Weak3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1, 0 ],
+        "linked2" : [ 0 ]
+      }, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -1118,118 +1068,12 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 0 ],
+        "linked" : [ 1 ],
         "linked2" : [ 1 ]
       }, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Act3Weak3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 0 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Weak3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 2 ],
-        "linked2" : [ 2 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "ELITE",
-      "enemies" : {
-        "id" : "Act3Elite2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "Act3Elite2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 0, 1, 2 ]
-      }, null, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1, 0 ],
-        "linked2" : [ 2 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act3Normal3",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Normal3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Normal3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Normal3",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 0 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "SHOP",
-      "enemies" : null,
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2, 0 ],
-        "linked2" : [ 0, 1 ]
-      }, null, {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1240,43 +1084,33 @@
       "selected" : -1,
       "isDone" : false
     }, {
-      "type" : "NORMAL",
+      "type" : "WEAK",
       "enemies" : {
-        "id" : "Act3Normal2",
+        "id" : "Act3Weak2",
         "battleDone" : false,
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "LOOK",
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Act3Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2 ],
+        "linked" : [ 1 ],
         "linked2" : [ 0 ]
       }, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act3Normal2",
+          "id" : "Act3Weak2",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 2 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2, 0 ],
-        "linked2" : [ 0 ]
-      } ],
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 1, 2 ]
+      }, null ],
       "selected" : -1,
       "isDone" : false
     }, {
@@ -1287,16 +1121,6 @@
         "isDone" : false
       },
       "choices" : [ {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "Act3Elite1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 2 ]
-      }, null, {
         "type" : "REST",
         "room" : {
           "id" : "Rest",
@@ -1304,9 +1128,19 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 0, 2 ],
-        "linked2" : [ 0, 1, 2 ]
-      } ],
+        "linked" : [ 0 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Act3Elite1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 0 ]
+      }, null ],
       "selected" : -1,
       "isDone" : false
     }, {
@@ -1324,25 +1158,51 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 1, 0, 2 ],
-        "linked2" : [ 0, 2 ]
-      }, null, {
-        "type" : "LOOK",
+        "linked" : [ 2 ],
+        "linked2" : [ 0 ]
+      }, {
+        "type" : "BATTLE",
         "room" : {
-          "id" : "Mystery",
+          "id" : "Act3Normal5",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 2 ]
+        "linked" : [ 0 ],
+        "linked2" : [ 1 ]
+      }, null ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "SHOP",
+      "enemies" : null,
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Normal3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 2 ],
+        "linked2" : [ 1 ]
+      }, null, {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0 ]
       } ],
       "selected" : -1,
       "isDone" : false
     }, {
       "type" : "NORMAL",
       "enemies" : {
-        "id" : "Act3Normal4",
+        "id" : "Act3Normal1",
         "battleDone" : false,
         "isDone" : false
       },
@@ -1354,9 +1214,99 @@
           "isDone" : false
         },
         "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 2 ]
+      }, null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Normal1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Act3Elite2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0 ]
       }, {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Act3Elite2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 2 ]
+      }, null ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act3Normal4",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Normal4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 0 ]
+      }, null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Normal4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2, 0 ],
+        "linked2" : [ 1 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act3Normal2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act3Normal2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1 ],
+        "linked2" : [ 2 ]
+      }, null, {
         "type" : "LOOK",
         "room" : {
           "id" : "Mystery",
@@ -1366,16 +1316,6 @@
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0, 2 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act3Normal4",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 0 ]
       } ],
       "selected" : -1,
       "isDone" : false
@@ -1391,7 +1331,7 @@
         },
         "canGo" : false,
         "linked" : [ 1 ],
-        "linked2" : [ 0, 1, 2 ]
+        "linked2" : [ 0, 2 ]
       }, null ],
       "selected" : -1,
       "isDone" : false
@@ -1436,7 +1376,7 @@
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 1, 2 ],
+        "linked" : [ 0, 1, 2 ],
         "linked2" : [ ]
       }, null ],
       "selected" : -1,
@@ -1453,69 +1393,9 @@
           "isDone" : false
         },
         "canGo" : true,
-        "linked" : [ 1, 2 ],
+        "linked" : [ 0, 1, 2 ],
         "linked2" : [ ]
       }, null ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Act4Weak2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Weak2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 2 ],
-        "linked2" : [ 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "WEAK",
-      "enemies" : {
-        "id" : "Act4Weak4",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "LOOK",
-        "room" : {
-          "id" : "Mystery",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1, 2 ]
-      }, null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Weak4",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 2 ],
-        "linked2" : [ 2 ]
-      } ],
       "selected" : -1,
       "isDone" : false
     }, {
@@ -1534,7 +1414,7 @@
         },
         "canGo" : false,
         "linked" : [ 0 ],
-        "linked2" : [ 2 ]
+        "linked2" : [ 1 ]
       }, {
         "type" : "BATTLE",
         "room" : {
@@ -1543,18 +1423,98 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 0 ]
+        "linked" : [ 2, 1 ],
+        "linked2" : [ 1 ]
       }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 1 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Act4Weak4",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act4Weak1",
+          "id" : "Act4Weak4",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 0 ],
+        "linked2" : [ 0 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Weak4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 2 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Weak4",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0, 1 ],
+        "linked2" : [ 1, 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "WEAK",
+      "enemies" : {
+        "id" : "Act4Weak3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 0, 1, 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Weak3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
         "linked2" : [ 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Weak3",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 1 ]
       } ],
       "selected" : -1,
       "isDone" : false
@@ -1573,9 +1533,9 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2, 0 ],
+        "linked" : [ 0, 1 ],
         "linked2" : [ 0, 2 ]
-      }, {
+      }, null, {
         "type" : "ELITE",
         "room" : {
           "id" : "Act4Elite1",
@@ -1583,134 +1543,8 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 2, 1 ],
-        "linked2" : [ 1 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act4Normal1",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 0 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal1",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 0, 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "SHOP",
-      "enemies" : null,
-      "choices" : [ {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 1 ],
-        "linked2" : [ 1 ]
-      }, {
-        "type" : "SHOP",
-        "room" : {
-          "id" : "Shop",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 2 ],
-        "linked2" : [ 0, 2 ]
-      }, null ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "NORMAL",
-      "enemies" : {
-        "id" : "Act4Normal5",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ null, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 0 ]
-      }, {
-        "type" : "BATTLE",
-        "room" : {
-          "id" : "Act4Normal5",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
         "linked" : [ 2 ],
         "linked2" : [ 1 ]
-      } ],
-      "selected" : -1,
-      "isDone" : false
-    }, {
-      "type" : "ELITE",
-      "enemies" : {
-        "id" : "Act4Elite2",
-        "battleDone" : false,
-        "isDone" : false
-      },
-      "choices" : [ {
-        "type" : "ELITE",
-        "room" : {
-          "id" : "Act4Elite2",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 1 ]
-      }, null, {
-        "type" : "REST",
-        "room" : {
-          "id" : "Rest",
-          "battleDone" : false,
-          "isDone" : false
-        },
-        "canGo" : false,
-        "linked" : [ 0, 1, 2 ],
-        "linked2" : [ 2 ]
       } ],
       "selected" : -1,
       "isDone" : false
@@ -1729,8 +1563,8 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 0 ],
-        "linked2" : [ 0, 2 ]
+        "linked" : [ 1 ],
+        "linked2" : [ 0 ]
       }, {
         "type" : "BATTLE",
         "room" : {
@@ -1739,12 +1573,108 @@
           "isDone" : false
         },
         "canGo" : false,
-        "linked" : [ 1, 2 ],
+        "linked" : [ 2 ],
+        "linked2" : [ 0 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
         "linked2" : [ 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "SHOP",
+      "enemies" : null,
+      "choices" : [ null, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Normal2",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1, 0 ],
+        "linked2" : [ 0 ]
+      }, {
+        "type" : "SHOP",
+        "room" : {
+          "id" : "Shop",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1, 2 ],
+        "linked2" : [ 1, 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act4Normal1",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 1 ]
+      }, {
+        "type" : "LOOK",
+        "room" : {
+          "id" : "Mystery",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 0 ],
+        "linked2" : [ 1, 2 ]
       }, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act4Normal4",
+          "id" : "Act4Normal1",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 2 ]
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "ELITE",
+      "enemies" : {
+        "id" : "Act4Elite2",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ {
+        "type" : "REST",
+        "room" : {
+          "id" : "Rest",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 1, 2 ],
+        "linked2" : [ 0, 1 ]
+      }, null, {
+        "type" : "ELITE",
+        "room" : {
+          "id" : "Act4Elite2",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1757,21 +1687,41 @@
     }, {
       "type" : "NORMAL",
       "enemies" : {
-        "id" : "Act4Normal3",
+        "id" : "Act4Normal5",
         "battleDone" : false,
         "isDone" : false
       },
-      "choices" : [ {
+      "choices" : [ null, {
         "type" : "BATTLE",
         "room" : {
-          "id" : "Act4Normal3",
+          "id" : "Act4Normal5",
+          "battleDone" : false,
+          "isDone" : false
+        },
+        "canGo" : false,
+        "linked" : [ 2 ],
+        "linked2" : [ 0, 2 ]
+      }, {
+        "type" : "BATTLE",
+        "room" : {
+          "id" : "Act4Normal5",
           "battleDone" : false,
           "isDone" : false
         },
         "canGo" : false,
         "linked" : [ 1 ],
         "linked2" : [ 0 ]
-      }, {
+      } ],
+      "selected" : -1,
+      "isDone" : false
+    }, {
+      "type" : "NORMAL",
+      "enemies" : {
+        "id" : "Act4Normal3",
+        "battleDone" : false,
+        "isDone" : false
+      },
+      "choices" : [ null, {
         "type" : "BATTLE",
         "room" : {
           "id" : "Act4Normal3",
@@ -1780,11 +1730,11 @@
         },
         "canGo" : false,
         "linked" : [ 1 ],
-        "linked2" : [ 1, 2 ]
+        "linked2" : [ 2 ]
       }, {
-        "type" : "BATTLE",
+        "type" : "LOOK",
         "room" : {
-          "id" : "Act4Normal3",
+          "id" : "Mystery",
           "battleDone" : false,
           "isDone" : false
         },
@@ -1806,7 +1756,7 @@
         },
         "canGo" : false,
         "linked" : [ 1 ],
-        "linked2" : [ 0, 1, 2 ]
+        "linked2" : [ 1, 2 ]
       }, null ],
       "selected" : -1,
       "isDone" : false
@@ -1835,25 +1785,25 @@
     "floorNum" : 4,
     "num" : 0
   } ],
-  "eventCount" : 0,
-  "neutCount" : 0,
+  "eventCount" : 1,
+  "neutCount" : 2,
   "weakCount" : 3,
   "normalCount" : 5,
   "eliteCount" : 2,
   "bossCount" : 1,
-  "minute" : 0,
-  "second" : 14,
-  "result" : null,
+  "minute" : 11,
+  "second" : 13,
+  "result" : "WIN",
   "scoreHandle" : {
     "score" : 0,
-    "normal" : 0,
-    "death" : 0,
+    "normal" : 6,
+    "death" : 2,
     "pSkill" : 0,
     "alive" : 0,
     "more99" : false,
     "devil" : false,
     "elite" : {
-      "1" : 0,
+      "1" : 1,
       "2" : 0,
       "3" : 0,
       "4" : 0

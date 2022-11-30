@@ -36,7 +36,7 @@ public class CharItemIcon extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      sb.setColor(Color.WHITE);
+      sb.setColor(skill.getRarityColor());
       if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
       sb.draw(
           skill.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);

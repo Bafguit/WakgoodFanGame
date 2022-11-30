@@ -163,11 +163,11 @@ public class AbstractItem implements Cloneable {
       } else if (rarity == ItemRarity.GOLD) {
         return Color.GOLD;
       } else if (rarity == ItemRarity.BOSS) {
-        return Color.SCARLET;
+        return Color.RED;
       } else if (rarity == ItemRarity.SHOP) {
         return Color.CHARTREUSE;
       } else if (rarity == ItemRarity.SPECIAL) {
-        return Color.VIOLET;
+        return Color.PURPLE;
       }
     }
     return Color.WHITE;
