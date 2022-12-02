@@ -21,7 +21,7 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
   public RestType type;
 
   public RestButton(RestScreen s, RestType t) {
-    super(FileHandler.getUi().get("WAY_SELECT"));
+    super(FileHandler.getUi().get("REST_" + t.toString()));
     sc = s;
     type = t;
   }
@@ -85,7 +85,6 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
   public enum RestType {
     HEAL,
     UPGRADE,
-    DISCOVER,
     REVIVE
   }
 }

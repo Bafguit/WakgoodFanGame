@@ -149,7 +149,7 @@ public class ShopRoom extends AbstractRoom {
     public RollItem(ShopRoom s) {
       super(50);
       shop = s;
-      img = FileHandler.getUi().get("REWARD_CARD");
+      img = FileHandler.getUi().get("ROLL");
     }
 
     @Override

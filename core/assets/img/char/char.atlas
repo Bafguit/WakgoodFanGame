@@ -4,193 +4,81 @@ size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-burger
+burger_camp
   rotate: false
-  xy: 521, 2
-  size: 171, 171
-  orig: 171, 171
-  offset: 0, 0
-  index: -1
-burger_cPanel
-  rotate: false
-  xy: 1213, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-burger_p
-  rotate: false
-  xy: 1521, 209
-  size: 133, 133
-  orig: 133, 133
-  offset: 0, 0
-  index: -1
-gosegu
-  rotate: false
-  xy: 1732, 344
-  size: 171, 171
-  orig: 171, 171
-  offset: 0, 0
-  index: -1
-gosegu_bg
-  rotate: false
-  xy: 1286, 517
-  size: 640, 1440
-  orig: 640, 1440
+  xy: 1256, 2
+  size: 416, 517
+  orig: 416, 517
   offset: 0, 0
   index: -1
 gosegu_cPanel
   rotate: false
-  xy: 2, 175
+  xy: 1674, 179
   size: 171, 340
   orig: 171, 340
   offset: 0, 0
   index: -1
-gosegu_p
+gosegu_camp_upset
   rotate: false
-  xy: 1272, 40
-  size: 133, 133
-  orig: 133, 133
-  offset: 0, 0
-  index: -1
-ine
-  rotate: false
-  xy: 348, 2
-  size: 171, 171
-  orig: 171, 171
+  xy: 420, 2
+  size: 416, 517
+  orig: 416, 517
   offset: 0, 0
   index: -1
 ine_bg
   rotate: false
-  xy: 644, 517
+  xy: 1286, 521
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
-ine_cPanel
+ine_camp_upset
   rotate: false
-  xy: 1040, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-ine_p
-  rotate: false
-  xy: 1002, 40
-  size: 133, 133
-  orig: 133, 133
-  offset: 0, 0
-  index: -1
-jururu
-  rotate: false
-  xy: 694, 2
-  size: 171, 171
-  orig: 171, 171
+  xy: 838, 2
+  size: 416, 517
+  orig: 416, 517
   offset: 0, 0
   index: -1
 jururu_bg
   rotate: false
-  xy: 2, 517
+  xy: 644, 521
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
-jururu_cPanel
-  rotate: false
-  xy: 521, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-jururu_p
-  rotate: false
-  xy: 1137, 40
-  size: 133, 133
-  orig: 133, 133
-  offset: 0, 0
-  index: -1
-lilpa
-  rotate: false
-  xy: 175, 2
-  size: 171, 171
-  orig: 171, 171
-  offset: 0, 0
-  index: -1
 lilpa_cPanel
   rotate: false
-  xy: 175, 175
+  xy: 1847, 179
   size: 171, 340
   orig: 171, 340
-  offset: 0, 0
-  index: -1
-lilpa_p
-  rotate: false
-  xy: 1656, 209
-  size: 133, 133
-  orig: 133, 133
   offset: 0, 0
   index: -1
 manager
   rotate: false
-  xy: 1386, 344
+  xy: 1847, 6
   size: 171, 171
   orig: 171, 171
-  offset: 0, 0
-  index: -1
-manager_cPanel
-  rotate: false
-  xy: 694, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-manager_p
-  rotate: false
-  xy: 867, 40
-  size: 133, 133
-  orig: 133, 133
   offset: 0, 0
   index: -1
 viichan
   rotate: false
+  xy: 1674, 6
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+viichan_bg
+  rotate: false
+  xy: 2, 521
+  size: 640, 1440
+  orig: 640, 1440
+  offset: 0, 0
+  index: -1
+wak_camp_upset
+  rotate: false
   xy: 2, 2
-  size: 171, 171
-  orig: 171, 171
-  offset: 0, 0
-  index: -1
-viichan_cPanel
-  rotate: false
-  xy: 348, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-viichan_p
-  rotate: false
-  xy: 1791, 209
-  size: 133, 133
-  orig: 133, 133
-  offset: 0, 0
-  index: -1
-wak
-  rotate: false
-  xy: 1559, 344
-  size: 171, 171
-  orig: 171, 171
-  offset: 0, 0
-  index: -1
-wak_cPanel
-  rotate: false
-  xy: 867, 175
-  size: 171, 340
-  orig: 171, 340
-  offset: 0, 0
-  index: -1
-wak_p
-  rotate: false
-  xy: 1386, 209
-  size: 133, 133
-  orig: 133, 133
+  size: 416, 517
+  orig: 416, 517
   offset: 0, 0
   index: -1
 
@@ -201,23 +89,79 @@ filter: Nearest, Nearest
 repeat: none
 burger_bg
   rotate: false
-  xy: 2, 2
+  xy: 644, 521
   size: 640, 1440
   orig: 640, 1440
+  offset: 0, 0
+  index: -1
+gosegu_bg
+  rotate: false
+  xy: 2, 521
+  size: 640, 1440
+  orig: 640, 1440
+  offset: 0, 0
+  index: -1
+gosegu_camp
+  rotate: false
+  xy: 420, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+jururu_cPanel
+  rotate: false
+  xy: 1674, 179
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+jururu_camp_upset
+  rotate: false
+  xy: 838, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+lilpa
+  rotate: false
+  xy: 1674, 6
+  size: 171, 171
+  orig: 171, 171
   offset: 0, 0
   index: -1
 lilpa_bg
   rotate: false
-  xy: 644, 2
+  xy: 1286, 521
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
-manager_bg
+lilpa_camp
   rotate: false
-  xy: 1286, 2
-  size: 640, 1440
-  orig: 640, 1440
+  xy: 2, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+manager_cPanel
+  rotate: false
+  xy: 1847, 179
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+manager_camp_upset
+  rotate: false
+  xy: 1256, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+wak
+  rotate: false
+  xy: 1847, 6
+  size: 171, 171
+  orig: 171, 171
   offset: 0, 0
   index: -1
 
@@ -226,17 +170,191 @@ size: 2048, 2048
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-viichan_bg
+burger
   rotate: false
-  xy: 644, 2
+  xy: 1256, 60
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+burger_cPanel
+  rotate: false
+  xy: 1704, 595
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+burger_p
+  rotate: false
+  xy: 1429, 98
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+gosegu
+  rotate: false
+  xy: 1256, 233
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+gosegu_p
+  rotate: false
+  xy: 1877, 1018
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+ine
+  rotate: false
+  xy: 1704, 422
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ine_cPanel
+  rotate: false
+  xy: 1704, 937
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+ine_camp
+  rotate: false
+  xy: 2, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+ine_p
+  rotate: false
+  xy: 1877, 1693
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+jururu
+  rotate: false
+  xy: 1429, 233
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+jururu_camp
+  rotate: false
+  xy: 1286, 1444
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+jururu_p
+  rotate: false
+  xy: 1877, 1288
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+lilpa_camp_upset
+  rotate: false
+  xy: 420, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+lilpa_p
+  rotate: false
+  xy: 1877, 1423
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+manager_bg
+  rotate: false
+  xy: 2, 521
   size: 640, 1440
   orig: 640, 1440
   offset: 0, 0
   index: -1
+manager_camp
+  rotate: false
+  xy: 1286, 406
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+manager_p
+  rotate: false
+  xy: 1877, 1828
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+viichan_cPanel
+  rotate: false
+  xy: 1704, 1621
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+viichan_camp_upset
+  rotate: false
+  xy: 1286, 925
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+viichan_p
+  rotate: false
+  xy: 1877, 1153
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
 wak_bg
   rotate: false
-  xy: 2, 2
+  xy: 644, 521
   size: 640, 1440
   orig: 640, 1440
+  offset: 0, 0
+  index: -1
+wak_cPanel
+  rotate: false
+  xy: 1704, 1279
+  size: 171, 340
+  orig: 171, 340
+  offset: 0, 0
+  index: -1
+wak_camp
+  rotate: false
+  xy: 838, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+wak_p
+  rotate: false
+  xy: 1877, 1558
+  size: 133, 133
+  orig: 133, 133
+  offset: 0, 0
+  index: -1
+
+char4.png
+size: 1024, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+burger_camp_upset
+  rotate: false
+  xy: 420, 2
+  size: 416, 517
+  orig: 416, 517
+  offset: 0, 0
+  index: -1
+viichan_camp
+  rotate: false
+  xy: 2, 2
+  size: 416, 517
+  orig: 416, 517
   offset: 0, 0
   index: -1

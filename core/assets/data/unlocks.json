@@ -1,4 +1,9 @@
 {
+  "DIFF" : {
+    "HARD" : false,
+    "NORMAL" : true,
+    "COFFIN" : false
+  },
   "SKILL" : {
     "EnduringPotion" : false,
     "Intimidate" : false,
@@ -21,10 +26,10 @@
     "HolySmite" : false,
     "ThrowAxe" : false,
     "Provoke" : false,
-    "UpgradePotion" : false,
+    "UpgradePotion" : true,
     "ShockZone" : false,
     "Overpower" : false,
-    "ShockBomb" : false,
+    "ShockBomb" : true,
     "Scorn" : true,
     "DramaticExit" : false,
     "Onslaught" : false,
@@ -35,7 +40,7 @@
     "ConfidPotion" : false,
     "Penitence" : false,
     "ChainExp" : false,
-    "Penance" : false,
+    "Penance" : true,
     "HealingPotion" : false,
     "Boost" : false,
     "Pruning" : false,
@@ -45,22 +50,17 @@
     "HolyLight" : false,
     "SuperSave" : false,
     "BioCloud" : false,
-    "BraveWill" : false,
+    "BraveWill" : true,
     "Faith" : false,
     "AvantProtect" : false,
     "Lilpaa" : false,
     "PointBlank" : false,
-    "KeepOnLine" : false,
+    "KeepOnLine" : true,
     "EyeSting" : false,
     "RapidFire" : false,
     "Lightning" : false,
-    "Poison" : false,
+    "Poison" : true,
     "Calmness" : false
-  },
-  "DIFF" : {
-    "HARD" : false,
-    "NORMAL" : true,
-    "COFFIN" : false
   },
   "ITEM" : {
     "PlaceHolder" : false,
@@ -86,7 +86,7 @@
     "Turtle" : false,
     "AhpuHat" : false,
     "Gyeruek" : false,
-    "OldArmour" : false,
+    "OldArmour" : true,
     "Cane" : false,
     "Brainize" : false,
     "PeridotStone" : false,
@@ -100,7 +100,7 @@
     "SandClock" : false,
     "OldSword" : false,
     "GlowingStick" : true,
-    "PlatedArmour" : false,
+    "PlatedArmour" : true,
     "LoyalVirus" : false,
     "ShortBase" : false,
     "RobotHand" : false,
@@ -119,9 +119,9 @@
     "OldPistol" : false,
     "CrackedHeart" : false,
     "DevilIdol" : false,
-    "Tail" : false,
+    "Tail" : true,
     "BurgerHat" : false,
-    "Bomb" : false,
+    "Bomb" : true,
     "Hwacha" : false,
     "TrickDeck" : false,
     "Butter" : false,
@@ -135,6 +135,6 @@
     "TotoDeck" : false,
     "GreenHeart" : false,
     "GoldenRing" : false,
-    "BabyDish" : false
+    "BabyDish" : true
   }
 }

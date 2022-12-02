@@ -44,6 +44,8 @@ public class FileHandler implements Disposable {
   @Getter private static final HashMap<PlayerClass, Sprite> charImgTurn = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
   @Getter private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
+  @Getter private static final HashMap<PlayerClass, Sprite> charCampImg = new HashMap<>();
+  @Getter private static final HashMap<PlayerClass, Sprite> charUpsetImg = new HashMap<>();
   @Getter private static final HashMap<AdvisorClass, Sprite> advImg = new HashMap<>();
   @Getter private static final HashMap<String, Sprite> enemyImg = new HashMap<>();
   @Getter private static final HashMap<String, Sprite> enemyPanelImg = new HashMap<>();
@@ -139,6 +141,8 @@ public class FileHandler implements Disposable {
     maps.add(charImgTurn);
     maps.add(charBgImg);
     maps.add(charPanelImg);
+    maps.add(charCampImg);
+    maps.add(charUpsetImg);
     maps.add(advImg);
     maps.add(enemyImg);
     maps.add(enemyPanelImg);
@@ -153,6 +157,8 @@ public class FileHandler implements Disposable {
   private void generateGif() {
     gif.clear();
     gif.put("MAIN_MENU", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/main_gif.gif").read()));
+    gif.put("FIRE_LIGHT", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/fire_light.gif").read()));
+    gif.put("FIRE", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/fire.gif").read()));
   }
 
   private void generateSkeleton() {
@@ -178,6 +184,7 @@ public class FileHandler implements Disposable {
     bg.put("BG_WAY_2", new Sprite(new Texture("img/bg/way_deep.png")));
     bg.put("BG_WAY_3", new Sprite(new Texture("img/bg/way_temple.png")));
     bg.put("BG_WAY_4", new Sprite(new Texture("img/bg/way_lab.png")));
+    bg.put("BG_REST_BAG", new Sprite(new Texture("img/bg/fire_bag.png")));
   }
 
   private void generateVFX() {
@@ -219,11 +226,16 @@ public class FileHandler implements Disposable {
     ui.put("BORDER_T", new Sprite(new Texture("img/ui/border_turn.png")));
     ui.put("BORDER_T2", new Sprite(new Texture("img/ui/border_turn2.png")));
     ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
+    ui.put("REST_HEAL", new Sprite(new Texture("img/ui/rest_heal.png")));
+    ui.put("REST_REVIVE", new Sprite(new Texture("img/ui/rest_revive.png")));
+    ui.put("REST_UPGRADE", new Sprite(new Texture("img/ui/rest_upgrade.png")));
+    ui.put("CAMP", new Sprite(new Texture("img/ui/camp.png")));
     ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
     ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
     ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));
     ui.put("DRAW", new Sprite(new Texture("img/ui/draw.png")));
     ui.put("GOLD", new Sprite(new Texture("img/ui/gold.png")));
+    ui.put("ROLL", new Sprite(new Texture("img/ui/roll.png")));
     ui.put("DISCARD", new Sprite(new Texture("img/ui/discard.png")));
     ui.put("REWARD_CARD", new Sprite(new Texture("img/ui/deck.png")));
     ui.put("ENTITY_POINT_B", new Sprite(new Texture("img/ui/entityPoint_boss.png")));
@@ -301,6 +313,8 @@ public class FileHandler implements Disposable {
     charImgTurn.clear();
     charBgImg.clear();
     charPanelImg.clear();
+    charCampImg.clear();
+    charUpsetImg.clear();
     skeleton.clear();
     atlas.clear();
     for (PlayerClass cls : PlayerClass.values()) {
@@ -308,6 +322,8 @@ public class FileHandler implements Disposable {
       charImg.put(cls, character.createSprite(s));
       charImgTurn.put(cls, character.createSprite(s + "_p"));
       charBgImg.put(cls, character.createSprite(s + "_bg"));
+      charCampImg.put(cls, character.createSprite(s + "_camp"));
+      charUpsetImg.put(cls, character.createSprite(s + "_camp_upset"));
       charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
       skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
       atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));

@@ -16,17 +16,23 @@ public class GifBg extends AbstractUI {
   private final Animation<Sprite> animation;
   private float elapsed = 0;
 
-  public GifBg(String key) {
-    super(FileHandler.getBg().get("BG_BLACK"));
+  public GifBg(Sprite sprite, String key) {
+    super(sprite);
     setPosition(0, 0);
     overable = false;
     animation = FileHandler.getGif().get(key);
+  }
+
+  public GifBg(String key) {
+    this(FileHandler.getBg().get("BG_BLACK"), key);
   }
 
   @Override
   protected void renderUi(SpriteBatch sb) {
     elapsed += Labyrintale.tick * 0.75f;
     sb.setColor(Color.WHITE);
-    sb.draw(animation.getKeyFrame(elapsed), 0, 0, sWidth, sHeight);
+    float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    sb.draw(img, 0, 0, w, h);
+    sb.draw(animation.getKeyFrame(elapsed), 0, 0, w, h);
   }
 }

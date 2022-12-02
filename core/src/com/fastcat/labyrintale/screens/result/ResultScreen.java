@@ -102,14 +102,14 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.DIFF);
     if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
       diff += "일반";
-      if(!temp.get("HARD")) {
+      if(type == DeadScreen.ScreenType.WIN && !temp.get("HARD")) {
         temp.replace("HARD", true);
         UnlockHandler.save();
       }
     }
     else if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
       diff += "어려움";
-      if(!temp.get("COFFIN")) {
+      if(type == DeadScreen.ScreenType.WIN && !temp.get("COFFIN")) {
         temp.replace("COFFIN", true);
         UnlockHandler.save();
       }

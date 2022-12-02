@@ -24,14 +24,6 @@ public class SelfBombStatus extends AbstractStatus {
     if (amount > 1) {
       amount--;
     } else {
-      top(
-              new AttackAction(
-                      null,
-                      SkillTarget.PLAYER_ALL,
-                      10,
-                      AbstractEntity.DamageType.SPIKE,
-                      AttackAction.AttackType.BURN,
-                      true));
       top(new SuicideAction(owner, 0.3f));
       top(new FlashAction(owner, img));
     }

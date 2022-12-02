@@ -59,7 +59,7 @@ public final class SettingHandler {
     if (!hasSave) {
 
       // 화면 모드 설정
-      setting.screenMode = 2;
+      setting.screenMode = 0;
       setting.width = 1600;
       setting.height = 900;
 

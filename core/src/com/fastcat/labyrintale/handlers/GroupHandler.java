@@ -578,6 +578,13 @@ public final class GroupHandler {
       t.add(new Sanpellegrino(null));
     }
 
+    public static AbstractItem getItem(String id) {
+      AbstractItem tt = Objects.requireNonNull(idSort.get(id).clone());
+      HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+      if(!temp.get(tt.id)) temp.replace(tt.id, true);
+      return tt;
+    }
+
     public static AbstractItem getRandomItemByRarity(AbstractItem.ItemRarity rarity) {
       return getRandomItemByRarity(rarity, 1).get(0);
     }

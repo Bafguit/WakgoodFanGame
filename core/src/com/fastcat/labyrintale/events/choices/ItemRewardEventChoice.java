@@ -6,8 +6,11 @@ import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
+
+import java.util.HashMap;
 
 public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
 
@@ -62,7 +65,13 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
   @Override
   protected void onSelect() {
     ShopTakeScreen s;
-    if (item != null) s = new ShopTakeScreen(item);
+    if (item != null) {
+      if(item.rarity == AbstractItem.ItemRarity.SPECIAL) {
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+        if(!temp.get(item.id)) temp.replace(item.id, true);
+      }
+      s = new ShopTakeScreen(item);
+    }
     else if (rarity != null)
       s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity));
     else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem());
