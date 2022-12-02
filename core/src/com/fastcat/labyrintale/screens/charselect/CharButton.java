@@ -19,14 +19,14 @@ public class CharButton extends AbstractUI {
   public CharButton sChar;
 
   public CharButton() {
-    super(FileHandler.getUi().get("BORDER_M"));
+    super(FileHandler.getUi().get("BORDER_P"));
     showImg = false;
     clickable = false;
     isChar = false;
   }
 
   public CharButton(AbstractPlayer player) {
-    super(FileHandler.getUi().get("BORDER_M"));
+    super(FileHandler.getUi().get("BORDER_P"));
     this.player = player;
   }
 

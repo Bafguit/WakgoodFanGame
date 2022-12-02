@@ -598,8 +598,11 @@ public final class GroupHandler {
       for (int i = 0; i < amount; i++) {
         AbstractItem tt;
         tt = Objects.requireNonNull(b.get(i).clone());
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+        if(!temp.get(tt.id)) temp.replace(tt.id, true);
         a.add(tt);
       }
+      UnlockHandler.save();
       return a;
     }
 
@@ -618,8 +621,11 @@ public final class GroupHandler {
       for (int i = 0; i < amount; i++) {
         AbstractItem tt;
         tt = Objects.requireNonNull(b.get(i).clone());
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+        if(!temp.get(tt.id)) temp.replace(tt.id, true);
         a.add(tt);
       }
+      UnlockHandler.save();
       return a;
     }
 
@@ -654,6 +660,7 @@ public final class GroupHandler {
       raritySort.put(AbstractItem.ItemRarity.GOLD, goldItem);
       raritySort.put(AbstractItem.ItemRarity.BOSS, bossItem);
       raritySort.put(AbstractItem.ItemRarity.SHOP, shopItem);
+      raritySort.put(AbstractItem.ItemRarity.SPECIAL, specialItem);
       raritySort.put(AbstractItem.ItemRarity.STARTER, starterItem);
     }
 
@@ -836,8 +843,11 @@ public final class GroupHandler {
         AbstractSkill tt;
         tt = Objects.requireNonNull(b.get(i).clone());
         tt.owner = p;
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+        if(!temp.get(tt.id)) temp.replace(tt.id, true);
         a.add(tt);
       }
+      UnlockHandler.save();
       return a;
     }
 
@@ -850,9 +860,14 @@ public final class GroupHandler {
       Array<AbstractSkill> b = p.deck;
       for (int i = 0; i < b.size; i++) {
         AbstractSkill s = b.get(i);
-        if (s.upgraded != isNone) a.add(s.clone());
+        if (s.upgraded != isNone) {
+          a.add(s.clone());
+          HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+          if(!temp.get(s.id)) temp.replace(s.id, true);
+        }
       }
       if (a.size > 0) {
+        UnlockHandler.save();
         return staticShuffle(a).get(0);
       } else return null;
     }

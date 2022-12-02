@@ -106,7 +106,7 @@ public class StatIcon extends AbstractUI {
         String t = "";
         if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED) t += amount;
         else t = amount + "%";
-        renderLineLeft(sb, fontData, t, x + sWidth * 1.05f, y + sHeight / 2, sWidth * 3, sHeight);
+        renderLineLeft(sb, fontData, t, x + sWidth * 1.02f, y + sHeight / 2, sWidth * 3, sHeight);
       }
     }
   }

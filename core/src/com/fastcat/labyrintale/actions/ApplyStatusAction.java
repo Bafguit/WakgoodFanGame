@@ -33,22 +33,26 @@ public class ApplyStatusAction extends AbstractAction {
   @Override
   protected void updateAction() {
     if (duration == baseDuration) {
-      if (actor != null && actor.isPlayer) {
-        actor.passive.onApplyStatus(status, target);
-        for (AbstractItem m : actor.item) {
-          if (m != null) m.onApplyStatus(status, target);
+      if(target.size > 0) {
+        if (actor != null && actor.isPlayer) {
+          actor.passive.onApplyStatus(status, target);
+          for (AbstractItem m : actor.item) {
+            if (m != null) m.onApplyStatus(status, target);
+          }
         }
-      }
-      if (status.type == AbstractStatus.StatusType.BUFF) {
-        SoundHandler.playSfx("BUFF");
-      } else if (status.type == AbstractStatus.StatusType.DEBUFF) {
-        SoundHandler.playSfx("DEBUFF");
+        if (status.type == AbstractStatus.StatusType.BUFF) {
+          SoundHandler.playSfx("BUFF");
+        } else if (status.type == AbstractStatus.StatusType.DEBUFF) {
+          SoundHandler.playSfx("DEBUFF");
+        } else {
+          SoundHandler.playSfx("STATIC");
+        }
+        for (AbstractEntity e : target) {
+          AbstractStatus s = status.cpy();
+          e.applyStatus(s, actor, status.amount);
+        }
       } else {
-        SoundHandler.playSfx("STATIC");
-      }
-      for (AbstractEntity e : target) {
-        AbstractStatus s = status.cpy();
-        e.applyStatus(s, actor, status.amount);
+        isDone = true;
       }
     }
   }

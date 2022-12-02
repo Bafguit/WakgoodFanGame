@@ -8,8 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
-import com.fastcat.labyrintale.screens.allskillscreen.AllSkillScreen;
-import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
+import com.fastcat.labyrintale.screens.allskill.AllSkillScreen;
 
 public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
 

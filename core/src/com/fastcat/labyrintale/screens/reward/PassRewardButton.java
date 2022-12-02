@@ -1,6 +1,6 @@
 package com.fastcat.labyrintale.screens.reward;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
@@ -15,22 +15,11 @@ public class PassRewardButton extends AbstractUI {
   public RewardScreen sc;
 
   public PassRewardButton(RewardScreen sc) {
-    super(FileHandler.getUi().get("NEXT"));
+    super(FileHandler.getUi().get("BUTTON"));
     this.sc = sc;
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.55f);
-    fontData = MAIN_MENU;
+    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+    fontData = BUTTON;
     text = "넘기기";
-    showImg = false;
-  }
-
-  @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
-
-  @Override
-  protected void onOver() {
-    showImg = true;
   }
 
   @Override

@@ -8,7 +8,9 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.effects.UpTextImgEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
 import java.util.HashMap;
@@ -73,11 +75,8 @@ public class MoveAction extends AbstractAction {
         if(from.goodLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
         if(a < AbstractEntity.EntityStat.cap(from.stat.moveRes)) {
           EffectHandler.add(
-                  new UpTextEffect(
-                          from.ui.x + from.ui.sWidth / 2,
-                          from.ui.y + from.ui.sHeight * 0.35f,
-                          "이동 저항",
-                          CYAN));
+                  new UpTextImgEffect(
+                          from.ui.x + from.ui.sWidth / 2, from.ui.y + from.ui.sHeight * 0.5f, FileHandler.getUi().get("TEXT_MOVE")));
           isDone = true;
           run = false;
         }

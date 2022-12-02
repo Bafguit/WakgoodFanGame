@@ -12,7 +12,7 @@ public class RewardText extends AbstractUI {
   public RewardText() {
     super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 600, 60);
     setPosition(Gdx.graphics.getWidth() * 0.75f - sWidth / 2, Gdx.graphics.getHeight() * 0.75f);
-    fontData = MAIN_MENU;
+    fontData = MAIN_MENU_SHADOW;
     text = "보상";
     showImg = false;
     overable = false;

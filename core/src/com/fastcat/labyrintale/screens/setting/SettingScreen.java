@@ -6,18 +6,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.actions.EndLabyrinthAction;
+import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class SettingScreen extends AbstractScreen {
 
-  public BgImg bgImg = new BgImg();
   public OptionPanel panel;
   public CloseSettingButton close;
   public ReturnToMainButton main;
   public ResetTutorialButton reset;
   public ExitGameButton exit;
+  public GiveUpButton giveUp;
   public SelectionGroup screenMode;
   public SelectionGroup resolution;
   public SlideBarGroup volumeSfx;
@@ -36,8 +39,9 @@ public class SettingScreen extends AbstractScreen {
     close = new CloseSettingButton(this);
     main = new ReturnToMainButton(this);
     exit = new ExitGameButton(this);
+    giveUp = new GiveUpButton(this);
     reset = new ResetTutorialButton(this);
-    reset.setPosition(w * 0.15f, h * 0.6f);
+    reset.setPosition(w * 0.25f, h * 0.6f);
     Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
     String[] ms = new String[mo.length];
     int[] mi = new int[mo.length];
@@ -46,11 +50,11 @@ public class SettingScreen extends AbstractScreen {
       mi[i] = i;
     }
     screenMode =
-        new SelectionGroup("화면 모드", new String[] {"창 모드", "전체 화면", "전체 창 모드"}, w * 0.15f, h * 0.5f);
+        new SelectionGroup("화면 모드", new String[] {"창 모드", "전체 화면", "전체 창 모드"}, w * 0.15f, h * 0.51f);
     screenMode.index = SettingHandler.setting.screenMode;
     screenMode.setText();
     setResolution();
-    resolution = new SelectionGroup("해상도", res, w * 0.15f, h * 0.4f);
+    resolution = new SelectionGroup("해상도", res, w * 0.15f, h * 0.41f);
     resolution.item = width;
     resolution.item2 = height;
     int id = 0;
@@ -62,12 +66,12 @@ public class SettingScreen extends AbstractScreen {
     }
     resolution.index = id;
     resolution.setText();
-    volumeBgm = new SlideBarGroup("배경음악", SettingHandler.setting.volumeBgm, w * 0.5f, h * 0.65f);
+    volumeBgm = new SlideBarGroup("배경음악", SettingHandler.setting.volumeBgm, w * 0.5f, h * 0.61f);
     volumeBgm.setText();
-    volumeSfx = new SlideBarGroup("효과음", SettingHandler.setting.volumeSfx, w * 0.5f, h * 0.55f);
+    volumeSfx = new SlideBarGroup("효과음", SettingHandler.setting.volumeSfx, w * 0.5f, h * 0.51f);
     volumeSfx.setText();
-    shake = new CheckBoxGroup("화면 흔들림", SettingHandler.setting.shake, w * 0.5f, h * 0.45f);
-    fastMode = new CheckBoxGroup("빠른 전투", SettingHandler.setting.fastMode, w * 0.5f, h * 0.35f);
+    shake = new CheckBoxGroup("화면 흔들림", SettingHandler.setting.shake, w * 0.5f, h * 0.41f);
+    fastMode = new CheckBoxGroup("빠른 전투", SettingHandler.setting.fastMode, w * 0.5f, h * 0.31f);
   }
 
   @Override
@@ -78,6 +82,7 @@ public class SettingScreen extends AbstractScreen {
     if(Labyrintale.labyrinth != null) {
       main.update();
       exit.update();
+      giveUp.update();
     }
     screenMode.update();
     SettingHandler.setting.screenMode = screenMode.index;
@@ -96,7 +101,6 @@ public class SettingScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
-    bgImg.render(sb);
     panel.render(sb);
     screenMode.render(sb);
     resolution.render(sb);
@@ -109,6 +113,7 @@ public class SettingScreen extends AbstractScreen {
     if(Labyrintale.labyrinth != null) {
       main.render(sb);
       exit.render(sb);
+      giveUp.render(sb);
     }
   }
 

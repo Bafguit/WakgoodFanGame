@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 public class RunViewDeckIcon extends AbstractUI {
 
   private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
+  private final FontHandler.FontData up = FontHandler.UPGRADE;
   public AbstractSkill skill;
 
   public RunViewDeckIcon() {
@@ -51,7 +52,7 @@ public class RunViewDeckIcon extends AbstractUI {
       if(skill.upgradeCount > 0) {
         FontHandler.renderLineRight(
                 sb,
-                fontData,
+                up,
                 "+" + skill.upgradeCount,
                 x + sWidth * 0.75f, y + sWidth * 0.2f,
                 sWidth * 0.2f,

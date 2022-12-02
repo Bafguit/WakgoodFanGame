@@ -6,18 +6,15 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.credit.CreditScreen;
-import com.fastcat.labyrintale.screens.runview.RunViewScreen;
 
-import java.util.Properties;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU_SHADOW;
 
 public class CreditButton extends AbstractUI {
 
   public CreditButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
     setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.19f);
-    fontData = MAIN_MENU;
+    fontData = MAIN_MENU_SHADOW;
     text = "크레딧";
     showImg = false;
   }

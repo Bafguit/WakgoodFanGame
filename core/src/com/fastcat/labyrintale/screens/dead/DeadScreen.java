@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.screens.dead;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -27,7 +26,7 @@ public class DeadScreen extends AbstractScreen {
     }
     mainButton = new MainButton();
     cType = ControlPanel.ControlType.HIDE;
-    font = FontHandler.MAIN_MENU;
+    font = FontHandler.MAIN_MENU_SHADOW;
     m = AbstractLabyrinth.minute;
     s = AbstractLabyrinth.second;
   }

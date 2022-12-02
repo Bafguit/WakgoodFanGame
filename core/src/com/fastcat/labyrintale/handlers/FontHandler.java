@@ -30,13 +30,17 @@ public final class FontHandler implements Disposable {
   public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
   public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
   public static final FontData ENERGY = new FontData(BOLD, 48, true);
-  public static final FontData MAIN_MENU = new FontData(MEDIUM, 53, false);
+  public static final FontData BUTTON = new FontData(MEDIUM, 46, false, false);
+  public static final FontData CLOSE = new FontData(MEDIUM, 53, false, false);
+  public static final FontData MAIN_MENU_SHADOW = new FontData(MEDIUM, 53, false);
   public static final FontData MAIN_MENU_BORDER = new FontData(MEDIUM, 53, true);
   public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
   public static final FontData CARD_BORDER = new FontData(MEDIUM, 67, true);
-  // private static final Pattern ORB_PATTERN = Pattern.compile("\\(@\\)");
   public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
   public static final FontData CARD_BIG_DESC = new FontData(MEDIUM, 40, WHITE, true, true);
+  public static final FontData UPGRADE = new FontData(MEDIUM, 40, WHITE, true, true);
+  public static final FontData PANEL_NAME = new FontData(BOLD, 48, new Color(1f, 0.975f, 0.925f, 1), true, false);
+  public static final FontData PANEL_DESC = new FontData(MEDIUM, 40, new Color(1f, 0.975f, 0.925f, 1), true, false);
   public static final FontData BIG_DESC = new FontData(MEDIUM, 32, WHITE, true, true);
   public static final FontData SEED = new FontData(MEDIUM, 44, WHITE, true, false);
   public static final FontData SHOP_OK = new FontData(MEDIUM, 30, WHITE, true, true);
@@ -45,22 +49,24 @@ public final class FontHandler implements Disposable {
   public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
   public static final FontData INFO_HP_BORDER = new FontData(MEDIUM, 35, true);
   public static final FontData BORDER_44 = new FontData(MEDIUM, 44, true);
-  public static final FontData EVENT_TITLE = new FontData(MEDIUM, 42, new Color(0.85f, 0.8f, 0.745f, 1), false, false);
-  public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, new Color(0.85f, 0.8f, 0.745f, 1), false, false);
-  public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 32, false);
+  public static final FontData EVENT_TITLE = new FontData(MEDIUM, 42, new Color(1f, 0.975f, 0.925f, 1), false, false);
+  public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, new Color(1f, 0.975f, 0.925f, 1), false, false);
+  public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 36, false, false);
   public static final FontData BORDER = new FontData(MEDIUM, 40, true);
   public static final FontData BLOCK = new FontData(MEDIUM, 36, CYAN, true, true);
   public static final FontData HP = new FontData(MEDIUM, 26, false);
-  public static final FontData HP_N = new FontData(MEDIUM, 26, SCARLET, false, false);
+  public static final FontData HP_N = new FontData(MEDIUM, 26, SCARLET, true, false);
   public static final FontData STATUS = new FontData(MEDIUM, 20, true);
-  public static final FontData REST_DESC = new FontData(MEDIUM, 48, false);
-  public static final FontData WAY = new FontData(MEDIUM, 32, false);
-  public static final FontData SETTING = new FontData(BOLD, 44, true);
+  public static final FontData REST_DESC = new FontData(MEDIUM, 38, false, false);
+  public static final FontData WAY = new FontData(MEDIUM, 31, false, false);
+  public static final FontData SETTING = new FontData(BOLD, 44, false, false);
+  public static final FontData TAB = new FontData(BOLD, 40, false, false);
   public static final FontData BLEAK =
       new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
-  public static final FontData SUB_NAME = new FontData(MEDIUM, 32, true);
-  public static final FontData STAT = new FontData(MEDIUM, 28, true);
+  public static final FontData SUB_NAME = new FontData(MEDIUM, 32, false);
   public static final FontData SUB_DESC = new FontData(MEDIUM, 26, false);
+  public static final FontData STAT = new FontData(MEDIUM, 30, false);
+  public static final FontData STAT_RAW = new FontData(MEDIUM, 30, false, false);
   public static final FontData EXP = new FontData(MEDIUM, 26, true);
 
   // private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
@@ -100,7 +106,7 @@ public final class FontHandler implements Disposable {
     parameter.size = size;
     parameter.color = color;
     parameter.borderColor = bColor;
-    parameter.borderWidth = border ? parameter.size * 0.07f : 0.0f;
+    parameter.borderWidth = border ? parameter.size * 0.04f : 0.0f;
     if (type.equals(BOLD)) return bold.generateFont(parameter);
     else return medium.generateFont(parameter);
   }
@@ -119,7 +125,7 @@ public final class FontHandler implements Disposable {
       SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
     BitmapFont font = fontData.font;
     layout.setText(font, text, fontData.color, bw, Align.center, false);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -134,7 +140,7 @@ public final class FontHandler implements Disposable {
       matcher = COLOR_PATTERN.matcher(text);
     }
     layout.setText(font, text, fontData.color, bw, Align.left, false);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -142,7 +148,7 @@ public final class FontHandler implements Disposable {
       SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
     BitmapFont font = fontData.font;
     layout.setText(font, text, fontData.color, bw, Align.right, false);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -157,7 +163,7 @@ public final class FontHandler implements Disposable {
       SpriteBatch sb, FontData fontData, String text, float x, float y, float bw, float bh) {
     BitmapFont font = fontData.font;
     layout.setText(font, text, fontData.color, bw, Align.topLeft, true);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -204,7 +210,7 @@ public final class FontHandler implements Disposable {
     }
     font.getData().setScale(fontData.scale);
     layout.setText(font, text, fontData.color, bw, Align.center, true);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -274,7 +280,7 @@ public final class FontHandler implements Disposable {
         break;
       }
     }
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -283,7 +289,7 @@ public final class FontHandler implements Disposable {
     BitmapFont font = fontData.font;
     font.getData().setScale(fontData.scale);
     layout.setText(font, text, fontData.color, bw, Align.center, true);
-    float ry = y + (layout.height) / 2;
+    float ry = y + (layout.height) * 0.65f;
     fontData.draw(sb, layout, fontData.alpha, x, ry);
   }
 
@@ -317,10 +323,12 @@ public final class FontHandler implements Disposable {
     TURN_CHANGE.dispose();
     COOLDOWN.dispose();
     ENERGY.dispose();
-    MAIN_MENU.dispose();
+    BUTTON.dispose();
+    MAIN_MENU_SHADOW.dispose();
     CARD_BIG_ORB.dispose();
     CARD_BIG_NAME.dispose();
     CARD_BIG_DESC.dispose();
+    UPGRADE.dispose();
     BIG_DESC.dispose();
     SEED.dispose();
     SHOP_OK.dispose();
@@ -342,9 +350,14 @@ public final class FontHandler implements Disposable {
     SUB_NAME.dispose();
     SUB_DESC.dispose();
     STAT.dispose();
+    STAT_RAW.dispose();
     MAIN_MENU_BORDER.dispose();
     EXP.dispose();
     CARD_BORDER.dispose();
+    PANEL_DESC.dispose();
+    PANEL_NAME.dispose();
+    CLOSE.dispose();
+    TAB.dispose();
   }
 
   public enum FontType {
@@ -364,15 +377,19 @@ public final class FontHandler implements Disposable {
     public boolean border;
 
     public FontData(FontType type, int size, Color color, boolean shadow, boolean border) {
-      this(type, size, shadow, border, color, DARK_GRAY);
+      this(type, size, shadow, border, color, new Color(0.2f, 0.175f, 0.125f, 1));
     }
 
     public FontData(FontType type, int size, boolean border) {
-      this(type, size, true, border, WHITE, DARK_GRAY);
+      this(type, size, true, border, new Color(1f, 0.975f, 0.925f, 1), new Color(0.2f, 0.175f, 0.125f, 1));
+    }
+
+    public FontData(FontType type, int size, boolean shadow, boolean border) {
+      this(type, size, shadow, border, new Color(1f, 0.975f, 0.925f, 1), new Color(0.2f, 0.175f, 0.125f, 1));
     }
 
     public FontData(FontType type, int size, Color color) {
-      this(type, size, true, false, color, DARK_GRAY);
+      this(type, size, true, false, color, new Color(0.2f, 0.175f, 0.125f, 1));
     }
 
     public FontData(

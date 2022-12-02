@@ -49,7 +49,7 @@ public class PlayerIcon extends AbstractUI {
               p.isNeut || !p.isAlive() ? HP_N : FontHandler.HP,
               p.health + "/" + p.maxHealth,
               x,
-              y + hy + 18 * scale,
+              y + hy + 14 * scale,
               sWidth,
               y);
     }

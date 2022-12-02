@@ -20,8 +20,9 @@ import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
-import com.fastcat.labyrintale.screens.difficultyscreen.DifficultyScreen;
+import com.fastcat.labyrintale.screens.difficulty.DifficultyScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
+import com.fastcat.labyrintale.screens.library.LibraryScreen;
 import com.fastcat.labyrintale.screens.logo.LogoScreen;
 import com.fastcat.labyrintale.screens.mainmenu.MainMenuScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
@@ -31,7 +32,6 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
-import io.github.singlerr.Main;
 import lombok.Getter;
 
 public class Labyrintale extends Game {
@@ -51,6 +51,7 @@ public class Labyrintale extends Game {
   public static MapScreen mapScreen;
   public static WayScreen wayScreen;
   public static DifficultyScreen diffScreen;
+  public static LibraryScreen libScreen;
   public static BattleScreen battleScreen;
   public static CharInfoScreen charInfoScreen;
   public static RestScreen restScreen;
@@ -160,12 +161,15 @@ public class Labyrintale extends Game {
     SoundHandler.getInstance();
     ActionHandler.getInstance();
     GroupHandler.getInstance();
+    UnlockHandler.load();
+    AchieveHandler.load();
 
     game = this;
     mainMenuScreen = new MainMenuScreen();
     charSelectScreen = new CharSelectScreen();
     settingScreen = new SettingScreen();
     diffScreen = new DifficultyScreen();
+    libScreen = new LibraryScreen();
     tutorialScreen = new TutorialScreen();
     // labyrinth = new AbstractLabyrinth();
     fadeTex = FileHandler.getUi().get("FADE");

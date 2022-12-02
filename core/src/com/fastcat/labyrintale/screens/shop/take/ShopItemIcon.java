@@ -12,7 +12,7 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 
 public class ShopItemIcon extends AbstractUI {
 
-  private static final FontHandler.FontData fontData = FontHandler.MAIN_MENU;
+  private static final FontHandler.FontData fontData = FontHandler.MAIN_MENU_SHADOW;
   private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
   public ShopTakeScreen screen;
   public Sprite icon;

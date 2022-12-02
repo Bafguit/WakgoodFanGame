@@ -1,13 +1,11 @@
 package com.fastcat.labyrintale.screens.setting;
 
 import com.badlogic.gdx.Gdx;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
 import static com.fastcat.labyrintale.handlers.FontHandler.SETTING;
 
 public class ResetTutorialButton extends AbstractUI {

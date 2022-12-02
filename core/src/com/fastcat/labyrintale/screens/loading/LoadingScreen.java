@@ -45,8 +45,6 @@ public class LoadingScreen extends AbstractScreen {
           Labyrintale.charSelectScreen.chars[i].removeChar();
         }
         Labyrintale.charSelectScreen.nextButton.disable();
-        Labyrintale.charSelectScreen.backButton.onHide();
-        Labyrintale.charSelectScreen.nextButton.onHide();
         Labyrintale.returnToWay();
         SaveHandler.finish(true);
         SaveHandler.save();

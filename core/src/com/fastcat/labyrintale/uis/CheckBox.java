@@ -24,8 +24,7 @@ public class CheckBox extends AbstractUI {
   @Override
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
-      if (!over) sb.setColor(Color.LIGHT_GRAY);
-      else sb.setColor(Color.WHITE);
+      sb.setColor(Color.WHITE);
       if (checked) sb.draw(on, x, y, sWidth, sHeight);
       else sb.draw(img, x, y, sWidth, sHeight);
     }

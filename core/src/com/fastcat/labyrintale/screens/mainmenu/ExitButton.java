@@ -1,6 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU_SHADOW;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -11,7 +11,7 @@ public class ExitButton extends AbstractUI {
   public ExitButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
     setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.125f);
-    fontData = MAIN_MENU;
+    fontData = MAIN_MENU_SHADOW;
     text = "종료";
     showImg = false;
   }

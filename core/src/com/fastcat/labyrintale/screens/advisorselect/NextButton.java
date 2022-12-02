@@ -1,6 +1,6 @@
 package com.fastcat.labyrintale.screens.advisorselect;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
@@ -13,22 +13,11 @@ public class NextButton extends AbstractUI {
   private final AdvisorSelectScreen sc;
 
   public NextButton(AdvisorSelectScreen sc) {
-    super(FileHandler.getUi().get("NEXT"));
+    super(FileHandler.getUi().get("BUTTON"));
     setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-    fontData = MAIN_MENU;
+    fontData = BUTTON;
     text = "결정";
     this.sc = sc;
-    showImg = false;
-  }
-
-  @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
-
-  @Override
-  protected void onOver() {
-    showImg = true;
   }
 
   @Override

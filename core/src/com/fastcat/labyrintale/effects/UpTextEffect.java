@@ -15,9 +15,10 @@ public class UpTextEffect extends AbstractEffect {
   private final EffectPublicText text;
 
   public UpTextEffect(float x, float y, String t, Color color) {
-    super(x, y, 1);
+    super(x, y, 1.5f);
+    duration = baseDuration = 1;
     text = new EffectPublicText(FileHandler.getUi().get("MENU_SELECT"), 300, 60);
-    text.fontData = new FontHandler.FontData(MEDIUM, 53, color, true, true);
+    text.fontData = new FontHandler.FontData(MEDIUM, 52, color, true, true);
     text.text = t;
     text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);
   }

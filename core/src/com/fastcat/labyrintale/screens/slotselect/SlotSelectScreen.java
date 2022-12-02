@@ -44,10 +44,10 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         AbstractPlayer p = AbstractLabyrinth.players[cnt];
         float bw = w * (0.15f + 0.46f * k);
         PlayerSlotIcon c = new PlayerSlotIcon(p);
-        c.setPosition(bw - c.sWidth / 2, h * (0.69f - 0.275f * l));
+        c.setPosition(bw - c.sWidth / 2, h * (0.69f - 0.215f * l));
         for (int i = 0; i < 3; i++) {
           SlotButton adv = new SlotButton(p, i, this);
-          adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.69f - 0.275f * l));
+          adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.69f - 0.215f * l));
           pPlayer[cnt][i] = adv;
         }
         pIcons[cnt++] = c;
@@ -112,7 +112,7 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
     private AbstractPlayer player;
 
     public PlayerSlotIcon(AbstractPlayer player) {
-      super(FileHandler.getUi().get("BORDER_M"));
+      super(FileHandler.getUi().get("BORDER_P"));
       this.player = player;
     }
 

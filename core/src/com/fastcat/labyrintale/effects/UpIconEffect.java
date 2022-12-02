@@ -19,7 +19,8 @@ public class UpIconEffect extends AbstractEffect {
   private final float rh;
 
   public UpIconEffect(float x, float y, Sprite img) {
-    super(x, y, 1);
+    super(x, y, 1.5f);
+    duration = baseDuration = 1;
     this.img = new Sprite(img.getTexture());
     rw = 100 * scale;
     rh = 100 * scale;

@@ -1,16 +1,11 @@
 package com.fastcat.labyrintale.events.choices;
 
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
-import com.fastcat.labyrintale.screens.allskillscreen.AllSkillScreen;
-import com.fastcat.labyrintale.skills.enemy.StrikeE;
-import com.fastcat.labyrintale.skills.player.basic.Strike;
+import com.fastcat.labyrintale.screens.allskill.AllSkillScreen;
 
 public class AmnesiaEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
 

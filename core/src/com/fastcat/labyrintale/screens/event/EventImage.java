@@ -25,8 +25,8 @@ public class EventImage extends AbstractUI {
     overable = false;
     nx = 1290 * scale;
     dx = 1095 * scale;
-    ny = 1172 * scale;
-    dy = 1102 * scale;
+    ny = 1169 * scale;
+    dy = 1099 * scale;
     nw = 404 * scale;
     dw = 706 * scale;
     nh = 58 * scale;

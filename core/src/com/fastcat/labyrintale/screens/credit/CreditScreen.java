@@ -19,6 +19,7 @@ import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 
 public class CreditScreen extends AbstractScreen {
 
+    private SoundHandler.MusicData music;
     public boolean clicked = false;
     public CreditBackButton backButton;
     public AbstractUI.TempUI logo;
@@ -49,9 +50,10 @@ public class CreditScreen extends AbstractScreen {
             mainMenuScreen.playMusic = true;
             Labyrintale.fadeOutAndChangeScreen(mainMenuScreen, 1.5f);
         }
-        if(logo.y <= Gdx.graphics.getHeight()) {
-            logo.y += Labyrintale.tick * 134 * InputHandler.scale;
-        } else {
+        if(logo.y < 0) {
+            logo.y += Labyrintale.tick * 128 * InputHandler.scale;
+            if(logo.y > 0) logo.y = 0;
+        } else if(music != null && !music.music.isPlaying()) {
             clicked = true;
             backButton.enable();
         }
@@ -68,6 +70,6 @@ public class CreditScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        SoundHandler.addMusic("CREDIT", false, true);
+        music = SoundHandler.addMusic("CREDIT", false, true);
     }
 }

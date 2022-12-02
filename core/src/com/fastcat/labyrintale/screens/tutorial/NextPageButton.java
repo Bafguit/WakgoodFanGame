@@ -1,45 +1,33 @@
 package com.fastcat.labyrintale.screens.tutorial;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.screens.setting.SettingScreen;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
+import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class NextPageButton extends AbstractUI {
 
   private TutorialScreen sc;
 
   public NextPageButton(TutorialScreen sc) {
-    super(FileHandler.getUi().get("NEXT"));
+    super(FileHandler.getUi().get("BUTTON"));
     setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-    fontData = MAIN_MENU;
+    fontData = BUTTON;
     text = "다음";
-    showImg = false;
     this.sc = sc;
   }
 
   @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
-
-  @Override
   protected void renderUi(SpriteBatch sb) {
-    sb.setColor(Color.WHITE);
-    if (showImg) sb.draw(img, x, y, sWidth, sHeight);
+    if(overable && over) sb.setColor(WHITE);
+    else sb.setColor(LIGHT_GRAY);
+    sb.draw(img, x, y, sWidth, sHeight);
     renderKeywordCenter(sb, fontData, sc.index < sc.max ? text : "닫기", x, y + sHeight / 2, sWidth, sHeight);
-  }
-
-  @Override
-  protected void onOver() {
-    showImg = true;
   }
 
   @Override

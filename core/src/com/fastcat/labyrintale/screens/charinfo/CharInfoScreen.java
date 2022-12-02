@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -28,7 +29,7 @@ public class CharInfoScreen extends AbstractScreen {
   private final FontHandler.FontData fontHp = INFO_HP;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
-  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
   public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public CharDeckIcon[] deck = new CharDeckIcon[3];
@@ -102,7 +103,7 @@ public class CharInfoScreen extends AbstractScreen {
 
     // button
     sb.draw(hbb, w * 0.47f, h * 0.68f, w * 0.14f, h * 0.03f);
-    sb.draw(hb,
+    sb.draw(hb.img,
             w * 0.47f,
             h * 0.68f, 0, 0, w * 0.14f, h * 0.03f,
             Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
@@ -113,9 +114,8 @@ public class CharInfoScreen extends AbstractScreen {
         fontHp,
         player.health + "/" + player.maxHealth,
         w * 0.47f,
-        h * 0.697f,
-        w * 0.14f,
-        h * 0.03f);
+        h * 0.695f,
+        w * 0.14f, h * 0.03f);
 
     for (CharDeckIcon b : deck) b.render(sb);
     for (CharItemIcon b : item) b.render(sb);

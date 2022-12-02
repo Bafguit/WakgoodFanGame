@@ -1,12 +1,11 @@
 package com.fastcat.labyrintale.screens.rest;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.REST_DESC;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderColorCenter;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class RestDesc extends AbstractUI {
 
@@ -14,7 +13,7 @@ public class RestDesc extends AbstractUI {
     super(FileHandler.getUi().get("WAY_SELECT"));
     text = d;
     showImg = false;
-    fontData = REST_DESC;
+    fontData = INFO_NAME;
     overable = false;
   }
 

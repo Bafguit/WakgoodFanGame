@@ -15,9 +15,10 @@ public class UpDamageEffect extends AbstractEffect {
   private final EffectPublicText text;
 
   public UpDamageEffect(float x, float y, int damage, Color color, boolean isNegative) {
-    super(x, y, 1);
+    super(x, y, 1.5f);
+    duration = baseDuration = 1;
     text = new EffectPublicText(FileHandler.getUi().get("MENU_SELECT"), 300, 60);
-    text.fontData = new FontHandler.FontData(MEDIUM, 53, color, true, true);
+    text.fontData = new FontHandler.FontData(MEDIUM, 52, color, true, true);
     damage = Math.max(damage, 0);
     text.text = damage != 0 ? isNegative ? "-" + damage : "+" + damage : "0";
     text.setPosition(x - text.sWidth / 2, y - text.sHeight / 2);

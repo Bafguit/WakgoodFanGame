@@ -43,12 +43,13 @@ public class EventChoiceButton extends AbstractUI {
       }
       sb.draw(img, x, y, sWidth, sHeight);
 
+      sb.setColor(Color.WHITE);
       renderLineLeft(
           sb,
           fontData,
           choice.condition.condition() ? choice.text : choice.condition.cdText(),
-          x + 20 * InputHandler.scale,
-          y + sHeight * 0.55f,
+          x + 14 * InputHandler.scale,
+          y + sHeight * 0.5f,
           sWidth,
           sHeight);
     }

@@ -15,6 +15,7 @@ public class SlotButton extends AbstractUI {
 
   private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
   private final FontHandler.FontData fd = FontHandler.CARD_BIG_DESC;
+  private final FontHandler.FontData up = FontHandler.UPGRADE;
   public AbstractPlayer player;
   public AbstractSkill skill;
   public int index;
@@ -27,7 +28,6 @@ public class SlotButton extends AbstractUI {
     skill = player.deck.get(index);
     clickable = skill.upgradeCount < AbstractLabyrinth.maxSkillUp;
     this.select = select;
-    fontData = FontHandler.COOLDOWN;
   }
 
   @Override
@@ -57,6 +57,15 @@ public class SlotButton extends AbstractUI {
             y + sWidth * 0.95f,
             sWidth * 0.2f,
             sWidth * 0.2f);
+      }
+      if(skill.upgradeCount > 0) {
+        FontHandler.renderLineRight(
+                sb,
+                up,
+                "+" + skill.upgradeCount,
+                x + sWidth * 0.75f, y + sWidth * 0.2f,
+                sWidth * 0.2f,
+                sWidth * 0.2f);
       }
     }
   }

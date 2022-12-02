@@ -1,6 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU;
+import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU_SHADOW;
 
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
@@ -14,7 +14,7 @@ public class LoadButton extends AbstractUI {
   public LoadButton() {
     super(FileHandler.getUi().get("MENU_SELECT"));
     setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.385f);
-    fontData = MAIN_MENU;
+    fontData = MAIN_MENU_SHADOW;
     text = "불러오기";
     showImg = false;
   }

@@ -7,7 +7,7 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
-import com.fastcat.labyrintale.screens.resultscreen.ResultScreen;
+import com.fastcat.labyrintale.screens.result.ResultScreen;
 
 public class EndLabyrinthAction extends AbstractAction {
 

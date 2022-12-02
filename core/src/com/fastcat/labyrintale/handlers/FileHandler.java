@@ -202,8 +202,13 @@ public class FileHandler implements Disposable {
     ui.put("CONTROL_PANEL", new Sprite(new Texture("img/ui/cPanel.png")));
     ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
     ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
+    ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
+    ui.put("CLOSE", new Sprite(new Texture("img/ui/close.png")));
+    ui.put("CLOSE_SET", new Sprite(new Texture("img/ui/closeSet.png")));
     ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
     ui.put("BORDER_M", new Sprite(new Texture("img/ui/border_m.png")));
+    ui.put("BORDER_P", new Sprite(new Texture("img/ui/border_player.png")));
+    ui.put("BORDER_PL", new Sprite(new Texture("img/ui/border_p_p.png")));
     ui.put("BORDER_B", new Sprite(new Texture("img/ui/border_p.png")));
     ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
     ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
@@ -269,13 +274,25 @@ public class FileHandler implements Disposable {
     ui.put("STAT_NEUTRES", new Sprite(new Texture("img/stat/neutRes.png")));
     ui.put("E_IMAGE", new Sprite(new Texture("img/ui/e_img.png")));
     ui.put("E_PANEL", new Sprite(new Texture("img/ui/e_imgPanel.png")));
+    ui.put("UNKNOWN", new Sprite(new Texture("img/ui/unknown.png")));
     ui.put("STAT_PLUS", new Sprite(new Texture("img/ui/statPlus.png")));
     ui.put("DIFF_NORMAL", new Sprite(new Texture("img/ui/diff_normal.png")));
     ui.put("DIFF_HARD", new Sprite(new Texture("img/ui/diff_hard.png")));
     ui.put("DIFF_COFFIN", new Sprite(new Texture("img/ui/diff_coffin.png")));
+    ui.put("DIFF_LOCKED", new Sprite(new Texture("img/ui/diff_locked.png")));
+    ui.put("LIB_RUNS", new Sprite(new Texture("img/ui/lib_runs.png")));
+    ui.put("LIB_ACHVS", new Sprite(new Texture("img/ui/lib_achvs.png")));
+    ui.put("LIB_DICT", new Sprite(new Texture("img/ui/lib_dict.png")));
     ui.put("ARROW_RIGHT", new Sprite(new Texture("img/ui/arrow_right.png")));
     ui.put("HEALTH_BAR", new Sprite(new Texture("img/ui/health_bar.png")));
     ui.put("HEALTH_BACK", new Sprite(new Texture("img/ui/hb_block.png")));
+    ui.put("SETTING", new Sprite(new Texture("img/ui/setting_paper.png")));
+    ui.put("DICT", new Sprite(new Texture("img/ui/dict_paper.png")));
+    ui.put("TEXT_DEBU", new Sprite(new Texture("img/ui/debuRes.png")));
+    ui.put("TEXT_NEUT", new Sprite(new Texture("img/ui/neutRes.png")));
+    ui.put("TEXT_MOVE", new Sprite(new Texture("img/ui/moveRes.png")));
+    ui.put("TEXT_CRIT", new Sprite(new Texture("img/ui/critical.png")));
+    ui.put("TEXT_NEUTRAL", new Sprite(new Texture("img/ui/neutral.png")));
     ui.put("CREDIT", new Sprite(new Texture("img/credit.png")));
   }
 

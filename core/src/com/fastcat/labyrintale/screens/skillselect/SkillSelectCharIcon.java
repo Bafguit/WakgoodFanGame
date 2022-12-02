@@ -16,7 +16,7 @@ public class SkillSelectCharIcon extends AbstractUI {
   public AbstractPlayer p;
 
   public SkillSelectCharIcon(SkillSelectGroup g, AbstractPlayer p) {
-    super(FileHandler.getUi().get("BORDER_M"));
+    super(FileHandler.getUi().get("BORDER_P"));
     group = g;
     this.p = p;
     border = FileHandler.getCharImg().get(p.playerClass);

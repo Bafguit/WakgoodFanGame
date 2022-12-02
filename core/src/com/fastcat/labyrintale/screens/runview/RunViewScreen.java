@@ -9,23 +9,16 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.BuildInfo;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
-import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
-import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoItemIcon;
-import com.fastcat.labyrintale.screens.resultscreen.BackToMainButton;
-import com.fastcat.labyrintale.screens.resultscreen.ResultAdvisor;
-import com.fastcat.labyrintale.screens.resultscreen.ResultText;
-import com.fastcat.labyrintale.screens.resultscreen.ScreenshotButton;
-import com.fastcat.labyrintale.uis.PlayerIcon;
+import com.fastcat.labyrintale.screens.result.ResultAdvisor;
+import com.fastcat.labyrintale.screens.result.ResultText;
+import com.fastcat.labyrintale.screens.result.ScreenshotButton;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.getPlayerInstance;
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class RunViewScreen extends AbstractScreen {
@@ -37,7 +30,7 @@ public class RunViewScreen extends AbstractScreen {
   private final FontData fontData = ENERGY;
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
 
-  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
   public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public ShapeRenderer shr = new ShapeRenderer();
   public RunViewDeckIcon[][] deck = new RunViewDeckIcon[4][3];
@@ -73,30 +66,30 @@ public class RunViewScreen extends AbstractScreen {
         for (int i = 0; i < 3; i++) {
           RunViewDeckIcon b = new RunViewDeckIcon();
           b.setPosition(
-              w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+              w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           deck[c][i] = b;
         }
         for (int i = 0; i < 2; i++) {
           RunViewItemIcon b = new RunViewItemIcon();
           b.setPosition(
-              w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+              w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           item[c][i] = b;
         }
         RunViewItemIcon ps = new RunViewItemIcon();
-        ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
+        ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
         passive[c] = ps;
         int cnt = 0;
         for (int j = 3; j >= 0; j--) {
           for (int i = 1; i >= 0; i--) {
             StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
             s.setPosition(
-                w * (0.398f + 0.46f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
+                w * (0.425f + 0.435f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
             stats[c][cnt++] = s;
           }
         }
         RunViewPlayerIcon pc = new RunViewPlayerIcon();
         pc.clickable = false;
-        pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
+        pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
         pIcons[c] = pc;
         c++;
       }
@@ -112,6 +105,7 @@ public class RunViewScreen extends AbstractScreen {
     score = "점수: ";
     date = "";
     shot = new ScreenshotButton();
+    shot.setPosition(Gdx.graphics.getWidth() * 0.17f, Gdx.graphics.getHeight() * 0.9f);
     back = new BackToMainRunButton();
     noRuns = new NoRunsText();
     if(RunHandler.runs.size > 0) setIndex(true);
@@ -227,16 +221,16 @@ public class RunViewScreen extends AbstractScreen {
       for (int f = 0; f < 2; f++) {
         for (int g = 0; g < 2; g++) {
           AbstractPlayer player = pIcons[cnt++].p;
-          sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
-          sb.draw(hb,
-                  w * (0.15f + 0.46f * f),
+          sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+          sb.draw(hb.img,
+                  w * (0.175f + 0.435f * f),
                   h * (0.73f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
                   Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
           FontHandler.renderLineLeft(
                   sb,
                   fontName,
                   player.name,
-                  w * (0.15f + 0.46f * f),
+                  w * (0.175f + 0.435f * f),
                   h * (0.79f - 0.275f * g),
                   w * 0.12f,
                   50);
@@ -244,8 +238,8 @@ public class RunViewScreen extends AbstractScreen {
                   sb,
                   fontHp,
                   player.health + "/" + player.maxHealth,
-                  w * (0.15f + 0.46f * f),
-                  h * (0.747f - 0.275f * g),
+                  w * (0.175f + 0.435f * f),
+                  h * (0.745f - 0.275f * g),
                   w * 0.12f,
                   h * 0.03f);
         }

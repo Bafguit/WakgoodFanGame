@@ -21,8 +21,8 @@ public class InfoPanel extends AbstractUI {
   public Sprite border = FileHandler.getUi().get("BORDER_B");
   public String name = "";
   public String desc = "";
-  public FontHandler.FontData fontName = CARD_BIG_NAME;
-  public FontHandler.FontData fontDesc = CARD_BIG_DESC;
+  public FontHandler.FontData fontName = PANEL_NAME;
+  public FontHandler.FontData fontDesc = PANEL_DESC;
   public PlayerIcon[] pIcons = new PlayerIcon[4];
   public MapButton map;
   public PlayerInfoButton playerInfo;
@@ -44,8 +44,8 @@ public class InfoPanel extends AbstractUI {
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
     nx = dx = w * 0.615f;
-    ny = h * 0.34f;
-    dy = h * 0.33f - 50 * scale;
+    ny = h * 0.335f;
+    dy = h * 0.325f - 50 * scale;
     nw = dw = 880 * InputHandler.scale;
     nh = 60 * InputHandler.scale;
     dh = 280 * InputHandler.scale;

@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.abstracts;
 
 import static com.badlogic.gdx.graphics.Color.*;
-import static com.fastcat.labyrintale.Labyrintale.wayScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 import com.badlogic.gdx.Gdx;
@@ -15,17 +14,13 @@ import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.actions.*;
-import com.fastcat.labyrintale.effects.DieEffect;
-import com.fastcat.labyrintale.effects.HealthBarDamageEffect;
-import com.fastcat.labyrintale.effects.UpDamageEffect;
-import com.fastcat.labyrintale.effects.UpTextEffect;
+import com.fastcat.labyrintale.effects.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
-import com.fastcat.labyrintale.screens.resultscreen.ResultScreen;
+import com.fastcat.labyrintale.screens.result.ResultScreen;
 import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
-import com.fastcat.labyrintale.uis.PlayerWayView;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -241,7 +236,8 @@ public abstract class AbstractEntity implements Cloneable {
           if (goodLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
           if (a < EntityStat.cap(stat.debuRes)) {
             EffectHandler.add(
-                    new UpTextEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "디버프 저항", CYAN));
+                    new UpTextImgEffect(
+                            ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, FileHandler.getUi().get("TEXT_DEBU")));
             done = true;
           } else {
             s = Objects.requireNonNull(status.cpy());
@@ -351,7 +347,8 @@ public abstract class AbstractEntity implements Cloneable {
     if(goodLuck > 1) a = Math.min(a, publicRandom.random(0, 99));
     if (a < cr) {
       EffectHandler.add(
-              new UpTextEffect(tar.ui.x + tar.ui.sWidth / 2, tar.ui.y + tar.ui.sHeight * 0.475f, "치명타", CYAN));
+              new UpTextImgEffect(
+                      tar.ui.x + tar.ui.sWidth / 2, tar.ui.y + tar.ui.sHeight * 0.375f, FileHandler.getUi().get("TEXT_CRIT")));
       Labyrintale.getScreenShake()
               .shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
       d *= 1 + ((float) stat.multiply * 0.01f);
@@ -457,7 +454,7 @@ public abstract class AbstractEntity implements Cloneable {
                 if(!isPlayer && damage >= 99) scoreHandle.more99 = true;
                 EffectHandler.add(
                     new UpDamageEffect(
-                        ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, YELLOW, true));
+                        ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, isCrit ? SCARLET : YELLOW, true));
                 EffectHandler.add(new HealthBarDamageEffect(this));
                 AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
                 state.addAnimation(0, "idle", true, 0.0F);
@@ -477,8 +474,8 @@ public abstract class AbstractEntity implements Cloneable {
                       block = 0;
                       blockRemove = 0;
                       EffectHandler.add(
-                              new UpTextEffect(
-                                      ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, "죽음 저항", CYAN));
+                              new UpTextImgEffect(
+                                      ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, FileHandler.getUi().get("TEXT_NEUT")));
                       applyStatus(new NeutResStatus(5), 5, false);
                     } else {
                       die(attacker);
@@ -495,7 +492,7 @@ public abstract class AbstractEntity implements Cloneable {
           }
         }
         EffectHandler.add(
-            new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, 0, YELLOW, true));
+            new UpDamageEffect(ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.325f, 0, YELLOW, true));
       } else if (isPlayer && damage > 0) {
         PlayerIcon ui = cPanel.infoPanel.pIcons[index];
         cPanel.effectHandler.effectList.addLast(
@@ -529,7 +526,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (blockRemove > 0) blockRemove = Math.max(blockRemove - damage, 0);
         EffectHandler.add(
             new UpDamageEffect(
-                ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.35f, damage, CYAN, true));
+                ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.325f, damage, CYAN, true));
         return 0;
       } else {
         if (isPlayer) {
@@ -588,7 +585,7 @@ public abstract class AbstractEntity implements Cloneable {
       if (isPlayer) {
         passive.onDeath(murder);
         for (AbstractItem m : item) {
-          if (m != null) m.onDeath(murder);
+          m.onDeath(murder);
         }
         scoreHandle.death++;
       }
@@ -630,7 +627,6 @@ public abstract class AbstractEntity implements Cloneable {
       if (!AbstractLabyrinth.stillAlive()) {
         ActionHandler.clear();
         SoundHandler.fadeOutAll();
-        ActionHandler.clear();
         Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD));
         SaveHandler.finish(false);
       } else {
@@ -650,7 +646,10 @@ public abstract class AbstractEntity implements Cloneable {
     health = 1;
     block = 0;
     SoundHandler.playSfx("NEUT");
-    applyStatus(new NeutStatus(this), this, 1);
+    applyStatus(new NeutStatus(this), this, 1, false);
+    EffectHandler.add(
+            new UpTextImgEffect(
+                    ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, FileHandler.getUi().get("TEXT_NEUTRAL")));
   }
 
   public void gainSkill(int index, AbstractSkill skill) {

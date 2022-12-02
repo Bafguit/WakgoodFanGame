@@ -30,9 +30,8 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
   private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
   public StatSelectScreen statScreen;
 
-  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
   public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
-  public ShapeRenderer shr = new ShapeRenderer();
   public PlayerInfoDeckIcon[][] deck = new PlayerInfoDeckIcon[4][3];
   public PlayerInfoItemIcon[][] item = new PlayerInfoItemIcon[4][2];
   public PlayerInfoItemIcon[] passive = new PlayerInfoItemIcon[4];
@@ -131,7 +130,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
       for (int g = 0; g < 2; g++) {
         AbstractPlayer player = AbstractLabyrinth.players[cnt++];
         sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.83f - 0.275f * g), w * 0.12f, h * 0.03f);
-        sb.draw(hb,
+        sb.draw(hb.img,
                 w * (0.15f + 0.46f * f),
                 h * (0.83f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
                 Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
@@ -148,7 +147,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
                 fontHp,
                 player.health + "/" + player.maxHealth,
                 w * (0.15f + 0.46f * f),
-                h * (0.847f - 0.275f * g),
+                h * (0.845f - 0.275f * g),
                 w * 0.12f,
                 h * 0.03f);
       }

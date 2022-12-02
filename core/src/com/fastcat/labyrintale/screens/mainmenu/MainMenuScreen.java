@@ -16,7 +16,7 @@ public class MainMenuScreen extends AbstractScreen {
   private final LogoText logo;
   private final GameStartButton gameStartButton;
   private final LoadButton loadButton;
-  private final RunsButton runsButton;
+  private final LibButton runsButton;
   private final OptionButton optionButton;
   private final CreditButton creditButton;
   private final ExitButton exitButton;
@@ -30,7 +30,7 @@ public class MainMenuScreen extends AbstractScreen {
     gameStartButton.setX(lx);
     loadButton = new LoadButton();
     loadButton.setX(lx);
-    runsButton = new RunsButton();
+    runsButton = new LibButton();
     runsButton.setX(lx);
     optionButton = new OptionButton();
     optionButton.setX(lx);
@@ -80,7 +80,6 @@ public class MainMenuScreen extends AbstractScreen {
       }
     }
     Labyrintale.closeTutorial();
-    logo.onHide();
     gameStartButton.onHide();
     loadButton.onHide();
     runsButton.onHide();

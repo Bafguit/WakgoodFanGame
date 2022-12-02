@@ -27,7 +27,7 @@ public class BattleScreen extends AbstractScreen {
   private final BgImg bgImg = new BgImg();
 
   public Sprite shield = FileHandler.getUi().get("SHIELD");
-  public Sprite hb = FileHandler.getUi().get("HEALTH_BAR");
+  public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
   public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
   public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
   public LinkedList<StatusButton>[] enemyStatus = new LinkedList[4];
@@ -263,7 +263,7 @@ public class BattleScreen extends AbstractScreen {
       float ex = te.entity.animX - te.sWidth / 2, ey = te.entity.animY - h * 0.025f;
       if (!tp.entity.isDead) {
         sb.draw(hbb, px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
-        sb.draw(hb,
+        sb.draw(hb.img,
             px + tw * 0.1f,
             py, 0, 0, tw * 0.8f, th * 0.05f,
             Math.max(((float) tp.entity.health) / ((float) tp.entity.maxHealth), 0), 1, 0);
@@ -272,9 +272,9 @@ public class BattleScreen extends AbstractScreen {
                 tp.entity.isNeut || !tp.entity.isAlive() ? HP_N : FontHandler.HP,
                 tp.entity.health + "/" + tp.entity.maxHealth,
                 px,
-                py + tp.sHeight * 0.06f / 2,
+                py + hb.sHeight / 2,
                 tw,
-                tp.sHeight * 0.05f);
+                hb.sHeight);
 
         ShieldIcon ps = pShield[i];
         pShield[i].setPosition(px + tw * 0.075f - ps.sWidth * 0.65f, h * 0.49f - ps.sHeight * 0.35f);
@@ -282,7 +282,7 @@ public class BattleScreen extends AbstractScreen {
       }
       if (!te.entity.isDead) {
         sb.draw(hbb, ex + ew * 0.1f, ey, ew * 0.8f, th * 0.05f);
-        sb.draw(hb,
+        sb.draw(hb.img,
             ex + ew * 0.1f,
             ey, 0, 0, ew * 0.8f, th * 0.05f,
             Math.max(((float) te.entity.health) / ((float) te.entity.maxHealth), 0), 1, 0);
@@ -291,9 +291,9 @@ public class BattleScreen extends AbstractScreen {
                 te.entity.isNeut || !te.entity.isAlive() ? HP_N : FontHandler.HP,
                 te.entity.health + "/" + te.entity.maxHealth,
                 ex,
-                ey + te.sHeight * 0.06f / 2,
+                ey + hb.sHeight / 2,
                 ew,
-                te.sHeight * 0.05f);
+                hb.sHeight);
         ShieldIcon es = eShield[i];
         eShield[i].setPosition(ex + ew * 0.075f - es.sWidth * 0.65f, h * 0.49f - es.sHeight * 0.35f);
         eShield[i].render(sb);

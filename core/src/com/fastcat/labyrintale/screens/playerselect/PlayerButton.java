@@ -14,7 +14,7 @@ public class PlayerButton extends AbstractUI {
   public PlayerSelectScreen select;
 
   public PlayerButton(AbstractPlayer adv, PlayerSelectScreen select) {
-    super(FileHandler.getUi().get("BORDER_M"));
+    super(FileHandler.getUi().get("BORDER_P"));
     player = adv;
     this.select = select;
   }
