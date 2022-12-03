@@ -32,7 +32,7 @@ public class DictCharTabButton extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
       if (!clickable || over) sb.setColor(Color.WHITE);
-      else sb.setColor(Color.LIGHT_GRAY);
+      else sb.setColor(Color.GRAY);
       sb.draw(img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
       renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);

@@ -51,7 +51,7 @@ public class CreditScreen extends AbstractScreen {
             Labyrintale.fadeOutAndChangeScreen(mainMenuScreen, 1.5f);
         }
         if(logo.y < 0) {
-            logo.y += Labyrintale.tick * 128 * InputHandler.scale;
+            logo.y += Labyrintale.tick * 138 * InputHandler.scale;
             if(logo.y > 0) logo.y = 0;
         } else if(music != null && !music.music.isPlaying()) {
             clicked = true;

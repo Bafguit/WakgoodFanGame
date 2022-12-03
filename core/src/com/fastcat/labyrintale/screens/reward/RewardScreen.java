@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
@@ -13,13 +15,12 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RewardScreen extends AbstractScreen {
 
-  public RewardTypeText rewardTypeText;
-  public RewardText rewardText;
   public PassRewardButton passButton;
   public Array<RewardItemButton> rewardButtons = new Array<>();
   public Array<AbstractReward> rewards;
 
   public RewardScreen(Array<AbstractReward> rewards) {
+    setBg(FileHandler.getUi().get("REWARD"));
     cType = ControlPanel.ControlType.BASIC;
     this.rewards = rewards;
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -27,11 +28,9 @@ public class RewardScreen extends AbstractScreen {
       float hf = (float) rewards.size / 2 - 0.5f;
       RewardItemButton temp = new RewardItemButton(rewards.get(i));
       temp.setPosition(
-          w * (0.75f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, h * 0.65f - temp.sHeight * 0.5f);
+          w * (0.5f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, 892 * InputHandler.scale);
       rewardButtons.add(temp);
     }
-    rewardTypeText = new RewardTypeText();
-    rewardText = new RewardText();
     passButton = new PassRewardButton(this);
   }
 
@@ -45,8 +44,6 @@ public class RewardScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
-    rewardTypeText.render(sb);
-    rewardText.render(sb);
     for (RewardItemButton b : rewardButtons) {
       b.render(sb);
     }

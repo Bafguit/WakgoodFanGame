@@ -75,6 +75,9 @@ public final class SaveHandler {
       }
       saveFile.delete();
       data = null;
+      AchieveHandler.save();
+    } else {
+      AchieveHandler.load();
     }
   }
 
@@ -161,6 +164,7 @@ public final class SaveHandler {
     exp = data.exp;
     maxExp = data.maxExp;
     scoreHandle = data.scoreHandle;
+    achvCheck = data.achvCheck;;
   }
 
   public static class SaveData {
@@ -190,6 +194,7 @@ public final class SaveHandler {
     public int second;
     public DeadScreen.ScreenType result;
     public ScoreHandle scoreHandle;
+    public AchieveHandler.AchvLabCheck achvCheck;
 
     public static SaveData create() {
       SaveData temp = new SaveData();
@@ -228,6 +233,7 @@ public final class SaveHandler {
       temp.sp = AbstractLabyrinth.sp;
       temp.result = AbstractLabyrinth.result;
       temp.scoreHandle = AbstractLabyrinth.scoreHandle;
+      temp.achvCheck = AbstractLabyrinth.achvCheck;
 
       return temp;
     }

@@ -17,6 +17,7 @@ public final class StringHandler {
   public static AdvisorString advisorString;
   public static KeyString keyString;
   public static RiskString riskString;
+  public static AchieveString achvString;
 
   public static void generate() {
     skillString = new SkillString();
@@ -29,5 +30,6 @@ public final class StringHandler {
     advisorString = new AdvisorString();
     keyString = new KeyString();
     riskString = new RiskString();
+    achvString = new AchieveString();
   }
 }

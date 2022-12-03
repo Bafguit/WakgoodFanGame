@@ -31,7 +31,7 @@ public class DictCharButton extends AbstractUI {
   protected void renderUi(SpriteBatch sb) {
     if (enabled) {
       if (!clickable || over) sb.setColor(Color.WHITE);
-      else sb.setColor(Color.LIGHT_GRAY);
+      else sb.setColor(Color.GRAY);
       sb.draw(group.data.player.img, x, y, sWidth, sHeight);
       sb.setColor(Color.WHITE);
       sb.draw(img, x, y, sWidth, sHeight);

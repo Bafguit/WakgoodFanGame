@@ -58,6 +58,8 @@ public class FileHandler implements Disposable {
   @Getter private static final HashMap<String, Sprite> itemImgTrans = new HashMap<>();
   // 이벤트
   @Getter private static final HashMap<String, Sprite> eventImg = new HashMap<>();
+  // 업적
+  @Getter private static final HashMap<AchieveHandler.Achievement, Sprite> achvImg = new HashMap<>();
   // 튜토리얼
   @Getter private static final HashMap<String, Sprite> tutorialImg = new HashMap<>();
   // 움짤
@@ -69,6 +71,7 @@ public class FileHandler implements Disposable {
   private static FileHandler instance;
 
   static {
+    jsonMap.put(JsonType.ACHV_JSON, generateJson("json/achieves.json"));
     jsonMap.put(JsonType.ADV_JSON, generateJson("json/advisors.json"));
     jsonMap.put(JsonType.CHAR_JSON, generateJson("json/chars.json"));
     jsonMap.put(JsonType.CHOICE_JSON, generateJson("json/choices.json"));
@@ -106,6 +109,7 @@ public class FileHandler implements Disposable {
     generateStatusImg();
     generateItemImg();
     generateEventImg();
+    generateAchieve();
     generateTutorialImg();
     generateGif();
     setAntiAliased();
@@ -144,6 +148,7 @@ public class FileHandler implements Disposable {
     maps.add(charCampImg);
     maps.add(charUpsetImg);
     maps.add(advImg);
+    maps.add(achvImg);
     maps.add(enemyImg);
     maps.add(enemyPanelImg);
     maps.add(skillImg);
@@ -165,6 +170,12 @@ public class FileHandler implements Disposable {
     for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
       skeleton.put(js.name, Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json"));
       atlas.put(js.name, new TextureAtlas("spine/enemy/" + js.name + "/skeleton.atlas"));
+    }
+  }
+
+  private void generateAchieve() {
+    for (AchieveHandler.Achievement a : AchieveHandler.Achievement.values()) {
+      achvImg.put(a, new Sprite(new Texture("img/achieve/" + a.toString().toLowerCase() + ".png")));
     }
   }
 
@@ -299,6 +310,8 @@ public class FileHandler implements Disposable {
     ui.put("HEALTH_BAR", new Sprite(new Texture("img/ui/health_bar.png")));
     ui.put("HEALTH_BACK", new Sprite(new Texture("img/ui/hb_block.png")));
     ui.put("SETTING", new Sprite(new Texture("img/ui/setting_paper.png")));
+    ui.put("ACHIEVE", new Sprite(new Texture("img/ui/achv_paper.png")));
+    ui.put("REWARD", new Sprite(new Texture("img/ui/reward.png")));
     ui.put("DICT", new Sprite(new Texture("img/ui/dict_paper.png")));
     ui.put("TEXT_DEBU", new Sprite(new Texture("img/ui/debuRes.png")));
     ui.put("TEXT_NEUT", new Sprite(new Texture("img/ui/neutRes.png")));
@@ -440,7 +453,7 @@ public class FileHandler implements Disposable {
         ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
       }
     }
-    /*
+/*
     for(Animation<Sprite> arr : gif.values()) {
       for(Sprite s : arr.getKeyFrames()) {
         s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -466,6 +479,7 @@ public class FileHandler implements Disposable {
   }
 
   public enum JsonType {
+    ACHV_JSON,
     ADV_JSON,
     CHAR_JSON,
     CHOICE_JSON,

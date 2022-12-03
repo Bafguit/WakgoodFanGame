@@ -172,6 +172,24 @@ public class AbstractItem implements Cloneable {
     }
     return Color.WHITE;
   }
+  public static Color getRarityColor(ItemRarity rarity) {
+    if(rarity != null) {
+      if (rarity == ItemRarity.BRONZE) {
+        return Color.BROWN;
+      } else if (rarity == ItemRarity.SILVER) {
+        return Color.SKY;
+      } else if (rarity == ItemRarity.GOLD) {
+        return Color.GOLD;
+      } else if (rarity == ItemRarity.BOSS) {
+        return Color.RED;
+      } else if (rarity == ItemRarity.SHOP) {
+        return Color.CHARTREUSE;
+      } else if (rarity == ItemRarity.SPECIAL) {
+        return Color.PURPLE;
+      }
+    }
+    return Color.WHITE;
+  }
 
   public enum ItemRarity {
     EMPTY,

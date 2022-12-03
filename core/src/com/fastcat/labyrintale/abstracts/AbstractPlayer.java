@@ -94,11 +94,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
   public enum PlayerClass {
     WAK,
     INE,
-    VIICHAN,
-    LILPA,
     BURGER,
-    GOSEGU,
+    LILPA,
     JURURU,
+    GOSEGU,
+    VIICHAN,
     MANAGER
   }
 }

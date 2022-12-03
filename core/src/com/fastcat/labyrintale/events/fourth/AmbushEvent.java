@@ -56,7 +56,7 @@ public class AmbushEvent extends AbstractEvent {
         e.stat.attack += 3;
       }
     } else if(p == 4) {
-      AbstractLabyrinth.gold = 0;
+      AbstractLabyrinth.modifyGold(-AbstractLabyrinth.gold);
     }
   }
 }

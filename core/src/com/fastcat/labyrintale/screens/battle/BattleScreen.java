@@ -39,6 +39,7 @@ public class BattleScreen extends AbstractScreen {
   public GetSelectedTarget gets;
   public boolean isSelecting = false;
   public boolean isEnemyTurn = false;
+  public int neutResCount = 0;
   public Array<AbstractEntity> looking;
   private Array<AbstractEntity> turn;
   private int turnIndex;
@@ -150,7 +151,7 @@ public class BattleScreen extends AbstractScreen {
     }
 
     if (cPanel.infoPanel.skill != null) {
-      Labyrintale.battleScreen.looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
+      looking = AbstractSkill.getTargets(cPanel.infoPanel.skill);
     }
     for (int i = 0; i < 4; i++) {
       PlayerBattleView pv = players[i];

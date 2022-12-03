@@ -6,10 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.BuildInfo;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
-import com.fastcat.labyrintale.handlers.UnlockHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
@@ -20,6 +17,9 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.util.HashMap;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.achvCheck;
+import static com.fastcat.labyrintale.handlers.AchieveHandler.achvs;
+import static com.fastcat.labyrintale.handlers.AchieveHandler.check;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class ResultScreen extends AbstractScreen implements GetSelectedStat {
@@ -54,6 +54,162 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       setBg(FileHandler.getBg().get("BG_DEAD"));
     } else {
       setBg(FileHandler.getBg().get("BG_WIN"));
+
+      if(achvCheck.REFLECT >= 4) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.REFLECT;
+        int cur = achvs.get(ac);
+        if(cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+      }
+
+      if(achvCheck.IMMORTAL) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.IMMORTAL;
+        int cur = achvs.get(ac);
+        if(cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+      }
+
+      if(achvCheck.NO_USE_GOLD) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.NO_USE_GOLD;
+        int cur = achvs.get(ac);
+        if(cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+      }
+
+      int purity = achvs.get(AchieveHandler.Achievement.PURITY);
+      if(purity < 3) {
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+          if (p.deck.get(0).rarity == AbstractSkill.SkillRarity.STARTER
+                  && p.deck.get(1).rarity == AbstractSkill.SkillRarity.STARTER
+                  && p.deck.get(2).rarity == AbstractSkill.SkillRarity.STARTER) {
+
+            if(purity < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+              achvs.replace(AchieveHandler.Achievement.PURITY, 1);
+            } else if(purity < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+              achvs.replace(AchieveHandler.Achievement.PURITY, 2);
+            } else if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+              achvs.replace(AchieveHandler.Achievement.PURITY, 3);
+            }
+            break;
+          }
+        }
+      }
+
+      if(AbstractLabyrinth.minute <= 20) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.FASTEST;
+        int cur = achvs.get(ac);
+        if(cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+      }
+
+      int aCount = 0;
+      for(AbstractPlayer p : AbstractLabyrinth.players) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.valueOf(p.playerClass.toString());
+        int cur = achvs.get(ac);
+        if(cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+        if(p.isAlive()) aCount++;
+      }
+
+      if(aCount == 1) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.LAST_ONE;
+        int cur = achvs.get(ac);
+        if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+          achvs.replace(ac, 1);
+        } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+          achvs.replace(ac, 2);
+        } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+          achvs.replace(ac, 3);
+        }
+      }
+
+      if(AbstractLabyrinth.gold >= 1000) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.GOLDEN;
+        int cur = achvs.get(ac);
+        if (cur < 3) {
+          if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+            achvs.replace(ac, 1);
+          } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+            achvs.replace(ac, 2);
+          } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+            achvs.replace(ac, 3);
+          }
+        }
+      }
+
+      if(achvs.get(AchieveHandler.Achievement.ALL_CHAR) == 0) {
+        int nCount = 0;
+        for (AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+          AchieveHandler.Achievement ac = AchieveHandler.Achievement.valueOf(cls.toString());
+          int clear = achvs.get(ac);
+          if (clear > 0) {
+            nCount++;
+          }
+        }
+        if (nCount == 8) {
+          achvs.replace(AchieveHandler.Achievement.ALL_CHAR, 3);
+        }
+      }
+
+      int advCur = achvs.get(AchieveHandler.Achievement.ALL_ADV);
+      if(advCur == 0) {
+        int nCount = 0;
+        for (AbstractAdvisor.AdvisorClass cls : AbstractAdvisor.AdvisorClass.values()) {
+          boolean clear = check.ALL_ADV.get(cls);
+          if (clear) {
+            nCount++;
+          } else if(AbstractLabyrinth.advisor.id.equals(cls.toString().toLowerCase())) {
+            check.ALL_ADV.replace(cls, true);
+          }
+        }
+        if (nCount == AbstractAdvisor.AdvisorClass.values().length) {
+          achvs.replace(AchieveHandler.Achievement.ALL_ADV, 3);
+        }
+      }
+
+      if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.COFFIN;
+        int cur = achvs.get(ac);
+        if (cur == 0) {
+          achvs.replace(ac, 3);
+        }
+      }
+
     }
     dType = type;
     AbstractLabyrinth.result = type;

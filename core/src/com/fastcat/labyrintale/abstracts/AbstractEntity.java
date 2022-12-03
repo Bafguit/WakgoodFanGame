@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.abstracts;
 
 import static com.badlogic.gdx.graphics.Color.*;
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 import com.badlogic.gdx.Gdx;
@@ -473,11 +474,15 @@ public abstract class AbstractEntity implements Cloneable {
                       health = 1;
                       block = 0;
                       blockRemove = 0;
+                      if(info.actor.isPlayer) battleScreen.neutResCount++;
                       EffectHandler.add(
                               new UpTextImgEffect(
                                       ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, FileHandler.getUi().get("TEXT_NEUT")));
                       applyStatus(new NeutResStatus(5), 5, false);
                     } else {
+                      if(info.actor.isPlayer && type == DamageType.COUNTER && currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
+                        achvCheck.REFLECT++;
+                      }
                       die(attacker);
                     }
                   }
@@ -578,6 +583,13 @@ public abstract class AbstractEntity implements Cloneable {
   public void die(AbstractEntity murder) {
     health = 0;
     block = 0;
+    if(isPlayer) {
+      AchieveHandler.check.DEATH++;
+      if(AchieveHandler.check.DEATH >= 100) {
+        int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.DEATH);
+        if(i == 0) AchieveHandler.achvs.replace(AchieveHandler.Achievement.DEATH, 3);
+      }
+    }
     if (cPanel.type == ControlPanel.ControlType.BATTLE) {
       isDie = true;
       ActionHandler.top(new MoveAction(this, this, 3));
@@ -604,6 +616,14 @@ public abstract class AbstractEntity implements Cloneable {
           if (a) break;
         }
         if (!a) {
+          if(!achvCheck.IMMORTAL && Labyrintale.battleScreen.neutResCount >= 10) {
+            AbstractLabyrinth.achvCheck.IMMORTAL = true;
+          }
+          AchieveHandler.check.WIN++;
+          if(AchieveHandler.check.WIN >= 100) {
+            int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.WIN);
+            if(i == 0) AchieveHandler.achvs.replace(AchieveHandler.Achievement.WIN, 3);
+          }
           ActionHandler.clear();
           ActionHandler.bot(new AtBattleEndAction());
           if (currentFloor.floorNum == 4 && currentFloor.num == 12) {

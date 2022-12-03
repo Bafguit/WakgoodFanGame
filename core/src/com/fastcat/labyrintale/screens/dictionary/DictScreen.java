@@ -2,8 +2,10 @@ package com.fastcat.labyrintale.screens.dictionary;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
@@ -56,6 +58,9 @@ public class DictScreen extends AbstractScreen {
             for(int i = 0; i < 6; i++) {
                 items[i].update();
             }
+        }
+        if(InputHandler.cancel) {
+            Labyrintale.removeTempScreen(this);
         }
     }
 

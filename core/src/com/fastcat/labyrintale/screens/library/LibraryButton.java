@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
+import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
 import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.screens.runview.RunViewScreen;
 
@@ -37,7 +38,7 @@ public class LibraryButton extends AbstractUI {
     protected void onClick() {
         if(lib == Library.RUNS) Labyrintale.fadeOutAndChangeScreen(new RunViewScreen());
         else if(lib == Library.DICT) Labyrintale.addTempScreen(new DictScreen());
-        //TODO else if(lib == Library.ACHVS)
+        else if(lib == Library.ACHVS) Labyrintale.addTempScreen(new AchieveScreen());
     }
 
     public enum Library {

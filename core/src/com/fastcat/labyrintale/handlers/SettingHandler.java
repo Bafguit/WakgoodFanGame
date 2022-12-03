@@ -22,7 +22,30 @@ public final class SettingHandler {
   public static void initialize() {
     setting = new SettingData();
     boolean hasSave = settingFile.exists();
-    if (hasSave) {
+    if (!hasSave) {
+
+      // 화면 모드 설정
+      setting.screenMode = 0;
+      setting.width = 1600;
+      setting.height = 900;
+
+      // 볼륨 설정
+      setting.volumeBgm = 80;
+      setting.volumeSfx = 80;
+
+      // 기타 설정
+      setting.shake = true;
+      setting.fastMode = false;
+
+      //튜토리얼
+      setting.charTutorial = true;
+      setting.battleTutorial = true;
+      setting.wayTutorial = true;
+      setting.rewardTutorial = true;
+
+      // 저장
+      save();
+    } else {
       try {
         SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
         Graphics.Monitor monitor = Gdx.graphics.getMonitor();
@@ -54,31 +77,6 @@ public final class SettingHandler {
       } catch (IOException e) {
         hasSave = false;
       }
-    }
-
-    if (!hasSave) {
-
-      // 화면 모드 설정
-      setting.screenMode = 0;
-      setting.width = 1600;
-      setting.height = 900;
-
-      // 볼륨 설정
-      setting.volumeBgm = 80;
-      setting.volumeSfx = 80;
-
-      // 기타 설정
-      setting.shake = true;
-      setting.fastMode = false;
-
-      //튜토리얼
-      setting.charTutorial = true;
-      setting.battleTutorial = true;
-      setting.wayTutorial = true;
-      setting.rewardTutorial = true;
-
-      // 저장
-      save();
     }
   }
 

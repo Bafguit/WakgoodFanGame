@@ -24,6 +24,7 @@ public class AbstractLabyrinth {
   public static String seed;
   public static long seedLong;
 
+  public static AchieveHandler.AchvLabCheck achvCheck;
   public static RandomXC publicRandom;
   public static RandomXC skillRandom;
   public static RandomXC itemRandom;
@@ -113,6 +114,7 @@ public class AbstractLabyrinth {
       diff = Labyrintale.charSelectScreen.diff;
       restriction.onCreateLabyrinth();
       scoreHandle = new ScoreHandle();
+      achvCheck = new AchieveHandler.AchvLabCheck();
     }
     cPanel = new ControlPanel();
     curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);
@@ -154,6 +156,9 @@ public class AbstractLabyrinth {
   }
 
   public static void modifyGold(int add) {
+    if(add < 0 && achvCheck.NO_USE_GOLD) {
+      achvCheck.NO_USE_GOLD = false;
+    }
     for (AbstractPlayer p : players) {
       if (add > 0) add = p.passive.onGainGold(add);
       for (AbstractItem i : p.item) {
@@ -254,6 +259,7 @@ public class AbstractLabyrinth {
     players = new AbstractPlayer[4];
     diff = null;
     cPanel = null;
+    achvCheck = new AchieveHandler.AchvLabCheck();
     ActionHandler.reset();
   }
 
