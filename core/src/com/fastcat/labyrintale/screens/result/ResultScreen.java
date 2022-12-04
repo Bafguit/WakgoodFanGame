@@ -116,7 +116,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
         }
       }
 
-      if(AbstractLabyrinth.minute <= 20) {
+      if(AbstractLabyrinth.minute <= 25) {
         AchieveHandler.Achievement ac = AchieveHandler.Achievement.FASTEST;
         int cur = achvs.get(ac);
         if(cur < 3) {
@@ -131,6 +131,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       }
 
       int aCount = 0;
+      boolean noItem = true;
       for(AbstractPlayer p : AbstractLabyrinth.players) {
         AchieveHandler.Achievement ac = AchieveHandler.Achievement.valueOf(p.playerClass.toString());
         int cur = achvs.get(ac);
@@ -143,11 +144,24 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             achvs.replace(ac, 3);
           }
         }
+        if(noItem) noItem = p.item[0].id.equals("PlaceHolder") && p.item[1].id.equals("PlaceHolder");
         if(p.isAlive()) aCount++;
       }
 
       if(aCount == 1) {
         AchieveHandler.Achievement ac = AchieveHandler.Achievement.LAST_ONE;
+        int cur = achvs.get(ac);
+        if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+          achvs.replace(ac, 1);
+        } else if (cur < 2 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+          achvs.replace(ac, 2);
+        } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN) {
+          achvs.replace(ac, 3);
+        }
+      }
+
+      if(noItem) {
+        AchieveHandler.Achievement ac = AchieveHandler.Achievement.NO_ITEM;
         int cur = achvs.get(ac);
         if (cur < 1 && AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
           achvs.replace(ac, 1);
@@ -260,15 +274,12 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       diff += "일반";
       if(type == DeadScreen.ScreenType.WIN && !temp.get("HARD")) {
         temp.replace("HARD", true);
+        temp.replace("COFFIN", true);
         UnlockHandler.save();
       }
     }
     else if(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
       diff += "어려움";
-      if(type == DeadScreen.ScreenType.WIN && !temp.get("COFFIN")) {
-        temp.replace("COFFIN", true);
-        UnlockHandler.save();
-      }
     }
     else diff += "관";
     time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";

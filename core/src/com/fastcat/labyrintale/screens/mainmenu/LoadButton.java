@@ -17,17 +17,18 @@ public class LoadButton extends AbstractUI {
     fontData = MAIN_MENU_SHADOW;
     text = "불러오기";
     showImg = false;
+    overable = SaveHandler.hasSave;
   }
 
   @Override
   protected void updateButton() {
-    clickable = SaveHandler.hasSave;
+    overable = SaveHandler.hasSave;
     if (!over && showImg) showImg = false;
   }
 
   @Override
   protected void onOver() {
-    showImg = true;
+    if(overable) showImg = true;
   }
 
   @Override

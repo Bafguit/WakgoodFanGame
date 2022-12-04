@@ -1,111 +1,83 @@
 
 skeleton.png
-size: 1822,707
+size: 1936,765
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 arm_left
-  rotate: false
-  xy: 274, 26
-  size: 58, 118
+  rotate: true
+  xy: 2, 151
+  size: 186, 421
   orig: 640, 640
-  offset: 203, 303
+  offset: 137, 33
   index: -1
 arm_right
   rotate: true
-  xy: 2, 2
-  size: 142, 162
+  xy: 2, 31
+  size: 118, 336
   orig: 640, 640
-  offset: 327, 327
+  offset: 366, 145
   index: -1
 attack
   rotate: true
-  xy: 1225, 311
-  size: 394, 544
+  xy: 2, 339
+  size: 424, 540
   orig: 640, 640
-  offset: 73, 31
+  offset: 6, 31
   index: -1
 body
   rotate: false
-  xy: 1225, 9
-  size: 202, 300
+  xy: 1672, 122
+  size: 258, 346
   orig: 640, 640
-  offset: 220, 193
+  offset: 228, 199
   index: -1
 die
-  rotate: false
-  xy: 1429, 54
-  size: 391, 255
-  orig: 640, 640
-  offset: 149, 9
-  index: -1
-feet_left
-  rotate: false
-  xy: 495, 3
-  size: 100, 156
-  orig: 640, 640
-  offset: 201, 35
-  index: -1
-feet_right
-  rotate: false
-  xy: 792, 13
-  size: 102, 146
-  orig: 640, 640
-  offset: 327, 31
-  index: -1
-hand_left
-  rotate: false
-  xy: 896, 56
-  size: 53, 103
-  orig: 640, 640
-  offset: 208, 210
-  index: -1
-hand_right
   rotate: true
-  xy: 951, 76
-  size: 83, 241
+  xy: 1091, 13
+  size: 365, 517
   orig: 640, 640
-  offset: 416, 146
+  offset: 70, 22
   index: -1
 head
-  rotate: true
-  xy: 597, 12
-  size: 147, 193
+  rotate: false
+  xy: 1672, 470
+  size: 262, 293
   orig: 640, 640
-  offset: 175, 382
+  offset: 110, 285
   index: -1
 hit
-  rotate: false
-  xy: 430, 161
-  size: 396, 544
+  rotate: true
+  xy: 544, 380
+  size: 383, 562
   orig: 640, 640
-  offset: 140, 31
+  offset: 126, 24
   index: -1
 idle
-  rotate: false
-  xy: 828, 161
-  size: 395, 544
+  rotate: true
+  xy: 544, 2
+  size: 376, 545
   orig: 640, 640
-  offset: 106, 31
+  offset: 110, 33
   index: -1
 leg_left
-  rotate: false
-  xy: 166, 26
-  size: 106, 118
+  rotate: true
+  xy: 1610, 8
+  size: 112, 223
   orig: 640, 640
-  offset: 214, 147
+  offset: 211, 33
   index: -1
 leg_right
-  rotate: true
-  xy: 334, 38
-  size: 106, 159
+  rotate: false
+  xy: 425, 107
+  size: 100, 230
   orig: 640, 640
-  offset: 325, 134
+  offset: 327, 34
   index: -1
 skill
-  rotate: false
-  xy: 2, 146
-  size: 426, 559
+  rotate: true
+  xy: 1108, 380
+  size: 383, 562
   orig: 640, 640
-  offset: 97, 31
+  offset: 65, 24
   index: -1

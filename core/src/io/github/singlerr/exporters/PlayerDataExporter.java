@@ -22,11 +22,6 @@ import java.util.Set;
 import org.reflections.Reflections;
 
 public final class PlayerDataExporter implements DataExporter<AbstractEnemy> {
-  /***
-   * Write your data of {@link T} to {@link CSVWriter}
-   * Any mechanisms writing data to csv is okay. Writing with bean or directly.
-   * @param writer writer of csv. Passed from {@link GameConfiguration}
-   */
   @Override
   public void export(CSVWriter writer)
       throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
@@ -47,7 +42,7 @@ public final class PlayerDataExporter implements DataExporter<AbstractEnemy> {
 
     for (Class<?> cls : classes) {
 
-      System.out.println("Exporting " + cls.getName());
+      //System.out.println("Exporting " + cls.getName());
 
       EntityStatProvider.DummyEntityStat data = new EntityStatProvider.DummyEntityStat();
       data.setClassName(cls.getName());

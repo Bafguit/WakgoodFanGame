@@ -42,11 +42,13 @@ public class RestScreen extends AbstractScreen {
     }
 
     chars[0].setPosition(670 * scale, 600 * scale);
+    chars[0].img.setFlip(false, false);
     chars[1].setPosition(920 * scale, 654 * scale);
-    chars[2].img.setFlip(true, false);
+    chars[1].img.setFlip(false, false);
     chars[2].setPosition(1224 * scale, 654 * scale);
-    chars[3].img.setFlip(true, false);
+    chars[2].img.setFlip(true, false);
     chars[3].setPosition(1474 * scale, 600 * scale);
+    chars[3].img.setFlip(true, false);
 
     for(int i = 0; i < 4; i++) {
       AbstractPlayer p = AbstractLabyrinth.players[i];
@@ -97,7 +99,7 @@ public class RestScreen extends AbstractScreen {
       AbstractUI.TempUI u = chars[i];
       u.img = alive > 2 ? p.camp : p.upset;
       u.showImg = p.isAlive();
-      if(i > 1) u.img.setFlip(true, false);
+      u.img.setFlip(i > 1, false);
       u.update();
     }
     for (int i = 0; i < count; i++) {

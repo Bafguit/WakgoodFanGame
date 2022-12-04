@@ -53,6 +53,7 @@ public final class SaveHandler {
     data = SaveData.create();
     try {
       mapper.writeValue(new File("save.json"), data);
+      AchieveHandler.save();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -82,6 +83,7 @@ public final class SaveHandler {
   }
 
   public static void load() {
+    AchieveHandler.load();
     GroupHandler.RoomGroup.eventCount = data.eventCount;
     GroupHandler.RoomGroup.neutCount = data.neutCount;
     GroupHandler.RoomGroup.weakCount = data.weakCount;

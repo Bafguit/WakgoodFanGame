@@ -1,16 +1,16 @@
 {
 "skeleton": {
-	"hash": "mRph/EcuDqVnuAOsEGUstUPjcAU",
+	"hash": "e35FyppUtwAsW4g1AJt75I4RD4o",
 	"spine": "3.8.75",
-	"x": -224.03,
-	"y": -35.2,
-	"width": 448.39,
-	"height": 448.39,
-	"images": "./img/",
+	"x": -352.18,
+	"y": -83.81,
+	"width": 704.62,
+	"height": 704.62,
+	"images": "",
 	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root", "rotation": -0.05, "scaleX": 0.7, "scaleY": 0.7 },
+	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.4, "scaleY": 0.4 },
 	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
@@ -25,19 +25,19 @@
 		"name": "default",
 		"attachments": {
 			"die": {
-				"die": { "y": 270, "width": 640, "height": 640 }
+				"die": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"attack": {
-				"attack": { "y": 270, "width": 640, "height": 640 }
+				"attack": { "x": -0.16, "y": 450, "width": 1280, "height": 1280 }
 			},
 			"skill": {
-				"skill": { "y": 270, "width": 640, "height": 640 }
+				"skill": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"hit": {
-				"hit": { "y": 270, "width": 640, "height": 640 }
+				"hit": { "y": 270, "width": 1280, "height": 1280 }
 			},
 			"idle": {
-				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+				"idle": { "y": -0.24, "rotation": -90.05, "width": 1280, "height": 1280 }
 			}
 		}
 	}
@@ -45,15 +45,15 @@
 "animations": {
 	"attack": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"attack": {
 				"attachment": [
 					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
-				]
-			},
-			"skill": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}
@@ -75,15 +75,15 @@
 	},
 	"hit": {
 		"slots": {
+			"skill": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
 					{ "time": 0.6667, "name": "hit" }
-				]
-			},
-			"skill": {
-				"attachment": [
-					{ "name": null }
 				]
 			}
 		}

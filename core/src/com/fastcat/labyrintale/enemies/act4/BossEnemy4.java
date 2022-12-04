@@ -48,6 +48,7 @@ public class BossEnemy4 extends AbstractEnemy {
     s6.upgrade();
     s6.upgrade();
     s6.upgrade();
+    s6.disposable = true;
     temp.add(s6);
     /////////////////////////
     temp.add(new InduceE(this));
@@ -58,11 +59,9 @@ public class BossEnemy4 extends AbstractEnemy {
     }
     temp.add(s2);
     /////////////////////////
-    temp.add(new RecapE(this));
-    /////////////////////////
-    temp.add(new HinderAllE(this));
-    /////////////////////////
     temp.add(new RestrictE(this).upgrade().upgrade().upgrade());
+    /////////////////////////
+    temp.add(new HinderAllE(this).upgrade().upgrade().upgrade());
     /////////////////////////
     AbstractSkill s4 = new GrowE(this);
     temp.add(s4);

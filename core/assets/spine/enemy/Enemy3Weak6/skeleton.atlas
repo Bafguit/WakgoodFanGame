@@ -1,41 +1,83 @@
 
 skeleton.png
-size: 1119,1084
+size: 1982,763
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 554, 652
+  xy: 1071, 331
   size: 513, 430
   orig: 640, 640
   offset: 76, 33
   index: -1
+body
+  rotate: false
+  xy: 1236, 98
+  size: 225, 231
+  orig: 640, 640
+  offset: 225, 199
+  index: -1
 die
   rotate: false
-  xy: 554, 398
+  xy: 671, 15
   size: 563, 252
   orig: 640, 640
   offset: 42, 20
   index: -1
+head
+  rotate: true
+  xy: 374, 19
+  size: 212, 295
+  orig: 640, 640
+  offset: 46, 229
+  index: -1
 hit
   rotate: false
-  xy: 2, 590
+  xy: 519, 269
   size: 550, 492
   orig: 640, 640
   offset: 37, 39
   index: -1
 idle
+  rotate: true
+  xy: 2, 233
+  size: 528, 515
+  orig: 640, 640
+  offset: 46, 9
+  index: -1
+leg_back_left
   rotate: false
-  xy: 533, 2
+  xy: 1463, 93
+  size: 119, 236
+  orig: 640, 640
+  offset: 360, 43
+  index: -1
+leg_back_right
+  rotate: true
+  xy: 2, 58
+  size: 173, 370
+  orig: 640, 640
+  offset: 398, 39
+  index: -1
+leg_front_left
+  rotate: true
+  xy: 1236, 2
+  size: 89, 255
+  orig: 640, 640
+  offset: 202, 43
+  index: -1
+leg_front_right
+  rotate: true
+  xy: 1584, 95
+  size: 137, 334
+  orig: 640, 640
+  offset: 203, 40
+  index: -1
+skill
+  rotate: true
+  xy: 1586, 234
   size: 527, 394
   orig: 640, 640
   offset: 49, 33
-  index: -1
-skill
-  rotate: false
-  xy: 2, 98
-  size: 529, 490
-  orig: 640, 640
-  offset: 46, 34
   index: -1

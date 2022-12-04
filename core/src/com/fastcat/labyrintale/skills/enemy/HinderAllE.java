@@ -14,7 +14,7 @@ public class HinderAllE extends AbstractSkill {
   public HinderAllE(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(2, 1);
-    setBaseValue(1);
+    setBaseValue(2);
     setIntent(IntentType.ATTACK_DEBUFF);
   }
 

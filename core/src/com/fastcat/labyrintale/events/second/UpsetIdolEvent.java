@@ -1,13 +1,13 @@
 package com.fastcat.labyrintale.events.second;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
-import com.fastcat.labyrintale.abstracts.AbstractEvent;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.items.special.CrackedHeart;
+
+import java.util.HashMap;
 
 public class UpsetIdolEvent extends AbstractEvent {
 
@@ -70,7 +70,12 @@ public class UpsetIdolEvent extends AbstractEvent {
           break;
         }
       }
-      if (player != null) player.gainItem(new CrackedHeart(player), index);
+      if (player != null) {
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+        AbstractItem item = new CrackedHeart(player);
+        if(!temp.get(item.id)) temp.replace(item.id, true);
+        player.gainItem(item, index);
+      }
     } else if (page == 2) {
       for (AbstractPlayer p : AbstractLabyrinth.players) {
         if (p.isAlive()) {

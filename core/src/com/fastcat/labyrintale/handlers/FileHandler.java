@@ -161,9 +161,9 @@ public class FileHandler implements Disposable {
 
   private void generateGif() {
     gif.clear();
-    gif.put("MAIN_MENU", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/main_gif.gif").read()));
-    gif.put("FIRE_LIGHT", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/fire_light.gif").read()));
-    gif.put("FIRE", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/bg/fire.gif").read()));
+    gif.put("MAIN_MENU", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/gif/main_gif.gif").read()));
+    gif.put("FIRE_LIGHT", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/gif/fire_light.gif").read()));
+    gif.put("FIRE", GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal("img/gif/fire.gif").read()));
   }
 
   private void generateSkeleton() {

@@ -474,13 +474,15 @@ public abstract class AbstractEntity implements Cloneable {
                       health = 1;
                       block = 0;
                       blockRemove = 0;
-                      if(info.actor.isPlayer) battleScreen.neutResCount++;
+                      if(isPlayer) battleScreen.neutResCount++;
                       EffectHandler.add(
                               new UpTextImgEffect(
                                       ui.x + ui.sWidth / 2, ui.y + ui.sHeight * 0.5f, FileHandler.getUi().get("TEXT_NEUT")));
                       applyStatus(new NeutResStatus(5), 5, false);
                     } else {
-                      if(info.actor.isPlayer && type == DamageType.COUNTER && currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
+                      if(info.actor != null &&
+                              info.actor.isPlayer && type == DamageType.COUNTER &&
+                              currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
                         achvCheck.REFLECT++;
                       }
                       die(attacker);
