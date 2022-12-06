@@ -45,6 +45,9 @@ public class LibraryScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        backButton.over = false;
+        for (LibraryButton b : buttons) {
+            b.over = false;
+        }
     }
 }

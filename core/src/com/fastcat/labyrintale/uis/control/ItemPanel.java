@@ -41,7 +41,9 @@ public class ItemPanel extends AbstractUI {
       if(adv) sb.draw(paper.img, x + sWidth / 2 - paper.sWidth / 2, y - 68 * InputHandler.scale, paper.sWidth, paper.sHeight);
       if (item != null) {
         sb.draw(item.img, x, y, sWidth, sHeight);
+        sb.setColor(item.getRarityColor());
         if(!adv) sb.draw(item.rarity == AbstractItem.ItemRarity.STARTER ? psv : img, x, y, sWidth, sHeight);
+        sb.setColor(Color.WHITE);
       }
     }
   }

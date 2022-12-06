@@ -1,20 +1,17 @@
 {
   "ALL_ADV" : {
-    "CARNAR" : false,
-    "DUKSU" : false,
-    "CALLYCARLY" : false,
-    "FREETER" : false,
-    "RUSUK" : false,
-    "PUNG" : false,
-    "DOPA" : false,
-    "HAKU" : false,
-    "MANDU" : false,
     "SECRET" : false,
+    "DOPA" : false,
+    "MANDU" : false,
     "HIKI" : false,
+    "PUNG" : false,
+    "HAKU" : false,
+    "CALLYCARLY" : false,
+    "SOPHIA" : false,
+    "RUSUK" : false,
     "JK" : false,
-    "BUSINESS" : false,
-    "SOPHIA" : false
+    "DUKSU" : false
   },
-  "DEATH" : 11,
-  "WIN" : 3
+  "DEATH" : 4,
+  "WIN" : 1
 }

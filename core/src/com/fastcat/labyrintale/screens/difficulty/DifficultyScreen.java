@@ -43,6 +43,9 @@ public class DifficultyScreen extends AbstractScreen {
 
     @Override
     public void show() {
-
+        backButton.over = false;
+        for(DifficultyButton b : buttons) {
+            b.over = false;
+        }
     }
 }

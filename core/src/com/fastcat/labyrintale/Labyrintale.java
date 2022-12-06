@@ -193,7 +193,7 @@ public class Labyrintale extends Game {
     if (!setting && !tutorial && labyrinth != null) {
       labyrinth.update();
     }
-    if(setting) {
+    if(setting || settingScreen.anim) {
       settingScreen.update();
     } else if(tutorial) {
       tutorialScreen.update();
@@ -237,7 +237,7 @@ public class Labyrintale extends Game {
     if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
     if (subText != null) subText.renderSub(sb);
     if (tutorial) tutorialScreen.render(sb);
-    if (setting) settingScreen.render(sb);
+    if (setting || settingScreen.anim) settingScreen.render(sb);
     /** ============== */
     fade();
 
@@ -280,6 +280,9 @@ public class Labyrintale extends Game {
       }
     }
 
+    Labyrintale.closeTutorial();
+    setting = false;
+    settingScreen.hide();
     if (tempScreen.size > 0) {
       for (AbstractScreen s : tempScreen) {
         s.hide();
@@ -309,11 +312,13 @@ public class Labyrintale extends Game {
 
   public static void openSetting() {
     setting = true;
+    settingScreen.anim = true;
   }
 
   public static void closeSetting() {
     SettingHandler.save();
     setting = false;
+    settingScreen.anim = true;
   }
 
   @Override

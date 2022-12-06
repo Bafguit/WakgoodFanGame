@@ -11,7 +11,7 @@ public class ExitGameButton extends AbstractUI {
 
   public ExitGameButton(SettingScreen sc) {
     super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+    setPosition(Gdx.graphics.getWidth() * 0.67f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
     fontData = BUTTON;
     text = "종료";
     screen = sc;

@@ -98,6 +98,14 @@ public class DictItemRarityButton extends AbstractUI {
   }
 
   @Override
+  public void setParent(AbstractUI ui) {
+    super.setParent(ui);
+    for(DictItemTabIcon c : items) {
+      c.setParent(ui);
+    }
+  }
+
+  @Override
   protected void onClick() {
     sc.iSelected = this;
   }

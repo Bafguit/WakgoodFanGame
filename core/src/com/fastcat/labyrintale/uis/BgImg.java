@@ -6,11 +6,15 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class BgImg extends AbstractUI {
 
-  public BgImg() {
+  public BgImg(float alpha) {
     super(FileHandler.getBg().get("BG_BLACK"));
     setPosition(0, 0);
-    img.setAlpha(0.85f);
+    img.setAlpha(alpha);
     overable = false;
+  }
+
+  public BgImg() {
+    this(0.8f);
   }
 
   @Override

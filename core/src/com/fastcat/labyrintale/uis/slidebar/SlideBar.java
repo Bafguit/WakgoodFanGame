@@ -45,6 +45,9 @@ public class SlideBar extends AbstractUI {
     if (!clicking) button.overTrack = false;
     button.update();
     pos = MathUtils.floor((button.x - x) / (button.max - x) * abs);
+    sideL.update();
+    line.update();
+    sideR.update();
   }
 
   @Override
@@ -56,6 +59,14 @@ public class SlideBar extends AbstractUI {
       sideR.render(sb);
       button.render(sb);
     }
+  }
+
+  @Override
+  public void setParent(AbstractUI ui) {
+    sideL.setParent(ui);
+    line.setParent(ui);
+    sideR.setParent(ui);
+    button.setParent(ui);
   }
 
   @Override

@@ -49,19 +49,19 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
         for (int i = 0; i < 3; i++) {
           PlayerInfoDeckIcon b = new PlayerInfoDeckIcon(player.deck.get(i));
           b.setPosition(
-              w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+              w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
           b.subWay = sw;
           deck[c][i] = b;
         }
         for (int i = 0; i < 2; i++) {
           PlayerInfoItemIcon b = new PlayerInfoItemIcon(player.item[i]);
           b.setPosition(
-              w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+              w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
           b.subWay = sw;
           item[c][i] = b;
         }
         PlayerInfoItemIcon ps = new PlayerInfoItemIcon(player.passive);
-        ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.81f - 0.275f * f));
+        ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.81f - 0.275f * f));
         ps.subWay = sw;
         passive[c] = ps;
         int cnt = 0;
@@ -70,14 +70,14 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
             StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
             s.entity = player;
             s.setPosition(
-                w * (0.398f + 0.46f * g - 0.055f * i), h * (0.8f - 0.275f * f + 0.027f * j));
+                w * (0.425f + 0.435f * g - 0.055f * i), h * (0.8f - 0.275f * f + 0.027f * j));
             s.subWay = sw;
             stats[c][cnt++] = s;
           }
         }
         PlayerInfoIcon pc = new PlayerInfoIcon(c);
         pc.clickable = false;
-        pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.69f - 0.275f * f));
+        pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.69f - 0.275f * f));
         pIcons[c] = pc;
         c++;
       }

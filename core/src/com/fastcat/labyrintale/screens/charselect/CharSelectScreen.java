@@ -111,6 +111,7 @@ public class CharSelectScreen extends AbstractScreen {
 
   @Override
   public void show() {
+    backButton.over = false;
     if(SettingHandler.setting.charTutorial) {
       Labyrintale.openTutorial(TutorialScreen.TutorialType.CHARSELECT);
       SettingHandler.setting.charTutorial = false;

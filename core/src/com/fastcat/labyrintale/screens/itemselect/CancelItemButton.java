@@ -14,9 +14,9 @@ public class CancelItemButton extends AbstractUI {
   public CancelItemButton(ItemSelectScreen sc) {
     super(FileHandler.getUi().get("BUTTON"));
     this.sc = sc;
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+    setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.4f);
     fontData = BUTTON;
-    text = "넘기기";
+    text = "취소";
   }
 
   @Override

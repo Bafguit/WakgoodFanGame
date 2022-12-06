@@ -15,15 +15,13 @@ public class Sharp extends AbstractSkill {
 
   public Sharp(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
-    setBaseCost(2);
     setBaseValue(VALUE, 1);
   }
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, owner, true));
     bot(new ApplyStatusAction(new CounterStatus(value), owner, owner, true));
-    bot(new ApplyStatusAction(new CriticalPlusStatus(2), owner, owner, true));
+    bot(new ApplyStatusAction(new CriticalPlusStatus(value), owner, owner, true));
   }
 
   @Override

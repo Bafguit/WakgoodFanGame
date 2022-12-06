@@ -5,7 +5,7 @@
   "height" : 900,
   "screenMode" : 0,
   "shake" : true,
-  "fastMode" : true,
+  "fastMode" : false,
   "charTutorial" : false,
   "wayTutorial" : false,
   "battleTutorial" : false,

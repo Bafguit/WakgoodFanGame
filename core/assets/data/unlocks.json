@@ -4,7 +4,7 @@
     "Intimidate" : false,
     "Support" : false,
     "Snipe" : false,
-    "IronWill" : true,
+    "IronWill" : false,
     "Sharp" : false,
     "Strong" : false,
     "Bless" : false,
@@ -45,7 +45,7 @@
     "HolyLight" : false,
     "SuperSave" : false,
     "BioCloud" : false,
-    "BraveWill" : false,
+    "BraveWill" : true,
     "Faith" : false,
     "AvantProtect" : false,
     "Lilpaa" : false,
@@ -53,8 +53,8 @@
     "KeepOnLine" : false,
     "EyeSting" : false,
     "RapidFire" : false,
-    "Lightning" : true,
-    "Poison" : true,
+    "Lightning" : false,
+    "Poison" : false,
     "Calmness" : false
   },
   "ITEM" : {

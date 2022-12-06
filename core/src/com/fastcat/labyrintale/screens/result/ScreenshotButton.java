@@ -1,8 +1,10 @@
 package com.fastcat.labyrintale.screens.result;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -10,7 +12,10 @@ import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.zip.Deflater;
 
+import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class ScreenshotButton extends AbstractUI {
 
@@ -27,6 +32,21 @@ public class ScreenshotButton extends AbstractUI {
   public void setDate(String s) {
     date = s;
     overable = true;
+  }
+
+  @Override
+  protected void renderUi(SpriteBatch sb) {
+    if (enabled) {
+      if(!overable) sb.setColor(DARK_GRAY);
+      else if (!over) sb.setColor(Color.LIGHT_GRAY);
+      else sb.setColor(WHITE);
+      if (showImg) sb.draw(img, x, y, sWidth, sHeight);
+
+      sb.setColor(WHITE);
+      if (fontData != null) {
+        renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+      }
+    }
   }
 
   @Override

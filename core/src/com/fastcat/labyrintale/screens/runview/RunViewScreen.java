@@ -273,7 +273,9 @@ public class RunViewScreen extends AbstractScreen {
   }
 
   @Override
-  public void show() {}
+  public void show() {
+    back.over = false;
+  }
 
   @Override
   public void hide() {}

@@ -22,7 +22,7 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
     this.type = type;
     if(type == ItemRewardType.BOSS) {
       items = GroupHandler.ItemGroup.getRandomItemByRarity(AbstractItem.ItemRarity.BOSS, 3).toArray(AbstractItem.class);
-      img = FileHandler.getUi().get("DISCARD");
+      img = FileHandler.getUi().get("UNKNOWN");
       setInfo("보스 아이템", "보스 아이템 3개 중 하나를 선택해 획득합니다.");
     } else {
       item = generateItem(type);

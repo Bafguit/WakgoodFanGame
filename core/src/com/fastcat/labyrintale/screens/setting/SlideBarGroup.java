@@ -31,6 +31,11 @@ public class SlideBarGroup {
     title.render(sb);
   }
 
+  public void setParent(AbstractUI ui) {
+    slideBar.setParent(ui);
+    title.setParent(ui);
+  }
+
   public void setText() {
     this.title.text = slideBar.pos + "%";
   }

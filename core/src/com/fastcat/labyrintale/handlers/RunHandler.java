@@ -26,17 +26,17 @@ public final class RunHandler {
   public static void load() {
     SaveHandler.refresh();
     runs.clear();
-    File dir = new File("runs");
-    if(dir.isDirectory()) {
-      File[] rs = dir.listFiles();
+    FileHandle file = Gdx.files.local("runs");
+    if(file.isDirectory()) {
+      FileHandle[] rs = file.list();
       if(rs != null && rs.length > 0) {
         for(int i = rs.length - 1; i >= 0; i--) {
-          File f = rs[i];
-          String n = f.getName();
+          FileHandle f = rs[i];
+          String n = f.name();
           Matcher matcher = DATE.matcher(n);
           if(matcher.find()) {
             try {
-              SaveHandler.SaveData sd = SaveHandler.mapper.readValue(f, SaveHandler.SaveData.class);
+              SaveHandler.SaveData sd = SaveHandler.mapper.readValue(f.file(), SaveHandler.SaveData.class);
               if(sd != null) runs.add(sd);
             } catch (IOException e) {
               e.printStackTrace();

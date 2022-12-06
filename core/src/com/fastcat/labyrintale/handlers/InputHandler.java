@@ -5,10 +5,16 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.PixmapIO;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
+
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.util.zip.Deflater;
 
 public final class InputHandler {
 
@@ -19,6 +25,7 @@ public final class InputHandler {
   public static boolean cancel;
   public static boolean map;
   public static boolean info;
+  public static boolean sc;
 
   public static float scale;
   public static int mx;
@@ -102,6 +109,7 @@ public final class InputHandler {
     if (!textInputMode) {
       map = Gdx.input.isKeyJustPressed(Keys.M);
       info = Gdx.input.isKeyJustPressed(Keys.I);
+      sc = Gdx.input.isKeyJustPressed(Keys.PRINT_SCREEN);
     }
 
     if (map
@@ -119,15 +127,31 @@ public final class InputHandler {
       info = false;
     }
 
-    if (cancel) {
+    if(sc) {
+      Pixmap pixmap = Pixmap.createFromFrameBuffer(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight());
+      ByteBuffer pixels = pixmap.getPixels();
+
+// This loop makes sure the whole screenshot is opaque and looks exactly like what the user is seeing
+      int size = Gdx.graphics.getBackBufferWidth() * Gdx.graphics.getBackBufferHeight() * 4;
+      for (int i = 3; i < size; i += 4) {
+        pixels.put(i, (byte) 255);
+      }
+
+      PixmapIO.writePNG(Gdx.files.local("screen.png"), pixmap, Deflater.DEFAULT_COMPRESSION, true);
+      pixmap.dispose();
+    }
+
+    if (cancel && !Labyrintale.fading) {
       if(Labyrintale.labyrinth != null) {
-        if(!Labyrintale.setting) {
-          if (Labyrintale.mapScreen != null && !Labyrintale.mapScreen.showing
-                  && Labyrintale.playerInfoScreen != null && !Labyrintale.playerInfoScreen.showing) {
-            Labyrintale.openSetting();
+        if(Labyrintale.settingScreen != null && !Labyrintale.settingScreen.anim) {
+          if (!Labyrintale.setting) {
+            if (Labyrintale.mapScreen != null && !Labyrintale.mapScreen.showing
+                    && Labyrintale.playerInfoScreen != null && !Labyrintale.playerInfoScreen.showing) {
+              Labyrintale.openSetting();
+            }
+          } else {
+            Labyrintale.closeSetting();
           }
-        } else {
-          Labyrintale.closeSetting();
         }
       }
     }

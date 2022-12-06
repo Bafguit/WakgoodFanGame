@@ -20,6 +20,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DictCharGroup extends DictGroup {
 
+    public AbstractUI parent = new AbstractUI.TempUI(FileHandler.getUi().get("BORDER"));
     public AbstractUI.TempUI heart;
     public FontHandler.FontData cName = CLOSE;
     public FontHandler.FontData iName = REST_DESC;
@@ -31,9 +32,10 @@ public class DictCharGroup extends DictGroup {
     public DictSkillIcon[] skills = new DictSkillIcon[7];
     public CheckBox up;
     public String name = "", desc = "";
-    public float nx, hx, ny, nw, ix, iy, dy, dw, dh;
+    public float nx, hx, ny, nw, ix, iy, dy, dw, dh, px, py;
 
     public DictCharGroup(AbstractPlayer player) {
+        parent.setPosition(0, 0);
         data = new DictCharData(player);
         nx = 975 * scale;
         hx = 1340 * scale;
@@ -44,6 +46,8 @@ public class DictCharGroup extends DictGroup {
         dy = 464 * scale;
         dw = 600 * scale;
         dh = 164 * scale;
+        px = 658 * scale;
+        py = 340 * scale;
         heart = new AbstractUI.TempUI(FileHandler.getUi().get("BORDER_S"));
         heart.img = FileHandler.getUi().get("HEART");
         heart.setPosition(1273 * scale, ny - 30 * scale);
@@ -86,6 +90,7 @@ public class DictCharGroup extends DictGroup {
         item = null;
         up.update();
         passive.update();
+        data.player.infoSpine.skeleton.setPosition(parent.x + px, parent.y + py);
         for(int i = 0; i < 6; i++) {
             stats[i].update();
         }
@@ -129,16 +134,32 @@ public class DictCharGroup extends DictGroup {
         }
         data.player.infoSpine.render(sb);
         heart.render(sb);
-        FontHandler.renderCenter(sb, iName, "강화 보기", up.x + up.sWidth / 2, up.y + up.sHeight * 1.5f);
-        FontHandler.renderLineLeft(sb, cName, data.player.name, nx, ny, nw, nw);
-        FontHandler.renderLineLeft(sb, cName, Integer.toString(data.player.maxHealth), hx, ny, nw, nw);
+        FontHandler.renderCenter(sb, iName, "강화 보기", parent.x + up.x + up.sWidth / 2, parent.y + up.y + up.sHeight * 1.5f);
+        FontHandler.renderLineLeft(sb, cName, data.player.name, parent.x + nx, parent.y + ny, nw, nw);
+        FontHandler.renderLineLeft(sb, cName, Integer.toString(data.player.maxHealth), parent.x + hx, parent.y + ny, nw, nw);
         if(type == InfoPanel.InfoType.SKILL && skill != null) {
-            FontHandler.renderLineLeft(sb, iName, skill.name, ix, iy, dw, dh);
-            FontHandler.renderCardLeft(sb, skill, iDesc, skill.desc, ix, dy, dw, dh);
+            FontHandler.renderLineLeft(sb, iName, skill.name, parent.x + ix, parent.y + iy, dw, dh);
+            FontHandler.renderCardLeft(sb, skill, iDesc, skill.desc, parent.x + ix, parent.y + dy, dw, dh);
         } else if(type == InfoPanel.InfoType.ITEM && item != null) {
-            FontHandler.renderLineLeft(sb, iName, item.name, ix, iy, dw, dh);
-            FontHandler.renderColorLeft(sb, iDesc, item.desc, ix, dy, dw);
+            FontHandler.renderLineLeft(sb, iName, item.name, parent.x + ix, parent.y + iy, dw, dh);
+            FontHandler.renderColorLeft(sb, iDesc, item.desc, parent.x + ix, parent.y + dy, dw);
         }
+    }
+
+    public void setParent(AbstractUI ui) {
+        parent = ui;
+        heart.setParent(ui);
+        passive.setParent(ui);
+        for(int i = 0; i < 6; i++) {
+            stats[i].setParent(ui);
+        }
+        for(int i = 0; i < 3; i++) {
+            deck[i].setParent(ui);
+        }
+        for(int i = 0; i < 7; i++) {
+            skills[i].setParent(ui);
+        }
+        up.setParent(ui);
     }
 
     public static class DictCharData {
@@ -150,7 +171,7 @@ public class DictCharGroup extends DictGroup {
 
         public DictCharData(AbstractPlayer p) {
             player = p;
-            player.infoSpine.skeleton.setPosition(658 * scale, 340 * scale);
+            player.infoSpine.skeleton.setPosition(10000, 10000);
             nDeck = player.deck;
             uDeck = new Array<>();
             for(AbstractSkill s : nDeck) {

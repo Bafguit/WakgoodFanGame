@@ -203,7 +203,8 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
       int advCur = achvs.get(AchieveHandler.Achievement.ALL_ADV);
       if(advCur == 0) {
         int nCount = 0;
-        for (AbstractAdvisor.AdvisorClass cls : AbstractAdvisor.AdvisorClass.values()) {
+        for(int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+          AbstractAdvisor.AdvisorClass cls = AbstractAdvisor.AdvisorClass.values()[i];
           boolean clear = check.ALL_ADV.get(cls);
           if (clear) {
             nCount++;
@@ -234,17 +235,17 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
         for (int i = 0; i < 3; i++) {
           PlayerInfoDeckIcon b = new PlayerInfoDeckIcon(player.deck.get(i));
           b.setPosition(
-              w * (0.175f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+              w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           deck[c][i] = b;
         }
         for (int i = 0; i < 2; i++) {
           PlayerInfoItemIcon b = new PlayerInfoItemIcon(player.item[i]);
           b.setPosition(
-              w * (0.365f + 0.46f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+              w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
           item[c][i] = b;
         }
         PlayerInfoItemIcon ps = new PlayerInfoItemIcon(player.passive);
-        ps.setPosition(w * (0.305f + 0.46f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
+        ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
         passive[c] = ps;
         int cnt = 0;
         for (int j = 3; j >= 0; j--) {
@@ -252,13 +253,13 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
             s.setEntity(player);
             s.setPosition(
-                w * (0.398f + 0.46f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
+                w * (0.425f + 0.435f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
             stats[c][cnt++] = s;
           }
         }
         PlayerInfoIcon pc = new PlayerInfoIcon(c);
         pc.clickable = false;
-        pc.setPosition(w * (0.125f + 0.46f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
+        pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
         pIcons[c] = pc;
         c++;
       }

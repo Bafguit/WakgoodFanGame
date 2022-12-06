@@ -29,20 +29,19 @@ public final class SaveHandler {
   public static final ObjectMapper mapper =
       new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
   public static FileHandle saveFile = Gdx.files.local("save.json");
-  public static File runsFile = new File("runs");
   public static SaveData data;
   public static boolean hasSave;
-  private static SaveHandler instance;
 
   static {
     refresh();
   }
 
   public static void refresh() {
+    saveFile = Gdx.files.local("save.json");
     hasSave = saveFile.exists();
     if (hasSave) {
       try {
-        data = mapper.readValue(new File("save.json"), SaveData.class);
+        data = mapper.readValue(saveFile.file(), SaveData.class);
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -52,7 +51,7 @@ public final class SaveHandler {
   public static void save() {
     data = SaveData.create();
     try {
-      mapper.writeValue(new File("save.json"), data);
+      mapper.writeValue(saveFile.file(), data);
       AchieveHandler.save();
     } catch (IOException e) {
       e.printStackTrace();
@@ -69,8 +68,8 @@ public final class SaveHandler {
       if(data.result == null) data.result = DeadScreen.ScreenType.DEAD;
       try {
         String name = "run_" + data.date + ".json";
-        new File("runs").mkdir();
-        mapper.writeValue(new File("runs/" + name), data);
+        Gdx.files.local("runs").mkdirs();
+        mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
       } catch (IOException e) {
         e.printStackTrace();
       }

@@ -14,7 +14,7 @@ public class DictItemTabButton extends AbstractUI {
   public DictScreen sc;
 
   public DictItemTabButton(DictScreen sc) {
-    super(FileHandler.getUi().get("BUTTON"));
+    super(FileHandler.getUi().get("BUTTON_P"));
     setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.795f - sHeight / 2);
     fontData = BUTTON;
     text = "아이템";

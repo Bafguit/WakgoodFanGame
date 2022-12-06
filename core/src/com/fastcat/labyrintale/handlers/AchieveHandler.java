@@ -30,9 +30,9 @@ public class AchieveHandler {
             for(Achievement ac : Achievement.values()) {
                 achvs.put(ac, 0);
             }
-            new File("data").mkdir();
+            Gdx.files.local("data").mkdirs();
             try {
-                mapper.writeValue(new File("data/achievements.json"), achvs);
+                mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -41,21 +41,23 @@ public class AchieveHandler {
         if(aCheck.exists()) {
             JsonValue js = FileHandler.generateJson(aCheck);
             JsonValue aa = js.get("ALL_ADV");
-            for(AbstractAdvisor.AdvisorClass p : AbstractAdvisor.AdvisorClass.values()) {
+            for(int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+                AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
                 check.ALL_ADV.put(p, aa.get(p.toString()).asBoolean());
             }
             check.DEATH = js.get("DEATH").asInt();
             check.WIN = js.get("WIN").asInt();
         } else {
             check = new AchieveCheck();
-            for(AbstractAdvisor.AdvisorClass p : AbstractAdvisor.AdvisorClass.values()) {
+            for(int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+                AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
                 check.ALL_ADV.put(p, false);
             }
             check.DEATH = 0;
             check.WIN = 0;
-            new File("data").mkdir();
+            Gdx.files.local("data").mkdirs();
             try {
-                mapper.writeValue(new File("data/checks.json"), check);
+                mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -64,8 +66,8 @@ public class AchieveHandler {
 
     public static void save() {
         try {
-            mapper.writeValue(new File("data/achievements.json"), achvs);
-            mapper.writeValue(new File("data/checks.json"), check);
+            mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
+            mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
         } catch (IOException e) {
             e.printStackTrace();
         }

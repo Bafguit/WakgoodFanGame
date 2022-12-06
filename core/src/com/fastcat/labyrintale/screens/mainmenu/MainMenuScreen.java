@@ -80,12 +80,12 @@ public class MainMenuScreen extends AbstractScreen {
       }
     }
     Labyrintale.closeTutorial();
-    gameStartButton.onHide();
-    loadButton.onHide();
-    runsButton.onHide();
-    optionButton.onHide();
-    creditButton.onHide();
-    exitButton.onHide();
+    gameStartButton.showImg = false;
+    loadButton.showImg = false;
+    runsButton.showImg = false;
+    optionButton.showImg = false;
+    creditButton.showImg = false;
+    exitButton.showImg = false;
     SaveHandler.refresh();
     RunHandler.load();
     if(Labyrintale.labyrinth != null) {

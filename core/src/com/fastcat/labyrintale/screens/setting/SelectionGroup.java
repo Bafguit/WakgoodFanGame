@@ -33,6 +33,13 @@ public class SelectionGroup {
     right.setPosition(x + this.title.sWidth + text.sWidth - right.sWidth, left.y);
   }
 
+  public void setParent(AbstractUI ui) {
+    text.setParent(ui);
+    title.setParent(ui);
+    right.setParent(ui);
+    left.setParent(ui);
+  }
+
   public void update() {
     title.update();
     text.update();

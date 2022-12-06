@@ -48,7 +48,7 @@ public class UnlockHandler {
                 if(!i.id.equals("Placeholder")) item.put(i.id, false);
             }
             achvs.put(Unlocks.ITEM, item);
-            new File("data").mkdir();
+            Gdx.files.local("data").mkdirs();
             try {
                 mapper.writeValue(new File("data/unlocks.json"), achvs);
             } catch (IOException e) {

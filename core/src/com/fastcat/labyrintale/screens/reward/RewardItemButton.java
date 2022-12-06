@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -60,8 +61,10 @@ public class RewardItemButton extends AbstractUI {
               sWidth * 0.2f,
               sWidth * 0.2f);
         }
-      } else if(reward.type == AbstractReward.RewardType.ITEM && iReward.item != null) {
-        sb.setColor(iReward.item.getRarityColor());
+      } else if(reward.type == AbstractReward.RewardType.ITEM) {
+        sb.setColor(iReward.type == ItemReward.ItemRewardType.BOSS ?
+                AbstractItem.getRarityColor(AbstractItem.ItemRarity.BOSS) :
+                iReward.item.getRarityColor());
         sb.draw(img, x, y, sWidth, sHeight);
       }
       sb.setColor(Color.WHITE);

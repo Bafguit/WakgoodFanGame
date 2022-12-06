@@ -32,6 +32,11 @@ public class CheckBoxGroup {
     checkBox.render(sb);
   }
 
+  public void setParent(AbstractUI ui) {
+    checkBox.setParent(ui);
+    title.setParent(ui);
+  }
+
   public boolean getValue() {
     return checkBox.checked;
   }

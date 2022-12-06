@@ -15,6 +15,7 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class SettingScreen extends AbstractScreen {
 
+  public BgImg bgImg;
   public OptionPanel panel;
   public CloseSettingButton close;
   public ReturnToMainButton main;
@@ -27,21 +28,29 @@ public class SettingScreen extends AbstractScreen {
   public SlideBarGroup volumeBgm;
   public CheckBoxGroup shake;
   public CheckBoxGroup fastMode;
-  public boolean changed = false;
+  public boolean anim = false;
   private String[] res;
   private int[] width;
   private int[] height;
+  private float alpha = 0;
 
   public SettingScreen() {
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    bgImg = new BgImg(0);
     panel = new OptionPanel();
+    panel.setY(h);
     cType = ControlPanel.ControlType.HIDE;
     close = new CloseSettingButton(this);
+    close.setParent(panel);
     main = new ReturnToMainButton(this);
+    main.setParent(panel);
     exit = new ExitGameButton(this);
+    exit.setParent(panel);
     giveUp = new GiveUpButton(this);
+    giveUp.setParent(panel);
     reset = new ResetTutorialButton(this);
     reset.setPosition(w * 0.25f, h * 0.6f);
+    reset.setParent(panel);
     Graphics.Monitor[] mo = Gdx.graphics.getMonitors();
     String[] ms = new String[mo.length];
     int[] mi = new int[mo.length];
@@ -49,11 +58,13 @@ public class SettingScreen extends AbstractScreen {
       ms[i] = mo[i].name;
       mi[i] = i;
     }
+
     screenMode =
         new SelectionGroup("화면 모드", new String[] {"창 모드", "전체 화면", "전체 창 모드"}, w * 0.15f, h * 0.51f);
     screenMode.index = SettingHandler.setting.screenMode;
     screenMode.setText();
     setResolution();
+    screenMode.setParent(panel);
     resolution = new SelectionGroup("해상도", res, w * 0.15f, h * 0.41f);
     resolution.item = width;
     resolution.item2 = height;
@@ -66,22 +77,53 @@ public class SettingScreen extends AbstractScreen {
     }
     resolution.index = id;
     resolution.setText();
+    resolution.setParent(panel);
     volumeBgm = new SlideBarGroup("배경음악", SettingHandler.setting.volumeBgm, w * 0.5f, h * 0.61f);
     volumeBgm.setText();
+    volumeBgm.setParent(panel);
     volumeSfx = new SlideBarGroup("효과음", SettingHandler.setting.volumeSfx, w * 0.5f, h * 0.51f);
     volumeSfx.setText();
+    volumeSfx.setParent(panel);
     shake = new CheckBoxGroup("화면 흔들림", SettingHandler.setting.shake, w * 0.5f, h * 0.41f);
+    shake.setParent(panel);
     fastMode = new CheckBoxGroup("빠른 전투", SettingHandler.setting.fastMode, w * 0.5f, h * 0.31f);
+    fastMode.setParent(panel);
   }
 
   @Override
   public void update() {
+    if(anim) {
+      float h = Gdx.graphics.getHeight();
+      if(Labyrintale.setting) {
+        alpha += Labyrintale.tick * 4 * 0.8f;
+        panel.y -= h * 4 * Labyrintale.tick;
+        if(alpha >= 0.8f) {
+          alpha = 0.8f;
+        }
+        if(panel.y <= 0) {
+          panel.y = 0;
+          anim = false;
+        }
+      } else {
+        alpha -= Labyrintale.tick * 4 * 0.8f;
+        panel.y += h * 4 * Labyrintale.tick;
+        if(alpha <= 0) {
+          alpha = 0;
+        }
+        if(panel.y >= h) {
+          panel.y = h;
+          anim = false;
+        }
+      }
+      bgImg.img.setAlpha(alpha);
+    }
+
     resolution.can = screenMode.index == 0;
     close.update();
     reset.update();
     if(Labyrintale.labyrinth != null) {
       main.update();
-      exit.update();
+      //exit.update();
       giveUp.update();
     }
     screenMode.update();
@@ -101,6 +143,7 @@ public class SettingScreen extends AbstractScreen {
 
   @Override
   public void render(SpriteBatch sb) {
+    bgImg.render(sb);
     panel.render(sb);
     screenMode.render(sb);
     resolution.render(sb);
@@ -112,7 +155,7 @@ public class SettingScreen extends AbstractScreen {
     reset.render(sb);
     if(Labyrintale.labyrinth != null) {
       main.render(sb);
-      exit.render(sb);
+      //exit.render(sb);
       giveUp.render(sb);
     }
   }
@@ -161,7 +204,13 @@ public class SettingScreen extends AbstractScreen {
   }
 
   @Override
-  public void show() {
-    changed = false;
+  public void show() {}
+
+  @Override
+  public void hide() {
+    anim = false;
+    alpha = 0;
+    panel.setY(Gdx.graphics.getHeight());
+    update();
   }
 }

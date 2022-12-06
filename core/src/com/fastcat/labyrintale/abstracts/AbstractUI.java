@@ -19,22 +19,21 @@ import com.fastcat.labyrintale.handlers.*;
 
 public abstract class AbstractUI implements Disposable {
 
-  private static final SpriteBatch uib = new SpriteBatch();
-
   protected final Array<SubText> subs = new Array<>();
   public AbstractScreen screen;
   public Array<SubText> subTexts;
+  public AbstractUI parent;
   public SubText.SubWay subWay = SubText.SubWay.UP;
   protected LogHandler logger = new LogHandler(this.getClass().getName());
   public Sprite img;
   public String text;
   public FontData fontData;
   public float x;
-  protected float sx;
-  protected float cx;
   public float y;
-  protected float sy;
-  protected float cy;
+  public float localX;
+  public float localY;
+  protected float cursorX;
+  protected float cursorY;
   public float width;
   public float height;
   public float sWidth;
@@ -81,8 +80,8 @@ public abstract class AbstractUI implements Disposable {
     this.height = height;
     sWidth = this.width * scale;
     sHeight = this.height * scale;
-    sx = this.x;
-    sy = this.y;
+    localX = this.x;
+    localY = this.y;
     over = false;
     enabled = true;
     uiScale = 1.0f;
@@ -93,6 +92,10 @@ public abstract class AbstractUI implements Disposable {
   public final void update() {
     // x = sx * scale;
     // y = sy * scale;
+    if(parent != null) {
+      x = parent.x + localX;
+      y = parent.y + localY;
+    }
     sWidth = width * scale * uiScale;
     sHeight = height * scale * uiScale;
     clicked = isLeftClick;
@@ -108,8 +111,8 @@ public abstract class AbstractUI implements Disposable {
           justOver = true;
         }
         if (overable) {
-          cx = mx - x;
-          cy = my - y;
+          cursorX = mx - x;
+          cursorY = my - y;
           Labyrintale.subText = this;
           subTexts = getSubText();
           if (clicked) {
@@ -137,6 +140,7 @@ public abstract class AbstractUI implements Disposable {
       else sb.setColor(WHITE);
       if (showImg) sb.draw(img, x, y, sWidth, sHeight);
 
+      sb.setColor(WHITE);
       if (fontData != null) {
         renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
       }
@@ -171,16 +175,22 @@ public abstract class AbstractUI implements Disposable {
     }
   }
 
+  public void setParent(AbstractUI ui) {
+    parent = ui;
+    x = parent.x + localX;
+    y = parent.y + localY;
+  }
+
   protected Array<SubText> getSubText() {
     return new Array<>();
   }
 
   public void setX(float x) {
-    this.x = x;
+    this.x = localX = x;
   }
 
   public void setY(float y) {
-    this.y = y;
+    this.y = localY = y;
   }
 
   public void setPosition(float x, float y) {
@@ -198,7 +208,7 @@ public abstract class AbstractUI implements Disposable {
     if (trackable && isCursorInScreen) {
       tracking = true;
       if (center) setPosition(mx - sWidth / 2, my - sHeight / 2);
-      else setPosition(mx - cx, my - cy);
+      else setPosition(mx - cursorX, my - cursorY);
     }
   }
 

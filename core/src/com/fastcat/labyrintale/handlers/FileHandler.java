@@ -221,6 +221,7 @@ public class FileHandler implements Disposable {
     ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
     ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
     ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
+    ui.put("BUTTON_P", new Sprite(new Texture("img/ui/button_p.png")));
     ui.put("CLOSE", new Sprite(new Texture("img/ui/close.png")));
     ui.put("CLOSE_SET", new Sprite(new Texture("img/ui/closeSet.png")));
     ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));

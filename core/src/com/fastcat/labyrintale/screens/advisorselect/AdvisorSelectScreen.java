@@ -30,7 +30,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
     float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     Array<AbstractItem> a;
     if (start) a = GroupHandler.AdvisorGroup.getStartAdvisor();
-    else a = GroupHandler.AdvisorGroup.getAdvisors(4);
+    else a = GroupHandler.AdvisorGroup.getAdvisors(3);
     int s = a.size;
     aAdvisor = new AdvisorButton[s];
     float ws = w / (s + 1);

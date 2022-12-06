@@ -43,6 +43,12 @@ public class DictCharButton extends AbstractUI {
   }
 
   @Override
+  public void setParent(AbstractUI ui) {
+    super.setParent(ui);
+    group.setParent(ui);
+  }
+
+  @Override
   protected void onOver() {}
 
   @Override

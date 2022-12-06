@@ -12,10 +12,10 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 public class CloseSettingButton extends AbstractUI {
 
   public CloseSettingButton(SettingScreen sc) {
-    super(FileHandler.getUi().get("CLOSE_SET"));
-    setPosition(Gdx.graphics.getWidth() * 0.85f - sWidth / 2, Gdx.graphics.getHeight() * 0.795f - sHeight / 2);
-    fontData = CLOSE;
-    text = "×";
+    super(FileHandler.getUi().get("BUTTON"));
+    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+    fontData = BUTTON;
+    text = "저장";
     screen = sc;
   }
 
