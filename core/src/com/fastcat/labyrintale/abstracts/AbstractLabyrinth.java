@@ -106,7 +106,7 @@ public class AbstractLabyrinth {
       for(AbstractPlayer p : players) {
         if(p.playerClass == AbstractPlayer.PlayerClass.JURURU) {
           for(AbstractPlayer pl : players) {
-            pl.stat.debuRes += 15;
+            if(pl.playerClass != AbstractPlayer.PlayerClass.JURURU) pl.stat.debuRes += 15;
           }
           break;
         }

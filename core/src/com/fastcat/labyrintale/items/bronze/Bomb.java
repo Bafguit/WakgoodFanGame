@@ -17,16 +17,6 @@ public class Bomb extends AbstractItem {
   }
 
   @Override
-  public void onGain() {
-    owner.stat.critical += 10;
-  }
-
-  @Override
-  public void onRemove() {
-    owner.stat.critical -= 10;
-  }
-
-  @Override
   public void atBattleStart() {
     flash();
     top(new ApplyStatusAction(new BurnStatus(3), null, AbstractSkill.SkillTarget.ENEMY_ALL, false));

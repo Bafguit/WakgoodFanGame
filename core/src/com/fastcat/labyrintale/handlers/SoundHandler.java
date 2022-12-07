@@ -83,7 +83,7 @@ public final class SoundHandler implements Disposable {
     music.put("WIN", new MusicData("LOBBY", getMusic("sound/bgm/win.mp3")));
     music.put("LOSS", new MusicData("LOBBY", getMusic("sound/bgm/loss.mp3")));
     music.put("CREDIT", new MusicData("LOBBY", getMusic("sound/bgm/credit.mp3")));
-    // music.put("LOGO", new MusicData("LOGO", getMusic("sound/bgm/logo.mp3")));
+    music.put("LOGO", new MusicData("LOGO", getMusic("sound/bgm/logo.mp3")));
   }
 
   private static Sound getSound(String url) {

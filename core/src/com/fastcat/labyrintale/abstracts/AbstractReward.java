@@ -13,19 +13,8 @@ public abstract class AbstractReward implements GetRewardDone {
   public boolean isDone = false;
 
   public AbstractReward(RewardType type) {
-    img = getImg(type);
+    img = FileHandler.getUi().get("GOLD");
     this.type = type;
-  }
-
-  private static Sprite getImg(AbstractReward.RewardType type) {
-    switch (type) {
-      case HEAL:
-        return FileHandler.getUi().get("HEAL");
-      case GOLD:
-        return FileHandler.getUi().get("GOLD");
-      default:
-        return FileHandler.getUi().get("REWARD_CARD");
-    }
   }
 
   public void setInfo(String name, String desc) {

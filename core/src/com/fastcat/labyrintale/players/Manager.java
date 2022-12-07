@@ -24,7 +24,7 @@ public class Manager extends AbstractPlayer {
     stat.speed = 2;
     stat.debuRes = 10;
     stat.critical = 10;
-    stat.moveRes = 50;
+    stat.moveRes = 40;
   }
 
   @Override

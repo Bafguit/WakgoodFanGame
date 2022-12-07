@@ -73,7 +73,7 @@ public abstract class AbstractUI implements Disposable {
   }
 
   public AbstractUI(Sprite img, float x, float y, float width, float height) {
-    this.img = img;
+    this.img = new Sprite(img);
     this.x = x;
     this.y = y;
     this.width = width;

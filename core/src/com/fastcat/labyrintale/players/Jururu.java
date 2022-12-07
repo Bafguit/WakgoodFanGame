@@ -22,9 +22,9 @@ public class Jururu extends AbstractPlayer {
   public Jururu() {
     super(ID, HEALTH, COLOR);
     stat.speed = 1;
-    stat.debuRes = 40;
+    stat.debuRes = 35;
     stat.critical = 5;
-    stat.moveRes = 25;
+    stat.moveRes = 20;
   }
 
   @Override

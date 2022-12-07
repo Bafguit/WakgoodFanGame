@@ -80,7 +80,6 @@ public class FileHandler implements Disposable {
     jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
     jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
     jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
-    jsonMap.put(JsonType.RISK_JSON, generateJson("json/restrictions.json"));
     jsonMap.put(JsonType.CREDIT_JSON, generateJson("json/credit.json"));
     jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
     jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
@@ -188,9 +187,6 @@ public class FileHandler implements Disposable {
     bg.put("BG_DEAD", new Sprite(new Texture("img/bg/dead.png")));
     bg.put("BG_WIN", new Sprite(new Texture("img/bg/win.png")));
     bg.put("BG_MAP", new Sprite(new Texture("img/bg/map.png")));
-    bg.put("BG_CHARSELECT", new Sprite(new Texture("img/bg/charselect.png")));
-    bg.put("BG_BATTLE", new Sprite(new Texture("img/bg/battle.png")));
-    bg.put("BG_WAY", new Sprite(new Texture("img/bg/way.png")));
     bg.put("BG_WAY_1", new Sprite(new Texture("img/bg/way_forest.png")));
     bg.put("BG_WAY_2", new Sprite(new Texture("img/bg/way_deep.png")));
     bg.put("BG_WAY_3", new Sprite(new Texture("img/bg/way_temple.png")));
@@ -221,7 +217,6 @@ public class FileHandler implements Disposable {
     ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
     ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
     ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
-    ui.put("BUTTON_P", new Sprite(new Texture("img/ui/button_p.png")));
     ui.put("CLOSE", new Sprite(new Texture("img/ui/close.png")));
     ui.put("CLOSE_SET", new Sprite(new Texture("img/ui/closeSet.png")));
     ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
@@ -244,24 +239,20 @@ public class FileHandler implements Disposable {
     ui.put("CAMP", new Sprite(new Texture("img/ui/camp.png")));
     ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
     ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
-    ui.put("DECK", new Sprite(new Texture("img/ui/deck.png")));
-    ui.put("DRAW", new Sprite(new Texture("img/ui/draw.png")));
     ui.put("GOLD", new Sprite(new Texture("img/ui/gold.png")));
     ui.put("ROLL", new Sprite(new Texture("img/ui/roll.png")));
-    ui.put("DISCARD", new Sprite(new Texture("img/ui/discard.png")));
-    ui.put("REWARD_CARD", new Sprite(new Texture("img/ui/deck.png")));
     ui.put("ENTITY_POINT_B", new Sprite(new Texture("img/ui/entityPoint_boss.png")));
     ui.put("PLAYER_POINT_B", new Sprite(new Texture("img/ui/playerPoint_boss.png")));
     ui.put("ENTITY_POINT", new Sprite(new Texture("img/ui/entityPoint.png")));
     ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
-    ui.put("CHAR_SKILL_REWARD", new Sprite(new Texture("img/ui/charSkillReward.png")));
     ui.put("WAY_SELECT", new Sprite(new Texture("img/ui/wayBG.png")));
     ui.put("EVENT_PANEL", new Sprite(new Texture("img/ui/event_paper.png")));
     ui.put("EVENT_CHOICE", new Sprite(new Texture("img/ui/event_select.png")));
     ui.put("CHECK_OFF", new Sprite(new Texture("img/ui/check_0.png")));
     ui.put("CHECK_ON", new Sprite(new Texture("img/ui/check_1.png")));
-    ui.put("OPTION_PANEL", new Sprite(new Texture("img/ui/optionPanel.png")));
     ui.put("SHIELD", new Sprite(new Texture("img/ui/shield.png")));
+    ui.put("GOLD_PANEL", new Sprite(new Texture("img/ui/gold_paper.png")));
+    ui.put("SETTING_B", new Sprite(new Texture("img/ui/setting.png")));
     ui.put("LOGO", new Sprite(new Texture("img/ui/logo.png")));
     ui.put("TITLE", new Sprite(new Texture("img/ui/title.png")));
     ui.put("CURSOR", new Sprite(new Texture("img/ui/cursor.png")));
@@ -272,9 +263,6 @@ public class FileHandler implements Disposable {
     ui.put("SLIDE_SR", new Sprite(new Texture("img/ui/slide_sr.png")));
     ui.put("LEFT", new Sprite(new Texture("img/ui/left.png")));
     ui.put("RIGHT", new Sprite(new Texture("img/ui/right.png")));
-    ui.put("MYSTERY", new Sprite(new Texture("img/ui/mystery.png")));
-    ui.put("HEAL", new Sprite(new Texture("img/ui/heal.png")));
-    ui.put("UPGRADE", new Sprite(new Texture("img/ui/upgrade.png")));
     ui.put("HEART", new Sprite(new Texture("img/ui/heart.png")));
     ui.put("REST", new Sprite(new Texture("img/ui/restNode.png")));
     ui.put("BATTLE", new Sprite(new Texture("img/ui/battle_n.png")));
@@ -296,8 +284,6 @@ public class FileHandler implements Disposable {
     ui.put("STAT_MOVERES", new Sprite(new Texture("img/stat/moveRes.png")));
     ui.put("STAT_DEBURES", new Sprite(new Texture("img/stat/debuRes.png")));
     ui.put("STAT_NEUTRES", new Sprite(new Texture("img/stat/neutRes.png")));
-    ui.put("E_IMAGE", new Sprite(new Texture("img/ui/e_img.png")));
-    ui.put("E_PANEL", new Sprite(new Texture("img/ui/e_imgPanel.png")));
     ui.put("UNKNOWN", new Sprite(new Texture("img/ui/unknown.png")));
     ui.put("STAT_PLUS", new Sprite(new Texture("img/ui/statPlus.png")));
     ui.put("DIFF_NORMAL", new Sprite(new Texture("img/ui/diff_normal.png")));
@@ -405,12 +391,6 @@ public class FileHandler implements Disposable {
     for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_JURURU)) {
       skillImg.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + ".png")));
     }
-    for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_ENEMY)) {
-      skillImg.put(js.name, new Sprite(new Texture("img/skill/enemy/" + js.name + ".png")));
-    }
-    for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_ADV)) {
-      skillImg.put(js.name, new Sprite(new Texture("img/skill/adv/" + js.name + ".png")));
-    }
     for (AbstractSkill.IntentType it : AbstractSkill.IntentType.values()) {
       skillImg.put(it.toString(), new Sprite(new Texture("img/skill/intent/" + it.toString().toLowerCase() + ".png")));
     }
@@ -489,7 +469,6 @@ public class FileHandler implements Disposable {
     EVENT_JSON,
     CREDIT_JSON,
     ITEM_JSON,
-    RISK_JSON,
     KEY_JSON,
     CARD_JSON_BASIC,
     CARD_JSON_WAK,

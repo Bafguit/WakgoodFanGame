@@ -11,7 +11,7 @@ public class CloseInfoScreenButton extends AbstractUI {
 
   public CloseInfoScreenButton(PlayerInfoScreen screen) {
     super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
+    setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
     fontData = BUTTON;
     text = "닫기";
     this.screen = screen;

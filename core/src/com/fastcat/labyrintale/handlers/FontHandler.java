@@ -23,10 +23,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public final class FontHandler implements Disposable {
-  private static final FreeTypeFontGenerator medium =
-      new FreeTypeFontGenerator(Gdx.files.internal("font/hlm.ttf"));
-  private static final FreeTypeFontGenerator bold =
-      new FreeTypeFontGenerator(Gdx.files.internal("font/hlb.ttf"));
+  private static final FreeTypeFontGenerator font = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
   public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
   public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
   public static final FontData ENERGY = new FontData(BOLD, 48, true);
@@ -48,7 +45,7 @@ public final class FontHandler implements Disposable {
   public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
   public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
   public static final FontData INFO_HP_BORDER = new FontData(MEDIUM, 35, true);
-  public static final FontData BORDER_44 = new FontData(MEDIUM, 44, true);
+  public static final FontData BORDER_36 = new FontData(MEDIUM, 36, true, false);
   public static final FontData EVENT_TITLE = new FontData(MEDIUM, 42, new Color(1f, 0.975f, 0.925f, 1), false, false);
   public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, new Color(1f, 0.975f, 0.925f, 1), false, false);
   public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 36, false, false);
@@ -61,8 +58,7 @@ public final class FontHandler implements Disposable {
   public static final FontData WAY = new FontData(MEDIUM, 31, false, false);
   public static final FontData SETTING = new FontData(BOLD, 44, false, false);
   public static final FontData TAB = new FontData(BOLD, 40, false, false);
-  public static final FontData BLEAK =
-      new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
+  public static final FontData BLEAK = new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
   public static final FontData SUB_NAME = new FontData(MEDIUM, 32, false);
   public static final FontData SUB_DESC = new FontData(MEDIUM, 26, false);
   public static final FontData STAT = new FontData(MEDIUM, 30, false);
@@ -107,8 +103,7 @@ public final class FontHandler implements Disposable {
     parameter.color = color;
     parameter.borderColor = bColor;
     parameter.borderWidth = border ? parameter.size * 0.04f : 0.0f;
-    if (type.equals(BOLD)) return bold.generateFont(parameter);
-    else return medium.generateFont(parameter);
+    return font.generateFont(parameter);
   }
 
   public static void renderCenter(SpriteBatch sb, FontData font, String text, float x, float y) {
@@ -318,8 +313,7 @@ public final class FontHandler implements Disposable {
 
   @Override
   public void dispose() {
-    medium.dispose();
-    bold.dispose();
+    font.dispose();
     TURN_CHANGE.dispose();
     COOLDOWN.dispose();
     ENERGY.dispose();
@@ -336,7 +330,7 @@ public final class FontHandler implements Disposable {
     INFO_NAME.dispose();
     INFO_HP.dispose();
     INFO_HP_BORDER.dispose();
-    BORDER_44.dispose();
+    BORDER_36.dispose();
     EVENT_DESC.dispose();
     EVENT_CHOICE.dispose();
     BORDER.dispose();

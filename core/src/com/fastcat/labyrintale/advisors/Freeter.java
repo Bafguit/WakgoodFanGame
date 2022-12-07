@@ -4,7 +4,6 @@ import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.skills.player.advisor.FreeterSkill;
 import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.EnduranceStatus;
 

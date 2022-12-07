@@ -5,9 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.video.VideoPlayer;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.VideoSyncPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -20,7 +18,6 @@ public class LogoScreen extends AbstractScreen {
 
   public boolean isDone = false;
   private int mode = 0;
-  private float elapsed = 0;
   private float timer = 0;
   private float color = 0;
   private int dup = 1;
@@ -34,6 +31,7 @@ public class LogoScreen extends AbstractScreen {
     back.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     logo = new AbstractUI.TempUI(FileHandler.getUi().get("LOGO"));
     logo.setPosition(Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f, Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
+    //SoundHandler.addMusic("LOGO", false, false);
   }
 
   @Override

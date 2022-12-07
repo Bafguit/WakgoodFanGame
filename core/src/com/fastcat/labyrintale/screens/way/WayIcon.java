@@ -16,7 +16,7 @@ public class WayIcon extends AbstractUI {
     super(FileHandler.getUi().get("BORDER"));
     icon = i;
     this.b = b;
-    bIcon = FileHandler.getUi().get("MYSTERY");
+    bIcon = FileHandler.getUi().get("LOOK");
     overable = false;
   }
 

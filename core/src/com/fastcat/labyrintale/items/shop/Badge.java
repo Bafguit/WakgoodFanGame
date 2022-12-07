@@ -22,7 +22,13 @@ public class Badge extends AbstractItem {
   @Override
   public void onGain() {
     if(Labyrintale.getBaseScreen() instanceof ShopScreen) {
-      Labyrintale.shopScreen.room.roll.price += 0.5f;
+      ShopRoom s = Labyrintale.shopScreen.room;
+      int i = shopRandom.random(0, 10);
+      if (i < 6) {
+        s.skills[i].price = 0;
+      } else {
+        s.items[i - 6].price = 0;
+      }
     }
     owner.modifyMaxHealth(5);
     owner.stat.neutRes += 10;

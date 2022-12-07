@@ -14,7 +14,7 @@ public class ResultText extends AbstractUI {
 
   public ResultText(DeadScreen.ScreenType type) {
     super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
-    setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.925f);
+    setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.875f);
     fontData = CARD_BORDER;
     text = type == DeadScreen.ScreenType.WIN ? "승리" : "멸망";
     showImg = false;

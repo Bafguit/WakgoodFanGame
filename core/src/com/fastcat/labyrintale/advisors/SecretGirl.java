@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.advisors;
 
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.skills.player.advisor.SecretSkill;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class SecretGirl extends AbstractItem {
 

@@ -95,8 +95,8 @@ public class SettingScreen extends AbstractScreen {
     if(anim) {
       float h = Gdx.graphics.getHeight();
       if(Labyrintale.setting) {
-        alpha += Labyrintale.tick * 4 * 0.8f;
-        panel.y -= h * 4 * Labyrintale.tick;
+        alpha += Labyrintale.tick * 5 * 0.8f;
+        panel.y -= h * 5 * Labyrintale.tick;
         if(alpha >= 0.8f) {
           alpha = 0.8f;
         }
@@ -105,8 +105,8 @@ public class SettingScreen extends AbstractScreen {
           anim = false;
         }
       } else {
-        alpha -= Labyrintale.tick * 4 * 0.8f;
-        panel.y += h * 4 * Labyrintale.tick;
+        alpha -= Labyrintale.tick * 5 * 0.8f;
+        panel.y += h * 5 * Labyrintale.tick;
         if(alpha <= 0) {
           alpha = 0;
         }

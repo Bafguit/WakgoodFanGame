@@ -9,7 +9,6 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -56,6 +55,7 @@ public class RewardScreen extends AbstractScreen {
     if(SettingHandler.setting.rewardTutorial) {
       Labyrintale.openTutorial(TutorialScreen.TutorialType.REWARD);
       SettingHandler.setting.rewardTutorial = false;
+      SettingHandler.save();
     }
   }
 

@@ -22,9 +22,9 @@ public class Wakgood extends AbstractPlayer {
   public Wakgood() {
     super(ID, HEALTH, COLOR);
     stat.speed = 1;
-    stat.debuRes = 20;
+    stat.debuRes = 5;
     stat.critical = 10;
-    stat.moveRes = 40;
+    stat.moveRes = 45;
   }
 
   @Override

@@ -59,7 +59,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
       AbstractEntity owner, String id, SkillType type, SkillRarity rarity, SkillTarget target) {
     this.owner = owner;
     this.id = id;
-    this.img = FileHandler.getSkillImg().get(this.id);
+    if(rarity != SkillRarity.ENEMY) this.img = FileHandler.getSkillImg().get(this.id);
     this.skillData = StringHandler.skillString.get(this.id);
     this.name = this.skillData.NAME;
     this.desc = this.skillData.DESC;

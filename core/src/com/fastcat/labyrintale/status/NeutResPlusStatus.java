@@ -21,7 +21,7 @@ public class NeutResPlusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.neutRes += 40;
+    owner.stat.neutRes += 30;
   }
 
   @Override
@@ -33,6 +33,6 @@ public class NeutResPlusStatus extends AbstractStatus {
 
   @Override
   public void onRemove() {
-    owner.stat.neutRes -= 40;
+    owner.stat.neutRes -= 30;
   }
 }

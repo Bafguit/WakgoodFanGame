@@ -22,7 +22,7 @@ public class Gosegu extends AbstractPlayer {
   public Gosegu() {
     super(ID, HEALTH, COLOR);
     stat.speed = 2;
-    stat.debuRes = 40;
+    stat.debuRes = 30;
     stat.critical = 5;
     stat.moveRes = 5;
   }

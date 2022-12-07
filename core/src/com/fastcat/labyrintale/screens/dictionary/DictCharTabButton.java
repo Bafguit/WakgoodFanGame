@@ -16,7 +16,7 @@ public class DictCharTabButton extends AbstractUI {
   public DictScreen sc;
 
   public DictCharTabButton(DictScreen sc) {
-    super(FileHandler.getUi().get("BUTTON_P"));
+    super(FileHandler.getUi().get("BUTTON"));
     setPosition(Gdx.graphics.getWidth() * 0.3f - sWidth / 2, Gdx.graphics.getHeight() * 0.795f - sHeight / 2);
     fontData = BUTTON;
     text = "플레이어";

@@ -21,9 +21,9 @@ public class Ine extends AbstractPlayer {
   public Ine() {
     super(ID, HEALTH, COLOR);
     stat.speed = 1;
-    stat.debuRes = 30;
+    stat.debuRes = 25;
     stat.critical = 10;
-    stat.moveRes = 30;
+    stat.moveRes = 25;
   }
 
   @Override

@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.uis.control;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.sc;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
 
@@ -15,6 +16,7 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.MapButton;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.PlayerInfoButton;
+import com.fastcat.labyrintale.uis.SettingButton;
 
 public class InfoPanel extends AbstractUI {
 
@@ -25,6 +27,8 @@ public class InfoPanel extends AbstractUI {
   public FontHandler.FontData fontDesc = PANEL_DESC;
   public PlayerIcon[] pIcons = new PlayerIcon[4];
   public MapButton map;
+  public TempUI gold;
+  public SettingButton setting;
   public PlayerInfoButton playerInfo;
   public InfoType type = InfoType.COLOR;
   public AbstractSkill skill;
@@ -34,7 +38,7 @@ public class InfoPanel extends AbstractUI {
   public AbstractEntity player;
   public boolean show;
   public boolean renderIcon = true;
-  public float nx, ny, nw, nh, dx, dy, dw, dh;
+  public float nx, ny, nw, nh, dx, dy, dw, dh, fy;
   public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
   public InfoPanel() {
@@ -57,6 +61,13 @@ public class InfoPanel extends AbstractUI {
     bnw = bdw = 1000 * InputHandler.scale;
     bnh = 60 * InputHandler.scale;
     bdh = 60 * InputHandler.scale;
+
+    setting = new SettingButton(2443 * scale, 17 * scale);
+
+    gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
+    gold.setPosition(957 * scale, 64 * scale);
+
+    fy = gold.y + gold.sHeight / 2;
 
     for (int i = 0; i < 4; i++) {
       PlayerIcon c = new PlayerIcon(i);
@@ -98,6 +109,7 @@ public class InfoPanel extends AbstractUI {
     aSkill.update();
     map.update();
     playerInfo.update();
+    setting.update();
   }
 
   @Override
@@ -115,12 +127,14 @@ public class InfoPanel extends AbstractUI {
           pIcons[i].render(sb);
         }
       }
-      FontHandler.renderColorCenter(sb, BORDER_44, AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second, 975 * scale, 120 * scale, 200 * scale);
-      FontHandler.renderColorCenter(sb, BORDER_44, AbstractLabyrinth.currentFloor.floorNum + "층", 1120 * scale, 120 * scale, 200 * scale);
-      FontHandler.renderColorCenter(sb, BORDER_44, "&y<" + AbstractLabyrinth.gold + "G>", 1270 * scale, 120 * scale, 200 * scale);
+      gold.render(sb);
+      FontHandler.renderLineLeft(sb, BORDER_36, "&y<" + AbstractLabyrinth.gold + "G>", 1040 * scale, fy, 200 * scale, fy);
+      FontHandler.renderLineLeft(sb, BORDER_36, AbstractLabyrinth.currentFloor.floorNum + "층", 1210 * scale, fy, 200 * scale, fy);
+      FontHandler.renderLineLeft(sb, BORDER_36, AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second, 1318 * scale, fy, 200 * scale, fy);
       aSkill.render(sb);
       map.render(sb);
       playerInfo.render(sb);
+      setting.render(sb);
     }
   }
 

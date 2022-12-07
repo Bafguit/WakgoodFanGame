@@ -26,6 +26,6 @@ public class TrickDeck extends AbstractItem {
 
   @Override
   public int onGainGold(int amount) {
-    return (int) (((float) amount) * 1.2f);
+    return (int) (((float) amount) * 1.3f);
   }
 }

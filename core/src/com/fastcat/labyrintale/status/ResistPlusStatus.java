@@ -21,9 +21,9 @@ public class ResistPlusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.moveRes += 40;
-    owner.stat.neutRes += 40;
-    owner.stat.debuRes += 40;
+    owner.stat.moveRes += 30;
+    owner.stat.neutRes += 30;
+    owner.stat.debuRes += 30;
   }
 
   @Override
@@ -35,8 +35,8 @@ public class ResistPlusStatus extends AbstractStatus {
 
   @Override
   public void onRemove() {
-    owner.stat.moveRes -= 40;
-    owner.stat.neutRes -= 40;
-    owner.stat.debuRes -= 40;
+    owner.stat.moveRes -= 30;
+    owner.stat.neutRes -= 30;
+    owner.stat.debuRes -= 30;
   }
 }

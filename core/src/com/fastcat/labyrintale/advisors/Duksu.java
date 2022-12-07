@@ -1,10 +1,7 @@
 package com.fastcat.labyrintale.advisors;
 
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.UpgradeAction;
-import com.fastcat.labyrintale.skills.player.advisor.DuksuSkill;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Duksu extends AbstractItem {
 
@@ -16,11 +13,10 @@ public class Duksu extends AbstractItem {
   }
 
   public void atBattleStart() {
-    AbstractSkill[] temp = new AbstractSkill[4];
     for(int i = 0; i < 4; i++) {
       AbstractPlayer p = AbstractLabyrinth.players[i];
-      temp[i] = p.hand[AbstractLabyrinth.publicRandom.random(0, 2)];
+      AbstractSkill s = p.hand[AbstractLabyrinth.publicRandom.random(0, 2)];
+      s.upgrade();
     }
-    bot(new UpgradeAction(temp));
   }
 }

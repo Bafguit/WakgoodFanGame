@@ -4,7 +4,9 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.status.ImmuneStatus;
 import com.fastcat.labyrintale.status.LethargyStatus;
+import com.fastcat.labyrintale.status.ProvokeStatus;
 
 public class CrossPin extends AbstractItem {
 
@@ -17,13 +19,19 @@ public class CrossPin extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.debuRes += 20;
-    owner.stat.moveRes += 20;
+    owner.stat.debuRes += 10;
+    owner.stat.moveRes += 10;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.debuRes -= 20;
-    owner.stat.moveRes -= 20;
+    owner.stat.debuRes -= 10;
+    owner.stat.moveRes -= 10;
+  }
+
+  @Override
+  public void atBattleStart() {
+    flash();
+    top(new ApplyStatusAction(new ProvokeStatus(owner), owner, owner, true));
   }
 }

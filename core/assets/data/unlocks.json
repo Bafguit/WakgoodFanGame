@@ -2,7 +2,7 @@
   "SKILL" : {
     "EnduringPotion" : false,
     "Intimidate" : false,
-    "Support" : false,
+    "Support" : true,
     "Snipe" : false,
     "IronWill" : false,
     "Sharp" : false,
@@ -45,7 +45,7 @@
     "HolyLight" : false,
     "SuperSave" : false,
     "BioCloud" : false,
-    "BraveWill" : true,
+    "BraveWill" : false,
     "Faith" : false,
     "AvantProtect" : false,
     "Lilpaa" : false,

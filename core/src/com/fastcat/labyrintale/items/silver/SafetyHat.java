@@ -14,13 +14,13 @@ public class SafetyHat extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.modifyMaxHealth(10);
-    owner.stat.neutRes += 10;
+    owner.modifyMaxHealth(15);
+    owner.stat.neutRes += 5;
   }
 
   @Override
   public void onRemove() {
-    owner.modifyMaxHealth(-10);
-    owner.stat.neutRes -= 10;
+    owner.modifyMaxHealth(-15);
+    owner.stat.neutRes -= 5;
   }
 }

@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale.advisors;
 
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.skills.player.advisor.HikiSkill;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class HikiKing extends AbstractItem {
 

@@ -60,7 +60,7 @@ public class ScreenshotButton extends AbstractUI {
       pixels.put(i, (byte) 255);
     }
 
-    new File("screenshots").mkdir();
+    Gdx.files.local("screenshots").mkdirs();
     PixmapIO.writePNG(Gdx.files.local("screenshots/screenshot_" + date + ".png"), pixmap, Deflater.DEFAULT_COMPRESSION, true);
     pixmap.dispose();
     text = "저장됨";

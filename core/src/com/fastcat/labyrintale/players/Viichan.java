@@ -22,9 +22,9 @@ public class Viichan extends AbstractPlayer {
   public Viichan() {
     super(ID, HEALTH, COLOR);
     stat.speed = 3;
-    stat.debuRes = 15;
+    stat.debuRes = 10;
     stat.critical = 15;
-    stat.moveRes = 20;
+    stat.moveRes = 15;
   }
 
   @Override

@@ -12,7 +12,7 @@ import com.fastcat.labyrintale.uis.GifBg;
 public class LibraryScreen extends AbstractScreen {
 
     private final GifBg back;
-    private LibraryButton[] buttons = new LibraryButton[3];
+    private final LibraryButton[] buttons = new LibraryButton[3];
     public BackButton backButton;
 
     public LibraryScreen() {

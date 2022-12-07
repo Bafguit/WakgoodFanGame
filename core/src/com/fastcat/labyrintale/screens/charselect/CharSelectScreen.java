@@ -30,7 +30,6 @@ public class CharSelectScreen extends AbstractScreen {
   public CharButton[] aChars = new CharButton[8];
 
   public CharSelectScreen() {
-    setBg(FileHandler.getBg().get("BG_CHARSELECT"));
     charSelectText = new CharSelectText();
     backButton = new BackButton();
     nextButton = new NextToAdvisorButton();

@@ -622,7 +622,7 @@ public abstract class AbstractEntity implements Cloneable {
             AbstractLabyrinth.achvCheck.IMMORTAL = true;
           }
           AchieveHandler.check.WIN++;
-          if(AchieveHandler.check.WIN >= 100) {
+          if(AchieveHandler.check.WIN >= 1000) {
             int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.WIN);
             if(i == 0) AchieveHandler.achvs.replace(AchieveHandler.Achievement.WIN, 3);
           }
