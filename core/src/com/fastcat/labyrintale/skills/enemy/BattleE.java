@@ -6,21 +6,21 @@ import com.fastcat.labyrintale.actions.CoercionAction;
 
 public class BattleE extends AbstractSkill {
 
-  private static final String ID = "BattleE";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+    private static final String ID = "BattleE";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
 
-  public BattleE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setIntent(IntentType.DEBUFF);
-  }
+    public BattleE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setIntent(IntentType.DEBUFF);
+    }
 
-  @Override
-  public void use() {
-    bot(new CoercionAction(owner, false));
-  }
+    @Override
+    public void use() {
+        bot(new CoercionAction(owner, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

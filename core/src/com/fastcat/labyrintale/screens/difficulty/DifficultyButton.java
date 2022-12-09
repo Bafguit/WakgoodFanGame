@@ -1,16 +1,16 @@
 package com.fastcat.labyrintale.screens.difficulty;
 
+import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
+import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
-
-import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
-import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
-import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
 public class DifficultyButton extends AbstractUI {
 

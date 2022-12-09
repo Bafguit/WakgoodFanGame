@@ -5,12 +5,11 @@ import io.github.singlerr.exporters.PlayerDataExporter;
 import java.io.File;
 
 public class Main {
-  public static void main(String[] args) {
-    File parentFile = new File("exported");
-    if (!parentFile.exists()) parentFile.mkdir();
+    public static void main(String[] args) {
+        File parentFile = new File("exported");
+        if (!parentFile.exists()) parentFile.mkdir();
 
-    DataExportManager.getInstance()
-        .registerDataExporters(MonsterDataExporter.class, PlayerDataExporter.class);
-    DataExportManager.getInstance().exportAllDataTo(parentFile);
-  }
+        DataExportManager.getInstance().registerDataExporters(MonsterDataExporter.class, PlayerDataExporter.class);
+        DataExportManager.getInstance().exportAllDataTo(parentFile);
+    }
 }

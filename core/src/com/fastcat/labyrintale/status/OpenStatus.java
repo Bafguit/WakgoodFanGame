@@ -7,24 +7,24 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 
 public class OpenStatus extends AbstractStatus {
 
-  private static final String ID = "Open";
-  private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final String ID = "Open";
+    private static final SkillTarget TARGET = SkillTarget.SELF;
 
-  public OpenStatus(int amount) {
-    super(ID, TARGET, StatusType.STATIC);
-    setAmount(amount);
-  }
-
-  @Override
-  public String getDesc() {
-    return exDesc[0] + amount + exDesc[1];
-  }
-
-  @Override
-  public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
-      top(new ApplyStatusAction(new ScarStatus(amount), owner, owner, true));
+    public OpenStatus(int amount) {
+        super(ID, TARGET, StatusType.STATIC);
+        setAmount(amount);
     }
-    return d;
-  }
+
+    @Override
+    public String getDesc() {
+        return exDesc[0] + amount + exDesc[1];
+    }
+
+    @Override
+    public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+        if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
+            top(new ApplyStatusAction(new ScarStatus(amount), owner, owner, true));
+        }
+        return d;
+    }
 }

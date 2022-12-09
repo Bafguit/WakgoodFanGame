@@ -6,35 +6,35 @@ import com.fastcat.labyrintale.actions.RemoveStatusAction;
 
 public class BlindStatus extends AbstractStatus {
 
-  private static final String ID = "Blind";
+    private static final String ID = "Blind";
 
-  public BlindStatus() {
-    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
-  }
+    public BlindStatus() {
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.DEBUFF);
+    }
 
-  @Override
-  public String getDesc() {
-    return desc;
-  }
+    @Override
+    public String getDesc() {
+        return desc;
+    }
 
-  @Override
-  public void onInitial() {
-    owner.badLuck++;
-  }
+    @Override
+    public void onInitial() {
+        owner.badLuck++;
+    }
 
-  @Override
-  public void onRemove() {
-    owner.badLuck--;
-  }
+    @Override
+    public void onRemove() {
+        owner.badLuck--;
+    }
 
-  @Override
-  public void endOfTurn() {
-    if (isSelf) isSelf = false;
-    else top(new RemoveStatusAction(this, true));
-  }
+    @Override
+    public void endOfTurn() {
+        if (isSelf) isSelf = false;
+        else top(new RemoveStatusAction(this, true));
+    }
 
-  @Override
-  public float attackMultiply() {
-    return 0.3f;
-  }
+    @Override
+    public float attackMultiply() {
+        return 0.3f;
+    }
 }

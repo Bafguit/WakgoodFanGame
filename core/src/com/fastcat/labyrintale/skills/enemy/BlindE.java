@@ -7,21 +7,21 @@ import com.fastcat.labyrintale.status.BlindStatus;
 
 public class BlindE extends AbstractSkill {
 
-  private static final String ID = "BlindE";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
+    private static final String ID = "BlindE";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
 
-  public BlindE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setIntent(IntentType.DEBUFF);
-  }
+    public BlindE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setIntent(IntentType.DEBUFF);
+    }
 
-  @Override
-  public void use() {
-    bot(new ApplyStatusAction(new BlindStatus(), owner, target, false));
-  }
+    @Override
+    public void use() {
+        bot(new ApplyStatusAction(new BlindStatus(), owner, target, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

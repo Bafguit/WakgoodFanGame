@@ -6,16 +6,16 @@ import com.fastcat.labyrintale.enemies.BugEnemy;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 
 public class PlaceholderRoom extends AbstractRoom {
-  public PlaceholderRoom() {
-    super("Placeholder", RoomType.ENTRY);
-    isDone = true;
-    battleDone = true;
-  }
+    public PlaceholderRoom() {
+        super("Placeholder", RoomType.ENTRY);
+        isDone = true;
+        battleDone = true;
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new BugEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {
+            new BugEnemy(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+        };
+    }
 }

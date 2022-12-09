@@ -9,39 +9,39 @@ import com.fastcat.labyrintale.skills.enemy.GrowE;
 
 public class WeakEnemy8 extends AbstractEnemy {
 
-  private static final String ID = "WeakEnemy8";
-  private static final EnemyType TYPE = EnemyType.NORMAL;
-  private static final int HEALTH = 52;
+    private static final String ID = "WeakEnemy8";
+    private static final EnemyType TYPE = EnemyType.NORMAL;
+    private static final int HEALTH = 52;
 
-  public WeakEnemy8() {
-    super(ID, TYPE, HEALTH);
-    isRandom = false;
-    stat.speed = 1;
-    stat.debuRes = 15;
-    stat.neutRes = 15;
-    stat.critical = 15;
-    stat.moveRes = 15;
-  }
+    public WeakEnemy8() {
+        super(ID, TYPE, HEALTH);
+        isRandom = false;
+        stat.speed = 1;
+        stat.debuRes = 15;
+        stat.neutRes = 15;
+        stat.critical = 15;
+        stat.moveRes = 15;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s1 = new AttackHighE(this);
-    s1.upgrade();
-    s1.upgrade();
-    s1.upgrade();
-    s1.upgrade();
-    temp.add(s1);
-    AbstractSkill s = new BarrierE(this);
-    s.upgrade();
-    temp.add(s);
-    AbstractSkill s2 = new AttackHighE(this);
-    s2.upgrade();
-    s2.upgrade();
-    s2.upgrade();
-    s2.upgrade();
-    temp.add(s2);
-    temp.add(new GrowE(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        AbstractSkill s1 = new AttackHighE(this);
+        s1.upgrade();
+        s1.upgrade();
+        s1.upgrade();
+        s1.upgrade();
+        temp.add(s1);
+        AbstractSkill s = new BarrierE(this);
+        s.upgrade();
+        temp.add(s);
+        AbstractSkill s2 = new AttackHighE(this);
+        s2.upgrade();
+        s2.upgrade();
+        s2.upgrade();
+        s2.upgrade();
+        temp.add(s2);
+        temp.add(new GrowE(this));
+        return temp;
+    }
 }

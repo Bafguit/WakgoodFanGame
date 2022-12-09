@@ -9,30 +9,30 @@ import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
 public class Enemy2Normal6 extends AbstractEnemy {
 
-  private static final String ID = "Enemy2Normal6";
-  private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 35;
+    private static final String ID = "Enemy2Normal6";
+    private static final EnemyType TYPE = EnemyType.WEAK;
+    private static final int HEALTH = 35;
 
-  public Enemy2Normal6() {
-    super(ID, TYPE, HEALTH);
-    stat.speed = 2;
-    stat.debuRes = 20;
-    stat.neutRes = 10;
-    stat.critical = 5;
-    stat.moveRes = 5;
-  }
+    public Enemy2Normal6() {
+        super(ID, TYPE, HEALTH);
+        stat.speed = 2;
+        stat.debuRes = 20;
+        stat.neutRes = 10;
+        stat.critical = 5;
+        stat.moveRes = 5;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s = new StrikeE(this);
-    s.upgrade();
-    temp.add(s);
-    AbstractSkill ss = new StrikeE(this);
-    ss.upgrade();
-    temp.add(ss);
-    temp.add(new GrowE(this));
-    temp.add(new FrailE(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        AbstractSkill s = new StrikeE(this);
+        s.upgrade();
+        temp.add(s);
+        AbstractSkill ss = new StrikeE(this);
+        ss.upgrade();
+        temp.add(ss);
+        temp.add(new GrowE(this));
+        temp.add(new FrailE(this));
+        return temp;
+    }
 }

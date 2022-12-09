@@ -7,24 +7,24 @@ import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 
 public class StartAdvisorChoice extends AbstractEvent.EventChoice implements AtEndOfTempScreen {
 
-  public AbstractEvent event;
-  public int page;
+    public AbstractEvent event;
+    public int page;
 
-  public StartAdvisorChoice(String t, AbstractEvent event, int page) {
-    super(t);
-    this.event = event;
-    this.page = page;
-  }
+    public StartAdvisorChoice(String t, AbstractEvent event, int page) {
+        super(t);
+        this.event = event;
+        this.page = page;
+    }
 
-  @Override
-  protected void onSelect() {
-    AdvisorSelectScreen s = new AdvisorSelectScreen(true);
-    s.endTemp.add(this);
-    Labyrintale.addTempScreen(s);
-  }
+    @Override
+    protected void onSelect() {
+        AdvisorSelectScreen s = new AdvisorSelectScreen(true);
+        s.endTemp.add(this);
+        Labyrintale.addTempScreen(s);
+    }
 
-  @Override
-  public void atEndOfTempScreen() {
-    event.setPage(page);
-  }
+    @Override
+    public void atEndOfTempScreen() {
+        event.setPage(page);
+    }
 }

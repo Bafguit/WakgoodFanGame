@@ -10,21 +10,21 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class RewardTypeText extends AbstractUI {
 
-  public RewardTypeText() {
-    super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 600, 60);
-    setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
-    fontData = CARD_BIG_ORB;
-    text = "전투 승리";
-    showImg = false;
-    overable = false;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      if (fontData != null) {
-        renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
-      }
+    public RewardTypeText() {
+        super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 600, 60);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
+        fontData = CARD_BIG_ORB;
+        text = "전투 승리";
+        showImg = false;
+        overable = false;
     }
-  }
+
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (fontData != null) {
+                renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+            }
+        }
+    }
 }

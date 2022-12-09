@@ -7,38 +7,38 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 
 public abstract class AbstractEffect implements Disposable {
 
-  public float baseDuration;
-  public float duration;
-  public float x, y;
-  public boolean isDone;
+    public float baseDuration;
+    public float duration;
+    public float x, y;
+    public boolean isDone;
 
-  public AbstractEffect(float x, float y, float duration) {
-    this.x = x;
-    this.y = y;
-    this.duration = SettingHandler.setting.fastMode ? duration * 0.5f : duration;
-    this.baseDuration = this.duration;
-  }
-
-  public final void update() {
-    if (duration <= 0) {
-      isDone = true;
-      duration = 0;
+    public AbstractEffect(float x, float y, float duration) {
+        this.x = x;
+        this.y = y;
+        this.duration = SettingHandler.setting.fastMode ? duration * 0.5f : duration;
+        this.baseDuration = this.duration;
     }
-    updateEffect();
-    TickDuration();
-  }
 
-  protected void TickDuration() {
-    if (duration > 0) {
-      duration -= Labyrintale.tick;
+    public final void update() {
+        if (duration <= 0) {
+            isDone = true;
+            duration = 0;
+        }
+        updateEffect();
+        TickDuration();
     }
-  }
 
-  protected abstract void updateEffect();
+    protected void TickDuration() {
+        if (duration > 0) {
+            duration -= Labyrintale.tick;
+        }
+    }
 
-  public abstract void render(SpriteBatch sb);
+    protected abstract void updateEffect();
 
-  public void onRemove() {}
+    public abstract void render(SpriteBatch sb);
 
-  public void dispose() {}
+    public void onRemove() {}
+
+    public void dispose() {}
 }

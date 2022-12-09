@@ -12,22 +12,22 @@ import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen;
 
 public class SkillRewardUpgrade extends SkillUpgradeReward {
 
-  public SkillRewardUpgrade(GetSelectedSkill gets) {
-    this.gets = gets;
-    Array<AbstractPlayer> ap = new Array<>(AbstractLabyrinth.players);
-    for (int i = 0; i < ap.size; i++) {
-      AbstractPlayer p = ap.get(i);
-      if (p.isAlive()) {
-        Array<AbstractSkill> t = new Array<>();
-        t.add(getRandomUpgradedSkillFromDeck(p, true));
-        group.add(t);
-      }
+    public SkillRewardUpgrade(GetSelectedSkill gets) {
+        this.gets = gets;
+        Array<AbstractPlayer> ap = new Array<>(AbstractLabyrinth.players);
+        for (int i = 0; i < ap.size; i++) {
+            AbstractPlayer p = ap.get(i);
+            if (p.isAlive()) {
+                Array<AbstractSkill> t = new Array<>();
+                t.add(getRandomUpgradedSkillFromDeck(p, true));
+                group.add(t);
+            }
+        }
+        setInfo("스킬 강화", "스킬을 강화합니다.");
     }
-    setInfo("스킬 강화", "스킬을 강화합니다.");
-  }
 
-  @Override
-  public void takeReward() {
-    Labyrintale.addTempScreen(new SkillSelectScreen(SkillRewardType.UPGRADE, group, this, this));
-  }
+    @Override
+    public void takeReward() {
+        Labyrintale.addTempScreen(new SkillSelectScreen(SkillRewardType.UPGRADE, group, this, this));
+    }
 }

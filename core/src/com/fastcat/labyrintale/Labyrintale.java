@@ -36,307 +36,308 @@ import lombok.Getter;
 
 public class Labyrintale extends Game {
 
-  public static Labyrintale game;
+    public static Labyrintale game;
 
-  public static PolygonSpriteBatch psb;
-  public static SkeletonRenderer sr;
+    public static PolygonSpriteBatch psb;
+    public static SkeletonRenderer sr;
 
-  public static OrthographicCamera camera;
-  public static FitViewport viewport;
+    public static OrthographicCamera camera;
+    public static FitViewport viewport;
 
-  public static AbstractLabyrinth labyrinth;
-  public static MainMenuScreen mainMenuScreen;
-  public static CharSelectScreen charSelectScreen;
-  public static PlayerInfoScreen playerInfoScreen;
-  public static MapScreen mapScreen;
-  public static WayScreen wayScreen;
-  public static DifficultyScreen diffScreen;
-  public static LibraryScreen libScreen;
-  public static BattleScreen battleScreen;
-  public static CharInfoScreen charInfoScreen;
-  public static RestScreen restScreen;
-  public static EventScreen eventScreen;
-  public static ShopScreen shopScreen;
-  public static SettingScreen settingScreen;
-  public static TutorialScreen tutorialScreen;
-  public static boolean fading = false;
-  public static boolean fadeIn = false;
-  public static boolean tempFade = false;
-  public static boolean tutorial = false;
-  public static boolean setting = false;
-  public static float tick;
-  private static AbstractScreen nextScreen = null;
-  private static Sprite fadeTex;
-  private static float alphaCount = 0;
-  private static float alphaDex = 2;
-  public static AbstractUI subText;
-  public Array<AbstractScreen> tempScreen = new Array<>();
-  public SpriteBatch sb;
+    public static AbstractLabyrinth labyrinth;
+    public static MainMenuScreen mainMenuScreen;
+    public static CharSelectScreen charSelectScreen;
+    public static PlayerInfoScreen playerInfoScreen;
+    public static MapScreen mapScreen;
+    public static WayScreen wayScreen;
+    public static DifficultyScreen diffScreen;
+    public static LibraryScreen libScreen;
+    public static BattleScreen battleScreen;
+    public static CharInfoScreen charInfoScreen;
+    public static RestScreen restScreen;
+    public static EventScreen eventScreen;
+    public static ShopScreen shopScreen;
+    public static SettingScreen settingScreen;
+    public static TutorialScreen tutorialScreen;
+    public static boolean fading = false;
+    public static boolean fadeIn = false;
+    public static boolean tempFade = false;
+    public static boolean tutorial = false;
+    public static boolean setting = false;
+    public static float tick;
+    private static AbstractScreen nextScreen = null;
+    private static Sprite fadeTex;
+    private static float alphaCount = 0;
+    private static float alphaDex = 2;
+    public static AbstractUI subText;
+    public Array<AbstractScreen> tempScreen = new Array<>();
+    public SpriteBatch sb;
 
-  @Getter private static ScreenShake screenShake;
+    @Getter
+    private static ScreenShake screenShake;
 
-  public static void fadeOutAndChangeScreen(AbstractScreen screen) {
-    fadeOutAndChangeScreen(screen, 1.25f);
-  }
-
-  public static void fadeOutAndChangeScreen(AbstractScreen screen, float sec) {
-    nextScreen = screen;
-    alphaDex = sec;
-    fading = true;
-    fadeIn = false;
-    tempFade = false;
-  }
-
-  public static void fadeOutAndAddScreen(AbstractScreen screen) {
-    fadeOutAndAddScreen(screen, 1.25f);
-  }
-
-  public static void fadeOutAndAddScreen(AbstractScreen screen, float sec) {
-    nextScreen = screen;
-    alphaDex = sec;
-    fading = true;
-    fadeIn = false;
-    tempFade = true;
-  }
-
-  public static AbstractScreen getCurScreen() {
-    if (game.tempScreen.size > 0) return game.tempScreen.get(game.tempScreen.size - 1);
-    else return (AbstractScreen) game.screen;
-  }
-
-  public static AbstractScreen getBaseScreen() {
-    return (AbstractScreen) game.screen;
-  }
-
-  public static void addTempScreen(AbstractScreen screen) {
-    removeTempScreen(screen);
-    screen.show();
-    game.tempScreen.add(screen);
-  }
-
-  public static void removeTempScreen(AbstractScreen screen) {
-    for (int i = 0; i < game.tempScreen.size; i++) {
-      AbstractScreen s = game.tempScreen.get(i);
-      if (s == screen) {
-        s.hide();
-        s.atEndOfTempScreen();
-        s.getEffectHandler().removeAll();
-        game.tempScreen.removeIndex(i);
-        break;
-      }
-    }
-  }
-
-  @Override
-  public void create() {
-    Gdx.graphics.setResizable(false);
-    Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
-    Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor.png"));
-    pix.setFilter(Pixmap.Filter.BiLinear);
-    Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
-    SettingHandler.initialize();
-
-    Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
-
-    if (SettingHandler.setting.screenMode == 0) { // 창모드
-      Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
-    } else if (SettingHandler.setting.screenMode == 1) { // 전체화면
-      Gdx.graphics.setFullscreenMode(displayMode);
-    } else { // 전체창
-      Gdx.graphics.setUndecorated(true);
-      Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
+    public static void fadeOutAndChangeScreen(AbstractScreen screen) {
+        fadeOutAndChangeScreen(screen, 1.25f);
     }
 
-    screenShake = ScreenShake.newInstance();
-    camera = new OrthographicCamera();
-    camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
-    viewport = new FitViewport(SettingHandler.setting.width, SettingHandler.setting.height, camera);
-    sb = new SpriteBatch();
-    psb = new PolygonSpriteBatch();
-    sr = new SkeletonRenderer();
-    sr.setPremultipliedAlpha(false);
-    InputHandler.getInstance();
-    FileHandler.getInstance();
-    FontHandler.getInstance();
-    SoundHandler.getInstance();
-    ActionHandler.getInstance();
-    GroupHandler.getInstance();
-    UnlockHandler.load();
-    AchieveHandler.load();
-
-    game = this;
-    mainMenuScreen = new MainMenuScreen();
-    charSelectScreen = new CharSelectScreen();
-    settingScreen = new SettingScreen();
-    diffScreen = new DifficultyScreen();
-    libScreen = new LibraryScreen();
-    tutorialScreen = new TutorialScreen();
-    // labyrinth = new AbstractLabyrinth();
-    fadeTex = FileHandler.getUi().get("FADE");
-    fadeTex.setPosition(0, 0);
-
-    mainMenuScreen.onCreate();
-    fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
-    /** Generate csv files If you don't want this task, comment below */
-    //Main.main(new String[] {});
-  }
-
-  public void update() {
-    tick = Gdx.graphics.getDeltaTime();
-    camera.update();
-    screenShake.update(viewport);
-    InputHandler.getInstance().update();
-    InputHandler.getInstance().update();
-    InputHandler.getInstance().update();
-    FontHandler.getInstance().update();
-    subText = null;
-    if (!setting && !tutorial && labyrinth != null) {
-      labyrinth.update();
+    public static void fadeOutAndChangeScreen(AbstractScreen screen, float sec) {
+        nextScreen = screen;
+        alphaDex = sec;
+        fading = true;
+        fadeIn = false;
+        tempFade = false;
     }
-    if(setting || settingScreen.anim) {
-      settingScreen.update();
-    } else if(tutorial) {
-      tutorialScreen.update();
-    } else if (tempScreen.size > 0) {
-      AbstractScreen s = tempScreen.get(tempScreen.size - 1);
-      if (s != null) {
-        s.update();
-        s.getEffectHandler().update();
-      }
-    } else if (screen instanceof AbstractScreen) {
-      if (AbstractLabyrinth.cPanel != null) {
-        ActionHandler.getInstance().update();
-      }
-      AbstractScreen s = (AbstractScreen) screen;
-      s.update();
-      s.getEffectHandler().update();
+
+    public static void fadeOutAndAddScreen(AbstractScreen screen) {
+        fadeOutAndAddScreen(screen, 1.25f);
     }
-    SoundHandler.getInstance().update();
-  }
 
-  @Override
-  public void render() {
-    /** Update */
-    update();
-
-    /** Render */
-    ScreenUtils.clear(0, 0, 0, 0.3f);
-    psb.setProjectionMatrix(camera.combined);
-    sb.setProjectionMatrix(camera.combined);
-    sb.enableBlending();
-    sb.begin();
-
-    /** Render Methods */
-    // actionHandler.render(sb);
-    super.render();
-    if (tempScreen.size > 0) {
-      for (Screen s : tempScreen) {
-        if (s != null) s.render(Labyrintale.tick);
-      }
+    public static void fadeOutAndAddScreen(AbstractScreen screen, float sec) {
+        nextScreen = screen;
+        alphaDex = sec;
+        fading = true;
+        fadeIn = false;
+        tempFade = true;
     }
-    if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
-    if (subText != null) subText.renderSub(sb);
-    if (tutorial) tutorialScreen.render(sb);
-    if (setting || settingScreen.anim) settingScreen.render(sb);
-    /** ============== */
-    fade();
 
-    sb.end();
-  }
+    public static AbstractScreen getCurScreen() {
+        if (game.tempScreen.size > 0) return game.tempScreen.get(game.tempScreen.size - 1);
+        else return (AbstractScreen) game.screen;
+    }
 
-  private void fade() {
-    if (fading) {
-      if (!fadeIn) {
-        alphaCount += Labyrintale.tick / alphaDex;
-        if (alphaCount > 1.0f) {
-          if (nextScreen != null) {
-            alphaCount = 1.0f;
-            if (!tempFade) setScreen(nextScreen);
-            else addTempScreen(nextScreen);
-            if(setting) closeSetting();
-            nextScreen = null;
-            fadeIn = true;
-          } else fading = false;
+    public static AbstractScreen getBaseScreen() {
+        return (AbstractScreen) game.screen;
+    }
+
+    public static void addTempScreen(AbstractScreen screen) {
+        removeTempScreen(screen);
+        screen.show();
+        game.tempScreen.add(screen);
+    }
+
+    public static void removeTempScreen(AbstractScreen screen) {
+        for (int i = 0; i < game.tempScreen.size; i++) {
+            AbstractScreen s = game.tempScreen.get(i);
+            if (s == screen) {
+                s.hide();
+                s.atEndOfTempScreen();
+                s.getEffectHandler().removeAll();
+                game.tempScreen.removeIndex(i);
+                break;
+            }
         }
-      } else {
-        alphaCount -= Labyrintale.tick / alphaDex;
-        if (alphaCount < 0.0f) {
-          alphaCount = 0.0f;
-          fading = false;
+    }
+
+    @Override
+    public void create() {
+        Gdx.graphics.setResizable(false);
+        Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
+        Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor.png"));
+        pix.setFilter(Pixmap.Filter.BiLinear);
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
+        SettingHandler.initialize();
+
+        Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
+
+        if (SettingHandler.setting.screenMode == 0) { // 창모드
+            Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
+        } else if (SettingHandler.setting.screenMode == 1) { // 전체화면
+            Gdx.graphics.setFullscreenMode(displayMode);
+        } else { // 전체창
+            Gdx.graphics.setUndecorated(true);
+            Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
         }
-      }
-      // fadeTex.setAlpha(alphaCount);
-      fadeTex.draw(sb, alphaCount);
+
+        screenShake = ScreenShake.newInstance();
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
+        viewport = new FitViewport(SettingHandler.setting.width, SettingHandler.setting.height, camera);
+        sb = new SpriteBatch();
+        psb = new PolygonSpriteBatch();
+        sr = new SkeletonRenderer();
+        sr.setPremultipliedAlpha(false);
+        InputHandler.getInstance();
+        FileHandler.getInstance();
+        FontHandler.getInstance();
+        SoundHandler.getInstance();
+        ActionHandler.getInstance();
+        GroupHandler.getInstance();
+        UnlockHandler.load();
+        AchieveHandler.load();
+
+        game = this;
+        mainMenuScreen = new MainMenuScreen();
+        charSelectScreen = new CharSelectScreen();
+        settingScreen = new SettingScreen();
+        diffScreen = new DifficultyScreen();
+        libScreen = new LibraryScreen();
+        tutorialScreen = new TutorialScreen();
+        // labyrinth = new AbstractLabyrinth();
+        fadeTex = FileHandler.getUi().get("FADE");
+        fadeTex.setPosition(0, 0);
+
+        mainMenuScreen.onCreate();
+        fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
+        /** Generate csv files If you don't want this task, comment below */
+        // Main.main(new String[] {});
     }
-  }
 
-  @Override
-  public void setScreen(Screen screen) {
-    if (this.screen != null) {
-      this.screen.hide();
-      this.screen.dispose();
-      if (this.screen instanceof AbstractScreen) {
-        ((AbstractScreen) this.screen).getEffectHandler().removeAll();
-      }
+    public void update() {
+        tick = Gdx.graphics.getDeltaTime();
+        camera.update();
+        screenShake.update(viewport);
+        InputHandler.getInstance().update();
+        InputHandler.getInstance().update();
+        InputHandler.getInstance().update();
+        FontHandler.getInstance().update();
+        subText = null;
+        if (!setting && !tutorial && labyrinth != null) {
+            labyrinth.update();
+        }
+        if (setting || settingScreen.anim) {
+            settingScreen.update();
+        } else if (tutorial) {
+            tutorialScreen.update();
+        } else if (tempScreen.size > 0) {
+            AbstractScreen s = tempScreen.get(tempScreen.size - 1);
+            if (s != null) {
+                s.update();
+                s.getEffectHandler().update();
+            }
+        } else if (screen instanceof AbstractScreen) {
+            if (AbstractLabyrinth.cPanel != null) {
+                ActionHandler.getInstance().update();
+            }
+            AbstractScreen s = (AbstractScreen) screen;
+            s.update();
+            s.getEffectHandler().update();
+        }
+        SoundHandler.getInstance().update();
     }
 
-    Labyrintale.closeTutorial();
-    setting = false;
-    settingScreen.hide();
-    if (tempScreen.size > 0) {
-      for (AbstractScreen s : tempScreen) {
-        s.hide();
-        s.atEndOfTempScreen();
-        s.getEffectHandler().removeAll();
-      }
-      tempScreen.clear();
+    @Override
+    public void render() {
+        /** Update */
+        update();
+
+        /** Render */
+        ScreenUtils.clear(0, 0, 0, 0.3f);
+        psb.setProjectionMatrix(camera.combined);
+        sb.setProjectionMatrix(camera.combined);
+        sb.enableBlending();
+        sb.begin();
+
+        /** Render Methods */
+        // actionHandler.render(sb);
+        super.render();
+        if (tempScreen.size > 0) {
+            for (Screen s : tempScreen) {
+                if (s != null) s.render(Labyrintale.tick);
+            }
+        }
+        if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
+        if (subText != null) subText.renderSub(sb);
+        if (tutorial) tutorialScreen.render(sb);
+        if (setting || settingScreen.anim) settingScreen.render(sb);
+        /** ============== */
+        fade();
+
+        sb.end();
     }
 
-    this.screen = screen;
-    if (this.screen != null) this.screen.show();
-  }
-
-  public static void returnToWay() {
-    wayScreen = new WayScreen();
-    fadeOutAndChangeScreen(wayScreen);
-  }
-
-  public static void openTutorial(TutorialScreen.TutorialType type) {
-    tutorialScreen.setType(type);
-    tutorial = true;
-  }
-
-  public static void closeTutorial() {
-    tutorial = false;
-  }
-
-  public static void openSetting() {
-    setting = true;
-    settingScreen.anim = true;
-  }
-
-  public static void closeSetting() {
-    SettingHandler.save();
-    setting = false;
-    settingScreen.anim = true;
-  }
-
-  @Override
-  public void dispose() {
-    sb.dispose();
-    FileHandler.getInstance().dispose();
-    FontHandler.getInstance().dispose();
-    SoundHandler.getInstance().dispose();
-    for (AbstractScreen s : tempScreen) {
-      s.dispose();
+    private void fade() {
+        if (fading) {
+            if (!fadeIn) {
+                alphaCount += Labyrintale.tick / alphaDex;
+                if (alphaCount > 1.0f) {
+                    if (nextScreen != null) {
+                        alphaCount = 1.0f;
+                        if (!tempFade) setScreen(nextScreen);
+                        else addTempScreen(nextScreen);
+                        if (setting) closeSetting();
+                        nextScreen = null;
+                        fadeIn = true;
+                    } else fading = false;
+                }
+            } else {
+                alphaCount -= Labyrintale.tick / alphaDex;
+                if (alphaCount < 0.0f) {
+                    alphaCount = 0.0f;
+                    fading = false;
+                }
+            }
+            // fadeTex.setAlpha(alphaCount);
+            fadeTex.draw(sb, alphaCount);
+        }
     }
-    if (mainMenuScreen != null) mainMenuScreen.dispose();
-    if (charSelectScreen != null) charSelectScreen.dispose();
-    if (mapScreen != null) mapScreen.dispose();
-    if (battleScreen != null) battleScreen.dispose();
-    if (charInfoScreen != null) charInfoScreen.dispose();
-    if (restScreen != null) restScreen.dispose();
-    if (eventScreen != null) eventScreen.dispose();
-    if (shopScreen != null) shopScreen.dispose();
-  }
+
+    @Override
+    public void setScreen(Screen screen) {
+        if (this.screen != null) {
+            this.screen.hide();
+            this.screen.dispose();
+            if (this.screen instanceof AbstractScreen) {
+                ((AbstractScreen) this.screen).getEffectHandler().removeAll();
+            }
+        }
+
+        Labyrintale.closeTutorial();
+        setting = false;
+        settingScreen.hide();
+        if (tempScreen.size > 0) {
+            for (AbstractScreen s : tempScreen) {
+                s.hide();
+                s.atEndOfTempScreen();
+                s.getEffectHandler().removeAll();
+            }
+            tempScreen.clear();
+        }
+
+        this.screen = screen;
+        if (this.screen != null) this.screen.show();
+    }
+
+    public static void returnToWay() {
+        wayScreen = new WayScreen();
+        fadeOutAndChangeScreen(wayScreen);
+    }
+
+    public static void openTutorial(TutorialScreen.TutorialType type) {
+        tutorialScreen.setType(type);
+        tutorial = true;
+    }
+
+    public static void closeTutorial() {
+        tutorial = false;
+    }
+
+    public static void openSetting() {
+        setting = true;
+        settingScreen.anim = true;
+    }
+
+    public static void closeSetting() {
+        SettingHandler.save();
+        setting = false;
+        settingScreen.anim = true;
+    }
+
+    @Override
+    public void dispose() {
+        sb.dispose();
+        FileHandler.getInstance().dispose();
+        FontHandler.getInstance().dispose();
+        SoundHandler.getInstance().dispose();
+        for (AbstractScreen s : tempScreen) {
+            s.dispose();
+        }
+        if (mainMenuScreen != null) mainMenuScreen.dispose();
+        if (charSelectScreen != null) charSelectScreen.dispose();
+        if (mapScreen != null) mapScreen.dispose();
+        if (battleScreen != null) battleScreen.dispose();
+        if (charInfoScreen != null) charInfoScreen.dispose();
+        if (restScreen != null) restScreen.dispose();
+        if (eventScreen != null) eventScreen.dispose();
+        if (shopScreen != null) shopScreen.dispose();
+    }
 }

@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.prototype;
 
 import com.opencsv.CSVReader;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,8 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public final class GameConfiguration {
-    private HashMap<Class<? extends ConfigurationProvider<?>>, ConfigurationProvider<?>>
-            loadedProviders;
+    private HashMap<Class<? extends ConfigurationProvider<?>>, ConfigurationProvider<?>> loadedProviders;
 
     private List<Class<? extends ConfigurationProvider<?>>> providerClasses;
 
@@ -36,8 +34,7 @@ public final class GameConfiguration {
      * @param providerClasses class provider array to register.
      */
     @SafeVarargs
-    public final void setProviderClasses(
-            Class<? extends ConfigurationProvider<?>>... providerClasses) {
+    public final void setProviderClasses(Class<? extends ConfigurationProvider<?>>... providerClasses) {
         this.providerClasses = Arrays.asList(providerClasses);
     }
 
@@ -63,15 +60,16 @@ public final class GameConfiguration {
      * @throws IllegalAccessException
      */
     public void loadAllProviders(File parentFile)
-            throws NoSuchMethodException, IOException, InvocationTargetException,
-            InstantiationException, IllegalAccessException {
+            throws NoSuchMethodException, IOException, InvocationTargetException, InstantiationException,
+                    IllegalAccessException {
         if (providerClasses == null) return;
 
         for (Class<? extends ConfigurationProvider<?>> providerClass : providerClasses) {
 
             ConfigurationProvider<?> provider = providerClass.getConstructor().newInstance();
 
-            FileReader reader = new FileReader(new File(parentFile, provider.getConfigurationFileName()), Charset.forName("MS949"));
+            FileReader reader =
+                    new FileReader(new File(parentFile, provider.getConfigurationFileName()), Charset.forName("MS949"));
             provider.loadConfiguration(new CSVReader(reader));
 
             loadedProviders.put(providerClass, provider);
@@ -80,7 +78,8 @@ public final class GameConfiguration {
 
     public void updateAllProviders(File parentFile) throws IOException {
         for (ConfigurationProvider<?> provider : loadedProviders.values()) {
-            FileReader reader = new FileReader(new File(parentFile, provider.getConfigurationFileName()), Charset.forName("MS949"));
+            FileReader reader =
+                    new FileReader(new File(parentFile, provider.getConfigurationFileName()), Charset.forName("MS949"));
             provider.loadConfiguration(new CSVReader(reader));
         }
     }

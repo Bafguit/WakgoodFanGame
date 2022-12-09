@@ -10,16 +10,16 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class RestEndButton extends AbstractUI {
 
-  public RestEndButton() {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
-    fontData = BUTTON;
-    text = "계속";
-  }
+    public RestEndButton() {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+        fontData = BUTTON;
+        text = "계속";
+    }
 
-  @Override
-  protected void onClick() {
-    AbstractLabyrinth.endRoom();
-    Labyrintale.returnToWay();
-  }
+    @Override
+    protected void onClick() {
+        AbstractLabyrinth.endRoom();
+        Labyrintale.returnToWay();
+    }
 }

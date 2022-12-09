@@ -10,16 +10,16 @@ import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
 public class NextToAdvisorButton extends AbstractUI {
 
-  public NextToAdvisorButton() {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-    fontData = BUTTON;
-    text = "출발";
-    disable();
-  }
+    public NextToAdvisorButton() {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
+        fontData = BUTTON;
+        text = "출발";
+        disable();
+    }
 
-  @Override
-  protected void onClick() {
-    Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(true));
-  }
+    @Override
+    protected void onClick() {
+        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(true));
+    }
 }

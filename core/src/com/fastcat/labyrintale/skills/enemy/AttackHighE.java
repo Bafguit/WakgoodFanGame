@@ -6,23 +6,23 @@ import com.fastcat.labyrintale.actions.HighAttackAction;
 
 public class AttackHighE extends AbstractSkill {
 
-  private static final String ID = "AttackHighE";
-  private static final SkillType TYPE = SkillType.ATTACK;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_HIGH_HP;
-  private static final int VALUE = 4;
+    private static final String ID = "AttackHighE";
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_HIGH_HP;
+    private static final int VALUE = 4;
 
-  public AttackHighE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(VALUE, 1);
-    setIntent(IntentType.ATTACK);
-  }
+    public AttackHighE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseAttack(VALUE, 1);
+        setIntent(IntentType.ATTACK);
+    }
 
-  @Override
-  public void use() {
-    bot(new HighAttackAction(owner, attack, false));
-  }
+    @Override
+    public void use() {
+        bot(new HighAttackAction(owner, attack, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

@@ -1,9 +1,9 @@
 package com.fastcat.labyrintale.actions;
 
-import com.fastcat.labyrintale.abstracts.*;
-
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.advisor;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.players;
+
+import com.fastcat.labyrintale.abstracts.*;
 
 public class AtBattleEndAction extends AbstractAction {
     public AtBattleEndAction() {
@@ -12,7 +12,7 @@ public class AtBattleEndAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        if(isDone) {
+        if (isDone) {
             for (AbstractPlayer p : players) {
                 if (p.isAlive()) {
                     p.pre = null;

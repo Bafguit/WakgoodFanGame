@@ -7,23 +7,23 @@ import com.fastcat.labyrintale.status.FlawStatus;
 
 public class DecayE extends AbstractSkill {
 
-  private static final String ID = "DecayE";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
-  private static final int VALUE = 1;
+    private static final String ID = "DecayE";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+    private static final int VALUE = 1;
 
-  public DecayE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
-    setIntent(IntentType.DEBUFF);
-  }
+    public DecayE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseValue(VALUE, 1);
+        setIntent(IntentType.DEBUFF);
+    }
 
-  @Override
-  public void use() {
-    bot(new ApplyStatusAction(new FlawStatus(value), owner, target, false));
-  }
+    @Override
+    public void use() {
+        bot(new ApplyStatusAction(new FlawStatus(value), owner, target, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

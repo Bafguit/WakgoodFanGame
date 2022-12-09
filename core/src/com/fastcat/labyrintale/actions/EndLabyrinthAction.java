@@ -11,24 +11,24 @@ import com.fastcat.labyrintale.screens.result.ResultScreen;
 
 public class EndLabyrinthAction extends AbstractAction {
 
-  private final DeadScreen.ScreenType dType;
+    private final DeadScreen.ScreenType dType;
 
-  public EndLabyrinthAction(DeadScreen.ScreenType type) {
-    super(null, 2);
-    dType = type;
-  }
-
-  @Override
-  protected void applySetting() {}
-
-  @Override
-  protected void updateAction() {
-    if (duration == baseDuration) {
-      SoundHandler.fadeOutAll();
-      ActionHandler.clear();
-      AbstractLabyrinth.scoreHandle.calculateScore();
-      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType));
-      SaveHandler.finish(false);
+    public EndLabyrinthAction(DeadScreen.ScreenType type) {
+        super(null, 2);
+        dType = type;
     }
-  }
+
+    @Override
+    protected void applySetting() {}
+
+    @Override
+    protected void updateAction() {
+        if (duration == baseDuration) {
+            SoundHandler.fadeOutAll();
+            ActionHandler.clear();
+            AbstractLabyrinth.scoreHandle.calculateScore();
+            Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType));
+            SaveHandler.finish(false);
+        }
+    }
 }

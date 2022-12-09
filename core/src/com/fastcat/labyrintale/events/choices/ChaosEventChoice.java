@@ -10,46 +10,44 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.allskill.AllSkillScreen;
-
 import java.util.HashMap;
 
 public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSelectedSlot {
 
-  private final AbstractEvent event;
-  private final int toPage;
+    private final AbstractEvent event;
+    private final int toPage;
 
-  public ChaosEventChoice(String t, AbstractEvent.EventCondition c, AbstractEvent event) {
-    this(t, c, event, -1);
-  }
-
-  public ChaosEventChoice(
-      String t, AbstractEvent.EventCondition c, AbstractEvent event, int page) {
-    super(t, c);
-    this.event = event;
-    toPage = page;
-  }
-
-  @Override
-  protected void onSelect() {
-    Labyrintale.addTempScreen(
-        new AllSkillScreen(this));
-  }
-
-  @Override
-  public void slotSelected(AbstractPlayer player, int index) {
-    Array<AbstractSkill> s = new Array<>();
-    for(AbstractPlayer p : AbstractLabyrinth.players) {
-      for (AbstractSkill sk : GroupHandler.SkillGroup.normalSkills.get(p.playerClass)) {
-        if(!p.hasSkill(sk.id)) s.add(sk);
-      }
+    public ChaosEventChoice(String t, AbstractEvent.EventCondition c, AbstractEvent event) {
+        this(t, c, event, -1);
     }
-    AbstractSkill sk = s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
-    sk.owner = player;
-    HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
-    if(!temp.get(sk.id)) temp.replace(sk.id, true);
-    player.gainSkill(index, sk);
-    if (toPage >= 0) {
-      event.setPage(toPage);
+
+    public ChaosEventChoice(String t, AbstractEvent.EventCondition c, AbstractEvent event, int page) {
+        super(t, c);
+        this.event = event;
+        toPage = page;
     }
-  }
+
+    @Override
+    protected void onSelect() {
+        Labyrintale.addTempScreen(new AllSkillScreen(this));
+    }
+
+    @Override
+    public void slotSelected(AbstractPlayer player, int index) {
+        Array<AbstractSkill> s = new Array<>();
+        for (AbstractPlayer p : AbstractLabyrinth.players) {
+            for (AbstractSkill sk : GroupHandler.SkillGroup.normalSkills.get(p.playerClass)) {
+                if (!p.hasSkill(sk.id)) s.add(sk);
+            }
+        }
+        AbstractSkill sk =
+                s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
+        sk.owner = player;
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+        if (!temp.get(sk.id)) temp.replace(sk.id, true);
+        player.gainSkill(index, sk);
+        if (toPage >= 0) {
+            event.setPage(toPage);
+        }
+    }
 }

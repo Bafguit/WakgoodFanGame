@@ -5,20 +5,19 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.BurnStatus;
-import com.fastcat.labyrintale.status.EnduranceStatus;
 
 public class Bomb extends AbstractItem {
 
-  private static final String ID = "Bomb";
-  private static final ItemRarity RARITY = ItemRarity.BRONZE;
+    private static final String ID = "Bomb";
+    private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-  public Bomb(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public Bomb(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(new ApplyStatusAction(new BurnStatus(3), null, AbstractSkill.SkillTarget.ENEMY_ALL, false));
-  }
+    @Override
+    public void atBattleStart() {
+        flash();
+        top(new ApplyStatusAction(new BurnStatus(3), null, AbstractSkill.SkillTarget.ENEMY_ALL, false));
+    }
 }

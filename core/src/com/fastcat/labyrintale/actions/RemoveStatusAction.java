@@ -6,21 +6,21 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class RemoveStatusAction extends AbstractAction {
 
-  private final String id;
+    private final String id;
 
-  public RemoveStatusAction(AbstractStatus status, boolean fast) {
-    this(status.id, status.owner, fast);
-  }
-
-  public RemoveStatusAction(String id, AbstractEntity actor, boolean fast) {
-    super(actor, fast ? 0.25f : DUR_DEFAULT);
-    this.id = id;
-  }
-
-  @Override
-  protected void updateAction() {
-    if (duration == baseDuration) {
-      actor.removeStatus(id);
+    public RemoveStatusAction(AbstractStatus status, boolean fast) {
+        this(status.id, status.owner, fast);
     }
-  }
+
+    public RemoveStatusAction(String id, AbstractEntity actor, boolean fast) {
+        super(actor, fast ? 0.25f : DUR_DEFAULT);
+        this.id = id;
+    }
+
+    @Override
+    protected void updateAction() {
+        if (duration == baseDuration) {
+            actor.removeStatus(id);
+        }
+    }
 }

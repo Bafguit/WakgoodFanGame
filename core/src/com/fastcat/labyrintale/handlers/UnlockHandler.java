@@ -1,18 +1,16 @@
 package com.fastcat.labyrintale.handlers;
 
+import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonValue;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
-import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
 
 public class UnlockHandler {
 
@@ -20,11 +18,11 @@ public class UnlockHandler {
     public static HashMap<Unlocks, HashMap<String, Boolean>> achvs = new HashMap<>();
 
     public static void load() {
-        if(data.exists()) {
+        if (data.exists()) {
             JsonValue js = FileHandler.generateJson(data);
-            for(Unlocks ac : Unlocks.values()) {
+            for (Unlocks ac : Unlocks.values()) {
                 HashMap<String, Boolean> temp = new HashMap<>();
-                for(JsonValue jj : js.get(ac.name())) {
+                for (JsonValue jj : js.get(ac.name())) {
                     temp.put(jj.name, jj.asBoolean());
                 }
                 achvs.put(ac, temp);
@@ -37,7 +35,7 @@ public class UnlockHandler {
             diff.put("COFFIN", false);
             achvs.put(Unlocks.DIFF, diff);
             HashMap<String, Boolean> skill = new HashMap<>();
-            for(AbstractPlayer.PlayerClass p : AbstractPlayer.PlayerClass.values()) {
+            for (AbstractPlayer.PlayerClass p : AbstractPlayer.PlayerClass.values()) {
                 for (AbstractSkill s : GroupHandler.SkillGroup.normalSkills.get(p)) {
                     skill.put(s.id, false);
                 }
@@ -45,7 +43,7 @@ public class UnlockHandler {
             achvs.put(Unlocks.SKILL, skill);
             HashMap<String, Boolean> item = new HashMap<>();
             for (AbstractItem i : GroupHandler.ItemGroup.allItem) {
-                if(!i.id.equals("Placeholder")) item.put(i.id, false);
+                if (!i.id.equals("Placeholder")) item.put(i.id, false);
             }
             achvs.put(Unlocks.ITEM, item);
             Gdx.files.local("data").mkdirs();
@@ -66,6 +64,8 @@ public class UnlockHandler {
     }
 
     public enum Unlocks {
-        DIFF, SKILL, ITEM
+        DIFF,
+        SKILL,
+        ITEM
     }
 }

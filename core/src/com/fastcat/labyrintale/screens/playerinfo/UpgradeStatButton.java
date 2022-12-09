@@ -15,40 +15,40 @@ import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
 
 public class UpgradeStatButton extends AbstractUI {
 
-  private static final ShapeRenderer shr = new ShapeRenderer();
+    private static final ShapeRenderer shr = new ShapeRenderer();
 
-  public UpgradeStatButton() {
-    super(FileHandler.getUi().get("STAT_PLUS"));
-    setPosition(Gdx.graphics.getWidth() * 0.97f - sWidth, Gdx.graphics.getHeight() * 0.87f);
-    fontData = SUB_NAME;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      if (!over) sb.setColor(Color.LIGHT_GRAY);
-      else sb.setColor(Color.WHITE);
-      sb.draw(img, x, y, sWidth, sHeight);
-      sb.end();
-      shr.setColor(Color.ORANGE);
-      shr.begin(ShapeRenderer.ShapeType.Filled);
-      shr.circle(x + sWidth * 0.875f, y + sHeight * 0.875f, sHeight * 0.25f);
-      shr.end();
-      sb.begin();
-      renderCenter(
-          sb,
-          fontData,
-          Integer.toString(AbstractLabyrinth.sp),
-          x + sWidth * 0.625f,
-          y + sHeight * 0.875f,
-          sWidth * 0.5f,
-          sHeight * 0.5f);
+    public UpgradeStatButton() {
+        super(FileHandler.getUi().get("STAT_PLUS"));
+        setPosition(Gdx.graphics.getWidth() * 0.97f - sWidth, Gdx.graphics.getHeight() * 0.87f);
+        fontData = SUB_NAME;
     }
-  }
 
-  @Override
-  protected void onClick() {
-    playerInfoScreen.statScreen = new StatSelectScreen();
-    Labyrintale.addTempScreen(playerInfoScreen.statScreen);
-  }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (!over) sb.setColor(Color.LIGHT_GRAY);
+            else sb.setColor(Color.WHITE);
+            sb.draw(img, x, y, sWidth, sHeight);
+            sb.end();
+            shr.setColor(Color.ORANGE);
+            shr.begin(ShapeRenderer.ShapeType.Filled);
+            shr.circle(x + sWidth * 0.875f, y + sHeight * 0.875f, sHeight * 0.25f);
+            shr.end();
+            sb.begin();
+            renderCenter(
+                    sb,
+                    fontData,
+                    Integer.toString(AbstractLabyrinth.sp),
+                    x + sWidth * 0.625f,
+                    y + sHeight * 0.875f,
+                    sWidth * 0.5f,
+                    sHeight * 0.5f);
+        }
+    }
+
+    @Override
+    protected void onClick() {
+        playerInfoScreen.statScreen = new StatSelectScreen();
+        Labyrintale.addTempScreen(playerInfoScreen.statScreen);
+    }
 }

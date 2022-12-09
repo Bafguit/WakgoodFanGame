@@ -8,30 +8,28 @@ import com.fastcat.labyrintale.status.ImmuneStatus;
 
 public class Brainize extends AbstractItem {
 
-  private static final String ID = "Brainize";
-  private static final ItemRarity RARITY = ItemRarity.SILVER;
+    private static final String ID = "Brainize";
+    private static final ItemRarity RARITY = ItemRarity.SILVER;
 
-  public Brainize(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public Brainize(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void onGain() {
-    owner.modifyMaxHealth(5);
-    owner.stat.debuRes += 20;
-  }
+    @Override
+    public void onGain() {
+        owner.modifyMaxHealth(5);
+        owner.stat.debuRes += 20;
+    }
 
-  @Override
-  public void onRemove() {
-    owner.modifyMaxHealth(-5);
-    owner.stat.debuRes -= 20;
-  }
+    @Override
+    public void onRemove() {
+        owner.modifyMaxHealth(-5);
+        owner.stat.debuRes -= 20;
+    }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(
-        new ApplyStatusAction(
-            new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
-  }
+    @Override
+    public void atBattleStart() {
+        flash();
+        top(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+    }
 }

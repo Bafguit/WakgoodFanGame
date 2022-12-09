@@ -5,51 +5,44 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.screens.dictionary.DictCharGroup;
-import com.fastcat.labyrintale.screens.dictionary.DictGroup;
-import com.fastcat.labyrintale.strings.AchieveString;
-import com.fastcat.labyrintale.strings.EventString;
 import com.fastcat.labyrintale.strings.KeyString;
-
-import java.util.HashMap;
 
 public class AchieveIcon extends AbstractUI {
 
-  private final Sprite image;
-  public final AchieveHandler.Achievement achv;
-  public final AbstractItem.ItemRarity rarity;
-  public final int grade;
+    private final Sprite image;
+    public final AchieveHandler.Achievement achv;
+    public final AbstractItem.ItemRarity rarity;
+    public final int grade;
 
-  public AchieveIcon(AchieveHandler.Achievement achv) {
-    super(FileHandler.getUi().get("BORDER_P"));
-    this.achv = achv;
-    fontData = FontHandler.BIG_DESC;
-    clickable = false;
-    image = FileHandler.getAchvImg().get(achv);
-    grade = AchieveHandler.achvs.get(achv);
-    KeyString.KeyData data = StringHandler.achvString.get(achv);
-    subs.add(new SubText(data.NAME, data.DESC));
-    if(grade == 1) rarity = AbstractItem.ItemRarity.BRONZE;
-    else if(grade == 2) rarity = AbstractItem.ItemRarity.SILVER;
-    else if(grade == 3) rarity = AbstractItem.ItemRarity.GOLD;
-    else rarity = AbstractItem.ItemRarity.STARTER;
-  }
+    public AchieveIcon(AchieveHandler.Achievement achv) {
+        super(FileHandler.getUi().get("BORDER_P"));
+        this.achv = achv;
+        fontData = FontHandler.BIG_DESC;
+        clickable = false;
+        image = FileHandler.getAchvImg().get(achv);
+        grade = AchieveHandler.achvs.get(achv);
+        KeyString.KeyData data = StringHandler.achvString.get(achv);
+        subs.add(new SubText(data.NAME, data.DESC));
+        if (grade == 1) rarity = AbstractItem.ItemRarity.BRONZE;
+        else if (grade == 2) rarity = AbstractItem.ItemRarity.SILVER;
+        else if (grade == 3) rarity = AbstractItem.ItemRarity.GOLD;
+        else rarity = AbstractItem.ItemRarity.STARTER;
+    }
 
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if(grade == 0) sb.setColor(Color.DARK_GRAY);
-    else sb.setColor(Color.WHITE);
-    sb.draw(image, x, y, sWidth, sHeight);
-    if(grade > 0) sb.setColor(AbstractItem.getRarityColor(rarity));
-    sb.draw(img, x, y, sWidth, sHeight);
-    sb.setColor(Color.WHITE);
-  }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (grade == 0) sb.setColor(Color.DARK_GRAY);
+        else sb.setColor(Color.WHITE);
+        sb.draw(image, x, y, sWidth, sHeight);
+        if (grade > 0) sb.setColor(AbstractItem.getRarityColor(rarity));
+        sb.draw(img, x, y, sWidth, sHeight);
+        sb.setColor(Color.WHITE);
+    }
 
-  @Override
-  protected Array<SubText> getSubText() {
-    return subs;
-  }
+    @Override
+    protected Array<SubText> getSubText() {
+        return subs;
+    }
 }

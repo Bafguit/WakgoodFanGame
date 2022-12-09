@@ -1,8 +1,10 @@
 package com.fastcat.labyrintale.screens.dictionary;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -12,11 +14,7 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
-
 import java.util.Objects;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DictCharGroup extends DictGroup {
 
@@ -65,12 +63,12 @@ public class DictCharGroup extends DictGroup {
                 cnt++;
             }
         }
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.normal.get(i));
             c.setPosition((1524 + 162 * i) * scale, 694 * scale);
             skills[i] = c;
         }
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.player.deck.get(i));
             c.setPosition((975 + 162 * i) * scale, 450 * scale);
             deck[i] = c;
@@ -91,10 +89,10 @@ public class DictCharGroup extends DictGroup {
         up.update();
         passive.update();
         data.player.infoSpine.skeleton.setPosition(parent.x + px, parent.y + py);
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             stats[i].update();
         }
-        if(up.checked) {
+        if (up.checked) {
             for (int i = 0; i < 3; i++) {
                 DictSkillIcon c = deck[i];
                 c.skill = data.uDeck.get(i);
@@ -123,24 +121,26 @@ public class DictCharGroup extends DictGroup {
     public void render(SpriteBatch sb) {
         up.render(sb);
         passive.render(sb);
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             stats[i].render(sb);
         }
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             deck[i].render(sb);
         }
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             skills[i].render(sb);
         }
         data.player.infoSpine.render(sb);
         heart.render(sb);
-        FontHandler.renderCenter(sb, iName, "강화 보기", parent.x + up.x + up.sWidth / 2, parent.y + up.y + up.sHeight * 1.5f);
+        FontHandler.renderCenter(
+                sb, iName, "강화 보기", parent.x + up.x + up.sWidth / 2, parent.y + up.y + up.sHeight * 1.5f);
         FontHandler.renderLineLeft(sb, cName, data.player.name, parent.x + nx, parent.y + ny, nw, nw);
-        FontHandler.renderLineLeft(sb, cName, Integer.toString(data.player.maxHealth), parent.x + hx, parent.y + ny, nw, nw);
-        if(type == InfoPanel.InfoType.SKILL && skill != null) {
+        FontHandler.renderLineLeft(
+                sb, cName, Integer.toString(data.player.maxHealth), parent.x + hx, parent.y + ny, nw, nw);
+        if (type == InfoPanel.InfoType.SKILL && skill != null) {
             FontHandler.renderLineLeft(sb, iName, skill.name, parent.x + ix, parent.y + iy, dw, dh);
             FontHandler.renderCardLeft(sb, skill, iDesc, skill.desc, parent.x + ix, parent.y + dy, dw, dh);
-        } else if(type == InfoPanel.InfoType.ITEM && item != null) {
+        } else if (type == InfoPanel.InfoType.ITEM && item != null) {
             FontHandler.renderLineLeft(sb, iName, item.name, parent.x + ix, parent.y + iy, dw, dh);
             FontHandler.renderColorLeft(sb, iDesc, item.desc, parent.x + ix, parent.y + dy, dw);
         }
@@ -150,13 +150,13 @@ public class DictCharGroup extends DictGroup {
         parent = ui;
         heart.setParent(ui);
         passive.setParent(ui);
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             stats[i].setParent(ui);
         }
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             deck[i].setParent(ui);
         }
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             skills[i].setParent(ui);
         }
         up.setParent(ui);
@@ -174,17 +174,17 @@ public class DictCharGroup extends DictGroup {
             player.infoSpine.skeleton.setPosition(10000, 10000);
             nDeck = player.deck;
             uDeck = new Array<>();
-            for(AbstractSkill s : nDeck) {
+            for (AbstractSkill s : nDeck) {
                 uDeck.add(Objects.requireNonNull(s.clone()).upgrade());
             }
             normal = new Array<>();
-            for(AbstractSkill s : GroupHandler.SkillGroup.playerSort.get(p.playerClass)) {
-                if(s.rarity == AbstractSkill.SkillRarity.NORMAL) {
+            for (AbstractSkill s : GroupHandler.SkillGroup.playerSort.get(p.playerClass)) {
+                if (s.rarity == AbstractSkill.SkillRarity.NORMAL) {
                     normal.add(s.clone());
                 }
             }
             upgrade = new Array<>();
-            for(AbstractSkill s : normal) {
+            for (AbstractSkill s : normal) {
                 upgrade.add(Objects.requireNonNull(s.clone()).upgrade());
             }
         }

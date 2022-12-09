@@ -9,32 +9,32 @@ import com.fastcat.labyrintale.uis.TurnEffectText;
 
 public class FloorChangeEffect extends AbstractEffect {
 
-  private final TurnEffectText text;
-  private float alpha;
+    private final TurnEffectText text;
+    private float alpha;
 
-  public FloorChangeEffect(int floor) {
-    super(0, 0, 2);
-    text = new TurnEffectText("지하 " + floor + " 층");
-    alpha = 0;
-    duration = baseDuration = 2;
-  }
-
-  @Override
-  protected void updateEffect() {
-    float d = Labyrintale.tick;
-    if (duration < 0.5f) {
-      alpha -= d;
-    } else if (duration >= 1.5f) {
-      alpha += d;
+    public FloorChangeEffect(int floor) {
+        super(0, 0, 2);
+        text = new TurnEffectText("지하 " + floor + " 층");
+        alpha = 0;
+        duration = baseDuration = 2;
     }
-    alpha = MathUtils.clamp(alpha, 0, 0.5f);
-    text.img.setAlpha(alpha);
-    text.fontData.alpha = MathUtils.clamp(alpha * 2, 0, 1.0f);
-  }
 
-  @Override
-  public void render(SpriteBatch sb) {
-    sb.setColor(Color.WHITE);
-    text.render(sb);
-  }
+    @Override
+    protected void updateEffect() {
+        float d = Labyrintale.tick;
+        if (duration < 0.5f) {
+            alpha -= d;
+        } else if (duration >= 1.5f) {
+            alpha += d;
+        }
+        alpha = MathUtils.clamp(alpha, 0, 0.5f);
+        text.img.setAlpha(alpha);
+        text.fontData.alpha = MathUtils.clamp(alpha * 2, 0, 1.0f);
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
+        text.render(sb);
+    }
 }

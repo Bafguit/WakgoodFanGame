@@ -10,31 +10,29 @@ import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 
 public class TestEvent extends AbstractEvent implements AtEndOfTempScreen {
 
-  private static final String ID = "TestEvent";
-  private static final int SIZE = 3;
+    private static final String ID = "TestEvent";
+    private static final int SIZE = 3;
 
-  public TestEvent() {
-    super(ID, SIZE);
-    img = getImage(0);
-    desc = data.DESC[0];
-  }
+    public TestEvent() {
+        super(ID, SIZE);
+        img = getImage(0);
+        desc = data.DESC[0];
+    }
 
-  @Override
-  public String getDescription(int page) {
-    return data.DESC[0];
-  }
+    @Override
+    public String getDescription(int page) {
+        return data.DESC[0];
+    }
 
-  @Override
-  public Array<EventChoice> getChoices(int page) {
-    Array<EventChoice> a = new Array<>();
-    a.add(
-        new HealEventChoice(
-            data.SELECT[0], AbstractLabyrinth.players, 3, new EventCondition.True()));
-    a.add(new SkillRewardEventChoice(data.SELECT[1], new EventCondition.True(), this));
-    a.add(new PlaceholderEventChoice(data.SELECT[2]));
-    return a;
-  }
+    @Override
+    public Array<EventChoice> getChoices(int page) {
+        Array<EventChoice> a = new Array<>();
+        a.add(new HealEventChoice(data.SELECT[0], AbstractLabyrinth.players, 3, new EventCondition.True()));
+        a.add(new SkillRewardEventChoice(data.SELECT[1], new EventCondition.True(), this));
+        a.add(new PlaceholderEventChoice(data.SELECT[2]));
+        return a;
+    }
 
-  @Override
-  public void atEndOfTempScreen() {}
+    @Override
+    public void atEndOfTempScreen() {}
 }

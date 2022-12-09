@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.uis.control;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.sc;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
 
@@ -20,175 +19,184 @@ import com.fastcat.labyrintale.uis.SettingButton;
 
 public class InfoPanel extends AbstractUI {
 
-  public Sprite border = FileHandler.getUi().get("BORDER_B");
-  public String name = "";
-  public String desc = "";
-  public FontHandler.FontData fontName = PANEL_NAME;
-  public FontHandler.FontData fontDesc = PANEL_DESC;
-  public PlayerIcon[] pIcons = new PlayerIcon[4];
-  public MapButton map;
-  public TempUI gold;
-  public SettingButton setting;
-  public PlayerInfoButton playerInfo;
-  public InfoType type = InfoType.COLOR;
-  public AbstractSkill skill;
-  public AbstractStatus status;
-  public AbstractItem item;
-  public ItemPanel aSkill;
-  public AbstractEntity player;
-  public boolean show;
-  public boolean renderIcon = true;
-  public float nx, ny, nw, nh, dx, dy, dw, dh, fy;
-  public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
+    public Sprite border = FileHandler.getUi().get("BORDER_B");
+    public String name = "";
+    public String desc = "";
+    public FontHandler.FontData fontName = PANEL_NAME;
+    public FontHandler.FontData fontDesc = PANEL_DESC;
+    public PlayerIcon[] pIcons = new PlayerIcon[4];
+    public MapButton map;
+    public TempUI gold;
+    public SettingButton setting;
+    public PlayerInfoButton playerInfo;
+    public InfoType type = InfoType.COLOR;
+    public AbstractSkill skill;
+    public AbstractStatus status;
+    public AbstractItem item;
+    public ItemPanel aSkill;
+    public AbstractEntity player;
+    public boolean show;
+    public boolean renderIcon = true;
+    public float nx, ny, nw, nh, dx, dy, dw, dh, fy;
+    public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
-  public InfoPanel() {
-    super(FileHandler.getUi().get("BORDER_B"));
-    clickable = false;
-    overable = false;
-    float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-    setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
-    nx = dx = w * 0.615f;
-    ny = h * 0.335f;
-    dy = h * 0.325f - 50 * scale;
-    nw = dw = 880 * InputHandler.scale;
-    nh = 60 * InputHandler.scale;
-    dh = 280 * InputHandler.scale;
+    public InfoPanel() {
+        super(FileHandler.getUi().get("BORDER_B"));
+        clickable = false;
+        overable = false;
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
+        nx = dx = w * 0.615f;
+        ny = h * 0.335f;
+        dy = h * 0.325f - 50 * scale;
+        nw = dw = 880 * InputHandler.scale;
+        nh = 60 * InputHandler.scale;
+        dh = 280 * InputHandler.scale;
 
-    bnx = 970 * scale;
-    bny = 445 * scale;
-    bdx = 1000 * scale;
-    bdy = 390 * scale;
-    bnw = bdw = 1000 * InputHandler.scale;
-    bnh = 60 * InputHandler.scale;
-    bdh = 60 * InputHandler.scale;
+        bnx = 970 * scale;
+        bny = 445 * scale;
+        bdx = 1000 * scale;
+        bdy = 390 * scale;
+        bnw = bdw = 1000 * InputHandler.scale;
+        bnh = 60 * InputHandler.scale;
+        bdh = 60 * InputHandler.scale;
 
-    setting = new SettingButton(2443 * scale, 17 * scale);
+        setting = new SettingButton(2443 * scale, 17 * scale);
 
-    gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
-    gold.setPosition(957 * scale, 64 * scale);
+        gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
+        gold.setPosition(957 * scale, 64 * scale);
 
-    fy = gold.y + gold.sHeight / 2;
+        fy = gold.y + gold.sHeight / 2;
 
-    for (int i = 0; i < 4; i++) {
-      PlayerIcon c = new PlayerIcon(i);
-      c.setPosition((68 + 212 * i) * scale, (70 * scale));
-      pIcons[i] = c;
-    }
-    aSkill = new ItemPanel();
-    aSkill.adv = true;
-    aSkill.setPosition(993 * scale, 280 * scale);
-    aSkill.item = AbstractLabyrinth.advisor;
-    map = new MapButton();
-    map.setPosition(1269 * scale, 217 * scale);
-    playerInfo = new PlayerInfoButton();
-    playerInfo.setPosition(1269 * scale, 364 * scale);
-  }
-
-  @Override
-  public void updateButton() {
-    if (AbstractLabyrinth.cPanel.battlePanel.selected == null) {
-      type = InfoType.COLOR;
-      skill = null;
-      name = "";
-      desc = "";
-      show = false;
-    } else {
-      type = SKILL;
-      skill = AbstractLabyrinth.cPanel.battlePanel.selected;
-      name = skill.name;
-      desc = skill.desc;
-      show = true;
-    }
-    status = null;
-    if (renderIcon) {
-      for (int i = 0; i < 4; i++) {
-        pIcons[i].update();
-      }
-    }
-    aSkill.item = AbstractLabyrinth.advisor;
-    aSkill.update();
-    map.update();
-    playerInfo.update();
-    setting.update();
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      sb.setColor(Color.WHITE);
-      renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
-      if (type == InfoType.SKILL) {
-        renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
-      } else {
-        renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
-      }
-      if (renderIcon) {
         for (int i = 0; i < 4; i++) {
-          pIcons[i].render(sb);
+            PlayerIcon c = new PlayerIcon(i);
+            c.setPosition((68 + 212 * i) * scale, (70 * scale));
+            pIcons[i] = c;
         }
-      }
-      gold.render(sb);
-      FontHandler.renderLineLeft(sb, BORDER_36, "&y<" + AbstractLabyrinth.gold + "G>", 1040 * scale, fy, 200 * scale, fy);
-      FontHandler.renderLineLeft(sb, BORDER_36, AbstractLabyrinth.currentFloor.floorNum + "층", 1210 * scale, fy, 200 * scale, fy);
-      FontHandler.renderLineLeft(sb, BORDER_36, AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second, 1318 * scale, fy, 200 * scale, fy);
-      aSkill.render(sb);
-      map.render(sb);
-      playerInfo.render(sb);
-      setting.render(sb);
+        aSkill = new ItemPanel();
+        aSkill.adv = true;
+        aSkill.setPosition(993 * scale, 280 * scale);
+        aSkill.item = AbstractLabyrinth.advisor;
+        map = new MapButton();
+        map.setPosition(1269 * scale, 217 * scale);
+        playerInfo = new PlayerInfoButton();
+        playerInfo.setPosition(1269 * scale, 364 * scale);
     }
-  }
 
-  public void setInfo(AbstractSkill s) {
-    if (s != null) {
-      name = s.name;
-      desc = s.desc;
-      type = InfoType.SKILL;
-      skill = s;
-      show = true;
+    @Override
+    public void updateButton() {
+        if (AbstractLabyrinth.cPanel.battlePanel.selected == null) {
+            type = InfoType.COLOR;
+            skill = null;
+            name = "";
+            desc = "";
+            show = false;
+        } else {
+            type = SKILL;
+            skill = AbstractLabyrinth.cPanel.battlePanel.selected;
+            name = skill.name;
+            desc = skill.desc;
+            show = true;
+        }
+        status = null;
+        if (renderIcon) {
+            for (int i = 0; i < 4; i++) {
+                pIcons[i].update();
+            }
+        }
+        aSkill.item = AbstractLabyrinth.advisor;
+        aSkill.update();
+        map.update();
+        playerInfo.update();
+        setting.update();
     }
-  }
 
-  public void setInfo(AbstractStatus s) {
-    if (s != null) {
-      name = s.name;
-      desc = s.getDesc();
-      type = InfoType.STATUS;
-      status = s;
-      show = true;
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            sb.setColor(Color.WHITE);
+            renderLineBotLeft(sb, fontName, name, nx, ny, nw, nh);
+            if (type == InfoType.SKILL) {
+                renderCardLeft(sb, skill, fontDesc, desc, dx, dy, dw, dh);
+            } else {
+                renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
+            }
+            if (renderIcon) {
+                for (int i = 0; i < 4; i++) {
+                    pIcons[i].render(sb);
+                }
+            }
+            gold.render(sb);
+            FontHandler.renderLineLeft(
+                    sb, BORDER_36, "&y<" + AbstractLabyrinth.gold + "G>", 1040 * scale, fy, 200 * scale, fy);
+            FontHandler.renderLineLeft(
+                    sb, BORDER_36, AbstractLabyrinth.currentFloor.floorNum + "층", 1210 * scale, fy, 200 * scale, fy);
+            FontHandler.renderLineLeft(
+                    sb,
+                    BORDER_36,
+                    AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second,
+                    1318 * scale,
+                    fy,
+                    200 * scale,
+                    fy);
+            aSkill.render(sb);
+            map.render(sb);
+            playerInfo.render(sb);
+            setting.render(sb);
+        }
     }
-  }
 
-  public void setInfo(AbstractItem s) {
-    if (s != null) {
-      name = s.name;
-      desc = s.desc;
-      type = ITEM;
-      item = s;
-      show = true;
+    public void setInfo(AbstractSkill s) {
+        if (s != null) {
+            name = s.name;
+            desc = s.desc;
+            type = InfoType.SKILL;
+            skill = s;
+            show = true;
+        }
     }
-  }
 
-  public void setInfo(AbstractEntity p) {
-    if (p != null) {
-      name = p.name;
-      desc = p.desc;
-      type = PLAYER;
-      player = p;
-      show = true;
+    public void setInfo(AbstractStatus s) {
+        if (s != null) {
+            name = s.name;
+            desc = s.getDesc();
+            type = InfoType.STATUS;
+            status = s;
+            show = true;
+        }
     }
-  }
 
-  public void setInfo(String name, String desc) {
-    this.name = name;
-    this.desc = desc;
-    type = InfoType.COLOR;
-  }
+    public void setInfo(AbstractItem s) {
+        if (s != null) {
+            name = s.name;
+            desc = s.desc;
+            type = ITEM;
+            item = s;
+            show = true;
+        }
+    }
 
-  public enum InfoType {
-    SKILL,
-    STATUS,
-    ITEM,
-    COLOR,
-    PLAYER
-  }
+    public void setInfo(AbstractEntity p) {
+        if (p != null) {
+            name = p.name;
+            desc = p.desc;
+            type = PLAYER;
+            player = p;
+            show = true;
+        }
+    }
+
+    public void setInfo(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+        type = InfoType.COLOR;
+    }
+
+    public enum InfoType {
+        SKILL,
+        STATUS,
+        ITEM,
+        COLOR,
+        PLAYER
+    }
 }

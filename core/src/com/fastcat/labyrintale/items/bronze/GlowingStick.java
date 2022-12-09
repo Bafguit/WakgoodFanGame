@@ -8,26 +8,26 @@ import com.fastcat.labyrintale.status.CourageStatus;
 
 public class GlowingStick extends AbstractItem {
 
-  private static final String ID = "GlowingStick";
-  private static final ItemRarity RARITY = ItemRarity.BRONZE;
+    private static final String ID = "GlowingStick";
+    private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-  public GlowingStick(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public GlowingStick(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void onGain() {
-    owner.stat.attack += 1;
-  }
+    @Override
+    public void onGain() {
+        owner.stat.attack += 1;
+    }
 
-  @Override
-  public void onRemove() {
-    owner.stat.attack -= 1;
-  }
+    @Override
+    public void onRemove() {
+        owner.stat.attack -= 1;
+    }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(new ApplyStatusAction(new CourageStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
-  }
+    @Override
+    public void atBattleStart() {
+        flash();
+        top(new ApplyStatusAction(new CourageStatus(5), owner, AbstractSkill.SkillTarget.SELF, true));
+    }
 }

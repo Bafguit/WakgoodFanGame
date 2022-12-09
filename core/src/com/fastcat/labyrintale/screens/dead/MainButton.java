@@ -10,27 +10,27 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class MainButton extends AbstractUI {
 
-  public MainButton() {
-    super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 300, 50);
-    setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
-    fontData = MAIN_MENU_SHADOW;
-    text = "처음으로";
-    showImg = false;
-  }
+    public MainButton() {
+        super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 300, 50);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+        fontData = MAIN_MENU_SHADOW;
+        text = "처음으로";
+        showImg = false;
+    }
 
-  @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
+    @Override
+    protected void updateButton() {
+        if (!over && showImg) showImg = false;
+    }
 
-  @Override
-  protected void onOver() {
-    showImg = true;
-  }
+    @Override
+    protected void onOver() {
+        showImg = true;
+    }
 
-  @Override
-  protected void onClick() {
-    SoundHandler.fadeOutAll();
-    Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
-  }
+    @Override
+    protected void onClick() {
+        SoundHandler.fadeOutAll();
+        Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
+    }
 }

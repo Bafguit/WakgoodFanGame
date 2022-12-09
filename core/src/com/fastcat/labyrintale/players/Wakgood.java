@@ -15,37 +15,37 @@ import com.fastcat.labyrintale.skills.player.wak.ShieldPush;
 
 public class Wakgood extends AbstractPlayer {
 
-  private static final String ID = "wak";
-  private static final int HEALTH = 26;
-  private static final Color COLOR = FOREST;
+    private static final String ID = "wak";
+    private static final int HEALTH = 26;
+    private static final Color COLOR = FOREST;
 
-  public Wakgood() {
-    super(ID, HEALTH, COLOR);
-    stat.speed = 1;
-    stat.debuRes = 5;
-    stat.critical = 10;
-    stat.moveRes = 45;
-  }
+    public Wakgood() {
+        super(ID, HEALTH, COLOR);
+        stat.speed = 1;
+        stat.debuRes = 5;
+        stat.critical = 10;
+        stat.moveRes = 45;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    temp.add(new Strike(this));
-    temp.add(new Barrier(this));
-    temp.add(new ShieldPush(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
+        temp.add(new ShieldPush(this));
+        return temp;
+    }
 
-  @Override
-  public Array<AbstractItem> getStartingItem() {
-    Array<AbstractItem> temp = new Array<>();
-    temp.add(new PlaceHolder(this));
-    temp.add(new PlaceHolder(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractItem> getStartingItem() {
+        Array<AbstractItem> temp = new Array<>();
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
+        return temp;
+    }
 
-  @Override
-  public AbstractItem getPassive() {
-    return new OldShield(this);
-  }
+    @Override
+    public AbstractItem getPassive() {
+        return new OldShield(this);
+    }
 }

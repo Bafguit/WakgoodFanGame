@@ -10,20 +10,20 @@ import com.fastcat.labyrintale.screens.result.ResultScreen;
 
 public class DefeatAction extends AbstractAction {
 
-  public DefeatAction() {
-    super(null, 2);
-  }
-
-  @Override
-  protected void applySetting() {}
-
-  @Override
-  protected void updateAction() {
-    if (duration == baseDuration) {
-      SoundHandler.fadeOutAll();
-      ActionHandler.clear();
-      Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD));
-      SaveHandler.finish(false);
+    public DefeatAction() {
+        super(null, 2);
     }
-  }
+
+    @Override
+    protected void applySetting() {}
+
+    @Override
+    protected void updateAction() {
+        if (duration == baseDuration) {
+            SoundHandler.fadeOutAll();
+            ActionHandler.clear();
+            Labyrintale.fadeOutAndChangeScreen(new ResultScreen(DeadScreen.ScreenType.DEAD));
+            SaveHandler.finish(false);
+        }
+    }
 }

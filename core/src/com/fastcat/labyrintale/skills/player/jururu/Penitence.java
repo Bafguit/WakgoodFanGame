@@ -8,26 +8,26 @@ import com.fastcat.labyrintale.status.SinStatus;
 
 public class Penitence extends AbstractSkill {
 
-  private static final String ID = "Penitence";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY;
-  private static final int VALUE = 3;
+    private static final String ID = "Penitence";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY;
+    private static final int VALUE = 3;
 
-  public Penitence(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
-  }
+    public Penitence(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseValue(VALUE, 1);
+    }
 
-  @Override
-  public void use() {}
+    @Override
+    public void use() {}
 
-  @Override
-  public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new SinStatus(value), owner, e, true));
-    top(new ApplyStatusAction(new RestrictStatus(value), owner, e, true));
-  }
+    @Override
+    public void onTarget(AbstractEntity e) {
+        top(new ApplyStatusAction(new SinStatus(value), owner, e, true));
+        top(new ApplyStatusAction(new RestrictStatus(value), owner, e, true));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

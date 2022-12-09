@@ -12,27 +12,27 @@ import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
 
 public class MapButton extends AbstractUI {
 
-  public MapButton() {
-    super(FileHandler.getUi().get("MAP"));
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      sb.setColor(mapScreen.showing || over ? Color.WHITE : Color.LIGHT_GRAY);
-      sb.draw(img, x, y, sWidth, sHeight);
+    public MapButton() {
+        super(FileHandler.getUi().get("MAP"));
     }
-  }
 
-  @Override
-  protected void onClick() {
-    if (!mapScreen.showing) {
-      MapScreen.view();
-      if (playerInfoScreen.showing) {
-        PlayerInfoScreen.remove();
-      }
-    } else {
-      MapScreen.remove();
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            sb.setColor(mapScreen.showing || over ? Color.WHITE : Color.LIGHT_GRAY);
+            sb.draw(img, x, y, sWidth, sHeight);
+        }
     }
-  }
+
+    @Override
+    protected void onClick() {
+        if (!mapScreen.showing) {
+            MapScreen.view();
+            if (playerInfoScreen.showing) {
+                PlayerInfoScreen.remove();
+            }
+        } else {
+            MapScreen.remove();
+        }
+    }
 }

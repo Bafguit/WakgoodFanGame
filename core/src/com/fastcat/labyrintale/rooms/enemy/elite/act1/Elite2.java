@@ -7,12 +7,12 @@ import com.fastcat.labyrintale.enemies.act1.ModelB;
 
 public class Elite2 extends AbstractRoom {
 
-  public Elite2() {
-    super("Elite2", RoomType.ELITE);
-  }
+    public Elite2() {
+        super("Elite2", RoomType.ELITE);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {new ModelA(), new ModelB(), new ModelB(), new ModelB()};
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {new ModelA(), new ModelB(), new ModelB(), new ModelB()};
+    }
 }

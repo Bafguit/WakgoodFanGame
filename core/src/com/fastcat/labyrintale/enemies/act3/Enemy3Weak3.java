@@ -8,35 +8,35 @@ import com.fastcat.labyrintale.skills.enemy.UnstoppableE;
 
 public class Enemy3Weak3 extends AbstractEnemy {
 
-  private static final String ID = "Enemy3Weak3";
-  private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 72;
+    private static final String ID = "Enemy3Weak3";
+    private static final EnemyType TYPE = EnemyType.WEAK;
+    private static final int HEALTH = 72;
 
-  public Enemy3Weak3() {
-    super(ID, TYPE, HEALTH);
-    stat.speed = 1;
-    stat.critical = 20;
-    stat.debuRes = 15;
-    stat.neutRes = 10;
-    stat.moveRes = 5;
-  }
-
-  @Override
-  public void preBattle() {}
-
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s1 = new UnstoppableE(this);
-    for (int i = 0; i < 2; i++) {
-      s1.upgrade();
+    public Enemy3Weak3() {
+        super(ID, TYPE, HEALTH);
+        stat.speed = 1;
+        stat.critical = 20;
+        stat.debuRes = 15;
+        stat.neutRes = 10;
+        stat.moveRes = 5;
     }
-    temp.add(s1);
-    AbstractSkill s4 = new AttackLowE(this);
-    for (int i = 0; i < 5; i++) {
-      s4.upgrade();
+
+    @Override
+    public void preBattle() {}
+
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        AbstractSkill s1 = new UnstoppableE(this);
+        for (int i = 0; i < 2; i++) {
+            s1.upgrade();
+        }
+        temp.add(s1);
+        AbstractSkill s4 = new AttackLowE(this);
+        for (int i = 0; i < 5; i++) {
+            s4.upgrade();
+        }
+        temp.add(s4);
+        return temp;
     }
-    temp.add(s4);
-    return temp;
-  }
 }

@@ -8,24 +8,24 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class PlayerView extends AbstractUI {
 
-  public AbstractPlayer player;
+    public AbstractPlayer player;
 
-  public PlayerView(AbstractPlayer cls) {
-    super(FileHandler.getUi().get("ENTITY_POINT"));
-    player = cls;
-    showImg = false;
-  }
-
-  @Override
-  protected void updateButton() {
-    clickable = false;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (!player.isDead) {
-      sb.setColor(Color.WHITE);
-      player.render(sb);
+    public PlayerView(AbstractPlayer cls) {
+        super(FileHandler.getUi().get("ENTITY_POINT"));
+        player = cls;
+        showImg = false;
     }
-  }
+
+    @Override
+    protected void updateButton() {
+        clickable = false;
+    }
+
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (!player.isDead) {
+            sb.setColor(Color.WHITE);
+            player.render(sb);
+        }
+    }
 }

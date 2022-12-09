@@ -8,14 +8,14 @@ import com.fastcat.labyrintale.enemies.act2.Enemy2Normal3;
 
 public class Act2Normal2 extends AbstractRoom {
 
-  public Act2Normal2() {
-    super("Act2Normal2", RoomType.BATTLE);
-  }
+    public Act2Normal2() {
+        super("Act2Normal2", RoomType.BATTLE);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new Enemy2Normal2(), new Enemy2Normal3(), new EnemyPlaceholder(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {
+            new Enemy2Normal2(), new Enemy2Normal3(), new EnemyPlaceholder(), new EnemyPlaceholder()
+        };
+    }
 }

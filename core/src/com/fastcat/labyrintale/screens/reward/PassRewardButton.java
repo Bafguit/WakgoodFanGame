@@ -12,31 +12,31 @@ import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 public class PassRewardButton extends AbstractUI {
 
-  public RewardScreen sc;
+    public RewardScreen sc;
 
-  public PassRewardButton(RewardScreen sc) {
-    super(FileHandler.getUi().get("BUTTON"));
-    this.sc = sc;
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
-    fontData = BUTTON;
-    text = "계속";
-  }
-
-  @Override
-  protected void onClick() {
-    AbstractScreen s = Labyrintale.getBaseScreen();
-    if (s == Labyrintale.battleScreen) {
-      if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
-        AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
-        AbstractLabyrinth.endRoom();
-      } else {
-        Labyrintale.eventScreen.event.endBattle();
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
-      }
-    } else if (s == Labyrintale.restScreen) {
-      Labyrintale.returnToWay();
-    } else {
-      Labyrintale.removeTempScreen(sc);
+    public PassRewardButton(RewardScreen sc) {
+        super(FileHandler.getUi().get("BUTTON"));
+        this.sc = sc;
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+        fontData = BUTTON;
+        text = "계속";
     }
-  }
+
+    @Override
+    protected void onClick() {
+        AbstractScreen s = Labyrintale.getBaseScreen();
+        if (s == Labyrintale.battleScreen) {
+            if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+                AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
+                AbstractLabyrinth.endRoom();
+            } else {
+                Labyrintale.eventScreen.event.endBattle();
+                Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
+            }
+        } else if (s == Labyrintale.restScreen) {
+            Labyrintale.returnToWay();
+        } else {
+            Labyrintale.removeTempScreen(sc);
+        }
+    }
 }

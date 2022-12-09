@@ -4,31 +4,29 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.LoseBlockAction;
-import com.fastcat.labyrintale.status.FlawStatus;
-import com.fastcat.labyrintale.status.InfectionStatus;
 import com.fastcat.labyrintale.status.UnblockableStatus;
 
 public class FlameFlask extends AbstractSkill {
 
-  private static final String ID = "FlameFlask";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
-  private static final int VALUE = 2;
+    private static final String ID = "FlameFlask";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_ALL;
+    private static final int VALUE = 2;
 
-  public FlameFlask(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseCost(VALUE);
-  }
+    public FlameFlask(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseCost(VALUE);
+    }
 
-  @Override
-  public void use() {
-    bot(new LoseBlockAction(owner, target));
-    bot(new ApplyStatusAction(new UnblockableStatus(), owner, target, true));
-  }
+    @Override
+    public void use() {
+        bot(new LoseBlockAction(owner, target));
+        bot(new ApplyStatusAction(new UnblockableStatus(), owner, target, true));
+    }
 
-  @Override
-  protected void upgradeCard() {
-    if (cost > 0) cost--;
-  }
+    @Override
+    protected void upgradeCard() {
+        if (cost > 0) cost--;
+    }
 }

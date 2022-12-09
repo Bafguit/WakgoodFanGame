@@ -18,119 +18,127 @@ import com.fastcat.labyrintale.strings.KeyString;
 
 public class StatIcon extends AbstractUI {
 
-  private final Sprite icon;
-  public AbstractEntity entity;
-  public StatType type;
-  public int amount;
-  public boolean isUp = false;
+    private final Sprite icon;
+    public AbstractEntity entity;
+    public StatType type;
+    public int amount;
+    public boolean isUp = false;
 
-  private GetSelectedStat gets;
+    private GetSelectedStat gets;
 
-  public StatIcon(StatType type) {
-    super(FileHandler.getUi().get("BORDER_SS"));
-    this.type = type;
-    icon = FileHandler.getUi().get("STAT_" + type.toString());
-    KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
-    subTexts = new Array<>();
-    subTexts.add(new SubText(data.NAME, data.DESC));
-    fontData = FontHandler.STAT;
-    clickable = false;
-  }
-
-  public StatIcon(AbstractEntity e, StatType type, GetSelectedStat get) {
-    super(FileHandler.getUi().get("BORDER_SS"));
-    this.type = type;
-    icon = FileHandler.getUi().get("STAT_" + type.toString());
-    KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
-    subTexts = new Array<>();
-    subTexts.add(new SubText(data.NAME, data.DESC));
-    fontData = FontHandler.STAT;
-    entity = e;
-    isUp = true;
-    clickable = e.isAlive() && AbstractLabyrinth.sp > 0;
-    gets = get;
-  }
-
-  public void setEntity(AbstractEntity entity) {
-    this.entity = entity;
-    if(entity != null) {
-      if (isUp)
-        clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
-      if (type == StatType.ATTACK) amount = entity.stat.attack;
-      else if (type == StatType.SPELL) amount = entity.stat.spell;
-      else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
-      else {
-        if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
-        else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
-        else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
-        else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-        else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
-      }
+    public StatIcon(StatType type) {
+        super(FileHandler.getUi().get("BORDER_SS"));
+        this.type = type;
+        icon = FileHandler.getUi().get("STAT_" + type.toString());
+        KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
+        subTexts = new Array<>();
+        subTexts.add(new SubText(data.NAME, data.DESC));
+        fontData = FontHandler.STAT;
+        clickable = false;
     }
-  }
 
-  @Override
-  protected void updateButton() {
-    if(entity != null) {
-      if (isUp)
-        clickable = entity.isAlive() && AbstractLabyrinth.sp > 0 && amount < 80 && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
-      if (type == StatType.ATTACK) amount = entity.stat.attack;
-      else if (type == StatType.SPELL) amount = entity.stat.spell;
-      else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
-      else {
-        if (type == StatType.CRITICAL) amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
-        else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
-        else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
-        else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-        else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
-      }
+    public StatIcon(AbstractEntity e, StatType type, GetSelectedStat get) {
+        super(FileHandler.getUi().get("BORDER_SS"));
+        this.type = type;
+        icon = FileHandler.getUi().get("STAT_" + type.toString());
+        KeyString.KeyData data = StringHandler.keyString.get(type.toString().toLowerCase());
+        subTexts = new Array<>();
+        subTexts.add(new SubText(data.NAME, data.DESC));
+        fontData = FontHandler.STAT;
+        entity = e;
+        isUp = true;
+        clickable = e.isAlive() && AbstractLabyrinth.sp > 0;
+        gets = get;
     }
-  }
 
-  @Override
-  protected Array<SubText> getSubText() {
-    return subTexts;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled && entity != null) {
-      if (isUp) {
-        if (!clickable || (type != StatType.MULTIPLY && amount >= 80)) sb.setColor(Color.DARK_GRAY);
-        else if (over) sb.setColor(Color.WHITE);
-        else sb.setColor(Color.LIGHT_GRAY);
-      } else sb.setColor(Color.WHITE);
-      sb.draw(icon, x, y, sWidth, sHeight);
-      sb.draw(img, x, y, sWidth, sHeight);
-      if (entity != null) {
-        String t = "";
-        if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED) t += amount;
-        else t = amount + "%";
-        renderLineLeft(sb, fontData, t, x + sWidth * 1.02f, y + sHeight / 2, sWidth * 3, sHeight);
-      }
+    public void setEntity(AbstractEntity entity) {
+        this.entity = entity;
+        if (entity != null) {
+            if (isUp)
+                clickable = entity.isAlive()
+                        && AbstractLabyrinth.sp > 0
+                        && amount < 80
+                        && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
+            if (type == StatType.ATTACK) amount = entity.stat.attack;
+            else if (type == StatType.SPELL) amount = entity.stat.spell;
+            else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
+            else {
+                if (type == StatType.CRITICAL)
+                    amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
+                else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
+                else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
+                else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
+                else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+            }
+        }
     }
-  }
 
-  @Override
-  public void onClick() {
-    if (amount < 80) {
-      if (type == StatType.CRITICAL) entity.stat.critical += 5;
-      else if (type == StatType.MOVERES) entity.stat.moveRes += 5;
-      else if (type == StatType.DEBURES) entity.stat.debuRes += 5;
-      else if (type == StatType.NEUTRES) entity.stat.neutRes += 5;
+    @Override
+    protected void updateButton() {
+        if (entity != null) {
+            if (isUp)
+                clickable = entity.isAlive()
+                        && AbstractLabyrinth.sp > 0
+                        && amount < 80
+                        && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
+            if (type == StatType.ATTACK) amount = entity.stat.attack;
+            else if (type == StatType.SPELL) amount = entity.stat.spell;
+            else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
+            else {
+                if (type == StatType.CRITICAL)
+                    amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
+                else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
+                else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
+                else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
+                else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+            }
+        }
     }
-    AbstractLabyrinth.sp--;
-    gets.statSelected(entity, type);
-  }
 
-  public enum StatType {
-    ATTACK,
-    SPELL,
-    SPEED,
-    MULTIPLY,
-    CRITICAL,
-    MOVERES,
-    DEBURES,
-    NEUTRES
-  }
+    @Override
+    protected Array<SubText> getSubText() {
+        return subTexts;
+    }
+
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled && entity != null) {
+            if (isUp) {
+                if (!clickable || (type != StatType.MULTIPLY && amount >= 80)) sb.setColor(Color.DARK_GRAY);
+                else if (over) sb.setColor(Color.WHITE);
+                else sb.setColor(Color.LIGHT_GRAY);
+            } else sb.setColor(Color.WHITE);
+            sb.draw(icon, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
+            if (entity != null) {
+                String t = "";
+                if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED) t += amount;
+                else t = amount + "%";
+                renderLineLeft(sb, fontData, t, x + sWidth * 1.02f, y + sHeight / 2, sWidth * 3, sHeight);
+            }
+        }
+    }
+
+    @Override
+    public void onClick() {
+        if (amount < 80) {
+            if (type == StatType.CRITICAL) entity.stat.critical += 5;
+            else if (type == StatType.MOVERES) entity.stat.moveRes += 5;
+            else if (type == StatType.DEBURES) entity.stat.debuRes += 5;
+            else if (type == StatType.NEUTRES) entity.stat.neutRes += 5;
+        }
+        AbstractLabyrinth.sp--;
+        gets.statSelected(entity, type);
+    }
+
+    public enum StatType {
+        ATTACK,
+        SPELL,
+        SPEED,
+        MULTIPLY,
+        CRITICAL,
+        MOVERES,
+        DEBURES,
+        NEUTRES
+    }
 }

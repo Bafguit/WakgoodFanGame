@@ -10,41 +10,40 @@ import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.skills.player.basic.Barrier;
 import com.fastcat.labyrintale.skills.player.basic.Strike;
 import com.fastcat.labyrintale.skills.player.ine.Charge;
-import com.fastcat.labyrintale.skills.player.ine.Pruning;
 
 public class Ine extends AbstractPlayer {
 
-  private static final String ID = "ine";
-  private static final int HEALTH = 25;
-  private static final Color COLOR = Color.valueOf("#8a2be2");
+    private static final String ID = "ine";
+    private static final int HEALTH = 25;
+    private static final Color COLOR = Color.valueOf("#8a2be2");
 
-  public Ine() {
-    super(ID, HEALTH, COLOR);
-    stat.speed = 1;
-    stat.debuRes = 25;
-    stat.critical = 10;
-    stat.moveRes = 25;
-  }
+    public Ine() {
+        super(ID, HEALTH, COLOR);
+        stat.speed = 1;
+        stat.debuRes = 25;
+        stat.critical = 10;
+        stat.moveRes = 25;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    temp.add(new Strike(this));
-    temp.add(new Barrier(this));
-    temp.add(new Charge(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
+        temp.add(new Charge(this));
+        return temp;
+    }
 
-  @Override
-  public Array<AbstractItem> getStartingItem() {
-    Array<AbstractItem> temp = new Array<>();
-    temp.add(new PlaceHolder(this));
-    temp.add(new PlaceHolder(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractItem> getStartingItem() {
+        Array<AbstractItem> temp = new Array<>();
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
+        return temp;
+    }
 
-  @Override
-  public AbstractItem getPassive() {
-    return new BattleAxe(this);
-  }
+    @Override
+    public AbstractItem getPassive() {
+        return new BattleAxe(this);
+    }
 }

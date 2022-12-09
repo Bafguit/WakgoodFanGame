@@ -15,37 +15,37 @@ import com.fastcat.labyrintale.skills.player.burger.Protect;
 
 public class Burger extends AbstractPlayer {
 
-  private static final String ID = "burger";
-  private static final int HEALTH = 27;
-  private static final Color COLOR = YELLOW;
+    private static final String ID = "burger";
+    private static final int HEALTH = 27;
+    private static final Color COLOR = YELLOW;
 
-  public Burger() {
-    super(ID, HEALTH, COLOR);
-    stat.speed = 1;
-    stat.debuRes = 30;
-    stat.critical = 5;
-    stat.moveRes = 25;
-  }
+    public Burger() {
+        super(ID, HEALTH, COLOR);
+        stat.speed = 1;
+        stat.debuRes = 30;
+        stat.critical = 5;
+        stat.moveRes = 25;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    temp.add(new Strike(this));
-    temp.add(new Barrier(this));
-    temp.add(new Protect(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
+        temp.add(new Protect(this));
+        return temp;
+    }
 
-  @Override
-  public Array<AbstractItem> getStartingItem() {
-    Array<AbstractItem> temp = new Array<>();
-    temp.add(new PlaceHolder(this));
-    temp.add(new PlaceHolder(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractItem> getStartingItem() {
+        Array<AbstractItem> temp = new Array<>();
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
+        return temp;
+    }
 
-  @Override
-  public AbstractItem getPassive() {
-    return new BurgerHat(this);
-  }
+    @Override
+    public AbstractItem getPassive() {
+        return new BurgerHat(this);
+    }
 }

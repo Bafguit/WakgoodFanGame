@@ -8,24 +8,24 @@ import com.fastcat.labyrintale.skills.enemy.StrikeE;
 
 public class TestEnemy extends AbstractEnemy {
 
-  private static final String ID = "TestEnemy1";
-  private static final EnemyType TYPE = EnemyType.NORMAL;
-  private static final int HEALTH = 37;
+    private static final String ID = "TestEnemy1";
+    private static final EnemyType TYPE = EnemyType.NORMAL;
+    private static final int HEALTH = 37;
 
-  public TestEnemy() {
-    super(ID, TYPE, HEALTH);
-    stat.speed = 0;
-    stat.debuRes = 10;
-    stat.neutRes = 10;
-    stat.critical = 10;
-    stat.moveRes = 10;
-  }
+    public TestEnemy() {
+        super(ID, TYPE, HEALTH);
+        stat.speed = 0;
+        stat.debuRes = 10;
+        stat.neutRes = 10;
+        stat.critical = 10;
+        stat.moveRes = 10;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    temp.add(new StrikeE(this));
-    temp.add(new GrowE(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new StrikeE(this));
+        temp.add(new GrowE(this));
+        return temp;
+    }
 }

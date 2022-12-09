@@ -9,26 +9,26 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class GameStartButton extends AbstractUI {
 
-  public GameStartButton() {
-    super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.45f);
-    fontData = MAIN_MENU_SHADOW;
-    text = "게임 시작";
-    showImg = false;
-  }
+    public GameStartButton() {
+        super(FileHandler.getUi().get("MENU_SELECT"));
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.45f);
+        fontData = MAIN_MENU_SHADOW;
+        text = "게임 시작";
+        showImg = false;
+    }
 
-  @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
+    @Override
+    protected void updateButton() {
+        if (!over && showImg) showImg = false;
+    }
 
-  @Override
-  protected void onOver() {
-    showImg = true;
-  }
+    @Override
+    protected void onOver() {
+        showImg = true;
+    }
 
-  @Override
-  protected void onClick() {
-    fadeOutAndChangeScreen(diffScreen);
-  }
+    @Override
+    protected void onClick() {
+        fadeOutAndChangeScreen(diffScreen);
+    }
 }

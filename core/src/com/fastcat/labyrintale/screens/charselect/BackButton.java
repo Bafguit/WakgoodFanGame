@@ -10,16 +10,16 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class BackButton extends AbstractUI {
 
-  public BackButton() {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
-    fontData = BUTTON;
-    text = "뒤로";
-    showImg = true;
-  }
+    public BackButton() {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
+        fontData = BUTTON;
+        text = "뒤로";
+        showImg = true;
+    }
 
-  @Override
-  protected void onClick() {
-    Labyrintale.fadeOutAndChangeScreen(diffScreen);
-  }
+    @Override
+    protected void onClick() {
+        Labyrintale.fadeOutAndChangeScreen(diffScreen);
+    }
 }

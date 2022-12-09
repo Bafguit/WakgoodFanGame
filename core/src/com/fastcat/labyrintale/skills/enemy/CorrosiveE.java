@@ -7,23 +7,23 @@ import com.fastcat.labyrintale.status.LethargyStatus;
 
 public class CorrosiveE extends AbstractSkill {
 
-  private static final String ID = "CorrosiveE";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
-  private static final int VALUE = 1;
+    private static final String ID = "CorrosiveE";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_LAST_TWO;
+    private static final int VALUE = 1;
 
-  public CorrosiveE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
-    setIntent(IntentType.DEBUFF);
-  }
+    public CorrosiveE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseValue(VALUE, 1);
+        setIntent(IntentType.DEBUFF);
+    }
 
-  @Override
-  public void use() {
-    bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, false));
-  }
+    @Override
+    public void use() {
+        bot(new ApplyStatusAction(new LethargyStatus(value), owner, target, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

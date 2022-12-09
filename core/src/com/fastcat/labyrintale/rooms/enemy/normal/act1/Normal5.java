@@ -8,14 +8,12 @@ import com.fastcat.labyrintale.enemies.act1.WeakEnemy1;
 
 public class Normal5 extends AbstractRoom {
 
-  public Normal5() {
-    super("Normal5", RoomType.BATTLE);
-  }
+    public Normal5() {
+        super("Normal5", RoomType.BATTLE);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new WeakEnemy1(), new BrutalChimp(), new WeakEnemy1(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {new WeakEnemy1(), new BrutalChimp(), new WeakEnemy1(), new EnemyPlaceholder()};
+    }
 }

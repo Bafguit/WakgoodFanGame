@@ -6,14 +6,14 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 
 public class NextTurnAction extends AbstractAction {
 
-  public NextTurnAction() {
-    super(null, SettingHandler.setting.fastMode ? 0.5f : 1);
-  }
-
-  @Override
-  protected void updateAction() {
-    if (isDone) {
-      Labyrintale.battleScreen.nextTurn();
+    public NextTurnAction() {
+        super(null, SettingHandler.setting.fastMode ? 0.5f : 1);
     }
-  }
+
+    @Override
+    protected void updateAction() {
+        if (isDone) {
+            Labyrintale.battleScreen.nextTurn();
+        }
+    }
 }

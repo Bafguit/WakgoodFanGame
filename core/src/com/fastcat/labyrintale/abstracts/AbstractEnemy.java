@@ -1,20 +1,16 @@
 package com.fastcat.labyrintale.abstracts;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
+
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
-import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
-import com.fastcat.labyrintale.prototype.providers.EntityStatProvider;
 import com.fastcat.labyrintale.prototype.providers.MonsterStatProvider;
 import com.fastcat.labyrintale.prototype.tracker.Tracker;
-import com.fastcat.labyrintale.skills.enemy.MoveLeftE;
-import com.fastcat.labyrintale.skills.enemy.MoveRightE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
 import com.fastcat.labyrintale.strings.CharString;
-
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
 
 public abstract class AbstractEnemy extends AbstractEntity {
 
@@ -26,7 +22,13 @@ public abstract class AbstractEnemy extends AbstractEntity {
     public boolean hasChange = false;
 
     public AbstractEnemy(String id, EnemyType type, int maxHealth) {
-        super(id, 1, maxHealth, FileHandler.getAtlas().get(id), FileHandler.getSkeleton().get(id), false);
+        super(
+                id,
+                1,
+                maxHealth,
+                FileHandler.getAtlas().get(id),
+                FileHandler.getSkeleton().get(id),
+                false);
         this.type = type;
         CharString.CharData temp = StringHandler.enemyString.get(id);
         name = temp.NAME;
@@ -43,8 +45,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
         imgPanel = FileHandler.getEnemyPanelImg().get(id);
 
         if (GameConfiguration.getInstance().hasProvider(MonsterStatProvider.class)) {
-            MonsterStatProvider provider =
-                    GameConfiguration.getInstance().getProvider(MonsterStatProvider.class);
+            MonsterStatProvider provider = GameConfiguration.getInstance().getProvider(MonsterStatProvider.class);
             provider.apply(this);
             provider.addTracker(new Tracker<>(this));
         }
@@ -73,7 +74,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
             discardPile.clear();
         }
         if (isRandom) GroupHandler.SkillGroup.staticShuffle(drawPile, publicRandom);
-        if(hasChange) {
+        if (hasChange) {
             hand[0] = makeHand();
             hand[0].nextTurn = true;
         } else {
@@ -92,6 +93,9 @@ public abstract class AbstractEnemy extends AbstractEntity {
     }
 
     public enum EnemyType {
-        WEAK, NORMAL, ELITE, BOSS
+        WEAK,
+        NORMAL,
+        ELITE,
+        BOSS
     }
 }

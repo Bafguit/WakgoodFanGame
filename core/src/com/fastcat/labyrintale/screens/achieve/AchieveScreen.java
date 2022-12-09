@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.achieve;
 
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
@@ -9,8 +11,6 @@ import com.fastcat.labyrintale.handlers.AchieveHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.BgImg;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class AchieveScreen extends AbstractScreen {
 
@@ -27,8 +27,8 @@ public class AchieveScreen extends AbstractScreen {
         bgImg = new BgImg(0);
         int cnt = 0;
         AchieveHandler.Achievement[] a = AchieveHandler.Achievement.values();
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 7; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 7; j++) {
                 AchieveIcon c = new AchieveIcon(a[cnt]);
                 c.setPosition((516 + 226 * j) * scale, (785 - 214 * i) * scale);
                 c.setParent(bg);
@@ -41,38 +41,38 @@ public class AchieveScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(anim) {
+        if (anim) {
             float h = Gdx.graphics.getHeight();
-            if(isDown) {
+            if (isDown) {
                 alpha += Labyrintale.tick * 5 * 0.8f;
                 bg.y -= h * 5 * Labyrintale.tick;
-                if(alpha >= 0.8f) {
+                if (alpha >= 0.8f) {
                     alpha = 0.8f;
                 }
-                if(bg.y <= 0) {
+                if (bg.y <= 0) {
                     bg.y = 0;
                     anim = false;
                 }
             } else {
                 alpha -= Labyrintale.tick * 5 * 0.8f;
                 bg.y += h * 5 * Labyrintale.tick;
-                if(alpha <= 0) {
+                if (alpha <= 0) {
                     alpha = 0;
                 }
-                if(bg.y >= h) {
+                if (bg.y >= h) {
                     bg.y = h;
                     anim = false;
                     Labyrintale.removeTempScreen(this);
                 }
             }
             bgImg.img.setAlpha(alpha);
-        } else if(InputHandler.cancel) {
+        } else if (InputHandler.cancel) {
             close();
         }
 
         close.update();
-        for(int i = 0; i < 7; i++) {
-            for(int j = 0; j < 3; j++) {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 3; j++) {
                 achvs[i][j].update();
             }
         }
@@ -83,8 +83,8 @@ public class AchieveScreen extends AbstractScreen {
         bgImg.render(sb);
         bg.render(sb);
         close.render(sb);
-        for(int i = 0; i < 7; i++) {
-            for(int j = 0; j < 3; j++) {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 3; j++) {
                 achvs[i][j].render(sb);
             }
         }

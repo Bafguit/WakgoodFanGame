@@ -6,23 +6,23 @@ import com.fastcat.labyrintale.actions.BlockAction;
 
 public class Encourage extends AbstractSkill {
 
-  private static final String ID = "Encourage";
-  private static final SkillType TYPE = SkillType.DEFENCE;
-  private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
-  private static final int VALUE = 4;
+    private static final String ID = "Encourage";
+    private static final SkillType TYPE = SkillType.DEFENCE;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_ALL;
+    private static final int VALUE = 4;
 
-  public Encourage(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(VALUE, 1);
-    setBaseCost(2);
-  }
+    public Encourage(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseSpell(VALUE, 1);
+        setBaseCost(2);
+    }
 
-  @Override
-  public void use() {
-    top(new BlockAction(owner, target, spell));
-  }
+    @Override
+    public void use() {
+        top(new BlockAction(owner, target, spell));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

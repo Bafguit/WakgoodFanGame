@@ -7,14 +7,14 @@ import com.fastcat.labyrintale.enemies.act1.BrutalChimp;
 
 public class Weak3 extends AbstractRoom {
 
-  public Weak3() {
-    super("Weak3", RoomType.BATTLE);
-  }
+    public Weak3() {
+        super("Weak3", RoomType.BATTLE);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new BrutalChimp(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {
+            new BrutalChimp(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+        };
+    }
 }

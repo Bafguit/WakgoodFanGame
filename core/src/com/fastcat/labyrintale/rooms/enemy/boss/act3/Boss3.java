@@ -7,14 +7,14 @@ import com.fastcat.labyrintale.enemies.act3.BossEnemy3;
 
 public class Boss3 extends AbstractRoom {
 
-  public Boss3() {
-    super("Boss3", RoomType.BOSS);
-  }
+    public Boss3() {
+        super("Boss3", RoomType.BOSS);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new EnemyPlaceholder(), new BossEnemy3(), new EnemyPlaceholder(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {
+            new EnemyPlaceholder(), new BossEnemy3(), new EnemyPlaceholder(), new EnemyPlaceholder()
+        };
+    }
 }

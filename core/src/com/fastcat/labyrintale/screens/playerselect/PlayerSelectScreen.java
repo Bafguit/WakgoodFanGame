@@ -11,66 +11,66 @@ import com.fastcat.labyrintale.uis.BgImg;
 
 public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPlayer {
 
-  public BgImg bg = new BgImg();
-  public PlayerSelectText playerSelectText;
-  public PlayerButton[] pPlayer;
-  public GetSelectedPlayer gets;
-  public GetRewardDone rewardDone;
-  public CancelPlayerButton cancel;
+    public BgImg bg = new BgImg();
+    public PlayerSelectText playerSelectText;
+    public PlayerButton[] pPlayer;
+    public GetSelectedPlayer gets;
+    public GetRewardDone rewardDone;
+    public CancelPlayerButton cancel;
 
-  public PlayerSelectScreen(GetSelectedPlayer gets) {
-    this(AbstractLabyrinth.players, gets, null);
-  }
-
-  public PlayerSelectScreen(AbstractPlayer[] players, GetSelectedPlayer gets, GetRewardDone rewardDone) {
-    playerSelectText = new PlayerSelectText();
-    this.gets = gets;
-    this.rewardDone = rewardDone;
-    int size = players.length;
-    pPlayer = new PlayerButton[size];
-    float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
-    for (int i = 0; i < size; i++) {
-      PlayerButton adv = new PlayerButton(players[i], this);
-      adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
-      pPlayer[i] = adv;
+    public PlayerSelectScreen(GetSelectedPlayer gets) {
+        this(AbstractLabyrinth.players, gets, null);
     }
-    cancel = new CancelPlayerButton(this);
-  }
 
-  @Override
-  public void update() {
-    for (PlayerButton advisorButton : pPlayer) {
-      advisorButton.update();
+    public PlayerSelectScreen(AbstractPlayer[] players, GetSelectedPlayer gets, GetRewardDone rewardDone) {
+        playerSelectText = new PlayerSelectText();
+        this.gets = gets;
+        this.rewardDone = rewardDone;
+        int size = players.length;
+        pPlayer = new PlayerButton[size];
+        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
+        for (int i = 0; i < size; i++) {
+            PlayerButton adv = new PlayerButton(players[i], this);
+            adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
+            pPlayer[i] = adv;
+        }
+        cancel = new CancelPlayerButton(this);
     }
-    playerSelectText.update();
-    if(rewardDone != null) cancel.update();
-  }
 
-  @Override
-  public void render(SpriteBatch sb) {
-    bg.render(sb);
-    for (PlayerButton advisorButton : pPlayer) {
-      advisorButton.render(sb);
+    @Override
+    public void update() {
+        for (PlayerButton advisorButton : pPlayer) {
+            advisorButton.update();
+        }
+        playerSelectText.update();
+        if (rewardDone != null) cancel.update();
     }
-    playerSelectText.render(sb);
-    if(rewardDone != null) cancel.render(sb);
-  }
 
-  @Override
-  public void show() {}
-
-  @Override
-  public void hide() {}
-
-  @Override
-  public void dispose() {
-    for (PlayerButton advisorButton : pPlayer) {
-      advisorButton.dispose();
+    @Override
+    public void render(SpriteBatch sb) {
+        bg.render(sb);
+        for (PlayerButton advisorButton : pPlayer) {
+            advisorButton.render(sb);
+        }
+        playerSelectText.render(sb);
+        if (rewardDone != null) cancel.render(sb);
     }
-  }
 
-  @Override
-  public void playerSelected(AbstractPlayer player) {
-    gets.playerSelected(player);
-  }
+    @Override
+    public void show() {}
+
+    @Override
+    public void hide() {}
+
+    @Override
+    public void dispose() {
+        for (PlayerButton advisorButton : pPlayer) {
+            advisorButton.dispose();
+        }
+    }
+
+    @Override
+    public void playerSelected(AbstractPlayer player) {
+        gets.playerSelected(player);
+    }
 }

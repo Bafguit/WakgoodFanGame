@@ -1,21 +1,17 @@
 package com.fastcat.labyrintale.screens.credit;
 
-import com.badlogic.gdx.Gdx;
+import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
-import com.fastcat.labyrintale.screens.charselect.BackButton;
-import com.fastcat.labyrintale.strings.CreditString;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-
-import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
 
 public class CreditScreen extends AbstractScreen {
 
@@ -40,20 +36,20 @@ public class CreditScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(InputHandler.isLeftClick) {
-            if(!clicked) {
+        if (InputHandler.isLeftClick) {
+            if (!clicked) {
                 clicked = true;
                 backButton.enable();
             }
-        } else if(InputHandler.cancel) {
+        } else if (InputHandler.cancel) {
             SoundHandler.fadeOutAll();
             mainMenuScreen.playMusic = true;
             Labyrintale.fadeOutAndChangeScreen(mainMenuScreen, 1.5f);
         }
-        if(logo.y < 0) {
+        if (logo.y < 0) {
             logo.y += Labyrintale.tick * 138 * InputHandler.scale;
-            if(logo.y > 0) logo.y = 0;
-        } else if(music != null && !music.music.isPlaying()) {
+            if (logo.y > 0) logo.y = 0;
+        } else if (music != null && !music.music.isPlaying()) {
             clicked = true;
             backButton.enable();
         }

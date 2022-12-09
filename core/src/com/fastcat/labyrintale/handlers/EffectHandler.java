@@ -12,53 +12,53 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class EffectHandler {
 
-  public static final ShapeRenderer shr = new ShapeRenderer();
-  /***
-   * Instance of handler.
-   * Initialized on getInstance()
-   */
-  public Queue<AbstractEffect> effectList = new Queue<>();
+    public static final ShapeRenderer shr = new ShapeRenderer();
+    /***
+     * Instance of handler.
+     * Initialized on getInstance()
+     */
+    public Queue<AbstractEffect> effectList = new Queue<>();
 
-  public boolean isShaking = false;
+    public boolean isShaking = false;
 
-  /***
-   * Returns instance of handler, if not exist, create new.
-   * @return instance of handler
-   */
-  public static EffectHandler newInstance() {
-    return new EffectHandler();
-  }
+    /***
+     * Returns instance of handler, if not exist, create new.
+     * @return instance of handler
+     */
+    public static EffectHandler newInstance() {
+        return new EffectHandler();
+    }
 
-  public static void add(AbstractEffect e) {
-    Labyrintale.getBaseScreen().getEffectHandler().effectList.addLast(e);
-  }
+    public static void add(AbstractEffect e) {
+        Labyrintale.getBaseScreen().getEffectHandler().effectList.addLast(e);
+    }
 
-  public void update() {
-    if (effectList.size > 0) {
-      Iterator<AbstractEffect> it = effectList.iterator();
-      while (it.hasNext()) {
-        AbstractEffect e = it.next();
-        e.update();
-        if (e.isDone) {
-          e.onRemove();
-          e.dispose();
-          it.remove();
+    public void update() {
+        if (effectList.size > 0) {
+            Iterator<AbstractEffect> it = effectList.iterator();
+            while (it.hasNext()) {
+                AbstractEffect e = it.next();
+                e.update();
+                if (e.isDone) {
+                    e.onRemove();
+                    e.dispose();
+                    it.remove();
+                }
+            }
         }
-      }
     }
-  }
 
-  public void render(SpriteBatch sb) {
-    for (AbstractEffect e : effectList) {
-      e.render(sb);
+    public void render(SpriteBatch sb) {
+        for (AbstractEffect e : effectList) {
+            e.render(sb);
+        }
     }
-  }
 
-  public void removeAll() {
-    for (AbstractEffect e : effectList) {
-      e.onRemove();
-      e.dispose();
+    public void removeAll() {
+        for (AbstractEffect e : effectList) {
+            e.onRemove();
+            e.dispose();
+        }
+        effectList.clear();
     }
-    effectList.clear();
-  }
 }

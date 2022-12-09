@@ -8,18 +8,18 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class TutorialImg extends AbstractUI {
 
-  public Sprite image;
+    public Sprite image;
 
-  public TutorialImg() {
-    super(FileHandler.getBg().get("BG_BLACK"));
-    setPosition(0, 0);
-    overable = false;
-    image = FileHandler.getBg().get("BG_BLACK");
-  }
+    public TutorialImg() {
+        super(FileHandler.getBg().get("BG_BLACK"));
+        setPosition(0, 0);
+        overable = false;
+        image = FileHandler.getBg().get("BG_BLACK");
+    }
 
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    sb.setColor(Color.WHITE);
-    sb.draw(image, x, y, sWidth, sHeight);
-  }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        sb.setColor(Color.WHITE);
+        sb.draw(image, x, y, sWidth, sHeight);
+    }
 }

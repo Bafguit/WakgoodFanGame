@@ -6,33 +6,32 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.status.ParalyzedStatus;
 import com.fastcat.labyrintale.status.ShockStatus;
-import com.fastcat.labyrintale.status.SpeedMinusStatus;
 
 public class Lightning extends AbstractSkill {
 
-  private static final String ID = "Lightning";
-  private static final SkillType TYPE = SkillType.ATTACK;
-  private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY;
-  private static final int VALUE = 4;
+    private static final String ID = "Lightning";
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY;
+    private static final int VALUE = 4;
 
-  public Lightning(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(VALUE, 1);
-    setBaseValue(VALUE, 1);
-    setBaseValue2(1, 1);
-  }
+    public Lightning(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseAttack(VALUE, 1);
+        setBaseValue(VALUE, 1);
+        setBaseValue2(1, 1);
+    }
 
-  @Override
-  public void use() {}
+    @Override
+    public void use() {}
 
-  @Override
-  public void onTarget(AbstractEntity e) {
-    top(new ApplyStatusAction(new ParalyzedStatus(value2), owner, e, true));
-    top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
-    top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
-  }
+    @Override
+    public void onTarget(AbstractEntity e) {
+        top(new ApplyStatusAction(new ParalyzedStatus(value2), owner, e, true));
+        top(new ApplyStatusAction(new ShockStatus(value), owner, e, true));
+        top(new AttackAction(owner, e, attack, AttackAction.AttackType.LIGHTNING));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

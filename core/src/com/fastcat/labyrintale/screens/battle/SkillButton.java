@@ -14,48 +14,48 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class SkillButton extends AbstractUI {
 
-  private final Sprite border = FileHandler.getUi().get("BORDER");
-  public AbstractSkill skill;
-  public boolean isInfo = false;
-  public boolean canClick = true;
-  public boolean advisor = false;
+    private final Sprite border = FileHandler.getUi().get("BORDER");
+    public AbstractSkill skill;
+    public boolean isInfo = false;
+    public boolean canClick = true;
+    public boolean advisor = false;
 
-  public SkillButton() {
-    super(FileHandler.getUi().get("BORDER"));
-    clickable = false;
-    subWay = SubText.SubWay.DOWN;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      if (skill.nextTurn) {
-        sb.setColor(1, 1, 1, 0.5f);
-      } else {
-        sb.setColor(Color.WHITE);
-      }
-
-      if (skill != null) {
-        if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
-      }
-      sb.setColor(Color.WHITE);
+    public SkillButton() {
+        super(FileHandler.getUi().get("BORDER"));
+        clickable = false;
+        subWay = SubText.SubWay.DOWN;
     }
-  }
 
-  @Override
-  protected void updateButton() {
-    if (skill != null) {
-      if (skill.owner != null && !skill.owner.isAlive()) {
-        skill = null;
-      } else if (overable && over) {
-        cPanel.infoPanel.setInfo(skill);
-        battleScreen.looking = getTargets(skill);
-      }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (skill.nextTurn) {
+                sb.setColor(1, 1, 1, 0.5f);
+            } else {
+                sb.setColor(Color.WHITE);
+            }
+
+            if (skill != null) {
+                if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+            }
+            sb.setColor(Color.WHITE);
+        }
     }
-  }
 
-  @Override
-  protected Array<SubText> getSubText() {
-    return skill != null ? skill.key : null;
-  }
+    @Override
+    protected void updateButton() {
+        if (skill != null) {
+            if (skill.owner != null && !skill.owner.isAlive()) {
+                skill = null;
+            } else if (overable && over) {
+                cPanel.infoPanel.setInfo(skill);
+                battleScreen.looking = getTargets(skill);
+            }
+        }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : null;
+    }
 }

@@ -7,17 +7,17 @@ import com.fastcat.labyrintale.screens.advisorselect.AdvisorSelectScreen;
 
 public class AdvisorChoice extends AbstractEvent.EventChoice {
 
-  AtEndOfTempScreen gets;
+    AtEndOfTempScreen gets;
 
-  public AdvisorChoice(String t, AtEndOfTempScreen gets) {
-    super(t);
-    this.gets = gets;
-  }
+    public AdvisorChoice(String t, AtEndOfTempScreen gets) {
+        super(t);
+        this.gets = gets;
+    }
 
-  @Override
-  protected void onSelect() {
-    AdvisorSelectScreen s = new AdvisorSelectScreen();
-    s.endTemp.add(gets);
-    Labyrintale.addTempScreen(s);
-  }
+    @Override
+    protected void onSelect() {
+        AdvisorSelectScreen s = new AdvisorSelectScreen();
+        s.endTemp.add(gets);
+        Labyrintale.addTempScreen(s);
+    }
 }

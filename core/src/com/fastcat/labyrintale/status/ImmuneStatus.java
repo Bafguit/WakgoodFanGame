@@ -5,15 +5,15 @@ import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class ImmuneStatus extends AbstractStatus {
 
-  private static final String ID = "Immune";
+    private static final String ID = "Immune";
 
-  public ImmuneStatus(int amount) {
-    super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
-    setAmount(amount);
-  }
+    public ImmuneStatus(int amount) {
+        super(ID, AbstractSkill.SkillTarget.NONE, StatusType.BUFF);
+        setAmount(amount);
+    }
 
-  @Override
-  public String getDesc() {
-    return exDesc[0] + amount + exDesc[1];
-  }
+    @Override
+    public String getDesc() {
+        return exDesc[0] + amount + exDesc[1];
+    }
 }

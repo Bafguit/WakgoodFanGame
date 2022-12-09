@@ -9,16 +9,16 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CloseInfoScreenButton extends AbstractUI {
 
-  public CloseInfoScreenButton(PlayerInfoScreen screen) {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
-    fontData = BUTTON;
-    text = "닫기";
-    this.screen = screen;
-  }
+    public CloseInfoScreenButton(PlayerInfoScreen screen) {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
+        fontData = BUTTON;
+        text = "닫기";
+        this.screen = screen;
+    }
 
-  @Override
-  protected void onClick() {
-    playerInfoScreen.hide();
-  }
+    @Override
+    protected void onClick() {
+        playerInfoScreen.hide();
+    }
 }

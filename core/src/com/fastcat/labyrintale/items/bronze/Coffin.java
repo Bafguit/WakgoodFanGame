@@ -8,30 +8,28 @@ import com.fastcat.labyrintale.status.LethargyStatus;
 
 public class Coffin extends AbstractItem {
 
-  private static final String ID = "Coffin";
-  private static final ItemRarity RARITY = ItemRarity.BRONZE;
+    private static final String ID = "Coffin";
+    private static final ItemRarity RARITY = ItemRarity.BRONZE;
 
-  public Coffin(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public Coffin(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void onGain() {
-    owner.modifyMaxHealth(5);
-    owner.stat.neutRes += 5;
-  }
+    @Override
+    public void onGain() {
+        owner.modifyMaxHealth(5);
+        owner.stat.neutRes += 5;
+    }
 
-  @Override
-  public void onRemove() {
-    owner.modifyMaxHealth(-5);
-    owner.stat.neutRes -= 5;
-  }
+    @Override
+    public void onRemove() {
+        owner.modifyMaxHealth(-5);
+        owner.stat.neutRes -= 5;
+    }
 
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(
-        new ApplyStatusAction(
-            new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
-  }
+    @Override
+    public void atBattleStart() {
+        flash();
+        top(new ApplyStatusAction(new LethargyStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
+    }
 }

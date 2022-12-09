@@ -8,24 +8,24 @@ import com.fastcat.labyrintale.actions.StatusDamageAction;
 
 public class ScarStatus extends AbstractStatus {
 
-  private static final String ID = "Scar";
-  private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final String ID = "Scar";
+    private static final SkillTarget TARGET = SkillTarget.SELF;
 
-  public ScarStatus(int amount) {
-    super(ID, TARGET, StatusType.DEBUFF);
-    setAmount(amount);
-  }
-
-  @Override
-  public String getDesc() {
-    return exDesc[0] + amount + exDesc[1];
-  }
-
-  @Override
-  public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
-      top(new StatusDamageAction(this, AttackAction.AttackType.LIGHT, false, false, true));
+    public ScarStatus(int amount) {
+        super(ID, TARGET, StatusType.DEBUFF);
+        setAmount(amount);
     }
-    return d;
-  }
+
+    @Override
+    public String getDesc() {
+        return exDesc[0] + amount + exDesc[1];
+    }
+
+    @Override
+    public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+        if (type == AbstractEntity.DamageType.NORMAL || type == AbstractEntity.DamageType.COUNTER) {
+            top(new StatusDamageAction(this, AttackAction.AttackType.LIGHT, false, false, true));
+        }
+        return d;
+    }
 }

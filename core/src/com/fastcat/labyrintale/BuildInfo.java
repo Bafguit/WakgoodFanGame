@@ -10,10 +10,10 @@ public class BuildInfo {
     static {
         String buildVersion = "ERROR";
         try (InputStream in = BuildInfo.class.getResourceAsStream("/version.properties")) {
-             Properties p = new Properties();
-             p.load(in);
+            Properties p = new Properties();
+            p.load(in);
 
-             buildVersion = (String) p.get("version");
+            buildVersion = (String) p.get("version");
 
         } catch (IOException e) {
             e.printStackTrace();

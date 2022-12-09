@@ -6,8 +6,6 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.RunHandler;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
-
 public class IndexButton extends AbstractUI {
 
     public final RunViewScreen sc;
@@ -24,7 +22,7 @@ public class IndexButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if(!overable) sb.setColor(Color.DARK_GRAY);
+            if (!overable) sb.setColor(Color.DARK_GRAY);
             else if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);
             if (showImg) sb.draw(img, x, y, sWidth, sHeight);

@@ -11,23 +11,23 @@ import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 public class BattleEventChoice extends AbstractEvent.EventChoice {
 
-  public AbstractRoom battle;
+    public AbstractRoom battle;
 
-  public BattleEventChoice(String t, AbstractRoom battle) {
-    this(t, battle, new AbstractEvent.EventCondition.True());
-  }
+    public BattleEventChoice(String t, AbstractRoom battle) {
+        this(t, battle, new AbstractEvent.EventCondition.True());
+    }
 
-  public BattleEventChoice(String t, AbstractRoom battle, AbstractEvent.EventCondition condition) {
-    super(t, condition);
-    this.battle = battle;
-  }
+    public BattleEventChoice(String t, AbstractRoom battle, AbstractEvent.EventCondition condition) {
+        super(t, condition);
+        this.battle = battle;
+    }
 
-  @Override
-  protected void onSelect() {
-    AbstractLabyrinth.currentFloor.currentRoom.enemies = battle.enemies;
-    battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
-    SoundHandler.fadeOutAll();
-    SoundHandler.addBattle();
-    fadeOutAndChangeScreen(battleScreen);
-  }
+    @Override
+    protected void onSelect() {
+        AbstractLabyrinth.currentFloor.currentRoom.enemies = battle.enemies;
+        battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
+        SoundHandler.fadeOutAll();
+        SoundHandler.addBattle();
+        fadeOutAndChangeScreen(battleScreen);
+    }
 }

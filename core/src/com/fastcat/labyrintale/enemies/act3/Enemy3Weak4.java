@@ -9,39 +9,39 @@ import com.fastcat.labyrintale.status.HostStatus;
 
 public class Enemy3Weak4 extends AbstractEnemy {
 
-  private static final String ID = "Enemy3Weak4";
-  private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 26;
+    private static final String ID = "Enemy3Weak4";
+    private static final EnemyType TYPE = EnemyType.WEAK;
+    private static final int HEALTH = 26;
 
-  public Enemy3Weak4() {
-    super(ID, TYPE, HEALTH);
-    stat.speed = 3;
-    stat.critical = 5;
-    stat.debuRes = 30;
-    stat.neutRes = -100;
-    stat.moveRes = 5;
-  }
+    public Enemy3Weak4() {
+        super(ID, TYPE, HEALTH);
+        stat.speed = 3;
+        stat.critical = 5;
+        stat.debuRes = 30;
+        stat.neutRes = -100;
+        stat.moveRes = 5;
+    }
 
-  @Override
-  public void preBattle() {
-    applyStatus(new HostStatus(2), this, 1, false);
-  }
+    @Override
+    public void preBattle() {
+        applyStatus(new HostStatus(2), this, 1, false);
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s1 = new StrikeE(this);
-    s1.upgrade();
-    s1.upgrade();
-    temp.add(s1);
-    AbstractSkill s2 = new StrikeE(this);
-    s2.upgrade();
-    s2.upgrade();
-    temp.add(s2);
-    AbstractSkill s3 = new FuryE(this);
-    s3.upgrade();
-    s3.upgrade();
-    temp.add(s3);
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        AbstractSkill s1 = new StrikeE(this);
+        s1.upgrade();
+        s1.upgrade();
+        temp.add(s1);
+        AbstractSkill s2 = new StrikeE(this);
+        s2.upgrade();
+        s2.upgrade();
+        temp.add(s2);
+        AbstractSkill s3 = new FuryE(this);
+        s3.upgrade();
+        s3.upgrade();
+        temp.add(s3);
+        return temp;
+    }
 }

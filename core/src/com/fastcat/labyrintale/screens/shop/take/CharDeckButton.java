@@ -13,61 +13,61 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 
 public class CharDeckButton extends AbstractUI {
 
-  private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
-  public ShopTakeScreen sc;
-  public AbstractSkill skill;
-  public AbstractSkill toSkill;
-  public int index;
+    private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
+    public ShopTakeScreen sc;
+    public AbstractSkill skill;
+    public AbstractSkill toSkill;
+    public int index;
 
-  public CharDeckButton(ShopTakeScreen screen, int index, AbstractSkill s) {
-    super(FileHandler.getUi().get("BORDER_M"));
-    toSkill = s;
-    this.index = index;
-    sc = screen;
-    skill = s.owner.deck.get(index);
+    public CharDeckButton(ShopTakeScreen screen, int index, AbstractSkill s) {
+        super(FileHandler.getUi().get("BORDER_M"));
+        toSkill = s;
+        this.index = index;
+        sc = screen;
+        skill = s.owner.deck.get(index);
 
-    fontData = FontHandler.CARD_BIG_DESC;
-  }
-
-  @Override
-  protected void updateButton() {
-    if (over) {
-      AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
+        fontData = FontHandler.CARD_BIG_DESC;
     }
-  }
 
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      if (!over) sb.setColor(Color.LIGHT_GRAY);
-      else sb.setColor(Color.WHITE);
-      if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
-      sb.setColor(Color.WHITE);
-      sb.draw(img, x, y, sWidth, sHeight);
-
-      if (!skill.passive) {
-        sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
-        FontHandler.renderCenter(
-            sb,
-            fontData,
-            Integer.toString(skill.cost),
-            x - sWidth * 0.05f,
-            y + sWidth * 0.95f,
-            sWidth * 0.2f,
-            sWidth * 0.2f);
-      }
+    @Override
+    protected void updateButton() {
+        if (over) {
+            AbstractLabyrinth.cPanel.infoPanel.setInfo(skill);
+        }
     }
-  }
 
-  @Override
-  protected Array<SubText> getSubText() {
-    return skill != null ? skill.key : null;
-  }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (!over) sb.setColor(Color.LIGHT_GRAY);
+            else sb.setColor(Color.WHITE);
+            if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
+            sb.setColor(Color.WHITE);
+            sb.draw(img, x, y, sWidth, sHeight);
 
-  @Override
-  public void onClick() {
-    skill.owner.gainSkill(index, toSkill);
-    sc.isRewardDone(true);
-    Labyrintale.removeTempScreen(sc);
-  }
+            if (!skill.passive) {
+                sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                FontHandler.renderCenter(
+                        sb,
+                        fontData,
+                        Integer.toString(skill.cost),
+                        x - sWidth * 0.05f,
+                        y + sWidth * 0.95f,
+                        sWidth * 0.2f,
+                        sWidth * 0.2f);
+            }
+        }
+    }
+
+    @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : null;
+    }
+
+    @Override
+    public void onClick() {
+        skill.owner.gainSkill(index, toSkill);
+        sc.isRewardDone(true);
+        Labyrintale.removeTempScreen(sc);
+    }
 }

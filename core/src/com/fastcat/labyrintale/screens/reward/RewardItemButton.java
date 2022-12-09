@@ -15,91 +15,91 @@ import com.fastcat.labyrintale.rewards.SkillReward;
 
 public class RewardItemButton extends AbstractUI {
 
-  private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
-  private final Sprite image;
-  public AbstractReward reward;
-  public SkillReward sReward;
-  public ItemReward iReward;
-  private RewardItemCharIcon icon;
+    private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
+    private final Sprite image;
+    public AbstractReward reward;
+    public SkillReward sReward;
+    public ItemReward iReward;
+    private RewardItemCharIcon icon;
 
-  public RewardItemButton(AbstractReward re) {
-    super(FileHandler.getUi().get("BORDER"));
-    image = re.img;
-    this.reward = re;
-    if (reward.type == AbstractReward.RewardType.SKILL) {
-      sReward = (SkillReward) reward;
-      icon = new RewardItemCharIcon(sReward);
-    } else if (reward.type == AbstractReward.RewardType.ITEM) {
-      iReward = (ItemReward) reward;
-    }
-
-    fontData = FontHandler.SUB_NAME;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (enabled) {
-      if (reward.isDone) sb.setColor(Color.DARK_GRAY);
-      else if (!over) sb.setColor(Color.LIGHT_GRAY);
-      else sb.setColor(Color.WHITE);
-      sb.draw(image, x, y, sWidth, sHeight);
-      if (reward.type == AbstractReward.RewardType.SKILL) {
-        sb.setColor(Color.WHITE);
-        sb.draw(img, x, y, sWidth, sHeight);
-        sb.draw(
-            icon.item.skill.owner.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
-        sb.draw(icon.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
-
-        if (!icon.item.skill.passive) {
-          sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
-          FontHandler.renderCenter(
-              sb,
-              fontData,
-              Integer.toString(icon.item.skill.cost),
-              x - sWidth * 0.05f,
-              y + sWidth * 0.95f,
-              sWidth * 0.2f,
-              sWidth * 0.2f);
+    public RewardItemButton(AbstractReward re) {
+        super(FileHandler.getUi().get("BORDER"));
+        image = re.img;
+        this.reward = re;
+        if (reward.type == AbstractReward.RewardType.SKILL) {
+            sReward = (SkillReward) reward;
+            icon = new RewardItemCharIcon(sReward);
+        } else if (reward.type == AbstractReward.RewardType.ITEM) {
+            iReward = (ItemReward) reward;
         }
-      } else if(reward.type == AbstractReward.RewardType.ITEM) {
-        sb.setColor(iReward.type == ItemReward.ItemRewardType.BOSS ?
-                AbstractItem.getRarityColor(AbstractItem.ItemRarity.BOSS) :
-                iReward.item.getRarityColor());
-        sb.draw(img, x, y, sWidth, sHeight);
-      }
-      sb.setColor(Color.WHITE);
-    }
-  }
 
-  @Override
-  protected void updateButton() {
-    if (over) {
-      if (reward.type == AbstractReward.RewardType.SKILL)
-        AbstractLabyrinth.cPanel.infoPanel.setInfo(sReward.skill);
-      else AbstractLabyrinth.cPanel.infoPanel.setInfo(reward.name, reward.desc);
-    }
-  }
-
-  @Override
-  protected void onOver() {}
-
-  @Override
-  protected Array<SubText> getSubText() {
-    if (reward.type == AbstractReward.RewardType.SKILL) {
-      return sReward.skill.key;
-    } else if (reward.type == AbstractReward.RewardType.ITEM && iReward.type != ItemReward.ItemRewardType.BOSS) {
-      return iReward.item.key;
-    } else if (reward.type == AbstractReward.RewardType.EXP) {
-      return subs;
+        fontData = FontHandler.SUB_NAME;
     }
 
-    return subTexts;
-  }
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (reward.isDone) sb.setColor(Color.DARK_GRAY);
+            else if (!over) sb.setColor(Color.LIGHT_GRAY);
+            else sb.setColor(Color.WHITE);
+            sb.draw(image, x, y, sWidth, sHeight);
+            if (reward.type == AbstractReward.RewardType.SKILL) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+                sb.draw(icon.item.skill.owner.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
+                sb.draw(icon.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
 
-  @Override
-  protected void onClick() {
-    if (!reward.isDone) {
-      reward.takeReward();
+                if (!icon.item.skill.passive) {
+                    sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                    FontHandler.renderCenter(
+                            sb,
+                            fontData,
+                            Integer.toString(icon.item.skill.cost),
+                            x - sWidth * 0.05f,
+                            y + sWidth * 0.95f,
+                            sWidth * 0.2f,
+                            sWidth * 0.2f);
+                }
+            } else if (reward.type == AbstractReward.RewardType.ITEM) {
+                sb.setColor(
+                        iReward.type == ItemReward.ItemRewardType.BOSS
+                                ? AbstractItem.getRarityColor(AbstractItem.ItemRarity.BOSS)
+                                : iReward.item.getRarityColor());
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+            sb.setColor(Color.WHITE);
+        }
     }
-  }
+
+    @Override
+    protected void updateButton() {
+        if (over) {
+            if (reward.type == AbstractReward.RewardType.SKILL)
+                AbstractLabyrinth.cPanel.infoPanel.setInfo(sReward.skill);
+            else AbstractLabyrinth.cPanel.infoPanel.setInfo(reward.name, reward.desc);
+        }
+    }
+
+    @Override
+    protected void onOver() {}
+
+    @Override
+    protected Array<SubText> getSubText() {
+        if (reward.type == AbstractReward.RewardType.SKILL) {
+            return sReward.skill.key;
+        } else if (reward.type == AbstractReward.RewardType.ITEM && iReward.type != ItemReward.ItemRewardType.BOSS) {
+            return iReward.item.key;
+        } else if (reward.type == AbstractReward.RewardType.EXP) {
+            return subs;
+        }
+
+        return subTexts;
+    }
+
+    @Override
+    protected void onClick() {
+        if (!reward.isDone) {
+            reward.takeReward();
+        }
+    }
 }

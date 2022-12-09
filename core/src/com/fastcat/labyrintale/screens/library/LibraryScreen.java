@@ -2,11 +2,8 @@ package com.fastcat.labyrintale.screens.library;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.difficulty.BackButton;
-import com.fastcat.labyrintale.screens.difficulty.DifficultyButton;
 import com.fastcat.labyrintale.uis.GifBg;
 
 public class LibraryScreen extends AbstractScreen {
@@ -17,7 +14,7 @@ public class LibraryScreen extends AbstractScreen {
 
     public LibraryScreen() {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             LibraryButton b = new LibraryButton(LibraryButton.Library.values()[i]);
             b.setPosition(w * 0.175f + w * 0.325f * i - b.sWidth / 2, h * 0.5f - b.sHeight / 2);
             buttons[i] = b;
@@ -28,7 +25,7 @@ public class LibraryScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        for(LibraryButton b : buttons) {
+        for (LibraryButton b : buttons) {
             b.update();
         }
         backButton.update();
@@ -37,7 +34,7 @@ public class LibraryScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         back.render(sb);
-        for(LibraryButton b : buttons) {
+        for (LibraryButton b : buttons) {
             b.render(sb);
         }
         backButton.render(sb);

@@ -7,24 +7,24 @@ import com.fastcat.labyrintale.actions.MoveAction;
 
 public class LureStatus extends AbstractStatus {
 
-  private static final String ID = "Lure";
-  private static final SkillTarget TARGET = SkillTarget.NONE;
+    private static final String ID = "Lure";
+    private static final SkillTarget TARGET = SkillTarget.NONE;
 
-  public LureStatus() {
-    super(ID, TARGET, StatusType.STATIC);
-  }
-
-  @Override
-  public String getDesc() {
-    return exDesc[0];
-  }
-
-  @Override
-  public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
-    if (type == AbstractEntity.DamageType.NORMAL) {
-      flash();
-      top(new MoveAction(t, owner, 0, 0.2f));
+    public LureStatus() {
+        super(ID, TARGET, StatusType.STATIC);
     }
-    return d;
-  }
+
+    @Override
+    public String getDesc() {
+        return exDesc[0];
+    }
+
+    @Override
+    public int onDamaged(AbstractEntity t, int d, AbstractEntity.DamageType type) {
+        if (type == AbstractEntity.DamageType.NORMAL) {
+            flash();
+            top(new MoveAction(t, owner, 0, 0.2f));
+        }
+        return d;
+    }
 }

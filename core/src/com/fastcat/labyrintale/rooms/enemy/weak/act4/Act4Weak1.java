@@ -8,14 +8,12 @@ import com.fastcat.labyrintale.enemies.act4.Enemy4Weak1;
 
 public class Act4Weak1 extends AbstractRoom {
 
-  public Act4Weak1() {
-    super("Act4Weak1", RoomType.BATTLE);
-  }
+    public Act4Weak1() {
+        super("Act4Weak1", RoomType.BATTLE);
+    }
 
-  @Override
-  public AbstractEnemy[] getEnemies() {
-    return new AbstractEnemy[] {
-      new Enemy2Weak5(), new Enemy2Weak5(), new Enemy4Weak1(), new EnemyPlaceholder()
-    };
-  }
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {new Enemy2Weak5(), new Enemy2Weak5(), new Enemy4Weak1(), new EnemyPlaceholder()};
+    }
 }

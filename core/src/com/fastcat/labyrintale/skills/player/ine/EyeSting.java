@@ -9,28 +9,28 @@ import com.fastcat.labyrintale.status.BlindStatus;
 
 public class EyeSting extends AbstractSkill {
 
-  private static final String ID = "EyeSting";
-  private static final SkillType TYPE = SkillType.ATTACK;
-  private static final SkillRarity RARITY = SkillRarity.NORMAL;
-  private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-  private static final int ATTACK = 10;
-  private static final int UP = 5;
+    private static final String ID = "EyeSting";
+    private static final SkillType TYPE = SkillType.ATTACK;
+    private static final SkillRarity RARITY = SkillRarity.NORMAL;
+    private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
+    private static final int ATTACK = 10;
+    private static final int UP = 5;
 
-  public EyeSting(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseAttack(ATTACK, UP);
-    cost = 4;
-  }
+    public EyeSting(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseAttack(ATTACK, UP);
+        cost = 4;
+    }
 
-  @Override
-  public void use() {
-    AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT);
-    bot(a);
-    AbstractAction m = new ApplyStatusAction(new BlindStatus(), owner, target, true);
-    m.preAction = a;
-    bot(m);
-  }
+    @Override
+    public void use() {
+        AbstractAction a = new AttackAction(owner, target, attack, AttackAction.AttackType.LIGHT);
+        bot(a);
+        AbstractAction m = new ApplyStatusAction(new BlindStatus(), owner, target, true);
+        m.preAction = a;
+        bot(m);
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

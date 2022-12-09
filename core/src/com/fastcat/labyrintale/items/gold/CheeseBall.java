@@ -6,26 +6,22 @@ import com.fastcat.labyrintale.actions.UpgradeAction;
 
 public class CheeseBall extends AbstractItem {
 
-  private static final String ID = "CheeseBall";
-  private static final ItemRarity RARITY = ItemRarity.GOLD;
+    private static final String ID = "CheeseBall";
+    private static final ItemRarity RARITY = ItemRarity.GOLD;
 
-  public CheeseBall(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public CheeseBall(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void onGain() {
+    @Override
+    public void onGain() {}
 
-  }
+    @Override
+    public void onRemove() {}
 
-  @Override
-  public void onRemove() {
-
-  }
-
-  @Override
-  public void atBattleStart() {
-    flash();
-    top(new UpgradeAction(owner.hand));
-  }
+    @Override
+    public void atBattleStart() {
+        flash();
+        top(new UpgradeAction(owner.hand));
+    }
 }

@@ -8,23 +8,23 @@ import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
 
 public class TransformEvent extends AbstractEvent {
 
-  private static final String ID = "Transform";
-  private static final int SIZE = 3;
+    private static final String ID = "Transform";
+    private static final int SIZE = 3;
 
-  public TransformEvent() {
-    super(ID, SIZE);
-    img = getImage(0);
-  }
-
-  @Override
-  public Array<EventChoice> getChoices(int page) {
-    Array<EventChoice> a = new Array<>();
-    if (page == 0) {
-      a.add(new SkillRewardEventChoice(data.SELECT[0], new EventCondition.True(), this, 1));
-      a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
-    } else {
-      a.add(new EndEventChoice());
+    public TransformEvent() {
+        super(ID, SIZE);
+        img = getImage(0);
     }
-    return a;
-  }
+
+    @Override
+    public Array<EventChoice> getChoices(int page) {
+        Array<EventChoice> a = new Array<>();
+        if (page == 0) {
+            a.add(new SkillRewardEventChoice(data.SELECT[0], new EventCondition.True(), this, 1));
+            a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
+        } else {
+            a.add(new EndEventChoice());
+        }
+        return a;
+    }
 }

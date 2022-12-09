@@ -7,23 +7,23 @@ import com.fastcat.labyrintale.status.RestrictStatus;
 
 public class RestrictE extends AbstractSkill {
 
-  private static final String ID = "RestrictE";
-  private static final SkillType TYPE = SkillType.SCHEME;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.PLAYER_LOW_HP;
-  private static final int VALUE = 2;
+    private static final String ID = "RestrictE";
+    private static final SkillType TYPE = SkillType.SCHEME;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER_LOW_HP;
+    private static final int VALUE = 2;
 
-  public RestrictE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseValue(VALUE, 1);
-    setIntent(IntentType.DEBUFF);
-  }
+    public RestrictE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseValue(VALUE, 1);
+        setIntent(IntentType.DEBUFF);
+    }
 
-  @Override
-  public void use() {
-    bot(new ApplyStatusAction(new RestrictStatus(value), owner, target, false));
-  }
+    @Override
+    public void use() {
+        bot(new ApplyStatusAction(new RestrictStatus(value), owner, target, false));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

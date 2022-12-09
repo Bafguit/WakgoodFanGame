@@ -10,16 +10,16 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class PassShopButton extends AbstractUI {
 
-  public PassShopButton() {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
-    fontData = BUTTON;
-    text = "넘기기";
-  }
+    public PassShopButton() {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+        fontData = BUTTON;
+        text = "넘기기";
+    }
 
-  @Override
-  protected void onClick() {
-    AbstractLabyrinth.endRoom();
-    Labyrintale.returnToWay();
-  }
+    @Override
+    protected void onClick() {
+        AbstractLabyrinth.endRoom();
+        Labyrintale.returnToWay();
+    }
 }

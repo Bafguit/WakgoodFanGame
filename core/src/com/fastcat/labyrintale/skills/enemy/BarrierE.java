@@ -7,23 +7,23 @@ import com.fastcat.labyrintale.handlers.ActionHandler;
 
 public class BarrierE extends AbstractSkill {
 
-  private static final String ID = "BarrierE";
-  private static final SkillType TYPE = SkillType.DEFENCE;
-  private static final SkillRarity RARITY = SkillRarity.ENEMY;
-  private static final SkillTarget TARGET = SkillTarget.SELF;
-  private static final int VALUE = 3;
+    private static final String ID = "BarrierE";
+    private static final SkillType TYPE = SkillType.DEFENCE;
+    private static final SkillRarity RARITY = SkillRarity.ENEMY;
+    private static final SkillTarget TARGET = SkillTarget.SELF;
+    private static final int VALUE = 3;
 
-  public BarrierE(AbstractEntity e) {
-    super(e, ID, TYPE, RARITY, TARGET);
-    setBaseSpell(VALUE, 1);
-    setIntent(IntentType.SHIELD);
-  }
+    public BarrierE(AbstractEntity e) {
+        super(e, ID, TYPE, RARITY, TARGET);
+        setBaseSpell(VALUE, 1);
+        setIntent(IntentType.SHIELD);
+    }
 
-  @Override
-  public void use() {
-    ActionHandler.bot(new BlockAction(this.owner, target, spell));
-  }
+    @Override
+    public void use() {
+        ActionHandler.bot(new BlockAction(this.owner, target, spell));
+    }
 
-  @Override
-  protected void upgradeCard() {}
+    @Override
+    protected void upgradeCard() {}
 }

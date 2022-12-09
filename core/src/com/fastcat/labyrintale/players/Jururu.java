@@ -15,37 +15,37 @@ import com.fastcat.labyrintale.skills.player.jururu.Pray;
 
 public class Jururu extends AbstractPlayer {
 
-  private static final String ID = "jururu";
-  private static final int HEALTH = 20;
-  private static final Color COLOR = MAGENTA;
+    private static final String ID = "jururu";
+    private static final int HEALTH = 20;
+    private static final Color COLOR = MAGENTA;
 
-  public Jururu() {
-    super(ID, HEALTH, COLOR);
-    stat.speed = 1;
-    stat.debuRes = 35;
-    stat.critical = 5;
-    stat.moveRes = 20;
-  }
+    public Jururu() {
+        super(ID, HEALTH, COLOR);
+        stat.speed = 1;
+        stat.debuRes = 35;
+        stat.critical = 5;
+        stat.moveRes = 20;
+    }
 
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    temp.add(new Strike(this));
-    temp.add(new Barrier(this));
-    temp.add(new Pray(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        temp.add(new Strike(this));
+        temp.add(new Barrier(this));
+        temp.add(new Pray(this));
+        return temp;
+    }
 
-  @Override
-  public Array<AbstractItem> getStartingItem() {
-    Array<AbstractItem> temp = new Array<>();
-    temp.add(new PlaceHolder(this));
-    temp.add(new PlaceHolder(this));
-    return temp;
-  }
+    @Override
+    public Array<AbstractItem> getStartingItem() {
+        Array<AbstractItem> temp = new Array<>();
+        temp.add(new PlaceHolder(this));
+        temp.add(new PlaceHolder(this));
+        return temp;
+    }
 
-  @Override
-  public AbstractItem getPassive() {
-    return new Bible(this);
-  }
+    @Override
+    public AbstractItem getPassive() {
+        return new Bible(this);
+    }
 }

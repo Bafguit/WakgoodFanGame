@@ -1,16 +1,13 @@
 package com.fastcat.labyrintale.handlers;
 
+import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonValue;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor;
-import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
-import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
 
 public class AchieveHandler {
 
@@ -20,14 +17,14 @@ public class AchieveHandler {
     public static AchieveCheck check = new AchieveCheck();
 
     public static void load() {
-        if(data.exists()) {
+        if (data.exists()) {
             JsonValue js = FileHandler.generateJson(data);
-            for(Achievement ac : Achievement.values()) {
+            for (Achievement ac : Achievement.values()) {
                 achvs.put(ac, js.get(ac.name()).asInt());
             }
         } else {
             achvs.clear();
-            for(Achievement ac : Achievement.values()) {
+            for (Achievement ac : Achievement.values()) {
                 achvs.put(ac, 0);
             }
             Gdx.files.local("data").mkdirs();
@@ -38,10 +35,10 @@ public class AchieveHandler {
             }
         }
 
-        if(aCheck.exists()) {
+        if (aCheck.exists()) {
             JsonValue js = FileHandler.generateJson(aCheck);
             JsonValue aa = js.get("ALL_ADV");
-            for(int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+            for (int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
                 AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
                 check.ALL_ADV.put(p, aa.get(p.toString()).asBoolean());
             }
@@ -49,7 +46,7 @@ public class AchieveHandler {
             check.WIN = js.get("WIN").asInt();
         } else {
             check = new AchieveCheck();
-            for(int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+            for (int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
                 AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
                 check.ALL_ADV.put(p, false);
             }
@@ -86,8 +83,26 @@ public class AchieveHandler {
     }
 
     public enum Achievement {
-        COFFIN, ALL_CHAR, ALL_ADV, NO_ITEM, NO_USE_GOLD, GOLDEN, WAK,
-        INE, BURGER, LILPA, GOSEGU, VIICHAN, JURURU, MANAGER,
-        LAST_ONE, PURITY, REFLECT, IMMORTAL, FASTEST, DEATH, WIN
+        COFFIN,
+        ALL_CHAR,
+        ALL_ADV,
+        NO_ITEM,
+        NO_USE_GOLD,
+        GOLDEN,
+        WAK,
+        INE,
+        BURGER,
+        LILPA,
+        GOSEGU,
+        VIICHAN,
+        JURURU,
+        MANAGER,
+        LAST_ONE,
+        PURITY,
+        REFLECT,
+        IMMORTAL,
+        FASTEST,
+        DEATH,
+        WIN
     }
 }

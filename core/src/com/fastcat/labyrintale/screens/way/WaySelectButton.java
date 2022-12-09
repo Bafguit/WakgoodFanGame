@@ -10,25 +10,25 @@ import com.fastcat.labyrintale.handlers.SaveHandler;
 
 public class WaySelectButton extends AbstractUI {
 
-  public WayScreen screen;
-  public AbstractChoice c;
+    public WayScreen screen;
+    public AbstractChoice c;
 
-  public WaySelectButton(WayScreen s, AbstractChoice r) {
-    super(FileHandler.getUi().get("WAY_SELECT"));
-    screen = s;
-    c = r;
-  }
+    public WaySelectButton(WayScreen s, AbstractChoice r) {
+        super(FileHandler.getUi().get("WAY_SELECT"));
+        screen = s;
+        c = r;
+    }
 
-  @Override
-  protected void updateButton() {
-    overable = !Labyrintale.wayScreen.isSelecting;
-  }
+    @Override
+    protected void updateButton() {
+        overable = !Labyrintale.wayScreen.isSelecting;
+    }
 
-  @Override
-  public void onClick() {
-    currentFloor.currentRoom = c.room;
-    currentFloor.currentWay.selected = c.index;
-    SaveHandler.save();
-    currentFloor.currentRoom.enter();
-  }
+    @Override
+    public void onClick() {
+        currentFloor.currentRoom = c.room;
+        currentFloor.currentWay.selected = c.index;
+        SaveHandler.save();
+        currentFloor.currentRoom.enter();
+    }
 }

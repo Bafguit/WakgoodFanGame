@@ -10,44 +10,44 @@ import com.fastcat.labyrintale.status.ImmuneStatus;
 
 public class Enemy4Weak4 extends AbstractEnemy {
 
-  private static final String ID = "Enemy4Weak4";
-  private static final EnemyType TYPE = EnemyType.WEAK;
-  private static final int HEALTH = 61;
+    private static final String ID = "Enemy4Weak4";
+    private static final EnemyType TYPE = EnemyType.WEAK;
+    private static final int HEALTH = 61;
 
-  public Enemy4Weak4() {
-    super(ID, TYPE, HEALTH);
-    stat.speed = 4;
-    stat.critical = 5;
-    stat.debuRes = 40;
-    stat.neutRes = 5;
-    stat.moveRes = 5;
-  }
-
-  @Override
-  public void preBattle() {
-    applyStatus(new ImmuneStatus(3), this, 3, false);
-  }
-
-  @Override
-  public Array<AbstractSkill> getStartingDeck() {
-    Array<AbstractSkill> temp = new Array<>();
-    AbstractSkill s1 = new AttackLowE(this).upgrade();
-    for (int i = 0; i < 4; i++) {
-      s1.upgrade();
+    public Enemy4Weak4() {
+        super(ID, TYPE, HEALTH);
+        stat.speed = 4;
+        stat.critical = 5;
+        stat.debuRes = 40;
+        stat.neutRes = 5;
+        stat.moveRes = 5;
     }
-    temp.add(s1);
-    AbstractSkill s4 = new AttackLowE(this).upgrade();
-    for (int i = 0; i < 4; i++) {
-      s4.upgrade();
+
+    @Override
+    public void preBattle() {
+        applyStatus(new ImmuneStatus(3), this, 3, false);
     }
-    temp.add(s4);
-    AbstractSkill s2 = new FuryE(this);
-    s2.upgrade();
-    s2.upgrade();
-    temp.add(s2);
-    AbstractSkill s3 = new WeakE(this);
-    s3.upgrade().upgrade();
-    temp.add(s3);
-    return temp;
-  }
+
+    @Override
+    public Array<AbstractSkill> getStartingDeck() {
+        Array<AbstractSkill> temp = new Array<>();
+        AbstractSkill s1 = new AttackLowE(this).upgrade();
+        for (int i = 0; i < 4; i++) {
+            s1.upgrade();
+        }
+        temp.add(s1);
+        AbstractSkill s4 = new AttackLowE(this).upgrade();
+        for (int i = 0; i < 4; i++) {
+            s4.upgrade();
+        }
+        temp.add(s4);
+        AbstractSkill s2 = new FuryE(this);
+        s2.upgrade();
+        s2.upgrade();
+        temp.add(s2);
+        AbstractSkill s3 = new WeakE(this);
+        s3.upgrade().upgrade();
+        temp.add(s3);
+        return temp;
+    }
 }

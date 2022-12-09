@@ -8,20 +8,20 @@ import com.fastcat.labyrintale.actions.StatusDamageAction;
 
 public class RestrictStatus extends AbstractStatus {
 
-  private static final String ID = "Restrict";
+    private static final String ID = "Restrict";
 
-  public RestrictStatus(int amount) {
-    super(ID, SELF, StatusType.DEBUFF);
-    setAmount(amount);
-  }
+    public RestrictStatus(int amount) {
+        super(ID, SELF, StatusType.DEBUFF);
+        setAmount(amount);
+    }
 
-  @Override
-  public String getDesc() {
-    return exDesc[0] + amount + exDesc[1];
-  }
+    @Override
+    public String getDesc() {
+        return exDesc[0] + amount + exDesc[1];
+    }
 
-  @Override
-  public void endOfTurn() {
-    top(new StatusDamageAction(this, AttackAction.AttackType.NONE, false, false));
-  }
+    @Override
+    public void endOfTurn() {
+        top(new StatusDamageAction(this, AttackAction.AttackType.NONE, false, false));
+    }
 }

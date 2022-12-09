@@ -7,16 +7,16 @@ import com.fastcat.labyrintale.actions.ModifyMaxHealthAction;
 
 public class CrackedHeart extends AbstractItem {
 
-  private static final String ID = "CrackedHeart";
-  private static final ItemRarity RARITY = ItemRarity.SPECIAL;
+    private static final String ID = "CrackedHeart";
+    private static final ItemRarity RARITY = ItemRarity.SPECIAL;
 
-  public CrackedHeart(AbstractPlayer owner) {
-    super(ID, owner, RARITY);
-  }
+    public CrackedHeart(AbstractPlayer owner) {
+        super(ID, owner, RARITY);
+    }
 
-  @Override
-  public void atBattleEnd() {
-    flash();
-    top(new ModifyMaxHealthAction(owner, AbstractSkill.SkillTarget.SELF, 2));
-  }
+    @Override
+    public void atBattleEnd() {
+        flash();
+        top(new ModifyMaxHealthAction(owner, AbstractSkill.SkillTarget.SELF, 2));
+    }
 }

@@ -61,9 +61,7 @@ public class ConfirmSlotScreen extends AbstractScreen implements GetSelectedSlot
     }
 
     @Override
-    public void show() {
-
-    }
+    public void show() {}
 
     @Override
     public void slotSelected(AbstractPlayer player, int index) {

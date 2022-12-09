@@ -12,31 +12,30 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class ShieldIcon extends AbstractUI {
 
-  public AbstractStatus status;
-  public AbstractEntity e;
-  public int amount = 0;
+    public AbstractStatus status;
+    public AbstractEntity e;
+    public int amount = 0;
 
-  public ShieldIcon(AbstractEntity e) {
-    super(FileHandler.getUi().get("SHIELD"));
-    fontData = BLOCK;
-    overable = false;
-    clickable = false;
-    this.e = e;
-  }
-
-  @Override
-  protected void renderUi(SpriteBatch sb) {
-    if (e.isAlive()) {
-      amount = e.block;
-      if (amount > 0) {
-        sb.setColor(Color.WHITE);
-        sb.draw(img, x, y, sWidth, sHeight);
-        renderKeywordCenter(
-            sb, fontData, Integer.toString(amount), x, y + sHeight * 0.5f, sWidth, sHeight);
-      }
+    public ShieldIcon(AbstractEntity e) {
+        super(FileHandler.getUi().get("SHIELD"));
+        fontData = BLOCK;
+        overable = false;
+        clickable = false;
+        this.e = e;
     }
-  }
 
-  @Override
-  protected void updateButton() {}
+    @Override
+    protected void renderUi(SpriteBatch sb) {
+        if (e.isAlive()) {
+            amount = e.block;
+            if (amount > 0) {
+                sb.setColor(Color.WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+                renderKeywordCenter(sb, fontData, Integer.toString(amount), x, y + sHeight * 0.5f, sWidth, sHeight);
+            }
+        }
+    }
+
+    @Override
+    protected void updateButton() {}
 }

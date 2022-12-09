@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.dictionary;
 
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
@@ -7,8 +9,6 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.BgImg;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DictScreen extends AbstractScreen {
 
@@ -33,7 +33,7 @@ public class DictScreen extends AbstractScreen {
         close.setParent(bg);
         bg.setPosition(0, Gdx.graphics.getHeight());
         AbstractPlayer.PlayerClass[] cls = AbstractPlayer.PlayerClass.values();
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             DictCharButton c = new DictCharButton(AbstractLabyrinth.getPlayerInstance(cls[i]), this);
             c.setPosition((464 + 214 * i) * scale, 970f * scale - c.sHeight / 2);
             c.setParent(bg);
@@ -43,7 +43,7 @@ public class DictScreen extends AbstractScreen {
 
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         AbstractItem.ItemRarity[] rare = AbstractItem.ItemRarity.values();
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             DictItemRarityButton b = new DictItemRarityButton(this, rare[i + 2]);
             b.setPosition(w * 0.25f + w * 0.1f * i - b.sWidth / 2, 971.3f * scale - b.sHeight / 2);
             b.setParent(bg);
@@ -57,45 +57,45 @@ public class DictScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        if(anim) {
+        if (anim) {
             float h = Gdx.graphics.getHeight();
-            if(isDown) {
+            if (isDown) {
                 alpha += Labyrintale.tick * 5 * 0.8f;
                 bg.y -= h * 5 * Labyrintale.tick;
-                if(alpha >= 0.8f) {
+                if (alpha >= 0.8f) {
                     alpha = 0.8f;
                 }
-                if(bg.y <= 0) {
+                if (bg.y <= 0) {
                     bg.y = 0;
                     anim = false;
                 }
             } else {
                 alpha -= Labyrintale.tick * 5 * 0.8f;
                 bg.y += h * 5 * Labyrintale.tick;
-                if(alpha <= 0) {
+                if (alpha <= 0) {
                     alpha = 0;
                 }
-                if(bg.y >= h) {
+                if (bg.y >= h) {
                     bg.y = h;
                     anim = false;
                     Labyrintale.removeTempScreen(this);
                 }
             }
             bgImg.img.setAlpha(alpha);
-        } else if(InputHandler.cancel) {
+        } else if (InputHandler.cancel) {
             close();
         }
         close.update();
         charTab.update();
         itemTab.update();
-        if(type == DictType.CHAR) {
+        if (type == DictType.CHAR) {
             for (int i = 0; i < 8; i++) {
                 DictCharButton b = chars[i];
-                if(cSelected != null) b.group.up.checked = cSelected.group.up.checked;
+                if (cSelected != null) b.group.up.checked = cSelected.group.up.checked;
                 b.update();
             }
-        } else if(type == DictType.ITEM) {
-            for(int i = 0; i < 6; i++) {
+        } else if (type == DictType.ITEM) {
+            for (int i = 0; i < 6; i++) {
                 items[i].update();
             }
         }
@@ -108,12 +108,12 @@ public class DictScreen extends AbstractScreen {
         close.render(sb);
         charTab.render(sb);
         itemTab.render(sb);
-        if(type == DictType.CHAR) {
+        if (type == DictType.CHAR) {
             for (int i = 0; i < 8; i++) {
                 chars[i].render(sb);
             }
-        } else if(type == DictType.ITEM) {
-            for(int i = 0; i < 6; i++) {
+        } else if (type == DictType.ITEM) {
+            for (int i = 0; i < 6; i++) {
                 items[i].render(sb);
             }
         }
@@ -132,6 +132,7 @@ public class DictScreen extends AbstractScreen {
     }
 
     public enum DictType {
-        CHAR, ITEM
+        CHAR,
+        ITEM
     }
 }

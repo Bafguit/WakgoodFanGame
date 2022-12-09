@@ -5,16 +5,15 @@
 
 package com.fastcat.labyrintale;
 
-import java.io.InputStream;
-import java.util.Vector;
-
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
+import java.io.InputStream;
+import java.util.Vector;
 
 public class GifDecoder {
     /**
@@ -31,6 +30,7 @@ public class GifDecoder {
     public static final int STATUS_OPEN_ERROR = 2;
     /** max decoder pixel stack size */
     protected static final int MAX_STACK_SIZE = 4096;
+
     protected InputStream in;
     protected int status;
     protected int width; // full image width
@@ -77,11 +77,10 @@ public class GifDecoder {
 
             int x, y;
 
-            for(y = 0; y < h; y++) {
-                for(x = 0; x < w; x++) {
+            for (y = 0; y < h; y++) {
+                for (x = 0; x < w; x++) {
                     int pxl_ARGB8888 = data[x + y * w];
-                    int pxl_RGBA8888 =
-                            ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
+                    int pxl_RGBA8888 = ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
                     // convert ARGB8888 > RGBA8888
                     drawPixel(x, y, pxl_RGBA8888);
                 }
@@ -93,9 +92,9 @@ public class GifDecoder {
 
             int k, l;
 
-            for(k = y;  k < y + height; k++) {
+            for (k = y; k < y + height; k++) {
                 int _offset = offset;
-                for(l = x; l < x + width; l++) {
+                for (l = x; l < x + width; l++) {
                     int pxl = bb.getInt(4 * (l + k * width));
 
                     // convert RGBA8888 > ARGB8888
@@ -243,7 +242,7 @@ public class GifDecoder {
             }
         }
         image = new DixieMap(dest, width, height, Pixmap.Format.RGBA8888);
-        //Pixmap.createPixmap(dest, width, height, Config.ARGB_4444);
+        // Pixmap.createPixmap(dest, width, height, Config.ARGB_4444);
     }
 
     /**
@@ -252,8 +251,7 @@ public class GifDecoder {
      * @return BufferedPixmap representation of frame, or null if n is invalid.
      */
     public DixieMap getFrame(int n) {
-        if (frameCount <= 0)
-            return null;
+        if (frameCount <= 0) return null;
         n = n % frameCount;
         return ((GifFrame) frames.elementAt(n)).image;
     }
@@ -292,7 +290,23 @@ public class GifDecoder {
     protected void decodeBitmapData() {
         int nullCode = -1;
         int npix = iw * ih;
-        int available, clear, code_mask, code_size, end_of_information, in_code, old_code, bits, code, count, i, datum, data_size, first, top, bi, pi;
+        int available,
+                clear,
+                code_mask,
+                code_size,
+                end_of_information,
+                in_code,
+                old_code,
+                bits,
+                code,
+                count,
+                i,
+                datum,
+                data_size,
+                first,
+                top,
+                bi,
+                pi;
         if ((pixels == null) || (pixels.length < npix)) {
             pixels = new byte[npix]; // allocate new pixel array
         }
@@ -319,7 +333,7 @@ public class GifDecoder {
         }
         // Decode GIF pixel stream.
         datum = bits = count = first = top = pi = bi = 0;
-        for (i = 0; i < npix;) {
+        for (i = 0; i < npix; ) {
             if (top == 0) {
                 if (bits < code_size) {
                     // Load bytes until there are enough bits for a code.
@@ -515,10 +529,10 @@ public class GifDecoder {
                                 skip(); // don't care
                             }
                             break;
-                        case 0xfe:// comment extension
+                        case 0xfe: // comment extension
                             skip();
                             break;
-                        case 0x01:// plain text extension
+                        case 0x01: // plain text extension
                             skip();
                             break;
                         default: // uninteresting extension
@@ -693,19 +707,19 @@ public class GifDecoder {
         Pixmap frame = getFrame(0);
         int width = frame.getWidth();
         int height = frame.getHeight();
-        int vzones = (int)Math.sqrt((double)nrFrames);
+        int vzones = (int) Math.sqrt((double) nrFrames);
         int hzones = vzones;
 
-        while(vzones * hzones < nrFrames) vzones++;
+        while (vzones * hzones < nrFrames) vzones++;
 
         int v, h;
 
         Pixmap target = new Pixmap(width * hzones, height * vzones, Pixmap.Format.RGBA8888);
 
-        for(h = 0; h < hzones; h++) {
-            for(v = 0; v < vzones; v++) {
+        for (h = 0; h < hzones; h++) {
+            for (v = 0; v < vzones; v++) {
                 int frameID = v + h * vzones;
-                if(frameID < nrFrames) {
+                if (frameID < nrFrames) {
                     frame = getFrame(frameID);
                     target.drawPixmap(frame, h * width, v * height);
                 }
@@ -715,16 +729,16 @@ public class GifDecoder {
         Texture texture = new Texture(target);
         Array<Sprite> texReg = new Array<>();
 
-        for(h = 0; h < hzones; h++) {
-            for(v = 0; v < vzones; v++) {
+        for (h = 0; h < hzones; h++) {
+            for (v = 0; v < vzones; v++) {
                 int frameID = v + h * vzones;
-                if(frameID < nrFrames) {
+                if (frameID < nrFrames) {
                     Sprite tr = new Sprite(new TextureRegion(texture, h * width, v * height, width, height));
                     texReg.add(tr);
                 }
             }
         }
-        float frameDuration = (float)getDelay(0);
+        float frameDuration = (float) getDelay(0);
         frameDuration /= 1000; // convert milliseconds into seconds
 
         return new Animation<Sprite>(frameDuration, texReg, playMode);
@@ -735,4 +749,4 @@ public class GifDecoder {
         gdec.read(is);
         return gdec.getAnimation(playMode);
     }
-} 
+}

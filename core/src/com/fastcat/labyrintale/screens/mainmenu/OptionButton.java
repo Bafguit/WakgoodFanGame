@@ -9,26 +9,26 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class OptionButton extends AbstractUI {
 
-  public OptionButton() {
-    super(FileHandler.getUi().get("MENU_SELECT"));
-    setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.255f);
-    fontData = MAIN_MENU_SHADOW;
-    text = "설정";
-    showImg = false;
-  }
+    public OptionButton() {
+        super(FileHandler.getUi().get("MENU_SELECT"));
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.255f);
+        fontData = MAIN_MENU_SHADOW;
+        text = "설정";
+        showImg = false;
+    }
 
-  @Override
-  protected void updateButton() {
-    if (!over && showImg) showImg = false;
-  }
+    @Override
+    protected void updateButton() {
+        if (!over && showImg) showImg = false;
+    }
 
-  @Override
-  protected void onOver() {
-    showImg = true;
-  }
+    @Override
+    protected void onOver() {
+        showImg = true;
+    }
 
-  @Override
-  protected void onClick() {
-    Labyrintale.openSetting();
-  }
+    @Override
+    protected void onClick() {
+        Labyrintale.openSetting();
+    }
 }

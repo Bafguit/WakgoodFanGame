@@ -41,7 +41,7 @@ allprojects {
             removeUnusedImports()
             formatAnnotations()
 
-            googleJavaFormat()
+            palantirJavaFormat()
 
         }
     }

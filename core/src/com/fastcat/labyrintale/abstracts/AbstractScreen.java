@@ -14,64 +14,65 @@ import lombok.Getter;
 
 public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Disposable {
 
-  public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
-  public ScreenType type = ScreenType.OTHER;
-  public Array<AtEndOfTempScreen> endTemp = new Array<>();
-  public boolean playMusic = false;
-  private Sprite bg;
+    public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
+    public ScreenType type = ScreenType.OTHER;
+    public Array<AtEndOfTempScreen> endTemp = new Array<>();
+    public boolean playMusic = false;
+    private Sprite bg;
 
-  @Getter private final EffectHandler effectHandler = EffectHandler.newInstance();
+    @Getter
+    private final EffectHandler effectHandler = EffectHandler.newInstance();
 
-  public final void updateAll() {
-    update();
-    effectHandler.update();
-  }
-
-  public abstract void update();
-
-  public abstract void render(SpriteBatch sb);
-
-  @Override
-  public final void render(float delta) {
-    if (bg != null) bg.draw(Labyrintale.game.sb);
-    render(Labyrintale.game.sb);
-    effectHandler.render(Labyrintale.game.sb);
-  }
-
-  public final void setBg(Sprite s) {
-    bg = s;
-    bg.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-  }
-
-  @Override
-  public final void resize(int width, int height) {}
-
-  public void onCreate() {}
-
-  @Override
-  public final void pause() {}
-
-  @Override
-  public final void resume() {}
-
-  @Override
-  public final void atEndOfTempScreen() {
-    for (AtEndOfTempScreen e : endTemp) {
-      if (e != null) e.atEndOfTempScreen();
+    public final void updateAll() {
+        update();
+        effectHandler.update();
     }
-  }
 
-  @Override
-  public void hide() {}
+    public abstract void update();
 
-  @Override
-  public void dispose() {
-    effectHandler.removeAll();
-  }
+    public abstract void render(SpriteBatch sb);
 
-  public enum ScreenType {
-    MAP,
-    OTHER,
-    SETTING
-  }
+    @Override
+    public final void render(float delta) {
+        if (bg != null) bg.draw(Labyrintale.game.sb);
+        render(Labyrintale.game.sb);
+        effectHandler.render(Labyrintale.game.sb);
+    }
+
+    public final void setBg(Sprite s) {
+        bg = s;
+        bg.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+
+    @Override
+    public final void resize(int width, int height) {}
+
+    public void onCreate() {}
+
+    @Override
+    public final void pause() {}
+
+    @Override
+    public final void resume() {}
+
+    @Override
+    public final void atEndOfTempScreen() {
+        for (AtEndOfTempScreen e : endTemp) {
+            if (e != null) e.atEndOfTempScreen();
+        }
+    }
+
+    @Override
+    public void hide() {}
+
+    @Override
+    public void dispose() {
+        effectHandler.removeAll();
+    }
+
+    public enum ScreenType {
+        MAP,
+        OTHER,
+        SETTING
+    }
 }

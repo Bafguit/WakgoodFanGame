@@ -10,16 +10,16 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CloseTempScreenButton extends AbstractUI {
 
-  public CloseTempScreenButton(AbstractScreen screen) {
-    super(FileHandler.getUi().get("BUTTON"));
-    setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
-    fontData = BUTTON;
-    text = "닫기";
-    this.screen = screen;
-  }
+    public CloseTempScreenButton(AbstractScreen screen) {
+        super(FileHandler.getUi().get("BUTTON"));
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+        fontData = BUTTON;
+        text = "닫기";
+        this.screen = screen;
+    }
 
-  @Override
-  protected void onClick() {
-    Labyrintale.removeTempScreen(screen);
-  }
+    @Override
+    protected void onClick() {
+        Labyrintale.removeTempScreen(screen);
+    }
 }
