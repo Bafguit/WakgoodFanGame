@@ -17,7 +17,7 @@ public class RustyShard extends AbstractSkill {
   public RustyShard(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseValue(VALUE, 1);
+    setBaseValue(VALUE);
   }
 
   @Override

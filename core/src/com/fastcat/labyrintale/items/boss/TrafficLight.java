@@ -16,12 +16,12 @@ public class TrafficLight extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.moveRes += 30;
+    owner.stat.speed += 1;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.moveRes -= 30;
+    owner.stat.speed -= 1;
   }
 }

@@ -23,7 +23,7 @@ public class Pray extends AbstractSkill {
   @Override
   public void use() {
     bot(new ApplyStatusAction(new CourageStatus(value), owner, target, true));
-    bot(new ApplyStatusAction(new EnduranceStatus(value), owner, target, true));
+    bot(new ApplyStatusAction(new EnduranceStatus(1), owner, target, true));
   }
 
   @Override

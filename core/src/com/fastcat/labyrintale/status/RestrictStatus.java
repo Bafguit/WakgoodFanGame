@@ -22,6 +22,6 @@ public class RestrictStatus extends AbstractStatus {
 
   @Override
   public void endOfTurn() {
-    top(new StatusDamageAction(this, AttackAction.AttackType.LIGHT, false, false));
+    top(new StatusDamageAction(this, AttackAction.AttackType.NONE, false, false));
   }
 }

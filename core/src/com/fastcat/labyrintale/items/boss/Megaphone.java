@@ -16,12 +16,12 @@ public class Megaphone extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.modifyMaxHealth(10);
+    owner.modifyMaxHealth(8);
   }
 
   @Override
   public void onRemove() {
-    AbstractLabyrinth.charge++;
-    owner.modifyMaxHealth(-10);
+    AbstractLabyrinth.charge--;
+    owner.modifyMaxHealth(-8);
   }
 }

@@ -14,7 +14,6 @@ public final class StringHandler {
   public static ChoiceString choiceString;
   public static EventString eventString;
   public static ItemString itemString;
-  public static AdvisorString advisorString;
   public static KeyString keyString;
   public static AchieveString achvString;
 
@@ -26,7 +25,6 @@ public final class StringHandler {
     choiceString = new ChoiceString();
     eventString = new EventString();
     itemString = new ItemString();
-    advisorString = new AdvisorString();
     keyString = new KeyString();
     achvString = new AchieveString();
   }

@@ -16,12 +16,11 @@ public class SportsCar extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.speed += 2;
+    AbstractLabyrinth.modifyGold(150);
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.speed -= 2;
   }
 }

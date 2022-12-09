@@ -16,12 +16,12 @@ public class Hwacha extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.attack += 2;
+    owner.stat.attack += 1;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.attack -= 2;
+    owner.stat.attack -= 1;
   }
 }

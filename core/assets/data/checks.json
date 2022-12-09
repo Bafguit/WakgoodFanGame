@@ -1,17 +1,17 @@
 {
   "ALL_ADV" : {
-    "HIKI" : false,
+    "PUNG" : false,
+    "SOPHIA" : false,
     "JK" : false,
-    "HAKU" : false,
+    "DOPA" : false,
+    "HIKI" : false,
+    "DUKSU" : false,
     "SECRET" : false,
     "CALLYCARLY" : false,
     "MANDU" : false,
-    "SOPHIA" : false,
-    "DUKSU" : false,
-    "DOPA" : false,
     "RUSUK" : false,
-    "PUNG" : false
+    "HAKU" : false
   },
   "DEATH" : 0,
-  "WIN" : 0
+  "WIN" : 6
 }

@@ -17,12 +17,14 @@ public class ElasticRing extends AbstractItem {
 
   @Override
   public void onGain() {
-    owner.stat.moveRes += 15;
+    owner.modifyMaxHealth(5);
+    owner.stat.moveRes += 10;
   }
 
   @Override
   public void onRemove() {
-    owner.stat.moveRes -= 15;
+    owner.modifyMaxHealth(-5);
+    owner.stat.moveRes -= 10;
   }
 
   @Override

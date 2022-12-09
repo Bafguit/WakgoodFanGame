@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractReward;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -52,6 +53,7 @@ public class RewardScreen extends AbstractScreen {
   @Override
   public void show() {
     Labyrintale.getBaseScreen().cType = ControlPanel.ControlType.BASIC;
+    AbstractLabyrinth.cPanel.update();
     if(SettingHandler.setting.rewardTutorial) {
       Labyrintale.openTutorial(TutorialScreen.TutorialType.REWARD);
       SettingHandler.setting.rewardTutorial = false;

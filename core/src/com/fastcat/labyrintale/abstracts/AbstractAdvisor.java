@@ -9,14 +9,12 @@ public abstract class AbstractAdvisor implements Cloneable {
 
   public AdvisorClass cls;
   public AbstractSkill skill;
-  public SkillString.SkillData data;
   public Sprite img;
 
   public AbstractAdvisor(AdvisorClass cls, AbstractSkill skill) {
     this.cls = cls;
     this.skill = skill;
     img = FileHandler.getAdvImg().get(cls);
-    data = StringHandler.advisorString.get(cls.toString().toLowerCase());
   }
 
   public void onHire() {}

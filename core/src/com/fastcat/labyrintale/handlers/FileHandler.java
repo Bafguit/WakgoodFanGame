@@ -72,7 +72,6 @@ public class FileHandler implements Disposable {
 
   static {
     jsonMap.put(JsonType.ACHV_JSON, generateJson("json/achieves.json"));
-    jsonMap.put(JsonType.ADV_JSON, generateJson("json/advisors.json"));
     jsonMap.put(JsonType.CHAR_JSON, generateJson("json/chars.json"));
     jsonMap.put(JsonType.CHOICE_JSON, generateJson("json/choices.json"));
     jsonMap.put(JsonType.STATUS_JSON, generateJson("json/status.json"));
@@ -461,7 +460,6 @@ public class FileHandler implements Disposable {
 
   public enum JsonType {
     ACHV_JSON,
-    ADV_JSON,
     CHAR_JSON,
     CHOICE_JSON,
     STATUS_JSON,

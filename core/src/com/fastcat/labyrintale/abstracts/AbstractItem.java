@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.actions.FlashAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.strings.ItemString;
 import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.SkillString;
@@ -134,6 +135,15 @@ public class AbstractItem implements Cloneable {
   }
 
   public void onMove(AbstractEntity source) {}
+
+  protected final void consume() {
+    for(int i = 0; i < 2; i++) {
+      if(owner.item[i] == this) {
+        owner.gainItem(new PlaceHolder(owner), i);
+        break;
+      }
+    }
+  }
 
   protected final void top(AbstractAction a) {
     ActionHandler.top(a);

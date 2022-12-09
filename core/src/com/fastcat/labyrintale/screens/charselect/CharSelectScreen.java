@@ -122,7 +122,9 @@ public class CharSelectScreen extends AbstractScreen {
   }
 
   @Override
-  public void hide() {}
+  public void hide() {
+    selected = null;
+  }
 
   @Override
   public void dispose() {

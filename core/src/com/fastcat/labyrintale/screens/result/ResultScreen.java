@@ -336,16 +336,16 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     for (int f = 0; f < 2; f++) {
       for (int g = 0; g < 2; g++) {
         AbstractPlayer player = AbstractLabyrinth.players[cnt++];
-        sb.draw(hbb, w * (0.15f + 0.46f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+        sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
         sb.draw(hb.img,
-                w * (0.15f + 0.46f * f),
+                w * (0.175f + 0.435f * f),
                 h * (0.73f - 0.275f * g), 0, 0, w * 0.12f, h * 0.03f,
                 Math.max(((float) player.health) / ((float) player.maxHealth), 0), 1, 0);
         FontHandler.renderLineLeft(
                 sb,
                 fontName,
                 player.name,
-                w * (0.15f + 0.46f * f),
+                w * (0.175f + 0.435f * f),
                 h * (0.79f - 0.275f * g),
                 w * 0.12f,
                 50);
@@ -353,7 +353,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
                 sb,
                 fontHp,
                 player.health + "/" + player.maxHealth,
-                w * (0.15f + 0.46f * f),
+                w * (0.175f + 0.435f * f),
                 h * (0.745f - 0.275f * g),
                 w * 0.12f,
                 h * 0.03f);

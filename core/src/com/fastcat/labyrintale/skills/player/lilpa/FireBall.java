@@ -19,7 +19,7 @@ public class FireBall extends AbstractSkill {
   public FireBall(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseValue(VALUE, 1);
+    setBaseValue(VALUE);
   }
 
   @Override

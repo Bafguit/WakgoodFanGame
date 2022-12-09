@@ -20,7 +20,7 @@ public class Channeling extends AbstractSkill {
 
   @Override
   public void use() {
-    bot(new ApplyStatusAction(new SpeedPlusStatus(value), owner, owner, true));
+    bot(new ApplyStatusAction(new CriticalPlusStatus(value), owner, owner, true));
     bot(new ApplyStatusAction(new ResistPlusStatus(value), owner, owner, true));
   }
 

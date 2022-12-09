@@ -1,12 +1,10 @@
 package com.fastcat.labyrintale.uis.control;
 
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.BATTLE;
 import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.HIDE;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;

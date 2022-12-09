@@ -42,6 +42,5 @@ public class DictCharTabButton extends AbstractUI {
   @Override
   protected void onClick() {
     sc.type = DictScreen.DictType.CHAR;
-    sc.iSelected = sc.items[0];
   }
 }

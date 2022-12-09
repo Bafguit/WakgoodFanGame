@@ -21,7 +21,7 @@ public class CriticalPlusStatus extends AbstractStatus {
 
   @Override
   public void onInitial() {
-    owner.stat.critical += 30f;
+    owner.stat.critical += 30;
   }
 
   @Override

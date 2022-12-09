@@ -16,11 +16,6 @@ public class Potato extends AbstractItem {
   @Override
   public void onGain() {
     owner.modifyMaxHealth(10);
-    for(int i = 0; i < 2; i++) {
-      if(owner.item[i] == this) {
-        owner.gainItem(new PlaceHolder(owner), i);
-        break;
-      }
-    }
+    consume();
   }
 }

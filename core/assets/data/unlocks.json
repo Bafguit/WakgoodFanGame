@@ -1,10 +1,15 @@
 {
+  "DIFF" : {
+    "HARD" : false,
+    "NORMAL" : true,
+    "COFFIN" : false
+  },
   "SKILL" : {
     "EnduringPotion" : false,
     "Intimidate" : false,
-    "Support" : true,
+    "Support" : false,
     "Snipe" : false,
-    "IronWill" : false,
+    "IronWill" : true,
     "Sharp" : false,
     "Strong" : false,
     "Bless" : false,
@@ -21,16 +26,16 @@
     "HolySmite" : false,
     "ThrowAxe" : false,
     "Provoke" : false,
-    "UpgradePotion" : false,
+    "UpgradePotion" : true,
     "ShockZone" : false,
     "Overpower" : false,
     "ShockBomb" : false,
-    "Scorn" : false,
+    "Scorn" : true,
     "DramaticExit" : false,
     "Onslaught" : false,
     "CrystalStrike" : false,
     "Cross" : false,
-    "Stab" : false,
+    "Stab" : true,
     "Purify" : false,
     "ConfidPotion" : false,
     "Penitence" : false,
@@ -39,7 +44,7 @@
     "HealingPotion" : false,
     "Boost" : false,
     "Pruning" : false,
-    "Ignite" : false,
+    "Ignite" : true,
     "PureWill" : false,
     "Impulse" : false,
     "HolyLight" : false,
@@ -48,13 +53,13 @@
     "BraveWill" : false,
     "Faith" : false,
     "AvantProtect" : false,
-    "Lilpaa" : false,
+    "Lilpaa" : true,
     "PointBlank" : false,
     "KeepOnLine" : false,
     "EyeSting" : false,
     "RapidFire" : false,
     "Lightning" : false,
-    "Poison" : false,
+    "Poison" : true,
     "Calmness" : false
   },
   "ITEM" : {
@@ -92,7 +97,7 @@
     "IceFrag" : false,
     "FlameBook" : false,
     "CrossPin" : false,
-    "SandClock" : false,
+    "SandClock" : true,
     "OldSword" : false,
     "GlowingStick" : false,
     "PlatedArmour" : false,
@@ -131,10 +136,5 @@
     "GreenHeart" : false,
     "GoldenRing" : false,
     "BabyDish" : false
-  },
-  "DIFF" : {
-    "HARD" : false,
-    "NORMAL" : true,
-    "COFFIN" : false
   }
 }

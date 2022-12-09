@@ -14,6 +14,7 @@ public class StatusDamageAction extends AbstractAction {
   public AbstractStatus status;
   public boolean reduce = false;
   public boolean remove = false;
+  public boolean hasEffect;
   public AttackAction.AttackType effect;
   public Sprite eImg;
   public AbstractEntity e;
@@ -22,6 +23,7 @@ public class StatusDamageAction extends AbstractAction {
     super(s.owner, 0.5f);
     status = s;
     this.effect = effect;
+    hasEffect = effect != AttackAction.AttackType.NONE;
     eImg = AttackAction.getEffectImg(effect);
     if (s.target == AbstractSkill.SkillTarget.SELF) e = s.owner;
   }
@@ -64,7 +66,7 @@ public class StatusDamageAction extends AbstractAction {
     if (duration == baseDuration) {
       if (e != null) {
         AttackAction.playAttackSfx(effect);
-        if (effect == AttackAction.AttackType.NONE) {
+        if (!hasEffect) {
           status.flash(e);
         } else {
           EffectHandler.add(new HitEffect(e, eImg));
@@ -75,7 +77,7 @@ public class StatusDamageAction extends AbstractAction {
         Array<AbstractEntity> temp = AbstractSkill.getTargets(status);
         if (temp.size > 0) {
           AttackAction.playAttackSfx(effect);
-          if (effect == AttackAction.AttackType.NONE) {
+          if (!hasEffect) {
             status.flash(actor);
           } else {
             for (AbstractEntity t : temp) {
@@ -89,7 +91,7 @@ public class StatusDamageAction extends AbstractAction {
           }
         }
       }
-      if (reduce) actor.applyStatus(status, actor, -1, true, true);
+      if (reduce) actor.applyStatus(status, actor, -1, false, true);
       if (remove) actor.removeStatus(status.id);
     }
   }

@@ -16,12 +16,12 @@ public class Snow extends AbstractItem {
   @Override
   public void onGain() {
     AbstractLabyrinth.charge++;
-    owner.stat.spell += 2;
+    owner.stat.spell += 1;
   }
 
   @Override
   public void onRemove() {
     AbstractLabyrinth.charge--;
-    owner.stat.spell -= 2;
+    owner.stat.spell -= 1;
   }
 }

@@ -35,6 +35,6 @@ public class CottonNecklace extends AbstractItem {
     flash();
     top(
         new ApplyStatusAction(
-            new EnduranceStatus(3), null, AbstractSkill.SkillTarget.PLAYER_ALL, false));
+            new EnduranceStatus(4), null, AbstractSkill.SkillTarget.PLAYER_ALL, false));
   }
 }

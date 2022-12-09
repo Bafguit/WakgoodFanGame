@@ -18,7 +18,7 @@ public class ThrowAxe extends AbstractSkill {
   public ThrowAxe(AbstractEntity e) {
     super(e, ID, TYPE, RARITY, TARGET);
     setBaseAttack(VALUE, 1);
-    setBaseValue(1, 1);
+    setBaseValue(2, 1);
   }
 
   @Override
