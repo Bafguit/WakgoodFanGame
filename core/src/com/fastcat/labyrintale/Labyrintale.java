@@ -91,7 +91,7 @@ public class Labyrintale extends Game {
         alphaDex = sec;
         fading = true;
         fadeIn = false;
-        tempFade = false;
+        tempFade = false;//테스트
     }
 
     public static void fadeOutAndAddScreen(AbstractScreen screen) {
