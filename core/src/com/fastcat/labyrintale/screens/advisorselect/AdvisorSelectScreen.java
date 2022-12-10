@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 
 public class AdvisorSelectScreen extends AbstractScreen {
@@ -35,7 +36,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
         float ws = w / (s + 1);
         for (int i = 0; i < a.size; i++) {
             AdvisorButton adv = new AdvisorButton(a.get(i).clone(), this);
-            adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.6f);
+            adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.6f - 68 * InputHandler.scale);
             aAdvisor[i] = adv;
         }
     }

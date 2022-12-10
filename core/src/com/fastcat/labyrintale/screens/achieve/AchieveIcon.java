@@ -13,8 +13,8 @@ public class AchieveIcon extends AbstractUI {
 
     private final Sprite image;
     public final AchieveHandler.Achievement achv;
-    public final AbstractItem.ItemRarity rarity;
-    public final int grade;
+    public AbstractItem.ItemRarity rarity;
+    public int grade;
 
     public AchieveIcon(AchieveHandler.Achievement achv) {
         super(FileHandler.getUi().get("BORDER_P"));
@@ -22,9 +22,13 @@ public class AchieveIcon extends AbstractUI {
         fontData = FontHandler.BIG_DESC;
         clickable = false;
         image = FileHandler.getAchvImg().get(achv);
-        grade = AchieveHandler.achvs.get(achv);
         KeyString.KeyData data = StringHandler.achvString.get(achv);
         subs.add(new SubText(data.NAME, data.DESC));
+    }
+
+    @Override
+    protected void updateButton() {
+        grade = AchieveHandler.achvs.get(achv);
         if (grade == 1) rarity = AbstractItem.ItemRarity.BRONZE;
         else if (grade == 2) rarity = AbstractItem.ItemRarity.SILVER;
         else if (grade == 3) rarity = AbstractItem.ItemRarity.GOLD;

@@ -16,6 +16,7 @@ public class NextToAdvisorButton extends AbstractUI {
         fontData = BUTTON;
         text = "출발";
         disable();
+        isPixmap = true;
     }
 
     @Override

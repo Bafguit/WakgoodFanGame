@@ -8,5 +8,6 @@ public class OptionPanel extends AbstractUI {
         super(FileHandler.getUi().get("SETTING"));
         setPosition(0, 0);
         overable = false;
+        isPixmap = true;
     }
 }

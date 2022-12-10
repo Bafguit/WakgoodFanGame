@@ -1,8 +1,12 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.MAIN_MENU_SHADOW;
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -12,9 +16,9 @@ import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 public class LoadButton extends AbstractUI {
 
     public LoadButton() {
-        super(FileHandler.getUi().get("MENU_SELECT"));
+        super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.385f);
-        fontData = MAIN_MENU_SHADOW;
+        fontData = new FontData(MEDIUM, 53, false);
         text = "불러오기";
         showImg = false;
         overable = SaveHandler.hasSave;
@@ -23,12 +27,16 @@ public class LoadButton extends AbstractUI {
     @Override
     protected void updateButton() {
         overable = SaveHandler.hasSave;
-        if (!over && showImg) showImg = false;
     }
 
     @Override
-    protected void onOver() {
-        if (overable) showImg = true;
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if (overable && !over) fontData.color = Color.GRAY;
+            else fontData.color = WHITE;
+
+            renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+        }
     }
 
     @Override

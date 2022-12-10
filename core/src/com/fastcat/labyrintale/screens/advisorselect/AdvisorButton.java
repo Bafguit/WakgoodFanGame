@@ -15,14 +15,15 @@ public class AdvisorButton extends AbstractUI {
 
     public AbstractItem advisor;
 
-    public TempUI paper = new TempUI(FileHandler.getUi().get("BORDER_ADV"));
+    public TempUI adv = new TempUI(FileHandler.getUi().get("BORDER_M"));
     public AbstractAdvisor.AdvisorClass selected;
     public AdvisorSelectScreen select;
 
     public AdvisorButton(AbstractItem adv, AdvisorSelectScreen select) {
-        super(FileHandler.getUi().get("BORDER_M"));
+        super(FileHandler.getUi().get("BORDER_ADV"));
         advisor = adv;
         this.select = select;
+        isPixmap = true;
     }
 
     @Override
@@ -42,13 +43,8 @@ public class AdvisorButton extends AbstractUI {
         if (enabled) {
             if (select.selected == this || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            sb.draw(
-                    paper.img,
-                    x + sWidth / 2 - paper.sWidth / 2,
-                    y - 68 * InputHandler.scale,
-                    paper.sWidth,
-                    paper.sHeight);
-            sb.draw(advisor.img, x, y, sWidth, sHeight);
+            sb.draw(img, x, y, sWidth, sHeight);
+            sb.draw(advisor.img, x + sWidth / 2 - adv.sWidth / 2, y + 68 * InputHandler.scale, adv.sWidth, adv.sHeight);
         }
     }
 

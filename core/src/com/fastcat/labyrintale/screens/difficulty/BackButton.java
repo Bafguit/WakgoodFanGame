@@ -15,6 +15,7 @@ public class BackButton extends AbstractUI {
         setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
         fontData = BUTTON;
         text = "뒤로";
+        isPixmap = true;
     }
 
     @Override

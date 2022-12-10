@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
@@ -17,9 +18,11 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
+import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.screens.difficulty.DifficultyScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.library.LibraryScreen;
@@ -59,6 +62,8 @@ public class Labyrintale extends Game {
     public static ShopScreen shopScreen;
     public static SettingScreen settingScreen;
     public static TutorialScreen tutorialScreen;
+    public static DictScreen dictionary;
+    public static AchieveScreen achievement;
     public static boolean fading = false;
     public static boolean fadeIn = false;
     public static boolean tempFade = false;
@@ -69,6 +74,7 @@ public class Labyrintale extends Game {
     private static Sprite fadeTex;
     private static float alphaCount = 0;
     private static float alphaDex = 2;
+    private static Sprite cursor;
     public static AbstractUI subText;
     public Array<AbstractScreen> tempScreen = new Array<>();
     public SpriteBatch sb;
@@ -132,7 +138,7 @@ public class Labyrintale extends Game {
     public void create() {
         Gdx.graphics.setResizable(false);
         Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
-        Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor.png"));
+        Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
         pix.setFilter(Pixmap.Filter.BiLinear);
         Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
         SettingHandler.initialize();
@@ -172,9 +178,15 @@ public class Labyrintale extends Game {
         diffScreen = new DifficultyScreen();
         libScreen = new LibraryScreen();
         tutorialScreen = new TutorialScreen();
+        dictionary = new DictScreen();
+        achievement = new AchieveScreen();
         // labyrinth = new AbstractLabyrinth();
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
+
+        cursor = FileHandler.getUi().get("CURSOR");
+        cursor.setOrigin(0, 128);
+        cursor.setScale(0.5f);
 
         mainMenuScreen.onCreate();
         fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
@@ -186,8 +198,6 @@ public class Labyrintale extends Game {
         tick = Gdx.graphics.getDeltaTime();
         camera.update();
         screenShake.update(viewport);
-        InputHandler.getInstance().update();
-        InputHandler.getInstance().update();
         InputHandler.getInstance().update();
         FontHandler.getInstance().update();
         subText = null;
@@ -241,6 +251,12 @@ public class Labyrintale extends Game {
         if (setting || settingScreen.anim) settingScreen.render(sb);
         /** ============== */
         fade();
+
+        if(InputHandler.isCursorInScreen) {
+            sb.setColor(Color.WHITE);
+            cursor.setPosition(InputHandler.mx, InputHandler.my - cursor.getHeight());
+            cursor.draw(sb);
+        }
 
         sb.end();
     }

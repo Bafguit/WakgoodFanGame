@@ -17,6 +17,7 @@ public class ReturnToMainButton extends AbstractUI {
         fontData = BUTTON;
         text = "메인 메뉴";
         screen = sc;
+        isPixmap = true;
     }
 
     @Override

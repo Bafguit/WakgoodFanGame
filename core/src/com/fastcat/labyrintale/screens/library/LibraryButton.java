@@ -32,8 +32,8 @@ public class LibraryButton extends AbstractUI {
     @Override
     protected void onClick() {
         if (lib == Library.RUNS) Labyrintale.fadeOutAndChangeScreen(new RunViewScreen());
-        else if (lib == Library.DICT) Labyrintale.addTempScreen(new DictScreen());
-        else if (lib == Library.ACHVS) Labyrintale.addTempScreen(new AchieveScreen());
+        else if (lib == Library.DICT) Labyrintale.addTempScreen(Labyrintale.dictionary);
+        else if (lib == Library.ACHVS) Labyrintale.addTempScreen(Labyrintale.achievement);
     }
 
     public enum Library {

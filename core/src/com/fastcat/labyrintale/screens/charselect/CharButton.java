@@ -23,6 +23,7 @@ public class CharButton extends AbstractUI {
         showImg = false;
         clickable = false;
         isChar = false;
+        isPixmap = true;
     }
 
     public CharButton(AbstractPlayer player) {

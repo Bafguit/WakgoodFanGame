@@ -25,8 +25,7 @@
       "출발"
     ],
     "IMAGE": [
-      "Start1",
-      "Start2"
+      "StartEvent"
     ]
   },
   "SecondFloor": {
@@ -41,8 +40,7 @@
       "계속"
     ],
     "IMAGE": [
-      "Start1",
-      "Start2"
+      "SecondFloor"
     ]
   },
   "ThirdFloor": {
@@ -55,8 +53,7 @@
       "계속"
     ],
     "IMAGE": [
-      "Start1",
-      "Start2"
+      "ThirdFloor"
     ]
   },
   "FourthFloor": {
@@ -71,8 +68,7 @@
       "소생"
     ],
     "IMAGE": [
-      "Start1",
-      "Start2"
+      "FourthFloor"
     ]
   },
   "Transform": {
@@ -87,7 +83,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Transform"
     ]
   },
   "Upgrade": {
@@ -103,7 +99,7 @@
       "잠김: 강화할 수 있는 스킬 필요"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Upgrade"
     ]
   },
   "Chaos": {
@@ -118,7 +114,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Chaos"
     ]
   },
   "Cure": {
@@ -133,7 +129,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Cure"
     ]
   },
   "Purify": {
@@ -148,7 +144,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Purify"
     ]
   },
   "Light": {
@@ -163,7 +159,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Light"
     ]
   },
   "Metamorph": {

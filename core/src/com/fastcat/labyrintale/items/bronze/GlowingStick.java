@@ -1,5 +1,9 @@
 package com.fastcat.labyrintale.items.bronze;
 
+import com.badlogic.gdx.graphics.Cursor;
+import com.badlogic.gdx.math.Shape2D;
+import com.badlogic.gdx.physics.box2d.Box2D;
+import com.badlogic.gdx.physics.box2d.Shape;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;

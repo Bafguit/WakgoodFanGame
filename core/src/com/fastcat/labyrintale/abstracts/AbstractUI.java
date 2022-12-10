@@ -5,11 +5,15 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
@@ -39,6 +43,8 @@ public abstract class AbstractUI implements Disposable {
     public float sWidth;
     public float sHeight;
     public boolean over;
+    public boolean isPixmap = false;
+    private Pixmap pixmap;
     private boolean justOver = false;
     public boolean overable = true;
     public boolean enabled;
@@ -87,6 +93,9 @@ public abstract class AbstractUI implements Disposable {
         uiScale = 1.0f;
         clicked = false;
         clicking = false;
+        TextureData d = this.img.getTexture().getTextureData();
+        d.prepare();
+        pixmap = d.consumePixmap();
     }
 
     public final void update() {
@@ -104,6 +113,11 @@ public abstract class AbstractUI implements Disposable {
         if (enabled && !Labyrintale.fading) {
             justOver = over;
             over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+
+            if(over && isPixmap) {
+                Color c = getSpritePixColor();
+                over = c.a > 0;
+            }
 
             if (over) {
                 if (!justOver) {
@@ -173,6 +187,20 @@ public abstract class AbstractUI implements Disposable {
                 }
             }
         }
+    }
+
+    public Color getSpritePixColor() {
+        Texture texture = img.getTexture();
+
+        int LocalX = (int) ((mx - x) / scale);
+        // we need to "invert" Y, because the screen coordinate origin is top-left
+        int LocalY = (int) (((Gdx.graphics.getHeight() - my) - (Gdx.graphics.getHeight() - (y + sHeight))) / scale);
+
+        if (!texture.getTextureData().isPrepared()) {
+            texture.getTextureData().prepare();
+        }
+        Pixmap pixmap = texture.getTextureData().consumePixmap();
+        return new Color(pixmap.getPixel(LocalX, LocalY));
     }
 
     public void setParent(AbstractUI ui) {

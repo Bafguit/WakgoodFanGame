@@ -16,6 +16,7 @@ public class CloseSettingButton extends AbstractUI {
         fontData = BUTTON;
         text = "저장";
         screen = sc;
+        isPixmap = true;
     }
 
     @Override

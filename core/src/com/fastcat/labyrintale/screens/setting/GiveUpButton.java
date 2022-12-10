@@ -19,6 +19,7 @@ public class GiveUpButton extends AbstractUI {
         fontData = BUTTON;
         text = "포기";
         screen = sc;
+        isPixmap = true;
     }
 
     @Override

@@ -8,7 +8,7 @@ allprojects {
     apply plugin: "java"
     apply plugin: "eclipse"
     apply plugin: "com.diffplug.spotless"
-    version = 'b0.9.22'
+    version = 'b0.9.23'
     ext {
         appName = "Labyrintale"
         gdxVersion = '1.10.0'

@@ -15,6 +15,7 @@ public class ExitGameButton extends AbstractUI {
         fontData = BUTTON;
         text = "종료";
         screen = sc;
+        isPixmap = true;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
+import com.badlogic.gdx.math.Rectangle;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoScreen;
@@ -27,6 +28,8 @@ public final class InputHandler {
     public static int mx;
     public static int my;
 
+    public static Rectangle cursor;
+
     public static boolean textInputMode;
     private static String typedText = "";
     private static int backspaces = 0;
@@ -41,6 +44,7 @@ public final class InputHandler {
         isLeftClicking = false;
         mx = 0;
         my = 0;
+        cursor = new Rectangle(0, 0, 1, 1);
         scale = (float) Gdx.graphics.getWidth() / 2560.0f;
 
         Gdx.input.setInputProcessor(new InputAdapter() {
@@ -93,6 +97,7 @@ public final class InputHandler {
 
         mx = Math.max(Math.min(gx, sw), 0);
         my = sh - Math.max(Math.min(gy, sh), 0);
+        cursor.setPosition(mx, my);
         cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
 
         if (textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) textInputMode = false;

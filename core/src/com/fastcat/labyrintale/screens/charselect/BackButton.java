@@ -16,6 +16,7 @@ public class BackButton extends AbstractUI {
         fontData = BUTTON;
         text = "뒤로";
         showImg = true;
+        isPixmap = true;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -8,6 +9,8 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.RunHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
+import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -80,12 +83,12 @@ public class MainMenuScreen extends AbstractScreen {
             }
         }
         Labyrintale.closeTutorial();
-        gameStartButton.showImg = false;
-        loadButton.showImg = false;
-        runsButton.showImg = false;
-        optionButton.showImg = false;
-        creditButton.showImg = false;
-        exitButton.showImg = false;
+        gameStartButton.over = false;
+        loadButton.over = false;
+        runsButton.over = false;
+        optionButton.over = false;
+        creditButton.over = false;
+        exitButton.over = false;
         SaveHandler.refresh();
         RunHandler.load();
         if (Labyrintale.labyrinth != null) {

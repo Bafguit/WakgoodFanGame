@@ -21,6 +21,7 @@ public class DifficultyButton extends AbstractUI {
         super(FileHandler.getUi().get("DIFF_" + diff.toString()));
         this.diff = diff;
         clickable = UnlockHandler.achvs.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
+        isPixmap = true;
     }
 
     @Override
