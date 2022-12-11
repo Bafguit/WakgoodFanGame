@@ -111,6 +111,7 @@ public class CharSelectScreen extends AbstractScreen {
     @Override
     public void show() {
         backButton.over = false;
+        backButton.show();
         if (SettingHandler.setting.charTutorial) {
             Labyrintale.openTutorial(TutorialScreen.TutorialType.CHARSELECT);
             SettingHandler.setting.charTutorial = false;
@@ -264,7 +265,6 @@ public class CharSelectScreen extends AbstractScreen {
 
     public static class CharInfoItemButton extends AbstractUI {
 
-        private final Sprite border = FileHandler.getUi().get("BORDER_R");
         private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
         public InfoPanel.InfoType type = InfoPanel.InfoType.COLOR;
         public AbstractSkill skill;
@@ -317,19 +317,19 @@ public class CharSelectScreen extends AbstractScreen {
                         sb.draw(img, x, y, sWidth, sHeight);
                         sb.setColor(Color.WHITE);
                         if (!skill.passive) {
-                            sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                            sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                             FontHandler.renderCenter(
                                     sb,
                                     fontData,
                                     Integer.toString(skill.cost),
-                                    x - sWidth * 0.05f,
-                                    y + sWidth * 0.95f,
+                                    x + sWidth * 0.05f,
+                                    y + sWidth * 0.85f,
                                     sWidth * 0.2f,
                                     sWidth * 0.2f);
                         }
                     } else {
                         sb.draw(item.img, x, y, sWidth, sHeight);
-                        sb.draw(item.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);
+                        if(item.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
                     }
                 }
             }

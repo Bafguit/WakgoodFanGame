@@ -5,17 +5,22 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
 
 public class DifficultyButton extends AbstractUI {
 
     private Sprite locked = FileHandler.getUi().get("DIFF_LOCKED");
     public AbstractLabyrinth.Difficulty diff;
+    private final float aa = Color.LIGHT_GRAY.r;
+    private float a = aa;
 
     public DifficultyButton(AbstractLabyrinth.Difficulty diff) {
         super(FileHandler.getUi().get("DIFF_" + diff.toString()));
@@ -32,10 +37,21 @@ public class DifficultyButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (clickable && over) sb.setColor(WHITE);
-            else sb.setColor(LIGHT_GRAY);
+            if(clickable && !over) {
+                a -= Labyrintale.tick * 4;
+                if(a <= aa) a = aa;
+            } else {
+                a += Labyrintale.tick * 4;
+                if(a >= 1) a = 1;
+            }
+            sb.setColor(a, a, a, 1);
             sb.draw(clickable ? img : locked, x, y, sWidth, sHeight);
         }
+    }
+
+    @Override
+    public void show() {
+        a = aa;
     }
 
     @Override
@@ -46,6 +62,7 @@ public class DifficultyButton extends AbstractUI {
         }
         charSelectScreen.nextButton.disable();
         charSelectScreen.seedText.text = "";
-        fadeOutAndChangeScreen(charSelectScreen);
+        SoundHandler.playSfx("CHANGE");
+        fadeOutAndChangeScreen(charSelectScreen, Labyrintale.FadeType.VERTICAL, 0.3f);
     }
 }

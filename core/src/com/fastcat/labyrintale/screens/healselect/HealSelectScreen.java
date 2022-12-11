@@ -32,11 +32,11 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
         float w = Gdx.graphics.getWidth() * 0.25f, h = Gdx.graphics.getHeight();
 
         HealButton adv = new HealButton(HealReward.HealType.HEAL, this);
-        adv.setPosition(w - adv.sWidth / 2, h * 0.6f);
+        adv.setPosition(w - adv.sWidth / 2, h * 0.55f);
         exp[0] = adv;
 
         adv = new HealButton(HealReward.HealType.MAX_HEALTH, this);
-        adv.setPosition(w * 2 - adv.sWidth / 2, h * 0.6f);
+        adv.setPosition(w * 2 - adv.sWidth / 2, h * 0.55f);
         exp[1] = adv;
 
         boolean canRevive = false;
@@ -48,7 +48,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
         }
         adv = new HealButton(HealReward.HealType.REVIVE, this);
         adv.clickable = canRevive;
-        adv.setPosition(w * 3 - adv.sWidth / 2, h * 0.6f);
+        adv.setPosition(w * 3 - adv.sWidth / 2, h * 0.55f);
         exp[2] = adv;
         cancel = new CancelHealButton(this);
     }

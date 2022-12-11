@@ -13,7 +13,6 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 public class ItemPanel extends AbstractUI {
 
     public TempUI paper = new TempUI(FileHandler.getUi().get("BORDER_ADV"));
-    private Sprite psv = FileHandler.getUi().get("BORDER_R");
     public AbstractItem item;
     boolean adv = false;
 
@@ -48,7 +47,7 @@ public class ItemPanel extends AbstractUI {
             if (item != null) {
                 sb.draw(item.img, x, y, sWidth, sHeight);
                 sb.setColor(item.getRarityColor());
-                if (!adv) sb.draw(item.rarity == AbstractItem.ItemRarity.STARTER ? psv : img, x, y, sWidth, sHeight);
+                if (!adv && item.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
                 sb.setColor(Color.WHITE);
             }
         }

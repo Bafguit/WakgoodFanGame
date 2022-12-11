@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -47,17 +48,6 @@ public class EnemyBattleView extends BattleView {
         if (enabled && entity != null && !entity.isDead) {
             sb.setColor(Color.WHITE);
             entity.render(sb);
-        }
-    }
-
-    public void renderLook(SpriteBatch sb) {
-        if (enabled && entity != null && !entity.isDead && showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) {
-            sb.setColor(Color.WHITE);
-            sb.draw(battleScreen.currentTurnEntity() == entity ? turnLook.img : targetLook.img,
-                    entity.animX - targetLook.sWidth / 2,
-                    entity.animY - targetLook.sHeight * 0.6f,
-                    targetLook.sWidth,
-                    targetLook.sHeight);
         }
     }
 

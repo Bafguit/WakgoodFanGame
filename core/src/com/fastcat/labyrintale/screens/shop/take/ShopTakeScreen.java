@@ -34,11 +34,11 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for (int i = 0; i < 3; i++) {
             CharDeckButton c = new CharDeckButton(this, i, this.skill);
-            c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.775f - c.sHeight * 0.5f);
+            c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.675f - c.sHeight * 0.5f);
             deck[i] = c;
         }
         shopItem = new ShopItemIcon(this);
-        shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
+        shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.475f - shopItem.sHeight * 0.5f);
         cancel = new CancelShopButton(this);
     }
 
@@ -68,12 +68,12 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < 2; j++) {
                 CharItemButton t = new CharItemButton(this, j, p.get(i), this.item);
-                t.setPosition(ww + ww * i + w * (0.08f * j - 0.04f) - t.sWidth * 0.5f, h * 0.775f - t.sHeight * 0.5f);
+                t.setPosition(ww + ww * i + w * (0.08f * j - 0.04f) - t.sWidth * 0.5f, h * 0.675f - t.sHeight * 0.5f);
                 items[i][j] = t;
             }
         }
         shopItem = new ShopItemIcon(this);
-        shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.575f - shopItem.sHeight * 0.5f);
+        shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.475f - shopItem.sHeight * 0.5f);
         cancel = new CancelShopButton(this);
     }
 

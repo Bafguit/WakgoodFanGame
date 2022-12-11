@@ -71,9 +71,15 @@ public class Labyrintale extends Game {
     public static boolean setting = false;
     public static float tick;
     private static AbstractScreen nextScreen = null;
+    private static AbstractUI.TempUI change_h;
+    private static AbstractUI.TempUI change_v;
+    private static AbstractUI.TempUI change_h_r;
+    private static AbstractUI.TempUI change_v_r;
+    private static FadeType fadeType = FadeType.NONE;
     private static Sprite fadeTex;
     private static float alphaCount = 0;
     private static float alphaDex = 2;
+    private static float duration = 0;
     private static Sprite cursor;
     public static AbstractUI subText;
     public Array<AbstractScreen> tempScreen = new Array<>();
@@ -87,11 +93,28 @@ public class Labyrintale extends Game {
     }
 
     public static void fadeOutAndChangeScreen(AbstractScreen screen, float sec) {
+        fadeOutAndChangeScreen(screen, FadeType.FADE, sec);
+    }
+
+    public static void fadeOutAndChangeScreen(AbstractScreen screen, FadeType type) {
+        fadeOutAndChangeScreen(screen, type, 1.25f);
+    }
+
+    public static void fadeOutAndChangeScreen(AbstractScreen screen, FadeType type, float sec) {
         nextScreen = screen;
         alphaDex = sec;
         fading = true;
         fadeIn = false;
         tempFade = false;
+        fadeType = type;
+        duration = 0;
+        if(type == FadeType.HORIZONTAL) {
+            change_h.setPosition(0 - change_h.sWidth, 0);
+            change_h_r.setPosition(0 - change_h_r.sWidth + Gdx.graphics.getWidth(), 0);
+        } else if(type == FadeType.VERTICAL) {
+            change_v.setPosition(0, Gdx.graphics.getHeight());
+            change_v_r.setPosition(0, 0);
+        }
     }
 
     public static void fadeOutAndAddScreen(AbstractScreen screen) {
@@ -104,6 +127,7 @@ public class Labyrintale extends Game {
         fading = true;
         fadeIn = false;
         tempFade = true;
+        fadeType = FadeType.FADE;
     }
 
     public static AbstractScreen getCurScreen() {
@@ -188,6 +212,14 @@ public class Labyrintale extends Game {
         cursor.setOrigin(0, 128);
         cursor.setScale(0.5f);
 
+        change_h = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
+        change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
+        change_v = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+        change_v_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+
+        change_h_r.img.setFlip(true, false);
+        change_v_r.img.setFlip(false, true);
+
         mainMenuScreen.onCreate();
         fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
         /** Generate csv files If you don't want this task, comment below */
@@ -250,7 +282,13 @@ public class Labyrintale extends Game {
         if (tutorial) tutorialScreen.render(sb);
         if (setting || settingScreen.anim) settingScreen.render(sb);
         /** ============== */
-        fade();
+        if(fadeType == FadeType.FADE) {
+            fade();
+        } else if(fadeType == FadeType.HORIZONTAL) {
+            change_H();
+        } else if(fadeType == FadeType.VERTICAL) {
+            change_V();
+        }
 
         if(InputHandler.isCursorInScreen) {
             sb.setColor(Color.WHITE);
@@ -280,10 +318,86 @@ public class Labyrintale extends Game {
                 if (alphaCount < 0.0f) {
                     alphaCount = 0.0f;
                     fading = false;
+                    fadeType = FadeType.NONE;
                 }
             }
             // fadeTex.setAlpha(alphaCount);
             fadeTex.draw(sb, alphaCount);
+        }
+    }
+
+    private void change_H() {
+        if (fading) {
+            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f;
+            if (!fadeIn) {
+                if(change_h.x < 0) {
+                    change_h.x += change_h.sWidth * ac;
+                    if(change_h.x >= 0) change_h.x = 0;
+                }
+                duration += add;
+                if (duration >= 1) {
+                    if (nextScreen != null) {
+                        duration = 1;
+                        if (!tempFade) setScreen(nextScreen);
+                        else addTempScreen(nextScreen);
+                        if (setting) closeSetting();
+                        nextScreen = null;
+                        fadeIn = true;
+                    } else fading = false;
+                }
+                change_h.render(sb);
+            } else {
+                float w = Gdx.graphics.getWidth();
+                if(change_h_r.x < w) {
+                    change_h_r.x += change_h_r.sWidth * ac;
+                    if(change_h_r.x >= w) change_h_r.x = w;
+                }
+                duration -= add;
+                if (duration <= 0) {
+                    duration = 0;
+                    fading = false;
+                    fadeType = FadeType.NONE;
+                }
+                change_h_r.render(sb);
+            }
+        }
+    }
+
+    private void change_V() {
+        if (fading) {
+            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f;
+            if (!fadeIn) {
+                float yy = Gdx.graphics.getHeight() - change_v.sHeight;
+                if(change_v.y > yy) {
+                    change_v.y -= change_v.sHeight * ac;
+                    if(change_v.y <= yy) change_v.y = yy;
+                }
+                duration += add;
+                if (duration >= 1) {
+                    if (nextScreen != null) {
+                        duration = 1;
+                        if (!tempFade) setScreen(nextScreen);
+                        else addTempScreen(nextScreen);
+                        if (setting) closeSetting();
+                        nextScreen = null;
+                        fadeIn = true;
+                    } else fading = false;
+                }
+                change_v.render(sb);
+            } else {
+                float yy = -change_v_r.sHeight;
+                if(change_v_r.y > yy) {
+                    change_v_r.y -= change_v_r.sHeight * ac;
+                    if (change_v_r.y <= yy) change_v_r.y = yy;
+                }
+                duration -= add;
+                if (duration <= 0) {
+                    duration = 0;
+                    fading = false;
+                    fadeType = FadeType.NONE;
+                }
+                change_v_r.render(sb);
+            }
         }
     }
 
@@ -355,5 +469,9 @@ public class Labyrintale extends Game {
         if (restScreen != null) restScreen.dispose();
         if (eventScreen != null) eventScreen.dispose();
         if (shopScreen != null) shopScreen.dispose();
+    }
+
+    public enum FadeType {
+        FADE, HORIZONTAL, VERTICAL, NONE
     }
 }

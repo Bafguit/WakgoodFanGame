@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.slotselect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
@@ -39,22 +40,29 @@ public class SlotButton extends AbstractUI {
     }
 
     @Override
+    protected Array<SubText> getSubText() {
+        return skill != null ? skill.key : subs;
+    }
+
+    @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if (!clickable) sb.setColor(Color.DARK_GRAY);
             else if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(skill.img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
+            if(skill.owner != null) sb.setColor(skill.owner.pColor);
+            else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
+            sb.setColor(Color.WHITE);
             if (!skill.passive) {
-                sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(
                         sb,
                         fd,
                         Integer.toString(skill.cost),
-                        x - sWidth * 0.05f,
-                        y + sWidth * 0.95f,
+                        x + sWidth * 0.05f,
+                        y + sWidth * 0.85f,
                         sWidth * 0.2f,
                         sWidth * 0.2f);
             }

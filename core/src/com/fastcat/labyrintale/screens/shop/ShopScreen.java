@@ -24,7 +24,7 @@ public class ShopScreen extends AbstractScreen {
         for (int i = 0; i < 6; i++) {
             ShopRoom.SkillItem s = room.skills[i];
             ShopItemButton b = new ShopItemButton(s);
-            b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.75f);
+            b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.725f);
             skills[i] = b;
         }
         for (int i = 0; i < 5; i++) {

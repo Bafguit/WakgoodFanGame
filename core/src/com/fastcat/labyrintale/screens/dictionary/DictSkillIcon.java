@@ -48,10 +48,10 @@ public class DictSkillIcon extends AbstractUI {
                 sb.draw(img, x, y, sWidth, sHeight);
                 sb.setColor(Color.WHITE);
                 if (!skill.passive) {
-                    sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                    sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                     String t = Integer.toString(skill.cost);
                     FontHandler.renderColorCenter(
-                            sb, fontData, t, x - sWidth * 0.05f, y + sWidth * 0.95f, sWidth * 0.2f);
+                            sb, fontData, t, x + sWidth * 0.05f, y + sWidth * 0.85f, sWidth * 0.2f);
                 }
                 if (skill.upgradeCount > 0) {
                     FontHandler.renderLineRight(

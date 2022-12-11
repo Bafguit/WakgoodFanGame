@@ -21,8 +21,8 @@ public class FlameFlask extends AbstractSkill {
 
     @Override
     public void use() {
-        bot(new LoseBlockAction(owner, target));
         bot(new ApplyStatusAction(new UnblockableStatus(), owner, target, true));
+        bot(new LoseBlockAction(owner, target));
     }
 
     @Override

@@ -29,13 +29,13 @@ public class ConfirmSlotScreen extends AbstractScreen implements GetSelectedSlot
         skill = p.deck.get(index);
         from = new SlotCheckButton(skill);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
-        from.setPosition(w * 0.4f - from.sWidth / 2, h * 0.6f);
+        from.setPosition(w * 0.4f - from.sWidth / 2, h * 0.55f);
         arrow = new AbstractUI.TempUI(FileHandler.getUi().get("ARROW_RIGHT"));
-        arrow.setPosition(w * 0.5f - from.sWidth / 2, h * 0.6f);
+        arrow.setPosition(w * 0.5f - from.sWidth / 2, h * 0.55f);
         AbstractSkill up = skill.clone();
         up.upgrade();
         to = new SlotCheckButton(up);
-        to.setPosition(w * 0.6f - from.sWidth / 2, h * 0.6f);
+        to.setPosition(w * 0.6f - from.sWidth / 2, h * 0.55f);
         this.sc = sc;
         confirm = new ConfirmButton(this);
         cancel = new CancelButton(this);

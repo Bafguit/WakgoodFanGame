@@ -35,7 +35,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
         this.items = new ItemButton[size];
         for (int i = 0; i < size; i++) {
             ItemButton adv = new ItemButton(items[i], this);
-            adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.6f);
+            adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.55f);
             this.items[i] = adv;
         }
         pass = passable;

@@ -30,7 +30,7 @@ public final class FontHandler implements Disposable {
     public static final FontData BUTTON = new FontData(MEDIUM, 46, false, false);
     public static final FontData CLOSE = new FontData(MEDIUM, 53, false, false);
     public static final FontData MAIN_MENU_SHADOW = new FontData(MEDIUM, 53, false);
-    public static final FontData MAIN_MENU_BORDER = new FontData(MEDIUM, 53, true);
+    public static final FontData ROUND = new FontData(MEDIUM, 48, new Color(0.8f, 0.775f, 0.725f, 1), false, false);
     public static final FontData CARD_BIG_ORB = new FontData(MEDIUM, 67, false);
     public static final FontData CARD_BORDER = new FontData(MEDIUM, 67, true);
     public static final FontData CARD_BIG_NAME = new FontData(BOLD, 48, WHITE, true, true);
@@ -59,7 +59,7 @@ public final class FontHandler implements Disposable {
     public static final FontData SETTING = new FontData(BOLD, 44, false, false);
     public static final FontData TAB = new FontData(BOLD, 40, false, false);
     public static final FontData BLEAK = new FontData(BOLD, 80, Color.valueOf("#4a1564"), false, false);
-    public static final FontData SUB_NAME = new FontData(MEDIUM, 32, false);
+    public static final FontData SUB_NAME = new FontData(MEDIUM, 30, false);
     public static final FontData SUB_DESC = new FontData(MEDIUM, 26, false);
     public static final FontData STAT = new FontData(MEDIUM, 30, false);
     public static final FontData STAT_RAW = new FontData(MEDIUM, 30, false, false);
@@ -321,7 +321,7 @@ public final class FontHandler implements Disposable {
         SUB_DESC.dispose();
         STAT.dispose();
         STAT_RAW.dispose();
-        MAIN_MENU_BORDER.dispose();
+        ROUND.dispose();
         EXP.dispose();
         CARD_BORDER.dispose();
         PANEL_DESC.dispose();

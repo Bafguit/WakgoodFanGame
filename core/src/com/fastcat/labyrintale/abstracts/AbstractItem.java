@@ -57,7 +57,7 @@ public class AbstractItem implements Cloneable {
     }
 
     public final void flash(AbstractEntity e) {
-        ActionHandler.bot(new FlashAction(e, img));
+        ActionHandler.top(new FlashAction(e, tImg));
     }
 
     public final void flashWithoutAction() {
@@ -65,7 +65,7 @@ public class AbstractItem implements Cloneable {
     }
 
     public final void flashWithoutAction(AbstractEntity e) {
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, tImg));
     }
 
     public void startOfTurn() {}
@@ -161,7 +161,6 @@ public class AbstractItem implements Cloneable {
         return null;
     }
 
-    // TODO 임시 희귀도 구분
     public Color getRarityColor() {
         if (rarity != null) {
             if (rarity == ItemRarity.BRONZE) {

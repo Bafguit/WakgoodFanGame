@@ -35,7 +35,7 @@ public class BattlePanel implements Disposable {
         passive.setPosition(320 * scale, bottom);
         item[0] = new ItemPanel();
         item[0].setScale(0.6f);
-        item[0].setPosition(435 * scale, bottom);
+        item[0].setPosition(445 * scale, bottom);
         item[1] = new ItemPanel();
         item[1].setScale(0.6f);
         item[1].setPosition(550 * scale, bottom);

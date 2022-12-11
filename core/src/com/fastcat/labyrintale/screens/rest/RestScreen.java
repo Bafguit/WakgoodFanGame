@@ -60,7 +60,7 @@ public class RestScreen extends AbstractScreen {
         int cnt = 0;
 
         RestButton b = buttons[cnt] = new RestButton(this, RestButton.RestType.HEAL);
-        b.setPosition(tw - b.sWidth / 2, h * 0.73f - b.sHeight / 2);
+        b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
 
         RestDesc d = desc[cnt] = new RestDesc("휴식");
         d.setPosition(tw - d.sWidth / 2, b.y);
@@ -70,7 +70,7 @@ public class RestScreen extends AbstractScreen {
             cnt++;
 
             RestButton b3 = buttons[cnt] = new RestButton(this, RestButton.RestType.REVIVE);
-            b3.setPosition(tw - b3.sWidth / 2, h * 0.83f - b3.sHeight / 2);
+            b3.setPosition(tw - b3.sWidth / 2, h * 0.77f - b3.sHeight / 2);
 
             RestDesc d3 = desc[cnt] = new RestDesc("소생");
             d3.setPosition(tw - d3.sWidth / 2, b3.y);
@@ -82,7 +82,7 @@ public class RestScreen extends AbstractScreen {
         cnt++;
 
         RestButton b2 = buttons[cnt] = new RestButton(this, RestButton.RestType.UPGRADE);
-        b2.setPosition(tw - b2.sWidth / 2, h * 0.73f - b2.sHeight / 2);
+        b2.setPosition(tw - b2.sWidth / 2, h * 0.7f - b2.sHeight / 2);
 
         RestDesc d2 = desc[cnt] = new RestDesc("단련");
         d2.setPosition(tw - d2.sWidth / 2, b2.y);
@@ -109,14 +109,14 @@ public class RestScreen extends AbstractScreen {
     @Override
     public void render(SpriteBatch sb) {
         light.render(sb);
-        for (int i = 0; i < 4; i++) {
-            chars[i].render(sb);
-        }
-        fire.render(sb);
         for (int i = 0; i < count; i++) {
             buttons[i].render(sb);
             desc[i].render(sb);
         }
+        for (int i = 0; i < 4; i++) {
+            chars[i].render(sb);
+        }
+        fire.render(sb);
         end.render(sb);
     }
 

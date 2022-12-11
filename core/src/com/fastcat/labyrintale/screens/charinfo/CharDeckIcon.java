@@ -46,13 +46,13 @@ public class CharDeckIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
 
             if (!skill.passive) {
-                sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(
                         sb,
                         fontData,
                         Integer.toString(skill.cost),
-                        x - sWidth * 0.05f,
-                        y + sWidth * 0.95f,
+                        x + sWidth * 0.05f,
+                        y + sWidth * 0.85f,
                         sWidth * 0.2f,
                         sWidth * 0.2f);
             }

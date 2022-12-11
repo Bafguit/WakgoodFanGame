@@ -13,7 +13,6 @@ import java.util.HashMap;
 public class DictItemIcon extends AbstractUI {
 
     private final HashMap<String, Boolean> map = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
-    private final Sprite passive = FileHandler.getUi().get("BORDER_R");
     private final Sprite locked = FileHandler.getUi().get("UNKNOWN");
     public DictGroup group;
     public AbstractItem item;
@@ -44,7 +43,7 @@ public class DictItemIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
             sb.draw(!overable ? locked : item.img, x, y, sWidth, sHeight);
             sb.setColor(item.getRarityColor());
-            sb.draw(isStarter ? passive : img, x, y, sWidth, sHeight);
+            if(!isStarter) sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }
     }

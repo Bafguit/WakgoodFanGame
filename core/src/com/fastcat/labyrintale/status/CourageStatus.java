@@ -29,7 +29,6 @@ public class CourageStatus extends AbstractStatus {
     public void onAttack(AbstractEntity e, int dmg, AbstractEntity.DamageType type) {
         if (!used) {
             used = true;
-            flash();
             bot(new ReduceStatusAction(this, amount, StatusType.BUFF, true));
         }
     }

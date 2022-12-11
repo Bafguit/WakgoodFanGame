@@ -13,10 +13,10 @@ public class FloorChangeEffect extends AbstractEffect {
     private float alpha;
 
     public FloorChangeEffect(int floor) {
-        super(0, 0, 2);
+        super(0, 0, 3);
         text = new TurnEffectText("지하 " + floor + " 층");
         alpha = 0;
-        duration = baseDuration = 2;
+        duration = baseDuration = 3;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class FloorChangeEffect extends AbstractEffect {
         float d = Labyrintale.tick;
         if (duration < 0.5f) {
             alpha -= d;
-        } else if (duration >= 1.5f) {
+        } else if (duration >= 2.5f) {
             alpha += d;
         }
         alpha = MathUtils.clamp(alpha, 0, 0.5f);

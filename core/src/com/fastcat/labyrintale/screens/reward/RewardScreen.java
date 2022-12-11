@@ -27,7 +27,7 @@ public class RewardScreen extends AbstractScreen {
         for (int i = 0; i < rewards.size; i++) {
             float hf = (float) rewards.size / 2 - 0.5f;
             RewardItemButton temp = new RewardItemButton(rewards.get(i));
-            temp.setPosition(w * (0.5f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, 892 * InputHandler.scale);
+            temp.setPosition(w * (0.5f - (hf - i) * 0.065f) - temp.sWidth * 0.5f, 852 * InputHandler.scale);
             rewardButtons.add(temp);
         }
         passButton = new PassRewardButton(this);

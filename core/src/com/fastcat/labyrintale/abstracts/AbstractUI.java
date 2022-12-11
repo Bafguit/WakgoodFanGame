@@ -44,7 +44,6 @@ public abstract class AbstractUI implements Disposable {
     public float sHeight;
     public boolean over;
     public boolean isPixmap = false;
-    private Pixmap pixmap;
     private boolean justOver = false;
     public boolean overable = true;
     public boolean enabled;
@@ -93,9 +92,6 @@ public abstract class AbstractUI implements Disposable {
         uiScale = 1.0f;
         clicked = false;
         clicking = false;
-        TextureData d = this.img.getTexture().getTextureData();
-        d.prepare();
-        pixmap = d.consumePixmap();
     }
 
     public final void update() {
@@ -170,13 +166,13 @@ public abstract class AbstractUI implements Disposable {
                     sc = -10 * scale;
                     subP = y + sc;
                     for (SubText s : subTexts) {
-                        subP = s.render(sb, 0, subP, subWay).y + sc;
+                        subP = s.render(sb, x + sWidth / 2, subP, subWay).y + sc;
                     }
                 } else if (subWay == SubText.SubWay.UP) {
                     sc = 10 * scale;
                     subP = y + sHeight + sc;
                     for (SubText s : subTexts) {
-                        subP = s.render(sb, 0, subP, subWay).y + sc;
+                        subP = s.render(sb, x + sWidth / 2, subP, subWay).y + sc;
                     }
                 } else if (subWay == SubText.SubWay.LEFT) {
                     sc = -10 * scale;
@@ -217,10 +213,12 @@ public abstract class AbstractUI implements Disposable {
 
     public void setX(float x) {
         this.x = localX = x;
+        this.img.setX(x);
     }
 
     public void setY(float y) {
         this.y = localY = y;
+        this.img.setY(y);
     }
 
     public void setPosition(float x, float y) {
@@ -241,6 +239,8 @@ public abstract class AbstractUI implements Disposable {
             else setPosition(mx - cursorX, my - cursorY);
         }
     }
+
+    public void show() {}
 
     public boolean isEnabled() {
         return enabled;
@@ -329,24 +329,24 @@ public abstract class AbstractUI implements Disposable {
         public Vector2 render(SpriteBatch sb, float x, float y, SubWay way) {
             float xx = 0, yy = 0;
             if (way == SubWay.UP) {
-                xx = mx - ww * 0.5f;
+                xx = x - ww * 0.5f;
                 yy = 0;
                 sb.draw(bot.img, xx, y, ww, hh);
                 sb.draw(mid.img, xx, y + (yy += hh), ww, mh);
                 sb.draw(top.img, xx, y + (yy += mh), ww, hh);
                 yy += hh;
                 float ny = y + yy - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
-                nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
-                descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
+                nameFont.draw(sb, nameLayout, nameFont.alpha, x - ww * 0.47f, ny);
+                descFont.draw(sb, descLayout, descFont.alpha, x - ww * 0.47f, dy);
             } else if (way == SubWay.DOWN) {
-                xx = mx - ww * 0.5f;
+                xx = x - ww * 0.5f;
                 yy = 0;
                 sb.draw(top.img, xx, y + (yy -= hh), ww, hh);
                 sb.draw(mid.img, xx, y + (yy -= mh), ww, mh);
                 sb.draw(bot.img, xx, y + (yy -= hh), ww, hh);
                 float ny = y - ww * 0.03f, dy = ny - nameLayout.height * 1.5f;
-                nameFont.draw(sb, nameLayout, nameFont.alpha, mx - ww * 0.47f, ny);
-                descFont.draw(sb, descLayout, descFont.alpha, mx - ww * 0.47f, dy);
+                nameFont.draw(sb, nameLayout, nameFont.alpha, x - ww * 0.47f, ny);
+                descFont.draw(sb, descLayout, descFont.alpha, x - ww * 0.47f, dy);
             } else if (way == SubWay.LEFT) {
                 xx = x - ww;
                 yy = 0;

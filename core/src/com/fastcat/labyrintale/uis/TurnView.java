@@ -11,12 +11,16 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
+
 import java.util.LinkedList;
 
 public class TurnView extends AbstractUI {
 
     private LinkedList<TurnIcon> icons = new LinkedList<>();
     private TurnIcon now;
+    private float nx, ny, nw;
 
     public TurnView() {
         super(FileHandler.getUi().get("BORDER"));
@@ -28,6 +32,10 @@ public class TurnView extends AbstractUI {
             TurnIcon c = new TurnIcon(turns.get(i), this);
             icons.add(c);
         }
+        fontData = FontHandler.ROUND;
+        nx = 1830 * InputHandler.scale;
+        ny = Gdx.graphics.getHeight() * 0.97f;
+        nw = 200 * InputHandler.scale;
     }
 
     @Override
@@ -74,6 +82,8 @@ public class TurnView extends AbstractUI {
         for (int i = icons.size() - 1; i >= 0; i--) {
             icons.get(i).render(sb);
         }
+
+        FontHandler.renderLineRight(sb, FontHandler.ROUND, "라운드 " + Labyrintale.battleScreen.round, nx, ny, nw, nw);
     }
 
     private static class TurnIcon extends AbstractUI {

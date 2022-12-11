@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.rest;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -13,10 +15,15 @@ import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
 
+import static com.badlogic.gdx.graphics.Color.WHITE;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
+
 public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot, GetRewardDone {
 
     public static final int HEAL_AMOUNT = 8;
 
+    private final float aa = Color.LIGHT_GRAY.r;
+    private float a = aa;
     public RestScreen sc;
     public RestType type;
 
@@ -36,6 +43,21 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
             } else if (type == RestType.REVIVE) {
                 AbstractLabyrinth.cPanel.infoPanel.setInfo("소생", "사망한 플레이어 하나를 부활시킵니다.");
             }
+        }
+    }
+
+    protected void renderUi(SpriteBatch sb) {
+        if (enabled) {
+            if(overable && !over) {
+                a -= Labyrintale.tick * 4;
+                if(a <= aa) a = aa;
+            } else {
+                a += Labyrintale.tick * 4;
+                if(a >= 1) a = 1;
+            }
+            sb.setColor(a, a, a, 1);
+
+            if (showImg) sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 

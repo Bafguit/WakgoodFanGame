@@ -25,7 +25,7 @@ public class HealButton extends AbstractUI {
         desc = getDesc(type);
     }
 
-    private static Sprite getImage(HealReward.HealType type) { // TODO 이미지 바꾸기
+    private static Sprite getImage(HealReward.HealType type) {
         if (type == HealReward.HealType.HEAL) return FileHandler.getUi().get("REST");
         else if (type == HealReward.HealType.MAX_HEALTH)
             return FileHandler.getUi().get("REST");

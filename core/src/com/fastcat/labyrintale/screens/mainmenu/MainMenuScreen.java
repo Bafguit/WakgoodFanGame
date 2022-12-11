@@ -84,11 +84,17 @@ public class MainMenuScreen extends AbstractScreen {
         }
         Labyrintale.closeTutorial();
         gameStartButton.over = false;
+        gameStartButton.show();
         loadButton.over = false;
+        loadButton.show();
         runsButton.over = false;
+        runsButton.show();
         optionButton.over = false;
+        optionButton.show();
         creditButton.over = false;
+        creditButton.show();
         exitButton.over = false;
+        exitButton.show();
         SaveHandler.refresh();
         RunHandler.load();
         if (Labyrintale.labyrinth != null) {

@@ -37,19 +37,22 @@ public class ShopItemIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
 
             FontHandler.renderCenter(
-                    sb, fontData, text, x - sWidth, Gdx.graphics.getHeight() * 0.925f, sWidth * 3f, sHeight);
-            FontHandler.renderCenter(sb, fontData, "▼", x, Gdx.graphics.getHeight() * 0.675f, sWidth, sHeight);
+                    sb, fontData, text, x - sWidth, Gdx.graphics.getHeight() * 0.78f, sWidth * 3f, sHeight);
+            FontHandler.renderCenter(sb, fontData, "▼", x, Gdx.graphics.getHeight() * 0.575f, sWidth, sHeight);
 
             sb.draw(icon, x, y, sWidth, sHeight);
             if (screen.type == ShopTakeScreen.TakeType.SKILL) {
+                if(screen.skill.owner != null) sb.setColor(screen.skill.owner.pColor);
+                else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
-                sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
+                sb.setColor(Color.WHITE);
+                sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(
                         sb,
                         FontHandler.CARD_BIG_DESC,
                         Integer.toString(screen.skill.cost),
-                        x - sWidth * 0.05f,
-                        y + sWidth * 0.95f,
+                        x + sWidth * 0.05f,
+                        y + sWidth * 0.85f,
                         sWidth * 0.2f,
                         sWidth * 0.2f);
             } else if (screen.type == ShopTakeScreen.TakeType.ITEM) {

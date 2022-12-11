@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharItemIcon extends AbstractUI {
 
-    private final Sprite border = FileHandler.getUi().get("BORDER_R");
     public AbstractItem skill;
 
     public CharItemIcon(AbstractItem s) {
@@ -39,7 +38,7 @@ public class CharItemIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
             sb.setColor(skill.getRarityColor());
-            sb.draw(skill.rarity == AbstractItem.ItemRarity.STARTER ? border : img, x, y, sWidth, sHeight);
+            if(skill.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 }

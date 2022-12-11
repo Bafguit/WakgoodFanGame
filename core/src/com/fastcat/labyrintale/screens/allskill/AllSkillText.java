@@ -12,7 +12,7 @@ public class AllSkillText extends AbstractUI {
 
     public AllSkillText() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.925f);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.78f);
         fontData = CARD_BIG_ORB;
         text = "스킬을 선택하세요";
         showImg = false;
