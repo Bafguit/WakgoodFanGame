@@ -17,7 +17,7 @@ public class Wakgood extends AbstractPlayer {
 
     private static final String ID = "wak";
     private static final int HEALTH = 26;
-    private static final Color COLOR = FOREST;
+    private static final Color COLOR = new Color(0x6be18fff);
 
     public Wakgood() {
         super(ID, HEALTH, COLOR);

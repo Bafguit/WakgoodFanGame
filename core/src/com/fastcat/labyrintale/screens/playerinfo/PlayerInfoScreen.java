@@ -46,18 +46,18 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
                 AbstractPlayer player = AbstractLabyrinth.players[c];
                 for (int i = 0; i < 3; i++) {
                     PlayerInfoDeckIcon b = new PlayerInfoDeckIcon(player.deck.get(i));
-                    b.setPosition(w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+                    b.setPosition(w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.62f - 0.23f * f));
                     b.subWay = sw;
                     deck[c][i] = b;
                 }
                 for (int i = 0; i < 2; i++) {
                     PlayerInfoItemIcon b = new PlayerInfoItemIcon(player.item[i]);
-                    b.setPosition(w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.7f - 0.275f * f));
+                    b.setPosition(w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.62f - 0.23f * f));
                     b.subWay = sw;
                     item[c][i] = b;
                 }
                 PlayerInfoItemIcon ps = new PlayerInfoItemIcon(player.passive);
-                ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.81f - 0.275f * f));
+                ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.73f - 0.23f * f));
                 ps.subWay = sw;
                 passive[c] = ps;
                 int cnt = 0;
@@ -65,14 +65,14 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
                     for (int i = 1; i >= 0; i--) {
                         StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
                         s.entity = player;
-                        s.setPosition(w * (0.425f + 0.435f * g - 0.055f * i), h * (0.8f - 0.275f * f + 0.027f * j));
+                        s.setPosition(w * (0.425f + 0.435f * g - 0.055f * i), h * (0.72f - 0.23f * f + 0.027f * j));
                         s.subWay = sw;
                         stats[c][cnt++] = s;
                     }
                 }
                 PlayerInfoIcon pc = new PlayerInfoIcon(c);
                 pc.clickable = false;
-                pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.69f - 0.275f * f));
+                pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.62f - 0.23f * f));
                 pIcons[c] = pc;
                 c++;
             }
@@ -124,11 +124,11 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
         for (int f = 0; f < 2; f++) {
             for (int g = 0; g < 2; g++) {
                 AbstractPlayer player = AbstractLabyrinth.players[cnt++];
-                sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.83f - 0.275f * g), w * 0.12f, h * 0.03f);
+                sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.75f - 0.23f * g), w * 0.12f, h * 0.03f);
                 sb.draw(
                         hb.img,
                         w * (0.175f + 0.435f * f),
-                        h * (0.83f - 0.275f * g),
+                        h * (0.75f - 0.23f * g),
                         0,
                         0,
                         w * 0.12f,
@@ -137,13 +137,13 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
                         1,
                         0);
                 FontHandler.renderLineLeft(
-                        sb, fontName, player.name, w * (0.175f + 0.435f * f), h * (0.89f - 0.275f * g), w * 0.12f, 50);
+                        sb, fontName, player.name, w * (0.175f + 0.435f * f), h * (0.81f - 0.23f * g), w * 0.12f, 50);
                 FontHandler.renderCenter(
                         sb,
                         fontHp,
                         player.health + "/" + player.maxHealth,
                         w * (0.175f + 0.435f * f),
-                        h * (0.845f - 0.275f * g),
+                        h * (0.765f - 0.23f * g),
                         w * 0.12f,
                         h * 0.03f);
             }

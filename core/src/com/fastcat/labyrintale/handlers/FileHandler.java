@@ -233,6 +233,7 @@ public class FileHandler implements Disposable {
         bg.put("BG_DEAD", new Sprite(new Texture("img/bg/dead.png")));
         bg.put("BG_WIN", new Sprite(new Texture("img/bg/win.png")));
         bg.put("BG_MAP", new Sprite(new Texture("img/bg/map.png")));
+        bg.put("BG_DIFF", new Sprite(new Texture("img/bg/diff.png")));
         bg.put("BG_WAY_1", new Sprite(new Texture("img/bg/way_forest.png")));
         bg.put("BG_WAY_2", new Sprite(new Texture("img/bg/way_deep.png")));
         bg.put("BG_WAY_3", new Sprite(new Texture("img/bg/way_temple.png")));
@@ -263,6 +264,10 @@ public class FileHandler implements Disposable {
         ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
         ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
         ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
+        ui.put("BUTTON_S", new Sprite(new Texture("img/ui/button_s.png")));
+        ui.put("LEVEL_BACK", new Sprite(new Texture("img/ui/level_back.png")));
+        ui.put("LEVEL_LINE", new Sprite(new Texture("img/ui/level_border.png")));
+        ui.put("LEVEL_EXP", new Sprite(new Texture("img/ui/level_exp.png")));
         ui.put("CLOSE", new Sprite(new Texture("img/ui/close.png")));
         ui.put("CLOSE_SET", new Sprite(new Texture("img/ui/closeSet.png")));
         ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
@@ -291,6 +296,12 @@ public class FileHandler implements Disposable {
         ui.put("PLAYER_POINT_B", new Sprite(new Texture("img/ui/playerPoint_boss.png")));
         ui.put("ENTITY_POINT", new Sprite(new Texture("img/ui/entityPoint.png")));
         ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
+        ui.put("POINT_TURN", new Sprite(new Texture("img/ui/point_turn.png")));
+        ui.put("POINT_ALLEY", new Sprite(new Texture("img/ui/point_alley.png")));
+        ui.put("POINT_ATTACK", new Sprite(new Texture("img/ui/point_attack.png")));
+        ui.put("POINT_TURN_B", new Sprite(new Texture("img/ui/point_turn_b.png")));
+        ui.put("POINT_ALLEY_B", new Sprite(new Texture("img/ui/point_alley_b.png")));
+        ui.put("POINT_ATTACK_B", new Sprite(new Texture("img/ui/point_attack_b.png")));
         ui.put("WAY_SELECT", new Sprite(new Texture("img/ui/wayBG.png")));
         ui.put("EVENT_PANEL", new Sprite(new Texture("img/ui/event_paper.png")));
         ui.put("EVENT_CHOICE", new Sprite(new Texture("img/ui/event_select.png")));
@@ -302,6 +313,7 @@ public class FileHandler implements Disposable {
         ui.put("LOGO", new Sprite(new Texture("img/ui/logo.png")));
         ui.put("TITLE", new Sprite(new Texture("img/ui/title.png")));
         ui.put("CURSOR", new Sprite(new Texture("img/ui/cursor.png")));
+        ui.put("TURN_ARROW", new Sprite(new Texture("img/ui/turn_arrow.png")));
         ui.put("SLIDE_A", new Sprite(new Texture("img/ui/slide_a.png")));
         ui.put("SLIDE_B", new Sprite(new Texture("img/ui/slide_b.png")));
         ui.put("SLIDE_L", new Sprite(new Texture("img/ui/slide_l.png")));

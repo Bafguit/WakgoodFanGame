@@ -16,7 +16,7 @@ public class LibButton extends AbstractUI {
     public LibButton() {
         super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.32f);
-        fontData = new FontData(MEDIUM, 53, false);
+        fontData = new FontData(MEDIUM, 53, false, false);
         text = "도서관";
         showImg = false;
     }

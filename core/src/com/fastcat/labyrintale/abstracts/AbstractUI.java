@@ -200,7 +200,9 @@ public abstract class AbstractUI implements Disposable {
             texture.getTextureData().prepare();
         }
         Pixmap pixmap = texture.getTextureData().consumePixmap();
-        return new Color(pixmap.getPixel(LocalX, LocalY));
+        Color c = new Color(pixmap.getPixel(LocalX, LocalY));
+        pixmap.dispose();
+        return c;
     }
 
     public void setParent(AbstractUI ui) {

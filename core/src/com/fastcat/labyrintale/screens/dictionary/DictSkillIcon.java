@@ -16,7 +16,7 @@ public class DictSkillIcon extends AbstractUI {
     private final HashMap<String, Boolean> map = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
     private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
     private final Sprite locked = FileHandler.getUi().get("UNKNOWN");
-    public DictGroup group;
+    public DictCharGroup group;
     public AbstractSkill skill;
 
     public DictSkillIcon(DictCharGroup group, AbstractSkill skill) {
@@ -44,7 +44,9 @@ public class DictSkillIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
             if (overable) {
                 sb.draw(skill.img, x, y, sWidth, sHeight);
+                sb.setColor(group.data.player.pColor);
                 sb.draw(img, x, y, sWidth, sHeight);
+                sb.setColor(Color.WHITE);
                 if (!skill.passive) {
                     sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
                     String t = Integer.toString(skill.cost);
@@ -63,7 +65,9 @@ public class DictSkillIcon extends AbstractUI {
                 }
             } else {
                 sb.draw(locked, x, y, sWidth, sHeight);
+                sb.setColor(group.data.player.pColor);
                 sb.draw(img, x, y, sWidth, sHeight);
+                sb.setColor(Color.WHITE);
             }
         }
     }

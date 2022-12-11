@@ -19,6 +19,7 @@ public class PlayerInfoIcon extends AbstractUI {
     public PlayerInfoIcon(int index) {
         super(FileHandler.getUi().get("BORDER_V2"));
         this.index = index;
+        setScale(0.9f);
         p = AbstractLabyrinth.players[index];
     }
 

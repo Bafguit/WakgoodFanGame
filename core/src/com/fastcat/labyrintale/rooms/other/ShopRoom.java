@@ -165,7 +165,6 @@ public class ShopRoom extends AbstractRoom {
             shop.generateItems();
             for (int i = 0; i < 6; i++) {
                 shopScreen.skills[i].setItem(shop.skills[i]);
-                shopScreen.icons[i].item = shop.skills[i];
             }
             for (int i = 0; i < 5; i++) {
                 shopScreen.items[i].setItem(shop.items[i]);

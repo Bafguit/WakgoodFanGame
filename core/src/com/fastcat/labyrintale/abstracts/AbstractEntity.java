@@ -29,6 +29,7 @@ import java.util.Objects;
 
 public abstract class AbstractEntity implements Cloneable {
 
+    public Color pColor;
     public final int handSize;
     public final boolean isPlayer;
 

@@ -25,6 +25,7 @@ public class StatusButton extends AbstractUI {
         fontData = STATUS;
         overable = true;
         clickable = false;
+        setScale(0.9f);
     }
 
     @Override

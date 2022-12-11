@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.players;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.SKY;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
@@ -17,7 +18,7 @@ public class Gosegu extends AbstractPlayer {
 
     private static final String ID = "gosegu";
     private static final int HEALTH = 21;
-    private static final Color COLOR = BLUE;
+    private static final Color COLOR = new Color(0x87fffdff);
 
     public Gosegu() {
         super(ID, HEALTH, COLOR);

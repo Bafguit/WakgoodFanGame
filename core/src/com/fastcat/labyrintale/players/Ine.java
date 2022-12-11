@@ -15,7 +15,7 @@ public class Ine extends AbstractPlayer {
 
     private static final String ID = "ine";
     private static final int HEALTH = 25;
-    private static final Color COLOR = Color.valueOf("#8a2be2");
+    private static final Color COLOR = new Color(0xa87dffff);
 
     public Ine() {
         super(ID, HEALTH, COLOR);

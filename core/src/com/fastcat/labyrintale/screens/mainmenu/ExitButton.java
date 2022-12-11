@@ -15,7 +15,7 @@ public class ExitButton extends AbstractUI {
     public ExitButton() {
         super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.125f);
-        fontData = new FontData(MEDIUM, 53, false);
+        fontData = new FontData(MEDIUM, 53, false, false);
         text = "종료";
         showImg = false;
     }

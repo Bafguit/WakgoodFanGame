@@ -17,7 +17,7 @@ public class Jururu extends AbstractPlayer {
 
     private static final String ID = "jururu";
     private static final int HEALTH = 20;
-    private static final Color COLOR = MAGENTA;
+    private static final Color COLOR = new Color(0xe373ffff);
 
     public Jururu() {
         super(ID, HEALTH, COLOR);

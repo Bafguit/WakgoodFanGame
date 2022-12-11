@@ -14,10 +14,6 @@ import com.fastcat.labyrintale.strings.CharString;
 
 public abstract class AbstractPlayer extends AbstractEntity {
 
-    public final Color pColor;
-    public final Color pColorW;
-    public final Color pColorLG;
-    public final Color pColorDG;
     public final PlayerClass playerClass;
     public final Sprite camp;
     public final Sprite upset;
@@ -36,9 +32,6 @@ public abstract class AbstractPlayer extends AbstractEntity {
         name = temp.NAME;
         desc = temp.DESC;
         pColor = c.cpy();
-        pColorW = c.cpy().mul(0.827f, 0.827f, 0.827f, 1);
-        pColorLG = c.cpy().mul(0.663f, 0.663f, 0.663f, 1);
-        pColorDG = c.cpy().mul(0.5f, 0.5f, 0.5f, 1);
         move = new MoveP(this);
         pass = new PassTurn(this);
         setImage(

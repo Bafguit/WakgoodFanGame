@@ -17,7 +17,7 @@ public class Viichan extends AbstractPlayer {
 
     private static final String ID = "viichan";
     private static final int HEALTH = 23;
-    private static final Color COLOR = CHARTREUSE;
+    private static final Color COLOR = new Color(0xc3ff81ff);
 
     public Viichan() {
         super(ID, HEALTH, COLOR);

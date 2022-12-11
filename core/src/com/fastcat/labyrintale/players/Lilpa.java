@@ -17,7 +17,7 @@ public class Lilpa extends AbstractPlayer {
 
     private static final String ID = "lilpa";
     private static final int HEALTH = 22;
-    private static final Color COLOR = NAVY;
+    private static final Color COLOR = new Color(0x899cffff);
 
     public Lilpa() {
         super(ID, HEALTH, COLOR);

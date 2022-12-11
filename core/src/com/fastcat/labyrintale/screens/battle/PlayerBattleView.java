@@ -18,7 +18,6 @@ public class PlayerBattleView extends BattleView {
         super(FileHandler.getUi().get("ENTITY_POINT"));
         entity = cls;
         entity.block = 0;
-        pImg = FileHandler.getUi().get("PLAYER_POINT");
         showImg = false;
     }
 
@@ -44,14 +43,18 @@ public class PlayerBattleView extends BattleView {
     protected void renderUi(SpriteBatch sb) {
         if (enabled && entity != null) {
             sb.setColor(Color.WHITE);
-            if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE)
-                sb.draw(
-                        isLooking || (over && isTarget) ? img : pImg,
-                        entity.animX - sWidth / 2,
-                        entity.animY - Gdx.graphics.getHeight() * 0.025f,
-                        sWidth,
-                        sHeight);
             entity.render(sb);
+        }
+    }
+
+    public void renderLook(SpriteBatch sb) {
+        if (enabled && entity != null && !entity.isDead && showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) {
+            sb.setColor(Color.WHITE);
+            sb.draw(battleScreen.currentTurnEntity() == entity ? turnLook.img : targetLook.img,
+                    entity.animX - targetLook.sWidth / 2,
+                    entity.animY - targetLook.sHeight * 0.6f,
+                    targetLook.sWidth,
+                    targetLook.sHeight);
         }
     }
 

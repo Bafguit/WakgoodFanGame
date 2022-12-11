@@ -11,10 +11,10 @@ import javax.swing.*;
 public final class ReloadWindow extends JFrame {
 
     public ReloadWindow(File parentFile) {
-        setTitle("설정 다시 로드");
+        setTitle("Reloads Setting");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JButton reloadButton = new JButton("설정 다시 불러오기");
+        JButton reloadButton = new JButton("Reload");
         reloadButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         reloadButton.addActionListener(e -> {
             try {
@@ -28,7 +28,6 @@ public final class ReloadWindow extends JFrame {
                     configurationProvider.applyTracker(tracker);
                 }
             }
-            // JOptionPane.showMessageDialog(this, "완료", "완료", JOptionPane.OK_OPTION);
         });
         add(reloadButton);
         pack();

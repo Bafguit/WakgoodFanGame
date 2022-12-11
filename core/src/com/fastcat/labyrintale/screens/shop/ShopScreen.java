@@ -13,7 +13,6 @@ public class ShopScreen extends AbstractScreen {
 
     public ShopItemButton[] skills = new ShopItemButton[6];
     public ShopItemButton[] items = new ShopItemButton[5];
-    public ShopItemCharIcon[] icons = new ShopItemCharIcon[6];
     public ShopItemButton roll;
     public PassShopButton pass;
     public ShopRoom room;
@@ -27,10 +26,6 @@ public class ShopScreen extends AbstractScreen {
             ShopItemButton b = new ShopItemButton(s);
             b.setPosition(w * (0.25f + 0.1f * i) - b.sWidth / 2, h * 0.75f);
             skills[i] = b;
-
-            ShopItemCharIcon c = new ShopItemCharIcon(s);
-            c.setPosition(b.x + b.sWidth - c.sWidth, b.y);
-            icons[i] = c;
         }
         for (int i = 0; i < 5; i++) {
             ShopItemButton b = new ShopItemButton(room.items[i]);
@@ -55,7 +50,6 @@ public class ShopScreen extends AbstractScreen {
     public void render(SpriteBatch sb) {
         for (int i = 0; i < 6; i++) {
             skills[i].render(sb);
-            icons[i].render(sb);
         }
         for (ShopItemButton b : items) b.render(sb);
         roll.render(sb);

@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.abstracts;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.publicRandom;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
@@ -39,6 +40,7 @@ public abstract class AbstractEnemy extends AbstractEntity {
         stat.debuRes = 5;
         stat.neutRes = 5;
         stat.critical = 5;
+        pColor = Color.WHITE.cpy();
         stat.moveRes = 5;
         stat.multiply = 50;
         img = imgTurn = FileHandler.getEnemyImg().get(id);

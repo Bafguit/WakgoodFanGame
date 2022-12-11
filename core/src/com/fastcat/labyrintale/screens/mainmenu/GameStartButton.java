@@ -16,7 +16,7 @@ public class GameStartButton extends AbstractUI {
     public GameStartButton() {
         super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.45f);
-        fontData = new FontData(MEDIUM, 53, false);
+        fontData = new FontData(MEDIUM, 53, false, false);
         text = "게임 시작";
         showImg = false;
     }

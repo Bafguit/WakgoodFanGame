@@ -17,7 +17,7 @@ public class Burger extends AbstractPlayer {
 
     private static final String ID = "burger";
     private static final int HEALTH = 27;
-    private static final Color COLOR = YELLOW;
+    private static final Color COLOR = new Color(0xfff081ff);
 
     public Burger() {
         super(ID, HEALTH, COLOR);

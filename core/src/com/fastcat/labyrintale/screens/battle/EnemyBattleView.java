@@ -22,10 +22,9 @@ public class EnemyBattleView extends BattleView {
         overable = false;
 
         if (enemy != null && enemy.type == AbstractEnemy.EnemyType.BOSS) {
-            pImg = FileHandler.getUi().get("PLAYER_POINT_B");
+            turnLook = new TempUI(FileHandler.getUi().get("POINT_TURN_B"));
+            targetLook = new TempUI(FileHandler.getUi().get("POINT_ALLEY_B"));
             statSize = 9;
-        } else {
-            pImg = FileHandler.getUi().get("PLAYER_POINT");
         }
     }
 
@@ -47,10 +46,18 @@ public class EnemyBattleView extends BattleView {
         setPosition(entity.animX - sWidth / 2, entity.animY - Gdx.graphics.getHeight() * 0.025f);
         if (enabled && entity != null && !entity.isDead) {
             sb.setColor(Color.WHITE);
-            if (showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) {
-                sb.draw(battleScreen.currentTurnEntity() == entity ? pImg : img, x, y, sWidth, sHeight);
-            }
             entity.render(sb);
+        }
+    }
+
+    public void renderLook(SpriteBatch sb) {
+        if (enabled && entity != null && !entity.isDead && showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE) {
+            sb.setColor(Color.WHITE);
+            sb.draw(battleScreen.currentTurnEntity() == entity ? turnLook.img : targetLook.img,
+                    entity.animX - targetLook.sWidth / 2,
+                    entity.animY - targetLook.sHeight * 0.6f,
+                    targetLook.sWidth,
+                    targetLook.sHeight);
         }
     }
 

@@ -20,7 +20,6 @@ public class RewardItemButton extends AbstractUI {
     public AbstractReward reward;
     public SkillReward sReward;
     public ItemReward iReward;
-    private RewardItemCharIcon icon;
 
     public RewardItemButton(AbstractReward re) {
         super(FileHandler.getUi().get("BORDER"));
@@ -28,7 +27,6 @@ public class RewardItemButton extends AbstractUI {
         this.reward = re;
         if (reward.type == AbstractReward.RewardType.SKILL) {
             sReward = (SkillReward) reward;
-            icon = new RewardItemCharIcon(sReward);
         } else if (reward.type == AbstractReward.RewardType.ITEM) {
             iReward = (ItemReward) reward;
         }
@@ -44,17 +42,17 @@ public class RewardItemButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(image, x, y, sWidth, sHeight);
             if (reward.type == AbstractReward.RewardType.SKILL) {
-                sb.setColor(Color.WHITE);
+                if(sReward.skill.owner != null) sb.setColor(sReward.skill.owner.pColor);
+                else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
-                sb.draw(icon.item.skill.owner.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
-                sb.draw(icon.img, x + sWidth - icon.sWidth, y, icon.sWidth, icon.sHeight);
+                sb.setColor(Color.WHITE);
 
-                if (!icon.item.skill.passive) {
+                if (!sReward.skill.passive) {
                     sb.draw(cost, x - sWidth * 0.2f, y + sWidth * 0.7f, sWidth * 0.5f, sWidth * 0.5f);
                     FontHandler.renderCenter(
                             sb,
                             fontData,
-                            Integer.toString(icon.item.skill.cost),
+                            Integer.toString(sReward.skill.cost),
                             x - sWidth * 0.05f,
                             y + sWidth * 0.95f,
                             sWidth * 0.2f,

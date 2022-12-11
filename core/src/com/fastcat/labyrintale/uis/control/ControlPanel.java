@@ -14,6 +14,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.uis.LevelPanel;
 
 public class ControlPanel implements Disposable {
 
@@ -21,6 +22,7 @@ public class ControlPanel implements Disposable {
 
     public InfoPanel infoPanel;
     public BattlePanel battlePanel;
+    public LevelPanel level;
     public AbstractUI.TempUI bg;
     public AbstractUI.TempUI bbg;
     public ControlType type = HIDE;
@@ -30,6 +32,7 @@ public class ControlPanel implements Disposable {
     public ControlPanel() {
         infoPanel = new InfoPanel();
         battlePanel = new BattlePanel();
+        level = new LevelPanel();
         effectHandler = EffectHandler.newInstance();
         bg = new AbstractUI.TempUI(FileHandler.getUi().get("CONTROL_PANEL"));
         bg.setPosition((Gdx.graphics.getWidth() - bg.sWidth) * 0.5f, 0);
@@ -45,6 +48,7 @@ public class ControlPanel implements Disposable {
             infoPanel.update();
             if (type == BATTLE) battlePanel.update();
             effectHandler.update();
+            level.update();
         }
     }
 
@@ -58,6 +62,8 @@ public class ControlPanel implements Disposable {
             }
             infoPanel.render(sb);
             effectHandler.render(sb);
+            level.render(sb);
+            /*
             sb.end();
             float f = ((float) AbstractLabyrinth.exp) / ((float) AbstractLabyrinth.maxExp);
             String p = "레벨 "
@@ -77,7 +83,7 @@ public class ControlPanel implements Disposable {
             shr.rect(0, y - h, w * f, h);
             shr.end();
             sb.begin();
-            FontHandler.renderCenter(sb, font, p, 0, y - h * 0.5f, w, h);
+            FontHandler.renderCenter(sb, font, p, 0, y - h * 0.5f, w, h);*/
         }
     }
 

@@ -17,7 +17,7 @@ public class Manager extends AbstractPlayer {
 
     private static final String ID = "manager";
     private static final int HEALTH = 25;
-    private static final Color COLOR = PINK;
+    private static final Color COLOR = new Color(0xfe77b3ff);
 
     public Manager() {
         super(ID, HEALTH, COLOR);
