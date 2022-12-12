@@ -7,77 +7,44 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.screens.setting.SlideBarGroup;
 
 public class SlideBar extends AbstractUI {
 
-    private final SlideLine line;
-    private final SlideSideL sideL;
-    private final SlideSideR sideR;
-    private final SlideButton button;
-
+    public SlideBarGroup group;
     public int min, max, abs;
     public int pos; // 0 ~ 100;
 
-    public SlideBar(float x, float y, int start) {
+    public SlideBar(float x, float y, int start, SlideBarGroup group) {
         this(x, y, 0, 100, start);
+        this.group = group;
     }
 
     public SlideBar(float x, float y, int min, int max, int start) {
         super(FileHandler.getUi().get("SLIDE_A"), x, y);
-        sideL = new SlideSideL();
-        sideL.setPosition(x, y);
-        line = new SlideLine(width);
-        line.setPosition(x + sideL.sWidth, y);
-        sideR = new SlideSideR();
-        sideR.setPosition(x + sideL.sWidth + line.sWidth, y);
         this.min = min;
         this.max = max;
         abs = max - min;
         pos = start;
-        button = new SlideButton();
-        button.min = x;
-        button.max = x + sWidth - button.sWidth;
-        button.setPosition(x + ((sWidth - button.sWidth) * ((float) pos / abs)), y);
     }
 
     @Override
     protected void updateButton() {
-        if (!clicking) button.overTrack = false;
-        button.update();
-        pos = MathUtils.floor((button.x - x) / (button.max - x) * abs);
-        sideL.update();
-        line.update();
-        sideR.update();
+        if (!clicking) group.button.overTrack = false;
     }
 
     @Override
-    protected void renderUi(SpriteBatch sb) {
-        if (enabled) {
-            sb.setColor(Color.WHITE);
-            sideL.render(sb);
-            line.render(sb);
-            sideR.render(sb);
-            button.render(sb);
-        }
-    }
-
-    @Override
-    public void setParent(AbstractUI ui) {
-        sideL.setParent(ui);
-        line.setParent(ui);
-        sideR.setParent(ui);
-        button.setParent(ui);
-    }
+    protected void renderUi(SpriteBatch sb) {}
 
     @Override
     public void onClick() {
-        button.overTrack = true;
+        group.button.overTrack = true;
     }
 
     public static class SlideButton extends AbstractUI {
 
         protected boolean overTrack = false;
-        protected float min, max;
+        public float min, max;
 
         public SlideButton() {
             super(FileHandler.getUi().get("SLIDE_B"));
@@ -86,7 +53,7 @@ public class SlideBar extends AbstractUI {
 
         @Override
         protected void updateButton() {
-            if (overTrack) setPosition(MathUtils.clamp(mx - sWidth / 2, min, max), y);
+            if (overTrack) setX(MathUtils.clamp(mx - sWidth / 2, min, max));
         }
 
         @Override
@@ -100,14 +67,13 @@ public class SlideBar extends AbstractUI {
 
     public static class SlideLine extends AbstractUI {
         public SlideLine(float width) {
-            super(FileHandler.getUi().get("SLIDE_L"), -1000, -1000, width - 12, 40);
+            super(FileHandler.getUi().get("SLIDE_L"), -1000, -1000, width - 14, 40);
             clickable = false;
         }
 
         @Override
         protected void renderUi(SpriteBatch sb) {
             if (enabled) {
-                sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
             }
         }
@@ -122,7 +88,6 @@ public class SlideBar extends AbstractUI {
         @Override
         protected void renderUi(SpriteBatch sb) {
             if (enabled) {
-                sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
             }
         }

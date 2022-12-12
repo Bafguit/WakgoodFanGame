@@ -65,7 +65,7 @@ public abstract class AbstractRoom implements Cloneable {
                 SoundHandler.fadeOutAll();
                 SoundHandler.addBattle();
                 battleScreen = new BattleScreen();
-                fadeOutAndChangeScreen(battleScreen);
+                fadeOutAndChangeScreen(battleScreen, FadeType.HORIZONTAL);
             } else if (x < s) {
                 ShopRoom temp;
                 temp = new ShopRoom();
@@ -73,43 +73,43 @@ public abstract class AbstractRoom implements Cloneable {
                 type = SHOP;
                 temp.entry();
                 shopScreen = new ShopScreen(temp);
-                fadeOutAndChangeScreen(shopScreen);
+                fadeOutAndChangeScreen(shopScreen, FadeType.HORIZONTAL);
             } else if (x < r) {
                 AbstractRoom temp;
                 temp = new RestRoom();
                 id = temp.id;
                 type = REST;
                 restScreen = new RestScreen();
-                fadeOutAndChangeScreen(restScreen);
+                fadeOutAndChangeScreen(restScreen, FadeType.HORIZONTAL);
             } else {
                 event = GroupHandler.RoomGroup.getNextEvent(AbstractLabyrinth.floorNum);
                 type = EVENT;
                 eventScreen = new EventScreen(event);
-                fadeOutAndChangeScreen(eventScreen);
+                fadeOutAndChangeScreen(eventScreen, FadeType.HORIZONTAL);
             }
         } else if (type == AbstractRoom.RoomType.BATTLE || type == AbstractRoom.RoomType.ELITE) {
             refreshEnemy();
             SoundHandler.fadeOutAll();
             SoundHandler.addBattle();
             battleScreen = new BattleScreen();
-            fadeOutAndChangeScreen(battleScreen);
+            fadeOutAndChangeScreen(battleScreen, FadeType.HORIZONTAL);
         } else if (type == AbstractRoom.RoomType.BOSS) {
             refreshEnemy();
             SoundHandler.fadeOutAll();
             SoundHandler.addBattle();
             battleScreen = new BattleScreen();
-            fadeOutAndChangeScreen(battleScreen);
+            fadeOutAndChangeScreen(battleScreen, FadeType.HORIZONTAL);
         } else if (type == AbstractRoom.RoomType.REST) {
             restScreen = new RestScreen();
-            fadeOutAndChangeScreen(restScreen);
+            fadeOutAndChangeScreen(restScreen, FadeType.HORIZONTAL);
         } else if (type == AbstractRoom.RoomType.EVENT) {
             eventScreen = new EventScreen(event);
-            fadeOutAndChangeScreen(eventScreen);
+            fadeOutAndChangeScreen(eventScreen, FadeType.HORIZONTAL);
         } else if (type == SHOP) {
             ShopRoom r = new ShopRoom();
             r.entry();
             shopScreen = new ShopScreen(r);
-            fadeOutAndChangeScreen(shopScreen);
+            fadeOutAndChangeScreen(shopScreen, FadeType.HORIZONTAL);
         }
     }
 

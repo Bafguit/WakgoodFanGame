@@ -14,6 +14,7 @@ import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
@@ -43,7 +44,8 @@ public class ShopRoom extends AbstractRoom {
             }
             if (p.hasItem("Protection")) roll.price *= 0.5f;
         }
-        fadeOutAndChangeScreen(shopScreen);
+        SoundHandler.playSfx("CHANGE");
+        fadeOutAndChangeScreen(shopScreen, Labyrintale.FadeType.HORIZONTAL);
     }
 
     public void generateSkills() {

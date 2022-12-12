@@ -30,7 +30,7 @@ public class EventScreen extends AbstractScreen {
         setPage(event.page);
         setBg(AbstractLabyrinth.curBg);
         cx = 1118 * InputHandler.scale;
-        cy = 733 * InputHandler.scale;
+        cy = 713 * InputHandler.scale;
         ch = 64 * InputHandler.scale;
     }
 
@@ -46,7 +46,7 @@ public class EventScreen extends AbstractScreen {
         for (int i = 0; i < size; i++) {
             EventChoiceButton t = new EventChoiceButton(this.event.choices[page].get(i));
             t.setPosition(
-                    1085 * InputHandler.scale, 678 * InputHandler.scale + 67 * InputHandler.scale * (size - 1 - i));
+                    1085 * InputHandler.scale, 658 * InputHandler.scale + 67 * InputHandler.scale * (size - 1 - i));
             ecb[i] = t;
         }
     }

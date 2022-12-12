@@ -62,9 +62,13 @@ public class VictoryAction extends AbstractAction {
 
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.BOSS));
-            } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE
-                    || AbstractLabyrinth.advisor.id.equals("dopa")) {
+            } else if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
                 temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
+            } else if(AbstractLabyrinth.advisor.id.equals("dopa")) {
+                int i = AbstractLabyrinth.publicRandom.random(99);
+                if(i < 70) {
+                    temp.add(new ItemReward(ItemReward.ItemRewardType.NORMAL));
+                }
             }
 
             int g;

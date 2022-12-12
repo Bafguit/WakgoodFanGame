@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.events.choices;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
@@ -28,6 +29,7 @@ public class BattleEventChoice extends AbstractEvent.EventChoice {
         battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
         SoundHandler.fadeOutAll();
         SoundHandler.addBattle();
-        fadeOutAndChangeScreen(battleScreen);
+        SoundHandler.playSfx("CHANGE_DOOR");
+        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.VERTICAL);
     }
 }

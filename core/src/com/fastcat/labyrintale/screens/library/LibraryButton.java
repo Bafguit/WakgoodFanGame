@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
 import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.screens.runview.RunViewScreen;
@@ -31,8 +32,10 @@ public class LibraryButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        if (lib == Library.RUNS) Labyrintale.fadeOutAndChangeScreen(new RunViewScreen());
-        else if (lib == Library.DICT) Labyrintale.addTempScreen(Labyrintale.dictionary);
+        if (lib == Library.RUNS) {
+            SoundHandler.playSfx("CHANGE");
+            Labyrintale.fadeOutAndChangeScreen(new RunViewScreen(), Labyrintale.FadeType.VERTICAL, 0.3f);
+        } else if (lib == Library.DICT) Labyrintale.addTempScreen(Labyrintale.dictionary);
         else if (lib == Library.ACHVS) Labyrintale.addTempScreen(Labyrintale.achievement);
     }
 

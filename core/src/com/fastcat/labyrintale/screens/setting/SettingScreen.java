@@ -207,5 +207,6 @@ public class SettingScreen extends AbstractScreen {
         alpha = 0;
         panel.setY(Gdx.graphics.getHeight());
         update();
+        bgImg.img.setAlpha(0);
     }
 }

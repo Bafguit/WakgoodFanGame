@@ -10,7 +10,7 @@ public class Pruning extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY_FIRST;
-    private static final int ATTACK = 7;
+    private static final int ATTACK = 8;
     private static final int UP = 1;
     private static final int VALUE = 2;
 
@@ -18,7 +18,7 @@ public class Pruning extends AbstractSkill {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(ATTACK);
         setBaseValue(VALUE, UP);
-        setBaseCost(2);
+        setBaseCost(3);
     }
 
     @Override

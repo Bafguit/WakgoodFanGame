@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class LibButton extends AbstractUI {
 
@@ -51,7 +52,8 @@ public class LibButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.libScreen);
+        SoundHandler.playSfx("CHANGE");
+        Labyrintale.fadeOutAndChangeScreen(Labyrintale.libScreen, Labyrintale.FadeType.VERTICAL, 0.3f);
     }
 
     @Override

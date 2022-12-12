@@ -18,13 +18,13 @@ public class EventImage extends AbstractUI {
 
     public EventImage(AbstractEvent e) {
         super(FileHandler.getUi().get("EVENT"));
-        setPosition(626 * scale, 686 * scale);
+        setPosition(626 * scale, 666 * scale);
         event = e;
         overable = false;
         nx = 1290 * scale;
         dx = 1095 * scale;
-        ny = 1169 * scale;
-        dy = 1099 * scale;
+        ny = 1149 * scale;
+        dy = 1079 * scale;
         nw = 404 * scale;
         dw = 706 * scale;
         nh = 58 * scale;

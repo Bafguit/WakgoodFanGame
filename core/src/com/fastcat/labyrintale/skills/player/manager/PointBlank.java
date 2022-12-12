@@ -13,13 +13,13 @@ public class PointBlank extends AbstractSkill {
     private static final SkillType TYPE = SkillType.ATTACK;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
     private static final SkillTarget TARGET = SkillTarget.ENEMY;
-    private static final int VALUE = 6;
+    private static final int VALUE = 5;
 
     public PointBlank(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseAttack(VALUE);
         setBaseValue(2, 1);
-        setBaseCost(3);
+        setBaseCost(2);
     }
 
     @Override

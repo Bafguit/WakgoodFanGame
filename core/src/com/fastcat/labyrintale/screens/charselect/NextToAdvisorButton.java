@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.charselect;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 import com.badlogic.gdx.Gdx;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
@@ -21,7 +23,7 @@ public class NextToAdvisorButton extends AbstractUI {
     public NextToAdvisorButton() {
         super(FileHandler.getUi().get("BUTTON_S"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
-        fontData = BUTTON;
+        fontData = new FontHandler.FontData(MEDIUM, 53, false, false);
         text = "출발";
         disable();
     }

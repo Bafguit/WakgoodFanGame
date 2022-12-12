@@ -14,12 +14,11 @@ public class PassShopButton extends AbstractUI {
         super(FileHandler.getUi().get("BUTTON"));
         setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
         fontData = BUTTON;
-        text = "넘기기";
+        text = "나가기";
     }
 
     @Override
     protected void onClick() {
         AbstractLabyrinth.endRoom();
-        Labyrintale.returnToWay();
     }
 }

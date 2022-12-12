@@ -103,6 +103,10 @@
     "NAME": "일타쌍피",
     "DESC": "앞의 적 둘에게 피해를 {A} 줍니다."
   },
+  "DualBackAttackE": {
+    "NAME": "뒤치기",
+    "DESC": "뒤의 적 둘에게 피해를 {A} 줍니다."
+  },
   "DoubleE": {
     "NAME": "연속 공격",
     "DESC": "앞의 적 하나에게 피해를 {A} 만큼 두 번 줍니다."
@@ -220,6 +224,13 @@
   "RestrictE": {
     "NAME": "속박",
     "DESC": "체력이 가장 낮은 적들에게 &y<속박>을 {V} 부여합니다.",
+    "KEY" : [
+      "Restrict"
+    ]
+  },
+  "RestrictAttackE": {
+    "NAME": "절멸",
+    "DESC": "체력이 가장 낮은 적들에게 피해를 {A} 주고 &y<속박>을 {V} 부여합니다.",
     "KEY" : [
       "Restrict"
     ]

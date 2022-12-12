@@ -37,12 +37,12 @@ public class DifficultyButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if(clickable && !over) {
-                a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
-            } else {
+            if(clickable && over) {
                 a += Labyrintale.tick * 4;
                 if(a >= 1) a = 1;
+            } else {
+                a -= Labyrintale.tick * 4;
+                if(a <= aa) a = aa;
             }
             sb.setColor(a, a, a, 1);
             sb.draw(clickable ? img : locked, x, y, sWidth, sHeight);

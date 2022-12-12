@@ -25,29 +25,29 @@ public class BossEnemy2 extends AbstractEnemy {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         AbstractSkill s = new PushE(this);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             s.upgrade();
         }
         temp.add(s);
         AbstractSkill s2 = new DualAttackE(this);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             s2.upgrade();
         }
         temp.add(s2);
-        AbstractSkill ss = new BarrierE(this);
-        for (int i = 0; i < 7; i++) {
-            ss.upgrade();
-        }
-        temp.add(ss);
         AbstractSkill s3 = new FrailStrongE(this);
         s3.upgrade();
         temp.add(s3);
+        AbstractSkill ss = new DualBackAttackE(this);
+        for (int i = 0; i < 5; i++) {
+            ss.upgrade();
+        }
+        temp.add(ss);
         AbstractSkill sss = new AdjudgeE(this);
         sss.upgrade();
         sss.upgrade();
         temp.add(sss);
         AbstractSkill s4 = new StrikeE(this);
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 20; i++) {
             s4.upgrade();
         }
         temp.add(s4);

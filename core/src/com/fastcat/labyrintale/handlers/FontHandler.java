@@ -27,6 +27,7 @@ public final class FontHandler implements Disposable {
     public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 48, true);
+    public static final FontData GOLD = new FontData(BOLD, 53, true, false);
     public static final FontData BUTTON = new FontData(MEDIUM, 46, false, false);
     public static final FontData CLOSE = new FontData(MEDIUM, 53, false, false);
     public static final FontData MAIN_MENU_SHADOW = new FontData(MEDIUM, 53, false);
@@ -45,7 +46,7 @@ public final class FontHandler implements Disposable {
     public static final FontData INFO_NAME = new FontData(BOLD, 48, false);
     public static final FontData INFO_HP = new FontData(MEDIUM, 35, false);
     public static final FontData INFO_HP_BORDER = new FontData(MEDIUM, 35, true);
-    public static final FontData BORDER_36 = new FontData(MEDIUM, 36, true, false);
+    public static final FontData BORDER_40 = new FontData(MEDIUM, 40, false, true);
     public static final FontData EVENT_TITLE = new FontData(MEDIUM, 42, new Color(1f, 0.975f, 0.925f, 1), false, false);
     public static final FontData EVENT_DESC = new FontData(MEDIUM, 32, new Color(1f, 0.975f, 0.925f, 1), false, false);
     public static final FontData EVENT_CHOICE = new FontData(MEDIUM, 36, false, false);
@@ -306,12 +307,13 @@ public final class FontHandler implements Disposable {
         INFO_NAME.dispose();
         INFO_HP.dispose();
         INFO_HP_BORDER.dispose();
-        BORDER_36.dispose();
+        BORDER_40.dispose();
         EVENT_DESC.dispose();
         EVENT_CHOICE.dispose();
         BORDER.dispose();
         BLOCK.dispose();
         HP.dispose();
+        GOLD.dispose();
         STATUS.dispose();
         REST_DESC.dispose();
         SETTING.dispose();

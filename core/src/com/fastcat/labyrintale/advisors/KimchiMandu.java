@@ -14,14 +14,14 @@ public class KimchiMandu extends AbstractItem {
     @Override
     public void onGain() {
         for (AbstractPlayer p : AbstractLabyrinth.players) {
-            p.stat.moveRes += 100;
+            p.stat.moveRes += 60;
         }
     }
 
     @Override
     public void onRemove() {
         for (AbstractPlayer p : AbstractLabyrinth.players) {
-            p.stat.moveRes -= 100;
+            p.stat.moveRes -= 60;
         }
     }
 }

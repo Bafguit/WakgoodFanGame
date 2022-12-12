@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.way;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -9,10 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.FloorChangeEffect;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.PlayerWayView;
@@ -112,23 +110,22 @@ public class WayScreen extends AbstractScreen {
         float h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
             PlayerWayView tp = players[i];
-            float tw = tp.sWidth, th = tp.sHeight;
-            float px = tp.player.animX - tp.sWidth / 2, py = tp.player.animY - h * 0.025f;
+            float px = tp.player.animX - 80 * scale, py = tp.player.animY - h * 0.025f;
             if (!tp.player.isDead) {
-                sb.draw(hbb, px + tw * 0.1f, py, tw * 0.8f, th * 0.05f);
+                sb.draw(hbb, px, py, 160 * scale, 22 * scale);
                 sb.draw(
                         hb.img,
-                        px + tw * 0.1f,
+                        px,
                         py,
                         0,
                         0,
-                        tw * 0.8f,
-                        th * 0.05f,
+                        160 * scale,
+                        22 * scale,
                         Math.max(((float) tp.player.health) / ((float) tp.player.maxHealth), 0),
                         1,
                         0);
                 renderCenter(
-                        sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + hb.sHeight / 2, tw, hb.sHeight);
+                        sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + hb.sHeight / 2, 160 * scale, hb.sHeight);
             }
         }
         for (int i = 0; i < wayCount; i++) {

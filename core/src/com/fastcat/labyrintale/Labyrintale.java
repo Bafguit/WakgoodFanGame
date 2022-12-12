@@ -80,7 +80,6 @@ public class Labyrintale extends Game {
     private static float alphaCount = 0;
     private static float alphaDex = 2;
     private static float duration = 0;
-    private static Sprite cursor;
     public static AbstractUI subText;
     public Array<AbstractScreen> tempScreen = new Array<>();
     public SpriteBatch sb;
@@ -109,8 +108,8 @@ public class Labyrintale extends Game {
         fadeType = type;
         duration = 0;
         if(type == FadeType.HORIZONTAL) {
-            change_h.setPosition(0 - change_h.sWidth, 0);
-            change_h_r.setPosition(0 - change_h_r.sWidth + Gdx.graphics.getWidth(), 0);
+            change_h.setPosition(Gdx.graphics.getWidth(), 0);
+            change_h_r.setPosition(0, 0);
         } else if(type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
@@ -118,16 +117,32 @@ public class Labyrintale extends Game {
     }
 
     public static void fadeOutAndAddScreen(AbstractScreen screen) {
-        fadeOutAndAddScreen(screen, 1.25f);
+        fadeOutAndAddScreen(screen, FadeType.FADE);
     }
 
     public static void fadeOutAndAddScreen(AbstractScreen screen, float sec) {
+        fadeOutAndAddScreen(screen, FadeType.FADE, sec);
+    }
+
+    public static void fadeOutAndAddScreen(AbstractScreen screen, FadeType type) {
+        fadeOutAndAddScreen(screen, type, 1.25f);
+    }
+
+    public static void fadeOutAndAddScreen(AbstractScreen screen, FadeType type, float sec) {
         nextScreen = screen;
         alphaDex = sec;
         fading = true;
         fadeIn = false;
         tempFade = true;
-        fadeType = FadeType.FADE;
+        fadeType = type;
+        duration = 0;
+        if(type == FadeType.HORIZONTAL) {
+            change_h.setPosition(Gdx.graphics.getWidth(), 0);
+            change_h_r.setPosition(0, 0);
+        } else if(type == FadeType.VERTICAL) {
+            change_v.setPosition(0, Gdx.graphics.getHeight());
+            change_v_r.setPosition(0, 0);
+        }
     }
 
     public static AbstractScreen getCurScreen() {
@@ -208,10 +223,6 @@ public class Labyrintale extends Game {
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
 
-        cursor = FileHandler.getUi().get("CURSOR");
-        cursor.setOrigin(0, 128);
-        cursor.setScale(0.5f);
-
         change_h = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
         change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
         change_v = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
@@ -290,12 +301,10 @@ public class Labyrintale extends Game {
             change_V();
         }
 
-        if(InputHandler.isCursorInScreen) {
-            sb.setColor(Color.WHITE);
-            cursor.setPosition(InputHandler.mx, InputHandler.my - cursor.getHeight());
-            cursor.draw(sb);
-        }
-
+        /*
+        sb.setColor(Color.WHITE);
+        sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
+*/
         sb.end();
     }
 
@@ -306,9 +315,9 @@ public class Labyrintale extends Game {
                 if (alphaCount > 1.0f) {
                     if (nextScreen != null) {
                         alphaCount = 1.0f;
+                        if (setting) closeSetting();
                         if (!tempFade) setScreen(nextScreen);
                         else addTempScreen(nextScreen);
-                        if (setting) closeSetting();
                         nextScreen = null;
                         fadeIn = true;
                     } else fading = false;
@@ -321,36 +330,41 @@ public class Labyrintale extends Game {
                     fadeType = FadeType.NONE;
                 }
             }
-            // fadeTex.setAlpha(alphaCount);
             fadeTex.draw(sb, alphaCount);
         }
     }
 
     private void change_H() {
         if (fading) {
-            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f;
+            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f, ad = 0.3f / alphaDex;
+            float xx = Gdx.graphics.getWidth() - change_h.sWidth;
+            AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                if(change_h.x < 0) {
-                    change_h.x += change_h.sWidth * ac;
-                    if(change_h.x >= 0) change_h.x = 0;
+                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                    if (change_h.x > xx) {
+                        change_h.x -= change_h.sWidth * ac;
+                        if (change_h.x <= xx) change_h.x = xx;
+                    }
                 }
                 duration += add;
                 if (duration >= 1) {
                     if (nextScreen != null) {
                         duration = 1;
+                        if (setting) closeSetting();
                         if (!tempFade) setScreen(nextScreen);
                         else addTempScreen(nextScreen);
-                        if (setting) closeSetting();
                         nextScreen = null;
                         fadeIn = true;
                     } else fading = false;
                 }
                 change_h.render(sb);
             } else {
-                float w = Gdx.graphics.getWidth();
-                if(change_h_r.x < w) {
-                    change_h_r.x += change_h_r.sWidth * ac;
-                    if(change_h_r.x >= w) change_h_r.x = w;
+                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                    float w = change_h_r.sWidth;
+                    if (duration <= ad && change_h_r.x > -w) {
+                        change_h_r.x -= w * ac;
+                        if (change_h_r.x <= -w) change_h_r.x = -w;
+                    }
                 }
                 duration -= add;
                 if (duration <= 0) {
@@ -365,30 +379,35 @@ public class Labyrintale extends Game {
 
     private void change_V() {
         if (fading) {
-            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f;
+            float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f, ad = 0.3f / alphaDex;
+            AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                float yy = Gdx.graphics.getHeight() - change_v.sHeight;
-                if(change_v.y > yy) {
-                    change_v.y -= change_v.sHeight * ac;
-                    if(change_v.y <= yy) change_v.y = yy;
+                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                    float yy = Gdx.graphics.getHeight() - change_v.sHeight;
+                    if (change_v.y > yy) {
+                        change_v.y -= change_v.sHeight * ac;
+                        if (change_v.y <= yy) change_v.y = yy;
+                    }
                 }
                 duration += add;
                 if (duration >= 1) {
                     if (nextScreen != null) {
                         duration = 1;
+                        if (setting) closeSetting();
                         if (!tempFade) setScreen(nextScreen);
                         else addTempScreen(nextScreen);
-                        if (setting) closeSetting();
                         nextScreen = null;
                         fadeIn = true;
                     } else fading = false;
                 }
                 change_v.render(sb);
             } else {
-                float yy = -change_v_r.sHeight;
-                if(change_v_r.y > yy) {
-                    change_v_r.y -= change_v_r.sHeight * ac;
-                    if (change_v_r.y <= yy) change_v_r.y = yy;
+                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                    float yy = -change_v_r.sHeight;
+                    if (duration <= ad && change_v_r.y > yy) {
+                        change_v_r.y -= change_v_r.sHeight * ac;
+                        if (change_v_r.y <= yy) change_v_r.y = yy;
+                    }
                 }
                 duration -= add;
                 if (duration <= 0) {
@@ -429,7 +448,7 @@ public class Labyrintale extends Game {
 
     public static void returnToWay() {
         wayScreen = new WayScreen();
-        fadeOutAndChangeScreen(wayScreen);
+        fadeOutAndChangeScreen(wayScreen, FadeType.VERTICAL);
     }
 
     public static void openTutorial(TutorialScreen.TutorialType type) {

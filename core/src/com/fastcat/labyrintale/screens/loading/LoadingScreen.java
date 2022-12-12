@@ -24,6 +24,7 @@ public class LoadingScreen extends AbstractScreen {
 
     public LoadingScreen() {
         cType = ControlPanel.ControlType.HIDE;
+        type = ScreenType.LOAD;
         setBg(FileHandler.getUi().get("FADE"));
         SoundHandler.fadeOutAll();
     }

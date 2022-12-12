@@ -202,8 +202,9 @@ public class AbstractLabyrinth {
         } else {
             currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
         }
-        Labyrintale.returnToWay();
         SaveHandler.save();
+        SoundHandler.playSfx("CHANGE");
+        Labyrintale.returnToWay();
     }
 
     public static void nextFloor() {

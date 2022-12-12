@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractChoice;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class WaySelectButton extends AbstractUI {
 
@@ -29,6 +30,7 @@ public class WaySelectButton extends AbstractUI {
         currentFloor.currentRoom = c.room;
         currentFloor.currentWay.selected = c.index;
         SaveHandler.save();
+        SoundHandler.playSfx("CHANGE");
         currentFloor.currentRoom.enter();
     }
 }

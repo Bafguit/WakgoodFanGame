@@ -64,9 +64,9 @@ public class InfoPanel extends AbstractUI {
         setting = new SettingButton(2443 * scale, 17 * scale);
 
         gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
-        gold.setPosition(957 * scale, 64 * scale);
+        gold.setPosition(974 * scale, 49 * scale);
 
-        fy = gold.y + gold.sHeight / 2;
+        fy = 122 * scale;
 
         for (int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(i);
@@ -127,18 +127,8 @@ public class InfoPanel extends AbstractUI {
                 }
             }
             gold.render(sb);
-            FontHandler.renderLineLeft(
-                    sb, BORDER_36, "&y<" + AbstractLabyrinth.gold + "G>", 1040 * scale, fy, 200 * scale, fy);
-            FontHandler.renderLineLeft(
-                    sb, BORDER_36, AbstractLabyrinth.currentFloor.floorNum + "층", 1210 * scale, fy, 200 * scale, fy);
-            FontHandler.renderLineLeft(
-                    sb,
-                    BORDER_36,
-                    AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second,
-                    1318 * scale,
-                    fy,
-                    200 * scale,
-                    fy);
+            FontHandler.renderColorCenter(
+                    sb, GOLD, "&y<" + AbstractLabyrinth.gold + "G>", 1166 * scale, fy, 200 * scale);
             aSkill.render(sb);
             map.render(sb);
             playerInfo.render(sb);

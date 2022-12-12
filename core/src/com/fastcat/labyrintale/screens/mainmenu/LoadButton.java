@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
 public class LoadButton extends AbstractUI {
@@ -36,12 +37,12 @@ public class LoadButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (overable && !over) {
-                a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
-            } else {
+            if (overable && over) {
                 a += Labyrintale.tick * 4;
                 if(a >= 1) a = 1;
+            } else {
+                a -= Labyrintale.tick * 4;
+                if(a <= aa) a = aa;
             }
 
             fColor.set(a, a, a, 1);
@@ -58,7 +59,8 @@ public class LoadButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(false));
+        SoundHandler.playSfx("CHANGE_DOOR");
+        Labyrintale.fadeOutAndChangeScreen(new LoadingScreen(false), Labyrintale.FadeType.VERTICAL);
     }
 
     @Override

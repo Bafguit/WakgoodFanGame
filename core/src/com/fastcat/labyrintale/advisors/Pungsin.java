@@ -15,6 +15,7 @@ public class Pungsin extends AbstractItem {
     public void onGain() {
         for (AbstractPlayer p : AbstractLabyrinth.players) {
             p.stat.spell++;
+            p.stat.speed++;
         }
     }
 
@@ -22,6 +23,7 @@ public class Pungsin extends AbstractItem {
     public void onRemove() {
         for (AbstractPlayer p : AbstractLabyrinth.players) {
             p.stat.spell--;
+            p.stat.speed--;
         }
     }
 }
