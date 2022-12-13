@@ -89,7 +89,6 @@ project(":core") {
     dependencies {
         implementation 'org.reflections:reflections:0.10.2'
         implementation "com.badlogicgames.gdx-video:gdx-video:$videoVersion"
-        implementation 'net.indiespot.media:medialibv4:1.0-SNAPSHOT'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
