@@ -74,6 +74,7 @@ public class LogoScreen extends AbstractScreen {
                 videoPlayer.play(FileHandler.getVideo().get("LOGO"));
                 videoPlayer.setVolume(0);
                 videoPlayer.setLooping(false);
+                //SoundHandler.addMusic("LOGO", false, false);
             } catch (FileNotFoundException e) {
                 isDone = true;
                 e.printStackTrace();

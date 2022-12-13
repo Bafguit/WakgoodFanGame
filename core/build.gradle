@@ -4,7 +4,6 @@ plugins{
 sourceCompatibility = 11
 dependencies {
     implementation 'org.jetbrains:annotations-java5:23.0.0'
-    implementation 'nl.weeaboo.gdx-video:gdx-video:1.0.0-anonl'
 }
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
