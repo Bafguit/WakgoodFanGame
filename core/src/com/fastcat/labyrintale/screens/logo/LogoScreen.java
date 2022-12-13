@@ -79,8 +79,8 @@ public class LogoScreen extends AbstractScreen {
                 e.printStackTrace();
             }
         }
-
-        videoPlayer.update();
+        if(videoPlayer.isBuffered())
+            videoPlayer.update();
 
         if (!isDone) {
             if (InputHandler.isLeftClick) {
