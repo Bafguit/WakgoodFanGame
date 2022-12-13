@@ -40,7 +40,7 @@ public class DesktopLauncher {
         config.useVsync(true);
         config.setResizable(false);
         //config.setInitialVisible(false);
-        config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
+        config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 10);
 
         SettingHandler.initialize();
 
@@ -57,7 +57,7 @@ public class DesktopLauncher {
         }
 
         Lwjgl3Application app = new Lwjgl3Application(new Labyrintale(), config);
-
+/*
         try {
             Field field = Lwjgl3Application.class.getDeclaredField("loop");
             field.setAccessible(true);
@@ -68,6 +68,6 @@ public class DesktopLauncher {
             });
         } catch (Exception e) {
             new ErrorWindow(e).setVisible(true);
-        }
+        }*/
     }
 }

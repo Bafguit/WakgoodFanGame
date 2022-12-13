@@ -34,9 +34,9 @@ public class AllSkillScreen extends AbstractScreen implements GetSelectedSlot {
         for (int l = 0; l < 2; l++) {
             for (int k = 0; k < 2; k++) {
                 AbstractPlayer p = AbstractLabyrinth.players[cnt];
-                float bw = w * (0.15f + 0.46f * k);
+                float bw = w * (0.2f + 0.36f * k);
                 PlayerSlotIcon c = new PlayerSlotIcon(p);
-                c.setPosition(bw - c.sWidth / 2, h * (0.69f - 0.215f * l));
+                c.setPosition(bw - c.sWidth / 2, h * (0.625f - 0.15f * l));
                 for (int i = 0; i < 3; i++) {
                     AllSlotButton adv = new AllSlotButton(p, i, this);
                     adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.69f - 0.215f * l));

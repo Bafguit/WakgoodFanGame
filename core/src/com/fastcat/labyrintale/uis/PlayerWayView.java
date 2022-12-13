@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.uis;
 
 import static com.fastcat.labyrintale.Labyrintale.wayScreen;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -54,9 +55,9 @@ public class PlayerWayView extends AbstractUI implements GetSelectedTarget {
         AbstractLabyrinth.players[ti] = player;
         AbstractLabyrinth.players[pi] = tar;
         PlayerWayView tv = wayScreen.players[ti];
-        tar.setAnimXY(w * 0.425f - w * 0.1f * pi, h * 0.515f);
+        tar.setAnimXY(w * 0.425f - w * 0.1f * pi, h * 0.515f - 40 * scale);
         tar.ui = this;
-        player.setAnimXY(w * 0.425f - w * 0.1f * ti, h * 0.515f);
+        player.setAnimXY(w * 0.425f - w * 0.1f * ti, h * 0.515f - 40 * scale);
         player.ui = tv;
         tv.player = player;
         player = tar;

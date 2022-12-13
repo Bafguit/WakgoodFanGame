@@ -44,7 +44,7 @@ public class LogoScreen extends AbstractScreen {
         logo.setPosition(
                 Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f,
                 Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
-        // SoundHandler.addMusic("LOGO", false, false);
+        SoundHandler.playMusic("LOGO", false, false);
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
 
@@ -79,8 +79,8 @@ public class LogoScreen extends AbstractScreen {
                 e.printStackTrace();
             }
         }
-        if(videoPlayer.isBuffered())
-            videoPlayer.update();
+
+        videoPlayer.update();
 
         if (!isDone) {
             if (InputHandler.isLeftClick) {
@@ -103,7 +103,7 @@ public class LogoScreen extends AbstractScreen {
         }
 
         realVol = MathUtils.clamp(SettingHandler.setting.volumeBgm * vol * 0.8f, 0, 1);
-        videoPlayer.setVolume(realVol);
+        //videoPlayer.setVolume(realVol);
     }
 
     @Override
