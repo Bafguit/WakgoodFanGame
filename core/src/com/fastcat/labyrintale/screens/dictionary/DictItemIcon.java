@@ -43,7 +43,7 @@ public class DictItemIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
             sb.draw(!overable ? locked : item.img, x, y, sWidth, sHeight);
             sb.setColor(item.getRarityColor());
-            if(!isStarter) sb.draw(img, x, y, sWidth, sHeight);
+            if (!isStarter) sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
         }
     }

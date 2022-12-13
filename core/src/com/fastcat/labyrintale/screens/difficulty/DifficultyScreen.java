@@ -1,14 +1,11 @@
 package com.fastcat.labyrintale.screens.difficulty;
 
-import com.badlogic.gdx.Gdx;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.uis.GifBg;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class DifficultyScreen extends AbstractScreen {
 

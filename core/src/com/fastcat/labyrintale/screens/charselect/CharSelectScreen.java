@@ -312,7 +312,7 @@ public class CharSelectScreen extends AbstractScreen {
                 if (type != InfoPanel.InfoType.COLOR) {
                     if (type == InfoPanel.InfoType.SKILL) {
                         sb.draw(skill.img, x, y, sWidth, sHeight);
-                        if(skill.owner != null) sb.setColor(skill.owner.pColor);
+                        if (skill.owner != null) sb.setColor(skill.owner.pColor);
                         else sb.setColor(Color.WHITE);
                         sb.draw(img, x, y, sWidth, sHeight);
                         sb.setColor(Color.WHITE);
@@ -329,7 +329,7 @@ public class CharSelectScreen extends AbstractScreen {
                         }
                     } else {
                         sb.draw(item.img, x, y, sWidth, sHeight);
-                        if(item.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
+                        if (item.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
                     }
                 }
             }

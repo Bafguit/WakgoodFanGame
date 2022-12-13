@@ -3,7 +3,6 @@ package com.fastcat.labyrintale.screens.rest;
 import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 
 import com.badlogic.gdx.Gdx;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;

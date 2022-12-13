@@ -1,7 +1,5 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.Labyrintale.tick;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 import com.badlogic.gdx.Gdx;
@@ -32,10 +30,10 @@ public class CreditButton extends AbstractUI {
         if (enabled) {
             if (overable && !over) {
                 a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             } else {
                 a += Labyrintale.tick * 4;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             }
 
             fColor.set(a, a, a, 1);

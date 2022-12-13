@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.screens.battle;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
-import static com.fastcat.labyrintale.handlers.InputHandler.sc;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
@@ -257,7 +256,7 @@ public class BattleScreen extends AbstractScreen {
             EnemyBattleView te = enemies[i];
             float px = tp.entity.animX - 80 * scale, py = tp.entity.animY - h * 0.025f;
             float ex = te.entity.animX, ey = te.entity.animY - h * 0.025f, ew;
-            if(AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
+            if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
                 ew = 359 * scale;
             } else {
                 ew = 160 * scale;
@@ -322,13 +321,13 @@ public class BattleScreen extends AbstractScreen {
             }
 
             ShieldIcon ps = pShield[i];
-            if(ps.e.isAlive() && ps.e.block > 0) {
+            if (ps.e.isAlive() && ps.e.block > 0) {
                 ps.setPosition(ps.e.animX - ps.sWidth / 2, 737 * scale - 40 * scale);
                 ps.render(sb);
             }
 
             ShieldIcon es = eShield[i];
-            if(es.e.isAlive() && es.e.block > 0) {
+            if (es.e.isAlive() && es.e.block > 0) {
                 es.setPosition(es.e.animX - es.sWidth / 2, 737 * scale - 40 * scale);
                 es.render(sb);
             }

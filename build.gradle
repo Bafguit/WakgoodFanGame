@@ -28,6 +28,9 @@ allprojects {
         gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        flatDir {
+            dir '../libs'
+        }
     }
 
     spotless {
@@ -52,11 +55,12 @@ project(":desktop") {
 
     apply plugin: "java-library"
     apply plugin: "distribution"
-
+    
     dependencies {
         implementation project(":core")
         implementation 'com.opencsv:opencsv:5.6'
         implementation 'org.reflections:reflections:0.10.2'
+        api "com.badlogicgames.gdx-video:gdx-video-lwjgl3:$videoVersion"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -85,6 +89,7 @@ project(":core") {
     dependencies {
         implementation 'org.reflections:reflections:0.10.2'
         implementation "com.badlogicgames.gdx-video:gdx-video:$videoVersion"
+        implementation 'net.indiespot.media:medialibv4:1.0-SNAPSHOT'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"

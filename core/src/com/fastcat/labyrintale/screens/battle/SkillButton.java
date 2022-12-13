@@ -45,7 +45,7 @@ public class SkillButton extends AbstractUI {
     @Override
     protected void updateButton() {
         if (skill != null) {
-            if(skill.owner != null) {
+            if (skill.owner != null) {
                 if (!skill.owner.isAlive()) {
                     skill = null;
                 } else if (overable && over) {

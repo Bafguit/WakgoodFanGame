@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.rest;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
@@ -15,9 +14,6 @@ import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.screens.playerselect.PlayerSelectScreen;
 import com.fastcat.labyrintale.screens.slotselect.SlotSelectScreen;
-
-import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSelectedSlot, GetRewardDone {
 
@@ -49,12 +45,12 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
 
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if(overable && !over) {
+            if (overable && !over) {
                 a -= Labyrintale.tick * 2;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             } else {
                 a += Labyrintale.tick * 2;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             }
             sb.setColor(a, a, a, 1);
 

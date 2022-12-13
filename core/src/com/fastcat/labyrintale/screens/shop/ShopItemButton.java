@@ -57,7 +57,7 @@ public class ShopItemButton extends AbstractUI {
                     sWidth,
                     sHeight * 0.2f);
             if (type == ShopItemType.SKILL) {
-                if(sItem.skill.owner != null) sb.setColor(sItem.skill.owner.pColor);
+                if (sItem.skill.owner != null) sb.setColor(sItem.skill.owner.pColor);
                 else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
                 sb.setColor(Color.WHITE);

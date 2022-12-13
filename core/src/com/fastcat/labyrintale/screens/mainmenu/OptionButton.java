@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
@@ -20,7 +19,8 @@ public class OptionButton extends AbstractUI {
     public OptionButton() {
         super(FileHandler.getUi().get("NEXT"));
         setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.255f);
-        fontData = new FontData(MEDIUM, 53, false, false);;
+        fontData = new FontData(MEDIUM, 53, false, false);
+        ;
         text = "설정";
         showImg = false;
     }
@@ -30,10 +30,10 @@ public class OptionButton extends AbstractUI {
         if (enabled) {
             if (overable && !over) {
                 a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             } else {
                 a += Labyrintale.tick * 4;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             }
 
             fColor.set(a, a, a, 1);

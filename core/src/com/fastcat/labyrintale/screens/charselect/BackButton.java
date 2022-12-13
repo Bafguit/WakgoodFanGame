@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.charselect;
 
 import static com.fastcat.labyrintale.Labyrintale.diffScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
@@ -32,10 +31,10 @@ public class BackButton extends AbstractUI {
         if (enabled) {
             if (overable && !over) {
                 a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             } else {
                 a += Labyrintale.tick * 4;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             }
 
             fColor.set(a, a, a, 1);

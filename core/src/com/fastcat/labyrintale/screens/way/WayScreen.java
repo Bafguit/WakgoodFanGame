@@ -125,7 +125,13 @@ public class WayScreen extends AbstractScreen {
                         1,
                         0);
                 renderCenter(
-                        sb, HP, tp.player.health + "/" + tp.player.maxHealth, px, py + hb.sHeight / 2, 160 * scale, hb.sHeight);
+                        sb,
+                        HP,
+                        tp.player.health + "/" + tp.player.maxHealth,
+                        px,
+                        py + hb.sHeight / 2,
+                        160 * scale,
+                        hb.sHeight);
             }
         }
         for (int i = 0; i < wayCount; i++) {

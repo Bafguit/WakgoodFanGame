@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 
@@ -39,10 +38,10 @@ public class LoadButton extends AbstractUI {
         if (enabled) {
             if (overable && over) {
                 a += Labyrintale.tick * 4;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             } else {
                 a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             }
 
             fColor.set(a, a, a, 1);

@@ -9,11 +9,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
@@ -110,7 +108,7 @@ public abstract class AbstractUI implements Disposable {
             justOver = over;
             over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
 
-            if(over && isPixmap) {
+            if (over && isPixmap) {
                 Color c = getSpritePixColor();
                 over = c.a > 0;
             }

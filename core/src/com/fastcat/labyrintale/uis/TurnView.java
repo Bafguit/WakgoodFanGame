@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.uis;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
@@ -13,7 +12,6 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-
 import java.util.LinkedList;
 
 public class TurnView extends AbstractUI {
@@ -42,9 +40,7 @@ public class TurnView extends AbstractUI {
     protected void updateButton() {
         if (icons.size() > 0) {
             int index = Labyrintale.battleScreen.getCurrentTurn();
-            float w = Gdx.graphics.getWidth(),
-                    h = Gdx.graphics.getHeight(),
-                    wh = h * 0.87f, wc = w - h * 0.13f;
+            float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), wh = h * 0.87f, wc = w - h * 0.13f;
             for (int i = 0; i < index; i++) {
                 TurnIcon t = icons.get(i);
                 t.isMain = false;
@@ -59,7 +55,7 @@ public class TurnView extends AbstractUI {
             for (int i = index + 1; i < icons.size(); i++) {
                 TurnIcon t = icons.get(i);
                 t.isMain = false;
-                if(cnt <= 3) {
+                if (cnt <= 3) {
                     t.setPosition(wc - t.sWidth * 0.8f * (cnt), wh + t.bb.sHeight - t.sHeight);
                 } else {
                     t.setPosition(-10000, -10000);
@@ -70,7 +66,7 @@ public class TurnView extends AbstractUI {
             for (int i = icons.size() - 1; i >= 0; i--) {
                 icons.get(i).update();
             }
-            if(now != null) {
+            if (now != null) {
                 Labyrintale.battleScreen.looking.add(now.view);
                 AbstractLabyrinth.cPanel.battlePanel.setPlayer(now.view);
             }
@@ -124,8 +120,13 @@ public class TurnView extends AbstractUI {
                         sb.draw(view.imgTurn, x, y, bb.sWidth, bb.sHeight);
                     }
                     sb.draw(bb.img, x, y, bb.sWidth, bb.sHeight);
-                    if(view.isAlive()) {
-                        sb.draw(arrow.img, x + bb.sWidth / 2 - arrow.sWidth / 2, y - arrow.sHeight * 0.75f, arrow.sWidth, arrow.sHeight);
+                    if (view.isAlive()) {
+                        sb.draw(
+                                arrow.img,
+                                x + bb.sWidth / 2 - arrow.sWidth / 2,
+                                y - arrow.sHeight * 0.75f,
+                                arrow.sWidth,
+                                arrow.sHeight);
                     }
                 } else {
                     if (view != null) {

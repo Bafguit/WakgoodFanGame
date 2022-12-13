@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.battle;
 
+import static com.fastcat.labyrintale.Labyrintale.battleScreen;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,10 +9,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-
-import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 
 public abstract class BattleView extends AbstractUI {
 
@@ -39,18 +38,22 @@ public abstract class BattleView extends AbstractUI {
     }
 
     public void renderLook(SpriteBatch sb) {
-        fade = enabled && entity != null && !entity.isDead && showImg && battleScreen.cType == ControlPanel.ControlType.BATTLE;
+        fade = enabled
+                && entity != null
+                && !entity.isDead
+                && showImg
+                && battleScreen.cType == ControlPanel.ControlType.BATTLE;
 
-        if(fade) {
+        if (fade) {
             alpha += Labyrintale.tick * 8;
-            if(alpha >= 1) alpha = 1;
+            if (alpha >= 1) alpha = 1;
         } else {
             alpha -= Labyrintale.tick * 8;
-            if(alpha <= 0) alpha = 0;
+            if (alpha <= 0) alpha = 0;
         }
 
         sb.setColor(Color.WHITE);
-        if(battleScreen.currentTurnEntity() == entity) {
+        if (battleScreen.currentTurnEntity() == entity) {
             turnLook.img.setAlpha(alpha);
             turnLook.img.setPosition(entity.animX - turnLook.sWidth / 2, entity.animY - turnLook.sHeight * 0.6f);
             turnLook.img.draw(sb);

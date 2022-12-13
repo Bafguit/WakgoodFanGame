@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.screens.rest;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
