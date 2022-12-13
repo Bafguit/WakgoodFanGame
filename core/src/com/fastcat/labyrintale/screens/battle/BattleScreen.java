@@ -61,16 +61,16 @@ public class BattleScreen extends AbstractScreen {
         h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
             PlayerBattleView pv = new PlayerBattleView(AbstractLabyrinth.players[i]);
-            pv.entity.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
-            pv.setPosition(pv.entity.animX - pv.sWidth / 2, h * 0.49f);
+            pv.entity.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f - 40 * scale);
+            pv.setPosition(pv.entity.animX - pv.sWidth / 2, h * 0.49f - 40 * scale);
             pv.entity.newDeck();
             pv.entity.beforeBattle();
             pv.entity.ui = pv;
             players[i] = pv;
 
             EnemyBattleView ev = new EnemyBattleView(AbstractLabyrinth.currentFloor.currentRoom.enemies[i]);
-            ev.entity.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f);
-            ev.setPosition(ev.entity.animX - ev.sWidth / 2, h * 0.49f);
+            ev.entity.setAnimXY(w * 0.575f + w * 0.1f * i, h * 0.515f - 40 * scale);
+            ev.setPosition(ev.entity.animX - ev.sWidth / 2, h * 0.49f - 40 * scale);
             ev.entity.index = i;
             ev.entity.newDeck();
             if (isLoad) {
@@ -94,11 +94,11 @@ public class BattleScreen extends AbstractScreen {
             enemies[i] = ev;
 
             ShieldIcon ps = new ShieldIcon(pv.entity);
-            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f);
+            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f - 40 * scale);
             pShield[i] = ps;
 
             ShieldIcon es = new ShieldIcon(ev.entity);
-            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.49f - es.sHeight * 0.35f);
+            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.49f - es.sHeight * 0.35f - 40 * scale);
             eShield[i] = es;
 
             playerStatus[i] = new LinkedList<>();
@@ -106,7 +106,7 @@ public class BattleScreen extends AbstractScreen {
 
             SkillButton s3 = new SkillButton();
             s3.setScale(0.75f);
-            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.765f);
+            s3.setPosition(w * 0.505f + w * 0.1f * i + ev.sWidth / 2 - s3.sWidth, h * 0.765f - 40 * scale);
             s3.canClick = false;
             // s3.subDown = AbstractUI.SubText.SubWay.DOWN;
             enemySkills[i] = s3;
@@ -153,7 +153,7 @@ public class BattleScreen extends AbstractScreen {
             ss.skill = ev.entity.hand[0];
             ss.overable = true;
             ss.update();
-            ss.setPosition(ev.entity.animX - ss.sWidth / 2, h * 0.765f);
+            ss.setPosition(ev.entity.animX - ss.sWidth / 2, h * 0.765f - 40 * scale);
 
             if (pv.entity.isAlive()) {
                 AbstractEntity pp = pv.entity;
@@ -176,7 +176,7 @@ public class BattleScreen extends AbstractScreen {
                     int num = j % pv.statSize;
                     ts.setPosition(
                             pv.entity.animX + (ww + 40 * num) * scale - ts.sWidth / 2,
-                            h * 0.46f - (32 * line * scale));
+                            h * 0.46f - (40 * line * scale) - 40 * scale);
                     ts.update();
                 }
             }
@@ -201,7 +201,7 @@ public class BattleScreen extends AbstractScreen {
                     int num = j % ev.statSize;
                     ts.setPosition(
                             ev.entity.animX + (ww + 40 * num) * scale - ts.sWidth / 2,
-                            h * 0.46f - (40 * line * scale));
+                            h * 0.46f - (40 * line * scale) - 40 * scale);
                     ts.update();
                 }
             }
@@ -323,13 +323,13 @@ public class BattleScreen extends AbstractScreen {
 
             ShieldIcon ps = pShield[i];
             if(ps.e.isAlive() && ps.e.block > 0) {
-                ps.setPosition(ps.e.animX - ps.sWidth / 2, 737 * scale);
+                ps.setPosition(ps.e.animX - ps.sWidth / 2, 737 * scale - 40 * scale);
                 ps.render(sb);
             }
 
             ShieldIcon es = eShield[i];
             if(es.e.isAlive() && es.e.block > 0) {
-                es.setPosition(es.e.animX - es.sWidth / 2, 737 * scale);
+                es.setPosition(es.e.animX - es.sWidth / 2, 737 * scale - 40 * scale);
                 es.render(sb);
             }
         }

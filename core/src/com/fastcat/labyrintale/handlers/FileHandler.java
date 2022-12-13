@@ -99,6 +99,9 @@ public class FileHandler implements Disposable {
     // 움짤
     @Getter
     private static final HashMap<String, Animation<Sprite>> gif = new HashMap<>();
+    // 영상
+    @Getter
+    private static final HashMap<String, FileHandle> video = new HashMap<>();
     /***
      * Instance of handler.
      * Initialized on getInstance()
@@ -145,6 +148,7 @@ public class FileHandler implements Disposable {
         generateAchieve();
         generateTutorialImg();
         generateGif();
+        generateVideo();
         setAntiAliased();
     }
 
@@ -209,6 +213,11 @@ public class FileHandler implements Disposable {
                 GifDecoder.loadGIFAnimation(
                         Animation.PlayMode.LOOP,
                         Gdx.files.internal("img/gif/fire.gif").read()));
+    }
+
+    private void generateVideo() {
+        video.clear();
+        video.put("LOGO", Gdx.files.internal("video/logo.webm"));
     }
 
     private void generateSkeleton() {

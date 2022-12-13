@@ -15,7 +15,7 @@ public final class SettingHandler {
     private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public static SettingData setting;
 
-    public static FileHandle settingFile = Gdx.files.local("setting.json");
+    public static File settingFile = new File("setting.json");
 
     public static void initialize() {
         setting = new SettingData();
@@ -46,17 +46,12 @@ public final class SettingHandler {
         } else {
             try {
                 SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
-                Graphics.Monitor monitor = Gdx.graphics.getMonitor();
 
                 // 화면 모드 설정
                 setting.screenMode = data.screenMode;
                 if (setting.screenMode == 0) {
                     setting.width = data.width;
                     setting.height = data.height;
-                } else {
-                    Graphics.DisplayMode display = Gdx.graphics.getDisplayMode(monitor);
-                    setting.width = display.width;
-                    setting.height = display.height;
                 }
 
                 // 볼륨 설정

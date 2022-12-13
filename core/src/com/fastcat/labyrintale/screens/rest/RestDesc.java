@@ -9,9 +9,12 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class RestDesc extends AbstractUI {
 
-    public RestDesc(String d) {
+    private RestButton b;
+
+    public RestDesc(String d, RestButton b) {
         super(FileHandler.getUi().get("WAY_SELECT"));
         text = d;
+        this.b = b;
         showImg = false;
         fontData = INFO_NAME;
         overable = false;
@@ -20,12 +23,7 @@ public class RestDesc extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (!over) sb.setColor(Color.LIGHT_GRAY);
-            else sb.setColor(Color.WHITE);
-
-            if (fontData != null) {
-                renderColorCenter(sb, fontData, text, x, y + sHeight / 2, sWidth);
-            }
+            renderColorCenter(sb, fontData, text, x, y + sHeight / 2, sWidth);
         }
     }
 }

@@ -52,13 +52,13 @@ public class SealedHeartEvent extends AbstractEvent implements GetSelectedPlayer
             }
         } else if (page == 3) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
-                if (p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 4, AbstractEntity.DamageType.LOSE));
+                if (p.isAlive()) p.takeDamage(new AbstractEntity.DamageInfo(null, 5, AbstractEntity.DamageType.LOSE));
             }
         } else if (page == 4) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
-                p.stat.debuRes -= 3;
-                p.stat.moveRes -= 3;
-                p.stat.neutRes -= 3;
+                p.stat.debuRes -= 5;
+                p.stat.moveRes -= 5;
+                p.stat.neutRes -= 5;
             }
         }
     }

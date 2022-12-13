@@ -42,8 +42,8 @@ public class WayScreen extends AbstractScreen {
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
             PlayerWayView pv = new PlayerWayView(AbstractLabyrinth.players[i]);
-            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f);
-            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f);
+            pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f - 40 * scale);
+            pv.player.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f - 40 * scale);
             pv.player.ui = pv;
             players[i] = pv;
         }
@@ -56,15 +56,15 @@ public class WayScreen extends AbstractScreen {
                 float tw = w * (0.6f + 0.135f * i);
 
                 WaySelectButton b = new WaySelectButton(this, ch);
-                b.setPosition(tw - b.sWidth / 2, h * 0.65f - b.sHeight / 2);
+                b.setPosition(tw - b.sWidth / 2, h * 0.65f - b.sHeight / 2 - 40 * scale);
                 buttons.add(b);
 
                 WayIcon c = new WayIcon(b, ch.img);
-                c.setPosition(tw - c.sWidth / 2, h * 0.74f - c.sHeight / 2);
+                c.setPosition(tw - c.sWidth / 2, h * 0.74f - c.sHeight / 2 - 40 * scale);
                 icons.add(c);
 
                 WayDesc d = new WayDesc(ch.desc);
-                d.setPosition(tw - d.sWidth / 2, h * 0.62f - d.sHeight / 2);
+                d.setPosition(tw - d.sWidth / 2, h * 0.62f - d.sHeight / 2 - 40 * scale);
                 desc.add(d);
             }
         }

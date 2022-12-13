@@ -175,28 +175,17 @@ public class Labyrintale extends Game {
 
     @Override
     public void create() {
-        Gdx.graphics.setResizable(false);
-        Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
+        //Gdx.graphics.setResizable(false);
+        //Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
         Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
         pix.setFilter(Pixmap.Filter.BiLinear);
         Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
-        SettingHandler.initialize();
-
-        Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
-
-        if (SettingHandler.setting.screenMode == 0) { // 창모드
-            Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
-        } else if (SettingHandler.setting.screenMode == 1) { // 전체화면
-            Gdx.graphics.setFullscreenMode(displayMode);
-        } else { // 전체창
-            Gdx.graphics.setUndecorated(true);
-            Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
-        }
 
         screenShake = ScreenShake.newInstance();
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SettingHandler.setting.width, SettingHandler.setting.height);
-        viewport = new FitViewport(SettingHandler.setting.width, SettingHandler.setting.height, camera);
+        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        camera.setToOrtho(false, w, h);
+        viewport = new FitViewport(w, h);
         sb = new SpriteBatch();
         psb = new PolygonSpriteBatch();
         sr = new SkeletonRenderer();
@@ -232,9 +221,7 @@ public class Labyrintale extends Game {
         change_v_r.img.setFlip(false, true);
 
         mainMenuScreen.onCreate();
-        fadeOutAndChangeScreen(new LogoScreen(), 2.0f);
-        /** Generate csv files If you don't want this task, comment below */
-        // Main.main(new String[] {});
+        setScreen(new LogoScreen());
     }
 
     public void update() {

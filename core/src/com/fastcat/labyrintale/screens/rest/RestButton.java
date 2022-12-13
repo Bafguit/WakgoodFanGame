@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.rest;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
@@ -22,8 +23,8 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
 
     public static final int HEAL_AMOUNT = 8;
 
-    private final float aa = Color.LIGHT_GRAY.r;
-    private float a = aa;
+    public final float aa = Color.LIGHT_GRAY.r;
+    public float a = aa;
     public RestScreen sc;
     public RestType type;
 
@@ -49,10 +50,10 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             if(overable && !over) {
-                a -= Labyrintale.tick * 4;
+                a -= Labyrintale.tick * 2;
                 if(a <= aa) a = aa;
             } else {
-                a += Labyrintale.tick * 4;
+                a += Labyrintale.tick * 2;
                 if(a >= 1) a = 1;
             }
             sb.setColor(a, a, a, 1);
