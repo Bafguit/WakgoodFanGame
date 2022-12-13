@@ -60,6 +60,7 @@ project(":desktop") {
         implementation project(":core")
         implementation 'com.opencsv:opencsv:5.6'
         implementation 'org.reflections:reflections:0.10.2'
+        api "com.badlogicgames.gdx-video:gdx-video-lwjgl3:$videoVersion"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"

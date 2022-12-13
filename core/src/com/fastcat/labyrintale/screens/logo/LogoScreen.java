@@ -71,7 +71,6 @@ public class LogoScreen extends AbstractScreen {
             videoPlayer.start();
         }
 
-        videoPlayer.update();
 
         if (!isDone) {
             if (InputHandler.isLeftClick) {
@@ -92,7 +91,6 @@ public class LogoScreen extends AbstractScreen {
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
             }
         }
-
         realVol = MathUtils.clamp(SettingHandler.setting.volumeBgm * vol * 0.8f, 0, 1);
         // videoPlayer.setVolume(realVol);
     }
@@ -107,6 +105,9 @@ public class LogoScreen extends AbstractScreen {
         if(t != null) {
         	sb.draw(t, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
+        */
+        if(videoPlayer.isBuffered())
+            videoPlayer.update();
 
          */
 
