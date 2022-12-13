@@ -15,8 +15,6 @@ import java.lang.reflect.Field;
 
 public class DesktopLauncher {
 
-    private static Lwjgl3Application app;
-
     private static void loadConfiguration() {
         try {
             File parentFile = new File("settings");
@@ -58,11 +56,10 @@ public class DesktopLauncher {
             config.setWindowedMode(displayMode.width, displayMode.height);
         }
 
-        app = new Lwjgl3Application(new Labyrintale(), config);
+        Lwjgl3Application app = new Lwjgl3Application(new Labyrintale(), config);
 
-        /*
         try {
-            Field field = Lwjgl3Application.class.getDeclaredField("mainLoopThread");
+            Field field = Lwjgl3Application.class.getDeclaredField("loop");
             field.setAccessible(true);
             Thread mainLoopThread = (Thread) field.get(app);
             mainLoopThread.setUncaughtExceptionHandler((t, e) -> {
@@ -71,6 +68,6 @@ public class DesktopLauncher {
             });
         } catch (Exception e) {
             new ErrorWindow(e).setVisible(true);
-        }*/
+        }
     }
 }

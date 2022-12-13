@@ -177,22 +177,9 @@ public class Labyrintale extends Game {
     public void create() {
         //Gdx.graphics.setResizable(false);
         //Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
-/*
-        Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
-
-        if (SettingHandler.setting.screenMode == 0) {
-            Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
-        } else if (SettingHandler.setting.screenMode == 1) {
-            Gdx.graphics.setFullscreenMode(displayMode);
-        } else {
-            Gdx.graphics.setUndecorated(true);
-            Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
-        }
-        */
         Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
         pix.setFilter(Pixmap.Filter.BiLinear);
         Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
-        pix.dispose();
 
         screenShake = ScreenShake.newInstance();
         camera = new OrthographicCamera();
