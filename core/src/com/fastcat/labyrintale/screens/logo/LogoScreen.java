@@ -1,14 +1,10 @@
 package com.fastcat.labyrintale.screens.logo;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.video.VideoPlayer;
-import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -17,8 +13,9 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-
-import java.io.FileNotFoundException;
+import com.fastcat.labyrintale.utils.VideoManager;
+import java.io.File;
+import java.io.IOException;
 
 public class LogoScreen extends AbstractScreen {
 
@@ -33,7 +30,7 @@ public class LogoScreen extends AbstractScreen {
     private int dup = 1;
     private final AbstractUI.TempUI logo;
     private final Sprite back;
-    private final VideoPlayer videoPlayer;
+    private final VideoManager videoPlayer;
 
     public LogoScreen() {
         cType = ControlPanel.ControlType.HIDE;
@@ -45,40 +42,33 @@ public class LogoScreen extends AbstractScreen {
                 Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f,
                 Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
         // SoundHandler.addMusic("LOGO", false, false);
-
-        videoPlayer = VideoPlayerCreator.createVideoPlayer();
-
-        videoPlayer.setOnCompletionListener(file -> isDone = true);
+        try {
+            videoPlayer = new VideoManager(new File("비디오 파일"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void update() {
         /*timer += Labyrintale.tick / dup;
         if (timer >= 3 && mode == 0) {
-            dup = 2;
-            mode = 1;
+        	dup = 2;
+        	mode = 1;
         } else if (mode == 1) {
-            color += Labyrintale.tick / dup;
-            if (color > 1) color = 1;
-            if (timer >= 4) {
-                mode = 2;
-                dup = 1;
-            }
+        	color += Labyrintale.tick / dup;
+        	if (color > 1) color = 1;
+        	if (timer >= 4) {
+        		mode = 2;
+        		dup = 1;
+        	}
         } else {
-            if (timer >= 5) isDone = true;
+        	if (timer >= 5) isDone = true;
         }*/
 
-        if(create) {
+        if (create) {
             create = false;
-            try {
-                videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-                videoPlayer.setVolume(0);
-                videoPlayer.setLooping(false);
-                //SoundHandler.addMusic("LOGO", false, false);
-            } catch (FileNotFoundException e) {
-                isDone = true;
-                e.printStackTrace();
-            }
+            videoPlayer.start();
         }
 
         videoPlayer.update();
@@ -87,14 +77,14 @@ public class LogoScreen extends AbstractScreen {
             if (InputHandler.isLeftClick) {
                 isDone = true;
             }
-            if(vol < 1) {
+            if (vol < 1) {
                 vol += Labyrintale.tick * 2;
-                if(vol >= 1) vol = 1;
+                if (vol >= 1) vol = 1;
             }
         } else {
-            if(vol > 0) {
+            if (vol > 0) {
                 vol -= Labyrintale.tick;
-                if(vol <= 0) vol = 0;
+                if (vol <= 0) vol = 0;
             }
             if (go) {
                 go = false;
@@ -104,20 +94,23 @@ public class LogoScreen extends AbstractScreen {
         }
 
         realVol = MathUtils.clamp(SettingHandler.setting.volumeBgm * vol * 0.8f, 0, 1);
-        videoPlayer.setVolume(realVol);
+        // videoPlayer.setVolume(realVol);
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.setColor(Color.WHITE);
-        //back.draw(sb, color);
+        // back.draw(sb, color);
 
+        /*
         Texture t = videoPlayer.getTexture();
         if(t != null) {
-            sb.draw(t, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        	sb.draw(t, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
 
-        //logo.render(sb);
+         */
+
+        // logo.render(sb);
     }
 
     @Override
@@ -128,6 +121,6 @@ public class LogoScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-        videoPlayer.dispose();
+        // videoPlayer.dispose();
     }
 }

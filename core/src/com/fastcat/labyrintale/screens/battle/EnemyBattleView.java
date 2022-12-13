@@ -5,11 +5,9 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class EnemyBattleView extends BattleView {
 

@@ -1,7 +1,5 @@
 package com.fastcat.labyrintale.screens.difficulty;
 
-import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
-import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
 import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
 
@@ -37,12 +35,12 @@ public class DifficultyButton extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if(clickable && over) {
+            if (clickable && over) {
                 a += Labyrintale.tick * 4;
-                if(a >= 1) a = 1;
+                if (a >= 1) a = 1;
             } else {
                 a -= Labyrintale.tick * 4;
-                if(a <= aa) a = aa;
+                if (a <= aa) a = aa;
             }
             sb.setColor(a, a, a, 1);
             sb.draw(clickable ? img : locked, x, y, sWidth, sHeight);

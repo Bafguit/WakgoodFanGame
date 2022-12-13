@@ -20,7 +20,7 @@ public class BurgerHat extends AbstractItem {
         }
         if (temp.size > 0) {
             int h = 1 + owner.calculateSpell(0) / 2;
-            if(h > 0) {
+            if (h > 0) {
                 top(new HealAction(null, temp, h));
             }
         }

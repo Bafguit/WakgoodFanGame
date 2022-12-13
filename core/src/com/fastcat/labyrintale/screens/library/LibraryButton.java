@@ -8,8 +8,6 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
-import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
-import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.screens.runview.RunViewScreen;
 
 public class LibraryButton extends AbstractUI {

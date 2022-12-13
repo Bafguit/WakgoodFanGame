@@ -4,12 +4,10 @@ import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.BATTL
 import static com.fastcat.labyrintale.uis.control.ControlPanel.ControlType.HIDE;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.EffectHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
@@ -67,14 +65,14 @@ public class ControlPanel implements Disposable {
             sb.end();
             float f = ((float) AbstractLabyrinth.exp) / ((float) AbstractLabyrinth.maxExp);
             String p = "레벨 "
-                    + AbstractLabyrinth.level
-                    + "   "
-                    + AbstractLabyrinth.exp
-                    + " / "
-                    + AbstractLabyrinth.maxExp
-                    + " ("
-                    + (int) (f * 100)
-                    + "%)";
+            		+ AbstractLabyrinth.level
+            		+ "   "
+            		+ AbstractLabyrinth.exp
+            		+ " / "
+            		+ AbstractLabyrinth.maxExp
+            		+ " ("
+            		+ (int) (f * 100)
+            		+ "%)";
             shr.begin(ShapeRenderer.ShapeType.Filled);
             shr.setColor(Color.DARK_GRAY);
             float w = Gdx.graphics.getWidth(), y = Gdx.graphics.getHeight(), h = y * 0.02f;

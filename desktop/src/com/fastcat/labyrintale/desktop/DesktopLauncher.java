@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.desktop;
 
 import com.badlogic.gdx.Files;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
@@ -11,7 +10,6 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
 import java.io.File;
-import java.lang.reflect.Field;
 
 public class DesktopLauncher {
 
@@ -41,7 +39,7 @@ public class DesktopLauncher {
         config.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
         config.useVsync(true);
         config.setResizable(false);
-        //config.setInitialVisible(false);
+        // config.setInitialVisible(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
 
         SettingHandler.initialize();
@@ -62,15 +60,15 @@ public class DesktopLauncher {
 
         /*
         try {
-            Field field = Lwjgl3Application.class.getDeclaredField("mainLoopThread");
-            field.setAccessible(true);
-            Thread mainLoopThread = (Thread) field.get(app);
-            mainLoopThread.setUncaughtExceptionHandler((t, e) -> {
-                Gdx.app.error("ERROR: ", "", e);
-                new ErrorWindow(e).setVisible(true);
-            });
+        	Field field = Lwjgl3Application.class.getDeclaredField("mainLoopThread");
+        	field.setAccessible(true);
+        	Thread mainLoopThread = (Thread) field.get(app);
+        	mainLoopThread.setUncaughtExceptionHandler((t, e) -> {
+        		Gdx.app.error("ERROR: ", "", e);
+        		new ErrorWindow(e).setVisible(true);
+        	});
         } catch (Exception e) {
-            new ErrorWindow(e).setVisible(true);
+        	new ErrorWindow(e).setVisible(true);
         }*/
     }
 }

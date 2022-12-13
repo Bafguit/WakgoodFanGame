@@ -1,5 +1,8 @@
 package com.fastcat.labyrintale.uis;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.BORDER_40;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,9 +10,6 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.BORDER_40;
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class LevelPanel extends AbstractUI {
 
@@ -31,21 +31,30 @@ public class LevelPanel extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         sb.draw(back, x, y, sWidth, sHeight);
-        sb.draw(exp.img, exp.x, exp.y, 0, 0, exp.sWidth, exp.sHeight,
-                Math.max(((float) AbstractLabyrinth.exp) / ((float) AbstractLabyrinth.maxExp), 0), 1, 0);
+        sb.draw(
+                exp.img,
+                exp.x,
+                exp.y,
+                0,
+                0,
+                exp.sWidth,
+                exp.sHeight,
+                Math.max(((float) AbstractLabyrinth.exp) / ((float) AbstractLabyrinth.maxExp), 0),
+                1,
+                0);
         sb.draw(img, x, y, sWidth, sHeight);
         FontHandler.renderLineLeft(
                 sb, BORDER_40, AbstractLabyrinth.currentFloor.floorNum + "층", fx, fy, 200 * scale, fy);
         FontHandler.renderLineLeft(
-                sb,
-                BORDER_40,
-                AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second,
-                tx,
-                fy,
-                200 * scale,
-                fy);
+                sb, BORDER_40, AbstractLabyrinth.minute + ":" + AbstractLabyrinth.second, tx, fy, 200 * scale, fy);
 
-        FontHandler.renderCenter(sb, fontData, Integer.toString(AbstractLabyrinth.level),
-                exp.x, exp.y + exp.sHeight / 2, exp.sWidth, exp.sHeight);
+        FontHandler.renderCenter(
+                sb,
+                fontData,
+                Integer.toString(AbstractLabyrinth.level),
+                exp.x,
+                exp.y + exp.sHeight / 2,
+                exp.sWidth,
+                exp.sHeight);
     }
 }

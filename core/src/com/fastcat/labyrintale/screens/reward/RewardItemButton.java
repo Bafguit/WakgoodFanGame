@@ -42,7 +42,7 @@ public class RewardItemButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(image, x, y, sWidth, sHeight);
             if (reward.type == AbstractReward.RewardType.SKILL) {
-                if(sReward.skill.owner != null) sb.setColor(sReward.skill.owner.pColor);
+                if (sReward.skill.owner != null) sb.setColor(sReward.skill.owner.pColor);
                 else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
                 sb.setColor(Color.WHITE);

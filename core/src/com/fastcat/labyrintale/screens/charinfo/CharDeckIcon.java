@@ -40,7 +40,7 @@ public class CharDeckIcon extends AbstractUI {
         if (enabled) {
             sb.setColor(Color.WHITE);
             if (showImg) sb.draw(skill.img, x, y, sWidth, sHeight);
-            if(skill.owner != null) sb.setColor(skill.owner.pColor);
+            if (skill.owner != null) sb.setColor(skill.owner.pColor);
             else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);

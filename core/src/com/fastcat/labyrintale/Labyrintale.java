@@ -2,9 +2,8 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
@@ -35,7 +34,9 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import com.fastcat.labyrintale.utils.VideoManager;
 import lombok.Getter;
+import net.indiespot.media.impl.FFmpeg;
 
 public class Labyrintale extends Game {
 
@@ -107,10 +108,10 @@ public class Labyrintale extends Game {
         tempFade = false;
         fadeType = type;
         duration = 0;
-        if(type == FadeType.HORIZONTAL) {
+        if (type == FadeType.HORIZONTAL) {
             change_h.setPosition(Gdx.graphics.getWidth(), 0);
             change_h_r.setPosition(0, 0);
-        } else if(type == FadeType.VERTICAL) {
+        } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         }
@@ -136,10 +137,10 @@ public class Labyrintale extends Game {
         tempFade = true;
         fadeType = type;
         duration = 0;
-        if(type == FadeType.HORIZONTAL) {
+        if (type == FadeType.HORIZONTAL) {
             change_h.setPosition(Gdx.graphics.getWidth(), 0);
             change_h_r.setPosition(0, 0);
-        } else if(type == FadeType.VERTICAL) {
+        } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         }
@@ -175,18 +176,19 @@ public class Labyrintale extends Game {
 
     @Override
     public void create() {
-        //Gdx.graphics.setResizable(false);
-        //Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
-/*
+        initializeVideoPlayerEnv();
+        // Gdx.graphics.setResizable(false);
+        // Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
+        /*
         Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
 
         if (SettingHandler.setting.screenMode == 0) {
-            Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
+        	Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
         } else if (SettingHandler.setting.screenMode == 1) {
-            Gdx.graphics.setFullscreenMode(displayMode);
+        	Gdx.graphics.setFullscreenMode(displayMode);
         } else {
-            Gdx.graphics.setUndecorated(true);
-            Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
+        	Gdx.graphics.setUndecorated(true);
+        	Gdx.graphics.setWindowedMode(displayMode.width, displayMode.height);
         }
         */
         Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
@@ -293,18 +295,18 @@ public class Labyrintale extends Game {
         if (tutorial) tutorialScreen.render(sb);
         if (setting || settingScreen.anim) settingScreen.render(sb);
         /** ============== */
-        if(fadeType == FadeType.FADE) {
+        if (fadeType == FadeType.FADE) {
             fade();
-        } else if(fadeType == FadeType.HORIZONTAL) {
+        } else if (fadeType == FadeType.HORIZONTAL) {
             change_H();
-        } else if(fadeType == FadeType.VERTICAL) {
+        } else if (fadeType == FadeType.VERTICAL) {
             change_V();
         }
 
         /*
-        sb.setColor(Color.WHITE);
-        sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
-*/
+        		sb.setColor(Color.WHITE);
+        		sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
+        */
         sb.end();
     }
 
@@ -340,7 +342,7 @@ public class Labyrintale extends Game {
             float xx = Gdx.graphics.getWidth() - change_h.sWidth;
             AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     if (change_h.x > xx) {
                         change_h.x -= change_h.sWidth * ac;
                         if (change_h.x <= xx) change_h.x = xx;
@@ -359,7 +361,7 @@ public class Labyrintale extends Game {
                 }
                 change_h.render(sb);
             } else {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float w = change_h_r.sWidth;
                     if (duration <= ad && change_h_r.x > -w) {
                         change_h_r.x -= w * ac;
@@ -382,7 +384,7 @@ public class Labyrintale extends Game {
             float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f, ad = 0.3f / alphaDex;
             AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float yy = Gdx.graphics.getHeight() - change_v.sHeight;
                     if (change_v.y > yy) {
                         change_v.y -= change_v.sHeight * ac;
@@ -402,7 +404,7 @@ public class Labyrintale extends Game {
                 }
                 change_v.render(sb);
             } else {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float yy = -change_v_r.sHeight;
                     if (duration <= ad && change_v_r.y > yy) {
                         change_v_r.y -= change_v_r.sHeight * ac;
@@ -491,6 +493,17 @@ public class Labyrintale extends Game {
     }
 
     public enum FadeType {
-        FADE, HORIZONTAL, VERTICAL, NONE
+        FADE,
+        HORIZONTAL,
+        VERTICAL,
+        NONE
+    }
+
+    private void initializeVideoPlayerEnv() {
+        FileHandle ffmpeg =  Gdx.files.internal("bin/ffmpeg64.exe");
+        FileHandle out = Gdx.files.local(VideoManager.FFMPEG_NAME);
+        ffmpeg.copyTo(out);
+
+        FFmpeg.FFMPEG_PATH = out.path();
     }
 }
