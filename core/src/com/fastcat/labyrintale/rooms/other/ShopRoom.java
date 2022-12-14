@@ -44,8 +44,7 @@ public class ShopRoom extends AbstractRoom {
             }
             if (p.hasItem("Protection")) roll.price *= 0.5f;
         }
-        SoundHandler.playSfx("CHANGE");
-        fadeOutAndChangeScreen(shopScreen, Labyrintale.FadeType.HORIZONTAL);
+        fadeOutAndChangeScreen(shopScreen);
     }
 
     public void generateSkills() {

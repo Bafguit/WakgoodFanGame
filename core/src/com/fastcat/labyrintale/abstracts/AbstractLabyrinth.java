@@ -3,7 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.players.*;
@@ -203,7 +203,6 @@ public class AbstractLabyrinth {
             currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
         }
         SaveHandler.save();
-        SoundHandler.playSfx("CHANGE");
         Labyrintale.returnToWay();
     }
 

@@ -1,17 +1,15 @@
 package com.fastcat.labyrintale.desktop;
 
 import com.badlogic.gdx.Files;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.fastcat.labyrintale.BuildInfo;
+import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
 import java.io.File;
-import java.lang.reflect.Field;
 
 public class DesktopLauncher {
 
@@ -40,7 +38,7 @@ public class DesktopLauncher {
         config.useVsync(true);
         config.setResizable(false);
         //config.setInitialVisible(false);
-        config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 10);
+        config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
 
         SettingHandler.initialize();
 

@@ -19,7 +19,6 @@ public class CreditScreen extends AbstractScreen {
     public boolean clicked = false;
     public CreditBackButton backButton;
     public AbstractUI.TempUI logo;
-    private final GifBg back;
     private final BgImg bg;
 
     public CreditScreen() {
@@ -28,7 +27,6 @@ public class CreditScreen extends AbstractScreen {
         backButton.disable();
         logo = new AbstractUI.TempUI(FileHandler.getUi().get("CREDIT"));
         logo.setPosition(0, -logo.sHeight);
-        back = new GifBg("MAIN_MENU");
         bg = new BgImg();
 
         cType = ControlPanel.ControlType.HIDE;

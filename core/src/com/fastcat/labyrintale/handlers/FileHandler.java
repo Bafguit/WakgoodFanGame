@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.fastcat.labyrintale.GifDecoder;
+import com.fastcat.labyrintale.utils.GifDecoder;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import java.io.InputStreamReader;
@@ -248,6 +248,7 @@ public class FileHandler implements Disposable {
         bg.put("BG_WAY_3", new Sprite(new Texture("img/bg/way_temple.png")));
         bg.put("BG_WAY_4", new Sprite(new Texture("img/bg/way_lab.png")));
         bg.put("BG_REST_BAG", new Sprite(new Texture("img/bg/fire_bag.png")));
+        bg.put("BG_SHOP", new Sprite(new Texture("img/bg/shop.png")));
     }
 
     private void generateVFX() {
@@ -374,6 +375,7 @@ public class FileHandler implements Disposable {
         ui.put("TEXT_MOVE", new Sprite(new Texture("img/ui/moveRes.png")));
         ui.put("TEXT_CRIT", new Sprite(new Texture("img/ui/critical.png")));
         ui.put("TEXT_NEUTRAL", new Sprite(new Texture("img/ui/neutral.png")));
+        ui.put("GROUND", new Sprite(new Texture("img/ui/entity_ground.png")));
         ui.put("CREDIT", new Sprite(new Texture("img/credit.png")));
     }
 

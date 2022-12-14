@@ -32,11 +32,9 @@ public class PassRewardButton extends AbstractUI {
                 AbstractLabyrinth.endRoom();
             } else {
                 Labyrintale.eventScreen.event.endBattle();
-                SoundHandler.playSfx("CHANGE");
-                Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen, Labyrintale.FadeType.VERTICAL);
+                Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
             }
         } else if (s == Labyrintale.restScreen) {
-            SoundHandler.playSfx("CHANGE");
             Labyrintale.returnToWay();
         } else {
             Labyrintale.removeTempScreen(sc);

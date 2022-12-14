@@ -8,6 +8,7 @@ public class SettingButton extends AbstractUI {
 
     public SettingButton(float x, float y) {
         super(FileHandler.getUi().get("SETTING_B"), x, y);
+        isPixmap = true;
     }
 
     @Override

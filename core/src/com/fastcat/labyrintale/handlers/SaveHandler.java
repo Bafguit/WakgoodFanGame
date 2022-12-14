@@ -6,8 +6,8 @@ import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvi
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.BuildInfo;
-import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.utils.BuildInfo;
+import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fasterxml.jackson.databind.ObjectMapper;

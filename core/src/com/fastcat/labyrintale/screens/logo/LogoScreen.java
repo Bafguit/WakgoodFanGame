@@ -47,7 +47,6 @@ public class LogoScreen extends AbstractScreen {
         SoundHandler.playMusic("LOGO", false, false);
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
-
         videoPlayer.setOnCompletionListener(file -> isDone = true);
     }
 
@@ -67,20 +66,6 @@ public class LogoScreen extends AbstractScreen {
         } else {
             if (timer >= 5) isDone = true;
         }*/
-
-        if(create) {
-            create = false;
-            try {
-                videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-                videoPlayer.setVolume(0);
-                videoPlayer.setLooping(false);
-            } catch (FileNotFoundException e) {
-                isDone = true;
-                e.printStackTrace();
-            }
-        }
-
-        videoPlayer.update();
 
         if (!isDone) {
             if (InputHandler.isLeftClick) {
@@ -110,6 +95,20 @@ public class LogoScreen extends AbstractScreen {
     public void render(SpriteBatch sb) {
         sb.setColor(Color.WHITE);
         //back.draw(sb, color);
+
+        if(create) {
+            create = false;
+            try {
+                videoPlayer.play(FileHandler.getVideo().get("LOGO"));
+                videoPlayer.setVolume(0);
+                videoPlayer.setLooping(false);
+            } catch (FileNotFoundException e) {
+                isDone = true;
+                e.printStackTrace();
+            }
+        }
+
+        videoPlayer.update();
 
         Texture t = videoPlayer.getTexture();
         if(t != null) {

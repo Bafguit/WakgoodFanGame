@@ -1,83 +1,76 @@
 
 skeleton.png
-size: 1662,1065
+size: 1650,1002
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: true
-  xy: 507, 72
-  size: 603, 455
-  orig: 900, 900
-  offset: 174, 31
+  xy: 502, 389
+  size: 611, 562
+  orig: 640, 640
+  offset: 14, 53
   index: -1
 body
   rotate: true
-  xy: 1186, 61
-  size: 500, 310
-  orig: 900, 900
-  offset: 201, 185
+  xy: 1066, 7
+  size: 461, 548
+  orig: 640, 640
+  offset: 170, 47
   index: -1
 die
   rotate: false
-  xy: 507, 677
-  size: 678, 386
-  orig: 900, 900
-  offset: 150, 13
+  xy: 2, 6
+  size: 613, 370
+  orig: 640, 640
+  offset: 17, 10
+  index: -1
+foot_left
+  rotate: false
+  xy: 937, 112
+  size: 108, 172
+  orig: 640, 640
+  offset: 351, 125
+  index: -1
+foot_right
+  rotate: true
+  xy: 826, 286
+  size: 101, 197
+  orig: 640, 640
+  offset: 459, 100
   index: -1
 hand_left
-  rotate: true
-  xy: 964, 2
-  size: 162, 164
-  orig: 900, 900
-  offset: 279, 31
+  rotate: false
+  xy: 937, 2
+  size: 83, 108
+  orig: 640, 640
+  offset: 97, 131
   index: -1
 hand_right
   rotate: false
-  xy: 1498, 132
-  size: 145, 429
-  orig: 900, 900
-  offset: 416, 22
+  xy: 826, 20
+  size: 109, 264
+  orig: 640, 640
+  offset: 206, 126
+  index: -1
+head
+  rotate: false
+  xy: 617, 20
+  size: 207, 367
+  orig: 640, 640
+  offset: 47, 181
   index: -1
 hit
-  rotate: true
-  xy: 2, 17
-  size: 547, 466
-  orig: 900, 900
-  offset: 146, 31
-  index: -1
-idle
-  rotate: true
-  xy: 1187, 563
-  size: 500, 473
-  orig: 900, 900
-  offset: 201, 22
-  index: -1
-leg_left
   rotate: false
-  xy: 964, 417
-  size: 220, 258
-  orig: 900, 900
-  offset: 301, 30
-  index: -1
-leg_right
-  rotate: false
-  xy: 964, 166
-  size: 197, 249
-  orig: 900, 900
-  offset: 495, 36
+  xy: 2, 378
+  size: 498, 622
+  orig: 640, 640
+  offset: 106, 4
   index: -1
 skill
-  rotate: false
-  xy: 2, 566
-  size: 503, 497
-  orig: 900, 900
-  offset: 200, 25
-  index: -1
-tail
   rotate: true
-  xy: 1498, 35
-  size: 95, 112
-  orig: 900, 900
-  offset: 601, 50
+  xy: 1066, 470
+  size: 530, 582
+  orig: 640, 640
+  offset: 55, 35
   index: -1

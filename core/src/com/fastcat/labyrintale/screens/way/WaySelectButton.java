@@ -30,7 +30,6 @@ public class WaySelectButton extends AbstractUI {
         currentFloor.currentRoom = c.room;
         currentFloor.currentWay.selected = c.index;
         SaveHandler.save();
-        SoundHandler.playSfx("CHANGE");
         currentFloor.currentRoom.enter();
     }
 }

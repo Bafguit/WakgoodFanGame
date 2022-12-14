@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "e35FyppUtwAsW4g1AJt75I4RD4o",
+	"hash": "UZnbXLkXSytwcOKhbY+7LqU0OcM",
 	"spine": "3.8.75",
 	"x": -352.18,
 	"y": -83.81,
@@ -10,7 +10,7 @@
 	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.4, "scaleY": 0.4 },
+	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.55, "scaleY": 0.55 },
 	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [

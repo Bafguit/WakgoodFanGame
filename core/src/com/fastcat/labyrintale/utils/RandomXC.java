@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.fastcat.labyrintale;
+package com.fastcat.labyrintale.utils;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;

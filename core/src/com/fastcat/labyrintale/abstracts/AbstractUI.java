@@ -283,6 +283,11 @@ public abstract class AbstractUI implements Disposable {
             super(texture, x, y);
             overable = false;
         }
+
+        public TempUI(Sprite texture, float x, float y, float w, float h) {
+            super(texture, x, y, w, h);
+            overable = false;
+        }
     }
 
     public static class SubText {

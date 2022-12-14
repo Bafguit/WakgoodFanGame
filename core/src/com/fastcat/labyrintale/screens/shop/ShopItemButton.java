@@ -48,14 +48,9 @@ public class ShopItemButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(itemImg, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            FontHandler.renderCenter(
-                    sb,
-                    can ? FontHandler.SHOP_OK : FontHandler.SHOP_NO,
-                    item.price + "G",
-                    x,
-                    y - sHeight * 0.2f,
-                    sWidth,
-                    sHeight * 0.2f);
+            String t = item.price + "G";
+            if(!can) t = "&r<" + t + ">";
+            FontHandler.renderColorLeft(sb, FontHandler.SHOP_OK, t, x + sWidth * 0.45f, y - sHeight * 0.08f, sWidth);
             if (type == ShopItemType.SKILL) {
                 if (sItem.skill.owner != null) sb.setColor(sItem.skill.owner.pColor);
                 else sb.setColor(Color.WHITE);

@@ -21,6 +21,7 @@ public class WayScreen extends AbstractScreen {
     private final WayBgImg bgImg;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
+    public AbstractUI.TempUI ground = new AbstractUI.TempUI(FileHandler.getUi().get("GROUND"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
     public Array<WaySelectButton> buttons;
     public Array<WayIcon> icons;
@@ -39,6 +40,7 @@ public class WayScreen extends AbstractScreen {
     public WayScreen(AbstractWay wy) {
         way = wy;
         cType = ControlPanel.ControlType.BASIC;
+        ground.setPosition(0, 0);
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
             PlayerWayView pv = new PlayerWayView(AbstractLabyrinth.players[i]);
@@ -107,6 +109,7 @@ public class WayScreen extends AbstractScreen {
                 players[i].render(sb);
             }
         }
+        sb.draw(ground.img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         float h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
             PlayerWayView tp = players[i];

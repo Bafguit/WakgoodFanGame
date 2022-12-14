@@ -124,6 +124,7 @@ public class SettingScreen extends AbstractScreen {
         }
         screenMode.update();
         SettingHandler.setting.screenMode = screenMode.index;
+        resolution.can = screenMode.index == 0;
         resolution.update();
         SettingHandler.setting.width = width[resolution.index];
         SettingHandler.setting.height = height[resolution.index];

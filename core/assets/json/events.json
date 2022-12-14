@@ -207,7 +207,7 @@
       "전투!"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Door"
     ]
   },
   "Loyalist": {
@@ -224,7 +224,7 @@
       "계속"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Loyalist"
     ]
   },
   "Survivor": {
@@ -244,7 +244,7 @@
       "잠김: 강화할 수 있는 스킬 필요"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Survivor"
     ]
   },
   "Civilization": {
@@ -264,7 +264,7 @@
       "잠김: 강화할 수 있는 스킬 필요"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Civilization"
     ]
   },
   "SealedHeart": {
@@ -285,7 +285,7 @@
       "무시한다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "SealedHeart"
     ]
   },
 

@@ -22,7 +22,7 @@ public class ShieldIcon extends AbstractUI {
     public ShieldIcon(AbstractEntity e) {
         super(FileHandler.getUi().get("SHIELD"));
         fontData = BLOCK;
-        overable = true;
+        overable = false;
         clickable = false;
         isPixmap = true;
         this.e = e;
@@ -36,9 +36,16 @@ public class ShieldIcon extends AbstractUI {
     }
 
     @Override
+    protected void updateButton() {
+        overable = e.block > 0;
+    }
+
+    @Override
     protected void renderUi(SpriteBatch sb) {
-        sb.setColor(Color.WHITE);
-        sb.draw(img, x, y, sWidth, sHeight);
-        renderKeywordCenter(sb, fontData, Integer.toString(e.block), x, y + sHeight * 0.5f, sWidth, sHeight);
+        if(overable) {
+            sb.setColor(Color.WHITE);
+            sb.draw(img, x, y, sWidth, sHeight);
+            renderKeywordCenter(sb, fontData, Integer.toString(e.block), x, y + sHeight * 0.5f, sWidth, sHeight);
+        }
     }
 }

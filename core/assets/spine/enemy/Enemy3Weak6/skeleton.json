@@ -1,7 +1,7 @@
 {
-"skeleton": { "hash": "Qc9fv4FQaOxzV+RUK6Dxrw60uBE", "spine": "3.8.75", "images": "./img/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
+"skeleton": { "hash": "PkLmTmKlqhtHGgFFvK7LOX/345c", "spine": "3.8.75", "images": "./img/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
 "bones": [
-	{ "name": "root", "rotation": -0.05 },
+	{ "name": "root", "rotation": -0.05, "x": -60, "y": 0.05 },
 	{ "name": "body", "parent": "root", "length": 179.74, "rotation": 90.05, "x": 24.68, "y": 177.56 },
 	{ "name": "leg_back_left", "parent": "body", "length": 215.27, "rotation": -180, "x": 50.16, "y": -75.24 },
 	{ "name": "leg_back_right", "parent": "body", "length": 353.21, "rotation": -180, "x": 175.56, "y": -80.46 },
@@ -100,16 +100,6 @@
 					{ "name": "body" }
 				]
 			},
-			"head": {
-				"attachment": [
-					{ "name": "head" }
-				]
-			},
-			"leg_back_right": {
-				"attachment": [
-					{ "name": "leg_back_right" }
-				]
-			},
 			"leg_back_left": {
 				"attachment": [
 					{ "name": "leg_back_left" }
@@ -118,6 +108,16 @@
 			"leg_front_right": {
 				"attachment": [
 					{ "name": "leg_front_right" }
+				]
+			},
+			"head": {
+				"attachment": [
+					{ "name": "head" }
+				]
+			},
+			"leg_back_right": {
+				"attachment": [
+					{ "name": "leg_back_right" }
 				]
 			},
 			"leg_front_left": {

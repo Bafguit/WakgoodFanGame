@@ -4,7 +4,7 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.RandomXC;
+import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;

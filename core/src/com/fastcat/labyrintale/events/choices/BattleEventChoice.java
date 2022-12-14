@@ -29,7 +29,6 @@ public class BattleEventChoice extends AbstractEvent.EventChoice {
         battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
         SoundHandler.fadeOutAll();
         SoundHandler.addBattle();
-        SoundHandler.playSfx("CHANGE_DOOR");
-        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.VERTICAL);
+        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.HORIZONTAL);
     }
 }

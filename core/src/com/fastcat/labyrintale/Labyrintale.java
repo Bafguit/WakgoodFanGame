@@ -435,7 +435,7 @@ public class Labyrintale extends Game {
 
     public static void returnToWay() {
         wayScreen = new WayScreen();
-        fadeOutAndChangeScreen(wayScreen, FadeType.VERTICAL);
+        fadeOutAndChangeScreen(wayScreen);
     }
 
     public static void openTutorial(TutorialScreen.TutorialType type) {

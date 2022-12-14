@@ -3,7 +3,7 @@
 /* Released under Apache 2.0 */
 /* https://code.google.com/p/animated-gifs-in-android/ */
 
-package com.fastcat.labyrintale;
+package com.fastcat.labyrintale.utils;
 
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -733,8 +733,10 @@ public class GifDecoder {
             for (v = 0; v < vzones; v++) {
                 int frameID = v + h * vzones;
                 if (frameID < nrFrames) {
-                    Sprite tr = new Sprite(new TextureRegion(texture, h * width, v * height, width, height));
-                    texReg.add(tr);
+                    TextureRegion tr = new TextureRegion(texture, h * width, v * height, width, height);
+                    tr.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    Sprite sp = new Sprite(tr);
+                    texReg.add(sp);
                 }
             }
         }

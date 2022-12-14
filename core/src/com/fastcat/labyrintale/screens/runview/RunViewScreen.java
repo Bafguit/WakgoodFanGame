@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.BuildInfo;
+import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
@@ -40,7 +40,7 @@ public class RunViewScreen extends AbstractScreen {
     public NoRunsText noRuns;
     public ResultText text;
     public BackToMainRunButton back;
-    public ScreenshotButton shot;
+    public ScreenshotRunButton shot;
     public ResultAdvisor adv;
     public IndexButton left;
     public IndexButton right;
@@ -100,8 +100,8 @@ public class RunViewScreen extends AbstractScreen {
         seed = "시드: ";
         score = "점수: ";
         date = "";
-        shot = new ScreenshotButton();
-        shot.setPosition(Gdx.graphics.getWidth() * 0.17f, Gdx.graphics.getHeight() * 0.9f);
+        shot = new ScreenshotRunButton();
+        shot.setPosition(Gdx.graphics.getWidth() * 0.1f, Gdx.graphics.getHeight() * 0.9f);
         back = new BackToMainRunButton();
         noRuns = new NoRunsText();
         if (RunHandler.runs.size > 0) setIndex(true);

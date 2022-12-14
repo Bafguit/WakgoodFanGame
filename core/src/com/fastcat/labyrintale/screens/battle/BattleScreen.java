@@ -28,6 +28,7 @@ public class BattleScreen extends AbstractScreen {
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
+    public AbstractUI.TempUI ground = new AbstractUI.TempUI(FileHandler.getUi().get("GROUND"));
     public LinkedList<StatusButton>[] playerStatus = new LinkedList[4];
     public LinkedList<StatusButton>[] enemyStatus = new LinkedList[4];
     public SkillButton[] enemySkills = new SkillButton[4];
@@ -56,6 +57,7 @@ public class BattleScreen extends AbstractScreen {
         this.type = type;
         AbstractLabyrinth.prepare();
         setBg(AbstractLabyrinth.curBg);
+        ground.setPosition(0, 0);
         w = Gdx.graphics.getWidth();
         h = Gdx.graphics.getHeight();
         for (int i = 0; i < 4; i++) {
@@ -250,6 +252,8 @@ public class BattleScreen extends AbstractScreen {
                 enemies[i].render(sb);
             }
         }
+
+        sb.draw(ground.img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         for (int i = 0; i < 4; i++) {
             PlayerBattleView tp = players[i];

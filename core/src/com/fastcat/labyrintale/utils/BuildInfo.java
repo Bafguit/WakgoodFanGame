@@ -1,4 +1,4 @@
-package com.fastcat.labyrintale;
+package com.fastcat.labyrintale.utils;
 
 import java.io.*;
 import java.util.Properties;

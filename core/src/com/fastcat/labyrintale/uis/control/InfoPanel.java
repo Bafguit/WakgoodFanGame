@@ -61,7 +61,7 @@ public class InfoPanel extends AbstractUI {
         bnh = 60 * InputHandler.scale;
         bdh = 60 * InputHandler.scale;
 
-        setting = new SettingButton(2443 * scale, 17 * scale);
+        setting = new SettingButton(w * 0.01f, h * 0.915f);
 
         gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
         gold.setPosition(974 * scale, 49 * scale);

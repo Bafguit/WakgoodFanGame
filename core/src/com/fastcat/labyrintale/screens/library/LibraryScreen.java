@@ -2,13 +2,13 @@ package com.fastcat.labyrintale.screens.library;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.difficulty.BackButton;
 import com.fastcat.labyrintale.uis.GifBg;
 
 public class LibraryScreen extends AbstractScreen {
 
-    private final GifBg back;
     private final LibraryButton[] buttons = new LibraryButton[3];
     public BackButton backButton;
 
@@ -20,7 +20,6 @@ public class LibraryScreen extends AbstractScreen {
             buttons[i] = b;
         }
         backButton = new BackButton();
-        back = new GifBg("MAIN_MENU");
     }
 
     @Override
@@ -33,7 +32,7 @@ public class LibraryScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        back.render(sb);
+        Labyrintale.mainMenuScreen.back.render(sb);
         for (LibraryButton b : buttons) {
             b.render(sb);
         }
