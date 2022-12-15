@@ -95,11 +95,9 @@ public class BattleScreen extends AbstractScreen {
             enemies[i] = ev;
 
             ShieldIcon ps = new ShieldIcon(pv.entity);
-            ps.setPosition(pv.x - ps.sWidth * 0.4f, h * 0.49f - ps.sHeight * 0.35f - 40 * scale);
             pShield[i] = ps;
 
             ShieldIcon es = new ShieldIcon(ev.entity);
-            es.setPosition(ev.x - es.sWidth * 0.4f, h * 0.49f - es.sHeight * 0.35f - 40 * scale);
             eShield[i] = es;
 
             playerStatus[i] = new LinkedList<>();

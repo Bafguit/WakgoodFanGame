@@ -51,7 +51,6 @@ public class BackButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        SoundHandler.playSfx("CHANGE");
-        Labyrintale.fadeOutAndChangeScreen(diffScreen, Labyrintale.FadeType.VERTICAL, 0.3f);
+        Labyrintale.fadeOutAndChangeScreen(diffScreen, 0.75f);
     }
 }

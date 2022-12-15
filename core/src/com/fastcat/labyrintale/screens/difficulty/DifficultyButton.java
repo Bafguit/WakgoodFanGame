@@ -1,8 +1,5 @@
 package com.fastcat.labyrintale.screens.difficulty;
 
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
-import static com.fastcat.labyrintale.Labyrintale.fadeOutAndChangeScreen;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,6 +9,8 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
+
+import static com.fastcat.labyrintale.Labyrintale.*;
 
 public class DifficultyButton extends AbstractUI {
 
@@ -60,7 +59,6 @@ public class DifficultyButton extends AbstractUI {
         }
         charSelectScreen.nextButton.disable();
         charSelectScreen.seedText.text = "";
-        SoundHandler.playSfx("CHANGE");
-        fadeOutAndChangeScreen(charSelectScreen, Labyrintale.FadeType.VERTICAL, 0.3f);
+        Labyrintale.fadeOutAndChangeScreen(charSelectScreen, 0.75f);
     }
 }

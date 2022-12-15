@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.enemies.act4;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.enemy.*;
 import com.fastcat.labyrintale.status.PunishStatus;
@@ -24,7 +25,8 @@ public class Enemy4Elite3 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new PunishStatus(2), this, 2, false);
+        applyStatus(new PunishStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
+                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2, false);
     }
 
     @Override

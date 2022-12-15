@@ -29,23 +29,23 @@ public class ShopScreen extends AbstractScreen {
             ShopRoom.SkillItem s = room.skills[i];
             ShopItemButton b = new ShopItemButton(s);
             b.setPosition((662 + 200 * i) * scale, 957 * scale);
-            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
-                    (690 + 200 * i) * scale, (670 + 241) * scale, 35, 35);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
+                    (685 + 200 * i) * scale, (665 + 241) * scale, 45, 45);
             b.gold = ui;
             skills[i] = b;
         }
         for (int i = 0; i < 5; i++) {
             ShopItemButton b = new ShopItemButton(room.items[i]);
             b.setPosition((662 + 200 * i) * scale, 716 * scale);
-            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
-                    (690 + 200 * i) * scale, 670 * scale, 35, 35);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
+                    (685 + 200 * i) * scale, 665 * scale, 45, 45);
             b.gold = ui;
             items[i] = b;
         }
         roll = new ShopItemButton(room.roll);
         roll.setPosition(1662 * scale, 716 * scale);
-        AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
-                1690 * scale, 670 * scale, 35, 35);
+        AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
+                1685 * scale, 665 * scale, 45, 45);
         roll.gold = ui;
         pass = new PassShopButton();
         setBg(FileHandler.getBg().get("BG_SHOP"));

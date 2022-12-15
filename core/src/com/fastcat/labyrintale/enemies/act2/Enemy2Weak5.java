@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.enemies.act2;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.enemy.FuryE;
 import com.fastcat.labyrintale.skills.enemy.StrikeE;
@@ -24,7 +25,8 @@ public class Enemy2Weak5 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new HostStatus(2), this, 1, false);
+        applyStatus(new HostStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
+                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2, false);
     }
 
     @Override

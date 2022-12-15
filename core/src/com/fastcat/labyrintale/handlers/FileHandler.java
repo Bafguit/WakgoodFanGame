@@ -296,6 +296,9 @@ public class FileHandler implements Disposable {
         ui.put("BORDER_T", new Sprite(new Texture("img/ui/border_turn.png")));
         ui.put("BORDER_T2", new Sprite(new Texture("img/ui/border_turn2.png")));
         ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
+        ui.put("SHADOW_ITEM", new Sprite(new Texture("img/ui/shadow_item.png")));
+        ui.put("SHADOW_ROLL", new Sprite(new Texture("img/ui/shadow_roll.png")));
+        ui.put("GOLD_SHOP", new Sprite(new Texture("img/ui/gold_shop.png")));
         ui.put("REST_HEAL", new Sprite(new Texture("img/ui/rest_heal.png")));
         ui.put("REST_REVIVE", new Sprite(new Texture("img/ui/rest_revive.png")));
         ui.put("REST_UPGRADE", new Sprite(new Texture("img/ui/rest_upgrade.png")));
@@ -310,10 +313,8 @@ public class FileHandler implements Disposable {
         ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
         ui.put("POINT_TURN", new Sprite(new Texture("img/ui/point_turn.png")));
         ui.put("POINT_ALLEY", new Sprite(new Texture("img/ui/point_alley.png")));
-        ui.put("POINT_ATTACK", new Sprite(new Texture("img/ui/point_attack.png")));
         ui.put("POINT_TURN_B", new Sprite(new Texture("img/ui/point_turn_b.png")));
         ui.put("POINT_ALLEY_B", new Sprite(new Texture("img/ui/point_alley_b.png")));
-        ui.put("POINT_ATTACK_B", new Sprite(new Texture("img/ui/point_attack_b.png")));
         ui.put("WAY_SELECT", new Sprite(new Texture("img/ui/wayBG.png")));
         ui.put("EVENT_PANEL", new Sprite(new Texture("img/ui/event_paper.png")));
         ui.put("EVENT_CHOICE", new Sprite(new Texture("img/ui/event_select.png")));

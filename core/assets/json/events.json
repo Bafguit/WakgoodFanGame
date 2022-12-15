@@ -305,7 +305,7 @@
       "나간다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Betting"
     ]
   },
   "Stranger": {
@@ -323,7 +323,7 @@
       "거절한다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Stranger"
     ]
   },
   "Weapon": {
@@ -338,7 +338,7 @@
       "휴식한다: 모든 아군이 체력을 &b<6> 회복합니다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Weapon"
     ]
   },
   "Trap": {
@@ -372,7 +372,7 @@
       "무시한다: 모든 아군의 모든 저항 &r<-3%>"
     ],
     "IMAGE": [
-      "TestEvent"
+      "UpsetIdol"
     ]
   },
 
@@ -404,7 +404,7 @@
       "다른 것을 원한다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "GeneralStore"
     ]
   },
   "CorruptedIdol": {
@@ -419,7 +419,7 @@
       "가져간다: 아군 하나를 제물로 바치고 &y<악마 우상>을 얻습니다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "CorruptedIdol"
     ]
   },
   "Fog": {
@@ -439,7 +439,7 @@
       "계속"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Fog"
     ]
   },
   "Ghost": {
@@ -456,7 +456,7 @@
       "계속"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Ghost"
     ]
   },
   "Gotcha": {
@@ -475,7 +475,7 @@
       "계속"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Gotcha"
     ]
   },
 
@@ -490,7 +490,7 @@
       "경계하며 간다: 스킬 하나를 &y<보호막>으로 교체합니다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Amnesia"
     ]
   },
   "Revelation": {
@@ -508,7 +508,7 @@
       "조건: 2명 이상 필요"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Revelation"
     ]
   },
   "Punk": {
@@ -525,7 +525,7 @@
       "무시한다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Punk"
     ]
   },
   "Ambush": {
@@ -545,7 +545,7 @@
       "전투!"
     ],
     "IMAGE": [
-      "TestEvent"
+      "Ambush"
     ]
   },
   "Bar": {
@@ -565,7 +565,7 @@
       "무시한다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Bar"
     ]
   }
 }

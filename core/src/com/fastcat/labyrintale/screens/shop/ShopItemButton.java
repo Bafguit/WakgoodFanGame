@@ -12,6 +12,8 @@ import com.fastcat.labyrintale.rooms.other.ShopRoom;
 public class ShopItemButton extends AbstractUI {
 
     private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
+    private final TempUI shadow = new TempUI(FileHandler.getUi().get("SHADOW_ITEM"));
+    private final Sprite roll = FileHandler.getUi().get("SHADOW_ROLL");
     private ShopRoom.SkillItem sItem;
     private ShopRoom.ItemItem iItem;
     public ShopRoom.ShopItem item;
@@ -44,6 +46,10 @@ public class ShopItemButton extends AbstractUI {
     protected void renderUi(SpriteBatch sb) {
         if (enabled && !item.isDone) {
             boolean can = item.canBuy();
+            sb.draw(type == ShopItemType.ROLL ? roll : shadow.img,
+                    x + sWidth / 2 - shadow.sWidth / 2,
+                    y + sHeight / 2 - shadow.sHeight / 2,
+                    shadow.sWidth, shadow.sHeight);
             if (!can) sb.setColor(Color.DARK_GRAY);
             else if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(Color.WHITE);

@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.enemies.act2;
 
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.skills.enemy.DoubleE;
 import com.fastcat.labyrintale.skills.enemy.FuryE;
@@ -26,7 +27,8 @@ public class Enemy2Normal1 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ArmourStatus(10), this, 10, false);
+        applyStatus(new ArmourStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10),
+                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10, false);
         block = 10;
     }
 
