@@ -1,16 +1,16 @@
 {
 "skeleton": {
-	"hash": "UZnbXLkXSytwcOKhbY+7LqU0OcM",
+	"hash": "tE3Lct+95k/0LK4+qygQA7tQyGU",
 	"spine": "3.8.75",
-	"x": -352.18,
-	"y": -83.81,
-	"width": 704.62,
-	"height": 704.62,
-	"images": "",
+	"x": -246.52,
+	"y": -22.67,
+	"width": 493.23,
+	"height": 493.23,
+	"images": "./img/",
 	"audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더"
 },
 "bones": [
-	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.55, "scaleY": 0.55 },
+	{ "name": "root", "rotation": -0.05, "y": 120, "scaleX": 0.385, "scaleY": 0.385 },
 	{ "name": "bone", "parent": "root", "length": 180.32, "rotation": 90.05, "x": -0.24, "y": 270 }
 ],
 "slots": [
@@ -45,30 +45,30 @@
 "animations": {
 	"attack": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"attack": {
 				"attachment": [
 					{ "name": "attack" },
 					{ "time": 0.6667, "name": "attack" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}
 	},
 	"die": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"die": {
 				"attachment": [
 					{ "name": "die" },
 					{ "time": 0.6667, "name": "die" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}

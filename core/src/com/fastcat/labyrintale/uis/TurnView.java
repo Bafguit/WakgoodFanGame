@@ -44,11 +44,13 @@ public class TurnView extends AbstractUI {
             for (int i = 0; i < index; i++) {
                 TurnIcon t = icons.get(i);
                 t.isMain = false;
+                t.c = 1;
                 t.setPosition(-10000, -10000);
             }
 
             TurnIcon tx = icons.get(index);
             tx.isMain = true;
+            tx.c = 1;
             tx.setPosition(wc, wh);
 
             int cnt = 1;
@@ -56,8 +58,10 @@ public class TurnView extends AbstractUI {
                 TurnIcon t = icons.get(i);
                 t.isMain = false;
                 if (cnt <= 3) {
+                    t.c = 1 - 0.125f * cnt;
                     t.setPosition(wc - t.sWidth * 0.8f * (cnt), wh + t.bb.sHeight - t.sHeight);
                 } else {
+                    t.c = 1;
                     t.setPosition(-10000, -10000);
                 }
                 cnt++;
@@ -68,7 +72,7 @@ public class TurnView extends AbstractUI {
             }
             if (now != null) {
                 Labyrintale.battleScreen.looking.add(now.view);
-                AbstractLabyrinth.cPanel.battlePanel.setPlayer(now.view);
+                AbstractLabyrinth.cPanel.battlePanel.setEntity(now.view);
             }
         }
     }
@@ -87,6 +91,8 @@ public class TurnView extends AbstractUI {
         private final TempUI arrow;
         private final TempUI bb;
         private final TurnView tv;
+        private final Color color;
+        public float c = 1;
         public AbstractEntity view;
         public AbstractSkill skill;
         public boolean isMain;
@@ -100,6 +106,7 @@ public class TurnView extends AbstractUI {
             this.view = entity;
             isMain = false;
             isPixmap = true;
+            color = new Color(1, 1, 1, 1);
         }
 
         @Override
@@ -113,8 +120,8 @@ public class TurnView extends AbstractUI {
         @Override
         protected void renderUi(SpriteBatch sb) {
             if (enabled) {
-                if (view.isAlive()) sb.setColor(Color.WHITE);
-                else sb.setColor(Color.DARK_GRAY);
+                if (view.isAlive()) sb.setColor(c, c, c, 1);
+                else sb.setColor(0.2f, 0.2f, 0.2f, 1);
                 if (isMain) {
                     if (view != null) {
                         sb.draw(view.imgTurn, x, y, bb.sWidth, bb.sHeight);

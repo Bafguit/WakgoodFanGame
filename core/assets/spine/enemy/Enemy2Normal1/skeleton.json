@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "lo3lvDsRd2XJD5EnL+XlEXBTG4g", "spine": "3.8.75", "images": "./img/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
+"skeleton": { "hash": "mrwAeNEokmyF5hUjrhKpaT+WoYk", "spine": "3.8.75", "images": "./img/", "audio": "C:/Users/유민/Pictures/게임개발/burger/새 폴더" },
 "bones": [
 	{ "name": "root", "rotation": -0.05 },
 	{ "name": "body", "parent": "root", "length": 192.21, "rotation": 90.05, "x": -0.99, "y": 160.19 },
@@ -94,16 +94,6 @@
 	},
 	"idle": {
 		"slots": {
-			"arm_left": {
-				"attachment": [
-					{ "name": "arm_left" }
-				]
-			},
-			"arm_right": {
-				"attachment": [
-					{ "name": "arm_right" }
-				]
-			},
 			"head": {
 				"attachment": [
 					{ "name": "head" }
@@ -114,14 +104,24 @@
 					{ "name": "leg_left" }
 				]
 			},
-			"body": {
+			"arm_right": {
 				"attachment": [
-					{ "name": "body" }
+					{ "name": "arm_right" }
 				]
 			},
 			"leg_right": {
 				"attachment": [
 					{ "name": "leg_right" }
+				]
+			},
+			"arm_left": {
+				"attachment": [
+					{ "name": "arm_left" }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": "body" }
 				]
 			}
 		},

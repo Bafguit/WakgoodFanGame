@@ -53,7 +53,7 @@ public class BattleScreen extends AbstractScreen {
 
     public BattleScreen(BattleType type, boolean isLoad) {
         cType = ControlPanel.ControlType.BATTLE;
-        cPanel.battlePanel = new BattlePanel();
+        cPanel.battlePanel = new BattlePanel(cPanel);
         this.type = type;
         AbstractLabyrinth.prepare();
         setBg(AbstractLabyrinth.curBg);
@@ -117,7 +117,7 @@ public class BattleScreen extends AbstractScreen {
         for (int i = 0; i < 4; i++) {
             AbstractPlayer p = AbstractLabyrinth.players[i];
             if (p.isAlive()) {
-                cPanel.battlePanel.setPlayer(p);
+                cPanel.battlePanel.setEntity(p);
                 break;
             }
         }
@@ -137,7 +137,7 @@ public class BattleScreen extends AbstractScreen {
             for (int i = 0; i < 4; i++) {
                 AbstractEntity tp = players[i].entity;
                 if (tp.isAlive()) {
-                    cPanel.battlePanel.setPlayer(tp);
+                    cPanel.battlePanel.setEntity(tp);
                     break;
                 }
             }
@@ -404,7 +404,7 @@ public class BattleScreen extends AbstractScreen {
 
         for (AbstractEntity e : sortedEntities) {
             if (e.isPlayer) {
-                cPanel.battlePanel.setPlayer(e);
+                cPanel.battlePanel.setEntity(e);
                 break;
             }
         }

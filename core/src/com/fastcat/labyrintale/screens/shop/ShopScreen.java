@@ -17,7 +17,6 @@ public class ShopScreen extends AbstractScreen {
 
     public ShopItemButton[] skills = new ShopItemButton[6];
     public ShopItemButton[] items = new ShopItemButton[5];
-    public AbstractUI.TempUI[][] gold = new AbstractUI.TempUI[6][2];
     public ShopItemButton roll;
     public PassShopButton pass;
     public ShopRoom room;
@@ -30,20 +29,24 @@ public class ShopScreen extends AbstractScreen {
             ShopRoom.SkillItem s = room.skills[i];
             ShopItemButton b = new ShopItemButton(s);
             b.setPosition((662 + 200 * i) * scale, 957 * scale);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
+                    (690 + 200 * i) * scale, (670 + 241) * scale, 35, 35);
+            b.gold = ui;
             skills[i] = b;
-            for(int j = 0; j < 2; j++) {
-                AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
-                        (688 + 200 * i) * scale, (665 + 241 * j) * scale, 45, 45);
-                gold[i][j] = ui;
-            }
         }
         for (int i = 0; i < 5; i++) {
             ShopItemButton b = new ShopItemButton(room.items[i]);
             b.setPosition((662 + 200 * i) * scale, 716 * scale);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
+                    (690 + 200 * i) * scale, 670 * scale, 35, 35);
+            b.gold = ui;
             items[i] = b;
         }
         roll = new ShopItemButton(room.roll);
         roll.setPosition(1662 * scale, 716 * scale);
+        AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD"),
+                1690 * scale, 670 * scale, 35, 35);
+        roll.gold = ui;
         pass = new PassShopButton();
         setBg(FileHandler.getBg().get("BG_SHOP"));
     }
@@ -60,9 +63,6 @@ public class ShopScreen extends AbstractScreen {
     public void render(SpriteBatch sb) {
         for (int i = 0; i < 6; i++) {
             skills[i].render(sb);
-            for(int j = 0; j < 2; j++) {
-                gold[i][j].render(sb);
-            }
         }
         for (ShopItemButton b : items) b.render(sb);
         roll.render(sb);

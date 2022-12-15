@@ -64,6 +64,10 @@ public class PlayerBigIcon extends AbstractUI {
 
     public void setPlayer(AbstractEntity p) {
         this.p = p;
+        for (int i = 0; i < 8; i++) {
+            AbstractLabyrinth.cPanel.battlePanel.stats[i].entity = AbstractLabyrinth.cPanel.battlePanel.curPlayer;
+            AbstractLabyrinth.cPanel.battlePanel.stats[i].update();
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.uis.control;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;
@@ -25,6 +26,7 @@ public class InfoPanel extends AbstractUI {
     public FontHandler.FontData fontName = PANEL_NAME;
     public FontHandler.FontData fontDesc = PANEL_DESC;
     public PlayerIcon[] pIcons = new PlayerIcon[4];
+    public ControlPanel cp;
     public MapButton map;
     public TempUI gold;
     public SettingButton setting;
@@ -40,8 +42,9 @@ public class InfoPanel extends AbstractUI {
     public float nx, ny, nw, nh, dx, dy, dw, dh, fy;
     public float bnx, bny, bnw, bnh, bdx, bdy, bdw, bdh;
 
-    public InfoPanel() {
+    public InfoPanel(ControlPanel cp) {
         super(FileHandler.getUi().get("BORDER_B"));
+        this.cp = cp;
         clickable = false;
         overable = false;
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
@@ -70,7 +73,7 @@ public class InfoPanel extends AbstractUI {
 
         for (int i = 0; i < 4; i++) {
             PlayerIcon c = new PlayerIcon(i);
-            c.setPosition((68 + 212 * i) * scale, (70 * scale));
+            c.setPosition((68 + 212 * i) * scale, cp.bg.y + cp.bg.sHeight / 2 - c.sHeight / 2);
             pIcons[i] = c;
         }
         aSkill = new ItemPanel();

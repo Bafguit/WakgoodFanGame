@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
@@ -31,8 +32,13 @@ public class PlayerBattleView extends BattleView {
                 isLooking = true;
             }
         } else {
+            overable = entity.isAlive();
+            clickable = false;
             showImg = isLooking || isOnLock;
             clickable = entity.isAlive();
+            if(overable && over) {
+                AbstractLabyrinth.cPanel.battlePanel.setEntity(entity);
+            }
         }
         mute = isOnLock;
     }

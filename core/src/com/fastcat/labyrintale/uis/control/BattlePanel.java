@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.uis.control;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
@@ -17,6 +18,7 @@ public class BattlePanel implements Disposable {
     public static EnergyPanel energy = new EnergyPanel();
     private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
     public AbstractSkill selected;
+    public ControlPanel cp;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];
     public SkillButtonPanel mSkill;
     public SkillButtonPanel pSkill;
@@ -28,8 +30,12 @@ public class BattlePanel implements Disposable {
     public TurnView turnView;
     public float rx, ry, ex, ey;
 
-    public BattlePanel() {
-        float bottom = 61 * scale, mid = 187 * scale, panel = 82 * scale;
+    public BattlePanel(ControlPanel cp) {
+        this.cp = cp;
+        float mid = 187 * scale, panel = 82 * scale;
+        cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
+        cpIcon.setPosition(panel, cp.bg.y + cp.bg.sHeight / 2 - cpIcon.sHeight / 2);
+        float bottom = cpIcon.y;
         passive = new ItemPanel();
         passive.setScale(0.6f);
         passive.setPosition(320 * scale, bottom);
@@ -50,8 +56,6 @@ public class BattlePanel implements Disposable {
             s.setPosition((728 - 204 * i) * scale, mid);
             skill[i] = s;
         }
-        cpIcon = new PlayerBigIcon(AbstractLabyrinth.players[0]);
-        cpIcon.setPosition(panel, 473 * scale - cpIcon.sHeight);
         energy.setPosition(780 * scale, 490 * scale - energy.sHeight);
         rx = panel;
         ex = cpIcon.sWidth;
@@ -61,7 +65,7 @@ public class BattlePanel implements Disposable {
         for (int j = 1; j >= 0; j--) {
             for (int i = 0; i < 4; i++) {
                 StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-                s.setPosition(320 * scale + w * 0.044f * i, 395 * scale + h * 0.027f * j);
+                s.setPosition(320 * scale + w * 0.044f * i, 390 * scale + h * 0.027f * j);
                 stats[cnt++] = s;
             }
         }
@@ -80,15 +84,11 @@ public class BattlePanel implements Disposable {
         for (int i = 0; i < 2; i++) {
             item[i].update();
         }
-        setPlayer(Labyrintale.battleScreen.currentTurnEntity());
+        setEntity(Labyrintale.battleScreen.currentTurnEntity());
         turnView.update();
         cpIcon.setPlayer(curPlayer);
         cpIcon.update();
         energy.update();
-        for (int i = 0; i < 8; i++) {
-            stats[i].entity = curPlayer;
-            stats[i].update();
-        }
     }
 
     public void render(SpriteBatch sb) {
@@ -103,28 +103,29 @@ public class BattlePanel implements Disposable {
         for (int i = 0; i < 3; i++) {
             skill[i].render(sb);
         }
-        energy.render(sb);
         for (int i = 0; i < 8; i++) {
             stats[i].render(sb);
         }
+
+        energy.render(sb);
 
         if (!Labyrintale.playerInfoScreen.showing) {
             turnView.render(sb);
         }
     }
 
-    public void setPlayer(AbstractEntity p) {
-        if (p != null && p.isAlive()) {
-            curPlayer = p;
-            if (p.isPlayer) {
+    public void setEntity(AbstractEntity e) {
+        if (e != null && e.isAlive()) {
+            curPlayer = e;
+            if (e.isPlayer) {
                 for (int j = 0; j < 3; j++) {
-                    skill[j].skill = p.hand[2 - j];
+                    skill[j].skill = e.hand[2 - j];
                 }
-                mSkill.skill = p.moveTemp;
-                pSkill.skill = p.pass;
-                passive.item = p.passive;
-                item[0].item = p.item[0];
-                item[1].item = p.item[1];
+                mSkill.skill = e.moveTemp;
+                pSkill.skill = e.pass;
+                passive.item = e.passive;
+                item[0].item = e.item[0];
+                item[1].item = e.item[1];
             } else {
                 for (int j = 0; j < 3; j++) {
                     skill[j].skill = null;
@@ -135,6 +136,7 @@ public class BattlePanel implements Disposable {
                 item[0].item = null;
                 item[1].item = null;
             }
+            cpIcon.setPlayer(e);
         }
     }
 

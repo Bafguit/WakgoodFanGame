@@ -1,118 +1,48 @@
 
 skeleton.png
-size: 1975,1283
+size: 1454,1093
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-arm_left
-  rotate: true
-  xy: 1740, 88
-  size: 108, 171
-  orig: 900, 900
-  offset: 278, 366
-  index: -1
-arm_right
-  rotate: true
-  xy: 1816, 758
-  size: 223, 157
-  orig: 900, 900
-  offset: 410, 491
-  index: -1
 attack
   rotate: false
-  xy: 2, 592
-  size: 750, 689
-  orig: 900, 900
-  offset: 22, 53
+  xy: 2, 500
+  size: 608, 591
+  orig: 640, 640
+  offset: 22, 43
   index: -1
 body
   rotate: false
-  xy: 1295, 241
-  size: 241, 369
-  orig: 900, 900
-  offset: 296, 279
+  xy: 2, 9
+  size: 505, 489
+  orig: 640, 640
+  offset: 40, 48
   index: -1
 die
-  rotate: true
-  xy: 674, 60
-  size: 530, 619
-  orig: 900, 900
-  offset: 174, 56
-  index: -1
-foot_left
   rotate: false
-  xy: 1816, 628
-  size: 127, 128
-  orig: 900, 900
-  offset: 280, 53
-  index: -1
-foot_right
-  rotate: true
-  xy: 1740, 2
-  size: 84, 103
-  orig: 900, 900
-  offset: 551, 55
-  index: -1
-hand_left
-  rotate: false
-  xy: 1742, 198
-  size: 212, 190
-  orig: 900, 900
-  offset: 172, 205
-  index: -1
-hand_right
-  rotate: false
-  xy: 1816, 983
-  size: 137, 298
-  orig: 900, 900
-  offset: 563, 289
-  index: -1
-head
-  rotate: false
-  xy: 1742, 390
-  size: 212, 220
-  orig: 900, 900
-  offset: 217, 502
+  xy: 1241, 864
+  size: 211, 227
+  orig: 640, 640
+  offset: 245, 51
   index: -1
 hit
-  rotate: true
-  xy: 2, 15
-  size: 575, 670
-  orig: 900, 900
-  offset: 116, 53
-  index: -1
-idle
   rotate: false
-  xy: 1286, 612
-  size: 528, 669
-  orig: 900, 900
-  offset: 172, 53
-  index: -1
-leg_left
-  rotate: true
-  xy: 1295, 56
-  size: 183, 260
-  orig: 900, 900
-  offset: 232, 142
-  index: -1
-leg_right
-  rotate: false
-  xy: 1538, 331
-  size: 202, 279
-  orig: 900, 900
-  offset: 406, 117
+  xy: 612, 549
+  size: 627, 542
+  orig: 640, 640
+  offset: 11, 49
   index: -1
 skill
   rotate: false
-  xy: 754, 611
-  size: 530, 670
-  orig: 900, 900
-  offset: 174, 53
+  xy: 612, 2
+  size: 562, 545
+  orig: 640, 640
+  offset: 40, 48
   index: -1
 tail
   rotate: false
-  xy: 1557, 58
-  size: 181, 271
-  orig: 900, 900
-  offset: 410, 133
+  xy: 1176, 58
+  size: 269, 489
+  orig: 640, 640
+  offset: 329, 69
   index: -1

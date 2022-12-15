@@ -205,7 +205,7 @@ public class MoveAction extends AbstractAction {
                     for (PlayerBattleView pv : battleScreen.players) {
                         pv.entity.ui = pv;
                     }
-                    cPanel.battlePanel.setPlayer(from);
+                    cPanel.battlePanel.setEntity(from);
                 } else {
                     for (Integer i : to.keySet()) {
                         AbstractEntity e = to.get(i);

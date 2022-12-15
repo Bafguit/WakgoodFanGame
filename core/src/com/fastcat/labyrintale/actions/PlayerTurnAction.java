@@ -17,7 +17,7 @@ public class PlayerTurnAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            cPanel.battlePanel.setPlayer(p);
+            cPanel.battlePanel.setEntity(p);
         }
     }
 }

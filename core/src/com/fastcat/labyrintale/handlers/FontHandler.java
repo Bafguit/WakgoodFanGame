@@ -29,6 +29,7 @@ public final class FontHandler implements Disposable {
     public static final FontData ENERGY = new FontData(BOLD, 48, true);
     public static final FontData GOLD = new FontData(BOLD, 53, true, false);
     public static final FontData BUTTON = new FontData(MEDIUM, 46, false, false);
+    public static final FontData ENERGY_PANEL = new FontData(MEDIUM, 46, true, false);
     public static final FontData CLOSE = new FontData(MEDIUM, 53, false, false);
     public static final FontData MAIN_MENU_SHADOW = new FontData(MEDIUM, 53, false);
     public static final FontData ROUND = new FontData(MEDIUM, 48, new Color(0.8f, 0.775f, 0.725f, 1), false, false);
@@ -318,6 +319,7 @@ public final class FontHandler implements Disposable {
         REST_DESC.dispose();
         SETTING.dispose();
         WAY.dispose();
+        ENERGY_PANEL.dispose();
         BLEAK.dispose();
         SUB_NAME.dispose();
         SUB_DESC.dispose();

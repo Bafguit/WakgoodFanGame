@@ -25,7 +25,7 @@ public class EndRoundAction extends AbstractAction {
                     || !AbstractLabyrinth.cPanel.battlePanel.curPlayer.isAlive()) {
                 Array<AbstractEntity> temp = AbstractSkill.getTargets(PLAYER_FIRST);
                 if (temp.size > 0) {
-                    AbstractLabyrinth.cPanel.battlePanel.setPlayer((AbstractPlayer) temp.get(0));
+                    AbstractLabyrinth.cPanel.battlePanel.setEntity((AbstractPlayer) temp.get(0));
                 }
             }
         }

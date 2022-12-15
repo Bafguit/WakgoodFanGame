@@ -273,8 +273,8 @@ public class FileHandler implements Disposable {
         ui.put("CHANGE_V", new Sprite(new Texture("img/ui/change_v.png")));
         ui.put("MENU_SELECT", new Sprite(new Texture("img/ui/menuSelect.png")));
         ui.put("CONTROL_PANEL", new Sprite(new Texture("img/ui/cPanel.png")));
-        ui.put("BATTLE_PANEL", new Sprite(new Texture("img/ui/cPanel_b.png")));
         ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
+        ui.put("ENERGY_PANEL", new Sprite(new Texture("img/ui/energy_p.png")));
         ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
         ui.put("BUTTON_S", new Sprite(new Texture("img/ui/button_s.png")));
         ui.put("LEVEL_BACK", new Sprite(new Texture("img/ui/level_back.png")));
@@ -324,7 +324,6 @@ public class FileHandler implements Disposable {
         ui.put("SETTING_B", new Sprite(new Texture("img/ui/setting.png")));
         ui.put("LOGO", new Sprite(new Texture("img/ui/logo.png")));
         ui.put("TITLE", new Sprite(new Texture("img/ui/title.png")));
-        ui.put("CURSOR", new Sprite(new Texture("img/ui/cursor.png")));
         ui.put("TURN_ARROW", new Sprite(new Texture("img/ui/turn_arrow.png")));
         ui.put("SLIDE_A", new Sprite(new Texture("img/ui/slide_a.png")));
         ui.put("SLIDE_B", new Sprite(new Texture("img/ui/slide_b.png")));

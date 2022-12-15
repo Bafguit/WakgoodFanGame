@@ -15,6 +15,7 @@ public class ShopItemButton extends AbstractUI {
     private ShopRoom.SkillItem sItem;
     private ShopRoom.ItemItem iItem;
     public ShopRoom.ShopItem item;
+    public TempUI gold;
     public Sprite itemImg;
     public ShopItemType type;
 
@@ -48,9 +49,10 @@ public class ShopItemButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(itemImg, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
+            if(gold != null) gold.render(sb);
             String t = item.price + "G";
             if(!can) t = "&r<" + t + ">";
-            FontHandler.renderColorLeft(sb, FontHandler.SHOP_OK, t, x + sWidth * 0.45f, y - sHeight * 0.08f, sWidth);
+            FontHandler.renderColorLeft(sb, FontHandler.SHOP_OK, t, x + sWidth * 0.415f, y - sHeight * 0.07f, sWidth);
             if (type == ShopItemType.SKILL) {
                 if (sItem.skill.owner != null) sb.setColor(sItem.skill.owner.pColor);
                 else sb.setColor(Color.WHITE);

@@ -22,20 +22,17 @@ public class ControlPanel implements Disposable {
     public BattlePanel battlePanel;
     public LevelPanel level;
     public AbstractUI.TempUI bg;
-    public AbstractUI.TempUI bbg;
     public ControlType type = HIDE;
     public EffectHandler effectHandler;
     public FontHandler.FontData font;
 
     public ControlPanel() {
-        infoPanel = new InfoPanel();
-        battlePanel = new BattlePanel();
-        level = new LevelPanel();
-        effectHandler = EffectHandler.newInstance();
         bg = new AbstractUI.TempUI(FileHandler.getUi().get("CONTROL_PANEL"));
         bg.setPosition((Gdx.graphics.getWidth() - bg.sWidth) * 0.5f, 0);
-        bbg = new AbstractUI.TempUI(FileHandler.getUi().get("BATTLE_PANEL"));
-        bbg.setPosition((Gdx.graphics.getWidth() - bbg.sWidth) * 0.5f, 0);
+        infoPanel = new InfoPanel(this);
+        battlePanel = new BattlePanel(this);
+        level = new LevelPanel();
+        effectHandler = EffectHandler.newInstance();
         font = FontHandler.EXP;
     }
 
@@ -52,11 +49,9 @@ public class ControlPanel implements Disposable {
 
     public void render(SpriteBatch sb) {
         if (type != HIDE) {
+            bg.render(sb);
             if (type == BATTLE) {
-                bbg.render(sb);
                 battlePanel.render(sb);
-            } else {
-                bg.render(sb);
             }
             infoPanel.render(sb);
             effectHandler.render(sb);

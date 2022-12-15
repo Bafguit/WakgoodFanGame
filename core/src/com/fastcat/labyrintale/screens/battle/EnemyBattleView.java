@@ -5,8 +5,10 @@ import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class EnemyBattleView extends BattleView {
@@ -31,12 +33,17 @@ public class EnemyBattleView extends BattleView {
     protected void updateButton() {
         if (battleScreen.isSelecting) {
             overable = entity.isAlive() && isTarget;
-            showImg = over && overable;
+            clickable = overable;
+            showImg = overable && over;
             if (showImg) battleScreen.looking.add(entity);
         } else {
-            overable = false;
+            overable = entity.isAlive();
+            clickable = false;
             AbstractEntity t = battleScreen.currentTurnEntity();
             showImg = isLooking || (t != null && t == entity);
+            if(overable && over) {
+                AbstractLabyrinth.cPanel.battlePanel.setEntity(entity);
+            }
         }
     }
 
