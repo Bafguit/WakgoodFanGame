@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.logo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,6 +20,7 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 
 public class LogoScreen extends AbstractScreen {
 
@@ -33,7 +35,7 @@ public class LogoScreen extends AbstractScreen {
     private int dup = 1;
     private final AbstractUI.TempUI logo;
     private final Sprite back;
-    private final VideoPlayer videoPlayer;
+    private VideoPlayer videoPlayer;
 
     public LogoScreen() {
         cType = ControlPanel.ControlType.HIDE;
@@ -44,10 +46,9 @@ public class LogoScreen extends AbstractScreen {
         logo.setPosition(
                 Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f,
                 Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
-        SoundHandler.playMusic("LOGO", false, false);
+        //SoundHandler.playMusic("LOGO", false, false);
 
-        videoPlayer = VideoPlayerCreator.createVideoPlayer();
-        videoPlayer.setOnCompletionListener(file -> isDone = true);
+
     }
 
     @Override
@@ -99,14 +100,17 @@ public class LogoScreen extends AbstractScreen {
         if(create) {
             create = false;
             try {
+                videoPlayer = VideoPlayerCreator.createVideoPlayer();
+                videoPlayer.setOnCompletionListener(file -> isDone = true);
                 videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-                videoPlayer.setVolume(0);
                 videoPlayer.setLooping(false);
-            } catch (FileNotFoundException e) {
+            } catch (Exception e) {
                 isDone = true;
                 e.printStackTrace();
             }
         }
+
+
 
         videoPlayer.update();
 

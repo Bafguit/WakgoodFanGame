@@ -109,7 +109,6 @@ project(":desktop") {
         api("com.badlogicgames.gdx:gdx-tools:$gdxVersion"){
             exclude group: 'com.badlogicgames.gdx', module: 'gdx-backend-lwjgl'
         }
-        implementation "com.badlogicgames.gdx-video:gdx-video-lwjgl3:$videoVersion"
     }
     distributions {
         main{
@@ -129,6 +128,7 @@ project(":core") {
 
     dependencies {
         implementation 'org.reflections:reflections:0.10.2'
+        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         implementation "com.badlogicgames.gdx-video:gdx-video:$videoVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
