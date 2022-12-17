@@ -11,7 +11,7 @@ public class Enemy3Weak2 extends AbstractEnemy {
 
     private static final String ID = "Enemy3Weak2";
     private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 48;
+    private static final int HEALTH = 52;
 
     public Enemy3Weak2() {
         super(ID, TYPE, HEALTH);

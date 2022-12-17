@@ -49,10 +49,9 @@ public final class DifficultyHandler {
         } else if (diff == COFFIN) {
             enemy.setMaxHealth((int) ((float) enemy.maxHealth * 1.3f), true);
             enemy.stat.speed += 2;
-            enemy.stat.critical += 10;
-            enemy.stat.moveRes += 25;
-            enemy.stat.debuRes += 25;
-            enemy.stat.neutRes += 25;
+            enemy.stat.moveRes += 20;
+            enemy.stat.debuRes += 20;
+            enemy.stat.neutRes += 20;
             enemy.stat.attack += 2;
             enemy.stat.spell += 2;
         }
