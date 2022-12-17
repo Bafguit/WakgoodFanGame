@@ -62,16 +62,14 @@ public final class SaveHandler {
         }
         if (hasSave) {
             if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
-            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-                try {
-                    String name = "run_" + data.date + ".json";
-                    Gdx.files.local("runs").mkdirs();
-                    mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                saveFile.delete();
+            try {
+                String name = "run_" + data.date + ".json";
+                Gdx.files.local("runs").mkdirs();
+                mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            saveFile.delete();
             data = null;
             AchieveHandler.save();
         } else {

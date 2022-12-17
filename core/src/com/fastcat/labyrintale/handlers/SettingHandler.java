@@ -39,9 +39,6 @@ public final class SettingHandler {
             setting.battleTutorial = true;
             setting.wayTutorial = true;
             setting.rewardTutorial = true;
-
-            // 저장
-            //save();
         } else {
             try {
                 SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
@@ -73,14 +70,11 @@ public final class SettingHandler {
     }
 
     public static void save() {
-        if (setting != null) {
-            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-                try {
-                    mapper.writeValue(new File("setting.json"), setting);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        try {
+            //TODO java.File 사용하는 부분 해결 필요
+            mapper.writeValue(new File("setting.json"), setting);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

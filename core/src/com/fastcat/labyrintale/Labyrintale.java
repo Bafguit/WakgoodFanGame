@@ -180,6 +180,8 @@ public class Labyrintale extends Game {
             Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
         }
 
+        SettingHandler.save();
+
         screenShake = ScreenShake.newInstance();
         camera = new OrthographicCamera();
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();

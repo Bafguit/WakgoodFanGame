@@ -94,8 +94,13 @@ public final class InputHandler {
     public void update() {
         int gx = Gdx.input.getX(), gy = Gdx.input.getY(), sw = Gdx.graphics.getWidth(), sh = Gdx.graphics.getHeight();
         scale = (float) sw / 2560.0f;
-        isLeftClick = Gdx.input.isButtonJustPressed(Buttons.LEFT);
-        isLeftClicking = Gdx.input.isButtonPressed(Buttons.LEFT);
+        if(isDesktop) {
+            isLeftClick = Gdx.input.isButtonJustPressed(Buttons.LEFT);
+            isLeftClicking = Gdx.input.isButtonPressed(Buttons.LEFT);
+        } else {
+            isLeftClick = Gdx.input.justTouched();
+            isLeftClicking = Gdx.input.isTouched();
+        }
         isCursorInScreen = gx < sw && gx > 0 && gy < sh && gy > 0;
 
         mx = Math.max(Math.min(gx, sw), 0);

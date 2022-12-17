@@ -47,24 +47,20 @@ public class UnlockHandler {
                 if (!i.id.equals("Placeholder")) item.put(i.id, false);
             }
             achvs.put(Unlocks.ITEM, item);
-            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-                Gdx.files.local("data").mkdirs();
-                try {
-                    mapper.writeValue(new File("data/unlocks.json"), achvs);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public static void save() {
-        if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+            Gdx.files.local("data").mkdirs();
             try {
                 mapper.writeValue(new File("data/unlocks.json"), achvs);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void save() {
+        try {
+            mapper.writeValue(new File("data/unlocks.json"), achvs);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -119,7 +119,7 @@ public abstract class AbstractUI implements Disposable {
 
         if (enabled && !Labyrintale.fading) {
             justOver = over;
-            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight && hasClick;
+            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
 
             if (over && isPixmap) {
                 Color c = getSpritePixColor();

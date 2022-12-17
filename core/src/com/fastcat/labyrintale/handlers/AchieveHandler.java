@@ -28,13 +28,11 @@ public class AchieveHandler {
             for (Achievement ac : Achievement.values()) {
                 achvs.put(ac, 0);
             }
-            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-                Gdx.files.local("data").mkdirs();
-                try {
-                    mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            Gdx.files.local("data").mkdirs();
+            try {
+                mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
@@ -55,25 +53,21 @@ public class AchieveHandler {
             }
             check.DEATH = 0;
             check.WIN = 0;
-            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-                Gdx.files.local("data").mkdirs();
-                try {
-                    mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            Gdx.files.local("data").mkdirs();
+            try {
+                mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
 
     public static void save() {
-        if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-            try {
-                mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
-                mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
+            mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
