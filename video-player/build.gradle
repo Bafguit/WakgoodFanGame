@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 11
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+eclipse.project.name = 'video-player'

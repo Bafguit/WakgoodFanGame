@@ -11,4 +11,6 @@ pluginManagement{
     }
 }
 
-include 'android', 'desktop', 'core'
+include 'android', 'desktop', 'core', 'video-player'
+include 'video-player'
+
