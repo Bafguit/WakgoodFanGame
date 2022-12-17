@@ -128,7 +128,6 @@ project(":core") {
 
     dependencies {
         implementation 'org.reflections:reflections:0.10.2'
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         implementation "com.badlogicgames.gdx-video:gdx-video:$videoVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"

@@ -49,7 +49,7 @@ public class UnlockHandler {
             achvs.put(Unlocks.ITEM, item);
             Gdx.files.local("data").mkdirs();
             try {
-                mapper.writeValue(new File("data/unlocks.json"), achvs);
+                mapper.writeValue(data.file(), achvs);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -58,7 +58,7 @@ public class UnlockHandler {
 
     public static void save() {
         try {
-            mapper.writeValue(new File("data/unlocks.json"), achvs);
+            mapper.writeValue(data.file(), achvs);
         } catch (IOException e) {
             e.printStackTrace();
         }

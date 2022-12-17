@@ -1,0 +1,47 @@
+
+skeleton.png
+size: 2029,1942
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack
+  rotate: false
+  xy: 2, 720
+  size: 999, 1220
+  orig: 1280, 1280
+  offset: 204, 39
+  index: -1
+hit
+  rotate: false
+  xy: 1003, 972
+  size: 1024, 968
+  orig: 1280, 1280
+  offset: 129, 220
+  index: -1
+idle
+  rotate: false
+  xy: 1003, 2
+  size: 1024, 968
+  orig: 1280, 1280
+  offset: 129, 220
+  index: -1
+
+skeleton2.png
+size: 1929,972
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+die
+  rotate: false
+  xy: 1028, 17
+  size: 899, 953
+  orig: 1280, 1280
+  offset: 162, 249
+  index: -1
+skill
+  rotate: false
+  xy: 2, 2
+  size: 1024, 968
+  orig: 1280, 1280
+  offset: 129, 220
+  index: -1
