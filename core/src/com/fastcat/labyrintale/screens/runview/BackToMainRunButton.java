@@ -52,6 +52,6 @@ public class BackToMainRunButton extends AbstractUI {
     @Override
     protected void onClick() {
         SoundHandler.playSfx("CHANGE");
-        Labyrintale.fadeOutAndChangeScreen(Labyrintale.libScreen, Labyrintale.FadeType.VERTICAL, 0.3f);
+        Labyrintale.fadeOutAndChangeScreen(Labyrintale.libScreen, Labyrintale.FadeType.VERTICAL, 0.5f);
     }
 }

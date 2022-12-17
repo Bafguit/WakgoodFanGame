@@ -52,7 +52,7 @@ public class GameStartButton extends AbstractUI {
     @Override
     protected void onClick() {
         SoundHandler.playSfx("CHANGE");
-        fadeOutAndChangeScreen(diffScreen, FadeType.VERTICAL, 0.3f);
+        fadeOutAndChangeScreen(diffScreen, FadeType.VERTICAL, 0.5f);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class LibraryButton extends AbstractUI {
     protected void onClick() {
         if (lib == Library.RUNS) {
             SoundHandler.playSfx("CHANGE");
-            Labyrintale.fadeOutAndChangeScreen(new RunViewScreen(), Labyrintale.FadeType.VERTICAL, 0.3f);
+            Labyrintale.fadeOutAndChangeScreen(new RunViewScreen(), Labyrintale.FadeType.VERTICAL, 0.5f);
         } else if (lib == Library.DICT) Labyrintale.addTempScreen(Labyrintale.dictionary);
         else if (lib == Library.ACHVS) Labyrintale.addTempScreen(Labyrintale.achievement);
     }

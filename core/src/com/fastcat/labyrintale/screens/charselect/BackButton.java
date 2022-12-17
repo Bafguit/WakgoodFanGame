@@ -51,6 +51,6 @@ public class BackButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        Labyrintale.fadeOutAndChangeScreen(diffScreen, 0.75f);
+        Labyrintale.fadeOutAndChangeScreen(diffScreen, 0.5f);
     }
 }
