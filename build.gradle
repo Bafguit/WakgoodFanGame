@@ -122,13 +122,6 @@ project(":desktop") {
 
 }
 
-project(":video-player"){
-    apply plugin: "java"
-    apply plugin: "java-library"
-    dependencies {
-        compileOnly "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-    }
-}
 
 project(":core") {
     apply plugin: "java"
@@ -136,7 +129,6 @@ project(":core") {
 
     dependencies {
 
-        implementation project(":video-player")
         api "com.badlogicgames.gdx-video:gdx-video-lwjgl3:$videoVersion"
         implementation 'org.reflections:reflections:0.10.2'
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
