@@ -4,14 +4,11 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowListener;
 import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
-import com.fastcat.labyrintale.utils.LibGdxHandle;
 
 import java.io.File;
 
@@ -57,48 +54,6 @@ public class DesktopLauncher {
             config.setDecorated(false);
             config.setWindowedMode(displayMode.width, displayMode.height);
         }
-
-        config.setWindowListener(new Lwjgl3WindowListener() {
-            @Override
-            public void created(Lwjgl3Window window) {
-                LibGdxHandle.setCurrentWindow(window);
-            }
-
-            @Override
-            public void iconified(boolean isIconified) {
-
-            }
-
-            @Override
-            public void maximized(boolean isMaximized) {
-
-            }
-
-            @Override
-            public void focusLost() {
-
-            }
-
-            @Override
-            public void focusGained() {
-
-            }
-
-            @Override
-            public boolean closeRequested() {
-                return false;
-            }
-
-            @Override
-            public void filesDropped(String[] files) {
-
-            }
-
-            @Override
-            public void refreshRequested() {
-
-            }
-        });
 
         Lwjgl3Application app = new Lwjgl3Application(new Labyrintale(), config);
 

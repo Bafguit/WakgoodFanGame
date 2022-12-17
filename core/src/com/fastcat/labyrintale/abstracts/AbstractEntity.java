@@ -212,6 +212,10 @@ public abstract class AbstractEntity implements Cloneable {
         }
     }
 
+    public void applyStatus(AbstractStatus status) {
+        applyStatus(status, null, status.amount, false);
+    }
+
     public void applyStatus(AbstractStatus status, int amount, boolean effect) {
         applyStatus(status, null, amount, effect);
     }
@@ -581,6 +585,7 @@ public abstract class AbstractEntity implements Cloneable {
         infoSpine.setAnimation("idle");
     }
 
+    @SuppressWarnings("NewApi")
     public void die(AbstractEntity murder) {
         health = 0;
         block = 0;

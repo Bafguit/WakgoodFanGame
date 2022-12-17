@@ -12,7 +12,7 @@ public class Enemy4Weak2 extends AbstractEnemy {
 
     private static final String ID = "Enemy4Weak2";
     private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 74;
+    private static final int HEALTH = 70;
 
     public Enemy4Weak2() {
         super(ID, TYPE, HEALTH);
@@ -35,11 +35,11 @@ public class Enemy4Weak2 extends AbstractEnemy {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         AbstractSkill s = new ChargeE(this);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 8; i++) {
             s.upgrade();
         }
         temp.add(s);
-        temp.add(new GrowE(this));
+        temp.add(new GrowE(this).upgrade().upgrade());
         return temp;
     }
 }
