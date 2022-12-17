@@ -32,7 +32,6 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
-import com.fastcat.labyrintale.utils.FFMPEGHelper;
 import lombok.Getter;
 
 public class Labyrintale extends Game {
@@ -173,8 +172,6 @@ public class Labyrintale extends Game {
 
     @Override
     public void create() {
-
-        FFMPEGHelper.prepare(Gdx.files.internal("bin/ffmpeg64.exe"), Gdx.files.local("ffmpeg64.exe"));
         //Gdx.graphics.setResizable(false);
         //Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
         if(Gdx.app.getType() == Application.ApplicationType.Desktop) {

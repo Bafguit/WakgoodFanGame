@@ -176,8 +176,7 @@ public class RunViewScreen extends AbstractScreen {
         else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
         else diff += "관";
         time = "소요 시간: " + data.minute + "분 " + data.second + "초";
-        if(InputHandler.isDesktop) ver = "버전: " + BuildInfo.BUILD_VERSION;
-        else ver = "버전: ANDROID";
+        ver = "버전: " + BuildInfo.BUILD_VERSION;
         seed = "시드: " + data.random.seed;
         score = "점수: " + data.scoreHandle.score;
         shot.setDate(data.date);

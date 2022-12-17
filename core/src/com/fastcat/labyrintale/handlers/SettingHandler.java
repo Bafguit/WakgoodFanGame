@@ -71,6 +71,7 @@ public final class SettingHandler {
 
     public static void save() {
         try {
+            //TODO java.File 사용하는 부분 해결 필요
             mapper.writeValue(settingFile, setting);
         } catch (IOException e) {
             e.printStackTrace();
