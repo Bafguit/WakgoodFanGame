@@ -91,7 +91,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
                 }
             }
         }
-        if (rewardDone != null) cancel.update();
+        cancel.update();
     }
 
     @Override
@@ -110,7 +110,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
                 }
             }
         }
-        if (rewardDone != null) cancel.render(sb);
+        cancel.render(sb);
     }
 
     @Override

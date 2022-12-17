@@ -20,13 +20,12 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
     public GetSelectedItem gets;
     public GetRewardDone rewardDone;
     public CancelItemButton cancel;
-    public boolean pass;
 
-    public ItemSelectScreen(int amount, GetSelectedItem gets, GetRewardDone rewardDone, boolean passable) {
-        this(GroupHandler.ItemGroup.getRandomItem(amount).toArray(AbstractItem.class), gets, rewardDone, passable);
+    public ItemSelectScreen(int amount, GetSelectedItem gets, GetRewardDone rewardDone) {
+        this(GroupHandler.ItemGroup.getRandomItem(amount).toArray(AbstractItem.class), gets, rewardDone);
     }
 
-    public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets, GetRewardDone rewardDone, boolean passable) {
+    public ItemSelectScreen(AbstractItem[] items, GetSelectedItem gets, GetRewardDone rewardDone) {
         itemSelectText = new ItemSelectText();
         this.rewardDone = rewardDone;
         this.gets = gets;
@@ -38,7 +37,6 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
             adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.55f);
             this.items[i] = adv;
         }
-        pass = passable;
         cancel = new CancelItemButton(this);
     }
 
@@ -48,7 +46,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
             item.update();
         }
         itemSelectText.update();
-        if (pass) cancel.update();
+        cancel.update();
     }
 
     @Override
@@ -58,7 +56,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
             advisorButton.render(sb);
         }
         itemSelectText.render(sb);
-        if (pass) cancel.render(sb);
+        cancel.render(sb);
     }
 
     @Override

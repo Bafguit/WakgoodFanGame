@@ -43,7 +43,10 @@ public abstract class AbstractUI implements Disposable {
     public boolean over;
     public boolean isPixmap = false;
     private boolean justOver = false;
+    private boolean hasClick = false;
+    public boolean hasOver = false;
     public boolean overable = true;
+    public boolean instantClick = false;
     public boolean enabled;
     public boolean showImg = true;
 
@@ -101,12 +104,22 @@ public abstract class AbstractUI implements Disposable {
         }
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        clicked = isLeftClick;
-        clicking = isLeftClicking;
+        if(isDesktop) {
+            clicked = isLeftClick;
+            clicking = isLeftClicking;
+            hasClick = true;
+        } else {
+            clicked = (instantClick || hasClick) && isLeftClick;
+            clicking = (instantClick || hasClick) && isLeftClicking;
+            hasOver = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+            if(isLeftClick) {
+                hasClick = hasOver && !clicked;
+            }
+        }
 
         if (enabled && !Labyrintale.fading) {
             justOver = over;
-            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight && hasClick;
 
             if (over && isPixmap) {
                 Color c = getSpritePixColor();

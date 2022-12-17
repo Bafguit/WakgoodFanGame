@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.handlers;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvisorInstance;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
@@ -61,14 +62,16 @@ public final class SaveHandler {
         }
         if (hasSave) {
             if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
-            try {
-                String name = "run_" + data.date + ".json";
-                Gdx.files.local("runs").mkdirs();
-                mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+                try {
+                    String name = "run_" + data.date + ".json";
+                    Gdx.files.local("runs").mkdirs();
+                    mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                saveFile.delete();
             }
-            saveFile.delete();
             data = null;
             AchieveHandler.save();
         } else {
@@ -199,7 +202,8 @@ public final class SaveHandler {
             Date now = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             temp.date = AbstractLabyrinth.date = formatter.format(now);
-            temp.version = BuildInfo.BUILD_VERSION;
+            temp.version = "b0.9.25";
+            //temp.version = BuildInfo.BUILD_VERSION;
             temp.random = RandomData.create();
             for (int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];

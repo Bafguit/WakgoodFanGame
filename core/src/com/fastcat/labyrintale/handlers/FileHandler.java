@@ -24,7 +24,6 @@ public class FileHandler implements Disposable {
 
     // TextureAtlas
     public static final TextureAtlas character = new TextureAtlas("img/char/char.atlas");
-    /** Combined all static "JsonValue" variables into hash map to optimize memory. */
     private static final HashMap<JsonType, JsonValue> jsonMap = new HashMap<>();
 
     public static JsonValue getJsonValue(JsonType jsonType) {

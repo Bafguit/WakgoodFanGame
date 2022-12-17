@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.AttackStatus;
+import com.fastcat.labyrintale.status.SpeedStatus;
 import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Intimidate extends AbstractSkill {
@@ -17,13 +18,14 @@ public class Intimidate extends AbstractSkill {
     public Intimidate(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
+        setBaseValue2(1);
         setBaseCost(3);
     }
 
     @Override
     public void use() {
         bot(new ApplyStatusAction(new AttackStatus(value), owner, owner, true));
-        bot(new ApplyStatusAction(new SpellStatus(-value), owner, owner, true));
+        bot(new ApplyStatusAction(new SpeedStatus(-value2), owner, owner, true));
     }
 
     @Override

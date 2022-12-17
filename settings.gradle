@@ -11,4 +11,4 @@ pluginManagement{
     }
 }
 
-include 'desktop', 'core'
+include 'android', 'desktop', 'core'

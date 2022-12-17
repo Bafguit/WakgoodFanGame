@@ -44,7 +44,7 @@ public class ItemReward extends AbstractReward implements GetSelectedItem {
 
     @Override
     public void takeReward() {
-        if (type == ItemRewardType.BOSS) Labyrintale.addTempScreen(new ItemSelectScreen(items, this, this, true));
+        if (type == ItemRewardType.BOSS) Labyrintale.addTempScreen(new ItemSelectScreen(items, this, this));
         else Labyrintale.addTempScreen(new ShopTakeScreen(item, this, this));
     }
 

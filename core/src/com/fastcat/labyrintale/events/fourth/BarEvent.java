@@ -48,9 +48,7 @@ public class BarEvent extends AbstractEvent {
     public void onSetPage(int page) {
         if (page == 1) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
-                p.stat.debuRes += 10;
-                p.stat.moveRes += 10;
-                p.stat.neutRes += 10;
+                p.modifyMaxHealth(10);
             }
         } else if (page == 3) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {

@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.handlers;
 
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
@@ -39,7 +41,7 @@ public final class SettingHandler {
             setting.rewardTutorial = true;
 
             // 저장
-            save();
+            //save();
         } else {
             try {
                 SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
@@ -72,10 +74,12 @@ public final class SettingHandler {
 
     public static void save() {
         if (setting != null) {
-            try {
-                mapper.writeValue(new File("setting.json"), setting);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+                try {
+                    mapper.writeValue(new File("setting.json"), setting);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

@@ -1,13 +1,29 @@
+buildscript {
+
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+
+
+    }
+}
+
 plugins{
     id "io.freefair.lombok" version "6.5.1" apply false
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "distribution"
-    id "com.diffplug.spotless" version "6.11.0"
+    //id "com.diffplug.spotless" version "6.11.0"
 }
 allprojects {
-    apply plugin: "java"
     apply plugin: "eclipse"
-    apply plugin: "com.diffplug.spotless"
+    //apply plugin: "com.diffplug.spotless"
     version = 'b0.9.25'
     ext {
         appName = "Labyrintale"
@@ -28,12 +44,13 @@ allprojects {
         gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
         flatDir {
             dir '../libs'
         }
     }
 
-    spotless {
+    /*spotless {
         enforceCheck true
         java{
             importOrder()
@@ -48,11 +65,34 @@ allprojects {
             palantirJavaFormat()
 
         }
+    }*/
+}
+
+project(":android") {
+    apply plugin: "com.android.application"
+
+    configurations { natives }
+
+    dependencies {
+        implementation project(":core")
+        api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+        api "de.golfgl.gdxgamesvcs:gdx-gamesvcs-android-gpgs:1.1.0"
+        implementation "com.badlogicgames.gdx-video:gdx-video-android:$videoVersion"
+
     }
 }
+
 project(":desktop") {
-
-
+    apply plugin: "java"
     apply plugin: "java-library"
     apply plugin: "distribution"
     
@@ -84,6 +124,7 @@ project(":desktop") {
 }
 
 project(":core") {
+    apply plugin: "java"
     apply plugin: "java-library"
 
     dependencies {

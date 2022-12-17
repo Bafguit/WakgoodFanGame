@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.handlers;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
@@ -18,6 +19,7 @@ public final class InputHandler {
     public static boolean isLeftClick;
     public static boolean isLeftClicking;
     public static boolean isCursorInScreen;
+    public static boolean isDesktop;
 
     public static boolean cancel;
     public static boolean map;
@@ -42,6 +44,7 @@ public final class InputHandler {
     private InputHandler() {
         isLeftClick = false;
         isLeftClicking = false;
+        isDesktop = Gdx.app.getType() == Application.ApplicationType.Desktop;
         mx = 0;
         my = 0;
         cursor = new Rectangle(0, 0, 1, 1);

@@ -33,7 +33,7 @@ public class ItemSelectEventChoice extends AbstractEvent.EventChoice implements 
 
     @Override
     protected void onSelect() {
-        Labyrintale.addTempScreen(new ItemSelectScreen(amount, this, this, false));
+        Labyrintale.addTempScreen(new ItemSelectScreen(amount, this, this));
     }
 
     @Override

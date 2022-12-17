@@ -3,11 +3,11 @@ package com.fastcat.labyrintale.status;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
-public class AttackStatus extends AbstractStatus {
+public class SpeedStatus extends AbstractStatus {
 
-    private static final String ID = "Attack";
+    private static final String ID = "Speed";
 
-    public AttackStatus(int amount) {
+    public SpeedStatus(int amount) {
         super(ID, AbstractSkill.SkillTarget.NONE, amount > 0 ? StatusType.BUFF : StatusType.DEBUFF);
         setAmount(amount);
         canGoNegative = true;
@@ -15,13 +15,13 @@ public class AttackStatus extends AbstractStatus {
 
     @Override
     public void onApply(int amount) {
-        owner.stat.attack += amount;
+        owner.stat.speed += amount;
         type = this.amount > 0 ? StatusType.BUFF : StatusType.DEBUFF;
     }
 
     @Override
     public void onRemove() {
-        owner.stat.attack -= amount;
+        owner.stat.speed -= amount;
     }
 
     @Override

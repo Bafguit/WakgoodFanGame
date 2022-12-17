@@ -1,9 +1,6 @@
 package com.fastcat.labyrintale;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -177,9 +174,11 @@ public class Labyrintale extends Game {
     public void create() {
         //Gdx.graphics.setResizable(false);
         //Gdx.graphics.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
-        Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
-        pix.setFilter(Pixmap.Filter.BiLinear);
-        Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
+        if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+            Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
+            pix.setFilter(Pixmap.Filter.BiLinear);
+            Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
+        }
 
         screenShake = ScreenShake.newInstance();
         camera = new OrthographicCamera();

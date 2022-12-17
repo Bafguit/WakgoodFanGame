@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.handlers;
 
 import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonValue;
@@ -46,20 +47,24 @@ public class UnlockHandler {
                 if (!i.id.equals("Placeholder")) item.put(i.id, false);
             }
             achvs.put(Unlocks.ITEM, item);
-            Gdx.files.local("data").mkdirs();
-            try {
-                mapper.writeValue(new File("data/unlocks.json"), achvs);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+                Gdx.files.local("data").mkdirs();
+                try {
+                    mapper.writeValue(new File("data/unlocks.json"), achvs);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     public static void save() {
-        try {
-            mapper.writeValue(new File("data/unlocks.json"), achvs);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+            try {
+                mapper.writeValue(new File("data/unlocks.json"), achvs);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
