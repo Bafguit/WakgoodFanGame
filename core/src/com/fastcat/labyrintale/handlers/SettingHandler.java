@@ -41,7 +41,7 @@ public final class SettingHandler {
             setting.rewardTutorial = true;
         } else {
             try {
-                SettingData data = mapper.readValue(new File("setting.json"), SettingData.class);
+                SettingData data = mapper.readValue(settingFile, SettingData.class);
 
                 // 화면 모드 설정
                 setting.screenMode = data.screenMode;
@@ -72,7 +72,7 @@ public final class SettingHandler {
     public static void save() {
         try {
             //TODO java.File 사용하는 부분 해결 필요
-            mapper.writeValue(new File("setting.json"), setting);
+            mapper.writeValue(settingFile, setting);
         } catch (IOException e) {
             e.printStackTrace();
         }

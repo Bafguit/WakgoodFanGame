@@ -55,6 +55,7 @@ public class DesktopLauncher {
         }
 
         Lwjgl3Application app = new Lwjgl3Application(new Labyrintale(), config);
+
 /*
         try {
             Field field = Lwjgl3Application.class.getDeclaredField("loop");
