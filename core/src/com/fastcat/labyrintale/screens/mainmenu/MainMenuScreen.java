@@ -46,7 +46,6 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        System.out.println("W: " + Gdx.graphics.getWidth() + " | H: " + Gdx.graphics.getHeight());
         logo.update();
         gameStartButton.update();
         loadButton.update();

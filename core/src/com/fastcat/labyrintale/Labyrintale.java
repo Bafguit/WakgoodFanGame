@@ -44,6 +44,8 @@ import com.fastcat.labyrintale.utils.Gif;
 import com.google.common.util.concurrent.FutureCallback;
 import lombok.Getter;
 
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 public class Labyrintale extends Game {
 
     public static Labyrintale game;
@@ -97,10 +99,13 @@ public class Labyrintale extends Game {
 
     private boolean start = false;
 
+    private AbstractUI.TempUI back;
+    private Sprite process;
+
     @Getter
     private AssetManager assetManager;
 
-    private ResourceHandler resourceHandler;
+    public ResourceHandler resourceHandler;
 
     private Queue<Runnable> queuedTasks = new Queue<>();
 
@@ -197,6 +202,7 @@ public class Labyrintale extends Game {
 
     @Override
     public void create() {
+        game = this;
         phase = LifeCycle.STARTED;
         assetManager = new AssetManager();
         assetManager.setLoader(Gif.class, new AsynchronousGifLoader(new InternalFileHandleResolver()));
@@ -229,7 +235,6 @@ public class Labyrintale extends Game {
 
     private void init() {
 
-        InputHandler.getInstance();
         AsyncHandler.scheduleAsyncTask(
                 () -> {
                     FileHandler.getInstance().loadFiles();
@@ -291,8 +296,6 @@ public class Labyrintale extends Game {
         GroupHandler.getInstance();
         UnlockHandler.load();
         AchieveHandler.load();
-
-        game = this;
         mainMenuScreen = new MainMenuScreen();
         charSelectScreen = new CharSelectScreen();
         settingScreen = new SettingScreen();
@@ -315,7 +318,7 @@ public class Labyrintale extends Game {
 
         mainMenuScreen.onCreate();
 
-        setScreen(new LogoScreen());
+        fadeOutAndChangeScreen(new LogoScreen(), 0.3f);
     }
 
     public void submitTask(Runnable t) {
@@ -324,23 +327,23 @@ public class Labyrintale extends Game {
 
     @Override
     public void render() {
-        if (phase == LifeCycle.STARTED) return;
+        if (phase == LifeCycle.STARTED) {
+            return;
+        }
 
         if (phase == LifeCycle.LOADING) {
             if (resourceHandler.process()) phase = LifeCycle.FINISHING;
-
-            System.out.println("loading resources : " + resourceHandler.getProgress() * 100 + "% / phase : " + phase);
-
-            return;
         }
         if (phase == LifeCycle.FINISHING) {
             load();
             phase = LifeCycle.ENDED;
-            return;
         }
 
-        /** Update */
-        update();
+
+        if(phase == LifeCycle.ENDED) {
+            /** Update */
+            update();
+        }
 
         /** Render */
         ScreenUtils.clear(0, 0, 0, 1);
@@ -352,27 +355,34 @@ public class Labyrintale extends Game {
         /** Render Methods */
         // actionHandler.render(sb);
         super.render();
-        if (tempScreen.size > 0) {
-            for (Screen s : tempScreen) {
-                if (s != null) s.render(Labyrintale.tick);
+
+        if(phase == LifeCycle.ENDED) {
+            if (tempScreen.size > 0) {
+                for (Screen s : tempScreen) {
+                    if (s != null) s.render(Labyrintale.tick);
+                }
             }
-        }
-        if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
-        if (tutorial) tutorialScreen.render(sb);
-        if (setting || settingScreen.anim) settingScreen.render(sb);
-        /** ============== */
-        if (fadeType == FadeType.FADE) {
-            fade();
-        } else if (fadeType == FadeType.HORIZONTAL) {
-            change_H();
-        } else if (fadeType == FadeType.VERTICAL) {
-            change_V();
-        }
+            if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
+            if (tutorial) tutorialScreen.render(sb);
+            if (setting || settingScreen.anim) settingScreen.render(sb);
+            /** ============== */
+            if (fadeType == FadeType.FADE) {
+                fade();
+            } else if (fadeType == FadeType.HORIZONTAL) {
+                change_H();
+            } else if (fadeType == FadeType.VERTICAL) {
+                change_V();
+            }
 
         /*
         		sb.setColor(Color.WHITE);
         		sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
         */
+        } else {
+            float p = resourceHandler.getProgress();
+            FontHandler.renderCenter(sb, FontHandler.SETTING, "리소스 불러오는 중\n" + p * 100 + "%",
+                    1080 * scale, 720 * scale, 400 * scale, 200);
+        }
         sb.end();
     }
 
@@ -486,6 +496,10 @@ public class Labyrintale extends Game {
                 change_v_r.render(sb);
             }
         }
+    }
+
+    public void forceSetScreen(AbstractScreen screen) {
+        this.screen = screen;
     }
 
     @Override

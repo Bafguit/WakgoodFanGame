@@ -12,9 +12,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.resourcetype.MultipleResourceRequest;
+import com.fastcat.labyrintale.screens.initial.InitialScreen;
 import com.fastcat.labyrintale.utils.Gif;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -101,6 +103,7 @@ public class FileHandler implements Disposable {
      * Instance of handler.
      * Initialized on getInstance()
      */
+
     private static FileHandler instance;
 
     private FileHandler() {}
@@ -168,9 +171,8 @@ public class FileHandler implements Disposable {
      * Load resources which must be loaded on main thread or asset manager
      */
     public void loadResources(ResourceHandler resourceHandler) {
-
-        generateBG(resourceHandler);
         generateUI(resourceHandler);
+        generateBG(resourceHandler);
         generateVFX(resourceHandler);
         generateCharImg(resourceHandler);
         generateSkeleton(resourceHandler);

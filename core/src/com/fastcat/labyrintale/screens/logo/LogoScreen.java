@@ -24,12 +24,12 @@ public class LogoScreen extends AbstractScreen {
     public boolean isDone = false;
     private boolean create = true;
     private boolean go = true;
-    private final int mode = 0;
+    private int mode = 0;
     private float vol = 0;
     private float realVol = 0;
-    private final float timer = 0;
-    private final float color = 0;
-    private final int dup = 1;
+    private float timer = 0;
+    private float color = 0;
+    private int dup = 1;
     private VideoPlayer videoPlayer;
 
     public LogoScreen() {
@@ -41,77 +41,95 @@ public class LogoScreen extends AbstractScreen {
         logo.setPosition(
                 Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f,
                 720 * InputHandler.scale - logo.sHeight * 0.5f);
-        // SoundHandler.playMusic("LOGO", false, false);
+
+        videoPlayer = VideoPlayerCreator.createVideoPlayer();
+        videoPlayer.setOnCompletionListener(file -> isDone = true);
+
+        SoundHandler.playMusic("LOGO", false, false);
 
     }
 
     @Override
     public void update() {
-        /*timer += Labyrintale.tick / dup;
-        if (timer >= 3 && mode == 0) {
-        	dup = 2;
-        	mode = 1;
-        } else if (mode == 1) {
-        	color += Labyrintale.tick / dup;
-        	if (color > 1) color = 1;
-        	if (timer >= 4) {
-        		mode = 2;
-        		dup = 1;
-        	}
-        } else {
-        	if (timer >= 5) isDone = true;
-        }*/
+        if(InputHandler.isDesktop) {
+            if (!isDone) {
+                if (InputHandler.isLeftClick) {
+                    isDone = true;
+                }
+                if (vol < 1) {
+                    vol += Labyrintale.tick * 2;
+                    if (vol >= 1) vol = 1;
+                }
+            } else {
+                if (vol > 0) {
+                    vol -= Labyrintale.tick;
+                    if (vol <= 0) vol = 0;
+                }
+                if (go) {
+                    go = false;
+                    SoundHandler.fadeOutAll();
+                    Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
+                }
+            }
 
-        if (!isDone) {
+            realVol = MathUtils.clamp(SettingHandler.setting.volumeBgm * vol * 0.8f, 0, 1);
+            // videoPlayer.setVolume(realVol);
+        } else {
+            timer += Labyrintale.tick / dup;
+            if (timer >= 3 && mode == 0) {
+                dup = 2;
+                mode = 1;
+            } else if (mode == 1) {
+                color += Labyrintale.tick / dup;
+                if (color > 1) color = 1;
+                if (timer >= 4) {
+                    mode = 2;
+                    dup = 1;
+                }
+            } else {
+                if (timer >= 5) {
+                    isDone = true;
+                }
+            }
             if (InputHandler.isLeftClick) {
                 isDone = true;
             }
-            if (vol < 1) {
-                vol += Labyrintale.tick * 2;
-                if (vol >= 1) vol = 1;
-            }
-        } else {
-            if (vol > 0) {
-                vol -= Labyrintale.tick;
-                if (vol <= 0) vol = 0;
-            }
-            if (go) {
+
+            if(isDone && go) {
                 go = false;
                 SoundHandler.fadeOutAll();
                 Labyrintale.fadeOutAndChangeScreen(Labyrintale.mainMenuScreen);
             }
         }
-
-        realVol = MathUtils.clamp(SettingHandler.setting.volumeBgm * vol * 0.8f, 0, 1);
-        // videoPlayer.setVolume(realVol);
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.setColor(Color.WHITE);
-        // back.draw(sb, color);
 
-        if (create) {
-            create = false;
-            try {
-                videoPlayer = VideoPlayerCreator.createVideoPlayer();
-                videoPlayer.setOnCompletionListener(file -> isDone = true);
-                videoPlayer.play(FileHandler.getVideo().get("LOGO"));
-                videoPlayer.setLooping(false);
-            } catch (Exception e) {
-                isDone = true;
-                e.printStackTrace();
+        if(InputHandler.isDesktop) {
+            if (create) {
+                create = false;
+                try {
+                    videoPlayer.play(FileHandler.getVideo().get("LOGO"));
+                    videoPlayer.setVolume(0);
+                    videoPlayer.setLooping(false);
+                } catch (Exception e) {
+                    isDone = true;
+                    e.printStackTrace();
+                }
             }
+
+            videoPlayer.update();
+
+            Texture t = videoPlayer.getTexture();
+            if (t != null) {
+                sb.draw(t, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            }
+        } else {
+            back.draw(sb, color);
+            logo.render(sb);
         }
-
-        videoPlayer.update();
-
-        Texture t = videoPlayer.getTexture();
-        if (t != null) {
-            sb.draw(t, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        }
-
-        // logo.render(sb);
     }
 
     @Override
