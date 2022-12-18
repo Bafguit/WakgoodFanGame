@@ -47,7 +47,7 @@ public class EventScreen extends AbstractScreen {
         for (int i = 0; i < size; i++) {
             EventChoiceButton t = new EventChoiceButton(this.event.choices[page].get(i));
             t.setPosition(
-                    w * 0.424f, 725 * InputHandler.scale * (size - 1 - i));
+                    w * 0.424f, (678 + 67 * (size - 1 - i)) * InputHandler.scale);
             ecb[i] = t;
         }
     }
@@ -67,8 +67,6 @@ public class EventScreen extends AbstractScreen {
             t.render(sb);
         }
     }
-
-    public void refresh() {}
 
     @Override
     public void show() {
