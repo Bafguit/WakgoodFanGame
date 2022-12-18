@@ -104,7 +104,10 @@ public final class InputHandler {
         my = sh - Math.max(Math.min(gy, sh), 0);
         cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
 
-        if (textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) textInputMode = false;
+        if (textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) {
+            textInputMode = false;
+            if(!isDesktop) Gdx.input.setOnscreenKeyboardVisible(false);
+        }
 
         if (!textInputMode) {
             map = Gdx.input.isKeyJustPressed(Keys.M);

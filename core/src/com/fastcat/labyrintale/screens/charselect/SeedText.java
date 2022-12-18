@@ -72,6 +72,7 @@ public class SeedText extends AbstractUI {
     public void onClick() {
         if (!InputHandler.textInputMode) {
             text = "";
+            if(!InputHandler.isDesktop) Gdx.input.setOnscreenKeyboardVisible(true);
             InputHandler.setTextInputMode(true);
         }
     }

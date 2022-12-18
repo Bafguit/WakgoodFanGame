@@ -22,7 +22,7 @@ public class BackButton extends AbstractUI {
 
     public BackButton() {
         super(FileHandler.getUi().get("BUTTON_S"));
-        setPosition(Gdx.graphics.getWidth() * 0.02f, 1145 * InputHandler.scale);
+        setPosition(Gdx.graphics.getWidth() * 0.02f, 1296 * InputHandler.scale);
         fontData = new FontHandler.FontData(MEDIUM, 53, false, false);
         text = "뒤로";
     }

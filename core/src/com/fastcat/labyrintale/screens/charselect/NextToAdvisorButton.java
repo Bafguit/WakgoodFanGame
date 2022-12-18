@@ -22,7 +22,7 @@ public class NextToAdvisorButton extends AbstractUI {
 
     public NextToAdvisorButton() {
         super(FileHandler.getUi().get("BUTTON_S"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1145 * InputHandler.scale);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1296 * InputHandler.scale);
         fontData = new FontHandler.FontData(MEDIUM, 53, false, false);
         text = "출발";
         disable();

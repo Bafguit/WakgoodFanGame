@@ -90,6 +90,7 @@ public class Labyrintale extends Game {
     private static float alphaCount = 0;
     private static float alphaDex = 2;
     private static float duration = 0;
+    public static AbstractUI subText;
     private static ScreenShake screenShake;
     public Array<AbstractScreen> tempScreen = new Array<>();
     public SpriteBatch sb;
@@ -262,6 +263,7 @@ public class Labyrintale extends Game {
         screenShake.update(viewport);
         InputHandler.getInstance().update();
         FontHandler.getInstance().update();
+        subText = null;
         if (!setting && !tutorial && labyrinth != null) {
             labyrinth.update();
         }
@@ -363,6 +365,7 @@ public class Labyrintale extends Game {
                 }
             }
             if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
+            if (subText != null) subText.renderSub(sb);
             if (tutorial) tutorialScreen.render(sb);
             if (setting || settingScreen.anim) settingScreen.render(sb);
             /** ============== */
@@ -496,10 +499,6 @@ public class Labyrintale extends Game {
                 change_v_r.render(sb);
             }
         }
-    }
-
-    public void forceSetScreen(AbstractScreen screen) {
-        this.screen = screen;
     }
 
     @Override

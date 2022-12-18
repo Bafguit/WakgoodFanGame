@@ -132,6 +132,7 @@ public abstract class AbstractUI implements Disposable {
                 if (overable) {
                     cursorX = mx - x;
                     cursorY = my - y;
+                    Labyrintale.subText = this;
                     subTexts = getSubText();
                     if (clicked) {
                         if (clickable) {
