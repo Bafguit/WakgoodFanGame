@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.runview;
 
+import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -9,13 +11,8 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-
 import java.nio.ByteBuffer;
 import java.util.zip.Deflater;
-
-import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
-import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
 
 public class ScreenshotRunButton extends AbstractUI {
 

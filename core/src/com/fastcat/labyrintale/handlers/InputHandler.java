@@ -94,7 +94,7 @@ public final class InputHandler {
     public void update() {
         int gx = Gdx.input.getX(), gy = Gdx.input.getY(), sw = Gdx.graphics.getWidth(), sh = Gdx.graphics.getHeight();
         scale = (float) sw / 2560.0f;
-        if(isDesktop) {
+        if (isDesktop) {
             isLeftClick = Gdx.input.isButtonJustPressed(Buttons.LEFT);
             isLeftClicking = Gdx.input.isButtonPressed(Buttons.LEFT);
         } else {

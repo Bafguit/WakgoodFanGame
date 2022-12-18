@@ -54,7 +54,7 @@ public class RevelationEvent extends AbstractEvent implements GetSelectedPlayer 
         if (page == 1) {
             for (AbstractPlayer p : AbstractLabyrinth.players) {
                 p.stat.attack += 3;
-                if(p.isAlive()) p.health = 5;
+                if (p.isAlive()) p.health = 5;
             }
         } else if (page == 2) {
             int min = AbstractLabyrinth.players[0].maxHealth;

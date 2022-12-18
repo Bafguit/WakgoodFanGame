@@ -3,7 +3,8 @@ package com.fastcat.labyrintale.skills.player.ine;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.*;
+import com.fastcat.labyrintale.status.CounterStatus;
+import com.fastcat.labyrintale.status.SpeedPlusStatus;
 
 public class Sharp extends AbstractSkill {
 

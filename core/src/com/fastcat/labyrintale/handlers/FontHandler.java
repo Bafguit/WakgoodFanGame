@@ -18,12 +18,9 @@ import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public final class FontHandler implements Disposable {
-    private static final FreeTypeFontGenerator font = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+    private static FreeTypeFontGenerator font = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
     public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 48, true);
@@ -66,9 +63,9 @@ public final class FontHandler implements Disposable {
     public static final FontData STAT = new FontData(MEDIUM, 30, false);
     public static final FontData STAT_RAW = new FontData(MEDIUM, 30, false, false);
     public static final FontData EXP = new FontData(MEDIUM, 26, true);
-
     // private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     public static final GlyphLayout layout = new GlyphLayout();
+
     private static final Pattern COLOR_PATTERN = Pattern.compile("&([a-z])<([^>]*)>");
     private static final Pattern VAR_PATTERN = Pattern.compile("\\{([A-Z])\\}");
     /***
@@ -83,8 +80,11 @@ public final class FontHandler implements Disposable {
      */
     public static FontHandler getInstance() {
         if (instance == null) return (instance = new FontHandler());
+
         return instance;
     }
+
+    public FontHandler() {}
 
     public static BitmapFont generate(FontType type, int size, boolean border) {
         return generate(type, size, WHITE, DARK_GRAY, border);

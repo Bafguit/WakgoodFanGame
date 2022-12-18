@@ -10,16 +10,15 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.BgImg;
-import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class CreditScreen extends AbstractScreen {
 
-    private SoundHandler.MusicData music;
+    private final BgImg bg;
     public boolean clicked = false;
     public CreditBackButton backButton;
     public AbstractUI.TempUI logo;
-    private final BgImg bg;
+    private SoundHandler.MusicData music;
 
     public CreditScreen() {
         setBg(FileHandler.getBg().get("BG_MAIN"));

@@ -4,7 +4,6 @@ import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.abstracts.AbstractPlayer.PlayerClass;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.advisors.*;
@@ -51,6 +50,7 @@ import com.fastcat.labyrintale.skills.player.lilpa.*;
 import com.fastcat.labyrintale.skills.player.manager.*;
 import com.fastcat.labyrintale.skills.player.viichan.*;
 import com.fastcat.labyrintale.skills.player.wak.*;
+import com.fastcat.labyrintale.utils.RandomXC;
 import java.util.HashMap;
 import java.util.Objects;
 

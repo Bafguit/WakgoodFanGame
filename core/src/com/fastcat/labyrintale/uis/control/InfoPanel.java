@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.uis.control;
 
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 import static com.fastcat.labyrintale.uis.control.InfoPanel.InfoType.*;

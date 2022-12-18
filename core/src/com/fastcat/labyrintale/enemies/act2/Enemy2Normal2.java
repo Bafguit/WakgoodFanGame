@@ -4,7 +4,9 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.*;
+import com.fastcat.labyrintale.skills.enemy.BarrierE;
+import com.fastcat.labyrintale.skills.enemy.SpikeE;
+import com.fastcat.labyrintale.skills.enemy.StrikeE;
 import com.fastcat.labyrintale.status.SpikeStatus;
 
 public class Enemy2Normal2 extends AbstractEnemy {
@@ -24,8 +26,11 @@ public class Enemy2Normal2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new SpikeStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 2 : 1),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 2 : 1, false);
+        applyStatus(
+                new SpikeStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 2 : 1),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 2 : 1,
+                false);
     }
 
     @Override

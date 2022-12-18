@@ -3,12 +3,10 @@ package com.fastcat.labyrintale.uis;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.KeyString;
 
@@ -46,7 +44,7 @@ public class EnergyPanel extends AbstractUI {
                     y + sHeight / 2,
                     sWidth,
                     sHeight);
-            if(over) res.render(sb);
+            if (over) res.render(sb);
         }
     }
 
@@ -64,22 +62,21 @@ public class EnergyPanel extends AbstractUI {
             this.panel = panel;
             fontData = FontHandler.ENERGY_PANEL;
             setPosition(panel.x - sWidth, panel.y + panel.sHeight / 2 - sHeight * 0.55f);
-            //setPosition(panel.x + panel.sWidth / 2 - sWidth / 2, panel.y + panel.sHeight * 1.05f);
+            // setPosition(panel.x + panel.sWidth / 2 - sWidth / 2, panel.y + panel.sHeight * 1.05f);
             overable = false;
         }
 
         @Override
         protected void updateButton() {
             setPosition(panel.x - sWidth, panel.y + panel.sHeight / 2 - sHeight * 0.55f);
-            //setPosition(panel.x + panel.sWidth / 2 - sWidth / 2, panel.y + panel.sHeight * 1.05f);
+            // setPosition(panel.x + panel.sWidth / 2 - sWidth / 2, panel.y + panel.sHeight * 1.05f);
         }
 
         @Override
         protected void renderUi(SpriteBatch sb) {
             sb.draw(img, x, y, sWidth, sHeight);
-            FontHandler.renderColorCenter(sb, fontData,
-                    "매 라운드마다 &b<" + AbstractLabyrinth.charge + "> 회복",
-                    x, y + sHeight * 0.52f, sWidth);
+            FontHandler.renderColorCenter(
+                    sb, fontData, "매 라운드마다 &b<" + AbstractLabyrinth.charge + "> 회복", x, y + sHeight * 0.52f, sWidth);
         }
     }
 }

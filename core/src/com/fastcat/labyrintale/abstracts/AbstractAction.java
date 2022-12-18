@@ -94,6 +94,7 @@ public abstract class AbstractAction implements Cloneable {
     }
 
     private void onComplete() {
+
         if (!ActionHandler.getListeners().isEmpty()) {
             for (EventCallback<AbstractAction> listener : ActionHandler.getListeners()) {
                 listener.onComplete(this);

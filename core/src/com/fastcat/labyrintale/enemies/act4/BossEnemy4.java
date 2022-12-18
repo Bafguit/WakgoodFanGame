@@ -27,8 +27,11 @@ public class BossEnemy4 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ImmuneStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 6 : 5),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 6 : 5, false);
+        applyStatus(
+                new ImmuneStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 6 : 5),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 6 : 5,
+                false);
     }
 
     @Override

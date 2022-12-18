@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.screens.credit;
 
 import static com.fastcat.labyrintale.Labyrintale.mainMenuScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 

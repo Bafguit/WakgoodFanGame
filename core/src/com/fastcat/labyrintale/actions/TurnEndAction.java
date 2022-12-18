@@ -1,6 +1,9 @@
 package com.fastcat.labyrintale.actions;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractStatus;
 
 public class TurnEndAction extends AbstractAction {
 

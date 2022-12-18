@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.actions.FlashAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.items.starter.PlaceHolder;
 import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.SkillString;
@@ -46,6 +49,25 @@ public class AbstractItem implements Cloneable {
         }
         this.rarity = rarity;
         this.owner = owner;
+    }
+
+    public static Color getRarityColor(ItemRarity rarity) {
+        if (rarity != null) {
+            if (rarity == ItemRarity.BRONZE) {
+                return Color.BROWN;
+            } else if (rarity == ItemRarity.SILVER) {
+                return Color.SKY;
+            } else if (rarity == ItemRarity.GOLD) {
+                return Color.GOLD;
+            } else if (rarity == ItemRarity.BOSS) {
+                return Color.RED;
+            } else if (rarity == ItemRarity.SHOP) {
+                return Color.CHARTREUSE;
+            } else if (rarity == ItemRarity.SPECIAL) {
+                return Color.PURPLE;
+            }
+        }
+        return Color.WHITE;
     }
 
     public final void setOwner(AbstractPlayer owner) {
@@ -162,25 +184,6 @@ public class AbstractItem implements Cloneable {
     }
 
     public Color getRarityColor() {
-        if (rarity != null) {
-            if (rarity == ItemRarity.BRONZE) {
-                return Color.BROWN;
-            } else if (rarity == ItemRarity.SILVER) {
-                return Color.SKY;
-            } else if (rarity == ItemRarity.GOLD) {
-                return Color.GOLD;
-            } else if (rarity == ItemRarity.BOSS) {
-                return Color.RED;
-            } else if (rarity == ItemRarity.SHOP) {
-                return Color.CHARTREUSE;
-            } else if (rarity == ItemRarity.SPECIAL) {
-                return Color.PURPLE;
-            }
-        }
-        return Color.WHITE;
-    }
-
-    public static Color getRarityColor(ItemRarity rarity) {
         if (rarity != null) {
             if (rarity == ItemRarity.BRONZE) {
                 return Color.BROWN;

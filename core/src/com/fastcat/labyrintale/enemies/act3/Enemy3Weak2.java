@@ -4,7 +4,9 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.*;
+import com.fastcat.labyrintale.skills.enemy.AttackLowE;
+import com.fastcat.labyrintale.skills.enemy.FuryE;
+import com.fastcat.labyrintale.skills.enemy.WeakE;
 import com.fastcat.labyrintale.status.ImmuneStatus;
 
 public class Enemy3Weak2 extends AbstractEnemy {
@@ -24,8 +26,11 @@ public class Enemy3Weak2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ImmuneStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 4 : 3),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 4 : 3, false);
+        applyStatus(
+                new ImmuneStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 4 : 3),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 4 : 3,
+                false);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class PlayerBattleView extends BattleView {
             clickable = false;
             showImg = isLooking || isOnLock;
             clickable = entity.isAlive();
-            if(overable && over) {
+            if (overable && over) {
                 AbstractLabyrinth.cPanel.battlePanel.setEntity(entity);
             }
         }

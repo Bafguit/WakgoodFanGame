@@ -13,14 +13,14 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public abstract class BattleView extends AbstractUI {
 
-    protected TempUI turnLook;
-    protected TempUI targetLook;
     public AbstractEntity entity;
     public boolean isLooking = false;
     public boolean isTarget = false;
     public boolean fade = false;
     public float alpha = 0;
     public int statSize = 4;
+    protected TempUI turnLook;
+    protected TempUI targetLook;
 
     public BattleView(Sprite s) {
         super(s);

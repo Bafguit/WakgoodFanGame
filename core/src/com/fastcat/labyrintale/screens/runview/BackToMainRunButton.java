@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.screens.runview;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 

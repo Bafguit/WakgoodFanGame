@@ -1,7 +1,8 @@
 package com.fastcat.labyrintale.screens.battle;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.HP_N;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
@@ -12,7 +13,10 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.actions.*;
-import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.handlers.ActionHandler;
+import com.fastcat.labyrintale.handlers.DifficultyHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.BattlePanel;
@@ -41,11 +45,11 @@ public class BattleScreen extends AbstractScreen {
     public boolean isEnemyTurn = false;
     public int neutResCount = 0;
     public Array<AbstractEntity> looking;
-    private Array<AbstractEntity> turn;
-    private int turnIndex;
     public int round;
     public BattleType type;
     public float w, h;
+    private Array<AbstractEntity> turn;
+    private int turnIndex;
 
     public BattleScreen() {
         this(BattleType.NORMAL, false);
@@ -350,18 +354,6 @@ public class BattleScreen extends AbstractScreen {
         }
     }
 
-    public static class TurnSpeedData {
-        public final int originalSpeed;
-        public final int randomSpeed;
-        public final AbstractEntity entity;
-
-        public TurnSpeedData(int originalSpeed, int randomSpeed, AbstractEntity entity) {
-            this.originalSpeed = originalSpeed;
-            this.randomSpeed = randomSpeed;
-            this.entity = entity;
-        }
-    }
-
     public void resetTurn() {
         // Sort priority: origSpeed+rand(0-7) -> origSpeed -> random
         Array<TurnSpeedData> speedData = new Array<>();
@@ -463,5 +455,17 @@ public class BattleScreen extends AbstractScreen {
     public enum BattleType {
         NORMAL,
         EVENT
+    }
+
+    public static class TurnSpeedData {
+        public final int originalSpeed;
+        public final int randomSpeed;
+        public final AbstractEntity entity;
+
+        public TurnSpeedData(int originalSpeed, int randomSpeed, AbstractEntity entity) {
+            this.originalSpeed = originalSpeed;
+            this.randomSpeed = randomSpeed;
+            this.entity = entity;
+        }
     }
 }

@@ -9,8 +9,8 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class DifficultyScreen extends AbstractScreen {
 
-    private DifficultyButton[] buttons = new DifficultyButton[3];
     public BackButton backButton;
+    private final DifficultyButton[] buttons = new DifficultyButton[3];
 
     public DifficultyScreen() {
         for (int i = 0; i < 3; i++) {

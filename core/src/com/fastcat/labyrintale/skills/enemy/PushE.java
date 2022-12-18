@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.skills.enemy;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.AttackAction;
 import com.fastcat.labyrintale.actions.MoveAction;
 

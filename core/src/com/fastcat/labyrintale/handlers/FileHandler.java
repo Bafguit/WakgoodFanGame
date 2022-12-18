@@ -12,9 +12,10 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.fastcat.labyrintale.utils.GifDecoder;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.handlers.resourcetype.MultipleResourceRequest;
+import com.fastcat.labyrintale.utils.Gif;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -22,14 +23,7 @@ import lombok.Getter;
 
 public class FileHandler implements Disposable {
 
-    // TextureAtlas
-    public static final TextureAtlas character = new TextureAtlas("img/char/char.atlas");
     private static final HashMap<JsonType, JsonValue> jsonMap = new HashMap<>();
-
-    public static JsonValue getJsonValue(JsonType jsonType) {
-        return jsonMap.get(jsonType);
-    }
-
     // 관리
     private static final Array<HashMap> maps = new Array<>();
 
@@ -101,54 +95,18 @@ public class FileHandler implements Disposable {
     // 영상
     @Getter
     private static final HashMap<String, FileHandle> video = new HashMap<>();
+    // TextureAtlas
+    public static TextureAtlas character;
     /***
      * Instance of handler.
      * Initialized on getInstance()
      */
     private static FileHandler instance;
 
-    static {
-        jsonMap.put(JsonType.ACHV_JSON, generateJson("json/achieves.json"));
-        jsonMap.put(JsonType.CHAR_JSON, generateJson("json/chars.json"));
-        jsonMap.put(JsonType.CHOICE_JSON, generateJson("json/choices.json"));
-        jsonMap.put(JsonType.STATUS_JSON, generateJson("json/status.json"));
-        jsonMap.put(JsonType.ENEMY_JSON, generateJson("json/enemies.json"));
-        jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
-        jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
-        jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
-        jsonMap.put(JsonType.CREDIT_JSON, generateJson("json/credit.json"));
-        jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_INE, generateJson("json/skill/ineCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_VIICHAN, generateJson("json/skill/viichanCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_LILPA, generateJson("json/skill/lilpaCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_BURGER, generateJson("json/skill/burgerCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_GOSEGU, generateJson("json/skill/goseguCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_JURURU, generateJson("json/skill/jururuCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_ADV, generateJson("json/skill/advCards.json"));
-        jsonMap.put(JsonType.CARD_JSON_ENEMY, generateJson("json/skill/enemyCards.json"));
-    }
+    private FileHandler() {}
 
-    private FileHandler() {
-        generateHashMap();
-        generateBG();
-        generateUI();
-        generateVFX();
-        generateCharImg();
-        generateSkeleton();
-        StringHandler.generate();
-        generateAdvImg();
-        generateEnemyImg();
-        generateSkillImg();
-        generateStatusImg();
-        generateItemImg();
-        generateEventImg();
-        generateAchieve();
-        generateTutorialImg();
-        generateGif();
-        generateVideo();
-        setAntiAliased();
+    public static JsonValue getJsonValue(JsonType jsonType) {
+        return jsonMap.get(jsonType);
     }
 
     /***
@@ -173,6 +131,61 @@ public class FileHandler implements Disposable {
         return jsonReader.parse(is);
     }
 
+    private void loadJson() {
+        jsonMap.put(JsonType.ACHV_JSON, generateJson("json/achieves.json"));
+        jsonMap.put(JsonType.CHAR_JSON, generateJson("json/chars.json"));
+        jsonMap.put(JsonType.CHOICE_JSON, generateJson("json/choices.json"));
+        jsonMap.put(JsonType.STATUS_JSON, generateJson("json/status.json"));
+        jsonMap.put(JsonType.ENEMY_JSON, generateJson("json/enemies.json"));
+        jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
+        jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
+        jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
+        jsonMap.put(JsonType.CREDIT_JSON, generateJson("json/credit.json"));
+        jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_INE, generateJson("json/skill/ineCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_VIICHAN, generateJson("json/skill/viichanCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_LILPA, generateJson("json/skill/lilpaCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_BURGER, generateJson("json/skill/burgerCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_GOSEGU, generateJson("json/skill/goseguCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_JURURU, generateJson("json/skill/jururuCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_ADV, generateJson("json/skill/advCards.json"));
+        jsonMap.put(JsonType.CARD_JSON_ENEMY, generateJson("json/skill/enemyCards.json"));
+        StringHandler.generate();
+    }
+
+    /***
+     * Load files which do not require being called on main thread
+     */
+    public void loadFiles() {
+        loadJson();
+        generateHashMap();
+        generateVideo();
+    }
+
+    /***
+     * Load resources which must be loaded on main thread or asset manager
+     */
+    public void loadResources(ResourceHandler resourceHandler) {
+
+        generateBG(resourceHandler);
+        generateUI(resourceHandler);
+        generateVFX(resourceHandler);
+        generateCharImg(resourceHandler);
+        generateSkeleton(resourceHandler);
+        generateAdvImg(resourceHandler);
+        generateEnemyImg(resourceHandler);
+        generateSkillImg(resourceHandler);
+        generateStatusImg(resourceHandler);
+        generateItemImg(resourceHandler);
+        generateEventImg(resourceHandler);
+        generateAchieve(resourceHandler);
+        generateTutorialImg(resourceHandler);
+        generateGif(resourceHandler);
+        setAntiAliased();
+    }
+
     private void generateHashMap() {
         maps.add(bg);
         maps.add(ui);
@@ -195,23 +208,25 @@ public class FileHandler implements Disposable {
         maps.add(tutorialImg);
     }
 
-    private void generateGif() {
+    private void generateGif(ResourceHandler resourceHandler) {
         gif.clear();
-        gif.put(
-                "MAIN_MENU",
-                GifDecoder.loadGIFAnimation(
-                        Animation.PlayMode.LOOP,
-                        Gdx.files.internal("img/gif/main_gif.gif").read()));
-        gif.put(
-                "FIRE_LIGHT",
-                GifDecoder.loadGIFAnimation(
-                        Animation.PlayMode.LOOP,
-                        Gdx.files.internal("img/gif/fire_light.gif").read()));
-        gif.put(
-                "FIRE",
-                GifDecoder.loadGIFAnimation(
-                        Animation.PlayMode.LOOP,
-                        Gdx.files.internal("img/gif/fire.gif").read()));
+
+        HashMap<String, String> resourceNames = new HashMap<>();
+
+        resourceNames.put("MAIN_MENU", "img/gif/main_gif.gif");
+        resourceNames.put("FIRE_LIGHT", "img/gif/fire_light.gif");
+        resourceNames.put("FIRE", "img/gif/fire.gif");
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Gif.class, new ResourceHandler.ResourceCallback() {
+                    @Override
+                    public void onResourceLoaded(Object resource, Object... args) {
+                        Gif gifData = (Gif) resource;
+                        String name = args[0].toString();
+
+                        gif.put(name, gifData.getGif());
+                    }
+                }));
     }
 
     private void generateVideo() {
@@ -219,166 +234,221 @@ public class FileHandler implements Disposable {
         video.put("LOGO", Gdx.files.internal("video/logo.webm"));
     }
 
-    private void generateSkeleton() {
+    private void generateSkeleton(ResourceHandler resourceHandler) {
         for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
             skeleton.put(js.name, Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json"));
-            atlas.put(js.name, new TextureAtlas("spine/enemy/" + js.name + "/skeleton.atlas"));
+
+            FileHandle handle = Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json");
+            resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
+                    "spine/enemy/" + js.name + "/skeleton.atlas",
+                    TextureAtlas.class,
+                    new ResourceHandler.ResourceCallback() {
+                        @Override
+                        public void onResourceLoaded(Object resource, Object... args) {
+                            TextureAtlas textureAtlas = (TextureAtlas) resource;
+                            String name = args[0].toString();
+                            atlas.put(name, textureAtlas);
+                        }
+                    },
+                    js.name));
         }
     }
 
-    private void generateAchieve() {
+    private void generateAchieve(ResourceHandler resourceHandler) {
+
         for (AchieveHandler.Achievement a : AchieveHandler.Achievement.values()) {
-            achvImg.put(a, new Sprite(new Texture("img/achieve/" + a.toString().toLowerCase() + ".png")));
+            resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
+                    "img/achieve/" + a.toString().toLowerCase() + ".png",
+                    Texture.class,
+                    new ResourceHandler.ResourceCallback() {
+                        @Override
+                        public void onResourceLoaded(Object resource, Object... args) {
+                            Texture texture = (Texture) resource;
+                            AchieveHandler.Achievement achievement = (AchieveHandler.Achievement) args[0];
+                            achvImg.put(achievement, new Sprite(texture));
+                        }
+                    },
+                    a));
         }
     }
 
-    private void generateBG() {
+    private void generateBG(ResourceHandler resourceHandler) {
         bg.clear();
-        bg.put("BG_BLACK", new Sprite(new Texture("img/ui/fade.png")));
-        bg.put("BG_GREY", new Sprite(new Texture("img/bg/white.png")));
-        bg.put("BG_LOGO", new Sprite(new Texture("img/ui/logo.png")));
-        bg.put("BG_MAIN", new Sprite(new Texture("img/bg/main.png")));
-        bg.put("BG_DEAD", new Sprite(new Texture("img/bg/dead.png")));
-        bg.put("BG_WIN", new Sprite(new Texture("img/bg/win.png")));
-        bg.put("BG_MAP", new Sprite(new Texture("img/bg/map.png")));
-        bg.put("BG_DIFF", new Sprite(new Texture("img/bg/diff.png")));
-        bg.put("BG_WAY_1", new Sprite(new Texture("img/bg/way_forest.png")));
-        bg.put("BG_WAY_2", new Sprite(new Texture("img/bg/way_deep.png")));
-        bg.put("BG_WAY_3", new Sprite(new Texture("img/bg/way_temple.png")));
-        bg.put("BG_WAY_4", new Sprite(new Texture("img/bg/way_lab.png")));
-        bg.put("BG_REST_BAG", new Sprite(new Texture("img/bg/fire_bag.png")));
-        bg.put("BG_SHOP", new Sprite(new Texture("img/bg/shop.png")));
+
+        HashMap<String, String> resources = new HashMap<>();
+        resources.put("BG_GREY", "img/bg/white.png");
+        resources.put("BG_BLACK", "img/ui/fade.png");
+        resources.put("BG_LOGO", "img/ui/logo.png");
+        resources.put("BG_MAIN", "img/bg/main.png");
+        resources.put("BG_DEAD", "img/bg/dead.png");
+        resources.put("BG_WIN", "img/bg/win.png");
+        resources.put("BG_MAP", "img/bg/map.png");
+        resources.put("BG_DIFF", "img/bg/diff.png");
+        resources.put("BG_WAY_1", "img/bg/way_forest.png");
+        resources.put("BG_WAY_2", "img/bg/way_deep.png");
+        resources.put("BG_WAY_3", "img/bg/way_temple.png");
+        resources.put("BG_WAY_4", "img/bg/way_lab.png");
+        resources.put("BG_REST_BAG", "img/bg/fire_bag.png");
+        resources.put("BG_SHOP", "img/bg/shop.png");
+
+        resourceHandler.requestResource(new MultipleResourceRequest<>(resources, Texture.class, (resource, args) -> {
+            Texture texture = (Texture) resource;
+            String resourceName = args[0].toString();
+
+            bg.put(resourceName, new Sprite(texture));
+        }));
     }
 
-    private void generateVFX() {
+    private void generateVFX(ResourceHandler resourceHandler) {
         vfx.clear();
-        vfx.put("HIT_LIGHT", new Sprite(new Texture("img/vfx/hit_s.png")));
-        vfx.put("HIT_HEAVY", new Sprite(new Texture("img/vfx/hit_b.png")));
-        vfx.put("INFECTION", new Sprite(new Texture("img/vfx/infection.png")));
-        vfx.put("LIGHTNING", new Sprite(new Texture("img/vfx/lightning.png")));
-        vfx.put("BURN", new Sprite(new Texture("img/vfx/burn.png")));
-        vfx.put("SHIELD", new Sprite(new Texture("img/vfx/shield.png")));
-        vfx.put("SLASH_H", new Sprite(new Texture("img/vfx/slash_h.png")));
-        vfx.put("SLASH_V", new Sprite(new Texture("img/vfx/slash_v.png")));
-        vfx.put("SLASH_D", new Sprite(new Texture("img/vfx/slash_d.png")));
-        vfx.put("SMASH", new Sprite(new Texture("img/vfx/smash.png")));
+
+        HashMap<String, String> resourceNames = new HashMap<>();
+
+        resourceNames.put("HIT_LIGHT", "img/vfx/hit_s.png");
+        resourceNames.put("HIT_HEAVY", "img/vfx/hit_b.png");
+        resourceNames.put("INFECTION", "img/vfx/infection.png");
+        resourceNames.put("LIGHTNING", "img/vfx/lightning.png");
+        resourceNames.put("BURN", "img/vfx/burn.png");
+        resourceNames.put("SHIELD", "img/vfx/shield.png");
+        resourceNames.put("SLASH_H", "img/vfx/slash_h.png");
+        resourceNames.put("SLASH_V", "img/vfx/slash_v.png");
+        resourceNames.put("SLASH_D", "img/vfx/slash_d.png");
+        resourceNames.put("SMASH", "img/vfx/smash.png");
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    vfx.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateUI() {
+    private void generateUI(ResourceHandler resourceHandler) {
         ui.clear();
-        ui.put("FADE", new Sprite(new Texture("img/ui/fade.png")));
-        ui.put("TURN_BG", new Sprite(new Texture("img/ui/tc.png")));
-        ui.put("CHANGE_H", new Sprite(new Texture("img/ui/change_h.png")));
-        ui.put("CHANGE_V", new Sprite(new Texture("img/ui/change_v.png")));
-        ui.put("MENU_SELECT", new Sprite(new Texture("img/ui/menuSelect.png")));
-        ui.put("CONTROL_PANEL", new Sprite(new Texture("img/ui/cPanel.png")));
-        ui.put("ENERGY_ORB", new Sprite(new Texture("img/ui/energy.png")));
-        ui.put("ENERGY_PANEL", new Sprite(new Texture("img/ui/energy_p.png")));
-        ui.put("BUTTON", new Sprite(new Texture("img/ui/button.png")));
-        ui.put("BUTTON_S", new Sprite(new Texture("img/ui/button_s.png")));
-        ui.put("LEVEL_BACK", new Sprite(new Texture("img/ui/level_back.png")));
-        ui.put("LEVEL_LINE", new Sprite(new Texture("img/ui/level_border.png")));
-        ui.put("LEVEL_EXP", new Sprite(new Texture("img/ui/level_exp.png")));
-        ui.put("CLOSE", new Sprite(new Texture("img/ui/close.png")));
-        ui.put("CLOSE_SET", new Sprite(new Texture("img/ui/closeSet.png")));
-        ui.put("BORDER", new Sprite(new Texture("img/ui/border.png")));
-        ui.put("BORDER_M", new Sprite(new Texture("img/ui/border_m.png")));
-        ui.put("BORDER_P", new Sprite(new Texture("img/ui/border_player.png")));
-        ui.put("BORDER_PL", new Sprite(new Texture("img/ui/border_p_p.png")));
-        ui.put("BORDER_B", new Sprite(new Texture("img/ui/border_p.png")));
-        ui.put("BORDER_S", new Sprite(new Texture("img/ui/border_s.png")));
-        ui.put("BORDER_SS", new Sprite(new Texture("img/ui/border_ss.png")));
-        ui.put("BORDER_V", new Sprite(new Texture("img/ui/border_v.png")));
-        ui.put("BORDER_V2", new Sprite(new Texture("img/ui/border_v2.png")));
-        ui.put("BORDER_R", new Sprite(new Texture("img/ui/border_r.png")));
-        ui.put("BORDER_ADV", new Sprite(new Texture("img/ui/border_adv.png")));
-        ui.put("BORDER_T", new Sprite(new Texture("img/ui/border_turn.png")));
-        ui.put("BORDER_T2", new Sprite(new Texture("img/ui/border_turn2.png")));
-        ui.put("BORDER_BACK", new Sprite(new Texture("img/ui/border_back.png")));
-        ui.put("SHADOW_ITEM", new Sprite(new Texture("img/ui/shadow_item.png")));
-        ui.put("SHADOW_ROLL", new Sprite(new Texture("img/ui/shadow_roll.png")));
-        ui.put("GOLD_SHOP", new Sprite(new Texture("img/ui/gold_shop.png")));
-        ui.put("REST_HEAL", new Sprite(new Texture("img/ui/rest_heal.png")));
-        ui.put("REST_REVIVE", new Sprite(new Texture("img/ui/rest_revive.png")));
-        ui.put("REST_UPGRADE", new Sprite(new Texture("img/ui/rest_upgrade.png")));
-        ui.put("CAMP", new Sprite(new Texture("img/ui/camp.png")));
-        ui.put("BACK", new Sprite(new Texture("img/ui/back.png")));
-        ui.put("NEXT", new Sprite(new Texture("img/ui/next.png")));
-        ui.put("GOLD", new Sprite(new Texture("img/ui/gold.png")));
-        ui.put("ROLL", new Sprite(new Texture("img/ui/roll.png")));
-        ui.put("ENTITY_POINT_B", new Sprite(new Texture("img/ui/entityPoint_boss.png")));
-        ui.put("PLAYER_POINT_B", new Sprite(new Texture("img/ui/playerPoint_boss.png")));
-        ui.put("ENTITY_POINT", new Sprite(new Texture("img/ui/entityPoint.png")));
-        ui.put("PLAYER_POINT", new Sprite(new Texture("img/ui/playerPoint.png")));
-        ui.put("POINT_TURN", new Sprite(new Texture("img/ui/point_turn.png")));
-        ui.put("POINT_ALLEY", new Sprite(new Texture("img/ui/point_alley.png")));
-        ui.put("POINT_TURN_B", new Sprite(new Texture("img/ui/point_turn_b.png")));
-        ui.put("POINT_ALLEY_B", new Sprite(new Texture("img/ui/point_alley_b.png")));
-        ui.put("WAY_SELECT", new Sprite(new Texture("img/ui/wayBG.png")));
-        ui.put("EVENT_PANEL", new Sprite(new Texture("img/ui/event_paper.png")));
-        ui.put("EVENT_CHOICE", new Sprite(new Texture("img/ui/event_select.png")));
-        ui.put("CHECK_OFF", new Sprite(new Texture("img/ui/check_0.png")));
-        ui.put("CHECK_ON", new Sprite(new Texture("img/ui/check_1.png")));
-        ui.put("SHIELD", new Sprite(new Texture("img/ui/shield.png")));
-        ui.put("GOLD_PANEL", new Sprite(new Texture("img/ui/gold_paper.png")));
-        ui.put("SETTING_B", new Sprite(new Texture("img/ui/setting.png")));
-        ui.put("LOGO", new Sprite(new Texture("img/ui/logo.png")));
-        ui.put("TITLE", new Sprite(new Texture("img/ui/title.png")));
-        ui.put("TURN_ARROW", new Sprite(new Texture("img/ui/turn_arrow.png")));
-        ui.put("SLIDE_A", new Sprite(new Texture("img/ui/slide_a.png")));
-        ui.put("SLIDE_B", new Sprite(new Texture("img/ui/slide_b.png")));
-        ui.put("SLIDE_L", new Sprite(new Texture("img/ui/slide_l.png")));
-        ui.put("SLIDE_SL", new Sprite(new Texture("img/ui/slide_sl.png")));
-        ui.put("SLIDE_SR", new Sprite(new Texture("img/ui/slide_sr.png")));
-        ui.put("LEFT", new Sprite(new Texture("img/ui/left.png")));
-        ui.put("RIGHT", new Sprite(new Texture("img/ui/right.png")));
-        ui.put("HEART", new Sprite(new Texture("img/ui/heart.png")));
-        ui.put("REST", new Sprite(new Texture("img/ui/restNode.png")));
-        ui.put("BATTLE", new Sprite(new Texture("img/ui/battle_n.png")));
-        ui.put("ELITE", new Sprite(new Texture("img/ui/battle_e.png")));
-        ui.put("BOSS", new Sprite(new Texture("img/ui/battle_b.png")));
-        ui.put("LOOK", new Sprite(new Texture("img/ui/mysteryNode.png")));
-        ui.put("ENTRY", new Sprite(new Texture("img/ui/entryNode.png")));
-        ui.put("SHOP", new Sprite(new Texture("img/ui/shopNode.png")));
-        ui.put("MAP", new Sprite(new Texture("img/ui/map.png")));
-        ui.put("EVENT", new Sprite(new Texture("img/ui/event_img.png")));
-        ui.put("SUB_TOP", new Sprite(new Texture("img/ui/sub_t.png")));
-        ui.put("SUB_MID", new Sprite(new Texture("img/ui/sub_m.png")));
-        ui.put("SUB_BOT", new Sprite(new Texture("img/ui/sub_b.png")));
-        ui.put("STAT_ATTACK", new Sprite(new Texture("img/stat/attack.png")));
-        ui.put("STAT_SPELL", new Sprite(new Texture("img/stat/spell.png")));
-        ui.put("STAT_CRITICAL", new Sprite(new Texture("img/stat/critical.png")));
-        ui.put("STAT_MULTIPLY", new Sprite(new Texture("img/stat/multiply.png")));
-        ui.put("STAT_SPEED", new Sprite(new Texture("img/stat/speed.png")));
-        ui.put("STAT_MOVERES", new Sprite(new Texture("img/stat/moveRes.png")));
-        ui.put("STAT_DEBURES", new Sprite(new Texture("img/stat/debuRes.png")));
-        ui.put("STAT_NEUTRES", new Sprite(new Texture("img/stat/neutRes.png")));
-        ui.put("UNKNOWN", new Sprite(new Texture("img/ui/unknown.png")));
-        ui.put("STAT_PLUS", new Sprite(new Texture("img/ui/statPlus.png")));
-        ui.put("DIFF_NORMAL", new Sprite(new Texture("img/ui/diff_normal.png")));
-        ui.put("DIFF_HARD", new Sprite(new Texture("img/ui/diff_hard.png")));
-        ui.put("DIFF_COFFIN", new Sprite(new Texture("img/ui/diff_coffin.png")));
-        ui.put("DIFF_LOCKED", new Sprite(new Texture("img/ui/diff_locked.png")));
-        ui.put("LIB_RUNS", new Sprite(new Texture("img/ui/lib_runs.png")));
-        ui.put("LIB_ACHVS", new Sprite(new Texture("img/ui/lib_achvs.png")));
-        ui.put("LIB_DICT", new Sprite(new Texture("img/ui/lib_dict.png")));
-        ui.put("ARROW_RIGHT", new Sprite(new Texture("img/ui/arrow_right.png")));
-        ui.put("HEALTH_BAR", new Sprite(new Texture("img/ui/health_bar.png")));
-        ui.put("HEALTH_BACK", new Sprite(new Texture("img/ui/hb_block.png")));
-        ui.put("SETTING", new Sprite(new Texture("img/ui/setting_paper.png")));
-        ui.put("ACHIEVE", new Sprite(new Texture("img/ui/achv_paper.png")));
-        ui.put("REWARD", new Sprite(new Texture("img/ui/reward.png")));
-        ui.put("DICT", new Sprite(new Texture("img/ui/dict_paper.png")));
-        ui.put("TEXT_DEBU", new Sprite(new Texture("img/ui/debuRes.png")));
-        ui.put("TEXT_NEUT", new Sprite(new Texture("img/ui/neutRes.png")));
-        ui.put("TEXT_MOVE", new Sprite(new Texture("img/ui/moveRes.png")));
-        ui.put("TEXT_CRIT", new Sprite(new Texture("img/ui/critical.png")));
-        ui.put("TEXT_NEUTRAL", new Sprite(new Texture("img/ui/neutral.png")));
-        ui.put("GROUND", new Sprite(new Texture("img/ui/entity_ground.png")));
-        ui.put("CREDIT", new Sprite(new Texture("img/credit.png")));
+
+        HashMap<String, String> resourceNames = new HashMap<>();
+        resourceNames.put("FADE", "img/ui/fade.png");
+        resourceNames.put("TURN_BG", "img/ui/tc.png");
+
+        resourceNames.put("CHANGE_H", "img/ui/change_h.png");
+        resourceNames.put("CHANGE_V", "img/ui/change_v.png");
+        resourceNames.put("MENU_SELECT", "img/ui/menuSelect.png");
+        resourceNames.put("CONTROL_PANEL", "img/ui/cPanel.png");
+        resourceNames.put("ENERGY_ORB", "img/ui/energy.png");
+        resourceNames.put("ENERGY_PANEL", "img/ui/energy_p.png");
+        resourceNames.put("BUTTON", "img/ui/button.png");
+        resourceNames.put("BUTTON_S", "img/ui/button_s.png");
+        resourceNames.put("LEVEL_BACK", "img/ui/level_back.png");
+        resourceNames.put("LEVEL_LINE", "img/ui/level_border.png");
+        resourceNames.put("LEVEL_EXP", "img/ui/level_exp.png");
+        resourceNames.put("CLOSE", "img/ui/close.png");
+        resourceNames.put("CLOSE_SET", "img/ui/closeSet.png");
+        resourceNames.put("BORDER", "img/ui/border.png");
+        resourceNames.put("BORDER_M", "img/ui/border_m.png");
+        resourceNames.put("BORDER_P", "img/ui/border_player.png");
+        resourceNames.put("BORDER_PL", "img/ui/border_p_p.png");
+        resourceNames.put("BORDER_B", "img/ui/border_p.png");
+        resourceNames.put("BORDER_S", "img/ui/border_s.png");
+        resourceNames.put("BORDER_SS", "img/ui/border_ss.png");
+        resourceNames.put("BORDER_V", "img/ui/border_v.png");
+        resourceNames.put("BORDER_V2", "img/ui/border_v2.png");
+        resourceNames.put("BORDER_R", "img/ui/border_r.png");
+        resourceNames.put("BORDER_ADV", "img/ui/border_adv.png");
+        resourceNames.put("BORDER_T", "img/ui/border_turn.png");
+        resourceNames.put("BORDER_T2", "img/ui/border_turn2.png");
+        resourceNames.put("BORDER_BACK", "img/ui/border_back.png");
+        resourceNames.put("SHADOW_ITEM", "img/ui/shadow_item.png");
+        resourceNames.put("SHADOW_ROLL", "img/ui/shadow_roll.png");
+        resourceNames.put("GOLD_SHOP", "img/ui/gold_shop.png");
+        resourceNames.put("REST_HEAL", "img/ui/rest_heal.png");
+        resourceNames.put("REST_REVIVE", "img/ui/rest_revive.png");
+        resourceNames.put("REST_UPGRADE", "img/ui/rest_upgrade.png");
+        resourceNames.put("CAMP", "img/ui/camp.png");
+        resourceNames.put("BACK", "img/ui/back.png");
+        resourceNames.put("NEXT", "img/ui/next.png");
+        resourceNames.put("GOLD", "img/ui/gold.png");
+        resourceNames.put("ROLL", "img/ui/roll.png");
+        resourceNames.put("ENTITY_POINT_B", "img/ui/entityPoint_boss.png");
+        resourceNames.put("PLAYER_POINT_B", "img/ui/playerPoint_boss.png");
+        resourceNames.put("ENTITY_POINT", "img/ui/entityPoint.png");
+        resourceNames.put("PLAYER_POINT", "img/ui/playerPoint.png");
+        resourceNames.put("POINT_TURN", "img/ui/point_turn.png");
+        resourceNames.put("POINT_ALLEY", "img/ui/point_alley.png");
+        resourceNames.put("POINT_TURN_B", "img/ui/point_turn_b.png");
+        resourceNames.put("POINT_ALLEY_B", "img/ui/point_alley_b.png");
+        resourceNames.put("WAY_SELECT", "img/ui/wayBG.png");
+        resourceNames.put("EVENT_PANEL", "img/ui/event_paper.png");
+        resourceNames.put("EVENT_CHOICE", "img/ui/event_select.png");
+        resourceNames.put("CHECK_OFF", "img/ui/check_0.png");
+        resourceNames.put("CHECK_ON", "img/ui/check_1.png");
+        resourceNames.put("SHIELD", "img/ui/shield.png");
+        resourceNames.put("GOLD_PANEL", "img/ui/gold_paper.png");
+        resourceNames.put("SETTING_B", "img/ui/setting.png");
+        resourceNames.put("LOGO", "img/ui/logo.png");
+        resourceNames.put("TITLE", "img/ui/title.png");
+        resourceNames.put("TURN_ARROW", "img/ui/turn_arrow.png");
+        resourceNames.put("SLIDE_A", "img/ui/slide_a.png");
+        resourceNames.put("SLIDE_B", "img/ui/slide_b.png");
+        resourceNames.put("SLIDE_L", "img/ui/slide_l.png");
+        resourceNames.put("SLIDE_SL", "img/ui/slide_sl.png");
+        resourceNames.put("SLIDE_SR", "img/ui/slide_sr.png");
+        resourceNames.put("LEFT", "img/ui/left.png");
+        resourceNames.put("RIGHT", "img/ui/right.png");
+        resourceNames.put("HEART", "img/ui/heart.png");
+        resourceNames.put("REST", "img/ui/restNode.png");
+        resourceNames.put("BATTLE", "img/ui/battle_n.png");
+        resourceNames.put("ELITE", "img/ui/battle_e.png");
+        resourceNames.put("BOSS", "img/ui/battle_b.png");
+        resourceNames.put("LOOK", "img/ui/mysteryNode.png");
+        resourceNames.put("ENTRY", "img/ui/entryNode.png");
+        resourceNames.put("SHOP", "img/ui/shopNode.png");
+        resourceNames.put("MAP", "img/ui/map.png");
+        resourceNames.put("EVENT", "img/ui/event_img.png");
+        resourceNames.put("SUB_TOP", "img/ui/sub_t.png");
+        resourceNames.put("SUB_MID", "img/ui/sub_m.png");
+        resourceNames.put("SUB_BOT", "img/ui/sub_b.png");
+        resourceNames.put("STAT_ATTACK", "img/stat/attack.png");
+        resourceNames.put("STAT_SPELL", "img/stat/spell.png");
+        resourceNames.put("STAT_CRITICAL", "img/stat/critical.png");
+        resourceNames.put("STAT_MULTIPLY", "img/stat/multiply.png");
+        resourceNames.put("STAT_SPEED", "img/stat/speed.png");
+        resourceNames.put("STAT_MOVERES", "img/stat/moveRes.png");
+        resourceNames.put("STAT_DEBURES", "img/stat/debuRes.png");
+        resourceNames.put("STAT_NEUTRES", "img/stat/neutRes.png");
+        resourceNames.put("UNKNOWN", "img/ui/unknown.png");
+        resourceNames.put("STAT_PLUS", "img/ui/statPlus.png");
+        resourceNames.put("DIFF_NORMAL", "img/ui/diff_normal.png");
+        resourceNames.put("DIFF_HARD", "img/ui/diff_hard.png");
+        resourceNames.put("DIFF_COFFIN", "img/ui/diff_coffin.png");
+        resourceNames.put("DIFF_LOCKED", "img/ui/diff_locked.png");
+        resourceNames.put("LIB_RUNS", "img/ui/lib_runs.png");
+        resourceNames.put("LIB_ACHVS", "img/ui/lib_achvs.png");
+        resourceNames.put("LIB_DICT", "img/ui/lib_dict.png");
+        resourceNames.put("ARROW_RIGHT", "img/ui/arrow_right.png");
+        resourceNames.put("HEALTH_BAR", "img/ui/health_bar.png");
+        resourceNames.put("HEALTH_BACK", "img/ui/hb_block.png");
+        resourceNames.put("SETTING", "img/ui/setting_paper.png");
+        resourceNames.put("ACHIEVE", "img/ui/achv_paper.png");
+        resourceNames.put("REWARD", "img/ui/reward.png");
+        resourceNames.put("DICT", "img/ui/dict_paper.png");
+        resourceNames.put("TEXT_DEBU", "img/ui/debuRes.png");
+        resourceNames.put("TEXT_NEUT", "img/ui/neutRes.png");
+        resourceNames.put("TEXT_MOVE", "img/ui/moveRes.png");
+        resourceNames.put("TEXT_CRIT", "img/ui/critical.png");
+        resourceNames.put("TEXT_NEUTRAL", "img/ui/neutral.png");
+        resourceNames.put("GROUND", "img/ui/entity_ground.png");
+        resourceNames.put("CREDIT", "img/credit.png");
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+                    ui.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateCharImg() {
+    private void generateCharImg(ResourceHandler resourceHandler) {
         charImg.clear();
         charImgTurn.clear();
         charBgImg.clear();
@@ -387,117 +457,215 @@ public class FileHandler implements Disposable {
         charUpsetImg.clear();
         skeleton.clear();
         atlas.clear();
-        for (PlayerClass cls : PlayerClass.values()) {
-            String s = cls.toString().toLowerCase();
-            charImg.put(cls, character.createSprite(s));
-            charImgTurn.put(cls, character.createSprite(s + "_p"));
-            charBgImg.put(cls, character.createSprite(s + "_bg"));
-            charCampImg.put(cls, character.createSprite(s + "_camp"));
-            charUpsetImg.put(cls, character.createSprite(s + "_camp_upset"));
-            charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
-            skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
-            atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
-        }
+        resourceHandler.requestResource(
+                new ResourceHandler.ResourceRequest<>("img/char/char.atlas", TextureAtlas.class, (resource, args) -> {
+                    character = (TextureAtlas) resource;
+
+                    for (PlayerClass cls : PlayerClass.values()) {
+                        String s = cls.toString().toLowerCase();
+                        charImg.put(cls, character.createSprite(s));
+                        charImgTurn.put(cls, character.createSprite(s + "_p"));
+                        charBgImg.put(cls, character.createSprite(s + "_bg"));
+                        charCampImg.put(cls, character.createSprite(s + "_camp"));
+                        charUpsetImg.put(cls, character.createSprite(s + "_camp_upset"));
+                        charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
+                        skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
+
+                        atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
+                    }
+                }));
     }
 
-    private void generateTutorialImg() {
+    private void generateTutorialImg(ResourceHandler resourceHandler) {
         tutorialImg.clear();
         String s;
-        tutorialImg.put(s = "CHARSELECT_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "CHARSELECT_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "CHARSELECT_3", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "BATTLE_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "BATTLE_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "BATTLE_3", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "WAY_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "WAY_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "REWARD_1", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
-        tutorialImg.put(s = "REWARD_2", new Sprite(new Texture("img/tutorial/" + s.toLowerCase() + ".png")));
+
+        HashMap<String, String> resourceNames = new HashMap<>();
+
+        resourceNames.put(s = "CHARSELECT_1", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "CHARSELECT_2", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "CHARSELECT_3", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "BATTLE_1", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "BATTLE_2", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "BATTLE_3", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "WAY_1", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "WAY_2", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "REWARD_1", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "REWARD_2", "img/tutorial/" + s.toLowerCase() + ".png");
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    tutorialImg.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateAdvImg() {
+    private void generateAdvImg(ResourceHandler resourceHandler) {
         advImg.clear();
         for (AdvisorClass cls : AdvisorClass.values()) {
             String s = cls.toString().toLowerCase();
-            advImg.put(cls, new Sprite(new Texture("img/advisor/" + s + ".png")));
+
+            resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
+                    "img/advisor/" + s + ".png",
+                    Texture.class,
+                    (resource, args) -> {
+                        AdvisorClass clazz = (AdvisorClass) args[0];
+                        Texture texture = (Texture) resource;
+                        advImg.put(clazz, new Sprite(texture));
+                    },
+                    cls));
         }
     }
 
-    private void generateEnemyImg() {
+    private void generateEnemyImg(ResourceHandler resourceHandler) {
         enemyImg.clear();
         enemyPanelImg.clear();
         for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
-            enemyImg.put(js.name, new Sprite(new Texture("spine/enemy/" + js.name + "/img.png")));
-            enemyPanelImg.put(js.name, new Sprite(new Texture("spine/enemy/" + js.name + "/img_p.png")));
+
+            ResourceHandler.ResourceRequest<Texture> request = new ResourceHandler.ResourceRequest<>(
+                    "spine/enemy/" + js.name + "/img.png",
+                    Texture.class,
+                    (resource, args) -> {
+                        Texture texture = (Texture) resource;
+                        String name = args[0].toString();
+                        enemyImg.put(name, new Sprite(texture));
+                    },
+                    js.name);
+
+            resourceHandler.requestResource(request);
+
+            request = new ResourceHandler.ResourceRequest<>(
+                    "spine/enemy/" + js.name + "/img_p.png",
+                    Texture.class,
+                    (resource, args) -> {
+                        Texture texture = (Texture) resource;
+                        String name = args[0].toString();
+                        enemyPanelImg.put(name, new Sprite(texture));
+                    },
+                    js.name);
+
+            resourceHandler.requestResource(request);
         }
     }
 
-    private void generateSkillImg() {
+    private void generateSkillImg(ResourceHandler resourceHandler) {
         skillImg.clear();
+
+        HashMap<String, String> resourceNames = new HashMap<>();
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_BASIC)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/basic/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/basic/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_WAK)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/wak/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/wak/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_MANAGER)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/manager/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/manager/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_INE)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/ine/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/ine/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_VIICHAN)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/viichan/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/viichan/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_LILPA)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/lilpa/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/lilpa/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_BURGER)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/burger/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/burger/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_GOSEGU)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/gosegu/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/gosegu/" + js.name + ".png");
         }
         for (JsonValue js : jsonMap.get(JsonType.CARD_JSON_JURURU)) {
-            skillImg.put(js.name, new Sprite(new Texture("img/skill/jururu/" + js.name + ".png")));
+            resourceNames.put(js.name, "img/skill/jururu/" + js.name + ".png");
         }
         for (AbstractSkill.IntentType it : AbstractSkill.IntentType.values()) {
-            skillImg.put(
-                    it.toString(),
-                    new Sprite(new Texture("img/skill/intent/" + it.toString().toLowerCase() + ".png")));
+            resourceNames.put(it.toString(), "img/skill/intent/" + it.toString().toLowerCase() + ".png");
         }
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    skillImg.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateStatusImg() {
+    private void generateStatusImg(ResourceHandler resourceHandler) {
         statusImg.clear();
+
+        HashMap<String, String> resourceNames = new HashMap<>();
         for (JsonValue js : jsonMap.get(JsonType.STATUS_JSON)) {
             if (!js.name.equals("")) {
-                statusImg.put(js.name, new Sprite(new Texture("img/status/" + js.name + ".png")));
+                resourceNames.put(js.name, "img/status/" + js.name + ".png");
             }
         }
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    statusImg.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateItemImg() {
+    private void generateItemImg(ResourceHandler resourceHandler) {
         itemImg.clear();
         itemImgTrans.clear();
+
+        HashMap<String, String> itemResources = new HashMap<>();
+        HashMap<String, String> itemTransResources = new HashMap<>();
         for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
             if (!js.name.equals("")) {
-                itemImg.put(js.name, new Sprite(new Texture("img/item/" + js.name + ".png")));
-                itemImgTrans.put(js.name, new Sprite(new Texture("img/item/" + js.name + "_t.png")));
+
+                itemResources.put(js.name, "img/item/" + js.name + ".png");
+                itemTransResources.put(js.name, "img/item/" + js.name + "_t.png");
             }
         }
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(itemResources, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    itemImg.put(resourceName, new Sprite(texture));
+                }));
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(itemTransResources, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    String resourceName = args[0].toString();
+
+                    itemImgTrans.put(resourceName, new Sprite(texture));
+                }));
     }
 
-    private void generateEventImg() {
+    private void generateEventImg(ResourceHandler resourceHandler) {
         eventImg.clear();
+        HashMap<String, String> resourceNames = new HashMap<>();
         for (JsonValue js : jsonMap.get(JsonType.EVENT_JSON)) {
             if (!js.name.equals("")) {
                 String[] ss = js.get("IMAGE").asStringArray();
                 for (String id : ss) {
-                    eventImg.put(id, new Sprite(new Texture("img/event/" + id + ".png")));
+                    resourceNames.put(id, "img/event/" + id + ".png");
                 }
             }
         }
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, new ResourceHandler.ResourceCallback() {
+                    @Override
+                    public void onResourceLoaded(Object resource, Object... args) {
+                        Texture texture = (Texture) resource;
+                        String resourceName = args[0].toString();
+
+                        eventImg.put(resourceName, new Sprite(texture));
+                    }
+                }));
     }
 
     private void setAntiAliased() {

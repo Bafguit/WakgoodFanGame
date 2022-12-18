@@ -43,8 +43,8 @@ public class SlideBar extends AbstractUI {
 
     public static class SlideButton extends AbstractUI {
 
-        protected boolean overTrack = false;
         public float min, max;
+        protected boolean overTrack = false;
 
         public SlideButton() {
             super(FileHandler.getUi().get("SLIDE_B"));

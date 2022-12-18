@@ -1,9 +1,12 @@
 package com.fastcat.labyrintale.handlers;
 
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Difficulty.*;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Difficulty.COFFIN;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Difficulty.HARD;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.diff;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 
 public final class DifficultyHandler {
 

@@ -14,7 +14,6 @@ import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler.ItemGroup;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
 
@@ -117,6 +116,13 @@ public class ShopRoom extends AbstractRoom {
             }
         }
         if (shop) items[4] = new ItemItem(ItemRarity.SHOP);
+    }
+
+    @Override
+    public AbstractEnemy[] getEnemies() {
+        return new AbstractEnemy[] {
+            new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
+        };
     }
 
     public abstract static class ShopItem {
@@ -238,12 +244,5 @@ public class ShopRoom extends AbstractRoom {
         public void setPanel() {
             cPanel.infoPanel.setInfo(item);
         }
-    }
-
-    @Override
-    public AbstractEnemy[] getEnemies() {
-        return new AbstractEnemy[] {
-            new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder(), new EnemyPlaceholder()
-        };
     }
 }

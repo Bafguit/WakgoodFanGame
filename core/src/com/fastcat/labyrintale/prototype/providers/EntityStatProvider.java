@@ -16,9 +16,9 @@ import lombok.ToString;
 
 public class EntityStatProvider implements ConfigurationProvider<AbstractEntity> {
 
-    private HashMap<Class<? extends AbstractEntity>, DummyEntityStat> loadedStats = new HashMap<>();
+    private final HashMap<Class<? extends AbstractEntity>, DummyEntityStat> loadedStats = new HashMap<>();
 
-    private ArrayList<Tracker<AbstractEntity>> trackers = new ArrayList<>();
+    private final ArrayList<Tracker<AbstractEntity>> trackers = new ArrayList<>();
 
     /***
      * name of file that this is supposed to read

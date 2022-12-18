@@ -15,12 +15,12 @@ import java.util.HashMap;
 
 public class MoveAction extends AbstractAction {
 
-    private AbstractEntity from;
-    private AbstractEntity source;
     private final HashMap<Integer, AbstractEntity> to = new HashMap<>();
     private final HashMap<Integer, Float> distance = new HashMap<>();
     private final HashMap<Integer, Float> position = new HashMap<>();
     private final MoveType fromType;
+    private AbstractEntity from;
+    private final AbstractEntity source;
     private MoveType type;
 
     private boolean alive;

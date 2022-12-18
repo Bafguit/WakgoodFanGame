@@ -6,13 +6,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
-import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.handlers.AchieveHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.strings.KeyString;
 
 public class AchieveIcon extends AbstractUI {
 
-    private final Sprite image;
     public final AchieveHandler.Achievement achv;
+    private final Sprite image;
     public AbstractItem.ItemRarity rarity;
     public int grade;
 

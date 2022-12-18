@@ -3,14 +3,12 @@ package com.fastcat.labyrintale.handlers;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvisorInstance;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.utils.BuildInfo;
-import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
+import com.fastcat.labyrintale.utils.RandomXC;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
@@ -162,7 +160,6 @@ public final class SaveHandler {
         maxExp = data.maxExp;
         scoreHandle = data.scoreHandle;
         achvCheck = data.achvCheck;
-        ;
     }
 
     public static class SaveData {
@@ -201,7 +198,7 @@ public final class SaveHandler {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             temp.date = AbstractLabyrinth.date = formatter.format(now);
             temp.version = "b0.9.25";
-            //temp.version = BuildInfo.BUILD_VERSION;
+            // temp.version = BuildInfo.BUILD_VERSION;
             temp.random = RandomData.create();
             for (int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];

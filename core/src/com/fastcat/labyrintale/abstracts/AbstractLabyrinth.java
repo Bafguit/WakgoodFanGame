@@ -3,21 +3,19 @@ package com.fastcat.labyrintale.abstracts;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.utils.RandomXC;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+import com.fastcat.labyrintale.utils.RandomXC;
 import java.util.HashMap;
 
 public class AbstractLabyrinth {
 
-    public static float tick;
-
     public static final int MAX_ENERGY = 8;
-
+    public static float tick;
     public static String date;
 
     public static String seed;
@@ -304,6 +302,14 @@ public class AbstractLabyrinth {
         SaveHandler.save();
     }
 
+    public static boolean allAlive() {
+        return players[0].isAlive() && players[1].isAlive() && players[2].isAlive() && players[3].isAlive();
+    }
+
+    public static boolean stillAlive() {
+        return players[0].isAlive() || players[1].isAlive() || players[2].isAlive() || players[3].isAlive();
+    }
+
     public void update() {
         if (!Labyrintale.setting && !Labyrintale.tutorial) tick();
         if (cPanel != null) cPanel.update();
@@ -320,14 +326,6 @@ public class AbstractLabyrinth {
                 second = 0;
             }
         }
-    }
-
-    public static boolean allAlive() {
-        return players[0].isAlive() && players[1].isAlive() && players[2].isAlive() && players[3].isAlive();
-    }
-
-    public static boolean stillAlive() {
-        return players[0].isAlive() || players[1].isAlive() || players[2].isAlive() || players[3].isAlive();
     }
 
     public enum RunType {

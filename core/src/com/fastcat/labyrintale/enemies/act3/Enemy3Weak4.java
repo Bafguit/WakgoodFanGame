@@ -25,8 +25,11 @@ public class Enemy3Weak4 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new HostStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2, false);
+        applyStatus(
+                new HostStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2,
+                false);
     }
 
     @Override

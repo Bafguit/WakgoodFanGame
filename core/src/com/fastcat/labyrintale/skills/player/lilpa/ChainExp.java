@@ -4,7 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.AttackAction;
-import com.fastcat.labyrintale.status.*;
+import com.fastcat.labyrintale.status.ShockStatus;
 
 public class ChainExp extends AbstractSkill {
 

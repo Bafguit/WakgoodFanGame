@@ -3,7 +3,9 @@ package com.fastcat.labyrintale.rooms.enemy.elite.act2;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
 import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
-import com.fastcat.labyrintale.enemies.act2.*;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Elite2;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Normal5;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Weak2;
 
 public class Act2Elite2 extends AbstractRoom {
 

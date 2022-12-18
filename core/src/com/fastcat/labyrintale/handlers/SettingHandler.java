@@ -1,7 +1,5 @@
 package com.fastcat.labyrintale.handlers;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
@@ -71,7 +69,7 @@ public final class SettingHandler {
 
     public static void save() {
         try {
-            //TODO java.File 사용하는 부분 해결 필요
+            // TODO java.File 사용하는 부분 해결 필요
             mapper.writeValue(settingFile, setting);
         } catch (IOException e) {
             e.printStackTrace();

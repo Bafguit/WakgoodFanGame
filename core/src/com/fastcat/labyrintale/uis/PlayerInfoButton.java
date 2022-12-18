@@ -2,7 +2,7 @@ package com.fastcat.labyrintale.uis;
 
 import static com.fastcat.labyrintale.Labyrintale.mapScreen;
 import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.CARD_BIG_DESC;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

@@ -15,8 +15,8 @@ import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelect
 
 public class SkillSelectButton extends AbstractUI {
 
-    private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
     public final SkillSelectGroup group;
+    private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
     public AbstractSkill skill;
     public boolean isTo;
 

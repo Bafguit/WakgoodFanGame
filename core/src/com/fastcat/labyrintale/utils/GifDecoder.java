@@ -28,7 +28,9 @@ public class GifDecoder {
      * File read status: Unable to open source.
      */
     public static final int STATUS_OPEN_ERROR = 2;
-    /** max decoder pixel stack size */
+    /**
+     * max decoder pixel stack size
+     */
     protected static final int MAX_STACK_SIZE = 4096;
 
     protected InputStream in;
@@ -67,59 +69,16 @@ public class GifDecoder {
     protected Vector<GifFrame> frames; // frames read from current file
     protected int frameCount;
 
-    private static class DixieMap extends Pixmap {
-        DixieMap(int w, int h, Pixmap.Format f) {
-            super(w, h, f);
-        }
-
-        DixieMap(int[] data, int w, int h, Pixmap.Format f) {
-            super(w, h, f);
-
-            int x, y;
-
-            for (y = 0; y < h; y++) {
-                for (x = 0; x < w; x++) {
-                    int pxl_ARGB8888 = data[x + y * w];
-                    int pxl_RGBA8888 = ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
-                    // convert ARGB8888 > RGBA8888
-                    drawPixel(x, y, pxl_RGBA8888);
-                }
-            }
-        }
-
-        void getPixels(int[] pixels, int offset, int stride, int x, int y, int width, int height) {
-            java.nio.ByteBuffer bb = getPixels();
-
-            int k, l;
-
-            for (k = y; k < y + height; k++) {
-                int _offset = offset;
-                for (l = x; l < x + width; l++) {
-                    int pxl = bb.getInt(4 * (l + k * width));
-
-                    // convert RGBA8888 > ARGB8888
-                    pixels[_offset++] = ((pxl >> 8) & 0x00ffffff) | ((pxl << 24) & 0xff000000);
-                }
-                offset += stride;
-            }
-        }
-    }
-
-    private static class GifFrame {
-        public GifFrame(DixieMap im, int del) {
-            image = im;
-            delay = del;
-        }
-
-        public DixieMap image;
-        public int delay;
+    public static Animation<Sprite> loadGIFAnimation(Animation.PlayMode playMode, InputStream is) {
+        GifDecoder gdec = new GifDecoder();
+        gdec.read(is);
+        return gdec.getAnimation(playMode);
     }
 
     /**
      * Gets display duration for specified frame.
      *
-     * @param n
-     *          int index of frame
+     * @param n int index of frame
      * @return delay in milliseconds
      */
     public int getDelay(int n) {
@@ -253,14 +212,13 @@ public class GifDecoder {
     public DixieMap getFrame(int n) {
         if (frameCount <= 0) return null;
         n = n % frameCount;
-        return ((GifFrame) frames.elementAt(n)).image;
+        return frames.elementAt(n).image;
     }
 
     /**
      * Reads GIF image from stream
      *
-     * @param is
-     *          containing GIF file.
+     * @param is containing GIF file.
      * @return read status code (0 = no errors)
      */
     public int read(InputStream is) {
@@ -469,8 +427,7 @@ public class GifDecoder {
     /**
      * Reads color table as 256 RGB integer values
      *
-     * @param ncolors
-     *          int number of colors to read
+     * @param ncolors int number of colors to read
      * @return int array containing 256 colors (packed ARGB with full alpha)
      */
     protected int[] readColorTable(int ncolors) {
@@ -707,7 +664,7 @@ public class GifDecoder {
         Pixmap frame = getFrame(0);
         int width = frame.getWidth();
         int height = frame.getHeight();
-        int vzones = (int) Math.sqrt((double) nrFrames);
+        int vzones = (int) Math.sqrt(nrFrames);
         int hzones = vzones;
 
         while (vzones * hzones < nrFrames) vzones++;
@@ -746,9 +703,51 @@ public class GifDecoder {
         return new Animation<Sprite>(frameDuration, texReg, playMode);
     }
 
-    public static Animation<Sprite> loadGIFAnimation(Animation.PlayMode playMode, InputStream is) {
-        GifDecoder gdec = new GifDecoder();
-        gdec.read(is);
-        return gdec.getAnimation(playMode);
+    private static class DixieMap extends Pixmap {
+        DixieMap(int w, int h, Pixmap.Format f) {
+            super(w, h, f);
+        }
+
+        DixieMap(int[] data, int w, int h, Pixmap.Format f) {
+            super(w, h, f);
+
+            int x, y;
+
+            for (y = 0; y < h; y++) {
+                for (x = 0; x < w; x++) {
+                    int pxl_ARGB8888 = data[x + y * w];
+                    int pxl_RGBA8888 = ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
+                    // convert ARGB8888 > RGBA8888
+                    drawPixel(x, y, pxl_RGBA8888);
+                }
+            }
+        }
+
+        void getPixels(int[] pixels, int offset, int stride, int x, int y, int width, int height) {
+            java.nio.ByteBuffer bb = getPixels();
+
+            int k, l;
+
+            for (k = y; k < y + height; k++) {
+                int _offset = offset;
+                for (l = x; l < x + width; l++) {
+                    int pxl = bb.getInt(4 * (l + k * width));
+
+                    // convert RGBA8888 > ARGB8888
+                    pixels[_offset++] = ((pxl >> 8) & 0x00ffffff) | ((pxl << 24) & 0xff000000);
+                }
+                offset += stride;
+            }
+        }
+    }
+
+    private static class GifFrame {
+        public DixieMap image;
+        public int delay;
+
+        public GifFrame(DixieMap im, int del) {
+            image = im;
+            delay = del;
+        }
     }
 }

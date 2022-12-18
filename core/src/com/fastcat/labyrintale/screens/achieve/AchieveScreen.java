@@ -14,13 +14,14 @@ import com.fastcat.labyrintale.uis.BgImg;
 
 public class AchieveScreen extends AbstractScreen {
 
-    private AbstractUI.TempUI bg = new AbstractUI.TempUI(FileHandler.getUi().get("ACHIEVE"));
+    public AchvCloseButton close = new AchvCloseButton(this);
+    public AchieveIcon[][] achvs = new AchieveIcon[7][3];
+    private final AbstractUI.TempUI bg =
+            new AbstractUI.TempUI(FileHandler.getUi().get("ACHIEVE"));
     private float alpha = 0;
     private boolean anim = false;
     private boolean isDown = true;
-    private BgImg bgImg;
-    public AchvCloseButton close = new AchvCloseButton(this);
-    public AchieveIcon[][] achvs = new AchieveIcon[7][3];
+    private final BgImg bgImg;
 
     public AchieveScreen() {
         bg.setPosition(0, Gdx.graphics.getHeight());

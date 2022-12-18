@@ -12,11 +12,11 @@ import com.fastcat.labyrintale.abstracts.AbstractEffect;
 public class UpIconEffect extends AbstractEffect {
 
     private final Sprite img;
-    private float alpha = 0.9f;
     private final float x;
-    private float y;
     private final float rw;
     private final float rh;
+    private float alpha = 0.9f;
+    private float y;
 
     public UpIconEffect(float x, float y, Sprite img) {
         super(x, y, 1.5f);

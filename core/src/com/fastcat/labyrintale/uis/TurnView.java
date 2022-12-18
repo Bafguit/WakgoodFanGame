@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 public class TurnView extends AbstractUI {
 
-    private LinkedList<TurnIcon> icons = new LinkedList<>();
+    private final LinkedList<TurnIcon> icons = new LinkedList<>();
     private TurnIcon now;
     private float nx, ny, nw;
 

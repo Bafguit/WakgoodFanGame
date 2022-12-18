@@ -2,7 +2,7 @@ package com.fastcat.labyrintale.rooms.enemy.elite.act1;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.enemies.*;
+import com.fastcat.labyrintale.enemies.EnemyPlaceholder;
 import com.fastcat.labyrintale.enemies.act1.WeakEnemy7;
 import com.fastcat.labyrintale.enemies.act1.WeakEnemy8;
 

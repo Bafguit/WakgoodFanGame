@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class DictCloseButton extends AbstractUI {
 
-    private DictScreen sc;
+    private final DictScreen sc;
 
     public DictCloseButton(DictScreen sc) {
         super(FileHandler.getUi().get("CLOSE_SET"));

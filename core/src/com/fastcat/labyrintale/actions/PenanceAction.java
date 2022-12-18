@@ -15,9 +15,9 @@ import com.fastcat.labyrintale.status.ResistPlusStatus;
 public class PenanceAction extends AbstractAction {
 
     private final Sprite img;
-    private AbstractSkill skill;
     public AttackType effect;
     public AbstractEntity.DamageInfo info;
+    private final AbstractSkill skill;
 
     public PenanceAction(AbstractSkill s, AbstractEntity target) {
         super(s.owner, target, 0.5f);

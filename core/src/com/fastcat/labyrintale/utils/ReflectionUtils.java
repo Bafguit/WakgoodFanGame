@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -41,7 +42,6 @@ public final class ReflectionUtils {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         URL packageURL;
         ArrayList<String> names = new ArrayList<String>();
-        ;
 
         packageName = packageName.replace(".", "/");
         packageURL = classLoader.getResource(packageName);
@@ -53,7 +53,7 @@ public final class ReflectionUtils {
             String entryName;
 
             // build jar file name, then loop through zipped entries
-            jarFileName = URLDecoder.decode(packageURL.getFile(), "UTF-8");
+            jarFileName = URLDecoder.decode(packageURL.getFile(), StandardCharsets.UTF_8);
             jarFileName = jarFileName.substring(5, jarFileName.indexOf("!"));
             // System.out.println(">" + jarFileName);
             jf = new JarFile(jarFileName);

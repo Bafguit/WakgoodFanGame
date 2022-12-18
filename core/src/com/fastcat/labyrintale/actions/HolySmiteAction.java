@@ -2,7 +2,9 @@ package com.fastcat.labyrintale.actions;
 
 import com.esotericsoftware.spine.AnimationState;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAction;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.effects.HitEffect;
 import com.fastcat.labyrintale.handlers.*;
 

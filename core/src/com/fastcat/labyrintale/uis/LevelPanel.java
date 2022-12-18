@@ -15,7 +15,9 @@ public class LevelPanel extends AbstractUI {
 
     private final Sprite back = FileHandler.getUi().get("LEVEL_BACK");
     private final TempUI exp = new TempUI(FileHandler.getUi().get("LEVEL_EXP"));
-    private float fx, fy, tx;
+    private final float fx;
+    private final float fy;
+    private final float tx;
 
     public LevelPanel() {
         super(FileHandler.getUi().get("LEVEL_LINE"));

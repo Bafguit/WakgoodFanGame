@@ -13,7 +13,7 @@ import com.fastcat.labyrintale.screens.credit.CreditScreen;
 
 public class CreditButton extends AbstractUI {
 
-    private Color fColor = Color.GRAY.cpy();
+    private final Color fColor = Color.GRAY.cpy();
     private final float aa = fColor.r;
     private float a = fColor.r;
 

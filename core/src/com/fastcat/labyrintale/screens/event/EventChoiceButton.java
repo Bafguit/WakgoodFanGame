@@ -1,7 +1,8 @@
 package com.fastcat.labyrintale.screens.event;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.FontData;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

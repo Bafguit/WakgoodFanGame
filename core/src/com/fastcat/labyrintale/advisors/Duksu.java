@@ -1,6 +1,9 @@
 package com.fastcat.labyrintale.advisors;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
 public class Duksu extends AbstractItem {
 

@@ -16,7 +16,7 @@ import com.fastcat.labyrintale.uis.LevelPanel;
 
 public class ControlPanel implements Disposable {
 
-    private static ShapeRenderer shr = new ShapeRenderer();
+    private static final ShapeRenderer shr = new ShapeRenderer();
 
     public InfoPanel infoPanel;
     public BattlePanel battlePanel;

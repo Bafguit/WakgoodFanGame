@@ -42,7 +42,7 @@ public class ShieldIcon extends AbstractUI {
 
     @Override
     protected void renderUi(SpriteBatch sb) {
-        if(overable) {
+        if (overable) {
             sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             renderKeywordCenter(sb, fontData, Integer.toString(e.block), x, y + sHeight * 0.5f, sWidth, sHeight);

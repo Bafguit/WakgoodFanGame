@@ -1,11 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.video.VideoPlayer;
-import com.badlogic.gdx.video.VideoPlayerCreator;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -16,10 +11,9 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
-import java.io.FileNotFoundException;
-
 public class MainMenuScreen extends AbstractScreen {
 
+    public final GifBg back;
     private final LogoText logo;
     private final GameStartButton gameStartButton;
     private final LoadButton loadButton;
@@ -27,7 +21,6 @@ public class MainMenuScreen extends AbstractScreen {
     private final OptionButton optionButton;
     private final CreditButton creditButton;
     private final ExitButton exitButton;
-    public final GifBg back;
 
     public MainMenuScreen() {
         setBg(FileHandler.getBg().get("BG_MAIN"));

@@ -1,14 +1,18 @@
 package com.fastcat.labyrintale;
 
-import com.badlogic.gdx.*;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
@@ -33,12 +37,16 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import com.fastcat.labyrintale.utils.AsynchronousGifLoader;
+import com.fastcat.labyrintale.utils.Gif;
+import com.google.common.util.concurrent.FutureCallback;
 import lombok.Getter;
 
 public class Labyrintale extends Game {
 
     public static Labyrintale game;
 
+    private static LifeCycle phase;
     public static PolygonSpriteBatch psb;
     public static SkeletonRenderer sr;
 
@@ -68,6 +76,7 @@ public class Labyrintale extends Game {
     public static boolean tutorial = false;
     public static boolean setting = false;
     public static float tick;
+    public static AbstractUI subText;
     private static AbstractScreen nextScreen = null;
     private static AbstractUI.TempUI change_h;
     private static AbstractUI.TempUI change_v;
@@ -78,12 +87,26 @@ public class Labyrintale extends Game {
     private static float alphaCount = 0;
     private static float alphaDex = 2;
     private static float duration = 0;
-    public static AbstractUI subText;
+    private static ScreenShake screenShake;
     public Array<AbstractScreen> tempScreen = new Array<>();
     public SpriteBatch sb;
+    private boolean loaded = false;
+
+    private boolean asyncComplete = false;
+
+    private boolean start = false;
 
     @Getter
-    private static ScreenShake screenShake;
+    private AssetManager assetManager;
+
+    private ResourceHandler resourceHandler;
+
+    private Queue<Runnable> queuedTasks = new Queue<>();
+
+    public static ScreenShake getScreenShake() {
+        if (screenShake == null) screenShake = ScreenShake.newInstance();
+        return screenShake;
+    }
 
     public static void fadeOutAndChangeScreen(AbstractScreen screen) {
         fadeOutAndChangeScreen(screen, 1.25f);
@@ -105,10 +128,10 @@ public class Labyrintale extends Game {
         tempFade = false;
         fadeType = type;
         duration = 0;
-        if(type == FadeType.HORIZONTAL) {
+        if (type == FadeType.HORIZONTAL) {
             change_h.setPosition(Gdx.graphics.getWidth(), 0);
             change_h_r.setPosition(0, 0);
-        } else if(type == FadeType.VERTICAL) {
+        } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         }
@@ -134,10 +157,10 @@ public class Labyrintale extends Game {
         tempFade = true;
         fadeType = type;
         duration = 0;
-        if(type == FadeType.HORIZONTAL) {
+        if (type == FadeType.HORIZONTAL) {
             change_h.setPosition(Gdx.graphics.getWidth(), 0);
             change_h_r.setPosition(0, 0);
-        } else if(type == FadeType.VERTICAL) {
+        } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         }
@@ -171,19 +194,48 @@ public class Labyrintale extends Game {
         }
     }
 
+    public static void returnToWay() {
+        wayScreen = new WayScreen();
+        fadeOutAndChangeScreen(wayScreen);
+    }
+
+    public static void openTutorial(TutorialScreen.TutorialType type) {
+        tutorialScreen.setType(type);
+        tutorial = true;
+    }
+
+    public static void closeTutorial() {
+        tutorial = false;
+    }
+
+    public static void openSetting() {
+        setting = true;
+        settingScreen.anim = true;
+    }
+
+    public static void closeSetting() {
+        SettingHandler.save();
+        setting = false;
+        settingScreen.anim = true;
+    }
+
     @Override
     public void create() {
+        phase = LifeCycle.STARTED;
+        assetManager = new AssetManager();
+        assetManager.setLoader(Gif.class, new AsynchronousGifLoader(new InternalFileHandleResolver()));
+        resourceHandler = new ResourceHandler(assetManager);
         Gdx.graphics.setResizable(false);
         Gdx.graphics.setTitle("Wakest Dungeon");
-        if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
             Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
             pix.setFilter(Pixmap.Filter.BiLinear);
             Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
         }
-
         SettingHandler.save();
 
-        screenShake = ScreenShake.newInstance();
+        getScreenShake();
+
         camera = new OrthographicCamera();
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         camera.setToOrtho(false, w, h);
@@ -191,39 +243,34 @@ public class Labyrintale extends Game {
         sb = new SpriteBatch();
         psb = new PolygonSpriteBatch();
         sr = new SkeletonRenderer();
+
         sr.setPremultipliedAlpha(false);
-        InputHandler.getInstance();
-        FileHandler.getInstance();
         FontHandler.getInstance();
-        SoundHandler.getInstance();
-        ActionHandler.getInstance();
-        GroupHandler.getInstance();
-        UnlockHandler.load();
-        AchieveHandler.load();
+        init();
+    }
 
-        game = this;
-        mainMenuScreen = new MainMenuScreen();
-        charSelectScreen = new CharSelectScreen();
-        settingScreen = new SettingScreen();
-        diffScreen = new DifficultyScreen();
-        libScreen = new LibraryScreen();
-        tutorialScreen = new TutorialScreen();
-        dictionary = new DictScreen();
-        achievement = new AchieveScreen();
-        // labyrinth = new AbstractLabyrinth();
-        fadeTex = FileHandler.getUi().get("FADE");
-        fadeTex.setPosition(0, 0);
+    private void init() {
 
-        change_h = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
-        change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
-        change_v = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
-        change_v_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+        InputHandler.getInstance();
+        AsyncHandler.scheduleAsyncTask(
+                () -> {
+                    FileHandler.getInstance().loadFiles();
+                    FileHandler.getInstance().loadResources(resourceHandler);
 
-        change_h_r.img.setFlip(true, false);
-        change_v_r.img.setFlip(false, true);
+                    return new Object();
+                },
+                new FutureCallback<Object>() {
+                    @Override
+                    public void onSuccess(Object result) {
+                        phase = LifeCycle.LOADING;
+                        System.out.println("phase : " + phase);
+                    }
 
-        mainMenuScreen.onCreate();
-        setScreen(new LogoScreen());
+                    @Override
+                    public void onFailure(Throwable t) {
+                        throw new RuntimeException(t);
+                    }
+                });
     }
 
     public void update() {
@@ -257,8 +304,64 @@ public class Labyrintale extends Game {
         SoundHandler.getInstance().update();
     }
 
+    /**
+     * Must be called after all assets are loaded
+     */
+    private void load() {
+
+        SoundHandler.getInstance();
+        ActionHandler.getInstance();
+        GroupHandler.getInstance();
+        UnlockHandler.load();
+        AchieveHandler.load();
+
+        game = this;
+        mainMenuScreen = new MainMenuScreen();
+        charSelectScreen = new CharSelectScreen();
+        settingScreen = new SettingScreen();
+        diffScreen = new DifficultyScreen();
+        libScreen = new LibraryScreen();
+        tutorialScreen = new TutorialScreen();
+        dictionary = new DictScreen();
+        achievement = new AchieveScreen();
+        // labyrinth = new AbstractLabyrinth();
+        fadeTex = FileHandler.getUi().get("FADE");
+        fadeTex.setPosition(0, 0);
+
+        change_h = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
+        change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
+        change_v = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+        change_v_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+
+        change_h_r.img.setFlip(true, false);
+        change_v_r.img.setFlip(false, true);
+
+        mainMenuScreen.onCreate();
+
+        setScreen(new LogoScreen());
+    }
+
+    public void submitTask(Runnable t) {
+        queuedTasks.addLast(t);
+    }
+
     @Override
     public void render() {
+        if (phase == LifeCycle.STARTED) return;
+
+        if (phase == LifeCycle.LOADING) {
+            if (resourceHandler.process()) phase = LifeCycle.FINISHING;
+
+            System.out.println("loading resources : " + resourceHandler.getProgress() * 100 + "% / phase : " + phase);
+
+            return;
+        }
+        if (phase == LifeCycle.FINISHING) {
+            load();
+            phase = LifeCycle.ENDED;
+            return;
+        }
+
         /** Update */
         update();
 
@@ -282,18 +385,18 @@ public class Labyrintale extends Game {
         if (tutorial) tutorialScreen.render(sb);
         if (setting || settingScreen.anim) settingScreen.render(sb);
         /** ============== */
-        if(fadeType == FadeType.FADE) {
+        if (fadeType == FadeType.FADE) {
             fade();
-        } else if(fadeType == FadeType.HORIZONTAL) {
+        } else if (fadeType == FadeType.HORIZONTAL) {
             change_H();
-        } else if(fadeType == FadeType.VERTICAL) {
+        } else if (fadeType == FadeType.VERTICAL) {
             change_V();
         }
 
         /*
-        sb.setColor(Color.WHITE);
-        sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
-*/
+        		sb.setColor(Color.WHITE);
+        		sb.draw(cursor.img, InputHandler.mx, InputHandler.my - cursor.height / 2, cursor.width / 2, cursor.height / 2);
+        */
         sb.end();
     }
 
@@ -329,7 +432,7 @@ public class Labyrintale extends Game {
             float xx = Gdx.graphics.getWidth() - change_h.sWidth;
             AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     if (change_h.x > xx) {
                         change_h.x -= change_h.sWidth * ac;
                         if (change_h.x <= xx) change_h.x = xx;
@@ -348,7 +451,7 @@ public class Labyrintale extends Game {
                 }
                 change_h.render(sb);
             } else {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float w = change_h_r.sWidth;
                     if (duration <= ad && change_h_r.x > -w) {
                         change_h_r.x -= w * ac;
@@ -371,7 +474,7 @@ public class Labyrintale extends Game {
             float add = Labyrintale.tick / alphaDex, ac = Labyrintale.tick / 0.3f, ad = 0.3f / alphaDex;
             AbstractScreen s = getCurScreen();
             if (!fadeIn) {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float yy = Gdx.graphics.getHeight() - change_v.sHeight;
                     if (change_v.y > yy) {
                         change_v.y -= change_v.sHeight * ac;
@@ -391,7 +494,7 @@ public class Labyrintale extends Game {
                 }
                 change_v.render(sb);
             } else {
-                if(s == null || s.type != AbstractScreen.ScreenType.LOAD) {
+                if (s == null || s.type != AbstractScreen.ScreenType.LOAD) {
                     float yy = -change_v_r.sHeight;
                     if (duration <= ad && change_v_r.y > yy) {
                         change_v_r.y -= change_v_r.sHeight * ac;
@@ -435,31 +538,6 @@ public class Labyrintale extends Game {
         if (this.screen != null) this.screen.show();
     }
 
-    public static void returnToWay() {
-        wayScreen = new WayScreen();
-        fadeOutAndChangeScreen(wayScreen);
-    }
-
-    public static void openTutorial(TutorialScreen.TutorialType type) {
-        tutorialScreen.setType(type);
-        tutorial = true;
-    }
-
-    public static void closeTutorial() {
-        tutorial = false;
-    }
-
-    public static void openSetting() {
-        setting = true;
-        settingScreen.anim = true;
-    }
-
-    public static void closeSetting() {
-        SettingHandler.save();
-        setting = false;
-        settingScreen.anim = true;
-    }
-
     @Override
     public void dispose() {
         sb.dispose();
@@ -480,6 +558,9 @@ public class Labyrintale extends Game {
     }
 
     public enum FadeType {
-        FADE, HORIZONTAL, VERTICAL, NONE
+        FADE,
+        HORIZONTAL,
+        VERTICAL,
+        NONE
     }
 }

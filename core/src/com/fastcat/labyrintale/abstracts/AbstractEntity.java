@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.abstracts;
 
 import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
-import static com.fastcat.labyrintale.Labyrintale.psb;
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.*;
 
 import com.badlogic.gdx.Gdx;
@@ -11,7 +10,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.*;
@@ -31,11 +29,10 @@ import java.util.Objects;
 
 public abstract class AbstractEntity implements Cloneable {
 
-    public Color pColor;
     public final int handSize;
     public final boolean isPlayer;
-
     public final transient Color animColor = new Color(1, 1, 1, 1);
+    public Color pColor;
     public transient HealthBarDamageEffect hbEffect = null;
 
     public TextureAtlas atlas;

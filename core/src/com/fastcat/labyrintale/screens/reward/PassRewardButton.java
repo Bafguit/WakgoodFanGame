@@ -8,7 +8,6 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 
 public class PassRewardButton extends AbstractUI {

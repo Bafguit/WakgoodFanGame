@@ -15,9 +15,9 @@ import com.fastcat.labyrintale.status.EnduranceStatus;
 public class ChargeAction extends AbstractAction {
 
     private final Sprite img;
-    private AbstractSkill skill;
     public AttackType effect;
     public AbstractEntity.DamageInfo info;
+    private final AbstractSkill skill;
 
     public ChargeAction(AbstractSkill s, AbstractSkill.SkillTarget target) {
         super(s.owner, target, 0.25f);

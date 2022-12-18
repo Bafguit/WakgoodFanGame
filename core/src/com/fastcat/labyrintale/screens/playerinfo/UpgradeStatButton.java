@@ -1,7 +1,8 @@
 package com.fastcat.labyrintale.screens.playerinfo;
 
 import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.SUB_NAME;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

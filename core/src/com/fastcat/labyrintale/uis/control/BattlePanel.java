@@ -1,6 +1,5 @@
 package com.fastcat.labyrintale.uis.control;
 
-import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
@@ -11,7 +10,10 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.uis.*;
+import com.fastcat.labyrintale.uis.EnergyPanel;
+import com.fastcat.labyrintale.uis.PlayerBigIcon;
+import com.fastcat.labyrintale.uis.StatIcon;
+import com.fastcat.labyrintale.uis.TurnView;
 
 public class BattlePanel implements Disposable {
 

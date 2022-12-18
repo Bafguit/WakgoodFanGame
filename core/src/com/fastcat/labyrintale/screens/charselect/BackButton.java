@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class BackButton extends AbstractUI {
 

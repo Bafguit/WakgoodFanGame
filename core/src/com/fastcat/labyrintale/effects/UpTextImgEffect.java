@@ -10,8 +10,8 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 public class UpTextImgEffect extends AbstractEffect {
 
     private final AbstractUI.TempUI img;
-    private float alpha = 1;
     private final float x;
+    private float alpha = 1;
     private float y;
 
     public UpTextImgEffect(float x, float y, Sprite img) {

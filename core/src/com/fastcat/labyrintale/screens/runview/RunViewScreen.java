@@ -9,15 +9,14 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.result.ResultAdvisor;
 import com.fastcat.labyrintale.screens.result.ResultText;
-import com.fastcat.labyrintale.screens.result.ScreenshotButton;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+import com.fastcat.labyrintale.utils.BuildInfo;
 import java.util.Objects;
 
 public class RunViewScreen extends AbstractScreen {

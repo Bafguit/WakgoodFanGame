@@ -91,9 +91,13 @@ public class AllSkillScreen extends AbstractScreen implements GetSelectedSlot {
         gets.slotSelected(player, index);
     }
 
+    public enum SlotType {
+        UPGRADE
+    }
+
     private static class PlayerSlotIcon extends AbstractUI {
 
-        private AbstractPlayer player;
+        private final AbstractPlayer player;
 
         public PlayerSlotIcon(AbstractPlayer player) {
             super(FileHandler.getUi().get("BORDER_P"));
@@ -106,9 +110,5 @@ public class AllSkillScreen extends AbstractScreen implements GetSelectedSlot {
             if (player != null) sb.draw(player.img, x, y, sWidth, sHeight);
             sb.draw(img, x, y, sWidth, sHeight);
         }
-    }
-
-    public enum SlotType {
-        UPGRADE
     }
 }

@@ -1,7 +1,7 @@
 package com.fastcat.labyrintale.handlers;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.currentFloor;
-import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.*;
+import static com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType.BOSS;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;

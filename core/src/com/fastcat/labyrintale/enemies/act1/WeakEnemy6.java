@@ -3,7 +3,8 @@ package com.fastcat.labyrintale.enemies.act1;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.*;
+import com.fastcat.labyrintale.skills.enemy.FuryE;
+import com.fastcat.labyrintale.skills.enemy.UnstoppableE;
 
 public class WeakEnemy6 extends AbstractEnemy {
 

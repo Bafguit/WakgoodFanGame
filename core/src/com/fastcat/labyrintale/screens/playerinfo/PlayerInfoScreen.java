@@ -82,6 +82,20 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
         statScreen = new StatSelectScreen();
     }
 
+    public static void view() {
+        playerInfoScreen.showing = true;
+        Labyrintale.addTempScreen(playerInfoScreen);
+    }
+
+    public static void remove() {
+        playerInfoScreen.showing = false;
+        if (playerInfoScreen.statScreen != null) {
+            Labyrintale.removeTempScreen(playerInfoScreen.statScreen);
+            playerInfoScreen.statScreen = null;
+        }
+        Labyrintale.removeTempScreen(playerInfoScreen);
+    }
+
     @Override
     public void update() {
         cType = Labyrintale.getBaseScreen().cType;
@@ -163,20 +177,6 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
             pIcons[i].render(sb);
         }
         /*if (AbstractLabyrinth.sp > 0) upStat.render(sb);*/
-    }
-
-    public static void view() {
-        playerInfoScreen.showing = true;
-        Labyrintale.addTempScreen(playerInfoScreen);
-    }
-
-    public static void remove() {
-        playerInfoScreen.showing = false;
-        if (playerInfoScreen.statScreen != null) {
-            Labyrintale.removeTempScreen(playerInfoScreen.statScreen);
-            playerInfoScreen.statScreen = null;
-        }
-        Labyrintale.removeTempScreen(playerInfoScreen);
     }
 
     @Override

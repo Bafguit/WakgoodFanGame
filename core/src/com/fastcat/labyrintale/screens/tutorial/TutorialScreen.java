@@ -9,19 +9,41 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class TutorialScreen extends AbstractScreen {
 
-    private Array<Sprite> img;
     public TutorialType type;
     public NextPageButton nextPage;
     public PrePageButton close;
     public TutorialImg bg;
     public int max;
     public int index;
+    private Array<Sprite> img;
 
     public TutorialScreen() {
         index = 0;
         nextPage = new NextPageButton(this);
         close = new PrePageButton(this);
         bg = new TutorialImg();
+    }
+
+    private static Array<Sprite> getImage(TutorialType type) {
+        Array<Sprite> temp = new Array<>();
+        if (type == TutorialType.CHARSELECT) {
+            for (int i = 1; i <= 3; i++) {
+                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
+            }
+        } else if (type == TutorialType.BATTLE) {
+            for (int i = 1; i <= 3; i++) {
+                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
+            }
+        } else if (type == TutorialType.WAY) {
+            for (int i = 1; i <= 2; i++) {
+                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
+            }
+        } else if (type == TutorialType.REWARD) {
+            for (int i = 1; i <= 2; i++) {
+                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
+            }
+        }
+        return temp;
     }
 
     @Override
@@ -53,28 +75,6 @@ public class TutorialScreen extends AbstractScreen {
         img = getImage(type);
         max = img.size - 1;
         index = 0;
-    }
-
-    private static Array<Sprite> getImage(TutorialType type) {
-        Array<Sprite> temp = new Array<>();
-        if (type == TutorialType.CHARSELECT) {
-            for (int i = 1; i <= 3; i++) {
-                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
-            }
-        } else if (type == TutorialType.BATTLE) {
-            for (int i = 1; i <= 3; i++) {
-                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
-            }
-        } else if (type == TutorialType.WAY) {
-            for (int i = 1; i <= 2; i++) {
-                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
-            }
-        } else if (type == TutorialType.REWARD) {
-            for (int i = 1; i <= 2; i++) {
-                temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
-            }
-        }
-        return temp;
     }
 
     public enum TutorialType {

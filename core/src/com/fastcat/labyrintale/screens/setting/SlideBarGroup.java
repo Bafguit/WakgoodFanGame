@@ -13,11 +13,11 @@ import com.fastcat.labyrintale.uis.slidebar.SlideBar;
 
 public class SlideBarGroup {
 
-    public SlideBar slideBar;
     public final SlideBar.SlideLine line;
     public final SlideBar.SlideSideL sideL;
     public final SlideBar.SlideSideR sideR;
     public final SlideBar.SlideButton button;
+    public SlideBar slideBar;
     public Title title;
 
     public SlideBarGroup(String text, int start, float x, float y) {

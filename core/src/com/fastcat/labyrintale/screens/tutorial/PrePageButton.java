@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.tutorial;
 
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,7 +11,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class PrePageButton extends AbstractUI {
 
-    private TutorialScreen sc;
+    private final TutorialScreen sc;
 
     public PrePageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));

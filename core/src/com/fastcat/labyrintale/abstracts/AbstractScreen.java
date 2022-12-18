@@ -14,14 +14,14 @@ import lombok.Getter;
 
 public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Disposable {
 
+    @Getter
+    private final EffectHandler effectHandler = EffectHandler.newInstance();
+
     public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
     public ScreenType type = ScreenType.OTHER;
     public Array<AtEndOfTempScreen> endTemp = new Array<>();
     public boolean playMusic = false;
     private Sprite bg;
-
-    @Getter
-    private final EffectHandler effectHandler = EffectHandler.newInstance();
 
     public final void updateAll() {
         update();

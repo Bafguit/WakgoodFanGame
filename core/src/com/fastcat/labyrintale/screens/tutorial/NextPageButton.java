@@ -2,7 +2,8 @@ package com.fastcat.labyrintale.screens.tutorial;
 
 import static com.badlogic.gdx.graphics.Color.LIGHT_GRAY;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.FontHandler.BUTTON;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,7 +13,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class NextPageButton extends AbstractUI {
 
-    private TutorialScreen sc;
+    private final TutorialScreen sc;
 
     public NextPageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));

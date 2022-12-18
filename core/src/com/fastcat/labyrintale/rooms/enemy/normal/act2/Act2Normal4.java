@@ -2,7 +2,9 @@ package com.fastcat.labyrintale.rooms.enemy.normal.act2;
 
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractRoom;
-import com.fastcat.labyrintale.enemies.act2.*;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Normal2;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Normal4;
+import com.fastcat.labyrintale.enemies.act2.Enemy2Normal5;
 
 public class Act2Normal4 extends AbstractRoom {
 

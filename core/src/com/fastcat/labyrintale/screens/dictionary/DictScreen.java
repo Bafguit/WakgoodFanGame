@@ -12,11 +12,6 @@ import com.fastcat.labyrintale.uis.BgImg;
 
 public class DictScreen extends AbstractScreen {
 
-    private AbstractUI.TempUI bg = new AbstractUI.TempUI(FileHandler.getUi().get("DICT"));
-    private float alpha = 0;
-    private boolean anim = false;
-    private boolean isDown = true;
-    private BgImg bgImg;
     public DictType type;
     public DictCloseButton close;
     public DictCharTabButton charTab = new DictCharTabButton(this);
@@ -25,6 +20,12 @@ public class DictScreen extends AbstractScreen {
     public DictItemRarityButton iSelected;
     public DictItemRarityButton[] items = new DictItemRarityButton[6];
     public DictCharButton[] chars = new DictCharButton[8];
+    private final AbstractUI.TempUI bg =
+            new AbstractUI.TempUI(FileHandler.getUi().get("DICT"));
+    private float alpha = 0;
+    private boolean anim = false;
+    private boolean isDown = true;
+    private final BgImg bgImg;
 
     public DictScreen() {
         type = DictType.CHAR;

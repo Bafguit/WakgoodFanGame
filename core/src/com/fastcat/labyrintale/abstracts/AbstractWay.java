@@ -6,11 +6,11 @@ import com.fastcat.labyrintale.handlers.GroupHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 
 public class AbstractWay {
+    public final AbstractChoice[] choices;
     public Sprite img = FileHandler.getCharImg().get(AbstractPlayer.PlayerClass.BURGER);
     public WayType type;
     public AbstractRoom enemies;
     public int selected = -1;
-    public final AbstractChoice[] choices;
     public boolean isDone = false;
 
     public AbstractWay(SaveHandler.WayData data) {

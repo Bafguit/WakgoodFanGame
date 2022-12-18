@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.difficulty;
 
+import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,16 +9,13 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
-
-import static com.fastcat.labyrintale.Labyrintale.*;
 
 public class DifficultyButton extends AbstractUI {
 
-    private Sprite locked = FileHandler.getUi().get("DIFF_LOCKED");
-    public AbstractLabyrinth.Difficulty diff;
     private final float aa = Color.LIGHT_GRAY.r;
+    public AbstractLabyrinth.Difficulty diff;
+    private final Sprite locked = FileHandler.getUi().get("DIFF_LOCKED");
     private float a = aa;
 
     public DifficultyButton(AbstractLabyrinth.Difficulty diff) {

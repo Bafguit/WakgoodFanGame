@@ -13,9 +13,9 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 public class ShieldPushAction extends AbstractAction {
 
     private final Sprite img;
-    private AbstractSkill skill;
     public AttackType effect;
     public AbstractEntity.DamageInfo info;
+    private final AbstractSkill skill;
 
     public ShieldPushAction(AbstractSkill s, AbstractSkill.SkillTarget target) {
         super(s.owner, target, 0.25f);

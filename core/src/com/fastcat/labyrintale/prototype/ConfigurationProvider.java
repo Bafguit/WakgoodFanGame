@@ -5,8 +5,8 @@ import com.opencsv.CSVReader;
 import java.util.List;
 
 /**
- * @author Singlerr
  * @param <T> Type that configuration need to apply.
+ * @author Singlerr
  */
 public interface ConfigurationProvider<T> {
     /***

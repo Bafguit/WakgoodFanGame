@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.screens.difficulty.BackButton;
-import com.fastcat.labyrintale.uis.GifBg;
 
 public class LibraryScreen extends AbstractScreen {
 

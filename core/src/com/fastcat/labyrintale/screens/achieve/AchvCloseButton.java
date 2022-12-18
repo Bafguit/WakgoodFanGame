@@ -8,7 +8,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class AchvCloseButton extends AbstractUI {
 
-    private AchieveScreen sc;
+    private final AchieveScreen sc;
 
     public AchvCloseButton(AchieveScreen sc) {
         super(FileHandler.getUi().get("CLOSE_SET"));

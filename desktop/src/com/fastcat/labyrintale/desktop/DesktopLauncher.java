@@ -1,7 +1,6 @@
 package com.fastcat.labyrintale.desktop;
 
-import com.badlogic.gdx.Files;
-import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
@@ -17,6 +16,7 @@ import java.io.File;
 
 public class DesktopLauncher {
 
+    @Deprecated
     private static void loadConfiguration() {
         try {
             File parentFile = new File("settings");
@@ -36,13 +36,13 @@ public class DesktopLauncher {
     public static void main(String[] arg) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
-        loadConfiguration();
         config.setWindowIcon(Files.FileType.Internal, "img/icon.png");
         config.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
         config.useVsync(true);
         config.setResizable(false);
         //config.setInitialVisible(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
+
 
         SettingHandler.initialize();
 
@@ -58,49 +58,7 @@ public class DesktopLauncher {
             config.setWindowedMode(displayMode.width, displayMode.height);
         }
 
-        config.setWindowListener(new Lwjgl3WindowListener() {
-            @Override
-            public void created(Lwjgl3Window window) {
-                LibGdxHandle.setCurrentWindow(window);
-            }
-
-            @Override
-            public void iconified(boolean isIconified) {
-
-            }
-
-            @Override
-            public void maximized(boolean isMaximized) {
-
-            }
-
-            @Override
-            public void focusLost() {
-
-            }
-
-            @Override
-            public void focusGained() {
-
-            }
-
-            @Override
-            public boolean closeRequested() {
-                return false;
-            }
-
-            @Override
-            public void filesDropped(String[] files) {
-
-            }
-
-            @Override
-            public void refreshRequested() {
-
-            }
-        });
-
-        Lwjgl3Application app = new Lwjgl3Application(new Labyrintale(), config);
+        new Lwjgl3Application(new Labyrintale(), config);
 
 /*
         try {

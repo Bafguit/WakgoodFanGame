@@ -5,7 +5,10 @@ import com.fastcat.labyrintale.abstracts.AbstractEvent;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
-import com.fastcat.labyrintale.events.choices.*;
+import com.fastcat.labyrintale.events.choices.EndEventChoice;
+import com.fastcat.labyrintale.events.choices.ItemRewardEventChoice;
+import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
+import com.fastcat.labyrintale.events.choices.SkillRewardEventChoice;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.items.special.GolemHead;
 

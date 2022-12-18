@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.shop;
 
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -10,8 +12,6 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class ShopScreen extends AbstractScreen {
 
@@ -29,23 +29,23 @@ public class ShopScreen extends AbstractScreen {
             ShopRoom.SkillItem s = room.skills[i];
             ShopItemButton b = new ShopItemButton(s);
             b.setPosition((662 + 200 * i) * scale, 957 * scale);
-            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
-                    (685 + 200 * i) * scale, (665 + 241) * scale, 45, 45);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(
+                    FileHandler.getUi().get("GOLD_SHOP"), (685 + 200 * i) * scale, (665 + 241) * scale, 45, 45);
             b.gold = ui;
             skills[i] = b;
         }
         for (int i = 0; i < 5; i++) {
             ShopItemButton b = new ShopItemButton(room.items[i]);
             b.setPosition((662 + 200 * i) * scale, 716 * scale);
-            AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
-                    (685 + 200 * i) * scale, 665 * scale, 45, 45);
+            AbstractUI.TempUI ui = new AbstractUI.TempUI(
+                    FileHandler.getUi().get("GOLD_SHOP"), (685 + 200 * i) * scale, 665 * scale, 45, 45);
             b.gold = ui;
             items[i] = b;
         }
         roll = new ShopItemButton(room.roll);
         roll.setPosition(1662 * scale, 716 * scale);
-        AbstractUI.TempUI ui = new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"),
-                1685 * scale, 665 * scale, 45, 45);
+        AbstractUI.TempUI ui =
+                new AbstractUI.TempUI(FileHandler.getUi().get("GOLD_SHOP"), 1685 * scale, 665 * scale, 45, 45);
         roll.gold = ui;
         pass = new PassShopButton();
         setBg(FileHandler.getBg().get("BG_SHOP"));
@@ -67,8 +67,8 @@ public class ShopScreen extends AbstractScreen {
         for (ShopItemButton b : items) b.render(sb);
         roll.render(sb);
         String t;
-        if(AbstractLabyrinth.advisor.id.equals("rusuk")) t = "∞";
-        else if(!roll.item.isDone) t = "1";
+        if (AbstractLabyrinth.advisor.id.equals("rusuk")) t = "∞";
+        else if (!roll.item.isDone) t = "1";
         else t = "&r<0>";
         FontHandler.renderColorCenter(sb, FontHandler.ROLL, t, 1864 * scale, 819 * scale, 56 * scale);
         pass.render(sb);

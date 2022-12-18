@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ActionHandler {
 
-    private final Queue<AbstractAction> actionList = new Queue<>();
-
     @Getter
     private static final Array<EventCallback<AbstractAction>> listeners = new Array<>();
 
@@ -26,6 +24,7 @@ public final class ActionHandler {
      */
     private static ActionHandler instance;
 
+    private final Queue<AbstractAction> actionList = new Queue<>();
     private AbstractAction current;
 
     /***

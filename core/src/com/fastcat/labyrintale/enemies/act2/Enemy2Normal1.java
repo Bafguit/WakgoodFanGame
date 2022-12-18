@@ -27,8 +27,11 @@ public class Enemy2Normal1 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new ArmourStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10, false);
+        applyStatus(
+                new ArmourStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 15 : 10,
+                false);
         block = 10;
     }
 

@@ -4,7 +4,10 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
+import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.GifBg;
@@ -12,12 +15,12 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RestScreen extends AbstractScreen {
 
+    public final GifBg fire, light;
     public int count;
     public RestButton[] buttons;
     public RestDesc[] desc;
     public AbstractUI.TempUI[] chars = new AbstractUI.TempUI[4];
     public RestEndButton end;
-    public final GifBg fire, light;
     public int alive = 0;
 
     public RestScreen() {

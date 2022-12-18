@@ -2,7 +2,8 @@ package com.fastcat.labyrintale.skills.player.jururu;
 
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.actions.*;
+import com.fastcat.labyrintale.actions.ApplyStatusAction;
+import com.fastcat.labyrintale.actions.PenanceAction;
 import com.fastcat.labyrintale.status.ResistMinusStatus;
 
 public class Penance extends AbstractSkill {

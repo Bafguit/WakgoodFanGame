@@ -1,7 +1,10 @@
 package com.fastcat.labyrintale.items.starter;
 
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.actions.HealAction;
 
 public class BurgerHat extends AbstractItem {

@@ -44,7 +44,6 @@ public class PlayerTurnStartAction extends AbstractAction {
                 }
             }
             if (AbstractSkill.noMoreSkill()) battleScreen.endPlayerTurn();
-            ;
         }
     }
 }

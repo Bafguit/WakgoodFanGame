@@ -8,8 +8,8 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CheckBox extends AbstractUI {
 
-    public boolean checked;
     private final Sprite on = FileHandler.getUi().get("CHECK_ON");
+    public boolean checked;
 
     public CheckBox(boolean checked) {
         super(FileHandler.getUi().get("CHECK_OFF"));

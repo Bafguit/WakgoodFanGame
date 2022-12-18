@@ -2,7 +2,6 @@ package com.fastcat.labyrintale.handlers;
 
 import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonValue;
@@ -12,10 +11,10 @@ import java.util.HashMap;
 
 public class AchieveHandler {
 
-    private static FileHandle data = Gdx.files.local("data/achievements.json");
-    private static FileHandle aCheck = Gdx.files.local("data/checks.json");
     public static HashMap<Achievement, Integer> achvs = new HashMap<>();
     public static AchieveCheck check = new AchieveCheck();
+    private static final FileHandle data = Gdx.files.local("data/achievements.json");
+    private static final FileHandle aCheck = Gdx.files.local("data/checks.json");
 
     public static void load() {
         if (data.exists()) {
@@ -71,18 +70,6 @@ public class AchieveHandler {
         }
     }
 
-    public static class AchvLabCheck {
-        public boolean NO_USE_GOLD = true;
-        public boolean IMMORTAL = false;
-        public int REFLECT = 0;
-    }
-
-    public static class AchieveCheck {
-        public HashMap<AbstractAdvisor.AdvisorClass, Boolean> ALL_ADV = new HashMap<>();
-        public int DEATH;
-        public int WIN;
-    }
-
     public enum Achievement {
         COFFIN,
         ALL_CHAR,
@@ -105,5 +92,17 @@ public class AchieveHandler {
         FASTEST,
         DEATH,
         WIN
+    }
+
+    public static class AchvLabCheck {
+        public boolean NO_USE_GOLD = true;
+        public boolean IMMORTAL = false;
+        public int REFLECT = 0;
+    }
+
+    public static class AchieveCheck {
+        public HashMap<AbstractAdvisor.AdvisorClass, Boolean> ALL_ADV = new HashMap<>();
+        public int DEATH;
+        public int WIN;
     }
 }

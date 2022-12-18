@@ -9,9 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
-import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
@@ -115,7 +117,6 @@ public class CharSelectScreen extends AbstractScreen {
             SettingHandler.setting.charTutorial = false;
             SettingHandler.save();
             AbstractPlayer p = aChars[0].player;
-            ;
             selected = p;
             group.setPlayer(p);
         }

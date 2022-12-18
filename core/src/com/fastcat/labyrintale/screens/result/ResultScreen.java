@@ -9,7 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
@@ -19,6 +18,7 @@ import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoIcon;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoItemIcon;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+import com.fastcat.labyrintale.utils.BuildInfo;
 import java.util.HashMap;
 
 public class ResultScreen extends AbstractScreen implements GetSelectedStat {

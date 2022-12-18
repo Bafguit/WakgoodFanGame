@@ -61,8 +61,11 @@ public class LoadingScreen extends AbstractScreen {
                                     || tr.type == AbstractRoom.RoomType.BOSS)
                             && !tr.battleDone) {
                         battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
-                        fadeOutAndChangeScreen(battleScreen,
-                                tr.type == AbstractRoom.RoomType.BOSS ? Labyrintale.FadeType.VERTICAL : Labyrintale.FadeType.FADE);
+                        fadeOutAndChangeScreen(
+                                battleScreen,
+                                tr.type == AbstractRoom.RoomType.BOSS
+                                        ? Labyrintale.FadeType.VERTICAL
+                                        : Labyrintale.FadeType.FADE);
                     } else {
                         fadeOutAndChangeScreen(Labyrintale.wayScreen);
                     }

@@ -21,9 +21,9 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
     public HealSelectText playerSelectText;
     public HealButton selected;
     public HealButton[] exp;
-    private HealReward.HealType selectedType;
     public GetRewardDone rewardDone;
-    private CancelHealButton cancel;
+    private HealReward.HealType selectedType;
+    private final CancelHealButton cancel;
 
     public HealSelectScreen() {
         playerSelectText = new HealSelectText();

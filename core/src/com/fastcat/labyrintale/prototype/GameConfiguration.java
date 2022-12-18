@@ -13,11 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public final class GameConfiguration {
-    private HashMap<Class<? extends ConfigurationProvider<?>>, ConfigurationProvider<?>> loadedProviders;
-
-    private List<Class<? extends ConfigurationProvider<?>>> providerClasses;
-
     private static GameConfiguration instance;
+    private final HashMap<Class<? extends ConfigurationProvider<?>>, ConfigurationProvider<?>> loadedProviders;
+    private List<Class<? extends ConfigurationProvider<?>>> providerClasses;
 
     private GameConfiguration() {
         loadedProviders = new HashMap<>();
@@ -26,16 +24,6 @@ public final class GameConfiguration {
     public static GameConfiguration getInstance() {
         if (instance == null) instance = new GameConfiguration();
         return instance;
-    }
-
-    /***
-     * Set provider classes.
-     * Note that provider classes registered before are removed.
-     * @param providerClasses class provider array to register.
-     */
-    @SafeVarargs
-    public final void setProviderClasses(Class<? extends ConfigurationProvider<?>>... providerClasses) {
-        this.providerClasses = Arrays.asList(providerClasses);
     }
 
     public Collection<ConfigurationProvider<?>> getConfigurationProviders() {
@@ -48,6 +36,16 @@ public final class GameConfiguration {
      */
     public List<Class<? extends ConfigurationProvider<?>>> getProviderClasses() {
         return providerClasses;
+    }
+
+    /***
+     * Set provider classes.
+     * Note that provider classes registered before are removed.
+     * @param providerClasses class provider array to register.
+     */
+    @SafeVarargs
+    public final void setProviderClasses(Class<? extends ConfigurationProvider<?>>... providerClasses) {
+        this.providerClasses = Arrays.asList(providerClasses);
     }
 
     /***

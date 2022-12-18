@@ -5,7 +5,6 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.AttackStatus;
 import com.fastcat.labyrintale.status.SpeedStatus;
-import com.fastcat.labyrintale.status.SpellStatus;
 
 public class Intimidate extends AbstractSkill {
 

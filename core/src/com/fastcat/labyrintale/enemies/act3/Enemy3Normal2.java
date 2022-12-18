@@ -4,7 +4,10 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.skills.enemy.*;
+import com.fastcat.labyrintale.skills.enemy.CorrosE;
+import com.fastcat.labyrintale.skills.enemy.DoubleE;
+import com.fastcat.labyrintale.skills.enemy.FuryE;
+import com.fastcat.labyrintale.skills.enemy.StrikeE;
 import com.fastcat.labyrintale.status.PunishStatus;
 
 public class Enemy3Normal2 extends AbstractEnemy {
@@ -25,8 +28,11 @@ public class Enemy3Normal2 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(new PunishStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
-                this, AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2, false);
+        applyStatus(
+                new PunishStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2),
+                this,
+                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 2,
+                false);
     }
 
     @Override

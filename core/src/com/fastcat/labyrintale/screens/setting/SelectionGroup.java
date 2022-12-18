@@ -90,7 +90,7 @@ public class SelectionGroup {
 
         @Override
         protected void renderUi(SpriteBatch sb) {
-            if(!ui.can) sb.setColor(Color.DARK_GRAY);
+            if (!ui.can) sb.setColor(Color.DARK_GRAY);
             Color c = fontData.color;
             fontData.color = sb.getColor();
             renderKeywordCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
@@ -118,7 +118,7 @@ public class SelectionGroup {
 
         @Override
         protected void renderUi(SpriteBatch sb) {
-            if(!overable) sb.setColor(Color.DARK_GRAY);
+            if (!overable) sb.setColor(Color.DARK_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }
@@ -143,7 +143,7 @@ public class SelectionGroup {
 
         @Override
         protected void renderUi(SpriteBatch sb) {
-            if(!overable) sb.setColor(Color.DARK_GRAY);
+            if (!overable) sb.setColor(Color.DARK_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
         }
     }

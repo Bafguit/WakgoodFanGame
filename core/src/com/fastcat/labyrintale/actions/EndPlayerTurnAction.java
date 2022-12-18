@@ -2,7 +2,7 @@ package com.fastcat.labyrintale.actions;
 
 import static com.fastcat.labyrintale.Labyrintale.battleScreen;
 
-import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.screens.battle.SkillButton;
 

@@ -3,7 +3,8 @@ package com.fastcat.labyrintale.skills.player.ine;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
-import com.fastcat.labyrintale.status.*;
+import com.fastcat.labyrintale.status.CriticalPlusStatus;
+import com.fastcat.labyrintale.status.ResistPlusStatus;
 
 public class Channeling extends AbstractSkill {
 
