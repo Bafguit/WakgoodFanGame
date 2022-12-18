@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class ConfirmButton extends AbstractUI {
 
@@ -13,7 +14,7 @@ public class ConfirmButton extends AbstractUI {
 
     public ConfirmButton(ConfirmSlotScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.4f);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 576 * InputHandler.scale);
         fontData = BUTTON;
         text = "결정";
         this.sc = sc;

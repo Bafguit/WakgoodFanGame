@@ -28,7 +28,7 @@ public class MapScreen extends AbstractScreen {
     public MapScreen() {
         cType = Labyrintale.getBaseScreen().cType;
         type = ScreenType.MAP;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale, b = w * 0.1f;
         for (int i = 0; i < 13; i++) {
             for (int j = 0; j < 3; j++) {
                 AbstractChoice tw = currentFloor.ways[i].choices[j];
@@ -54,7 +54,7 @@ public class MapScreen extends AbstractScreen {
     }
 
     public void refreshFloor() {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), b = w * 0.1f;
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale, b = w * 0.1f;
         for (int i = 0; i < 13; i++) {
             for (int j = 0; j < 3; j++) {
                 AbstractChoice c = currentFloor.ways[i].choices[j];
@@ -105,7 +105,7 @@ public class MapScreen extends AbstractScreen {
 
         shr.begin(ShapeRenderer.ShapeType.Filled);
         shr.setColor(Color.DARK_GRAY);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
 
         Vector2 v1 = new Vector2(w * 0.1f, 0), v2 = new Vector2(w * 0.1666f, 0);
         for (int i = 1; i < 13; i++) {

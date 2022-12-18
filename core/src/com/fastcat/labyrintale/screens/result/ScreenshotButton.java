@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
+
 import java.nio.ByteBuffer;
 import java.util.zip.Deflater;
 
@@ -21,7 +23,7 @@ public class ScreenshotButton extends AbstractUI {
 
     public ScreenshotButton() {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.83f - sWidth, Gdx.graphics.getHeight() * 0.05f);
+        setPosition(Gdx.graphics.getWidth() * 0.83f - sWidth, 72 * InputHandler.scale);
         fontData = BUTTON;
         text = "스크린샷";
         setDate("");

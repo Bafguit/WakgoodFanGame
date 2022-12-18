@@ -9,7 +9,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.fastcat.labyrintale.Labyrintale;
+import com.fastcat.labyrintale.utils.FillViewport;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -61,9 +63,9 @@ public class ScreenShake {
         this.intervalSpeed = 0.7F;
     }
 
-    public void update(FitViewport viewport) {
-        sw = Gdx.graphics.getWidth();
-        sh = Gdx.graphics.getHeight();
+    public void update(Viewport viewport) {
+        sw = viewport.getWorldWidth();
+        sh = viewport.getWorldHeight();
         iw = (int) sw;
         ih = (int) sh;
         if (this.duration != 0.0F) {

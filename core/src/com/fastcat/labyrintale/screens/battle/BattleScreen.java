@@ -63,7 +63,7 @@ public class BattleScreen extends AbstractScreen {
         setBg(AbstractLabyrinth.curBg);
         ground.setPosition(0, 0);
         w = Gdx.graphics.getWidth();
-        h = Gdx.graphics.getHeight();
+        h = 1440 * scale;
         for (int i = 0; i < 4; i++) {
             PlayerBattleView pv = new PlayerBattleView(AbstractLabyrinth.players[i]);
             pv.entity.setAnimXY(w * 0.425f - w * 0.1f * i, h * 0.515f - 40 * scale);
@@ -260,23 +260,23 @@ public class BattleScreen extends AbstractScreen {
         for (int i = 0; i < 4; i++) {
             PlayerBattleView tp = players[i];
             EnemyBattleView te = enemies[i];
-            float px = tp.entity.animX - 80 * scale, py = tp.entity.animY - h * 0.025f;
+            float px = tp.entity.animX - w * 0.031f, py = tp.entity.animY - h * 0.025f;
             float ex = te.entity.animX, ey = te.entity.animY - h * 0.025f, ew;
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.BOSS) {
-                ew = 359 * scale;
+                ew = w * 0.14f;
             } else {
-                ew = 160 * scale;
+                ew = w * 0.062f;
             }
             ex -= ew / 2;
             if (!tp.entity.isDead) {
-                sb.draw(hbb, px, py, 160 * scale, 22 * scale);
+                sb.draw(hbb, px, py, w * 0.0625f, 22 * scale);
                 sb.draw(
                         hb.img,
                         px,
                         py,
                         0,
                         0,
-                        160 * scale,
+                        w * 0.062f,
                         22 * scale,
                         Math.max(((float) tp.entity.health) / ((float) tp.entity.maxHealth), 0),
                         1,
@@ -287,7 +287,7 @@ public class BattleScreen extends AbstractScreen {
                         tp.entity.health + "/" + tp.entity.maxHealth,
                         px,
                         py + hb.sHeight / 2,
-                        160 * scale,
+                        w * 0.062f,
                         hb.sHeight);
             }
             if (!te.entity.isDead) {

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class LibButton extends AbstractUI {
@@ -20,7 +21,7 @@ public class LibButton extends AbstractUI {
 
     public LibButton() {
         super(FileHandler.getUi().get("NEXT"));
-        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.32f);
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, 460 * InputHandler.scale);
         fontData = new FontData(MEDIUM, 53, false, false);
         text = "도서관";
         showImg = false;

@@ -43,7 +43,7 @@ public class AchieveScreen extends AbstractScreen {
     @Override
     public void update() {
         if (anim) {
-            float h = Gdx.graphics.getHeight();
+            float h = 1440 * InputHandler.scale;
             if (isDown) {
                 alpha += Labyrintale.tick * 5 * 0.8f;
                 bg.y -= h * 5 * Labyrintale.tick;

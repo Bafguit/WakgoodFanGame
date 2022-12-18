@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.screens.mainmenu;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
@@ -45,6 +46,7 @@ public class MainMenuScreen extends AbstractScreen {
 
     @Override
     public void update() {
+        System.out.println("W: " + Gdx.graphics.getWidth() + " | H: " + Gdx.graphics.getHeight());
         logo.update();
         gameStartButton.update();
         loadButton.update();

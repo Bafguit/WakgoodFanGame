@@ -11,10 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.effects.FloorChangeEffect;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.PlayerWayView;
@@ -45,7 +42,7 @@ public class WayScreen extends AbstractScreen {
         way = wy;
         cType = ControlPanel.ControlType.BASIC;
         ground.setPosition(0, 0);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         for (int i = 0; i < 4; i++) {
             PlayerWayView pv = new PlayerWayView(AbstractLabyrinth.players[i]);
             pv.setPosition(w * 0.425f - w * 0.1f * i - pv.sWidth / 2, h * 0.49f - 40 * scale);
@@ -114,7 +111,7 @@ public class WayScreen extends AbstractScreen {
             }
         }
         sb.draw(ground.img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        float h = Gdx.graphics.getHeight();
+        float h = 1440 * InputHandler.scale;
         for (int i = 0; i < 4; i++) {
             PlayerWayView tp = players[i];
             float px = tp.player.animX - 80 * scale, py = tp.player.animY - h * 0.025f;

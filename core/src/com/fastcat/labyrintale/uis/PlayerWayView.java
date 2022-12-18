@@ -13,6 +13,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.actions.SelectMoveTargetAction;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 
 public class PlayerWayView extends AbstractUI implements GetSelectedTarget {
@@ -52,7 +53,7 @@ public class PlayerWayView extends AbstractUI implements GetSelectedTarget {
     public void onTargetSelected(AbstractEntity e) {
         AbstractPlayer tar = (AbstractPlayer) e;
         int pi = player.index, ti = tar.index;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         player.index = ti;
         tar.index = pi;
         AbstractLabyrinth.players[ti] = player;

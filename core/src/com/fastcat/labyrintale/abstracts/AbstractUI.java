@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.abstracts;
 import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,10 +17,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.LogHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.handlers.*;
 
 public abstract class AbstractUI implements Disposable {
 
@@ -28,6 +26,7 @@ public abstract class AbstractUI implements Disposable {
     public Array<SubText> subTexts;
     public AbstractUI parent;
     public SubText.SubWay subWay = SubText.SubWay.UP;
+    protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
     public String text;
     public FontData fontData;
@@ -35,17 +34,21 @@ public abstract class AbstractUI implements Disposable {
     public float y;
     public float localX;
     public float localY;
+    protected float cursorX;
+    protected float cursorY;
     public float width;
     public float height;
     public float sWidth;
     public float sHeight;
     public boolean over;
     public boolean isPixmap = false;
+    private boolean justOver = false;
+    private boolean hasClick = false;
     public boolean hasOver = false;
     public boolean overable = true;
-    public boolean instantClick = false;
     public boolean enabled;
     public boolean showImg = true;
+
     public float uiScale;
     public boolean clicked;
     public boolean clicking;
@@ -53,11 +56,6 @@ public abstract class AbstractUI implements Disposable {
     public boolean trackable = false;
     public boolean tracking = false;
     public boolean mute = false;
-    protected LogHandler logger = new LogHandler(this.getClass().getName());
-    protected float cursorX;
-    protected float cursorY;
-    private boolean justOver = false;
-    private boolean hasClick = false;
 
     public AbstractUI(String imgPath) {
         this(imgPath, -10000, -10000);
@@ -105,22 +103,21 @@ public abstract class AbstractUI implements Disposable {
         }
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        if (isDesktop) {
+        justOver = over;
+        hasOver = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
+        if(isDesktop) {
             clicked = isLeftClick;
             clicking = isLeftClicking;
-            hasClick = true;
+            over = hasClick = hasOver;
         } else {
-            clicked = (instantClick || hasClick) && isLeftClick;
-            clicking = (instantClick || hasClick) && isLeftClicking;
-            hasOver = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
-            if (isLeftClick) {
+            clicked = hasClick && hasOver && isLeftClick;
+            clicking = hasClick && hasOver && isLeftClicking;
+            if(isLeftClick) {
                 hasClick = hasOver && !clicked;
             }
         }
 
         if (enabled && !Labyrintale.fading) {
-            justOver = over;
-            over = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
 
             if (over && isPixmap) {
                 Color c = getSpritePixColor();
@@ -135,7 +132,6 @@ public abstract class AbstractUI implements Disposable {
                 if (overable) {
                     cursorX = mx - x;
                     cursorY = my - y;
-                    Labyrintale.subText = this;
                     subTexts = getSubText();
                     if (clicked) {
                         if (clickable) {
@@ -146,8 +142,13 @@ public abstract class AbstractUI implements Disposable {
                     if (clicking) onClicking();
                 }
             }
-
+            over = hasClick;
             updateButton();
+        } else {
+            over = false;
+            hasOver = false;
+            hasClick = false;
+            clicked = false;
         }
     }
 

@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -37,6 +38,7 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import com.fastcat.labyrintale.utils.FillViewport;
 import com.fastcat.labyrintale.utils.AsynchronousGifLoader;
 import com.fastcat.labyrintale.utils.Gif;
 import com.google.common.util.concurrent.FutureCallback;
@@ -51,7 +53,7 @@ public class Labyrintale extends Game {
     public static SkeletonRenderer sr;
 
     public static OrthographicCamera camera;
-    public static FitViewport viewport;
+    public static Viewport viewport;
 
     public static AbstractLabyrinth labyrinth;
     public static MainMenuScreen mainMenuScreen;
@@ -76,7 +78,6 @@ public class Labyrintale extends Game {
     public static boolean tutorial = false;
     public static boolean setting = false;
     public static float tick;
-    public static AbstractUI subText;
     private static AbstractScreen nextScreen = null;
     private static AbstractUI.TempUI change_h;
     private static AbstractUI.TempUI change_v;
@@ -194,31 +195,6 @@ public class Labyrintale extends Game {
         }
     }
 
-    public static void returnToWay() {
-        wayScreen = new WayScreen();
-        fadeOutAndChangeScreen(wayScreen);
-    }
-
-    public static void openTutorial(TutorialScreen.TutorialType type) {
-        tutorialScreen.setType(type);
-        tutorial = true;
-    }
-
-    public static void closeTutorial() {
-        tutorial = false;
-    }
-
-    public static void openSetting() {
-        setting = true;
-        settingScreen.anim = true;
-    }
-
-    public static void closeSetting() {
-        SettingHandler.save();
-        setting = false;
-        settingScreen.anim = true;
-    }
-
     @Override
     public void create() {
         phase = LifeCycle.STARTED;
@@ -237,14 +213,16 @@ public class Labyrintale extends Game {
         getScreenShake();
 
         camera = new OrthographicCamera();
+        InputHandler.getInstance();
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         camera.setToOrtho(false, w, h);
-        viewport = new FitViewport(w, h);
+        viewport = new FillViewport(w, h);
         sb = new SpriteBatch();
         psb = new PolygonSpriteBatch();
         sr = new SkeletonRenderer();
 
         sr.setPremultipliedAlpha(false);
+        FileHandler.getInstance();
         FontHandler.getInstance();
         init();
     }
@@ -279,7 +257,6 @@ public class Labyrintale extends Game {
         screenShake.update(viewport);
         InputHandler.getInstance().update();
         FontHandler.getInstance().update();
-        subText = null;
         if (!setting && !tutorial && labyrinth != null) {
             labyrinth.update();
         }
@@ -366,7 +343,7 @@ public class Labyrintale extends Game {
         update();
 
         /** Render */
-        ScreenUtils.clear(0, 0, 0, 0.3f);
+        ScreenUtils.clear(0, 0, 0, 1);
         psb.setProjectionMatrix(camera.combined);
         sb.setProjectionMatrix(camera.combined);
         sb.enableBlending();
@@ -381,7 +358,6 @@ public class Labyrintale extends Game {
             }
         }
         if (AbstractLabyrinth.cPanel != null) AbstractLabyrinth.cPanel.render(sb);
-        if (subText != null) subText.renderSub(sb);
         if (tutorial) tutorialScreen.render(sb);
         if (setting || settingScreen.anim) settingScreen.render(sb);
         /** ============== */
@@ -536,6 +512,31 @@ public class Labyrintale extends Game {
 
         this.screen = screen;
         if (this.screen != null) this.screen.show();
+    }
+
+    public static void returnToWay() {
+        wayScreen = new WayScreen();
+        fadeOutAndChangeScreen(wayScreen);
+    }
+
+    public static void openTutorial(TutorialScreen.TutorialType type) {
+        tutorialScreen.setType(type);
+        tutorial = true;
+    }
+
+    public static void closeTutorial() {
+        tutorial = false;
+    }
+
+    public static void openSetting() {
+        setting = true;
+        settingScreen.anim = true;
+    }
+
+    public static void closeSetting() {
+        SettingHandler.save();
+        setting = false;
+        settingScreen.anim = true;
     }
 
     @Override

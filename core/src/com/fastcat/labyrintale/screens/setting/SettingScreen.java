@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -32,7 +33,7 @@ public class SettingScreen extends AbstractScreen {
     private float alpha = 0;
 
     public SettingScreen() {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         bgImg = new BgImg(0);
         panel = new OptionPanel();
         panel.setY(h);
@@ -89,7 +90,7 @@ public class SettingScreen extends AbstractScreen {
     @Override
     public void update() {
         if (anim) {
-            float h = Gdx.graphics.getHeight();
+            float h = 1440 * InputHandler.scale;
             if (Labyrintale.setting) {
                 alpha += Labyrintale.tick * 5 * 0.8f;
                 panel.y -= h * 5 * Labyrintale.tick;

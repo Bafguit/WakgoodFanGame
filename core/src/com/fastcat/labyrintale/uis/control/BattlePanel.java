@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.uis.control;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.cPanel;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
@@ -10,6 +11,8 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.uis.*;
 import com.fastcat.labyrintale.uis.EnergyPanel;
 import com.fastcat.labyrintale.uis.PlayerBigIcon;
 import com.fastcat.labyrintale.uis.StatIcon;
@@ -18,7 +21,7 @@ import com.fastcat.labyrintale.uis.TurnView;
 public class BattlePanel implements Disposable {
 
     public static EnergyPanel energy = new EnergyPanel();
-    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
     public AbstractSkill selected;
     public ControlPanel cp;
     public SkillButtonPanel[] skill = new SkillButtonPanel[3];

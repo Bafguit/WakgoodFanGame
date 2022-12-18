@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedExp;
@@ -29,7 +30,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
         playerSelectText = new HealSelectText();
 
         exp = new HealButton[3];
-        float w = Gdx.graphics.getWidth() * 0.25f, h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth() * 0.25f, h = 1440 * InputHandler.scale;
 
         HealButton adv = new HealButton(HealReward.HealType.HEAL, this);
         adv.setPosition(w - adv.sWidth / 2, h * 0.55f);

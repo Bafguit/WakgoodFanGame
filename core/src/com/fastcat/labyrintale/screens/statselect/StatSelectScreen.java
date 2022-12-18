@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.CloseTempScreenButton;
@@ -26,7 +27,7 @@ public class StatSelectScreen extends AbstractScreen implements GetSelectedStat 
         player = new PlayerStat[2][2];
         stats = new StatIcon[2][2][2][3];
         close = new CloseTempScreenButton(this);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         int cnt = 0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {

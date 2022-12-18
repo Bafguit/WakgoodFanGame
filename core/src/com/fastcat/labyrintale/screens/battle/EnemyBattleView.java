@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEnemy;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class EnemyBattleView extends BattleView {
 
@@ -48,7 +49,7 @@ public class EnemyBattleView extends BattleView {
 
     @Override
     protected void renderUi(SpriteBatch sb) {
-        setPosition(entity.animX - sWidth / 2, entity.animY - Gdx.graphics.getHeight() * 0.025f);
+        setPosition(entity.animX - sWidth / 2, entity.animY - 36 * InputHandler.scale);
         if (enabled && entity != null && !entity.isDead) {
             sb.setColor(Color.WHITE);
             entity.render(sb);

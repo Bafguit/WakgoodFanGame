@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class PrePageButton extends AbstractUI {
 
@@ -15,7 +16,7 @@ public class PrePageButton extends AbstractUI {
 
     public PrePageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
+        setPosition(Gdx.graphics.getWidth() * 0.02f, 1145 * InputHandler.scale);
         fontData = BUTTON;
         text = "이전";
         this.sc = sc;

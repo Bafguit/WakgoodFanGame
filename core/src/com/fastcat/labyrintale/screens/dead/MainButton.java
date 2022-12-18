@@ -6,13 +6,14 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class MainButton extends AbstractUI {
 
     public MainButton() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 300, 50);
-        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 288 * InputHandler.scale);
         fontData = MAIN_MENU_SHADOW;
         text = "처음으로";
         showImg = false;

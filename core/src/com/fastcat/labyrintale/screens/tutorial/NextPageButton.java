@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class NextPageButton extends AbstractUI {
 
@@ -17,7 +18,7 @@ public class NextPageButton extends AbstractUI {
 
     public NextPageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1145 * InputHandler.scale);
         fontData = BUTTON;
         text = "다음";
         this.sc = sc;

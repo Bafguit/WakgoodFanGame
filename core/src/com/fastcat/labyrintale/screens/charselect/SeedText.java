@@ -21,7 +21,7 @@ public class SeedText extends AbstractUI {
         super(
                 FileHandler.getUi().get("MENU_SELECT"),
                 Gdx.graphics.getWidth() * 0.05f,
-                Gdx.graphics.getHeight() * 0.05f,
+                72 * InputHandler.scale,
                 200,
                 60);
         fontData = SEED;

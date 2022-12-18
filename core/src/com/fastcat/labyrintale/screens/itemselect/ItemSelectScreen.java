@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
@@ -30,7 +31,7 @@ public class ItemSelectScreen extends AbstractScreen implements GetSelectedItem,
         this.rewardDone = rewardDone;
         this.gets = gets;
         int size = items.length;
-        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = 1440 * InputHandler.scale;
         this.items = new ItemButton[size];
         for (int i = 0; i < size; i++) {
             ItemButton adv = new ItemButton(items[i], this);

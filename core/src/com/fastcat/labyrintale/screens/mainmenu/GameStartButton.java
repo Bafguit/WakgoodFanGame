@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class GameStartButton extends AbstractUI {
@@ -21,7 +22,7 @@ public class GameStartButton extends AbstractUI {
 
     public GameStartButton() {
         super(FileHandler.getUi().get("NEXT"));
-        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.45f);
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, 650 * InputHandler.scale);
         fontData = new FontData(MEDIUM, 53, false, false);
         text = "게임 시작";
         showImg = false;

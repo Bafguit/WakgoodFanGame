@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
@@ -22,7 +23,7 @@ public class LoadButton extends AbstractUI {
 
     public LoadButton() {
         super(FileHandler.getUi().get("NEXT"));
-        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.385f);
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, 555 * InputHandler.scale);
         fontData = new FontData(MEDIUM, 53, false, false);
         text = "불러오기";
         showImg = false;

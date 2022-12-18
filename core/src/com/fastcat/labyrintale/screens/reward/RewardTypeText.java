@@ -7,12 +7,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class RewardTypeText extends AbstractUI {
 
     public RewardTypeText() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 600, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.9f);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 1145 * InputHandler.scale);
         fontData = CARD_BIG_ORB;
         text = "전투 승리";
         showImg = false;

@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.effects.UpIconEffect;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class FlashAction extends AbstractAction {
 
@@ -24,6 +25,6 @@ public class FlashAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration)
-            EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.25f, img));
+            EffectHandler.add(new UpIconEffect(e.animX, e.animY + 360 * InputHandler.scale, img));
     }
 }

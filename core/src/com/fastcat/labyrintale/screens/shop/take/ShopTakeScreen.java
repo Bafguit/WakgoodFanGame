@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedItem;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -31,7 +32,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         this.rewardDone = rewardDone;
         type = TakeType.SKILL;
         deck = new CharDeckButton[3];
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         for (int i = 0; i < 3; i++) {
             CharDeckButton c = new CharDeckButton(this, i, this.skill);
             c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.675f - c.sHeight * 0.5f);
@@ -63,7 +64,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         }
         count = p.size;
         items = new CharItemButton[count][2];
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         float ww = w / (count + 1);
         for (int i = 0; i < count; i++) {
             for (int j = 0; j < 2; j++) {

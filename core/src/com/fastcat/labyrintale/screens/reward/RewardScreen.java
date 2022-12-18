@@ -23,7 +23,7 @@ public class RewardScreen extends AbstractScreen {
         setBg(FileHandler.getUi().get("REWARD"));
         cType = ControlPanel.ControlType.BASIC;
         this.rewards = rewards;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth();
         for (int i = 0; i < rewards.size; i++) {
             float hf = (float) rewards.size / 2 - 0.5f;
             RewardItemButton temp = new RewardItemButton(rewards.get(i));

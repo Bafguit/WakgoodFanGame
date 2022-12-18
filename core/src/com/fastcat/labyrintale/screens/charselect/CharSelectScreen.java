@@ -40,7 +40,7 @@ public class CharSelectScreen extends AbstractScreen {
         CharButton char2 = new CharButton();
         CharButton char3 = new CharButton();
         CharButton char4 = new CharButton();
-        float cy = Gdx.graphics.getHeight() * 0.85f;
+        float cy = 1224 * InputHandler.scale;
         char1.setPosition(Gdx.graphics.getWidth() * 0.3725f - char1.sWidth / 2, cy);
         char2.setPosition(Gdx.graphics.getWidth() * 0.4575f - char2.sWidth / 2, cy);
         char3.setPosition(Gdx.graphics.getWidth() * 0.5425f - char3.sWidth / 2, cy);
@@ -59,7 +59,7 @@ public class CharSelectScreen extends AbstractScreen {
             CharButton char0 = new CharButton(AbstractLabyrinth.getPlayerInstance(pc[i]));
             char0.setPosition(
                     Gdx.graphics.getWidth() * 0.21f + Gdx.graphics.getWidth() * 0.085f * i - char0.sWidth / 2,
-                    Gdx.graphics.getHeight() * 0.03f);
+                    43 * InputHandler.scale);
             aChars[i] = char0;
         }
     }
@@ -157,7 +157,7 @@ public class CharSelectScreen extends AbstractScreen {
 
         public CharSelectGroup() {
             type = InfoPanel.InfoType.COLOR;
-            float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+            float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
             health = new HealthIcon();
             health.setPosition(w * 0.515f, h * 0.47f);
             passive = new CharInfoItemButton(this);
@@ -170,7 +170,7 @@ public class CharSelectScreen extends AbstractScreen {
             stats = new StatIcon[6];
             int cnt = 0;
             for (int i = 0; i < 3; i++) {
-                float cw = w * 0.715f, ch = h * 0.645f - h * 0.027f * i;
+                float cw = w * 0.715f, ch = h * (0.645f - 0.027f * i);
                 for (int j = 0; j < 2; j++) {
                     StatIcon c = new StatIcon(StatIcon.StatType.values()[cnt + 2]);
                     c.setPosition(cw + w * 0.046f * j, ch);

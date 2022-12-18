@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class CancelUpgradeButton extends AbstractUI {
 
@@ -14,7 +15,7 @@ public class CancelUpgradeButton extends AbstractUI {
     public CancelUpgradeButton(SlotSelectScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
         this.sc = sc;
-        setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.4f);
+        setPosition(Gdx.graphics.getWidth() * 0.02f, 576 * InputHandler.scale);
         fontData = BUTTON;
         text = "취소";
     }

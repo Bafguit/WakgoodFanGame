@@ -46,7 +46,7 @@ public class InfoPanel extends AbstractUI {
         this.cp = cp;
         clickable = false;
         overable = false;
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         setPosition(w * 0.5f, h * 0.26f - sHeight / 2);
         nx = dx = w * 0.615f;
         ny = h * 0.335f;

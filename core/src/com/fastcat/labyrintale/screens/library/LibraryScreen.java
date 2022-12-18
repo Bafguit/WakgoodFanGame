@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.screens.difficulty.BackButton;
 
 public class LibraryScreen extends AbstractScreen {
@@ -12,7 +13,7 @@ public class LibraryScreen extends AbstractScreen {
     public BackButton backButton;
 
     public LibraryScreen() {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         for (int i = 0; i < 3; i++) {
             LibraryButton b = new LibraryButton(LibraryButton.Library.values()[i]);
             b.setPosition(w * 0.175f + w * 0.325f * i - b.sWidth / 2, h * 0.5f - b.sHeight / 2);

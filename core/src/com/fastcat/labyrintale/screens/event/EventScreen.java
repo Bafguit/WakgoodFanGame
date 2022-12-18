@@ -21,6 +21,7 @@ public class EventScreen extends AbstractScreen {
     public float cx, cy, ch;
 
     public EventScreen(AbstractEvent event) {
+        float w = Gdx.graphics.getWidth();
         cType = ControlPanel.ControlType.BASIC;
         this.event = event;
         this.event.generateChoices();
@@ -29,13 +30,13 @@ public class EventScreen extends AbstractScreen {
         panel.setPosition(0, 0);
         setPage(event.page);
         setBg(AbstractLabyrinth.curBg);
-        cx = 1118 * InputHandler.scale;
+        cx = w * 0.437f * InputHandler.scale;
         cy = 713 * InputHandler.scale;
         ch = 64 * InputHandler.scale;
     }
 
     public void setPage(int page) {
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth();
         size = event.choices[page].size;
         if (ecb != null) {
             for (EventChoiceButton bb : ecb) {
@@ -46,7 +47,7 @@ public class EventScreen extends AbstractScreen {
         for (int i = 0; i < size; i++) {
             EventChoiceButton t = new EventChoiceButton(this.event.choices[page].get(i));
             t.setPosition(
-                    1085 * InputHandler.scale, 658 * InputHandler.scale + 67 * InputHandler.scale * (size - 1 - i));
+                    w * 0.424f, 725 * InputHandler.scale * (size - 1 - i));
             ecb[i] = t;
         }
     }

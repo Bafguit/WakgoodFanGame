@@ -40,7 +40,7 @@ public class LogoScreen extends AbstractScreen {
         logo = new AbstractUI.TempUI(FileHandler.getUi().get("LOGO"));
         logo.setPosition(
                 Gdx.graphics.getWidth() * 0.5f - logo.sWidth * 0.5f,
-                Gdx.graphics.getHeight() * 0.5f - logo.sHeight * 0.5f);
+                720 * InputHandler.scale - logo.sHeight * 0.5f);
         // SoundHandler.playMusic("LOGO", false, false);
 
     }

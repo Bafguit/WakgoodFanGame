@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.screens.skillselect.SkillSelectScreen.SkillSelectGroup;
 
 public class SkillSelectButton extends AbstractUI {
@@ -49,7 +50,7 @@ public class SkillSelectButton extends AbstractUI {
             sb.setColor(Color.WHITE);
             if (isTo)
                 FontHandler.renderCenter(
-                        sb, FontHandler.BORDER, "↕", x + sWidth * 0.5f, y + sHeight + Gdx.graphics.getHeight() * 0.03f);
+                        sb, FontHandler.BORDER, "↕", x + sWidth * 0.5f, y + sHeight + 43 * InputHandler.scale);
             sb.draw(img, x, y, sWidth, sHeight);
 
             if (!skill.passive) {

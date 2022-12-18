@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.badlogic.gdx.backends.android.surfaceview.FixedResolutionStrategy;
 import com.badlogic.gdx.backends.android.surfaceview.ResolutionStrategy;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.SettingHandler;
@@ -25,7 +26,7 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.numSamples = 10;
-
+		config.useImmersiveMode = true;
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
 			if(checkSelfPermission(WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
@@ -34,6 +35,8 @@ public class AndroidLauncher extends AndroidApplication {
 
 		SettingHandler.settingFile = new File(getExternalFilesDir(null),"settings.json");
 		SettingHandler.initialize();
+
+		config.resolutionStrategy = new FitResolutionStrategy();
 
 		initialize(new Labyrintale(), config);
 	}

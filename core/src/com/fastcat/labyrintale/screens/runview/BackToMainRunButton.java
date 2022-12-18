@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 
 public class BackToMainRunButton extends AbstractUI {
@@ -20,7 +21,7 @@ public class BackToMainRunButton extends AbstractUI {
 
     public BackToMainRunButton() {
         super(FileHandler.getUi().get("BUTTON_S"));
-        setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.9f);
+        setPosition(Gdx.graphics.getWidth() * 0.02f, 1296 * InputHandler.scale);
         fontData = new FontHandler.FontData(MEDIUM, 53, false, false);
         text = "뒤로";
     }

@@ -26,7 +26,7 @@ public class RunViewScreen extends AbstractScreen {
     private final FontData fontName = ENERGY;
     private final FontData fontHp = INFO_HP_BORDER;
     private final FontData fontData = ENERGY;
-    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
@@ -100,7 +100,7 @@ public class RunViewScreen extends AbstractScreen {
         score = "점수: ";
         date = "";
         shot = new ScreenshotRunButton();
-        shot.setPosition(Gdx.graphics.getWidth() * 0.1f, Gdx.graphics.getHeight() * 0.9f);
+        shot.setPosition(Gdx.graphics.getWidth() * 0.1f, 1296 * InputHandler.scale);
         back = new BackToMainRunButton();
         noRuns = new NoRunsText();
         if (RunHandler.runs.size > 0) setIndex(true);
@@ -175,7 +175,7 @@ public class RunViewScreen extends AbstractScreen {
         else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
         else diff += "관";
         time = "소요 시간: " + data.minute + "분 " + data.second + "초";
-        ver = "버전: " + BuildInfo.BUILD_VERSION;
+        ver = "버전: " + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
         seed = "시드: " + data.random.seed;
         score = "점수: " + data.scoreHandle.score;
         shot.setDate(data.date);

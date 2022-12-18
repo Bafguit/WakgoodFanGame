@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.uis.BgImg;
 
@@ -28,7 +29,7 @@ public class ConfirmSlotScreen extends AbstractScreen implements GetSelectedSlot
         this.index = index;
         skill = p.deck.get(index);
         from = new SlotCheckButton(skill);
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         from.setPosition(w * 0.4f - from.sWidth / 2, h * 0.55f);
         arrow = new AbstractUI.TempUI(FileHandler.getUi().get("ARROW_RIGHT"));
         arrow.setPosition(w * 0.5f - from.sWidth / 2, h * 0.55f);

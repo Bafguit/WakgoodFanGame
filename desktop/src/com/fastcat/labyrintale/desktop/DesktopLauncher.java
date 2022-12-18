@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.desktop;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Files;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
@@ -10,7 +11,6 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.prototype.GameConfiguration;
 import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
-import com.fastcat.labyrintale.utils.LibGdxHandle;
 
 import java.io.File;
 

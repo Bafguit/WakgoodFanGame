@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -58,7 +59,7 @@ public class RestScreen extends AbstractScreen {
         buttons = new RestButton[count];
         desc = new RestDesc[count];
 
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         float tw = w / 6, tww = w / 3;
         int cnt = 0;
 

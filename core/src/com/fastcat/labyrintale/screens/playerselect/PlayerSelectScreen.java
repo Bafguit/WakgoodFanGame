@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -28,7 +29,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         this.rewardDone = rewardDone;
         int size = players.length;
         pPlayer = new PlayerButton[size];
-        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = 1440 * InputHandler.scale;
         for (int i = 0; i < size; i++) {
             PlayerButton adv = new PlayerButton(players[i], this);
             adv.setPosition(w * (i + 1) - adv.sWidth / 2, h * 0.55f);

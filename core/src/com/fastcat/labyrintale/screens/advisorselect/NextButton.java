@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class NextButton extends AbstractUI {
 
@@ -14,7 +15,7 @@ public class NextButton extends AbstractUI {
 
     public NextButton(AdvisorSelectScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, Gdx.graphics.getHeight() * 0.9f);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1145 * InputHandler.scale);
         fontData = BUTTON;
         text = "결정";
         this.sc = sc;

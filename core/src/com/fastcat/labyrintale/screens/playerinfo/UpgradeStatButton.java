@@ -12,6 +12,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
 
 public class UpgradeStatButton extends AbstractUI {
@@ -20,7 +21,7 @@ public class UpgradeStatButton extends AbstractUI {
 
     public UpgradeStatButton() {
         super(FileHandler.getUi().get("STAT_PLUS"));
-        setPosition(Gdx.graphics.getWidth() * 0.97f - sWidth, Gdx.graphics.getHeight() * 0.87f);
+        setPosition(Gdx.graphics.getWidth() * 0.97f - sWidth, 1253 * InputHandler.scale);
         fontData = SUB_NAME;
     }
 

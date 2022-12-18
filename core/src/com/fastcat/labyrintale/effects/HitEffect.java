@@ -17,7 +17,7 @@ public class HitEffect extends AbstractEffect {
     private float alpha = 1;
 
     public HitEffect(AbstractEntity e, Sprite img) {
-        super(e.animX, e.animY + Gdx.graphics.getHeight() * 0.1f, 0.6f);
+        super(e.animX, e.animY + 144 * InputHandler.scale, 0.6f);
         this.img = new Sprite(img.getTexture());
         rw = img.getWidth() * InputHandler.scale;
         rh = img.getHeight() * InputHandler.scale;
@@ -27,7 +27,7 @@ public class HitEffect extends AbstractEffect {
 
     @Override
     protected void updateEffect() {
-        img.setPosition(e.animX - rw * 0.5f, e.animY - rh * 0.5f + Gdx.graphics.getHeight() * 0.1f);
+        img.setPosition(e.animX - rw * 0.5f, e.animY - rh * 0.5f + 144 * InputHandler.scale);
         float m = baseDuration * 0.5f;
         if (duration <= m) {
             alpha -= Labyrintale.tick / m;

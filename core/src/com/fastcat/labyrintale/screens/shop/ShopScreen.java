@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -24,7 +25,6 @@ public class ShopScreen extends AbstractScreen {
     public ShopScreen(ShopRoom room) {
         this.room = room;
         cType = ControlPanel.ControlType.BASIC;
-        int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         for (int i = 0; i < 6; i++) {
             ShopRoom.SkillItem s = room.skills[i];
             ShopItemButton b = new ShopItemButton(s);

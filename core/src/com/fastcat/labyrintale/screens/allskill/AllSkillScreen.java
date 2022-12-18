@@ -8,6 +8,7 @@ import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedSlot;
 import com.fastcat.labyrintale.uis.BgImg;
 
@@ -29,7 +30,7 @@ public class AllSkillScreen extends AbstractScreen implements GetSelectedSlot {
         this.gets = gets;
         this.type = type;
         pPlayer = new AllSlotButton[4][3];
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         int cnt = 0;
         for (int l = 0; l < 2; l++) {
             for (int k = 0; k < 2; k++) {

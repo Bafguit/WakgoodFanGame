@@ -42,7 +42,7 @@ public class DictScreen extends AbstractScreen {
         }
         cSelected = chars[0];
 
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth();
         AbstractItem.ItemRarity[] rare = AbstractItem.ItemRarity.values();
         for (int i = 0; i < 6; i++) {
             DictItemRarityButton b = new DictItemRarityButton(this, rare[i + 2]);
@@ -59,7 +59,7 @@ public class DictScreen extends AbstractScreen {
     @Override
     public void update() {
         if (anim) {
-            float h = Gdx.graphics.getHeight();
+            float h = 1440 * InputHandler.scale;
             if (isDown) {
                 alpha += Labyrintale.tick * 5 * 0.8f;
                 bg.y -= h * 5 * Labyrintale.tick;

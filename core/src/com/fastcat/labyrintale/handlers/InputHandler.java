@@ -30,8 +30,6 @@ public final class InputHandler {
     public static int mx;
     public static int my;
 
-    public static Rectangle cursor;
-
     public static boolean textInputMode;
     private static String typedText = "";
     private static int backspaces = 0;
@@ -47,8 +45,7 @@ public final class InputHandler {
         isDesktop = Gdx.app.getType() == Application.ApplicationType.Desktop;
         mx = 0;
         my = 0;
-        cursor = new Rectangle(0, 0, 1, 1);
-        scale = (float) Gdx.graphics.getWidth() / 2560.0f;
+        scale = (float) Gdx.graphics.getHeight() / 1440.0f;
 
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean keyTyped(char c) {
@@ -93,7 +90,7 @@ public final class InputHandler {
 
     public void update() {
         int gx = Gdx.input.getX(), gy = Gdx.input.getY(), sw = Gdx.graphics.getWidth(), sh = Gdx.graphics.getHeight();
-        scale = (float) sw / 2560.0f;
+        scale = (float) sh / 1440.0f;
         if (isDesktop) {
             isLeftClick = Gdx.input.isButtonJustPressed(Buttons.LEFT);
             isLeftClicking = Gdx.input.isButtonPressed(Buttons.LEFT);
@@ -105,7 +102,6 @@ public final class InputHandler {
 
         mx = Math.max(Math.min(gx, sw), 0);
         my = sh - Math.max(Math.min(gy, sh), 0);
-        cursor.setPosition(mx, my);
         cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
 
         if (textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) textInputMode = false;

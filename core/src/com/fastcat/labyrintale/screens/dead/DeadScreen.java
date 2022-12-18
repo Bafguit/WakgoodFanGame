@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class DeadScreen extends AbstractScreen {
@@ -46,7 +47,7 @@ public class DeadScreen extends AbstractScreen {
                 font,
                 "소요 시간: " + m + "분 " + s + "초",
                 Gdx.graphics.getWidth() * 0.5f,
-                Gdx.graphics.getHeight() * 0.5f);
+                720 * InputHandler.scale);
     }
 
     @Override

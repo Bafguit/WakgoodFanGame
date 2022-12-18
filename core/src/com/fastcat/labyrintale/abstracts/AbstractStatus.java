@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.strings.KeyString;
 import com.fastcat.labyrintale.strings.StatusString;
 
@@ -66,7 +63,7 @@ public abstract class AbstractStatus implements Cloneable {
     }
 
     public final void flash(AbstractEntity e) {
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.25f, img));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + 360 * InputHandler.scale, img));
     }
 
     public void startOfTurn() {}

@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class ShopItemIcon extends AbstractUI {
 
@@ -37,8 +38,8 @@ public class ShopItemIcon extends AbstractUI {
             sb.setColor(Color.WHITE);
 
             FontHandler.renderCenter(
-                    sb, fontData, text, x - sWidth, Gdx.graphics.getHeight() * 0.78f, sWidth * 3f, sHeight);
-            FontHandler.renderCenter(sb, fontData, "▼", x, Gdx.graphics.getHeight() * 0.575f, sWidth, sHeight);
+                    sb, fontData, text, x - sWidth, 1123 * InputHandler.scale, sWidth * 3f, sHeight);
+            FontHandler.renderCenter(sb, fontData, "▼", x, 828 * InputHandler.scale, sWidth, sHeight);
 
             sb.draw(icon, x, y, sWidth, sHeight);
             if (screen.type == ShopTakeScreen.TakeType.SKILL) {

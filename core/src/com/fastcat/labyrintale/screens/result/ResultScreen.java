@@ -28,7 +28,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     private final FontHandler.FontData fontName = ENERGY;
     private final FontHandler.FontData fontHp = INFO_HP_BORDER;
     private final FontHandler.FontData fontData = ENERGY;
-    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
@@ -48,6 +48,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
     public String seed;
     public String score;
 
+    @SuppressWarnings("NewApi")
     public ResultScreen(DeadScreen.ScreenType type) {
         if (type == DeadScreen.ScreenType.DEAD) {
             setBg(FileHandler.getBg().get("BG_DEAD"));

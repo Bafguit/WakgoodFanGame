@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class CharSelectText extends AbstractUI {
 
@@ -14,7 +15,7 @@ public class CharSelectText extends AbstractUI {
 
     public CharSelectText() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.2f);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 288 * InputHandler.scale);
         fontData = CARD_BIG_ORB;
         text = "플레이어를 선택하세요";
         showImg = false;

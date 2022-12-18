@@ -10,6 +10,7 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedSkill;
 import com.fastcat.labyrintale.uis.BgImg;
@@ -41,7 +42,7 @@ public class SkillSelectScreen extends AbstractScreen implements GetSelectedSkil
             Array<AbstractSkill> a = group.get(i);
             groups[i] = new SkillSelectGroup((AbstractPlayer) a.get(0).owner, a, this.type, a.size);
         }
-        float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
         for (int i = 0; i < groups.length; i++) {
             SkillSelectGroup g = groups[i];
             float ww = w / groups.length, wc = w / groups.length / 2 + ww * i, hc = h * 0.73f;

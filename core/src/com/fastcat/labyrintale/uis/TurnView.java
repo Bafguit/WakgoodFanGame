@@ -32,7 +32,7 @@ public class TurnView extends AbstractUI {
         }
         fontData = FontHandler.ROUND;
         nx = 1830 * InputHandler.scale;
-        ny = Gdx.graphics.getHeight() * 0.97f;
+        ny = 1397 * InputHandler.scale;
         nw = 200 * InputHandler.scale;
     }
 
@@ -40,7 +40,7 @@ public class TurnView extends AbstractUI {
     protected void updateButton() {
         if (icons.size() > 0) {
             int index = Labyrintale.battleScreen.getCurrentTurn();
-            float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight(), wh = h * 0.87f, wc = w - h * 0.13f;
+            float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale, wh = h * 0.87f, wc = w - h * 0.13f;
             for (int i = 0; i < index; i++) {
                 TurnIcon t = icons.get(i);
                 t.isMain = false;

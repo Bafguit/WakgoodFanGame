@@ -14,6 +14,7 @@ import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.CloseTempScreenButton;
 import com.fastcat.labyrintale.uis.StatIcon;
@@ -26,7 +27,7 @@ public class CharInfoScreen extends AbstractScreen {
     private final CloseTempScreenButton close;
     private final FontHandler.FontData fontName = INFO_NAME;
     private final FontHandler.FontData fontHp = INFO_HP;
-    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final int w = Gdx.graphics.getWidth();
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
@@ -40,21 +41,21 @@ public class CharInfoScreen extends AbstractScreen {
     public CharInfoScreen(AbstractEntity player) {
         for (int i = 0; i < 3; i++) {
             CharDeckIcon b = new CharDeckIcon(null);
-            b.setPosition(w * (0.5f + 0.08f * i) - b.sWidth / 2, h * 0.5f);
+            b.setPosition(w * (0.5f + 0.08f * i) - b.sWidth / 2, 1440 * InputHandler.scale * 0.5f);
             deck[i] = b;
         }
         for (int i = 0; i < 2; i++) {
             CharItemIcon b = new CharItemIcon(null);
-            b.setPosition(w * (0.75f + 0.08f * i) - b.sWidth / 2, h * 0.5f);
+            b.setPosition(w * (0.75f + 0.08f * i) - b.sWidth / 2, 1440 * InputHandler.scale * 0.5f);
             item[i] = b;
         }
         passive = new CharItemIcon(null);
-        passive.setPosition(w * 0.67f - passive.sWidth / 2, h * 0.65f);
+        passive.setPosition(w * 0.67f - passive.sWidth / 2, 1440 * InputHandler.scale * 0.65f);
         int cnt = 0;
         for (int j = 3; j >= 0; j--) {
             for (int i = 0; i < 2; i++) {
                 StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-                s.setPosition(w * (0.72f + 0.08f * i), h * (0.65f + 0.027f * j));
+                s.setPosition(w * (0.72f + 0.08f * i), 1440 * InputHandler.scale * (0.65f + 0.027f * j));
                 stats[cnt++] = s;
             }
         }
@@ -101,22 +102,22 @@ public class CharInfoScreen extends AbstractScreen {
         // health bar
 
         // button
-        sb.draw(hbb, w * 0.47f, h * 0.68f, w * 0.14f, h * 0.03f);
+        sb.draw(hbb, w * 0.47f, 1440 * InputHandler.scale * 0.68f, w * 0.14f, 1440 * InputHandler.scale * 0.03f);
         sb.draw(
                 hb.img,
                 w * 0.47f,
-                h * 0.68f,
+                1440 * InputHandler.scale * 0.68f,
                 0,
                 0,
                 w * 0.14f,
-                h * 0.03f,
+                1440 * InputHandler.scale * 0.03f,
                 Math.max(((float) player.health) / ((float) player.maxHealth), 0),
                 1,
                 0);
 
-        FontHandler.renderLineLeft(sb, fontName, player.name, w * 0.47f, h * 0.74f, w * 0.14f, 50);
+        FontHandler.renderLineLeft(sb, fontName, player.name, w * 0.47f, 1440 * InputHandler.scale * 0.74f, w * 0.14f, 50 * InputHandler.scale);
         FontHandler.renderCenter(
-                sb, fontHp, player.health + "/" + player.maxHealth, w * 0.47f, h * 0.695f, w * 0.14f, h * 0.03f);
+                sb, fontHp, player.health + "/" + player.maxHealth, w * 0.47f, 1440 * InputHandler.scale * 0.695f, w * 0.14f, 1440 * InputHandler.scale * 0.03f);
 
         for (CharDeckIcon b : deck) b.render(sb);
         for (CharItemIcon b : item) b.render(sb);

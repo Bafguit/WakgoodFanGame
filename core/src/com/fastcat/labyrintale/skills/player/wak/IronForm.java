@@ -17,7 +17,7 @@ public class IronForm extends AbstractSkill {
     public IronForm(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
-        setBaseCost(4);
+        setBaseCost(3);
     }
 
     @Override

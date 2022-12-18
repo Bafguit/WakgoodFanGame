@@ -15,10 +15,7 @@ import com.fastcat.labyrintale.actions.SelectTargetAction;
 import com.fastcat.labyrintale.actions.SetAnimationAction;
 import com.fastcat.labyrintale.actions.TurnEndAction;
 import com.fastcat.labyrintale.effects.UpIconEffect;
-import com.fastcat.labyrintale.handlers.ActionHandler;
-import com.fastcat.labyrintale.handlers.EffectHandler;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.StringHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.GetSelectedTarget;
 import com.fastcat.labyrintale.screens.battle.EnemyBattleView;
 import com.fastcat.labyrintale.screens.battle.PlayerBattleView;
@@ -521,7 +518,7 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
     }
 
     public final void flash(AbstractEntity e) {
-        EffectHandler.add(new UpIconEffect(e.animX, e.animY + Gdx.graphics.getHeight() * 0.2f, img));
+        EffectHandler.add(new UpIconEffect(e.animX, e.animY + 288 * InputHandler.scale, img));
     }
 
     public int calculateAttack(int a) {

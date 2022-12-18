@@ -25,7 +25,7 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
     private final BgImg bg = new BgImg();
     private final FontHandler.FontData fontName = INFO_NAME;
     private final FontHandler.FontData fontHp = INFO_HP;
-    private final int w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+    private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
     public StatSelectScreen statScreen;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));

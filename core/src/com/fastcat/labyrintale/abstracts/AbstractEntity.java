@@ -267,7 +267,7 @@ public abstract class AbstractEntity implements Cloneable {
                             temp.flash(this);
                             EffectHandler.add(new UpTextEffect(
                                     animX,
-                                    animY + Gdx.graphics.getHeight() * 0.2f,
+                                    animY + 288 * InputHandler.scale,
                                     text,
                                     s.id.equals("NeutE") ? SCARLET : YELLOW));
                         }
@@ -285,7 +285,7 @@ public abstract class AbstractEntity implements Cloneable {
                         s.flash(this);
                         EffectHandler.add(new UpTextEffect(
                                 animX,
-                                animY + Gdx.graphics.getHeight() * 0.2f,
+                                animY + 288 * InputHandler.scale,
                                 text,
                                 s.id.equals("NeutE") ? SCARLET : YELLOW));
                     }
@@ -558,7 +558,7 @@ public abstract class AbstractEntity implements Cloneable {
                 AbstractPlayer tar = players[i];
                 if (!tar.isAlive()) {
                     int pi = index, ti = tar.index;
-                    float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
+                    float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
                     index = ti;
                     tar.index = pi;
                     AbstractLabyrinth.players[ti] = (AbstractPlayer) this;
@@ -578,6 +578,7 @@ public abstract class AbstractEntity implements Cloneable {
         infoSpine.setAnimation("idle");
     }
 
+    @SuppressWarnings("NewApi")
     public void die(AbstractEntity murder) {
         health = 0;
         block = 0;
@@ -807,7 +808,7 @@ public abstract class AbstractEntity implements Cloneable {
             SkeletonData skeletonData = json.readSkeletonData(skel);
             skeleton = new Skeleton(skeletonData);
             skeleton.setColor(Color.WHITE);
-            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, Gdx.graphics.getHeight() * 0.475f);
+            skeleton.setPosition(Gdx.graphics.getWidth() * 0.3f, 684 * InputHandler.scale);
             stateData = new AnimationStateData(skeletonData);
             state = new AnimationState(stateData);
             AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);

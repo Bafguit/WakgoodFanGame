@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class ExitButton extends AbstractUI {
 
@@ -19,7 +20,7 @@ public class ExitButton extends AbstractUI {
 
     public ExitButton() {
         super(FileHandler.getUi().get("NEXT"));
-        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, Gdx.graphics.getHeight() * 0.125f);
+        setPosition(Gdx.graphics.getWidth() * 0.8f - sWidth / 2, 175 * InputHandler.scale);
         fontData = new FontData(MEDIUM, 53, false, false);
         text = "종료";
         showImg = false;

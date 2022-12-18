@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class DictItemTabButton extends AbstractUI {
 
@@ -15,7 +16,7 @@ public class DictItemTabButton extends AbstractUI {
 
     public DictItemTabButton(DictScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, Gdx.graphics.getHeight() * 0.795f - sHeight / 2);
+        setPosition(Gdx.graphics.getWidth() * 0.7f - sWidth / 2, 1145 * InputHandler.scale - sHeight / 2);
         fontData = BUTTON;
         text = "아이템";
         this.sc = sc;
