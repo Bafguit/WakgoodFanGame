@@ -37,8 +37,7 @@ public class LogoScreen extends AbstractScreen {
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
         videoPlayer.setOnCompletionListener(file -> isDone = true);
 
-        SoundHandler.playMusic("LOGO", false, false);
-
+        if(InputHandler.isDesktop) SoundHandler.playMusic("LOGO", false, false);
     }
 
     @Override
