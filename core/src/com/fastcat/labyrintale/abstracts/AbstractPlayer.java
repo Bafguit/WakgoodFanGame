@@ -87,6 +87,14 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     public abstract AbstractItem getPassive();
 
+    public static Sprite getPlayerPortrait(AbstractPlayer p) {
+        return FileHandler.getCharImg().get(p.playerClass);
+    }
+
+    public static Sprite getPlayerPortrait(PlayerClass p) {
+        return FileHandler.getCharImg().get(p);
+    }
+
     public enum PlayerClass {
         WAK,
         INE,

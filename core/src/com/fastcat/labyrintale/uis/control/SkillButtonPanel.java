@@ -57,8 +57,7 @@ public class SkillButtonPanel extends AbstractUI {
             } else if (over && clickable) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(skill.img, x, y, sWidth, sHeight);
-            if (skill.owner != null) sb.setColor(skill.owner.pColor);
-            else sb.setColor(Color.WHITE);
+            sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
             if (!skill.passive) {

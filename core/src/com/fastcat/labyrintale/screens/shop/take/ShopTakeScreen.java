@@ -21,6 +21,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
     public CancelShopButton cancel;
     public GetSelectedItem getItem;
     public GetRewardDone rewardDone;
+    public boolean canCancel = true;
     public int count;
 
     public ShopTakeScreen(AbstractSkill skill) {
@@ -46,6 +47,12 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
     public ShopTakeScreen(AbstractItem item) {
         this(item, null);
     }
+
+    public ShopTakeScreen(AbstractItem item, boolean cancel) {
+        this(item, null);
+        canCancel = cancel;
+    }
+
 
     public ShopTakeScreen(AbstractItem item, GetSelectedItem gets) {
         this(item, null, gets);
@@ -92,7 +99,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
                 }
             }
         }
-        cancel.update();
+        if(canCancel) cancel.update();
     }
 
     @Override
@@ -111,7 +118,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
                 }
             }
         }
-        cancel.render(sb);
+        if(canCancel) cancel.render(sb);
     }
 
     @Override

@@ -12,7 +12,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharItemButton extends AbstractUI {
 
-    public CharOwnerIcon icon;
+    public CharOwnerIcon ownerIcon;
     public AbstractPlayer player;
     public AbstractItem item;
     public AbstractItem toItem;
@@ -26,14 +26,14 @@ public class CharItemButton extends AbstractUI {
         this.player = player;
         this.index = index;
         sc = screen;
-        icon = new CharOwnerIcon(player);
+        ownerIcon = new CharOwnerIcon(player);
     }
 
     @Override
     public void setPosition(float x, float y) {
         setX(x);
         setY(y);
-        icon.setPosition(x + sWidth - icon.sWidth, y);
+        ownerIcon.setPosition(x + sWidth - ownerIcon.sWidth, y);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class CharItemButton extends AbstractUI {
             sb.setColor(item.getRarityColor());
             sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
-            icon.render(sb);
+            ownerIcon.render(sb);
         }
     }
 

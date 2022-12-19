@@ -52,7 +52,7 @@ public class MainMenuScreen extends AbstractScreen {
         exitButton.update();
 
         if(!InputHandler.isDesktop && InputHandler.cancel) {
-            Gdx.app.exit();
+            System.exit(0);
         }
     }
 

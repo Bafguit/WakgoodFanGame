@@ -17,6 +17,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
     private final int toPage;
     public AbstractItem item;
     public AbstractItem.ItemRarity rarity;
+    public boolean canCancel = true;
     public Array<AbstractUI.SubText> sub = new Array<>();
 
     public ItemRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event) {
@@ -55,6 +56,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
         return sub;
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     protected void onSelect() {
         ShopTakeScreen s;
@@ -64,8 +66,8 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
                 if (!temp.get(item.id)) temp.replace(item.id, true);
             }
             s = new ShopTakeScreen(item);
-        } else if (rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity));
-        else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem());
+        } else if (rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity), canCancel);
+        else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem(), canCancel);
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

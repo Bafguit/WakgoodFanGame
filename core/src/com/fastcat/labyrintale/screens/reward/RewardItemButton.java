@@ -4,14 +4,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import com.fastcat.labyrintale.abstracts.AbstractItem;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractReward;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.rewards.ItemReward;
 import com.fastcat.labyrintale.rewards.SkillReward;
+import com.fastcat.labyrintale.screens.shop.take.CharOwnerIcon;
 
 public class RewardItemButton extends AbstractUI {
 
@@ -20,6 +18,7 @@ public class RewardItemButton extends AbstractUI {
     public AbstractReward reward;
     public SkillReward sReward;
     public ItemReward iReward;
+    public CharOwnerIcon ownerIcon;
 
     public RewardItemButton(AbstractReward re) {
         super(FileHandler.getUi().get("BORDER"));
@@ -27,6 +26,7 @@ public class RewardItemButton extends AbstractUI {
         this.reward = re;
         if (reward.type == AbstractReward.RewardType.SKILL) {
             sReward = (SkillReward) reward;
+            ownerIcon = new CharOwnerIcon((AbstractPlayer) sReward.skill.owner);
         } else if (reward.type == AbstractReward.RewardType.ITEM) {
             iReward = (ItemReward) reward;
         }
@@ -42,11 +42,10 @@ public class RewardItemButton extends AbstractUI {
             else sb.setColor(Color.WHITE);
             sb.draw(image, x, y, sWidth, sHeight);
             if (reward.type == AbstractReward.RewardType.SKILL) {
-                if (sReward.skill.owner != null) sb.setColor(sReward.skill.owner.pColor);
-                else sb.setColor(Color.WHITE);
-                sb.draw(img, x, y, sWidth, sHeight);
                 sb.setColor(Color.WHITE);
-
+                sb.draw(img, x, y, sWidth, sHeight);
+                ownerIcon.setPosition(x + sWidth - ownerIcon.sWidth, y);
+                ownerIcon.render(sb);
                 if (!sReward.skill.passive) {
                     sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                     FontHandler.renderCenter(

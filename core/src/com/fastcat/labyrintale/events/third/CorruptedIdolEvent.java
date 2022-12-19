@@ -50,7 +50,7 @@ public class CorruptedIdolEvent extends AbstractEvent implements GetSelectedPlay
     public void playerSelected(AbstractPlayer player) {
         player.die(null);
         ShopTakeScreen s;
-        s = new ShopTakeScreen(new DevilIdol(null));
+        s = new ShopTakeScreen(new DevilIdol(null), false);
         s.endTemp.add(this);
         Labyrintale.addTempScreen(s);
     }

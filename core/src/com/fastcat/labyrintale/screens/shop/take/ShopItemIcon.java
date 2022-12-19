@@ -43,10 +43,7 @@ public class ShopItemIcon extends AbstractUI {
 
             sb.draw(icon, x, y, sWidth, sHeight);
             if (screen.type == ShopTakeScreen.TakeType.SKILL) {
-                if (screen.skill.owner != null) sb.setColor(screen.skill.owner.pColor);
-                else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
-                sb.setColor(Color.WHITE);
                 sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(
                         sb,

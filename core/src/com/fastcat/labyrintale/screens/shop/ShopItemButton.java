@@ -4,10 +4,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.rooms.other.ShopRoom;
+import com.fastcat.labyrintale.screens.shop.take.CharOwnerIcon;
 
 public class ShopItemButton extends AbstractUI {
 
@@ -15,6 +17,7 @@ public class ShopItemButton extends AbstractUI {
     private final TempUI shadow = new TempUI(FileHandler.getUi().get("SHADOW_ITEM"));
     private final Sprite roll = FileHandler.getUi().get("SHADOW_ROLL");
     public ShopRoom.ShopItem item;
+    public CharOwnerIcon ownerIcon;
     public TempUI gold;
     public Sprite itemImg;
     public ShopItemType type;
@@ -33,6 +36,7 @@ public class ShopItemButton extends AbstractUI {
         if (item instanceof ShopRoom.SkillItem) {
             type = ShopItemType.SKILL;
             sItem = (ShopRoom.SkillItem) item;
+            ownerIcon = new CharOwnerIcon((AbstractPlayer) sItem.skill.owner);
             subWay = SubText.SubWay.DOWN;
         } else if (item instanceof ShopRoom.ItemItem) {
             type = ShopItemType.ITEM;
@@ -62,10 +66,9 @@ public class ShopItemButton extends AbstractUI {
             if (!can) t = "&r<" + t + ">";
             FontHandler.renderColorLeft(sb, FontHandler.SHOP_OK, t, x + sWidth * 0.415f, y - sHeight * 0.07f, sWidth);
             if (type == ShopItemType.SKILL) {
-                if (sItem.skill.owner != null) sb.setColor(sItem.skill.owner.pColor);
-                else sb.setColor(Color.WHITE);
                 sb.draw(img, x, y, sWidth, sHeight);
-                sb.setColor(Color.WHITE);
+                ownerIcon.setPosition(x + sWidth - ownerIcon.sWidth, y);
+                ownerIcon.render(sb);
                 if (!sItem.skill.passive) {
                     sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                     FontHandler.renderCenter(

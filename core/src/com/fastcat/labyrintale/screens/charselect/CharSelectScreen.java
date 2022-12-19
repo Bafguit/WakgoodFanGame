@@ -140,7 +140,6 @@ public class CharSelectScreen extends AbstractScreen {
     public static class CharSelectGroup {
 
         private final FontHandler.FontData nData = TURN_CHANGE;
-        private final FontHandler.FontData dData = BIG_DESC;
         private final FontHandler.FontData inData = CARD_BIG_NAME;
         private final FontHandler.FontData idData = BIG_DESC;
 
@@ -276,6 +275,7 @@ public class CharSelectScreen extends AbstractScreen {
             super(FileHandler.getUi().get("BORDER"));
             this.group = group;
             fontData = FontHandler.SUB_NAME;
+            clickable = false;
         }
 
         public void setSkill(AbstractSkill skill) {
@@ -311,10 +311,7 @@ public class CharSelectScreen extends AbstractScreen {
                 if (type != InfoPanel.InfoType.COLOR) {
                     if (type == InfoPanel.InfoType.SKILL) {
                         sb.draw(skill.img, x, y, sWidth, sHeight);
-                        if (skill.owner != null) sb.setColor(skill.owner.pColor);
-                        else sb.setColor(Color.WHITE);
                         sb.draw(img, x, y, sWidth, sHeight);
-                        sb.setColor(Color.WHITE);
                         if (!skill.passive) {
                             sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                             FontHandler.renderCenter(

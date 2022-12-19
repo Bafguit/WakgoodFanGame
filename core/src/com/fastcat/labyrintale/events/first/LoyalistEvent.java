@@ -25,7 +25,9 @@ public class LoyalistEvent extends AbstractEvent {
             a.add(new NextPageEventChoice(data.SELECT[0], this, 1));
             a.add(new NextPageEventChoice(data.SELECT[1], this, 2));
         } else if (page == 1) {
-            a.add(new ItemRewardEventChoice(data.SELECT[2], new LoyalVirus(null), new EventCondition.True(), this, 3));
+            ItemRewardEventChoice tt = new ItemRewardEventChoice(data.SELECT[2], new LoyalVirus(null), new EventCondition.True(), this, 3);
+            tt.canCancel = false;
+            a.add(tt);
         } else {
             a.add(new EndEventChoice());
         }

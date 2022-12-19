@@ -576,6 +576,7 @@ public final class GroupHandler {
             t.add(new Sanpellegrino(null));
         }
 
+        @SuppressWarnings("NewApi")
         public static AbstractItem getItem(String id) {
             AbstractItem tt = Objects.requireNonNull(idSort.get(id).clone());
             HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
@@ -587,6 +588,7 @@ public final class GroupHandler {
             return getRandomItemByRarity(rarity, 1).get(0);
         }
 
+        @SuppressWarnings("NewApi")
         public static Array<AbstractItem> getRandomItemByRarity(AbstractItem.ItemRarity rarity, int amount) {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
@@ -610,6 +612,7 @@ public final class GroupHandler {
             return a;
         }
 
+        @SuppressWarnings("NewApi")
         public static Array<AbstractItem> getRandomItem(int amount) {
             Array<AbstractItem> a = new Array<>();
             Array<AbstractItem> b = new Array<>();
@@ -828,6 +831,7 @@ public final class GroupHandler {
             playerSort.put(PlayerClass.WAK, t);
         }
 
+        @SuppressWarnings("NewApi")
         public static Array<AbstractSkill> getRandomSkill(AbstractPlayer p, int amount) {
             Array<AbstractSkill> a = new Array<>();
             Array<AbstractSkill> b = new Array<>();
@@ -859,6 +863,7 @@ public final class GroupHandler {
             return getRandomSkill(p, 1).get(0);
         }
 
+        @SuppressWarnings("NewApi")
         public static AbstractSkill getRandomUpgradedSkillFromDeck(AbstractPlayer p, boolean isNone) {
             Array<AbstractSkill> a = new Array<>();
             Array<AbstractSkill> b = p.deck;

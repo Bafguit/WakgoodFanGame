@@ -185,7 +185,7 @@ public class FileHandler implements Disposable {
         generateAchieve(resourceHandler);
         generateTutorialImg(resourceHandler);
         generateGif(resourceHandler);
-        setAntiAliased();
+        //setAntiAliased();
     }
 
     private void generateHashMap() {
@@ -266,6 +266,7 @@ public class FileHandler implements Disposable {
                         @Override
                         public void onResourceLoaded(Object resource, Object... args) {
                             Texture texture = (Texture) resource;
+                            texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                             AchieveHandler.Achievement achievement = (AchieveHandler.Achievement) args[0];
                             achvImg.put(achievement, new Sprite(texture));
                         }
@@ -295,6 +296,7 @@ public class FileHandler implements Disposable {
 
         resourceHandler.requestResource(new MultipleResourceRequest<>(resources, Texture.class, (resource, args) -> {
             Texture texture = (Texture) resource;
+            texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             String resourceName = args[0].toString();
 
             bg.put(resourceName, new Sprite(texture));
@@ -320,6 +322,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     vfx.put(resourceName, new Sprite(texture));
@@ -445,6 +448,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
                     ui.put(resourceName, new Sprite(texture));
                 }));
@@ -498,6 +502,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     tutorialImg.put(resourceName, new Sprite(texture));
@@ -515,6 +520,7 @@ public class FileHandler implements Disposable {
                     (resource, args) -> {
                         AdvisorClass clazz = (AdvisorClass) args[0];
                         Texture texture = (Texture) resource;
+                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         advImg.put(clazz, new Sprite(texture));
                     },
                     cls));
@@ -531,6 +537,7 @@ public class FileHandler implements Disposable {
                     Texture.class,
                     (resource, args) -> {
                         Texture texture = (Texture) resource;
+                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         String name = args[0].toString();
                         enemyImg.put(name, new Sprite(texture));
                     },
@@ -543,6 +550,7 @@ public class FileHandler implements Disposable {
                     Texture.class,
                     (resource, args) -> {
                         Texture texture = (Texture) resource;
+                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         String name = args[0].toString();
                         enemyPanelImg.put(name, new Sprite(texture));
                     },
@@ -590,6 +598,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     skillImg.put(resourceName, new Sprite(texture));
@@ -609,6 +618,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     statusImg.put(resourceName, new Sprite(texture));
@@ -632,6 +642,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(itemResources, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     itemImg.put(resourceName, new Sprite(texture));
@@ -640,6 +651,7 @@ public class FileHandler implements Disposable {
         resourceHandler.requestResource(
                 new MultipleResourceRequest<>(itemTransResources, Texture.class, (resource, args) -> {
                     Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     String resourceName = args[0].toString();
 
                     itemImgTrans.put(resourceName, new Sprite(texture));
@@ -663,6 +675,7 @@ public class FileHandler implements Disposable {
                     @Override
                     public void onResourceLoaded(Object resource, Object... args) {
                         Texture texture = (Texture) resource;
+                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         String resourceName = args[0].toString();
 
                         eventImg.put(resourceName, new Sprite(texture));
@@ -670,13 +683,13 @@ public class FileHandler implements Disposable {
                 }));
     }
 
+        /*
     private void setAntiAliased() {
         for (HashMap h : maps) {
             for (Object s : h.values()) {
                 ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             }
         }
-        /*
         for(Animation<Sprite> arr : gif.values()) {
         for(Sprite s : arr.getKeyFrames()) {
         	s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -686,8 +699,8 @@ public class FileHandler implements Disposable {
         	for (Texture t : a.getTextures()) {
         		t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         	}
-        }*/
-    }
+        }
+    }*/
 
     @Override
     public void dispose() {

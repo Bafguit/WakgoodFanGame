@@ -40,10 +40,7 @@ public class SlotCheckButton extends AbstractUI {
         if (enabled) {
             sb.setColor(Color.WHITE);
             sb.draw(skill.img, x, y, sWidth, sHeight);
-            if (skill.owner != null) sb.setColor(skill.owner.pColor);
-            else sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
             if (!skill.passive) {
                 sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(

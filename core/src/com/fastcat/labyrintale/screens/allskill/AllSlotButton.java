@@ -43,10 +43,8 @@ public class AllSlotButton extends AbstractUI {
             if (over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(skill.img, x, y, sWidth, sHeight);
-            if (skill.owner != null) sb.setColor(skill.owner.pColor);
-            else sb.setColor(Color.WHITE);
-            sb.draw(img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
+            sb.draw(img, x, y, sWidth, sHeight);
             if (!skill.passive) {
                 sb.draw(cost, x - sWidth * 0.05f, y + sWidth * 0.65f, sWidth * 0.4f, sWidth * 0.4f);
                 FontHandler.renderCenter(
