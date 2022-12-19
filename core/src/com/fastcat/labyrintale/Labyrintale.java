@@ -204,6 +204,10 @@ public class Labyrintale extends Game {
     @Override
     public void create() {
         game = this;
+        InputHandler.getInstance();
+        if(!InputHandler.isDesktop) {
+            SettingHandler.initialize(true);
+        }
         phase = LifeCycle.STARTED;
         assetManager = new AssetManager();
         assetManager.setLoader(Gif.class, new AsynchronousGifLoader(new InternalFileHandleResolver()));
@@ -220,7 +224,6 @@ public class Labyrintale extends Game {
         getScreenShake();
 
         camera = new OrthographicCamera();
-        InputHandler.getInstance();
         float w = Gdx.graphics.getWidth(), h = Gdx.graphics.getHeight();
         camera.setToOrtho(false, w, h);
         viewport = new FillViewport(w, h);

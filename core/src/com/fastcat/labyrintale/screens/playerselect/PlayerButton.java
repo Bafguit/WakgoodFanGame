@@ -36,9 +36,6 @@ public class PlayerButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         select.playerSelected(player);
         Labyrintale.removeTempScreen(select);

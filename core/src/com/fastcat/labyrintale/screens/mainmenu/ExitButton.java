@@ -52,7 +52,8 @@ public class ExitButton extends AbstractUI {
     @Override
     protected void onClick() {
         logger.log("Shutting Down...");
-        Gdx.app.exit();
+        if(InputHandler.isDesktop) Gdx.app.exit();
+        else System.exit(0);
     }
 
     @Override

@@ -32,7 +32,12 @@ public class CharButton extends AbstractUI {
     }
 
     @Override
-    protected void updateButton() {}
+    protected void updateButton() {
+        if (over && player != null) {
+            charSelectScreen.group.setPlayer(player);
+            charSelectScreen.selected = player;
+        }
+    }
 
     @Override
     protected void renderUi(SpriteBatch sb) {
@@ -45,14 +50,6 @@ public class CharButton extends AbstractUI {
             if (showImg) sb.draw(player.img, x, y, sWidth, sHeight);
             sb.setColor(Color.WHITE);
             sb.draw(img, x, y, sWidth, sHeight);
-        }
-    }
-
-    @Override
-    protected void onOver() {
-        if (player != null) {
-            charSelectScreen.group.setPlayer(player);
-            charSelectScreen.selected = player;
         }
     }
 

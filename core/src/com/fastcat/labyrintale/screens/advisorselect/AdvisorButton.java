@@ -49,9 +49,6 @@ public class AdvisorButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         if (AbstractLabyrinth.advisor != null) AbstractLabyrinth.advisor.onRemove();
         AbstractLabyrinth.advisor = advisor;

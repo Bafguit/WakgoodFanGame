@@ -34,8 +34,5 @@ public class SkillSelectBG extends AbstractUI {
     protected void updateButton() {}
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {}
 }

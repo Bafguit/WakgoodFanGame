@@ -13,10 +13,12 @@ public final class SettingHandler {
     private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public static SettingData setting;
 
-    public static File settingFile = new File("setting.json");
+    public static File settingFile;
 
-    public static void initialize() {
+    public static void initialize(boolean android) {
         setting = new SettingData();
+        if(android) settingFile = Gdx.files.local("setting.json").file();
+        else settingFile = new File("setting.json");
         boolean hasSave = settingFile.exists();
         if (!hasSave) {
 

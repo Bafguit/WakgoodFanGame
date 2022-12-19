@@ -80,9 +80,6 @@ public class SlotButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         Labyrintale.addTempScreen(new ConfirmSlotScreen(player, index, select));
     }

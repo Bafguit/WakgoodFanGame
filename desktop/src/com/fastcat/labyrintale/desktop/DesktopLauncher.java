@@ -44,7 +44,7 @@ public class DesktopLauncher {
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
 
 
-        SettingHandler.initialize();
+        SettingHandler.initialize(false);
 
         Graphics.DisplayMode displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode();
 

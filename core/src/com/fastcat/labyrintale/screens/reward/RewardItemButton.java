@@ -79,9 +79,6 @@ public class RewardItemButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected Array<SubText> getSubText() {
         if (reward.type == AbstractReward.RewardType.SKILL) {
             return sReward.skill.key;

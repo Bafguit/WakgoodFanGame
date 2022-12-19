@@ -100,9 +100,6 @@ public class ShopItemButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         if (!item.isDone && item.canBuy()) {
             item.takeItem();

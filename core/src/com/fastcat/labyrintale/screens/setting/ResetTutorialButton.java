@@ -22,12 +22,7 @@ public class ResetTutorialButton extends AbstractUI {
 
     @Override
     protected void updateButton() {
-        if (!over && showImg) showImg = false;
-    }
-
-    @Override
-    protected void onOver() {
-        showImg = true;
+        showImg = over;
     }
 
     @Override

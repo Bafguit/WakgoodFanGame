@@ -71,9 +71,6 @@ public class PlayerBigIcon extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         if (p.isPlayer) {
             AbstractPlayer player = (AbstractPlayer) p;

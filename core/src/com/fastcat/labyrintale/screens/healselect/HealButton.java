@@ -69,9 +69,6 @@ public class HealButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         select.expSelected(type);
     }

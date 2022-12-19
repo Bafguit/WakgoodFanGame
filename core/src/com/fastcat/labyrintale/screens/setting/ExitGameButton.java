@@ -22,6 +22,7 @@ public class ExitGameButton extends AbstractUI {
     @Override
     protected void onClick() {
         SettingHandler.save();
-        Gdx.app.exit();
+        if(InputHandler.isDesktop) Gdx.app.exit();
+        else System.exit(0);
     }
 }

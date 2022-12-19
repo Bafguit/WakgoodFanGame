@@ -42,9 +42,6 @@ public class ItemButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         select.itemSelected(item);
     }

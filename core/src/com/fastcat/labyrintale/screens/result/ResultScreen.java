@@ -279,7 +279,7 @@ public class ResultScreen extends AbstractScreen implements GetSelectedStat {
             diff += "어려움";
         } else diff += "관";
         time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
-        ver = "버전: " + BuildInfo.BUILD_VERSION;
+        ver = "버전: " + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
         seed = "시드: " + AbstractLabyrinth.seed;
         score = "점수: " + AbstractLabyrinth.scoreHandle.score;
         shot = new ScreenshotButton();

@@ -42,9 +42,6 @@ public class PlayerInfoIcon extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         if (charInfoScreen == null) {
             charInfoScreen = new CharInfoScreen(p);

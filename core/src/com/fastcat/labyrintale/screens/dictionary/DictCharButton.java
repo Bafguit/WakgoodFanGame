@@ -48,9 +48,6 @@ public class DictCharButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         select.cSelected = this;
     }

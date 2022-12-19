@@ -72,9 +72,6 @@ public class AllSlotButton extends AbstractUI {
     }
 
     @Override
-    protected void onOver() {}
-
-    @Override
     protected void onClick() {
         select.slotSelected(player, index);
         Labyrintale.removeTempScreen(select);

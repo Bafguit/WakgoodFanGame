@@ -42,7 +42,6 @@ public abstract class AbstractUI implements Disposable {
     public float sHeight;
     public boolean over;
     public boolean isPixmap = false;
-    private boolean justOver = false;
     private boolean hasClick = false;
     public boolean hasOver = false;
     public boolean overable = true;
@@ -103,7 +102,6 @@ public abstract class AbstractUI implements Disposable {
         }
         sWidth = width * scale * uiScale;
         sHeight = height * scale * uiScale;
-        justOver = over;
         hasOver = mx > x && mx < x + sWidth && my > y && my < y + sHeight;
         if(isDesktop) {
             clicked = isLeftClick;
@@ -125,10 +123,6 @@ public abstract class AbstractUI implements Disposable {
             }
 
             if (over) {
-                if (!justOver) {
-                    onOver();
-                    justOver = true;
-                }
                 if (overable) {
                     cursorX = mx - x;
                     cursorY = my - y;
@@ -143,8 +137,8 @@ public abstract class AbstractUI implements Disposable {
                     if (clicking) onClicking();
                 }
             }
-            over = hasClick;
             updateButton();
+            over = hasClick;
         } else {
             over = false;
             hasOver = false;
@@ -282,8 +276,6 @@ public abstract class AbstractUI implements Disposable {
     }
 
     protected void updateButton() {}
-
-    protected void onOver() {}
 
     protected void onClick() {}
 
