@@ -12,5 +12,6 @@ pluginManagement{
 }
 
 include 'android', 'desktop', 'core'
-include 'video-player'
+include 'decision-handler'
+include 'event'
 

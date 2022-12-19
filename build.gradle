@@ -1,6 +1,6 @@
+import java.security.MessageDigest
+
 buildscript {
-
-
     repositories {
         mavenLocal()
         mavenCentral()
@@ -9,9 +9,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
-
-
+        classpath 'com.android.tools.build:gradle:7.3.0'
     }
 }
 
@@ -143,6 +141,29 @@ githubRelease {
 }
 distZip{
     dependsOn ':desktop:dist'
+}
+def md5( obj ) {
+    def hash = MessageDigest.getInstance( 'MD5' ).with {
+        obj.eachByte( 8192 ) { bfr, num ->
+            update bfr, 0, num
+        }
+        it.digest()
+    }
+    new BigInteger( 1, hash ).toString( 16 ).padLeft( 32, '0' )
+}
+//https://gist.github.com/ikarius/299062/85b6540c99878f50f082aaee236ef15fc78e527c
+task createVersion(){
+    def file = project(":desktop").distsDirectory.asFile.get().listFiles(new FilenameFilter() {
+        @Override
+        boolean accept(File dir, String name) {
+            return name.endsWith(".zip")
+        }
+    })[0]
+    if(file == null)
+        return
+    def output = new File("version.txt")
+
+    output.write("$version ${file.name} ${md5(file)}")
 }
 
 
