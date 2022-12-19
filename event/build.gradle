@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly project(":core")
+    implementation 'io.github.apringframework:apring-eventbus:1.0.1'
+    implementation 'io.github.apringframework:apring-utilities:1.0.1'
+}
+
+test {
+}
