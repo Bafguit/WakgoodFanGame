@@ -153,17 +153,30 @@ def md5( obj ) {
 }
 //https://gist.github.com/ikarius/299062/85b6540c99878f50f082aaee236ef15fc78e527c
 task createVersion(){
-    def file = project(":desktop").distsDirectory.asFile.get().listFiles(new FilenameFilter() {
-        @Override
-        boolean accept(File dir, String name) {
-            return name.endsWith(".zip")
-        }
-    })[0]
-    if(file == null)
-        return
-    def output = new File("version.txt")
+    doLast {
+        def zipFile = project(":desktop").distsDirectory.asFile.get().listFiles(new FilenameFilter() {
+            @Override
+            boolean accept(File dir, String name) {
+                return name.endsWith(".zip")
+            }
+        })[0]
+        if(zipFile == null)
+            throw new IllegalStateException("Zip file cannot be null")
 
-    output.write("$version ${file.name} ${md5(file)}")
+        def jarFile = project(":desktop").jar.destinationDir.listFiles(new FilenameFilter() {
+            @Override
+            boolean accept(File dir, String name) {
+                return name.endsWith(".zip")
+            }
+        })[0]
+
+        if(jarFile == null)
+            throw new IllegalStateException("jar file cannot be null")
+
+        def output = new File("version.txt")
+
+        output.write("$version ${zipFile.name} ${md5(zipFile)} ${md5(jarFile)}")
+    }
 }
 
 
