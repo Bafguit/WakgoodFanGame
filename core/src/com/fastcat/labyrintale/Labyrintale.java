@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
+import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
@@ -243,7 +244,6 @@ public class Labyrintale extends Game {
                 () -> {
                     FileHandler.getInstance().loadFiles();
                     FileHandler.getInstance().loadResources(resourceHandler);
-
                     return new Object();
                 },
                 new FutureCallback<Object>() {
@@ -312,6 +312,7 @@ public class Labyrintale extends Game {
         // labyrinth = new AbstractLabyrinth();
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);
+
 
         change_h = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
         change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
