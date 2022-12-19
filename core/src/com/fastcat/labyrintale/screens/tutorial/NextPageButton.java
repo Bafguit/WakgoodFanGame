@@ -18,7 +18,7 @@ public class NextPageButton extends AbstractUI {
 
     public NextPageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1145 * InputHandler.scale);
+        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1296 * InputHandler.scale);
         fontData = BUTTON;
         text = "다음";
         this.sc = sc;

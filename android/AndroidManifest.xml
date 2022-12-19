@@ -12,7 +12,7 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon"
         android:isGame="true"
         android:appCategory="game"
         android:requestLegacyExternalStorage="true"

@@ -63,6 +63,8 @@ public final class InputHandler {
                 return false;
             }
         });
+
+        Gdx.input.setCatchKey(Keys.BACK, true);
     }
 
     /***
@@ -102,7 +104,7 @@ public final class InputHandler {
 
         mx = Math.max(Math.min(gx, sw), 0);
         my = sh - Math.max(Math.min(gy, sh), 0);
-        cancel = Gdx.input.isButtonJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE);
+        cancel = Gdx.input.isKeyJustPressed(Buttons.BACK) || Gdx.input.isKeyJustPressed(Keys.ESCAPE) || Gdx.input.isButtonJustPressed(Keys.BACK);
 
         if (textInputMode && (isLeftClick || Gdx.input.isKeyJustPressed(Keys.ENTER) || cancel)) {
             textInputMode = false;

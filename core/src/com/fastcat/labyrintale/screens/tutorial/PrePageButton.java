@@ -16,7 +16,7 @@ public class PrePageButton extends AbstractUI {
 
     public PrePageButton(TutorialScreen sc) {
         super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.02f, 1145 * InputHandler.scale);
+        setPosition(Gdx.graphics.getWidth() * 0.02f, 1296 * InputHandler.scale);
         fontData = BUTTON;
         text = "이전";
         this.sc = sc;

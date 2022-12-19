@@ -5,10 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.RunHandler;
-import com.fastcat.labyrintale.handlers.SaveHandler;
-import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
@@ -53,6 +50,10 @@ public class MainMenuScreen extends AbstractScreen {
         optionButton.update();
         creditButton.update();
         exitButton.update();
+
+        if(!InputHandler.isDesktop && InputHandler.cancel) {
+            Gdx.app.exit();
+        }
     }
 
     @Override
