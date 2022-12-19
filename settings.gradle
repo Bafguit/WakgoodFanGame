@@ -12,6 +12,4 @@ pluginManagement{
 }
 
 include 'android', 'desktop', 'core'
-include 'decision-handler'
-include 'event'
 
