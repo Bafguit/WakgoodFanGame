@@ -166,7 +166,7 @@ task createVersion(){
         def jarFile = project(":desktop").jar.destinationDir.listFiles(new FilenameFilter() {
             @Override
             boolean accept(File dir, String name) {
-                return name.endsWith(".zip")
+                return name.endsWith(".jar")
             }
         })[0]
 
