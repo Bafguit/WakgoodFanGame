@@ -18,9 +18,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
 -verbose
-
 -dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
 -dontwarn com.badlogic.gdx.utils.GdxBuild
 -dontwarn com.badlogic.gdx.physics.box2d.utils.Box2DBuild
