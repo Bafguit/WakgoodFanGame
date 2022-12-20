@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "vl8JS6BkncHOX2ACboALyuAgpjk",
+	"hash": "SlDyK84uU3thDoq77hr98ItNR/4",
 	"spine": "3.8.75",
 	"x": -320.04,
 	"y": -50.28,
@@ -19,14 +19,14 @@
 	{ "name": "hit", "bone": "root" },
 	{ "name": "skill", "bone": "root", "attachment": "skill" },
 	{ "name": "idle", "bone": "bone" },
-	{ "name": "flag_1", "bone": "bone" },
-	{ "name": "flag_2", "bone": "bone" },
-	{ "name": "flag_3", "bone": "bone" },
-	{ "name": "flag_4", "bone": "bone" },
-	{ "name": "flag_5", "bone": "bone" },
-	{ "name": "flag_6", "bone": "bone" },
-	{ "name": "flag_7", "bone": "bone" },
-	{ "name": "flag_8", "bone": "bone" }
+	{ "name": "flag_a", "bone": "bone" },
+	{ "name": "flag_b", "bone": "bone" },
+	{ "name": "flag_c", "bone": "bone" },
+	{ "name": "flag_d", "bone": "bone" },
+	{ "name": "flag_e", "bone": "bone" },
+	{ "name": "flag_f", "bone": "bone" },
+	{ "name": "flag_g", "bone": "bone" },
+	{ "name": "flag_h", "bone": "bone" }
 ],
 "skins": [
 	{
@@ -35,11 +35,29 @@
 			"die": {
 				"die": { "y": 270, "width": 640, "height": 640 }
 			},
+			"flag_f": {
+				"flag_f": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			},
 			"attack": {
 				"attack": { "y": 270, "width": 640, "height": 640 }
 			},
+			"flag_d": {
+				"flag_d": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			},
+			"flag_a": {
+				"flag_a": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			},
+			"flag_b": {
+				"flag_b": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			},
+			"flag_c": {
+				"flag_c": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			},
 			"skill": {
 				"skill": { "y": 270, "width": 640, "height": 640 }
+			},
+			"flag_e": {
+				"flag_e": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			},
 			"hit": {
 				"hit": { "y": 270, "width": 640, "height": 640 }
@@ -47,29 +65,11 @@
 			"idle": {
 				"idle": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			},
-			"flag_1": {
-				"flag_1": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			"flag_h": {
+				"flag_h": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			},
-			"flag_2": {
-				"flag_2": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_3": {
-				"flag_3": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_4": {
-				"flag_4": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_5": {
-				"flag_5": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_6": {
-				"flag_6": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_7": {
-				"flag_7": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
-			},
-			"flag_8": {
-				"flag_8": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
+			"flag_g": {
+				"flag_g": { "y": -0.24, "rotation": -90.05, "width": 640, "height": 640 }
 			}
 		}
 	}
@@ -107,15 +107,15 @@
 	},
 	"hit": {
 		"slots": {
-			"skill": {
-				"attachment": [
-					{ "name": null }
-				]
-			},
 			"hit": {
 				"attachment": [
 					{ "name": "hit" },
 					{ "time": 0.6667, "name": "hit" }
+				]
+			},
+			"skill": {
+				"attachment": [
+					{ "name": null }
 				]
 			}
 		}
@@ -127,58 +127,58 @@
 					{ "name": "idle" }
 				]
 			},
+			"flag_h": {
+				"attachment": [
+					{ "time": 1.1667, "name": "flag_h" },
+					{ "time": 1.3333, "name": null }
+				]
+			},
+			"flag_e": {
+				"attachment": [
+					{ "time": 0.6667, "name": "flag_e" },
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"flag_g": {
+				"attachment": [
+					{ "time": 1, "name": "flag_g" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"flag_f": {
+				"attachment": [
+					{ "time": 0.8333, "name": "flag_f" },
+					{ "time": 1, "name": null }
+				]
+			},
+			"flag_b": {
+				"attachment": [
+					{ "time": 0.1667, "name": "flag_b" },
+					{ "time": 0.3333, "name": null }
+				]
+			},
+			"flag_a": {
+				"attachment": [
+					{ "name": "flag_a" },
+					{ "time": 0.1667, "name": null },
+					{ "time": 1.3333, "name": "flag_a" }
+				]
+			},
 			"skill": {
 				"attachment": [
 					{ "name": null }
 				]
 			},
-			"flag_8": {
+			"flag_c": {
 				"attachment": [
-					{ "time": 1.1667, "name": "flag_8" },
-					{ "time": 1.3333, "name": null }
-				]
-			},
-			"flag_5": {
-				"attachment": [
-					{ "time": 0.6667, "name": "flag_5" },
-					{ "time": 0.8333, "name": null }
-				]
-			},
-			"flag_4": {
-				"attachment": [
-					{ "time": 0.5, "name": "flag_4" },
-					{ "time": 0.6667, "name": null }
-				]
-			},
-			"flag_1": {
-				"attachment": [
-					{ "name": "flag_1" },
-					{ "time": 0.1667, "name": null },
-					{ "time": 1.3333, "name": "flag_1" }
-				]
-			},
-			"flag_2": {
-				"attachment": [
-					{ "time": 0.1667, "name": "flag_2" },
-					{ "time": 0.3333, "name": null }
-				]
-			},
-			"flag_7": {
-				"attachment": [
-					{ "time": 1, "name": "flag_7" },
-					{ "time": 1.1667, "name": null }
-				]
-			},
-			"flag_3": {
-				"attachment": [
-					{ "time": 0.3333, "name": "flag_3" },
+					{ "time": 0.3333, "name": "flag_c" },
 					{ "time": 0.5, "name": null }
 				]
 			},
-			"flag_6": {
+			"flag_d": {
 				"attachment": [
-					{ "time": 0.8333, "name": "flag_6" },
-					{ "time": 1, "name": null }
+					{ "time": 0.5, "name": "flag_d" },
+					{ "time": 0.6667, "name": null }
 				]
 			}
 		}

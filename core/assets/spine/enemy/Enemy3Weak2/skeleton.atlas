@@ -18,62 +18,62 @@ die
   orig: 640, 640
   offset: 49, 52
   index: -1
-flag
-  rotate: true
-  xy: 1118, 224
-  size: 195, 327
-  orig: 640, 640
-  offset: 257, 280
-  index: 4
-flag
-  rotate: true
-  xy: 1118, 224
-  size: 195, 327
-  orig: 640, 640
-  offset: 257, 280
-  index: 6
-flag
+flag_a
   rotate: true
   xy: 1447, 224
   size: 195, 326
   orig: 640, 640
   offset: 257, 281
-  index: 1
-flag
+  index: -1
+flag_c
+  rotate: true
+  xy: 1436, 27
+  size: 195, 305
+  orig: 640, 640
+  offset: 257, 302
+  index: -1
+flag_g
+  rotate: true
+  xy: 1436, 27
+  size: 195, 305
+  orig: 640, 640
+  offset: 257, 302
+  index: -1
+flag_d
+  rotate: true
+  xy: 1118, 224
+  size: 195, 327
+  orig: 640, 640
+  offset: 257, 280
+  index: -1
+flag_f
+  rotate: true
+  xy: 1118, 224
+  size: 195, 327
+  orig: 640, 640
+  offset: 257, 280
+  index: -1
+flag_e
   rotate: false
   xy: 1591, 611
   size: 195, 320
   orig: 640, 640
   offset: 257, 287
-  index: 5
-flag
+  index: -1
+flag_h
   rotate: true
   xy: 1118, 27
   size: 195, 316
   orig: 640, 640
   offset: 257, 291
-  index: 8
-flag
+  index: -1
+flag_b
   rotate: true
   xy: 1118, 27
   size: 195, 316
   orig: 640, 640
   offset: 257, 291
-  index: 2
-flag
-  rotate: true
-  xy: 1436, 27
-  size: 195, 305
-  orig: 640, 640
-  offset: 257, 302
-  index: 3
-flag
-  rotate: true
-  xy: 1436, 27
-  size: 195, 305
-  orig: 640, 640
-  offset: 257, 302
-  index: 7
+  index: -1
 hit
   rotate: true
   xy: 560, 2
