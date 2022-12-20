@@ -21,7 +21,7 @@ plugins{
 }
 allprojects {
     apply plugin: "eclipse"
-    version = 'b0.9.25'
+    version = 'b0.9.26'
     ext {
         appName = "Labyrintale"
         gdxVersion = '1.10.0'
