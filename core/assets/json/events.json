@@ -1,19 +1,4 @@
 {
-  "TestEvent": {
-    "NAME": "아무튼 이벤트",
-    "DESC": [
-      "테스트 설명",
-      "설명 2"
-    ],
-    "SELECT": [
-      "회복",
-      "스킬 획득",
-      "대가리"
-    ],
-    "IMAGE": [
-      "TestEvent"
-    ]
-  },
   "StartEvent": {
     "NAME": "참모 고용",
     "DESC": [
@@ -174,7 +159,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Metamorph"
     ]
   },
   "Gold": {
@@ -189,7 +174,7 @@
       "떠난다."
     ],
     "IMAGE": [
-      "TestEvent"
+      "Gold"
     ]
   },
 

@@ -1,76 +1,97 @@
 
 skeleton.png
-size: 1290,1058
+size: 1788,933
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
-  rotate: false
-  xy: 2, 486
-  size: 431, 570
+  rotate: true
+  xy: 2, 446
+  size: 485, 556
   orig: 640, 640
-  offset: 100, 60
-  index: -1
-body
-  rotate: false
-  xy: 948, 279
-  size: 340, 414
-  orig: 640, 640
-  offset: 100, 102
+  offset: 31, 51
   index: -1
 die
-  rotate: true
-  xy: 566, 58
-  size: 426, 380
-  orig: 640, 640
-  offset: 112, 53
-  index: -1
-ear_left
-  rotate: true
-  xy: 2, 2
-  size: 29, 149
-  orig: 640, 640
-  offset: 264, 481
-  index: -1
-ear_right
-  rotate: true
-  xy: 777, 609
-  size: 84, 133
-  orig: 640, 640
-  offset: 348, 490
-  index: -1
-feet
   rotate: false
-  xy: 777, 532
-  size: 69, 75
+  xy: 1118, 421
+  size: 471, 510
   orig: 640, 640
-  offset: 321, 60
+  offset: 49, 52
   index: -1
-head
+flag
+  rotate: true
+  xy: 1118, 224
+  size: 195, 327
+  orig: 640, 640
+  offset: 257, 280
+  index: 4
+flag
+  rotate: true
+  xy: 1118, 224
+  size: 195, 327
+  orig: 640, 640
+  offset: 257, 280
+  index: 6
+flag
+  rotate: true
+  xy: 1447, 224
+  size: 195, 326
+  orig: 640, 640
+  offset: 257, 281
+  index: 1
+flag
   rotate: false
-  xy: 948, 150
-  size: 127, 127
+  xy: 1591, 611
+  size: 195, 320
   orig: 640, 640
-  offset: 269, 426
-  index: -1
+  offset: 257, 287
+  index: 5
+flag
+  rotate: true
+  xy: 1118, 27
+  size: 195, 316
+  orig: 640, 640
+  offset: 257, 291
+  index: 8
+flag
+  rotate: true
+  xy: 1118, 27
+  size: 195, 316
+  orig: 640, 640
+  offset: 257, 291
+  index: 2
+flag
+  rotate: true
+  xy: 1436, 27
+  size: 195, 305
+  orig: 640, 640
+  offset: 257, 302
+  index: 3
+flag
+  rotate: true
+  xy: 1436, 27
+  size: 195, 305
+  orig: 640, 640
+  offset: 257, 302
+  index: 7
 hit
   rotate: true
-  xy: 777, 695
-  size: 361, 502
+  xy: 560, 2
+  size: 451, 556
   orig: 640, 640
-  offset: 128, 59
+  offset: 65, 51
   index: -1
 idle
-  rotate: false
-  xy: 435, 486
-  size: 340, 570
+  rotate: true
+  xy: 2, 62
+  size: 382, 421
   orig: 640, 640
-  offset: 100, 60
+  offset: 134, 51
   index: -1
 skill
   rotate: true
-  xy: 2, 33
-  size: 451, 562
+  xy: 560, 455
+  size: 476, 556
   orig: 640, 640
-  offset: 47, 59
+  offset: 40, 51
   index: -1

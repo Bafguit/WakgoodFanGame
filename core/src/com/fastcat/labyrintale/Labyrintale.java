@@ -215,9 +215,8 @@ public class Labyrintale extends Game {
         assetManager.setLoader(Gif.class, new AsynchronousGifLoader(new InternalFileHandleResolver()));
         resourceHandler = new ResourceHandler(assetManager);
         Gdx.graphics.setResizable(false);
-        if(Gdx.app.getType() == Application.ApplicationType.Desktop)
+        if(InputHandler.isDesktop) {
             Gdx.graphics.setTitle("Wakest Dungeon");
-        if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
             Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
             pix.setFilter(Pixmap.Filter.BiLinear);
             Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));

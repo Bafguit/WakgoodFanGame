@@ -65,7 +65,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
                 HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
                 if (!temp.get(item.id)) temp.replace(item.id, true);
             }
-            s = new ShopTakeScreen(item);
+            s = new ShopTakeScreen(item, canCancel);
         } else if (rarity != null) s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItemByRarity(rarity), canCancel);
         else s = new ShopTakeScreen(GroupHandler.ItemGroup.getRandomItem(), canCancel);
         s.endTemp.add(this);

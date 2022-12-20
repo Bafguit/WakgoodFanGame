@@ -469,14 +469,32 @@ public class FileHandler implements Disposable {
 
                     for (PlayerClass cls : PlayerClass.values()) {
                         String s = cls.toString().toLowerCase();
-                        charImg.put(cls, character.createSprite(s));
-                        charImgTurn.put(cls, character.createSprite(s + "_p"));
-                        charBgImg.put(cls, character.createSprite(s + "_bg"));
-                        charCampImg.put(cls, character.createSprite(s + "_camp"));
-                        charUpsetImg.put(cls, character.createSprite(s + "_camp_upset"));
-                        charPanelImg.put(cls, character.createSprite(s + "_cPanel"));
-                        skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
 
+                        Sprite sp = character.createSprite(s);
+                        sp.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charImg.put(cls, sp);
+
+                        Sprite sp2 = character.createSprite(s + "_p");
+                        sp2.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charImgTurn.put(cls, sp2);
+
+                        Sprite sp3 = character.createSprite(s + "_bg");
+                        sp3.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charBgImg.put(cls, sp3);
+
+                        Sprite sp4 = character.createSprite(s + "_camp");
+                        sp4.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charCampImg.put(cls, sp4);
+
+                        Sprite sp5 = character.createSprite(s + "_camp_upset");
+                        sp5.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charUpsetImg.put(cls, sp5);
+
+                        Sprite sp6 = character.createSprite(s + "_cPanel");
+                        sp6.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charPanelImg.put(cls, sp6);
+
+                        skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
                         atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
                     }
                 }));
