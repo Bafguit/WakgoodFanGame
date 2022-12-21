@@ -1,0 +1,22 @@
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+ext {
+	mainClassName = "com.fastcat.labyrintale.IOSLauncher"
+}
+
+launchIPhoneSimulator.dependsOn build
+launchIPadSimulator.dependsOn build
+launchIOSDevice.dependsOn build
+createIPA.dependsOn build
+
+robovm {
+	archs = "thumbv7:arm64"
+
+	iosSignIdentity = "fastcat"
+	iosProvisioningProfile = "fastcat_profile"
+	iosSkipSigning = false
+}
+
+eclipse.project.name = appName + "-ios"
