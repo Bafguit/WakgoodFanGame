@@ -14,34 +14,29 @@ public class SelectionGroup {
     public String[] itemText;
     public int[] item;
     public int[] item2;
-    public Title title;
     public Text text;
     public Right right;
     public Left left;
     public int index;
     public boolean can = true;
 
-    public SelectionGroup(String title, String[] itemText, float x, float y) {
+    public SelectionGroup(String[] itemText, float x, float y) {
         this.itemText = itemText;
-        this.title = new Title(title, x, y);
-        float centerY = y + this.title.sHeight * 0.5f;
         left = new Left(this);
-        left.setPosition(x + this.title.sWidth, centerY - left.sHeight * 0.5f);
+        left.setPosition(x - left.sWidth, y - left.sHeight * 0.5f);
         text = new Text(this);
-        text.setPosition(x + this.title.sWidth, centerY - text.sHeight * 0.5f);
+        text.setPosition(x, y - text.sHeight * 0.5f);
         right = new Right(this);
-        right.setPosition(x + this.title.sWidth + text.sWidth - right.sWidth, left.y);
+        right.setPosition(x + text.sWidth, left.y);
     }
 
     public void setParent(AbstractUI ui) {
         text.setParent(ui);
-        title.setParent(ui);
         right.setParent(ui);
         left.setParent(ui);
     }
 
     public void update() {
-        title.update();
         text.update();
         right.update();
         left.update();
@@ -50,7 +45,6 @@ public class SelectionGroup {
     public void render(SpriteBatch sb) {
         if (can) sb.setColor(Color.WHITE);
         else sb.setColor(Color.DARK_GRAY);
-        title.render(sb);
         text.render(sb);
         right.render(sb);
         left.render(sb);
@@ -69,10 +63,6 @@ public class SelectionGroup {
         return item[index];
     }
 
-    public int getItem(int i) {
-        return i == 0 ? item[index] : item2[index];
-    }
-
     public void modifyIndex(int i) {
         index = MathUtils.clamp(index + i, 0, itemText.length - 1);
         setText();
@@ -82,7 +72,7 @@ public class SelectionGroup {
         public SelectionGroup ui;
 
         public Text(SelectionGroup ui) {
-            super(FileHandler.getUi().get("BORDER_B"));
+            super(FileHandler.getUi().get("SLIDE"));
             fontData = FontHandler.SETTING;
             this.ui = ui;
             overable = false;
@@ -145,25 +135,6 @@ public class SelectionGroup {
         protected void renderUi(SpriteBatch sb) {
             if (!overable) sb.setColor(Color.DARK_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
-        }
-    }
-
-    private static class Title extends AbstractUI {
-        public String title;
-
-        public Title(String title, float x, float y) {
-            super(FileHandler.getUi().get("SLIDE_A"), x, y);
-            this.title = title;
-            fontData = FontHandler.SETTING;
-            overable = false;
-        }
-
-        @Override
-        protected void renderUi(SpriteBatch sb) {
-            Color c = fontData.color;
-            fontData.color = sb.getColor();
-            renderKeywordCenter(sb, fontData, title, x, y + sHeight / 2, sWidth, sHeight);
-            fontData.color = c;
         }
     }
 }

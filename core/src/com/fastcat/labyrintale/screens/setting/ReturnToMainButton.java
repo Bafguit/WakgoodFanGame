@@ -13,10 +13,8 @@ import com.fastcat.labyrintale.handlers.SoundHandler;
 public class ReturnToMainButton extends AbstractUI {
 
     public ReturnToMainButton(SettingScreen sc) {
-        super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.21f - sWidth / 2, 288 * InputHandler.scale);
-        fontData = BUTTON;
-        text = "메인 메뉴";
+        super(FileHandler.getUi().get("SETTING_MAIN"));
+        setPosition(990 * InputHandler.scale - sWidth / 2, 190 * InputHandler.scale - sHeight / 2);
         screen = sc;
         isPixmap = true;
     }

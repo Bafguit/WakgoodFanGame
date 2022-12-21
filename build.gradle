@@ -25,7 +25,7 @@ allprojects {
     version = 'b0.9.26'
     ext {
         appName = "Labyrintale"
-        gdxVersion = '1.10.0'
+        gdxVersion = '1.11.0'
         roboVMVersion = '2.3.12'
         box2DLightsVersion = '1.5'
         ashleyVersion = '1.7.3'

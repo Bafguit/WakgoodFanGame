@@ -18,7 +18,7 @@ public class Ine extends AbstractPlayer {
     private static final Color COLOR = new Color(0xa87dffff);
 
     public Ine() {
-        super(ID, HEALTH, COLOR);
+        super(ID, HEALTH, COLOR, PlayerJob.ATTACKER);
         stat.speed = 1;
         stat.debuRes = 25;
         stat.critical = 10;

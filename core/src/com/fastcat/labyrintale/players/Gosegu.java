@@ -18,7 +18,7 @@ public class Gosegu extends AbstractPlayer {
     private static final Color COLOR = new Color(0x87fffdff);
 
     public Gosegu() {
-        super(ID, HEALTH, COLOR);
+        super(ID, HEALTH, COLOR, PlayerJob.SUPPORTER);
         stat.speed = 2;
         stat.debuRes = 30;
         stat.critical = 5;

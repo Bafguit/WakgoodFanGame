@@ -14,11 +14,12 @@ import com.fastcat.labyrintale.strings.CharString;
 
 public abstract class AbstractPlayer extends AbstractEntity {
 
+    public final PlayerJob job;
     public final PlayerClass playerClass;
     public final Sprite camp;
     public final Sprite upset;
 
-    public AbstractPlayer(String id, int maxHealth, Color c) {
+    public AbstractPlayer(String id, int maxHealth, Color c, PlayerJob job) {
         super(
                 id,
                 3,
@@ -26,6 +27,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
                 FileHandler.getAtlas().get(id),
                 FileHandler.getSkeleton().get(id),
                 true);
+        this.job = job;
         this.playerClass = PlayerClass.valueOf(id.toUpperCase());
 
         CharString.CharData temp = StringHandler.charString.get(id);
@@ -93,6 +95,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
 
     public static Sprite getPlayerPortrait(PlayerClass p) {
         return FileHandler.getCharImg().get(p);
+    }
+
+    public enum PlayerJob {
+        GUARD, ATTACKER, SUPPORTER
     }
 
     public enum PlayerClass {

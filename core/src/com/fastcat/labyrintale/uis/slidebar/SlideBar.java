@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.uis.slidebar;
 
 import static com.fastcat.labyrintale.handlers.InputHandler.mx;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,7 +22,8 @@ public class SlideBar extends AbstractUI {
     }
 
     public SlideBar(float x, float y, int min, int max, int start) {
-        super(FileHandler.getUi().get("SLIDE_A"), x, y);
+        super(FileHandler.getUi().get("SLIDE"));
+        setPosition(x, y - sHeight / 2);
         this.min = min;
         this.max = max;
         abs = max - min;
@@ -34,7 +36,9 @@ public class SlideBar extends AbstractUI {
     }
 
     @Override
-    protected void renderUi(SpriteBatch sb) {}
+    protected void renderUi(SpriteBatch sb) {
+        sb.draw(img, x, y, sWidth, sHeight);
+    }
 
     @Override
     public void onClick() {
@@ -66,44 +70,19 @@ public class SlideBar extends AbstractUI {
     }
 
     public static class SlideLine extends AbstractUI {
-        public SlideLine(float width) {
-            super(FileHandler.getUi().get("SLIDE_L"), -1000, -1000, width - 14, 40);
+
+        private final SlideBar bar;
+
+        public SlideLine(SlideBar bar) {
+            super(FileHandler.getUi().get("SLIDE_A"));
+            this.bar = bar;
             clickable = false;
         }
 
         @Override
         protected void renderUi(SpriteBatch sb) {
             if (enabled) {
-                sb.draw(img, x, y, sWidth, sHeight);
-            }
-        }
-    }
-
-    public static class SlideSideL extends AbstractUI {
-        public SlideSideL() {
-            super(FileHandler.getUi().get("SLIDE_SL"));
-            clickable = false;
-        }
-
-        @Override
-        protected void renderUi(SpriteBatch sb) {
-            if (enabled) {
-                sb.draw(img, x, y, sWidth, sHeight);
-            }
-        }
-    }
-
-    public static class SlideSideR extends AbstractUI {
-        public SlideSideR() {
-            super(FileHandler.getUi().get("SLIDE_SR"));
-            clickable = false;
-        }
-
-        @Override
-        protected void renderUi(SpriteBatch sb) {
-            if (enabled) {
-                sb.setColor(Color.WHITE);
-                sb.draw(img, x, y, sWidth, sHeight);
+                sb.draw(img, x, y, 0, 0, sWidth, sHeight, (float) bar.pos / 100, 1, 0);
             }
         }
     }

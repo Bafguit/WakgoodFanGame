@@ -143,7 +143,6 @@ public class FileHandler implements Disposable {
         jsonMap.put(JsonType.EVENT_JSON, generateJson("json/events.json"));
         jsonMap.put(JsonType.ITEM_JSON, generateJson("json/items.json"));
         jsonMap.put(JsonType.KEY_JSON, generateJson("json/keywords.json"));
-        jsonMap.put(JsonType.CREDIT_JSON, generateJson("json/credit.json"));
         jsonMap.put(JsonType.CARD_JSON_BASIC, generateJson("json/skill/basicCards.json"));
         jsonMap.put(JsonType.CARD_JSON_WAK, generateJson("json/skill/wakCards.json"));
         jsonMap.put(JsonType.CARD_JSON_MANAGER, generateJson("json/skill/managerCards.json"));
@@ -374,6 +373,10 @@ public class FileHandler implements Disposable {
         resourceNames.put("NEXT", "img/ui/next.png");
         resourceNames.put("GOLD", "img/ui/gold.png");
         resourceNames.put("ROLL", "img/ui/roll.png");
+        resourceNames.put("SETTING_CLOSE", "img/ui/closeSetting.png");
+        resourceNames.put("SETTING_MAIN", "img/ui/mainMenu.png");
+        resourceNames.put("SETTING_GIVEUP", "img/ui/giveUp.png");
+        resourceNames.put("SETTING_EXIT", "img/ui/exit.png");
         resourceNames.put("ENTITY_POINT_B", "img/ui/entityPoint_boss.png");
         resourceNames.put("PLAYER_POINT_B", "img/ui/playerPoint_boss.png");
         resourceNames.put("ENTITY_POINT", "img/ui/entityPoint.png");
@@ -395,9 +398,7 @@ public class FileHandler implements Disposable {
         resourceNames.put("TURN_ARROW", "img/ui/turn_arrow.png");
         resourceNames.put("SLIDE_A", "img/ui/slide_a.png");
         resourceNames.put("SLIDE_B", "img/ui/slide_b.png");
-        resourceNames.put("SLIDE_L", "img/ui/slide_l.png");
-        resourceNames.put("SLIDE_SL", "img/ui/slide_sl.png");
-        resourceNames.put("SLIDE_SR", "img/ui/slide_sr.png");
+        resourceNames.put("SLIDE", "img/ui/slide.png");
         resourceNames.put("LEFT", "img/ui/left.png");
         resourceNames.put("RIGHT", "img/ui/right.png");
         resourceNames.put("HEART", "img/ui/heart.png");
@@ -739,7 +740,6 @@ public class FileHandler implements Disposable {
         STATUS_JSON,
         ENEMY_JSON,
         EVENT_JSON,
-        CREDIT_JSON,
         ITEM_JSON,
         KEY_JSON,
         CARD_JSON_BASIC,

@@ -98,7 +98,6 @@ public abstract class AbstractRoom implements Cloneable {
             SoundHandler.fadeOutAll();
             SoundHandler.addBattle();
             battleScreen = new BattleScreen();
-            SoundHandler.playSfx("CHANGE_DOOR");
             fadeOutAndChangeScreen(battleScreen, FadeType.HORIZONTAL);
         } else if (type == AbstractRoom.RoomType.REST) {
             restScreen = new RestScreen();

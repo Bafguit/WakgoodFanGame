@@ -34,9 +34,9 @@ public class RestButton extends AbstractUI implements GetSelectedPlayer, GetSele
     protected void updateButton() {
         if (over) {
             if (type == RestType.HEAL) {
-                AbstractLabyrinth.cPanel.infoPanel.setInfo("회복", "모든 플레이어가 체력을 &g<" + HEAL_AMOUNT + "> 회복합니다.");
+                AbstractLabyrinth.cPanel.infoPanel.setInfo("휴식", "모든 플레이어가 체력을 &g<" + HEAL_AMOUNT + "> 회복합니다.");
             } else if (type == RestType.UPGRADE) {
-                AbstractLabyrinth.cPanel.infoPanel.setInfo("연마", "스킬 하나를 강화합니다.");
+                AbstractLabyrinth.cPanel.infoPanel.setInfo("단련", "스킬 하나를 강화합니다.");
             } else if (type == RestType.REVIVE) {
                 AbstractLabyrinth.cPanel.infoPanel.setInfo("소생", "사망한 플레이어 하나를 부활시킵니다.");
             }

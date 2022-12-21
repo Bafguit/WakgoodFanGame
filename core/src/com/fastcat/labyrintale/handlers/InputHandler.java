@@ -158,6 +158,12 @@ public final class InputHandler {
                         Labyrintale.closeSetting();
                     }
                 }
+            } else if(Labyrintale.getCurScreen() == Labyrintale.mainMenuScreen) {
+                if (!Labyrintale.setting) {
+                    Labyrintale.openSetting();
+                } else {
+                    Labyrintale.closeSetting();
+                }
             }
         }
     }

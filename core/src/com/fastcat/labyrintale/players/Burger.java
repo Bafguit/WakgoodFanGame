@@ -18,7 +18,7 @@ public class Burger extends AbstractPlayer {
     private static final Color COLOR = new Color(0xfff081ff);
 
     public Burger() {
-        super(ID, HEALTH, COLOR);
+        super(ID, HEALTH, COLOR, PlayerJob.GUARD);
         stat.speed = 1;
         stat.debuRes = 30;
         stat.critical = 5;

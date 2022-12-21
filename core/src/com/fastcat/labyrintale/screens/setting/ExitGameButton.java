@@ -11,10 +11,8 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 public class ExitGameButton extends AbstractUI {
 
     public ExitGameButton(SettingScreen sc) {
-        super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.67f - sWidth / 2, 288 * InputHandler.scale);
-        fontData = BUTTON;
-        text = "종료";
+        super(FileHandler.getUi().get("SETTING_EXIT"));
+        setPosition(1570 * InputHandler.scale - sWidth / 2, 190 * InputHandler.scale - sHeight / 2);
         screen = sc;
         isPixmap = true;
     }

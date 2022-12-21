@@ -7,6 +7,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class ItemPanel extends AbstractUI {
@@ -45,8 +46,12 @@ public class ItemPanel extends AbstractUI {
                         paper.sHeight);
             if (item != null) {
                 sb.draw(item.img, x, y, sWidth, sHeight);
-                sb.setColor(item.getRarityColor());
-                if (!adv && item.rarity != AbstractItem.ItemRarity.STARTER) sb.draw(img, x, y, sWidth, sHeight);
+                if(adv) {
+                    FontHandler.renderCenter(sb, FontHandler.GOMEM, item.name, x, y - 23 * InputHandler.scale, sWidth, sHeight);
+                } else if (item.rarity != AbstractItem.ItemRarity.STARTER) {
+                    sb.setColor(item.getRarityColor());
+                    sb.draw(img, x, y, sWidth, sHeight);
+                }
                 sb.setColor(Color.WHITE);
             }
         }

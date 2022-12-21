@@ -15,10 +15,8 @@ import com.fastcat.labyrintale.handlers.SettingHandler;
 public class GiveUpButton extends AbstractUI {
 
     public GiveUpButton(SettingScreen sc) {
-        super(FileHandler.getUi().get("BUTTON"));
-        setPosition(Gdx.graphics.getWidth() * 0.34f - sWidth / 2, 288 * InputHandler.scale);
-        fontData = BUTTON;
-        text = "포기";
+        super(FileHandler.getUi().get("SETTING_GIVEUP"));
+        setPosition(1280 * InputHandler.scale - sWidth / 2, 190 * InputHandler.scale - sHeight / 2);
         screen = sc;
         isPixmap = true;
     }
