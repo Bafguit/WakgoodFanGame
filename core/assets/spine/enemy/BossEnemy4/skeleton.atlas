@@ -1,41 +1,152 @@
 
 skeleton.png
-size: 1234,1132
+size: 2044,1281
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_left
+  rotate: true
+  xy: 2, 287
+  size: 609, 685
+  orig: 1200, 900
+  offset: 121, 35
+  index: -1
+arm_right
+  rotate: true
+  xy: 638, 898
+  size: 220, 345
+  orig: 1200, 900
+  offset: 725, 230
+  index: -1
+body_under
+  rotate: true
+  xy: 1739, 1088
+  size: 191, 303
+  orig: 1200, 900
+  offset: 738, 546
+  index: -1
+body_upper
+  rotate: true
+  xy: 1519, 1089
+  size: 190, 218
+  orig: 1200, 900
+  offset: 658, 478
+  index: -1
+die
+  rotate: false
+  xy: 689, 2
+  size: 1134, 782
+  orig: 1200, 900
+  offset: 66, 19
+  index: -1
+eye_left
+  rotate: true
+  xy: 2, 1213
+  size: 66, 73
+  orig: 1200, 900
+  offset: 353, 372
+  index: -1
+eye_right
+  rotate: false
+  xy: 799, 1125
+  size: 179, 154
+  orig: 1200, 900
+  offset: 503, 275
+  index: -1
+foot_right
+  rotate: true
+  xy: 1240, 867
+  size: 220, 382
+  orig: 1200, 900
+  offset: 865, 7
+  index: -1
+hand_right
+  rotate: false
+  xy: 1624, 786
+  size: 381, 300
+  orig: 1200, 900
+  offset: 556, 8
+  index: -1
+head
+  rotate: true
+  xy: 2, 961
+  size: 212, 213
+  orig: 1200, 900
+  offset: 473, 358
+  index: -1
+leg_left
+  rotate: true
+  xy: 289, 1134
+  size: 145, 508
+  orig: 1200, 900
+  offset: 652, 78
+  index: -1
+leg_right
+  rotate: true
+  xy: 1252, 1105
+  size: 174, 265
+  orig: 1200, 900
+  offset: 817, 345
+  index: -1
+mouth_left
+  rotate: true
+  xy: 77, 1175
+  size: 104, 210
+  orig: 1200, 900
+  offset: 390, 65
+  index: -1
+mouth_right
+  rotate: true
+  xy: 980, 1120
+  size: 159, 270
+  orig: 1200, 900
+  offset: 470, 56
+  index: -1
+nose
+  rotate: true
+  xy: 985, 890
+  size: 228, 253
+  orig: 1200, 900
+  offset: 331, 207
+  index: -1
+tail
+  rotate: true
+  xy: 217, 938
+  size: 194, 419
+  orig: 1200, 900
+  offset: 873, 324
+  index: -1
+
+skeleton2.png
+size: 2028,1969
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 attack
   rotate: false
-  xy: 503, 62
-  size: 519, 526
-  orig: 640, 640
-  offset: 35, 30
-  index: -1
-die
-  rotate: true
-  xy: 920, 595
-  size: 535, 312
-  orig: 640, 640
-  offset: 69, 45
+  xy: 2, 250
+  size: 1131, 873
+  orig: 1200, 900
+  offset: 13, 7
   index: -1
 hit
   rotate: false
-  xy: 2, 566
-  size: 447, 564
-  orig: 640, 640
-  offset: 155, 21
+  xy: 968, 1125
+  size: 1022, 842
+  orig: 1200, 900
+  offset: 63, 7
   index: -1
 idle
-  rotate: true
-  xy: 2, 2
-  size: 562, 499
-  orig: 640, 640
-  offset: 39, 52
+  rotate: false
+  xy: 2, 1125
+  size: 964, 842
+  orig: 1200, 900
+  offset: 121, 7
   index: -1
 skill
-  rotate: false
-  xy: 451, 590
-  size: 467, 540
-  orig: 640, 640
-  offset: 66, 47
+  rotate: true
+  xy: 1135, 2
+  size: 1121, 891
+  orig: 1200, 900
+  offset: 64, 7
   index: -1
