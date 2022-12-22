@@ -48,7 +48,18 @@ allprojects {
         }
     }
 }
+project(":ios") {
+    apply plugin: "java-library"
+    apply plugin: "robovm"
+    dependencies {
+        implementation project(":core")
+        api "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
+        api "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
+        api "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
 
+    }
+}
 project(":android") {
     apply plugin: "com.android.application"
 
