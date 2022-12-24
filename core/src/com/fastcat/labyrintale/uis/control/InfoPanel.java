@@ -60,7 +60,7 @@ public class InfoPanel extends AbstractUI {
         bny = 445 * scale;
         bdx = 1000 * scale;
         bdy = 390 * scale;
-        bnw = bdw = 1000 * InputHandler.scale;
+        bnw = bdw = 930 * InputHandler.scale;
         bnh = 60 * InputHandler.scale;
         bdh = 60 * InputHandler.scale;
 

@@ -446,6 +446,7 @@ public class Labyrintale extends Game {
                         else addTempScreen(nextScreen);
                         nextScreen = null;
                         fadeIn = true;
+                        SoundHandler.playSfx("BATTLE");
                     } else fading = false;
                 }
                 fadeTex.draw(sb, alphaCount);
@@ -580,6 +581,7 @@ public class Labyrintale extends Game {
 
     public static void openTutorial(TutorialScreen.TutorialType type) {
         tutorialScreen.setType(type);
+        tutorialScreen.close.clickable = false;
         tutorial = true;
     }
 

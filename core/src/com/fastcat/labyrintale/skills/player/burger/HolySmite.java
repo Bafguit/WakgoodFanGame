@@ -14,7 +14,7 @@ public class HolySmite extends AbstractSkill {
 
     public HolySmite(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(ATK, 2);
+        setBaseAttack(ATK, 1);
         setBaseCost(2);
     }
 

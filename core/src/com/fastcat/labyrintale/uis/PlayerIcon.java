@@ -33,6 +33,7 @@ public class PlayerIcon extends AbstractUI {
         hy = 21 * scale;
         hw = 162 * scale;
         hh = 26 * scale;
+        clickable = false;
     }
 
     @Override

@@ -372,9 +372,6 @@ public class FileHandler implements Disposable {
         resourceNames.put("JOB_DEF", "img/ui/job_def.png");
         resourceNames.put("JOB_ATK", "img/ui/job_atk.png");
         resourceNames.put("JOB_SUP", "img/ui/job_sup.png");
-        resourceNames.put("JOB_DEF_B", "img/ui/job_def_big.png");
-        resourceNames.put("JOB_ATK_B", "img/ui/job_atk_big.png");
-        resourceNames.put("JOB_SUP_B", "img/ui/job_sup_big.png");
         resourceNames.put("REST_HEAL", "img/ui/rest_heal.png");
         resourceNames.put("REST_REVIVE", "img/ui/rest_revive.png");
         resourceNames.put("REST_UPGRADE", "img/ui/rest_upgrade.png");

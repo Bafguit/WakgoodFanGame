@@ -165,7 +165,6 @@ public class CharSelectScreen extends AbstractScreen {
         public HealthIcon health;
         public CharStatIcon[] stats;
         public AbstractUI.TempUI job;
-        public AbstractUI.TempUI jobBg;
         public AbstractUI.TempUI charLine;
         public CharInfoItemButton passive;
         public CharInfoItemButton[] skills = new CharInfoItemButton[3];
@@ -203,8 +202,6 @@ public class CharSelectScreen extends AbstractScreen {
             charLine.setPosition(1474 * scale, 1076 * scale);
             job = new AbstractUI.TempUI(FileHandler.getUi().get("JOB_DEF"));
             job.setPosition(1571 * scale, 1103 * scale);
-            jobBg = new AbstractUI.TempUI(FileHandler.getUi().get("JOB_DEF_B"));
-            jobBg.setPosition(1400 * scale, 450 * scale);
         }
 
         public void setPlayer(AbstractPlayer player) {
@@ -220,7 +217,6 @@ public class CharSelectScreen extends AbstractScreen {
             cw = player.bg.getWidth() * scale;
             ch = player.bg.getHeight() * scale;
             job.img = FileHandler.getUi().get("JOB_" + player.job);
-            jobBg.img = FileHandler.getUi().get("JOB_" + player.job + "_B");
         }
 
         public void update() {
@@ -236,7 +232,6 @@ public class CharSelectScreen extends AbstractScreen {
 
         public void render(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
-            jobBg.render(sb);
             sb.draw(player.bg, bgx, bgy, cw, ch);
             job.render(sb);
             renderLineLeft(sb, nData, player.name, nx, ny, ny, 0);

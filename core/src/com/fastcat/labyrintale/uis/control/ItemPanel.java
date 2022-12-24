@@ -47,7 +47,7 @@ public class ItemPanel extends AbstractUI {
             if (item != null) {
                 sb.draw(item.img, x, y, sWidth, sHeight);
                 if(adv) {
-                    FontHandler.renderCenter(sb, FontHandler.GOMEM, item.name, x, y - 23 * InputHandler.scale, sWidth, sHeight);
+                    FontHandler.renderCenter(sb, FontHandler.GOMEM, item.name, x, y - 22 * InputHandler.scale, sWidth, sHeight);
                 } else if (item.rarity != AbstractItem.ItemRarity.STARTER) {
                     sb.setColor(item.getRarityColor());
                     sb.draw(img, x, y, sWidth, sHeight);

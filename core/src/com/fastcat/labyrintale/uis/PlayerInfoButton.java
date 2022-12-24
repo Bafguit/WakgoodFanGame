@@ -16,6 +16,7 @@ public class PlayerInfoButton extends AbstractUI {
     public PlayerInfoButton() {
         super(FileHandler.getUi().get("STAT_PLUS"));
         fontData = CARD_BIG_DESC;
+        subs.add(new SubText("플레이어 정보", "모든 플레이어의 정보를 열람합니다."));
     }
 
     @Override

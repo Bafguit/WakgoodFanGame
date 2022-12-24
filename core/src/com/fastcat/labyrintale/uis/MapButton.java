@@ -14,6 +14,7 @@ public class MapButton extends AbstractUI {
 
     public MapButton() {
         super(FileHandler.getUi().get("MAP"));
+        subs.add(new SubText("지도", "지도를 펼칩니다."));
     }
 
     @Override

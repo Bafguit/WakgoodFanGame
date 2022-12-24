@@ -67,7 +67,7 @@ public class RestScreen extends AbstractScreen {
         b.setPosition(tw - b.sWidth / 2, h * 0.7f - b.sHeight / 2);
 
         RestDesc d = desc[cnt] = new RestDesc("휴식", b);
-        d.setPosition(tw - d.sWidth / 2, b.y);
+        d.setPosition(tw - d.sWidth / 2, b.y - 100 * InputHandler.scale);
 
         if (count > 2) {
             tw += tww;
@@ -77,7 +77,7 @@ public class RestScreen extends AbstractScreen {
             b3.setPosition(tw - b3.sWidth / 2, h * 0.77f - b3.sHeight / 2);
 
             RestDesc d3 = desc[cnt] = new RestDesc("소생", b3);
-            d3.setPosition(tw - d3.sWidth / 2, b3.y);
+            d3.setPosition(tw - d3.sWidth / 2, b3.y - 100 * InputHandler.scale);
         } else {
             tw += tww;
         }
@@ -89,8 +89,7 @@ public class RestScreen extends AbstractScreen {
         b2.setPosition(tw - b2.sWidth / 2, h * 0.7f - b2.sHeight / 2);
 
         RestDesc d2 = desc[cnt] = new RestDesc("단련", b2);
-        d2.setPosition(tw - d2.sWidth / 2, b2.y);
-        setBg(AbstractLabyrinth.curBg);
+        d2.setPosition(tw - d2.sWidth / 2, b2.y - 100 * InputHandler.scale);
     }
 
     @Override
