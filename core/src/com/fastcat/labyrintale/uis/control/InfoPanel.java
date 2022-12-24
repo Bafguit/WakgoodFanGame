@@ -112,13 +112,6 @@ public class InfoPanel extends AbstractUI {
         aSkill.update();
         map.update();
         playerInfo.update();
-        if(Labyrintale.getCurScreen() == Labyrintale.battleScreen) {
-            tutorial.setType(TutorialScreen.TutorialType.BATTLE);
-        } else if(Labyrintale.getCurScreen() == Labyrintale.wayScreen) {
-            tutorial.setType(TutorialScreen.TutorialType.WAY);
-        } else if(Labyrintale.getCurScreen() instanceof RewardScreen) {
-            tutorial.setType(TutorialScreen.TutorialType.REWARD);
-        } else tutorial.type = null;
         tutorial.update();
         setting.update();
     }
@@ -144,6 +137,13 @@ public class InfoPanel extends AbstractUI {
             aSkill.render(sb);
             map.render(sb);
             playerInfo.render(sb);
+            if(Labyrintale.getCurScreen() == Labyrintale.battleScreen) {
+                tutorial.setType(TutorialScreen.TutorialType.BATTLE);
+            } else if(Labyrintale.getCurScreen() == Labyrintale.wayScreen) {
+                tutorial.setType(TutorialScreen.TutorialType.WAY);
+            } else if(Labyrintale.getCurScreen() instanceof RewardScreen) {
+                tutorial.setType(TutorialScreen.TutorialType.REWARD);
+            } else tutorial.type = null;
             tutorial.render(sb);
             setting.render(sb);
         }

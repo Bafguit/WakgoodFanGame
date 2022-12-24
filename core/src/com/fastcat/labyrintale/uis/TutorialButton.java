@@ -41,6 +41,7 @@ public class TutorialButton extends AbstractUI {
 
     @Override
     protected void renderUi(SpriteBatch sb) {
+        overable = type != null;
         if (overable) {
             if (!over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(WHITE);

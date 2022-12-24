@@ -1,118 +1,83 @@
 
 skeleton.png
-size: 2029,1253
+size: 1738,947
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-arm_left
-  rotate: true
-  xy: 1853, 65
-  size: 105, 172
-  orig: 900, 900
-  offset: 287, 363
-  index: -1
-arm_right
-  rotate: true
-  xy: 832, 561
-  size: 221, 159
-  orig: 900, 900
-  offset: 402, 489
-  index: -1
 attack
-  rotate: true
-  xy: 2, 547
-  size: 704, 696
-  orig: 900, 900
-  offset: 100, 53
+  rotate: false
+  xy: 2, 419
+  size: 602, 526
+  orig: 640, 640
+  offset: 11, 34
   index: -1
 body
-  rotate: true
-  xy: 700, 1020
-  size: 231, 428
-  orig: 900, 900
-  offset: 300, 221
+  rotate: false
+  xy: 1275, 32
+  size: 248, 177
+  orig: 640, 640
+  offset: 268, 221
   index: -1
 die
-  rotate: false
-  xy: 1344, 2
-  size: 507, 578
-  orig: 900, 900
-  offset: 156, 33
-  index: -1
-foot_left
-  rotate: false
-  xy: 1853, 172
-  size: 174, 193
-  orig: 900, 900
-  offset: 232, 53
-  index: -1
-foot_right
-  rotate: false
-  xy: 1190, 603
-  size: 137, 179
-  orig: 900, 900
-  offset: 498, 55
-  index: -1
-hand_left
   rotate: true
-  xy: 993, 564
-  size: 218, 195
-  orig: 900, 900
-  offset: 174, 205
-  index: -1
-hand_right
-  rotate: false
-  xy: 700, 646
-  size: 130, 296
-  orig: 900, 900
-  offset: 561, 289
+  xy: 2, 2
+  size: 415, 586
+  orig: 640, 640
+  offset: 63, 44
   index: -1
 head
   rotate: false
-  xy: 1130, 944
-  size: 201, 307
-  orig: 900, 900
-  offset: 217, 411
+  xy: 1275, 211
+  size: 251, 255
+  orig: 640, 640
+  offset: 34, 266
   index: -1
 hit
-  rotate: false
-  xy: 1344, 582
-  size: 681, 669
-  orig: 900, 900
-  offset: 28, 53
+  rotate: true
+  xy: 606, 10
+  size: 456, 502
+  orig: 640, 640
+  offset: 71, 45
   index: -1
 idle
-  rotate: true
-  xy: 673, 28
-  size: 517, 669
-  orig: 900, 900
-  offset: 174, 53
-  index: -1
-leg_left
-  rotate: true
-  xy: 1094, 784
-  size: 158, 233
-  orig: 900, 900
-  offset: 232, 168
-  index: -1
-leg_right
   rotate: false
-  xy: 1853, 367
-  size: 174, 213
-  orig: 900, 900
-  offset: 403, 171
+  xy: 1121, 468
+  size: 488, 477
+  orig: 640, 640
+  offset: 34, 44
+  index: -1
+leg_back_left
+  rotate: false
+  xy: 1633, 427
+  size: 87, 235
+  orig: 640, 640
+  offset: 395, 58
+  index: -1
+leg_back_right
+  rotate: false
+  xy: 1611, 664
+  size: 125, 281
+  orig: 640, 640
+  offset: 397, 47
+  index: -1
+leg_front_left
+  rotate: false
+  xy: 1528, 170
+  size: 103, 296
+  orig: 640, 640
+  offset: 183, 68
+  index: -1
+leg_front_right
+  rotate: false
+  xy: 1110, 96
+  size: 163, 370
+  orig: 640, 640
+  offset: 202, 44
   index: -1
 skill
-  rotate: true
-  xy: 2, 27
-  size: 518, 669
-  orig: 900, 900
-  offset: 142, 53
-  index: -1
-tail
-  rotate: true
-  xy: 832, 837
-  size: 181, 260
-  orig: 900, 900
-  offset: 410, 136
+  rotate: false
+  xy: 606, 468
+  size: 513, 477
+  orig: 640, 640
+  offset: 9, 44
   index: -1

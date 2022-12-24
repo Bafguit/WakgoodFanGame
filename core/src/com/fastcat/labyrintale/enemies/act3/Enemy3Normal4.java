@@ -27,11 +27,7 @@ public class Enemy3Normal4 extends AbstractEnemy {
 
     @Override
     public void preBattle() {
-        applyStatus(
-                new SelfBombStatus(AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 5),
-                this,
-                AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.COFFIN ? 3 : 5,
-                false);
+        applyStatus(new SelfBombStatus(4), this, 4, false);
     }
 
     @Override

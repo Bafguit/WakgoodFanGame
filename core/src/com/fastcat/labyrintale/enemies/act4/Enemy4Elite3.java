@@ -39,8 +39,7 @@ public class Enemy4Elite3 extends AbstractEnemy {
     public Array<AbstractSkill> getStartingDeck() {
         Array<AbstractSkill> temp = new Array<>();
         AbstractSkill s = new FourE(this);
-        s.upgrade();
-        temp.add(s);
+        temp.add(s.upgrade().upgrade());
         AbstractSkill s2 = new DecayE(this);
         s2.upgrade();
         temp.add(s2);

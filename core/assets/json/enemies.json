@@ -215,6 +215,22 @@
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },
+  "Enemy4Weak5": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Weak6": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Weak7": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Weak8": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
   "Enemy4Normal1": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
@@ -228,6 +244,14 @@
     "DESC": "DESCRIPTION"
   },
   "Enemy4Normal4": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Normal5": {
+    "NAME": "TestEnemy",
+    "DESC": "DESCRIPTION"
+  },
+  "Enemy4Normal6": {
     "NAME": "TestEnemy",
     "DESC": "DESCRIPTION"
   },

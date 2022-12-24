@@ -45,9 +45,10 @@ public class Enemy3Normal2 extends AbstractEnemy {
         s.disposable = true;
         temp.add(s);
         AbstractSkill s2 = new StrikeE(this);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             s2.upgrade();
         }
+        temp.add(s2);
         AbstractSkill s3 = new DoubleE(this);
         for (int i = 0; i < 2; i++) {
             s3.upgrade();

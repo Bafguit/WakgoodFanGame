@@ -25,7 +25,7 @@ public class SlideBarGroup {
         button.min = slideBar.x - button.sWidth / 2;
         button.max = slideBar.x + slideBar.sWidth - button.sWidth / 2;
         button.setPosition(
-                slideBar.x + ((slideBar.sWidth - button.sWidth) * ((float) slideBar.pos / slideBar.abs)), y - button.sHeight / 2);
+                slideBar.x + ((slideBar.sWidth) * ((float) slideBar.pos / slideBar.abs) - button.sWidth / 2), y - button.sHeight / 2);
     }
 
     public void update() {
