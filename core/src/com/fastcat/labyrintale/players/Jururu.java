@@ -18,7 +18,7 @@ public class Jururu extends AbstractPlayer {
     private static final Color COLOR = new Color(0xe373ffff);
 
     public Jururu() {
-        super(ID, HEALTH, COLOR, PlayerJob.SUPPORTER);
+        super(ID, HEALTH, COLOR, PlayerJob.SUP);
         stat.speed = 1;
         stat.debuRes = 35;
         stat.critical = 5;

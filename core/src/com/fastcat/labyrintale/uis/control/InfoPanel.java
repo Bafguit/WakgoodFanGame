@@ -8,14 +8,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.uis.MapButton;
-import com.fastcat.labyrintale.uis.PlayerIcon;
-import com.fastcat.labyrintale.uis.PlayerInfoButton;
-import com.fastcat.labyrintale.uis.SettingButton;
+import com.fastcat.labyrintale.screens.reward.RewardScreen;
+import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
+import com.fastcat.labyrintale.uis.*;
 
 public class InfoPanel extends AbstractUI {
 
@@ -29,6 +29,7 @@ public class InfoPanel extends AbstractUI {
     public MapButton map;
     public TempUI gold;
     public SettingButton setting;
+    public TutorialButton tutorial;
     public PlayerInfoButton playerInfo;
     public InfoType type = InfoType.COLOR;
     public AbstractSkill skill;
@@ -64,6 +65,7 @@ public class InfoPanel extends AbstractUI {
         bdh = 60 * InputHandler.scale;
 
         setting = new SettingButton(w * 0.01f, h * 0.915f);
+        tutorial = new TutorialButton(FileHandler.getUi().get("TUTORIAL_B"), w * 0.05f, h * 0.915f);
 
         gold = new TempUI(FileHandler.getUi().get("GOLD_PANEL"));
         gold.setPosition(974 * scale, 49 * scale);
@@ -110,6 +112,14 @@ public class InfoPanel extends AbstractUI {
         aSkill.update();
         map.update();
         playerInfo.update();
+        if(Labyrintale.getCurScreen() == Labyrintale.battleScreen) {
+            tutorial.setType(TutorialScreen.TutorialType.BATTLE);
+        } else if(Labyrintale.getCurScreen() == Labyrintale.wayScreen) {
+            tutorial.setType(TutorialScreen.TutorialType.WAY);
+        } else if(Labyrintale.getCurScreen() instanceof RewardScreen) {
+            tutorial.setType(TutorialScreen.TutorialType.REWARD);
+        } else tutorial.type = null;
+        tutorial.update();
         setting.update();
     }
 
@@ -134,6 +144,7 @@ public class InfoPanel extends AbstractUI {
             aSkill.render(sb);
             map.render(sb);
             playerInfo.render(sb);
+            tutorial.render(sb);
             setting.render(sb);
         }
     }

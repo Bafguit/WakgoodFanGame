@@ -1,6 +1,4 @@
-package com.fastcat.labyrintale.uis;
-
-import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
+package com.fastcat.labyrintale.screens.charselect;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -15,8 +13,12 @@ import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.StringHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
 import com.fastcat.labyrintale.strings.KeyString;
+import com.fastcat.labyrintale.uis.StatIcon;
+import com.fastcat.labyrintale.uis.StatIcon.StatType;
 
-public class StatIcon extends AbstractUI {
+import static com.fastcat.labyrintale.handlers.FontHandler.renderLineLeft;
+
+public class CharStatIcon extends AbstractUI {
 
     private final Sprite icon;
     public AbstractEntity entity;
@@ -24,9 +26,7 @@ public class StatIcon extends AbstractUI {
     public int amount;
     public boolean isUp = false;
 
-    private GetSelectedStat gets;
-
-    public StatIcon(StatType type) {
+    public CharStatIcon(StatType type) {
         super(FileHandler.getUi().get("BORDER_SS"));
         this.type = type;
         icon = FileHandler.getUi().get("STAT_" + type.toString());
@@ -37,7 +37,7 @@ public class StatIcon extends AbstractUI {
         clickable = false;
     }
 
-    public StatIcon(AbstractEntity e, StatType type, GetSelectedStat get) {
+    public CharStatIcon(AbstractEntity e, StatType type) {
         super(FileHandler.getUi().get("BORDER_SS"));
         this.type = type;
         icon = FileHandler.getUi().get("STAT_" + type.toString());
@@ -48,7 +48,6 @@ public class StatIcon extends AbstractUI {
         setEntity(e);
         isUp = true;
         clickable = e.isAlive() && AbstractLabyrinth.sp > 0;
-        gets = get;
     }
 
     public void setEntity(AbstractEntity entity) {
@@ -59,16 +58,32 @@ public class StatIcon extends AbstractUI {
                         && AbstractLabyrinth.sp > 0
                         && amount < 80
                         && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
-            if (type == StatType.ATTACK) amount = entity.stat.attack;
-            else if (type == StatType.SPELL) amount = entity.stat.spell;
-            else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
-            else {
-                if (type == StatType.CRITICAL)
+            if (type == StatType.ATTACK) {
+                amount = entity.stat.attack;
+                text = "공격력";
+            } else if (type == StatType.SPELL) {
+                amount = entity.stat.spell;
+                text = "방어력";
+            } else if (type == StatType.SPEED) {
+                amount = entity.stat.capSpeed();
+                text = "속도";
+            } else {
+                if (type == StatType.CRITICAL) {
                     amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
-                else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
-                else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
-                else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-                else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+                    text = "치명타 확률";
+                } else if (type == StatType.MULTIPLY) {
+                    amount = entity.stat.multiply;
+                    text = "치명타 피해";
+                } else if (type == StatType.MOVERES) {
+                    amount = EntityStat.cap(entity.stat.moveRes);
+                    text = "이동 저항";
+                } else if (type == StatType.DEBURES) {
+                    amount = EntityStat.cap(entity.stat.debuRes);
+                    text = "디버프 저항";
+                } else if (type == StatType.NEUTRES) {
+                    amount = EntityStat.neutCap(entity);
+                    text = "죽음 저항";
+                }
             }
         }
     }
@@ -81,16 +96,32 @@ public class StatIcon extends AbstractUI {
                         && AbstractLabyrinth.sp > 0
                         && amount < 80
                         && (type != StatType.CRITICAL || !entity.hasItem("TotoDeck"));
-            if (type == StatType.ATTACK) amount = entity.stat.attack;
-            else if (type == StatType.SPELL) amount = entity.stat.spell;
-            else if (type == StatType.SPEED) amount = entity.stat.capSpeed();
-            else {
-                if (type == StatType.CRITICAL)
+            if (type == StatType.ATTACK) {
+                amount = entity.stat.attack;
+                text = "공격력";
+            } else if (type == StatType.SPELL) {
+                amount = entity.stat.spell;
+                text = "방어력";
+            } else if (type == StatType.SPEED) {
+                amount = entity.stat.capSpeed();
+                text = "속도";
+            } else {
+                if (type == StatType.CRITICAL) {
                     amount = entity.hasItem("TotoDeck") ? 20 : EntityStat.cap(entity.stat.critical);
-                else if (type == StatType.MULTIPLY) amount = entity.stat.multiply;
-                else if (type == StatType.MOVERES) amount = EntityStat.cap(entity.stat.moveRes);
-                else if (type == StatType.DEBURES) amount = EntityStat.cap(entity.stat.debuRes);
-                else if (type == StatType.NEUTRES) amount = EntityStat.neutCap(entity);
+                    text = "치명타 확률";
+                } else if (type == StatType.MULTIPLY) {
+                    amount = entity.stat.multiply;
+                    text = "치명타 피해";
+                } else if (type == StatType.MOVERES) {
+                    amount = EntityStat.cap(entity.stat.moveRes);
+                    text = "이동 저항";
+                } else if (type == StatType.DEBURES) {
+                    amount = EntityStat.cap(entity.stat.debuRes);
+                    text = "디버프 저항";
+                } else if (type == StatType.NEUTRES) {
+                    amount = EntityStat.neutCap(entity);
+                    text = "죽음 저항";
+                }
             }
         }
     }
@@ -114,31 +145,9 @@ public class StatIcon extends AbstractUI {
                 String t = "";
                 if (type == StatType.ATTACK || type == StatType.SPELL || type == StatType.SPEED) t += amount;
                 else t = amount + "%";
-                renderLineLeft(sb, fontData, t, x + sWidth * 1.02f, y + sHeight / 2, sWidth * 3, sHeight);
+                renderLineLeft(sb, fontData, text, x + sWidth * 1.1f, y + sHeight / 2, sWidth * 5, sHeight);
+                renderLineLeft(sb, fontData, t, x + sWidth * 5.6f, y + sHeight / 2, sWidth * 3, sHeight);
             }
         }
-    }
-
-    @Override
-    public void onClick() {
-        if (amount < 80) {
-            if (type == StatType.CRITICAL) entity.stat.critical += 5;
-            else if (type == StatType.MOVERES) entity.stat.moveRes += 5;
-            else if (type == StatType.DEBURES) entity.stat.debuRes += 5;
-            else if (type == StatType.NEUTRES) entity.stat.neutRes += 5;
-        }
-        AbstractLabyrinth.sp--;
-        gets.statSelected(entity, type);
-    }
-
-    public enum StatType {
-        ATTACK,
-        SPELL,
-        SPEED,
-        MULTIPLY,
-        CRITICAL,
-        MOVERES,
-        DEBURES,
-        NEUTRES
     }
 }

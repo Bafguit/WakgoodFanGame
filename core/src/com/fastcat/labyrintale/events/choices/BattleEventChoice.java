@@ -29,6 +29,6 @@ public class BattleEventChoice extends AbstractEvent.EventChoice {
         battleScreen = new BattleScreen(BattleScreen.BattleType.EVENT, false);
         SoundHandler.fadeOutAll();
         SoundHandler.addBattle();
-        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.HORIZONTAL);
+        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.BATTLE);
     }
 }

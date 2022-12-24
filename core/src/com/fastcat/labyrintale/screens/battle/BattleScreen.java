@@ -57,6 +57,7 @@ public class BattleScreen extends AbstractScreen {
 
     public BattleScreen(BattleType type, boolean isLoad) {
         cType = ControlPanel.ControlType.BATTLE;
+        bgShades = false;
         cPanel.battlePanel = new BattlePanel(cPanel);
         this.type = type;
         AbstractLabyrinth.prepare();

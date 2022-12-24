@@ -56,7 +56,6 @@ public class DifficultyButton extends AbstractUI {
         for (int i = 0; i < charSelectScreen.chars.length; i++) {
             charSelectScreen.chars[i].removeChar();
         }
-        charSelectScreen.nextButton.disable();
         charSelectScreen.seedText.text = "";
         Labyrintale.fadeOutAndChangeScreen(charSelectScreen, 0.75f);
     }

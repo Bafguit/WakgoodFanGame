@@ -28,6 +28,9 @@ public class LibraryScreen extends AbstractScreen {
             b.update();
         }
         backButton.update();
+        if (!Labyrintale.fading && InputHandler.cancel) {
+            backButton.onClick();
+        }
     }
 
     @Override

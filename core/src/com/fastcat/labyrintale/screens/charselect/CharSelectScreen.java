@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.screens.charselect;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.sc;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,6 +17,7 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.StatIcon;
+import com.fastcat.labyrintale.uis.TutorialButton;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
 
@@ -22,34 +25,46 @@ public class CharSelectScreen extends AbstractScreen {
 
     public CharSelectText charSelectText;
     public BackButton backButton;
-    public NextToAdvisorButton nextButton;
+    public StartButton nextButton;
     public SeedText seedText;
     public CharSelectGroup group;
     public AbstractLabyrinth.Difficulty diff = AbstractLabyrinth.Difficulty.NORMAL;
     public AbstractPlayer selected;
+    public TutorialButton tuto;
+    public AbstractUI.TempUI ground;
+    public AbstractUI.TempUI buttonLine;
     public CharButton[] chars = new CharButton[4];
     public CharButton[] aChars = new CharButton[8];
 
     public CharSelectScreen() {
+        setBg(FileHandler.getBg().get("BG_CHARSELECT"));
         charSelectText = new CharSelectText();
         backButton = new BackButton();
-        nextButton = new NextToAdvisorButton();
+        nextButton = new StartButton();
         seedText = new SeedText();
         group = new CharSelectGroup();
         CharButton char1 = new CharButton();
         CharButton char2 = new CharButton();
         CharButton char3 = new CharButton();
         CharButton char4 = new CharButton();
-        float cy = 1224 * InputHandler.scale;
-        char1.setPosition(Gdx.graphics.getWidth() * 0.3725f - char1.sWidth / 2, cy);
-        char2.setPosition(Gdx.graphics.getWidth() * 0.4575f - char2.sWidth / 2, cy);
-        char3.setPosition(Gdx.graphics.getWidth() * 0.5425f - char3.sWidth / 2, cy);
-        char4.setPosition(Gdx.graphics.getWidth() * 0.6275f - char4.sWidth / 2, cy);
+        float cy = 40 * scale;
+        char1.setPosition(776 * scale, cy);
+        char2.setPosition(981 * scale, cy);
+        char3.setPosition(1186 * scale, cy);
+        char4.setPosition(1391 * scale, cy);
+        nextButton.setPosition(1596 * scale, cy);
         chars[0] = char1;
         chars[1] = char2;
         chars[2] = char3;
         chars[3] = char4;
         addChars();
+        tuto = new TutorialButton(FileHandler.getUi().get("CHAR_TUTO"), TutorialScreen.TutorialType.CHARSELECT);
+        tuto.isPixmap = true;
+        tuto.setPosition(606 * scale, 78 * scale);
+        ground = new AbstractUI.TempUI(FileHandler.getUi().get("CHAR_GROUND"));
+        ground.setPosition(0, 0);
+        buttonLine = new AbstractUI.TempUI(FileHandler.getUi().get("CHAR_LINE_B"));
+        buttonLine.setPosition(Gdx.graphics.getWidth() * 0.5f - buttonLine.sWidth / 2, 133 * scale);
         cType = ControlPanel.ControlType.HIDE;
     }
 
@@ -58,8 +73,8 @@ public class CharSelectScreen extends AbstractScreen {
         for (int i = 0; i < 8; i++) {
             CharButton char0 = new CharButton(AbstractLabyrinth.getPlayerInstance(pc[i]));
             char0.setPosition(
-                    Gdx.graphics.getWidth() * 0.21f + Gdx.graphics.getWidth() * 0.085f * i - char0.sWidth / 2,
-                    43 * InputHandler.scale);
+                    (467 + 205 * i) * scale,
+                    175 * scale);
             aChars[i] = char0;
         }
     }
@@ -76,12 +91,9 @@ public class CharSelectScreen extends AbstractScreen {
             aChars[i].update();
         }
 
-        if (cc == 4) {
-            nextButton.enable();
-        } else {
-            nextButton.disable();
-        }
+        nextButton.overable = cc == 4;
         if (selected != null) group.update();
+        tuto.update();
 
         seedText.update();
         backButton.update();
@@ -93,15 +105,17 @@ public class CharSelectScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        Labyrintale.mainMenuScreen.back.render(sb);
         if (selected != null) group.render(sb);
-        charSelectText.render(sb);
+        ground.render(sb);
+        //charSelectText.render(sb);
+        buttonLine.render(sb);
         for (CharButton aChar : chars) {
             aChar.render(sb);
         }
         for (int i = 0; i < 8; i++) {
             aChars[i].render(sb);
         }
+        tuto.render(sb);
 
         seedText.render(sb);
         backButton.render(sb);
@@ -140,51 +154,57 @@ public class CharSelectScreen extends AbstractScreen {
     public static class CharSelectGroup {
 
         private final FontHandler.FontData nData = TURN_CHANGE;
-        private final FontHandler.FontData inData = CARD_BIG_NAME;
-        private final FontHandler.FontData idData = BIG_DESC;
+        private final FontHandler.FontData inData = INFO_HP;
+        private final FontHandler.FontData idData = GOMEM;
+        private final FontHandler.FontData jData = SETTING;
 
         public InfoPanel.InfoType type;
         public AbstractPlayer player;
         public AbstractItem item;
         public AbstractSkill skill;
         public HealthIcon health;
-        public StatIcon[] stats;
+        public CharStatIcon[] stats;
+        public AbstractUI.TempUI job;
+        public AbstractUI.TempUI jobBg;
+        public AbstractUI.TempUI charLine;
         public CharInfoItemButton passive;
         public CharInfoItemButton[] skills = new CharInfoItemButton[3];
-        public float x, ny, dy, iny, idy, bgx, bgy;
+        public float x, nx, ny, iny, idy, bgx, bgy;
         public float tw, cw = 0, ch = 0;
 
         public CharSelectGroup() {
             type = InfoPanel.InfoType.COLOR;
-            float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
+            float w = Gdx.graphics.getWidth();
             health = new HealthIcon();
-            health.setPosition(w * 0.515f, h * 0.47f);
+            health.setPosition(1535 * scale, 830 * scale);
             passive = new CharInfoItemButton(this);
-            passive.setPosition(w * 0.575f, h * 0.47f);
+            passive.setPosition(1700 * scale, 840 * scale);
             for (int i = 0; i < 3; i++) {
                 CharInfoItemButton b = new CharInfoItemButton(this);
-                b.setPosition(w * 0.655f + w * 0.06f * i, h * 0.47f);
+                b.setPosition((1560 + 154 * i) * scale, 455 * scale);
                 skills[i] = b;
             }
-            stats = new StatIcon[6];
-            int cnt = 0;
-            for (int i = 0; i < 3; i++) {
-                float cw = w * 0.715f, ch = h * (0.645f - 0.027f * i);
-                for (int j = 0; j < 2; j++) {
-                    StatIcon c = new StatIcon(StatIcon.StatType.values()[cnt + 2]);
-                    c.setPosition(cw + w * 0.046f * j, ch);
-                    stats[cnt] = c;
-                    cnt++;
-                }
+            stats = new CharStatIcon[6];
+            for (int i = 0; i < 6; i++) {
+                float cw = 1560 * scale, ch = (800 - 40 * i) * scale;
+                CharStatIcon c = new CharStatIcon(StatIcon.StatType.values()[i + 2]);
+                c.setPosition(cw, ch);
+                stats[i] = c;
             }
-            tw = w * 0.325f;
-            x = w * 0.515f;
-            bgx = w * 0.175f;
-            bgy = h * -0.15f;
-            ny = h * 0.715f;
-            dy = h * 0.65f;
-            iny = h * 0.45f;
-            idy = h * 0.4f;
+            tw = 400 * scale;
+            x = 2015 * scale;
+            bgx = 506 * scale;
+            bgy = -40 * scale;
+            nx = 1796 * scale;
+            ny = 1150 * scale;
+            iny = 585 * scale;
+            idy = 540 * scale;
+            charLine = new AbstractUI.TempUI(FileHandler.getUi().get("CHAR_LINE"));
+            charLine.setPosition(1474 * scale, 1076 * scale);
+            job = new AbstractUI.TempUI(FileHandler.getUi().get("JOB_DEF"));
+            job.setPosition(1571 * scale, 1103 * scale);
+            jobBg = new AbstractUI.TempUI(FileHandler.getUi().get("JOB_DEF_B"));
+            jobBg.setPosition(1400 * scale, 450 * scale);
         }
 
         public void setPlayer(AbstractPlayer player) {
@@ -197,8 +217,10 @@ public class CharSelectScreen extends AbstractScreen {
             for (int i = 0; i < 6; i++) {
                 stats[i].entity = player;
             }
-            cw = player.bg.getWidth() * InputHandler.scale;
-            ch = player.bg.getHeight() * InputHandler.scale;
+            cw = player.bg.getWidth() * scale;
+            ch = player.bg.getHeight() * scale;
+            job.img = FileHandler.getUi().get("JOB_" + player.job);
+            jobBg.img = FileHandler.getUi().get("JOB_" + player.job + "_B");
         }
 
         public void update() {
@@ -214,20 +236,27 @@ public class CharSelectScreen extends AbstractScreen {
 
         public void render(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
+            jobBg.render(sb);
             sb.draw(player.bg, bgx, bgy, cw, ch);
-            renderLineBotLeft(sb, nData, player.name, x, dy, tw, 0);
+            job.render(sb);
+            renderLineLeft(sb, nData, player.name, nx, ny, ny, 0);
+            String j;
+            if(player.job == AbstractPlayer.PlayerJob.DEF) j = "수호자";
+            else if(player.job == AbstractPlayer.PlayerJob.ATK) j = "타격대";
+            else j = "지원가";
+            renderLineLeft(sb, jData, j, nx, ny + 70 * scale, ny, 0);
+            renderColorLeft(sb, inData, player.desc, 1560 * scale, ny - 85 * scale, 700 * scale);
+            charLine.render(sb);
 
             health.render(sb);
             passive.render(sb);
+            renderColorLeft(sb, idData, passive.item.desc, passive.x + passive.sWidth * 1.1f, passive.y + passive.sHeight, 500 * scale);
             for (int i = 0; i < 3; i++) {
                 skills[i].render(sb);
             }
             if (type == InfoPanel.InfoType.SKILL) {
                 renderLineBotLeft(sb, inData, skill.name, x, iny, tw, 0);
                 renderCardLeft(sb, skill, idData, skill.desc, x, idy, tw, 0);
-            } else if (type == InfoPanel.InfoType.ITEM) {
-                renderLineBotLeft(sb, inData, item.name, x, iny, tw, 0);
-                renderColorLeft(sb, idData, item.desc, x, idy, tw);
             }
             for (int i = 0; i < 6; i++) {
                 stats[i].render(sb);
@@ -297,7 +326,7 @@ public class CharSelectScreen extends AbstractScreen {
 
         @Override
         public void updateButton() {
-            if (over) {
+            if (over && type == InfoPanel.InfoType.SKILL) {
                 group.type = type;
                 group.item = item;
                 group.skill = skill;

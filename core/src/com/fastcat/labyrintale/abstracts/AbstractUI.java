@@ -28,7 +28,7 @@ public abstract class AbstractUI implements Disposable {
     public SubText.SubWay subWay = SubText.SubWay.UP;
     protected LogHandler logger = new LogHandler(this.getClass().getName());
     public Sprite img;
-    public String text;
+    public String text = "";
     public FontData fontData;
     public float x;
     public float y;
@@ -110,6 +110,7 @@ public abstract class AbstractUI implements Disposable {
         } else {
             clicked = hasClick && hasOver && isLeftClick;
             clicking = hasClick && hasOver && isLeftClicking;
+            over = hasClick;
             if(isLeftClick) {
                 hasClick = hasOver && !clicked;
             }
@@ -138,7 +139,6 @@ public abstract class AbstractUI implements Disposable {
                 }
             }
             updateButton();
-            over = hasClick;
         } else {
             over = false;
             hasOver = false;

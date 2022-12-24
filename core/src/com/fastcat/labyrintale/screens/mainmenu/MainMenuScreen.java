@@ -36,7 +36,7 @@ public class MainMenuScreen extends AbstractScreen {
         creditButton.setX(lx);
         exitButton = new ExitButton();
         exitButton.setX(lx);
-        back = new GifBg("MAIN_MENU");
+        back = new GifBg(FileHandler.getUi().get("FADE"), "MAIN_MENU");
 
         cType = ControlPanel.ControlType.HIDE;
     }

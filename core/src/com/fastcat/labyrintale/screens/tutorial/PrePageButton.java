@@ -39,6 +39,8 @@ public class PrePageButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        sc.index--;
+        if(sc.index > 0) {
+            sc.index--;
+        }
     }
 }

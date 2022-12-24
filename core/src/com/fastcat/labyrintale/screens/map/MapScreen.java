@@ -34,7 +34,7 @@ public class MapScreen extends AbstractScreen {
                 AbstractChoice tw = currentFloor.ways[i].choices[j];
                 if (tw != null) {
                     MapNodeButton node = new MapNodeButton(tw, i);
-                    node.setPosition(b - node.sWidth / 2, h * (0.8f - 0.15f * j) - node.sHeight / 2);
+                    node.setPosition(b - node.sWidth / 2, h * (0.76f - 0.15f * j) - node.sHeight / 2);
                     nodes[i][j] = node;
                 }
             }
@@ -51,22 +51,6 @@ public class MapScreen extends AbstractScreen {
     public static void remove() {
         mapScreen.showing = false;
         Labyrintale.removeTempScreen(Labyrintale.mapScreen);
-    }
-
-    public void refreshFloor() {
-        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale, b = w * 0.1f;
-        for (int i = 0; i < 13; i++) {
-            for (int j = 0; j < 3; j++) {
-                AbstractChoice c = currentFloor.ways[i].choices[j];
-                MapNodeButton n = null;
-                if (c != null) {
-                    n = new MapNodeButton(c, j);
-                    n.setPosition(b - n.sWidth / 2, h * (0.8f - 0.15f * j) - n.sHeight / 2);
-                }
-                nodes[i][j] = n;
-            }
-            b += w * 0.0666f;
-        }
     }
 
     @Override
@@ -113,10 +97,10 @@ public class MapScreen extends AbstractScreen {
                 MapNodeButton n = nodes[i][j];
                 if (n != null) {
                     int len = n.choice.linked2.size();
-                    v2.y = h * (0.8f - 0.15f * j);
+                    v2.y = h * (0.76f - 0.15f * j);
                     for (int k = 0; k < len; k++) {
                         int link = n.choice.linked2.get(k);
-                        v1.y = h * (0.8f - 0.15f * link);
+                        v1.y = h * (0.76f - 0.15f * link);
                         MapNodeButton n2 = nodes[i - 1][link];
                         if (n.choice.canGo && n2.choice.canGo) {
                             if (!n.choice.room.isDone && currentFloor.num == i) {

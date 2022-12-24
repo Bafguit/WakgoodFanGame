@@ -18,6 +18,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     public final PlayerClass playerClass;
     public final Sprite camp;
     public final Sprite upset;
+    public final Sprite select;
 
     public AbstractPlayer(String id, int maxHealth, Color c, PlayerJob job) {
         super(
@@ -42,6 +43,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
                 FileHandler.getCharBgImg().get(playerClass));
         camp = FileHandler.getCharCampImg().get(playerClass);
         upset = FileHandler.getCharUpsetImg().get(playerClass);
+        select = FileHandler.getCharSelectImg().get(playerClass);
         imgPanel = FileHandler.getCharPanelImg().get(playerClass);
         Array<AbstractItem> t = getStartingItem();
         for (int j = 0; j < 2; j++) {
@@ -98,7 +100,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public enum PlayerJob {
-        GUARD, ATTACKER, SUPPORTER
+        DEF, ATK, SUP
     }
 
     public enum PlayerClass {

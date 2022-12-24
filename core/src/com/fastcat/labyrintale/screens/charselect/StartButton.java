@@ -1,7 +1,9 @@
 package com.fastcat.labyrintale.screens.charselect;
 
+import static com.badlogic.gdx.graphics.Color.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.FontType.MEDIUM;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
+import static com.fastcat.labyrintale.handlers.FontHandler.renderKeywordCenter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -14,35 +16,20 @@ import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
 import com.fastcat.labyrintale.screens.loading.LoadingScreen;
 
-public class NextToAdvisorButton extends AbstractUI {
+public class StartButton extends AbstractUI {
 
-    private final Color fColor = Color.GRAY.cpy();
-    private final float aa = fColor.r;
-    private float a = fColor.r;
-
-    public NextToAdvisorButton() {
-        super(FileHandler.getUi().get("BUTTON_S"));
-        setPosition(Gdx.graphics.getWidth() * 0.98f - sWidth, 1296 * InputHandler.scale);
-        fontData = new FontHandler.FontData(MEDIUM, 53, false, false);
-        text = "출발";
-        disable();
+    public StartButton() {
+        super(FileHandler.getUi().get("CHAR_START"));
+        isPixmap = true;
     }
 
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (overable && !over) {
-                a -= Labyrintale.tick * 4;
-                if (a <= aa) a = aa;
-            } else {
-                a += Labyrintale.tick * 4;
-                if (a >= 1) a = 1;
-            }
-
-            fColor.set(a, a, a, 1);
-            fontData.color = fColor;
-
-            renderCenter(sb, fontData, text, x, y + sHeight / 2, sWidth, sHeight);
+            if (!overable) sb.setColor(DARK_GRAY);
+            else if(over) sb.setColor(WHITE);
+            else sb.setColor(LIGHT_GRAY);
+            sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 

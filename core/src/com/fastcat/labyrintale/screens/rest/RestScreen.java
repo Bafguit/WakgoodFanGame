@@ -16,7 +16,7 @@ import com.fastcat.labyrintale.uis.control.ControlPanel;
 
 public class RestScreen extends AbstractScreen {
 
-    public final GifBg fire, light;
+    public final GifBg fire;
     public int count;
     public RestButton[] buttons;
     public RestDesc[] desc;
@@ -25,7 +25,7 @@ public class RestScreen extends AbstractScreen {
     public int alive = 0;
 
     public RestScreen() {
-        light = new GifBg("FIRE_LIGHT");
+        setBg(FileHandler.getBg().get("BG_REST_LIGHT"));
         fire = new GifBg(FileHandler.getBg().get("BG_REST_BAG"), "FIRE");
         cType = ControlPanel.ControlType.BASIC;
         count = 2;
@@ -112,7 +112,6 @@ public class RestScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        light.render(sb);
         for (int i = 0; i < count; i++) {
             buttons[i].render(sb);
             desc[i].render(sb);

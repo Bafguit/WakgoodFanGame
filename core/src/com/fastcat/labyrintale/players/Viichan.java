@@ -18,7 +18,7 @@ public class Viichan extends AbstractPlayer {
     private static final Color COLOR = new Color(0xc3ff81ff);
 
     public Viichan() {
-        super(ID, HEALTH, COLOR, PlayerJob.ATTACKER);
+        super(ID, HEALTH, COLOR, PlayerJob.ATK);
         stat.speed = 3;
         stat.debuRes = 10;
         stat.critical = 15;

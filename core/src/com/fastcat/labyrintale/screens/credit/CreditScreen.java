@@ -22,6 +22,7 @@ public class CreditScreen extends AbstractScreen {
 
     public CreditScreen() {
         setBg(FileHandler.getBg().get("BG_MAIN"));
+        bgShades = false;
         backButton = new CreditBackButton();
         backButton.disable();
         logo = new AbstractUI.TempUI(FileHandler.getUi().get("CREDIT"));

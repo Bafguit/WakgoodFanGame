@@ -11,7 +11,6 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class CharButton extends AbstractUI {
 
-    private final Sprite back = FileHandler.getUi().get("BORDER_BACK");
     public AbstractPlayer player;
     public boolean isCharSt = false;
     public boolean isOnLock = false;
@@ -19,7 +18,7 @@ public class CharButton extends AbstractUI {
     public CharButton sChar;
 
     public CharButton() {
-        super(FileHandler.getUi().get("BORDER_P"));
+        super(FileHandler.getUi().get("BORDER_CHAR"));
         showImg = false;
         clickable = false;
         isChar = false;
@@ -27,8 +26,9 @@ public class CharButton extends AbstractUI {
     }
 
     public CharButton(AbstractPlayer player) {
-        super(FileHandler.getUi().get("BORDER_P"));
+        super(FileHandler.getUi().get("BORDER_CHAR"));
         this.player = player;
+        isPixmap = true;
     }
 
     @Override
@@ -43,13 +43,11 @@ public class CharButton extends AbstractUI {
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
             sb.setColor(Color.WHITE);
-            sb.draw(back, x, y, sWidth, sHeight);
             if (isCharSt) sb.setColor(Color.DARK_GRAY);
-            else if (over) sb.setColor(Color.WHITE);
+            else if (over && player != null) sb.setColor(Color.WHITE);
             else sb.setColor(Color.LIGHT_GRAY);
-            if (showImg) sb.draw(player.img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
-            sb.draw(img, x, y, sWidth, sHeight);
+            if (showImg) sb.draw(player.select, x, y, sWidth, sHeight);
+            else sb.draw(img, x, y, sWidth, sHeight);
         }
     }
 

@@ -18,7 +18,7 @@ public class Manager extends AbstractPlayer {
     private static final Color COLOR = new Color(0xfe77b3ff);
 
     public Manager() {
-        super(ID, HEALTH, COLOR, PlayerJob.ATTACKER);
+        super(ID, HEALTH, COLOR, PlayerJob.ATK);
         stat.speed = 2;
         stat.debuRes = 10;
         stat.critical = 10;

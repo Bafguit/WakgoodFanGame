@@ -18,7 +18,7 @@ public class Wakgood extends AbstractPlayer {
     private static final Color COLOR = new Color(0x6be18fff);
 
     public Wakgood() {
-        super(ID, HEALTH, COLOR, PlayerJob.GUARD);
+        super(ID, HEALTH, COLOR, PlayerJob.DEF);
         stat.speed = 1;
         stat.debuRes = 5;
         stat.critical = 10;

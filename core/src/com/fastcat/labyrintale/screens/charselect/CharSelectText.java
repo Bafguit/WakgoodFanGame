@@ -15,7 +15,7 @@ public class CharSelectText extends AbstractUI {
 
     public CharSelectText() {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
-        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 288 * InputHandler.scale);
+        setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, Gdx.graphics.getHeight() * 0.95f);
         fontData = CARD_BIG_ORB;
         text = "플레이어를 선택하세요";
         showImg = false;

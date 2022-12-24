@@ -54,6 +54,9 @@ public class FileHandler implements Disposable {
     private static final HashMap<PlayerClass, Sprite> charBgImg = new HashMap<>();
 
     @Getter
+    private static final HashMap<PlayerClass, Sprite> charSelectImg = new HashMap<>();
+
+    @Getter
     private static final HashMap<PlayerClass, Sprite> charPanelImg = new HashMap<>();
 
     @Getter
@@ -194,6 +197,7 @@ public class FileHandler implements Disposable {
         maps.add(charImg);
         maps.add(charImgTurn);
         maps.add(charBgImg);
+        maps.add(charSelectImg);
         maps.add(charPanelImg);
         maps.add(charCampImg);
         maps.add(charUpsetImg);
@@ -215,18 +219,15 @@ public class FileHandler implements Disposable {
         HashMap<String, String> resourceNames = new HashMap<>();
 
         resourceNames.put("MAIN_MENU", "img/gif/main_gif.gif");
-        resourceNames.put("FIRE_LIGHT", "img/gif/fire_light.gif");
+        resourceNames.put("BATTLE", "img/gif/battle.gif");
         resourceNames.put("FIRE", "img/gif/fire.gif");
 
         resourceHandler.requestResource(
-                new MultipleResourceRequest<>(resourceNames, Gif.class, new ResourceHandler.ResourceCallback() {
-                    @Override
-                    public void onResourceLoaded(Object resource, Object... args) {
-                        Gif gifData = (Gif) resource;
-                        String name = args[0].toString();
+                new MultipleResourceRequest<>(resourceNames, Gif.class, (resource, args) -> {
+                    Gif gifData = (Gif) resource;
+                    String name = args[0].toString();
 
-                        gif.put(name, gifData.getGif());
-                    }
+                    gif.put(name, gifData.getGif());
                 }));
     }
 
@@ -243,13 +244,10 @@ public class FileHandler implements Disposable {
             resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
                     "spine/enemy/" + js.name + "/skeleton.atlas",
                     TextureAtlas.class,
-                    new ResourceHandler.ResourceCallback() {
-                        @Override
-                        public void onResourceLoaded(Object resource, Object... args) {
-                            TextureAtlas textureAtlas = (TextureAtlas) resource;
-                            String name = args[0].toString();
-                            atlas.put(name, textureAtlas);
-                        }
+                    (resource, args) -> {
+                        TextureAtlas textureAtlas = (TextureAtlas) resource;
+                        String name = args[0].toString();
+                        atlas.put(name, textureAtlas);
                     },
                     js.name));
         }
@@ -261,14 +259,11 @@ public class FileHandler implements Disposable {
             resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
                     "img/achieve/" + a.toString().toLowerCase() + ".png",
                     Texture.class,
-                    new ResourceHandler.ResourceCallback() {
-                        @Override
-                        public void onResourceLoaded(Object resource, Object... args) {
-                            Texture texture = (Texture) resource;
-                            texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                            AchieveHandler.Achievement achievement = (AchieveHandler.Achievement) args[0];
-                            achvImg.put(achievement, new Sprite(texture));
-                        }
+                    (resource, args) -> {
+                        Texture texture = (Texture) resource;
+                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        AchieveHandler.Achievement achievement = (AchieveHandler.Achievement) args[0];
+                        achvImg.put(achievement, new Sprite(texture));
                     },
                     a));
         }
@@ -278,6 +273,7 @@ public class FileHandler implements Disposable {
         bg.clear();
 
         HashMap<String, String> resources = new HashMap<>();
+        resources.put("BG_OVER", "img/bg/bg_over.png");
         resources.put("BG_GREY", "img/bg/white.png");
         resources.put("BG_BLACK", "img/ui/fade.png");
         resources.put("BG_LOGO", "img/ui/logo.png");
@@ -291,7 +287,9 @@ public class FileHandler implements Disposable {
         resources.put("BG_WAY_3", "img/bg/way_temple.png");
         resources.put("BG_WAY_4", "img/bg/way_lab.png");
         resources.put("BG_REST_BAG", "img/bg/fire_bag.png");
+        resources.put("BG_REST_LIGHT", "img/bg/fire_light.png");
         resources.put("BG_SHOP", "img/bg/shop.png");
+        resources.put("BG_CHARSELECT", "img/bg/charselect.png");
 
         resourceHandler.requestResource(new MultipleResourceRequest<>(resources, Texture.class, (resource, args) -> {
             Texture texture = (Texture) resource;
@@ -353,6 +351,7 @@ public class FileHandler implements Disposable {
         resourceNames.put("BORDER_P", "img/ui/border_player.png");
         resourceNames.put("BORDER_PL", "img/ui/border_p_p.png");
         resourceNames.put("BORDER_B", "img/ui/border_p.png");
+        resourceNames.put("BORDER_CHAR", "img/ui/border_char.png");
         resourceNames.put("BORDER_S", "img/ui/border_s.png");
         resourceNames.put("BORDER_SS", "img/ui/border_ss.png");
         resourceNames.put("BORDER_V", "img/ui/border_v.png");
@@ -365,6 +364,17 @@ public class FileHandler implements Disposable {
         resourceNames.put("SHADOW_ITEM", "img/ui/shadow_item.png");
         resourceNames.put("SHADOW_ROLL", "img/ui/shadow_roll.png");
         resourceNames.put("GOLD_SHOP", "img/ui/gold_shop.png");
+        resourceNames.put("CHAR_TUTO", "img/ui/char_tuto.png");
+        resourceNames.put("CHAR_START", "img/ui/char_start.png");
+        resourceNames.put("CHAR_GROUND", "img/ui/char_ground.png");
+        resourceNames.put("CHAR_LINE", "img/ui/char_line.png");
+        resourceNames.put("CHAR_LINE_B", "img/ui/char_line_b.png");
+        resourceNames.put("JOB_DEF", "img/ui/job_def.png");
+        resourceNames.put("JOB_ATK", "img/ui/job_atk.png");
+        resourceNames.put("JOB_SUP", "img/ui/job_sup.png");
+        resourceNames.put("JOB_DEF_B", "img/ui/job_def_big.png");
+        resourceNames.put("JOB_ATK_B", "img/ui/job_atk_big.png");
+        resourceNames.put("JOB_SUP_B", "img/ui/job_sup_big.png");
         resourceNames.put("REST_HEAL", "img/ui/rest_heal.png");
         resourceNames.put("REST_REVIVE", "img/ui/rest_revive.png");
         resourceNames.put("REST_UPGRADE", "img/ui/rest_upgrade.png");
@@ -393,6 +403,7 @@ public class FileHandler implements Disposable {
         resourceNames.put("SHIELD", "img/ui/shield.png");
         resourceNames.put("GOLD_PANEL", "img/ui/gold_paper.png");
         resourceNames.put("SETTING_B", "img/ui/setting.png");
+        resourceNames.put("TUTORIAL_B", "img/ui/tutorial.png");
         resourceNames.put("LOGO", "img/ui/logo.png");
         resourceNames.put("TITLE", "img/ui/title.png");
         resourceNames.put("TURN_ARROW", "img/ui/turn_arrow.png");
@@ -459,6 +470,7 @@ public class FileHandler implements Disposable {
         charImg.clear();
         charImgTurn.clear();
         charBgImg.clear();
+        charSelectImg.clear();
         charPanelImg.clear();
         charCampImg.clear();
         charUpsetImg.clear();
@@ -482,6 +494,10 @@ public class FileHandler implements Disposable {
                         Sprite sp3 = character.createSprite(s + "_bg");
                         sp3.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         charBgImg.put(cls, sp3);
+
+                        Sprite spp = character.createSprite(s + "_char");
+                        spp.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        charSelectImg.put(cls, spp);
 
                         Sprite sp4 = character.createSprite(s + "_camp");
                         sp4.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);

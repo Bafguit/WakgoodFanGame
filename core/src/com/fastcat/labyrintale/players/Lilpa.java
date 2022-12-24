@@ -18,7 +18,7 @@ public class Lilpa extends AbstractPlayer {
     private static final Color COLOR = new Color(0x899cffff);
 
     public Lilpa() {
-        super(ID, HEALTH, COLOR, PlayerJob.ATTACKER);
+        super(ID, HEALTH, COLOR, PlayerJob.ATK);
         stat.speed = 2;
         stat.debuRes = 20;
         stat.critical = 15;

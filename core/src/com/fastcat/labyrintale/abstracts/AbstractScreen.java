@@ -8,19 +8,25 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.EffectHandler;
+import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import lombok.Getter;
+
+import java.io.File;
 
 public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Disposable {
 
     @Getter
     private final EffectHandler effectHandler = EffectHandler.newInstance();
 
+    private final Sprite bgOver = FileHandler.getBg().get("BG_OVER");
+
     public ControlPanel.ControlType cType = ControlPanel.ControlType.BASIC;
     public ScreenType type = ScreenType.OTHER;
     public Array<AtEndOfTempScreen> endTemp = new Array<>();
     public boolean playMusic = false;
+    public boolean bgShades = true;
     private Sprite bg;
 
     public final void updateAll() {
@@ -34,7 +40,10 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
 
     @Override
     public final void render(float delta) {
-        if (bg != null) bg.draw(Labyrintale.game.sb);
+        if (bg != null) {
+            bg.draw(Labyrintale.game.sb);
+            if(bgShades) bgOver.draw(Labyrintale.game.sb);
+        }
         render(Labyrintale.game.sb);
         effectHandler.render(Labyrintale.game.sb);
     }
@@ -42,6 +51,7 @@ public abstract class AbstractScreen implements Screen, AtEndOfTempScreen, Dispo
     public final void setBg(Sprite s) {
         bg = s;
         bg.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        bgOver.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override

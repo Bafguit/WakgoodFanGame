@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,6 +40,7 @@ import com.fastcat.labyrintale.screens.setting.SettingScreen;
 import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
+import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.utils.FillViewport;
 import com.fastcat.labyrintale.utils.AsynchronousGifLoader;
 import com.fastcat.labyrintale.utils.Gif;
@@ -86,6 +88,7 @@ public class Labyrintale extends Game {
     private static AbstractUI.TempUI change_v;
     private static AbstractUI.TempUI change_h_r;
     private static AbstractUI.TempUI change_v_r;
+    private static GifBg battle;
     private static FadeType fadeType = FadeType.NONE;
     private static Sprite fadeTex;
     private static float alphaCount = 0;
@@ -142,6 +145,10 @@ public class Labyrintale extends Game {
         } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
+        } else if(type == FadeType.BATTLE) {
+            battle = new GifBg("BATTLE");
+            battle.speed = 1;
+            battle.setPlayMode(Animation.PlayMode.NORMAL);
         }
     }
 
@@ -171,6 +178,10 @@ public class Labyrintale extends Game {
         } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
+        } else if(type == FadeType.BATTLE) {
+            battle = new GifBg("BATTLE");
+            battle.speed = 1;
+            battle.setPlayMode(Animation.PlayMode.NORMAL);
         }
     }
 
@@ -319,6 +330,7 @@ public class Labyrintale extends Game {
         change_h_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_H"));
         change_v = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
         change_v_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
+        battle = new GifBg("BATTLE");
 
         change_h_r.img.setFlip(true, false);
         change_v_r.img.setFlip(false, true);
@@ -380,6 +392,8 @@ public class Labyrintale extends Game {
                 change_H();
             } else if (fadeType == FadeType.VERTICAL) {
                 change_V();
+            } else if(fadeType == FadeType.BATTLE) {
+                fadeBattle();
             }
 
         /*
@@ -417,6 +431,33 @@ public class Labyrintale extends Game {
                 }
             }
             fadeTex.draw(sb, alphaCount);
+        }
+    }
+
+    private void fadeBattle() {
+        if (fading) {
+            if (!fadeIn) {
+                alphaCount += Labyrintale.tick / alphaDex;
+                if (alphaCount > 1.0f) {
+                    if (nextScreen != null) {
+                        alphaCount = 1.0f;
+                        if (setting) closeSetting();
+                        if (!tempFade) setScreen(nextScreen);
+                        else addTempScreen(nextScreen);
+                        nextScreen = null;
+                        fadeIn = true;
+                    } else fading = false;
+                }
+                fadeTex.draw(sb, alphaCount);
+            } else {
+                alphaCount -= Labyrintale.tick / 1.62f;
+                if (alphaCount < 0.0f) {
+                    alphaCount = 0.0f;
+                    fading = false;
+                    fadeType = FadeType.NONE;
+                }
+                battle.render(sb);
+            }
         }
     }
 
@@ -580,6 +621,7 @@ public class Labyrintale extends Game {
         FADE,
         HORIZONTAL,
         VERTICAL,
+        BATTLE,
         NONE
     }
 }
