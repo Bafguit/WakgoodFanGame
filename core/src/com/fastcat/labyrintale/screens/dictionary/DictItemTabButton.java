@@ -20,6 +20,7 @@ public class DictItemTabButton extends AbstractUI {
         fontData = BUTTON;
         text = "아이템";
         this.sc = sc;
+        isPixmap = true;
     }
 
     @Override

@@ -26,19 +26,12 @@ public class PassRewardButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        AbstractScreen s = Labyrintale.getBaseScreen();
-        if (s == Labyrintale.battleScreen) {
-            if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
-                AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
-                AbstractLabyrinth.endRoom();
-            } else {
-                Labyrintale.eventScreen.event.endBattle();
-                Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
-            }
-        } else if (s == Labyrintale.restScreen) {
-            Labyrintale.returnToWay();
+        if (Labyrintale.battleScreen.type == BattleScreen.BattleType.NORMAL) {
+            AbstractLabyrinth.currentFloor.currentRoom.battleDone = true;
+            AbstractLabyrinth.endRoom();
         } else {
-            Labyrintale.removeTempScreen(sc);
+            Labyrintale.eventScreen.event.endBattle();
+            Labyrintale.fadeOutAndChangeScreen(Labyrintale.eventScreen);
         }
     }
 }

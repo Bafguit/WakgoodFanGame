@@ -14,7 +14,7 @@ import com.fastcat.labyrintale.uis.BgImg;
 
 public class AchieveScreen extends AbstractScreen {
 
-    public AchvCloseButton close = new AchvCloseButton(this);
+    public AchvCloseButton close = new AchvCloseButton();
     public AchieveIcon[][] achvs = new AchieveIcon[7][3];
     private final AbstractUI.TempUI bg =
             new AbstractUI.TempUI(FileHandler.getUi().get("ACHIEVE"));
@@ -24,20 +24,28 @@ public class AchieveScreen extends AbstractScreen {
     private final BgImg bgImg;
 
     public AchieveScreen() {
-        bg.setPosition(0, Gdx.graphics.getHeight());
+        setBg(FileHandler.getBg().get("BG_ACHV"));
+        bg.setPosition(0, 0);
         bgImg = new BgImg(0);
         int cnt = 0;
         AchieveHandler.Achievement[] a = AchieveHandler.Achievement.values();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 7; j++) {
                 AchieveIcon c = new AchieveIcon(a[cnt]);
-                c.setPosition((516 + 226 * j) * scale, (785 - 214 * i) * scale);
+                c.setPosition((456 + 246 * j) * scale, (845 - 234 * i) * scale);
                 c.setParent(bg);
                 achvs[j][i] = c;
                 cnt++;
             }
         }
         close.setParent(bg);
+
+        close.update();
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 3; j++) {
+                achvs[i][j].update();
+            }
+        }
     }
 
     @Override
@@ -81,8 +89,8 @@ public class AchieveScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        bgImg.render(sb);
-        bg.render(sb);
+        //bgImg.render(sb);
+        //bg.render(sb);
         close.render(sb);
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 3; j++) {
@@ -92,13 +100,13 @@ public class AchieveScreen extends AbstractScreen {
     }
 
     public void close() {
-        anim = true;
+        //anim = true;
         isDown = false;
     }
 
     @Override
     public void show() {
-        anim = true;
+        //anim = true;
         isDown = true;
     }
 }

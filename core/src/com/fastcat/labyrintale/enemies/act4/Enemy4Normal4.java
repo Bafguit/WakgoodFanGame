@@ -9,9 +9,9 @@ import com.fastcat.labyrintale.status.AttackStatus;
 
 public class Enemy4Normal4 extends AbstractEnemy {
 
-    private static final String ID = "Enemy3Weak1";
+    private static final String ID = "Enemy4Normal4";
     private static final EnemyType TYPE = EnemyType.WEAK;
-    private static final int HEALTH = 56;
+    private static final int HEALTH = 50;
 
     public Enemy4Normal4() {
         super(ID, TYPE, HEALTH);

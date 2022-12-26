@@ -15,13 +15,19 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 
 public class MapNodeButton extends AbstractUI {
 
-    private final Sprite border = FileHandler.getUi().get("BORDER_S");
+    private final Sprite border;
     private final Sprite bg = FileHandler.getUi().get("BORDER_BACK");
     public int wayIndex;
     public AbstractChoice choice;
 
     public MapNodeButton(AbstractChoice c, int index) {
-        super(c.img);
+        super(FileHandler.getUi().get("BORDER_S"));
+        border = img;
+        if(c.type == AbstractChoice.ChoiceType.BOSS) {
+            img = FileHandler.getUi().get("BOSS_" + AbstractLabyrinth.floorNum);
+        } else {
+            img = c.img;
+        }
         this.choice = c;
         wayIndex = index;
     }

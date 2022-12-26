@@ -21,15 +21,15 @@ public class FloorChangeEffect extends AbstractEffect {
 
     @Override
     protected void updateEffect() {
-        float d = Labyrintale.tick;
+        float d = Labyrintale.tick * 2;
         if (duration < 0.5f) {
             alpha -= d;
         } else if (duration >= 2.5f) {
             alpha += d;
         }
-        alpha = MathUtils.clamp(alpha, 0, 0.5f);
+        alpha = MathUtils.clamp(alpha, 0, 1);
         text.img.setAlpha(alpha);
-        text.fontData.alpha = MathUtils.clamp(alpha * 2, 0, 1.0f);
+        text.fontData.alpha = alpha;
     }
 
     @Override

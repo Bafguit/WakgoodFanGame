@@ -5,7 +5,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.*;
+import com.fastcat.labyrintale.interfaces.AtCartoonEnd;
 import com.fastcat.labyrintale.players.*;
+import com.fastcat.labyrintale.screens.cartoon.CartoonScreen;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.map.MapScreen;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
@@ -114,6 +116,7 @@ public class AbstractLabyrinth {
         }
         cPanel = new ControlPanel();
         curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);
+        Labyrintale.mainMenuScreen.playMusic = true;
     }
 
     public static void prepare() {
@@ -192,16 +195,23 @@ public class AbstractLabyrinth {
     }
 
     public static void endRoom() {
-        RoomType type = currentFloor.currentRoom.type;
         currentFloor.currentWay.done();
         currentFloor.currentRoom.done();
         if (currentFloor.num == 12) {
+            if(SettingHandler.setting.cartoon[floorNum - 1]) {
+                SettingHandler.setting.cartoon[floorNum - 1] = false;
+                SettingHandler.save();
+                Labyrintale.fadeOutAndChangeScreen(new CartoonScreen("CLEAR_ACT" + floorNum, 3, Labyrintale::returnToWay));
+            } else {
+                Labyrintale.returnToWay();
+            }
             nextFloor();
+            SaveHandler.save();
         } else {
             currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
+            SaveHandler.save();
+            Labyrintale.returnToWay();
         }
-        SaveHandler.save();
-        Labyrintale.returnToWay();
     }
 
     public static void nextFloor() {

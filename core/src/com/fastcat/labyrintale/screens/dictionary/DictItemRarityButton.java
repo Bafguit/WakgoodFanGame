@@ -28,9 +28,9 @@ public class DictItemRarityButton extends AbstractUI {
         fontData = TAB;
         rarity = rare;
         nx = 1380 * scale;
-        ny = 830 * scale;
+        ny = 930 * scale;
         nw = 577 * scale;
-        dy = 793 * scale;
+        dy = 893 * scale;
         group = new DictItemGroup();
         if (rarity == AbstractItem.ItemRarity.BRONZE) {
             text = "일반";
@@ -50,7 +50,7 @@ public class DictItemRarityButton extends AbstractUI {
         int x = 0, y = 0;
         for (int i = 0; i < temp.size; i++) {
             DictItemTabIcon c = new DictItemTabIcon(group, temp.get(i));
-            c.setPosition((580 + 200 * x) * scale, (700 - 186 * y) * scale);
+            c.setPosition((580 + 200 * x) * scale, (800 - 186 * y) * scale);
             items[i] = c;
             x++;
             if (x == 4) {
@@ -60,6 +60,7 @@ public class DictItemRarityButton extends AbstractUI {
         }
         this.sc = sc;
         clickable = sc.iSelected != this;
+        isPixmap = true;
     }
 
     @Override

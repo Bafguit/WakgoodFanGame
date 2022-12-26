@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 public final class FontHandler implements Disposable {
     private static FreeTypeFontGenerator font = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
     public static final FontData TURN_CHANGE = new FontData(BOLD, 100, false);
+    public static final FontData CS_NAME = new FontData(BOLD, 100, false);
     public static final FontData COOLDOWN = new FontData(BOLD, 80, true);
     public static final FontData ENERGY = new FontData(BOLD, 48, true);
     public static final FontData GOLD = new FontData(BOLD, 53, true, false);
@@ -332,6 +333,7 @@ public final class FontHandler implements Disposable {
         PANEL_NAME.dispose();
         CLOSE.dispose();
         TAB.dispose();
+        CS_NAME.dispose();
     }
 
     public enum FontType {

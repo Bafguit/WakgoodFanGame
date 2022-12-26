@@ -40,6 +40,12 @@ public final class SettingHandler {
             setting.battleTutorial = true;
             setting.wayTutorial = true;
             setting.rewardTutorial = true;
+
+            setting.cartoon = new boolean[3];
+            for(int i = 0; i < 3; i++) {
+                setting.cartoon[i] = true;
+            }
+            setting.forceCredit = true;
         } else {
             try {
                 SettingData data = mapper.readValue(settingFile, SettingData.class);
@@ -64,6 +70,11 @@ public final class SettingHandler {
                 setting.battleTutorial = data.battleTutorial;
                 setting.rewardTutorial = data.rewardTutorial;
                 setting.wayTutorial = data.wayTutorial;
+
+
+                setting.cartoon = new boolean[3];
+                System.arraycopy(data.cartoon, 0, setting.cartoon, 0, 3);
+                setting.forceCredit = data.forceCredit;
             } catch (IOException e) {
                 hasSave = false;
             }
@@ -91,5 +102,7 @@ public final class SettingHandler {
         public boolean wayTutorial;
         public boolean battleTutorial;
         public boolean rewardTutorial;
+        public boolean forceCredit;
+        public boolean[] cartoon;
     }
 }

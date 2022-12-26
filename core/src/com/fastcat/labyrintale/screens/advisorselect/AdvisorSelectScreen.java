@@ -36,7 +36,7 @@ public class AdvisorSelectScreen extends AbstractScreen {
         float ws = w / (s + 1);
         for (int i = 0; i < a.size; i++) {
             AdvisorButton adv = new AdvisorButton(a.get(i).clone(), this);
-            adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.6f - 68 * InputHandler.scale);
+            adv.setPosition(ws * (i + 1) - adv.sWidth / 2, h * 0.55f - 68 * InputHandler.scale);
             aAdvisor[i] = adv;
         }
     }

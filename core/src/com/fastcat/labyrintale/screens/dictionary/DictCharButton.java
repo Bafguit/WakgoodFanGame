@@ -12,7 +12,8 @@ public class DictCharButton extends AbstractUI {
     public DictScreen select;
 
     public DictCharButton(AbstractPlayer p, DictScreen s) {
-        super(FileHandler.getUi().get("BORDER_PL"));
+        super(p.select);
+        setScale(0.8f);
         group = new DictCharGroup(p);
         this.select = s;
         clickable = false;
@@ -31,9 +32,7 @@ public class DictCharButton extends AbstractUI {
         if (enabled) {
             if (!clickable || over) sb.setColor(Color.WHITE);
             else sb.setColor(Color.GRAY);
-            sb.draw(group.data.player.img, x, y, sWidth, sHeight);
-            sb.setColor(Color.WHITE);
-            sb.draw(img, x, y, sWidth, sHeight);
+            sb.draw(group.data.player.select, x, y, sWidth, sHeight);
 
             if (!clickable) {
                 group.render(sb);

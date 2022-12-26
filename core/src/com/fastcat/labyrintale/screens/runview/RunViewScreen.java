@@ -2,6 +2,7 @@ package com.fastcat.labyrintale.screens.runview;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.getPlayerInstance;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -21,23 +22,20 @@ import java.util.Objects;
 
 public class RunViewScreen extends AbstractScreen {
 
-    public static final Color hbc = new Color(0.4f, 0, 0, 1);
-
     private final FontData fontName = ENERGY;
     private final FontData fontHp = INFO_HP_BORDER;
     private final FontData fontData = ENERGY;
-    private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
+    private final float w = Gdx.graphics.getWidth(), h = 1440 * scale;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
-    public ShapeRenderer shr = new ShapeRenderer();
     public RunViewDeckIcon[][] deck = new RunViewDeckIcon[4][3];
     public RunViewItemIcon[][] item = new RunViewItemIcon[4][2];
     public RunViewItemIcon[] passive = new RunViewItemIcon[4];
     public StatIcon[][] stats = new StatIcon[4][8];
     public RunViewPlayerIcon[] pIcons = new RunViewPlayerIcon[4];
     public NoRunsText noRuns;
-    public ResultText text;
+    public RunViewText text;
     public BackToMainRunButton back;
     public ScreenshotRunButton shot;
     public ResultAdvisor adv;
@@ -53,7 +51,7 @@ public class RunViewScreen extends AbstractScreen {
     public int index = -1;
 
     public RunViewScreen() {
-        setBg(FileHandler.getBg().get("BG_MAP"));
+        setBg(FileHandler.getBg().get("BG_RUN"));
         left = new IndexButton(this, true);
         left.setPosition(w * 0.02f, h * 0.5f - left.sHeight / 2);
         right = new IndexButton(this, false);
@@ -63,44 +61,44 @@ public class RunViewScreen extends AbstractScreen {
             for (int f = 0; f < 2; f++) {
                 for (int i = 0; i < 3; i++) {
                     RunViewDeckIcon b = new RunViewDeckIcon();
-                    b.setPosition(w * (0.2f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+                    b.setPosition((495 + 1007 * g + 150 * i) * scale, (865 - 361 * f) * scale);
                     deck[c][i] = b;
                 }
                 for (int i = 0; i < 2; i++) {
                     RunViewItemIcon b = new RunViewItemIcon();
-                    b.setPosition(w * (0.39f + 0.435f * g + 0.06f * i) - b.sWidth / 2, h * (0.6f - 0.275f * f));
+                    b.setPosition((965 + 1007 * g + 150 * i) * scale, (865 - 361 * f) * scale);
                     item[c][i] = b;
                 }
                 RunViewItemIcon ps = new RunViewItemIcon();
-                ps.setPosition(w * (0.33f + 0.435f * g) - ps.sWidth / 2, h * (0.71f - 0.275f * f));
+                ps.setPosition((835 + 1007 * g) * scale, (1038 - 361 * f) * scale);
                 passive[c] = ps;
                 int cnt = 0;
                 for (int j = 3; j >= 0; j--) {
                     for (int i = 1; i >= 0; i--) {
                         StatIcon s = new StatIcon(StatIcon.StatType.values()[cnt]);
-                        s.setPosition(w * (0.425f + 0.435f * g - 0.055f * i), h * (0.7f - 0.275f * f + 0.027f * j));
+                        s.setPosition((1115 + 1007 * g - 140 * i) * scale, (1023 - 361 * f + 39 * j) * scale);
                         stats[c][cnt++] = s;
                     }
                 }
                 RunViewPlayerIcon pc = new RunViewPlayerIcon();
                 pc.clickable = false;
-                pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.59f - 0.275f * f));
+                pc.setPosition((305 + 1007 * g) * scale, (850 - 361 * f) * scale);
                 pIcons[c] = pc;
                 c++;
             }
         }
         adv = new ResultAdvisor();
-        adv.setPosition(w * 0.1f, h * 0.15f);
-        text = new ResultText(DeadScreen.ScreenType.WIN);
+        adv.setPosition(w * 0.12f, h * 0.145f);
+        text = new RunViewText(DeadScreen.ScreenType.WIN);
         cType = ControlPanel.ControlType.HIDE;
-        diff = "난이도: ";
-        time = "소요 시간: ";
-        ver = "버전: ";
-        seed = "시드: ";
-        score = "점수: ";
+        diff = "";
+        time = "";
+        ver = "";
+        seed = "";
+        score = "";
         date = "";
         shot = new ScreenshotRunButton();
-        shot.setPosition(Gdx.graphics.getWidth() * 0.1f, 1296 * InputHandler.scale);
+        shot.setPosition(Gdx.graphics.getWidth() * 0.1f, 1296 * scale);
         back = new BackToMainRunButton();
         noRuns = new NoRunsText();
         if (RunHandler.runs.size > 0) setIndex(true);
@@ -169,15 +167,15 @@ public class RunViewScreen extends AbstractScreen {
         } else {
             adv.item = null;
         }
-        text = new ResultText(data.result);
-        diff = "난이도: ";
+        text = new RunViewText(data.result);
+        diff = "";
         if (data.diff == AbstractLabyrinth.Difficulty.NORMAL) diff += "일반";
         else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
         else diff += "관";
-        time = "소요 시간: " + data.minute + "분 " + data.second + "초";
-        ver = "버전: " + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
-        seed = "시드: " + data.random.seed;
-        score = "점수: " + data.scoreHandle.score;
+        time = data.minute + "분 " + data.second + "초";
+        ver = "" + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
+        seed = "" + data.random.seed;
+        score = "" + data.scoreHandle.score;
         shot.setDate(data.date);
         shot.text = "스크린샷";
     }
@@ -217,11 +215,11 @@ public class RunViewScreen extends AbstractScreen {
             for (int f = 0; f < 2; f++) {
                 for (int g = 0; g < 2; g++) {
                     AbstractPlayer player = pIcons[cnt++].p;
-                    sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+                    sb.draw(hbb, (495 + 1007 * f) * scale, (1052 - 361 * g) * scale, w * 0.12f, h * 0.03f);
                     sb.draw(
                             hb.img,
-                            w * (0.175f + 0.435f * f),
-                            h * (0.73f - 0.275f * g),
+                            scale * (495 + 1007 * f),
+                            scale * (1052 - 361 * g),
                             0,
                             0,
                             w * 0.12f,
@@ -233,26 +231,26 @@ public class RunViewScreen extends AbstractScreen {
                             sb,
                             fontName,
                             player.name,
-                            w * (0.175f + 0.435f * f),
-                            h * (0.79f - 0.275f * g),
+                            scale * (495 + 1007 * f),
+                            scale * (1138 - 361 * g),
                             w * 0.12f,
                             50);
                     FontHandler.renderCenter(
                             sb,
                             fontHp,
                             player.health + "/" + player.maxHealth,
-                            w * (0.175f + 0.435f * f),
-                            h * (0.745f - 0.275f * g),
+                            scale * (495 + 1007 * f),
+                            scale * (1073 - 361 * g),
                             w * 0.12f,
                             h * 0.03f);
                 }
             }
 
-            renderCenter(sb, fontData, diff, w * 0.2f, h * 0.25f, w * 0.2f, h * 0.1f);
-            renderCenter(sb, fontData, time, w * 0.4f, h * 0.25f, w * 0.2f, h * 0.1f);
-            renderCenter(sb, fontData, ver, w * 0.2f, h * 0.18f, w * 0.2f, h * 0.1f);
-            renderCenter(sb, fontData, seed, w * 0.4f, h * 0.18f, w * 0.2f, h * 0.1f);
-            renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
+            renderCenter(sb, fontData, diff, scale * 731, scale * 265, 300 * scale, h * 0.1f);
+            renderCenter(sb, fontData, time, scale * 1031, scale * 265, 300 * scale, h * 0.1f);
+            renderCenter(sb, fontData, score, scale * 1331, scale * 265, 300 * scale, h * 0.1f);
+            renderCenter(sb, fontData, seed, scale * 1631, scale * 265, 300 * scale, h * 0.1f);
+            renderCenter(sb, fontData, ver, scale * 1931, scale * 265, 300 * scale, h * 0.1f);
 
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 3; j++) {

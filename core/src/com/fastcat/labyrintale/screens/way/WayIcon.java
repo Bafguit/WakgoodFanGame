@@ -23,8 +23,7 @@ public class WayIcon extends AbstractUI {
     @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled) {
-            if (!b.over) sb.setColor(Color.LIGHT_GRAY);
-            else sb.setColor(Color.WHITE);
+            sb.setColor(b.a, b.a, b.a, 1);
             sb.draw(icon, x, y, sWidth, sHeight);
         }
     }

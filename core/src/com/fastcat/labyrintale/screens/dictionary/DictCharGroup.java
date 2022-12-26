@@ -37,23 +37,23 @@ public class DictCharGroup extends DictGroup {
         data = new DictCharData(player);
         nx = 975 * scale;
         hx = 1340 * scale;
-        ny = 780 * scale;
+        ny = 880 * scale;
         nw = 240 * scale;
         ix = 1524 * scale;
-        iy = 496 * scale;
-        dy = 464 * scale;
+        iy = 596 * scale;
+        dy = 564 * scale;
         dw = 600 * scale;
         dh = 164 * scale;
         px = 658 * scale;
-        py = 340 * scale;
+        py = 440 * scale;
         heart = new AbstractUI.TempUI(FileHandler.getUi().get("BORDER_S"));
         heart.img = FileHandler.getUi().get("HEART");
         heart.setPosition(1273 * scale, ny - 30 * scale);
         passive = new DictItemIcon(this, data.player.passive);
-        passive.setPosition(975 * scale, 606 * scale);
+        passive.setPosition(975 * scale, 706 * scale);
         int cnt = 0;
         for (int i = 0; i < 3; i++) {
-            float cw = 1180 * scale, cp = 120 * scale, ch = (694 - 40 * i) * scale;
+            float cw = 1180 * scale, cp = 120 * scale, ch = (794 - 40 * i) * scale;
             for (int j = 0; j < 2; j++) {
                 StatIcon c = new StatIcon(StatIcon.StatType.values()[cnt + 2]);
                 c.fontData = STAT_RAW;
@@ -65,21 +65,21 @@ public class DictCharGroup extends DictGroup {
         }
         for (int i = 0; i < 4; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.normal.get(i));
-            c.setPosition((1524 + 162 * i) * scale, 694 * scale);
+            c.setPosition((1524 + 162 * i) * scale, 794 * scale);
             skills[i] = c;
         }
         for (int i = 0; i < 3; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.player.deck.get(i));
-            c.setPosition((975 + 162 * i) * scale, 450 * scale);
+            c.setPosition((975 + 162 * i) * scale, 550 * scale);
             deck[i] = c;
 
             DictSkillIcon c2 = new DictSkillIcon(this, data.normal.get(i));
-            c2.setPosition((1524 + 162 * i) * scale, 538 * scale);
+            c2.setPosition((1524 + 162 * i) * scale, 638 * scale);
             skills[i + 4] = c2;
         }
         up = new CheckBox(false);
         up.setScale(0.8375f);
-        up.setPosition(2043 * scale, 543 * scale);
+        up.setPosition(2043 * scale, 643 * scale);
     }
 
     public void update() {
@@ -171,7 +171,7 @@ public class DictCharGroup extends DictGroup {
 
         public DictCharData(AbstractPlayer p) {
             player = p;
-            player.infoSpine.skeleton.setPosition(10000, 10000);
+            player.infoSpine.skeleton.setPosition(-10000, -10000);
             nDeck = player.deck;
             uDeck = new Array<>();
             for (AbstractSkill s : nDeck) {

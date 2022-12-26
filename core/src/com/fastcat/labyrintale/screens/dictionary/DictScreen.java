@@ -28,15 +28,16 @@ public class DictScreen extends AbstractScreen {
     private final BgImg bgImg;
 
     public DictScreen() {
+        setBg(FileHandler.getBg().get("BG_DICT"));
         type = DictType.CHAR;
         bgImg = new BgImg(0);
-        close = new DictCloseButton(this);
+        close = new DictCloseButton();
         close.setParent(bg);
-        bg.setPosition(0, Gdx.graphics.getHeight());
+        bg.setPosition(0, 0);
         AbstractPlayer.PlayerClass[] cls = AbstractPlayer.PlayerClass.values();
         for (int i = 0; i < 8; i++) {
             DictCharButton c = new DictCharButton(AbstractLabyrinth.getPlayerInstance(cls[i]), this);
-            c.setPosition((464 + 214 * i) * scale, 970f * scale - c.sHeight / 2);
+            c.setPosition(Gdx.graphics.getWidth() * (0.22f + 0.08f * i) - c.sWidth / 2, 140 * scale);
             c.setParent(bg);
             chars[i] = c;
         }
@@ -46,7 +47,7 @@ public class DictScreen extends AbstractScreen {
         AbstractItem.ItemRarity[] rare = AbstractItem.ItemRarity.values();
         for (int i = 0; i < 6; i++) {
             DictItemRarityButton b = new DictItemRarityButton(this, rare[i + 2]);
-            b.setPosition(w * 0.25f + w * 0.1f * i - b.sWidth / 2, 971.3f * scale - b.sHeight / 2);
+            b.setPosition(w * 0.25f + w * 0.1f * i - b.sWidth / 2, scale * 205);
             b.setParent(bg);
             items[i] = b;
         }
@@ -54,6 +55,21 @@ public class DictScreen extends AbstractScreen {
 
         charTab.setParent(bg);
         itemTab.setParent(bg);
+
+        close.update();
+        charTab.update();
+        itemTab.update();
+        if (type == DictType.CHAR) {
+            for (int i = 0; i < 8; i++) {
+                DictCharButton b = chars[i];
+                if (cSelected != null) b.group.up.checked = cSelected.group.up.checked;
+                b.update();
+            }
+        } else if (type == DictType.ITEM) {
+            for (int i = 0; i < 6; i++) {
+                items[i].update();
+            }
+        }
     }
 
     @Override
@@ -104,8 +120,8 @@ public class DictScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        bgImg.render(sb);
-        bg.render(sb);
+        //bgImg.render(sb);
+        //bg.render(sb);
         close.render(sb);
         charTab.render(sb);
         itemTab.render(sb);
@@ -121,14 +137,14 @@ public class DictScreen extends AbstractScreen {
     }
 
     public void close() {
-        anim = true;
-        isDown = false;
+        //anim = true;
+        //isDown = false;
     }
 
     @Override
     public void show() {
-        anim = true;
-        isDown = true;
+        //anim = true;
+        //isDown = true;
         type = DictType.CHAR;
     }
 

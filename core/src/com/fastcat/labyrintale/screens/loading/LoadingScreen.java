@@ -45,7 +45,6 @@ public class LoadingScreen extends AbstractScreen {
                 for (int i = 0; i < Labyrintale.charSelectScreen.chars.length; i++) {
                     Labyrintale.charSelectScreen.chars[i].removeChar();
                 }
-                Labyrintale.charSelectScreen.nextButton.disable();
                 Labyrintale.returnToWay();
                 SaveHandler.finish(true);
                 SaveHandler.save();
@@ -61,7 +60,7 @@ public class LoadingScreen extends AbstractScreen {
                                     || tr.type == AbstractRoom.RoomType.BOSS)
                             && !tr.battleDone) {
                         battleScreen = new BattleScreen(BattleScreen.BattleType.NORMAL, true);
-                        fadeOutAndChangeScreen(battleScreen, Labyrintale.FadeType.BATTLE);
+                        fadeOutAndChangeScreen(battleScreen);
                     } else {
                         fadeOutAndChangeScreen(Labyrintale.wayScreen);
                     }

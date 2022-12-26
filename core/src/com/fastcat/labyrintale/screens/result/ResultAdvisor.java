@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class ResultAdvisor extends AbstractUI {
@@ -16,11 +17,6 @@ public class ResultAdvisor extends AbstractUI {
     public ResultAdvisor() {
         super(FileHandler.getUi().get("BORDER_M"));
         clickable = false;
-    }
-
-    @Override
-    protected Array<SubText> getSubText() {
-        return item != null ? item.key : null;
     }
 
     @Override
@@ -35,6 +31,7 @@ public class ResultAdvisor extends AbstractUI {
                     paper.sHeight);
             if (item != null) {
                 sb.draw(item.img, x, y, sWidth, sHeight);
+                FontHandler.renderCenter(sb, FontHandler.GOMEM, item.name, x, y - 22 * InputHandler.scale, sWidth, sHeight);
             }
         }
     }

@@ -626,6 +626,8 @@ public abstract class AbstractEntity implements Cloneable {
                     ActionHandler.clear();
                     ActionHandler.bot(new AtBattleEndAction());
                     if (currentFloor.floorNum == 4 && currentFloor.num == 12) {
+                        Labyrintale.getScreenShake().shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.LONG, false);
+                        ActionHandler.bot(new WaitAction(2));
                         ActionHandler.bot(new EndLabyrinthAction(DeadScreen.ScreenType.WIN));
                     } else {
                         ActionHandler.bot(new VictoryAction());

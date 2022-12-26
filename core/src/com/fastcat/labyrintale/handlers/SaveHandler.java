@@ -45,7 +45,7 @@ public final class SaveHandler {
     public static void save() {
         data = SaveData.create();
         try {
-            mapper.writeValue(saveFile.file(), data);
+            mapper.writeValue(Gdx.files.local("save.json").file(), data);
             AchieveHandler.save();
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +67,8 @@ public final class SaveHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            saveFile.delete();
+            FileHandle f = Gdx.files.local("save.json");
+            if(f.exists()) Gdx.files.local("save.json").delete();
             data = null;
             AchieveHandler.save();
         } else {

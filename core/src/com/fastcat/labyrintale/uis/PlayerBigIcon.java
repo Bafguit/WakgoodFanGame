@@ -23,7 +23,7 @@ public class PlayerBigIcon extends AbstractUI {
     public Sprite hbb = FileHandler.getUi().get("HEALTH_BACK");
     public AbstractEntity p;
     public Sprite hb;
-    public float hx, hy, hw, hh;
+    public float hx, hy, hw, hh, fy;
 
     public PlayerBigIcon(AbstractPlayer p) {
         super(FileHandler.getUi().get("BORDER_V"));

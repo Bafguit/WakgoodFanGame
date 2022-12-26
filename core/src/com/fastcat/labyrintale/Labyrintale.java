@@ -75,8 +75,6 @@ public class Labyrintale extends Game {
     public static ShopScreen shopScreen;
     public static SettingScreen settingScreen;
     public static TutorialScreen tutorialScreen;
-    public static DictScreen dictionary;
-    public static AchieveScreen achievement;
     public static boolean fading = false;
     public static boolean fadeIn = false;
     public static boolean tempFade = false;
@@ -319,8 +317,6 @@ public class Labyrintale extends Game {
         diffScreen = new DifficultyScreen();
         libScreen = new LibraryScreen();
         tutorialScreen = new TutorialScreen();
-        dictionary = new DictScreen();
-        achievement = new AchieveScreen();
         // labyrinth = new AbstractLabyrinth();
         fadeTex = FileHandler.getUi().get("FADE");
         fadeTex.setPosition(0, 0);

@@ -153,7 +153,7 @@ public class CharSelectScreen extends AbstractScreen {
 
     public static class CharSelectGroup {
 
-        private final FontHandler.FontData nData = TURN_CHANGE;
+        private final FontHandler.FontData nData = CS_NAME;
         private final FontHandler.FontData inData = INFO_HP;
         private final FontHandler.FontData idData = GOMEM;
         private final FontHandler.FontData jData = SETTING;
@@ -173,7 +173,6 @@ public class CharSelectScreen extends AbstractScreen {
 
         public CharSelectGroup() {
             type = InfoPanel.InfoType.COLOR;
-            float w = Gdx.graphics.getWidth();
             health = new HealthIcon();
             health.setPosition(1535 * scale, 830 * scale);
             passive = new CharInfoItemButton(this);
@@ -212,7 +211,7 @@ public class CharSelectScreen extends AbstractScreen {
                 skills[i].setSkill(player.deck.get(i));
             }
             for (int i = 0; i < 6; i++) {
-                stats[i].entity = player;
+                stats[i].setEntity(player);
             }
             cw = player.bg.getWidth() * scale;
             ch = player.bg.getHeight() * scale;

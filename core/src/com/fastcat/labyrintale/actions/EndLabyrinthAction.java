@@ -5,7 +5,10 @@ import com.fastcat.labyrintale.abstracts.AbstractAction;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.handlers.ActionHandler;
 import com.fastcat.labyrintale.handlers.SaveHandler;
+import com.fastcat.labyrintale.handlers.SettingHandler;
 import com.fastcat.labyrintale.handlers.SoundHandler;
+import com.fastcat.labyrintale.interfaces.AtCartoonEnd;
+import com.fastcat.labyrintale.screens.cartoon.CartoonScreen;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.result.ResultScreen;
 
@@ -27,7 +30,7 @@ public class EndLabyrinthAction extends AbstractAction {
             SoundHandler.fadeOutAll();
             ActionHandler.clear();
             AbstractLabyrinth.scoreHandle.calculateScore();
-            Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType));
+            Labyrintale.fadeOutAndChangeScreen(new ResultScreen(dType), 2);
             SaveHandler.finish(false);
         }
     }

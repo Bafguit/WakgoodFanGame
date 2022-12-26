@@ -12,13 +12,11 @@ import com.fastcat.labyrintale.screens.dead.DeadScreen;
 
 public class ResultText extends AbstractUI {
 
-    public static final String TEXT = "플레이어를 선택하세요";
-
     public ResultText(DeadScreen.ScreenType type) {
         super(FileHandler.getUi().get("MENU_SELECT"), 0, 0, 1000, 60);
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 1260 * InputHandler.scale);
         fontData = CARD_BORDER;
-        text = type == DeadScreen.ScreenType.WIN ? "승리" : "멸망";
+        text = type == DeadScreen.ScreenType.WIN ? "승리" : "패배";
         showImg = false;
         overable = false;
     }

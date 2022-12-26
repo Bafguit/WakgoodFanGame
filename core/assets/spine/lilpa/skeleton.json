@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "6MnT+fyD7Sy+bEtbhzdu+09scRA", "spine": "3.8.75", "images": "", "audio": "" },
+"skeleton": { "hash": "hFJ7KTcCXuujwcM+prOQU5Ofsjo", "spine": "3.8.75", "images": "", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "body", "parent": "root", "length": 170.48, "rotation": 89.41, "x": -7.77, "y": 118.78 },
@@ -163,9 +163,9 @@
 					{ "name": "cape" }
 				]
 			},
-			"body": {
+			"staff": {
 				"attachment": [
-					{ "name": "body" }
+					{ "name": "staff" }
 				]
 			},
 			"leg": {
@@ -173,19 +173,9 @@
 					{ "name": "leg" }
 				]
 			},
-			"staff": {
-				"attachment": [
-					{ "name": "staff" }
-				]
-			},
 			"hand_right": {
 				"attachment": [
 					{ "name": "hand_right" }
-				]
-			},
-			"head": {
-				"attachment": [
-					{ "name": "head" }
 				]
 			},
 			"hair": {
@@ -193,9 +183,19 @@
 					{ "name": "hair" }
 				]
 			},
+			"head": {
+				"attachment": [
+					{ "name": "head" }
+				]
+			},
 			"hand_left": {
 				"attachment": [
 					{ "name": "hand_left" }
+				]
+			},
+			"body": {
+				"attachment": [
+					{ "name": "body" }
 				]
 			}
 		},

@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.Labyrintale.playerInfoScreen;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.screens.map.MapScreen;
@@ -14,7 +15,13 @@ public class MapButton extends AbstractUI {
 
     public MapButton() {
         super(FileHandler.getUi().get("MAP"));
-        subs.add(new SubText("지도", "지도를 펼칩니다."));
+        subTexts = new Array<>();
+        subTexts.add(new SubText("지도", "지도를 펼칩니다."));
+        isPixmap = true;
+    }
+
+    protected Array<SubText> getSubText() {
+        return subTexts;
     }
 
     @Override

@@ -27,6 +27,7 @@ public class ScreenshotButton extends AbstractUI {
         fontData = BUTTON;
         text = "스크린샷";
         setDate("");
+        isPixmap = true;
     }
 
     public void setDate(String s) {

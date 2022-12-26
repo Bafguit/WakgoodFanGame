@@ -22,11 +22,6 @@ public class RunViewItemIcon extends AbstractUI {
     }
 
     @Override
-    protected Array<SubText> getSubText() {
-        return skill != null ? skill.key : null;
-    }
-
-    @Override
     protected void renderUi(SpriteBatch sb) {
         if (enabled && skill != null) {
             sb.setColor(Color.WHITE);

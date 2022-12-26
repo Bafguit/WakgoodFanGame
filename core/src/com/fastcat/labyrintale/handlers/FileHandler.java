@@ -12,11 +12,9 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractAdvisor.AdvisorClass;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.handlers.resourcetype.MultipleResourceRequest;
-import com.fastcat.labyrintale.screens.initial.InitialScreen;
 import com.fastcat.labyrintale.utils.Gif;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -94,6 +92,9 @@ public class FileHandler implements Disposable {
     // 튜토리얼
     @Getter
     private static final HashMap<String, Sprite> tutorialImg = new HashMap<>();
+    // 만화
+    @Getter
+    private static final HashMap<String, Sprite> cartoonImg = new HashMap<>();
     // 움짤
     @Getter
     private static final HashMap<String, Animation<Sprite>> gif = new HashMap<>();
@@ -186,8 +187,8 @@ public class FileHandler implements Disposable {
         generateEventImg(resourceHandler);
         generateAchieve(resourceHandler);
         generateTutorialImg(resourceHandler);
+        generateCartoonImg(resourceHandler);
         generateGif(resourceHandler);
-        //setAntiAliased();
     }
 
     private void generateHashMap() {
@@ -211,6 +212,7 @@ public class FileHandler implements Disposable {
         maps.add(itemImgTrans);
         maps.add(eventImg);
         maps.add(tutorialImg);
+        maps.add(cartoonImg);
     }
 
     private void generateGif(ResourceHandler resourceHandler) {
@@ -240,7 +242,6 @@ public class FileHandler implements Disposable {
         for (JsonValue js : jsonMap.get(JsonType.ENEMY_JSON)) {
             skeleton.put(js.name, Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json"));
 
-            FileHandle handle = Gdx.files.internal("spine/enemy/" + js.name + "/skeleton.json");
             resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
                     "spine/enemy/" + js.name + "/skeleton.atlas",
                     TextureAtlas.class,
@@ -289,6 +290,10 @@ public class FileHandler implements Disposable {
         resources.put("BG_REST_BAG", "img/bg/fire_bag.png");
         resources.put("BG_REST_LIGHT", "img/bg/fire_light.png");
         resources.put("BG_SHOP", "img/bg/shop.png");
+        resources.put("BG_LIB", "img/bg/library.png");
+        resources.put("BG_RUN", "img/bg/run.png");
+        resources.put("BG_DICT", "img/bg/dict.png");
+        resources.put("BG_ACHV", "img/bg/achv.png");
         resources.put("BG_CHARSELECT", "img/bg/charselect.png");
 
         resourceHandler.requestResource(new MultipleResourceRequest<>(resources, Texture.class, (resource, args) -> {
@@ -332,7 +337,6 @@ public class FileHandler implements Disposable {
         HashMap<String, String> resourceNames = new HashMap<>();
         resourceNames.put("FADE", "img/ui/fade.png");
         resourceNames.put("TURN_BG", "img/ui/tc.png");
-
         resourceNames.put("CHANGE_H", "img/ui/change_h.png");
         resourceNames.put("CHANGE_V", "img/ui/change_v.png");
         resourceNames.put("MENU_SELECT", "img/ui/menuSelect.png");
@@ -393,10 +397,17 @@ public class FileHandler implements Disposable {
         resourceNames.put("POINT_TURN_B", "img/ui/point_turn_b.png");
         resourceNames.put("POINT_ALLEY_B", "img/ui/point_alley_b.png");
         resourceNames.put("WAY_SELECT", "img/ui/wayBG.png");
+        resourceNames.put("WAY_1", "img/ui/way_1.png");
+        resourceNames.put("WAY_2", "img/ui/way_2.png");
+        resourceNames.put("WAY_3", "img/ui/way_3.png");
+        resourceNames.put("WAY_4", "img/ui/way_4.png");
         resourceNames.put("EVENT_PANEL", "img/ui/event_paper.png");
         resourceNames.put("EVENT_CHOICE", "img/ui/event_select.png");
         resourceNames.put("CHECK_OFF", "img/ui/check_0.png");
         resourceNames.put("CHECK_ON", "img/ui/check_1.png");
+        resourceNames.put("MORE_RESULT", "img/ui/moreResult.png");
+        resourceNames.put("RESULT_WIN", "img/ui/result_win.png");
+        resourceNames.put("RESULT_DEAD", "img/ui/result_dead.png");
         resourceNames.put("SHIELD", "img/ui/shield.png");
         resourceNames.put("GOLD_PANEL", "img/ui/gold_paper.png");
         resourceNames.put("SETTING_B", "img/ui/setting.png");
@@ -414,6 +425,10 @@ public class FileHandler implements Disposable {
         resourceNames.put("BATTLE", "img/ui/battle_n.png");
         resourceNames.put("ELITE", "img/ui/battle_e.png");
         resourceNames.put("BOSS", "img/ui/battle_b.png");
+        resourceNames.put("BOSS_1", "img/ui/battle_b_1.png");
+        resourceNames.put("BOSS_2", "img/ui/battle_b_2.png");
+        resourceNames.put("BOSS_3", "img/ui/battle_b_3.png");
+        resourceNames.put("BOSS_4", "img/ui/battle_b_4.png");
         resourceNames.put("LOOK", "img/ui/mysteryNode.png");
         resourceNames.put("ENTRY", "img/ui/entryNode.png");
         resourceNames.put("SHOP", "img/ui/shopNode.png");
@@ -538,6 +553,34 @@ public class FileHandler implements Disposable {
                     String resourceName = args[0].toString();
 
                     tutorialImg.put(resourceName, new Sprite(texture));
+                }));
+    }
+
+    private void generateCartoonImg(ResourceHandler resourceHandler) {
+        cartoonImg.clear();
+        String s;
+
+        HashMap<String, String> resourceNames = new HashMap<>();
+
+        for(int i = 1; i <= 3; i++) {
+            resourceNames.put("CLEAR_ACT1_" + i, "img/cartoon/clear_act1/" + i + ".png");
+        }
+
+        for(int i = 1; i <= 3; i++) {
+            resourceNames.put("CLEAR_ACT2_" + i, "img/cartoon/clear_act2/" + i + ".png");
+        }
+
+        for(int i = 1; i <= 3; i++) {
+            resourceNames.put("CLEAR_ACT3_" + i, "img/cartoon/clear_act3/" + i + ".png");
+        }
+
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    String resourceName = args[0].toString();
+
+                    cartoonImg.put(resourceName, new Sprite(texture));
                 }));
     }
 
@@ -714,25 +757,6 @@ public class FileHandler implements Disposable {
                     }
                 }));
     }
-
-        /*
-    private void setAntiAliased() {
-        for (HashMap h : maps) {
-            for (Object s : h.values()) {
-                ((Sprite) s).getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-            }
-        }
-        for(Animation<Sprite> arr : gif.values()) {
-        for(Sprite s : arr.getKeyFrames()) {
-        	s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        }
-        }
-        for(TextureAtlas a : atlas.values()) {
-        	for (Texture t : a.getTextures()) {
-        		t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        	}
-        }
-    }*/
 
     @Override
     public void dispose() {

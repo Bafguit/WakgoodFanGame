@@ -5,6 +5,7 @@ import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -58,11 +59,17 @@ public class WayScreen extends AbstractScreen {
             if (ch != null && ch.canGo) {
                 float tw = w * (0.6f + 0.135f * i);
 
-                WaySelectButton b = new WaySelectButton(this, ch);
+                WaySelectButton b = new WaySelectButton(this, ch, AbstractLabyrinth.floorNum);
                 b.setPosition(tw - b.sWidth / 2, h * 0.65f - b.sHeight / 2 - 40 * scale);
                 buttons.add(b);
 
-                WayIcon c = new WayIcon(b, ch.img);
+                Sprite s;
+                if(ch.type == AbstractChoice.ChoiceType.BOSS) {
+                    s = FileHandler.getUi().get("BOSS_" + AbstractLabyrinth.floorNum);
+                } else {
+                    s = ch.img;
+                }
+                WayIcon c = new WayIcon(b, s);
                 c.setPosition(tw - c.sWidth / 2, h * 0.74f - c.sHeight / 2 - 40 * scale);
                 icons.add(c);
 
@@ -110,6 +117,12 @@ public class WayScreen extends AbstractScreen {
                 players[i].render(sb);
             }
         }
+        for (int i = 0; i < wayCount; i++) {
+            buttons.get(i).render(sb);
+            icons.get(i).render(sb);
+            desc.get(i).render(sb);
+        }
+        sb.setColor(Color.WHITE);
         sb.draw(ground.img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         float h = 1440 * InputHandler.scale;
         for (int i = 0; i < 4; i++) {
@@ -138,11 +151,6 @@ public class WayScreen extends AbstractScreen {
                         hb.sHeight);
             }
         }
-        for (int i = 0; i < wayCount; i++) {
-            buttons.get(i).render(sb);
-            icons.get(i).render(sb);
-            desc.get(i).render(sb);
-        }
     }
 
     public void selectTarget(GetSelectedTarget gets) {
@@ -153,6 +161,12 @@ public class WayScreen extends AbstractScreen {
     @Override
     public void show() {
         SoundHandler.addWay().stop = false;
+        for(WaySelectButton b : buttons) {
+            b.show();
+        }
+        for(WayIcon c : icons) {
+            c.show();
+        }
         if (SettingHandler.setting.wayTutorial) {
             AbstractLabyrinth.cPanel.type = ControlPanel.ControlType.BASIC;
             Labyrintale.openTutorial(TutorialScreen.TutorialType.WAY);

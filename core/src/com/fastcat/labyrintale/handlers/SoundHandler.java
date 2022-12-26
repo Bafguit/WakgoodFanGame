@@ -171,6 +171,14 @@ public final class SoundHandler implements Disposable {
         }
     }
 
+    public static void stopAllMusic() {
+        for (MusicData d : music.values()) {
+            if (d != null && d.music.isPlaying()) {
+                d.music.stop();
+            }
+        }
+    }
+
     public static void reset() {
         for (MusicData d : music.values()) {
             if (d != null) {

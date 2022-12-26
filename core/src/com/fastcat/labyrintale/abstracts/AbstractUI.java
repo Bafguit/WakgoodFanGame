@@ -216,7 +216,7 @@ public abstract class AbstractUI implements Disposable {
     }
 
     protected Array<SubText> getSubText() {
-        return subs;
+        return new Array<>();
     }
 
     public void setX(float x) {

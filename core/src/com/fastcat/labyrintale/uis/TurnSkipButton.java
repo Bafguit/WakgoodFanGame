@@ -12,13 +12,13 @@ public class TurnSkipButton extends AbstractUI {
     public TurnSkipButton() {
         super(FileHandler.getUi().get("RIGHT"));
         clickable = false;
-        subs.add(new SubText("턴 강제 넘기기", "턴이 자동으로 넘어가지 않을 때만 사용해 주세요."));
+        subTexts.add(new SubText("턴 강제 넘기기", "턴이 자동으로 넘어가지 않을 때만 사용해 주세요."));
         setScale(2);
     }
 
     @Override
     protected Array<SubText> getSubText() {
-        return subs;
+        return subTexts;
     }
 
     @Override
