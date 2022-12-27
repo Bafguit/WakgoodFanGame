@@ -34,6 +34,30 @@ task dist(type: Jar) {
     }
     with jar
 }
+javapackager{
+    mainClass = 'com.fastcat.labyrintale.desktop.DesktopLauncher'
+    bundleJre = true
+    name = 'WakestDungeon'
+    generateInstaller = false
+    copyDependencies = true
+    packagingJdk = file('D:\\ProjectStorage\\IdeaProjects\\WakgoodFanGame\\win\\jdk17.0.5_8')
+    runnableJar = file("$buildDir/libs/desktop-1.0.jar")
+
+}
+
+task packageGame(dependsOn: [/*'packageGameForMac',*/'packageGameForWin'])
+
+task packageGameForMac(type: io.github.fvarrui.javapackager.gradle.PackageTask, dependsOn: dist){
+    platform = io.github.fvarrui.javapackager.model.Platform.mac
+    jdkPath = file('D:\\ProjectStorage\\IdeaProjects\\WakgoodFanGame\\macOS\\amazon-corretto-17.jdk\\Contents\\Home')
+    outputDirectory = file("$buildDir/mac")
+}
+
+task packageGameForWin(type: io.github.fvarrui.javapackager.gradle.PackageTask,dependsOn: dist){
+    platform = io.github.fvarrui.javapackager.model.Platform.windows
+    jdkPath = file('D:\\ProjectStorage\\IdeaProjects\\WakgoodFanGame\\win\\jdk17.0.5_8')
+    outputDirectory = file("$buildDir/win")
+}
 
 task createProperties(dependsOn: processResources) {
     doLast {
