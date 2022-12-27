@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.16'
+        classpath 'io.github.fvarrui:javapackager:1.6.7'
     }
 }
 
@@ -87,7 +88,7 @@ project(":desktop") {
     apply plugin: "java"
     apply plugin: "java-library"
     apply plugin: "distribution"
-    
+    apply plugin: 'io.github.fvarrui.javapackager.plugin'
     dependencies {
         implementation project(":core")
         implementation 'com.opencsv:opencsv:5.6'
@@ -111,6 +112,7 @@ project(":desktop") {
             }
         }
     }
+
 
 }
 
@@ -149,9 +151,6 @@ githubRelease {
     releaseAssets project(":desktop").distsDirectory.asFile.get().listFiles()
     overwrite true
     allowUploadToExisting.set true
-}
-distZip{
-    dependsOn ':desktop:dist'
 }
 def md5( obj ) {
     def hash = MessageDigest.getInstance( 'MD5' ).with {
