@@ -199,14 +199,16 @@ public class AbstractLabyrinth {
         currentFloor.currentRoom.done();
         if (currentFloor.num == 12) {
             if(SettingHandler.setting.cartoon[floorNum - 1]) {
-                SettingHandler.setting.cartoon[floorNum - 1] = false;
+                int f = floorNum;
+                SettingHandler.setting.cartoon[f - 1] = false;
+                nextFloor();
                 SettingHandler.save();
-                Labyrintale.fadeOutAndChangeScreen(new CartoonScreen("CLEAR_ACT" + floorNum, 3, Labyrintale::returnToWay));
+                Labyrintale.fadeOutAndChangeScreen(new CartoonScreen("CLEAR_ACT" + f, 3, Labyrintale::returnToWay));
             } else {
+                nextFloor();
+                SaveHandler.save();
                 Labyrintale.returnToWay();
             }
-            nextFloor();
-            SaveHandler.save();
         } else {
             currentFloor.currentWay = currentFloor.ways[++currentFloor.num];
             SaveHandler.save();
