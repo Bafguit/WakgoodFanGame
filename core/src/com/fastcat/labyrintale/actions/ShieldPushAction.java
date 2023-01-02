@@ -56,9 +56,7 @@ public class ShieldPushAction extends AbstractAction {
             if (actor != null && target.size > 0) {
                 info = new AbstractEntity.DamageInfo(actor, skill.attack);
                 playAttackSfx(effect);
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                actor.state.addAnimation(0, "idle", true, 0.0F);
-                e.setTimeScale(1.0f);
+                actor.animation.setAndIdle("attack");
                 if (effect != AttackType.NONE) {
                     for (AbstractEntity t : target) {
                         EffectHandler.add(new HitEffect(t, img));

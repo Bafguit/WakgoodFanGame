@@ -164,9 +164,7 @@ public class AttackAction extends AbstractAction {
             if (temp.size > 0) {
                 playAttackSfx(effect);
                 if (actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
+                    actor.animation.setAndIdle("attack");
                 }
                 for (AbstractEntity t : temp) {
                     if (effect != AttackType.NONE) EffectHandler.add(new HitEffect(t, img));

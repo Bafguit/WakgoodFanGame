@@ -23,7 +23,7 @@ public class SetSkinAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (isDone) {
-            actor.skeleton.setSkin(key);
+            actor.animation.setSkin(key);
         }
     }
 }

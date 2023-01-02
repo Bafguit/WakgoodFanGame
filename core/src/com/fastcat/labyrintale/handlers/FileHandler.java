@@ -523,8 +523,8 @@ public class FileHandler implements Disposable {
                         sp6.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                         charPanelImg.put(cls, sp6);
 
-                        skeleton.put(s, Gdx.files.internal("spine/" + s + "/skeleton.json"));
-                        atlas.put(s, new TextureAtlas("spine/" + s + "/skeleton.atlas"));
+                        skeleton.put(s, Gdx.files.internal("spine/" + s + "/basic/skeleton.json"));
+                        atlas.put(s, new TextureAtlas("spine/" + s + "/basic/skeleton.atlas"));
                     }
                 }));
     }

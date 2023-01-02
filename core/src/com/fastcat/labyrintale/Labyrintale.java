@@ -311,6 +311,7 @@ public class Labyrintale extends Game {
         GroupHandler.getInstance();
         UnlockHandler.load();
         AchieveHandler.load();
+        CustomHandler.initialize();
         mainMenuScreen = new MainMenuScreen();
         charSelectScreen = new CharSelectScreen();
         settingScreen = new SettingScreen();

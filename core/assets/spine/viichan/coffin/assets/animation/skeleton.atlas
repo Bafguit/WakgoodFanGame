@@ -1,0 +1,96 @@
+
+skeleton.png
+size: 2009,1839
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_left
+  rotate: true
+  xy: 165, 1652
+  size: 185, 208
+  orig: 1280, 1280
+  offset: 416, 467
+  index: -1
+arm_right
+  rotate: true
+  xy: 375, 1577
+  size: 260, 331
+  orig: 1280, 1280
+  offset: 661, 345
+  index: -1
+body
+  rotate: true
+  xy: 708, 1515
+  size: 322, 508
+  orig: 1280, 1280
+  offset: 465, 223
+  index: -1
+die
+  rotate: false
+  xy: 1169, 2
+  size: 738, 903
+  orig: 1280, 1280
+  offset: 321, 31
+  index: -1
+hair
+  rotate: false
+  xy: 2, 1705
+  size: 161, 132
+  orig: 1280, 1280
+  offset: 665, 1061
+  index: -1
+head
+  rotate: false
+  xy: 441, 1036
+  size: 492, 477
+  orig: 1280, 1280
+  offset: 385, 663
+  index: -1
+hit
+  rotate: true
+  xy: 935, 907
+  size: 556, 1072
+  orig: 1280, 1280
+  offset: 365, 47
+  index: -1
+idle
+  rotate: true
+  xy: 2, 356
+  size: 549, 1165
+  orig: 1280, 1280
+  offset: 379, 28
+  index: -1
+leg
+  rotate: false
+  xy: 1218, 1465
+  size: 519, 372
+  orig: 1280, 1280
+  offset: 379, 53
+  index: -1
+sword
+  rotate: true
+  xy: 2, 1153
+  size: 422, 437
+  orig: 1280, 1280
+  offset: 506, 28
+  index: -1
+
+skeleton2.png
+size: 1865,1218
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack
+  rotate: true
+  xy: 2, 83
+  size: 1133, 1037
+  orig: 1280, 1280
+  offset: 128, 83
+  index: -1
+skill
+  rotate: false
+  xy: 1041, 2
+  size: 822, 1214
+  orig: 1280, 1280
+  offset: 94, 49
+  index: -1

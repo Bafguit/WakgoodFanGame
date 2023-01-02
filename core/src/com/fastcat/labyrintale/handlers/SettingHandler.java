@@ -1,10 +1,13 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
+import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -46,6 +49,11 @@ public final class SettingHandler {
                 setting.cartoon[i] = true;
             }
             setting.forceCredit = true;
+
+            setting.skin = new HashMap<>();
+            for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+                setting.skin.put(cls, "basic");
+            }
         } else {
             try {
                 SettingData data = mapper.readValue(settingFile, SettingData.class);
@@ -75,6 +83,15 @@ public final class SettingHandler {
                 setting.cartoon = new boolean[3];
                 System.arraycopy(data.cartoon, 0, setting.cartoon, 0, 3);
                 setting.forceCredit = data.forceCredit;
+
+                if(data.skin != null) {
+                    setting.skin = data.skin;
+                } else {
+                    setting.skin = new HashMap<>();
+                    for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+                        setting.skin.put(cls, "basic");
+                    }
+                }
             } catch (IOException e) {
                 hasSave = false;
             }
@@ -104,5 +121,6 @@ public final class SettingHandler {
         public boolean rewardTutorial;
         public boolean forceCredit;
         public boolean[] cartoon;
+        public HashMap<AbstractPlayer.PlayerClass, String> skin;
     }
 }

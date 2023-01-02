@@ -1,5 +1,7 @@
 package com.fastcat.labyrintale.screens.charselect;
 
+import static com.badlogic.gdx.graphics.Color.DARK_GRAY;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.sc;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
@@ -11,15 +13,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
-import com.fastcat.labyrintale.handlers.FileHandler;
-import com.fastcat.labyrintale.handlers.FontHandler;
-import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.SettingHandler;
+import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.TutorialButton;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
+
+import java.util.HashMap;
 
 public class CharSelectScreen extends AbstractScreen {
 
@@ -157,6 +158,7 @@ public class CharSelectScreen extends AbstractScreen {
         private final FontHandler.FontData inData = INFO_HP;
         private final FontHandler.FontData idData = GOMEM;
         private final FontHandler.FontData jData = SETTING;
+        private final HashMap<AbstractPlayer.PlayerClass, Integer> sIndex;
 
         public InfoPanel.InfoType type;
         public AbstractPlayer player;
@@ -164,12 +166,16 @@ public class CharSelectScreen extends AbstractScreen {
         public AbstractSkill skill;
         public HealthIcon health;
         public CharStatIcon[] stats;
+        public SkinLeft left;
+        public SkinRight right;
+        public Array<AbstractPlayer.CustomSkinData> skins;
         public AbstractUI.TempUI job;
         public AbstractUI.TempUI charLine;
         public CharInfoItemButton passive;
         public CharInfoItemButton[] skills = new CharInfoItemButton[3];
         public float x, nx, ny, iny, idy, bgx, bgy;
         public float tw, cw = 0, ch = 0;
+        public int index = -1;
 
         public CharSelectGroup() {
             type = InfoPanel.InfoType.COLOR;
@@ -201,6 +207,16 @@ public class CharSelectScreen extends AbstractScreen {
             charLine.setPosition(1474 * scale, 1076 * scale);
             job = new AbstractUI.TempUI(FileHandler.getUi().get("JOB_DEF"));
             job.setPosition(1571 * scale, 1103 * scale);
+            skins = new Array<>();
+            left = new SkinLeft(this);
+            left.setScale(2);
+            left.setPosition(347 * scale, 735 * scale);
+            left.enabled = skins.size > 0;
+            right = new SkinRight(this);
+            right.setScale(2);
+            right.setPosition(1248 * scale, 735 * scale);
+            right.enabled = skins.size > 0;
+            sIndex = new HashMap<>();
         }
 
         public void setPlayer(AbstractPlayer player) {
@@ -216,6 +232,40 @@ public class CharSelectScreen extends AbstractScreen {
             cw = player.bg.getWidth() * scale;
             ch = player.bg.getHeight() * scale;
             job.img = FileHandler.getUi().get("JOB_" + player.job);
+            skins = new Array<>();
+            for(AbstractPlayer.CustomSkinData d : CustomHandler.skins.get(player.playerClass).values()) {
+                skins.add(d);
+            }
+            boolean sk = skins.size > 0;
+            if(!sk) index = -1;
+            else {
+                if(sIndex.get(player.playerClass) == null) {
+                    String s = SettingHandler.setting.skin.get(player.playerClass);
+                    index = -1;
+                    if (!s.equals("basic")) {
+                        for (int i = 0; i < skins.size; i++) {
+                            AbstractPlayer.CustomSkinData d = skins.get(i);
+                            if (d.key.equals(s)) {
+                                index = i;
+                                break;
+                            }
+                        }
+                    }
+                    sIndex.put(player.playerClass, index);
+                } else {
+                    index = sIndex.get(player.playerClass);
+                }
+            }
+            refreshSkin();
+            left.enabled = sk;
+            right.enabled = sk;
+        }
+
+        @SuppressWarnings("NewApi")
+        public void refreshSkin() {
+            if(index > -1) player.setCustomSkin(skins.get(index).key);
+            else player.setBasicSkin();
+            sIndex.replace(player.playerClass, index);
         }
 
         public void update() {
@@ -227,11 +277,15 @@ public class CharSelectScreen extends AbstractScreen {
             for (int i = 0; i < 6; i++) {
                 stats[i].update();
             }
+            left.update();
+            right.update();
         }
 
         public void render(SpriteBatch sb) {
             sb.setColor(Color.WHITE);
             sb.draw(player.bg, bgx, bgy, cw, ch);
+            left.render(sb);
+            right.render(sb);
             job.render(sb);
             renderLineLeft(sb, nData, player.name, nx, ny, ny, 0);
             String j;
@@ -255,6 +309,70 @@ public class CharSelectScreen extends AbstractScreen {
             for (int i = 0; i < 6; i++) {
                 stats[i].render(sb);
             }
+        }
+    }
+
+    private static class SkinLeft extends AbstractUI {
+
+        protected CharSelectGroup group;
+
+        public SkinLeft(CharSelectGroup group) {
+            super(FileHandler.getUi().get("LEFT"));
+            this.group = group;
+            clickable = group.index > -1;
+        }
+
+        @Override
+        protected void updateButton() {
+            clickable = group.index > -1;
+        }
+
+        @Override
+        protected void renderUi(SpriteBatch sb) {
+            if (enabled) {
+                if(!clickable) sb.setColor(DARK_GRAY);
+                else if (!over) sb.setColor(Color.LIGHT_GRAY);
+                else sb.setColor(WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
+
+        @Override
+        public void onClick() {
+            group.index--;
+            group.refreshSkin();
+        }
+    }
+
+    private static class SkinRight extends AbstractUI {
+
+        protected CharSelectGroup group;
+
+        public SkinRight(CharSelectGroup group) {
+            super(FileHandler.getUi().get("RIGHT"));
+            this.group = group;
+            clickable = group.index < (group.skins.size - 1);
+        }
+
+        @Override
+        protected void updateButton() {
+            clickable = group.index < (group.skins.size - 1);
+        }
+
+        @Override
+        protected void renderUi(SpriteBatch sb) {
+            if (enabled) {
+                if(!clickable) sb.setColor(DARK_GRAY);
+                else if (!over) sb.setColor(Color.LIGHT_GRAY);
+                else sb.setColor(WHITE);
+                sb.draw(img, x, y, sWidth, sHeight);
+            }
+        }
+
+        @Override
+        public void onClick() {
+            group.index++;
+            group.refreshSkin();
         }
     }
 

@@ -113,6 +113,7 @@ public final class SaveHandler {
         for (int i = 0; i < 4; i++) {
             PlayerData d = data.players[i];
             AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
+            p.setCustomSkin(SettingHandler.setting.skin.get(p.playerClass));
             p.defineIndex(d.index);
             p.goodLuck = d.goodLuck;
             p.badLuck = d.badLuck;

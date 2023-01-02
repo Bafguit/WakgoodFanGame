@@ -31,9 +31,7 @@ public class LilpaaAction extends AbstractAction {
     protected void updateAction() {
         if (duration < 1.1f && !ps) {
             if (actor != null) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                actor.state.addAnimation(0, "idle", true, 0.0F);
-                e.setTimeScale(1.0f);
+                actor.animation.setAndIdle("attack");
             }
             ps = true;
             if (SettingHandler.setting.shake)

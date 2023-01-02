@@ -28,9 +28,7 @@ public class HighAttackAction extends AbstractAction {
             if (target.size > 0) {
                 AttackAction.playAttackSfx(AttackAction.AttackType.HEAVY);
                 if (actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
+                    actor.animation.setAndIdle("attack");
                 }
                 for (AbstractEntity t : target) {
                     EffectHandler.add(new HitEffect(t, FileHandler.getVfx().get("HIT_HEAVY")));

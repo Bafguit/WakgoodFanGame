@@ -18,8 +18,6 @@ public class SetAnimationAction extends AbstractAction {
 
     @Override
     protected void updateAction() {
-        AnimationState.TrackEntry e = actor.state.setAnimation(0, key, false);
-        actor.state.addAnimation(0, "idle", true, 0.0F);
-        e.setTimeScale(1.0f);
+        actor.animation.setAndIdle(key);
     }
 }

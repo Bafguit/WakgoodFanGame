@@ -12,6 +12,7 @@ public class DieEffect extends AbstractEffect {
 
     public DieEffect(AbstractEntity e) {
         super(0, 0, 1.3f);
+        baseDuration = duration = 1.3f;
         actor = e;
     }
 
@@ -19,8 +20,7 @@ public class DieEffect extends AbstractEffect {
     protected void updateEffect() {
         if (actor != null) {
             if (duration == baseDuration) {
-                AnimationState.TrackEntry e = actor.state.setAnimation(0, "die", false);
-                e.setTimeScale(baseDuration / 2);
+                actor.animation.setDie();
                 actor.infoSpine.setAnimation("die");
             }
             if (isDone) {

@@ -23,7 +23,7 @@ public class BossEnemy1 extends AbstractEnemy {
         stat.debuRes = 15;
         stat.neutRes = 15;
         stat.moveRes = 15;
-        skeleton.setSkin("first");
+        animation.setSkin("first");
     }
 
     @Override

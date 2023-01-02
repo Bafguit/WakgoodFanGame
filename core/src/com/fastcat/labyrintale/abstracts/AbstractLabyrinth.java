@@ -59,6 +59,7 @@ public class AbstractLabyrinth {
         this(RunType.NEW);
     }
 
+    @SuppressWarnings("NewApi")
     public AbstractLabyrinth(RunType type) {
         players = new AbstractPlayer[4];
         restriction = DifficultyHandler.getInstance();
@@ -96,7 +97,10 @@ public class AbstractLabyrinth {
             charge = 5;
             sp = 0;
             for (int i = 0; i < 4; i++) {
-                AbstractPlayer p = getPlayerInstance(Labyrintale.charSelectScreen.chars[i].player.playerClass);
+                AbstractPlayer temp = Labyrintale.charSelectScreen.chars[i].player;
+                AbstractPlayer p = getPlayerInstance(temp.playerClass);
+                p.setCustomSkin(temp.key);
+                SettingHandler.setting.skin.replace(temp.playerClass, temp.key);
                 p.defineIndex(i);
                 restriction.onCreatePlayer(p);
                 players[i] = p;
@@ -113,6 +117,7 @@ public class AbstractLabyrinth {
             restriction.onCreateLabyrinth();
             scoreHandle = new ScoreHandle();
             achvCheck = new AchieveHandler.AchvLabCheck();
+            SettingHandler.save();
         }
         cPanel = new ControlPanel();
         curBg = FileHandler.getBg().get("BG_WAY_" + floorNum);

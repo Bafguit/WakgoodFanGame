@@ -23,6 +23,8 @@ import com.fastcat.labyrintale.status.NeutResStatus;
 import com.fastcat.labyrintale.status.NeutStatus;
 import com.fastcat.labyrintale.uis.PlayerIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
+import com.fastcat.labyrintale.utils.SpineAnimation;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -34,12 +36,11 @@ public abstract class AbstractEntity implements Cloneable {
     public final transient Color animColor = new Color(1, 1, 1, 1);
     public Color pColor;
     public transient HealthBarDamageEffect hbEffect = null;
-
-    public TextureAtlas atlas;
-    public Skeleton skeleton;
-    public AnimationState state;
-    public AnimationStateData stateData;
     public InfoSpine infoSpine;
+
+    protected TextureAtlas atlas;
+    protected FileHandle skeleton;
+    public AbstractAnimation animation;
 
     public AbstractUI ui;
     public Array<AbstractSkill> deck;
@@ -84,19 +85,12 @@ public abstract class AbstractEntity implements Cloneable {
         this.maxHealth = maxHealth;
         this.health = this.maxHealth;
         deck = getStartingDeck();
+        stat = new EntityStat();
 
         this.atlas = atlas;
-        SkeletonJson json = new SkeletonJson(atlas);
-        json.setScale(0.7f * InputHandler.scale);
-        SkeletonData skeletonData = json.readSkeletonData(skel);
-        skeleton = new Skeleton(skeletonData);
-        skeleton.setColor(Color.WHITE);
-        skeleton.setPosition(animX, animY);
-        stateData = new AnimationStateData(skeletonData);
-        state = new AnimationState(stateData);
-        resetAnimation();
+        skeleton = skel;
+        animation = new SpineAnimation(atlas, skel);
         infoSpine = new InfoSpine(atlas, skel);
-        stat = new EntityStat();
     }
 
     public void update() {
@@ -111,25 +105,12 @@ public abstract class AbstractEntity implements Cloneable {
 
     public void shuffleHand() {}
 
-    public final void resetAnimation() {
-        AnimationState.TrackEntry e = state.setAnimation(0, "idle", true);
-        e.setTrackTime(MathUtils.random(0.0f, 1.0f));
-        e.setTimeScale(1.0f);
-    }
-
     public void render(SpriteBatch sb) {
-        if (atlas != null && !isDead) {
-            state.update(Labyrintale.tick);
-            state.apply(skeleton);
-            state.getCurrent(0).setTimeScale(1.0f);
-            skeleton.updateWorldTransform();
-            skeleton.setPosition(animX, animY);
-            skeleton.setColor(animColor);
-            sb.end();
-            Labyrintale.psb.begin();
-            Labyrintale.sr.draw(Labyrintale.psb, skeleton);
-            Labyrintale.psb.end();
-            sb.begin();
+        if (!isDead) {
+            Color c = sb.getColor();
+            sb.setColor(animColor);
+            animation.render(sb, animX, animY);
+            sb.setColor(c);
         }
     }
 
@@ -453,9 +434,7 @@ public abstract class AbstractEntity implements Cloneable {
                                         isCrit ? SCARLET : YELLOW,
                                         true));
                                 EffectHandler.add(new HealthBarDamageEffect(this));
-                                AnimationState.TrackEntry e = state.setAnimation(0, "hit", false);
-                                state.addAnimation(0, "idle", true, 0.0F);
-                                e.setTimeScale(1.0f);
+                                animation.setAndIdle("hit");
                                 health -= damage;
                                 if (health <= 0) {
                                     if (!isNeut && (isPlayer || !advisor.id.equals("callycarly"))) {
@@ -574,7 +553,7 @@ public abstract class AbstractEntity implements Cloneable {
         }
         health = maxHealth / 4;
         animColor.a = 1.0f;
-        resetAnimation();
+        animation.resetAnimation();
         infoSpine.setAnimation("idle");
     }
 

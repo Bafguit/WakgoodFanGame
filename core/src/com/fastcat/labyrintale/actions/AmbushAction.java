@@ -27,9 +27,7 @@ public class AmbushAction extends AbstractAction {
                     skill.upgradeCount > 3 ? AttackAction.AttackType.HEAVY : AttackAction.AttackType.LIGHT);
             if (target.size > 0) {
                 if (actor != null) {
-                    AnimationState.TrackEntry e = actor.state.setAnimation(0, "attack", false);
-                    actor.state.addAnimation(0, "idle", true, 0.0F);
-                    e.setTimeScale(1.0f);
+                    actor.animation.setAndIdle("attack");
                 }
                 for (int i = 0; i < target.size; i++) {
                     AbstractEntity te = target.get(i);
