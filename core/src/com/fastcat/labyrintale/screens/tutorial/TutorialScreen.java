@@ -35,7 +35,7 @@ public class TutorialScreen extends AbstractScreen {
                 temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
             }
         } else if (type == TutorialType.WAY) {
-            for (int i = 1; i <= 2; i++) {
+            for (int i = 1; i <= 3; i++) {
                 temp.add(FileHandler.getTutorialImg().get(type + "_" + i));
             }
         } else if (type == TutorialType.REWARD) {

@@ -127,6 +127,7 @@ public class CharSelectScreen extends AbstractScreen {
     public void show() {
         backButton.over = false;
         backButton.show();
+        group.sIndex.clear();
         if (SettingHandler.setting.charTutorial) {
             Labyrintale.openTutorial(TutorialScreen.TutorialType.CHARSELECT);
             SettingHandler.setting.charTutorial = false;
@@ -158,7 +159,8 @@ public class CharSelectScreen extends AbstractScreen {
         private final FontHandler.FontData inData = INFO_HP;
         private final FontHandler.FontData idData = GOMEM;
         private final FontHandler.FontData jData = SETTING;
-        private final HashMap<AbstractPlayer.PlayerClass, Integer> sIndex;
+
+        public final HashMap<AbstractPlayer.PlayerClass, Integer> sIndex;
 
         public InfoPanel.InfoType type;
         public AbstractPlayer player;

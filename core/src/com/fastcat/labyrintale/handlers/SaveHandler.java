@@ -22,20 +22,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SaveHandler {
     public static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-    public static FileHandle saveFile = Gdx.files.local("save.json");
     public static SaveData data;
-    public static boolean hasSave;
 
     static {
         refresh();
     }
 
     public static void refresh() {
-        saveFile = Gdx.files.local("save.json");
-        hasSave = saveFile.exists();
-        if (hasSave) {
+        if (Gdx.files.local("save.json").exists()) {
             try {
-                data = mapper.readValue(saveFile.file(), SaveData.class);
+                data = mapper.readValue(Gdx.files.local("save.json").file(), SaveData.class);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -58,22 +54,17 @@ public final class SaveHandler {
         } else {
             data = SaveData.create();
         }
-        if (hasSave) {
-            if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
-            try {
-                String name = "run_" + data.date + ".json";
-                Gdx.files.local("runs").mkdirs();
-                mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            FileHandle f = Gdx.files.local("save.json");
-            if(f.exists()) Gdx.files.local("save.json").delete();
-            data = null;
-            AchieveHandler.save();
-        } else {
-            AchieveHandler.load();
+        if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
+        try {
+            String name = "run_" + data.date + ".json";
+            Gdx.files.local("runs").mkdirs();
+            mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        if(Gdx.files.local("save.json").exists()) Gdx.files.local("save.json").delete();
+        data = null;
+        AchieveHandler.save();
     }
 
     public static void load() {

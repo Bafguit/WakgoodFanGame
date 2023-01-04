@@ -1,6 +1,6 @@
 {
-  "class" : "BURGER",
+  "class" : "JURURU",
   "type" : "sprite",
-  "name" : "테스트",
-  "desc" : "테스트 스킨"
+  "name" : "테스트1",
+  "desc" : "스프라이트 애니메이션 테스트"
 }

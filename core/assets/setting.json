@@ -1,0 +1,25 @@
+{
+  "volumeBgm" : 80,
+  "volumeSfx" : 80,
+  "width" : 1920,
+  "height" : 1080,
+  "screenMode" : 1,
+  "shake" : true,
+  "fastMode" : false,
+  "charTutorial" : false,
+  "wayTutorial" : false,
+  "battleTutorial" : false,
+  "rewardTutorial" : true,
+  "forceCredit" : true,
+  "cartoon" : [ true, true, true ],
+  "skin" : {
+    "JURURU" : "test",
+    "WAK" : "basic",
+    "VIICHAN" : "basic",
+    "GOSEGU" : "basic",
+    "INE" : "basic",
+    "LILPA" : "basic",
+    "MANAGER" : "basic",
+    "BURGER" : "basic"
+  }
+}

@@ -543,6 +543,7 @@ public class FileHandler implements Disposable {
         resourceNames.put(s = "BATTLE_3", "img/tutorial/" + s.toLowerCase() + ".png");
         resourceNames.put(s = "WAY_1", "img/tutorial/" + s.toLowerCase() + ".png");
         resourceNames.put(s = "WAY_2", "img/tutorial/" + s.toLowerCase() + ".png");
+        resourceNames.put(s = "WAY_3", "img/tutorial/" + s.toLowerCase() + ".png");
         resourceNames.put(s = "REWARD_1", "img/tutorial/" + s.toLowerCase() + ".png");
         resourceNames.put(s = "REWARD_2", "img/tutorial/" + s.toLowerCase() + ".png");
 

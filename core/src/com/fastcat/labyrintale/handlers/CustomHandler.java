@@ -16,26 +16,28 @@ public class CustomHandler {
         for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
             skins.put(cls, new HashMap<>());
         }
+        if(InputHandler.isDesktop) {
 
-        /* TODO 스킨 추가되면 주석 지우기
-        for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
-            int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.valueOf(cls.toString()));
-            if(i == 3) {
-                CustomSkinData data = new CustomSkinData(cls);
-                skins.get(data.playerClass).put(data.key, data);
-            }
-        }*/
-
-        FileHandle folder = Gdx.files.local("custom");
-        if(folder.exists() && folder.isDirectory()) {
-            for(FileHandle f : folder.list()) {
-                if(f.isDirectory()) {
-                    CustomSkinData data = new CustomSkinData(f.name());
+            /* TODO 스킨 추가되면 주석 지우기
+            for (AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+                int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.valueOf(cls.toString()));
+                if (i == 3) {
+                    CustomSkinData data = new CustomSkinData(cls);
                     skins.get(data.playerClass).put(data.key, data);
                 }
+            }*/
+
+            FileHandle folder = Gdx.files.local("custom");
+            if (folder.exists() && folder.isDirectory()) {
+                for (FileHandle f : folder.list()) {
+                    if (f.isDirectory()) {
+                        CustomSkinData data = new CustomSkinData(f.name());
+                        skins.get(data.playerClass).put(data.key, data);
+                    }
+                }
+            } else {
+                folder.mkdirs();
             }
-        } else {
-            folder.mkdirs();
         }
     }
 

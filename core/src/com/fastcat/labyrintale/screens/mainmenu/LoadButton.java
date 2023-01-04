@@ -27,12 +27,12 @@ public class LoadButton extends AbstractUI {
         fontData = new FontData(MEDIUM, 53, false, false);
         text = "불러오기";
         showImg = false;
-        overable = SaveHandler.hasSave;
+        overable = SaveHandler.data != null;
     }
 
     @Override
     protected void updateButton() {
-        overable = SaveHandler.hasSave;
+        overable = SaveHandler.data != null;
     }
 
     @Override
