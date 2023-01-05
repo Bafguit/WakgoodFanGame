@@ -54,16 +54,18 @@ public final class SaveHandler {
         } else {
             data = SaveData.create();
         }
-        if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
-        try {
-            String name = "run_" + data.date + ".json";
-            Gdx.files.local("runs").mkdirs();
-            mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(data != null) {
+            if (data.result == null) data.result = DeadScreen.ScreenType.DEAD;
+            try {
+                String name = "run_" + data.date + ".json";
+                Gdx.files.local("runs").mkdirs();
+                mapper.writeValue(Gdx.files.local("runs/" + name).file(), data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (Gdx.files.local("save.json").exists()) Gdx.files.local("save.json").delete();
+            data = null;
         }
-        if(Gdx.files.local("save.json").exists()) Gdx.files.local("save.json").delete();
-        data = null;
         AchieveHandler.save();
     }
 
