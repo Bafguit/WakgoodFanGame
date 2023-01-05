@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.handlers;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,10 +19,12 @@ public final class SettingHandler {
 
     public static File settingFile;
 
-    public static void initialize(boolean android) {
+    public static void initialize(boolean android, Files f) {
         setting = new SettingData();
         if(android) settingFile = Gdx.files.local("setting.json").file();
-        else settingFile = new File("setting.json");
+        else {
+            settingFile = f.local("setting.json").file();
+        }
         boolean hasSave = settingFile.exists();
         if (!hasSave) {
 
