@@ -241,7 +241,6 @@ public class Labyrintale extends Game {
     public void create() {
         game = this;
 
-        initGameAnalytics();
         Thread.currentThread().setUncaughtExceptionHandler((t, e) -> gameAnalytics.submitErrorEvent(GameAnalytics.ErrorType.error, e.getMessage()));
         InputHandler.getInstance();
 
