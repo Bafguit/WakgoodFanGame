@@ -47,6 +47,8 @@ import de.golfgl.gdxgameanalytics.GameAnalytics;
 import lombok.Getter;
 
 
+import java.util.Arrays;
+
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
@@ -212,16 +214,12 @@ public class Labyrintale extends Game {
         }
     }
 
-    private void initGameAnalytics() {
-
+    public Labyrintale(String[] args){
         gameAnalytics = new GameAnalytics();
-        gameAnalytics.setPlatformVersionString(InputHandler.isDesktop ? "1" : "0");
-        gameAnalytics.setGameBuildNumber(BuildInfo.BUILD_VERSION);
-        gameAnalytics.setGameKey(System.getenv("game.key"));
-        gameAnalytics.setGameSecretKey(System.getenv("game.secret"));
-        gameAnalytics.startSession();
-        gameAnalytics.submitDesignEvent("game:start");
+        gameAnalytics.setGameKey(args[0]);
+        gameAnalytics.setGameSecretKey(args[1]);
     }
+
     private GameAnalytics.Platform getPlatform(){
         if(! InputHandler.isDesktop)
             return GameAnalytics.Platform.Android;

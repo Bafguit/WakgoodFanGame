@@ -58,7 +58,7 @@ public class DesktopLauncher {
             config.setWindowedMode(displayMode.width, displayMode.height);
         }
 
-        new Lwjgl3Application(new Labyrintale(), config);
+        new Lwjgl3Application(new Labyrintale(arg), config);
 
 /*
         try {
