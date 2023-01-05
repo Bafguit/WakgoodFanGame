@@ -2,7 +2,6 @@ package com.fastcat.labyrintale;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -38,22 +37,15 @@ import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
 import com.fastcat.labyrintale.uis.GifBg;
 import com.fastcat.labyrintale.utils.AsynchronousGifLoader;
-import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.utils.FillViewport;
 import com.fastcat.labyrintale.utils.Gif;
 import com.google.common.util.concurrent.FutureCallback;
-
-import de.golfgl.gdxgameanalytics.GameAnalytics;
 import lombok.Getter;
-
-
-import java.util.Arrays;
 
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
-    @Getter
-    private GameAnalytics gameAnalytics;
+
     public static Labyrintale game;
 
     private static LifeCycle phase;
@@ -214,26 +206,10 @@ public class Labyrintale extends Game {
         }
     }
 
-    public Labyrintale(String[] args){
-        gameAnalytics = new GameAnalytics();
-        gameAnalytics.setGameKey(args[0]);
-        gameAnalytics.setGameSecretKey(args[1]);
-    }
 
-    private GameAnalytics.Platform getPlatform(){
-        if(! InputHandler.isDesktop)
-            return GameAnalytics.Platform.Android;
-        switch (System.getProperty("os.name")){
-            case "mac":
-                return GameAnalytics.Platform.MacOS;
-            case "win":
-                return GameAnalytics.Platform.Windows;
-        }
-        return GameAnalytics.Platform.iOS;
-    }
     @Override
     public void pause() {
-        gameAnalytics.closeSession();
+
 
     }
 
@@ -241,7 +217,7 @@ public class Labyrintale extends Game {
     public void create() {
         game = this;
 
-        Thread.currentThread().setUncaughtExceptionHandler((t, e) -> gameAnalytics.submitErrorEvent(GameAnalytics.ErrorType.error, e.getMessage()));
+
         InputHandler.getInstance();
 
         if (!InputHandler.isDesktop) {
@@ -628,7 +604,6 @@ public class Labyrintale extends Game {
 
     @Override
     public void dispose() {
-        gameAnalytics.closeSession();
         sb.dispose();
         FileHandler.getInstance().dispose();
         FontHandler.getInstance().dispose();
