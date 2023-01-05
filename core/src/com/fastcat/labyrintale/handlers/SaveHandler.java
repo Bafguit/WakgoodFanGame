@@ -190,7 +190,7 @@ public final class SaveHandler {
             Date now = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             temp.date = AbstractLabyrinth.date = formatter.format(now);
-            temp.version = "b0.9.25";
+            temp.version = "1.0.1";
             // temp.version = BuildInfo.BUILD_VERSION;
             temp.random = RandomData.create();
             for (int i = 0; i < 4; i++) {

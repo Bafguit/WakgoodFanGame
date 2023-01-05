@@ -3,15 +3,19 @@ package com.fastcat.labyrintale.events.third;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractEvent;
+import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.events.choices.EndEventChoice;
 import com.fastcat.labyrintale.events.choices.NextPageEventChoice;
 import com.fastcat.labyrintale.events.choices.PlayerEventChoice;
+import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.interfaces.AtEndOfTempScreen;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.items.special.DevilIdol;
 import com.fastcat.labyrintale.screens.shop.take.ShopTakeScreen;
+
+import java.util.HashMap;
 
 public class CorruptedIdolEvent extends AbstractEvent implements GetSelectedPlayer, AtEndOfTempScreen {
 
@@ -46,9 +50,12 @@ public class CorruptedIdolEvent extends AbstractEvent implements GetSelectedPlay
         }
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public void playerSelected(AbstractPlayer player) {
         player.die(null);
+        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+        if (!temp.get("DevilIdol")) temp.replace("DevilIdol", true);
         ShopTakeScreen s;
         s = new ShopTakeScreen(new DevilIdol(null), false);
         s.endTemp.add(this);
