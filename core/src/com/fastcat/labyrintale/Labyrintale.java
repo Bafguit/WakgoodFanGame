@@ -221,7 +221,7 @@ public class Labyrintale extends Game {
         InputHandler.getInstance();
 
         if (!InputHandler.isDesktop) {
-            SettingHandler.initialize(true, null);
+            SettingHandler.initialize(true);
         }
 
         phase = LifeCycle.STARTED;

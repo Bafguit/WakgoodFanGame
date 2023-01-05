@@ -2,7 +2,10 @@ package com.fastcat.labyrintale.desktop;
 
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Graphics;
-import com.badlogic.gdx.backends.lwjgl3.*;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowListener;
 import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.handlers.SettingHandler;
@@ -40,7 +43,8 @@ public class DesktopLauncher {
         //config.setInitialVisible(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
 
-        SettingHandler.initialize(false, new Lwjgl3Files());
+
+        SettingHandler.initialize(false);
 
         Graphics.DisplayMode displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode();
 
