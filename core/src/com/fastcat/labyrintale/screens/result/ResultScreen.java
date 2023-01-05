@@ -246,6 +246,10 @@ public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
         more = new MoreResultButton(this);
         tx = 1240 * scale;
         tw = 400 * scale;
+
+        for(int i = 0; i< 4;i++){
+            Labyrintale.game.getGameAnalytics().submitDesignEvent("game:character:" + AbstractLabyrinth.players[i].id);
+        }
     }
 
     @Override

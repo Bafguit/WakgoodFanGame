@@ -1,8 +1,8 @@
 package com.fastcat.labyrintale;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -15,19 +15,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.esotericsoftware.spine.SkeletonRenderer;
-import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.*;
-import com.fastcat.labyrintale.screens.achieve.AchieveScreen;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
-import com.fastcat.labyrintale.screens.dictionary.DictScreen;
 import com.fastcat.labyrintale.screens.difficulty.DifficultyScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.library.LibraryScreen;
@@ -41,16 +37,21 @@ import com.fastcat.labyrintale.screens.shop.ShopScreen;
 import com.fastcat.labyrintale.screens.tutorial.TutorialScreen;
 import com.fastcat.labyrintale.screens.way.WayScreen;
 import com.fastcat.labyrintale.uis.GifBg;
-import com.fastcat.labyrintale.utils.FillViewport;
 import com.fastcat.labyrintale.utils.AsynchronousGifLoader;
+import com.fastcat.labyrintale.utils.BuildInfo;
+import com.fastcat.labyrintale.utils.FillViewport;
 import com.fastcat.labyrintale.utils.Gif;
 import com.google.common.util.concurrent.FutureCallback;
+
+import de.golfgl.gdxgameanalytics.GameAnalytics;
 import lombok.Getter;
+
 
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
-
+    @Getter
+    private GameAnalytics gameAnalytics;
     public static Labyrintale game;
 
     private static LifeCycle phase;
@@ -143,7 +144,7 @@ public class Labyrintale extends Game {
         } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
-        } else if(type == FadeType.BATTLE) {
+        } else if (type == FadeType.BATTLE) {
             battle = new GifBg("BATTLE");
             battle.speed = 1;
             battle.setPlayMode(Animation.PlayMode.NORMAL);
@@ -176,7 +177,7 @@ public class Labyrintale extends Game {
         } else if (type == FadeType.VERTICAL) {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
-        } else if(type == FadeType.BATTLE) {
+        } else if (type == FadeType.BATTLE) {
             battle = new GifBg("BATTLE");
             battle.speed = 1;
             battle.setPlayMode(Animation.PlayMode.NORMAL);
@@ -211,11 +212,42 @@ public class Labyrintale extends Game {
         }
     }
 
+    private void initGameAnalytics() {
+
+        gameAnalytics = new GameAnalytics();
+        gameAnalytics.setPlatformVersionString(InputHandler.isDesktop ? "1" : "0");
+        gameAnalytics.setGameBuildNumber(BuildInfo.BUILD_VERSION);
+        gameAnalytics.setGameKey(System.getenv("game.key"));
+        gameAnalytics.setGameSecretKey(System.getenv("game.secret"));
+        gameAnalytics.startSession();
+        gameAnalytics.submitDesignEvent("game:start");
+    }
+    private GameAnalytics.Platform getPlatform(){
+        if(! InputHandler.isDesktop)
+            return GameAnalytics.Platform.Android;
+        switch (System.getProperty("os.name")){
+            case "mac":
+                return GameAnalytics.Platform.MacOS;
+            case "win":
+                return GameAnalytics.Platform.Windows;
+        }
+        return GameAnalytics.Platform.iOS;
+    }
+    @Override
+    public void pause() {
+        gameAnalytics.closeSession();
+
+    }
+
     @Override
     public void create() {
         game = this;
+
+        initGameAnalytics();
+        Thread.currentThread().setUncaughtExceptionHandler((t, e) -> gameAnalytics.submitErrorEvent(GameAnalytics.ErrorType.error, e.getMessage()));
         InputHandler.getInstance();
-        if(!InputHandler.isDesktop) {
+
+        if (!InputHandler.isDesktop) {
             SettingHandler.initialize(true);
         }
 
@@ -223,7 +255,7 @@ public class Labyrintale extends Game {
         assetManager = new AssetManager();
         assetManager.setLoader(Gif.class, new AsynchronousGifLoader(new InternalFileHandleResolver()));
         resourceHandler = new ResourceHandler(assetManager);
-        if(InputHandler.isDesktop) {
+        if (InputHandler.isDesktop) {
             Gdx.graphics.setResizable(System.getProperty("os.name").contains("mac"));
             Gdx.graphics.setTitle("Wakest Dungeon");
             Pixmap pix = new Pixmap(Gdx.files.internal("img/ui/cursor_b.png"));
@@ -356,7 +388,7 @@ public class Labyrintale extends Game {
         }
 
 
-        if(phase == LifeCycle.ENDED) {
+        if (phase == LifeCycle.ENDED) {
             /** Update */
             update();
         }
@@ -372,7 +404,7 @@ public class Labyrintale extends Game {
         // actionHandler.render(sb);
         super.render();
 
-        if(phase == LifeCycle.ENDED) {
+        if (phase == LifeCycle.ENDED) {
             if (tempScreen.size > 0) {
                 for (Screen s : tempScreen) {
                     if (s != null) s.render(Labyrintale.tick);
@@ -389,7 +421,7 @@ public class Labyrintale extends Game {
                 change_H();
             } else if (fadeType == FadeType.VERTICAL) {
                 change_V();
-            } else if(fadeType == FadeType.BATTLE) {
+            } else if (fadeType == FadeType.BATTLE) {
                 fadeBattle();
             }
 
@@ -599,6 +631,7 @@ public class Labyrintale extends Game {
 
     @Override
     public void dispose() {
+        gameAnalytics.closeSession();
         sb.dispose();
         FileHandler.getInstance().dispose();
         FontHandler.getInstance().dispose();
