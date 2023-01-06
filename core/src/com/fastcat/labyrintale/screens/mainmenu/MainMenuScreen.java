@@ -21,7 +21,7 @@ public class MainMenuScreen extends AbstractScreen {
     private final ExitButton exitButton;
 
     public MainMenuScreen() {
-        setBg(FileHandler.getBg().get("BG_MAIN"));
+        setBg(FileHandler.getBg().get("MAIN_MENU"));
         logo = new LogoText();
         gameStartButton = new GameStartButton();
         float lx = logo.x + (logo.sWidth - gameStartButton.sWidth) / 2;

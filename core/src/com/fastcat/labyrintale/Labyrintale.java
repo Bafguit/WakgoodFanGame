@@ -139,9 +139,10 @@ public class Labyrintale extends Game {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         } else if (type == FadeType.BATTLE) {
-            battle = new GifBg("BATTLE");
-            battle.speed = 1;
-            battle.setPlayMode(Animation.PlayMode.NORMAL);
+            if(InputHandler.isDesktop) {
+                battle = new GifBg("BATTLE");
+                battle.speed = 1;
+            } else fadeType = FadeType.FADE;
         }
     }
 
@@ -172,9 +173,10 @@ public class Labyrintale extends Game {
             change_v.setPosition(0, Gdx.graphics.getHeight());
             change_v_r.setPosition(0, 0);
         } else if (type == FadeType.BATTLE) {
-            battle = new GifBg("BATTLE");
-            battle.speed = 1;
-            battle.setPlayMode(Animation.PlayMode.NORMAL);
+            if(InputHandler.isDesktop) {
+                battle = new GifBg("BATTLE");
+                battle.speed = 1;
+            } else fadeType = FadeType.FADE;
         }
     }
 

@@ -21,7 +21,7 @@ public class CreditScreen extends AbstractScreen {
     private SoundHandler.MusicData music;
 
     public CreditScreen() {
-        setBg(FileHandler.getBg().get("BG_MAIN"));
+        setBg(FileHandler.getBg().get("MAIN_MENU"));
         bgShades = false;
         backButton = new CreditBackButton();
         backButton.disable();

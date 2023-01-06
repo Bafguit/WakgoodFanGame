@@ -5,9 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 
 import java.util.Arrays;
 
@@ -24,26 +26,34 @@ public class GifBg extends AbstractUI {
         setPosition(0, 0);
         overable = false;
         hasBg = true;
-        Animation<Sprite> s = FileHandler.getGif().get(key);
-        Object[] a = s.getKeyFrames();
-        Sprite[] aa = Arrays.copyOf(a, a.length, Sprite[].class);
-        animation = new Animation<>(s.getFrameDuration(), aa);
-        animation.setPlayMode(s.getPlayMode());
+        if(InputHandler.isDesktop) {
+            Animation<Sprite> s = FileHandler.getGif().get(key);
+            Object[] a = s.getKeyFrames();
+            Sprite[] aa = Arrays.copyOf(a, a.length, Sprite[].class);
+            animation = new Animation<>(s.getFrameDuration(), aa);
+            animation.setPlayMode(s.getPlayMode());
+        } else {
+            Array<Sprite> s = new Array<>();
+            s.add(FileHandler.getBg().get(key));
+            animation = new Animation<>(1, s, Animation.PlayMode.LOOP);
+        }
     }
 
     public GifBg(String key) {
         super(FileHandler.getBg().get("BG_BLACK"));
         setPosition(0, 0);
         overable = false;
-        Animation<Sprite> s = FileHandler.getGif().get(key);
-        Object[] a = s.getKeyFrames();
-        Sprite[] aa = Arrays.copyOf(a, a.length, Sprite[].class);
-        animation = new Animation<>(s.getFrameDuration(), aa);
-        animation.setPlayMode(s.getPlayMode());
-    }
-
-    public void setPlayMode(Animation.PlayMode mode) {
-        animation.setPlayMode(mode);
+        if(InputHandler.isDesktop) {
+            Animation<Sprite> s = FileHandler.getGif().get(key);
+            Object[] a = s.getKeyFrames();
+            Sprite[] aa = Arrays.copyOf(a, a.length, Sprite[].class);
+            animation = new Animation<>(s.getFrameDuration(), aa);
+            animation.setPlayMode(Animation.PlayMode.NORMAL);
+        } else {
+            Array<Sprite> s = new Array<>();
+            s.add(FileHandler.getBg().get("BG_BLACK"));
+            animation = new Animation<>(1, s, Animation.PlayMode.NORMAL);
+        }
     }
 
     @Override

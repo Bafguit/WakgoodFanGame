@@ -188,7 +188,7 @@ public class FileHandler implements Disposable {
         generateAchieve(resourceHandler);
         generateTutorialImg(resourceHandler);
         generateCartoonImg(resourceHandler);
-        generateGif(resourceHandler);
+        if(InputHandler.isDesktop) generateGif(resourceHandler);
     }
 
     private void generateHashMap() {
@@ -278,7 +278,6 @@ public class FileHandler implements Disposable {
         resources.put("BG_GREY", "img/bg/white.png");
         resources.put("BG_BLACK", "img/ui/fade.png");
         resources.put("BG_LOGO", "img/ui/logo.png");
-        resources.put("BG_MAIN", "img/bg/main.png");
         resources.put("BG_DEAD", "img/bg/dead.png");
         resources.put("BG_WIN", "img/bg/win.png");
         resources.put("BG_MAP", "img/bg/map.png");
@@ -295,6 +294,8 @@ public class FileHandler implements Disposable {
         resources.put("BG_DICT", "img/bg/dict.png");
         resources.put("BG_ACHV", "img/bg/achv.png");
         resources.put("BG_CHARSELECT", "img/bg/charselect.png");
+        resources.put("MAIN_MENU", "img/bg/main.png");
+        resources.put("FIRE", "img/bg/fire.png");
 
         resourceHandler.requestResource(new MultipleResourceRequest<>(resources, Texture.class, (resource, args) -> {
             Texture texture = (Texture) resource;
