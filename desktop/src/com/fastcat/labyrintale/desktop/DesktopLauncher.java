@@ -53,9 +53,21 @@ public class DesktopLauncher {
         } else if (SettingHandler.setting.screenMode == 1) {
             config.setFullscreenMode(displayMode);
         } else {
-            config.setWindowPosition(0, 0);
             config.setDecorated(false);
-            config.setWindowedMode(displayMode.width, displayMode.height);
+
+            final int height, width;
+            int w = displayMode.width, h = displayMode.height;
+            float a = ((float) h) / ((float) w);
+
+            if(a <= 0.5625f) {
+                height = h;
+                width = (int) (2560 * ((float) h / 1440.0f));
+            } else {
+                width = w;
+                height = (int) (1440 * ((float) w / 2560.0f));
+            }
+            config.setWindowedMode(width, height);
+            config.setWindowPosition(0, 0);
         }
 
         new Lwjgl3Application(new Labyrintale(), config);
