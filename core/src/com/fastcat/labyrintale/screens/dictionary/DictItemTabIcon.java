@@ -22,7 +22,9 @@ public class DictItemTabIcon extends AbstractUI {
         this.group = group;
         clickable = false;
         overable = false;
+        subWay = SubText.SubWay.LEFT;
         this.item = item;
+        if(map.get(item.id) == null) map.put(item.id, false);
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
+import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 
 public class AdvisorButton extends AbstractUI {
@@ -45,6 +46,7 @@ public class AdvisorButton extends AbstractUI {
             else sb.setColor(Color.LIGHT_GRAY);
             sb.draw(img, x, y, sWidth, sHeight);
             sb.draw(advisor.img, x + sWidth / 2 - adv.sWidth / 2, y + 68 * InputHandler.scale, adv.sWidth, adv.sHeight);
+            FontHandler.renderCenter(sb, FontHandler.GOMEM, advisor.name, x, y + 46 * InputHandler.scale, sWidth, sHeight);
         }
     }
 

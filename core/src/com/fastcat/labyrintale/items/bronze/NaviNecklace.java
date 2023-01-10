@@ -29,7 +29,7 @@ public class NaviNecklace extends AbstractItem {
 
     @Override
     public void atBattleStart() {
+        top(new ApplyStatusAction(new UnfortifiedStatus(1), null, AbstractSkill.SkillTarget.ENEMY_ALL, true));
         flash();
-        top(new ApplyStatusAction(new UnfortifiedStatus(1), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
     }
 }

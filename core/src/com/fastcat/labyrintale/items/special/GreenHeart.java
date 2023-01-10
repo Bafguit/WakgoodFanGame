@@ -15,7 +15,7 @@ public class GreenHeart extends AbstractItem {
 
     @Override
     public void atBattleEnd() {
-        flash();
         top(new HealAction(null, owner, 3));
+        flash();
     }
 }

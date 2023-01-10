@@ -26,7 +26,7 @@ public class LifePotion extends AbstractItem {
 
     @Override
     public void atBattleStart() {
+        top(new ApplyStatusAction(new ResistPlusStatus(1), null, owner, true));
         flash();
-        top(new ApplyStatusAction(new ResistPlusStatus(1), owner, owner, true));
     }
 }

@@ -14,15 +14,13 @@ public class Rose extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.stat.spell += 2;
-        owner.stat.speed += 2;
-        owner.stat.moveRes += 20;
+        owner.stat.spell += 3;
+        owner.stat.speed += 3;
     }
 
     @Override
     public void onRemove() {
-        owner.stat.spell -= 2;
-        owner.stat.speed -= 2;
-        owner.stat.moveRes -= 20;
+        owner.stat.spell -= 3;
+        owner.stat.speed -= 3;
     }
 }

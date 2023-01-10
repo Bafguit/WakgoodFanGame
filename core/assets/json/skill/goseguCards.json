@@ -53,5 +53,12 @@
   "ConfidPotion": {
     "NAME": "자신감 물약",
     "DESC": "{V} 턴 동안 모든 아군의 &y<속도>를 증가시킵니다."
+  },
+  "Catalyst": {
+    "NAME": "촉매",
+    "DESC": "&y<일회용>: 모든 적의 디버프 중첩을 {V} 배로 만듭니다.",
+    "KEY" : [
+      "Disposable"
+    ]
   }
 }

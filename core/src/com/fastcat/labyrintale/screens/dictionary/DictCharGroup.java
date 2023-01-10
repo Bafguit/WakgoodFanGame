@@ -11,6 +11,7 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.GroupHandler;
+import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.uis.CheckBox;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.InfoPanel;
@@ -21,13 +22,13 @@ public class DictCharGroup extends DictGroup {
     public AbstractUI parent = new AbstractUI.TempUI(FileHandler.getUi().get("BORDER"));
     public AbstractUI.TempUI heart;
     public FontHandler.FontData cName = CLOSE;
-    public FontHandler.FontData iName = REST_DESC;
-    public FontHandler.FontData iDesc = WAY;
+    public FontHandler.FontData iName = DICT_N;
+    public FontHandler.FontData iDesc = DICT;
     public DictCharData data;
     public DictItemIcon passive;
     public StatIcon[] stats = new StatIcon[6];
     public DictSkillIcon[] deck = new DictSkillIcon[3];
-    public DictSkillIcon[] skills = new DictSkillIcon[7];
+    public DictSkillIcon[] skills;
     public CheckBox up;
     public String name = "", desc = "";
     public float nx, hx, ny, nw, ix, iy, dy, dw, dh, px, py;
@@ -40,9 +41,9 @@ public class DictCharGroup extends DictGroup {
         ny = 880 * scale;
         nw = 240 * scale;
         ix = 1524 * scale;
-        iy = 596 * scale;
-        dy = 564 * scale;
-        dw = 600 * scale;
+        iy = 525 * scale;
+        dy = 500 * scale;
+        dw = 500 * scale;
         dh = 164 * scale;
         px = 658 * scale;
         py = 440 * scale;
@@ -63,23 +64,27 @@ public class DictCharGroup extends DictGroup {
                 cnt++;
             }
         }
-        for (int i = 0; i < 4; i++) {
+        skills = new DictSkillIcon[data.normal.size];
+        int x = 0, y = 0;
+        for (int i = 0; i < data.normal.size; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.normal.get(i));
-            c.setPosition((1524 + 162 * i) * scale, 794 * scale);
+            c.setPosition((1484 + 162 * x) * scale, (794 - 156 * y) * scale);
             skills[i] = c;
+            x++;
+            if(x % 4 == 0) {
+                x = 0;
+                y++;
+            }
         }
+
         for (int i = 0; i < 3; i++) {
             DictSkillIcon c = new DictSkillIcon(this, data.player.deck.get(i));
             c.setPosition((975 + 162 * i) * scale, 550 * scale);
             deck[i] = c;
-
-            DictSkillIcon c2 = new DictSkillIcon(this, data.normal.get(i));
-            c2.setPosition((1524 + 162 * i) * scale, 638 * scale);
-            skills[i + 4] = c2;
         }
+
         up = new CheckBox(false);
-        up.setScale(0.8375f);
-        up.setPosition(2043 * scale, 643 * scale);
+        up.setPosition(2040 * scale, 930 * scale);
     }
 
     public void update() {
@@ -98,7 +103,7 @@ public class DictCharGroup extends DictGroup {
                 c.skill = data.uDeck.get(i);
                 c.update();
             }
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < skills.length; i++) {
                 DictSkillIcon c = skills[i];
                 c.skill = data.upgrade.get(i);
                 c.update();
@@ -109,7 +114,7 @@ public class DictCharGroup extends DictGroup {
                 c.skill = data.nDeck.get(i);
                 c.update();
             }
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < skills.length; i++) {
                 DictSkillIcon c = skills[i];
                 c.skill = data.normal.get(i);
                 c.update();
@@ -127,22 +132,21 @@ public class DictCharGroup extends DictGroup {
         for (int i = 0; i < 3; i++) {
             deck[i].render(sb);
         }
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < skills.length; i++) {
             skills[i].render(sb);
         }
         data.player.infoSpine.render(sb);
         heart.render(sb);
-        FontHandler.renderCenter(
-                sb, iName, "강화 보기", parent.x + up.x + up.sWidth / 2, parent.y + up.y + up.sHeight * 1.5f);
+        FontHandler.renderLineRight(sb, iName, "강화 보기", parent.x + 1830 * scale, parent.y + 960 * scale, 200 * scale, nw);
         FontHandler.renderLineLeft(sb, cName, data.player.name, parent.x + nx, parent.y + ny, nw, nw);
         FontHandler.renderLineLeft(
                 sb, cName, Integer.toString(data.player.maxHealth), parent.x + hx, parent.y + ny, nw, nw);
         if (type == InfoPanel.InfoType.SKILL && skill != null) {
-            FontHandler.renderLineLeft(sb, iName, skill.name, parent.x + ix, parent.y + iy, dw, dh);
-            FontHandler.renderCardLeft(sb, skill, iDesc, skill.desc, parent.x + ix, parent.y + dy, dw, dh);
+            FontHandler.renderLineLeft(sb, iName, skill.name, parent.x + nx, parent.y + iy, dw, dh);
+            FontHandler.renderCardLeft(sb, skill, iDesc, skill.desc, parent.x + nx, parent.y + dy, dw, dh);
         } else if (type == InfoPanel.InfoType.ITEM && item != null) {
-            FontHandler.renderLineLeft(sb, iName, item.name, parent.x + ix, parent.y + iy, dw, dh);
-            FontHandler.renderColorLeft(sb, iDesc, item.desc, parent.x + ix, parent.y + dy, dw);
+            FontHandler.renderLineLeft(sb, iName, item.name, parent.x + nx, parent.y + iy, dw, dh);
+            FontHandler.renderColorLeft(sb, iDesc, item.desc, parent.x + nx, parent.y + dy, dw);
         }
     }
 
@@ -156,7 +160,7 @@ public class DictCharGroup extends DictGroup {
         for (int i = 0; i < 3; i++) {
             deck[i].setParent(ui);
         }
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < skills.length; i++) {
             skills[i].setParent(ui);
         }
         up.setParent(ui);

@@ -161,7 +161,9 @@ public abstract class AbstractEntity implements Cloneable {
                 }
             }
         } else {
-            health = Math.min(health + heal, maxHealth);
+            if(isAlive() && heal > 0) {
+                health = Math.min(health + heal, maxHealth);
+            }
         }
     }
 

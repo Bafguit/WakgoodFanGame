@@ -103,6 +103,9 @@ public class FileHandler implements Disposable {
     private static final HashMap<String, FileHandle> video = new HashMap<>();
     // TextureAtlas
     public static TextureAtlas character;
+    public static TextureAtlas advisor;
+    public static TextureAtlas skill;
+    public static TextureAtlas item;
     /***
      * Instance of handler.
      * Initialized on getInstance()
@@ -588,20 +591,18 @@ public class FileHandler implements Disposable {
 
     private void generateAdvImg(ResourceHandler resourceHandler) {
         advImg.clear();
-        for (AdvisorClass cls : AdvisorClass.values()) {
-            String s = cls.toString().toLowerCase();
+        resourceHandler.requestResource(
+                new ResourceHandler.ResourceRequest<>("img/advisor/advisor.atlas", TextureAtlas.class, (resource, args) -> {
+                    advisor = (TextureAtlas) resource;
 
-            resourceHandler.requestResource(new ResourceHandler.ResourceRequest<>(
-                    "img/advisor/" + s + ".png",
-                    Texture.class,
-                    (resource, args) -> {
-                        AdvisorClass clazz = (AdvisorClass) args[0];
-                        Texture texture = (Texture) resource;
-                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                        advImg.put(clazz, new Sprite(texture));
-                    },
-                    cls));
-        }
+                    for (AdvisorClass cls : AdvisorClass.values()) {
+                        String s = cls.toString().toLowerCase();
+
+                        Sprite sp = advisor.createSprite(s);
+                        sp.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                        advImg.put(cls, sp);
+                    }
+                }));
     }
 
     private void generateEnemyImg(ResourceHandler resourceHandler) {
@@ -705,33 +706,21 @@ public class FileHandler implements Disposable {
     private void generateItemImg(ResourceHandler resourceHandler) {
         itemImg.clear();
         itemImgTrans.clear();
-
-        HashMap<String, String> itemResources = new HashMap<>();
-        HashMap<String, String> itemTransResources = new HashMap<>();
-        for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
-            if (!js.name.equals("")) {
-
-                itemResources.put(js.name, "img/item/" + js.name + ".png");
-                itemTransResources.put(js.name, "img/item/" + js.name + "_t.png");
-            }
-        }
-
         resourceHandler.requestResource(
-                new MultipleResourceRequest<>(itemResources, Texture.class, (resource, args) -> {
-                    Texture texture = (Texture) resource;
-                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                    String resourceName = args[0].toString();
+                new ResourceHandler.ResourceRequest<>("img/item/item.atlas", TextureAtlas.class, (resource, args) -> {
+                    item = (TextureAtlas) resource;
 
-                    itemImg.put(resourceName, new Sprite(texture));
-                }));
+                    for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
+                        if (!js.name.equals("")) {
+                            Sprite s = item.createSprite(js.name);
+                            s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            itemImg.put(js.name, s);
 
-        resourceHandler.requestResource(
-                new MultipleResourceRequest<>(itemTransResources, Texture.class, (resource, args) -> {
-                    Texture texture = (Texture) resource;
-                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                    String resourceName = args[0].toString();
-
-                    itemImgTrans.put(resourceName, new Sprite(texture));
+                            Sprite s2 = item.createSprite(js.name + "_t");
+                            s2.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            itemImgTrans.put(js.name, s2);
+                        }
+                    }
                 }));
     }
 

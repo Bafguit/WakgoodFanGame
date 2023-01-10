@@ -29,7 +29,7 @@ public class ElasticRing extends AbstractItem {
 
     @Override
     public void atBattleStart() {
-        flash();
         top(new ApplyStatusAction(new EnduranceStatus(2), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
+        flash();
     }
 }

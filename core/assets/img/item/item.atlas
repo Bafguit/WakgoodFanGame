@@ -1,0 +1,1188 @@
+
+item.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+AhpuHat_t
+  rotate: false
+  xy: 1040, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Amadeus_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bear_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Chiwawa_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Cop_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Kettle_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Kunai_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Mosquito_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Nobles_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Pirate_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PlaceHolder_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Umbrella_t
+  rotate: false
+  xy: 2, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+AutoFire
+  rotate: false
+  xy: 1040, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BabyDish_t
+  rotate: false
+  xy: 1213, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Badge
+  rotate: false
+  xy: 1386, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Badge_t
+  rotate: false
+  xy: 694, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BattleAxe
+  rotate: false
+  xy: 348, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BattleAxe_t
+  rotate: false
+  xy: 1386, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bear
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Amadeus
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Chiwawa
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Cop
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Kettle
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Kunai
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Mosquito
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Nobles
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Pirate
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Umbrella
+  rotate: false
+  xy: 175, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bible
+  rotate: false
+  xy: 694, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bible_t
+  rotate: false
+  xy: 2, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BigRibbon
+  rotate: false
+  xy: 1040, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BigRibbon_t
+  rotate: false
+  xy: 1386, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bomb
+  rotate: false
+  xy: 521, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Bomb_t
+  rotate: false
+  xy: 348, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Brainize
+  rotate: false
+  xy: 2, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Brainize_t
+  rotate: false
+  xy: 1040, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BrokenTicker
+  rotate: false
+  xy: 1213, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BrokenTicker_t
+  rotate: false
+  xy: 1732, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BunnyHat
+  rotate: false
+  xy: 175, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BurgerHat
+  rotate: false
+  xy: 521, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BurgerHat_t
+  rotate: false
+  xy: 1559, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Butter
+  rotate: false
+  xy: 1732, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Butter_t
+  rotate: false
+  xy: 1559, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Cane
+  rotate: false
+  xy: 867, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CheeseBall
+  rotate: false
+  xy: 694, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Coffin
+  rotate: false
+  xy: 694, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Coffin_t
+  rotate: false
+  xy: 521, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CottonNecklace
+  rotate: false
+  xy: 867, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CottonNecklace_t
+  rotate: false
+  xy: 1732, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CrackedHeart_t
+  rotate: false
+  xy: 1040, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CrossPin
+  rotate: false
+  xy: 867, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CrossPin_t
+  rotate: false
+  xy: 1559, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+DevilIdol
+  rotate: false
+  xy: 867, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ElasticRing
+  rotate: false
+  xy: 867, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+EyePatch
+  rotate: false
+  xy: 2, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+EyePatch_t
+  rotate: false
+  xy: 348, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FabricMail
+  rotate: false
+  xy: 1040, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FabricMail_t
+  rotate: false
+  xy: 1559, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FireStaff_t
+  rotate: false
+  xy: 175, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FlameBook
+  rotate: false
+  xy: 1213, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FlameBook_t
+  rotate: false
+  xy: 521, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Flight
+  rotate: false
+  xy: 348, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Flight_t
+  rotate: false
+  xy: 1732, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GlowingStick_t
+  rotate: false
+  xy: 1732, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GoldenRing_t
+  rotate: false
+  xy: 1040, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GolemHead_t
+  rotate: false
+  xy: 1213, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GreenHeart
+  rotate: false
+  xy: 694, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GreenHeart_t
+  rotate: false
+  xy: 694, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Hwacha
+  rotate: false
+  xy: 348, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Hwacha_t
+  rotate: false
+  xy: 1732, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+IceFrag
+  rotate: false
+  xy: 2, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+IceFrag_t
+  rotate: false
+  xy: 1213, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Juggernaut
+  rotate: false
+  xy: 1386, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Juggernaut_t
+  rotate: false
+  xy: 694, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LifeContract
+  rotate: false
+  xy: 867, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LifePotion
+  rotate: false
+  xy: 348, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LifePotion_t
+  rotate: false
+  xy: 867, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LoyalVirus
+  rotate: false
+  xy: 867, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LoyalVirus_t
+  rotate: false
+  xy: 1732, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Megaphone_t
+  rotate: false
+  xy: 1040, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+NaviNecklace
+  rotate: false
+  xy: 867, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+NaviNecklace_t
+  rotate: false
+  xy: 521, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldArmour
+  rotate: false
+  xy: 1386, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldHood_t
+  rotate: false
+  xy: 175, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldPistol
+  rotate: false
+  xy: 175, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldShield_t
+  rotate: false
+  xy: 2, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldSword
+  rotate: false
+  xy: 2, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldSword_t
+  rotate: false
+  xy: 1040, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Pendant
+  rotate: false
+  xy: 1559, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Pendant_t
+  rotate: false
+  xy: 1559, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PeridotStone_t
+  rotate: false
+  xy: 694, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PlaceHolder
+  rotate: false
+  xy: 521, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PlatedArmour
+  rotate: false
+  xy: 867, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PlatedArmour_t
+  rotate: false
+  xy: 521, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Potato
+  rotate: false
+  xy: 867, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Potato_t
+  rotate: false
+  xy: 1213, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Protection
+  rotate: false
+  xy: 1559, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Protection_t
+  rotate: false
+  xy: 175, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Purplight
+  rotate: false
+  xy: 2, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Rocket
+  rotate: false
+  xy: 1213, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Rocket_t
+  rotate: false
+  xy: 1213, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Rose
+  rotate: false
+  xy: 1732, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Rose_t
+  rotate: false
+  xy: 1213, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SafetyHat
+  rotate: false
+  xy: 1559, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SandClock_t
+  rotate: false
+  xy: 1386, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Sanpellegrino
+  rotate: false
+  xy: 2, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Sanpellegrino_t
+  rotate: false
+  xy: 1386, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Sedative
+  rotate: false
+  xy: 1386, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Sedative_t
+  rotate: false
+  xy: 175, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Shield
+  rotate: false
+  xy: 348, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Shield_t
+  rotate: false
+  xy: 1040, 1040
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ShortBase
+  rotate: false
+  xy: 1386, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ShortBase_t
+  rotate: false
+  xy: 175, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ShoulderPlate
+  rotate: false
+  xy: 1732, 1559
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ShoulderPlate_t
+  rotate: false
+  xy: 175, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Snow
+  rotate: false
+  xy: 521, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Snow_t
+  rotate: false
+  xy: 2, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Spaceship
+  rotate: false
+  xy: 1559, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Spaceship_t
+  rotate: false
+  xy: 1040, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SportsCar
+  rotate: false
+  xy: 348, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SportsCar_t
+  rotate: false
+  xy: 1213, 1732
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SuperLadle
+  rotate: false
+  xy: 1732, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SuperLadle_t
+  rotate: false
+  xy: 694, 1213
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 694, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Tail_t
+  rotate: false
+  xy: 175, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Toadstool
+  rotate: false
+  xy: 694, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Toadstool_t
+  rotate: false
+  xy: 2, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TotoDeck
+  rotate: false
+  xy: 348, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TotoDeck_t
+  rotate: false
+  xy: 1386, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ToxicFlask
+  rotate: false
+  xy: 1732, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ToxicFlask_t
+  rotate: false
+  xy: 1386, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ToyPlane
+  rotate: false
+  xy: 175, 867
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ToyPlane_t
+  rotate: false
+  xy: 348, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TrafficLight
+  rotate: false
+  xy: 1559, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TrafficLight_t
+  rotate: false
+  xy: 521, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Tree
+  rotate: false
+  xy: 348, 1386
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Tree_t
+  rotate: false
+  xy: 521, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TrickDeck
+  rotate: false
+  xy: 1213, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Turtle
+  rotate: false
+  xy: 521, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Turtle_t
+  rotate: false
+  xy: 1559, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+
+item2.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+AhpuHat
+  rotate: false
+  xy: 1040, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+AutoFire_t
+  rotate: false
+  xy: 175, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BabyDish
+  rotate: false
+  xy: 2, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+BunnyHat_t
+  rotate: false
+  xy: 175, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Cane_t
+  rotate: false
+  xy: 348, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CheeseBall_t
+  rotate: false
+  xy: 521, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+CrackedHeart
+  rotate: false
+  xy: 2, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+DevilIdol_t
+  rotate: false
+  xy: 867, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+ElasticRing_t
+  rotate: false
+  xy: 521, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+FireStaff
+  rotate: false
+  xy: 521, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GlowingStick
+  rotate: false
+  xy: 521, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GoldenRing
+  rotate: false
+  xy: 2, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+GolemHead
+  rotate: false
+  xy: 348, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Gyeruek
+  rotate: false
+  xy: 694, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Gyeruek_t
+  rotate: false
+  xy: 694, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+LifeContract_t
+  rotate: false
+  xy: 2, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Megaphone
+  rotate: false
+  xy: 2, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldArmour_t
+  rotate: false
+  xy: 175, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldHood
+  rotate: false
+  xy: 694, 348
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldPistol_t
+  rotate: false
+  xy: 694, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+OldShield
+  rotate: false
+  xy: 348, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+PeridotStone
+  rotate: false
+  xy: 521, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+Purplight_t
+  rotate: false
+  xy: 867, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+RobotHand
+  rotate: false
+  xy: 348, 521
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+RobotHand_t
+  rotate: false
+  xy: 175, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SafetyHat_t
+  rotate: false
+  xy: 175, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+SandClock
+  rotate: false
+  xy: 867, 694
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+TrickDeck_t
+  rotate: false
+  xy: 348, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1

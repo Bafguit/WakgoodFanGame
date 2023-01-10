@@ -19,15 +19,11 @@ public class Protection extends AbstractItem {
         if (Labyrintale.getBaseScreen() instanceof ShopScreen) {
             Labyrintale.shopScreen.room.roll.price += 0.5f;
         }
-        owner.stat.moveRes += 5;
-        owner.stat.neutRes += 5;
-        owner.stat.debuRes += 5;
+        owner.modifyMaxHealth(15);
     }
 
     @Override
     public void onRemove() {
-        owner.stat.moveRes -= 5;
-        owner.stat.neutRes -= 5;
-        owner.stat.debuRes -= 5;
+        owner.modifyMaxHealth(-15);
     }
 }

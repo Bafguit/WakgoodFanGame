@@ -28,7 +28,7 @@ public class SandClock extends AbstractItem {
     }
 
     public void atBattleStart() {
+        top(new ApplyStatusAction(new BlindStatus(), null, AbstractSkill.SkillTarget.ENEMY_ALL, true));
         flash();
-        top(new ApplyStatusAction(new BlindStatus(), owner, AbstractSkill.SkillTarget.ENEMY_ALL, true));
     }
 }

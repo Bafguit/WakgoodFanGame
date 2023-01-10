@@ -16,7 +16,7 @@ public class Calmness extends AbstractSkill {
 
     public Calmness(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseValue(VALUE, 1);
+        setBaseValue(VALUE, 2);
     }
 
     @Override

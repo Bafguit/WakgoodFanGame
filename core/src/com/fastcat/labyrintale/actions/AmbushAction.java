@@ -23,9 +23,9 @@ public class AmbushAction extends AbstractAction {
     @Override
     protected void updateAction() {
         if (duration == baseDuration) {
-            AttackAction.playAttackSfx(
-                    skill.upgradeCount > 3 ? AttackAction.AttackType.HEAVY : AttackAction.AttackType.LIGHT);
             if (target.size > 0) {
+                AttackAction.playAttackSfx(
+                        skill.upgradeCount > 3 ? AttackAction.AttackType.HEAVY : AttackAction.AttackType.LIGHT);
                 if (actor != null) {
                     actor.animation.setAndIdle("attack");
                 }

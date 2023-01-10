@@ -36,7 +36,7 @@ public class FogEvent extends AbstractEvent {
             a.add(new NextPageEventChoice(data.SELECT[2], this, 2));
             a.add(new NextPageEventChoice(data.SELECT[3], this, 4));
         } else if (page == 2) {
-            a.add(new SkillRewardEventChoice(data.SELECT[4], new EventCondition.True(), this, 3));
+            a.add(new SkillRewardEventChoice(data.SELECT[4], new EventCondition.True(), this, 3, false));
         } else {
             a.add(new EndEventChoice());
         }

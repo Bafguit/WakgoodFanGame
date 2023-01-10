@@ -1,0 +1,104 @@
+
+advisor.png
+size: 2048, 512
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+business
+  rotate: false
+  xy: 2, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+callycarly
+  rotate: false
+  xy: 2, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+carnar
+  rotate: false
+  xy: 1040, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+dopa
+  rotate: false
+  xy: 348, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+duksu
+  rotate: false
+  xy: 694, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+freeter
+  rotate: false
+  xy: 867, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+haku
+  rotate: false
+  xy: 175, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+hiki
+  rotate: false
+  xy: 175, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+jk
+  rotate: false
+  xy: 1040, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+mandu
+  rotate: false
+  xy: 348, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+pung
+  rotate: false
+  xy: 694, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+rusuk
+  rotate: false
+  xy: 521, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+secret
+  rotate: false
+  xy: 521, 2
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1
+sophia
+  rotate: false
+  xy: 867, 175
+  size: 171, 171
+  orig: 171, 171
+  offset: 0, 0
+  index: -1

@@ -293,13 +293,16 @@ public final class GroupHandler {
             t.add(new CivilizationEvent());
             t.add(new SealedHeartEvent());
             eventGroup.put(1, t);
+
             Array<AbstractEvent> t2 = new Array<>();
             t2.add(new BettingEvent());
             t2.add(new TrapEvent());
             t2.add(new StrangerEvent());
             t2.add(new UpsetIdolEvent());
             t2.add(new WeaponEvent());
+            t2.add(new ConcertEvent());
             eventGroup.put(2, t2);
+
             Array<AbstractEvent> t3 = new Array<>();
             t3.add(new GeneralStoreEvent());
             t3.add(new FogEvent());
@@ -307,6 +310,7 @@ public final class GroupHandler {
             t3.add(new GhostEvent());
             t3.add(new GotchaEvent());
             eventGroup.put(3, t3);
+
             Array<AbstractEvent> t4 = new Array<>();
             t4.add(new AmnesiaEvent());
             t4.add(new RevelationEvent());
@@ -512,6 +516,9 @@ public final class GroupHandler {
             t.add(new Bomb(null));
             t.add(new Rocket(null));
             t.add(new Tail(null));
+            t.add(new Kettle(null));
+            t.add(new Umbrella(null));
+            t.add(new Nobles(null));
 
             // 실버
             t.add(new SafetyHat(null));
@@ -526,6 +533,9 @@ public final class GroupHandler {
             t.add(new CottonNecklace(null));
             t.add(new CrossPin(null));
             t.add(new FabricMail(null));
+            t.add(new Mosquito(null));
+            t.add(new Cop(null));
+            t.add(new Kunai(null));
 
             // 골드
             t.add(new Juggernaut(null));
@@ -540,6 +550,9 @@ public final class GroupHandler {
             t.add(new Flight(null));
             t.add(new FireStaff(null));
             t.add(new ShoulderPlate(null));
+            t.add(new Chiwawa(null));
+            t.add(new Pirate(null));
+            t.add(new Bear(null));
 
             // 보스
             t.add(new TotoDeck(null));
@@ -574,13 +587,15 @@ public final class GroupHandler {
             t.add(new LoyalVirus(null));
             t.add(new ShortBase(null));
             t.add(new Sanpellegrino(null));
+            t.add(new Amadeus(null));
         }
 
         @SuppressWarnings("NewApi")
         public static AbstractItem getItem(String id) {
             AbstractItem tt = Objects.requireNonNull(idSort.get(id).clone());
             HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
-            if (!temp.get(tt.id)) temp.replace(tt.id, true);
+            if(temp.get(tt.id) == null) temp.put(tt.id, true);
+            else if (!temp.get(tt.id)) temp.replace(tt.id, true);
             return tt;
         }
 
@@ -605,7 +620,8 @@ public final class GroupHandler {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
-                if (!temp.get(tt.id)) temp.replace(tt.id, true);
+                if(temp.get(tt.id) == null) temp.put(tt.id, true);
+                else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
             }
             UnlockHandler.save();
@@ -629,7 +645,8 @@ public final class GroupHandler {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
-                if (!temp.get(tt.id)) temp.replace(tt.id, true);
+                if(temp.get(tt.id) == null) temp.put(tt.id, true);
+                else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
             }
             UnlockHandler.save();
@@ -734,6 +751,7 @@ public final class GroupHandler {
             t.add(new HolySmite(null));
             t.add(new Strong(null));
             t.add(new Bless(null));
+            t.add(new Relief(null));
             playerSort.put(PlayerClass.BURGER, t);
         }
 
@@ -748,6 +766,7 @@ public final class GroupHandler {
             t.add(new HealingPotion(null));
             t.add(new UpgradePotion(null));
             t.add(new ConfidPotion(null));
+            t.add(new Catalyst(null));
             playerSort.put(PlayerClass.GOSEGU, t);
         }
 
@@ -761,6 +780,7 @@ public final class GroupHandler {
             t.add(new Intimidate(null));
             t.add(new Sharp(null));
             t.add(new Channeling(null));
+            t.add(new Crush(null));
             playerSort.put(PlayerClass.INE, t);
         }
 
@@ -774,6 +794,7 @@ public final class GroupHandler {
             t.add(new Penitence(null));
             t.add(new Penance(null));
             t.add(new BraveWill(null));
+            t.add(new Lure(null));
             playerSort.put(PlayerClass.JURURU, t);
         }
 
@@ -787,6 +808,7 @@ public final class GroupHandler {
             t.add(new Lightning(null));
             t.add(new ShockZone(null));
             t.add(new ChainExp(null));
+            t.add(new WarmUp(null));
             playerSort.put(PlayerClass.LILPA, t);
         }
 
@@ -800,6 +822,7 @@ public final class GroupHandler {
             t.add(new Snipe(null));
             t.add(new Impulse(null));
             t.add(new RapidFire(null));
+            t.add(new Battle(null));
             playerSort.put(PlayerClass.MANAGER, t);
         }
 
@@ -815,6 +838,7 @@ public final class GroupHandler {
             t.add(new Onslaught(null));
             t.add(new Counter(null));
             t.add(new Linked(null));
+            t.add(new Disarm(null));
             playerSort.put(PlayerClass.VIICHAN, t);
         }
 
@@ -828,6 +852,7 @@ public final class GroupHandler {
             t.add(new Obstinate(null));
             t.add(new IronForm(null));
             t.add(new Guard(null));
+            t.add(new Vanguard(null));
             playerSort.put(PlayerClass.WAK, t);
         }
 
@@ -852,7 +877,8 @@ public final class GroupHandler {
                 tt = Objects.requireNonNull(b.get(i).clone());
                 tt.owner = p;
                 HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
-                if (!temp.get(tt.id)) temp.replace(tt.id, true);
+                if(temp.get(tt.id) == null) temp.put(tt.id, true);
+                else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
             }
             UnlockHandler.save();
@@ -872,7 +898,8 @@ public final class GroupHandler {
                 if (s.upgraded != isNone) {
                     a.add(s.clone());
                     HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
-                    if (!temp.get(s.id)) temp.replace(s.id, true);
+                    if(temp.get(s.id) == null) temp.put(s.id, true);
+                    else if (!temp.get(s.id)) temp.replace(s.id, true);
                 }
             }
             if (a.size > 0) {

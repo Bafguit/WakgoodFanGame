@@ -204,7 +204,7 @@ public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
                         check.ALL_ADV.replace(cls, true);
                     }
                 }
-                if (nCount == AbstractAdvisor.AdvisorClass.values().length) {
+                if (nCount == (AbstractAdvisor.AdvisorClass.values().length - 3)) {
                     achvs.replace(AchieveHandler.Achievement.ALL_ADV, 3);
                 }
             }

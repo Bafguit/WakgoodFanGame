@@ -1,0 +1,17 @@
+{
+  "ALL_ADV" : {
+    "DUKSU" : true,
+    "SECRET" : true,
+    "SOPHIA" : true,
+    "HAKU" : true,
+    "DOPA" : true,
+    "CALLYCARLY" : true,
+    "JK" : true,
+    "RUSUK" : true,
+    "PUNG" : true,
+    "MANDU" : true,
+    "HIKI" : true
+  },
+  "DEATH" : 0,
+  "WIN" : 0
+}

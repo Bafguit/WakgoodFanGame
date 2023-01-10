@@ -28,7 +28,7 @@ public class CrossPin extends AbstractItem {
 
     @Override
     public void atBattleStart() {
+        top(new ApplyStatusAction(new ProvokeStatus(owner), null, owner, true));
         flash();
-        top(new ApplyStatusAction(new ProvokeStatus(owner), owner, owner, true));
     }
 }

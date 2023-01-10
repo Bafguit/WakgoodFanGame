@@ -27,7 +27,6 @@ public class AutoFire extends AbstractItem {
 
     @Override
     public void startOfTurn() {
-        flash();
         top(new AttackAction(
                 null,
                 AbstractSkill.SkillTarget.ENEMY_ALL,
@@ -35,5 +34,6 @@ public class AutoFire extends AbstractItem {
                 AbstractEntity.DamageType.SPIKE,
                 AttackAction.AttackType.LIGHT,
                 true));
+        flash();
     }
 }

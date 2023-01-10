@@ -56,5 +56,13 @@
     "KEY" : [
       "Shock"
     ]
+  },
+  "WarmUp": {
+    "NAME": "예열",
+    "DESC": "적 하나에게 &y<마비>를 {V} 부여하고 &y<용기>를 {I} 얻습니다.",
+    "KEY" : [
+      "Paralyzed",
+      "Courage"
+    ]
   }
 }

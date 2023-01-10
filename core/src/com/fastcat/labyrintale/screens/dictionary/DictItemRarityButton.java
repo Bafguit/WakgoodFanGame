@@ -27,9 +27,9 @@ public class DictItemRarityButton extends AbstractUI {
         setScale(0.8f);
         fontData = TAB;
         rarity = rare;
-        nx = 1380 * scale;
+        nx = 1580 * scale;
         ny = 930 * scale;
-        nw = 577 * scale;
+        nw = 500 * scale;
         dy = 893 * scale;
         group = new DictItemGroup();
         if (rarity == AbstractItem.ItemRarity.BRONZE) {
@@ -53,7 +53,7 @@ public class DictItemRarityButton extends AbstractUI {
             c.setPosition((580 + 200 * x) * scale, (800 - 186 * y) * scale);
             items[i] = c;
             x++;
-            if (x == 4) {
+            if (x == 5) {
                 x = 0;
                 y++;
             }

@@ -28,7 +28,7 @@ public class Pendant extends AbstractItem {
 
     @Override
     public void atBattleEnd() {
-        flash();
         top(new HealAction(null, AbstractSkill.SkillTarget.PLAYER_ALL, 2));
+        flash();
     }
 }

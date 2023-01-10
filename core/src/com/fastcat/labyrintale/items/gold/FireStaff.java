@@ -30,7 +30,6 @@ public class FireStaff extends AbstractItem {
     @Override
     public void onApplyStatus(AbstractStatus s, Array<AbstractEntity> target) {
         if (s.type == AbstractStatus.StatusType.DEBUFF && s.hasAmount) {
-            flash();
             s.amount++;
         }
     }

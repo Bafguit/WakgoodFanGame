@@ -31,7 +31,7 @@ public class BrokenTicker extends AbstractItem {
 
     @Override
     public void atBattleStart() {
-        flash();
         top(new HealAction(owner, owner, owner.maxHealth));
+        flash();
     }
 }

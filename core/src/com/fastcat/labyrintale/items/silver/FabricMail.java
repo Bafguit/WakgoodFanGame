@@ -28,8 +28,8 @@ public class FabricMail extends AbstractItem {
     }
 
     public int onDamaged(AbstractEntity attacker, int damage, AbstractEntity.DamageType type) {
+        top(new ApplyStatusAction(new EnduranceStatus(1), null, owner, true));
         flash();
-        top(new ApplyStatusAction(new EnduranceStatus(1), owner, owner, true));
         return damage;
     }
 }

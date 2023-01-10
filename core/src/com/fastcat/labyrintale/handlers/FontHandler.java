@@ -64,6 +64,8 @@ public final class FontHandler implements Disposable {
     public static final FontData STAT = new FontData(MEDIUM, 30, false);
     public static final FontData STAT_RAW = new FontData(MEDIUM, 30, false, false);
     public static final FontData EXP = new FontData(MEDIUM, 26, true);
+    public static final FontData DICT = new FontData(MEDIUM, 28, false, false);
+    public static final FontData DICT_N = new FontData(MEDIUM, 32, false, false);
     // private static final FreeTypeFontParameter parameter = new FreeTypeFontParameter();
     public static final GlyphLayout layout = new GlyphLayout();
 
@@ -334,6 +336,8 @@ public final class FontHandler implements Disposable {
         CLOSE.dispose();
         TAB.dispose();
         CS_NAME.dispose();
+        DICT.dispose();
+        DICT_N.dispose();
     }
 
     public enum FontType {

@@ -18,7 +18,7 @@ public class Intimidate extends AbstractSkill {
     public Intimidate(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
-        setBaseValue2(8);
+        setBaseValue2(10);
         setBaseCost(3);
     }
 

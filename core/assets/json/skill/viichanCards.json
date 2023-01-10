@@ -46,5 +46,12 @@
     "KEY" : [
       "Courage"
     ]
+  },
+  "Disarm": {
+    "NAME": "무장 해제",
+    "DESC": "앞의 적 하나에게 피해를 {A} 주고 &y<취약>을 {V} 부여합니다.",
+    "KEY" : [
+      "Unfortified"
+    ]
   }
 }

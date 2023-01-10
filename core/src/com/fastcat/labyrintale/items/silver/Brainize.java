@@ -29,7 +29,7 @@ public class Brainize extends AbstractItem {
 
     @Override
     public void atBattleStart() {
+        top(new ApplyStatusAction(new ImmuneStatus(1), null, AbstractSkill.SkillTarget.PLAYER_ALL, true));
         flash();
-        top(new ApplyStatusAction(new ImmuneStatus(1), owner, AbstractSkill.SkillTarget.PLAYER_ALL, true));
     }
 }

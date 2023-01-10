@@ -54,5 +54,13 @@
     "KEY" : [
       "resist"
     ]
+  },
+  "Lure": {
+    "NAME": "매혹",
+    "DESC": "적 하나에게 &y<속박>과 &y<취약>을 {V} 부여하고 맨 앞으로 이동시킵니다.",
+    "KEY" : [
+      "Restrict",
+      "Unfortified"
+    ]
   }
 }

@@ -12,10 +12,7 @@ public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements
 
     private final AbstractEvent event;
     private final int toPage;
-
-    public SkillRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event) {
-        this(t, condition, event, -1);
-    }
+    private boolean cancel = true;
 
     public SkillRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event, int page) {
         super(t, condition);
@@ -23,11 +20,19 @@ public class SkillRewardEventChoice extends AbstractEvent.EventChoice implements
         toPage = page;
     }
 
+    public SkillRewardEventChoice(String t, AbstractEvent.EventCondition condition, AbstractEvent event, int page, boolean cancel) {
+        super(t, condition);
+        this.event = event;
+        toPage = page;
+        this.cancel = cancel;
+    }
+
     @Override
     protected void onSelect() {
         ShopTakeScreen s = new ShopTakeScreen(
                 getRandomSkill(AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)]));
         s.endTemp.add(this);
+        s.canCancel = cancel;
         Labyrintale.addTempScreen(s);
     }
 

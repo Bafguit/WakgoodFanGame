@@ -26,7 +26,7 @@ public class Rocket extends AbstractItem {
 
     @Override
     public void atBattleStart() {
-        flash();
         top(new BlockAction(owner, AbstractSkill.SkillTarget.PLAYER_ALL, 3));
+        flash();
     }
 }

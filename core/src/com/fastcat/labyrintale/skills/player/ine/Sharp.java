@@ -4,6 +4,7 @@ import com.fastcat.labyrintale.abstracts.AbstractEntity;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.status.CounterStatus;
+import com.fastcat.labyrintale.status.EnduranceStatus;
 import com.fastcat.labyrintale.status.SpeedPlusStatus;
 
 public class Sharp extends AbstractSkill {
@@ -17,12 +18,13 @@ public class Sharp extends AbstractSkill {
     public Sharp(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
+        setBaseValue2(2, 1);
     }
 
     @Override
     public void use() {
         bot(new ApplyStatusAction(new CounterStatus(value), owner, owner, true));
-        bot(new ApplyStatusAction(new SpeedPlusStatus(2), owner, owner, true));
+        bot(new ApplyStatusAction(new EnduranceStatus(value2), owner, owner, true));
     }
 
     @Override

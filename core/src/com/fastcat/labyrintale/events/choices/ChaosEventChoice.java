@@ -32,6 +32,7 @@ public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSe
         Labyrintale.addTempScreen(new AllSkillScreen(this));
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public void slotSelected(AbstractPlayer player, int index) {
         Array<AbstractSkill> s = new Array<>();
@@ -40,11 +41,11 @@ public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSe
                 if (!p.hasSkill(sk.id)) s.add(sk);
             }
         }
-        AbstractSkill sk =
-                s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
+        AbstractSkill sk = s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
         sk.owner = player;
         HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
-        if (!temp.get(sk.id)) temp.replace(sk.id, true);
+        if(temp.get(sk.id) == null) temp.put(sk.id, true);
+        else if (!temp.get(sk.id)) temp.replace(sk.id, true);
         player.gainSkill(index, sk);
         if (toPage >= 0) {
             event.setPage(toPage);

@@ -16,7 +16,7 @@ public class Butter extends AbstractItem {
     @Override
     public void onGain() {
         AbstractLabyrinth.charge++;
-        owner.stat.speed -= 2;
+        owner.stat.speed -= 3;
         consume();
     }
 }

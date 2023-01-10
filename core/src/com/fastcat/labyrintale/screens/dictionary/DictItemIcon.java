@@ -24,6 +24,7 @@ public class DictItemIcon extends AbstractUI {
         clickable = false;
         overable = false;
         this.item = item;
+        if(map.get(item.id) == null) map.put(item.id, false);
     }
 
     @Override

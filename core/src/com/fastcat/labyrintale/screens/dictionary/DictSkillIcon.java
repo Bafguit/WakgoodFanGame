@@ -26,6 +26,7 @@ public class DictSkillIcon extends AbstractUI {
         clickable = false;
         overable = false;
         this.skill = skill;
+        if(map.get(skill.id) == null) map.put(skill.id, false);
     }
 
     @Override
