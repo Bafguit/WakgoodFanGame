@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class DictItemTabIcon extends AbstractUI {
 
-    private final HashMap<String, Boolean> map = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+    private final HashMap<String, Boolean> map = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
     private final Sprite locked = FileHandler.getUi().get("UNKNOWN");
     public DictGroup group;
     public AbstractItem item;

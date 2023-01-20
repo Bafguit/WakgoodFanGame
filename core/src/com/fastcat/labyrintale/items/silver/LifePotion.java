@@ -16,11 +16,13 @@ public class LifePotion extends AbstractItem {
 
     @Override
     public void onGain() {
+        owner.modifyMaxHealth(5);
         owner.stat.moveRes += 20;
     }
 
     @Override
     public void onRemove() {
+        owner.modifyMaxHealth(-5);
         owner.stat.moveRes -= 20;
     }
 

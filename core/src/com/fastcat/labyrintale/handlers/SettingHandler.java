@@ -1,6 +1,8 @@
 package com.fastcat.labyrintale.handlers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.files.FileHandle;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -16,98 +18,119 @@ public final class SettingHandler {
     private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public static SettingData setting;
 
-    public static File settingFile;
+    public static FileHandle settingFile;
 
-    public static void initialize(boolean android) {
+    public static void initialize() {
         setting = new SettingData();
-        if(android) settingFile = Gdx.files.local("setting.json").file();
-        else settingFile = new File("setting.json");
-        boolean hasSave = settingFile.exists();
-        if (!hasSave) {
-
-            // 화면 모드 설정
-            setting.screenMode = 0;
-            setting.width = 1600;
-            setting.height = 900;
-
-            // 볼륨 설정
-            setting.volumeBgm = 80;
-            setting.volumeSfx = 80;
-
-            // 기타 설정
-            setting.shake = true;
-            setting.fastMode = false;
-
-            // 튜토리얼
-            setting.charTutorial = true;
-            setting.battleTutorial = true;
-            setting.wayTutorial = true;
-            setting.rewardTutorial = true;
-
-            setting.cartoon = new boolean[3];
-            for(int i = 0; i < 3; i++) {
-                setting.cartoon[i] = true;
-            }
-            setting.forceCredit = true;
-
-            setting.skin = new HashMap<>();
-            for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
-                setting.skin.put(cls, "basic");
-            }
-        } else {
+        Preferences prefs = Gdx.app.getPreferences("WakestDungeon_Setting");
+        settingFile = Gdx.files.local("setting.json");
+        if (settingFile.exists()) {
             try {
-                SettingData data = mapper.readValue(settingFile, SettingData.class);
+                SettingData data = mapper.readValue(Gdx.files.local("setting.json").file(), SettingData.class);
 
                 // 화면 모드 설정
-                setting.screenMode = data.screenMode;
-                if (setting.screenMode == 0) {
-                    setting.width = data.width;
-                    setting.height = data.height;
-                }
+                setting.screenMode = prefs.getInteger("screenMode", data.screenMode);
+                setting.width = prefs.getInteger("width", data.width);
+                setting.height = prefs.getInteger("height", data.height);
 
                 // 볼륨 설정
-                setting.volumeBgm = data.volumeBgm;
-                setting.volumeSfx = data.volumeSfx;
+                setting.volumeBgm = prefs.getInteger("volumeBgm", data.volumeBgm);
+                setting.volumeSfx = prefs.getInteger("volumeSfx", data.volumeSfx);
 
                 // 기타 설정
-                setting.shake = data.shake;
-                setting.fastMode = data.fastMode;
+                setting.shake = prefs.getBoolean("shake", data.shake);
+                setting.fastMode = prefs.getBoolean("fastMode", data.fastMode);
 
                 // 튜토리얼
-                setting.charTutorial = data.charTutorial;
-                setting.battleTutorial = data.battleTutorial;
-                setting.rewardTutorial = data.rewardTutorial;
-                setting.wayTutorial = data.wayTutorial;
+                setting.charTutorial = prefs.getBoolean("charTutorial", data.charTutorial);
+                setting.battleTutorial = prefs.getBoolean("battleTutorial", data.battleTutorial);
+                setting.rewardTutorial = prefs.getBoolean("rewardTutorial", data.rewardTutorial);
+                setting.wayTutorial = prefs.getBoolean("wayTutorial", data.wayTutorial);
 
 
                 setting.cartoon = new boolean[3];
-                System.arraycopy(data.cartoon, 0, setting.cartoon, 0, 3);
-                setting.forceCredit = data.forceCredit;
+                for(int i = 0; i < 3; i++) {
+                    setting.cartoon[i] = prefs.getBoolean("cartoon_" + i, data.cartoon[i]);
+                }
+                setting.forceCredit = prefs.getBoolean("forceCredit" , data.forceCredit);
 
                 if(data.skin != null) {
-                    setting.skin = data.skin;
+                    setting.skin = new HashMap<>();
+                    for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+                        setting.skin.put(cls, prefs.getString("skin_" + cls, data.skin.get(cls)));
+                    }
                 } else {
                     setting.skin = new HashMap<>();
                     for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
-                        setting.skin.put(cls, "basic");
+                        setting.skin.put(cls, prefs.getString("skin_" + cls, "basic"));
                     }
                 }
+                settingFile.delete();
             } catch (IOException e) {
-                hasSave = false;
+                load(prefs);
             }
+        } else {
+            load(prefs);
+        }
+        save();
+    }
+
+    public static void load(Preferences prefs) {
+        // 화면 모드 설정
+        setting.screenMode = prefs.getInteger("screenMode", 0);
+        setting.width = prefs.getInteger("width", 1600);
+        setting.height = prefs.getInteger("height", 900);
+
+        // 볼륨 설정
+        setting.volumeBgm = prefs.getInteger("volumeBgm", 80);
+        setting.volumeSfx = prefs.getInteger("volumeSfx", 80);
+
+        // 기타 설정
+        setting.shake = prefs.getBoolean("shake", true);
+        setting.fastMode = prefs.getBoolean("fastMode", false);
+
+        // 튜토리얼
+        setting.charTutorial = prefs.getBoolean("charTutorial", true);
+        setting.battleTutorial = prefs.getBoolean("battleTutorial", true);
+        setting.wayTutorial = prefs.getBoolean("wayTutorial", true);
+        setting.rewardTutorial = prefs.getBoolean("rewardTutorial", true);
+
+        setting.cartoon = new boolean[3];
+        for(int i = 0; i < 3; i++) {
+            setting.cartoon[i] = prefs.getBoolean("cartoon_" + i, true);
+        }
+        setting.forceCredit = prefs.getBoolean("forceCredit", true);
+
+        setting.skin = new HashMap<>();
+        for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+            setting.skin.put(cls, prefs.getString("skin_" + cls, "basic"));
         }
     }
 
     public static void save() {
-        try {
-            mapper.writeValue(Gdx.files.local("setting.json").file(), setting);
-        } catch (IOException e) {
-            e.printStackTrace();
+        Preferences prefs = Gdx.app.getPreferences("WakestDungeon_Setting");
+        prefs.putInteger("screenMode", setting.screenMode);
+        prefs.putInteger("width", setting.width);
+        prefs.putInteger("height", setting.height);
+        prefs.putInteger("volumeBgm", setting.volumeBgm);
+        prefs.putInteger("volumeSfx", setting.volumeSfx);
+        prefs.putBoolean("shake", setting.shake);
+        prefs.putBoolean("fastMode", setting.fastMode);
+        prefs.putBoolean("charTutorial", setting.charTutorial);
+        prefs.putBoolean("battleTutorial", setting.battleTutorial);
+        prefs.putBoolean("wayTutorial", setting.wayTutorial);
+        prefs.putBoolean("rewardTutorial", setting.rewardTutorial);
+        for(int i = 0; i < 3; i++) {
+            prefs.putBoolean("cartoon_" + i, setting.cartoon[i]);
         }
+        prefs.putBoolean("forceCredit", setting.forceCredit);
+        for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
+            prefs.putString("skin_" + cls, setting.skin.get(cls));
+        }
+        prefs.flush();
     }
 
     public static class SettingData {
-
         public int volumeBgm; // 음악 볼륨
         public int volumeSfx; // 효과음 볼륨
         public int width; // 창모드일때만 활성화

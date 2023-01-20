@@ -43,7 +43,7 @@ public class ChaosEventChoice extends AbstractEvent.EventChoice implements GetSe
         }
         AbstractSkill sk = s.get(AbstractLabyrinth.skillRandom.random(0, s.size - 1)).clone();
         sk.owner = player;
-        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+        HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.SKILL);
         if(temp.get(sk.id) == null) temp.put(sk.id, true);
         else if (!temp.get(sk.id)) temp.replace(sk.id, true);
         player.gainSkill(index, sk);

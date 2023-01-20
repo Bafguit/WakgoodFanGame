@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.actions.ApplyStatusAction;
 import com.fastcat.labyrintale.actions.GainEnergyAction;
 import com.fastcat.labyrintale.status.BurnStatus;
 import com.fastcat.labyrintale.status.CounterStatus;
+import com.fastcat.labyrintale.status.CourageStatus;
 import com.fastcat.labyrintale.status.ParalyzedStatus;
 
 public class WarmUp extends AbstractSkill {
@@ -28,7 +29,7 @@ public class WarmUp extends AbstractSkill {
 
     @Override
     public void onTarget(AbstractEntity e) {
-        top(new ApplyStatusAction(new CounterStatus(value2), owner, owner, true));
+        top(new ApplyStatusAction(new CourageStatus(value2), owner, owner, true));
         top(new ApplyStatusAction(new ParalyzedStatus(value), owner, e, true));
     }
 

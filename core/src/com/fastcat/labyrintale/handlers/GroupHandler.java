@@ -593,7 +593,7 @@ public final class GroupHandler {
         @SuppressWarnings("NewApi")
         public static AbstractItem getItem(String id) {
             AbstractItem tt = Objects.requireNonNull(idSort.get(id).clone());
-            HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+            HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
             if(temp.get(tt.id) == null) temp.put(tt.id, true);
             else if (!temp.get(tt.id)) temp.replace(tt.id, true);
             return tt;
@@ -619,7 +619,7 @@ public final class GroupHandler {
             for (int i = 0; i < amount; i++) {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
-                HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+                HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
                 if(temp.get(tt.id) == null) temp.put(tt.id, true);
                 else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
@@ -644,7 +644,7 @@ public final class GroupHandler {
             for (int i = 0; i < amount; i++) {
                 AbstractItem tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
-                HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+                HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
                 if(temp.get(tt.id) == null) temp.put(tt.id, true);
                 else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
@@ -876,7 +876,7 @@ public final class GroupHandler {
                 AbstractSkill tt;
                 tt = Objects.requireNonNull(b.get(i).clone());
                 tt.owner = p;
-                HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+                HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.SKILL);
                 if(temp.get(tt.id) == null) temp.put(tt.id, true);
                 else if (!temp.get(tt.id)) temp.replace(tt.id, true);
                 a.add(tt);
@@ -897,7 +897,7 @@ public final class GroupHandler {
                 AbstractSkill s = b.get(i);
                 if (s.upgraded != isNone) {
                     a.add(s.clone());
-                    HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+                    HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.SKILL);
                     if(temp.get(s.id) == null) temp.put(s.id, true);
                     else if (!temp.get(s.id)) temp.replace(s.id, true);
                 }

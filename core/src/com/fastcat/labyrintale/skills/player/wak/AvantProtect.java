@@ -9,7 +9,7 @@ public class AvantProtect extends AbstractSkill {
     private static final String ID = "AvantProtect";
     private static final SkillType TYPE = SkillType.DEFENCE;
     private static final SkillRarity RARITY = SkillRarity.NORMAL;
-    private static final SkillTarget TARGET = SkillTarget.PLAYER_FIRST;
+    private static final SkillTarget TARGET = SkillTarget.PLAYER;
 
     public AvantProtect(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
@@ -19,9 +19,12 @@ public class AvantProtect extends AbstractSkill {
     }
 
     @Override
-    public void use() {
-        bot(new BlockAction(owner, target, spell));
+    public void onTarget(AbstractEntity target) {
+        top(new BlockAction(owner, target, spell));
     }
+
+    @Override
+    public void use() {}
 
     @Override
     protected void upgradeCard() {}

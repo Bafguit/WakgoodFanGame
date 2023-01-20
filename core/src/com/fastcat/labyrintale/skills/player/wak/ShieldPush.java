@@ -16,7 +16,7 @@ public class ShieldPush extends AbstractSkill {
     public ShieldPush(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(VALUE, 1);
-        setBaseAttack(VALUE);
+        setBaseAttack(VALUE, 1);
         setBaseCost(2);
     }
 

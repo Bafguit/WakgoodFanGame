@@ -30,7 +30,7 @@ public class AutoFire extends AbstractItem {
         top(new AttackAction(
                 null,
                 AbstractSkill.SkillTarget.ENEMY_ALL,
-                2,
+                3,
                 AbstractEntity.DamageType.SPIKE,
                 AttackAction.AttackType.LIGHT,
                 true));

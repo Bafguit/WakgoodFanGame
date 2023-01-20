@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class DictSkillIcon extends AbstractUI {
 
-    private final HashMap<String, Boolean> map = UnlockHandler.achvs.get(UnlockHandler.Unlocks.SKILL);
+    private final HashMap<String, Boolean> map = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.SKILL);
     private final Sprite cost = FileHandler.getUi().get("ENERGY_ORB");
     private final Sprite locked = FileHandler.getUi().get("UNKNOWN");
     public DictCharGroup group;

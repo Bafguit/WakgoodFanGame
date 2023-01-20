@@ -21,13 +21,13 @@ public class DifficultyButton extends AbstractUI {
     public DifficultyButton(AbstractLabyrinth.Difficulty diff) {
         super(FileHandler.getUi().get("DIFF_" + diff.toString()));
         this.diff = diff;
-        clickable = UnlockHandler.achvs.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
+        clickable = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
         isPixmap = true;
     }
 
     @Override
     protected void updateButton() {
-        clickable = UnlockHandler.achvs.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
+        clickable = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
     }
 
     @Override

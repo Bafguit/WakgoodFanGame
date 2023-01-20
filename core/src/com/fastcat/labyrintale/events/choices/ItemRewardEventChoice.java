@@ -62,7 +62,7 @@ public class ItemRewardEventChoice extends AbstractEvent.EventChoice implements 
         ShopTakeScreen s;
         if (item != null) {
             if (item.rarity == AbstractItem.ItemRarity.SPECIAL) {
-                HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+                HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
                 if(temp.get(item.id) == null) temp.put(item.id, true);
                 else if (!temp.get(item.id)) temp.replace(item.id, true);
             }

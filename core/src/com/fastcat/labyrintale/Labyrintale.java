@@ -1,8 +1,6 @@
 package com.fastcat.labyrintale;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -219,12 +217,34 @@ public class Labyrintale extends Game {
     public void create() {
         game = this;
 
+        SettingHandler.initialize();
+
+        if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
+            Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
+
+            if (SettingHandler.setting.screenMode == 0) {
+                Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);
+            } else if (SettingHandler.setting.screenMode == 1) {
+                Gdx.graphics.setFullscreenMode(displayMode);
+            } else {
+                Gdx.graphics.setUndecorated(true);
+
+                final int height, width;
+                int w = displayMode.width, h = displayMode.height;
+                float a = ((float) h) / ((float) w);
+
+                if(a <= 0.5625f) {
+                    height = h;
+                    width = (int) (2560 * ((float) h / 1440.0f));
+                } else {
+                    width = w;
+                    height = (int) (1440 * ((float) w / 2560.0f));
+                }
+                Gdx.graphics.setWindowedMode(width, height);
+            }
+        }
 
         InputHandler.getInstance();
-
-        if (!InputHandler.isDesktop) {
-            SettingHandler.initialize(true);
-        }
 
         phase = LifeCycle.STARTED;
         assetManager = new AssetManager();

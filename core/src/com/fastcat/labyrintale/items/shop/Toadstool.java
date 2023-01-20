@@ -14,9 +14,9 @@ public class Toadstool extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.stat.neutRes += 8;
-        owner.stat.debuRes += 8;
-        owner.stat.moveRes += 8;
+        owner.stat.neutRes += 10;
+        owner.stat.debuRes += 10;
+        owner.stat.moveRes += 10;
         consume();
     }
 }

@@ -15,13 +15,9 @@ import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.AtCartoonEnd;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
-import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
-import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoIcon;
-import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoItemIcon;
 import com.fastcat.labyrintale.screens.result.moreinfo.MoreResultScreen;
-import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-import com.fastcat.labyrintale.utils.BuildInfo;
+
 import java.util.HashMap;
 
 public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
@@ -228,7 +224,7 @@ public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
         }
         cType = ControlPanel.ControlType.HIDE;
         diff = "난이도: ";
-        HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.DIFF);
+        HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF);
         if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
             diff += "일반";
             if (type == DeadScreen.ScreenType.WIN && !temp.get("HARD")) {

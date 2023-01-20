@@ -1,6 +1,6 @@
 {
-  "class" : "INE",
-  "type" : "spine",
-  "name" : "테스트",
-  "desc" : "테스트 스킨"
+  "name": "아이네",
+  "class": "INE",
+  "type": "spine",
+  "desc": "도끼를 든 무자비한 전사입니다. 강력한 일격으로 적들의 두개골을 분쇄합니다."
 }

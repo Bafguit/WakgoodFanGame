@@ -16,14 +16,12 @@ public class CrossPin extends AbstractItem {
 
     @Override
     public void onGain() {
-        owner.stat.debuRes += 10;
-        owner.stat.moveRes += 10;
+        owner.modifyMaxHealth(10);
     }
 
     @Override
     public void onRemove() {
-        owner.stat.debuRes -= 10;
-        owner.stat.moveRes -= 10;
+        owner.modifyMaxHealth(-10);
     }
 
     @Override

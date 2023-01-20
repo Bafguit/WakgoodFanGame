@@ -1,96 +1,110 @@
 
 skeleton.png
-size: 2009,1839
+size: 1915,2030
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 arm_left
   rotate: true
-  xy: 165, 1652
-  size: 185, 208
+  xy: 830, 2
+  size: 166, 292
   orig: 1280, 1280
-  offset: 416, 467
+  offset: 430, 380
   index: -1
 arm_right
-  rotate: true
-  xy: 375, 1577
-  size: 260, 331
+  rotate: false
+  xy: 1359, 35
+  size: 299, 360
   orig: 1280, 1280
-  offset: 661, 345
+  offset: 655, 317
+  index: -1
+back
+  rotate: true
+  xy: 1119, 1746
+  size: 282, 221
+  orig: 1280, 1280
+  offset: 375, 175
   index: -1
 body
   rotate: true
-  xy: 708, 1515
-  size: 322, 508
+  xy: 1359, 743
+  size: 365, 490
   orig: 1280, 1280
-  offset: 465, 223
-  index: -1
-die
-  rotate: false
-  xy: 1169, 2
-  size: 738, 903
-  orig: 1280, 1280
-  offset: 321, 31
+  offset: 387, 249
   index: -1
 hair
-  rotate: false
-  xy: 2, 1705
-  size: 161, 132
+  rotate: true
+  xy: 1359, 397
+  size: 344, 467
   orig: 1280, 1280
-  offset: 665, 1061
+  offset: 230, 636
   index: -1
 head
   rotate: false
-  xy: 441, 1036
-  size: 492, 477
+  xy: 1359, 1110
+  size: 507, 506
   orig: 1280, 1280
-  offset: 385, 663
+  offset: 416, 614
   index: -1
-hit
-  rotate: true
-  xy: 935, 907
-  size: 556, 1072
+ine_sd_d
+  rotate: false
+  xy: 2, 34
+  size: 826, 870
   orig: 1280, 1280
-  offset: 365, 47
+  offset: 243, 85
   index: -1
-idle
-  rotate: true
-  xy: 2, 356
-  size: 549, 1165
+ine_sd_s
+  rotate: false
+  xy: 2, 906
+  size: 1115, 1122
   orig: 1280, 1280
-  offset: 379, 28
+  offset: 73, 24
   index: -1
 leg
   rotate: false
-  xy: 1218, 1465
-  size: 519, 372
+  xy: 1359, 1618
+  size: 554, 410
   orig: 1280, 1280
-  offset: 379, 53
+  offset: 338, 24
   index: -1
-sword
+phone_left
   rotate: true
-  xy: 2, 1153
-  size: 422, 437
+  xy: 1124, 50
+  size: 118, 70
   orig: 1280, 1280
-  offset: 506, 28
+  offset: 550, 644
+  index: -1
+phone_right
+  rotate: false
+  xy: 1196, 85
+  size: 81, 83
+  orig: 1280, 1280
+  offset: 638, 623
+  index: -1
+sign
+  rotate: true
+  xy: 830, 170
+  size: 734, 527
+  orig: 1280, 1280
+  offset: 65, 205
   index: -1
 
 skeleton2.png
-size: 1865,1218
+size: 2041,1110
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-attack
-  rotate: true
-  xy: 2, 83
-  size: 1133, 1037
-  orig: 1280, 1280
-  offset: 128, 83
-  index: -1
-skill
+ine_sd_a
   rotate: false
-  xy: 1041, 2
-  size: 822, 1214
+  xy: 2, 2
+  size: 1075, 1106
   orig: 1280, 1280
-  offset: 94, 49
+  offset: 196, 39
+  index: -1
+ine_sd_h
+  rotate: false
+  xy: 1079, 20
+  size: 960, 1088
+  orig: 1280, 1280
+  offset: 61, 36
   index: -1

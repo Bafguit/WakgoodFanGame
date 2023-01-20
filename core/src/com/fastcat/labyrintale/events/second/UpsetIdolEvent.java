@@ -48,6 +48,7 @@ public class UpsetIdolEvent extends AbstractEvent {
         return a;
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public void onSetPage(int page) {
         if (page == 1) {
@@ -65,7 +66,7 @@ public class UpsetIdolEvent extends AbstractEvent {
                 }
             }
             if (player != null) {
-                HashMap<String, Boolean> temp = UnlockHandler.achvs.get(UnlockHandler.Unlocks.ITEM);
+                HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
                 AbstractItem item = new CrackedHeart(player);
                 if (!temp.get(item.id)) temp.replace(item.id, true);
                 player.gainItem(item, index);

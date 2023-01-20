@@ -706,21 +706,33 @@ public class FileHandler implements Disposable {
     private void generateItemImg(ResourceHandler resourceHandler) {
         itemImg.clear();
         itemImgTrans.clear();
+
+        HashMap<String, String> itemResources = new HashMap<>();
+        HashMap<String, String> itemTransResources = new HashMap<>();
+        for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
+            if (!js.name.equals("")) {
+
+                itemResources.put(js.name, "img/item/" + js.name + ".png");
+                itemTransResources.put(js.name, "img/item/" + js.name + "_t.png");
+            }
+        }
+
         resourceHandler.requestResource(
-                new ResourceHandler.ResourceRequest<>("img/item/item.atlas", TextureAtlas.class, (resource, args) -> {
-                    item = (TextureAtlas) resource;
+                new MultipleResourceRequest<>(itemResources, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    String resourceName = args[0].toString();
 
-                    for (JsonValue js : jsonMap.get(JsonType.ITEM_JSON)) {
-                        if (!js.name.equals("")) {
-                            Sprite s = item.createSprite(js.name);
-                            s.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                            itemImg.put(js.name, s);
+                    itemImg.put(resourceName, new Sprite(texture));
+                }));
 
-                            Sprite s2 = item.createSprite(js.name + "_t");
-                            s2.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                            itemImgTrans.put(js.name, s2);
-                        }
-                    }
+        resourceHandler.requestResource(
+                new MultipleResourceRequest<>(itemTransResources, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    String resourceName = args[0].toString();
+
+                    itemImgTrans.put(resourceName, new Sprite(texture));
                 }));
     }
 
@@ -737,15 +749,12 @@ public class FileHandler implements Disposable {
         }
 
         resourceHandler.requestResource(
-                new MultipleResourceRequest<>(resourceNames, Texture.class, new ResourceHandler.ResourceCallback() {
-                    @Override
-                    public void onResourceLoaded(Object resource, Object... args) {
-                        Texture texture = (Texture) resource;
-                        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-                        String resourceName = args[0].toString();
+                new MultipleResourceRequest<>(resourceNames, Texture.class, (resource, args) -> {
+                    Texture texture = (Texture) resource;
+                    texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    String resourceName = args[0].toString();
 
-                        eventImg.put(resourceName, new Sprite(texture));
-                    }
+                    eventImg.put(resourceName, new Sprite(texture));
                 }));
     }
 

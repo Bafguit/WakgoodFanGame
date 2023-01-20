@@ -18,14 +18,11 @@ public class CustomHandler {
         }
         if(InputHandler.isDesktop) {
 
-            /* TODO 스킨 추가되면 주석 지우기
-            for (AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
-                int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.valueOf(cls.toString()));
-                if (i == 3) {
-                    CustomSkinData data = new CustomSkinData(cls);
-                    skins.get(data.playerClass).put(data.key, data);
-                }
-            }*/
+            int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.COFFIN);
+            if (i == 3) {
+                CustomSkinData data = new CustomSkinData(AbstractPlayer.PlayerClass.INE);
+                skins.get(data.playerClass).put(data.key, data);
+            }
 
             FileHandle folder = Gdx.files.local("custom");
             if (folder.exists() && folder.isDirectory()) {
