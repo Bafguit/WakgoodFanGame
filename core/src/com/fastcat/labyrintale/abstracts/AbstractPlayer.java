@@ -140,9 +140,9 @@ public abstract class AbstractPlayer extends AbstractEntity {
         public final Sprite turn;
         public final AbstractAnimation animation;
 
-        public CustomSkinData(PlayerClass player) {
+        public CustomSkinData(PlayerClass p) {
             this.key = "coffin";
-
+            String player = p.name().toLowerCase();
             JsonValue j = FileHandler.generateJson(Gdx.files.internal("spine/" + player + "/coffin/config.json"));
             playerClass = PlayerClass.valueOf(j.get("class").asString());
             name = j.get("name").asString();

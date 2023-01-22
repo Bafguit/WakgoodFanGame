@@ -16,6 +16,54 @@ public class AchieveHandler {
     public static AchieveCheck check = new AchieveCheck();
 
     public static void load() {
+        if(InputHandler.isDesktop) loadDesktop();
+        else loadAndroid();
+        save();
+    }
+
+    public static void save() {
+        if(InputHandler.isDesktop) saveDesktop();
+        else saveAndroid();
+    }
+
+    private static void loadAndroid() {
+        FileHandle data = Gdx.files.local("data/achievements.json");
+        FileHandle aCheck = Gdx.files.local("data/checks.json");
+        if (data.exists()) {
+            JsonValue js = FileHandler.generateJson(data);
+            for (Achievement ac : Achievement.values()) {
+                achvs.put(ac, js.get(ac.name()).asInt());
+            }
+        } else {
+            achvs.clear();
+            for (Achievement ac : Achievement.values()) {
+                achvs.put(ac, 0);
+            }
+            Gdx.files.local("data").mkdirs();
+        }
+
+        if (aCheck.exists()) {
+            JsonValue js = FileHandler.generateJson(aCheck);
+            JsonValue aa = js.get("ALL_ADV");
+            for (int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+                AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
+                check.ALL_ADV.put(p, aa.get(p.toString()).asBoolean());
+            }
+            check.DEATH = js.get("DEATH").asInt();
+            check.WIN = js.get("WIN").asInt();
+        } else {
+            check = new AchieveCheck();
+            for (int i = 0; i < AbstractAdvisor.AdvisorClass.values().length - 3; i++) {
+                AbstractAdvisor.AdvisorClass p = AbstractAdvisor.AdvisorClass.values()[i];
+                check.ALL_ADV.put(p, false);
+            }
+            check.DEATH = 0;
+            check.WIN = 0;
+            Gdx.files.local("data").mkdirs();
+        }
+    }
+
+    private static void loadDesktop() {
         Preferences av = Gdx.app.getPreferences("WakestDungeon_Achievements");
         FileHandle data = Gdx.files.local("data/achievements.json");
         if (data.exists()) {
@@ -52,10 +100,18 @@ public class AchieveHandler {
             check.DEATH = ch.getInteger("DEATH", 0);
             check.WIN = ch.getInteger("WIN", 0);
         }
-        save();
     }
 
-    public static void save() {
+    private static void saveAndroid() {
+        try {
+            mapper.writeValue(Gdx.files.local("data/achievements.json").file(), achvs);
+            mapper.writeValue(Gdx.files.local("data/checks.json").file(), check);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void saveDesktop() {
         Preferences av = Gdx.app.getPreferences("WakestDungeon_Achievements");
         for (Achievement ac : Achievement.values()) {
             av.putInteger(ac.name(), achvs.get(ac));

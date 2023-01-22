@@ -245,6 +245,7 @@ public class Labyrintale extends Game {
         }
 
         InputHandler.getInstance();
+        SettingHandler.save();
 
         phase = LifeCycle.STARTED;
         assetManager = new AssetManager();
@@ -257,7 +258,6 @@ public class Labyrintale extends Game {
             pix.setFilter(Pixmap.Filter.BiLinear);
             Gdx.graphics.setCursor(Gdx.graphics.newCursor(pix, 0, 0));
         }
-        SettingHandler.save();
 
         getScreenShake();
 

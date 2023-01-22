@@ -49,7 +49,6 @@ public final class ResourceHandler {
      */
     public boolean process() {
         if (assetManager.update(17)) {
-            System.out.println("Called process");
             boolean actualProcessing = false;
             while (queuedRequests.notEmpty()) {
                 actualProcessing = true;

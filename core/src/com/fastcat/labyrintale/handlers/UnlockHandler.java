@@ -8,13 +8,61 @@ import com.fastcat.labyrintale.abstracts.AbstractItem;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractSkill;
 
+import java.io.IOException;
 import java.util.HashMap;
+
+import static com.fastcat.labyrintale.handlers.SaveHandler.mapper;
 
 public class UnlockHandler {
 
     public static HashMap<Unlocks, HashMap<String, Boolean>> unlocks = new HashMap<>();
 
     public static void load() {
+        if(InputHandler.isDesktop) loadDesktop();
+        else loadAndroid();
+        save();
+    }
+
+    public static void save() {
+        if(InputHandler.isDesktop) saveDesktop();
+        else saveAndroid();
+    }
+
+    private static void loadAndroid() {
+        FileHandle data = Gdx.files.local("data/unlocks.json");
+        if (data.exists()) {
+            JsonValue js = FileHandler.generateJson(data);
+            for (Unlocks ac : Unlocks.values()) {
+                HashMap<String, Boolean> temp = new HashMap<>();
+                for (JsonValue jj : js.get(ac.name())) {
+                    temp.put(jj.name, jj.asBoolean());
+                }
+                unlocks.put(ac, temp);
+            }
+        } else {
+            unlocks.clear();
+            HashMap<String, Boolean> diff = new HashMap<>();
+            diff.put("NORMAL", true);
+            diff.put("HARD", false);
+            diff.put("COFFIN", false);
+            unlocks.put(Unlocks.DIFF, diff);
+            HashMap<String, Boolean> skill = new HashMap<>();
+            for (AbstractPlayer.PlayerClass p : AbstractPlayer.PlayerClass.values()) {
+                for (AbstractSkill s : GroupHandler.SkillGroup.normalSkills.get(p)) {
+                    skill.put(s.id, false);
+                }
+            }
+            unlocks.put(Unlocks.SKILL, skill);
+            HashMap<String, Boolean> item = new HashMap<>();
+            for (AbstractItem i : GroupHandler.ItemGroup.allItem) {
+                if (!i.id.equals("Placeholder")) item.put(i.id, false);
+            }
+            unlocks.put(Unlocks.ITEM, item);
+            Gdx.files.local("data").mkdirs();
+        }
+    }
+
+    private static void loadDesktop() {
         Preferences prefs = Gdx.app.getPreferences("WakestDungeon_Unlocks");
         FileHandle data = Gdx.files.local("data/unlocks.json");
         if (data.exists()) {
@@ -50,10 +98,17 @@ public class UnlockHandler {
             }
             unlocks.put(Unlocks.ITEM, item);
         }
-        save();
     }
 
-    public static void save() {
+    private static void saveAndroid() {
+        try {
+            mapper.writeValue(Gdx.files.local("data/unlocks.json").file(), unlocks);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void saveDesktop() {
         Preferences prefs = Gdx.app.getPreferences("WakestDungeon_Unlocks");
         for(Unlocks u : unlocks.keySet()) {
             HashMap<String, Boolean> map = unlocks.get(u);
