@@ -18,7 +18,7 @@ public class Vanguard extends AbstractSkill {
     public Vanguard(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseSpell(9, 1);
-        setBaseValue(3, 1);
+        setBaseValue(2, 1);
         setBaseCost(3);
     }
 

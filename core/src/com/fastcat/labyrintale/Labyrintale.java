@@ -44,6 +44,8 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
 
+    public static final String BUILD_VERSION = "1.1.0";
+
     public static Labyrintale game;
 
     private static LifeCycle phase;

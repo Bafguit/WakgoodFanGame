@@ -3,6 +3,7 @@ package com.fastcat.labyrintale.screens.result.moreinfo;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractPlayer;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
@@ -10,7 +11,6 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
-import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoDeckIcon;
 import com.fastcat.labyrintale.screens.playerinfo.PlayerInfoIcon;
@@ -22,9 +22,6 @@ import com.fastcat.labyrintale.screens.result.ScreenshotButton;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-import com.fastcat.labyrintale.utils.BuildInfo;
-
-import java.util.HashMap;
 
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
@@ -107,7 +104,7 @@ public class MoreResultScreen extends AbstractScreen {
             diff += "어려움";
         } else diff += "관";
         time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
-        ver = "버전: " + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
+        ver = "버전: " + Labyrintale.BUILD_VERSION;
         seed = "시드: " + AbstractLabyrinth.seed;
         score = "점수: " + AbstractLabyrinth.scoreHandle.score;
         shot = new ScreenshotButton();

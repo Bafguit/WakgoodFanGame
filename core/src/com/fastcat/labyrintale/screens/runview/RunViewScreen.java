@@ -5,19 +5,17 @@ import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.result.ResultAdvisor;
-import com.fastcat.labyrintale.screens.result.ResultText;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
-import com.fastcat.labyrintale.utils.BuildInfo;
+
 import java.util.Objects;
 
 public class RunViewScreen extends AbstractScreen {
@@ -173,7 +171,7 @@ public class RunViewScreen extends AbstractScreen {
         else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
         else diff += "관";
         time = data.minute + "분 " + data.second + "초";
-        ver = "" + (InputHandler.isDesktop ? BuildInfo.BUILD_VERSION : "ANDROID");
+        ver = "" + Labyrintale.BUILD_VERSION;
         seed = "" + data.random.seed;
         score = "" + data.scoreHandle.score;
         shot.setDate(data.date);

@@ -1,18 +1,9 @@
 package com.fastcat.labyrintale.desktop;
 
 import com.badlogic.gdx.Files;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowListener;
-import com.fastcat.labyrintale.utils.BuildInfo;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.handlers.SettingHandler;
-import com.fastcat.labyrintale.prototype.GameConfiguration;
-import com.fastcat.labyrintale.prototype.providers.PlayerStatProvider;
-
-import java.io.File;
 
 public class DesktopLauncher {
 
@@ -20,7 +11,7 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 
         config.setWindowIcon(Files.FileType.Internal, "img/icon.png");
-        config.setTitle("Wakest Dungeon - " + BuildInfo.BUILD_VERSION);
+        config.setTitle("Wakest Dungeon");
         config.useVsync(true);
         config.setResizable(false);
         config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 20);
