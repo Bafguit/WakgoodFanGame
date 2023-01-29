@@ -44,7 +44,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
 
-    public static final String BUILD_VERSION = "1.1.0";
+    public static final String BUILD_VERSION = "1.1.3";
 
     public static Labyrintale game;
 
@@ -223,6 +223,8 @@ public class Labyrintale extends Game {
 
         if (Gdx.app.getType() == Application.ApplicationType.Desktop) {
             Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
+
+            Gdx.graphics.setForegroundFPS(displayMode.refreshRate);
 
             if (SettingHandler.setting.screenMode == 0) {
                 Gdx.graphics.setWindowedMode(SettingHandler.setting.width, SettingHandler.setting.height);

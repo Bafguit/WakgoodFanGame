@@ -19,6 +19,7 @@ public class Catalyst extends AbstractSkill {
         super(e, ID, TYPE, RARITY, TARGET);
         setBaseValue(VALUE, 1);
         setBaseCost(4);
+        disposable = true;
     }
 
     @Override

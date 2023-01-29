@@ -79,7 +79,7 @@ public class UnlockHandler {
             unlocks.clear();
 
             HashMap<String, Boolean> diff = new HashMap<>();
-            diff.put("NORMAL", prefs.getBoolean("DIFF_NORMAL", false));
+            diff.put("NORMAL", prefs.getBoolean("DIFF_NORMAL", true));
             diff.put("HARD", prefs.getBoolean("DIFF_HARD", false));
             diff.put("COFFIN", prefs.getBoolean("DIFF_COFFIN", false));
             unlocks.put(Unlocks.DIFF, diff);

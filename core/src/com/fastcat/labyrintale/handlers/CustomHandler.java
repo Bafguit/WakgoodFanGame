@@ -16,14 +16,15 @@ public class CustomHandler {
         for(AbstractPlayer.PlayerClass cls : AbstractPlayer.PlayerClass.values()) {
             skins.put(cls, new HashMap<>());
         }
+
+        int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.COFFIN);
+        if (i == 3) {
+            CustomSkinData data = new CustomSkinData(AbstractPlayer.PlayerClass.INE);
+            skins.get(data.playerClass).put(data.key, data);
+        }
+
         if(InputHandler.isDesktop) {
-            /*
-            int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.COFFIN);
-            if (i == 3) {
-                CustomSkinData data = new CustomSkinData(AbstractPlayer.PlayerClass.INE);
-                skins.get(data.playerClass).put(data.key, data);
-            }
-*/
+
             FileHandle folder = Gdx.files.local("custom");
             if (folder.exists() && folder.isDirectory()) {
                 for (FileHandle f : folder.list()) {

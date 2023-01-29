@@ -53,14 +53,14 @@ public abstract class BattleView extends AbstractUI {
         }
 
         sb.setColor(Color.WHITE);
-        if (battleScreen.currentTurnEntity() == entity) {
-            turnLook.img.setAlpha(alpha);
-            turnLook.img.setPosition(entity.animX - turnLook.sWidth / 2, entity.animY - turnLook.sHeight * 0.6f);
-            turnLook.img.draw(sb);
-        } else {
+        if (battleScreen.currentTurnEntity() != entity) {
             targetLook.img.setAlpha(alpha);
             targetLook.img.setPosition(entity.animX - targetLook.sWidth / 2, entity.animY - targetLook.sHeight * 0.6f);
             targetLook.img.draw(sb);
+        } else {
+            turnLook.img.setAlpha(alpha);
+            turnLook.img.setPosition(entity.animX - turnLook.sWidth / 2, entity.animY - turnLook.sHeight * 0.6f);
+            turnLook.img.draw(sb);
         }
     }
 }

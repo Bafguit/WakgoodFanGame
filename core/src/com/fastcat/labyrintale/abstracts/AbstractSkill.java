@@ -656,8 +656,6 @@ public abstract class AbstractSkill implements Cloneable, GetSelectedTarget {
             }
             if (disposable) usedOnce = true;
             if (owner != null) {
-                /*top(new ZoomBeginAction());
-                bot(new ZoomEndAction());*/
                 bot(new TurnEndAction(owner));
                 if (owner.isPlayer) bot(new NextTurnAction());
             }
