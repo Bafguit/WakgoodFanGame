@@ -17,6 +17,7 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
     public AbstractItem item;
     public ShopItemIcon shopItem;
     public CharDeckButton[] deck;
+    public CharDeckButton[][] decks;
     public CharItemButton[][] items;
     public CancelShopButton cancel;
     public GetSelectedItem getItem;
@@ -32,15 +33,31 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         this.skill = skill;
         this.rewardDone = rewardDone;
         type = TakeType.SKILL;
-        deck = new CharDeckButton[3];
-        float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
-        for (int i = 0; i < 3; i++) {
-            CharDeckButton c = new CharDeckButton(this, i, this.skill);
-            c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.675f - c.sHeight * 0.5f);
-            deck[i] = c;
+        if(AbstractLabyrinth.mode == AbstractLabyrinth.Mode.FREE) {
+            decks = new CharDeckButton[4][3];
+            float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
+            for(int k = 0; k < 4; k++) {
+                for (int i = 0; i < 3; i++) {
+                    CharDeckButton c = new CharDeckButton(this, AbstractLabyrinth.players[k], i, this.skill);
+                    c.setScale(0.8f);
+                    c.setPosition(w * (0.2f + 0.22f * k + 0.06f * (i - 1.5f)) - c.sWidth * 0.5f, h * 0.675f - c.sHeight * 0.5f);
+                    decks[k][i] = c;
+                }
+            }
+            shopItem = new ShopItemIcon(this);
+            shopItem.setScale(0.8f);
+            shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.475f - shopItem.sHeight * 0.5f);
+        } else {
+            deck = new CharDeckButton[3];
+            float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
+            for (int i = 0; i < 3; i++) {
+                CharDeckButton c = new CharDeckButton(this, i, this.skill);
+                c.setPosition(w * (0.4f + 0.1f * i) - c.sWidth * 0.5f, h * 0.675f - c.sHeight * 0.5f);
+                deck[i] = c;
+            }
+            shopItem = new ShopItemIcon(this);
+            shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.475f - shopItem.sHeight * 0.5f);
         }
-        shopItem = new ShopItemIcon(this);
-        shopItem.setPosition(w * 0.5f - shopItem.sWidth * 0.5f, h * 0.475f - shopItem.sHeight * 0.5f);
         cancel = new CancelShopButton(this);
     }
 
@@ -90,7 +107,13 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         shopItem.update();
         if (type == TakeType.SKILL) {
             for (int i = 0; i < 3; i++) {
-                deck[i].update();
+                if(AbstractLabyrinth.mode == AbstractLabyrinth.Mode.FREE) {
+                    for(int j = 0; j < 4; j++) {
+                        decks[j][i].update();
+                    }
+                } else {
+                    deck[i].update();
+                }
             }
         } else {
             for (int i = 0; i < count; i++) {
@@ -109,7 +132,13 @@ public class ShopTakeScreen extends AbstractScreen implements GetSelectedItem, G
         shopItem.render(sb);
         if (type == TakeType.SKILL) {
             for (int i = 0; i < 3; i++) {
-                deck[i].render(sb);
+                if(AbstractLabyrinth.mode == AbstractLabyrinth.Mode.FREE) {
+                    for(int j = 0; j < 4; j++) {
+                        decks[j][i].render(sb);
+                    }
+                } else {
+                    deck[i].render(sb);
+                }
             }
         } else {
             for (int i = 0; i < count; i++) {

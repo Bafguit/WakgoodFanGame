@@ -42,19 +42,19 @@ public class RestScreen extends AbstractScreen {
             chars[i] = new AbstractUI.TempUI(FileHandler.getUi().get("CAMP"));
         }
 
-        chars[0].setPosition(670 * scale, 600 * scale);
-        chars[0].img.setFlip(false, false);
-        chars[1].setPosition(920 * scale, 654 * scale);
-        chars[1].img.setFlip(false, false);
-        chars[2].setPosition(1224 * scale, 654 * scale);
-        chars[2].img.setFlip(true, false);
-        chars[3].setPosition(1474 * scale, 600 * scale);
-        chars[3].img.setFlip(true, false);
-
         for (int i = 0; i < 4; i++) {
             AbstractPlayer p = AbstractLabyrinth.players[i];
             chars[i].img = alive > 2 ? p.camp : p.upset;
         }
+
+        chars[0].setPosition(670 * scale, 600 * scale);
+        chars[0].hFlip = false;
+        chars[1].setPosition(920 * scale, 654 * scale);
+        chars[1].hFlip = false;
+        chars[2].setPosition(1224 * scale, 654 * scale);
+        chars[2].hFlip = false;
+        chars[3].setPosition(1474 * scale, 600 * scale);
+        chars[3].hFlip = false;
 
         buttons = new RestButton[count];
         desc = new RestDesc[count];
@@ -69,7 +69,7 @@ public class RestScreen extends AbstractScreen {
         RestDesc d = desc[cnt] = new RestDesc("휴식", b);
         d.setPosition(tw - d.sWidth / 2, b.y - 100 * InputHandler.scale);
 
-        if (count > 2) {
+        if (count > 2 && AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
             tw += tww;
             cnt++;
 
@@ -99,7 +99,7 @@ public class RestScreen extends AbstractScreen {
             AbstractUI.TempUI u = chars[i];
             u.img = alive > 2 ? p.camp : p.upset;
             u.showImg = p.isAlive();
-            u.img.setFlip(i > 1, false);
+            u.hFlip = i > 1;
             u.update();
         }
         for (int i = 0; i < count; i++) {
@@ -115,9 +115,12 @@ public class RestScreen extends AbstractScreen {
             buttons[i].render(sb);
             desc[i].render(sb);
         }
-        for (int i = 0; i < 4; i++) {
-            chars[i].render(sb);
-        }
+
+        chars[1].render(sb);
+        chars[2].render(sb);
+        chars[0].render(sb);
+        chars[3].render(sb);
+
         fire.render(sb);
         end.render(sb);
     }

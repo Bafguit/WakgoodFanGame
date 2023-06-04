@@ -104,8 +104,11 @@ public class InfoPanel extends AbstractUI {
         }
         status = null;
         if (renderIcon) {
-            for (int i = 0; i < 4; i++) {
-                pIcons[i].update();
+            pIcons[0].update();
+            if(AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
+                for (int i = 1; i < 4; i++) {
+                    pIcons[i].update();
+                }
             }
         }
         aSkill.item = AbstractLabyrinth.advisor;
@@ -127,8 +130,11 @@ public class InfoPanel extends AbstractUI {
                 renderColorLeft(sb, fontDesc, desc, dx, dy, dw);
             }
             if (renderIcon) {
-                for (int i = 0; i < 4; i++) {
-                    pIcons[i].render(sb);
+                pIcons[0].render(sb);
+                if(AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
+                    for (int i = 1; i < 4; i++) {
+                        pIcons[i].render(sb);
+                    }
                 }
             }
             gold.render(sb);

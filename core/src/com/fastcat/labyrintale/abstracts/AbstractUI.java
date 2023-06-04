@@ -41,6 +41,8 @@ public abstract class AbstractUI implements Disposable {
     public float sWidth;
     public float sHeight;
     public boolean over;
+    public boolean hFlip = false;
+    public boolean vFlip = false;
     public boolean isPixmap = false;
     private boolean hasClick = false;
     public boolean hasOver = false;
@@ -156,7 +158,11 @@ public abstract class AbstractUI implements Disposable {
         if (enabled) {
             if (overable && !over) sb.setColor(Color.LIGHT_GRAY);
             else sb.setColor(WHITE);
-            if (showImg) sb.draw(img, x, y, sWidth, sHeight);
+            if (showImg) {
+                img.setFlip(hFlip, vFlip);
+                sb.draw(img, x, y, sWidth, sHeight);
+                img.setFlip(false, false);
+            }
 
             sb.setColor(WHITE);
             if (fontData != null) {

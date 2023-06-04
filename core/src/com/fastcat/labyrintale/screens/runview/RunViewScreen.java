@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.runview;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.getPlayerInstance;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.mode;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
@@ -10,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Mode;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.screens.result.ResultAdvisor;
@@ -40,6 +42,7 @@ public class RunViewScreen extends AbstractScreen {
     public IndexButton left;
     public IndexButton right;
     public DeadScreen.ScreenType dType;
+    public Mode mode;
     public String diff;
     public String time;
     public String ver;
@@ -89,6 +92,7 @@ public class RunViewScreen extends AbstractScreen {
         adv.setPosition(w * 0.12f, h * 0.145f);
         text = new RunViewText(DeadScreen.ScreenType.WIN);
         cType = ControlPanel.ControlType.HIDE;
+        mode = Mode.NORMAL;
         diff = "";
         time = "";
         ver = "";
@@ -166,10 +170,19 @@ public class RunViewScreen extends AbstractScreen {
             adv.item = null;
         }
         text = new RunViewText(data.result);
-        diff = "";
-        if (data.diff == AbstractLabyrinth.Difficulty.NORMAL) diff += "일반";
-        else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
-        else diff += "관";
+        mode = data.mode;
+        if(mode == Mode.SOLO) {
+            diff = "솔로 모드";
+        } else if(mode == Mode.DUP) {
+            diff = "복제 모드";
+        } else if(mode == Mode.FREE) {
+            diff = "자유 모드";
+        } else {
+            diff = "";
+            if (data.diff == AbstractLabyrinth.Difficulty.NORMAL) diff += "일반";
+            else if (data.diff == AbstractLabyrinth.Difficulty.HARD) diff += "어려움";
+            else diff += "관";
+        }
         time = data.minute + "분 " + data.second + "초";
         ver = "" + Labyrintale.BUILD_VERSION;
         seed = "" + data.random.seed;
@@ -182,17 +195,19 @@ public class RunViewScreen extends AbstractScreen {
     public void update() {
         if (RunHandler.runs.size > 0) {
             for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 3; j++) {
-                    deck[i][j].update();
+                if(i == 0 || mode != Mode.SOLO) {
+                    for (int j = 0; j < 3; j++) {
+                        deck[i][j].update();
+                    }
+                    for (int j = 0; j < 2; j++) {
+                        item[i][j].update();
+                    }
+                    for (int j = 0; j < 8; j++) {
+                        stats[i][j].update();
+                    }
+                    passive[i].update();
+                    pIcons[i].update();
                 }
-                for (int j = 0; j < 2; j++) {
-                    item[i][j].update();
-                }
-                for (int j = 0; j < 8; j++) {
-                    stats[i][j].update();
-                }
-                passive[i].update();
-                pIcons[i].update();
             }
             adv.update();
             text.update();
@@ -212,35 +227,38 @@ public class RunViewScreen extends AbstractScreen {
             int cnt = 0;
             for (int f = 0; f < 2; f++) {
                 for (int g = 0; g < 2; g++) {
-                    AbstractPlayer player = pIcons[cnt++].p;
-                    sb.draw(hbb, (495 + 1007 * f) * scale, (1052 - 361 * g) * scale, w * 0.12f, h * 0.03f);
-                    sb.draw(
-                            hb.img,
-                            scale * (495 + 1007 * f),
-                            scale * (1052 - 361 * g),
-                            0,
-                            0,
-                            w * 0.12f,
-                            h * 0.03f,
-                            Math.max(((float) player.health) / ((float) player.maxHealth), 0),
-                            1,
-                            0);
-                    FontHandler.renderLineLeft(
-                            sb,
-                            fontName,
-                            player.name,
-                            scale * (495 + 1007 * f),
-                            scale * (1138 - 361 * g),
-                            w * 0.12f,
-                            50);
-                    FontHandler.renderCenter(
-                            sb,
-                            fontHp,
-                            player.health + "/" + player.maxHealth,
-                            scale * (495 + 1007 * f),
-                            scale * (1073 - 361 * g),
-                            w * 0.12f,
-                            h * 0.03f);
+                    if(cnt == 0 || mode != Mode.SOLO) {
+                        AbstractPlayer player = pIcons[cnt].p;
+                        sb.draw(hbb, (495 + 1007 * f) * scale, (1052 - 361 * g) * scale, w * 0.12f, h * 0.03f);
+                        sb.draw(
+                                hb.img,
+                                scale * (495 + 1007 * f),
+                                scale * (1052 - 361 * g),
+                                0,
+                                0,
+                                w * 0.12f,
+                                h * 0.03f,
+                                Math.max(((float) player.health) / ((float) player.maxHealth), 0),
+                                1,
+                                0);
+                        FontHandler.renderLineLeft(
+                                sb,
+                                fontName,
+                                player.name,
+                                scale * (495 + 1007 * f),
+                                scale * (1138 - 361 * g),
+                                w * 0.12f,
+                                50);
+                        FontHandler.renderCenter(
+                                sb,
+                                fontHp,
+                                player.health + "/" + player.maxHealth,
+                                scale * (495 + 1007 * f),
+                                scale * (1073 - 361 * g),
+                                w * 0.12f,
+                                h * 0.03f);
+                    }
+                    cnt++;
                 }
             }
 
@@ -251,17 +269,19 @@ public class RunViewScreen extends AbstractScreen {
             renderCenter(sb, fontData, ver, scale * 1931, scale * 265, 300 * scale, h * 0.1f);
 
             for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 3; j++) {
-                    deck[i][j].render(sb);
+                if(i == 0 || mode != Mode.SOLO) {
+                    for (int j = 0; j < 3; j++) {
+                        deck[i][j].render(sb);
+                    }
+                    for (int j = 0; j < 2; j++) {
+                        item[i][j].render(sb);
+                    }
+                    for (int j = 0; j < 8; j++) {
+                        stats[i][j].render(sb);
+                    }
+                    passive[i].render(sb);
+                    pIcons[i].render(sb);
                 }
-                for (int j = 0; j < 2; j++) {
-                    item[i][j].render(sb);
-                }
-                for (int j = 0; j < 8; j++) {
-                    stats[i][j].render(sb);
-                }
-                passive[i].render(sb);
-                pIcons[i].render(sb);
             }
         } else {
             noRuns.render(sb);

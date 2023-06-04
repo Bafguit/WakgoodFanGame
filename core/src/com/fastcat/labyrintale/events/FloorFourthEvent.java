@@ -24,7 +24,7 @@ public class FloorFourthEvent extends AbstractEvent implements GetSelectedPlayer
     @Override
     public Array<EventChoice> getChoices(int page) {
         Array<EventChoice> a = new Array<>();
-        if (AbstractLabyrinth.allAlive()) {
+        if (AbstractLabyrinth.allAlive() || AbstractLabyrinth.mode == AbstractLabyrinth.Mode.SOLO) {
             if (page == 2) a.add(new EndEventChoice());
             else a.add(new NextPageEventChoice(data.SELECT[0], this, 2));
         } else {

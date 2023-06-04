@@ -16,6 +16,7 @@ public class IndexButton extends AbstractUI {
         this.sc = sc;
         this.isLeft = isLeft;
         int size = RunHandler.runs.size;
+        setScale(2);
         overable = size > 0 && isLeft ? sc.index > 0 : sc.index < size - 1;
     }
 

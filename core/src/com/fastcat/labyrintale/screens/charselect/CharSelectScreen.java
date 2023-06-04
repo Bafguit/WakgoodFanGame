@@ -30,6 +30,7 @@ public class CharSelectScreen extends AbstractScreen {
     public SeedText seedText;
     public CharSelectGroup group;
     public AbstractLabyrinth.Difficulty diff = AbstractLabyrinth.Difficulty.NORMAL;
+    public AbstractLabyrinth.Mode mode = AbstractLabyrinth.Mode.NORMAL;
     public AbstractPlayer selected;
     public TutorialButton tuto;
     public AbstractUI.TempUI ground;
@@ -40,14 +41,14 @@ public class CharSelectScreen extends AbstractScreen {
     public CharSelectScreen() {
         setBg(FileHandler.getBg().get("BG_CHARSELECT"));
         charSelectText = new CharSelectText();
-        backButton = new BackButton();
+        backButton = new BackButton(this);
         nextButton = new StartButton();
         seedText = new SeedText();
         group = new CharSelectGroup();
-        CharButton char1 = new CharButton();
-        CharButton char2 = new CharButton();
-        CharButton char3 = new CharButton();
-        CharButton char4 = new CharButton();
+        CharButton char1 = new CharButton(this);
+        CharButton char2 = new CharButton(this);
+        CharButton char3 = new CharButton(this);
+        CharButton char4 = new CharButton(this);
         float cy = 40 * scale;
         char1.setPosition(776 * scale, cy);
         char2.setPosition(981 * scale, cy);
@@ -69,13 +70,25 @@ public class CharSelectScreen extends AbstractScreen {
         cType = ControlPanel.ControlType.HIDE;
     }
 
+    public void setMode(AbstractLabyrinth.Mode mode) {
+        this.mode = mode;
+        if(mode == AbstractLabyrinth.Mode.SOLO || mode == AbstractLabyrinth.Mode.DUP) {
+            chars[0].isOnLock = false;
+            for(int i = 1; i < 4; i++) {
+                chars[i].isOnLock = true;
+            }
+        } else {
+            for(int i = 0; i < 4; i++) {
+                chars[i].isOnLock = false;
+            }
+        }
+    }
+
     private void addChars() {
         AbstractPlayer.PlayerClass[] pc = AbstractPlayer.PlayerClass.values();
         for (int i = 0; i < 8; i++) {
-            CharButton char0 = new CharButton(AbstractLabyrinth.getPlayerInstance(pc[i]));
-            char0.setPosition(
-                    (467 + 205 * i) * scale,
-                    175 * scale);
+            CharButton char0 = new CharButton(this, AbstractLabyrinth.getPlayerInstance(pc[i]));
+            char0.setPosition((467 + 205 * i) * scale, 175 * scale);
             aChars[i] = char0;
         }
     }
@@ -265,7 +278,7 @@ public class CharSelectScreen extends AbstractScreen {
 
         @SuppressWarnings("NewApi")
         public void refreshSkin() {
-            if(index > -1) player.setCustomSkin(skins.get(index).key);
+            if(index > -1) player.setTempCustomSkin(skins.get(index).key);
             else player.setBasicSkin();
             sIndex.replace(player.playerClass, index);
         }

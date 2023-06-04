@@ -14,6 +14,7 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.interfaces.GetSelectedStat;
+import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.statselect.StatSelectScreen;
 import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.StatIcon;
@@ -26,6 +27,8 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
     private final FontHandler.FontData fontName = INFO_NAME;
     private final FontHandler.FontData fontHp = INFO_HP;
     private final float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
+
+    private CharInfoScreen soloInfo;
     public StatSelectScreen statScreen;
 
     public AbstractUI.TempUI hb = new AbstractUI.TempUI(FileHandler.getUi().get("HEALTH_BAR"));
@@ -71,7 +74,6 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
                     }
                 }
                 PlayerInfoIcon pc = new PlayerInfoIcon(c);
-                pc.clickable = false;
                 pc.setPosition(w * (0.15f + 0.435f * g) - pc.sWidth, h * (0.62f - 0.23f * f));
                 pIcons[c] = pc;
                 c++;
@@ -84,14 +86,19 @@ public class PlayerInfoScreen extends AbstractScreen implements GetSelectedStat 
 
     public static void view() {
         playerInfoScreen.showing = true;
-        Labyrintale.addTempScreen(playerInfoScreen);
+        if(AbstractLabyrinth.mode == AbstractLabyrinth.Mode.SOLO) {
+            playerInfoScreen.soloInfo = new CharInfoScreen(AbstractLabyrinth.players[0]);
+            Labyrintale.addTempScreen(playerInfoScreen.soloInfo);
+        } else {
+            Labyrintale.addTempScreen(playerInfoScreen);
+        }
     }
 
     public static void remove() {
         playerInfoScreen.showing = false;
-        if (playerInfoScreen.statScreen != null) {
-            Labyrintale.removeTempScreen(playerInfoScreen.statScreen);
-            playerInfoScreen.statScreen = null;
+        if (playerInfoScreen.soloInfo != null) {
+            Labyrintale.removeTempScreen(playerInfoScreen.soloInfo);
+            playerInfoScreen.soloInfo = null;
         }
         Labyrintale.removeTempScreen(playerInfoScreen);
     }

@@ -5,9 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.fastcat.labyrintale.Labyrintale;
-import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
-import com.fastcat.labyrintale.abstracts.AbstractSkill;
-import com.fastcat.labyrintale.abstracts.AbstractUI;
+import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.FontHandler;
 
@@ -17,6 +15,7 @@ public class CharDeckButton extends AbstractUI {
     public ShopTakeScreen sc;
     public AbstractSkill skill;
     public AbstractSkill toSkill;
+    public AbstractEntity player;
     public int index;
 
     public CharDeckButton(ShopTakeScreen screen, int index, AbstractSkill s) {
@@ -25,6 +24,17 @@ public class CharDeckButton extends AbstractUI {
         this.index = index;
         sc = screen;
         skill = s.owner.deck.get(index);
+        player = s.owner;
+        fontData = FontHandler.CARD_BIG_DESC;
+    }
+
+    public CharDeckButton(ShopTakeScreen screen, AbstractPlayer player, int index, AbstractSkill s) {
+        super(FileHandler.getUi().get("BORDER_M"));
+        toSkill = s;
+        this.index = index;
+        sc = screen;
+        this.player = player;
+        skill = player.deck.get(index);
 
         fontData = FontHandler.CARD_BIG_DESC;
     }
@@ -65,7 +75,7 @@ public class CharDeckButton extends AbstractUI {
 
     @Override
     public void onClick() {
-        skill.owner.gainSkill(index, toSkill);
+        player.gainSkill(index, toSkill);
         sc.isRewardDone(true);
         Labyrintale.removeTempScreen(sc);
     }

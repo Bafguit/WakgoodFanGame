@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +20,7 @@ import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.screens.battle.BattleScreen;
 import com.fastcat.labyrintale.screens.charinfo.CharInfoScreen;
 import com.fastcat.labyrintale.screens.charselect.CharSelectScreen;
+import com.fastcat.labyrintale.screens.custom.CustomModeScreen;
 import com.fastcat.labyrintale.screens.difficulty.DifficultyScreen;
 import com.fastcat.labyrintale.screens.event.EventScreen;
 import com.fastcat.labyrintale.screens.library.LibraryScreen;
@@ -44,7 +44,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
 
-    public static final String BUILD_VERSION = "1.1.3";
+    public static final String BUILD_VERSION = "1.2.0";
 
     public static Labyrintale game;
 
@@ -62,6 +62,7 @@ public class Labyrintale extends Game {
     public static MapScreen mapScreen;
     public static WayScreen wayScreen;
     public static DifficultyScreen diffScreen;
+    public static CustomModeScreen modeScreen;
     public static LibraryScreen libScreen;
     public static BattleScreen battleScreen;
     public static CharInfoScreen charInfoScreen;
@@ -347,6 +348,7 @@ public class Labyrintale extends Game {
         charSelectScreen = new CharSelectScreen();
         settingScreen = new SettingScreen();
         diffScreen = new DifficultyScreen();
+        modeScreen = new CustomModeScreen();
         libScreen = new LibraryScreen();
         tutorialScreen = new TutorialScreen();
         // labyrinth = new AbstractLabyrinth();
@@ -360,8 +362,8 @@ public class Labyrintale extends Game {
         change_v_r = new AbstractUI.TempUI(FileHandler.getUi().get("CHANGE_V"));
         battle = new GifBg("BATTLE");
 
-        change_h_r.img.setFlip(true, false);
-        change_v_r.img.setFlip(false, true);
+        change_h_r.hFlip = true;
+        change_v_r.vFlip = true;
 
         mainMenuScreen.onCreate();
 

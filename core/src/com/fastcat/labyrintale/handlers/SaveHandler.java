@@ -6,6 +6,7 @@ import static com.fastcat.labyrintale.handlers.GroupHandler.AdvisorGroup.getAdvi
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
+import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
 import com.fastcat.labyrintale.utils.RandomXC;
@@ -82,6 +83,7 @@ public final class SaveHandler {
         seed = data.random.seed;
         seedLong = data.random.seedLong;
         diff = data.diff;
+        mode = data.mode;
         publicRandom = new RandomXC(seedLong, data.random.publicRandom);
         skillRandom = new RandomXC(seedLong, data.random.skillRandom);
         itemRandom = new RandomXC(seedLong, data.random.itemRandom);
@@ -105,40 +107,43 @@ public final class SaveHandler {
 
         for (int i = 0; i < 4; i++) {
             PlayerData d = data.players[i];
-            AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
-            p.setCustomSkin(SettingHandler.setting.skin.get(p.playerClass));
-            p.defineIndex(d.index);
-            p.goodLuck = d.goodLuck;
-            p.badLuck = d.badLuck;
-            p.maxRes = d.maxRes;
-            p.minRes = d.minRes;
-            p.isDead = d.isDead;
-            p.maxHealth = d.maxHealth;
-            p.health = d.health;
+            if(d != null) {
+                AbstractPlayer p = getPlayerInstance(AbstractPlayer.PlayerClass.valueOf(d.id.toUpperCase()));
+                if(mode == Mode.SOLO && i > 0) p.setDummy();
+                p.setCustomSkin(SettingHandler.setting.skin.get(p.playerClass));
+                p.defineIndex(d.index);
+                p.goodLuck = d.goodLuck;
+                p.badLuck = d.badLuck;
+                p.maxRes = d.maxRes;
+                p.minRes = d.minRes;
+                p.isDead = d.isDead;
+                p.maxHealth = d.maxHealth;
+                p.health = d.health;
 
-            for (int j = 0; j < 2; j++) {
-                AbstractItem it = Objects.requireNonNull(
-                        GroupHandler.ItemGroup.idSort.get(d.item[j]).clone());
-                it.setOwner(p);
-                p.item[j] = it;
-            }
-
-            AbstractSkill[] ss = new AbstractSkill[3];
-            for (int j = 0; j < 3; j++) {
-                SkillData sd = d.deck[j];
-                AbstractSkill s = Objects.requireNonNull(
-                        GroupHandler.SkillGroup.idSort.get(d.deck[j].id).clone());
-                s.usedOnly = sd.usedOnly;
-                s.owner = p;
-                for (int k = 0; k < sd.upgradeCount; k++) {
-                    s.upgrade();
+                for (int j = 0; j < 2; j++) {
+                    AbstractItem it = Objects.requireNonNull(
+                            GroupHandler.ItemGroup.idSort.get(d.item[j]).clone());
+                    it.setOwner(p);
+                    p.item[j] = it;
                 }
-                ss[j] = s;
+
+                AbstractSkill[] ss = new AbstractSkill[3];
+                for (int j = 0; j < 3; j++) {
+                    SkillData sd = d.deck[j];
+                    AbstractSkill s = Objects.requireNonNull(
+                            GroupHandler.SkillGroup.idSort.get(d.deck[j].id).clone());
+                    s.usedOnly = sd.usedOnly;
+                    s.owner = p;
+                    for (int k = 0; k < sd.upgradeCount; k++) {
+                        s.upgrade();
+                    }
+                    ss[j] = s;
+                }
+                p.deck = new Array<>(ss);
+                p.stat = d.stat;
+                if (p.isDead) p.infoSpine.setAnimation("die");
+                players[i] = p;
             }
-            p.deck = new Array<>(ss);
-            p.stat = d.stat;
-            if (p.isDead) p.infoSpine.setAnimation("die");
-            players[i] = p;
         }
         String ad = data.advisor;
         if (ad != null) {
@@ -171,6 +176,7 @@ public final class SaveHandler {
         public int maxExp;
         public String advisor;
         public Difficulty diff;
+        public Mode mode;
         public PlayerData[] players = new PlayerData[4];
         public int currentFloor;
         public FloorData[] floors = new FloorData[4];
@@ -192,8 +198,7 @@ public final class SaveHandler {
             Date now = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             temp.date = AbstractLabyrinth.date = formatter.format(now);
-            temp.version = "1.1.0";
-            // temp.version = BuildInfo.BUILD_VERSION;
+            temp.version = Labyrintale.BUILD_VERSION;
             temp.random = RandomData.create();
             for (int i = 0; i < 4; i++) {
                 AbstractFloor f = AbstractLabyrinth.floors[i];
@@ -207,6 +212,7 @@ public final class SaveHandler {
             temp.itemAble = AbstractLabyrinth.itemAble;
             temp.selection = AbstractLabyrinth.maxSkillUp;
             temp.diff = AbstractLabyrinth.diff;
+            temp.mode = AbstractLabyrinth.mode;
             temp.gold = AbstractLabyrinth.gold;
             temp.charge = AbstractLabyrinth.charge;
             temp.level = AbstractLabyrinth.level;
@@ -348,23 +354,26 @@ public final class SaveHandler {
         public int health;
 
         public static PlayerData create(AbstractPlayer e) {
-            PlayerData temp = new PlayerData();
-            temp.id = e.id;
-            for (int i = 0; i < 2; i++) {
-                AbstractItem t = e.item[i];
-                temp.item[i] = t != null ? t.id : null;
+            PlayerData temp = null;
+            if(e != null) {
+                temp = new PlayerData();
+                temp.id = e.id;
+                for (int i = 0; i < 2; i++) {
+                    AbstractItem t = e.item[i];
+                    temp.item[i] = t != null ? t.id : null;
+                }
+                temp.deck = new SkillData[3];
+                for (int i = 0; i < 3; i++) {
+                    temp.deck[i] = SkillData.create(e.deck.get(i));
+                }
+                temp.isDead = !e.isAlive();
+                temp.index = e.index;
+                temp.maxRes = e.maxRes;
+                temp.minRes = e.minRes;
+                temp.maxHealth = e.maxHealth;
+                temp.health = e.health;
+                temp.stat = e.stat;
             }
-            temp.deck = new SkillData[3];
-            for (int i = 0; i < 3; i++) {
-                temp.deck[i] = SkillData.create(e.deck.get(i));
-            }
-            temp.isDead = !e.isAlive();
-            temp.index = e.index;
-            temp.maxRes = e.maxRes;
-            temp.minRes = e.minRes;
-            temp.maxHealth = e.maxHealth;
-            temp.health = e.health;
-            temp.stat = e.stat;
             return temp;
         }
     }

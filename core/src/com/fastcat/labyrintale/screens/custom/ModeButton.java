@@ -1,6 +1,4 @@
-package com.fastcat.labyrintale.screens.difficulty;
-
-import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
+package com.fastcat.labyrintale.screens.custom;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,23 +9,19 @@ import com.fastcat.labyrintale.abstracts.AbstractUI;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.UnlockHandler;
 
-public class DifficultyButton extends AbstractUI {
+import static com.fastcat.labyrintale.Labyrintale.charSelectScreen;
+
+public class ModeButton extends AbstractUI {
 
     private final float aa = Color.LIGHT_GRAY.r;
-    public AbstractLabyrinth.Difficulty diff;
+    public AbstractLabyrinth.Mode mode;
     private final Sprite locked = FileHandler.getUi().get("DIFF_LOCKED");
     private float a = aa;
 
-    public DifficultyButton(AbstractLabyrinth.Difficulty diff) {
-        super(FileHandler.getUi().get("DIFF_" + diff.toString()));
-        this.diff = diff;
-        clickable = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
+    public ModeButton(AbstractLabyrinth.Mode diff) {
+        super(FileHandler.getUi().get("MODE_" + diff.toString()));
+        this.mode = diff;
         isPixmap = true;
-    }
-
-    @Override
-    protected void updateButton() {
-        clickable = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF).get(diff.toString());
     }
 
     @Override
@@ -52,11 +46,11 @@ public class DifficultyButton extends AbstractUI {
 
     @Override
     protected void onClick() {
-        charSelectScreen.diff = diff;
-        charSelectScreen.setMode(AbstractLabyrinth.Mode.NORMAL);
         for (int i = 0; i < charSelectScreen.chars.length; i++) {
             charSelectScreen.chars[i].removeChar();
         }
+        charSelectScreen.diff = AbstractLabyrinth.Difficulty.NORMAL;
+        charSelectScreen.setMode(mode);
         charSelectScreen.seedText.text = "";
         Labyrintale.fadeOutAndChangeScreen(charSelectScreen, 0.75f);
     }

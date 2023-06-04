@@ -23,6 +23,7 @@ import com.fastcat.labyrintale.uis.BgImg;
 import com.fastcat.labyrintale.uis.StatIcon;
 import com.fastcat.labyrintale.uis.control.ControlPanel;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.mode;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
 import static com.fastcat.labyrintale.handlers.FontHandler.renderCenter;
 
@@ -97,12 +98,20 @@ public class MoreResultScreen extends AbstractScreen {
         adv.setPosition(w * 0.1f, h * 0.15f);
         text = new ResultText(type);
         cType = ControlPanel.ControlType.HIDE;
-        diff = "난이도: ";
-        if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
-            diff += "일반";
-        } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
-            diff += "어려움";
-        } else diff += "관";
+        if(mode == AbstractLabyrinth.Mode.SOLO) {
+            diff = "솔로 모드";
+        } else if(mode == AbstractLabyrinth.Mode.DUP) {
+            diff = "복제 모드";
+        } else if(mode == AbstractLabyrinth.Mode.FREE) {
+            diff = "자유 모드";
+        } else {
+            diff = "난이도: ";
+            if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+                diff += "일반";
+            } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+                diff += "어려움";
+            } else diff += "관";
+        }
         time = "소요 시간: " + AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
         ver = "버전: " + Labyrintale.BUILD_VERSION;
         seed = "시드: " + AbstractLabyrinth.seed;
@@ -117,22 +126,24 @@ public class MoreResultScreen extends AbstractScreen {
         cType = ControlPanel.ControlType.HIDE;
 
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) {
-                deck[i][j].skill = AbstractLabyrinth.players[i].deck.get(j);
-                deck[i][j].update();
+            if(i == 0 || mode != AbstractLabyrinth.Mode.SOLO) {
+                for (int j = 0; j < 3; j++) {
+                    deck[i][j].skill = AbstractLabyrinth.players[i].deck.get(j);
+                    deck[i][j].update();
+                }
+                for (int j = 0; j < 2; j++) {
+                    item[i][j].skill = AbstractLabyrinth.players[i].item[j];
+                    item[i][j].update();
+                }
+                for (int j = 0; j < 8; j++) {
+                    stats[i][j].entity = AbstractLabyrinth.players[i];
+                    stats[i][j].update();
+                }
+                passive[i].skill = AbstractLabyrinth.players[i].passive;
+                passive[i].update();
+                pIcons[i].index = AbstractLabyrinth.players[i].index;
+                pIcons[i].update();
             }
-            for (int j = 0; j < 2; j++) {
-                item[i][j].skill = AbstractLabyrinth.players[i].item[j];
-                item[i][j].update();
-            }
-            for (int j = 0; j < 8; j++) {
-                stats[i][j].entity = AbstractLabyrinth.players[i];
-                stats[i][j].update();
-            }
-            passive[i].skill = AbstractLabyrinth.players[i].passive;
-            passive[i].update();
-            pIcons[i].index = AbstractLabyrinth.players[i].index;
-            pIcons[i].update();
         }
         adv.update();
         text.update();
@@ -150,29 +161,32 @@ public class MoreResultScreen extends AbstractScreen {
         int cnt = 0;
         for (int f = 0; f < 2; f++) {
             for (int g = 0; g < 2; g++) {
-                AbstractPlayer player = AbstractLabyrinth.players[cnt++];
-                sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
-                sb.draw(
-                        hb.img,
-                        w * (0.175f + 0.435f * f),
-                        h * (0.73f - 0.275f * g),
-                        0,
-                        0,
-                        w * 0.12f,
-                        h * 0.03f,
-                        Math.max(((float) player.health) / ((float) player.maxHealth), 0),
-                        1,
-                        0);
-                FontHandler.renderLineLeft(
-                        sb, fontName, player.name, w * (0.175f + 0.435f * f), h * (0.79f - 0.275f * g), w * 0.12f, 50);
-                FontHandler.renderCenter(
-                        sb,
-                        fontHp,
-                        player.health + "/" + player.maxHealth,
-                        w * (0.175f + 0.435f * f),
-                        h * (0.745f - 0.275f * g),
-                        w * 0.12f,
-                        h * 0.03f);
+                if(cnt == 0 || mode != AbstractLabyrinth.Mode.SOLO) {
+                    AbstractPlayer player = AbstractLabyrinth.players[cnt];
+                    sb.draw(hbb, w * (0.175f + 0.435f * f), h * (0.73f - 0.275f * g), w * 0.12f, h * 0.03f);
+                    sb.draw(
+                            hb.img,
+                            w * (0.175f + 0.435f * f),
+                            h * (0.73f - 0.275f * g),
+                            0,
+                            0,
+                            w * 0.12f,
+                            h * 0.03f,
+                            Math.max(((float) player.health) / ((float) player.maxHealth), 0),
+                            1,
+                            0);
+                    FontHandler.renderLineLeft(
+                            sb, fontName, player.name, w * (0.175f + 0.435f * f), h * (0.79f - 0.275f * g), w * 0.12f, 50);
+                    FontHandler.renderCenter(
+                            sb,
+                            fontHp,
+                            player.health + "/" + player.maxHealth,
+                            w * (0.175f + 0.435f * f),
+                            h * (0.745f - 0.275f * g),
+                            w * 0.12f,
+                            h * 0.03f);
+                }
+                cnt++;
             }
         }
 
@@ -183,17 +197,19 @@ public class MoreResultScreen extends AbstractScreen {
         renderCenter(sb, fontData, score, w * 0.6f, h * 0.18f, w * 0.2f, h * 0.1f);
 
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) {
-                deck[i][j].render(sb);
+            if(i == 0 || mode != AbstractLabyrinth.Mode.SOLO) {
+                for (int j = 0; j < 3; j++) {
+                    deck[i][j].render(sb);
+                }
+                for (int j = 0; j < 2; j++) {
+                    item[i][j].render(sb);
+                }
+                for (int j = 0; j < 8; j++) {
+                    stats[i][j].render(sb);
+                }
+                passive[i].render(sb);
+                pIcons[i].render(sb);
             }
-            for (int j = 0; j < 2; j++) {
-                item[i][j].render(sb);
-            }
-            for (int j = 0; j < 8; j++) {
-                stats[i][j].render(sb);
-            }
-            passive[i].render(sb);
-            pIcons[i].render(sb);
         }
     }
 

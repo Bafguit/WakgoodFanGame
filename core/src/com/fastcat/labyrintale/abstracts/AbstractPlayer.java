@@ -42,6 +42,10 @@ public abstract class AbstractPlayer extends AbstractEntity {
         this.playerClass = PlayerClass.valueOf(id.toUpperCase());
         skins = CustomHandler.skins.get(playerClass);
 
+        for(CustomSkinData skin : skins.values()) {
+            skin.animation.resetAnimation();
+        }
+
         pColor = c.cpy();
         move = new MoveP(this);
         pass = new PassTurn(this);
@@ -68,6 +72,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
         }
         moveTemp = move.clone();
         pass = new PassTurn(this);
+    }
+
+    public void setDummy() {
+        dummy = true;
+        isDead = true;
     }
 
     public void gainItem(AbstractItem i, int index) {
@@ -114,6 +123,21 @@ public abstract class AbstractPlayer extends AbstractEntity {
     }
 
     public void setCustomSkin(String key) {
+        CustomSkinData d = skins.get(key);
+        if(d != null) {
+            CustomSkinData data = d.cpy();
+            this.key = key;
+            name = data.name;
+            desc = data.desc;
+            setImage(data.portrait, data.turn, data.bg);
+            camp = data.camp;
+            upset = data.upset;
+            imgPanel = data.panel;
+            animation = data.animation;
+        }
+    }
+
+    public void setTempCustomSkin(String key) {
         CustomSkinData data = skins.get(key);
         if(data != null) {
             this.key = key;
@@ -138,9 +162,11 @@ public abstract class AbstractPlayer extends AbstractEntity {
         public final Sprite upset;
         public final Sprite panel;
         public final Sprite turn;
+        public final SkinType type;
         public final AbstractAnimation animation;
 
         public CustomSkinData(PlayerClass p) {
+            type = SkinType.CLASS;
             this.key = "coffin";
             String player = p.name().toLowerCase();
             JsonValue j = FileHandler.generateJson(Gdx.files.internal("spine/" + player + "/coffin/config.json"));
@@ -183,6 +209,7 @@ public abstract class AbstractPlayer extends AbstractEntity {
         }
 
         public CustomSkinData(String key) {
+            type = SkinType.KEY;
             this.key = key;
 
             JsonValue j = FileHandler.generateJson(Gdx.files.local("custom/" + key + "/config.json"));
@@ -222,6 +249,16 @@ public abstract class AbstractPlayer extends AbstractEntity {
             Texture t6 = new Texture(Gdx.files.local("custom/" + key + "/assets/turn.png"));
             t6.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             turn = new Sprite(t6);
+        }
+
+        public CustomSkinData cpy() {
+            if(type == SkinType.CLASS) return new CustomSkinData(playerClass);
+            else return new CustomSkinData(key);
+        }
+
+        enum SkinType {
+            CLASS,
+            KEY
         }
     }
 

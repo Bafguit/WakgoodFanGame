@@ -20,8 +20,8 @@ public class Crush extends AbstractSkill {
 
     public Crush(AbstractEntity e) {
         super(e, ID, TYPE, RARITY, TARGET);
-        setBaseAttack(VALUE, 2);
-        setBaseValue(1, 2);
+        setBaseAttack(VALUE, 1);
+        setBaseValue(1, 1);
     }
 
     @Override

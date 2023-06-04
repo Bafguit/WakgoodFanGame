@@ -1,6 +1,4 @@
-package com.fastcat.labyrintale.screens.difficulty;
-
-import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+package com.fastcat.labyrintale.screens.custom;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,28 +9,30 @@ import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
 import com.fastcat.labyrintale.screens.runview.IndexButton;
 
-public class DifficultyScreen extends AbstractScreen {
+import static com.fastcat.labyrintale.handlers.InputHandler.scale;
+
+public class CustomModeScreen extends AbstractScreen {
 
     public BackButton backButton;
-    public ToModeButton right;
-    private final DifficultyButton[] buttons = new DifficultyButton[3];
+    public ToDiffButton left;
+    private final ModeButton[] buttons = new ModeButton[3];
 
-    public DifficultyScreen() {
-        right = new ToModeButton();
-        right.setPosition(Gdx.graphics.getWidth() * 0.98f - right.sWidth, Gdx.graphics.getHeight() * 0.5f - right.sHeight / 2);
+    public CustomModeScreen() {
+        left = new ToDiffButton();
+        left.setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.5f - left.sHeight / 2);
         for (int i = 0; i < 3; i++) {
-            DifficultyButton b = new DifficultyButton(AbstractLabyrinth.Difficulty.values()[i]);
-            b.setPosition((680 + 600 * i) * scale - b.sWidth / 2, 424 * scale);
+            ModeButton b = new ModeButton(AbstractLabyrinth.Mode.values()[i + 1]);
+            b.setPosition((575 + 705 * i) * scale - b.sWidth / 2, 232 * scale);
             buttons[i] = b;
         }
         backButton = new BackButton();
-        setBg(FileHandler.getBg().get("BG_DIFF"));
+        setBg(FileHandler.getBg().get("BG_MODE"));
     }
 
     @Override
     public void update() {
-        right.update();
-        for (DifficultyButton b : buttons) {
+        left.update();
+        for (ModeButton b : buttons) {
             b.update();
         }
         backButton.update();
@@ -43,21 +43,21 @@ public class DifficultyScreen extends AbstractScreen {
 
     @Override
     public void render(SpriteBatch sb) {
-        for (DifficultyButton b : buttons) {
+        for (ModeButton b : buttons) {
             b.render(sb);
         }
         backButton.render(sb);
-        right.render(sb);
+        left.render(sb);
     }
 
     @Override
     public void show() {
         backButton.over = false;
         backButton.show();
-        for (DifficultyButton b : buttons) {
+        for (ModeButton b : buttons) {
             b.over = false;
             b.show();
         }
-        right.over = false;
+        left.over = false;
     }
 }

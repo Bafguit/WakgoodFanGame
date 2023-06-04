@@ -58,6 +58,7 @@ public abstract class AbstractEntity implements Cloneable {
     public boolean isDead = false;
     public boolean isDie = false;
     public boolean isNeut = false;
+    public boolean dummy = false;
     public int goodLuck = 0;
     public int badLuck = 0;
     public int movable = 0;
@@ -537,7 +538,7 @@ public abstract class AbstractEntity implements Cloneable {
         if (isPlayer) {
             for (int i = 0; i < index; i++) {
                 AbstractPlayer tar = players[i];
-                if (!tar.isAlive()) {
+                if (!tar.dummy && !tar.isAlive()) {
                     int pi = index, ti = tar.index;
                     float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
                     index = ti;
@@ -563,7 +564,7 @@ public abstract class AbstractEntity implements Cloneable {
     public void die(AbstractEntity murder) {
         health = 0;
         block = 0;
-        if (isPlayer) {
+        if (isPlayer && mode == Mode.NORMAL) {
             AchieveHandler.check.DEATH++;
             if (AchieveHandler.check.DEATH >= 100) {
                 int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.DEATH);
@@ -596,13 +597,15 @@ public abstract class AbstractEntity implements Cloneable {
                     if (a) break;
                 }
                 if (!a) {
-                    if (!achvCheck.IMMORTAL && Labyrintale.battleScreen.neutResCount >= 10) {
-                        AbstractLabyrinth.achvCheck.IMMORTAL = true;
-                    }
-                    AchieveHandler.check.WIN++;
-                    if (AchieveHandler.check.WIN >= 1000) {
-                        int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.WIN);
-                        if (i == 0) AchieveHandler.achvs.replace(AchieveHandler.Achievement.WIN, 3);
+                    if(mode == Mode.NORMAL) {
+                        if (!achvCheck.IMMORTAL && Labyrintale.battleScreen.neutResCount >= 10) {
+                            AbstractLabyrinth.achvCheck.IMMORTAL = true;
+                        }
+                        AchieveHandler.check.WIN++;
+                        if (AchieveHandler.check.WIN >= 1000) {
+                            int i = AchieveHandler.achvs.get(AchieveHandler.Achievement.WIN);
+                            if (i == 0) AchieveHandler.achvs.replace(AchieveHandler.Achievement.WIN, 3);
+                        }
                     }
                     ActionHandler.clear();
                     ActionHandler.bot(new AtBattleEndAction());

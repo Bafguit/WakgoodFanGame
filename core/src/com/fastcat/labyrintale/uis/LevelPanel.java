@@ -24,6 +24,7 @@ public class LevelPanel extends AbstractUI {
         setPosition(Gdx.graphics.getWidth() * 0.5f - sWidth / 2, 1128 * scale);
         exp.setPosition(Gdx.graphics.getWidth() * 0.5f - exp.sWidth / 2, 1276 * scale);
         isPixmap = true;
+        clickable = false;
         fontData = FontHandler.CARD_BIG_ORB;
         fx = x + 403 * scale;
         fy = y + sHeight - 230 * scale;

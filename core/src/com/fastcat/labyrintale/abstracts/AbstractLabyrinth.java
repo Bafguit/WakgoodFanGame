@@ -35,6 +35,7 @@ public class AbstractLabyrinth {
     public static DifficultyHandler restriction;
     public static DeadScreen.ScreenType result;
     public static Difficulty diff = Difficulty.NORMAL;
+    public static Mode mode = Mode.NORMAL;
     public static ScoreHandle scoreHandle;
     public static AbstractFloor[] floors;
     public static AbstractFloor currentFloor;
@@ -96,14 +97,36 @@ public class AbstractLabyrinth {
             maxExp = 100;
             charge = 5;
             sp = 0;
-            for (int i = 0; i < 4; i++) {
-                AbstractPlayer temp = Labyrintale.charSelectScreen.chars[i].player;
-                AbstractPlayer p = getPlayerInstance(temp.playerClass);
-                p.setCustomSkin(temp.key);
-                SettingHandler.setting.skin.replace(temp.playerClass, temp.key);
-                p.defineIndex(i);
+            diff = Labyrintale.charSelectScreen.diff;
+            mode = Labyrintale.charSelectScreen.mode;
+            if(mode == Mode.SOLO) {
+                AbstractPlayer t = Labyrintale.charSelectScreen.chars[0].player;
+                AbstractPlayer p = getPlayerInstance(t.playerClass);
+                p.setCustomSkin(t.key);
+                SettingHandler.setting.skin.replace(t.playerClass, t.key);
+                p.defineIndex(0);
                 restriction.onCreatePlayer(p);
-                players[i] = p;
+                players[0] = p;
+                for (int i = 1; i < 4; i++) {
+                    AbstractPlayer temp = Labyrintale.charSelectScreen.chars[0].player;
+                    AbstractPlayer pp = getPlayerInstance(temp.playerClass);
+                    pp.setDummy();
+                    pp.setCustomSkin(temp.key);
+                    SettingHandler.setting.skin.replace(temp.playerClass, temp.key);
+                    pp.defineIndex(i);
+                    restriction.onCreatePlayer(pp);
+                    players[i] = pp;
+                }
+            } else {
+                for (int i = 0; i < 4; i++) {
+                    AbstractPlayer temp = Labyrintale.charSelectScreen.chars[i].player;
+                    AbstractPlayer p = getPlayerInstance(temp.playerClass);
+                    p.setCustomSkin(temp.key);
+                    SettingHandler.setting.skin.replace(temp.playerClass, temp.key);
+                    p.defineIndex(i);
+                    restriction.onCreatePlayer(p);
+                    players[i] = p;
+                }
             }
             for (AbstractPlayer p : players) {
                 if (p.playerClass == AbstractPlayer.PlayerClass.JURURU) {
@@ -113,7 +136,6 @@ public class AbstractLabyrinth {
                     break;
                 }
             }
-            diff = Labyrintale.charSelectScreen.diff;
             restriction.onCreateLabyrinth();
             scoreHandle = new ScoreHandle();
             achvCheck = new AchieveHandler.AchvLabCheck();
@@ -354,6 +376,13 @@ public class AbstractLabyrinth {
         NORMAL,
         HARD,
         COFFIN
+    }
+
+    public enum Mode {
+        NORMAL,
+        SOLO,
+        FREE,
+        DUP
     }
 
     public static class ScoreHandle {

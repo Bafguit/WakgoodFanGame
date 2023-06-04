@@ -42,7 +42,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
 
         boolean canRevive = false;
         for (AbstractPlayer p : AbstractLabyrinth.players) {
-            if (!p.isAlive()) {
+            if (!p.dummy && !p.isAlive()) {
                 canRevive = true;
                 break;
             }

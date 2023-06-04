@@ -285,6 +285,7 @@ public class FileHandler implements Disposable {
         resources.put("BG_WIN", "img/bg/win.png");
         resources.put("BG_MAP", "img/bg/map.png");
         resources.put("BG_DIFF", "img/bg/diff.png");
+        resources.put("BG_MODE", "img/bg/mode.png");
         resources.put("BG_WAY_1", "img/bg/way_forest.png");
         resources.put("BG_WAY_2", "img/bg/way_deep.png");
         resources.put("BG_WAY_3", "img/bg/way_temple.png");
@@ -455,6 +456,9 @@ public class FileHandler implements Disposable {
         resourceNames.put("DIFF_HARD", "img/ui/diff_hard.png");
         resourceNames.put("DIFF_COFFIN", "img/ui/diff_coffin.png");
         resourceNames.put("DIFF_LOCKED", "img/ui/diff_locked.png");
+        resourceNames.put("MODE_SOLO", "img/ui/mode_solo.png");
+        resourceNames.put("MODE_FREE", "img/ui/mode_free.png");
+        resourceNames.put("MODE_DUP", "img/ui/mode_dup.png");
         resourceNames.put("LIB_RUNS", "img/ui/lib_runs.png");
         resourceNames.put("LIB_ACHVS", "img/ui/lib_achvs.png");
         resourceNames.put("LIB_DICT", "img/ui/lib_dict.png");

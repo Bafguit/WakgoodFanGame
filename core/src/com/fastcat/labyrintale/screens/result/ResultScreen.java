@@ -1,6 +1,7 @@
 package com.fastcat.labyrintale.screens.result;
 
 import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.achvCheck;
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.mode;
 import static com.fastcat.labyrintale.handlers.AchieveHandler.achvs;
 import static com.fastcat.labyrintale.handlers.AchieveHandler.check;
 import static com.fastcat.labyrintale.handlers.FontHandler.*;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.*;
+import com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Mode;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.AtCartoonEnd;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
@@ -44,7 +46,7 @@ public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
     public ResultScreen(DeadScreen.ScreenType type) {
         setBg(FileHandler.getBg().get("BG_" + type));
         backPanel = FileHandler.getUi().get("RESULT_" + type);
-        if (type == DeadScreen.ScreenType.WIN) {
+        if (type == DeadScreen.ScreenType.WIN && AbstractLabyrinth.mode == Mode.NORMAL) {
 
             if (achvCheck.REFLECT >= 4) {
                 AchieveHandler.Achievement ac = AchieveHandler.Achievement.REFLECT;
@@ -216,25 +218,46 @@ public class ResultScreen extends AbstractScreen implements AtCartoonEnd {
         dType = type;
         moreScreen = new MoreResultScreen(type);
         AbstractLabyrinth.result = type;
-        for (int g = 0; g < 4; g++) {
-            ResultPlayerBigIcon pc = new ResultPlayerBigIcon(AbstractLabyrinth.players[g]);
+        if(mode == Mode.SOLO) {
+            ResultPlayerBigIcon pc = new ResultPlayerBigIcon(AbstractLabyrinth.players[0]);
             pc.setScale(0.95f);
-            pc.setPosition((968 + 208 * g) * scale - pc.sWidth / 2, 609 * scale);
-            pIcons[g] = pc;
+            pc.setPosition((968 + 208 * 1.5f) * scale - pc.sWidth / 2, 609 * scale);
+            pIcons[0] = pc;
+            for (int g = 1; g < 4; g++) {
+                ResultPlayerBigIcon ppc = new ResultPlayerBigIcon(AbstractLabyrinth.players[g]);
+                ppc.setScale(0.95f);
+                ppc.setPosition(100000, 100000);
+                pIcons[g] = ppc;
+            }
+        } else {
+            for (int g = 0; g < 4; g++) {
+                ResultPlayerBigIcon pc = new ResultPlayerBigIcon(AbstractLabyrinth.players[g]);
+                pc.setScale(0.95f);
+                pc.setPosition((968 + 208 * g) * scale - pc.sWidth / 2, 609 * scale);
+                pIcons[g] = pc;
+            }
         }
         cType = ControlPanel.ControlType.HIDE;
-        diff = "난이도: ";
-        HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF);
-        if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
-            diff += "일반";
-            if (type == DeadScreen.ScreenType.WIN && !temp.get("HARD")) {
-                temp.replace("HARD", true);
-                temp.replace("COFFIN", true);
-                UnlockHandler.save();
-            }
-        } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
-            diff += "어려움";
-        } else diff += "관";
+        if(mode == Mode.SOLO) {
+            diff = "솔로 모드";
+        } else if(mode == Mode.DUP) {
+            diff = "복제 모드";
+        } else if(mode == Mode.FREE) {
+            diff = "자유 모드";
+        } else {
+            diff = "난이도: ";
+            HashMap<String, Boolean> temp = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.DIFF);
+            if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.NORMAL) {
+                diff += "일반";
+                if (type == DeadScreen.ScreenType.WIN && !temp.get("HARD")) {
+                    temp.replace("HARD", true);
+                    temp.replace("COFFIN", true);
+                    UnlockHandler.save();
+                }
+            } else if (AbstractLabyrinth.diff == AbstractLabyrinth.Difficulty.HARD) {
+                diff += "어려움";
+            } else diff += "관";
+        }
         gold = AbstractLabyrinth.gold + "G";
         time = AbstractLabyrinth.minute + "분 " + AbstractLabyrinth.second + "초";
         score = String.valueOf(AbstractLabyrinth.scoreHandle.score);
