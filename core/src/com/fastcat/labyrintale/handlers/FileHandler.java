@@ -459,6 +459,8 @@ public class FileHandler implements Disposable {
         resourceNames.put("MODE_SOLO", "img/ui/mode_solo.png");
         resourceNames.put("MODE_FREE", "img/ui/mode_free.png");
         resourceNames.put("MODE_DUP", "img/ui/mode_dup.png");
+        resourceNames.put("MODE_NORMAL", "img/ui/mode_normal.png");
+        resourceNames.put("MODE_LOCK", "img/ui/mode_lock.png");
         resourceNames.put("LIB_RUNS", "img/ui/lib_runs.png");
         resourceNames.put("LIB_ACHVS", "img/ui/lib_achvs.png");
         resourceNames.put("LIB_DICT", "img/ui/lib_dict.png");

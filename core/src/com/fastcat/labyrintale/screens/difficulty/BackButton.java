@@ -53,6 +53,6 @@ public class BackButton extends AbstractUI {
     @Override
     public void onClick() {
         SoundHandler.playSfx("CHANGE");
-        fadeOutAndChangeScreen(mainMenuScreen, FadeType.VERTICAL, 0.5f);
+        fadeOutAndChangeScreen(modeScreen, FadeType.VERTICAL, 0.5f);
     }
 }

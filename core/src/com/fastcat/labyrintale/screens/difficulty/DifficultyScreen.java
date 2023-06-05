@@ -9,17 +9,15 @@ import com.fastcat.labyrintale.abstracts.AbstractLabyrinth;
 import com.fastcat.labyrintale.abstracts.AbstractScreen;
 import com.fastcat.labyrintale.handlers.FileHandler;
 import com.fastcat.labyrintale.handlers.InputHandler;
+import com.fastcat.labyrintale.handlers.UnlockHandler;
 import com.fastcat.labyrintale.screens.runview.IndexButton;
 
 public class DifficultyScreen extends AbstractScreen {
 
     public BackButton backButton;
-    public ToModeButton right;
     private final DifficultyButton[] buttons = new DifficultyButton[3];
 
     public DifficultyScreen() {
-        right = new ToModeButton();
-        right.setPosition(Gdx.graphics.getWidth() * 0.98f - right.sWidth, Gdx.graphics.getHeight() * 0.5f - right.sHeight / 2);
         for (int i = 0; i < 3; i++) {
             DifficultyButton b = new DifficultyButton(AbstractLabyrinth.Difficulty.values()[i]);
             b.setPosition((680 + 600 * i) * scale - b.sWidth / 2, 424 * scale);
@@ -31,7 +29,6 @@ public class DifficultyScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        right.update();
         for (DifficultyButton b : buttons) {
             b.update();
         }
@@ -47,7 +44,6 @@ public class DifficultyScreen extends AbstractScreen {
             b.render(sb);
         }
         backButton.render(sb);
-        right.render(sb);
     }
 
     @Override
@@ -58,6 +54,5 @@ public class DifficultyScreen extends AbstractScreen {
             b.over = false;
             b.show();
         }
-        right.over = false;
     }
 }

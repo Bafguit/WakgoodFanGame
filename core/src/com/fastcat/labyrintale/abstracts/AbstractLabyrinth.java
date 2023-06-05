@@ -6,6 +6,7 @@ import com.fastcat.labyrintale.Labyrintale;
 import com.fastcat.labyrintale.abstracts.AbstractRoom.RoomType;
 import com.fastcat.labyrintale.handlers.*;
 import com.fastcat.labyrintale.interfaces.AtCartoonEnd;
+import com.fastcat.labyrintale.items.special.Water;
 import com.fastcat.labyrintale.players.*;
 import com.fastcat.labyrintale.screens.cartoon.CartoonScreen;
 import com.fastcat.labyrintale.screens.dead.DeadScreen;
@@ -103,6 +104,10 @@ public class AbstractLabyrinth {
                 AbstractPlayer t = Labyrintale.charSelectScreen.chars[0].player;
                 AbstractPlayer p = getPlayerInstance(t.playerClass);
                 p.setCustomSkin(t.key);
+                p.gainItem(new Water(p), 0);
+                HashMap<String, Boolean> ti = UnlockHandler.unlocks.get(UnlockHandler.Unlocks.ITEM);
+                if(ti.get("Water") == null) ti.put("Water", true);
+                else if (!ti.get("Water")) ti.replace("Water", true);
                 SettingHandler.setting.skin.replace(t.playerClass, t.key);
                 p.defineIndex(0);
                 restriction.onCreatePlayer(p);

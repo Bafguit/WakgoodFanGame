@@ -588,6 +588,7 @@ public final class GroupHandler {
             t.add(new ShortBase(null));
             t.add(new Sanpellegrino(null));
             t.add(new Amadeus(null));
+            t.add(new Water(null));
         }
 
         @SuppressWarnings("NewApi")

@@ -14,15 +14,12 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 public class CustomModeScreen extends AbstractScreen {
 
     public BackButton backButton;
-    public ToDiffButton left;
-    private final ModeButton[] buttons = new ModeButton[3];
+    private final ModeButton[] buttons = new ModeButton[4];
 
     public CustomModeScreen() {
-        left = new ToDiffButton();
-        left.setPosition(Gdx.graphics.getWidth() * 0.02f, Gdx.graphics.getHeight() * 0.5f - left.sHeight / 2);
-        for (int i = 0; i < 3; i++) {
-            ModeButton b = new ModeButton(AbstractLabyrinth.Mode.values()[i + 1]);
-            b.setPosition((575 + 705 * i) * scale - b.sWidth / 2, 232 * scale);
+        for (int i = 0; i < 4; i++) {
+            ModeButton b = new ModeButton(AbstractLabyrinth.Mode.values()[i]);
+            b.setPosition((176 + 552 * i) * scale, Gdx.graphics.getHeight() * 0.5f - b.sHeight / 2);
             buttons[i] = b;
         }
         backButton = new BackButton();
@@ -31,7 +28,6 @@ public class CustomModeScreen extends AbstractScreen {
 
     @Override
     public void update() {
-        left.update();
         for (ModeButton b : buttons) {
             b.update();
         }
@@ -47,7 +43,6 @@ public class CustomModeScreen extends AbstractScreen {
             b.render(sb);
         }
         backButton.render(sb);
-        left.render(sb);
     }
 
     @Override
@@ -58,6 +53,5 @@ public class CustomModeScreen extends AbstractScreen {
             b.over = false;
             b.show();
         }
-        left.over = false;
     }
 }
