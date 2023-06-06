@@ -36,19 +36,43 @@ public class SlotSelectScreen extends AbstractScreen implements GetSelectedSlot 
         this.type = type;
         pPlayer = new SlotButton[4][3];
         float w = Gdx.graphics.getWidth(), h = 1440 * InputHandler.scale;
-        int cnt = 0;
-        for (int l = 0; l < 2; l++) {
-            for (int k = 0; k < 2; k++) {
-                AbstractPlayer p = AbstractLabyrinth.players[cnt];
-                float bw = w * (0.2f + 0.36f * k);
+        if(AbstractLabyrinth.mode == AbstractLabyrinth.Mode.SOLO) {
+            AbstractPlayer pp = AbstractLabyrinth.players[0];
+            float bw = w * 0.38f;
+            PlayerSlotIcon cc = new PlayerSlotIcon(pp);
+            cc.setPosition(bw - cc.sWidth / 2, h * 0.62f - cc.sHeight / 2);
+            for (int i = 0; i < 3; i++) {
+                SlotButton adv = new SlotButton(pp, i, this);
+                adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * 0.62f - adv.sHeight / 2);
+                pPlayer[0][i] = adv;
+            }
+            pIcons[0] = cc;
+            for (int k = 1; k < 4; k++) {
+                AbstractPlayer p = AbstractLabyrinth.players[k];
                 PlayerSlotIcon c = new PlayerSlotIcon(p);
-                c.setPosition(bw - c.sWidth / 2, h * (0.625f - 0.15f * l));
+                c.setPosition(100000, 100000);
                 for (int i = 0; i < 3; i++) {
                     SlotButton adv = new SlotButton(p, i, this);
-                    adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.625f - 0.15f * l));
-                    pPlayer[cnt][i] = adv;
+                    adv.setPosition(10000, 10000);
+                    pPlayer[k][i] = adv;
                 }
-                pIcons[cnt++] = c;
+                pIcons[k] = c;
+            }
+        } else {
+            int cnt = 0;
+            for (int l = 0; l < 2; l++) {
+                for (int k = 0; k < 2; k++) {
+                    AbstractPlayer p = AbstractLabyrinth.players[cnt];
+                    float bw = w * (0.2f + 0.36f * k);
+                    PlayerSlotIcon c = new PlayerSlotIcon(p);
+                    c.setPosition(bw - c.sWidth / 2, h * (0.625f - 0.15f * l));
+                    for (int i = 0; i < 3; i++) {
+                        SlotButton adv = new SlotButton(p, i, this);
+                        adv.setPosition(bw + w * 0.08f * (i + 1) - adv.sWidth / 2, h * (0.625f - 0.15f * l));
+                        pPlayer[cnt][i] = adv;
+                    }
+                    pIcons[cnt++] = c;
+                }
             }
         }
         cancel = new CancelUpgradeButton(this);

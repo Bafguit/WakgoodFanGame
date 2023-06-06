@@ -10,6 +10,8 @@ import com.fastcat.labyrintale.interfaces.GetRewardDone;
 import com.fastcat.labyrintale.interfaces.GetSelectedPlayer;
 import com.fastcat.labyrintale.uis.BgImg;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Mode.SOLO;
+
 public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPlayer {
 
     public BgImg bg = new BgImg();
@@ -27,7 +29,7 @@ public class PlayerSelectScreen extends AbstractScreen implements GetSelectedPla
         playerSelectText = new PlayerSelectText();
         this.gets = gets;
         this.rewardDone = rewardDone;
-        int size = players.length;
+        int size = AbstractLabyrinth.mode == SOLO ? 1 : players.length;
         pPlayer = new PlayerButton[size];
         float w = Gdx.graphics.getWidth() * (1.0f / (size + 1)), h = 1440 * InputHandler.scale;
         for (int i = 0; i < size; i++) {

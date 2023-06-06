@@ -1,5 +1,6 @@
 package com.fastcat.labyrintale.actions;
 
+import static com.fastcat.labyrintale.abstracts.AbstractLabyrinth.Mode.SOLO;
 import static com.fastcat.labyrintale.handlers.GroupHandler.SkillGroup.getRandomSkill;
 
 import com.badlogic.gdx.math.MathUtils;
@@ -45,9 +46,9 @@ public class VictoryAction extends AbstractAction {
                 AbstractLabyrinth.victoryRoom();
             }
             Array<AbstractReward> temp = new Array<>();
-            AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
+            AbstractPlayer tp = AbstractLabyrinth.players[AbstractLabyrinth.mode == SOLO ? 0 : AbstractLabyrinth.publicRandom.random(0, 3)];
             if (AbstractLabyrinth.currentFloor.currentRoom.type == AbstractRoom.RoomType.ELITE) {
-                AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.publicRandom.random(0, 3)];
+                AbstractPlayer tp2 = AbstractLabyrinth.players[AbstractLabyrinth.mode == SOLO ? 0 : AbstractLabyrinth.publicRandom.random(0, 3)];
                 if (tp.playerClass == tp2.playerClass) {
                     Array<AbstractSkill> ss = getRandomSkill(tp, 2);
                     temp.add(new SkillReward(ss.get(0)));

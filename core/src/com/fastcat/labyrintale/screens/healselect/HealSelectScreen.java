@@ -70,7 +70,7 @@ public class HealSelectScreen extends AbstractScreen implements GetSelectedPlaye
             Array<AbstractPlayer> pp = new Array<>();
             for (int i = 0; i < 4; i++) {
                 AbstractPlayer p = AbstractLabyrinth.players[i];
-                if (!p.isAlive()) pp.add(p);
+                if (!p.dummy && !p.isAlive()) pp.add(p);
             }
             AbstractPlayer[] pa = new AbstractPlayer[pp.size];
             for (int i = 0; i < pp.size; i++) {

@@ -32,7 +32,7 @@ public class RestScreen extends AbstractScreen {
         end = new RestEndButton();
         end.disable();
         for (AbstractPlayer p : AbstractLabyrinth.players) {
-            if (!p.isAlive()) {
+            if (!p.dummy && !p.isAlive()) {
                 count++;
                 break;
             }
@@ -95,12 +95,14 @@ public class RestScreen extends AbstractScreen {
     @Override
     public void update() {
         for (int i = 0; i < 4; i++) {
-            AbstractPlayer p = AbstractLabyrinth.players[i];
-            AbstractUI.TempUI u = chars[i];
-            u.img = alive > 2 ? p.camp : p.upset;
-            u.showImg = p.isAlive();
-            u.hFlip = i > 1;
-            u.update();
+            if(i == 0 || AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
+                AbstractPlayer p = AbstractLabyrinth.players[i];
+                AbstractUI.TempUI u = chars[i];
+                u.img = alive > 2 ? p.camp : p.upset;
+                u.showImg = p.isAlive();
+                u.hFlip = i > 1;
+                u.update();
+            }
         }
         for (int i = 0; i < count; i++) {
             buttons[i].update();
@@ -116,10 +118,14 @@ public class RestScreen extends AbstractScreen {
             desc[i].render(sb);
         }
 
-        chars[1].render(sb);
-        chars[2].render(sb);
+        if(AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
+            chars[1].render(sb);
+            chars[2].render(sb);
+        }
         chars[0].render(sb);
-        chars[3].render(sb);
+        if(AbstractLabyrinth.mode != AbstractLabyrinth.Mode.SOLO) {
+            chars[3].render(sb);
+        }
 
         fire.render(sb);
         end.render(sb);
