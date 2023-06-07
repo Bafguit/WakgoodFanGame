@@ -47,23 +47,28 @@ public class ShopRoom extends AbstractRoom {
     }
 
     public void generateSkills() {
-        int p1 = 1, p2 = 1, p3 = 1, p4 = 1;
+        Array<AbstractSkill> bs = new Array<>();
 
-        for (int i = 0; i < 2; i++) {
-            int t = shopRandom.random(3);
-            if (t == 0) p1++;
-            else if (t == 1) p2++;
-            else if (t == 2) p3++;
-            else p4++;
+        if(mode == Mode.SOLO) {
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], 5));
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], 1));
+        } else {
+            int p1 = 1, p2 = 1, p3 = 1, p4 = 1;
+
+            for (int i = 0; i < 2; i++) {
+                int t = shopRandom.random(3);
+                if (t == 0) p1++;
+                else if (t == 1) p2++;
+                else if (t == 2) p3++;
+                else p4++;
+            }
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], p1));
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[1], p2));
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[2], p3));
+            bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[3], p4));
         }
 
-        Array<AbstractSkill> bs = new Array<>();
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[0], p1));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[1], p2));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[2], p3));
-        bs.addAll(GroupHandler.SkillGroup.getRandomSkill(players[3], p4));
         GroupHandler.SkillGroup.staticShuffle(bs);
-
         for (int i = 0; i < 6; i++) {
             skills[i] = new SkillItem(bs.get(i));
         }

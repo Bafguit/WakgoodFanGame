@@ -44,7 +44,7 @@ import static com.fastcat.labyrintale.handlers.InputHandler.scale;
 
 public class Labyrintale extends Game {
 
-    public static final String BUILD_VERSION = "1.2.1";
+    public static final String BUILD_VERSION = "1.2.2";
 
     public static Labyrintale game;
 
